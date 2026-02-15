@@ -4,7 +4,6 @@
 
 
 
-# Abilities API
 
 
 
@@ -81,13 +80,13 @@ add_action( 'wp_abilities_api_categories_init', 'wporg_register_category' );
  * @return void
  */
 function wporg_register_category() {
-	wp_register_ability_category(
-		'site-information',
-		array(
-			'label'       => __( 'Site Information', 'textdomain' ),
-			'description' => __( 'Abilities that provide information about the WordPress site.', 'textdomain' ),
-		)
-	);
+    wp_register_ability_category(
+        'site-information',
+        array(
+            'label'       => __( 'Site Information', 'textdomain' ),
+            'description' => __( 'Abilities that provide information about the WordPress site.', 'textdomain' ),
+        )
+    );
 }
 
 // Then, register an ability in that category.
@@ -98,54 +97,54 @@ add_action( 'wp_abilities_api_init', 'wporg_register_ability' );
  * @return void
  */
 function wporg_register_ability() {
-	wp_register_ability(
-		'my-plugin/site-info',
-		array(
-			'label'               => __( 'Site Info', 'textdomain' ),
-			'description'         => __( 'Returns information about this WordPress site', 'textdomain' ),
-			'category'            => 'site-information',
-			'input_schema'        => array(),
-			'output_schema'       => array(
-				'type'       => 'object',
-				'properties' => array(
-					'site_name'         => array(
-						'type'        => 'string',
-						'description' => __( 'The name of the WordPress site', 'textdomain' ),
-					),
-					'site_url'          => array(
-						'type'        => 'string',
-						'description' => __( 'The URL of the WordPress site', 'textdomain' ),
-					),
-					'active_theme'      => array(
-						'type'        => 'string',
-						'description' => __( 'The active theme of the WordPress site', 'textdomain' ),
-					),
-					'active_plugins'    => array(
-						'type'        => 'array',
-						'items'       => array(
-							'type' => 'string',
-						),
-						'description' => __( 'List of active plugins on the WordPress site', 'textdomain' ),
-					),
-					'php_version'       => array(
-						'type'        => 'string',
-						'description' => __( 'The PHP version of the WordPress site', 'textdomain' ),
-					),
-					'wordpress_version' => array(
-						'type'        => 'string',
-						'description' => __( 'The WordPress version of the site', 'textdomain' ),
-					),
-				),
-			),
-			'execute_callback'    => 'wporg_get_siteinfo',
-			'permission_callback' => function () {
-				return current_user_can( 'manage_options' );
-			},
-			'meta'                => array(
-				'show_in_rest' => true,
-			),
-		)
-	);
+    wp_register_ability(
+        'my-plugin/site-info',
+        array(
+            'label'               => __( 'Site Info', 'textdomain' ),
+            'description'         => __( 'Returns information about this WordPress site', 'textdomain' ),
+            'category'            => 'site-information',
+            'input_schema'        => array(),
+            'output_schema'       => array(
+                'type'       => 'object',
+                'properties' => array(
+                    'site_name'         => array(
+                        'type'        => 'string',
+                        'description' => __( 'The name of the WordPress site', 'textdomain' ),
+                    ),
+                    'site_url'          => array(
+                        'type'        => 'string',
+                        'description' => __( 'The URL of the WordPress site', 'textdomain' ),
+                    ),
+                    'active_theme'      => array(
+                        'type'        => 'string',
+                        'description' => __( 'The active theme of the WordPress site', 'textdomain' ),
+                    ),
+                    'active_plugins'    => array(
+                        'type'        => 'array',
+                        'items'       => array(
+                            'type' => 'string',
+                        ),
+                        'description' => __( 'List of active plugins on the WordPress site', 'textdomain' ),
+                    ),
+                    'php_version'       => array(
+                        'type'        => 'string',
+                        'description' => __( 'The PHP version of the WordPress site', 'textdomain' ),
+                    ),
+                    'wordpress_version' => array(
+                        'type'        => 'string',
+                        'description' => __( 'The WordPress version of the site', 'textdomain' ),
+                    ),
+                ),
+            ),
+            'execute_callback'    => 'wporg_get_siteinfo',
+            'permission_callback' => function () {
+                return current_user_can( 'manage_options' );
+            },
+            'meta'                => array(
+                'show_in_rest' => true,
+            ),
+        )
+    );
 }
 
 /**
@@ -154,20 +153,20 @@ function wporg_register_ability() {
  * @return array
  */
 function wporg_get_siteinfo() {
-	$active_plugins = array();
-	foreach ( get_option( 'active_plugins', array() ) as $plugin_path ) {
-		$plugin_data      = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_path );
-		$active_plugins[] = $plugin_data['Name'];
-	}
+    $active_plugins = array();
+    foreach ( get_option( 'active_plugins', array() ) as $plugin_path ) {
+        $plugin_data      = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_path );
+        $active_plugins[] = $plugin_data['Name'];
+    }
 
-	return array(
-		'site_name'         => get_bloginfo( 'name' ),
-		'site_url'          => get_bloginfo( 'url' ),
-		'active_theme'      => wp_get_theme()->get( 'Name' ),
-		'active_plugins'    => $active_plugins,
-		'php_version'       => PHP_VERSION,
-		'wordpress_version' => get_bloginfo( 'version' ),
-	);
+    return array(
+        'site_name'         => get_bloginfo( 'name' ),
+        'site_url'          => get_bloginfo( 'url' ),
+        'active_theme'      => wp_get_theme()->get( 'Name' ),
+        'active_plugins'    => $active_plugins,
+        'php_version'       => PHP_VERSION,
+        'wordpress_version' => get_bloginfo( 'version' ),
+    );
 }
 ```
 

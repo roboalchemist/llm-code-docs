@@ -39,37 +39,29 @@ Pay close attention to what each function does, as some will remove HTML while o
 - esc_html()– Use anytime an HTML element encloses a section of data being displayed. This will remove HTML.
 
 
-```
+```text
 <h4><?php echo esc_html( $title ); ?></h4>
-```
-
-
+```text
 - esc_js()– Use for inline Javascript.
 
 
-```
+```text
 <div onclick='<?php echo esc_js( $value ); ?>' />
-```
-
-
+```text
 - esc_url()– Use on all URLs, including those in the src and href attributes of an HTML element.
 
 
-```
+```text
 <img alt="" src="<?php echo esc_url( $media_url ); ?>" />
-```
-
-
+```text
 - esc_url_raw()– Use when storing a URL in the database or in other cases where non-encoded URLs are needed.
 - esc_xml()– Use to escape XML block.
 - esc_attr()– Use on everything else that’s printed into an HTML element’s attribute.
 
 
-```
+```text
 <ul class="<?php echo esc_attr( $stored_class ); ?>">
-```
-
-
+```text
 - esc_textarea()– Use this to encode text for use inside a textarea element.
 - wp_kses()– Use to safely escape for all non-trusted HTML (post text, comment text, etc.). This preserves HTML.
 - wp_kses_post()– Alternative version ofwp_kses()that automatically allows all HTML that is permitted in post content.
@@ -85,7 +77,7 @@ In the case that you need to escape your output in a specific way, the functionw
 This function makes sure that only the specified HTML elements, attributes, and attribute values will occur in your output, and normalizes HTML entities.
 
 
-```
+```text
 <?php
 echo wp_kses_post( $partial_html );
 echo wp_kses(
@@ -100,9 +92,7 @@ echo wp_kses(
         'strong' => array(),
     )
 ); ?>
-```
-
-
+```text
 In this example, all tags other than<a>,<br>,<em>, and<strong>will be stripped out. Additionally, if an<a>tag is passed, the escaping ensures that only thehrefand thetitleare returned.
 
 
@@ -122,7 +112,7 @@ It is better to escape late for a few reasons:
 - Escaping/casting on output removes any ambiguity and adds clarity (always develop for the maintainer).
 
 
-```
+```text
 // Okay, but not great.
 $url = esc_url( $url );
 $text = esc_html( $text );
@@ -130,9 +120,7 @@ echo '<a href="'. $url . '">' . $text . '</a>';
 
 // Much better!
 echo '<a href="'. esc_url( $url ) . '">' . esc_html( $text ) . '</a>';
-```
-
-
+```text
 ## … Except when you can’t
 
 
@@ -154,13 +142,11 @@ Rather than usingechoto output data, it’s common to use the WordPress localiza
 These functions simply wrap a localization function inside an escaping function:
 
 
-```
+```text
 esc_html_e( 'Hello World', 'text_domain' );
 // Same as
 echo esc_html( __( 'Hello World', 'text_domain' ) );
-```
-
-
+```text
 These helper functions combine localization and escaping:
 
 
@@ -178,11 +164,9 @@ These helper functions combine localization and escaping:
 ### Escaping any numeric variable used anywhere
 
 
-```
+```text
 echo $int;
-```
-
-
+```text
 Depending on whether it is an integer or a float,(int),absint(),(float)are all correct and acceptable.At times,number_format()ornumber_format_i18n()might be more appropriate.
 
 
@@ -192,166 +176,134 @@ intval(),floatval()are acceptable, but are outdated (PHP4) functions.
 ### Escaping arbitrary variable within HTML attribute
 
 
-```
+```text
 echo '<div id="', $prefix, '-box', $id, '">';
-```
-
-
+```text
 This should be escaped with one call toesc_attr().When a variable is used as part of an attribute or url, it is always better to escape the whole string as that way a potential escape character just before the variable will be correctly escaped.
 
 
 Correct:
 
 
-```
+```text
 echo '<div id="', esc_attr( $prefix . '-box' . $id ), '">';
-```
-
-
+```text
 Incorrect:
 
 
-```
+```text
 echo '<div id="', esc_attr( $prefix ), '-box', esc_attr( $id ), '">';
-```
-
-
+```text
 Note: nonces created usingwp_create_nonce()should also be escaped like this if used in an HTML attribute.
 
 
 ### Escaping arbitrary URL within HTML attribute, but also in other contexts
 
 
-```
+```text
 echo '<a href="', $url, '">';
-```
-
-
+```text
 This should be escaped withesc_url().
 
 
 Correct:
 
 
-```
+```text
 echo '<a href="', esc_url( $url ), '">';
-```
-
-
+```text
 Incorrect:
 
 
-```
+```text
 echo '<a href="', esc_attr( $url ), '">';
 echo '<a href="', esc_attr( esc_url( $url ) ), '">';
-```
-
-
+```text
 ### Passing an arbitrary variable to JavaScript via wp_localize_script()
 
 
-```
+```text
 wp_localize_script( 'handle', 'name',
-	array(
-		'prefix_nonce' => wp_create_nonce( 'plugin-name' ),
-		'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-		'errorMsg'     => __( 'An error occurred', 'plugin-name' ),
-	)
+    array(
+        'prefix_nonce' => wp_create_nonce( 'plugin-name' ),
+        'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+        'errorMsg'     => __( 'An error occurred', 'plugin-name' ),
+    )
 );
-```
-
-
+```text
 No escaping needed, WordPress will escape this.
 
 
 ### Escaping arbitrary variable within JavaScript block
 
 
-```
+```text
 <script type="text/javascript">
     var myVar = <?php echo $my_var; ?>
 </script>
-```
-
-
+```text
 $my_varshould be escaped withesc_js().
 
 
 Correct:
 
 
-```
+```text
 <script type="text/javascript">
     var myVar = <?php echo esc_js( $my_var ); ?>
 </script>
-```
-
-
+```text
 ### Escaping arbitrary variable within inline JavaScript
 
 
-```
+```text
 <a href="#" onclick="do_something(<?php echo $var; ?>); return false;">
-```
-
-
+```text
 $varshould be escaped withesc_js().
 
 
 Correct:
 
 
-```
+```text
 <a href="#" onclick="do_something(<?php echo esc_js( $var ); ?>); return false;">
-```
-
-
+```text
 ### Escaping arbitrary variable within HTML attribute for use by JavaScript
 
 
-```
+```text
 <a href="#" data-json="<?php echo $var; ?>">
-```
-
-
+```text
 $varshould be escaped withesc_js(),json_encode()orwp_json_encode().
 
 
 Correct:
 
 
-```
+```text
 <a href="#" data-json="<?php echo esc_js( $var ); ?>">
-```
-
-
+```text
 ### Escaping arbitrary string within HTML textarea
 
 
-```
+```text
 echo '<textarea>', $data, '</textarea>';
-```
-
-
+```text
 $datashould be escaped withesc_textarea().
 
 
 Correct:
 
 
-```
+```text
 echo '<textarea>', esc_textarea( $data ), '</textarea>';
-```
-
-
+```text
 ### Escaping arbitrary string within HTML tags
 
 
-```
+```text
 echo '<div>', $phrase, '</div>';
-```
-
-
+```text
 This depends on whether$phraseis expected to contain HTML or not.
 
 
@@ -362,25 +314,18 @@ This depends on whether$phraseis expected to contain HTML or not.
 ### Escaping arbitrary string within XML or XSL context
 
 
-```
+```text
 echo '<loc>', $var, '</loc>';
-```
-
-
+```text
 Escape withesc_xml()orent2ncr().
 
 
 Correct:
 
 
-```
+```text
 echo '<loc>', ent2ncr( $var ), '</loc>';
-```
-
-
-
-
-
+```text
 First published
 
 

@@ -89,11 +89,9 @@ You can add new settings fields (basically, an option in thewp_optionsdatabase t
 NOTE:You MUST register any options you use withadd_settings_field()or they won’t be saved and updated automatically. See below for details and an example.
 
 
-```
+```text
 add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() )
-```
-
-
+```text
 - $id– String for use in the ‘id’ attribute of tags.
 - $title– Title of the field.
 - $callback– Function that fills the field with the desired inputs as part of the larger form. Name and id of the input should match the $id given to this function. The function should echo its output.
@@ -108,11 +106,9 @@ add_settings_field( $id, $title, $callback, $page, $section = 'default', $args =
 Settings Sections are the groups of settings you see on WordPress settings pages with a shared heading. In your plugin you can add new sections to existing settings pages rather than creating a whole new page. This makes your plugin simpler to maintain and creates fewer new pages for users to learn. You just tell them to change your setting on the relevant existing page.
 
 
-```
+```text
 add_settings_section( $id, $title, $callback, $page );
-```
-
-
+```text
 - $id– String for use in the ‘id’ attribute of tags.
 - $title– Title of the section.
 - $callback– Function that fills the section with the desired content. The function should echo its output.
@@ -122,16 +118,12 @@ add_settings_section( $id, $title, $callback, $page );
 ## Registering Settings
 
 
-```
+```text
 register_setting( $option_group, $option_name, $args );
-```
-
-
-```
+```text
+```text
 unregister_setting( $option_group, $option_name );
-```
-
-
+```text
 NOTE:register_setting()as well as the above mentionedadd_settings_*()functions should all be called from aadmin_initaction hook callback function. Refer to the “Examples” section below.
 
 
@@ -168,7 +160,7 @@ Your options form also needs a submit button. You can use thesubmit_button()func
 Finally, you need to output the HTML <form> tag defining the action destination of options.php and method of POST. Here is an example options form code to generate all the sections and fields added to a page who’s slug name ismy-page:
 
 
-```
+```text
 <form method="POST" action="options.php">
 <?php 
 settings_fields( 'my-page' ); // pass slug name of page, also referred to in Settings API as option group name
@@ -176,44 +168,42 @@ do_settings_sections( 'my-page' );  // pass slug name of page
 submit_button(); // submit button
 ?>
 </form>
-```
-
-
+```text
 ## Example
 
 
 ### Adding a settings section with a new field in it
 
 
-```
+```text
 <?php 
 /**
  * Add all your sections, fields and settings during admin_init
  */
  
 function wporg_settings_api_init() {
- 	// Add the section to reading settings so we can add our
- 	// fields to it
- 	add_settings_section(
-		'wporg_setting_section',
-		'Example settings section in reading',
-		'wporg_setting_section_callback_function',
-		'reading'
-	);
- 	
- 	// Add the field with the names and function to use for our new
- 	// settings, put it in our new section
- 	add_settings_field(
-		'wporg_setting_name',
-		'Example setting Name',
-		'wporg_setting_callback_function',
-		'reading',
-		'wporg_setting_section'
-	);
- 	
- 	// Register our setting so that $_POST handling is done for us and
- 	// our callback function just has to echo the <input>
- 	register_setting( 'reading', 'wporg_setting_name' );
+     // Add the section to reading settings so we can add our
+     // fields to it
+     add_settings_section(
+        'wporg_setting_section',
+        'Example settings section in reading',
+        'wporg_setting_section_callback_function',
+        'reading'
+    );
+     
+     // Add the field with the names and function to use for our new
+     // settings, put it in our new section
+     add_settings_field(
+        'wporg_setting_name',
+        'Example setting Name',
+        'wporg_setting_callback_function',
+        'reading',
+        'wporg_setting_section'
+    );
+     
+     // Register our setting so that $_POST handling is done for us and
+     // our callback function just has to echo the <input>
+     register_setting( 'reading', 'wporg_setting_name' );
  } // wporg_settings_api_init()
  
  add_action( 'admin_init', 'wporg_settings_api_init' );
@@ -227,7 +217,7 @@ function wporg_settings_api_init() {
  */
  
  function wporg_setting_section_callback_function() {
- 	echo '<p>Intro text for our settings section</p>';
+     echo '<p>Intro text for our settings section</p>';
  }
  
 /*
@@ -237,11 +227,9 @@ function wporg_settings_api_init() {
  */
  
  function wporg_setting_callback_function() {
- 	echo '<input name="wporg_setting_name" id="wporg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'wporg_setting_name' ), false ) . ' /> <label for="wporg_setting_name">Explanation text</label>';
+     echo '<input name="wporg_setting_name" id="wporg_setting_name" type="checkbox" value="1" class="code" ' . checked( 1, get_option( 'wporg_setting_name' ), false ) . ' /> <label for="wporg_setting_name">Explanation text</label>';
  }
-```
-
-
+```text
 #### Graphical Representation of where all those code should go
 
 

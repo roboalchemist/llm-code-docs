@@ -1,199 +1,210 @@
-# Developer Resources
-
-**Source:** [https://developer.wordpress.org](https://developer.wordpress.org)
-
-
-
-
-
-[WordPress.org](https://wordpress.org/)
-
-
-
-	The search block is inside a navigation menu because that provides the exact functionality the design
-	calls for. It also provides a consistent experience with the primary navigation menu, with respect to
-	keyboard navigation, ARIA states, etc. It also saves having to write custom code for all the interactions.
-
-
- This is the first of two Get WordPress buttons; the other is in the navigation menu.
-	Two are needed because they have different DOM hierarchies at different breakpoints. 
-
-[Get WordPress](https://wordpress.org/download/)
-
-
-
-
-[WordPress.org](https://wordpress.org/)
-
-WordPress Developer Resources
-
-
-
-
-
-
-# Developer Resources
-
-
-/The freedom to build
-
-
-
-
-
-Seewhat has changedin the WordPress  API.
-
-
-
-
-
-
-## Documentation
-
-
-
-[Block EditorCreate the building blocks of WordPress.](https://developer.wordpress.org/block-editor/)
-[ThemesLearn how to build your own themes.](https://developer.wordpress.org/themes/)
-[PluginsDive into the world of plugin authoring.](https://developer.wordpress.org/plugins/)
-[Common APIsExplore APIs in the software and the ecosystem.](https://developer.wordpress.org/apis/)
-[Advanced AdministrationDig into the technical side of site management.](https://developer.wordpress.org/advanced-administration/)
-[WordPress PlaygroundRun WordPress entirely in your browser.](https://developer.wordpress.org/playground/)
-
-
-
-
-
-## API Reference
-
-
-
-[Code referenceRead through the codebase documentation.](https://developer.wordpress.org/reference/)
-[REST APIStart creating your own apps with WordPress.](https://developer.wordpress.org/rest-api/)
-[Run WP-CLI CommandsAccelerate your workflow managing WordPress.](https://developer.wordpress.org/cli/commands)
-[Coding StandardsEnsure your code is up to date.](https://developer.wordpress.org/coding-standards/)
-
-
-
-
-
-## Developer Blog
-
-
-Catch up on the latest news from theDeveloper Blog.
-
-
-- What's new for developers? (February 2026)AI·February 10, 2026
-- From Abilities to AI Agents: Introducing the WordPress MCP AdapterAI·February 4, 2026
-- Streamlining block theme development with WordPress Playground and GitHubPlayground·January 23, 2026
-
-Popular categories: [Themes](https://developer.wordpress.org/news/category/themes/), [Plugins](https://developer.wordpress.org/news/category/plugins/), [Blocks](https://developer.wordpress.org/news/category/blocks/).
-
-
-
-## Get Involved
-
-
-Start your journey to contribute to WordPress.
-
-
-
-[Documentation Contributor HandbookHelp document WordPress.](https://make.wordpress.org/docs/handbook/)
-[Contribute to WordPressStart contributing to core.](https://make.wordpress.org/core/handbook/)
-
-
-
-
-
-
-
-## More resources
-
-
-
-
-### DocumentationContributor Handbook
-
-
-
-
-### Core ContributorHandbook
-
-
-
-
-
-
-## Related
-
-
-
-
-### Learn WordPress
-
-
-
-
-
-
-
-
-
-
-
- The design calls for two logos, a small "mark" on mobile/tablet, and the full logo for desktops. 
-
-[WordPress.org](https://wordpress.org/)
-
-
-[WordPress.org](https://wordpress.org/)
-
-
-- Visit our X (formerly Twitter) account
-- Visit our Bluesky account
-- Visit our Mastodon account
-- Visit our Threads account
-- Visit our Facebook page
-- Visit our Instagram account
-- Visit our LinkedIn account
-- Visit our TikTok account
-- Visit our YouTube channel
-- Visit our Tumblr account
-
-
- Use an image so it can have the MrsEaves font. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# WordPress Developer Documentation
+
+**Source:** https://developer.wordpress.org/
+
+This documentation covers core WordPress development APIs, plugin and theme development, REST API, Block Editor (Gutenberg), WP-CLI, and coding standards.
+
+## Plugin Development Handbook
+
+Complete guide to WordPress plugin development
+
+- [Actions](plugins-hooks-actions.md) - [https://developer.wordpress.org/plugins/hooks/actions/](https://developer.wordpress.org/plugins/hooks/actions/)
+- [Activation / Deactivation Hooks](plugins-plugin-basics-activation-deactivation-hooks.md) - [https://developer.wordpress.org/plugins/plugin-basics/activation-deactivation-hooks/](https://developer.wordpress.org/plugins/plugin-basics/activation-deactivation-hooks/)
+- [Administration Menus](plugin-administration-menus.md) - [https://developer.wordpress.org/plugin/administration-menus/](https://developer.wordpress.org/plugin/administration-menus/)
+- [Best Practices](plugins-plugin-basics-best-practices.md) - [https://developer.wordpress.org/plugins/plugin-basics/best-practices/](https://developer.wordpress.org/plugins/plugin-basics/best-practices/)
+- [Checking User Capabilities](plugins-security-checking-user-capabilities.md) - [https://developer.wordpress.org/plugins/security/checking-user-capabilities/](https://developer.wordpress.org/plugins/security/checking-user-capabilities/)
+- [Cron](plugin-cron.md) - [https://developer.wordpress.org/plugin/cron/](https://developer.wordpress.org/plugin/cron/)
+- [Custom Post Types](plugins-post-types.md) - [https://developer.wordpress.org/plugins/post-types/](https://developer.wordpress.org/plugins/post-types/)
+- [Data Validation](plugins-security-data-validation.md) - [https://developer.wordpress.org/plugins/security/data-validation/](https://developer.wordpress.org/plugins/security/data-validation/)
+- [Determining Plugin and Content Directories](plugins-plugin-basics-determining-plugin-and-content-directories.md) - [https://developer.wordpress.org/plugins/plugin-basics/determining-plugin-and-content-directories/](https://developer.wordpress.org/plugins/plugin-basics/determining-plugin-and-content-directories/)
+- [Developer Blog](news.md) - [https://developer.wordpress.org/news/](https://developer.wordpress.org/news/)
+- [Developer Resources](index.md) - [https://developer.wordpress.org/](https://developer.wordpress.org/)
+- [Developer Resources](index.md) - [https://developer.wordpress.org](https://developer.wordpress.org)
+- [Developer Tools](plugin-developer-tools.md) - [https://developer.wordpress.org/plugin/developer-tools/](https://developer.wordpress.org/plugin/developer-tools/)
+- [Filters](plugins-hooks-filters.md) - [https://developer.wordpress.org/plugins/hooks/filters/](https://developer.wordpress.org/plugins/hooks/filters/)
+- [HTTP API](plugin-http-api.md) - [https://developer.wordpress.org/plugin/http-api/](https://developer.wordpress.org/plugin/http-api/)
+- [Header Requirements](plugins-plugin-basics-header-requirements.md) - [https://developer.wordpress.org/plugins/plugin-basics/header-requirements/](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/)
+- [Hooks](plugin-hooks.md) - [https://developer.wordpress.org/plugin/hooks/](https://developer.wordpress.org/plugin/hooks/)
+- [Hooks](plugins-hooks.md) - [https://developer.wordpress.org/plugins/hooks/](https://developer.wordpress.org/plugins/hooks/)
+- [Including a Software License](plugins-plugin-basics-including-a-software-license.md) - [https://developer.wordpress.org/plugins/plugin-basics/including-a-software-license/](https://developer.wordpress.org/plugins/plugin-basics/including-a-software-license/)
+- [Internationalization](plugin-internationalization.md) - [https://developer.wordpress.org/plugin/internationalization/](https://developer.wordpress.org/plugin/internationalization/)
+- [Introduction to Plugin Development](plugin-intro.md) - [https://developer.wordpress.org/plugin/intro/](https://developer.wordpress.org/plugin/intro/)
+- [Introduction to Plugin Development](plugins-intro.md) - [https://developer.wordpress.org/plugins/intro/](https://developer.wordpress.org/plugins/intro/)
+- [JavaScript](plugin-javascript.md) - [https://developer.wordpress.org/plugin/javascript/](https://developer.wordpress.org/plugin/javascript/)
+- [Metadata](plugin-metadata.md) - [https://developer.wordpress.org/plugin/metadata/](https://developer.wordpress.org/plugin/metadata/)
+- [Nonces](plugins-security-nonces.md) - [https://developer.wordpress.org/plugins/security/nonces/](https://developer.wordpress.org/plugins/security/nonces/)
+- [Plugin Basics](plugins-plugin-basics.md) - [https://developer.wordpress.org/plugins/plugin-basics/](https://developer.wordpress.org/plugins/plugin-basics/)
+- [Plugin Handbook](plugins.md) - [https://developer.wordpress.org/plugins/](https://developer.wordpress.org/plugins/)
+- [Plugin Security](plugin-security.md) - [https://developer.wordpress.org/plugin/security/](https://developer.wordpress.org/plugin/security/)
+- [Plugin Security](plugins-security.md) - [https://developer.wordpress.org/plugins/security/](https://developer.wordpress.org/plugins/security/)
+- [Privacy](plugins-privacy.md) - [https://developer.wordpress.org/plugins/privacy/](https://developer.wordpress.org/plugins/privacy/)
+- [Securing (escaping) Output](plugins-security-securing-output.md) - [https://developer.wordpress.org/plugins/security/securing-output/](https://developer.wordpress.org/plugins/security/securing-output/)
+- [Securing (sanitizing) Input](plugins-security-securing-input.md) - [https://developer.wordpress.org/plugins/security/securing-input/](https://developer.wordpress.org/plugins/security/securing-input/)
+- [Settings](plugin-settings.md) - [https://developer.wordpress.org/plugin/settings/](https://developer.wordpress.org/plugin/settings/)
+- [Shortcodes](plugin-shortcodes.md) - [https://developer.wordpress.org/plugin/shortcodes/](https://developer.wordpress.org/plugin/shortcodes/)
+- [Taxonomies](plugins-taxonomies.md) - [https://developer.wordpress.org/plugins/taxonomies/](https://developer.wordpress.org/plugins/taxonomies/)
+- [The WordPress.org Plugin Directory](plugin-wordpress-org.md) - [https://developer.wordpress.org/plugin/wordpress-org/](https://developer.wordpress.org/plugin/wordpress-org/)
+- [Uninstall Methods](plugins-plugin-basics-uninstall-methods.md) - [https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/](https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/)
+- [Users](plugin-users.md) - [https://developer.wordpress.org/plugin/users/](https://developer.wordpress.org/plugin/users/)
+- [WP-CLI Commands](cli-commands.md) - [https://developer.wordpress.org/cli/commands/](https://developer.wordpress.org/cli/commands/)
+- [What is a Plugin?](plugins-intro-what-is-a-plugin.md) - [https://developer.wordpress.org/plugins/intro/what-is-a-plugin/](https://developer.wordpress.org/plugins/intro/what-is-a-plugin/)
+
+## Theme Development Handbook
+
+Complete guide to WordPress theme development
+
+- [Advanced Topics](theme-advanced-topics.md) - [https://developer.wordpress.org/theme/advanced-topics/](https://developer.wordpress.org/theme/advanced-topics/)
+- [Appearance Tools](themes-global-settings-and-styles-settings-appearance-tools.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/appearance-tools/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/appearance-tools/)
+- [Applying Styles](themes-global-settings-and-styles-styles-applying-styles.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/styles/applying-styles/](https://developer.wordpress.org/themes/global-settings-and-styles/styles/applying-styles/)
+- [Blocks](themes-global-settings-and-styles-settings-blocks.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/blocks/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/blocks/)
+- [Border](themes-global-settings-and-styles-settings-border.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/border/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/border/)
+- [Color](themes-global-settings-and-styles-settings-color.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/)
+- [Core Concepts](themes-core-concepts.md) - [https://developer.wordpress.org/themes/core-concepts/](https://developer.wordpress.org/themes/core-concepts/)
+- [Custom](themes-global-settings-and-styles-settings-custom.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/custom/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/custom/)
+- [Custom Functionality (functions.php)](themes-core-concepts-custom-functionality.md) - [https://developer.wordpress.org/themes/core-concepts/custom-functionality/](https://developer.wordpress.org/themes/core-concepts/custom-functionality/)
+- [Custom Templates](themes-global-settings-and-styles-custom-templates.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/custom-templates/](https://developer.wordpress.org/themes/global-settings-and-styles/custom-templates/)
+- [Dimensions](themes-global-settings-and-styles-settings-dimensions.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/dimensions/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/dimensions/)
+- [Getting Started](themes-getting-started.md) - [https://developer.wordpress.org/themes/getting-started/](https://developer.wordpress.org/themes/getting-started/)
+- [Global Settings and Styles](themes-core-concepts-global-settings-and-styles.md) - [https://developer.wordpress.org/themes/core-concepts/global-settings-and-styles/](https://developer.wordpress.org/themes/core-concepts/global-settings-and-styles/)
+- [Global Settings and Styles (theme.json)](themes-global-settings-and-styles.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/](https://developer.wordpress.org/themes/global-settings-and-styles/)
+- [Including Assets](themes-core-concepts-including-assets.md) - [https://developer.wordpress.org/themes/core-concepts/including-assets/](https://developer.wordpress.org/themes/core-concepts/including-assets/)
+- [Introduction to theme.json](themes-global-settings-and-styles-introduction-to-theme-json.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/](https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/)
+- [Layout](themes-global-settings-and-styles-settings-layout.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/layout/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/layout/)
+- [Lightbox](themes-global-settings-and-styles-settings-lightbox.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/lightbox/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/lightbox/)
+- [Main Stylesheet (style.css)](themes-core-concepts-main-stylesheet.md) - [https://developer.wordpress.org/themes/core-concepts/main-stylesheet/](https://developer.wordpress.org/themes/core-concepts/main-stylesheet/)
+- [Patterns](themes-global-settings-and-styles-patterns.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/patterns/](https://developer.wordpress.org/themes/global-settings-and-styles/patterns/)
+- [Position](themes-global-settings-and-styles-settings-position.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/position/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/position/)
+- [Quick-Start Guide](themes-getting-started-quick-start-guide.md) - [https://developer.wordpress.org/themes/getting-started/quick-start-guide/](https://developer.wordpress.org/themes/getting-started/quick-start-guide/)
+- [Reading This Handbook](themes-getting-started-reading-this-handbook.md) - [https://developer.wordpress.org/themes/getting-started/reading-this-handbook/](https://developer.wordpress.org/themes/getting-started/reading-this-handbook/)
+- [Releasing Your Theme](themes-releasing-your-theme.md) - [https://developer.wordpress.org/themes/releasing-your-theme/](https://developer.wordpress.org/themes/releasing-your-theme/)
+- [Settings](themes-global-settings-and-styles-settings.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/)
+- [Settings Reference](themes-global-settings-and-styles-settings-settings-reference.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/settings-reference/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/settings-reference/)
+- [Shadow](themes-global-settings-and-styles-settings-shadow.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/shadow/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/shadow/)
+- [Spacing](themes-global-settings-and-styles-settings-spacing.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/spacing/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/spacing/)
+- [Styles](themes-global-settings-and-styles-styles.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/styles/](https://developer.wordpress.org/themes/global-settings-and-styles/styles/)
+- [Styles Reference](themes-global-settings-and-styles-styles-styles-reference.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/styles/styles-reference/](https://developer.wordpress.org/themes/global-settings-and-styles/styles/styles-reference/)
+- [Template Parts](themes-global-settings-and-styles-template-parts.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/template-parts/](https://developer.wordpress.org/themes/global-settings-and-styles/template-parts/)
+- [Templates](themes-core-concepts-templates.md) - [https://developer.wordpress.org/themes/core-concepts/templates/](https://developer.wordpress.org/themes/core-concepts/templates/)
+- [Theme Handbook](themes.md) - [https://developer.wordpress.org/themes/](https://developer.wordpress.org/themes/)
+- [Theme Structure](themes-core-concepts-theme-structure.md) - [https://developer.wordpress.org/themes/core-concepts/theme-structure/](https://developer.wordpress.org/themes/core-concepts/theme-structure/)
+- [Tools and Setup](themes-getting-started-tools-and-setup.md) - [https://developer.wordpress.org/themes/getting-started/tools-and-setup/](https://developer.wordpress.org/themes/getting-started/tools-and-setup/)
+- [Typography](themes-global-settings-and-styles-settings-typography.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/typography/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/typography/)
+- [Use Root Padding Aware Alignments](themes-global-settings-and-styles-settings-use-root-padding-aware-alignments.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/settings/use-root-padding-aware-alignments/](https://developer.wordpress.org/themes/global-settings-and-styles/settings/use-root-padding-aware-alignments/)
+- [Using Presets](themes-global-settings-and-styles-styles-using-presets.md) - [https://developer.wordpress.org/themes/global-settings-and-styles/styles/using-presets/](https://developer.wordpress.org/themes/global-settings-and-styles/styles/using-presets/)
+- [What Is a Theme?](themes-getting-started-what-is-a-theme.md) - [https://developer.wordpress.org/themes/getting-started/what-is-a-theme/](https://developer.wordpress.org/themes/getting-started/what-is-a-theme/)
+- [Who Is This Handbook For?](themes-getting-started-who-is-this-handbook-for.md) - [https://developer.wordpress.org/themes/getting-started/who-is-this-handbook-for/](https://developer.wordpress.org/themes/getting-started/who-is-this-handbook-for/)
+
+## Block Editor Handbook
+
+Gutenberg / Block Editor development guide
+
+- [Advanced Administration Handbook](advanced-administration.md) - [https://developer.wordpress.org/advanced-administration](https://developer.wordpress.org/advanced-administration)
+- [Architecture](block-editor-explanations-architecture.md) - [https://developer.wordpress.org/block-editor/explanations/architecture/](https://developer.wordpress.org/block-editor/explanations/architecture/)
+- [Best Practices](coding-standards.md) - [https://developer.wordpress.org/coding-standards](https://developer.wordpress.org/coding-standards)
+- [Block API Reference](block-editor-reference-guides-block-api.md) - [https://developer.wordpress.org/block-editor/reference-guides/block-api/](https://developer.wordpress.org/block-editor/reference-guides/block-api/)
+- [Block Development Environment](block-editor-getting-started-devenv.md) - [https://developer.wordpress.org/block-editor/getting-started/devenv/](https://developer.wordpress.org/block-editor/getting-started/devenv/)
+- [Block Editor Handbook](block-editor.md) - [https://developer.wordpress.org/block-editor/](https://developer.wordpress.org/block-editor/)
+- [Code Contributions](block-editor-contributors-code.md) - [https://developer.wordpress.org/block-editor/contributors/code/](https://developer.wordpress.org/block-editor/contributors/code/)
+- [Common APIs Handbook](apis.md) - [https://developer.wordpress.org/apis](https://developer.wordpress.org/apis)
+- [Component Reference](block-editor-reference-guides-components.md) - [https://developer.wordpress.org/block-editor/reference-guides/components/](https://developer.wordpress.org/block-editor/reference-guides/components/)
+- [Contributor Guide](block-editor-contributors.md) - [https://developer.wordpress.org/block-editor/contributors/](https://developer.wordpress.org/block-editor/contributors/)
+- [Core Blocks Reference](block-editor-reference-guides-core-blocks.md) - [https://developer.wordpress.org/block-editor/reference-guides/core-blocks/](https://developer.wordpress.org/block-editor/reference-guides/core-blocks/)
+- [Create your First App with Gutenberg Data](block-editor-how-to-guides-data-basics.md) - [https://developer.wordpress.org/block-editor/how-to-guides/data-basics/](https://developer.wordpress.org/block-editor/how-to-guides/data-basics/)
+- [Curating the Editor Experience](block-editor-how-to-guides-curating-the-editor-experience.md) - [https://developer.wordpress.org/block-editor/how-to-guides/curating-the-editor-experience/](https://developer.wordpress.org/block-editor/how-to-guides/curating-the-editor-experience/)
+- [Data Flow and Data Format](block-editor-explanations-architecture-data-flow.md) - [https://developer.wordpress.org/block-editor/explanations/architecture/data-flow/](https://developer.wordpress.org/block-editor/explanations/architecture/data-flow/)
+- [Design Contributions](block-editor-contributors-design.md) - [https://developer.wordpress.org/block-editor/contributors/design/](https://developer.wordpress.org/block-editor/contributors/design/)
+- [Documentation Contributions](block-editor-contributors-documentation.md) - [https://developer.wordpress.org/block-editor/contributors/documentation/](https://developer.wordpress.org/block-editor/contributors/documentation/)
+- [Explanations](block-editor-explanations.md) - [https://developer.wordpress.org/block-editor/explanations/](https://developer.wordpress.org/block-editor/explanations/)
+- [File structure of a block](block-editor-getting-started-fundamentals-file-structure-of-a-block.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/file-structure-of-a-block/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/file-structure-of-a-block/)
+- [Frequently Asked Questions](block-editor-getting-started-faq.md) - [https://developer.wordpress.org/block-editor/getting-started/faq/](https://developer.wordpress.org/block-editor/getting-started/faq/)
+- [Fundamentals of Block Development](block-editor-getting-started-fundamentals.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/)
+- [Get started with create-block](block-editor-getting-started-devenv-get-started-with-create-block.md) - [https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/](https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/)
+- [Get started with wp-env](block-editor-getting-started-devenv-get-started-with-wp-env.md) - [https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-wp-env/](https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-wp-env/)
+- [Get started with wp-scripts](block-editor-getting-started-devenv-get-started-with-wp-scripts.md) - [https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-wp-scripts/](https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-wp-scripts/)
+- [Getting Started](block-editor-getting-started.md) - [https://developer.wordpress.org/block-editor/getting-started/](https://developer.wordpress.org/block-editor/getting-started/)
+- [How-to Guides](block-editor-how-to-guides.md) - [https://developer.wordpress.org/block-editor/how-to-guides/](https://developer.wordpress.org/block-editor/how-to-guides/)
+- [Key Concepts](block-editor-explanations-architecture-key-concepts.md) - [https://developer.wordpress.org/block-editor/explanations/architecture/key-concepts/](https://developer.wordpress.org/block-editor/explanations/architecture/key-concepts/)
+- [Node.js development environment](block-editor-getting-started-devenv-nodejs-development-environment.md) - [https://developer.wordpress.org/block-editor/getting-started/devenv/nodejs-development-environment/](https://developer.wordpress.org/block-editor/getting-started/devenv/nodejs-development-environment/)
+- [Package Reference](block-editor-reference-guides-packages.md) - [https://developer.wordpress.org/block-editor/reference-guides/packages/](https://developer.wordpress.org/block-editor/reference-guides/packages/)
+- [Plugin Handbook](plugins.md) - [https://developer.wordpress.org/plugins](https://developer.wordpress.org/plugins)
+- [Quick Start Guide](block-editor-getting-started-quick-start-guide.md) - [https://developer.wordpress.org/block-editor/getting-started/quick-start-guide/](https://developer.wordpress.org/block-editor/getting-started/quick-start-guide/)
+- [REST API Handbook](rest-api.md) - [https://developer.wordpress.org/rest-api/](https://developer.wordpress.org/rest-api/)
+- [Reference Guides](block-editor-reference-guides.md) - [https://developer.wordpress.org/block-editor/reference-guides/](https://developer.wordpress.org/block-editor/reference-guides/)
+- [Registration of a block](block-editor-getting-started-fundamentals-registration-of-a-block.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/registration-of-a-block/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/registration-of-a-block/)
+- [Tag:Monthly Roundups](news-tag-roundup.md) - [https://developer.wordpress.org/news/tag/roundup/](https://developer.wordpress.org/news/tag/roundup/)
+- [The block in the Editor](block-editor-getting-started-fundamentals-block-in-the-editor.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-in-the-editor/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-in-the-editor/)
+- [The block wrapper](block-editor-getting-started-fundamentals-block-wrapper.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-wrapper/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-wrapper/)
+- [Theme Handbook](themes.md) - [https://developer.wordpress.org/themes](https://developer.wordpress.org/themes)
+- [Tutorial: Build your first block](block-editor-getting-started-create-block.md) - [https://developer.wordpress.org/block-editor/getting-started/create-block/](https://developer.wordpress.org/block-editor/getting-started/create-block/)
+- [Tutorial: Build your first block](block-editor-getting-started-tutorial.md) - [https://developer.wordpress.org/block-editor/getting-started/tutorial/](https://developer.wordpress.org/block-editor/getting-started/tutorial/)
+- [block.json](block-editor-getting-started-fundamentals-block-json.md) - [https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-json/](https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-json/)
+
+## Common APIs
+
+Core WordPress APIs and hooks
+
+- [Abilities API](apis-abilities-api.md) - [https://developer.wordpress.org/apis/abilities-api/](https://developer.wordpress.org/apis/abilities-api/)
+- [Action Reference](apis-hooks-action-reference.md) - [https://developer.wordpress.org/apis/hooks/action-reference/](https://developer.wordpress.org/apis/hooks/action-reference/)
+- [Advanced](apis-making-http-requests-advanced.md) - [https://developer.wordpress.org/apis/making-http-requests/advanced/](https://developer.wordpress.org/apis/making-http-requests/advanced/)
+- [Authentication](apis-making-http-requests-authentication.md) - [https://developer.wordpress.org/apis/making-http-requests/authentication/](https://developer.wordpress.org/apis/making-http-requests/authentication/)
+- [Common APIs Handbook](apis.md) - [https://developer.wordpress.org/apis/](https://developer.wordpress.org/apis/)
+- [Common Vulnerabilities](apis-security-common-vulnerabilities.md) - [https://developer.wordpress.org/apis/security/common-vulnerabilities/](https://developer.wordpress.org/apis/security/common-vulnerabilities/)
+- [Dashboard widgets API](apis-dashboard-widgets.md) - [https://developer.wordpress.org/apis/dashboard-widgets/](https://developer.wordpress.org/apis/dashboard-widgets/)
+- [Database API](apis-database.md) - [https://developer.wordpress.org/apis/database/](https://developer.wordpress.org/apis/database/)
+- [Escaping Data](apis-security-escaping.md) - [https://developer.wordpress.org/apis/security/escaping/](https://developer.wordpress.org/apis/security/escaping/)
+- [Example](apis-security-example.md) - [https://developer.wordpress.org/apis/security/example/](https://developer.wordpress.org/apis/security/example/)
+- [Filesystem](apis-filesystem.md) - [https://developer.wordpress.org/apis/filesystem/](https://developer.wordpress.org/apis/filesystem/)
+- [Filter Reference](apis-hooks-filter-reference.md) - [https://developer.wordpress.org/apis/hooks/filter-reference/](https://developer.wordpress.org/apis/hooks/filter-reference/)
+- [GETting data from an external service](apis-making-http-requests-getting-data-from-an-external-service.md) - [https://developer.wordpress.org/apis/making-http-requests/getting-data-from-an-external-service/](https://developer.wordpress.org/apis/making-http-requests/getting-data-from-an-external-service/)
+- [Getting started](apis-abilities-api-getting-started.md) - [https://developer.wordpress.org/apis/abilities-api/getting-started/](https://developer.wordpress.org/apis/abilities-api/getting-started/)
+- [Global Variables](apis-global-variables.md) - [https://developer.wordpress.org/apis/global-variables/](https://developer.wordpress.org/apis/global-variables/)
+- [Hooks](apis-hooks.md) - [https://developer.wordpress.org/apis/hooks/](https://developer.wordpress.org/apis/hooks/)
+- [Hooks](apis-abilities-api-hooks.md) - [https://developer.wordpress.org/apis/abilities-api/hooks/](https://developer.wordpress.org/apis/abilities-api/hooks/)
+- [Internationalization](apis-internationalization.md) - [https://developer.wordpress.org/apis/internationalization/](https://developer.wordpress.org/apis/internationalization/)
+- [Internationalization Functions](apis-internationalization-internationalization-functions.md) - [https://developer.wordpress.org/apis/internationalization/internationalization-functions/](https://developer.wordpress.org/apis/internationalization/internationalization-functions/)
+- [Internationalization Guidelines](apis-internationalization-internationalization-guidelines.md) - [https://developer.wordpress.org/apis/internationalization/internationalization-guidelines/](https://developer.wordpress.org/apis/internationalization/internationalization-guidelines/)
+- [Localization](apis-internationalization-localization.md) - [https://developer.wordpress.org/apis/internationalization/localization/](https://developer.wordpress.org/apis/internationalization/localization/)
+- [Making HTTP requests](apis-making-http-requests.md) - [https://developer.wordpress.org/apis/making-http-requests/](https://developer.wordpress.org/apis/making-http-requests/)
+- [Metadata](apis-metadata.md) - [https://developer.wordpress.org/apis/metadata/](https://developer.wordpress.org/apis/metadata/)
+- [Nonces](apis-security-nonces.md) - [https://developer.wordpress.org/apis/security/nonces/](https://developer.wordpress.org/apis/security/nonces/)
+- [Options](apis-options.md) - [https://developer.wordpress.org/apis/options/](https://developer.wordpress.org/apis/options/)
+- [PHP reference](apis-abilities-api-php-reference.md) - [https://developer.wordpress.org/apis/abilities-api/php-reference/](https://developer.wordpress.org/apis/abilities-api/php-reference/)
+- [POSTing data to an external service](apis-making-http-requests-posting-data-to-an-external-service.md) - [https://developer.wordpress.org/apis/making-http-requests/posting-data-to-an-external-service/](https://developer.wordpress.org/apis/making-http-requests/posting-data-to-an-external-service/)
+- [Performance](apis-making-http-requests-performance.md) - [https://developer.wordpress.org/apis/making-http-requests/performance/](https://developer.wordpress.org/apis/making-http-requests/performance/)
+- [Plugins](apis-plugins.md) - [https://developer.wordpress.org/apis/plugins/](https://developer.wordpress.org/apis/plugins/)
+- [Quicktags](apis-quicktags.md) - [https://developer.wordpress.org/apis/quicktags/](https://developer.wordpress.org/apis/quicktags/)
+- [REST](apis-rest.md) - [https://developer.wordpress.org/apis/rest/](https://developer.wordpress.org/apis/rest/)
+- [REST API endpoints](apis-abilities-api-rest-api-endpoints.md) - [https://developer.wordpress.org/apis/abilities-api/rest-api-endpoints/](https://developer.wordpress.org/apis/abilities-api/rest-api-endpoints/)
+- [Responsive Images](apis-responsive-images.md) - [https://developer.wordpress.org/apis/responsive-images/](https://developer.wordpress.org/apis/responsive-images/)
+- [Rewrite](apis-rewrite.md) - [https://developer.wordpress.org/apis/rewrite/](https://developer.wordpress.org/apis/rewrite/)
+- [Sanitizing Data](apis-security-sanitizing.md) - [https://developer.wordpress.org/apis/security/sanitizing/](https://developer.wordpress.org/apis/security/sanitizing/)
+- [Security](apis-security.md) - [https://developer.wordpress.org/apis/security/](https://developer.wordpress.org/apis/security/)
+- [Settings](apis-settings.md) - [https://developer.wordpress.org/apis/settings/](https://developer.wordpress.org/apis/settings/)
+- [Shortcode](apis-shortcode.md) - [https://developer.wordpress.org/apis/shortcode/](https://developer.wordpress.org/apis/shortcode/)
+- [User Roles and Capabilities](apis-security-user-roles-and-capabilities.md) - [https://developer.wordpress.org/apis/security/user-roles-and-capabilities/](https://developer.wordpress.org/apis/security/user-roles-and-capabilities/)
+- [Validating Data](apis-security-data-validation.md) - [https://developer.wordpress.org/apis/security/data-validation/](https://developer.wordpress.org/apis/security/data-validation/)
+
+## WP-CLI Documentation
+
+WordPress Command Line Interface
+
+- [wp cli alias add](cli-commands-cli-alias-add.md) - [https://developer.wordpress.org/cli/commands/cli/alias/add/](https://developer.wordpress.org/cli/commands/cli/alias/add/)
+- [wp cli alias delete](cli-commands-cli-alias-delete.md) - [https://developer.wordpress.org/cli/commands/cli/alias/delete/](https://developer.wordpress.org/cli/commands/cli/alias/delete/)
+- [wp cli alias get](cli-commands-cli-alias-get.md) - [https://developer.wordpress.org/cli/commands/cli/alias/get/](https://developer.wordpress.org/cli/commands/cli/alias/get/)
+- [wp cli alias is-group](cli-commands-cli-alias-is-group.md) - [https://developer.wordpress.org/cli/commands/cli/alias/is-group/](https://developer.wordpress.org/cli/commands/cli/alias/is-group/)
+- [wp cli alias list](cli-commands-cli-alias-list.md) - [https://developer.wordpress.org/cli/commands/cli/alias/list/](https://developer.wordpress.org/cli/commands/cli/alias/list/)
+- [wp cli alias update](cli-commands-cli-alias-update.md) - [https://developer.wordpress.org/cli/commands/cli/alias/update/](https://developer.wordpress.org/cli/commands/cli/alias/update/)
+- [wp cli alias<command>](cli-commands-cli-alias.md) - [https://developer.wordpress.org/cli/commands/cli/alias/](https://developer.wordpress.org/cli/commands/cli/alias/)
+- [wp cli cache clear](cli-commands-cli-cache-clear.md) - [https://developer.wordpress.org/cli/commands/cli/cache/clear/](https://developer.wordpress.org/cli/commands/cli/cache/clear/)
+- [wp cli cache prune](cli-commands-cli-cache-prune.md) - [https://developer.wordpress.org/cli/commands/cli/cache/prune/](https://developer.wordpress.org/cli/commands/cli/cache/prune/)
+- [wp cli cache<command>](cli-commands-cli-cache.md) - [https://developer.wordpress.org/cli/commands/cli/cache/](https://developer.wordpress.org/cli/commands/cli/cache/)
+- [wp cli check-update](cli-commands-cli-check-update.md) - [https://developer.wordpress.org/cli/commands/cli/check-update/](https://developer.wordpress.org/cli/commands/cli/check-update/)
+- [wp cli cmd-dump](cli-commands-cli-cmd-dump.md) - [https://developer.wordpress.org/cli/commands/cli/cmd-dump/](https://developer.wordpress.org/cli/commands/cli/cmd-dump/)
+- [wp cli completions](cli-commands-cli-completions.md) - [https://developer.wordpress.org/cli/commands/cli/completions/](https://developer.wordpress.org/cli/commands/cli/completions/)
+- [wp cli has-command](cli-commands-cli-has-command.md) - [https://developer.wordpress.org/cli/commands/cli/has-command/](https://developer.wordpress.org/cli/commands/cli/has-command/)
+- [wp cli info](cli-commands-cli-info.md) - [https://developer.wordpress.org/cli/commands/cli/info/](https://developer.wordpress.org/cli/commands/cli/info/)
+- [wp cli param-dump](cli-commands-cli-param-dump.md) - [https://developer.wordpress.org/cli/commands/cli/param-dump/](https://developer.wordpress.org/cli/commands/cli/param-dump/)
+- [wp cli update](cli-commands-cli-update.md) - [https://developer.wordpress.org/cli/commands/cli/update/](https://developer.wordpress.org/cli/commands/cli/update/)
+- [wp cli version](cli-commands-cli-version.md) - [https://developer.wordpress.org/cli/commands/cli/version/](https://developer.wordpress.org/cli/commands/cli/version/)
+- [wp cli<command>](cli.md) - [https://developer.wordpress.org/cli/](https://developer.wordpress.org/cli/)
+- [wp cli<command>](cli-commands-cli.md) - [https://developer.wordpress.org/cli/commands/cli/](https://developer.wordpress.org/cli/commands/cli/)

@@ -113,7 +113,7 @@ Overriding thesrcsetorsizesattributes for images not embedded in post content (e
 Additionally, you can create your own custom markup patterns by usingwp_get_attachment_image_srcset()directly in your templates. Here is an example of how you could use this function to build an<img>element with a customsizesattribute:
 
 
-```
+```text
 <?php
 $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
 $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
@@ -121,9 +121,7 @@ $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
 <img src="<?php echo esc_url( $img_src ); ?>"
      srcset="<?php echo esc_attr( $img_srcset ); ?>"
      sizes="(max-width: 50em) 87vw, 680px" alt="Foo Bar">
-```
-
-
+```text
 Need more developer details?Learn more about customizing responsive images markup on this GitHub repository.
 
 

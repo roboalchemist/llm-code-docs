@@ -68,7 +68,7 @@ For example, the “Administrator”, which is the highest user role on a single
 The example below creates a link on the frontend which gives the ability to trash posts. Because this code does not check user capabilities,it allows any visitor to the site to trash posts!
 
 
-```
+```text
 /**
  * Generate a Delete link based on the homepage url.
  *
@@ -77,20 +77,20 @@ The example below creates a link on the frontend which gives the ability to tras
  * @return string|null
  */
 function wporg_generate_delete_link( $content ) {
-	// Run only for single post page.
-	if ( is_single() && in_the_loop() && is_main_query() ) {
-		// Add query arguments: action, post.
-		$url = add_query_arg(
-			[
-				'action' => 'wporg_frontend_delete',
-				'post'   => get_the_ID(),
-			], home_url()
-		);
+    // Run only for single post page.
+    if ( is_single() && in_the_loop() && is_main_query() ) {
+        // Add query arguments: action, post.
+        $url = add_query_arg(
+            [
+                'action' => 'wporg_frontend_delete',
+                'post'   => get_the_ID(),
+            ], home_url()
+        );
 
-		return $content . ' <a href="' . esc_url( $url ) . '">' . esc_html__( 'Delete Post', 'wporg' ) . '</a>';
-	}
+        return $content . ' <a href="' . esc_url( $url ) . '">' . esc_html__( 'Delete Post', 'wporg' ) . '</a>';
+    }
 
-	return null;
+    return null;
 }
 
 
@@ -98,27 +98,27 @@ function wporg_generate_delete_link( $content ) {
  * Request handler
  */
 function wporg_delete_post() {
-	if ( isset( $_GET['action'] ) && 'wporg_frontend_delete' === $_GET['action'] ) {
+    if ( isset( $_GET['action'] ) && 'wporg_frontend_delete' === $_GET['action'] ) {
 
-		// Verify we have a post id.
-		$post_id = ( isset( $_GET['post'] ) ) ? ( $_GET['post'] ) : ( null );
+        // Verify we have a post id.
+        $post_id = ( isset( $_GET['post'] ) ) ? ( $_GET['post'] ) : ( null );
 
-		// Verify there is a post with such a number.
-		$post = get_post( (int) $post_id );
-		if ( empty( $post ) ) {
-			return;
-		}
+        // Verify there is a post with such a number.
+        $post = get_post( (int) $post_id );
+        if ( empty( $post ) ) {
+            return;
+        }
 
-		// Delete the post.
-		wp_trash_post( $post_id );
+        // Delete the post.
+        wp_trash_post( $post_id );
 
-		// Redirect to admin page.
-		$redirect = admin_url( 'edit.php' );
-		wp_safe_redirect( $redirect );
+        // Redirect to admin page.
+        $redirect = admin_url( 'edit.php' );
+        wp_safe_redirect( $redirect );
 
-		// We are done.
-		die;
-	}
+        // We are done.
+        die;
+    }
 }
 
 
@@ -132,9 +132,7 @@ add_filter( 'the_content', 'wporg_generate_delete_link' );
  */
 add_action( 'init', 'wporg_delete_post' );
 
-```
-
-
+```text
 ### Restricted to a Specific Capability
 
 
@@ -144,7 +142,7 @@ The example above allows any visitor to the site to click on the “Delete” li
 To accomplish this, we will check that the current user has the capabilityedit_others_posts, which only Editors or above would have:
 
 
-```
+```text
 /**
  * Generate a Delete link based on the homepage url.
  *
@@ -153,20 +151,20 @@ To accomplish this, we will check that the current user has the capabilityedit_o
  * @return string|null
  */
 function wporg_generate_delete_link( $content ) {
-	// Run only for single post page.
-	if ( is_single() && in_the_loop() && is_main_query() ) {
-		// Add query arguments: action, post.
-		$url = add_query_arg(
-			[
-				'action' => 'wporg_frontend_delete',
-				'post'   => get_the_ID(),
-			], home_url()
-		);
+    // Run only for single post page.
+    if ( is_single() && in_the_loop() && is_main_query() ) {
+        // Add query arguments: action, post.
+        $url = add_query_arg(
+            [
+                'action' => 'wporg_frontend_delete',
+                'post'   => get_the_ID(),
+            ], home_url()
+        );
 
-		return $content . ' <a href="' . esc_url( $url ) . '">' . esc_html__( 'Delete Post', 'wporg' ) . '</a>';
-	}
+        return $content . ' <a href="' . esc_url( $url ) . '">' . esc_html__( 'Delete Post', 'wporg' ) . '</a>';
+    }
 
-	return null;
+    return null;
 }
 
 
@@ -174,27 +172,27 @@ function wporg_generate_delete_link( $content ) {
  * Request handler
  */
 function wporg_delete_post() {
-	if ( isset( $_GET['action'] ) && 'wporg_frontend_delete' === $_GET['action'] ) {
+    if ( isset( $_GET['action'] ) && 'wporg_frontend_delete' === $_GET['action'] ) {
 
-		// Verify we have a post id.
-		$post_id = ( isset( $_GET['post'] ) ) ? ( $_GET['post'] ) : ( null );
+        // Verify we have a post id.
+        $post_id = ( isset( $_GET['post'] ) ) ? ( $_GET['post'] ) : ( null );
 
-		// Verify there is a post with such a number.
-		$post = get_post( (int) $post_id );
-		if ( empty( $post ) ) {
-			return;
-		}
+        // Verify there is a post with such a number.
+        $post = get_post( (int) $post_id );
+        if ( empty( $post ) ) {
+            return;
+        }
 
-		// Delete the post.
-		wp_trash_post( $post_id );
+        // Delete the post.
+        wp_trash_post( $post_id );
 
-		// Redirect to admin page.
-		$redirect = admin_url( 'edit.php' );
-		wp_safe_redirect( $redirect );
+        // Redirect to admin page.
+        $redirect = admin_url( 'edit.php' );
+        wp_safe_redirect( $redirect );
 
-		// We are done.
-		die;
-	}
+        // We are done.
+        die;
+    }
 }
 
 
@@ -216,13 +214,7 @@ function wporg_add_delete_post_ability() {
         add_action( 'init', 'wporg_delete_post' );
     }
 }
-```
-
-
-
-
-
-
+```text
 First published
 
 

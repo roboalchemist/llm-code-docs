@@ -80,13 +80,11 @@ Therefore, choose a directory to place the block plugin or optionally create a n
 
     If you are not using `wp-env`, instead, navigate to the `plugins/` folder in your local WordPress installation using the terminal and run the following command.
 
-```
+```text
 npx @wordpress/create-block@latest copyright-date-block --variant=dynamic
 cd copyright-date-block
 
-```
-
-
+```text
 After executing this command, you’ll find a new directory namedcopyright-date-blockin the plugins folder. This directory contains all the initial files needed to start customizing your block.
 
 
@@ -131,7 +129,7 @@ Check out theWorking with JavaScript for the Block Editordocumentation to learn 
 Open theblock.jsonfile in the/srcfolder.
 
 
-```
+```text
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
@@ -153,10 +151,7 @@ Open theblock.jsonfile in the/srcfolder.
     "viewScript": "file:./view.js"
 }
 
-```
-
-
-
+```text
     Review the [block.json](https://developer.wordpress.org/block-editor/getting-started/fundamentals/block-json/) documentation for an introduction to this file.
 
 Since this scaffolding process created this file, it requires some updating to suit the needs of the Copyright Date Block.
@@ -189,7 +184,7 @@ Next, let’s add a fewblock supportsso that the user can control the font size 
 Update thesupportssection of theblock.jsonfile to look like this.
 
 
-```
+```text
 "supports": {
     "color": {
         "background": false,
@@ -201,9 +196,7 @@ Update thesupportssection of theblock.jsonfile to look like this.
     }
 },
 
-```
-
-
+```text
 Note that when you enable text color support with"text": true, the background color is also enabled by default. You are welcome to keep it enabled, but it’s not required for this tutorial, so you can manually set"background": false.
 
 
@@ -233,7 +226,7 @@ Refresh the Editor, and you will see that the block styling now matches your cur
 Your finalblock.jsonfile should look like this:
 
 
-```
+```text
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
@@ -258,9 +251,7 @@ Your finalblock.jsonfile should look like this:
     "render": "file:./render.php"
 }
 
-```
-
-
+```text
 ### Updating index.js
 
 
@@ -273,7 +264,7 @@ Open theindex.jsfile. This is the main JavaScript file of the block and is used 
 Start by looking at theregisterBlockTypefunction. This function accepts the name of the block, which we are getting from the importedblock.jsonfile, and the block configuration object.
 
 
-```
+```text
 import Edit from './edit';
 import metadata from './block.json';
 
@@ -281,9 +272,7 @@ registerBlockType( metadata.name, {
     edit: Edit,
 } );
 
-```
-
-
+```text
 By default, the object just includes theeditproperty, but you can add many more, includingicon. While most of these properties are already defined inblock.json, you need to specify the icon here to use a custom SVG.
 
 
@@ -293,7 +282,7 @@ By default, the object just includes theeditproperty, but you can add many more,
 Using the calendar icon from theGutenberg Storybook, add the SVG to the function like so:
 
 
-```
+```text
 const calendarIcon = (
     <svg
         viewBox="0 0 24 24"
@@ -310,10 +299,7 @@ registerBlockType( metadata.name, {
     edit: Edit
 } );
 
-```
-
-
-
+```text
     All block icons should be 24 pixels square. Note the `viewBox` parameter above.
 
 Save theindex.jsfile and refresh the Editor. You will now see the calendar icon instead of the default.
@@ -332,7 +318,7 @@ Theedit.jsfile controls how the block functions and appears in the Editor. Right
 Open the file and see that theEdit()function returns a paragraph tag with the default message.
 
 
-```
+```text
 export default function Edit() {
     return (
         <p { ...useBlockProps() }>
@@ -344,9 +330,7 @@ export default function Edit() {
     );
 }
 
-```
-
-
+```text
 It looks a bit more complicated than it is.
 
 
@@ -360,16 +344,14 @@ It looks a bit more complicated than it is.
 As a reminder, the main purpose of this block is to display the copyright symbol (©) and the current year. So, you first need to get the current year in string form, which can be done with the following code.
 
 
-```
+```text
 const currentYear = new Date().getFullYear().toString();
 
-```
-
-
+```text
 Next, update the function to display the correct information.
 
 
-```
+```text
 export default function Edit() {
     const currentYear = new Date().getFullYear().toString();
 
@@ -378,9 +360,7 @@ export default function Edit() {
     );
 }
 
-```
-
-
+```text
 Save theedit.jsfile and refresh the Editor. You will now see the copyright symbol (©) followed by the current year.
 
 
@@ -391,7 +371,7 @@ Save theedit.jsfile and refresh the Editor. You will now see the copyright symbo
 While the block is working properly in the Editor, the default block message is still being displayed on the front end. To fix this, open therender.phpfile, and you will see the following.
 
 
-```
+```text
 <?php
 ...
 ?>
@@ -400,24 +380,20 @@ While the block is working properly in the Editor, the default block message is 
 </p>
 
 
-```
-
-
+```text
 Similar to theuseBlockProps()function in the Editor,get_block_wrapper_attributes()outputs all the necessary CSS classes and styles in theblock’s wrapper. Only the content needs to be updated.
 
 
 You can usedate( "Y" )to get the current year in PHP, and yourrender.phpshould look like this.
 
 
-```
+```text
 <?php
 ...
 ?>
 <p <?php echo get_block_wrapper_attributes(); ?>>© <?php echo date( "Y" ); ?></p>
 
-```
-
-
+```text
 Save the file and confirm that the block appears correctly in the Editor and on the front end.
 
 
@@ -460,7 +436,7 @@ To enable this starting year functionality, you will need one attribute to store
 Block attributes are generally specified in theblock.jsonfile. So open up the file and add the following section after theexampleproperty.
 
 
-```
+```text
 "example": {},
 "attributes": {
     "showStartingYear": {
@@ -471,9 +447,7 @@ Block attributes are generally specified in theblock.jsonfile. So open up the fi
     }
 },
 
-```
-
-
+```text
 You must indicate thetypewhen defining attributes. In this case, theshowStartingYearshould be true or false, so it’s set toboolean. ThestartingYearis just a string.
 
 
@@ -502,16 +476,14 @@ Earlier in this tutorial, you added block supports that automatically created Co
 TheInspectorControlsbelongs to the@wordpress/block-editorpackage, so you can import it into theedit.jsfile by adding the component name on line 14. The result should look like this.
 
 
-```
+```text
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
-```
-
-
+```text
 Next, update the Edit function to return the current block content and anInspectorControlscomponent that includes the text “Testing.” You can wrap everything in aFragment(<></>) to ensure proper JSX syntax. The result should look like this.
 
 
-```
+```text
 export default function Edit() {
     const currentYear = new Date().getFullYear().toString();
 
@@ -525,9 +497,7 @@ export default function Edit() {
     );
 }
 
-```
-
-
+```text
 Save the file and refresh the Editor. When selecting the block, you should see the “Testing” message in the Settings Sidebar.
 
 
@@ -541,16 +511,14 @@ Now, let’s use a few more Core components to add a custom panel and the user i
 Add the following line below the other imports in theedit.jsfile.
 
 
-```
+```text
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 
-```
-
-
+```text
 Then wrap the “Testing” message in thePanelBodycomponent and set thetitleparameter to “Settings”. Refer to thecomponent documentationfor additional parameter options.
 
 
-```
+```text
 export default function Edit() {
     const currentYear = new Date().getFullYear().toString();
 
@@ -566,9 +534,7 @@ export default function Edit() {
     );
 }
 
-```
-
-
+```text
 Save the file and refresh the Editor. You should now see the new Settings panel.
 
 
@@ -589,15 +555,12 @@ With these parameters included, you can fetch theshowStartingYearandstartingYear
 Update the top of theEdit()function to look like this.
 
 
-```
+```text
 export default function Edit( { attributes, setAttributes } ) {
     const { showStartingYear, startingYear } = attributes;
     ...
 
-```
-
-
-
+```text
     To see all the attributes associated with the Copyright Date Block, add `console.log( attributes );` at the top of the `Edit()` function. This can be useful when building and testing a custom block.
 
 Now, you can remove the “Testing” message and add aTextControl. It should include:
@@ -611,7 +574,7 @@ Now, you can remove the “Testing” message and add aTextControl. It should in
 Putting it all together, theEdit()function should look like the following.
 
 
-```
+```text
 export default function Edit( { attributes, setAttributes } ) {
     const { showStartingYear, startingYear } = attributes;
     const currentYear = new Date().getFullYear().toString();
@@ -638,10 +601,7 @@ export default function Edit( { attributes, setAttributes } ) {
     );
 }
 
-```
-
-
-
+```text
     You may have noticed that the `value` property has a value of `startingYear || ''`. The symbol `||` is called the [Logical OR](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR) (logical disjunction) operator. This prevents warnings in React when the `startingYear` is empty. See [Controlled and uncontrolled components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) for details.
 
 Save the file and refresh the Editor. Confirm that a text field now exists in the Settings panel. Add a starting year and confirm that when you update the page, the value is saved.
@@ -665,7 +625,7 @@ You can also update the “Starting year” text input so it’s only displayed 
 TheEdit()function should look like the following.
 
 
-```
+```text
 export default function Edit( { attributes, setAttributes } ) {
     const { showStartingYear, startingYear } = attributes;
     const currentYear = new Date().getFullYear().toString();
@@ -706,9 +666,7 @@ export default function Edit( { attributes, setAttributes } ) {
     );
 }
 
-```
-
-
+```text
 Save the file and refresh the Editor. Confirm that clicking the toggle displays the text input, and when you update the page, the toggle remains active.
 
 
@@ -725,7 +683,7 @@ Let’s create a new variable calleddisplayDate. WhenshowStartingYearistrueand t
 The code should look something like this.
 
 
-```
+```text
 let displayDate;
 
 if ( showStartingYear && startingYear ) {
@@ -734,10 +692,7 @@ if ( showStartingYear && startingYear ) {
     displayDate = currentYear;
 }
 
-```
-
-
-
+```text
     When you declare a variable with `let`, it means that the variable may be reassigned later. Declaring a variable with `const` means that the variable will never change. You could rewrite this code using `const`. It’s just a matter of personal preference.
 
 Next, you just need to update the block content to use thedisplayDateinstead of thecurrentYearvariable.
@@ -746,7 +701,7 @@ Next, you just need to update the block content to use thedisplayDateinstead of 
 TheEdit()function should look like the following.
 
 
-```
+```text
 export default function Edit( { attributes, setAttributes } ) {
     const { showStartingYear, startingYear } = attributes;
     const currentYear = new Date().getFullYear().toString();
@@ -794,9 +749,7 @@ export default function Edit( { attributes, setAttributes } ) {
     );
 }
 
-```
-
-
+```text
 Save the file and refresh the Editor. Confirm that the block content updates correctly when you make changes in the Settings panel.
 
 
@@ -824,23 +777,21 @@ This variable should display the value of thestartingYearattribute and the$curre
 The code should look something like this.
 
 
-```
+```text
 if ( ! empty( $attributes['startingYear'] ) && ! empty( $attributes['showStartingYear'] ) ) {
     $display_date = $attributes['startingYear'] . '–' . $current_year;
 } else {
     $display_date = $current_year;
 }
 
-```
-
-
+```text
 Next, you just need to update the block content to use the$display_dateinstead of the$current_yearvariable.
 
 
 Your finalrender.phpfile should look like this.
 
 
-```
+```text
 <?php
 $current_year = date( "Y" );
 
@@ -854,9 +805,7 @@ if ( ! empty( $attributes['startingYear'] ) && ! empty( $attributes['showStartin
     © <?php echo esc_html( $display_date ); ?>
 </p>
 
-```
-
-
+```text
 Save the file and confirm that the correct block content is now appearing on the front end of your site.
 
 
@@ -878,23 +827,19 @@ Statically rendered blocks will always store the block markup, attributes, and o
 You will see the following if you switch to the Code editor from within the Editor.
 
 
-```
+```text
 <!-- wp:create-block/copyright-date-block {"showStartingYear":true,"startingYear":"2017"} /-->
 
-```
-
-
+```text
 Compare this to a statically rendered block like the Paragraph block.
 
 
-```
+```text
 <!-- wp:paragraph -->
 <p>This is a test.</p>
 <!-- /wp:paragraph -->
 
-```
-
-
+```text
 The HTML of the paragraph is stored in post content and saved in the database.
 
 
@@ -923,7 +868,7 @@ Adding static rendering is also a good exploration of how block content is store
 Start by adding a new file namedsave.jsto thesrc/folder. In this file, add the following.
 
 
-```
+```text
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save() {
@@ -934,16 +879,14 @@ export default function save() {
     );
 }
 
-```
-
-
+```text
 This should look similar to the originaledit.jsfile, and you can refer to theblock wrapperdocumentation for additional information.
 
 
 Next, in theindex.jsfile, import thissave()function and add a save property to theregisterBlockType()function. Here’s a simplified view of the updated file.
 
 
-```
+```text
 import save from './save';
 
 ...
@@ -954,10 +897,7 @@ registerBlockType( metadata.name, {
     save
 } );
 
-```
-
-
-
+```text
     When defining properties of an object, if the property name and the variable name are the same, you can use shorthand property names. This is why the code above uses `save` instead of `save: save`.
 
 Save bothsave.jsandindex.jsfiles and refresh the Editor. It should look like this.
@@ -971,26 +911,22 @@ Don’t worry, the error is expected. If you open the inspector in your browser,
 This block validation error occurs because thesave()function returns block content, but no HTML is stored in the block markup since the previously saved block was dynamic. Remember that this is what the markup currently looks like.
 
 
-```
+```text
 <!-- wp:create-block/copyright-date-block {"showStartingYear":true,"startingYear":"2017"} /-->
 
-```
-
-
+```text
 You will see more of these errors as you update thesave()function in subsequent steps. Just click “Attempt Block Recovery” and update the page.
 
 
 After performing block recovery, open the Code editor and you will see the markup now looks like this.
 
 
-```
+```text
 <!-- wp:create-block/copyright-date-block {"showStartingYear":true,"startingYear":"2017"} -->
 <p class="wp-block-create-block-copyright-date-block">Copyright Date Block – hello from the saved content!</p>
 <!-- /wp:create-block/copyright-date-block -->
 
-```
-
-
+```text
 You will often encounter block validation errors when building a block with static rendering, and that’s ok. The output of thesave()function must match the HTML in the post content exactly, which may end up out of sync as you add functionality. So long as there are no validation errors when you’re completely finished building the block, you will be all set.
 
 
@@ -1009,7 +945,7 @@ Next, let’s update the output of thesave()function to display the correct cont
 The result should look like this.
 
 
-```
+```text
 export default function save( { attributes } ) {
     const { showStartingYear, startingYear } = attributes;
     const currentYear = new Date().getFullYear().toString();
@@ -1027,20 +963,16 @@ export default function save( { attributes } ) {
     );
 }
 
-```
-
-
+```text
 Save the file and refresh the Editor. Click “Attempt Block Recovery” and update the page. Check the Code editor, and the block markup should now look something like this.
 
 
-```
+```text
 <!-- wp:create-block/copyright-date-block {"showStartingYear":true,"startingYear":"2017"} -->
 <p class="wp-block-create-block-copyright-date-block">© 2017–2023</p>
 <!-- /wp:create-block/copyright-date-block -->
 
-```
-
-
+```text
 At this point, it might look like you’re done. The block content is now saved as HTML in the database and the output on the front end is dynamically rendered. However, there are still a few things that need to be addressed.
 
 
@@ -1068,7 +1000,7 @@ The root of the issue is that thecurrentYearvariable is set dynamically in thesa
 Open theblock.jsonfile and add a new attribute calledfallbackCurrentYearwith the typestring. Theattributessection of the file should now look like this.
 
 
-```
+```text
 "attributes": {
     "fallbackCurrentYear": {
         "type": "string"
@@ -1081,13 +1013,11 @@ Open theblock.jsonfile and add a new attribute calledfallbackCurrentYearwith the
     }
 },
 
-```
-
-
+```text
 Next, open thesave.jsfile and use the newfallbackCurrentYearattribute in place ofcurrentYear. Your updatedsave()function should look like this.
 
 
-```
+```text
 export default function save( { attributes } ) {
     const { fallbackCurrentYear, showStartingYear, startingYear } = attributes;
 
@@ -1104,9 +1034,7 @@ export default function save( { attributes } ) {
     );
 }
 
-```
-
-
+```text
 Now, what happens if thefallbackCurrentYearis undefined?
 
 
@@ -1119,7 +1047,7 @@ Instead of returning just the copyright symbol, let’s add a condition that iff
 The finalsave()function should look like this.
 
 
-```
+```text
 export default function save( { attributes } ) {
     const { fallbackCurrentYear, showStartingYear, startingYear } = attributes;
 
@@ -1140,9 +1068,7 @@ export default function save( { attributes } ) {
     );
 }
 
-```
-
-
+```text
 Save both theblock.jsonandsave.jsfiles; you won’t need to make any more changes.
 
 
@@ -1161,30 +1087,26 @@ When the block loads in the Editor, thecurrentYearvariable is defined. The funct
 Now, let’s set thefallbackCurrentYearattribute to thecurrentYearwhen the block loads if the attribute is not already set.
 
 
-```
+```text
 if ( currentYear !== fallbackCurrentYear ) {
     setAttributes( { fallbackCurrentYear: currentYear } );
 }
 
-```
-
-
+```text
 This will work but can be improved by ensuring this code only runs once when the block is initialized. To do so, you can use theuseEffectReact hook. Refer to the React documentation for more information about how to use this hook.
 
 
 First, importuseEffectwith the following code.
 
 
-```
+```text
 import { useEffect } from 'react';
 
-```
-
-
+```text
 Then wrap thesetAttribute()code above in auseEffectand place this code after thecurrentYeardefinition in theEdit()function. The result should look like this.
 
 
-```
+```text
 export default function Edit( { attributes, setAttributes } ) {
     const { fallbackCurrentYear, showStartingYear, startingYear } = attributes;
 
@@ -1201,9 +1123,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
     ...
 
-```
-
-
+```text
 When the block is initialized in the Editor, thefallbackCurrentYearattribute will be immediately set. This value will then be available to thesave()function, and the correct block content will be displayed without block validation errors.
 
 
@@ -1222,7 +1142,7 @@ The final step is to optimize therender.phpfile. If thecurrentYearand thefallbac
 Therefore, update the file to render the generated content ifcurrentYearandfallbackCurrentYeardo not match.
 
 
-```
+```text
 $current_year = date( "Y" );
 
 // Determine which content to display.
@@ -1244,9 +1164,7 @@ if ( isset( $attributes['fallbackCurrentYear'] ) && $attributes['fallbackCurrent
 
 echo wp_kses_post( $block_content );
 
-```
-
-
+```text
 That’s it! You now have a block that utilizes both dynamic and static rendering.
 
 

@@ -4,7 +4,6 @@
 
 
 
-# Global Variables
 
 
 

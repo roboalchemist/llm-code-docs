@@ -82,42 +82,34 @@ WordPress core, by default, generates the same nonce for guests as they have the
 To add a nonce to a URL, callwp_nonce_url()specifying the bare URL and a string representing the action. For example:
 
 
-```
+```text
 $complete_url = wp_nonce_url( $bare_url, 'trash-post_'.$post->ID );
-```
-
-
+```text
 For maximum protection, ensure that the string representing the action is as specific as possible.
 
 
 By default,wp_nonce_url()adds a field named_wpnonce. You can specify a different name in the function call. For example:
 
 
-```
+```text
 $complete_url = wp_nonce_url( $bare_url, 'trash-post_'.$post->ID, 'my_nonce' );
-```
-
-
+```text
 ### Adding a nonce to a form
 
 
 To add a nonce to a form, callwp_nonce_field()specifying a string representing the action. By defaultwp_nonce_field()generates two hidden fields, one whose value is the nonce and one whose value is the current URL (the referrer), and it echoes the result. For example, this call:
 
 
-```
+```text
 wp_nonce_field( 'delete-comment_'.$comment_id );
-```
-
-
+```text
 might echo something like:
 
 
-```
+```text
 <input type="hidden" id="_wpnonce" name="_wpnonce" value="796c7766b1" />
 <input type="hidden" name="_wp_http_referer" value="/wp-admin/edit-comments.php" />
-```
-
-
+```text
 For maximum protection, ensure that the string representing the action is as specific as possible.
 
 
@@ -130,11 +122,9 @@ You can specify a different name for the nonce field, you can specify that you d
 To create a nonce for use in some other way, callwp_create_nonce()specifying a string representing the action. For example:
 
 
-```
+```text
 $nonce = wp_create_nonce( 'my-action_'.$post->ID );
-```
-
-
+```text
 This simply returns the nonce itself. For example:295a686963
 
 
@@ -153,11 +143,9 @@ Verifying a nonce passed from an admin screenTo verify a nonce that was passed i
 For example:
 
 
-```
+```text
 check_admin_referer( 'delete-comment_'.$comment_id );
-```
-
-
+```text
 This call checks the nonce and the referrer, and if the check fails it takes the normal action (terminating script execution with a “403 Forbidden” response and an error message).
 
 
@@ -167,22 +155,18 @@ If you did not use the default field name (_wpnonce) when you created the nonce,
 For example:
 
 
-```
+```text
 check_admin_referer( 'delete-comment_'.$comment_id, 'my_nonce' );
-```
-
-
+```text
 ### Verifying a nonce passed in an AJAX request
 
 
 To verify a nonce that was passed in an AJAX request, callcheck_ajax_referer()specifying the string representing the action. For example:
 
 
-```
+```text
 check_ajax_referer( 'process-comment' );
-```
-
-
+```text
 This call checks the nonce (but not the referrer), and if the check fails then by default it terminates script execution.
 
 
@@ -195,11 +179,9 @@ Verifying a nonce passed in some other contextTo verify a nonce passed in some o
 For example:
 
 
-```
+```text
 wp_verify_nonce( $_POST['my_nonce'], 'process-comment'.$comment_id );
-```
-
-
+```text
 If the result is false, do not continue processing the request. Instead, take some appropriate action. The usual action is to callwp_nonce_ays(), which sends a “403 Forbidden” response to the browser.
 
 
@@ -218,11 +200,9 @@ By default, a nonce has a lifetime of one day. After that, the nonce is no longe
 For example, to change the lifetime to four hours:
 
 
-```
+```text
 add_filter( 'nonce_life', function () { return 4 * HOUR_IN_SECONDS; } );
-```
-
-
+```text
 ### Performing additional verification
 
 
@@ -232,14 +212,12 @@ To perform additional verification whencheck_admin_referrer()has found that the 
 For example:
 
 
-```
+```text
 function wporg_additional_check ( $action, $result ) {
     ...
 }
 add_action( 'check_admin_referer', 'wporg_additional_check', 10, 2 );
-```
-
-
+```text
 Forcheck_ajax_referer()add acheck_ajax_refereraction in the same way.
 
 
@@ -249,7 +227,7 @@ Forcheck_ajax_referer()add acheck_ajax_refereraction in the same way.
 You can change the error message sent when a nonce is not valid, by using the translation system. For example:
 
 
-```
+```text
 function my_nonce_message ($translation) {
     if ($translation === 'Are you sure you want to do this?') {
        return 'No! No! No!';
@@ -259,9 +237,7 @@ function my_nonce_message ($translation) {
 }
 
 add_filter('gettext', 'my_nonce_message');
-```
-
-
+```text
 ## Additional information
 
 

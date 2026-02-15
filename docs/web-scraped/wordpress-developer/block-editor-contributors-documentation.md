@@ -124,7 +124,7 @@ This can be accomplished by creating adocsdirectory in the package and addingtoc
 In order for these pages to be nested under the main package name, be sure to set theparentproperty correctly. See the example below that adds child pages to the@wordpress/create-blocksection.
 
 
-```
+```text
 [
     {
         "title": "@wordpress/create-block External Template",
@@ -134,9 +134,7 @@ In order for these pages to be nested under the main package name, be sure to se
     }
 ]
 
-```
-
-
+```text
 ### Using links
 
 
@@ -180,7 +178,7 @@ A unique feature to the Gutenberg documentation is thecodetabstoggle, this allow
 Here is an examplecodetabssection:
 
 
-```
+```text
     \{\% codetabs \%\}
     \{\% JSX \%\}
     ```js
@@ -192,9 +190,7 @@ Here is an examplecodetabssection:
     ```
     \{\% end \%\}
 
-```
-
-
+```text
 The preferred format for code examples is JSX. This should be the default view. The example placed first in source will be shown as the default.
 
 
@@ -210,16 +206,14 @@ The Block Editor handbook supports the samenotice styles as other WordPress hand
 The recommended way to implement in markdown is to use the raw HTML andcallout callout-LEVELclasses. For example:
 
 
-```
+```text
 <div class="callout callout-info">This is an **info** callout.</div>
 
-```
-
-
+```text
 The following classes are available:info,tip,alert,warning
 
 
-```
+```text
 <div class="callout callout-tip">
 This is a **tip** callout.
 </div>
@@ -236,9 +230,7 @@ This is an **alert** callout.
 This is a **warning** callout.
 </div>
 
-```
-
-
+```text
 Note: In callout notices, links also need to be HTML<a href=""></a>notations.The usual link transformation is not applied to links in callouts.For instance, to reach the Getting started > Create Block page, the URL in GitHub ishttps://github.com/WordPress/gutenberg/blob/trunk/docs/getting-started/devenv/get-started-with-create-block.md/and will have to be hardcoded for the endpoint in the Block Editor Handbook as<a href="https://developer.wordpress.org/block-editor/getting-started/create-block/">https://developer.wordpress.org/block-editor/getting-started/create-block/</a>to link correctly in the handbook.
 
 
@@ -251,16 +243,13 @@ You should configure your editor to use Prettier to auto-format markdown documen
 An example config for using Visual Studio Code and the Prettier extensions:
 
 
-```
+```text
 "[[markdown]]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
 },
 
-```
-
-
-
+```text
 Depending on where you are viewing this document, the brackets may show as double. The proper format is just a single bracket.
 
 ### Video embeds
@@ -272,22 +261,17 @@ Videos in the Block Editor Handbook need to be hosted on theWordPress YouTube ch
 Once the video has been uploaded to YouTube, retrieve the video embed link. It should look something like this:
 
 
-```
+```text
 https://www.youtube.com/embed/nrut8SfXA44?si=YxvmHmAoYx-BDCog
 
-```
-
-
+```text
 Then, place the following code where you want the video to be embedded in the documentation. Update the embed link and video title accordingly.
 
 
-```
+```text
 <iframe width="960" height="540" src="[Video embed link]" title="[Video title]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true"></iframe>
 
-```
-
-
-
+```text
 Videos should have an aspect ratio of `16:9` and be filmed at the highest resolution possible.
 
 ## Resources

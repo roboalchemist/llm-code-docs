@@ -4,7 +4,6 @@
 
 
 
-# Advanced
 
 
 
@@ -39,7 +38,7 @@ To send a DELETE method, for example, you may have something similar to the foll
 
 ```
 $args     = array(
-	'method' => 'DELETE',
+    'method' => 'DELETE',
 );
 $response = wp_remote_request( 'http://some-api.com/object/to/delete', $args );
 ```
@@ -86,32 +85,32 @@ $responseshould look similar to:
 
 ```
 Array(
-	[headers] => Array
-		(
-		[server] => nginx
-		[date] => Fri, 05 Oct 2012 05:21:26 GMT
-		[content-type] => application/json; charset=utf-8
-		[connection] => close
-		[status] => 200 OK
-		[vary] => Accept
-		[x-ratelimit-remaining] => 4982
-		[content-length] => 594
-		[last-modified] => Fri, 05 Oct 2012 04:39:58 GMT
-		[etag] => "5d5e6f7a09462d6a2b473fb616a26d2a"
-		[x-github-media-type] => github.beta
-		[cache-control] => public, s-maxage=60, max-age=60
-		[x-content-type-options] => nosniff
-		[x-ratelimit-limit] => 5000
-	)
+    [headers] => Array
+        (
+        [server] => nginx
+        [date] => Fri, 05 Oct 2012 05:21:26 GMT
+        [content-type] => application/json; charset=utf-8
+        [connection] => close
+        [status] => 200 OK
+        [vary] => Accept
+        [x-ratelimit-remaining] => 4982
+        [content-length] => 594
+        [last-modified] => Fri, 05 Oct 2012 04:39:58 GMT
+        [etag] => "5d5e6f7a09462d6a2b473fb616a26d2a"
+        [x-github-media-type] => github.beta
+        [cache-control] => public, s-maxage=60, max-age=60
+        [x-content-type-options] => nosniff
+        [x-ratelimit-limit] => 5000
+    )
     [body] =>
     [response] => Array
-		(
-		[preserved_text 39a8515bd2dce2aa06ee8a2a6656b1de /] => 200
-		[message] => OK
-	)
+        (
+        [preserved_text 39a8515bd2dce2aa06ee8a2a6656b1de /] => 200
+        [message] => OK
+    )
     [cookies] => Array(
-	)
-	[filename] =>
+    )
+    [filename] =>
 )
 ```
 

@@ -4,7 +4,6 @@
 
 
 
-# GETting data from an external service
 
 
 
@@ -62,24 +61,24 @@ Response from previous example will be something like
 
 ```
 Array(
-	[headers] => Array(
-		[server] => nginx
-		[date] => Fri, 05 Oct 2012 04:43:50 GMT
-		[content-type] => application/json; charset=utf-8
-		[connection] => close
-		[status] => 200 OK
-		[vary] => Accept
-		[x-ratelimit-remaining] => 4988
-		[content-length] => 594
-		[last-modified] => Fri, 05 Oct 2012 04:39:58 GMT
-		[etag] => "5d5e6f7a09462d6a2b473fb616a26d2a"
-		[x-github-media-type] => github.beta
-		[cache-control] => public, s-maxage=60, max-age=60
-		[x-content-type-options] => nosniff
-		[x-ratelimit-limit] => 5000
-	)
+    [headers] => Array(
+        [server] => nginx
+        [date] => Fri, 05 Oct 2012 04:43:50 GMT
+        [content-type] => application/json; charset=utf-8
+        [connection] => close
+        [status] => 200 OK
+        [vary] => Accept
+        [x-ratelimit-remaining] => 4988
+        [content-length] => 594
+        [last-modified] => Fri, 05 Oct 2012 04:39:58 GMT
+        [etag] => "5d5e6f7a09462d6a2b473fb616a26d2a"
+        [x-github-media-type] => github.beta
+        [cache-control] => public, s-maxage=60, max-age=60
+        [x-content-type-options] => nosniff
+        [x-ratelimit-limit] => 5000
+    )
 
-	[body] => {
+    [body] => {
 "login": "WordPress",
 "id": 276006,
 "node_id": "MDEyOk9yZ2FuaXphdGlvbjI3NjAwNg==",
@@ -113,13 +112,13 @@ Array(
 "created_at": "2010-05-13T22:42:10Z",
 "updated_at": "2020-05-22T14:27:02Z"
 }
-	[response] => Array(
-		[preserved_text 5237511b45884ac6db1ff9d7e407f225 /] => 200
-		[message] => OK
-	)
+    [response] => Array(
+        [preserved_text 5237511b45884ac6db1ff9d7e407f225 /] => 200
+        [message] => OK
+    )
 
-	[cookies] => Array()
-	[filename] =>
+    [cookies] => Array()
+    [filename] =>
 )
 ```
 

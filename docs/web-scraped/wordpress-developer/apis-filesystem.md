@@ -4,7 +4,6 @@
 
 
 
-# Filesystem
 
 
 
@@ -80,7 +79,7 @@ The credentials form can be displayed onto an admin page by using the following 
 ```
 $url = wp_nonce_url( 'themes.php?page=example', 'example-theme-options' );
 if ( false === ( $creds = request_filesystem_credentials( $url, '', false, false, null ) ) ) {
-	return; // stop processing here
+    return; // stop processing here
 }
 ```
 
@@ -118,8 +117,8 @@ Before the WP_Filesystem can be used, it must be initialized with the proper cre
 
 ```
 if ( ! WP_Filesystem( $creds ) ) {
-	request_filesystem_credentials( $url, '', true, false, null );
-	return;
+    request_filesystem_credentials( $url, '', true, false, null );
+    return;
 }
 ```
 
@@ -168,20 +167,20 @@ But let’s expand on this scenario further and say this plugin needs to access 
 $access_type = get_filesystem_method();
 if ( $access_type === 'direct' )
 {
-	/* you can safely run request_filesystem_credentials() without any issues and don't need to worry about passing in a URL */
-	$creds = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
-	/* initialize the API */
-	if ( ! WP_Filesystem( $creds ) ) {
-		/* any problems and we exit */
-		return false;
-	}	
-	global $wp_filesystem;
-	/* do our file manipulations below */
-}	
+    /* you can safely run request_filesystem_credentials() without any issues and don't need to worry about passing in a URL */
+    $creds = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
+    /* initialize the API */
+    if ( ! WP_Filesystem( $creds ) ) {
+        /* any problems and we exit */
+        return false;
+    }   
+    global $wp_filesystem;
+    /* do our file manipulations below */
+}   
 else
 {
-	/* don't have direct write access. Prompt user with our notice */
-	add_action( 'admin_notices', 'you_admin_notice_function' ); 	
+    /* don't have direct write access. Prompt user with our notice */
+    add_action( 'admin_notices', 'you_admin_notice_function' );     
 }
 ```
 
@@ -205,8 +204,8 @@ What you need to take into consideration when working with the Filesystem API is
  $plugin_path = str_replace( ABSPATH, $wp_filesystem->abspath(), MY_PLUGIN_DIR );
 /* Now we can use $plugin_path in all our Filesystem API method calls */
 if ( ! $wp_filesystem->is_dir( $plugin_path . '/config/' ) ) {
-	/* directory didn't exist, so let's create it */
-	$wp_filesystem->mkdir( $plugin_path . '/config/' );
+    /* directory didn't exist, so let's create it */
+    $wp_filesystem->mkdir( $plugin_path . '/config/' );
 }
 ```
 
@@ -226,7 +225,7 @@ $file = MY_PLUGIN_DIR . '/plugin-file.zip';
 $to = $plugin_path;
 $result = unzip_file( $file, $to ); 
 if ( $result !== true ) {
-	// unzip failed. Handle Error
+    // unzip failed. Handle Error
 }
 /* Not acceptable */
 $file = MY_PLUGIN_DIR . '/plugin-file.zip';

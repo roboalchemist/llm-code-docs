@@ -33,19 +33,17 @@ A block editor post is not the artifact it produces, namely thepost_content. The
 The input and output of the block editor is a tree of block objects with the current format:
 
 
-```
+```text
 const value = [ block1, block2, block3 ];
 
-```
-
-
+```text
 ### The block object
 
 
 Each block object has an id, a set of attributes and potentially a list of child blocks.
 
 
-```
+```text
 const block = {
     clientId, // unique string identifier.
     type, // The block type (paragraph, image...)
@@ -53,9 +51,7 @@ const block = {
     innerBlocks, // An array of child blocks or inner blocks.
 };
 
-```
-
-
+```text
 Note the attributes keys and types, the allowed inner blocks are defined by the block type. For example, the core quote block has acitestring attribute representing the cite content while a heading block has a numericlevelattribute, representing the level of the heading (1 to 6).
 
 
@@ -69,7 +65,7 @@ During the lifecycle of the block in the editor, the block object can receive ex
 Examples
 
 
-```
+```text
 // A simple paragraph block.
 const paragraphBlock1 = {
     clientId: '51828be1-5f0d-4a6b-8099-f4c6f897e0a3',
@@ -108,9 +104,7 @@ const columnsBlock = {
     ],
 };
 
-```
-
-
+```text
 ## Serialization and parsing
 
 
@@ -157,23 +151,19 @@ N.B.:The defining aspects of blocks are their semantics and the isolation mechan
 When blocks are saved to the content after the editing session, its attributes—depending on the nature of the block—are serialized to these explicit comment delimiters.
 
 
-```
+```text
 <!-- wp:image -->
 <figure class="wp-block-image"><img src="source.jpg" alt="" /></figure>
 <!-- /wp:image -->
 
-```
-
-
+```text
 A purely dynamic block that is to be server-rendered before display could look like this:
 
 
-```
+```text
 <!-- wp:latest-posts {"postsToShow":4,"displayPostDate":true} /-->
 
-```
-
-
+```text
 ## The data lifecycle
 
 

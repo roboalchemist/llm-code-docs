@@ -4,7 +4,6 @@
 
 
 
-# Dashboard widgets API
 
 
 
@@ -65,7 +64,7 @@ To run the function you will need to hook into the actionwp_dashboard_setupviaad
  * This function is hooked into the 'wp_dashboard_setup' action below.
  */
 function wporg_add_dashboard_widgets() {
-	// Add function here
+    // Add function here
 }
 add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widgets' );
 ```
@@ -81,7 +80,7 @@ Network dashboard:
  * This function is hooked into the 'wp_network_dashboard_setup' action below.
  */
 function wporg_add_network_dashboard_widgets() {
-	// Add function here
+    // Add function here
 }
 add_action( 'wp_network_dashboard_setup', 'wporg_add_network_dashboard_widgets' );
 ```
@@ -100,11 +99,11 @@ add_action( 'wp_network_dashboard_setup', 'wporg_add_network_dashboard_widgets' 
  * This function is hooked into the 'wp_dashboard_setup' action below.
  */
 function wporg_add_dashboard_widgets() {
-	wp_add_dashboard_widget(
-		'wporg_dashboard_widget',                          // Widget slug.
-		esc_html__( 'Example Dashboard Widget', 'wporg' ), // Title.
-		'wporg_dashboard_widget_render'                    // Display function.
-	); 
+    wp_add_dashboard_widget(
+        'wporg_dashboard_widget',                          // Widget slug.
+        esc_html__( 'Example Dashboard Widget', 'wporg' ), // Title.
+        'wporg_dashboard_widget_render'                    // Display function.
+    ); 
 }
 add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widgets' );
 
@@ -112,8 +111,8 @@ add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widgets' );
  * Create the function to output the content of our Dashboard Widget.
  */
 function wporg_dashboard_widget_render() {
-	// Display whatever you want to show.
-	esc_html_e( "Howdy! I'm a great Dashboard Widget.", "wporg" );
+    // Display whatever you want to show.
+    esc_html_e( "Howdy! I'm a great Dashboard Widget.", "wporg" );
 }
 ```
 
@@ -129,28 +128,28 @@ Below is an example hooking function that will try to put your widget before the
 
 ```
 function wporg_add_dashboard_widgets() {
-	wp_add_dashboard_widget( 
-		'wporg_dashboard_widget', 
-		esc_html__( 'Example Dashboard Widget', 'wporg' ), 
-		'wporg_dashboard_widget_function' 
-	);
-	
-	// Globalize the metaboxes array, this holds all the widgets for wp-admin.
-	global $wp_meta_boxes;
-	
-	// Get the regular dashboard widgets array 
-	// (which already has our new widget but appended at the end).
-	$default_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-	
-	// Backup and delete our new dashboard widget from the end of the array.
-	$example_widget_backup = array( 'example_dashboard_widget' => $default_dashboard['example_dashboard_widget'] );
-	unset( $default_dashboard['example_dashboard_widget'] );
+    wp_add_dashboard_widget( 
+        'wporg_dashboard_widget', 
+        esc_html__( 'Example Dashboard Widget', 'wporg' ), 
+        'wporg_dashboard_widget_function' 
+    );
+    
+    // Globalize the metaboxes array, this holds all the widgets for wp-admin.
+    global $wp_meta_boxes;
+    
+    // Get the regular dashboard widgets array 
+    // (which already has our new widget but appended at the end).
+    $default_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+    
+    // Backup and delete our new dashboard widget from the end of the array.
+    $example_widget_backup = array( 'example_dashboard_widget' => $default_dashboard['example_dashboard_widget'] );
+    unset( $default_dashboard['example_dashboard_widget'] );
  
-	// Merge the two arrays together so our widget is at the beginning.
-	$sorted_dashboard = array_merge( $example_widget_backup, $default_dashboard );
+    // Merge the two arrays together so our widget is at the beginning.
+    $sorted_dashboard = array_merge( $example_widget_backup, $default_dashboard );
  
-	// Save the sorted array back into the original metaboxes. 
-	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+    // Save the sorted array back into the original metaboxes. 
+    $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
 add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widgets' );
 ```
@@ -201,7 +200,7 @@ Here is an example function that removes the QuickPress widget:
 ```
 // Create the function to use in the action hook
 function wporg_remove_dashboard_widget() {
-	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
 } 
 // Hook into the 'wp_dashboard_setup' action to register our function
 add_action( 'wp_dashboard_setup', 'wporg_remove_dashboard_widget' );
@@ -213,14 +212,14 @@ The example below removes all Dashboard Widgets:
 
 ```
 function wporg_remove_all_dashboard_metaboxes() {
-	// Remove Welcome panel
-	remove_action( 'welcome_panel', 'wp_welcome_panel' );
-	// Remove the rest of the dashboard widgets
-	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
-	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-	remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
-	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
-	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
+    // Remove Welcome panel
+    remove_action( 'welcome_panel', 'wp_welcome_panel' );
+    // Remove the rest of the dashboard widgets
+    remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
 }
 add_action( 'wp_dashboard_setup', 'wporg_remove_all_dashboard_metaboxes' );
 ```
@@ -237,11 +236,11 @@ You can use theadd_meta_box()function instead ofwp_add_dashboard_widget. Simply 
 
 ```
 add_meta_box( 
-	'dashboard_widget_id', 
-	esc_html__( 'Dashboard Widget Title', 'wporg' ), 
-	'dashboard_widget', 
-	'dashboard', 
-	'side', 'high' 
+    'dashboard_widget_id', 
+    esc_html__( 'Dashboard Widget Title', 'wporg' ), 
+    'dashboard_widget', 
+    'dashboard', 
+    'side', 'high' 
 );
 ```
 
@@ -251,23 +250,23 @@ Or, after creating the widget:
 
 ```
 function wporg_add_dashboard_widget() {
-	wp_add_dashboard_widget( 
-		'wporg_dashboard_widget', 
-		esc_html__( 'Example Dashboard Widget', 'wporg' ), 
-		'wporg_dashboard_widget_function' 
-	);
-	
-	// Global the $wp_meta_boxes variable (this will allow us to alter the array).
-	global $wp_meta_boxes;
+    wp_add_dashboard_widget( 
+        'wporg_dashboard_widget', 
+        esc_html__( 'Example Dashboard Widget', 'wporg' ), 
+        'wporg_dashboard_widget_function' 
+    );
+    
+    // Global the $wp_meta_boxes variable (this will allow us to alter the array).
+    global $wp_meta_boxes;
 
-	// Then we make a backup of your widget.
-	$wporg_widget = $wp_meta_boxes['dashboard']['normal']['core']['wporg_dashboard_widget'];
+    // Then we make a backup of your widget.
+    $wporg_widget = $wp_meta_boxes['dashboard']['normal']['core']['wporg_dashboard_widget'];
 
-	// We then unset that part of the array.
-	unset( $wp_meta_boxes['dashboard']['normal']['core']['wporg_dashboard_widget'] );
+    // We then unset that part of the array.
+    unset( $wp_meta_boxes['dashboard']['normal']['core']['wporg_dashboard_widget'] );
 
-	// Now we just add your widget back in.
-	$wp_meta_boxes['dashboard']['side']['core']['wporg_dashboard_widget'] = $wporg_widget;
+    // Now we just add your widget back in.
+    $wp_meta_boxes['dashboard']['side']['core']['wporg_dashboard_widget'] = $wporg_widget;
 }
 add_action( 'wp_dashboard_setup', 'wporg_add_dashboard_widget' );
 ```
@@ -339,19 +338,19 @@ This example should be used with the previousGetting Widget Optionsexample funct
  * @return string            Returns single widget option.
  */
 function wporg_get_dashboard_widget_option( $widget_id, $option, $default = NULL ) {
-	$options = wporg_get_dashboard_widget_options( $widget_id );
+    $options = wporg_get_dashboard_widget_options( $widget_id );
 
-	// If widget options don't exist, return false.
-	if ( ! $options ) {
-		return false;
-	}
+    // If widget options don't exist, return false.
+    if ( ! $options ) {
+        return false;
+    }
 
-	// Otherwise fetch the option or use default
-	if ( isset( $options[$option] ) && ! empty( $options[$option] ) ) {
-		return $options[$option];
-	} else {
-		return ( isset( $default ) ) ? $default : false;
-	}
+    // Otherwise fetch the option or use default
+    if ( isset( $options[$option] ) && ! empty( $options[$option] ) ) {
+        return $options[$option];
+    } else {
+        return ( isset( $default ) ) ? $default : false;
+    }
 }
 ```
 
@@ -372,22 +371,22 @@ This function can be used to easily update all of a widget’s options. It can a
  * @param bool $add_only     Set to true if you don't want to override any existing options.
  */
 function update_dashboard_widget_options( $widget_id , $args = array(), $add_only = false ) {
-	// Fetch ALL dashboard widget options from the db...
-	$options = get_option( 'dashboard_widget_options' );
+    // Fetch ALL dashboard widget options from the db...
+    $options = get_option( 'dashboard_widget_options' );
 
-	// Get just our widget's options, or set empty array.
-	$widget_options = ( isset( $options[$widget_id] ) ) ? $options[$widget_id] : array();
+    // Get just our widget's options, or set empty array.
+    $widget_options = ( isset( $options[$widget_id] ) ) ? $options[$widget_id] : array();
 
-	if ( $add_only ) {
-		// Flesh out any missing options (existing ones overwrite new ones).
-		$options[$widget_id] = array_merge( $args, $widget_options );
-	} else {
-		// Merge new options with existing ones, and add it back to the widgets array.
-		$options[$widget_id] = array_merge( $widget_options, $args );
-	}
+    if ( $add_only ) {
+        // Flesh out any missing options (existing ones overwrite new ones).
+        $options[$widget_id] = array_merge( $args, $widget_options );
+    } else {
+        // Merge new options with existing ones, and add it back to the widgets array.
+        $options[$widget_id] = array_merge( $widget_options, $args );
+    }
 
-	// Save the entire widgets array back to the db.
-	return update_option( 'dashboard_widget_options', $options );
+    // Save the entire widgets array back to the db.
+    return update_option( 'dashboard_widget_options', $options );
 }
 ```
 

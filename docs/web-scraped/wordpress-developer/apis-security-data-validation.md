@@ -62,7 +62,7 @@ When comparing untrusted data against the safelist, it’s important to make sur
 #### Comparison Operator
 
 
-```
+```text
 $untrusted_input = '1 malicious string';  // will evaluate to integer 1 during loose comparisons
 
 if ( 1 === $untrusted_input ) {  // == would have evaluated to true, but === evaluates to false
@@ -70,13 +70,11 @@ if ( 1 === $untrusted_input ) {  // == would have evaluated to true, but === eva
 } else {
     wp_die( 'Invalid data' );
 }
-```
-
-
+```text
 #### in_array()
 
 
-```
+```text
 $untrusted_input = '1 malicious string';  // will evaluate to integer 1 during loose comparisons
 $safe_values     = array( 1, 5, 7 );
 
@@ -85,13 +83,11 @@ if ( in_array( $untrusted_input, $safe_values, true ) ) {  // `true` enables str
 } else {
     wp_die( 'Invalid data' );
 }
-```
-
-
+```text
 #### switch()
 
 
-```
+```text
 $untrusted_input = '1 malicious string';  // will evaluate to integer 1 during loose comparisons
 
 switch ( true ) {
@@ -102,9 +98,7 @@ switch ( true ) {
     default:
         wp_die( 'Invalid data' );
 }
-```
-
-
+```text
 #### Blocklist
 
 
@@ -117,7 +111,7 @@ Reject data from finite list of known untrusted values. This is very rarely a go
 Test to see if the data is of the correct format. Only accept it if it is.
 
 
-```
+```text
 if ( ! ctype_alnum( $data ) ) {
   wp_die( "Invalid format" );
 }
@@ -125,33 +119,27 @@ if ( ! ctype_alnum( $data ) ) {
 if ( preg_match( "/[^0-9.-]/", $data ) ) {
   wp_die( "Invalid format" );
 }
-```
-
-
+```text
 #### Format Correction
 
 
 Accept most any data, but remove or alter the dangerous pieces.
 
 
-```
+```text
 $trusted_integer = (int) $untrusted_integer;
 $trusted_alpha = preg_replace( '/[^a-z]/i', "", $untrusted_alpha );
 $trusted_slug = sanitize_title( $untrusted_slug );
-```
-
-
+```text
 ## Example One
 
 
 Let’s say we have an input field designed to accept a US zipcode:
 
 
-```
+```text
 <input type="text" id="wporg_zip_code" name="my-zipcode" maxlength="10" />
-```
-
-
+```text
 Here we’ve told the browser to only allow up to ten characters of input…but there’s no limitation onwhichcharacters they can input. They could enter11221oreval().
 
 
@@ -161,7 +149,7 @@ This is where validation comes in. When processing the form, we write code to ch
 For example: to check themy-zipcodefield, we might do something like this:
 
 
-```
+```text
 /**
  * Validate a US zip code.
  *
@@ -192,19 +180,15 @@ function wporg_is_valid_us_zip_code( string $zip_code ):bool {
     // Passed successfully.
     return true;
 }
-```
-
-
+```text
 Then, when processing the form, your code should check thewporg_zip_codefield and perform the action based on the result:
 
 
-```
+```text
 if ( isset( $_POST['wporg_zip_code'] ) && wporg_is_valid_us_zip_code( $_POST['wporg_zip_code'] ) ) {
     // $_POST['wporg_zip_code'] is valid; carry on
 }
-```
-
-
+```text
 Note that this specific example is checking that the supplied data is in the correct format; it is not checking that the supplied and correctly formatted data is a valid zipcode. For that, you’d need a second function to compare against a list of valid zipcodes.
 
 
@@ -214,15 +198,13 @@ Note that this specific example is checking that the supplied data is in the cor
 Say your code will query the database for posts, and you want to allow the user to sort the query results.
 
 
-```
+```text
 $allowed_keys = array( 'author', 'post_author', 'date', 'post_date' );
 $orderby      = sanitize_key( $_POST['orderby'] );
 if ( in_array( $orderby, $allowed_keys, true ) ) {
     // $orderby is valid; carry on
 }
-```
-
-
+```text
 This example code checks an incoming sort key (stored in theorderbyinput parameter) for validity by comparing it against an array of allowed sort keys. This prevents the user from passing in arbitrary and potentially malicious data.
 
 

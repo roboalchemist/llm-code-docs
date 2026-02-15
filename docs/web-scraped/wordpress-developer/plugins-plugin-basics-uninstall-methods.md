@@ -2,79 +2,51 @@
 
 **Source:** [https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/](https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/)
 
-
-
-# Uninstall Methods
-
-
-
-
 ## In this article
 
-
 Table of Contents- Method 1: register_uninstall_hook
+
 - Method 2: uninstall.php
-
-
 
 ↑Back to top
 
-
-
 Your plugin may need to do some clean-up when it is uninstalled from a site.
-
 
 A plugin is considered uninstalled if a user has deactivated the plugin, and then clicks the delete link within the WordPress Admin.
 
-
 When your plugin is uninstalled, you’ll want to clear out any plugin options and/or settings specific to the plugin, and/or other database entities such as tables.
-
 
 Less experienced developers sometimes make the mistake of using the deactivation hook for this purpose.
 
-
 This table illustrates the differences between deactivation and uninstall.
 
-
 ScenarioDeactivation HookUninstall HookFlush Cache/TempYesNoFlush PermalinksYesNoRemove Options from {$[wpdb](https://developer.wordpress.org/reference/classes/wpdb/)->prefix}_optionsNoYesRemove Tables from [wpdb](https://developer.wordpress.org/reference/classes/wpdb/)NoYes
-## Method 1: register_uninstall_hook
 
+## Method 1: register_uninstall_hook
 
 To set up an uninstall hook, use theregister_uninstall_hook()function:
 
-
-```
+```php
 register_uninstall_hook(
-	__FILE__,
-	'pluginprefix_function_to_run'
+    __FILE__,
+    'pluginprefix_function_to_run'
 );
-```
-
+```php
 
 ## Method 2: uninstall.php
 
-
 To use this method you need to create anuninstall.phpfile inside the root folder of your plugin. This magic file is run automatically when the users deletes the plugin.
 
-
 For example:/plugin-name/uninstall.php
-
-
-
-
-
 
 Always check for the constant `WP_UNINSTALL_PLUGIN` in `uninstall.php` before doing anything. This protects against direct access.
 The constant will be defined by WordPress during theuninstall.phpinvocation.
 
-
 The constant isNOTdefined when uninstall is performed byregister_uninstall_hook().
-
 
 Here is an example deleting option entries and dropping a database table:
 
-
-```
+```php
 // if uninstall.php is not called by WordPress, die
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
     die;
@@ -90,33 +62,17 @@ delete_site_option( $option_name );
 // drop a custom database table
 global $wpdb;
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}mytable" );
-```
-
-
-
-
-
+```php
 
 In Multisite, looping through all blogs to delete options can be very resource intensive.
 
-
-
-
-
 First published
-
 
 September 16, 2014
 
-
 Last updated
-
 
 February 20, 2024
 
-
-
 [PreviousIncluding a Software LicensePrevious: Including a Software License](https://developer.wordpress.org/plugins/plugin-basics/including-a-software-license/)
 [NextPlugin SecurityNext: Plugin Security](https://developer.wordpress.org/plugins/security/)
-
-

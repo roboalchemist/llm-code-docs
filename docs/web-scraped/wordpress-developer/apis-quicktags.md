@@ -43,11 +43,9 @@ This API was introduced inWordPress 3.3.
 ## Usage
 
 
-```
+```text
 QTags.addButton( id, display, arg1, arg2, access_key, title, priority, instance, object );
-```
-
-
+```text
 ## Parameters
 
 
@@ -80,22 +78,20 @@ Below examples would add HTML buttons to the default Quicktags in the Text edito
 This example uses the inline JS API to add the JavaScript when quicktags are enqueued.
 
 
-```
+```text
 /**
  * Add a paragraph tag button to the quicktags toolbar
  *
  * @return void
  */
 function wporg_add_quicktag_paragraph() {
-	wp_add_inline_script(
-		'quicktags',
-		"QTags.addButton( 'eg_paragraph_v2', 'p_v2', '<p>', '</p>', '', 'Paragraph tag v2', 2, '', { ariaLabel: 'Paragraph', ariaLabelClose: 'Close Paragraph tag' });"
-	);
+    wp_add_inline_script(
+        'quicktags',
+        "QTags.addButton( 'eg_paragraph_v2', 'p_v2', '<p>', '</p>', '', 'Paragraph tag v2', 2, '', { ariaLabel: 'Paragraph', ariaLabelClose: 'Close Paragraph tag' });"
+    );
 }
 add_action( 'admin_enqueue_scripts', 'wporg_add_quicktag_paragraph' );
-```
-
-
+```text
 ### Another modern example
 
 
@@ -112,21 +108,19 @@ In this example,
 Put below codes into active theme’sfunctions.php.
 
 
-```
+```text
 function enqueue_quicktag_script(){
-	wp_enqueue_script( 'your-handle', get_template_directory_uri() . '/editor-script.js', array( 'jquery', 'quicktags' ), '1.0.0', true );
+    wp_enqueue_script( 'your-handle', get_template_directory_uri() . '/editor-script.js', array( 'jquery', 'quicktags' ), '1.0.0', true );
 }
 add_action( 'admin_enqueue_scripts', 'enqueue_quicktag_script' );
-```
-
-
+```text
 #### The JavaScript itself
 
 
 Create new fileeditor-scriptand save under the active theme directory.
 
 
-```
+```text
 QTags.addButton( 'eg_paragraph_v3', 'p_v3', my_callback, '', '', 'Prompted Paragraph tag', 3, '', { ariaLabel: 'Prompted Paragraph' } ); 
 
 function my_callback(){
@@ -135,39 +129,35 @@ function my_callback(){
     QTags.insertContent( '<p>' + my_stuff + '</p>' );
   }
 }
-```
-
-
+```text
 ### Traditional example
 
 
 This example manually add hardcoded JavaScript withwp_script_ison the admin footer hook. You should consider to use modern example. See above.
 
 
-```
+```text
 /**
  * Add more buttons to the quicktags HTML editor
  *
  * @return void
  */
 function wporg_traditional_add_quicktags() {
-	if ( ! wp_script_is( 'quicktags' ) ) {
-		return;
-	}
+    if ( ! wp_script_is( 'quicktags' ) ) {
+        return;
+    }
 
-	?>
-	<script type="text/javascript">
-		QTags.addButton( 'eg_paragraph', 'p', '<p>', '</p>', '', 'Paragraph tag', 1, '', { ariaLabel: 'Paragraph', ariaLabelClose: 'Close Paragraph tag' } );
-		QTags.addButton( 'eg_hr', 'hr', '<hr />', '', '', 'Horizontal rule line', 201, '', { ariaLabel: 'Horizontal' } );
-		QTags.addButton( 'eg_pre', 'pre', '<pre lang="php">', '</pre>', '', 'Preformatted text tag', 111, '', { ariaLabel: 'Pre', ariaLabelClose: 'Close Pre tag' } );
-	</script>
-	<?php
+    ?>
+    <script type="text/javascript">
+        QTags.addButton( 'eg_paragraph', 'p', '<p>', '</p>', '', 'Paragraph tag', 1, '', { ariaLabel: 'Paragraph', ariaLabelClose: 'Close Paragraph tag' } );
+        QTags.addButton( 'eg_hr', 'hr', '<hr />', '', '', 'Horizontal rule line', 201, '', { ariaLabel: 'Horizontal' } );
+        QTags.addButton( 'eg_pre', 'pre', '<pre lang="php">', '</pre>', '', 'Preformatted text tag', 111, '', { ariaLabel: 'Pre', ariaLabelClose: 'Close Pre tag' } );
+    </script>
+    <?php
 }
 
 add_action( 'admin_print_footer_scripts', 'wporg_traditional_add_quicktags', 11 );
-```
-
-
+```text
 Note:
 
 
@@ -178,11 +168,9 @@ Note:
 The “p” button HTML would be:
 
 
-```
+```text
 <input type="button" id="qt_content_eg_paragraph" class="ed_button button button-small" title="Paragraph tag" aria-label="Paragraph" value="p">
-```
-
-
+```text
 The ID value for each button is automatically prepended with the string qt_content_.
 
 
@@ -190,7 +178,7 @@ The ID value for each button is automatically prepended with the string qt_conte
 Here is a dump of the docblock fromquicktags.js, it’s pretty useful on it’s own.
 
 
-```
+```text
 /**
  * Main API function for adding a button to Quicktags
  *
@@ -207,9 +195,7 @@ Here is a dump of the docblock fromquicktags.js, it’s pretty useful on it’s 
  *     QTags.addButton( 'my_id', 'my button', '<span>', '</span>' );
  *     QTags.addButton( 'my_id2', 'my button', '<br />' );
  */
-```
-
-
+```text
 ## Default Quicktags
 
 

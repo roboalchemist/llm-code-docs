@@ -2,30 +2,16 @@
 
 **Source:** [https://developer.wordpress.org/cli/commands/cli/alias/](https://developer.wordpress.org/cli/commands/cli/alias/)
 
-
-
-
 # wp cli alias<command>
 
 Retrieves, sets and updates aliases for WordPress Installations.
 
-
-
-
 ## In this article
-
 
 Table of Contents- Examples
 - Subcommands
 
-
-
 ↑Back to top
-
-
-
-
-
 
 [View Open Issues(16)](https://github.com/login?return_to=%2Fissues%3Fq%3Dlabel%3Acommand%3Acli-alias+sort%3Aupdated-desc+org%3Awp-cli+is%3Aopen)
 [View Closed Issues(20)](https://github.com/login?return_to=%2Fissues%3Fq%3Dlabel%3Acommand%3Acli-alias+sort%3Aupdated-desc+org%3Awp-cli+is%3Aclosed)
@@ -36,8 +22,7 @@ Aliases are shorthand references to WordPress installs. For instance, `@dev` cou
 
 ### Examples
 
-
-```
+```text
 # List alias information.
 $ wp cli alias list
 list
@@ -63,33 +48,23 @@ Success: Updated 'prod' alias.
 $ wp cli alias delete @prod
 Success: Deleted '@prod' alias.
 
-```
-
-
+```text
 
 ### Subcommands
 
  NameDescription[wp cli alias add](https://developer.wordpress.org/cli/commands/cli/alias/add/)Creates an alias.
 
-
 [wp cli alias delete](https://developer.wordpress.org/cli/commands/cli/alias/delete/)Deletes an alias.
-
 
 [wp cli alias get](https://developer.wordpress.org/cli/commands/cli/alias/get/)Gets the value for an alias.
 
-
 [wp cli alias is-group](https://developer.wordpress.org/cli/commands/cli/alias/is-group/)Check whether an alias is a group.
 
-
 [wp cli alias list](https://developer.wordpress.org/cli/commands/cli/alias/list/)Lists available WP-CLI aliases.
-
 
 [wp cli alias update](https://developer.wordpress.org/cli/commands/cli/alias/update/)Updates an alias.
 
 
- 
 
 Command documentation is regenerated at every release. To add or update an example, please submit a pull request against the corresponding part of the codebase.
-
-
 

@@ -47,14 +47,12 @@ Blocks are meant to be combined in different ways. Blocks are hierarchical in th
 Blocks understand content as attributes and are serializable to HTML. To this point, there is a new Block Grammar. Distilled, the block grammar is an HTML comment, either a self-closing tag or with a beginning tag and ending tag. In the main tag, depending on the block type and user customizations, there can be a JSON object. This raw form of the block is referred to as serialized.
 
 
-```
+```text
 <!-- wp:paragraph {"key": "value"} -->
 <p>Welcome to the world of blocks.</p>
 <!-- /wp:paragraph -->
 
-```
-
-
+```text
 Blocks can be static or dynamic. Static blocks contain rendered content and an object of Attributes used to re-render based on changes. Dynamic blocks require server-side data and rendering while the post content is being generated (rendering).
 
 

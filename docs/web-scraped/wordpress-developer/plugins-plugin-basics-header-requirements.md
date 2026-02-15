@@ -2,47 +2,31 @@
 
 **Source:** [https://developer.wordpress.org/plugins/plugin-basics/header-requirements/](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/)
 
-
-
-# Header Requirements
-
-
-
-
 ## In this article
 
-
 Table of Contents- Minimum Fields
+
 - Header Fields
 - Notes
 
-
-
 ↑Back to top
-
-
 
 As described inGetting Started, the main PHP file should include header comment what tells WordPress that a file is a plugin and provides information about the plugin.
 
-
 ## Minimum Fields
-
 
 At a minimum, a header comment must contain the Plugin Name:
 
-
-```
+```php
 /*
+
  * Plugin Name: YOUR PLUGIN NAME
  */
-```
-
+```php
 
 ## Header Fields
 
-
 Available header fields:
-
 
 - Plugin Name:(required) The name of your plugin, which will be displayed in the Plugins list in the WordPress Admin.
 - Plugin URI:The home page of the plugin, which should be a unique URL, preferably on your own website. Thismust be uniqueto your plugin. You cannot use a WordPress.org URL here.
@@ -60,12 +44,11 @@ Available header fields:
 - Update URI:Allows third-party plugins to avoid accidentally being overwritten with an update of a plugin of a similar name from the WordPress.org Plugin Directory. For more info read relateddev note.
 - Requires Plugins: A comma-separated list of WordPress.org-formatted slugs for its dependencies, such asmy-plugin(my-plugin/my-plugin.phpis not supported). It does not support commas in plugin slugs. For more info read the relateddev note.
 
-
 A valid PHP file with a header comment might look like this:
 
-
-```
+```php
 /*
+
  * Plugin Name:       My Basics Plugin
  * Plugin URI:        https://example.com/plugins/the-basics/
  * Description:       Handle the basics with this plugin.
@@ -81,21 +64,22 @@ A valid PHP file with a header comment might look like this:
  * Domain Path:       /languages
  * Requires Plugins:  my-plugin, yet-another-plugin
  */
-```
-
+```php
 
 Here’s another example which allows file-level PHPDoc DocBlock as well as WordPress plugin file headers:
 
-
-```
+```php
 /**
+
  * Plugin Name
  *
+
  * @package           PluginPackage
  * @author            Your Name
  * @copyright         2019 Your Name or Company Name
  * @license           GPL-2.0-or-later
  *
+
  * @wordpress-plugin
  * Plugin Name:       Plugin Name
  * Plugin URI:        https://example.com/plugin-name
@@ -111,33 +95,19 @@ Here’s another example which allows file-level PHPDoc DocBlock as well as Word
  * Update URI:        https://example.com/my-plugin/
  * Requires Plugins:  my-plugin, yet-another-plugin
  */
-```
-
+```php
 
 ## Notes
 
-
-
-
 When assigning a version number to your project, keep in mind that WordPress uses the PHP version_compare() function to compare plugin version numbers. Therefore, before you release a new version of your plugin, you should make sure that this PHP function considers the new version to be “greater” than the old one.  For example, 1.02 is actually greater than 1.1.
-
-
-
 
 First published
 
-
 September 16, 2014
-
 
 Last updated
 
-
 May 8, 2024
-
-
 
 [PreviousPlugin BasicsPrevious: Plugin Basics](https://developer.wordpress.org/plugins/plugin-basics/)
 [NextActivation / Deactivation HooksNext: Activation / Deactivation Hooks](https://developer.wordpress.org/plugins/plugin-basics/activation-deactivation-hooks/)
-
-

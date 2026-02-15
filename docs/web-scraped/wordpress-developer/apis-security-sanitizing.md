@@ -36,20 +36,16 @@ Sanitizinginput is the process of securing/cleaning/filtering input data. Valida
 Let’s say we have an input field namedtitle:
 
 
-```
+```text
 <input id="title" type="text" name="title">
-```
-
-
+```text
 We can’t use Validation here because the text field is too general: it can be anything at all. So we sanitize the input data with thesanitize_text_field()function:
 
 
-```
+```text
 $title = sanitize_text_field( $_POST['title'] );
 update_post_meta( $post->ID, 'title', $title );
-```
-
-
+```text
 Behind the scenes,sanitize_text_field()does the following:
 
 

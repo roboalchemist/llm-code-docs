@@ -44,15 +44,13 @@ But sometimes you need to do complex queries, that have not been accounted for i
 All data in SQL queries must be SQL-escaped before the SQL query is executed to prevent against SQL injection attacks. The best function to use for SQL-escaping is$wpdb->prepare()which supports both asprintf()-like andvsprintf()-like syntax.
 
 
-```
+```text
 $wpdb->get_var( $wpdb->prepare(
     "SELECT something FROM table WHERE foo = %s and status = %d",
     $name, // an unescaped string (function will do the sanitization for you)
     $status // an untrusted integer (function will do the sanitization for you)
 ) );
-```
-
-
+```text
 ### Cross Site Scripting (XSS)
 
 
@@ -65,15 +63,13 @@ Avoid XSS vulnerabilities by escaping output, stripping out unwanted data. As a
 An example of one of the escaping functions is escaping URL from a user profile.
 
 
-```
+```text
 <img src="<?php echo esc_url( $great_user_picture_url ); ?>" />
-```
-
-
+```text
 Content that has HTML entities within can be sanitized to allow only specified HTML elements.
 
 
-```
+```text
 $allowed_html = array(
     'a' => array(
         'href' => array(),
@@ -85,9 +81,7 @@ $allowed_html = array(
 );
 
 echo wp_kses( $custom_content, $allowed_html );
-```
-
-
+```text
 ### Cross-site Request Forgery (CSRF)
 
 
@@ -97,14 +91,12 @@ Cross-site request forgery or CSRF (pronounced sea-surf) is when a nefarious pa
 If your theme includes any HTML or HTTP-based form submissions, use anonceto guarantee a user intends to perform an action.
 
 
-```
+```text
 <form method="post">
     <!-- some inputs here … -->
     <?php wp_nonce_field( 'name_of_my_action', 'name_of_nonce_field' ); ?>
 </form>
-```
-
-
+```text
 ### Staying Current
 
 

@@ -4,7 +4,6 @@
 
 
 
-# POSTing data to an external service
 
 
 
@@ -35,10 +34,10 @@ Let’s assume we are submitting a contact form with the following fields: name,
 
 ```
 $body = array(
-	'name'    => sanitize_text_field( 'Jane Smith' ),
-	'email'   => sanitize_email( 'some@email.com' ),
-	'subject' => sanitize_text_field( 'Checkout this API stuff' ),
-	'comment' => sanitize_textarea_field( 'I just read a great tutorial. You gotta check it out!' ),
+    'name'    => sanitize_text_field( 'Jane Smith' ),
+    'email'   => sanitize_email( 'some@email.com' ),
+    'subject' => sanitize_text_field( 'Checkout this API stuff' ),
+    'comment' => sanitize_textarea_field( 'I just read a great tutorial. You gotta check it out!' ),
 );
 ```
 
@@ -48,7 +47,7 @@ Now we add the body to the$argsarray that will be passed as the second argument.
 
 ```
 $args = array(
-	'body'        => $body,
+    'body'        => $body,
 );
 ```
 

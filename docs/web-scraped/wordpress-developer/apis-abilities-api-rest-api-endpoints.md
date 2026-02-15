@@ -4,7 +4,6 @@
 
 
 
-# REST API endpoints
 
 
 
