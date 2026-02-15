@@ -85,7 +85,6 @@ cd /usr/share/FreshRSS/
 ```
 
 Change your database setup:
-
 - if you like to change database type (e.g. from MySQL to PostgreSQL), edit `data/config.php` accordingly.
 - if you upgrade to a major PostgreSQL version, after a PostgreSQL backup, you may delete the old instance and start a new instance (remove the PostgreSQL volume if using Docker).
 

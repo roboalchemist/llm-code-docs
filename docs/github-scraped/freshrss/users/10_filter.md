@@ -1,5 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/users/10_filter.md
 
+
 # Filtering articles
 
 ## Purpose
@@ -55,42 +56,42 @@ You can use the search field to further refine results:
 * by tag: `#tag` or `#tag+with+whitespace` or `#'tag with whitespace'`
 * by free-text: `keyword` or `'composed keyword'`
 * by date of discovery, using the [ISO 8601 time interval format](http://en.wikipedia.org/wiki/ISO_8601#Time_intervals): `date:<date-interval>`
-  * From a specific day, or month, or year:
-    * `date:2014-03-30`
-    * `date:2014-03` or `date:201403`
-    * `date:2014`
-  * From a specific time of a given day:
-    * `date:2014-05-30T13`
-    * `date:2014-05-30T13:30`
-  * Between two given dates:
-    * `date:2014-02/2014-04`
-    * `date:2014-02--2014-04`
-    * `date:2014-02/04`
-    * `date:2014-02-03/05`
-    * `date:2014-02-03T22:00/22:15`
-    * `date:2014-02-03T22:00/15`
-  * After a given date:
-    * `date:2014-03/`
-  * Before a given date:
-    * `date:/2014-03`
-  * For a specific duration after a given date:
-    * `date:2014-03/P1W`
-  * For a specific duration before a given date:
-    * `date:P1W/2014-05-25T23:59:59`
-  * For the past duration before now (the trailing slash is optional):
-    * `date:P1Y/` or `date:P1Y` (past year)
-    * `date:P2M/` (past two months)
-    * `date:P3W/` (past three weeks)
-    * `date:P4D/` (past four days)
-    * `date:PT5H/` (past five hours)
-    * `date:PT30M/` (past thirty minutes)
-    * `date:PT90S/` (past ninety seconds)
-    * `date:P1DT1H/` (past one day and one hour)
-  * From the oldest until some time before now:
-    * `!date:P1M` (older than one month before now, using a negation)
-      * Note: the syntax ~~`date:/P1M`~~ is not supported
-  * Date constraints may be combined:
-    * `date:P1Y !date:P1M` (from one year before now until one month before now)
+	* From a specific day, or month, or year:
+		* `date:2014-03-30`
+		* `date:2014-03` or `date:201403`
+		* `date:2014`
+	* From a specific time of a given day:
+		* `date:2014-05-30T13`
+		* `date:2014-05-30T13:30`
+	* Between two given dates:
+		* `date:2014-02/2014-04`
+		* `date:2014-02--2014-04`
+		* `date:2014-02/04`
+		* `date:2014-02-03/05`
+		* `date:2014-02-03T22:00/22:15`
+		* `date:2014-02-03T22:00/15`
+	* After a given date:
+		* `date:2014-03/`
+	* Before a given date:
+		* `date:/2014-03`
+	* For a specific duration after a given date:
+		* `date:2014-03/P1W`
+	* For a specific duration before a given date:
+		* `date:P1W/2014-05-25T23:59:59`
+	* For the past duration before now (the trailing slash is optional):
+		* `date:P1Y/` or `date:P1Y` (past year)
+		* `date:P2M/` (past two months)
+		* `date:P3W/` (past three weeks)
+		* `date:P4D/` (past four days)
+		* `date:PT5H/` (past five hours)
+		* `date:PT30M/` (past thirty minutes)
+		* `date:PT90S/` (past ninety seconds)
+		* `date:P1DT1H/` (past one day and one hour)
+	* From the oldest until some time before now:
+		* `!date:P1M` (older than one month before now, using a negation)
+			* Note: the syntax ~~`date:/P1M`~~ is not supported
+	* Date constraints may be combined:
+		* `date:P1Y !date:P1M` (from one year before now until one month before now)
 * by date of publication, using the same format: `pubdate:<date-interval>`
 * by date of user modification, using the same format: `userdate:<date-interval>`
 * by custom label ID `L:12` or multiple label IDs: `L:12,13,14` or with any label: `L:*`
@@ -98,7 +99,7 @@ You can use the search field to further refine results:
 * by several label names (*and*): `label:"my label" label:"my other label"`
 * by entry (article) ID: `e:1639310674957894` or multiple entry IDs  (*or*): `e:1639310674957894,1639310674957893`
 * by user query (saved search) name: `search:myQuery`, `search:"My query"` or saved search ID: `S:3` or multiple search IDs: `S:1,2`
-  * internally, those references are replaced by the corresponding user query in the search expression
+	* internally, those references are replaced by the corresponding user query in the search expression
 
 Be careful not to enter a space between the operator and the search value.
 
@@ -151,10 +152,10 @@ As opposed to normal searches, special XML characters `<&">` are not escaped in 
 
 * FreshRSS filter actions such as auto-mark-as-read and auto-favourite use [PHP preg_match](https://php.net/function.preg-match).
 * Regex searches depend on which database you are using:
-  * For SQLite, [PHP preg_match](https://php.net/function.preg-match) is used;
-  * [For PostgreSQL](https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-REGEXP);
-  * [For MariaDB](https://mariadb.com/kb/en/pcre/);
-  * [For MySQL](https://dev.mysql.com/doc/refman/9.0/en/regexp.html#function_regexp-like).
+	* For SQLite, [PHP preg_match](https://php.net/function.preg-match) is used;
+	* [For PostgreSQL](https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-REGEXP);
+	* [For MariaDB](https://mariadb.com/kb/en/pcre/);
+	* [For MySQL](https://dev.mysql.com/doc/refman/9.0/en/regexp.html#function_regexp-like).
 
 > ℹ️ Even with PostgreSQL, you are welcome to use `\b` for word boundary (and `\B` for the opposite), as there is an automatic translation to `\y` and `\Y`.
 
@@ -173,9 +174,7 @@ You can create as many as you want, the only limit is how they will be displayed
 Read more about [*user queries*](./user_queries.md) to learn how to create them, use them, and even reshare them via HTML / RSS / OPML.
 
 ---
-
 Read more:
-
 * [Normal, Global and Reader view](./03_Main_view.md)
 * [Refreshing the feeds](./09_refreshing_feeds.md)
 * [User queries](./user_queries.md)

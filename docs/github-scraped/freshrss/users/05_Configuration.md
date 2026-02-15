@@ -1,5 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/users/05_Configuration.md
 
+
 # Configuration
 
 ## Display
@@ -150,6 +151,7 @@ To remove an item from the list, follow those simple steps:
 
 1. Press the ```❌``` button next to the share method you want to remove.
 2. Submit your changes.
+
 
 ## Shortcuts
 

@@ -27,17 +27,16 @@ Code example:
 <?php
 
 class FreshRSS_hello_Controller extends FreshRSS_ActionController {
-  public function indexAction() {
-    $this->view->a_variable = 'FooBar';
-  }
+	public function indexAction() {
+		$this->view->a_variable = 'FooBar';
+	}
 
-  public function worldAction() {
-    $this->view->a_variable = 'Hello World!';
-  }
+	public function worldAction() {
+		$this->view->a_variable = 'Hello World!';
+	}
 }
 
 ?>
-
 ```
 
 When loading the address <http://example.com?c=hello&a=world>, the `world` action is executed on the `hello` controller.
@@ -55,9 +54,8 @@ As explained above, the views consist of HTML mixed with PHP. Code example:
 
 ```html
 <p>
-  This is a parameter passed from the controller: <?= $this->a_variable ?>
+	This is a parameter passed from the controller: <?= $this->a_variable ?>
 </p>
-
 ```
 
 The variable `$this->a_variable` is passed by the controller (see previous example). The difference is that in the controller it is necessary to pass `$this->view`, while in the view `$this` suffices.
@@ -85,7 +83,6 @@ Minz_Request::_param('bar', 'baz');
 echo Minz_Request::paramString('bar');
 
 ?>
-
 ```
 
 The `Minz_Request::isPost()` method can be used to execute a piece of code only if it is a POST request.
@@ -102,9 +99,8 @@ To take full advantage of the Minz routing system, it is strongly discouraged to
 
 ```html
 <p>
-  Go to page <a href="http://example.com?c=hello&amp;a=world">Hello world</a>!
+	Go to page <a href="http://example.com?c=hello&amp;a=world">Hello world</a>!
 </p>
-
 ```
 
 If one day it was decided to use a "url rewriting" system to have addresses in a <http://example.com/controller/action> format, all previous addresses would become ineffective!
@@ -115,18 +111,17 @@ So use the `Minz_Url` class and its `display()` method instead. `Minz_Url::displ
 <?php
 
 $url_array = [
-  'c' => 'hello',
-  'a' => 'world',
-  'params' => [
-    'foo' => 'bar',
-  ],
+	'c' => 'hello',
+	'a' => 'world',
+	'params' => [
+		'foo' => 'bar',
+	],
 ];
 
 // Show something like .?c=hello&amp;a=world&amp;foo=bar
 echo Minz_Url::display($url_array);
 
 ?>
-
 ```
 
 Since this can become a bit tedious to use in the long run, especially in views, it is preferable to use the `_url()` shortcut:
@@ -138,7 +133,6 @@ Since this can become a bit tedious to use in the long run, especially in views,
 echo _url('hello', 'world', 'foo', 'bar');
 
 ?>
-
 ```
 
 Note: as a general rule, the shortened form (`_url()`) should be used in views, while the long form (`Minz_Url::display()`) should be used in controllers.
@@ -153,8 +147,8 @@ Code example:
 <?php
 
 $url_array = [
-  'c' => 'hello',
-  'a' => 'world',
+	'c' => 'hello',
+	'a' => 'world',
 ];
 
 // Tells Minz to redirect the user to the hello / world page.
@@ -167,7 +161,6 @@ Minz_Request::forward($url_array);
 Minz_Request::forward($url_array, true);
 
 ?>
-
 ```
 
 It is very common to want display a message to the user while performing a redirect, to tell the user how the action was carried out (validation of a form for example). Such a message is passed through a `notification` session variable (note: we will talk about feedback from now on to avoid confusion with a notification that can occur at any time). To facilitate this kind of very frequent action, there are two shortcuts that both perform a 302 redirect by assigning a feedback message:
@@ -176,8 +169,8 @@ It is very common to want display a message to the user while performing a redir
 <?php
 
 $url_array = [
-  'c' => 'hello',
-  'a' => 'world',
+	'c' => 'hello',
+	'a' => 'world',
 ];
 $feedback_good = 'All went well!';
 $feedback_bad = 'Oops, something went wrong.';
@@ -189,7 +182,6 @@ Minz_Request::good($feedback_good, $url_array, showNotification: FreshRSS_Contex
 Minz_Request::bad($feedback_bad, $url_array);
 
 ?>
-
 ```
 
 ## Translation Management

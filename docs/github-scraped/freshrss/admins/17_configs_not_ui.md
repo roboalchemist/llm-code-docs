@@ -58,9 +58,9 @@ Some constants cannot be `update safe` changed. They are marked with `Not custom
 
 ### Example of constants.local.php
 
-```php
+``` php
 <?php
-define('CLEANCACHE_HOURS', 100);
+	define('CLEANCACHE_HOURS', 100);
 ```
 
 File name: `constants.local.php`
@@ -75,15 +75,18 @@ FreshRSS has a default user agent string that can be overwritten in each feed se
 
 `'FRESHRSS_USERAGENT'` default value starts with `'FreshRSS/'` and the FreshRSS version, used operating system and link to FreshRSS website.
 
+
 #### Application constant: CLEANCACHE_HOURS
 
 FreshRSS keeps feeds and fetched websites as `.spc` or `.html` file in `./data/cache` for a limited time. In some cases the storage could use a lot of storage space. Reducing the clean cache hours reduces the space.
 
 `'CLEANCACHE_HOURS'` default value `720` (hours = 30 days)
 
+
 ## User wide configuration
 
 Available for each user in `config.php` in `./data/users/username`. Edit there. Do not edit `./config-user.default.php` (it will be overwritten by the next system update and overruled by the user config file).
+
 
 ### User: simplify_over_n_feeds
 

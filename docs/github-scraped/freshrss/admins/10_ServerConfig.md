@@ -13,56 +13,56 @@ For more details, check our [reference Apache configuration](https://github.com/
 
 ```apache
 <VirtualHost *:80>
-    DocumentRoot /var/www/html/
+	DocumentRoot /var/www/html/
 
-    #Default site...
+	#Default site...
 
-    ErrorLog ${APACHE_LOG_DIR}/error.default.log
-    CustomLog ${APACHE_LOG_DIR}/access.default.log vhost_combined
+	ErrorLog ${APACHE_LOG_DIR}/error.default.log
+	CustomLog ${APACHE_LOG_DIR}/access.default.log vhost_combined
 </VirtualHost>
 
 <VirtualHost *:80>
-    ServerName rss.example.net
-    DocumentRoot /path/to/FreshRSS/p/
+	ServerName rss.example.net
+	DocumentRoot /path/to/FreshRSS/p/
 
-    <Directory /path/to/FreshRSS/p>
-        AllowOverride AuthConfig FileInfo Indexes Limit
-        Require all granted
-    </Directory>
+	<Directory /path/to/FreshRSS/p>
+		AllowOverride AuthConfig FileInfo Indexes Limit
+		Require all granted
+	</Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/freshrss_error.log
-    # Consider piping the logs for cleaning passwords; cf. comment higher up.
-    CustomLog ${APACHE_LOG_DIR}/freshrss_access.log combined
+	ErrorLog ${APACHE_LOG_DIR}/freshrss_error.log
+	# Consider piping the logs for cleaning passwords; cf. comment higher up.
+	CustomLog ${APACHE_LOG_DIR}/freshrss_access.log combined
 
-    AllowEncodedSlashes On
+	AllowEncodedSlashes On
 </VirtualHost>
 
 <IfModule mod_ssl.c>
-    <VirtualHost *:443>
-        ServerName rss.example.net
-        DocumentRoot /path/to/FreshRSS/p/
+	<VirtualHost *:443>
+		ServerName rss.example.net
+		DocumentRoot /path/to/FreshRSS/p/
 
-        <Directory /path/to/FreshRSS/p>
-            AllowOverride AuthConfig FileInfo Indexes Limit
-            Require all granted
-        </Directory>
+		<Directory /path/to/FreshRSS/p>
+			AllowOverride AuthConfig FileInfo Indexes Limit
+			Require all granted
+		</Directory>
 
-        ErrorLog ${APACHE_LOG_DIR}/freshrss_error.log
-        CustomLog ${APACHE_LOG_DIR}/freshrss_access.log combined
+		ErrorLog ${APACHE_LOG_DIR}/freshrss_error.log
+		CustomLog ${APACHE_LOG_DIR}/freshrss_access.log combined
 
-        <IfModule mod_http2.c>
-            Protocols h2 http/1.1
-        </IfModule>
+		<IfModule mod_http2.c>
+			Protocols h2 http/1.1
+		</IfModule>
 
-        # For the API
-        AllowEncodedSlashes On
+		# For the API
+		AllowEncodedSlashes On
 
-        SSLEngine on
-        SSLCompression off
-        SSLCertificateFile /path/to/server.crt
-        SSLCertificateKeyFile /path/to/server.key
-        # Additional SSL configuration, e.g. with LetsEncrypt
-    </VirtualHost>
+		SSLEngine on
+		SSLCompression off
+		SSLCertificateFile /path/to/server.crt
+		SSLCertificateKeyFile /path/to/server.key
+		# Additional SSL configuration, e.g. with LetsEncrypt
+	</VirtualHost>
 </IfModule>
 ```
 
@@ -74,44 +74,44 @@ You can find simpler config file but they may be incompatible with FreshRSS API.
 
 ```nginx
 server {
-    listen 80;
-    listen 443 ssl;
+	listen 80;
+	listen 443 ssl;
 
-    # HTTPS configuration
-    ssl on;
-    ssl_certificate /etc/nginx/server.crt;
-    ssl_certificate_key /etc/nginx/server.key;
+	# HTTPS configuration
+	ssl on;
+	ssl_certificate /etc/nginx/server.crt;
+	ssl_certificate_key /etc/nginx/server.key;
 
-    # your server’s URL(s)
-    server_name rss.example.net;
+	# your server’s URL(s)
+	server_name rss.example.net;
 
-    # the folder p of your FreshRSS installation
-    root /srv/FreshRSS/p/;
+	# the folder p of your FreshRSS installation
+	root /srv/FreshRSS/p/;
 
-    index index.php index.html index.htm;
+	index index.php index.html index.htm;
 
-    # nginx log files
-    access_log /var/log/nginx/rss.access.log;
-    error_log /var/log/nginx/rss.error.log;
+	# nginx log files
+	access_log /var/log/nginx/rss.access.log;
+	error_log /var/log/nginx/rss.error.log;
 
-    # php files handling
-    # this regex is mandatory because of the API
-    location ~ ^.+?\.php(/.*)?$ {
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        # By default, the variable PATH_INFO is not set under PHP-FPM
-        # But FreshRSS APIs greader.php and misc.php need it. If you have a “Bad Request” error, double check this var!
-        # NOTE: the separate $path_info variable is required. For more details, see:
-        # https://trac.nginx.org/nginx/ticket/321
-        set $path_info $fastcgi_path_info;
-        fastcgi_param PATH_INFO $path_info;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
+	# php files handling
+	# this regex is mandatory because of the API
+	location ~ ^.+?\.php(/.*)?$ {
+		fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+		fastcgi_split_path_info ^(.+\.php)(/.*)$;
+		# By default, the variable PATH_INFO is not set under PHP-FPM
+		# But FreshRSS APIs greader.php and misc.php need it. If you have a “Bad Request” error, double check this var!
+		# NOTE: the separate $path_info variable is required. For more details, see:
+		# https://trac.nginx.org/nginx/ticket/321
+		set $path_info $fastcgi_path_info;
+		fastcgi_param PATH_INFO $path_info;
+		include fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	}
 
-    location / {
-        try_files $uri $uri/ index.php;
-    }
+	location / {
+		try_files $uri $uri/ index.php;
+	}
 }
 ```
 
@@ -124,7 +124,6 @@ Avoid overwriting the [`Content-Security-Policy`](https://developer.mozilla.org/
 ❌ Bad CSP: `upgrade-insecure-requests`
 
 Debug your own CSP header:
-
 * With DevTools network tab: press F12
 * [CSP Evaluator](https://csp-evaluator.withgoogle.com/)
 

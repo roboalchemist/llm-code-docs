@@ -5,17 +5,17 @@
 To take full advantage of FreshRSS, it needs to retrieve new items from the feeds you have subscribed to. There are several ways to do this:
 
 - [Manual update](#manual-update)
-  - [Complete update](#complete-update)
-  - [Partial update](#partial-update)
+    - [Complete update](#complete-update)
+    - [Partial update](#partial-update)
 - [Automatic update with cron](#automatic-update-with-cron)
 - [Online cron](#online-cron)
-  - [For Form Authentication (Web form)](#for-form-authentication-web-form)
-  - [For HTTP authentication](#for-http-authentication)
-  - [For No authentication (None)](#for-no-authentication-none)
-- [Feed configuration of "Do not automatically refresh more often than"](#feed-configuration-of-do-not-automatically-refresh-more-often-than)
-  - [Background](#background)
-  - [Default value](#default-value)
-  - [Individual feed configuration](#individual-feed-configuration)
+    - [For Form Authentication (Web form)](#for-form-authentication-web-form)
+    - [For HTTP authentication](#for-http-authentication)
+    - [For No authentication (None)](#for-no-authentication-none)
+- [Feed configuration of “Do not automatically refresh more often than”](#feed-configuration-of-do-not-automatically-refresh-more-often-than)
+    - [Background](#background)
+    - [Default value](#default-value)
+    - [Individual feed configuration](#individual-feed-configuration)
 
 ## Manual update
 
@@ -127,8 +127,6 @@ The lowest global/default purposely cannot be set faster than every 20 minutes, 
 Under the settings for individual feeds, you can go down to 15min.
 
 ---
-
 Read more:
-
 - [Normal, Global and Reader view](./03_Main_view.md)
 - [Filter the feeds and search](./10_filter.md)

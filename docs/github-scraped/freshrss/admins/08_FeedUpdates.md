@@ -35,7 +35,6 @@ It’s advisable that you run the Cron job as your Web server user (often `www-d
 To run the updater script every hour, and 10 minutes past the hour:
 
 Edit `/etc/crontab` and append the following line:
-
 ```text
 10 * * * * www-data php -f /usr/share/FreshRSS/app/actualize_script.php > /tmp/FreshRSS.log 2>&1
 ```

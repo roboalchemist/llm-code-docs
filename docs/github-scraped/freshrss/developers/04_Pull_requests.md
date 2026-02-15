@@ -29,7 +29,6 @@ git checkout edge       # go on edge branch
 git pull upstream edge  # pull the last version of edge
 git checkout -          # go back to your branch
 git rebase edge         # rebase your branch on edge
-
 ```
 
 If you feel confident, you can use `git rebase -i edge` to rewrite your history and make it clearer.
@@ -45,7 +44,6 @@ git checkout edge       # go on edge branch
 git pull upstream edge  # pull the last version of edge
 git checkout -          # go back to your branch
 git merge edge          # merge edge into your branch
-
 ```
 
 ## How to write a Git commit message

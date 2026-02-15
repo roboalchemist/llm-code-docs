@@ -17,7 +17,6 @@ Once you’re done, clone the repository with:
 ```sh
 git clone https://github.com/FreshRSS/FreshRSS.git
 cd FreshRSS
-
 ```
 
 Note that, if you want to contribute, you have to fork the repository first and clone your fork instead of the "root" one. Adapt the commands in consequence.
@@ -26,7 +25,6 @@ Then, the only command you need to know is the following:
 
 ```sh
 make start
-
 ```
 
 This might take some time while Docker downloads the image. If your user isn’t in the `docker` group, you’ll need to prepend the command with `sudo`.
@@ -37,7 +35,6 @@ You can stop the containers by typing <kbd>Control</kbd> + <kbd>c</kbd> or with 
 
 ```sh
 make stop
-
 ```
 
 If you’re interested in the configuration, the `make` commands are defined in the [`Makefile`](/Makefile).
@@ -46,7 +43,6 @@ If you need to use a different tag image (default is `alpine`), you can set the 
 
 ```sh
 TAG=alpine make start
-
 ```
 
 You can find the full list of available tags [on the Docker hub](https://hub.docker.com/r/freshrss/freshrss/tags).
@@ -55,7 +51,6 @@ If you want to build the Docker image yourself, you can use the following comman
 
 ```sh
 make build
-
 ```
 
 The `TAG` variable can be anything (e.g. `local`). You can target a specific architecture by adding `-alpine` at the end of the tag (e.g. `local-alpine`).
@@ -86,7 +81,6 @@ Tests can be run locally, e.g. by running `make test-all`, and several problems 
 ```sh
 make fix-all
 make test-all
-
 ```
 
 This requires `make` and `npm` in addition to the FreshRSS requirements. See below for the precise requirements for a few platforms.
@@ -99,21 +93,18 @@ Here are the dependencies that need to be manually installed prior to running th
 
 ```sh
 sudo apt update && sudo apt install --no-install-recommends -y make npm php-cli php-curl php-mbstring php-xml unzip wget
-
 ```
 
 ### Fedora / Red Hat
 
 ```sh
 yum install -y git make npm php-cli php-curl php-mbstring php-xml php-pdo unzip wget
-
 ```
 
 ### Alpine Linux
 
 ```sh
 apk add git make npm php-cli php-curl php-ctype php-dom php-mbstring php-openssl php-phar php-simplexml php-xml php-pdo php-tokenizer php-xmlreader php-xmlwriter unzip wget
-
 ```
 
 ### Partial fixes & tests
@@ -176,7 +167,6 @@ Once the code has been correctly indented, it might be useful to align it for ea
 ```php
 $result = a_function_with_a_really_long_name($param1, $param2,
                                              $param3, $param4);
-
 ```
 
 ### End of line
@@ -190,7 +180,6 @@ You can verify if there is any unintended white space at the end of line with th
 git diff --check
 # command to check files after adding them in the Git index
 git diff --check --cached
-
 ```
 
 ### End of file
@@ -207,11 +196,10 @@ There should be a space before and after every operator.
 
 ```php
 if ($a == 10) {
-  // do something
+	// do something
 }
 
 echo $a ? 1 : 0;
-
 ```
 
 ### Parentheses
@@ -220,13 +208,12 @@ There should be no spaces in between brackets. There should be no spaces before 
 
 ```php
 if ($a == 10) {
-  // do something
+	// do something
 }
 
 if ((int)$a == 10) {
-  // do something
+	// do something
 }
-
 ```
 
 ### With chained functions
@@ -236,17 +223,16 @@ It happens most of the time in JavaScript files. When there are chained function
 ```javascript
 // First instruction
 shortcut.add(shortcuts.mark_read, function () {
-    //...
-  }, {
-    'disable_in_input': true
-  });
+		//...
+	}, {
+		'disable_in_input': true
+	});
 // Second instruction
 shortcut.add("shift+" + shortcuts.mark_read, function () {
-    //...
-  }, {
-    'disable_in_input': true
-  });
-
+		//...
+	}, {
+		'disable_in_input': true
+	});
 ```
 
 ## Line length
@@ -258,9 +244,8 @@ With functions, parameters can be declared on multiple lines.
 ```php
 function my_function($param_1, $param_2,
                      $param_3, $param_4) {
-  // do something
+	// do something
 }
-
 ```
 
 ## Naming
@@ -274,11 +259,10 @@ Functions and variables must follow the "snake case" naming convention.
 ```php
 // a function
 function function_name() {
-  // do something
+	// do something
 }
 // a variable
 $variable_name;
-
 ```
 
 ### Methods
@@ -287,9 +271,8 @@ Methods must follow the "lower camel case" naming convention.
 
 ```php
 private function methodName() {
-  // do something
+	// do something
 }
-
 ```
 
 ### Classes
@@ -298,7 +281,6 @@ Classes must follow the "upper camel case" naming convention.
 
 ```php
 abstract class ClassName {}
-
 ```
 
 ## Encoding
@@ -318,9 +300,8 @@ Operators must be at the end of the line if a condition is split over more than 
 ```php
 if ($a == 10 ||
     $a == 20) {
-  // do something
+	// do something
 }
-
 ```
 
 ### End of PHP file
@@ -333,9 +314,8 @@ If an array declaration runs on more than one line, each element must be followe
 
 ```php
 $variable = [
-  "value 1",
-  "value 2",
-  "value 3",
+	"value 1",
+	"value 2",
+	"value 3",
 ];
-
 ```

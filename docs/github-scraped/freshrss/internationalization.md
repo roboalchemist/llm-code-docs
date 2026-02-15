@@ -26,18 +26,18 @@ The translation files are quite simple: it’s only a matter of returning a PHP 
 ```php
 <?php
 return array(
-  'action' => array(
-    'actualize' => 'Actualiser',
-    'back_to_rss_feeds' => '← Retour à vos flux RSS',
-    'cancel' => 'Annuler',
-    'create' => 'Créer',
-    'disable' => 'Désactiver',
-  ),
-  'freshrss' => array(
-    '_' => 'FreshRSS',
-    'about' => 'À propos de FreshRSS',
-  ),
-  // ...
+	'action' => array(
+		'actualize' => 'Actualiser',
+		'back_to_rss_feeds' => '← Retour à vos flux RSS',
+		'cancel' => 'Annuler',
+		'create' => 'Créer',
+		'disable' => 'Désactiver',
+	),
+	'freshrss' => array(
+		'_' => 'FreshRSS',
+		'about' => 'À propos de FreshRSS',
+	),
+	// ...
 );
 ```
 
@@ -112,7 +112,6 @@ make i18n-update-key key=the.key.to.change value='The new string in English'
 The key will simply be removed and added back with the new value.
 
 If you want to move/rename a key, you can use:
-
 ```sh
 make i18n-move-key key=the.key.to.move new-key=new.location.of.the.key
 ```
@@ -123,7 +122,7 @@ To access these translations, you must use the `_t()` function (which is a short
 
 ```html
 <p>
-  <?= _t('gen.freshrss.about') ?>
+	<?= _t('gen.freshrss.about') ?>
 </p>
 ```
 
@@ -135,7 +134,7 @@ For instance, the English translation for `gen.auth.keep_logged_in` is `Keep me 
 
 ```php
 <label>
-  <input type="checkbox" name="keep_logged_in" />
-  <?= _t('gen.auth.keep_logged_in', 30) ?>
+	<input type="checkbox" name="keep_logged_in" />
+	<?= _t('gen.auth.keep_logged_in', 30) ?>
 </label>
 ```

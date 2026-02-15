@@ -17,14 +17,12 @@ First you need to add the official repo to your remote repo list:
 
 ```sh
 git remote add upstream git@github.com:FreshRSS/FreshRSS.git
-
 ```
 
 You can verify the remote repo is successfully added by using:
 
 ```sh
 git remote -v show
-
 ```
 
 Now you can pull the latest development code:
@@ -32,14 +30,12 @@ Now you can pull the latest development code:
 ```sh
 git checkout edge
 git pull upstream edge
-
 ```
 
 ## Starting a new development branch
 
 ```sh
 git checkout -b my-development-branch
-
 ```
 
 ## Sending a patch
@@ -53,7 +49,6 @@ git commit
 git show
 # Push it to your fork
 git push
-
 ```
 
 Now you can create a PR based on your branch.

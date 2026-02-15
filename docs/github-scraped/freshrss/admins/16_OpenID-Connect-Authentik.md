@@ -128,7 +128,7 @@ services:
     volumes:
       - freshrss-data:/var/www/FreshRSS/data
       - freshrss-extensions:/var/www/FreshRSS/extensions
-      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro # If using self-signed authentik signing-key issued by your own CA
+	  - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro # If using self-signed authentik signing-key issued by your own CA
     # # Portainer defines the env file as show below, but not needed if using the default `.env`
     # env_file:
     #   - ../stack.env
@@ -151,6 +151,7 @@ services:
 ```
 
 > ℹ️ Not sure where `preferred_username` is defined in authentik but using that does work. This does not need to be changed to something else. Note that the authentik documentation states: `By default, every user that has access to an application can request any of the configured scopes.`
+
 
 ## Step 3. Enable OIDC
 

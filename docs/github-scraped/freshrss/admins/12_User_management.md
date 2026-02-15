@@ -13,7 +13,6 @@ The [default user](13_Default_user.md) is marked with italic letters.
 Settings page: `Administration` → `Manage Users`.
 
 For a new user the following information is necessary:
-
 * language
 * username
 * is it an administrator account?
