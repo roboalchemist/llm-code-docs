@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/websets/overview.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Welcome to Websets
+
+## # Welcome to Websets
 
 > Our goal is to help you find anything you want on the web, no matter how complex.
 

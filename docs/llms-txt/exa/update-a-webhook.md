@@ -1,12 +1,15 @@
 # Source: https://exa.ai/docs/websets/api/webhooks/update-a-webhook.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Update a Webhook
 
 > Change a webhook's settings. You can update:
+
 - Events: Add or remove which events you want to hear about - URL: Change where notifications are sent - Metadata: Update custom data linked to the webhook
 
 Changes happen right away. If you change the events list, the webhook will start or stop getting notifications for those events immediately.

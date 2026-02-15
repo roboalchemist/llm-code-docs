@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/people-search-claude-skill.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# People Search
+
+## # People Search
 
 > This guide shows you how to set up a Claude skill and Exa MCP that helps you find LinkedIn profiles, professional backgrounds, and experts.
 
@@ -12,7 +14,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
+````markdown
 Step 1: Install or update Exa MCP
 
 If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
@@ -74,7 +76,7 @@ When using `category: "people"`, these parameters cause errors:
 - `startCrawlDate` / `endCrawlDate`
 - `includeText` / `excludeText`
 - `excludeDomains`
-- `includeDomains` — **LinkedIn domains only** (e.g., "linkedin.com")
+- `includeDomains` — __LinkedIn domains only__ (e.g., "linkedin.com")
 
 When searching without a category, all parameters are available (but `includeText`/`excludeText` still only support single-item arrays).
 
@@ -93,17 +95,20 @@ Auto-fallback to Claude in Chrome when:
 ## Examples
 
 ### Discovery: find people by role
-```
+```text
+
 web_search_advanced_exa {
   "query": "VP Engineering AI infrastructure",
   "category": "people",
   "numResults": 20,
   "type": "auto"
 }
-```
+
+```text
 
 ### With query variations
-```
+```text
+
 web_search_advanced_exa {
   "query": "machine learning engineer San Francisco",
   "category": "people",
@@ -111,27 +116,32 @@ web_search_advanced_exa {
   "numResults": 25,
   "type": "deep"
 }
-```
+
+```text
 
 ### Deep dive: research a specific person
-```
+```text
+
 web_search_advanced_exa {
   "query": "Dario Amodei Anthropic CEO background",
   "type": "auto",
   "livecrawl": "fallback",
   "numResults": 15
 }
-```
+
+```text
 
 ### News mentions
-```
+```text
+
 web_search_advanced_exa {
   "query": "Dario Amodei interview",
   "category": "news",
   "numResults": 10,
   "startPublishedDate": "2024-01-01"
 }
-```
+
+```text
 
 ## Output Format
 

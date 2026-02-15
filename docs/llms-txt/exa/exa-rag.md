@@ -25,11 +25,11 @@ To get around this fundamental issue with LLM reliability, we can use Exa to bri
 
 Exa's SDKs make incorporating quality data into your LLM pipelines quick and painless. Install the SDK by running this command in your terminal:
 
-```Shell Shell theme={null}
+```bash
 pip install exa-py
 ```
 
-```Python Python theme={null}
+```python
 # Now, import the Exa class and pass your API key to it.
 from exa_py import Exa
 
@@ -39,7 +39,7 @@ exa = Exa(my_exa_api_key)
 
 For our first example, we'll set up Exa to answer questions with OpenAI's popular GPT-3.5 Turbo model. (You can use GPT 4 or another model if you prefer!) We'll use Exa's `highlight` feature, which directly returns relevant text of customizable length for a query. You'll need to run `pip install openai` to get access to OpenAI's SDK if you haven't used it before. More information about the OpenAI Python SDK can be found [here](https://platform.openai.com/docs/quickstart?context=python).
 
-```Python Python theme={null}
+```python
 # Set up OpenAI' SDK
 from openai import OpenAI
 
@@ -49,8 +49,7 @@ openai_client = OpenAI(api_key=openai_api_key)
 
 Now, we just need some questions to answer!
 
-```Python Python theme={null}
-
+```python
 questions = [
     "How did bats evolve their wings?",
     "How did Rome defend Italy from Hannibal?",
@@ -65,7 +64,7 @@ While LLMs can answer some questions on their own, they have limitations:
 
 Robust retrieval helps solve all of these issues by providing quality sources of ground truth for the LLM (and their human users) to leverage and cite. Let's use Exa to get some information to answer our questions:
 
-```Python Python theme={null}
+```python
 # Parameters for our Highlights search
 highlights_options  = {
     "max_characters": 2000, # control the total length of highlight text returned
@@ -79,11 +78,12 @@ for question in questions:
     info_for_llm.append(info)
 ```
 
-```Python Python theme={null}
+```python
 info_for_llm
 ```
 
-```[['As the only mammals with powered flight, the evolutionary\xa0history of their wings has been poorly understood. However, research published Monday in Nature and PLoS Genetics has provided the first comprehensive look at the genetic origins of their incredible wings.But to appreciate the genetics of their wing development, it’s important to know how crazy a bat in flight truly\xa0looks.Try a little experiment: Stick your arms out to the side, palms facing forward, thumbs pointing up toward the ceiling. Now imagine that your fingers are\xa0long, arching down toward the floor like impossibly unkempt fingernails — but still made of bone, sturdy and spread apart. Picture the sides of your body connecting to your hands, a rubbery membrane attaching your leg and torso to those long fingers, binding you with strong, stretchy skin. Then, finally, imagine using your muscles to flap those enormous hands.Bats, man.As marvelous as bat flight is to behold, the genetic origins of their storied wings has remained murky. However, new findings from an international team of researchers led by Nadav Ahituv, PhD, of the University of California at San Francisco, Nicola Illing, PhD, of the University of Cape Town\xa0in\xa0South Africa\xa0and Katie Pollard, PhD of the UCSF-affiliated Gladstone Institutes has shed new light on how, 50 million years ago, bats took a tetrapod blueprint for arms and legs and went up into the sky.Using a sophisticated set of genetic tools, researchers approached the question of how bats evolved flight by looking not only at which genes were used in the embryonic development of wings, but at what point during development the genes were turned on and off, and — critically — what elements in the genome were regulating the expression of these genes. Genes do not just turn themselves on without input; genetic switches, called enhancers, act to regulate the timing and levels of gene expression in the body.', theme={null}
+```text
+[['As the only mammals with powered flight, the evolutionary history of their wings has been poorly understood. However, research published Monday in Nature and PLoS Genetics has provided the first comprehensive look at the genetic origins of their incredible wings.But to appreciate the genetics of their wing development, it's important to know how crazy a bat in flight truly looks.Try a little experiment: Stick your arms out to the side, palms facing forward, thumbs pointing up toward the ceiling. Now imagine that your fingers are long, arching down toward the floor like impossibly unkempt fingernails — but still made of bone, sturdy and spread apart. Picture the sides of your body connecting to your hands, a rubbery membrane attaching your leg and torso to those long fingers, binding you with strong, stretchy skin. Then, finally, imagine using your muscles to flap those enormous hands.Bats, man.As marvelous as bat flight is to behold, the genetic origins of their storied wings has remained murky. However, new findings from an international team of researchers led by Nadav Ahituv, PhD, of the University of California at San Francisco, Nicola Illing, PhD, of the University of Cape Town in South Africa and Katie Pollard, PhD of the UCSF-affiliated Gladstone Institutes has shed new light on how, 50 million years ago, bats took a tetrapod blueprint for arms and legs and went up into the sky.Using a sophisticated set of genetic tools, researchers approached the question of how bats evolved flight by looking not only at which genes were used in the embryonic development of wings, but at what point during development the genes were turned on and off, and — critically — what elements in the genome were regulating the expression of these genes. Genes do not just turn themselves on without input; genetic switches, called enhancers, act to regulate the timing and levels of gene expression in the body.'
   "Since flight evolved millions of years ago in all of the groups  that are capable of flight today, we can't observe the changes in behavior and much of the  morphology that the evolution of flight involves. We do have the fossil record, though, and  it is fairly good for the three main groups that evolved true flight. We'll spare you an in-depth description of how each group evolved flight for now;  see the later exhibits for a description of each group and how they developed flight.",
   "It's easy to forget that one in five species of mammal on this planet have wings capable of delivering spectacularly acrobatic flying abilities. Equally incredibly, two-thirds of these 1,200 species of flying mammal can fly in the dark, using exquisite echolocation to avoid obstacles and snatch airborne prey with stunning deftness. These amazing feats have helped make bats the focus not only of folkloric fascination, but also of biological enquiry and mimicry by human engineers from Leonardo da Vinci onwards. Recent research in PLOS journals continues to add surprising new findings to what we know about bats, and how they might inspire us to engineer manmade machines such as drones to emulate their skills. Bats, unlike most birds and flying insects, have relatively heavy wings – something that might appear disadvantageous. But a recent study in PLOS Biology by Kenny Breuer and colleagues shows that bats can exploit the inertia of the wings to make sharp turns that would be near-impossible using aerodynamic forces alone. The authors combined high-speed film of real bats landing upside-down on ceiling roosts with computational modelling to tease apart aerodynamic and inertial effects."],
  ["things, gold and silver, could buy a victory. And this Other Italian cities, inspired by Rome's example, overpowered occupying troops, shut their gates again and invited a second siege. Hannibal could not punish them without dividing his he had no competent leadership to do so, what with one member of",
@@ -93,7 +93,7 @@ info_for_llm
 
 Now, let's give the context we got to our LLM so it can answer our questions with solid sources backing them up!
 
-```Python Python theme={null}
+```python
 responses = []
 for question, info in zip(questions, info_for_llm):
   system_prompt = "You are RAG researcher. Read the provided contexts and, if relevant, use them to answer the user's question."
@@ -115,12 +115,13 @@ for question, info in zip(questions, info_for_llm):
   responses.append(response)
 ```
 
-```Python Python theme={null}
+```python
 from pprint import pprint # pretty print
 pprint(responses)
 ```
 
-```['\n'  theme={null}
+```text
+['\n'
  '  Question: How did bats evolve their wings?\n'
  '  Answer: Recent research has shed new light on how bats evolved their '
  'wings. An international team of researchers used genetic tools to study the '
@@ -170,7 +171,7 @@ pprint(responses)
 
 Exa can be used for more than simple question answering. One superpower of Exa's special embeddings-based search is that we can search for websites containing text with similar meaning to a given paragraph or essay! Instead of providing a standard query like "a research paper about Georgism", we can provide Exa with a paragraph about Georgism and find websites with similar contents. This is useful for finding additional sources for your research paper, finding alternatives/competitors for a product, etc.
 
-```Python Python theme={null}
+```python
 paragraph = """
 Georgism, also known as Geoism, is an economic philosophy and ideology named after the American
 political economist Henry George (1839–1897).This doctrine advocates for the societal collective,
@@ -185,14 +186,15 @@ query = f"The best academic source about {paragraph} is (paper: "
 georgism_search_response = exa.search_and_contents(paragraph, highlights=highlights_options, num_results=5)
 ```
 
-```Python Python theme={null}
+```python
 for result in georgism_search_response.results:
     print(result.title)
     print(result.url)
     pprint(result.highlights)
 ```
 
-```Henry George theme={null}
+```text
+Henry George
 https://www.newworldencyclopedia.org/entry/Henry_George
 ["George's theory of interest is nowadays dismissed even by some otherwise "
  'Georgist authors, who see it as mistaken and irrelevant to his ideas about '

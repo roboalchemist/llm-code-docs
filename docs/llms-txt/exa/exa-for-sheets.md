@@ -1,6 +1,6 @@
 # Source: https://exa.ai/docs/reference/exa-for-sheets.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -55,7 +55,7 @@ Exa for Sheets is a Google Apps Script integration that enables you to:
 
 Search the web and return URLs:
 
-```
+```text
 =EXA_SEARCH("latest developments in renewable energy", 5)
 ```
 
@@ -73,7 +73,7 @@ Search the web and return URLs:
 
 Generate AI-powered answers based on web search results:
 
-```
+```text
 =EXA_ANSWER("What is quantum computing?", "", "", TRUE)
 ```
 
@@ -90,7 +90,7 @@ Generate AI-powered answers based on web search results:
 
 Extract text content from a specified URL:
 
-```
+```text
 =EXA_CONTENTS("https://example.com/article")
 ```
 
@@ -104,7 +104,7 @@ Extract text content from a specified URL:
 
 Find URLs similar to a reference URL:
 
-```
+```text
 =EXA_FINDSIMILAR("https://example.com", 5)
 ```
 
@@ -125,7 +125,7 @@ Find URLs similar to a reference URL:
 
 Automatically gather competitor information and industry trends:
 
-```
+```text
 =EXA_SEARCH("startup funding rounds in AI sector 2024", 10, "neural")
 ```
 
@@ -133,7 +133,7 @@ Automatically gather competitor information and industry trends:
 
 Build reading lists and curate relevant articles:
 
-```
+```text
 =EXA_FINDSIMILAR("https://example.com/best-practices", 5)
 ```
 
@@ -141,7 +141,7 @@ Build reading lists and curate relevant articles:
 
 Get AI-powered answers with citations for research:
 
-```
+```text
 =EXA_ANSWER("What are the latest trends in renewable energy?", "", "", TRUE)
 ```
 
@@ -221,7 +221,7 @@ Build powerful dynamic queries by combining cell references with text using the 
 
 Combine text and cell values to create dynamic search queries:
 
-```
+```text
 =EXA_SEARCH("latest news about " & A2, 5)
 ```
 
@@ -231,7 +231,7 @@ If cell A2 contains "artificial intelligence", this searches for "latest news ab
 
 Combine multiple cells to build complex queries:
 
-```
+```text
 =EXA_SEARCH(A2 & " " & B2 & " in " & C2, 10, "neural")
 ```
 
@@ -241,7 +241,7 @@ Example: A2="Tesla", B2="production numbers", C2="2024" → searches for "Tesla 
 
 For longer queries, use `CONCAT()` for better readability:
 
-```
+```text
 =EXA_SEARCH(CONCAT("research papers about ", A2, " published after ", B2), 5)
 ```
 
@@ -249,7 +249,7 @@ For longer queries, use `CONCAT()` for better readability:
 
 Use the prefix and suffix parameters with cell references:
 
-```
+```text
 =EXA_SEARCH(A2, 5, "neural", "Find information about: ", " site:edu")
 ```
 
@@ -259,22 +259,22 @@ This prepends and appends text to your query dynamically.
 
 Combine with `IF()` statements for conditional searches:
 
-```
+```text
 =IF(A2<>"", EXA_SEARCH(CONCAT("latest ", A2, " trends"), 5), "Enter a topic")
 ```
 
-### Example Use Cases
+### Dynamic Query Examples
 
 **Research Tracker:**
 
-```
+```text
 Column A: Topic name
 Column B: =EXA_SEARCH("latest research on " & A2 & " 2024", 3)
 ```
 
 **Competitor Analysis:**
 
-```
+```text
 Column A: Company name
 Column B: Industry
 Column C: =EXA_SEARCH(A2 & " " & B2 & " market analysis", 5, "neural")
@@ -282,7 +282,7 @@ Column C: =EXA_SEARCH(A2 & " " & B2 & " market analysis", 5, "neural")
 
 **Content Discovery:**
 
-```
+```text
 Column A: Seed URL
 Column B: =EXA_FINDSIMILAR(A2, 10)
 Column C: =EXA_CONTENTS(B2)

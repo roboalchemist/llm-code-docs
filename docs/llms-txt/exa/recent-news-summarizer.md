@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/examples/recent-news-summarizer.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Building a News Summarizer
@@ -30,11 +32,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
 
     ```python  theme={null}
     pip install exa_py openai
-    ```
-
-    <Note> You'll need both an Exa API key and an OpenAI API key to run this example. You can get your OpenAI API key [here](https://platform.openai.com/api-keys).</Note>
-
-    <Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+    ```text
 
     Set up your API keys:
 
@@ -43,10 +41,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
 
     EXA_API_KEY = userdata.get('EXA_API_KEY') # replace with your Exa API key
     OPENAI_API_KEY = userdata.get('OPENAI_API_KEY') # replace with your OpenAI API key
-    ```
-  </Step>
-
-  <Step title="Initialize the clients">
+    ```text
     Import and set up both the OpenAI and Exa clients:
 
     ```python  theme={null}
@@ -55,10 +50,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
 
     openai.api_key = OPENAI_API_KEY
     exa = Exa(EXA_API_KEY)
-    ```
-  </Step>
-
-  <Step title="Generate a search query">
+    ```text
     First, we'll use GPT to generate an optimized search query based on the user's question:
 
     ```python  theme={null}
@@ -77,10 +69,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
 
     print("Search query:")
     print(search_query)
-    ```
-  </Step>
-
-  <Step title="Search for recent articles">
+    ```text
     Now we'll use Exa to search for recent articles, filtering by publication date:
 
     ```python  theme={null}
@@ -97,10 +86,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
     print("URLs:")
     for url in urls:
         print(url)
-    ```
-
-    <Note>
-      We use `start_published_date` to filter for recent content.
+    ```text
     </Note>
   </Step>
 
@@ -112,10 +98,7 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
     result_item = results[0]
     print(f"{len(results)} items total, printing the first one:")
     print(result_item.text)
-    ```
-
-    <Note>
-      Unlike traditional search engines that only return URLs, Exa gives us direct access to the webpage contents, eliminating the need for web scraping.
+    ```text
     </Note>
   </Step>
 
@@ -140,10 +123,6 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
     print(f"Summary for {urls[0]}:")
     print(result_item.title)
     print(textwrap.fill(summary, 80))
-    ```
-
-    And we're done! We've built an app that translates a question into a search query, uses Exa to search for useful links and their contents, and summarizes the content to effortlessly answer questions about the latest news.
-
-    **Through Exa, we have given our LLM access to the entire Internet.** The possibilities are endless.
+    ```text
   </Step>
 </Steps>

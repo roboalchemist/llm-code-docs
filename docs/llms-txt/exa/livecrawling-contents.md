@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/livecrawling-contents.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Content Freshness
+
+## # Content Freshness
 
 ***
 
@@ -22,7 +24,7 @@ By default, we serve cached content to bias for the fastest response possible. I
 | `1`      | Use cache if less than 1 hour old, otherwise livecrawl      | Near real-time data                             |
 | `0`      | Always livecrawl (ignore cache entirely)                    | Real-time data where cached content is unusable |
 | `-1`     | Never livecrawl (cache only)                                | Maximum speed, historical/static content        |
-| *(omit)* | Default behavior (livecrawl as fallback if no cache exists) | **Recommended** — balanced speed and freshness  |
+| *(omit)* | Default behavior (livecrawl as fallback if no cache exists) | __Recommended__ — balanced speed and freshness  |
 
 ## When LiveCrawl Isn't Necessary
 
@@ -35,6 +37,7 @@ Cached data is sufficient for many queries, especially for historical topics lik
 Set `maxAgeHours` to a low value to ensure you get fresh content. Pair with `livecrawlTimeout` to prevent long-running calls from hanging:
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST 'https://api.exa.ai/contents' \
     -H 'x-api-key: YOUR-EXA-API-KEY' \
@@ -63,6 +66,7 @@ Set `maxAgeHours` to a low value to ensure you get fresh content. Pair with `liv
       }
   );
   ```
+
 </CodeGroup>
 
 ### Production Applications
@@ -70,6 +74,7 @@ Set `maxAgeHours` to a low value to ensure you get fresh content. Pair with `liv
 For production apps, set `maxAgeHours` to match how frequently your target content changes. Pair with `livecrawlTimeout` for reliability:
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST 'https://api.exa.ai/contents' \
     -H 'x-api-key: YOUR-EXA-API-KEY' \
@@ -98,6 +103,7 @@ For production apps, set `maxAgeHours` to match how frequently your target conte
       }
   );
   ```
+
 </CodeGroup>
 
 This will serve cached content if it's less than 24 hours old, and livecrawl otherwise. If the livecrawl fails or times out, it falls back to cached content, making it ideal for production applications.

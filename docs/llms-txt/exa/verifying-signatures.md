@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/websets/api/webhooks/verifying-signatures.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Verifying Signatures
@@ -19,11 +21,7 @@ Exa uses HMAC SHA256 to sign webhook payloads. The signature is included in the 
 
 The signature format looks like this:
 
-```
-Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
-```
-
-## Verification Process
+```text
 
 To verify a webhook signature:
 
@@ -110,10 +108,7 @@ To verify a webhook signature:
         print(f"Received {webhook_data['type']} event")
 
         return jsonify({'status': 'success'}), 200
-    ```
-  </Tab>
-
-  <Tab title="JavaScript/Node.js">
+    ```javascript
     ```javascript javascript theme={null}
     const crypto = require('crypto');
 
@@ -190,10 +185,7 @@ To verify a webhook signature:
 
         res.json({ status: 'success' });
     });
-    ```
-  </Tab>
-
-  <Tab title="Java">
+    ```text
     ```java java theme={null}
     import javax.crypto.Mac;
     import javax.crypto.spec.SecretKeySpec;
@@ -364,9 +356,7 @@ To verify a webhook signature:
             }
         }
     }
-    ```
-  </Tab>
-</Tabs>
+    ```text
 
 ***
 
@@ -427,11 +417,8 @@ test_header = f"t={test_timestamp},v1={test_signature}"
 # Verify it works
 is_valid = verify_webhook_signature(test_payload, test_header, test_secret)
 print(f"Test signature valid: {is_valid}")  # Should print True
-```
 
-***
-
-<br />
+```text
 
 ## What's Next?
 

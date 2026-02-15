@@ -4,9 +4,9 @@
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Exploring your results 
+# Exploring your results
 
-> Explore your Websets matched results, view summaries, criteria justification 
+> Explore your Websets matched results, view summaries, criteria justification
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/lFgIdWKgJQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" />
 

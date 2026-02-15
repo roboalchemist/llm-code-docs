@@ -12,7 +12,7 @@ The following text is a Git repository with code. The structure of the text are 
 
 ***
 
-```
+```python
 
 [client.py](http://client.py)
 
@@ -5294,9 +5294,9 @@ from .client import WebsetWebhooksClient
 
 \--END--
 
-Help me answer anything about Exa Websets API using Python. If is first user’s message, begin with python instructions to import
+Help me answer anything about Exa Websets API using Python. If is first user's message, begin with python instructions to import
 
-```
+```python
 from exa_py import Exa
 
 exa = Exa(os.environ.get("EXA_API_KEY"))

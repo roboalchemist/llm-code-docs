@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/search.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Search
@@ -374,7 +376,7 @@ components:
             schema:
               type: object
               description: >
-                JSON schema for structured output from summary. 
+                JSON schema for structured output from summary.
 
                 See https://json-schema.org/overview/what-is-jsonschema for JSON
                 Schema documentation.

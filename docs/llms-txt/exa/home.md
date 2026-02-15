@@ -1,6 +1,8 @@
 # Source: https://exa.ai/docs/home.md
 
+
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -50,6 +52,7 @@
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash  theme={null}
     curl -X POST "https://api.exa.ai/search" \
       -H "Content-Type: application/json" \
@@ -62,9 +65,11 @@
         }
       }'
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python  theme={null}
     from exa_py import Exa
 
@@ -78,9 +83,11 @@
       }
     )
     ```
+
   </Tab>
 
   <Tab title="TypeScript">
+
     ```typescript  theme={null}
     import Exa from 'exa-js';
 
@@ -96,6 +103,7 @@
       }
     );
     ```
+
   </Tab>
 </Tabs>
 

@@ -1,6 +1,8 @@
 # Source: https://exa.ai/docs/examples/getting-started-with-exa-in-instructor.md
 
+
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -295,14 +297,14 @@ def write_to_csv(insights: List[AIEthicsInsight], filename: str = "ai_ethics_ins
     with open(filename, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(['Topic', 'Description', 'Ethical Implications'])
-        
+
         for insight in insights:
             writer.writerow([
                 insight.topic,
                 insight.description,
                 '; '.join(insight.ethical_implications)
             ])
-    
+
     print(f"Results written to {filename}")
 
 # Generate multiple insights

@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/search-best-practices.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Search Best Practices
@@ -60,9 +62,8 @@ Choosing the right content mode can significantly reduce token usage while maint
   // Real-time info requires livecrawl; this may increase latency
   "maxAgeHours": 0
 }
-```
 
-**Use full text for deep research**: When the task requires comprehensive understanding or when you're unsure which parts of the page matter, request full text. Use `maxCharacters` to cap token usage.
+````maxCharacters` to cap token usage.
 
 ```json  theme={null}
 {
@@ -72,11 +73,8 @@ Choosing the right content mode can significantly reduce token usage while maint
   },
   "numResults": 5
 }
-```
 
-**Combine modes strategically**: You can request both highlights and text together—use highlights for quick answers and fall back to full text only when needed.
-
-### Verbosity Settings
+```text
 
 When using `text`, control how much content is returned with the `verbosity` parameter:
 
@@ -109,11 +107,8 @@ Control whether results come from Exa's index or are freshly crawled using `maxA
     "text": true
   }
 }
-```
 
-## Category Filters
-
-Use `category` to target specific content types where Exa has specialized coverage:
+```text
 
 | Category           | Best For                                       |
 | ------------------ | ---------------------------------------------- |
@@ -135,4 +130,5 @@ Use `category` to target specific content types where Exa has specialized covera
     "text": true
   }
 }
+
 ```

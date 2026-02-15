@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/websets/api/webhooks/attempts/list-webhook-attempts.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# List webhook attempts
+
+## # List webhook attempts
 
 > List all attempts made by a Webhook ordered in descending order.
 

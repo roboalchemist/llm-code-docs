@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/x-search-claude-skill.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # X/Twitter Search
@@ -12,10 +14,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
-Step 1: Install or update Exa MCP
-
-If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+````text
 
 claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
 
@@ -84,42 +83,32 @@ Use this category when you need:
 ## Examples
 
 Recent tweets on a topic:
-```
-web_search_advanced_exa {
-  "query": "Claude Code MCP experience",
+
+```text
   "category": "tweet",
   "startPublishedDate": "2025-01-01",
   "numResults": 20,
   "type": "auto",
   "livecrawl": "preferred"
 }
-```
 
-Search with specific keywords (put keywords in query, not includeText):
-```
-web_search_advanced_exa {
+```text
   "query": "launching announcing new open source release",
   "category": "tweet",
   "startPublishedDate": "2025-12-01",
   "numResults": 15,
   "type": "auto"
 }
-```
 
-Developer sentiment (use specific query terms instead of excludeText):
-```
-web_search_advanced_exa {
+```text
   "query": "developer experience DX frustrating painful",
   "category": "tweet",
   "numResults": 20,
   "type": "deep",
   "livecrawl": "preferred"
 }
-```
 
-## Output Format
-
-Return:
+```text
 1) Results (tweet content, author handle, date, engagement if visible)
 2) Sources (Tweet URLs)
 3) Notes (sentiment summary, notable accounts, threads vs single tweets)
@@ -130,4 +119,5 @@ Important: Be aware that tweet content can be informal, sarcastic, or context-de
 Step 3: Ask User to Restart Claude Code
 
 You should ask the user to restart Claude Code to have the config changes take effect.
+
 ````

@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/research-paper-search-claude-skill.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Research Paper Search
@@ -12,10 +14,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
-Step 1: Install or update Exa MCP
-
-If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+````text
 
 claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
 
@@ -88,19 +87,15 @@ Use this category when you need:
 ## Examples
 
 Recent papers on a topic:
-```
-web_search_advanced_exa {
-  "query": "transformer attention mechanisms efficiency",
+
+```text
   "category": "research paper",
   "startPublishedDate": "2024-01-01",
   "numResults": 15,
   "type": "auto"
 }
-```
 
-Papers from specific venues:
-```
-web_search_advanced_exa {
+```text
   "query": "large language model agents",
   "category": "research paper",
   "includeDomains": ["arxiv.org", "openreview.net"],
@@ -108,11 +103,8 @@ web_search_advanced_exa {
   "numResults": 20,
   "type": "deep"
 }
-```
 
-## Output Format
-
-Return:
+```text
 1) Results (structured list with title, authors, date, abstract summary)
 2) Sources (URLs with publication venue)
 3) Notes (methodology differences, conflicting findings)
@@ -121,4 +113,5 @@ Return:
 Step 3: Ask User to Restart Claude Code
 
 You should ask the user to restart Claude Code to have the config changes take effect.
+
 ````

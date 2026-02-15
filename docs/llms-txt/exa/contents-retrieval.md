@@ -107,18 +107,20 @@ You can configure highlights in two ways:
 1. **Simple boolean** (`highlights=True`): Returns default highlights based on the search query
 
 2. **Detailed configuration** (pass as an object):
-   ```json  theme={null}
-   {
-     "contents": {
-       "highlights": {
-         "query": "Your specific highlight query",
-         "maxCharacters": 2000
-       }
-     }
-   }
-   ```
-   * `query`: The specific query to use for generating highlights (if different from search query)
-   * `maxCharacters`: Maximum number of characters to return for highlights
+
+```json  theme={null}
+{
+  "contents": {
+    "highlights": {
+      "query": "Your specific highlight query",
+      "maxCharacters": 2000
+    }
+  }
+}
+```
+
+* `query`: The specific query to use for generating highlights (if different from search query)
+* `maxCharacters`: Maximum number of characters to return for highlights
 
 ## Context String (Deprecated)
 
@@ -132,15 +134,16 @@ Returns page contents as a single combined string. When you set `context=True`, 
 
 1. **Simple boolean** (`context=True`): Returns all content combined with no character limit
 2. **With character limit** (pass as an object):
-   ```json  theme={null}
-   {
-     "contents": {
-       "context": {
-         "maxCharacters": 10000
-       }
-     }
-   }
-   ```
+
+```json  theme={null}
+{
+  "contents": {
+    "context": {
+      "maxCharacters": 10000
+    }
+  }
+}
+```
 
 ## Images and favicons
 

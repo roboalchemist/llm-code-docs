@@ -1,18 +1,20 @@
 # Source: https://exa.ai/docs/changelog/new-deep-search-type.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# New Deep Search Type
+
+## # New Deep Search Type
 
 > Introducing Exa Deep: Get better results with smart query expansion and high-quality summaries.
 
-***
+*__
 
-**Date: November 20, 2025**
+__Date: November 20, 2025__
 
-We're excited to introduce **Exa Deep** - a new search type that finds better results by running multiple searches at once and gives you high-quality context for each result. You can send just one query (we'll create variations automatically) or provide your own query variations using the `additionalQueries` parameter for even better results.
+We're excited to introduce __Exa Deep__ - a new search type that finds better results by running multiple searches at once and gives you high-quality context for each result. You can send just one query (we'll create variations automatically) or provide your own query variations using the `additionalQueries` parameter for even better results.
 
 <Info>
   Deep search is available on our API Playground. [Try Deep search in the dashboard →](https://dashboard.exa.ai/playground/search?q=blog%20post%20about%20AI\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22deep%22%2C%22livecrawl%22%3A%22fallback%22%7D)
@@ -22,16 +24,16 @@ We're excited to introduce **Exa Deep** - a new search type that finds better re
 
 When you use Deep search, here's what happens:
 
-1. **Query Expansion**: If you only send one query, we automatically create variations. If you send query variations yourself using `additionalQueries`, we use those instead. For best results, consider having a good LLM model (like GPT-5 or Claude 4.5 Sonnet) generate the query variations for you.
-2. **Parallel Search**: We search for your main query and all variations at the same time
-3. **Smart Ranking**: We combine and rank all results to give you the most relevant ones
-4. **Summary Generation**: Each result gets a detailed, accurate summary
+1. __Query Expansion__: If you only send one query, we automatically create variations. If you send query variations yourself using `additionalQueries`, we use those instead. For best results, consider having a good LLM model (like GPT-5 or Claude 4.5 Sonnet) generate the query variations for you.
+2. __Parallel Search__: We search for your main query and all variations at the same time
+3. __Smart Ranking__: We combine and rank all results to give you the most relevant ones
+4. __Summary Generation__: Each result gets a detailed, accurate summary
 
 ### How to Use Deep Search
 
 Using Deep search is simple - just add `type="deep"` to your search requests. You can also add `additionalQueries` for even better results:
 
-**Basic Deep Search:**
+__Basic Deep Search:__
 
 ```bash  theme={null}
 curl -X POST https://api.exa.ai/search \
@@ -45,9 +47,9 @@ curl -X POST https://api.exa.ai/search \
       "context": true
     }
   }'
-```
+```text
 
-**Deep Search with Query Variations:**
+__Deep Search with Query Variations:**
 
 ```bash  theme={null}
 curl -X POST https://api.exa.ai/search \
@@ -62,7 +64,7 @@ curl -X POST https://api.exa.ai/search \
       "context": true
     }
   }'
-```
+```text
 
 ### What You Get Back
 
@@ -75,7 +77,7 @@ Deep search returns a `context` field that gives you detailed context:
 ```json  theme={null}
 {
   "requestId": "975a6ff95c69a0bdc558f01c99ede801",
-  "context": "Title: AI News | Latest AI News, Analysis & Events\nPublished Date: 2025-11-19T10:22:05.000Z\nURL: https://www.artificialintelligence-news.com/\nSummary: This page is a collection of recent news, analysis, and resources related to Artificial Intelligence (AI). It features various blog posts and articles covering topics such as:\n\n*   **Workforce & HR:** Using ChatGPT for team planning and the Royal Navy's use of AI in recruitment.\n*   **Technology & Infrastructure:** The role of Pure Storage and Azure in AI-ready data, and alliances between Microsoft, NVIDIA, and Anthropic for AI compute.\n*   **AI Models & Tools:** Google’s Veo 3 video creation tools, Samsung’s small AI model, and lightweight LLMs for enterprise use in Japan.\n*   **Industry Applications:** AI in asset management (Franklin Templeton & Wand AI), Levi Strauss's DTC model, and accounting firms using AI agents.\n*   **Research & Hardware:** Breakthroughs in analog AI chips for deep learning a....",
+  "context": "Title: AI News | Latest AI News, Analysis & Events\nPublished Date: 2025-11-19T10:22:05.000Z\nURL: https://www.artificialintelligence-news.com/\nSummary: This page is a collection of recent news, analysis, and resources related to Artificial Intelligence (AI). It features various blog posts and articles covering topics such as:\n\n*   __Workforce & HR:__ Using ChatGPT for team planning and the Royal Navy's use of AI in recruitment.\n*   __Technology & Infrastructure:__ The role of Pure Storage and Azure in AI-ready data, and alliances between Microsoft, NVIDIA, and Anthropic for AI compute.\n*   __AI Models & Tools:__ Google’s Veo 3 video creation tools, Samsung’s small AI model, and lightweight LLMs for enterprise use in Japan.\n*   __Industry Applications:__ AI in asset management (Franklin Templeton & Wand AI), Levi Strauss's DTC model, and accounting firms using AI agents.\n*   __Research & Hardware:__ Breakthroughs in analog AI chips for deep learning a....",
   "results": [
     {
       "id": "https://www.artificial-intelligence.blog/",
@@ -105,15 +107,15 @@ Deep search returns a `context` field that gives you detailed context:
     "contents": {"text": 0.017}
   }
 }
-```
+```text
 
 ### Available Search Types
 
 Now you have four search types to choose from:
 
-* **Auto** (default): Our best search, intelligently combines multiple search methods
-* **Fast**: Fastest search with lowest latency
-* **Deep**: Deep search with query expansion and summaries
-* **Neural**: Predicts the most relevant results based on query meaning
+* __Auto__ (default): Our best search, intelligently combines multiple search methods
+* __Fast__: Fastest search with lowest latency
+* __Deep__: Deep search with query expansion and summaries
+* __Neural__: Predicts the most relevant results based on query meaning
 
 We're excited for you to try Deep search and see how it can improve your search results!

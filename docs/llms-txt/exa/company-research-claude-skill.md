@@ -12,7 +12,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
+```` text
 Step 1: Install or update Exa MCP
 
 If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:

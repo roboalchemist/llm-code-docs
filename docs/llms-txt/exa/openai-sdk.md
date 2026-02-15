@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/openai-sdk.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# OpenAI SDK Compatibility
+
+## # OpenAI SDK Compatibility
 
 > Use Exa's endpoints as a drop-in replacement for OpenAI - supporting both chat completions and responses APIs.
 
@@ -47,6 +49,7 @@ To use Exa's `/answer` endpoint via the chat completions interface:
 </Info>
 
 <CodeGroup>
+
   ```python Python theme={null}
   from openai import OpenAI
 
@@ -63,6 +66,7 @@ To use Exa's `/answer` endpoint via the chat completions interface:
   ],
 
   # use extra_body to pass extra parameters to the /answer endpoint
+
     extra_body={
       "text": True # include full text from sources
     }
@@ -70,7 +74,7 @@ To use Exa's `/answer` endpoint via the chat completions interface:
 
   print(completion.choices[0].message.content)  # print the response content
   print(completion.choices[0].message.citations)  # print the citations
-  ```
+```text
 
   ```javascript JavaScript theme={null}
   import OpenAI from "openai";
@@ -103,7 +107,7 @@ To use Exa's `/answer` endpoint via the chat completions interface:
   }
 
   main();
-  ```
+```text
 
   ```bash Curl theme={null}
   curl https://api.exa.ai/chat/completions \
@@ -125,7 +129,8 @@ To use Exa's `/answer` endpoint via the chat completions interface:
         "text": true
       }
     }'
-  ```
+```text
+
 </CodeGroup>
 
 ## Research
@@ -143,6 +148,7 @@ To use Exa's research models via the chat completions interface:
 </Info>
 
 <CodeGroup>
+
   ```python Python theme={null}
   import os
   from openai import OpenAI
@@ -163,7 +169,7 @@ To use Exa's research models via the chat completions interface:
   for chunk in completion:
       if chunk.choices and chunk.choices[0].delta.content:
           print(chunk.choices[0].delta.content, end="", flush=True)
-  ```
+```text
 
   ```javascript JavaScript theme={null}
   import { OpenAI } from "openai";
@@ -197,7 +203,7 @@ To use Exa's research models via the chat completions interface:
     console.error("Chat completion example failed:", err);
     process.exit(1);
   });
-  ```
+```text
 
   ```bash Curl theme={null}
   curl https://api.exa.ai/chat/completions \
@@ -213,7 +219,8 @@ To use Exa's research models via the chat completions interface:
       ],
       "stream": true
     }'
-  ```
+```text
+
 </CodeGroup>
 
 ## Research via Responses API
@@ -221,6 +228,7 @@ To use Exa's research models via the chat completions interface:
 You can also access Exa's research models using OpenAI's newer Responses API format:
 
 <CodeGroup>
+
   ```python Python theme={null}
   from openai import OpenAI
 
@@ -235,7 +243,7 @@ You can also access Exa's research models using OpenAI's newer Responses API for
   )
 
   print(response.output)
-  ```
+```text
 
   ```javascript JavaScript theme={null}
   import OpenAI from "openai";
@@ -256,7 +264,7 @@ You can also access Exa's research models using OpenAI's newer Responses API for
   }
 
   main();
-  ```
+```text
 
   ```bash cURL theme={null}
   curl --location 'https://api.exa.ai/responses' \
@@ -266,7 +274,8 @@ You can also access Exa's research models using OpenAI's newer Responses API for
       "input": "Summarize the impact of CRISPR on gene therapy with recent developments",
       "model": "exa-research"
   }'
-  ```
+```text
+
 </CodeGroup>
 
 <Note>
@@ -281,6 +290,7 @@ You can also access Exa's research models using OpenAI's newer Responses API for
 Exa provides a Python wrapper that automatically enhances any OpenAI chat completion with RAG capabilities. With one line of code, you can turn any OpenAI chat completion into an Exa-powered RAG system that handles search, chunking, and prompting automatically.
 
 <CodeGroup>
+
   ```python Python theme={null}
   from openai import OpenAI
   from exa_py import Exa
@@ -293,13 +303,15 @@ Exa provides a Python wrapper that automatically enhances any OpenAI chat comple
   exa_openai = exa.wrap(openai)
 
   # Use exactly like the normal OpenAI client
+
   completion = exa_openai.chat.completions.create(
       model="gpt-4o",
       messages=[{"role": "user", "content": "What is the latest climate tech news?"}]
   )
 
   print(completion.choices[0].message.content)
-  ```
+```text
+
 </CodeGroup>
 
 The wrapped client works exactly like the native OpenAI client, except it automatically improves your completions with relevant search results when needed.
@@ -317,4 +329,4 @@ completion = exa_openai.chat.completions.create(
     category="research paper",
     start_published_date="2019-01-01"
 )
-```
+```text

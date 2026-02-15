@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/openai-responses-api-with-exa.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# OpenAI Responses API
+
+## # OpenAI Responses API
 
 > Use Exa with OpenAI's Responses API - both as a web search tool and for direct research capabilities.
 
@@ -26,7 +28,8 @@ First, you'll need API keys from both OpenAI and Exa:
 ## Complete Example
 
 <CodeGroup>
-  ```python Python theme={null}
+
+  ```python
   import json
   from openai import OpenAI
   from exa_py import Exa
@@ -54,6 +57,7 @@ First, you'll need API keys from both OpenAI and Exa:
   }]
 
   # Define the system message
+
   system_message = {"role": "system", "content": "You are a helpful assistant. Use exa_websearch to find info when relevant. Always list sources."}
 
   def run_exa_search(user_query):
@@ -62,12 +66,14 @@ First, you'll need API keys from both OpenAI and Exa:
       exa = Exa(api_key=EXA_API_KEY)
 
       # Create messages with the dynamic user query
+
       messages = [
           system_message,
           {"role": "user", "content": user_query}
       ]
 
       # Send initial request
+
       print("Sending initial request to OpenAI...")
       response = openai_client.responses.create(
           model="gpt-4o",
@@ -77,6 +83,7 @@ First, you'll need API keys from both OpenAI and Exa:
       print("Initial OpenAI response:", response.output)
 
       # Check if the model returned a function call
+
       function_call = None
       for item in response.output:
           if item.type == "function_call" and item.name == "exa_websearch":
@@ -84,6 +91,7 @@ First, you'll need API keys from both OpenAI and Exa:
               break
 
       # If exa_websearch was called
+
       if function_call:
           call_id = function_call.call_id
           args = json.loads(function_call.arguments)
@@ -99,11 +107,13 @@ First, you'll need API keys from both OpenAI and Exa:
           )
 
           # Store citations for later use in formatting
+
           citations = [{"url": result.url, "title": result.title} for result in search_results.results]
 
           search_results_str = str(search_results)
 
           # Provide the function call + function_call_output to the conversation
+
           messages.append({
               "type": "function_call",
               "name": function_call.name,
@@ -124,19 +134,25 @@ First, you'll need API keys from both OpenAI and Exa:
           )
 
           # Format the final response to include citations
+
           if hasattr(response, 'output_text') and response.output_text:
               # Add citations to the final output
+
               formatted_response = format_response_with_citations(response.output_text, citations)
 
               # Create a custom response object with citations
+
               if hasattr(response, 'model_dump'):
                   # For newer versions of the OpenAI library that use Pydantic
+
                   response_dict = response.model_dump()
               else:
                   # For older versions or if model_dump is not available
+
                   response_dict = response.dict() if hasattr(response, 'dict') else response.__dict__
 
               # Update the output with annotations
+
               if response.output and len(response.output) > 0:
                   response_dict['output'] = [{
                       "type": "message",
@@ -151,16 +167,20 @@ First, you'll need API keys from both OpenAI and Exa:
                   }]
 
                   # Update the output_text property
+
                   response_dict['output_text'] = formatted_response["text"]
 
                   # Create a new response object (implementation may vary based on the OpenAI SDK version)
+
                   try:
-                      response = type(response)(**response_dict)
+                      response = type(response)(__response_dict)
                   except:
                       # If we can't create a new instance, we'll just print the difference
+
                       print("\nFormatted response with citations would be:", formatted_response)
 
       # Print final answer text
+
       print("\nFinal Answer:\n", response.output_text)
       print("\nAnnotations:", json.dumps(response.output[0].content[0].annotations if hasattr(response, 'output') and response.output and hasattr(response.output[0], 'content') else [], indent=2))
       print("\nFull Response with Citations:", response)
@@ -173,8 +193,10 @@ First, you'll need API keys from both OpenAI and Exa:
       formatted_text = text
 
       # For each citation, append a numbered reference to the text
+
       for i, citation in enumerate(citations):
           # Create annotation object
+
           start_index = len(formatted_text)
           citation_text = f"\n\n[{i+1}] {citation['url']}"
           end_index = start_index + len(citation_text)
@@ -188,9 +210,11 @@ First, you'll need API keys from both OpenAI and Exa:
           }
 
           # Add annotation to the array
+
           annotations.append(annotation)
 
           # Append citation to text
+
           formatted_text += citation_text
 
       return {
@@ -201,9 +225,10 @@ First, you'll need API keys from both OpenAI and Exa:
 
   if __name__ == "__main__":
       # Example of how to use with a dynamic query
+
       user_query = input("Enter your question: ")
       run_exa_search(user_query)
-  ```
+```text
 
   ```javascript JavaScript theme={null}
   const OpenAI = require("openai");
@@ -386,7 +411,8 @@ First, you'll need API keys from both OpenAI and Exa:
 
   // Export the function for use in other modules
   module.exports = { run_exa_search };
-  ```
+```text
+
 </CodeGroup>
 
 Both examples show how to:
@@ -403,7 +429,7 @@ Remember to replace the empty API key strings with your actual API keys when try
 
 Let's break down how the Exa web search tool works with OpenAI's Response API:
 
-1. **Tool Definition**: First, we define our Exa search as a tool that OpenAI can use:
+1. __Tool Definition__: First, we define our Exa search as a tool that OpenAI can use:
 
    ```javascript  theme={null}
    {
@@ -414,11 +440,11 @@ Let's break down how the Exa web search tool works with OpenAI's Response API:
        "query": "string"  // The search query parameter
      }
    }
-   ```
+```text
 
-2. **Initial Request**: When you send a message to OpenAI, the API looks at your message and decides if it needs to search the web. If it does, instead of giving a direct answer, it will return a "function call" in its output.
+2. __Initial Request__: When you send a message to OpenAI, the API looks at your message and decides if it needs to search the web. If it does, instead of giving a direct answer, it will return a "function call" in its output.
 
-3. **Function Call**: If OpenAI decides to search, it returns something like:
+3. __Function Call__: If OpenAI decides to search, it returns something like:
 
    ```javascript  theme={null}
    {
@@ -426,15 +452,15 @@ Let's break down how the Exa web search tool works with OpenAI's Response API:
      "name": "exa_websearch",
      "arguments": { "query": "your search query" }
    }
-   ```
+```text
 
-4. **Search Execution**: Your code then:
+4. __Search Execution**: Your code then:
 
    * Takes this search query
    * Calls Exa's API to perform the actual web search
    * Gets real web results back
 
-5. **Final Response**: You send these web results back to OpenAI, and it gives you a final answer using the fresh information from the web.
+5. __Final Response__: You send these web results back to OpenAI, and it gives you a final answer using the fresh information from the web.
 
 This back-and-forth process happens automatically in the code above, letting OpenAI use Exa's web search when it needs to find current information.
 
@@ -447,7 +473,8 @@ In addition to using Exa as a search tool, you can also access Exa's powerful re
 Simply point the OpenAI client to Exa's API and use our research models:
 
 <CodeGroup>
-  ```python Python theme={null}
+
+  ```python
   from openai import OpenAI
 
   client = OpenAI(
@@ -461,7 +488,7 @@ Simply point the OpenAI client to Exa's API and use our research models:
   )
 
   print(response.output)
-  ```
+```text
 
   ```javascript JavaScript theme={null}
   import OpenAI from "openai";
@@ -482,7 +509,7 @@ Simply point the OpenAI client to Exa's API and use our research models:
   }
 
   main();
-  ```
+```text
 
   ```bash cURL theme={null}
   curl --location 'https://api.exa.ai/responses' \
@@ -492,13 +519,14 @@ Simply point the OpenAI client to Exa's API and use our research models:
       "input": "Summarize the impact of CRISPR on gene therapy with recent developments",
       "model": "exa-research"
   }'
-  ```
+```text
+
 </CodeGroup>
 
 ### Available Models
 
-* **`exa-research`** - Adapts compute to task difficulty. Best for most use cases.
-* **`exa-research-pro`** - Maximum quality with highest reasoning capability. Best for complex, multi-step research.
+* __`exa-research`__ - Adapts compute to task difficulty. Best for most use cases.
+* __`exa-research-pro`__ - Maximum quality with highest reasoning capability. Best for complex, multi-step research.
 
 ### Research vs Web Search Tool
 
@@ -506,10 +534,10 @@ Choose the right approach for your use case:
 
 | Feature           | Web Search Tool (Function Calling)               | Direct Research                     |
 | ----------------- | ------------------------------------------------ | ----------------------------------- |
-| **Use Case**      | Augment LLM conversations with web data          | Get comprehensive research reports  |
-| **Control**       | Full control over search queries and integration | Automated multi-step research       |
-| **Response Time** | Fast (seconds)                                   | Longer (45-180 seconds)             |
-| **Best For**      | Interactive chatbots, real-time Q\&A             | In-depth analysis, research reports |
+| __Use Case__      | Augment LLM conversations with web data          | Get comprehensive research reports  |
+| __Control__       | Full control over search queries and integration | Automated multi-step research       |
+| __Response Time__ | Fast (seconds)                                   | Longer (45-180 seconds)             |
+| __Best For__      | Interactive chatbots, real-time Q\&A             | In-depth analysis, research reports |
 
 <Note>
   For detailed information about research capabilities, structured outputs, and

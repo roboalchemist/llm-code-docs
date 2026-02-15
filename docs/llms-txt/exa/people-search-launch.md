@@ -1,18 +1,20 @@
 # Source: https://exa.ai/docs/changelog/people-search-launch.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Introducing Exa People Search
+
+## # Introducing Exa People Search
 
 > We're launching state-of-the-art people search with 1B+ indexed profiles. The 'linkedin' category is now replaced with 'people' for better results.
 
-***
+*__
 
-**Date: December 19, 2025**
+__Date: December 19, 2025__
 
-We're launching **Exa People Search**, a new way to find and discover people on the web, designed for real production use across sales, recruiting, research, and more.
+We're launching __Exa People Search__, a new way to find and discover people on the web, designed for real production use across sales, recruiting, research, and more.
 
 <Info>
   Try People Search in our API Playground with `category = "people"`. [Try People Search in the dashboard →](https://dashboard.exa.ai/playground/search?q=product%20managers%20at%20microsoft\&c=people\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22auto%22%7D)
@@ -20,9 +22,9 @@ We're launching **Exa People Search**, a new way to find and discover people on 
 
 ## What's New
 
-**State-of-the-art people search**: Exa indexed 1B+ public profiles and trained a hybrid retrieval system (fine-tuned embeddings + Exa Search) to deliver highly accurate role, skill, and company based people search at web scale.
+__State-of-the-art people search__: Exa indexed 1B+ public profiles and trained a hybrid retrieval system (fine-tuned embeddings + Exa Search) to deliver highly accurate role, skill, and company based people search at web scale.
 
-**Usecase focused**: Customers can run queries like "VP of Product at Microsoft" or "enterprise sales reps from Microsoft in EMEA" and programmatically enrich results with profiles for sales, recruiting, and market research workflows.
+__Usecase focused**: Customers can run queries like "VP of Product at Microsoft" or "enterprise sales reps from Microsoft in EMEA" and programmatically enrich results with profiles for sales, recruiting, and market research workflows.
 
 ## What Changed
 
@@ -33,14 +35,14 @@ We're replacing the `linkedin` category with the new `people` category to provid
 ```python  theme={null}
 # Old approach - limited to LinkedIn
 result = exa.search("VP of Product at Microsoft", category="linkedin")
-```
+```text
 
 ### After
 
 ```python  theme={null}
 # New approach - comprehensive people search across the web
 result = exa.search("VP of Product at Microsoft", category="people")
-```
+```text
 
 ## How to Use People Search
 
@@ -55,13 +57,13 @@ curl -X POST https://api.exa.ai/search \
     "category": "people",
     "numResults": 10
   }'
-```
+```text
 
 The new `people` category provides:
 
-* **Broader coverage**: 1B+ profiles across the entire web, not just LinkedIn
-* **Better accuracy**: Fine-tuned embeddings specifically for people search
-* **More relevant results**: Hybrid retrieval system optimized for role, skill, and company queries
+* __Broader coverage__: 1B+ profiles across the entire web, not just LinkedIn
+* __Better accuracy__: Fine-tuned embeddings specifically for people search
+* __More relevant results__: Hybrid retrieval system optimized for role, skill, and company queries
 
 ## Learn More
 

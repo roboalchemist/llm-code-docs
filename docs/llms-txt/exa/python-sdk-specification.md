@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/sdks/python-sdk-specification.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Python SDK Specification
+
+## # Python SDK Specification
 
 > Enumeration of methods and types in the Exa Python SDK (exa_py).
 
@@ -33,7 +35,7 @@ from exa_py import Exa
 
 exa = Exa()  # Reads EXA_API_KEY from environment
 # or explicitly: exa = Exa(api_key="your-api-key")
-```
+```text
 
 <Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Follow this link to get your API key
@@ -61,7 +63,7 @@ deep_result = exa.search(
   additional_queries=["AI blogpost", "machine learning blogs"],
   num_results=5
 )
-```
+```text
 
 ### Input Parameters
 
@@ -108,7 +110,7 @@ deep_result = exa.search(
   ],
   "requestId": "a78ebce717f4d712b6f8fe0d5d7753f8"
 }
-```
+```text
 
 ### Result Object
 
@@ -140,7 +142,7 @@ similar_results = exa.find_similar(
     num_results=2,
     exclude_source_domain=True
 )
-```
+```text
 
 ### Input Parameters
 
@@ -183,7 +185,7 @@ similar_results = exa.find_similar(
   ],
   "requestId": "08fdc6f20e9f3ea87f860af3f6ccc30f"
 }
-```
+```text
 
 ### Result Object
 
@@ -216,7 +218,7 @@ contents = exa.get_contents([
     "https://example.com/article1",
     "https://example.com/article2"
 ])
-```
+```text
 
 ### Input Parameters
 
@@ -237,7 +239,7 @@ contents = exa.get_contents([
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -273,7 +275,7 @@ response_with_text = exa.answer(
     text=True
 )
 print(response_with_text.citations[0].text)  # Full page text
-```
+```text
 
 ### Input Parameters
 
@@ -303,7 +305,7 @@ print(response_with_text.citations[0].text)  # Full page text
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -331,7 +333,7 @@ for chunk in stream:
     if chunk.citations:
         for citation in chunk.citations:
             print("Citation found:", citation.url)
-```
+```text
 
 ### Input Parameters
 
@@ -360,7 +362,7 @@ for chunk in stream:
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -398,7 +400,7 @@ task = exa.research.create(
 )
 
 print(f"Task created with ID: {task.research_id}")
-```
+```text
 
 ### Input Parameters
 
@@ -414,7 +416,7 @@ print(f"Task created with ID: {task.research_id}")
 {
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 }
-```
+```text
 
 ### Result Object
 
@@ -445,7 +447,7 @@ task = exa.research.get(task_id)
 print(f"Task status: {task.status}")
 if task.status == "completed":
     print(f"Results: {task.output}")
-```
+```text
 
 ### Input Parameters
 
@@ -483,7 +485,7 @@ if task.status == "completed":
     "source": "Financial Times"
   }
 }
-```
+```text
 
 ### Result Object
 
@@ -523,7 +525,7 @@ task = exa.research.create(
 # Poll until completion
 result = exa.research.poll_until_finished(task.research_id)
 print(f"Research complete: {result.output}")
-```
+```text
 
 ### Input Parameters
 
@@ -565,7 +567,7 @@ print(f"Found {len(response.data)} tasks")
 response = exa.research.list(limit=10)
 if response.has_more:
     next_page = exa.research.list(cursor=response.next_cursor)
-```
+```text
 
 ### Input Parameters
 
@@ -593,7 +595,7 @@ if response.has_more:
   "hasMore": true,
   "nextCursor": "eyJjcmVhdGVkQXQiOiIyMDI0LTAxLTE1VDE4OjMwOjAwWiIsImlkIjoidGFzay0yIn0="
 }
-```
+```text
 
 ### Result Object
 
@@ -603,7 +605,7 @@ if response.has_more:
 | has\_more    | bool                               | Whether there are more results to paginate through     |
 | next\_cursor | Optional\[str]                     | The cursor to paginate through the next set of results |
 
-***
+*__
 
 ## Types Reference
 
@@ -1175,24 +1177,24 @@ These types represent structured entity data returned for company or person sear
 
 Input type for JSON schema parameters. Can be either a Pydantic model class (automatically converted to JSON Schema) or a raw JSON Schema dictionary.
 
-**Type:** Union\[type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)], dict\[str, Any]]
+__Type:__ Union\[type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)], dict\[str, Any]]
 
 #### `Category`
 
 Data category to focus on when searching. Each category returns results specialized for that content type.
 
-**Type:** Literal\['company', 'research paper', 'news', 'pdf', 'tweet', 'personal site', 'financial report', 'people']
+__Type:** Literal\['company', 'research paper', 'news', 'pdf', 'tweet', 'personal site', 'financial report', 'people']
 
 #### `SearchType`
 
 Search type that determines the search algorithm:
 
-* **auto** (default): Automatically selects the best approach for highest quality results
-* **fast**: Prioritizes speed with streamlined search models
-* **deep**: Comprehensive multi-query search with automatic query expansion
-* **instant**: Lowest latency search optimized for real-time applications
+* __auto__ (default): Automatically selects the best approach for highest quality results
+* __fast__: Prioritizes speed with streamlined search models
+* __deep__: Comprehensive multi-query search with automatic query expansion
+* __instant__: Lowest latency search optimized for real-time applications
 
-**Type:** Literal\['auto', 'fast', 'deep', 'instant']
+__Type:__ Literal\['auto', 'fast', 'deep', 'instant']
 
 #### `VERBOSITY_OPTIONS`
 
@@ -1202,45 +1204,45 @@ Verbosity levels for content filtering.
 * standard: Balanced content with more detail
 * full: Complete content including all sections
 
-**Type:** Literal\['compact', 'standard', 'full']
+__Type:__ Literal\['compact', 'standard', 'full']
 
 #### `SECTION_TAG`
 
 Section tags for semantic content filtering.
 
-**Type:** Literal\['unspecified', 'header', 'navigation', 'banner', 'body', 'sidebar', 'footer', 'metadata']
+__Type:__ Literal\['unspecified', 'header', 'navigation', 'banner', 'body', 'sidebar', 'footer', 'metadata']
 
 #### `Entity`
 
-**Type:** Union\[[CompanyEntity](#companyentity), [PersonEntity](#personentity)]
+__Type:__ Union\[[CompanyEntity](#companyentity), [PersonEntity](#personentity)]
 
 #### `ResearchModel`
 
-**Type:** Literal\['exa-research-fast', 'exa-research', 'exa-research-pro']
+__Type:__ Literal\['exa-research-fast', 'exa-research', 'exa-research-pro']
 
 #### `ResearchOperation`
 
-**Type:** Annotated\[Union\[[ResearchThinkOperation](#researchthinkoperation), [ResearchSearchOperation](#researchsearchoperation), [ResearchCrawlOperation](#researchcrawloperation)], Field(discriminator='type')]
+__Type:__ Annotated\[Union\[[ResearchThinkOperation](#researchthinkoperation), [ResearchSearchOperation](#researchsearchoperation), [ResearchCrawlOperation](#researchcrawloperation)], Field(discriminator='type')]
 
 #### `ResearchMetaEvent`
 
-**Type:** Union\[[ResearchDefinitionEvent](#researchdefinitionevent), [ResearchOutputEvent](#researchoutputevent)]
+__Type:__ Union\[[ResearchDefinitionEvent](#researchdefinitionevent), [ResearchOutputEvent](#researchoutputevent)]
 
 #### `ResearchPlanEvent`
 
-**Type:** Union\[[ResearchPlanDefinitionEvent](#researchplandefinitionevent), [ResearchPlanOperationEvent](#researchplanoperationevent), [ResearchPlanOutputEvent](#researchplanoutputevent)]
+__Type:__ Union\[[ResearchPlanDefinitionEvent](#researchplandefinitionevent), [ResearchPlanOperationEvent](#researchplanoperationevent), [ResearchPlanOutputEvent](#researchplanoutputevent)]
 
 #### `ResearchTaskEvent`
 
-**Type:** Union\[[ResearchTaskDefinitionEvent](#researchtaskdefinitionevent), [ResearchTaskOperationEvent](#researchtaskoperationevent), [ResearchTaskOutputEvent](#researchtaskoutputevent)]
+__Type:__ Union\[[ResearchTaskDefinitionEvent](#researchtaskdefinitionevent), [ResearchTaskOperationEvent](#researchtaskoperationevent), [ResearchTaskOutputEvent](#researchtaskoutputevent)]
 
 #### `ResearchEvent`
 
-**Type:** Union\[[ResearchMetaEvent](#researchmetaevent), [ResearchPlanEvent](#researchplanevent), [ResearchTaskEvent](#researchtaskevent)]
+__Type:__ Union\[[ResearchMetaEvent](#researchmetaevent), [ResearchPlanEvent](#researchplanevent), [ResearchTaskEvent](#researchtaskevent)]
 
 #### `ResearchDto`
 
-**Type:** Annotated\[Union\[[ResearchPendingDto](#researchpendingdto), [ResearchRunningDto](#researchrunningdto), [ResearchCompletedDto](#researchcompleteddto), [ResearchCanceledDto](#researchcanceleddto), [ResearchFailedDto](#researchfaileddto)], Field(discriminator='status')]
+__Type:__ Annotated\[Union\[[ResearchPendingDto](#researchpendingdto), [ResearchRunningDto](#researchrunningdto), [ResearchCompletedDto](#researchcompleteddto), [ResearchCanceledDto](#researchcanceleddto), [ResearchFailedDto](#researchfaileddto)], Field(discriminator='status')]
 
 #### `EntityCompanyPropertiesWorkforce`
 

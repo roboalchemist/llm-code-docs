@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/personal-site-search-claude-skill.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Personal Site Search
+
+## # Personal Site Search
 
 > This guide shows you how to set up a Claude skill and Exa MCP that helps you find personal blogs, portfolios, and independent content.
 
@@ -12,7 +14,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
+````markdown
 Step 1: Install or update Exa MCP
 
 If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
@@ -55,7 +57,7 @@ The `personal site` category supports ALL available parameters:
 - `includeText` (must contain ALL)
 - `excludeText` (exclude if ANY match)
 
-**Array size restriction:** `includeText` and `excludeText` only support **single-item arrays**. Multi-item arrays (2+ items) cause 400 errors. To match multiple terms, put them in the `query` string or run separate searches.
+__Array size restriction:__ `includeText` and `excludeText` only support __single-item arrays__. Multi-item arrays (2+ items) cause 400 errors. To match multiple terms, put them in the `query` string or run separate searches.
 
 ### Content extraction
 - `textMaxCharacters` / `contextMaxCharacters`
@@ -87,7 +89,8 @@ Use this category when you need:
 ## Examples
 
 Technical blog posts:
-```
+```text
+
 web_search_advanced_exa {
   "query": "building production LLM applications lessons learned",
   "category": "personal site",
@@ -95,10 +98,12 @@ web_search_advanced_exa {
   "type": "deep",
   "enableSummary": true
 }
-```
+
+```text
 
 Recent posts on a topic:
-```
+```text
+
 web_search_advanced_exa {
   "query": "Rust async runtime comparison",
   "category": "personal site",
@@ -106,10 +111,12 @@ web_search_advanced_exa {
   "numResults": 10,
   "type": "auto"
 }
-```
+
+```text
 
 Exclude aggregators:
-```
+```text
+
 web_search_advanced_exa {
   "query": "startup founder lessons",
   "category": "personal site",
@@ -117,7 +124,8 @@ web_search_advanced_exa {
   "numResults": 15,
   "type": "auto"
 }
-```
+
+```text
 
 ## Output Format
 

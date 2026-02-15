@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/sdks/typescript-sdk-specification.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # TypeScript SDK Specification
@@ -16,21 +18,13 @@ Install the [exa-js](https://github.com/exa-labs/exa-js) SDK
   <Tab title="npm">
     ```bash  theme={null}
     npm install exa-js
-    ```
-  </Tab>
-
-  <Tab title="yarn">
+    ```text
     ```bash  theme={null}
     yarn add exa-js
-    ```
-  </Tab>
-
-  <Tab title="pnpm">
+    ```text
     ```bash  theme={null}
     pnpm add exa-js
-    ```
-  </Tab>
-</Tabs>
+    ```text
 
 and then instantiate an Exa client
 
@@ -39,32 +33,27 @@ import Exa from "exa-js";
 
 const exa = new Exa();  // Reads EXA_API_KEY from environment
 // or explicitly: const exa = new Exa("your-api-key");
-```
 
-<Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Follow this link to get your API key
+```text
 </Card>
 
 ## `search` Method
 
 <Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
-### Input Example
+### search - Input Example
 
 ```typescript  theme={null}
 const result = await exa.search("hottest AI startups", {
   numResults: 10
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                    | Description | Default  |
+```text
 | --------- | ----------------------------------------------------------------------- | ----------- | -------- |
 | query     | `string`                                                                | -           | Required |
 | options   | `RegularSearchOptions & { contents?: T \| false \| null \| undefined }` | -           | Required |
 
-### Return Example
+### search - Return Example
 
 ```json  theme={null}
 {
@@ -81,11 +70,8 @@ const result = await exa.search("hottest AI startups", {
   ],
   "requestId": "a78ebce717f4d712b6f8fe0d5d7753f8"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                                                                        |
+```text
 | ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
 | requestId   | `string`                  | The request ID for the search.                                                                     |
@@ -98,7 +84,7 @@ const result = await exa.search("hottest AI startups", {
 
 <Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
-### Input Example
+### searchAndContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.searchAndContents("AI in healthcare", {
@@ -106,16 +92,13 @@ const result = await exa.searchAndContents("AI in healthcare", {
   highlights: true,
   numResults: 5
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                       | Description          | Default  |
+```text
 | --------- | -------------------------- | -------------------- | -------- |
 | query     | `string`                   | The query string. \* | Required |
 | options   | `RegularSearchOptions & T` | -                    | Required |
 
-### Return Example
+### searchAndContents - Return Example
 
 ```json  theme={null}
 {
@@ -137,11 +120,8 @@ const result = await exa.searchAndContents("AI in healthcare", {
   ],
   "requestId": "b89fcd823e4f5a91c7d0fe1e6e8864f9"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                                                                        |
+```text
 | ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
 | requestId   | `string`                  | The request ID for the search.                                                                     |
@@ -154,23 +134,20 @@ const result = await exa.searchAndContents("AI in healthcare", {
 
 <Note>See [FindSimilarOptions](#findsimilaroptions) for all available options including `excludeSourceDomain`.</Note>
 
-### Input Example
+### findSimilar - Input Example
 
 ```typescript  theme={null}
 const result = await exa.findSimilar("https://www.example.com/article", {
   numResults: 10,
   excludeSourceDomain: true
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                  | Description | Default  |
+```text
 | --------- | --------------------------------------------------------------------- | ----------- | -------- |
 | url       | `string`                                                              | -           | Required |
 | options   | `FindSimilarOptions & { contents?: T \| false \| null \| undefined }` | -           | Required |
 
-### Return Example
+### findSimilar - Return Example
 
 ```json  theme={null}
 {
@@ -186,11 +163,8 @@ const result = await exa.findSimilar("https://www.example.com/article", {
   ],
   "requestId": "08fdc6f20e9f3ea87f860af3f6ccc30f"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                                                                        |
+```text
 | ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
 | requestId   | `string`                  | The request ID for the search.                                                                     |
@@ -203,7 +177,7 @@ const result = await exa.findSimilar("https://www.example.com/article", {
 
 <Note>See [FindSimilarOptions](#findsimilaroptions) for all available options including `excludeSourceDomain`.</Note>
 
-### Input Example
+### findSimilarAndContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.findSimilarAndContents("https://www.example.com/article", {
@@ -211,16 +185,13 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
   highlights: true,
   numResults: 5
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                     | Description                                 | Default  |
+```text
 | --------- | ------------------------ | ------------------------------------------- | -------- |
 | url       | `string`                 | The URL for which to find similar links. \* | Required |
 | options   | `FindSimilarOptions & T` | -                                           | Required |
 
-### Return Example
+### findSimilarAndContents - Return Example
 
 ```json  theme={null}
 {
@@ -242,11 +213,8 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
   ],
   "requestId": "c90gde934f5g6b02d8e1gf2f7f9975g0"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                                                                        |
+```text
 | ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
 | requestId   | `string`                  | The request ID for the search.                                                                     |
@@ -259,7 +227,7 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
 
 Retrieves contents of documents based on URLs.
 
-### Input Example
+### getContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.getContents([
@@ -269,16 +237,13 @@ const result = await exa.getContents([
   text: { maxCharacters: 1000 },
   highlights: { query: "AI", maxCharacters: 200 }
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                            | Description                                                     | Default  |
+```text
 | --------- | ----------------------------------------------- | --------------------------------------------------------------- | -------- |
 | urls      | `string \| string[] \| SearchResult&lt;T&gt;[]` | A URL or array of URLs, or an array of SearchResult objects. \* | Required |
 | options   | `T`                                             | -                                                               | Required |
 
-### Return Example
+### getContents - Return Example
 
 ```json  theme={null}
 {
@@ -291,11 +256,8 @@ const result = await exa.getContents([
     }
   ]
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                                                                        |
+```text
 | ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
 | requestId   | `string`                  | The request ID for the search.                                                                     |
@@ -306,23 +268,20 @@ const result = await exa.getContents([
 
 ## `answer` Method
 
-### Input Example
+### answer - Input Example
 
 ```typescript  theme={null}
 const result = await exa.answer("What is the capital of France?", {
   text: true,
   model: "exa"
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                      | Description | Default  |
+```text
 | --------- | --------------------------------------------------------- | ----------- | -------- |
 | query     | `string`                                                  | -           | Required |
 | options   | `AnswerOptions \| AnswerOptionsTyped&lt;ZodSchema<T&gt;>` | -           | Required |
 
-### Return Example
+### answer - Return Example
 
 ```json  theme={null}
 {
@@ -339,11 +298,8 @@ const result = await exa.answer("What is the capital of France?", {
   ],
   "requestId": "abc123"
 }
-```
 
-### Result Object
-
-| Field       | Type                                      | Description                                                              |
+```text
 | ----------- | ----------------------------------------- | ------------------------------------------------------------------------ |
 | answer      | `string \| Record&lt;string, unknown&gt;` | The generated answer text (or object matching outputSchema if provided). |
 | citations   | `SearchResult&lt;{}&gt;[]`                | The sources used to generate the answer.                                 |
@@ -352,7 +308,7 @@ const result = await exa.answer("What is the capital of France?", {
 
 ## `streamAnswer` Method
 
-### Input Example
+### streamAnswer - Input Example
 
 ```typescript  theme={null}
 for await (const chunk of exa.streamAnswer("What is quantum computing?", {
@@ -362,16 +318,13 @@ for await (const chunk of exa.streamAnswer("What is quantum computing?", {
   if (chunk.content) process.stdout.write(chunk.content);
   if (chunk.citations) console.log("Citations:", chunk.citations);
 }
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                                                                                                                | Description | Default  |
+```text
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
 | query     | `string`                                                                                                                                                            | -           | Required |
 | options   | `{ text?: boolean; model?: "exa" \| "exa-pro"; systemPrompt?: string; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; userLocation?: string; }` | -           | Required |
 
-### Return Example
+### streamAnswer - Return Example
 
 ```json  theme={null}
 {
@@ -384,59 +337,49 @@ for await (const chunk of exa.streamAnswer("What is quantum computing?", {
     }
   ]
 }
-```
 
-### Result Object
-
-| Field     | Type                                                             | Description                                                        |
+```text
 | --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
 | content   | `string`                                                         | The partial text content of the answer (if present in this chunk). |
 | citations | `Array&lt;{id, url, title?, publishedDate?, author?, text?}&gt;` | Citations associated with the current chunk of text (if present).  |
 
 ## `research.create` Method
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const task = await exa.research.create({
   instructions: "Research the latest AI developments",
   model: "exa-research-fast"
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                                                                                    | Description | Default  |
+```text
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
 | params    | `{ instructions: string; model?: ResearchCreateRequest["model"]; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; }` | -           | Required |
 
-### Return Example
+### research.create - Return Example
 
 ```json  theme={null}
 {
   "researchId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "status": "pending"
 }
-```
 
-## `research.get` Method
+````research.get` Method
 
 <Note>When called with `stream: true`, returns an `AsyncGenerator<ResearchStreamEvent>` for real-time SSE updates instead of a `Promise<Research>`.</Note>
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const result = await exa.research.get("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
-```
 
-### Input Parameters
-
-| Parameter  | Type                                                                         | Description | Default  |
+```text
 | ---------- | ---------------------------------------------------------------------------- | ----------- | -------- |
 | researchId | `string`                                                                     | -           | Required |
 | options    | `{ stream?: boolean; events?: boolean; outputSchema?: ZodSchema&lt;T&gt;; }` | -           | Required |
 
-### Return Example
+### research.create - Return Example
 
 ```json  theme={null}
 {
@@ -451,43 +394,36 @@ const result = await exa.research.get("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
     }
   }
 }
-```
 
-## `research.pollUntilFinished` Method
+````research.pollUntilFinished` Method
 
 <Note>Options include `pollInterval` (default 1000ms), `timeoutMs` (default 10 minutes), and `events` (boolean to include event log).</Note>
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const result = await exa.research.pollUntilFinished("a1b2c3d4-e5f6-7890-abcd-ef1234567890", {
   pollInterval: 1000,
   timeoutMs: 600000
 });
-```
 
-### Input Parameters
-
-| Parameter  | Type                                                                                                  | Description | Default  |
+```text
 | ---------- | ----------------------------------------------------------------------------------------------------- | ----------- | -------- |
 | researchId | `string`                                                                                              | -           | Required |
 | options    | `{ pollInterval?: number; timeoutMs?: number; events?: boolean; outputSchema?: ZodSchema&lt;T&gt;; }` | -           | Required |
 
 ## `research.list` Method
 
-### Input Example
+### research.list - Input Example
 
 ```typescript  theme={null}
 const tasks = await exa.research.list({ limit: 10 });
-```
 
-### Input Parameters
-
-| Parameter | Type                  | Description | Default  |
+```text
 | --------- | --------------------- | ----------- | -------- |
 | options   | `ListResearchRequest` | -           | Required |
 
-### Return Example
+### research.list - Return Example
 
 ```json  theme={null}
 {
@@ -501,11 +437,8 @@ const tasks = await exa.research.list({ limit: 10 });
   "hasMore": true,
   "nextCursor": "eyJjcmVhdGVkQXQiOiIyMDI0LTAxLTE1VDE4OjMwOjAwWiIsImlkIjoidGFzay0yIn0="
 }
-```
 
-***
-
-## Types Reference
+```text
 
 This section documents the types used throughout the SDK.
 

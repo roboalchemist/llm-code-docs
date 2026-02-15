@@ -8,8 +8,6 @@
 
 > Tips and recommendations for getting the most out of Exa
 
-# Best Practices
-
 Learn how to use Exa effectively with these recommended best practices.
 
 ## Coming Soon

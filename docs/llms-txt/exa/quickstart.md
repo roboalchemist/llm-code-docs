@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/quickstart.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
-# Get started with Exa
+## Get started with Exa
 
 > Make your first request to one of Exa's API endpoints
 
@@ -24,8 +26,7 @@
 
           ```bash  theme={null}
           EXA_API_KEY=your api key without quotes
-          ```
-        </div>
+          ```text
       </li>
 
       <li>
@@ -42,8 +43,7 @@
           pip install exa-py
           pip install openai
           pip install python-dotenv
-          ```
-        </div>
+          ```text
       </li>
 
       <li>
@@ -79,8 +79,7 @@
               )
 
               print(result)
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Answer">
               <p>Get an answer to a question, grounded by citations from exa.</p>
@@ -102,8 +101,7 @@
 
               for chunk in result:
                 print(chunk, end='', flush=True)
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Chat Completions">
               <p>Get a chat completion from exa.</p>
@@ -134,8 +132,7 @@
                 }
               )
               print(completion.choices[0].message.content)
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Find similar links and get full text">
               <p>Find similar links to a given URL and get the full text for each link.</p>
@@ -168,8 +165,7 @@
                 print(f"URL: {web_page.url}")
                 print(f"Text snippet: {web_page.text[:500]} ...")
                 print("-"*100)
-              ```
-            </Tab>
+              ```text
           </Tabs>
         </div>
       </li>
@@ -191,8 +187,7 @@
 
           ```bash  theme={null}
           EXA_API_KEY=your api key without quotes
-          ```
-        </div>
+          ```text
       </li>
 
       <li>
@@ -209,8 +204,7 @@
           npm install exa-js
           npm install openai
           npm install dotenv
-          ```
-        </div>
+          ```text
       </li>
 
       <li>
@@ -247,8 +241,7 @@
 
               // print the first result
               console.log(result.results[0]);
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Answer">
               <p>Get an answer to a question, grounded by citations from exa.</p>
@@ -273,8 +266,7 @@
                   console.log("\nCitations:", chunk.citations);
                 }
               }
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Chat Completions">
               <p>Get a chat completion from exa.</p>
@@ -311,8 +303,7 @@
               }
 
               main();
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Find similar links and get full text">
               <p>Find similar links to a given URL and get the full text for each link.</p>
@@ -344,8 +335,7 @@
                 console.log(`Text snippet: ${webPage.text.slice(0, 500)} ...`);
                 console.log("-".repeat(100));
               });
-              ```
-            </Tab>
+              ```text
           </Tabs>
         </div>
       </li>
@@ -366,8 +356,7 @@
 
           ```bash  theme={null}
           export EXA_API_KEY='your-api-key-here'
-          ```
-        </div>
+          ```text
       </li>
 
       <li>
@@ -398,8 +387,7 @@
                     "text": true
                   }
               }'
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Answer">
               <p>Get an answer to a question, grounded by citations from exa.</p>
@@ -414,8 +402,7 @@
                   \"query\": \"What are the latest findings on gut microbiome's influence on mental health?\",
                   \"text\": true
                 }"
-              ```
-            </Tab>
+              ```text
 
             <Tab title="Chat Completions">
               <p>Get a chat completion from exa.</p>
@@ -425,7 +412,7 @@
                 -H "Content-Type: application/json" \
                 -H "x-api-key: ${EXA_API_KEY}" \
                 -d '{
-                  "model": "exa", 
+                  "model": "exa",
                   "messages": [
                     {
                       "role": "system",
@@ -440,8 +427,7 @@
                     "text": true
                   }
                 }'
-              ```
-            </Tab>
+              ```text
           </Tabs>
         </div>
       </li>

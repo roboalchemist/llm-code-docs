@@ -12,7 +12,7 @@
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-````
+```bash
 Step 1: Install or update Exa MCP
 
 If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
@@ -89,7 +89,8 @@ Use this category when you need:
 ## Examples
 
 SEC filings for a company:
-```
+
+```json
 web_search_advanced_exa {
   "query": "Anthropic SEC filing S-1",
   "category": "financial report",
@@ -99,7 +100,8 @@ web_search_advanced_exa {
 ```
 
 Recent earnings reports:
-```
+
+```json
 web_search_advanced_exa {
   "query": "Q4 2025 earnings report technology",
   "category": "financial report",
@@ -110,7 +112,8 @@ web_search_advanced_exa {
 ```
 
 Specific filing type:
-```
+
+```json
 web_search_advanced_exa {
   "query": "10-K annual report AI companies",
   "category": "financial report",
@@ -122,7 +125,8 @@ web_search_advanced_exa {
 ```
 
 Risk factors analysis:
-```
+
+```json
 web_search_advanced_exa {
   "query": "risk factors cybersecurity",
   "category": "financial report",
@@ -144,4 +148,5 @@ Return:
 Step 3: Ask User to Restart Claude Code
 
 You should ask the user to restart Claude Code to have the config changes take effect.
-````
+
+```

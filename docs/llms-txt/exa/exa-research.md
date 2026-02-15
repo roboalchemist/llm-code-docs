@@ -86,7 +86,7 @@ $$
 Compare the current flagship GPUs from NVIDIA, AMD, and Intel and extract pricing, TDP, and release date.
 
 <CodeGroup>
-  ```python Python theme={null}
+  ```python
   import os
   from exa_py import Exa
 
@@ -121,12 +121,12 @@ Compare the current flagship GPUs from NVIDIA, AMD, and Intel and extract pricin
       output_schema=schema
   )
 
-  # Poll until completion
   result = exa.research.poll_until_finished(research.researchId)
   print(result)
+
   ```
 
-  ```javascript JavaScript theme={null}
+  ```javascript
   import Exa, { ResearchModel } from "exa-js";
 
   const exa = new Exa(process.env.EXA_API_KEY);
@@ -173,7 +173,7 @@ Compare the current flagship GPUs from NVIDIA, AMD, and Intel and extract pricin
   compareGPUs();
   ```
 
-  ```bash Curl theme={null}
+  ```bash
   curl -X POST https://api.exa.ai/research/v1 \
     -H "x-api-key: $EXA_API_KEY" \
     -H "Content-Type: application/json" \
@@ -201,7 +201,9 @@ Compare the current flagship GPUs from NVIDIA, AMD, and Intel and extract pricin
         "additionalProperties": false
       }
     }'
+
   ```
+
 </CodeGroup>
 
 ### Market Size Estimate
@@ -209,7 +211,7 @@ Compare the current flagship GPUs from NVIDIA, AMD, and Intel and extract pricin
 Estimate the total global market size (USD) for battery recycling in 2030 with a clear methodology.
 
 <CodeGroup>
-  ```python Python theme={null}
+  ```python
   import os
   from exa_py import Exa
 
@@ -235,9 +237,10 @@ Estimate the total global market size (USD) for battery recycling in 2030 with a
   # Poll until completion
   result = exa.research.poll_until_finished(research.researchId)
   print(result)
+
   ```
 
-  ```javascript JavaScript theme={null}
+  ```javascript
   import Exa, { ResearchModel } from "exa-js";
 
   const exa = new Exa(process.env.EXA_API_KEY);
@@ -266,7 +269,7 @@ Estimate the total global market size (USD) for battery recycling in 2030 with a
   estimateMarketSize();
   ```
 
-  ```bash Curl theme={null}
+  ```bash
   curl -X POST https://api.exa.ai/research/v1 \
     -H "x-api-key: $EXA_API_KEY" \
     -H "Content-Type: application/json" \
@@ -282,7 +285,9 @@ Estimate the total global market size (USD) for battery recycling in 2030 with a
         "additionalProperties": false
       }
     }'
+
   ```
+
 </CodeGroup>
 
 ### Timeline of Key Events
@@ -290,7 +295,7 @@ Estimate the total global market size (USD) for battery recycling in 2030 with a
 Build a timeline of major OpenAI product releases from 2015 – 2023.
 
 <CodeGroup>
-  ```python Python theme={null}
+  ```python
   import os
   from exa_py import Exa
 
@@ -325,9 +330,10 @@ Build a timeline of major OpenAI product releases from 2015 – 2023.
   # Poll until completion
   result = exa.research.poll_until_finished(research.researchId)
   print(result)
+
   ```
 
-  ```javascript JavaScript theme={null}
+  ```javascript
   import Exa, { ResearchModel } from "exa-js";
 
   const exa = new Exa(process.env.EXA_API_KEY);
@@ -365,7 +371,7 @@ Build a timeline of major OpenAI product releases from 2015 – 2023.
   createTimeline();
   ```
 
-  ```bash Curl theme={null}
+  ```bash
   curl -X POST https://api.exa.ai/research/v1 \
     -H "x-api-key: $EXA_API_KEY" \
     -H "Content-Type: application/json" \
@@ -390,7 +396,9 @@ Build a timeline of major OpenAI product releases from 2015 – 2023.
         "additionalProperties": false
       }
     }'
+
   ```
+
 </CodeGroup>
 
 ## FAQs

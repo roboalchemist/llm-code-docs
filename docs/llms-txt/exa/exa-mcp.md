@@ -4,7 +4,7 @@
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Exa MCP - The Web Search MCP
+## Exa MCP - The Web Search MCP
 
 > Complete setup guide for Exa MCP Server. Connect Claude Desktop, Cursor, VS Code, and 10+ AI assistants to Exa's web search and code search tools.
 
@@ -272,13 +272,13 @@ Exa MCP connects AI assistants to Exa's search capabilities, including web searc
 
 Enable specific tools:
 
-```
+```bash
 https://mcp.exa.ai/mcp?tools=get_code_context_exa,people_search_exa
 ```
 
 Enable all tools:
 
-```
+```bash
 https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
 ```
 
@@ -288,7 +288,7 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_con
 
 Exa MCP has a generous free plan. To overcome free plan rate limits, add your own API key:
 
-```
+```bash
 https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
 ```
 
@@ -309,63 +309,67 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
 </CardGroup>
 
 <Accordion title="Usage Examples" icon="magnifying-glass">
-  **Web Search**
 
-  ```
-  Search for recent developments in AI agents and summarize the key trends.
-  ```
+**Web Search**
 
-  **Code Search**
+```text
+Search for recent developments in AI agents and summarize the key trends.
+```
 
-  ```
-  Find Python examples for implementing OAuth 2.0 authentication.
-  ```
+**Code Search**
 
-  **Company Research**
+```text
+Find Python examples for implementing OAuth 2.0 authentication.
+```
 
-  ```
-  Research Stripe and give me an overview of their products and recent news.
-  ```
+**Company Research**
 
-  **Deep Research**
+```text
+Research Stripe and give me an overview of their products and recent news.
+```
 
-  ```
-  Create a detailed report on the current state of quantum computing startups.
-  ```
+**Deep Research**
+
+```text
+Create a detailed report on the current state of quantum computing startups.
+```
+
 </Accordion>
 
 <Accordion title="Troubleshooting" icon="wrench">
-  **Rate limit error (429)**
 
-  You've hit the free plan rate limit. Add your own API key to continue:
+**Rate limit error (429)**
 
-  ```
-  https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
-  ```
+You've hit the free plan rate limit. Add your own API key to continue:
 
-  [Get your API key](https://dashboard.exa.ai/api-keys)
+```bash
+https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
+```
 
-  **Tools not appearing**
+[Get your API key](https://dashboard.exa.ai/api-keys)
 
-  Restart your MCP client after updating the config file. Some clients require a full restart to detect new MCP servers.
+**Tools not appearing**
 
-  **Claude Desktop not connecting**
+Restart your MCP client after updating the config file. Some clients require a full restart to detect new MCP servers.
 
-  Claude Desktop doesn't support remote MCP directly. Use the `mcp-remote` wrapper:
+**Claude Desktop not connecting**
 
-  ```json  theme={null}
-  {
-    "command": "npx",
-    "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
-  }
-  ```
+Claude Desktop doesn't support remote MCP directly. Use the `mcp-remote` wrapper:
 
-  **Config file not found**
+```json
+{
+  "command": "npx",
+  "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+}
+```
 
-  Common config locations:
+**Config file not found**
 
-  * Cursor: `~/.cursor/mcp.json`
-  * VS Code: `.vscode/mcp.json` (in project root)
-  * Claude Desktop (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`
-  * Claude Desktop (Windows): `%APPDATA%\Claude\claude_desktop_config.json`
+Common config locations:
+
+- Cursor: `~/.cursor/mcp.json`
+- VS Code: `.vscode/mcp.json` (in project root)
+- Claude Desktop (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Claude Desktop (Windows): `%APPDATA%\Claude\claude_desktop_config.json`
+
 </Accordion>

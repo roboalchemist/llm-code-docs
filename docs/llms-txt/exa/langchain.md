@@ -1,6 +1,8 @@
 # Source: https://exa.ai/docs/reference/langchain.md
 
+
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -51,6 +53,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
     # Define our retriever to use Exa Search, grabbing 3 results and parsing highlights from each result
     retriever = ExaSearchRetriever(api_key=os.getenv("EXA_API_KEY"), k=3, highlights=True)
     ```
+
   </Step>
 
   <Step title="Create a prompt template (optional)">
@@ -65,6 +68,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
     </source>
     """)
     ```
+
   </Step>
 
   <Step title="Parse the URL and content from Exa results">
@@ -79,6 +83,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
         }
     ) | document_prompt
     ```
+
   </Step>
 
   <Step title="Join Exa results and content for retrieval">
@@ -88,6 +93,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
     # Define the retrieval chain - Exa search results => grab attributes and parse into XML => join into a single string to feed as context in next steps
     retrieval_chain = retriever | document_chain.map() | (lambda docs: "\n".join([i.text for i in docs]))
     ```
+
   </Step>
 
   <Step title="Set up the rest of the toolchain including OpenAI for generation">
@@ -133,6 +139,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
         "context": retrieval_chain,
     }) | generation_prompt | llm | output_parser
     ```
+
   </Step>
 
   <Step title="Running the full RAG toolchain">
@@ -156,6 +163,7 @@ LangChain is a framework for building applications that combine LLMs with data, 
     2. Climate tech funding and attention: https://www.sbs.ox.ac.uk/oxford-answers/climate-tech-opportunity-save-planet
     3. Research funding allocation for climate and energy research: https://www.protocol.com/bulletins/climate-research-funding-adaptation'
     ```
+
   </Step>
 
   <Step title="Optionally, stream the output of the chain">

@@ -1,6 +1,6 @@
 # Source: https://exa.ai/docs/reference/evaluating-exa-search.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -630,6 +630,7 @@ Beyond search type selection, several parameters affect response time:
       }
 
   # Run evaluation
+
   config = {
       'type': 'auto',
       'num_results': 10,
@@ -639,7 +640,7 @@ Beyond search type selection, several parameters affect response time:
   results = evaluate_simpleqa('simpleqa.json', config)
   print(f"Accuracy: {results['accuracy']:.2%}")
   print(f"P50 Latency: {results['p50_latency_ms']:.0f}ms")
-  ```
+  ```python
 
   ```javascript JavaScript theme={null}
   import Exa from 'exa-js';
@@ -726,7 +727,7 @@ for config in configs:
 
 Example output:
 
-```
+```text
 `Fast`: 94.2% @ 450ms
 `Auto`: 95.8% @ 1050ms
 `Deep`: 97.2% @ 4950ms
