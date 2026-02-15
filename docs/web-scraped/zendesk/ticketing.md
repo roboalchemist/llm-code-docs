@@ -1,250 +1,256 @@
 # Source: https://developer.zendesk.com/documentation/ticketing/
 
-Ticketing | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Ticketing Home 
-- 
-- 
-## Ticketing 
+## Ticketing | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Ticketing Home
 
-- Introduction 
+-
+-
 
-- 
-- 
-### Getting Started 
+## Ticketing
 
-- Ticketing API quick start 
+- Introduction
 
-- Using the Ticketing API 
+-
+-
 
-- Common tasks for the Zendesk Ticketing API 
+### Getting Started
 
-- 
-- 
-### Managing Tickets 
+- Ticketing API quick start
 
-- Creating and updating tickets 
+- Using the Ticketing API
 
-- Creating and managing requests 
+- Common tasks for the Zendesk Ticketing API
 
-- Tickets vs Requests APIs: How to select the right option for your project 
+-
+-
 
-- Adding ticket attachments with the API 
+### Managing Tickets
 
-- Adding tags to tickets without overwriting existing tags 
+- Creating and updating tickets
 
-- Adding voice comments to tickets 
+- Creating and managing requests
 
-- Getting the CSAT ratings of tickets 
+- Tickets vs Requests APIs: How to select the right option for your project
 
-- Getting the CSAT survey responses 
+- Adding ticket attachments with the API
 
-- Creating reports of daily ticket trends with the Zendesk API 
+- Adding tags to tickets without overwriting existing tags
 
-- Setting a skill priority for omnichannel routing 
+- Adding voice comments to tickets
 
-- Building a custom ticket form with the Ticketing API 
+- Getting the CSAT ratings of tickets
 
-- Improving performance by creating tickets asynchronously 
+- Getting the CSAT survey responses
 
-- Making client-side CORS requests to the Ticketing API 
+- Creating reports of daily ticket trends with the Zendesk API
 
-- Making API requests on behalf of end users 
+- Setting a skill priority for omnichannel routing
 
-- Tutorial: Exporting a ticket view to a CSV file 
+- Building a custom ticket form with the Ticketing API
 
-- Tutorial: Exporting a ticket to a CSV file 
+- Improving performance by creating tickets asynchronously
 
-- Closing stale tickets with the Tickets API 
+- Making client-side CORS requests to the Ticketing API
 
-- Reassigning orphaned tickets with the Tickets API 
+- Making API requests on behalf of end users
 
-- Creating side conversations with the Zendesk API 
+- Tutorial: Exporting a ticket view to a CSV file
 
-- Creating a ticket dashboard with the Search API 
+- Tutorial: Exporting a ticket to a CSV file
 
-- 
-- 
-### Custom Profiles 
+- Closing stale tickets with the Tickets API
 
-- About the Profiles API 
+- Reassigning orphaned tickets with the Tickets API
 
-- Getting started with profiles 
+- Creating side conversations with the Zendesk API
 
-- Anatomy of a profile 
+- Creating a ticket dashboard with the Search API
 
-- How profiles affect existing data 
+-
+-
 
-- Using identifier queries with profiles 
+### Custom Profiles
 
-- Creating profiles 
+- About the Profiles API
 
-- Accessing profiles 
+- Getting started with profiles
 
-- Accessing profiles in Zendesk apps 
+- Anatomy of a profile
 
-- Updating profiles 
+- How profiles affect existing data
 
-- Using external ID with profiles 
+- Using identifier queries with profiles
 
-- 
-- 
-### Custom Events 
+- Creating profiles
 
-- About the Events API 
+- Accessing profiles
 
-- Getting started with events 
+- Accessing profiles in Zendesk apps
 
-- Anatomy of an event 
+- Updating profiles
 
-- Displaying rich links with events 
+- Using external ID with profiles
 
-- Tracking events 
+-
+-
 
-- Accessing events 
+### Custom Events
 
-- Accessing events in Zendesk apps 
+- About the Events API
 
-- Filtering events 
+- Getting started with events
 
-- Deleting events 
+- Anatomy of an event
 
-- 
-- 
-### Reference articles 
+- Displaying rich links with events
 
-- Actions reference 
+- Tracking events
 
-- Conditions reference 
+- Accessing events
 
-- Conversation Log events reference 
+- Accessing events in Zendesk apps
 
-- Ticket Audit events reference 
+- Filtering events
 
-- Ticket metric event types reference 
+- Deleting events
 
-- Cause of suspension reference 
+-
+-
 
-- Via object reference 
+### Reference articles
 
-- Via types reference 
+- Actions reference
 
-- 
-- 
-### API Clients 
+- Conditions reference
 
-- Introduction 
+- Conversation Log events reference
 
-- Python 
+- Ticket Audit events reference
 
-- PHP 
+- Ticket metric event types reference
 
-- Node.js 
+- Cause of suspension reference
 
-- .NET 
+- Via object reference
 
-- Java 
+- Via types reference
 
-- Ruby 
+-
+-
 
-- Clojure 
+### API Clients
 
-- Elixir 
+- Introduction
 
-- Force.com 
+- Python
 
-- R 
+- PHP
 
-## On this page 
+- Node.js
 
-- Getting started 
+- .NET
 
-- Creating tickets 
+- Java
 
-- Ticket Management 
+- Ruby
 
-- Working with OAuth 
+- Clojure
 
-- Embed and extend Support 
+- Elixir
 
-- Build Zendesk apps for Support 
+- Force.com
 
-- Add Support to your iOS and Android apps 
+- R
 
-# Ticketing 
-Create and manage tickets 
-## On this page 
+## On this page
 
-- Getting started 
+- Getting started
 
-- Creating tickets 
+- Creating tickets
 
-- Ticket Management 
+- Ticket Management
 
-- Working with OAuth 
+- Working with OAuth
 
-- Embed and extend Support 
+- Embed and extend Support
 
-- Build Zendesk apps for Support 
+- Build Zendesk apps for Support
 
-- Add Support to your iOS and Android apps 
+- Add Support to your iOS and Android apps
 
-## Getting started 
+## Main Content
 
-In this 10-minute quickstart, you'll use the Zendesk API to create a few tickets. To keep things moving along, you'll use the JavaScript console of your browser to make the API requests. 
+Create and manage tickets
 
-Zendesk API quick start 
+### Getting Started with Zendesk API
 
-## Creating tickets 
+In this 10-minute quickstart, you'll use the Zendesk API to create a few tickets. To keep things moving along, you'll use the JavaScript console of your browser to make the API requests.
 
-Building a custom ticket form with the Ticketing API 
-This article describes how to build a custom ticket form that lets users submit support requests from your website. 
+Zendesk API quick start
 
-Improving performance by creating tickets asynchronously 
-If you create tickets in Zendesk Support with the API but want faster response times in your application, you can instruct the API to queue the jobs and just return a ticket ID and information about the status of the job. 
+## Creating tickets
 
-Adding tags to tickets without overwriting existing tags 
-This article exmplains how to use the Update Many API. It lets you add tags without overwriting existing ones. You can also remove old tags without affecting existing tags. 
+Building a custom ticket form with the Ticketing API
 
-## Ticket Management 
+This article describes how to build a custom ticket form that lets users submit support requests from your website.
 
-Common tasks for the Zendesk Support API 
-This article covers common tasks performed with the Zendesk API, and lists the APIs and endpoints to use in your projects. 
+Improving performance by creating tickets asynchronously
 
-Searching with the Zendesk API 
-The Zendesk REST API provides the a single, unified API for searching Zendesk Support resources such as tickets, users, organizations, and groups. 
+If you create tickets in Zendesk Support with the API but want faster response times in your application, you can instruct the API to queue the jobs and just return a ticket ID and information about the status of the job.
 
-Side-loading 
-Side-loading allows you to retrieve related records as part of a single request. 
+Adding tags to tickets without overwriting existing tags
 
-Making cross-origin, browser-side API requests 
-For security purposes, modern browsers have a same-origin policy restriction that prevents scripts from accessing resources in other domains. However, if the other domain implements Cross-Origin Resource Sharing (CORS), the browser will allow a script to access resources in that domain. 
+This article exmplains how to use the Update Many API. It lets you add tags without overwriting existing ones. You can also remove old tags without affecting existing tags.
 
-Best practices for avoiding rate limiting 
-When you reach the API rate limit, the Zendesk API stops processing any more requests until a certain amount of time has passed. This article covers the best practices for avoiding rate limiting. 
+## Ticket Management
 
-## Working with OAuth 
+Common tasks for the Zendesk Support API
 
-OAuth authorization is to allow third-party applications to interact with a Zendesk Support instance without having to store and use the passwords of users, which is sensitive information that the apps shouldn't know. 
+This article covers common tasks performed with the Zendesk API, and lists the APIs and endpoints to use in your projects.
 
-Using OAuth to authenticate Zendesk API requests in a web app 
-In this tutorial, you'll build a web app that implements an OAuth authorization flow. 
+Searching with the Zendesk API
 
-Creating and using OAuth tokens with the API 
-Using OAuth tokens for authentication doesn't tie the requests to a specific username and password, and it offers more control and security than plain API tokens. 
+The Zendesk REST API provides the a single, unified API for searching Zendesk Support resources such as tickets, users, organizations, and groups.
 
-Set up a global OAuth client 
-If you're developing an integration for Zendesk Support, you can use OAuth authentication to let users grant access to Zendesk Support to your integration. 
+Side-loading
 
-## Embed and extend Support 
+Side-loading allows you to retrieve related records as part of a single request.
 
-### Build Zendesk apps for Support 
+Making cross-origin, browser-side API requests
 
-A Zendesk app is a small web application installed in the agent interface that extends the functionality of Zendesk Support, Chat, or Sell. Visit Apps for information on how to get started. 
+For security purposes, modern browsers have a same-origin policy restriction that prevents scripts from accessing resources in other domains. However, if the other domain implements Cross-Origin Resource Sharing (CORS), the browser will allow a script to access resources in that domain.
 
-Visit Apps 
+Best practices for avoiding rate limiting
 
-### Add Support to your iOS and Android apps 
+When you reach the API rate limit, the Zendesk API stops processing any more requests until a certain amount of time has passed. This article covers the best practices for avoiding rate limiting.
 
-The Support SDKs for iOS and Android lets you embed Zendesk Support options natively in your mobile app so your customers can get help directly in the app. 
+## Working with OAuth
 
-Visit Mobile SDKs 
+OAuth authorization is to allow third-party applications to interact with a Zendesk Support instance without having to store and use the passwords of users, which is sensitive information that the apps shouldn't know.
+
+Using OAuth to authenticate Zendesk API requests in a web app
+
+In this tutorial, you'll build a web app that implements an OAuth authorization flow.
+
+Creating and using OAuth tokens with the API
+
+Using OAuth tokens for authentication doesn't tie the requests to a specific username and password, and it offers more control and security than plain API tokens.
+
+Set up a global OAuth client
+
+If you're developing an integration for Zendesk Support, you can use OAuth authentication to let users grant access to Zendesk Support to your integration.
+
+## Embed and extend Support
+
+### Build Zendesk apps for Support
+
+A Zendesk app is a small web application installed in the agent interface that extends the functionality of Zendesk Support, Chat, or Sell. Visit Apps for information on how to get started.
+
+Visit Apps
+
+### Add Support to your iOS and Android apps
+
+The Support SDKs for iOS and Android lets you embed Zendesk Support options natively in your mobile app so your customers can get help directly in the app.
+
+Visit Mobile SDKs
+
 Join our developer community Forum Blog Slack Zendesk 181 Fremont Street, 17th Floor, San Francisco, California 94105 Privacy Notice Zendesk Developer Terms System Status

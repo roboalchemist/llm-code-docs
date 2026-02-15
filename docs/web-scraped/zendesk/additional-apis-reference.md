@@ -1,6 +1,6 @@
-# Source: https://developer.zendesk.com/api-reference/
-
 # Zendesk Additional APIs - Complete Reference
+
+Source: https://developer.zendesk.com/api-reference/
 
 Comprehensive coverage of supplementary Zendesk APIs for integration services, admin functions, webhooks, and more.
 
@@ -61,7 +61,7 @@ PUT /help_center/articles/{id}/translations/{lang}  # Update translation
 
 Zendesk Integration Services provides event-driven integration capabilities.
 
-### Overview
+### Key Features
 
 - **ZIS Configs API** - Manage integration configurations
 - **Connections API** - Setup external service connections
@@ -95,6 +95,7 @@ DELETE /zis/connections/{id}               # Delete connection
 ```
 
 **Connection Types:**
+
 - HTTP/REST endpoints
 - Database connections
 - OAuth applications
@@ -132,6 +133,7 @@ GET /status/maintenance                    # List maintenance windows
 ```
 
 **Status Values:**
+
 - `operational` - All systems normal
 - `degraded_performance` - Slower than normal
 - `partial_outage` - Some services unavailable
@@ -141,9 +143,10 @@ GET /status/maintenance                    # List maintenance windows
 
 Advanced search across Zendesk resources.
 
-### Overview
+### Search Interface
 
 Unified search interface for:
+
 - Tickets
 - Users
 - Organizations
@@ -183,6 +186,7 @@ GET /search?query=(status:open OR status:pending) AND priority:high
 ### Common Search Fields
 
 **Tickets:**
+
 - `status`, `priority`, `type`
 - `assignee_id`, `requester_id`
 - `organization_id`, `group_id`
@@ -190,11 +194,13 @@ GET /search?query=(status:open OR status:pending) AND priority:high
 - `tags`, `custom_field_id`
 
 **Users:**
+
 - `email`, `name`
 - `organization_id`, `role`
 - `created`, `updated`
 
 **Articles:**
+
 - `title`, `body`, `status`
 - `section_id`, `category_id`
 - `created`, `updated`
@@ -352,6 +358,7 @@ POST /webhooks/{id}/test                  # Test webhook
 ### Webhook Events
 
 **Ticket Events:**
+
 - `ticket.created`
 - `ticket.updated`
 - `ticket.solved`
@@ -359,15 +366,18 @@ POST /webhooks/{id}/test                  # Test webhook
 - `ticket_comment.created`
 
 **User Events:**
+
 - `user.created`
 - `user.updated`
 - `user.deleted`
 
 **Organization Events:**
+
 - `organization.created`
 - `organization.updated`
 
 **Chat Events:**
+
 - `chat_conversation.started`
 - `chat_conversation.ended`
 - `chat_message.created`
@@ -439,7 +449,7 @@ GET /events?filter[object_type]=ticket&filter[date][gte]=2024-02-01
 
 ### Ticket Creation Flow
 
-```
+```text
 1. Customer action (email, chat, form)
 2. Webhook event triggered
 3. External system receives webhook
@@ -450,7 +460,7 @@ GET /events?filter[object_type]=ticket&filter[date][gte]=2024-02-01
 
 ### Multi-System Sync
 
-```
+```text
 1. Zendesk ticket created
 2. ZIS trigger fires
 3. Webhook sent to external system
@@ -461,7 +471,7 @@ GET /events?filter[object_type]=ticket&filter[date][gte]=2024-02-01
 
 ### Custom Reporting
 
-```
+```text
 1. Query Search API for relevant records
 2. Use Explore API for metrics
 3. Process data in business intelligence tool
@@ -472,24 +482,28 @@ GET /events?filter[object_type]=ticket&filter[date][gte]=2024-02-01
 ## Best Practices
 
 ### API Usage
+
 - Use webhooks for async events (not polling)
 - Implement exponential backoff for retries
 - Cache Search results when possible
 - Batch operations to reduce API calls
 
 ### Security
+
 - Verify webhook signatures
 - Use OAuth for third-party apps
 - Rotate API tokens regularly
 - Encrypt sensitive data in transit
 
 ### Performance
+
 - Use cursor pagination for large datasets
 - Filter search queries for faster results
 - Implement request throttling
 - Monitor rate limits
 
 ### Reliability
+
 - Implement retry logic with backoff
 - Handle partial failures gracefully
 - Log all integration activity

@@ -1,12 +1,13 @@
-# Source: https://developer.zendesk.com/documentation/sales-crm/
-
 # Zendesk Sell (Sales CRM) API - Complete Reference
+
+Source: https://developer.zendesk.com/documentation/sales-crm/
 
 Zendesk Sell is a sales force automation platform that helps sales teams manage leads, deals, and customer relationships. The Sell API provides programmatic access to sales data and workflows.
 
 ## Overview
 
 Sell provides four complementary APIs for different use cases:
+
 1. **Core API** - RESTful CRUD operations (all plans)
 2. **Sync API** - Data synchronization (Growth+ only)
 3. **Firehose API** - Real-time data streams (Growth+ only)
@@ -15,28 +16,36 @@ Sell provides four complementary APIs for different use cases:
 ## Core Concepts
 
 ### Leads
+
 Prospective customers with contact information and sales pipeline status.
 
 ### Deals
+
 Opportunities representing potential sales transactions with:
+
 - Deal value and expected close date
 - Sales stage and pipeline
 - Associated contacts and organizations
 - Custom fields and properties
 
 ### Contacts
+
 Individual people in the sales pipeline with:
+
 - Name, email, phone, address
 - Associated deals and organizations
 - Custom fields for lead scoring, source, etc.
 
 ### Organizations
+
 Companies and accounts for grouping contacts and deals.
 
 ### Activities
+
 Sales activities like calls, emails, meetings tracked to contacts/deals.
 
 ### Pipelines & Stages
+
 Sales process definition with multiple stages for deal progression.
 
 ## Getting Started
@@ -44,6 +53,7 @@ Sales process definition with multiple stages for deal progression.
 ### Authentication
 
 **Token-Based Authentication:**
+
 ```bash
 curl -X GET https://api.getbase.com/v3/contacts \
   -H "Authorization: Bearer YOUR_API_TOKEN"
@@ -52,6 +62,7 @@ curl -X GET https://api.getbase.com/v3/contacts \
 **Base URL:** `https://api.getbase.com/v3/`
 
 ### Rate Limits
+
 - API-based: 6000 requests per hour
 - Per-user: 100 requests per minute per user
 - Sync/Firehose: Custom limits based on plan
@@ -70,6 +81,7 @@ GET /leads/{id}/activities   # Get lead activities
 ```
 
 **Lead Properties:**
+
 - `id` - Unique identifier
 - `first_name`, `last_name` - Contact name
 - `email`, `phone`, `mobile`, `fax` - Contact info
@@ -92,6 +104,7 @@ GET /deals/{id}/activities   # Get associated activities
 ```
 
 **Deal Properties:**
+
 - `id` - Unique identifier
 - `name` - Deal name
 - `value` - Deal amount
@@ -139,6 +152,7 @@ DELETE /activities/{id}      # Delete activity
 ```
 
 **Activity Types:**
+
 - Call
 - Email
 - Note
@@ -167,6 +181,7 @@ DELETE /custom_fields/{id}   # Delete custom field
 Provides data synchronization similar to mobile device sync functionality.
 
 ### Key Features
+
 - Synchronization layer for keeping local data current
 - Incremental sync to reduce bandwidth
 - Conflict resolution for offline edits
@@ -193,6 +208,7 @@ POST /sync/ack              # Acknowledge sync receipt
 Real-time event streaming for high-volume integrations and event-driven workflows.
 
 ### Features
+
 - Continuous data streams
 - Near real-time updates (seconds latency)
 - Event filtering and subscriptions
@@ -200,6 +216,7 @@ Real-time event streaming for high-volume integrations and event-driven workflow
 - Backpressure handling
 
 ### Event Types
+
 - `lead.created`, `lead.updated`, `lead.deleted`
 - `deal.created`, `deal.updated`, `deal.deleted`
 - `contact.created`, `contact.updated`, `contact.deleted`
@@ -272,6 +289,7 @@ POST /search/deals
 ```
 
 ### Search Features
+
 - Full-text search across text fields
 - Complex filtering with operators
 - Sorting and ordering
@@ -292,21 +310,25 @@ DELETE /apps/{id}           # Uninstall app
 ## Integration Patterns
 
 ### Two-Way Sync
+
 - Sync Sell data with external CRM
 - Maintain data currency in both systems
 - Conflict resolution for concurrent edits
 
 ### Real-Time Webhooks
+
 - Receive immediate notifications of data changes
 - Trigger workflows in external systems
 - Keep dashboards synchronized
 
 ### Analytics Exports
+
 - Export deal and activity data for BI tools
 - Search API for complex reporting queries
 - Data warehouse integration
 
 ### Lead Scoring
+
 - Use custom fields for scoring algorithms
 - Activities trigger re-scoring
 - Integrate with marketing automation
@@ -314,24 +336,28 @@ DELETE /apps/{id}           # Uninstall app
 ## Best Practices
 
 ### API Usage
+
 - Use cursor pagination for large datasets
 - Filter results to reduce data transfer
 - Batch operations where possible
 - Implement exponential backoff for retries
 
 ### Data Synchronization
+
 - Use Sync API for mobile/offline scenarios
 - Cache locally when sync not available
 - Handle merge conflicts gracefully
 - Clean up old sync checkpoints
 
 ### Firehose Integration
+
 - Process events asynchronously
 - Implement idempotent event handlers
 - Monitor for stream lag and backpressure
 - Log all event processing failures
 
 ### Security
+
 - Validate all webhook signatures
 - Encrypt sensitive data in transit
 - Rotate API tokens regularly
@@ -340,18 +366,23 @@ DELETE /apps/{id}           # Uninstall app
 ## Common Use Cases
 
 ### CRM Integration
+
 Sync Sell leads and deals with enterprise CRM systems.
 
 ### Pipeline Analytics
+
 Monitor deal progression and forecast accuracy using Search API.
 
 ### Activity Tracking
+
 Create activities from email, calendar, call logs automatically.
 
 ### Lead Assignment
+
 Implement custom lead routing based on territory or skill.
 
 ### Account-Based Marketing
+
 Connect Sell accounts with marketing campaigns and track engagement.
 
 ## Limitations & Quotas
@@ -365,6 +396,7 @@ Connect Sell accounts with marketing campaigns and track engagement.
 ## Error Handling
 
 **Error Response Format:**
+
 ```json
 {
   "error": {
@@ -381,6 +413,7 @@ Connect Sell accounts with marketing campaigns and track engagement.
 ```
 
 **Common Status Codes:**
+
 - `400 Bad Request` - Invalid input
 - `401 Unauthorized` - Authentication failure
 - `403 Forbidden` - Permission denied
@@ -392,6 +425,7 @@ Connect Sell accounts with marketing campaigns and track engagement.
 ## Client Libraries
 
 SDKs available for:
+
 - Python
 - JavaScript/Node.js
 - Ruby

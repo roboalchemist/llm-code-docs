@@ -1,6 +1,6 @@
-# Source: https://developer.zendesk.com/documentation/api-basics/
-
 # Zendesk Authentication & OAuth - Complete Guide
+
+Source: https://developer.zendesk.com/documentation/api-basics/
 
 Comprehensive guide to securing API access with API tokens and OAuth 2.0.
 
@@ -16,6 +16,7 @@ Zendesk supports two primary authentication mechanisms:
 ### Creating an API Token
 
 **Via Admin Panel:**
+
 1. Go to Admin → Apps and integrations → APIs
 2. Click "Create API Token"
 3. Name the token (descriptive)
@@ -89,6 +90,7 @@ PUT /api/v2/api_tokens/{id}
 ### Overview
 
 OAuth 2.0 is recommended for:
+
 - Third-party applications
 - Mobile apps
 - Web applications with user delegation
@@ -103,7 +105,7 @@ Best for web applications and desktop apps.
 
 **1. Redirect User to Authorization:**
 
-```
+```uri
 https://yoursubdomain.zendesk.com/oauth/authorizations/new?
   client_id=YOUR_CLIENT_ID
   &redirect_uri=https://yourapp.com/oauth/callback
@@ -112,24 +114,25 @@ https://yoursubdomain.zendesk.com/oauth/authorizations/new?
   &state=random_state_value
 ```
 
-**2. User Logs In & Grants Permission**
+### 2. User Logs In & Grants Permission
 
 User sees authorization screen showing:
+
 - Your application name
 - Scopes being requested
 - Option to grant/deny
 
-**3. Authorization Code Returned**
+### 3. Authorization Code Returned
 
 Browser redirects with authorization code:
 
-```
+```uri
 https://yourapp.com/oauth/callback?
   code=auth_code_123
   &state=random_state_value
 ```
 
-**4. Exchange Code for Token**
+### 4. Exchange Code for Token
 
 Backend request:
 
@@ -153,14 +156,14 @@ Response:
 }
 ```
 
-**5. Use Access Token**
+### 5. Use Access Token
 
 ```bash
 curl -H "Authorization: Bearer token_abc123" \
   https://yoursubdomain.zendesk.com/api/v2/tickets
 ```
 
-**6. Refresh Expired Token**
+### 6. Refresh Expired Token
 
 ```bash
 POST https://yoursubdomain.zendesk.com/oauth/tokens
@@ -183,7 +186,7 @@ Response:
 
 For single-page applications (SPAs). Less secure than Authorization Code.
 
-```
+```uri
 https://yoursubdomain.zendesk.com/oauth/authorizations/new?
   client_id=YOUR_CLIENT_ID
   &redirect_uri=https://yourapp.com/callback
@@ -193,7 +196,7 @@ https://yoursubdomain.zendesk.com/oauth/authorizations/new?
 
 Returns token directly in URL:
 
-```
+```uri
 https://yourapp.com/callback#
   access_token=token_123
   &token_type=Bearer
@@ -205,7 +208,7 @@ https://yourapp.com/callback#
 
 Control what access the application has:
 
-```
+```text
 read      # Read-only access to resources
 write     # Create and modify resources
 delete    # Delete resources
@@ -244,7 +247,7 @@ execute   # Execute bulk operations
 
 Get information about current token:
 
-```bash
+```json
 GET /oauth/token_info
 {
   "access_token": "token_123",
@@ -275,14 +278,14 @@ Enhanced security for mobile and desktop apps.
 
 **1. Generate Code Verifier & Challenge:**
 
-```
+```text
 code_verifier = random(43-128 characters)
 code_challenge = base64url(sha256(code_verifier))
 ```
 
 **2. Authorization Request with Challenge:**
 
-```
+```uri
 GET /oauth/authorizations/new?
   client_id=YOUR_CLIENT_ID
   &redirect_uri=https://app.example.com/callback
@@ -343,6 +346,7 @@ When Single Sign-On (SSO) enabled:
 Rate limits apply per user/token:
 
 **Standard Limits:**
+
 - 200 requests per minute for most endpoints
 - 60 requests per minute for Search API
 - 40 requests per minute for Incremental Exports
@@ -471,22 +475,26 @@ const { access_token } = await tokenResponse.json();
 
 ### Common Issues
 
-**"Invalid token"**
+#### "Invalid token"
+
 - Token expired or revoked
 - Incorrect token value
 - Wrong subdomain
 
-**"Unauthorized"**
+#### "Unauthorized"
+
 - Missing Authorization header
 - Malformed header value
 - User not authenticated (OAuth)
 
-**"Invalid redirect_uri"**
+#### "Invalid redirect_uri"
+
 - Mismatched redirect URI
 - Typo in URI
 - Not registered in OAuth client
 
-**"insufficient_scope"**
+#### "insufficient_scope"
+
 - API call requires additional scopes
 - Need to request new scopes in OAuth flow
 - Token doesn't have required permission

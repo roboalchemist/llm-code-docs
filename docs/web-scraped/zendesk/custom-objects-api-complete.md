@@ -1,6 +1,6 @@
-# Source: https://developer.zendesk.com/documentation/custom-data/
-
 # Zendesk Custom Objects API - Complete Reference
+
+Source: https://developer.zendesk.com/documentation/custom-data/
 
 The Custom Objects API enables storage and management of business-specific data within Zendesk. Create custom data structures beyond standard Zendesk objects (tickets, users, organizations).
 
@@ -8,14 +8,16 @@ The Custom Objects API enables storage and management of business-specific data 
 
 ### Custom Objects vs Legacy Custom Objects
 
-**Custom Objects (Recommended)**
+#### Custom Objects (Recommended)
+
 - Modern data structure support
 - Native Zendesk relationships
 - Integrated with triggers, views, Explore
 - Recommended for new implementations
 - Available across all Zendesk products
 
-**Legacy Custom Objects**
+#### Legacy Custom Objects
+
 - Stored in AWS infrastructure
 - Primarily for existing implementations
 - Limited relationship support
@@ -24,19 +26,24 @@ The Custom Objects API enables storage and management of business-specific data 
 ## Core Concepts
 
 ### Custom Object Type
+
 Defines the schema and structure for a type of custom object (like a database table).
 
 **Properties:**
+
 - `key` - Unique identifier for the object type
 - `display_name` - Human-readable name
 - `schema` - Field definitions
 - `created_at`, `updated_at` - Timestamps
 
 ### Custom Object Records
+
 Instances of a custom object type containing actual data.
 
 ### Relationships
+
 Link custom objects to:
+
 - Support tickets
 - Users
 - Organizations
@@ -44,7 +51,9 @@ Link custom objects to:
 - Multiple relationships per record
 
 ### Fields
+
 Define custom object properties with types:
+
 - Text (short strings)
 - Long text (descriptions)
 - Number (integer, decimal)
@@ -95,7 +104,7 @@ POST /custom_objects
 }
 ```
 
-### Custom Object Records
+### Custom Object Records (Endpoints)
 
 ```bash
 GET /custom_objects/{type_key}/records              # List records
@@ -120,7 +129,7 @@ POST /custom_objects/product/records
 }
 ```
 
-### Relationships
+### Relationships (Endpoints)
 
 Link custom objects to tickets and other resources:
 
@@ -133,6 +142,7 @@ DELETE /tickets/{ticket_id}/custom_object_records/{id}  # Unlink record
 ## Field Types & Validation
 
 ### Text Field
+
 Short text strings (single line).
 
 ```json
@@ -145,6 +155,7 @@ Short text strings (single line).
 ```
 
 ### Long Text Field
+
 Multi-line text content.
 
 ```json
@@ -156,6 +167,7 @@ Multi-line text content.
 ```
 
 ### Number Field
+
 Integer or decimal values.
 
 ```json
@@ -167,6 +179,7 @@ Integer or decimal values.
 ```
 
 ### Date/DateTime Field
+
 Calendar dates or timestamps.
 
 ```json
@@ -177,6 +190,7 @@ Calendar dates or timestamps.
 ```
 
 ### Dropdown (Single Select)
+
 Predefined list of options.
 
 ```json
@@ -191,6 +205,7 @@ Predefined list of options.
 ```
 
 ### Multiselect
+
 Multiple selection from predefined options.
 
 ```json
@@ -205,6 +220,7 @@ Multiple selection from predefined options.
 ```
 
 ### Boolean Field
+
 True/false values.
 
 ```json
@@ -215,6 +231,7 @@ True/false values.
 ```
 
 ### Record Relationship
+
 Link to other custom objects or Zendesk objects.
 
 ```json
@@ -350,28 +367,33 @@ GET /custom_objects/product/records?limit=50&offset=0
 ## Integration with Zendesk Features
 
 ### Triggers
+
 Create triggers that reference custom object data:
 
-```
+```text
 IF ticket subject contains [custom_object_field]
 THEN create/update related custom object
 ```
 
 ### Automations
+
 Time-based custom object operations:
 
-```
+```text
 IF ticket is stale
 THEN update related order status to "abandoned"
 ```
 
 ### Explore Analytics
+
 Report on custom object data alongside ticket metrics.
 
 ### Web Widget
+
 Display custom object information in widget for context.
 
 ### Views & Reports
+
 Filter and display tickets by related custom object properties.
 
 ## Relationships to Zendesk Objects
@@ -427,24 +449,28 @@ POST /custom_objects/order/records/{id}/timeline
 ## Best Practices
 
 ### Schema Design
+
 - Use descriptive field names
 - Define appropriate field types
 - Add helpful descriptions
 - Plan for future extensions
 
 ### Data Integrity
+
 - Validate data before creation
 - Enforce unique constraints where needed
 - Use relationships for data consistency
 - Clean up orphaned records
 
 ### Performance
+
 - Index frequently filtered fields
 - Use pagination for large result sets
 - Cache custom object queries
 - Batch operations where possible
 
 ### Security
+
 - Restrict access via roles/permissions
 - Audit sensitive field changes
 - Validate user input

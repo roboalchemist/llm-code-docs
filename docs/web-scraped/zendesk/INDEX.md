@@ -9,6 +9,7 @@ Zendesk is a comprehensive customer service and support platform offering integr
 ## Platform Overview
 
 Zendesk Sunshine is the open, flexible platform built on AWS enabling:
+
 - Ticketing system (Support) for customer support
 - Help Center for knowledge bases and communities
 - Live Chat and messaging for conversational support
@@ -25,6 +26,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 ### Core Ticketing APIs
 
 **Ticketing API** - Manage support tickets and related data
+
 - Create, read, update, delete tickets
 - User and organization management
 - Group and queue management
@@ -36,6 +38,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 - File: `ticketing-api-complete.md`
 
 **Support API** (Same as Ticketing)
+
 - Full REST API for all Support features
 - Batch operations for bulk updates
 - Ticket search and filtering
@@ -44,6 +47,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 ### Sales/CRM APIs
 
 **Sell API** - Sales CRM and pipeline management
+
 - **Core API** (v3) - RESTful CRUD operations
   - Leads, deals, contacts, organizations
   - Activities (calls, emails, meetings)
@@ -68,6 +72,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 ### Chat & Messaging APIs
 
 **Chat API** - Live chat functionality
+
 - Real-time chat conversations
 - Agent availability management
 - Visitor tracking and information
@@ -76,18 +81,21 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 - Conversation history and transcripts
 
 **Real-Time Chat API** - WebSocket-based real-time messaging
+
 - Bi-directional message streaming
 - Typing indicators and presence
 - Message read receipts
 - Connection lifecycle management
 
 **Chat Conversations API** - Agent-side operations
+
 - Agent interaction management
 - Chat transfers between agents
 - Tag management for chats
 - Agent invitation and participation
 
 **Conversations API** (Unified Messaging) - Multi-channel support
+
 - Unify messaging across channels
 - Web chat, mobile, SMS, email, social
 - Participant management
@@ -95,6 +103,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 - Conversation lifecycle
 
 **AI Agents API** - Conversational AI automation
+
 - Natural language understanding
 - Automated response generation
 - Multi-turn conversations
@@ -105,6 +114,7 @@ Zendesk Sunshine is the open, flexible platform built on AWS enabling:
 - Custom model configuration
 
 **Answer Bot API** - Help Center suggestions
+
 - Analyze customer inquiries
 - Recommend relevant articles
 - Track suggestion effectiveness
@@ -115,6 +125,7 @@ Files: `chat-ai-messaging-apis.md`
 ### Voice/Telephony API
 
 **Voice API** (Talk API) - Call center integration
+
 - Inbound and outbound call management
 - Phone number provisioning
 - Call recording and transcription
@@ -134,6 +145,7 @@ File: `voice-api-complete.md`
 ### Help Center API
 
 **Help Center API** - Knowledge base management
+
 - Article creation and management
 - Section and category organization
 - Multi-language support (translations)
@@ -149,6 +161,7 @@ File: `additional-apis-reference.md` (Help Center section)
 ### Custom Data APIs
 
 **Custom Objects API** - Store business-specific data
+
 - Create custom object types with schemas
 - Define relationships to Zendesk objects
 - Link to tickets, users, organizations
@@ -160,6 +173,7 @@ File: `additional-apis-reference.md` (Help Center section)
 - Zendesk Explore analytics integration
 
 **Profiles API** - Customer profile management
+
 - Build unified customer views
 - Link external data sources
 - Create relationships with Zendesk objects
@@ -170,6 +184,7 @@ File: `custom-objects-api-complete.md`
 ### Integration & Automation APIs
 
 **Webhooks API** - Event-driven integrations
+
 - Subscribe to ticket, user, chat events
 - Automatic webhook delivery
 - Webhook signing and verification
@@ -180,6 +195,7 @@ File: `custom-objects-api-complete.md`
 - Event types: ticket, user, organization, chat, comment
 
 **Integration Services (ZIS) APIs** - Event-driven automation
+
 - **ZIS Configs API** - Integration configurations
 - **Connections API** - External service connections
 - **ZIS Inbound Webhooks API** - Receive external webhooks
@@ -188,6 +204,7 @@ File: `custom-objects-api-complete.md`
 - **Trigger Events Reference** - Available integration events
 
 **Amazon EventBridge** - AWS event streaming
+
 - Route Zendesk events to AWS
 - Integration with AWS services
 - Cross-account event routing
@@ -197,21 +214,25 @@ File: `additional-apis-reference.md`
 ### Apps Framework
 
 **Apps Core API** - App lifecycle and management
+
 - App installation and configuration
 - API access from app context
 - Storage for app state
 - Event subscriptions
 
 **Apps Support API** - Support product integration
+
 - Access to ticket, user, organization data
 - UI component rendering
 - Modal and notification support
 
 **Apps Chat API** - Chat product integration
+
 - Access to conversation data
 - Visitor information access
 
 **Apps Sell API** - Sell product integration
+
 - Lead and deal access
 - Activity management
 
@@ -220,6 +241,7 @@ File: `apps.md`
 ### Authentication & Security
 
 **OAuth 2.0** - Third-party authorization
+
 - Authorization Code flow (recommended)
 - Implicit flow (legacy)
 - PKCE support for mobile apps
@@ -228,11 +250,13 @@ File: `apps.md`
 - OAuth client management
 
 **API Token Authentication** - Simple server-to-server
+
 - Token creation and management
 - Basic auth with email/token
 - Token revocation and rotation
 
 **Two-Factor Authentication (2FA)** - Additional security
+
 - 2FA code requirement handling
 - SSO integration support
 
@@ -241,18 +265,21 @@ File: `authentication-oauth-guide.md`
 ### Admin & Account APIs
 
 **Status API** - System status and maintenance
+
 - Overall system status
 - Incident tracking
 - Maintenance windows
 - Component-level status
 
 **Account Settings** - Account administration
+
 - Account information and features
 - Audit logs for all changes
 - Custom roles and permissions
 - Brand management
 
 **Audit Logs** - Track all administrative actions
+
 - Changes to configuration
 - User access logs
 - API usage tracking
@@ -263,6 +290,7 @@ File: `additional-apis-reference.md`
 ### Search & Analytics APIs
 
 **Search API** - Powerful cross-resource search
+
 - Unified search across objects
 - Advanced query syntax (operators, filters)
 - Full-text search capability
@@ -273,6 +301,7 @@ File: `additional-apis-reference.md`
 - Search in tickets, users, organizations, articles
 
 **Explore API** - Analytics and reporting
+
 - Custom report creation
 - Pre-built report templates
 - Report scheduling
@@ -285,6 +314,7 @@ File: `additional-apis-reference.md`
 ### Routing & Omnichannel
 
 **Omnichannel Routing APIs** - Channel-aware routing
+
 - Routing attributes configuration
 - Skill-based routing
 - Agent availability
@@ -293,6 +323,7 @@ File: `additional-apis-reference.md`
 - Priority routing
 
 **Workforce Management (WFM)** - Agent scheduling
+
 - Schedule management
 - Shift planning
 - Adherence tracking
@@ -302,7 +333,8 @@ File: `additional-apis-reference.md` (Omnichannel section)
 
 ### Mobile & Web SDKs
 
-**Web Widget APIs**
+#### Web Widget APIs
+
 - Web Widget (Messaging) API - Embedded messaging widget
 - Web Widget (Classic) API - Legacy widget support
 - Widget customization and theming
@@ -310,7 +342,8 @@ File: `additional-apis-reference.md` (Omnichannel section)
 - Pre-chat forms
 - Proactive messaging
 
-**Mobile SDKs**
+#### Mobile SDKs
+
 - **Android SDK** - Native Android support
 - **iOS SDK** - Native iOS support
 - **Unity SDK** - Game engine support
@@ -455,6 +488,7 @@ File: `additional-apis-reference.md` (Omnichannel section)
 ### For Different Use Cases
 
 **Building Support Integrations:**
+
 1. Start with `api-basics.md` for fundamentals
 2. Review `authentication-oauth-guide.md` for auth
 3. Explore `ticketing-api-complete.md` for main API
@@ -462,6 +496,7 @@ File: `additional-apis-reference.md` (Omnichannel section)
 5. See `additional-apis-reference.md` for Help Center
 
 **Building Sales Integrations:**
+
 1. Review `authentication-oauth-guide.md`
 2. Study `sales-crm-api-complete.md` (Core API first)
 3. For real-time: Use Firehose API
@@ -469,6 +504,7 @@ File: `additional-apis-reference.md` (Omnichannel section)
 5. For reporting: Check Search API section
 
 **Building Chat/Messaging Solutions:**
+
 1. Start with `chat-ai-messaging-apis.md`
 2. Review `web-widget-sdk.md` for web embedding
 3. Check mobile SDK guides for apps
@@ -476,6 +512,7 @@ File: `additional-apis-reference.md` (Omnichannel section)
 5. Study AI Agents for automation
 
 **Multi-Channel Integrations:**
+
 1. Review `chat-ai-messaging-apis.md` (Conversations API)
 2. Check `voice-api-complete.md` for phone
 3. Explore `custom-objects-api-complete.md` for data
@@ -504,6 +541,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ## API Best Practices
 
 ### Performance
+
 - Use cursor pagination for large datasets
 - Implement request caching where appropriate
 - Batch operations for bulk changes
@@ -511,6 +549,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 - Use Search API filters to reduce results
 
 ### Reliability
+
 - Implement exponential backoff for retries
 - Handle all HTTP error codes gracefully
 - Log all API interactions
@@ -518,6 +557,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 - Set up alerts for rate limit approaches
 
 ### Security
+
 - Use OAuth for third-party applications
 - Rotate API tokens every 90 days
 - Store credentials securely (no hardcoding)
@@ -526,6 +566,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 - Implement proper CORS for browser apps
 
 ### Integration Patterns
+
 - Use webhooks for async events (not polling)
 - Design idempotent operations
 - Handle partial failures gracefully
@@ -535,12 +576,14 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ## Key Resources
 
 ### Official Documentation
+
 - [Zendesk Developer Hub](https://developer.zendesk.com/)
 - [API Reference](https://developer.zendesk.com/api-reference/)
 - [Documentation Hub](https://developer.zendesk.com/documentation/)
 - [Developer Community](https://support.zendesk.com/hc/en-us/community/topics)
 
 ### SDKs & Client Libraries
+
 - JavaScript/Node.js SDK
 - Python SDK
 - Ruby SDK
@@ -550,6 +593,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 - C# SDK
 
 ### Related Tools
+
 - [Postman Collection](https://developer.zendesk.com/api-reference/) - Pre-built requests
 - [Zendesk CLI](https://developer.zendesk.com/documentation/apps/getting-started/using-the-zendesk-cli/) - Development tool
 - [Webhooks Tool](https://webhook.site/) - Test webhooks
@@ -577,6 +621,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ## Latest Updates
 
 ### February 2024 Refresh
+
 - Added comprehensive ticketing-api-complete.md
 - Added complete sales-crm-api-complete.md
 - Added voice-api-complete.md
@@ -601,7 +646,9 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ## Architecture & Design Patterns
 
 ### Zendesk Sunshine Platform
+
 Built on AWS with:
+
 - RESTful API design
 - JSON request/response format
 - Event-driven architecture
@@ -610,6 +657,7 @@ Built on AWS with:
 - Global infrastructure
 
 ### Integration Approaches
+
 1. **Polling** - Regular API queries (not recommended)
 2. **Webhooks** - Event notifications (recommended)
 3. **Sync API** - Bidirectional data sync

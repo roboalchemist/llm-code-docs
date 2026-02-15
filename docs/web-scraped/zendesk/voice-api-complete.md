@@ -1,12 +1,13 @@
-# Source: https://developer.zendesk.com/documentation/voice/
-
 # Zendesk Voice/Talk API - Complete Reference
+
+Source: https://developer.zendesk.com/documentation/voice/
 
 The Zendesk Voice API (also called Talk API) enables integration with telephony systems for call center automation, call recording, and ticket creation from phone interactions.
 
 ## Overview
 
 Zendesk Voice provides:
+
 - Inbound/outbound call management
 - Call recording and transcription
 - Voicemail handling
@@ -18,24 +19,31 @@ Zendesk Voice provides:
 ## Core Concepts
 
 ### Phone Numbers
+
 Zendesk-provided or custom phone numbers for receiving calls.
 
 ### Phone Lines
+
 Collections of phone numbers grouped by location or team.
 
 ### IVR (Interactive Voice Response)
+
 Automated call handling with menu options and routing.
 
 ### Agents
+
 Support staff who answer calls and create tickets from interactions.
 
 ### Call Recordings
+
 Audio files of conversations for training and compliance.
 
 ### Voicemails
+
 Messages left when agents unavailable.
 
 ### Phone Tags
+
 Categorization of calls and voicemails.
 
 ## Authentication
@@ -49,7 +57,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 
 ## API Endpoints
 
-### Phone Numbers
+### Phone Numbers (Provisioning)
 
 ```bash
 GET /phone_numbers                    # List phone numbers
@@ -63,6 +71,7 @@ PUT /phone_numbers/{id}/ivr          # Configure IVR
 ```
 
 **Phone Number Properties:**
+
 - `id` - Unique identifier
 - `number` - Phone number with country code
 - `display_name` - Display name for calls
@@ -72,7 +81,7 @@ PUT /phone_numbers/{id}/ivr          # Configure IVR
 - `capabilities` - Inbound, outbound, SMS, etc.
 - `created_at`, `updated_at` - Timestamps
 
-### Phone Lines
+### Phone Lines (Management)
 
 ```bash
 GET /phone_lines                      # List phone lines
@@ -82,7 +91,7 @@ PUT /phone_lines/{id}                # Update line
 DELETE /phone_lines/{id}             # Delete line
 ```
 
-### Call Logs
+### Call Logs (History)
 
 ```bash
 GET /phone_calls                      # List call history
@@ -92,6 +101,7 @@ POST /phone_calls/{id}/create_ticket # Create ticket from call
 ```
 
 **Call Log Properties:**
+
 - `id` - Call identifier
 - `from` - Caller phone number
 - `to` - Called phone number
@@ -104,7 +114,7 @@ POST /phone_calls/{id}/create_ticket # Create ticket from call
 - `transcription` - Call transcript (if available)
 - `tags` - Associated tags
 
-### Voicemails
+### Voicemails (Messages)
 
 ```bash
 GET /phone_voicemails                # List voicemails
@@ -115,6 +125,7 @@ POST /phone_voicemails/{id}/create_ticket  # Create ticket
 ```
 
 **Voicemail Properties:**
+
 - `id` - Voicemail identifier
 - `from` - Caller phone number
 - `to` - Voicemail box number
@@ -125,7 +136,7 @@ POST /phone_voicemails/{id}/create_ticket  # Create ticket
 - `status` - New, read, archived
 - `tags` - Associated tags
 
-### Call Recordings
+### Call Recordings (Audio Files)
 
 ```bash
 GET /phone_recordings                # List recordings
@@ -137,6 +148,7 @@ GET /phone_calls/{id}/recordings    # Get recordings for call
 ```
 
 **Recording Properties:**
+
 - `id` - Recording identifier
 - `call_id` - Associated call
 - `duration` - Recording length
@@ -146,7 +158,7 @@ GET /phone_calls/{id}/recordings    # Get recordings for call
 - `transcription` - Text version
 - `created_at` - Timestamp
 
-### IVR Configuration
+### IVR Configuration (Menus)
 
 ```bash
 GET /phone_numbers/{id}/ivr         # Get IVR settings
@@ -158,6 +170,7 @@ PUT /phone_ivr_menus/{id}          # Update menu
 ```
 
 **IVR Menu Structure:**
+
 ```json
 {
   "ivr_menu": {
@@ -196,6 +209,7 @@ PUT /agents/{id}/phone_status       # Update agent status
 ```
 
 **Agent Status Values:**
+
 - `available` - Ready to take calls
 - `unavailable` - Not taking calls
 - `on_call` - Currently on call
@@ -216,6 +230,7 @@ DELETE /phone_queues/{id}/members/{agent_id}  # Remove from queue
 ```
 
 **Queue Properties:**
+
 - `id` - Queue identifier
 - `name` - Queue name
 - `members` - Agent IDs in queue
@@ -381,6 +396,7 @@ GET /phone_calls/{id}
 ### Ticket Context
 
 Call information automatically available in ticket:
+
 - Caller phone number
 - Call duration
 - Call recording link
@@ -390,6 +406,7 @@ Call information automatically available in ticket:
 ### Automatic Ticket Creation
 
 Configure rules to create tickets from:
+
 - Inbound calls (on answer)
 - Missed calls
 - Voicemails
@@ -398,6 +415,7 @@ Configure rules to create tickets from:
 ### Call Logging
 
 Manually or automatically log calls to ticket:
+
 ```bash
 POST /tickets/{id}/comments
 {
@@ -423,24 +441,28 @@ Enables integration of custom phone systems while maintaining Zendesk integratio
 ## Best Practices
 
 ### Call Recording Compliance
+
 - Obtain consent before recording (varies by jurisdiction)
 - Store recordings securely
 - Implement retention policies
 - Handle deletion requests promptly
 
 ### Agent Training
+
 - Review call recordings regularly
 - Use transcriptions for QA
 - Identify common customer issues
 - Provide coaching feedback
 
 ### Performance Optimization
+
 - Monitor queue metrics
 - Adjust staffing based on demand
 - Implement callback systems
 - Route to specialized agents
 
 ### Data Management
+
 - Retain recordings per compliance requirements
 - Archive old call logs
 - Implement data retention policies

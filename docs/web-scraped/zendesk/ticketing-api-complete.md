@@ -2,12 +2,16 @@
 
 # Zendesk Ticketing API - Complete Reference
 
+**Note**: Complete reference documentation for the Zendesk Ticketing API
+
 The Zendesk Ticketing API enables programmatic access to create, read, update, and delete support tickets and related data. Built on REST principles with JSON responses.
 
 ## Core Concepts
 
 ### Tickets
+
 Tickets represent customer support requests. Each ticket contains:
+
 - Subject and description
 - Status (new, open, pending, hold, solved, closed)
 - Priority (urgent, high, normal, low)
@@ -19,23 +23,29 @@ Tickets represent customer support requests. Each ticket contains:
 - Attachments for file support
 
 ### Users
+
 Represents both customers and agents in the system:
+
 - End users (customers)
 - Agents (support staff)
 - Admin users
 - Organizations for grouping users
 
 ### Organizations
+
 Groups of users for:
+
 - Account management
 - Bulk user operations
 - Organization-level custom fields
 - SLA policy assignment
 
 ### Groups
+
 Collections of agents for ticket routing and assignment.
 
 ### Automation & Workflow
+
 - **Triggers**: Automated responses to ticket events
 - **Automations**: Time-based rule execution
 - **Macros**: Bulk ticket operations
@@ -45,7 +55,9 @@ Collections of agents for ticket routing and assignment.
 ## Getting Started
 
 ### Authentication
+
 Two methods supported:
+
 - **API Token**: Set via Basic Auth in Authorization header
 - **OAuth 2.0**: For third-party applications and integrations
 
@@ -62,6 +74,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 **Methods:** Standard REST (GET, POST, PUT, DELETE)
 
 **Rate Limiting:**
+
 - 200 requests per minute for most endpoints
 - Search requests: 60 per minute
 - Batch operations: Custom limits
@@ -69,6 +82,7 @@ curl -H "Authorization: Bearer YOUR_API_TOKEN" \
 ### Response Format
 
 All responses are JSON:
+
 ```json
 {
   "ticket": {
@@ -82,7 +96,8 @@ All responses are JSON:
 
 ## Main API Resources
 
-### Tickets
+### Tickets API
+
 - List tickets with filtering and pagination
 - Create single or batch tickets
 - Update ticket properties
@@ -93,6 +108,7 @@ All responses are JSON:
 - Bulk ticket operations (update many, delete many)
 
 **Key Endpoints:**
+
 - `GET /tickets` - List all tickets
 - `POST /tickets` - Create ticket
 - `GET /tickets/{id}` - Get specific ticket
@@ -101,7 +117,8 @@ All responses are JSON:
 - `GET /tickets/{id}/comments` - Get comments
 - `POST /tickets/{id}/comments` - Add comment
 
-### Users
+### Users API
+
 - List, create, update, delete users
 - Manage user fields and custom data
 - Assign users to organizations
@@ -110,45 +127,52 @@ All responses are JSON:
 - Export user data
 
 **Key Endpoints:**
+
 - `GET /users` - List users
 - `POST /users` - Create user
 - `GET /users/{id}` - Get user
 - `PUT /users/{id}` - Update user
 - `DELETE /users/{id}` - Delete user
 
-### Organizations
+### Organizations API
+
 - Create and manage organization records
 - Assign users to organizations
 - Set organization-specific custom fields
 - Organization search and filtering
 
 **Key Endpoints:**
+
 - `GET /organizations` - List organizations
 - `POST /organizations` - Create organization
 - `GET /organizations/{id}` - Get organization
 - `PUT /organizations/{id}` - Update organization
 - `DELETE /organizations/{id}` - Delete organization
 
-### Groups
+### Groups API
+
 - List agent groups
 - Create and manage groups
 - Assign agents to groups
 - Define group routing rules
 
 **Key Endpoints:**
+
 - `GET /groups` - List groups
 - `POST /groups` - Create group
 - `GET /groups/{id}` - Get group
 - `PUT /groups/{id}` - Update group
 - `DELETE /groups/{id}` - Delete group
 
-### Views
+### Views API
+
 - Create custom ticket views (saved searches)
 - Apply conditions and filters
 - Access preview data
 - Execute view queries
 
 **Key Endpoints:**
+
 - `GET /views` - List views
 - `POST /views` - Create view
 - `GET /views/{id}` - Get view details
@@ -156,60 +180,70 @@ All responses are JSON:
 - `PUT /views/{id}` - Update view
 - `DELETE /views/{id}` - Delete view
 
-### Macros
+### Macros API
+
 - Create reusable ticket operations
 - Bulk ticket updates via macros
 - Macro execution tracking
 - Category management
 
 **Key Endpoints:**
+
 - `GET /macros` - List macros
 - `POST /macros` - Create macro
 - `POST /macros/{id}/apply` - Execute macro
 - `PUT /macros/{id}` - Update macro
 - `DELETE /macros/{id}` - Delete macro
 
-### Triggers
+### Triggers API
+
 - Automated responses based on ticket conditions
 - Event-based execution
 - Action definitions (email, webhook, field updates)
 
 **Key Endpoints:**
+
 - `GET /triggers` - List triggers
 - `POST /triggers` - Create trigger
 - `PUT /triggers/{id}` - Update trigger
 - `DELETE /triggers/{id}` - Delete trigger
 
-### Automations
+### Automations API
+
 - Time-based rule execution
 - Conditions and actions
 - Stale ticket handling
 - Priority escalation
 
 **Key Endpoints:**
+
 - `GET /automations` - List automations
 - `POST /automations` - Create automation
 - `PUT /automations/{id}` - Update automation
 - `DELETE /automations/{id}` - Delete automation
 
-### SLA Policies
+### SLA Policies API
+
 - Define service level agreements
 - Priority and condition matching
 - Response and resolution times
 - Breach tracking and notifications
 
 **Key Endpoints:**
+
 - `GET /sla_policies` - List SLA policies
 - `POST /sla_policies` - Create SLA policy
 - `PUT /sla_policies/{id}` - Update SLA policy
 - `DELETE /sla_policies/{id}` - Delete SLA policy
 
-### Custom Fields
+### Custom Fields API
+
 - Define custom field schemas
 - Apply custom fields to tickets
 - Field validation and types
 
 **Key Endpoints:**
+
 - `GET /ticket_fields` - List custom fields
 - `POST /ticket_fields` - Create custom field
 - `PUT /ticket_fields/{id}` - Update custom field
@@ -272,6 +306,7 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Pagination
 
 ### Offset Pagination
+
 - Use `page` and `per_page` parameters
 - Limited to 1000 records per page
 - Best for small datasets
@@ -281,6 +316,7 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ```
 
 ### Cursor Pagination
+
 - Use `cursor` parameter for large datasets
 - More efficient for pagination
 - Returns `after_cursor` for next page
@@ -288,6 +324,7 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Error Handling
 
 **Error Response Format:**
+
 ```json
 {
   "error": "Invalid request body",
@@ -296,6 +333,7 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ```
 
 **Common Status Codes:**
+
 - `400 Bad Request` - Invalid parameters
 - `401 Unauthorized` - Authentication failure
 - `403 Forbidden` - Permission denied
@@ -306,26 +344,31 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Best Practices
 
 ### Asynchronous Operations
+
 - Create tickets asynchronously for better performance
 - Use job status API to poll for completion
 - Reduces response time in high-volume scenarios
 
 ### Batch Operations
+
 - Use batch endpoints for bulk updates
 - Maximum 100 items per batch
 - More efficient than individual requests
 
 ### Field Validation
+
 - Use custom fields API to get field definitions
 - Validate enum values before submission
 - Handle date/time formats correctly
 
 ### Search Optimization
+
 - Use cursor pagination for large result sets
 - Filter by date ranges to reduce result size
 - Leverage indexed fields for faster queries
 
 ### Error Recovery
+
 - Implement exponential backoff for retries
 - Handle 429 (rate limit) responses gracefully
 - Log all API errors for debugging
@@ -333,21 +376,25 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Integration Patterns
 
 ### Webhook Integration
+
 - Receive real-time ticket events
 - Update external systems on ticket changes
 - Trigger external workflows
 
 ### Chat Integration
+
 - Create tickets from chat conversations
 - Link tickets to chat transcripts
 - Escalate chat to tickets
 
 ### Email Integration
+
 - Create tickets from email
 - Reply to tickets via email
 - Forward ticket comments via email
 
 ### Side Conversations
+
 - Create private conversations on tickets
 - Include external email addresses
 - Collaborate without customer visibility
@@ -355,21 +402,25 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Advanced Topics
 
 ### Custom Objects Integration
+
 - Link custom objects to tickets
 - Enrich ticket data with custom object context
 - Query related custom object data
 
 ### JIRA Integration
+
 - Sync JIRA issues to Zendesk tickets
 - Two-way issue synchronization
 - Custom field mapping
 
 ### On-Behalf-Of Operations
+
 - Create/update tickets on behalf of end users
 - Maintains proper requester attribution
 - OAuth requirement
 
 ### CORS (Cross-Origin Requests)
+
 - Client-side API requests from web widgets
 - Restricted endpoints for browser security
 - CORS headers configuration
@@ -377,6 +428,7 @@ curl -X POST https://yoursubdomain.zendesk.com/api/v2/tickets/35436/comments \
 ## Client Libraries
 
 Official SDKs available for:
+
 - Python
 - JavaScript/Node.js
 - Java
