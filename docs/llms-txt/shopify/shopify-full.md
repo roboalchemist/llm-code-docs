@@ -31,7 +31,8 @@ When you initialize an app using the CLI (shopify app init CLI command) you will
 
 You can use scopes to configure the scopes that your app requires, and webhook subscriptions to detail out what events your app should receive.
 
-```
+```text
+
 name = "Example App"
 client_id = "a61950a2cbd5f32876b0b55587ec7a27"
 application_url = "https://www.app.example.com/"
@@ -86,63 +87,79 @@ The [GraphQL Admin API](https://shopify.dev/docs/api/admin-graphql) lets you bui
 
 The Admin GraphQL endpoint URL depends on your shop name and the API version:
 
-```
+```javascript
+
 https://{shop-name}.myshopify.com/admin/api/2025-01/graphql.json
+
 ```
 
 #### Authentication
 
 Authentication requires both access tokens and specific access scopes depending what resource you need to access.
 
-- All GraphQL Admin API queries require a valid Shopify access token.
-- Public and custom apps created in the Partner Dashboard generate tokens using OAuth, and custom apps made in the Shopify admin are authenticated in the Shopify admin.
-- Include your token as a `X-Shopify-Access-Token` header on all API queries.
-- Your app will need the correct [access scopes](https://shopify.dev/api/usage/access-scopes).
+* All GraphQL Admin API queries require a valid Shopify access token.
+* Public and custom apps created in the Partner Dashboard generate tokens using OAuth, and custom apps made in the Shopify admin are authenticated in the Shopify admin.
+* Include your token as a `X-Shopify-Access-Token` header on all API queries.
+* Your app will need the correct [access scopes](https://shopify.dev/api/usage/access-scopes).
 
 #### Example queries
 
 Get shop information:
 
-```
+```text
+
 query { shop { id name email domain createdAt updatedAt } }
+
 ```
 
 Get products:
 
-```
+```text
+
 query { products(first: 10) { edges { node { id title description variants(first: 5) { edges { node { id price sku } } } } } } }
+
 ```
 
 Get orders:
 
-```
+```text
+
 query { orders(first: 10) { edges { node { id name totalPrice createdAt lineItems(first: 5) { edges { node { title quantity } } } } } } }
+
 ```
 
 Get customers:
 
-```
+```text
+
 query { customers(first: 10) { edges { node { id firstName lastName email ordersCount } } } }
+
 ```
 
 #### Example mutations
 
 Create a product:
 
-```
+```text
+
 mutation { productCreate(input: { title: "New Product" bodyHtml: "Good Product" vendor: "Vendor Name" productType: "Type" tags: "tag1, tag2" variants: [{ price: "19.99" sku: "SKU123" }] }) { product { id title } userErrors { field message } } }
+
 ```
 
 Update a product:
 
-```
+```text
+
 mutation { productUpdate(input: { id: "gid://shopify/Product/1234567890" title: "Updated Product Title" }) { product { id title } userErrors { field message } } }
+
 ```
 
 Delete a product:
 
-```
+```text
+
 mutation { productDelete(id: "gid://shopify/Product/1234567890") { deletedProductId userErrors { field message } } }
+
 ```
 
 #### Best practices
@@ -158,8 +175,10 @@ The [Shopify CLI](https://shopify.dev/docs/api/shopify-cli) is a command-line in
 
 The general syntax for CLI commands is:
 
-```
+```text
+
 shopify [topic] [command]
+
 ```
 
 Here are some examples of common commands:
@@ -197,32 +216,38 @@ We base our design guidelines on some basic principles, so you can build apps th
 
 #### Setup Polaris Web Components
 
-**Required script tag:**
+##### Required script tag:
+
 ```html
 <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+
 ```
 
-**For TypeScript projects:**
+##### For TypeScript projects:
+
 ```bash
 npm install -D @shopify/polaris-types@latest
+
 ```
 
-**Configure TypeScript:**
+##### Configure TypeScript:
+
 ```json
 {
   "compilerOptions": {
     "types": ["@shopify/polaris-types"]
   }
 }
+
 ```
 
-**For React projects:**
+##### For React projects:
 
 See our [App template](https://github.com/Shopify/shopify-app-template-react-router).
 
 Getting set up with [React router](https://github.com/Shopify/shopify-app-js/blob/main/packages/apps/shopify-app-react-router/src/react/components/AppProvider/AppProvider.tsx#L111-L126)
 
-#### Best practices
+#### Best practices (1)
 
 * **Follow accessibility guidelines**: [Ensure your app is accessible](https://shopify.dev/docs/apps/build/accessibility); Polaris components are designed with accessibility in mind.
 * **Keep design consistent**: Stick to the guidelines provided in the Polaris documentation to maintain a cohesive user experience.
@@ -241,6 +266,7 @@ Box components provide layout and spacing control for content grouping. They're 
   <s-heading>Content inside a box</s-heading>
   <s-text>Additional text content goes here</s-text>
 </s-box>
+
 ```
 
 ##### Page Layout
@@ -258,6 +284,7 @@ Pages are structured using s-page as the main container with sections for conten
     <s-text>Credit card information</s-text>
   </s-section>
 </s-page>
+
 ```
 
 ##### Grid Layout
@@ -275,6 +302,7 @@ Grid components are used for creating responsive layouts with consistent spacing
     <s-text>Track your store performance.</s-text>
   </s-box>
 </s-grid>
+
 ```
 
 ##### Button
@@ -292,6 +320,7 @@ Buttons are used in Polaris primarily for actions, such as "Add", "Close", "Canc
 
 <!-- Button with href for navigation -->
 <s-button href="/products" target="_self">View products</s-button>
+
 ```
 
 ##### Text Field
@@ -321,6 +350,7 @@ Text fields are used as input fields that merchants can type into. They support 
   prefix="$"
   min="0">
 </s-number-field>
+
 ```
 
 ##### Checkbox
@@ -338,6 +368,7 @@ Checkboxes are most commonly used in Polaris to give merchants a way to make a r
   details="Ensure all criteria are met before proceeding"
   checked>
 </s-checkbox>
+
 ```
 
 ##### Choice List
@@ -354,35 +385,43 @@ Choice lists are used to present options where merchants must make a single sele
   <s-choice value="optional">Optional</s-choice>
   <s-choice value="required">Required</s-choice>
 </s-choice-list>
+
 ```
 
 ##### Additional Common Components
 
 **Badge**: Used to highlight status or provide quick visual context.
+
 ```html
 <s-badge tone="success">Active</s-badge>
 <s-badge tone="warning">Pending</s-badge>
 <s-badge tone="critical">Error</s-badge>
 <s-badge color="strong" size="large">Featured</s-badge>
+
 ```
 
 **Banner**: Used for important messaging that affects the entire page or section.
+
 ```html
 <s-banner heading="Order archived" tone="info" dismissible>
   This order was archived on March 7, 2017 at 3:12pm EDT.
 </s-banner>
+
 ```
 
 **Modal**: Used for focused tasks that require user attention.
+
 ```html
 <s-modal heading="Delete product" size="small">
   <s-text>Are you sure you want to delete this product? This action cannot be undone.</s-text>
   <s-button variant="primary" tone="critical" slot="primary-action">Delete</s-button>
   <s-button variant="secondary" slot="secondary-actions">Cancel</s-button>
 </s-modal>
+
 ```
 
 **Stack**: Used for flexible layout with consistent spacing.
+
 ```html
 <s-stack direction="block" gap="base">
   <s-heading>Customer information</s-heading>
@@ -394,6 +433,7 @@ Choice lists are used to present options where merchants must make a single sele
   <s-button variant="primary">Save</s-button>
   <s-button variant="secondary">Cancel</s-button>
 </s-stack>
+
 ```
 
 ### Polaris
@@ -411,11 +451,13 @@ We base our design guidelines on some basic principles, so you can build apps th
 
 #### Install Polaris
 
-```
+```text
+
 npm install @shopify/polaris
+
 ```
 
-#### Best practices
+#### Best practices (2)
 
 * **Use components**: Always use Polaris components for consistency and accessibility.
 * **Follow accessibility guidelines**: [Ensure your app is accessible](https://shopify.dev/docs/apps/build/accessibility); Polaris components are designed with accessibility in mind.
@@ -430,7 +472,8 @@ You can find all the Polaris components on [polaris.shopify.com](https://polaris
 
 Cards are used in Polaris to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 
-```
+```text
+
 import {Card, Text} from '@shopify/polaris';
 import React from 'react';
 
@@ -444,13 +487,15 @@ function CardDefault() {
   );
 
 }
+
 ```
 
 ##### Page
 
 Pages are used in Polaris to build the outer wrapper of a page, including the page title and associated actions.
 
-```
+```text
+
 import {Page, Badge, LegacyCard} from '@shopify/polaris';
 import React from 'react';
 
@@ -497,13 +542,15 @@ function PageExample() {
     </Page>
   );
 }
+
 ```
 
 ##### Layout
 
 The layout component is used in Polaris to create the main layout on a page. Layouts sections come in three main configurations. one-column, two-column, and annotated.
 
-```
+```text
+
 import {Page, Layout, LegacyCard} from '@shopify/polaris';
 import React from 'react';
 
@@ -520,13 +567,15 @@ function LayoutExample() {
     </Page>
   );
 }
+
 ```
 
 ##### Tabs
 
 Tabs are used in Polaris to alternate among related views within the same context.
 
-```
+```text
+
 import {LegacyCard, Tabs} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 
@@ -570,26 +619,30 @@ function TabsDefaultExample() {
     </Tabs>
   );
 }
+
 ```
 
-##### Button
+##### Button (1)
 
 Buttons are used in Polaris primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”.
 
-```
+```text
+
 import {Button} from '@shopify/polaris';
 import React from 'react';
 
 function ButtonExample() {
   return <Button>Add product</Button>;
 }
+
 ```
 
 ##### TextField
 
 A text field are used in Polaris as input fields that merchants can type into. It has a range of options and supports several text formats including numbers.
 
-```
+```text
+
 import {TextField} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 
@@ -610,13 +663,15 @@ function TextFieldExample() {
     />
   );
 }
+
 ```
 
-##### Checkbox
+##### Checkbox (1)
 
 Checkboxes are most commonly used in Polaris to give merchants a way to make a range of selections (zero, one, or multiple).
 
-```
+```text
+
 import {Checkbox} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 
@@ -635,13 +690,15 @@ function CheckboxExample() {
     />
   );
 }
+
 ```
 
 ##### Radio button
 
 Radio buttons are used in Polaris to present each item in a list of options where merchants must make a single selection.
 
-```
+```text
+
 import {LegacyStack, RadioButton} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 
@@ -674,6 +731,7 @@ function RadioButtonExample() {
     </LegacyStack>
   );
 }
+
 ```
 
 ### Embedded apps and App bridge
@@ -698,17 +756,20 @@ App Bridge enables you to do the following from your app home:
 
 * Render a navigation menu on the left of the Shopify admin
 
-```
+```html
+
 <ui-nav-menu>
   <a href="/" rel="home">Home</a>
   <a href="/templates">Templates</a>
   <a href="/settings">Settings</a>
 </ui-nav-menu>
+
 ```
 
 * Render a contextual save bar above the top bar of the Shopify admin
 
-```
+```html
+
 <ui-save-bar id="my-save-bar">
   <button variant="primary" id="save-button"></button>
   <button id="discard-button"></button>
@@ -727,17 +788,20 @@ App Bridge enables you to do the following from your app home:
     document.getElementById('my-save-bar').hide();
   });
 </script>
+
 ```
 
 * Render a title bar with primary and secondary actions
 
-```
+```html
+
 <ui-title-bar title="Products">
   <button onclick="console.log('Secondary action')">Secondary action</button>
   <button variant="primary" onclick="console.log('Primary action')">
     Primary action
   </button>
 </ui-title-bar>
+
 ```
 
 ### Checkout UI extensions
@@ -758,8 +822,10 @@ App Bridge enables you to do the following from your app home:
 
 To create a new extension, use the Shopify CLI:
 
-```
+```text
+
 shopify app generate extension
+
 ```
 
 #### Common components
@@ -768,7 +834,8 @@ shopify app generate extension
 
 View in checkout UI extensions is a generic container component. Its contents will always be their “natural” size, so this component can be useful in layout components.
 
-```
+```text
+
 import {
   reactExtension,
   View,
@@ -793,7 +860,8 @@ function Extension() {
 
 InlineLayout in checkout UI extensions is used to lay out content over multiple columns.
 
-```
+```text
+
 import {
   reactExtension,
   InlineLayout,
@@ -820,11 +888,12 @@ function Extension() {
 
 ```
 
-##### Button
+##### Button (2)
 
 Buttons in checkout UI extensions are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
 
-```
+```text
+
 import {
   reactExtension,
   Button,
@@ -853,7 +922,8 @@ function Extension() {
 
 Links in checkout UI extensions make text interactive so customers can perform an action, such as navigating to another location.
 
-```
+```text
+
 import {
   reactExtension,
   Link,
@@ -878,7 +948,8 @@ function Extension() {
 
 Modals in checkout UI extensions are a special type of overlay that shift focus towards a specific action/set of information before the main flow can proceed.
 
-```
+```text
+
 import {
   reactExtension,
   useApi,
@@ -930,7 +1001,8 @@ function Extension() {
 
 Banners in checkout UI extensions are used to communicate important messages to customers in a prominent way.
 
-```
+```text
+
 import {
   reactExtension,
   Banner,
@@ -949,6 +1021,7 @@ function Extension() {
     />
   );
 }
+
 ```
 
 ### Admin UI extensions
@@ -970,16 +1043,20 @@ Shopify provides different “variants” of UI extension APIs that are suitable
 
 To create a new extension, use Shopify CLI:
 
-```
+```text
+
 shopify app generate extension
+
 ```
 
 ##### Deploy an admin extension
 
 To deploy an admin extension, run this within your app's directory:
 
-```
+```text
+
 npm run deploy
+
 ```
 
 #### Example: Build an admin action
@@ -988,7 +1065,8 @@ In this example, we create an extension’s UI and render it.
 
 First, we’ll create a `shopify.extension.toml` file that targets `admin.product-details.action.render`:
 
-```
+```text
+
 api_version = "2025-01"
 
 [[extensions]]
@@ -1005,15 +1083,18 @@ target = "admin.product-details.action.render"
 
 Next, we set the title of the page in `/locales/en.default.json`:
 
-```
+```json
+
 {
   "name": "Create an issue"
 }
+
 ```
 
 Then, in `/src/ActionExtension.jsx` we’ll import the necessary components from Remote UI:
 
-```
+```javascript
+
 import {
   reactExtension,
   useApi,
@@ -1023,11 +1104,13 @@ import {
   TextArea,
   Box,
 } from "@shopify/ui-extensions-react/admin";
+
 ```
 
 Then we’ll build out the file with the target, logic, and UI rendering:
 
-```
+```text
+
 import { useCallback, useEffect, useState } from "react";
 import {
   reactExtension,
@@ -1137,17 +1220,20 @@ Using customer account UI extensions, apps can extend the functionality of exist
 
 Use Shopify CLI to generate a new extension in the directory of your app:
 
-```
+```text
+
 npm init @shopify/app@latest
 cd your-app
 npm run shopify app generate extension
+
 ```
 
 #### Configure extension targets
 
 [Extension targets](https://shopify.dev/docs/api/customer-account-ui-extensions/2025-01/extension-targets-overview) provide locations for customer account UI extensions to appear. Extension UIs are rendered using remote UI, a fast and secure environment for custom (non-DOM) UIs.
 
-```
+```text
+
 import {
   reactExtension,
   Banner,
@@ -1162,13 +1248,15 @@ function App() {
   const translate = useTranslate();
   return <Banner>{translate('welcomeMessage')}</Banner>;
 }
+
 ```
 
 #### Update your configuration file
 
 When you create a customer account UI extension, the `shopify.extension.toml` file is automatically generated in your customer account UI extension directory. It contains the extension's configuration, which includes the extension name, extension targets, metafields, capabilities and settings definition.
 
-```
+```text
+
 api_version = "unstable"
 
 [[extensions]]
@@ -1179,13 +1267,15 @@ type = "ui_extension"
 [[extensions.targeting]]
 target = "customer-account.order-status.block.render"
 module = "./Extension.jsx"
+
 ```
 
 #### Extension APIs
 
 APIs enable customer account UI extensions to get information about the customer or related objects and to perform actions. For example, you can use APIs to retrieve previous orders of the customer so that you can offer related products as upsells. Extensions use JavaScript to read and write data and call external services, and natively render UIs built using Shopify's checkout and customer account components.
 
-```
+```javascript
+
 import {
   reactExtension,
   Banner,
@@ -1210,7 +1300,8 @@ Customer account UI extensions declare their interface using supported UI compon
 
 To build customer account UI extensions, you can use checkout components, and customer account components.
 
-```
+```text
+
 import {
   reactExtension,
   BlockStack,
@@ -1243,6 +1334,7 @@ function App() {
     </InlineStack>
   );
 }
+
 ```
 
 ### Functions
@@ -1263,7 +1355,9 @@ GraphQL schemas provided by Shopify specify the targets, available inputs, and e
 In this example we build a Shopify Function that applies a 20% discount to the first item in the cart
 
 First we create an input query to get the first item in the cart
-```
+
+```text
+
 query Input {
   cart {
     lines {
@@ -1271,10 +1365,13 @@ query Input {
     }
   }
 }
+
 ```
 
 Then we write a Function in Rust to apply the 20% discount to the cart item
-```
+
+```text
+
 use shopify_function::prelude::*;
 use shopify_function::Result;
 use crate::run::run::output::*;
@@ -1303,13 +1400,16 @@ fn run(input: input::ResponseData) -> Result<FunctionRunResult> {
         discount_application_strategy: DiscountApplicationStrategy::FIRST,
     })
 }
+
 ```
 
 #### Example: Build a Payment Customization Function
 In this example we remove a payment method if the cart total exceeds a certain amount.
 
 Define the input query to fetch the cart total and available payment methods:
-```
+
+```text
+
 query Input {
   cart {
     cost {
@@ -1323,10 +1423,13 @@ query Input {
     name
   }
 }
+
 ```
 
 This returns the following JSON output
-```
+
+```json
+
 {
   "cart": {
     "cost": {
@@ -1346,10 +1449,13 @@ This returns the following JSON output
     }
   ]
 }
+
 ```
 
 Then we write a Function in Rust to hide the Cash on Delivery payment method if the value is greater than $100
-```
+
+```text
+
 use shopify_function::prelude::*;
 use shopify_function::Result;
 
@@ -1381,13 +1487,16 @@ fn run(input: input::ResponseData) -> Result<output::FunctionRunResult> {
     // The shopify_function crate serializes your function result
     Ok(output::FunctionRunResult { operations })
 }
+
 ```
 
 #### Example: Build a Delivery Option Customization Function
 In this example we add a "May be delayed due to weather conditions" message to the delivery options, if the delivery address is in North Carolina.
 
 Define the input query to fetch the provinceCode and delivery options:
-```
+
+```text
+
 query Input {
   cart {
     deliveryGroups {
@@ -1401,10 +1510,13 @@ query Input {
     }
   }
 }
+
 ```
 
 This returns the following JSON output
-```
+
+```json
+
 {
   "cart": {
     "deliveryGroups": [
@@ -1426,10 +1538,13 @@ This returns the following JSON output
     ]
   }
 }
+
 ```
 
 Then we write a Function in Rust to append the message if the delivery address is in North Carolina
-```
+
+```text
+
 use shopify_function::prelude::*;
 use shopify_function::Result;
 
@@ -1472,6 +1587,7 @@ fn run(input: input::ResponseData) -> Result<output::FunctionRunResult> {
         operations: to_rename,
     })
 }
+
 ```
 
 #### Available Function APIs
@@ -1512,22 +1628,26 @@ The default and recommended way to configure [webhooks](https://shopify.dev/docs
 
 You can use the following syntax for subscribing to webhooks where the URI is an endpoint that you provide. This could be an HTTP endpoint, Google Cloud PubSub endpoint, or an AWS Eventbridge endpoint.
 
-```
+```text
+
 [[webhooks.subscriptions]]
 topics = ["orders/create"]
 uri = "https://webhook.site/webhooks/o/app/orders-create"
+
 ```
 
 If you wish to use the same URI for all webhooks just put multiple topics into the topics array. If you wish to have different endpoints depending on the topic then you should have multiple `[[webhooks.subscriptions]]` sections in your TOML. Here’s what multiple subscriptions each with a different endpoint would look like:
 
-```
+```text
+
 [[webhooks.subscriptions]]
 topics = ["orders/create"]
 uri = "https://webhook.site/webhooks/app/orders-create"
 
 ```
 
-```
+```text
+
 [[webhooks.subscriptions]]
 topics = ["products/create"]
 uri = "https://webhook.site/webhooks/p/app/orders-create"
@@ -1536,7 +1656,8 @@ uri = "https://webhook.site/webhooks/p/app/orders-create"
 
 You can use the GraphQL mutations for registering webhooks when you require different events per shop. For example, if you have features in your app that merchants must upgrade to enable then you might want to only receive events that are necessary when merchants upgrade. Here’s a GraphQL mutation to register a webhook on a single shop:
 
-```
+```bash
+
 mutation WebhookSubscriptionCreate($topic: WebhookSubscriptionTopic!, $webhookSubscription: WebhookSubscriptionInput!) {
   webhookSubscriptionCreate(topic: $topic, webhookSubscription: $webhookSubscription) {
     webhookSubscription {
@@ -1554,11 +1675,13 @@ mutation WebhookSubscriptionCreate($topic: WebhookSubscriptionTopic!, $webhookSu
     }
   }
 }
+
 ```
 
 And that GraphQL takes the following as variable inputs:
 
-```
+```graphql
+
 {
   "topic": "ORDERS_CREATE",
   "webhookSubscription": {
@@ -1566,6 +1689,7 @@ And that GraphQL takes the following as variable inputs:
     "format": "JSON"
   }
 }
+
 ```
 
 For that GraphQL to work your app must be authenticated and have a shop token that it can use to call that mutation on that specific shop.
@@ -1591,10 +1715,11 @@ Metafields serve as the foundation for extending Shopify's data model. At their 
 
 The type on an unstructured metafield can vary on an instance-by-instance basis. To ensure consistency, you need a metafield definition.
 
-**Example**
+##### Example
 You work with a snowboard merchant who needs to store care instructions for each product. Starting simple, you add a custom.care\_guide metafield to a product by using the `productUpdate` mutation:
 
-```
+```text
+
 mutation {
   metafieldDefinitionCreate(definition: {
     name: "Care Guide",
@@ -1616,6 +1741,7 @@ mutation {
     }
   }
 }
+
 ```
 
 ##### Structured metafields
@@ -1627,10 +1753,11 @@ Metafields covered by a metafield definition, or structured metafields, have con
 * Optional features
 * Conditional usage
 
-**Example**
+##### Example (2)
 In this example, you'll add a definition to your snowboard merchant to ensure all products have a `custom.care_guide metafield` with a type of `single_line_text_field` that is also accessible to storefronts:
 
-```
+```text
+
 mutation {
   metafieldDefinitionCreate(definition: {
     name: "Care Guide",
@@ -1652,6 +1779,7 @@ mutation {
     }
   }
 }
+
 ```
 
 #### Metaobjects
@@ -1668,10 +1796,11 @@ Metaobject definitions, beyond defining the fields, also offer control over:
 * Permissions, such as storefront visibility.
 * Optional features, such as translatable fields.
 
-**Example**
+##### Example (3)
 Suppose a merchant wants a `Feature` resource in Shopify. You can represent that with a new metaobject definition:
 
-```
+```text
+
 mutation {
   metaobjectDefinitionCreate(definition: {
     type: "$app:feature",
@@ -1700,11 +1829,13 @@ mutation {
     }
   }
 }
+
 ```
 
 The merchant's products have a set of key features, so you'll also need to create a product metafield definition that references the `Feature` metaobject definition you just created:
 
-```
+```text
+
 mutation {
   metafieldDefinitionCreate(definition: {
     name: "Key features",
@@ -1726,11 +1857,12 @@ mutation {
     }
   }
 }
+
 ```
 
 With those in place, you can create `Feature` entries and reference as many as you want in a product's `key_features` metafield. These entries can be reused across products, making it easy to manage and update.
 
-### Authentication
+### Authentication & Authorization
 
 [Authentication](https://shopify.dev/docs/apps/build/authentication-authorization) is the process of verifying the identity of the user or the app. To keep transactions on Shopify’s platform safe and secure, all apps connecting with Shopify APIs must authenticate when making API requests.
 
@@ -1740,7 +1872,7 @@ Authorization is the process of giving permissions to apps. When an app user ins
 
 The authentication and authorization methods that your app needs to use depends on the tool that you used to create your app, and the components that your app uses.
 
-##### Authentication
+##### Authentication Methods
 
 * Embedded apps need to authenticate their incoming requests with session tokens.
 * Apps that are not embedded need to implement their own authentication method for incoming requests.
@@ -1773,9 +1905,9 @@ When you [deploy a Shopify app](https://shopify.dev/docs/apps/build/authenticati
 
 Common hosting providers for Shopify apps:
 
-- [Deploy to Fly.io](http://Fly.io)
-- [Deploy to Render](https://render.com/docs/deploy-shopify-app)
-- Manual deployment
+* [Deploy to Fly.io](http://Fly.io)
+* [Deploy to Render](https://render.com/docs/deploy-shopify-app)
+* Manual deployment
 
 #### How to deploy manually
 
@@ -1783,18 +1915,22 @@ Common hosting providers for Shopify apps:
 
 Create or link your app to an `app.toml file`. Note down the `SHOPIFY_API_KEY`, `SHOPIFY_API_SECRET`, and `SCOPES` values.
 
-```
+```text
+
 shopify app config link
 shopify app env show
+
 ```
 
 ##### 2\. Build your app
 
 The Shopify Remix app template comes set up with Vite, which can build the bundles you'll need to host your app. If your provider doesn't support Docker, then you'll need to build the app yourself.
 
-```
+```text
+
 npm ci
 npm run build
+
 ```
 
 ##### 3\. Set up your database
@@ -1830,9 +1966,9 @@ Shopify themes are a package of template files, building blocks, and supporting 
 
 Liquid [objects](https://shopify.dev/docs/api/liquid) represent variables that you can use to build your theme. Object types include, but aren't limited to:
 
-- Store resources, such as a collection or product and its properties
-- Standard content that is used to power Shopify themes, such as `content_for_header`
-- Functional elements that can be used to build interactivity, such as `paginate` and `search`
+* Store resources, such as a collection or product and its properties
+* Standard content that is used to power Shopify themes, such as `content_for_header`
+* Functional elements that can be used to build interactivity, such as `paginate` and `search`
 
 Objects might represent a single data point, or contain multiple properties. Some products might represent a related object, such as a product in a collection. Some objects can be accessed globally, and some are available only in certain contexts. Refer to the specific object reference to find its access scope.
 
@@ -1846,24 +1982,30 @@ The `product` object contains a property called `title` that can be used to outp
 
 Code:
 
-```
+```text
+
 {{ product.title }}
+
 ```
 
 Data:
 
-```
+```text
+
 {
   "product": {
     "title": "Health potion"
   }
 }
+
 ```
 
 Output:
 
-```
+```text
+
 Health potion
+
 ```
 
 #### Tags
@@ -1900,28 +2042,34 @@ In the example below, the `if` tag defines the condition to be met. If `product.
 
 Code:
 
-```
+```text
+
 {% if product.available %}
   Available units: 42
 {% else %}
   Sorry, this product is sold out.
 {% endif %}
+
 ```
 
 Data:
 
-```
+```text
+
 {
   "product": {
     "available": true
   }
 }
+
 ```
 
 Output:
 
-```
+```text
+
 Available units: 42
+
 ```
 
 #### [Filters](https://shopify.dev/docs/api/liquid/filters)
@@ -1936,26 +2084,32 @@ In the example below, product is the object, title is its property, and upcase i
 
 Code:
 
-```
+```text
+
 {% # product.title -> Health potion %}
 
 {{ product.title | upcase }}
+
 ```
 
 Data:
 
-```
+```text
+
 {
   "product": {
     "title": "Health potion"
   }
 }
+
 ```
 
 Output:
 
-```
+```text
+
 HEALTH POTION
+
 ```
 
 ### Theme App extensions
@@ -1983,12 +2137,14 @@ Theme app extensions contain the following resources:
 
 Apps built in the theme app extension framework don't edit theme code, which decreases the risk of introducing breaking changes to the theme, makes it easier to iterate on the content of the integration, and provides for a better merchant experience. Merchants can use the theme editor to configure exposed settings and add app blocks in theme sections for precise positioning in a page's layout.
 
-#### Create a new extension
+#### Create a new extension (1)
 
 Run the following command:
 
-```
+```text
+
 shopify app generate extension
+
 ```
 
 #### Configure a theme app extension
@@ -1997,7 +2153,8 @@ When you create a theme app extension, Shopify adds the following `theme-app-ext
 
 **Newly generated extension**:
 
-```
+```text
+
 └── extensions
   └── my-theme-app-extension
       ├── assets
@@ -2006,11 +2163,13 @@ When you create a theme app extension, Shopify adds the following `theme-app-ext
       ├── locales
       ├── package.json
       └── shopify.extension.toml
-```
-
-**Populated extension:**
 
 ```
+
+##### Populated extension:
+
+```text
+
 └── extensions
   └── my-theme-app-extension
       ├── assets
@@ -2033,6 +2192,7 @@ When you create a theme app extension, Shopify adds the following `theme-app-ext
       |   └── fr.schema.json
       ├── package.json
       └── shopify.extension.toml
+
 ```
 
 #### App blocks for themes
@@ -2047,9 +2207,10 @@ Use app blocks for the following types of apps:
 * Apps that merchants might want to reposition on a page.
 * Apps that should span the full width of a page.
 
-**Example**
+##### Example (4)
 
-```
+```html
+
 <span style="color: {{ block.settings.color }}">
 App blocks let you build powerful integrations with online store themes.
 </span>
@@ -2069,6 +2230,7 @@ App blocks let you build powerful integrations with online store themes.
     ]
   }
 {% endschema %}
+
 ```
 
 #### App embed blocks
@@ -2082,9 +2244,10 @@ Use app embed blocks for the following types of apps:
 * Apps that provide a floating or overlaid component to a page, such as chat bubble apps and product image badge apps.
 * Apps that add SEO meta tags, analytics, or tracking pixels.
 
-**Example**
+##### Example (5)
 
-```
+```html
+
 <div style="position: fixed; bottom: 0; right: 0">
     {{ "kitten.jpg" | asset_url | img_tag }}
 </div>
@@ -2104,9 +2267,10 @@ You can control the visibility of an app block or app embed block based on a cus
 
 The condition can be included in the block's schema with the `available_if` attribute, and the state of the condition is stored in an app-data metafield. The metafield can be accessed through the Liquid `app` object.
 
-**Example**
+##### Example (6)
 
-```
+```text
+
 {% schema %}
  {
    "name": "Conditional App block",
@@ -2124,6 +2288,7 @@ The condition can be included in the block's schema with the `available_if` attr
    ]
  }
 {% endschema %}
+
 ```
 
 ### Headless and custom storefronts
@@ -2149,15 +2314,18 @@ There are two methods of authentication for the Storefront API:
 
 The Storefront API is available only in GraphQL. All Storefront API queries are made on a single GraphQL endpoint, which only accepts POST requests:
 
-```
+```javascript
+
 https://{store_name}.myshopify.com/api/2025-01/graphql.json
+
 ```
 
 The Storefront API is versioned, with new releases four times a year. To keep your app stable, make sure that you specify a supported version in the URL.
 
 ##### Example query
 
-```
+```text
+
 # Get the ID and title of the three most recently added products
 curl -X POST \
   https://{store_name}.myshopify.com/api/2024-10/graphql.json \
@@ -2175,6 +2343,7 @@ curl -X POST \
       }
     }"
   }'
+
 ```
 
 #### Hydrogen apps
@@ -2187,7 +2356,8 @@ Hydrogen and Oxygen make up Shopify's recommended stack for headless commerce. T
 
 Hydrogen projects are structured like typical Remix apps and you can configure them to your preferences. The following is the default quickstart project structure:
 
-```
+```text
+
 📂 hydrogen-quickstart/
 ├── 📁 app/
 │   ├── 📁 assets/
@@ -2210,6 +2380,7 @@ Hydrogen projects are structured like typical Remix apps and you can configure t
 ├── server.js
 ├── storefrontapi.generated.d.ts
 └── vite.config.js
+
 ```
 
 ##### Packages and dependencies
@@ -2244,8 +2415,10 @@ Developers typically prefer automated systems that deploy their app whenever the
 
 You can create a new deployment from your local development environment with the Hydrogen CLI deploy command. The Hydrogen CLI builds, uploads, and deploys your app, then returns the deployment's unique URL.
 
-```
+```text
+
 npx shopify hydrogen deploy
+
 ```
 
 Consult the Hydrogen CLI reference for the complete list of options for the `deploy` command.
@@ -2272,7 +2445,7 @@ Every deployment in Oxygen is immutable: each deployment is a snapshot of your H
 
 [POS UI extensions](https://shopify.dev/docs/api/pos-ui-extensions) allow developers to create custom experiences within Shopify's Point of Sale (POS) app. They enable merchants to extend POS functionality with custom screens, actions, and integrations directly within the POS interface, creating seamless workflows for in-store operations.
 
-#### Key concepts
+#### Key concepts (1)
 
 * [**Extension targets**](https://shopify.dev/docs/api/pos-ui-extensions/targets): Extension targets define specific locations within the POS app where custom content can be rendered.
   * **Smart Grid targets** (`pos.home.tile.render`, `pos.home.modal.render`) appear on the POS home screen for quick access to app functionality.
@@ -2286,12 +2459,14 @@ Every deployment in Oxygen is immutable: each deployment is a snapshot of your H
 * [**UI components**](https://shopify.dev/docs/api/pos-ui-extensions/components): POS UI extensions use specialized components optimized for touch interfaces and POS workflows. Components are rendered natively for optimal performance.
 * **Navigation patterns**: Extensions use Navigator and Screen components to create multi-screen experiences with proper navigation flow.
 
-#### Create a new extension
+#### Create a new extension (2)
 
 To create a new POS UI extension, use the Shopify CLI:
 
-```
+```text
+
 shopify app generate extension --name="your-extension-name" --template="pos_ui" --flavor="typescript-react"
+
 ```
 
 #### Block extensions
@@ -2304,7 +2479,8 @@ Display additional product information, inventory details, or related data withi
 
 Here's an example of a block that shows real-time inventory information inline with the product details:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2325,6 +2501,7 @@ export default reactExtension('pos.product-details.block.render', () => (
     </Text>
   </Stack>
 ));
+
 ```
 
 ##### Customer details block
@@ -2333,7 +2510,8 @@ Show customer loyalty information, purchase history, or account status within th
 
 Here's an example that displays a customer's loyalty program status and allows them to apply points directly from the customer details screen:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2363,6 +2541,7 @@ export default reactExtension('pos.customer-details.block.render', () => {
     </Stack>
   );
 });
+
 ```
 
 ##### Order details block
@@ -2371,7 +2550,8 @@ Add custom order information, shipping details, or fulfillment tracking within o
 
 This example shows how to display shipping and tracking information within an order's details:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2391,6 +2571,7 @@ export default reactExtension('pos.order-details.block.render', () => (
     </Stack>
   </Stack>
 ));
+
 ```
 
 
@@ -2400,7 +2581,8 @@ Display additional options or information after a transaction is completed.
 
 Here's an example that offers additional services to customers after they complete their purchase:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2431,17 +2613,19 @@ export default reactExtension('pos.purchase.post.block.render', () => {
     </Stack>
   );
 });
+
 ```
 
-#### Common components
+#### Common components (1)
 
-##### Box
+##### Box (1)
 
 Box components provide a container for grouping content with padding, margins, and sizing control. They're useful for creating consistent layouts and visual boundaries.
 
 This example demonstrates using a Box component to create a padded container for customer notes:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2462,15 +2646,17 @@ export default reactExtension('pos.customer-details.block.render', () => (
     <Button title="Add Note" type="basic" />
   </Box>
 ));
+
 ```
 
-##### Button
+##### Button (3)
 
 Buttons in POS UI extensions enable merchants to initiate actions like adding items, processing transactions, or opening modals.
 
 Here's a simple button example that renders on the home screen tile:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2484,6 +2670,7 @@ export default reactExtension('pos.home.tile.render', () => (
     onPress={() => console.log('Button pressed')}
   />
 ));
+
 ```
 
 ##### List
@@ -2492,7 +2679,8 @@ List components display scrollable data in rows, perfect for product listings, c
 
 This example shows how to create a product list with multiple items, each displaying label, subtitle, and price information:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2534,6 +2722,7 @@ export default reactExtension('pos.home.modal.render', () => (
     </Screen>
   </Navigator>
 ));
+
 ```
 
 ##### Navigator
@@ -2542,7 +2731,8 @@ Navigator components manage navigation between multiple screens within an extens
 
 Here's an example of a multi-screen navigation flow with Home and Details screens:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2575,6 +2765,7 @@ export default reactExtension('pos.home.modal.render', () => {
     </Navigator>
   );
 });
+
 ```
 
 ##### Stack
@@ -2583,7 +2774,8 @@ Stack components provide flexible layout options for organizing UI elements hori
 
 This example demonstrates nested stacks to create a layout with buttons arranged horizontally within a vertical stack:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2601,6 +2793,7 @@ export default reactExtension('pos.customer-details.block.render', () => (
     </Stack>
   </Stack>
 ));
+
 ```
 
 ##### Text
@@ -2609,7 +2802,8 @@ Text components in POS UI extensions support various styling options for display
 
 Here's an example showing different text variants and how to create visual hierarchy:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2626,6 +2820,7 @@ export default reactExtension('pos.product-details.block.render', () => (
     </Text>
   </Stack>
 ));
+
 ```
 
 #### Common APIs
@@ -2636,7 +2831,8 @@ The Cart API enables extensions to interact with the POS cart, managing items, d
 
 This example shows how to use the Cart API to add items to the cart and display the current cart item count:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2659,6 +2855,7 @@ export default reactExtension('pos.product-details.action.render', () => {
     />
   );
 });
+
 ```
 
 ##### Navigation API
@@ -2667,7 +2864,8 @@ The Navigation API provides programmatic navigation control between screens with
 
 Here's an example of using the Navigation API to navigate to a different screen with parameters:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2687,6 +2885,7 @@ export default reactExtension('pos.order-details.action.render', () => {
     />
   );
 });
+
 ```
 
 ##### Toast API
@@ -2695,7 +2894,8 @@ The Toast API displays temporary notification messages to provide feedback for u
 
 This example demonstrates using the Toast API to show a success message when an action is completed:
 
-```
+```text
+
 import React from 'react';
 import {
   reactExtension,
@@ -2713,4 +2913,5 @@ export default reactExtension('pos.purchase.post.action.render', () => {
     />
   );
 });
+
 ```
