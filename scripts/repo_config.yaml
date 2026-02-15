@@ -278,6 +278,13 @@ repositories:
     target_folder: "docs/github-scraped/flow"
     branch: "main"
 
+  - name: "FreshRSS"
+    description: "FreshRSS - Free, self-hosted RSS feed aggregator with multi-user support and modern UI"
+    repo_url: "https://github.com/FreshRSS/FreshRSS.git"
+    source_folder: "docs/en"
+    target_folder: "docs/github-scraped/freshrss"
+    branch: "edge"
+
   - name: "Click"
     description: "Python CLI framework - Command-line interface creation toolkit"
     repo_url: "https://github.com/pallets/click.git"
