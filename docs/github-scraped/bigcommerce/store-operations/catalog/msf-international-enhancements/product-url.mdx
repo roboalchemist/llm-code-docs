@@ -9,7 +9,7 @@
 
 Using the Catalog features of the Admin API, you can set and query product URLs for a store or a locale within a storefront channel.
 
-Perform the following: 
+Perform the following:
 - [Set product URLs](#set-product-url-at-the-global-level) for the store. Channels inherit these by default.
 - [Create overrides for a channel's locale](#set-product-url-for-a-locale) using the `overridesForLocale` mutation. The product URL for the locale overrides the global value.
 - [Remove overrides for a channel's locale](#remove-product-url-for-a-locale). The product URL then defaults to its global store value.
@@ -46,6 +46,7 @@ The following example sets a product's URL for a store, from which channels inhe
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -57,6 +58,7 @@ The following example sets a product's URL for a store, from which channels inhe
         }
       }
     }
+
     ```
 
   </Tab>
@@ -76,7 +78,8 @@ The following example sets a product's URL for a store, from which channels inhe
           }
         }
       }
-    }    
+    }
+
     ```
 
   </Tab>
@@ -109,6 +112,7 @@ The following example sets a product's URL for the locale within a storefront ch
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -124,6 +128,7 @@ The following example sets a product's URL for the locale within a storefront ch
         }
       }
     }
+
     ```
 
   </Tab>
@@ -146,6 +151,7 @@ The following example sets a product's URL for the locale within a storefront ch
         }
       }
     }
+
     ```
 
   </Tab>
@@ -154,7 +160,7 @@ The following example sets a product's URL for the locale within a storefront ch
 
 ## Remove product URL for a locale
 
-The following example removes the overrides for a product's URL. This mutation removes the overrides for the locale within the storefront channel, and the product URL defaults to its global store value.  
+The following example removes the overrides for a product's URL. This mutation removes the overrides for the locale within the storefront channel, and the product URL defaults to its global store value.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -177,6 +183,7 @@ The following example removes the overrides for a product's URL. This mutation r
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -189,6 +196,7 @@ The following example removes the overrides for a product's URL. This mutation r
         }
       }
     }
+
     ```
 
   </Tab>
@@ -209,6 +217,7 @@ The following example removes the overrides for a product's URL. This mutation r
         }
       }
     }
+
     ```
 
   </Tab>
@@ -216,7 +225,7 @@ The following example removes the overrides for a product's URL. This mutation r
 
 ## Query product URL
 
-The following example retrieves a product's URL. You can retrieve global information for the store and overrides for a locale within a storefront channel. 
+The following example retrieves a product's URL. You can retrieve global information for the store and overrides for a locale within a storefront channel.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -242,6 +251,7 @@ The following example retrieves a product's URL. You can retrieve global informa
         }
       }
     }
+
     ```
 
   </Tab>
@@ -265,6 +275,7 @@ The following example retrieves a product's URL. You can retrieve global informa
         }
       }
     }
+
     ```
 
   </Tab>

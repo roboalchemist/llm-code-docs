@@ -18,21 +18,23 @@ To create a webhook, send a request to the [Create a webhook](/docs/webhooks/web
 The following example creates a webhook that subscribes to creation events for Company accounts.
 
 ```http filename="Example request: Create a webhook" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/hooks
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
 Accept: application/json
 
 {
-  "scope": "store/company/created", 
+  "scope": "store/company/created",
   "destination": "https://example.com/webhooks", // replace with your HTTPS endpoint URL
   "is_active": true
 }
+
 ```
 
 <Callout type="info">
-  
-  * The `destination` URL must be served on port **443**; custom ports are not currently supported.  
+
+  * The `destination` URL must be served on port **443**; custom ports are not currently supported.
   * It can take up to one minute for a newly created webhook to work.
 </Callout>
 
@@ -54,6 +56,7 @@ The following webhooks fire in response to changes to Company account records. Y
 | store/company/statusUpdated | Fires when a Company's activity status changes, such as when a pending Company account is approved. |
 
 ```json filename="Example Company created payload object" showLineNumbers copy
+
 {
   "scope": "store/company/created",
   "store_id": "123456",
@@ -64,6 +67,7 @@ The following webhooks fire in response to changes to Company account records. Y
   "created_at": 1561482670,
   "producer": "stores/{store_hash}"
 }
+
 ```
 
 ## Company Users
@@ -77,6 +81,7 @@ The following webhooks fire in response to changes to Company users. These are B
 | store/company/user/deleted | Fires when a Company user is deleted in the storefront, from the B2B Edition control panel, or via the API. |
 
 ```json filename="Example Company user created payload object" showLineNumbers copy
+
 {
   "scope": "store/company/user/created",
   "store_id": "123456",
@@ -88,6 +93,7 @@ The following webhooks fire in response to changes to Company users. These are B
   "created_at": 1561482670,
   "producer": "stores/{store_hash}"
 }
+
 ```
 
 ## Company Addresses
@@ -101,6 +107,7 @@ The following webhooks fire in response to changes to addresses saved to Company
 | store/company/address/deleted | Fires when a Company address is deleted in the storefront, from the B2B Edition control panel, or via the API. |
 
 ```json filename="Example Company address created payload object" showLineNumbers copy
+
 {
   "scope": "store/company/address/created",
   "store_id": "123456",
@@ -112,6 +119,7 @@ The following webhooks fire in response to changes to addresses saved to Company
   "created_at": 1561482670,
   "producer": "stores/{store_hash}"
 }
+
 ```
 
 ## Super Admins
@@ -125,6 +133,7 @@ The following webhooks fire in response to changes to [Super Admins](https://dev
 | store/superadmin/deleted | Fires when a Super Admin is deleted from the B2B Edition control panel or via the API. |
 
 ```json filename="Example Company address created payload object" showLineNumbers copy
+
 {
   "scope": "store/superadmin/created",
   "store_id": "123456",
@@ -135,6 +144,7 @@ The following webhooks fire in response to changes to [Super Admins](https://dev
   "created_at": 1561482670,
   "producer": "stores/{store_hash}"
 }
+
 ```
 
 ## Resources
@@ -142,6 +152,9 @@ The following webhooks fire in response to changes to [Super Admins](https://dev
 ### Related Articles
 
 * [Webhooks Overview](https://developer.bigcommerce.com/docs/integrations/webhooks)
+
 * [Webhook Events](https://developer.bigcommerce.com/docs/integrations/webhooks/events)
+
 * [Webhooks Reference](https://developer.bigcommerce.com/docs/webhooks/webhooks)
+
 * [B2B Edition Reference](https://developer.bigcommerce.com/b2b-edition/apis)

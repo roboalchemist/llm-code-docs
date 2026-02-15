@@ -6,14 +6,14 @@ The destination URL is the only required input when using the `route` node. You 
 
 When querying a `route`, the response may include the following node types:
 
-* Product
-* Category
-* Brand
-* NormalPage
-* ContactPage
-* RawHtmlPage
-* Blog
-* BlogPost
+- Product
+- Category
+- Brand
+- NormalPage
+- ContactPage
+- RawHtmlPage
+- Blog
+- BlogPost
 
 ## Redirect support
 
@@ -27,16 +27,16 @@ A "dynamic redirect" returns an entity type and entity ID of an existing store r
 
 It is possible to supply a `redirectBehavior` input argument to the `route` node which supports two values:
 
-* **IGNORE**(default): 
+- **IGNORE**(default): 
 
-   * The API ignores redirects and prioritizes direct entity lookups via custom URLs. 
-   * If both a redirect and an entity URL exist for the same path, both the `redirect` and `node` nodes return non-null values. 
-   * This behavior ensures backward compatibility.
+  - The API ignores redirects and prioritizes direct entity lookups via custom URLs. 
+  - If both a redirect and an entity URL exist for the same path, both the `redirect` and `node` nodes return non-null values. 
+  - This behavior ensures backward compatibility.
 
-* **FOLLOW**: 
+- **FOLLOW**: 
 
-  * The `node` node returns the target entity (e.g., category, product, blog, etc.) if the redirect is dynamic. 
-  * For static/manual redirects, the `node` node returns `null` (since there’s no associated entity), while the `redirect` node provides the redirect details.
+  - The `node` node returns the target entity (e.g., category, product, blog, etc.) if the redirect is dynamic. 
+  - For static/manual redirects, the `node` node returns `null` (since there’s no associated entity), while the `redirect` node provides the redirect details.
 
 ## Example queries
 
@@ -46,6 +46,7 @@ This example retrieves details about an object (e.g., Product, Brand, or Categor
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```graphql filename="Query route details" showLineNumbers copy
      query LookUpUrl(
        $urlPath: String!
@@ -94,14 +95,19 @@ This example retrieves details about an object (e.g., Product, Brand, or Categor
         }
       }
     }
+
 ```
+
 ```json filename="GraphQL variables" showLineNumbers copy 
     {
       "urlPath": "/Blouse/"
     }
+
 ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response" showLineNumbers copy
       {
   "data": {
@@ -127,7 +133,9 @@ This example retrieves details about an object (e.g., Product, Brand, or Categor
     }
   }
 }  
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -137,6 +145,7 @@ In this example query, the `node` value is "null" because the redirect is ignore
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
    ```graphql filename="Query using IGNORE redirect behavior" showLineNumbers copy
     query {
       site {
@@ -152,8 +161,10 @@ In this example query, the `node` value is "null" because the redirect is ignore
            }
          }
       ```
+
 </Tab>
   <Tab>
+
   ```json filename="Example response" showLineNumbers copy
      {
   "data": {
@@ -173,7 +184,9 @@ In this example query, the `node` value is "null" because the redirect is ignore
     }
   }
 }
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -183,6 +196,7 @@ In this example, the `node` returns the entity targeted by the dynamic redirect 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
    ```graphql filename="Query using FOLLOW redirect behavior" showLineNumbers copy
     query {
       site {
@@ -198,8 +212,10 @@ In this example, the `node` returns the entity targeted by the dynamic redirect 
            }
          }
       ```
+
 </Tab>
   <Tab>
+
   ```json filename="Example response" showLineNumbers copy
      {
   "data": {
@@ -223,5 +239,6 @@ In this example, the `node` returns the entity targeted by the dynamic redirect 
   }
 }
    ```
+
 </Tab>
 </Tabs>

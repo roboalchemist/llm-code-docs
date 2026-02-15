@@ -3,6 +3,7 @@
 Authenticate GraphQL Storefront API requests using bearer tokens passed with the `Authorization` header. You can authenticate using two different kinds of tokens: [storefront tokens](#storefront-tokens) or [customer impersonation tokens](#customer-impersonation-tokens).
 
 ```http filename="Example request configuration" showLineNumbers copy
+
 POST https://your_store.example.com/graphql
 Authorization: Bearer {token}
 Accept: application/json
@@ -11,6 +12,7 @@ Content-Type: application/json
 {
   // request body
 }
+
 ```
 
 ## Storefront tokens
@@ -39,6 +41,7 @@ Use the [Create a storefront token](/docs/rest-authentication/tokens#create-a-to
 <Tab>
 
 ```http filename="Example request: Create a storefront API token" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/storefront/api-token
 x-auth-token: {{access_token}}
 accept: application/json
@@ -51,18 +54,23 @@ content-type: application/json
     "https://example.com"
   ]
 }
+
 ```
+
 </Tab>
 <Tab>
 
 ```json filename="Example response: Create a storefront API token" showLineNumbers copy
+
 {
   "token": "...eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9...",
   "meta": {
     // ...
   }
 }
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -78,7 +86,9 @@ Do not use this token for browser-side or client-side requests.
 
 There are two options to obtain a customer access token.
 
+
 1. Login mutation
+
 2. Login with a JWT
 
 ###### Login mutation
@@ -86,7 +96,9 @@ There are two options to obtain a customer access token.
 Enter your user email and password to use the login mutation. When using the login mutation in a server-to-server context, the mutation will return a customer access token in response to login actions as part of the GraphQL body instead of a cookie header. From there, you can store the customer access token in the presentation layer's session management system and send it with future GraphQL requests. If the login mutation request is from a browser, we will not return the customer access token in the body, and will instead set a cookie.
 
 <Callout type="info">
+
 * Use the [Create a Token](/docs/rest-authentication/tokens#create-a-token) endpoint to generate the storefront bearer token needed to run the login mutation call.
+
 * If you request a customer access token in wrong communication context, you will receive the following error:
     ***Customer access token was requested in the body, but it's only returned for server-to-server requests. For browser requests it's set as an httpOnly cookie instead.***
 
@@ -95,7 +107,9 @@ Enter your user email and password to use the login mutation. When using the log
 
 <Tabs items={['Request', 'Response']}>
 <Tab>
+
 ```graphql filename="Example login mutation: Create a customer access token" showLineNumbers copy
+
 # Creates a customer access token
 POST https://{{storeDomain}}/graphql
 Authorization: Bearer {Storefront token}
@@ -115,18 +129,23 @@ mutation Login($email: String!, $pass: String!) {
    }
  }
 }
+
 ```
 
 ```json filename="GraphQL variables" showLineNumbers copy
+
 {
     "email": "user@email.com",
     "pass": "password"
 }
+
 ```
+
 </Tab>
 <Tab>
 
 ```json filename="Example login mutation: Create a customer access token" showLineNumbers copy
+
 {
     "data": {
         "login": {
@@ -142,28 +161,31 @@ mutation Login($email: String!, $pass: String!) {
         }
     }
 }
+
 ```
+
 </Tab>
 </Tabs>
-
 
 ###### Login with a JWT
 
 There are two options for logging in using a JWT.
 
+
 1. Customer Login API
 
 The Customer Login API enables third-party services to securely authenticate a logged-in customer by accepting a signed JWT from BigCommerce. This allows the third party to verify the customer’s identity before granting access to sensitive information. For more details, see the [Customer Login API](/docs/start/authentication/customer-login) article.
+
 
 2. `loginWithCustomerLoginJwt`
 
 The `loginWithCustomerLoginJwt` mutation allows you to pass a customer JSON web token instead of the user's email and password. A 3rd party signs the JSON web token used. In this scenario, you will generate a JWT that contains key information in the payload for the login to be successful. You will use this JWT in the login mutation to receive a customer access token. For instructions on creating a JWT, see the [Customer Login API](/docs/start/authentication/customer-login) article for instructions.
 
-
 <Tabs items={['Request', 'Response']}>
 <Tab>
 
 ```graphql filename="Example JWT login mutation: Create a customer access token" showLineNumbers copy
+
 # Creates a customer access token
 POST https://{{storeDomain}}/graphql
 Authorization: Bearer {Storefront token}
@@ -182,15 +204,20 @@ mutation Login($jwt: String!) {
    }
  }
 }
+
 ```
 
 ```json filename="GraphQL variables" showLineNumbers copy
+
 {"jwt": "your_jwt_token"}
+
 ```
+
 </Tab>
 <Tab>
 
 ```json filename="Example JWT login mutation: Create a customer access token" showLineNumbers copy
+
 {
     "data": {
         "loginWithCustomerLoginJwt": {
@@ -205,10 +232,11 @@ mutation Login($jwt: String!) {
         }
     }
 }
+
 ```
+
 </Tab>
 </Tabs>
-
 
 ##### Using a Customer Access Token
 
@@ -218,6 +246,7 @@ You can assign the customer access token obtained using one of the mutations des
 <Tab>
 
 ```graphql filename="Example customer query" showLineNumbers copy
+
 POST https://{{storeDomain}}/graphql
 Authorization: Bearer {Storefront token}
 X-Bc-Customer-Access-Token: {Customer access token}
@@ -244,11 +273,14 @@ query CustomerAttributes {
     }
   }
 }
+
 ```
+
 </Tab>
 <Tab>
 
 ```json filename="Example customer query" showLineNumbers copy
+
 {
     "data": {
         "customer": {
@@ -271,22 +303,25 @@ query CustomerAttributes {
         }
     }
 }
+
 ```
+
 </Tab>
 </Tabs>
-
 
 ### Using auto-generated tokens on Stencil storefronts
 
 On Stencil storefronts, you can access a token at render time and pass the token to client-side code using the `{{settings.storefront_api.token}}` Handlebars property. This auto-generated token has an expiry period of 24-48 hours and will rotate before expiration.
 
-
 ## Customer impersonation tokens
 
 <Callout type="warning">
 Because of the flexible use of the customer impersonation token, BigCommerce recommends using a more secure option like the [customer access token](#customer-access-tokens). Customer impersonation tokens allow you to access any customer by simply changing the `X-Bc-Customer-Id` value in the header for server-to-server communications. However, the customer access token is tied directly to a specific customer as part of the token payload providing a more secure experience. In addition, customer access tokens have the following added benefits:
+
 * A customer access token is unique to an individual user's account.
+
 * A customer access token allows users to act on different systems.
+
 * A customer access token becomes invalid on all devices when you log out on a single device.
 </Callout>
 
@@ -310,6 +345,7 @@ Add the [Storefront API customer impersonation tokens creation scope](/docs/star
 <Tab>
 
 ```http filename="Example request: Create a customer impersonation token" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/storefront/api-token-customer-impersonation
 X-Auth-Token: {{access_token}}
 Accept: application/json
@@ -319,11 +355,14 @@ Content-Type: application/json
   "channel_ids": [1, 2, 3], // array of integers (must be a valid channel IDs on the store)
   "expires_at": 1602288000 // when the token will expire, as an integer unix timestamp (in seconds)
 }
+
 ```
+
 </Tab>
 <Tab>
 
 ```json filename="Example response: Create a customer impersonation token" showLineNumbers copy
+
 {
   "data":
   {
@@ -331,7 +370,9 @@ Content-Type: application/json
   },
   "meta": {}
 }
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -349,7 +390,6 @@ A customer can only sign in on one device. When you run the customer login mutat
 
 If you're using the GraphQL Storefront API from a browser, for example, on top of your Stencil storefront, you can use the login mutation to sign in to a customer account with an email address and a password. This will set a session cookie in the browser, which will authenticate the customer account on future requests. You can also perform a login operation by passing the `guestCartEntityID` variable and assigning a cart to a customer.
 
-
 This mutation is also useful for server-to-server or headless storefront applications that use a customer impersonation token. For example, you can use a sign in form to validate a customer's email address and password. When the mutation returns successfully, you can take the resulting customer ID and store it in a session to pass with the `X-Bc-Customer-Id` header.
 
 As a security best practice, you should inject the email address and password using GraphQL query variables. This prevents the password from being exposed in the query itself. In the [GraphQL Storefront playground](/graphql-storefront/playground), you can set variables for requests.
@@ -364,16 +404,19 @@ As a security best practice, you should inject the email address and password us
   <Tab>
 
     ```http filename="Login mutation request" copy
+
       POST https://your_store.example.com/graphql
       Accept: application/json
       Content-Type: application/json
       Authorization: Bearer {token}
+
     ```
 
   </Tab>
   <Tab>
 
     ```graphql filename="Login mutation" showLineNumbers copy
+
       mutation Login($email: String!, $pass: String!) {
         login(email: $email, password: $pass) {
           customer {
@@ -392,22 +435,26 @@ As a security best practice, you should inject the email address and password us
           }
         }
       }
+
     ```
 
   </Tab>
   <Tab>
 
     ```json filename="Login mutation variables" showLineNumbers copy
+
       {
         "email": "jane.doe@example.com",
         "pass": "xxxxxxxxxxxxxxxxx"
       }
+
     ```
 
   </Tab>
   <Tab>
 
     ```json filename="Login mutation response" showLineNumbers copy
+
       {
         "data": {
           "login": {
@@ -433,6 +480,7 @@ As a security best practice, you should inject the email address and password us
           }
         }
       }
+
     ```
 
   </Tab>
@@ -443,12 +491,15 @@ As a security best practice, you should inject the email address and password us
 You can use the logout mutation to sign out of a customer account. If you're using a vanilla storefront token, future requests in that shopper's session will be from the perspective of an anonymous shopper.
 
 ```graphql filename="Example query: logout mutation" showLineNumbers copy
+
 mutation Logout {
   logout {
     result
   }
 }
+
 ```
+
 <Callout type="info">
 If you're signed out, the system reverts to a "guest" version of the cart, allowing a guest shopper to view their cart once logged out.
 </Callout>
@@ -456,16 +507,25 @@ If you're signed out, the system reverts to a "guest" version of the cart, allow
 ## Further reading
 
 * [GraphQL Storefront API overview](/docs/storefront/graphql)
+
 * [GraphQL Storefront API reference](/graphql-storefront/reference)
+
 * [GraphQL Storefront playground](/graphql-storefront/playground)
+
 * [Authentication and example requests: GraphQL Storefront API](/docs/start/authentication)
+
 * [Guide to API accounts: OAuth scopes](/docs/start/authentication/api-accounts#token-creation-scopes)
+
 * [Multi-storefront overview](/docs/storefront/multi-storefront)
+
 * [CORS (Mozilla)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
 ### Endpoints
 
 * [Create a storefront token](/docs/rest-authentication/tokens#create-a-token)
+
 * [Create a customer impersonation token](/docs/rest-authentication/tokens/customer-impersonation-token)
+
 * [Revoke a token](/docs/rest-authentication/tokens#revoke-a-token)
+
 * [Customer Login API](/docs/rest-authentication/customer-login)

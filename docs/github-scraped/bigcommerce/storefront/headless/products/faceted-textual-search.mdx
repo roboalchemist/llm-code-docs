@@ -53,6 +53,7 @@ To use faceted and textual search, specify a filter in the argument for `SearchP
   ... 
 )
 ...
+
 ```
 
 These filters affect **both** the products and facets that are returned. For example, filtering by rating returns only products within the specified rating range and only facets that have products within the rating range.
@@ -99,6 +100,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -141,6 +143,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -178,6 +181,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -220,6 +224,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -350,6 +355,7 @@ query SearchProductsInLanguage {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -384,6 +390,7 @@ query SearchProductsInLanguage {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -452,6 +459,7 @@ query GetFacets {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -525,6 +533,7 @@ query GetFacets {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -601,6 +610,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -667,6 +677,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -737,6 +748,7 @@ query AND_Categories {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -785,6 +797,7 @@ query AND_Categories {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -794,7 +807,7 @@ query AND_Categories {
 
 This example filters products to only those that appear in either of the specified categories:
 
-### Filter Logic
+### Filter Logic (1)
 - categoryIdsFilter: Defines the filter on product categories.
 - matchBehavior: OR: Means products that belong to **either** category 1172 **or** 250 will match the query.
 - entityIds: [1172, 250]: These are the category IDs being filtered on.
@@ -833,6 +846,7 @@ query OR_Categories {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -1068,6 +1082,7 @@ query OR_Categories {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -1159,6 +1174,7 @@ query {
     }
   }
 }
+
 ```
 
 </Tab>
@@ -1251,6 +1267,7 @@ query {
       }
     }
   }
+
 ```
 
 </Tab>
@@ -1298,6 +1315,7 @@ If a merchant has not enabled product filtering, you will receive an empty array
     }
   }
 }
+
 ```
 
 ## Limitations & Recommendations

@@ -19,15 +19,15 @@ Catalyst has been upgraded to Next.js 15.5.7. This upgrade moves from the canary
 - Next.js 15.5.7 with the security patch
 
 <Callout type='warning'>
-	All users are strongly encouraged to upgrade immediately.
+ All users are strongly encouraged to upgrade immediately.
 </Callout>
 
 ## Partial Prerendering (PPR) Removed
 
 <Callout type='warning'>
-	**Important**: PPR (Partial Prerendering) has been **removed** in this
-	release. PPR was only available in the Next.js 15.5.1-canary.4 release and is
-	not supported in the stable 15.5.7 release.
+ **Important**: PPR (Partial Prerendering) has been **removed** in this
+ release. PPR was only available in the Next.js 15.5.1-canary.4 release and is
+ not supported in the stable 15.5.7 release.
 </Callout>
 
 - The `ppr` experimental flag has been removed from `next.config.ts`
@@ -41,15 +41,15 @@ If you're maintaining a custom Catalyst store, update your `package.json`:
 
 ```json
 {
-	"dependencies": {
-		"next": "15.5.7",
-		"react": "^19.1.2",
-		"react-dom": "^19.1.2"
-	},
-	"devDependencies": {
-		"@next/bundle-analyzer": "15.5.7",
-		"eslint-config-next": "15.5.7"
-	}
+ "dependencies": {
+  "next": "15.5.7",
+  "react": "^19.1.2",
+  "react-dom": "^19.1.2"
+ },
+ "devDependencies": {
+  "@next/bundle-analyzer": "15.5.7",
+  "eslint-config-next": "15.5.7"
+ }
 }
 ```
 
@@ -60,7 +60,7 @@ pnpm install
 ```
 
 <Callout type='info'>
-	**Note**: `next` will automatically update your `tsconfig.json` file.
+ **Note**: `next` will automatically update your `tsconfig.json` file.
 </Callout>
 
 ### Step 2: Update next.config.ts

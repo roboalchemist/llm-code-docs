@@ -26,13 +26,13 @@ Data migration is complex and impacts your entire store setup. You should plan f
 
 ### Recommended preparatory tasks
 
-- **Test your migration workflow early**  
+- **Test your migration workflow early**
   Once you have defined your migration plan and scope, test your migration process in a non-production environment. Address any issues found during testing before moving to a full migration.
 
-- **Align store settings and source data**  
+- **Align store settings and source data**
   Before importing product data, configure your store’s [store settings](https://support.bigcommerce.com/s/article/Store-Settings) including product weight units, dimensions, currency, and timezone. Check that your source data matches these settings to avoid inconsistencies.
 
-- **Configure categories and brands in advance**  
+- **Configure categories and brands in advance**
   Categories and brands must be created in BigCommerce before importing products. Category and brand assignments are done by numeric ID, not by name. Prepare a mapping between your source data and BigCommerce IDs to ensure products are assigned correctly. See the [Catalog API Reference](/docs/rest-catalog) for details.
 
 <Callout type="info">

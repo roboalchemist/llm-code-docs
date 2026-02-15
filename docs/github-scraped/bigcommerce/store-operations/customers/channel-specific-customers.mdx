@@ -76,6 +76,7 @@ The following is an example response detailing the customer settings for a chann
     }
   }
 }
+
 ```
 
 Note the returned value of the `allow_global_logins` property. `true` means the channel allows global customer logins. `false` means the customer must be explicitly granted access to the channel.
@@ -97,6 +98,7 @@ X-Auth-Token: {{X-Auth-Token}}
 {
   "allow_global_logins": false
 }
+
 ```
 
 For more information on this step, see [Update the customer settings per channel](/docs/rest-management/customers/channel-settings#update-customer-settings-per-channel).
@@ -126,6 +128,7 @@ By default, the value of `channel_ids` is `null`, granting login access to any s
   "last_name": "Smith",
   "channel_ids": [1]
 }
+
 ```
 
 For more information on creating a customer, visit [Create Customers](/docs/rest-management/customers#create-customers).
@@ -139,6 +142,7 @@ To change the channels that an existing customer can access, send a `PUT` reques
   "id": 132,
   "channel_ids": [1]
 }
+
 ```
 
 For more information on updating customers, see [Update Customers](/docs/rest-management/customers#create-customers).

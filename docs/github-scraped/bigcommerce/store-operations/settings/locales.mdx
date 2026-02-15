@@ -4,7 +4,7 @@ This overview explains how to manage locales using the [GraphQL Admin API](/docs
 
 ## Introduction
 
-The BigCommerce GraphQL Admin API enables developers to manage languages across different channels. By accessing locale data and related configurations, developers can more easily localize headless storefronts. 
+The BigCommerce GraphQL Admin API enables developers to manage languages across different channels. By accessing locale data and related configurations, developers can more easily localize headless storefronts.
 
 <Callout type="info">
 This feature is currently available for **Catalyst** channels. We are actively working to extend locale management capabilities to other channel types in upcoming releases.
@@ -17,6 +17,7 @@ With the GraphQL Admin API, merchants can add, update, or remove locales for eac
 Each storefront can have up to 5 locales.
 
 ## Example requests
+
 This section provides examples of GraphQL Admin API queries and mutations that demonstrate how to manage locales, along with the required HTTP configuration.
 
 ```http filename="GraphQL Admin API HTTP configuration" showLineNumbers copy
@@ -24,13 +25,15 @@ POST https://api.bigcommerce.com/stores/{{store_hash}}/graphql
 X-Auth-Token: {{access_token}}
 Accept: application/json
 Content-Type: application/json
-```
+
+```javascript
 
 ### Query locales supported by the platform
 
 This query returns a static list of all locales currently supported by the platform.
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```graphql filename="Example query: Get locales supported by the platform" showLineNumbers copy
     query {
       i18n {
@@ -46,8 +49,10 @@ This query returns a static list of all locales currently supported by the platf
         }
       }
     ```
+
   </Tab>
 <Tab>
+
 ```json filename="Example query: Get locales supported by the platform" showLineNumbers copy
      {
   "data": {
@@ -76,16 +81,19 @@ This query returns a static list of all locales currently supported by the platf
       }
     }
   }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
 ### Query channel locales
 
-The following query returns channel locales. 
+The following query returns channel locales.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```graphql filename="Example query: Get locales" showLineNumbers copy
     query {
       store {
@@ -101,6 +109,7 @@ The following query returns channel locales.
       }
     }
     ```
+
   </Tab>
   <Tab>
 
@@ -108,7 +117,7 @@ The following query returns channel locales.
      {
       "data": {
         "store": {
-          "locales": 
+          "locales":
             "edges": [
               {
                 "node": {
@@ -122,15 +131,17 @@ The following query returns channel locales.
         }
       }
     ```
+
   </Tab>
 </Tabs>
 
 ### Add a locale
 
-The following mutation adds a locale. 
+The following mutation adds a locale.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```graphql filename="Example query: Add a locale" showLineNumbers copy
     mutation {
       locale {
@@ -152,13 +163,15 @@ The following mutation adds a locale.
                 }
             }
     ```
+
   </Tab>
    <Tab>
+
     ```json filename="Example query: Add a locale" showLineNumbers copy
      {
       "data": {
         "locales": {
-          "addlocale": 
+          "addlocale":
             "locale": {
               "code": "fr",
               "status": "INACTIVE",
@@ -170,15 +183,17 @@ The following mutation adds a locale.
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
 ### Update a locale
 
-The following mutation updates a channel's locale. 
+The following mutation updates a channel's locale.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
    ```graphql filename="Example query: Update a locale" showLineNumbers copy
      mutation {
       locale {
@@ -202,8 +217,10 @@ The following mutation updates a channel's locale.
                 }
             }
    ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example query: Update a locale" showLineNumbers copy
      {
       "data": {
@@ -220,15 +237,17 @@ The following mutation updates a channel's locale.
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
 ### Delete a locale
 
-The following mutation deletes a channel's locale. 
+The following mutation deletes a channel's locale.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
    ```graphql filename="Example query: Delete a locale" showLineNumbers copy
     mutation {
       locale {
@@ -246,8 +265,10 @@ The following mutation deletes a channel's locale.
                 }
             }
     ```
+
   </Tab>
    <Tab>
+
     ```json filename="Example query: Delete a locale" showLineNumbers copy
       {
       "data": {
@@ -260,6 +281,7 @@ The following mutation deletes a channel's locale.
       }
     }
     ```
+
   </Tab>
 </Tabs>
 

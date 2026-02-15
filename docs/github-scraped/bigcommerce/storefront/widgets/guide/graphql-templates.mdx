@@ -75,10 +75,10 @@ Accept: application/json
   ],
   "template": "<div style=\"text-align:center\">\n<h1>{{_.data.site.product.name}}</h1>\n<div>\n<img src=\"{{_.data.site.product.defaultImage.url}}\">\n</div>\n<div>\n<p>${{_.data.site.product.prices.price.value}}</p>\n</div>\n</div>"
 }
+
 ```
 </Tab>
 <Tab>
-
 
 ```json showLineNumbers copy
 {
@@ -137,6 +137,7 @@ Accept: application/json
   },
   "meta": {}
 }
+
 ```
 </Tab>
 </Tabs>
@@ -154,10 +155,11 @@ The `storefront_api_query` field allows you to query store data that widgets can
 For example, the `$productId` parameter comes from the widget configuration when a user selects a product. The `mappings` object from the widget template schema `settings` tells the widget to map the value of the widget configuration’s `productId` setting to the GraphQL parameter called `productId`.
 
 <Callout type="info">
+
   * You can use the `activeCurrencyCode` query parameter to return user-selected currency.
   * There is no need to provide the mapping for the `activeCurrencyCode` property as it is auto-populated with the shopper’s active currency at the time of page load.
-</Callout>
 
+</Callout>
 
 ## Place the widget using Page Builder
 
@@ -253,6 +255,7 @@ Alternatively, you can send a request to the [Get all widgets](/docs/rest-conten
   ],
   "meta": {...}
 }
+
 ```
 
 <Callout type="info">
@@ -273,6 +276,7 @@ Accept: application/json
   "name": "Product Widget",
   "widget_template_uuid": "{{TEMPLATE_UUID}}"
 }
+
 ```
 
 Take note of the widget's `uuid` returned in the response. You will need the widget's `uuid` to [Create a placement](/docs/rest-content/widgets/placement#create-a-placement) for your widget. The following code block gives an example response
@@ -284,6 +288,7 @@ Take note of the widget's `uuid` returned in the response. You will need the wid
     ...
   }
 }
+
 ```
 
 To create a widget placement, use the [Create a placement](/docs/rest-content/widgets/placement#create-a-placement) endpoint.
@@ -300,6 +305,7 @@ Accept: application/json
   "status": "active",
   "region": "{{REGION}}"
 }
+
 ```
 
 For a list of accepted `template_file` values, see [Placements](/docs/storefront/widgets#placements).
@@ -310,6 +316,7 @@ To determine the value of the `region` property, send a request to the [Get a li
 GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/content/regions?template_file={{TEMPLATE_FILE}}
 X-Auth-Token: {{ACCESS_TOKEN}}
 Accept: application/json
+
 ```
 
 ## Related resources

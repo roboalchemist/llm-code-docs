@@ -35,10 +35,10 @@ Translation API allows users to add content translations to any non-default chan
 
 When using the GraphQL Admin API to manage translations, the following fields are used to identify the relevant channel, locale, and resource so that all data is assigned properly.
 
-- **resourceType**: The type of entity being translated (PRODUCTS, CATEGORIES, BRANDS, etc.)
-- **resourceId**: The specific entity ID (format varies by type, e.g. `bc/store/category/{id}`)
-- **channelId**: The channel context (format: `bc/store/channel/{id}`)
-- **localeId**: The target language (format: `bc/store/locale/{locale_code}`)
+* **resourceType**: The type of entity being translated (PRODUCTS, CATEGORIES, BRANDS, etc.)
+* **resourceId**: The specific entity ID (format varies by type, e.g. `bc/store/category/{id}`)
+* **channelId**: The channel context (format: `bc/store/channel/{id}`)
+* **localeId**: The target language (format: `bc/store/locale/{locale_code}`)
 
 ### Authentication
 
@@ -55,36 +55,36 @@ For more information on OAuth Scopes, see our [Guide to API Accounts](/docs/star
 
 ### Behavior Notes
 
-- Adding a translation to a default locale will result in unexpected behavior. Do **not** attempt to add translations to a channel's default locale.
-- Across all translatable resources, the API will return the default values for any field that doesn't have an existing translation in the requested locale.
-- With translations enabled, the API will automatically return translated fields, whenever possible, based on the requested locale.
-- For more complex translation requests (e.g. product listing pages with many products), the use of pagination is required. Currently, the Translations API supports up to 50 results per request.
+* Adding a translation to a default locale will result in unexpected behavior. Do **not** attempt to add translations to a channel's default locale.
+* Across all translatable resources, the API will return the default values for any field that doesn't have an existing translation in the requested locale.
+* With translations enabled, the API will automatically return translated fields, whenever possible, based on the requested locale.
+* For more complex translation requests (e.g. product listing pages with many products), the use of pagination is required. Currently, the Translations API supports up to 50 results per request.
 
 ## Limitations
 
-- Currently in Beta and subject to changes
-- Catalyst storefronts only
-- Rate limits apply
-- Can only translate non-default channel locales
+* Currently in Beta and subject to changes
+* Catalyst storefronts only
+* Rate limits apply
+* Can only translate non-default channel locales
 
 ## Best Practices
 
-- Cache translations to minimize API calls
-- Check existing translations before creating duplicates
-- Use pagination effectively for large translation sets
-- Validate resourceIds match resourceType format requirements
+* Cache translations to minimize API calls
+* Check existing translations before creating duplicates
+* Use pagination effectively for large translation sets
+* Validate resourceIds match resourceType format requirements
 
 ## Resources
 
-- [Product Translations](/docs/store-operations/translations/product)
-- [Product Modifiers Translations](/docs/store-operations/translations/product-modifiers)
-- [Product Listing Page Translations](/docs/store-operations/translations/listings)
-- [Product Filter Translations](/docs/store-operations/translations/filters)
-- [Inventory Locations Translations](/docs/store-operations/translations/locations)
-- [Order Status Translations](/docs/store-operations/translations/order-statuses)
-- [Promotions Translations](/docs/store-operations/translations/promotions)
-- [Payment Methods Translations](/docs/store-operations/translations/payments)
-- [Address Form Fields Translations](/docs/store-operations/translations/address-form-fields)
-- [Customer Form Fields Translations](/docs/store-operations/translations/customer-form-fields)
-- [Checkout Settings Translations](/docs/store-operations/translations/checkout-settings)
-- [Error Handling Reference](/docs/store-operations/translations/errors)
+* [Product Translations](/docs/store-operations/translations/product)
+* [Product Modifiers Translations](/docs/store-operations/translations/product-modifiers)
+* [Product Listing Page Translations](/docs/store-operations/translations/listings)
+* [Product Filter Translations](/docs/store-operations/translations/filters)
+* [Inventory Locations Translations](/docs/store-operations/translations/locations)
+* [Order Status Translations](/docs/store-operations/translations/order-statuses)
+* [Promotions Translations](/docs/store-operations/translations/promotions)
+* [Payment Methods Translations](/docs/store-operations/translations/payments)
+* [Address Form Fields Translations](/docs/store-operations/translations/address-form-fields)
+* [Customer Form Fields Translations](/docs/store-operations/translations/customer-form-fields)
+* [Checkout Settings Translations](/docs/store-operations/translations/checkout-settings)
+* [Error Handling Reference](/docs/store-operations/translations/errors)

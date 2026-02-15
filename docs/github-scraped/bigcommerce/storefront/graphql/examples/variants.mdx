@@ -1,10 +1,12 @@
 **GraphQL Storefront API**
+
 # Guide to Working with Product Variants
 
 BigCommerce's GraphQL Storefront API lets frontend developers retrieve [variants](/docs/rest-catalog/product-variants) from a store. These built-in capabilities also allow developers to customize their hosted or headless storefronts with variant information.
 
 The GraphQL Storefront API lets you retrieve the following variant attributes and more:
-- Price information in a store's transacting currency   
+
+- Price information in a store's transacting currency
 - Variant options associated with a variant, along with their values
 - Variant metafields that have storefront access
 
@@ -136,6 +138,7 @@ Query a variant by specifying a variant identifier for the `product` field. Use 
   }
 
   ```
+
   </Tab>
   <Tab>
 
@@ -209,6 +212,7 @@ Query identifying information for variants by using the following query:
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
@@ -329,16 +333,17 @@ Query the prices and dimensions for variants. The following query retrieves pric
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
 ## Get variant options and variant option values
 
-Query variant options, and their associated values, that are available with variants. 
+Query variant options, and their associated values, that are available with variants.
 
 ### Get variant options
 
-All variant options are [multiple choice (Help Center)](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#mc). 
+All variant options are [multiple choice (Help Center)](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#mc).
 
 The following example shows how to get the first two variant options that are associated with the base product for the specified variant:
 
@@ -418,15 +423,15 @@ The following example shows how to get the first two variant options that are as
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
 ### Get variant option values
 
-All variant options are [multiple choice (Help Center)](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#mc). With variant options, you get to retrieve the multiple choice values, or the variant option values, associated with a variant. 
+All variant options are [multiple choice (Help Center)](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#mc). With variant options, you get to retrieve the multiple choice values, or the variant option values, associated with a variant.
 
-Multiple choice values are made up of various types, like swatch or radio buttons. Each type of multiple choice value has a specific schema that implements the `CatalogProductOptionValue` interface (meaning you can retrieve the common fields from `CatalogProductOptionValue` for any type of multiple choice value). For more on interfaces, see the [GraphQL Schema and Types- Interfaces](https://graphql.org/learn/schema#interfaces) documentation.   
-
+Multiple choice values are made up of various types, like swatch or radio buttons. Each type of multiple choice value has a specific schema that implements the `CatalogProductOptionValue` interface (meaning you can retrieve the common fields from `CatalogProductOptionValue` for any type of multiple choice value). For more on interfaces, see the [GraphQL Schema and Types- Interfaces](https://graphql.org/learn/schema#interfaces) documentation.
 
 ```graphql filename="CatalogProductOptionValue interface" showLineNumbers copy
 # Fields common among multiple choice values 
@@ -545,6 +550,7 @@ The following example retrieves variant option values for the specified variant.
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
@@ -645,6 +651,7 @@ Retrieve variant option values using the `options` field. The following query re
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
@@ -703,6 +710,7 @@ Query the images for variants. The following query retrieves the image for the s
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
@@ -712,7 +720,7 @@ Query variant metafields by specifying the namespace for the variant metafields.
 
 <Callout type="information">
   #### Variant versus product metafields
-  The query returns only **variant** metafields. To retrieve **product** metafields, see [Get product metafields](/docs/storefront/graphql/examples/products#get-product-metafields). 
+  The query returns only **variant** metafields. To retrieve **product** metafields, see [Get product metafields](/docs/storefront/graphql/examples/products#get-product-metafields).
 </Callout>
 
 The following query retrieves the first variant metafield for the specified variant:
@@ -736,7 +744,7 @@ The following query retrieves the first variant metafield for the specified vari
                     value
                   }
                 }
-              }  	 
+              }    
             }
           }
         }
@@ -778,12 +786,14 @@ The following query retrieves the first variant metafield for the specified vari
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
 ## Resources
 
 ### GraphQL documentation
+
 - [GraphQL Storefront API overview](/docs/storefront/graphql)
 - [Guide to Working with products](/docs/storefront/graphql/examples/products)
 - [GraphQL Storefront API explorer](https://developer.bigcommerce.com/graphql-storefront/explorer)
@@ -792,10 +802,12 @@ The following query retrieves the first variant metafield for the specified vari
 - [GraphQL schema and types (graphql.org)](https://graphql.org/learn/schema)
 
 ### REST API endpoints
+
 - [Catalog API - Variants](/docs/rest-catalog/product-variants) overview
 - [Catalog API - Update product variant metafields](/docs/rest-catalog/product-variants/metafields#update-product-variant-metafields) endpoint
 - [Catalog API - Get variant metafields](/docs/storefront/graphql/examples/variants#get-variant-metafields) endpoint
 - [Catalog API - Get product metafields](/docs/storefront/graphql/examples/products#get-product-metafields) endpoint
 
 ### Support articles
+
 - [Product options (Help Center)](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US)

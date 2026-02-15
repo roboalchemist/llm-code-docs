@@ -1,6 +1,6 @@
 # API rate limits
 
-BigCommerce aims to provide outstanding platform reliability. To ensure reliability, we implement safeguards in the form of rate limits for our REST APIs. 
+BigCommerce aims to provide outstanding platform reliability. To ensure reliability, we implement safeguards in the form of rate limits for our REST APIs.
 
 These rate limits enhance quality for merchants by regulating excessive API calls. In this document, we provide information on rate limits along with some best practices to put in place.
 
@@ -37,7 +37,7 @@ The Unlimited Rate Plan is for some BigCommerce Enterprise clients. It has no re
 
 ## Best practices
 
-Manage API rate limits by following these crucial guidelines for success. 
+Manage API rate limits by following these crucial guidelines for success.
 
 Process rate limit HTTP 429 status code accurately, distribute request loads evenly, store results, and repeat requests strategically to boost app performance and prevent outages.
 
@@ -103,6 +103,7 @@ Here's an example of what a 429 response looks like:
  X-Rate-Limit-Requests-Quota: 150
  X-Rate-Limit-Requests-Left: 35
 ```
+
 Continue to reduce the risk of an app outage by slowing down the amount of calls being made. This will reduce any strain on performance.  For more details on response headers, see [About Our API](/docs/start/about#bigcommerce-specific-response-headers).
 
 If retries continue to hit rate limits, gradually increase the wait time to avoid overwhelming the server.

@@ -1,11 +1,11 @@
 ---
 title: "GraphQL Storefront API: Carts and Checkout"
-keywords: graphql, carts, checkout, address, headless, currency, currencies, payment access token, pat, cartId, incomplete, 
+keywords: graphql, carts, checkout, address, headless, currency, currencies, payment access token, pat, cartId, incomplete,
 ---
 
 # GraphQL Storefront API: Carts and Checkout
 
-BigCommerce's [GraphQL Storefront API](/docs/storefront/graphql) provides the same access to cart and checkout objects as the REST Storefront API. Having access to cart and checkout data in the graph alongside related data makes it easier to build headless storefront applications. 
+BigCommerce's [GraphQL Storefront API](/docs/storefront/graphql) provides the same access to cart and checkout objects as the REST Storefront API. Having access to cart and checkout data in the graph alongside related data makes it easier to build headless storefront applications.
 
 Developers can use frontend GraphQL to create an end-to-end shopper experience. Cart and checkout-related mutations and queries can do the following:
 * Create a cart
@@ -19,11 +19,13 @@ Developers can use frontend GraphQL to create an end-to-end shopper experience. 
 * Generate a payment access token
 
 <Callout type="info">
-  **Limitations**
+
+## Limitations
+
   As of this writing, the GraphQL Storefront API does not support the following features:
-  * File upload product options
-  * _Buy Online, Pick up in Store_
-  * Checkout directly from the Product Details Page, or _Buy Now_ carts
+* File upload product options
+* _Buy Online, Pick up in Store_
+* Checkout directly from the Product Details Page, or _Buy Now_ carts
 </Callout>
 
 ## Tokens
@@ -40,9 +42,9 @@ For more information, see [Creating a token](/docs/start/authentication/graphql-
 
 ## Handling payments
 
-To handle payments, use the [Payments API (Overview)](/docs/store-operations/payments). 
+To handle payments, use the [Payments API (Overview)](/docs/store-operations/payments).
 
-For PCI compliance-related reasons, the GraphQL Storefront API does not handle payments. You can use the [Payments API (Reference)](/docs/rest-payments) to process payments. 
+For PCI compliance-related reasons, the GraphQL Storefront API does not handle payments. You can use the [Payments API (Reference)](/docs/rest-payments) to process payments.
 
 The GraphQL Storefront API returns the checkout ID and order ID, which you can use to [Get accepted payment methods](/docs/rest-payments/methods#get-accepted-payment-methods) and [Create a payment access token](/docs/rest-payments/tokens#create-payment-access-token).
 
@@ -50,7 +52,7 @@ The GraphQL Storefront API returns the customer ID, which you can use to [Get st
 
 Gift certificates are a type of payment instrument similar to a debit card, so the Payments API must apply the gift certificate to the checkout.
 
-The API account you use to process payments must have the scopes specified in the [Payments API Overview](/docs/store-operations/payments). 
+The API account you use to process payments must have the scopes specified in the [Payments API Overview](/docs/store-operations/payments).
 
 ## Example queries and mutations
 
@@ -58,8 +60,8 @@ The API account you use to process payments must have the scopes specified in th
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
-    ```graphql filename="Example mutation: Create a cart (simple)" showLineNumbers copy 
+
+    ```graphql filename="Example mutation: Create a cart (simple)" showLineNumbers copy
     # Creates a new cart, adding a simple product.
     # In the GraphQL Playground, this will fail if you already have a cart.
 
@@ -91,7 +93,7 @@ The API account you use to process payments must have the scopes specified in th
     }
     ```
 
-    ```json filename="GraphQL variables" showLineNumbers copy 
+    ```json filename="GraphQL variables" showLineNumbers copy
     {
       "createCartInput": {
         "lineItems": [
@@ -103,9 +105,10 @@ The API account you use to process payments must have the scopes specified in th
       }
     }
     ```
+
   </Tab>
   <Tab>
-   
+
     ```json filename="Example mutation: Create a cart (simple)" showLineNumbers copy
     {
       "data": {
@@ -130,6 +133,7 @@ The API account you use to process payments must have the scopes specified in th
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -141,7 +145,7 @@ If using the getCart query with customer impersonation tokens, you must include 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example query: Get a cart" showLineNumbers copy
     query getCart {
       site {
@@ -378,9 +382,10 @@ If using the getCart query with customer impersonation tokens, you must include 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example query: Get a cart" showLineNumbers copy
     {
       "data": {
@@ -475,6 +480,7 @@ If using the getCart query with customer impersonation tokens, you must include 
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -482,10 +488,10 @@ If using the getCart query with customer impersonation tokens, you must include 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Add cart line items" showLineNumbers copy
     # Adds another line item.
-    # Add the cart ID to the GraphQL variables, or the mutation will fail. 
+    # Add the cart ID to the GraphQL variables, or the mutation will fail.
     mutation addCartLineItems($addCartLineItemsInput: AddCartLineItemsInput!) {
       cart {
         addCartLineItems(input: $addCartLineItemsInput) {
@@ -497,7 +503,7 @@ If using the getCart query with customer impersonation tokens, you must include 
     }
     ```
 
-    ```json filename="GraphQL variables" showLineNumbers copy 
+    ```json filename="GraphQL variables" showLineNumbers copy
     {
       "addCartLineItemsInput": {
         "cartEntityId": "bb916deb-ddd6-4586-b65b-b8385e0e7a9d",
@@ -512,9 +518,10 @@ If using the getCart query with customer impersonation tokens, you must include 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example mutation: Add cart line item" showLineNumbers copy
     {
       "data": {
@@ -528,19 +535,21 @@ If using the getCart query with customer impersonation tokens, you must include 
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
 ### Create a cart redirect URL
 
 <Callout type="info">
- You can use a cart redirect URL for embedded checkouts or to redirect your   
- checkout. You need a `cartEntity` ID. To create a `cartEntity` ID, use the    
- [create a cart](#Create-a-cart-using-a-simple-product) mutation. 
+ You can use a cart redirect URL for embedded checkouts or to redirect your
+ checkout. You need a `cartEntity` ID. To create a `cartEntity` ID, use the
+ [create a cart](#Create-a-cart-using-a-simple-product) mutation.
 </Callout>
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
   ```graphql filename="Example mutation: Create cart redirect URL" showLineNumbers copy
   mutation{
    cart {
@@ -554,9 +563,12 @@ If using the getCart query with customer impersonation tokens, you must include 
   
    }
 }
-```
+
+```javascript
+
   </Tab>
   <Tab>  
+
   ```json filename="Example mutation: Create cart redirect URL" showLineNumbers copy
   {
     "data": {
@@ -570,7 +582,9 @@ If using the getCart query with customer impersonation tokens, you must include 
         }
     }
   }
-```
+
+```javascript
+
   </Tab>
 </Tabs>
 
@@ -582,6 +596,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
   ```graphql filename="Example mutation: Create cart metafield" showLineNumbers copy
   mutation createCartMetafield {
 
@@ -609,10 +624,11 @@ The current platform limit is 250 metafields for a single cart. When you create 
 }
 
 
-```
+```javascript
+
   </Tab>
   <Tab>
-    
+
 ```json filename="Example mutation: Create cart metafield" showLineNumbers copy
 {
   "data": {
@@ -629,7 +645,9 @@ The current platform limit is 250 metafields for a single cart. When you create 
     }
   }
 }
-```
+
+```javascript
+
   </Tab>
 </Tabs>
 
@@ -637,11 +655,11 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Delete cart" showLineNumbers copy
     # Delete your cart in the GraphQL Playground, which will enable you to create a new cart.
     # Add the cart ID to the GraphQL variables, or the mutation will fail.
-    
+
     mutation deleteCart($deleteCartInput: DeleteCartInput!) {
       cart {
         deleteCart(input: $deleteCartInput) {
@@ -651,16 +669,17 @@ The current platform limit is 250 metafields for a single cart. When you create 
     }
     ```
 
-    ```json filename="GraphQL variables" showLineNumbers copy 
+    ```json filename="GraphQL variables" showLineNumbers copy
     {
       "deleteCartInput": {
         "cartEntityId": "bb916deb-ddd6-4586-b65b-b8385e0e7a9d"
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example mutation: Delete cart" showLineNumbers copy
     {
       "data": {
@@ -672,6 +691,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }  
     ```
+
   </Tab>
 </Tabs>
 
@@ -679,7 +699,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example query: Get checkout" showLineNumbers copy
     query getCheckout {
       site {
@@ -858,10 +878,11 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
-    ```json filename="Example query: Get checkout" showLineNumbers copy   
+
+    ```json filename="Example query: Get checkout" showLineNumbers copy
     {
       "data": {
         "site": {
@@ -921,6 +942,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -928,7 +950,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Add checkout billing address" showLineNumbers copy
     mutation addCheckoutBillingAddress($addCheckoutBillingAddressInput: AddCheckoutBillingAddressInput!) {
       checkout {
@@ -938,7 +960,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
           }
         }
       }
-    }   
+    }
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -965,9 +987,10 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example mutation: Add checkout billing address" showLineNumbers copy
     {
       "data": {
@@ -981,6 +1004,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -988,7 +1012,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Add a checkout shipping consignment" showLineNumbers copy
     mutation addCheckoutShippingConsignments($addCheckoutShippingConsignmentsInput: AddCheckoutShippingConsignmentsInput!) {
       checkout {
@@ -1043,9 +1067,10 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example mutation: Add a checkout shipping consignment" showLineNumbers copy
     {
       "data": {
@@ -1073,6 +1098,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -1080,7 +1106,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Select checkout shipping option" showLineNumbers copy
       mutation selectCheckoutShippingOption($selectCheckoutShippingOptionInput: SelectCheckoutShippingOptionInput!) {
         checkout {
@@ -1092,6 +1118,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
         }
       }
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
       {
         "selectCheckoutShippingOptionInput": {
@@ -1103,10 +1130,11 @@ The current platform limit is 250 metafields for a single cart. When you create 
         }
       }
     ```
+
   </Tab>
   <Tab>
-    
-    ```json filename="Example mutation: Select checkout shipping option" showLineNumbers copy    
+
+    ```json filename="Example mutation: Select checkout shipping option" showLineNumbers copy
       {
         "data": {
           "checkout": {
@@ -1119,6 +1147,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
         }
       }
     ```
+
   </Tab>
 </Tabs>
 
@@ -1126,7 +1155,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    
+
     ```graphql filename="Example mutation: Complete checkout" showLineNumbers copy
       mutation completeCheckout($completeCheckoutInput: CompleteCheckoutInput!) {
         checkout {
@@ -1145,9 +1174,10 @@ The current platform limit is 250 metafields for a single cart. When you create 
       }
     }
     ```
+
   </Tab>
   <Tab>
-    
+
     ```json filename="Example mutation: Complete checkout" showLineNumbers copy
       {
         "data": {
@@ -1160,6 +1190,7 @@ The current platform limit is 250 metafields for a single cart. When you create 
         }
       }
     ```
+
   </Tab>
 </Tabs>
 

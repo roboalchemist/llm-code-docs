@@ -5,9 +5,9 @@ A high-severity Denial of Service ([CVE-2025-55184](https://www.cve.org/CVERecor
 The initial fix was incomplete and did not fully prevent denial-of-service attacks for all payload types, resulting in [CVE-2025-67779](https://www.cve.org/CVERecord?id=CVE-2025-67779).
 
 <Callout type='warning'>
-	**Important**: This release provides an additional security patch for the same
-	CVEs addressed in [1.3.6](/docs/storefront/catalyst/release-notes/1-3-6). You
-	should upgrade to `1.3.7` to receive the latest security fixes.
+ **Important**: This release provides an additional security patch for the same
+ CVEs addressed in [1.3.6](/docs/storefront/catalyst/release-notes/1-3-6). You
+ should upgrade to `1.3.7` to receive the latest security fixes.
 </Callout>
 
 Catalyst v1.3.7 release addresses these security vulnerabilities, including the additional CVE-2025-67779.
@@ -26,15 +26,15 @@ Update dependencies in your `package.json`:
 
 ```json
 {
-	"dependencies": {
-		"next": "15.5.9",
-		"react": "19.1.4",
-		"react-dom": "19.1.4"
-	},
-	"devDependencies": {
-		"@next/bundle-analyzer": "15.5.9",
-		"eslint-config-next": "15.5.9"
-	}
+ "dependencies": {
+  "next": "15.5.9",
+  "react": "19.1.4",
+  "react-dom": "19.1.4"
+ },
+ "devDependencies": {
+  "@next/bundle-analyzer": "15.5.9",
+  "eslint-config-next": "15.5.9"
+ }
 }
 ```
 
@@ -45,7 +45,7 @@ pnpm install
 ```
 
 <Callout type='info'>
-	**Note**: `next` will automatically update your `tsconfig.json` file.
+ **Note**: `next` will automatically update your `tsconfig.json` file.
 </Callout>
 
 </Steps>

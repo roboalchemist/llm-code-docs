@@ -5,9 +5,9 @@ This guide outlines the interim solution to sync a shoppers authentication (logi
 ## Intended Behavior
 
 <Callout type='info'>
-	Be aware that this solution removes the ability to **sign in directly at
-	checkout**. Instead, authentication must occur through the headless
-	storefront's login flow.
+    Be aware that this solution removes the ability to **sign in directly at
+    checkout**. Instead, authentication must occur through the headless
+    storefront's login flow.
 </Callout>
 
 ### Login Flow
@@ -33,6 +33,7 @@ sequenceDiagram
   Headless-->>Shopper: Redirect back with session
   Shopper->>Stencil: Follow redirect
   Stencil-->>Shopper: Checkout (Signed In)
+
 ```
 
 ### Logout Flow
@@ -57,6 +58,7 @@ sequenceDiagram
   Headless-->>Shopper: Logout Success
   Shopper->>Stencil: Follow redirect
   Stencil-->>Shopper: Checkout (Guest)
+
 ```
 
 ## Setup Instructions
@@ -70,9 +72,9 @@ Before session syncing can work, your headless storefront must be configured to 
 #### Required Routes and Behavior
 
 <Callout type='warning'>
-	**Security note**: For Login/Logout routes, developers are responsible for
-	validating the `redirectTo` parameter to prevent open redirects. We recommend
-	restricting this to relative paths (e.g. `/checkout`) only.
+    **Security note**: For Login/Logout routes, developers are responsible for
+    validating the `redirectTo` parameter to prevent open redirects. We recommend
+    restricting this to relative paths (e.g. `/checkout`) only.
 </Callout>
 
 - **/checkout route**  
@@ -94,32 +96,35 @@ Use the [Update a Site's Routes](https://developer.bigcommerce.com/docs/rest-man
 
 ```bash
 PUT https://api.bigcommerce.com/stores/{store_hash}/v3/sites/{site_id}/routes
+
 ```
 
 Payload:
+
 ```json
 [
-	{
-		"type": "home",
-		"matching": "*",
-		"route": "/"
-	},
-	{
-		"type": "cart",
-		"matching": "*",
-		"route": "/cart/"
-	},
-	{
-		"type": "login",
-		"matching": "*",
-		"route": "/login/"
-	},
-	{
-		"type": "logout",
-		"matching": "*",
-		"route": "/logout/"
-	}
+    {
+        "type": "home",
+        "matching": "*",
+        "route": "/"
+    },
+    {
+        "type": "cart",
+        "matching": "*",
+        "route": "/cart/"
+    },
+    {
+        "type": "login",
+        "matching": "*",
+        "route": "/login/"
+    },
+    {
+        "type": "logout",
+        "matching": "*",
+        "route": "/logout/"
+    }
 ]
+
 ```
 
 ### Step 3: **Enable storefront redirection in checkout settings**
@@ -128,19 +133,22 @@ Use the [Update Channel-Specific Checkout Settings](https://developer.bigcommerc
 
 ```bash
 PUT https://api.bigcommerce.com/stores/{store_hash}/v3/checkouts/settings/channels/{channel_id}
+
 ```
 
 Payload:
 
 ```json
 {
-	// Required to enable session-based redirect
-	"should_redirect_to_storefront_for_auth": true,
+    // Required to enable session-based redirect
+    "should_redirect_to_storefront_for_auth": true,
 
-	// Required if no custom checkout settings exist for this channel
-	"custom_checkout_script_url": "",
-	"custom_order_confirmation_script_url": "",
-	"order_confirmation_use_custom_checkout_script": false
+    // Required if no custom checkout settings exist for this channel
+    "custom_checkout_script_url": "",
+    "custom_order_confirmation_script_url": "",
+    "order_confirmation_use_custom_checkout_script": false
 }
+
 ```
+
  </Steps>

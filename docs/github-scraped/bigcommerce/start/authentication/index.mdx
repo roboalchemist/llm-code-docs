@@ -1,6 +1,6 @@
 ---
 title: Authentication
-keywords: cors, if, access_token, access token, jwt, api accounts, 
+keywords: cors, if, access_token, access token, jwt, api accounts,
 ---
 
 # Authentication
@@ -45,14 +45,20 @@ The following tabs contain examples of how to authenticate requests by passing a
 
 <Tabs items={['GET request', 'POST request', 'PUT request', 'DELETE request']}>
   <Tab>
+
     ```http filename="Example GET request with X-Auth-Token header"
+
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v... # endpoint
     X-Auth-Token: {{access_token}}
     Accept: application/json
+
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example POST request with X-Auth-Token header"
+
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v... # endpoint
     X-Auth-Token: {{access_token}}
     Accept: application/json
@@ -61,10 +67,14 @@ The following tabs contain examples of how to authenticate requests by passing a
     {
       // request body
     }
+
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example PUT request with X-Auth-Token header"
+
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v... # endpoint
     X-Auth-Token: {{access_token}}
     Accept: application/json
@@ -75,13 +85,18 @@ The following tabs contain examples of how to authenticate requests by passing a
     }
 
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example DELETE request with X-Auth-Token header"
+
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v... # endpoint
     X-Auth-Token: {{access_token}}
     Accept: application/json
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -91,7 +106,6 @@ Another **stable token**-based scheme involves mutual authentication. The reques
 
 The following table lists the APIs that authenticate with a client ID. For OAuth scopes, consult the **Endpoint Reference** column.
 
-
 | API description | Endpoint reference | API account type | Query parameter | Query argument |
 |:----------------|:-------------------|:-----------------|:----------------|:---------------|
 | [Current Customer API](/docs/start/authentication/current-customer) | [Get current customer](/docs/rest-authentication/current-customer#get-current-customer) | app | `app_client_id` | API account client ID |
@@ -100,7 +114,9 @@ The following table lists the APIs that authenticate with a client ID. For OAuth
 
 <Tabs items={['Example Request: Current Customer API', 'Example Response: Current Customer API']}>
   <Tab>
+
     ```js filename="Example GET request" showLineNumbers copy
+
     const customerJWT = (apiAccountClientId) => {
       let resource = `/customer/current.jwt?app_client_id=${apiAccountClientId}`;
       return fetch(resource)
@@ -117,13 +133,19 @@ The following table lists the APIs that authenticate with a client ID. For OAuth
       })
       .catch(error => console.error(error));
     }
+
     ```
+
   </Tab>
   <Tab>
+
     ```shell filename="Example text response: JWT string"
+
     # response body
     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lciI6eyJpZCI6NDkyNywiZW1haWwiOiJqb2huLmRvZUBnbWFpbC5jb20iLCJncm91cF9pZCI6IjYifSwiaXNzIjoiYmMvYXBwcyIsInN1YiI6ImFiYzEyMyIsImlhdCI6MTQ4MDgzMTg2MywiZXhwIjoxNDgwODMyNzYzLCJ2ZXJzaW9uIjoxLCJhdWQiOiI2c3YxNnRmeDNqNWdzb3BtNDJzczVkZDY3ZzJzcnZxIiwiYXBwbGljYXRpb25faWQiOiI2c3YxNnRhc2RncjJiNWhzNWRkNjdnMnNydnEiLCJzdG9yZV9oYXNoIjoiYWJjMTIzIiwib3BlcmF0aW9uIjoiY3VycmVudF9jdXN0b21lciJ9.uYTDTJzhDOog7PE1yLNeP6zDNdFMb91fS-NZrJpsts0
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -132,8 +154,11 @@ The following table lists the APIs that authenticate with a client ID. For OAuth
 Several of our APIs authenticate with JSON web tokens, or _JWTs_. JWTs authorize both the requester and the recipient because they contain a signed payload that the recipient must successfully decrypt before working with the transmitted data. You can use some JWTs for any number of requests within an expiration window; others must be unique to each request.
 
 Our JWT-based authentication schemes fall into the following categories:
+
 * The user passes a [BigCommerce-generated JWT](#bigcommerce-generated-jwts) as part of the value of the `Authorization` header
+
 * The user sends BigCommerce a [user-generated JWT](#user-generated-jwts)
+
 * [BigCommerce-encrypted payload JWTs](#bigcommerce-encrypted-payload-jwts) send apps information as part of a signed JWT's payload
 
 All requests that use JWTs require at least two steps. In addition to the request itself, you must also either get, make, or decrypt the JWT that the request sends or receives. The following sections describe the steps for these three JWT-based authentication schemes, reference the endpoints to which they apply, and give example requests.
@@ -146,9 +171,11 @@ All requests that use JWTs require at least two steps. In addition to the reques
 ### BigCommerce-generated JWTs
 
 Some APIs authenticate with an `Authorization` header that contains a string concatenated with a BigCommerce-generated JWT. Requests to these APIs contain the following two parts:
+
 1. The user obtains the JWT by:
    * Making an API request to BigCommerce, or
    * On Stencil storefronts, extracting it from the page's context.
+
 2. The user sends the intended request.
 
 The following table lists the APIs that use the `Authorization` header, along with information about obtaining a token and forming a valid header value. For OAuth scope, expiry window, and other implementation details, consult the **Endpoint Reference** column.
@@ -164,7 +191,9 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
 
 <Tabs items={['Example request: Dynamic token', 'GraphQL Storefront API', 'Payments API']}>
   <Tab>
+
     ```http filename="Example request: limited-use auth token" copy
+
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/some-token-generating-endpoint
     X-Auth-Token: {{access_token}}
     Accept: application/json
@@ -173,6 +202,7 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
     {
       // request body per token request endpoint documentation
     }
+
     ```
 
     Then, include the returned token with an identifying string in the Authorization header of your request.
@@ -181,12 +211,14 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
     GraphQL Storefront response-request pairs resemble the following:
 
     ```json filename="Example response: Create a GraphQL Storefront API token" showLineNumbers copy
+
     {
       "token":"BigCommerceProvidedJwt.dotDelimited.threePartString",
       "meta": {
         // ...
       }
     }
+
     ```
 
     &nbsp;
@@ -215,12 +247,15 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
       })
       .catch(error => console.error(error));
     }
+
     ```
+
   </Tab>
   <Tab>
     Payments response-request pairs resemble the following:
 
     ```json filename="Example response: Create a payment access token" showLineNumbers copy
+
     {
       "data": {
         "id": "BigCommerceProvidedJwt.dotDelimited.threePartString"
@@ -229,6 +264,7 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
         // ...
       }
     }
+
     ```
 
     &nbsp;
@@ -247,13 +283,16 @@ To obtain a dynamic token, send a request to the REST endpoint listed in the **O
     }
 
     ```
+
   </Tab>
 </Tabs>
 
 ### User-generated JWTs
 
 Some APIs rely on the app or implementation to send user-generated JWTs that simultaneously authenticate the request and contain the request body in their payload. Requests to these APIs contain the following two parts:
+
 * The user encrypts, or signs, the JWT
+
 * The user sends the intended request
 
 The following table lists the APIs that rely on user-generated JWTs. For OAuth scope, expiry window, and other implementation details, consult the **Endpoint Reference** column.
@@ -267,6 +306,7 @@ The following table lists the APIs that rely on user-generated JWTs. For OAuth s
 For the Customer Login API, your request will look something like the following:
 
 ```js filename="Example GET request: Customer Login API"
+
 const loginCustomer = (yourJwt) => {
   let resource = `${window.location.origin}/login/token/${yourJwt}`;
   return fetch(resource)
@@ -286,13 +326,17 @@ const loginCustomer = (yourJwt) => {
   })
   .catch(error => console.error(error));
 }
+
 ```
 
 ### BigCommerce-encrypted payload JWTs
 
 BigCommerce-encrypted payload JWTs let control panel apps listen to and reason about events that affect them, but happen outside the app itself. These events include users installing, loading, and uninstalling the app. Working with these JWTs includes the following parts:
+
 * The app receives the JWT from BigCommerce
+
 * The app validates the JWT, then decrypts its payload
+
 * The payload's data informs what the app does next
 
 To learn more, see our [Apps Guide](/docs/integrations/apps), especially the articles on [authorization, installation](/docs/integrations/apps/guide/auth), and other [app callback events](/docs/integrations/apps/guide/callbacks).
@@ -308,6 +352,7 @@ The REST Storefront API lets you make client-side requests for carts, checkouts,
 The following examples illustrate how to make calls to the REST Storefront API:
 
 ```js filename="Example script: REST Storefront API call" showLineNumbers copy
+
 const storefrontCall = (endpoint, requestBody = null) => {
   let resource = `${window.location.origin}/api/storefront${endpoint.route}`;
   let init = {
@@ -341,11 +386,14 @@ const storefrontCall = (endpoint, requestBody = null) => {
 }
 
 ```
+
 &nbsp;
 
 <Tabs items={['GET request', 'POST request', 'PUT request', 'DELETE request']}>
   <Tab>
+
     ```js filename="Example GET call: Get a cart" showLineNumbers copy
+
     let endpoint = {
       route: "/carts?include=lineItems.physicalItems.options",
       method: "GET",
@@ -357,9 +405,12 @@ const storefrontCall = (endpoint, requestBody = null) => {
     storefrontCall(endpoint);
 
     ```
+
   </Tab>
   <Tab>
+
     ```js filename="Example POST call: Add cart line items" showLineNumbers copy
+
     let endpoint = {
       route: "/carts/123abc45-de67-89f0-123a-bcd456ef7890/items",
       method: "POST",
@@ -380,9 +431,12 @@ const storefrontCall = (endpoint, requestBody = null) => {
     storefrontCall(endpoint, requestBody);
 
     ```
+
   </Tab>
   <Tab>
+
     ```js filename="Example PUT call: Update checkout billing address" showLineNumbers copy
+
     let endpoint = {
       route: "/checkouts/123abc45-de67-89f0-123a-bcd456ef7890/billing-address/123abc456def7",
       method: "PUT",
@@ -407,9 +461,12 @@ const storefrontCall = (endpoint, requestBody = null) => {
     storefrontCall(endpoint, requestBody);
 
     ```
+
   </Tab>
   <Tab>
+
     ```js filename="Example DELETE call: Delete a cart" showLineNumbers copy
+
     let endpoint = {
       route: "/carts/123abc45-de67-89f0-123a-bcd456ef7890",
       method: "DELETE",
@@ -421,6 +478,7 @@ const storefrontCall = (endpoint, requestBody = null) => {
     storefrontCall(endpoint);
 
     ```
+
   </Tab>
 </Tabs>
 
@@ -442,6 +500,8 @@ In the Tax Provider API `Authorization` header, the username and password belong
 ## Resources
 
 ### Related articles
+
 * [Creating API Accounts](/docs/start/authentication/api-accounts)
+
 * [OAuth Scopes](/docs/start/authentication/api-accounts#oauth-scopes)
 {/* <!-- jwts in apps, graphql storefront playground --> */}

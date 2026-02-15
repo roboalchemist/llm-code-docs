@@ -18,42 +18,56 @@ BigCommerce has several APIs that let you manage store data, authenticate custom
 ### REST Store Management APIs
 
 BigCommerce's Store Management and Payment APIs (for example, the [Catalog API](/docs/rest-catalog)) allow you to manage transactions, modify store data, and act as store administrator. Example use cases include the following:
+
 * Add and update products in a store
+
 * Update a customer's order and change the order status
+
 * Create a coupon
+
 * Manage a customer's store account details
 
 ### REST Storefront API
 
 The [REST Storefront API](/docs/rest-storefront/carts) lets you manage customer carts, checkouts, and order information client-side. Example use cases include the following:
-* Add an item with JavaScript to a shopper's cart from a Stencil storefront
-* Programmatically retrieve and display information to a customer about their recent order
-* Update the billing address of a checkout
-* Clear a customer's current cart
 
+* Add an item with JavaScript to a shopper's cart from a Stencil storefront
+
+* Programmatically retrieve and display information to a customer about their recent order
+
+* Update the billing address of a checkout
+
+* Clear a customer's current cart
 
 ### GraphQL Storefront API
 
 BigCommerce's [GraphQL Storefront API](/docs/graphql-storefront) lets you query and mutate products, customers, and carts, then launch a checkout on a headless storefront as well as from a native storefront's frontend. Example use cases include the following:
+
 * Add additional product data to a Stencil storefront
+
 * Access customer data on the frontend of a site
+
 * Manage shopper's carts on a headless storefront
+
 * Fetch category and brand details from a store's frontend
 
 ### Customer Login API
 
 The [Customer Login API](/docs/start/authentication/customer-login) lets you programmatically sign customers in to a BigCommerce storefront. Example use cases include the following:
-* Sign customers in to a BigCommerce store from a third-party account or a headless storefront
-* Enable login using credentials other than email and password, such as a phone number
-* Integrate a BigCommerce store with an SSO provider
 
+* Sign customers in to a BigCommerce store from a third-party account or a headless storefront
+
+* Enable login using credentials other than email and password, such as a phone number
+
+* Integrate a BigCommerce store with an SSO provider
 
 ### Current Customer API
 
 BigCommerce's [Current Customer API](/docs/start/authentication/current-customer) lets you determine which customer is logged in to a storefront during a session.
-* Confirm a customer's identity in the browser
-* Validate a customer's identity to display specific information to them from an external app
 
+* Confirm a customer's identity in the browser
+
+* Validate a customer's identity to display specific information to them from an external app
 
 ## API authentication and context
 
@@ -74,7 +88,6 @@ Make BigCommerce API requests in the context of the **storefront**, BigCommerce 
 | Single-store frontend scripts | storefront |
 | Headless storefronts with backend or request proxy | server |
 | Serverless headless storefronts | storefront, GraphQL-only |
-
 
 ## Available store resources
 
@@ -148,11 +161,13 @@ When performing a request that contains a body, specify the type of content you 
 The body of a JSON request is an object containing a set of key-value pairs. A simple representation of a product object is:
 
 ```json filename="Example request body: Product object" showLineNumbers copy
+
 {
  "id": 5,
  "name": "iPod",
  "description": "A portable MP3 music player."
 }
+
 ```
 
 ### Responses
@@ -204,7 +219,9 @@ HTTP response header names are case-insensitive; see the [HTTP specification on 
 When requesting a resource that returns a body, specify the type of content you want to receive with the `Accept` header. Alternatively, you can supply an extension to the resource you're requesting.
 
 The priorities with which you can process these methods are:
+
 * Accept header high-priority types (e.g. `Accept: application/json`) extensions on the resource (e.g. `customers.json`).
+
 * Accept header low priority types (priorities less than 1, e.g. `Accept: application/json;q=0.9`)
 
 #### Response structure
@@ -212,10 +229,13 @@ The priorities with which you can process these methods are:
 Responses are structured similarly to requests. If a request returns a single object, then the response will contain a single object containing the fields for that resource.
 
 ```http filename="Example request: Get a category"
+
 GET https://api.bigcommerce.com/stores/{{store_hash}}/v3/catalog/categories/{{category_id}}
+
 ```
 
 ```json filename="Example response: Get a category" showLineNumbers copy
+
 {
   "data": {
     "id": 39,
@@ -241,6 +261,7 @@ GET https://api.bigcommerce.com/stores/{{store_hash}}/v3/catalog/categories/{{ca
   },
   "meta": {}
 }
+
 ```
 
 ## Support
@@ -260,5 +281,7 @@ Our [release notes](/release-notes) catalog notable updates made to the BigComme
 ## Resources
 
 * [Developer Community](/community)
+
 * [Terms of Service](https://www.bigcommerce.com/terms/api-terms/)
+
 * [BigCommerce on Stack Overflow](https://stackoverflow.com/questions/tagged/bigcommerce)

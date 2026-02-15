@@ -20,7 +20,7 @@ Use the `GetAllOrders` query field to fetch all orders for a specific customer. 
 
 <Callout type="info">
     **The following features are coming soon**
-    - Payment/Payments information 
+    - Payment/Payments information
     - Order specific messages
 </Callout>
 
@@ -37,7 +37,7 @@ Note: Don't forget to include cursor [pagination](/docs/storefront/graphql#pagin
 
 ## Authorization
 
-Use your bearer token to perform the example queries on your storefront instance in the next section. 
+Use your bearer token to perform the example queries on your storefront instance in the next section.
 
 To learn more about authenticating requests to the GraphQL Storefront API, see [Authenticating requests to the GraphQL Storefront API](/docs/start/authentication/graphql-storefront).
 
@@ -50,7 +50,8 @@ Before running the example queries, you will need to [sign in as a customer](htt
 ### Get all orders and details
 
 #### Filter by order status
-In this example, the query is set up to return a filtered list of all orders with a `COMPLETED` status. 
+
+In this example, the query is set up to return a filtered list of all orders with a `COMPLETED` status.
 
 <Tabs items={[`Request`, `Response`]}>
     <Tab>
@@ -134,19 +135,20 @@ In this example, the query is set up to return a filtered list of all orders wit
                   "currencyCode": "USD",
                   "value": 25.0
                   }
-                } 
+                }
               }
             ]
           }
         }
-      } 
+      }
     }
     ```
     </Tab>
 </Tabs>
 
 ### Get order details
-In this example, the query is set up to get details for order #106. Use `entityId` to query by customer. 
+
+In this example, the query is set up to get details for order #106. Use `entityId` to query by customer.
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
@@ -317,10 +319,12 @@ In this example, the query is set up to get details for order #106. Use `entityI
 </Tabs>
 
 ### Get an order metafield
+
 In this example, the query is set up to get a metafield for order #102. Use `entityId` to query by order.
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
    ```graphql filename="Example query: Get order metafield" showLineNumbers copy
     query Order($namespace: String!) {
     site {
@@ -352,6 +356,7 @@ In this example, the query is set up to get a metafield for order #102. Use `ent
     
 }
 ```
+
 </Tab>
     <Tab>
    ``` graphQL filename="Example response: Get order metafield" showLineNumbers copy
@@ -389,10 +394,12 @@ In this example, the query is set up to get a metafield for order #102. Use `ent
 </Tabs>
 
 ### Get metafields for a customer
+
 In this example, the query is set up to get metafields for a customer. Ensure the customer is logged-in.
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
    ```graphql filename="Example query: Get metafields" showLineNumbers copy
    {
      customer {
@@ -413,6 +420,7 @@ In this example, the query is set up to get metafields for a customer. Ensure th
      }
    }
 ```
+
    </Tab>
 <Tab>
   ```graphql filename="Example response: Get metafields" showLineNumbers copy
@@ -449,7 +457,7 @@ In this example, the query is set up to get metafields for a customer. Ensure th
             }
         }
     }
-} 
+}
   ```
 </Tab>
 </Tabs>
@@ -460,27 +468,27 @@ Join our [Developer community](/community) to share your feedback with us in the
 
 ### Documentation
 
-* [GraphQL storefront API overview](/docs/storefront/graphql)
-* [Guide to API Accounts: Store-level API accounts](/docs/start/authentication/api-accounts#store-level-api-accounts)
-* [Guide to API accounts: OAuth token creation scopes](/docs/start/authentication/api-accounts#token-creation-scopes)
-* [Authentication and example requests: BigCommerce-generated JWTs](/docs/start/authentication#bigcommerce-generated-jwts)
+- [GraphQL storefront API overview](/docs/storefront/graphql)
+- [Guide to API Accounts: Store-level API accounts](/docs/start/authentication/api-accounts#store-level-api-accounts)
+- [Guide to API accounts: OAuth token creation scopes](/docs/start/authentication/api-accounts#token-creation-scopes)
+- [Authentication and example requests: BigCommerce-generated JWTs](/docs/start/authentication#bigcommerce-generated-jwts)
 
 ### API reference
 
 #### Storefront tokens
 
-* [Create a storefront token](/docs/rest-authentication/tokens#create-a-token)
-* [Create a customer impersonation token](/docs/rest-authentication/tokens/customer-impersonation-token#create-a-token)
+- [Create a storefront token](/docs/rest-authentication/tokens#create-a-token)
+- [Create a customer impersonation token](/docs/rest-authentication/tokens/customer-impersonation-token#create-a-token)
 
 #### Storefront API: orders
 
-* [Storefront Orders](/docs/rest-storefront/orders)
+- [Storefront Orders](/docs/rest-storefront/orders)
 
 #### REST Management API: orders
 
-* [Orders V2](/docs/rest-management/orders/)
-* [Orders V3](/docs/rest-management/transactions)
+- [Orders V2](/docs/rest-management/orders/)
+- [Orders V3](/docs/rest-management/transactions)
 
 ### Community
 
-* [Developer community](/community)
+- [Developer community](/community)

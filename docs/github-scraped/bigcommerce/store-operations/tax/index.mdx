@@ -8,7 +8,7 @@ The Tax Settings API supports cross-border transactions. You can localize storef
 
 To support cross-border transactions, the store identifies a tax zone for the shopper. The store then applies the tax zone and its settings to estimate taxes and display prices. For logged-in customers, the store uses the customer address to identify the tax zone. For guest shoppers, the store can use the shopper's geolocation to identify the zone if you enable this setting. Otherwise, the store uses the provided guest shopper tax zone ID.
 
-This guide shows you how to use the Tax Settings API. For more info, see the [Tax Settings API Reference](/docs/rest-management/tax-settings). 
+This guide shows you how to use the Tax Settings API. For more info, see the [Tax Settings API Reference](/docs/rest-management/tax-settings).
 
 ## Get tax settings
 
@@ -16,14 +16,17 @@ To get tax settings, send a request to the [Get tax settings](/docs/rest-managem
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get tax settings" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/settings
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
   ```json filename="Example response: Get tax settings" showLineNumbers copy
   {
     "data": {
@@ -42,11 +45,12 @@ To get tax settings, send a request to the [Get tax settings](/docs/rest-managem
     "meta": {}
   }
   ```
+
   </Tab>
 </Tabs>
 
 <Callout type="info">
-  When a merchant enters tax-inclusive prices, the `should_subtract_store_tax` field allows you to choose how a store calculates the tax-inclusive price displayed to shoppers. This setting affects the tax-inclusive price displayed to a shopper if the shopper and merchant are in different tax zones. For more information, see the [Tax Settings API Reference](/docs/rest-management/tax-settings). 
+  When a merchant enters tax-inclusive prices, the `should_subtract_store_tax` field allows you to choose how a store calculates the tax-inclusive price displayed to shoppers. This setting affects the tax-inclusive price displayed to a shopper if the shopper and merchant are in different tax zones. For more information, see the [Tax Settings API Reference](/docs/rest-management/tax-settings).
 </Callout>
 
 ## Update tax settings
@@ -56,6 +60,7 @@ To update tax settings, send a request to the [Update tax settings](/docs/rest-m
 <Tabs items={[`Request`, `Response`]}>
 
 <Tab>
+
 ```json filename="Example request: Update tax settings" showLineNumbers copy
 PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/settings
 X-Auth-Token: {{ACCESS_TOKEN}}
@@ -68,10 +73,13 @@ Accept: application/json
     "invoice_price_display_strategy": "INCLUSIVE"
   }
 }
-```
+
+```javascript
+
 </Tab>
 
 <Tab>
+
 ```json filename="Example response: Update tax settings" showLineNumbers copy
 {
   "data": {
@@ -89,13 +97,15 @@ Accept: application/json
   },
   "meta": {}
 }
-```
+
+```javascript
+
 </Tab>
 
 </Tabs>
 
 ## Resources
 
-- [Tax Settings API Reference](/docs/rest-management/tax-settings)
-- [Get Tax Settings](/docs/rest-management/tax-settings#get-tax-settings)
-- [Update Tax Settings](/docs/rest-management/tax-settings#update-tax-settings)
+* [Tax Settings API Reference](/docs/rest-management/tax-settings)
+* [Get Tax Settings](/docs/rest-management/tax-settings#get-tax-settings)
+* [Update Tax Settings](/docs/rest-management/tax-settings#update-tax-settings)

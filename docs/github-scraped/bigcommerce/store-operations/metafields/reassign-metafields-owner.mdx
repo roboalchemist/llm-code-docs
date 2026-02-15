@@ -3,20 +3,20 @@
 Metafields can be reassigned to a new owner by updating the `ownerClientId` field using the [Reassign Metafield Owner](https://developer.bigcommerce.com/graphql-admin/reference#definition-MetafieldMutations) GraphQL mutation.
 
 <Callout type='info'>
-	While the v3 REST API supports creating, updating, and deleting metafields, to
-	reassign a metafield's owner you **must use** the GraphQL API.
+    While the v3 REST API supports creating, updating, and deleting metafields, to
+    reassign a metafield's owner you **must use** the GraphQL API.
 </Callout>
 
 <Callout type='info'>
-	The client ID is displayed only once when you create a store-level API
-	account. If it's lost or forgotten, you'll need to create a new store-level
-	API account. See the [API Accounts
-	Documentation](https://support.bigcommerce.com/s/article/Store-API-Accounts?language=en_US#store-level)
-	for details.
+    The client ID is displayed only once when you create a store-level API
+    account. If it's lost or forgotten, you'll need to create a new store-level
+    API account. See the [API Accounts
+    Documentation](https://support.bigcommerce.com/s/article/Store-API-Accounts?language=en_US#store-level)
+    for details.
 </Callout>
 
 <Callout type='warning'>
-	Ensure the metafield id uses the correct format: `bc/store/metafield/{id}`
+    Ensure the metafield id uses the correct format: `bc/store/metafield/{id}`
 </Callout>
 
 ## GraphQL Mutation
@@ -28,7 +28,7 @@ Metafields can be reassigned to a new owner by updating the `ownerClientId` fiel
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
-     
+
     mutation Metafield($input: ReassignMetafieldsOwnerInput!) {
         metafield {
             reassignMetafieldsOwner(input: $input) {
@@ -59,6 +59,6 @@ Metafields can be reassigned to a new owner by updating the `ownerClientId` fiel
             }
         }
     }
-    ```    
+    ```
     </Tab>
 </Tabs>

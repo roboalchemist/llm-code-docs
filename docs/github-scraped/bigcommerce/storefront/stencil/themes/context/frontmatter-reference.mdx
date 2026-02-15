@@ -22,6 +22,7 @@ customer:
   orders:
     limit: 10                       # limit the number of orders displayed to 10
   recently_viewed_products: true    # display recently viewed products
+
 ```
 
 | Property | Description |
@@ -41,6 +42,7 @@ products:
     limit: 5   #limits the number of new products to 5
   top_sellers: 
     limit: 5   # limits the number of top sellers to 5
+
 ```    
 
 | Property | Description |
@@ -52,6 +54,7 @@ products:
 
 ```yaml showLineNumbers 
 carousel: true    # displays carousel on the storefront unless set to null
+
 ```
 
 | Property | Description |
@@ -59,10 +62,11 @@ carousel: true    # displays carousel on the storefront unless set to null
 | `carousel` | Boolean indicating whether to display a carousel on a storefront. No filtering available. |
 
 ```yaml showLineNumbers
-blog:	
+blog:    
   recent_posts:
     limit: 5    # limits recent blog posts to 5
     summary: 100  # displays 100 character summary of blog post
+
 ```
 
 | Property | Description |
@@ -73,7 +77,9 @@ blog:
 
 ```yaml showLineNumbers 
 cart: true    # show cart data
+
 ```
+
 | Property | Description |
 |:---------|:------------|
 | `cart` | Boolean indicating whether to retrieve cart data. false: Do not return cart data. |
@@ -81,6 +87,7 @@ cart: true    # show cart data
 ```yaml showLineNumbers
 categories: true      # displays category tree
   description: true   # displays category description
+
 ```
 
 | Property | Description |
@@ -91,6 +98,7 @@ categories: true      # displays category tree
 ```yaml showLineNumbers
 shop_by_brand: true   # displays brand list
   limit: 10           # limits brands to 10 
+
 ```
 
 | Property | Description |
@@ -102,10 +110,11 @@ shop_by_brand: true   # displays brand list
 Category attributes are available in the context of a category.
 
 ```yaml showLineNumbers
-category:	
+category:    
   shop_by_price: true   # displays shop by price controls
   products:
     limit:  10          # limits products per page for this category to 10
+
 ```
 
 | Property | Description |
@@ -123,6 +132,7 @@ blog:
     limit: 10        # limits number of blog posts to 10
     pages: 5        # displays 5 pages in pagination links
     summary: 250    # displays 250 character summary of blog post
+
 ```
 
 | Property | Description |
@@ -148,6 +158,7 @@ product:
     limit: 10          # limits related products by name to 10
   similar_by_views:
       limit: 10        # limits similar products by views to 10
+
 ```
 
 <Callout type="info">
@@ -193,6 +204,7 @@ query reviewsByProductId(
       }
     }
   }
+
 ```
 
 ## Brand attributes
@@ -201,6 +213,7 @@ query reviewsByProductId(
 brand:
   products:
     limit: 50   # limits products displayed for this brand to 50
+
 ```
 
 | Property | Description |
@@ -212,6 +225,7 @@ brand:
 ```yaml showLineNumbers
 brands:
   limit: 50   # limits number of brands displayed in the list to 50
+
 ```
 
 | Property | Description |
@@ -224,6 +238,7 @@ brands:
 search: 
   product_results:
     limit: 16   # limits product results to 16
+
 ```
 
 | Property | Description |
@@ -260,6 +275,7 @@ gql: "query productById($productId: Int!) {
     }
   }
 }"
+
 ```
 
 <Callout type="info">
@@ -279,6 +295,7 @@ Once you have added a query to your template's front matter block, execution hap
   {{/with}}
 {{/each}}
 {{/if}}
+
 ```
 
 If the GraphQL query is invalid, Stencil returns an `errors` object with `locations` and `message` properties similar to the following example:
@@ -299,6 +316,7 @@ If the GraphQL query is invalid, Stencil returns an `errors` object with `locati
     ]
   }
 }
+
 ```
   
 On some pages, you can inject special variables into your query to fetch data relevant to that page. For example, using the `$productId` variable on product pages injects the product ID associated with the current page.
@@ -334,6 +352,7 @@ fragment CategoryFields on CategoryTreeItem {
   path
   entityId
 }"
+
 ```
   
 The example query returns the following JSON object:
@@ -372,4 +391,5 @@ The example query returns the following JSON object:
     }
   }
 }
+
 ``` 

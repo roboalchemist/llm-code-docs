@@ -1,6 +1,6 @@
 # End-to-End Guide: Headless checkout flow with the REST Management API
 
-This tutorial walks you through [creating a cart](#creating-a-cart), [checkout](#creating-a-checkout), an [order](#creating-an-order), and processing a payment using the [Carts](/docs/rest-management/carts/carts-single#create-a-cart) and [Checkout](/docs/rest-management/checkouts) REST Management APIs to build a headless storefront. 
+This tutorial walks you through [creating a cart](#creating-a-cart), [checkout](#creating-a-checkout), an [order](#creating-an-order), and processing a payment using the [Carts](/docs/rest-management/carts/carts-single#create-a-cart) and [Checkout](/docs/rest-management/checkouts) REST Management APIs to build a headless storefront.
 
 This article assumes you are familiar with the following:
 
@@ -12,7 +12,7 @@ This article assumes you are familiar with the following:
 * A store-level or app-level API account with the following permissions:
 
 | UI Name   | Permission | Parameter                     |
-|-----------|------------|-------------------------------| 
+|-----------|------------|-------------------------------|
 | Carts     | modify     | `store_cart`                  |
 | Checkouts | modify     | `store_checkouts`             |
 | Orders    | modify     | `store_v2_orders`             |
@@ -24,7 +24,7 @@ For more information, see [OAuth Scopes](/docs/start/authentication/api-accounts
 
 <Steps>
 
-  ### Step 1: Generate the cart ID
+### Step 1: Generate the cart ID
 
   To generate a cart ID, send a request to the [Create a cart](/docs/rest-management/carts/carts-single#create-a-cart) endpoint. The response contains an `id`, which is the `cart_id` or `cartId` in subsequent calls.
 
@@ -108,9 +108,9 @@ For more information, see [OAuth Scopes](/docs/start/authentication/api-accounts
     </Tab>
   </Tabs>
 
-  ### Step 2: Generate the redirect URLs
+### Step 2: Generate the redirect URLs
 
-  After you generate the cart ID, generate URLs to redirect customers to the BigCommerce-hosted cart and checkout pages. 
+  After you generate the cart ID, generate URLs to redirect customers to the BigCommerce-hosted cart and checkout pages.
   
   To generate the redirect URLs, send a request to the [Create a cart redirect URL](/docs/rest-management/carts/redirects#create-cart-redirect-url) endpoint. You use the cart ID generated in [Step 1](#creating-a-cart). The response contains the `cart_url` and the `checkout_url`.
 
@@ -268,7 +268,7 @@ After you transform your headless cart into a proper checkout with a billing add
 
 <Steps>
 
-  ### Step 1: Add a new consignment to the checkout
+### Step 1: Add a new consignment to the checkout
 
   Send a request to the [Add Consignment to Checkout](/docs/rest-management/checkouts/checkout-consignments#add-consignment-to-checkout) endpoint. Append the `include=consignments.available_shipping_options` query parameter to your request to return available shipping options. Use one of the available shipping options to update the consignment in [step 2](#step-2-update-the-consignment-with-a-shipping-option).
 
@@ -510,7 +510,7 @@ After you transform your headless cart into a proper checkout with a billing add
     ]
   ```
 
-  ### Step 2: Update the consignment with a shipping option
+### Step 2: Update the consignment with a shipping option
 
   After you create the consignment, update it with one of the available shipping options the previous request returned.
   Send a request to the [Update Checkout Consignment](/docs/rest-management/checkouts/checkout-consignments#update-checkout-consignment) endpoint.
@@ -736,9 +736,5 @@ After you add a billing address and a consignment to your checkout, you can crea
 * [Carts: Create cart redirect URL](/docs/rest-management/carts/redirects#create-cart-redirect-url)
 * [Checkout: Add a checkout billing address](/docs/rest-management/checkouts/checkout-billing-address#add-checkout-billing-address)
 * [Checkout: Update checkout consignment](/docs/rest-management/checkouts/checkout-consignments#update-checkout-consignment)
-* [Checkout: Create an order](/docs/rest-management/checkouts/checkout-orders#create-an-order) 
+* [Checkout: Create an order](/docs/rest-management/checkouts/checkout-orders#create-an-order)
 * [Orders: Create an order](/docs/rest-management/checkouts/checkout-orders#create-an-order)
-
-
-
-

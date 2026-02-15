@@ -1,6 +1,6 @@
 ---
 title: Embedded Checkout
-keywords: checkouts, draft order, headless, storefronts, 
+keywords: checkouts, draft order, headless, storefronts,
 ---
 
 # Embedded Checkout
@@ -34,6 +34,7 @@ To allow an external website to serve the BigCommerce checkout, create a new cha
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```http filename="Request: Create a channel" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{store_hash}}/v3/channels
     X-Auth-Token: {{access_token}}
@@ -45,8 +46,10 @@ To allow an external website to serve the BigCommerce checkout, create a new cha
       "name": "My Custom Store"
     }
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Response: Create a channel" showLineNumbers copy
     {
       "data": {
@@ -62,6 +65,7 @@ To allow an external website to serve the BigCommerce checkout, create a new cha
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -75,6 +79,7 @@ Next, create a site for the channel by sending a request to the [Create a channe
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```http filename="Request: Create a site" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{store_hash}}/v3/channels/{{channel_id}}/site
     X-Auth-Token: {{access_token}}
@@ -85,8 +90,10 @@ Next, create a site for the channel by sending a request to the [Create a channe
       "url": "https://store.example.com"
     }
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Response: Create a site" showLineNumbers copy
     {
       "data": {
@@ -99,6 +106,7 @@ Next, create a site for the channel by sending a request to the [Create a channe
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -123,7 +131,8 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 If you are creating a cart for a specific customer, pass in the `customer_id` in the request.
 
@@ -137,7 +146,8 @@ If you are creating a cart for a specific customer, pass in the `customer_id` in
     }
   ]
 }
-```
+
+```javascript
 
 The response contains a cart ID you can use in subsequent requests:
 
@@ -148,7 +158,8 @@ The response contains a cart ID you can use in subsequent requests:
     ...
     }
   }
-```
+
+```javascript
 
 To generate a cart redirect URL, send a request to the [Create cart redirect URL](/docs/rest-management/carts/redirects#create-cart-redirect-url) endpoint. Use the cart ID returned with the [Create a cart](/docs/rest-management/carts/carts-single#create-a-cart) response as the cartId path parameter value.
 
@@ -163,7 +174,8 @@ Content-Type: application/json
   "checkout_url": "https://store-id30h7ohwf.mybigcommerce.com/cart.php?action=loadInCheckout&id=bc218c65-7a32-4ab7-8082-68730c074d02&token=aa958e2b7922035bf3339215d95d145ebd9193deb36ae847caa780aa2e003e4b",
   "embedded_checkout_url": "https://store-id30h7ohwf.mybigcommerce.com/cart.php?embedded=1&action=loadInCheckout&id=bc218c65-7a32-4ab7-8082-68730c074d02&token=aa958e2b7922035bf3339215d95d145ebd9193deb36ae847caa780aa2e003e4b"
 }
-```
+
+```javascript
 
 ### Redirecting a signed-in customer to embedded checkout
 
@@ -187,7 +199,8 @@ Next, include the `embedded_checkout_url` as part of the request payload you sen
   "redirect_to": "https://store-id30h7ohwf.mybigcommerce.com/cart.php?embedded=1&action=loadInCheckout&id=bc218c65-7a32-4ab7-8082-68730c074d02&token=aa958e2b7922035bf3339215d95d145ebd9193deb36ae847caa780aa2e003e4b",
   "request_ip": "111.222.333.444"
 }
-```
+
+```javascript
 
 ### Data properties in the Customer Login JWT
 
@@ -197,7 +210,7 @@ The following table clarifies where the data properties for the embedded checkou
 |:---------|:-----|:------------|
 | `operation` | string | The value is always `customer_login`. |
 | `customer_id` | integer | The ID of the customer who wants to check out. |
-| `channel_id` | integer | The sales channel that the customer is signing in to. In a headless implementation, this is the storefront's channel ID. Required for embedded checkout. | 
+| `channel_id` | integer | The sales channel that the customer is signing in to. In a headless implementation, this is the storefront's channel ID. Required for embedded checkout. |
 | `redirect_to` | string, URL | The cart redirect URL you generated in a previous step. |
 
 ## Embedding the checkout
@@ -206,14 +219,15 @@ Use the `embedded_checkout_url` that is returned from generating redirect URLs a
 
 <Callout type="info">
   When the shopper is signed in, use the `https://{{store-url}}/login/token/{{token}}` URL as the `url` option for `embedCheckout`. For unauthenticated shoppers, use the `embedded_checkout_url` as the `url` option instead.
-</Callout>	
+</Callout>
 
 ```json filename="JSON Object" showLineNumbers copy
 {
   "containerId": "foo-bar-checkout",
   "url": "https://store-id30h7ohwf.mybigcommerce.com/cart.php?embedded=1&action=loadInCheckout&id=bc218c65-7a32-4ab7-8082-68730c074d02&token=aa958e2b7922035bf3339215d95d145ebd9193deb36ae847caa780aa2e003e4b"
 }
-```
+
+```javascript
 
 Pass the object to the `embedCheckout` method of the Checkout SDK.
 
@@ -222,13 +236,15 @@ embedCheckout({
   "containerId": "foo-bar-checkout",
   "url": "https://store-id30h7ohwf.mybigcommerce.com/cart.php?embedded=1&action=loadInCheckout&id=bc218c65-7a32-4ab7-8082-68730c074d02&token=aa958e2b7922035bf3339215d95d145ebd9193deb36ae847caa780aa2e003e4b"
 });
-```
+
+```javascript
 
 This will render the checkout to an HTML element with the `id` you chose.
 
 ```html filename="HTML element" showLineNumbers copy
 <div id="foo-bar-checkout"></div>
-```
+
+```javascript
 
 Read more about the [JSON object (GitHub)](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/README.md#embedcheckout) and its possible corresponding [rendering options (GitHub)](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/interfaces/EmbeddedCheckoutOptions.md).
 
@@ -236,7 +252,7 @@ Read more about the [JSON object (GitHub)](https://github.com/bigcommerce/checko
 
 ### How can I work with Embedded Checkout locally?
 
-You can use ngrok to test Embedded Checkout locally. 
+You can use ngrok to test Embedded Checkout locally.
 Steps:
 1. Start the development server using your local copy of the storefront.
 2. Create an [ngrok tunnel (ngrok.com)](https://ngrok.com/docs#getting-started-expose) to serve your localhost over a fully-qualified SSL connection.
@@ -257,7 +273,7 @@ For Embedded Checkout to work correctly for shoppers using a browser with restri
 
 ### How do I make sure that authenticated shoppers who sign out from the checkout page are also signed out of the headless storefront?
 
-To ensure you sign shoppers out of the checkout page and the headless storefront, pass the `onSignOut` option to `embedCheckout` to handle sign out events from the checkout page. 
+To ensure you sign shoppers out of the checkout page and the headless storefront, pass the `onSignOut` option to `embedCheckout` to handle sign out events from the checkout page.
 
 ## Related resources
 
@@ -280,7 +296,7 @@ To ensure you sign shoppers out of the checkout page and the headless storefront
 * [Sort customers by channel](https://login.bigcommerce.com/deep-links/manage/customers?limit=20&page=1&sortField=channel)
 * [Create custom views of orders](https://login.bigcommerce.com/deep-links/manage/orders/create-view)
 
-### External 
+### External
 
 * [JWT library (jwt.io)](https://jwt.io/#libraries-io)
 * [ngrok (ngrok.com)](https://ngrok.com/docs#getting-started-expose)

@@ -1,6 +1,6 @@
 ---
 title: API Best Practices
-keywords: best practices, 
+keywords: best practices,
 ---
 
 # API Best Practices
@@ -18,9 +18,13 @@ In most cases, we will give advance notice in our developer [release notes](/rel
 Examples of breaking changes include:
 
 - Removing fields from API responses
+
 - Changing the data type of request or response fields
+
 - Changing the structure of request or response objects
+
 - Adding new required fields to `POST` and `PUT` request bodies
+
 - Removing endpoints
 
 We will push "non-breaking" changes to the code base without warning as part of our normal development.
@@ -28,7 +32,9 @@ We will push "non-breaking" changes to the code base without warning as part of 
 Examples of non-breaking changes include:
 
 - Adding new fields to `GET` request responses
+
 - Adding new optional fields to `POST` and `PUT` request bodies
+
 - Adding new endpoints
 
 We encourage you to write robust, resilient code that will not break or leak memory if an endpoint begins to return additional fields.
@@ -39,11 +45,11 @@ To keep your app's data up to date, [webhooks](/docs/integrations/webhooks) prov
 
 When an event your app is listening for occurs, BigCommerce sends a payload with a few identifying details relevant to the event. See a list of [webhook events and their payloads](/docs/integrations/webhooks/events). Use the payload data points to make subsequent API requests for more details.
 
-### Avoid polling the Storefront Cart API 
+### Avoid polling the Storefront Cart API
 
 Client-side applications should avoid polling the [REST Storefront Cart API](/docs/rest-storefront/carts) on interval. Millions of browsers could poll this API at any given time, causing a significant load increase to BigCommerce's servers. We may take action against a store using this practice to prevent service interruptions to other stores.
 
-As an alternative, consider using a server-side app to subscribe to [cart webhook events](/docs/integrations/webhooks/events#carts), then query the Storefront Cart API only as a response to user input. Storing cart information in the browser cache is an alternative method for updating cart information across browser tabs. You may also be interested in the [growing list of events](/docs/integrations/hosted-analytics#bodl-event-schemas) available to native storefronts with our Open Data Layer enabled. 
+As an alternative, consider using a server-side app to subscribe to [cart webhook events](/docs/integrations/webhooks/events#carts), then query the Storefront Cart API only as a response to user input. Storing cart information in the browser cache is an alternative method for updating cart information across browser tabs. You may also be interested in the [growing list of events](/docs/integrations/hosted-analytics#bodl-event-schemas) available to native storefronts with our Open Data Layer enabled.
 
 ## Thread API requests
 
@@ -67,8 +73,11 @@ In order to achieve full pagination, the ending `cursor` of returned data also i
 
 An example workflow for `cursor` pagination is outlined below:
 
+
 1. Make a request with a set `limit`.
+
 2. Check if there is another page, and make another request on the `endCursor` associated with the response.
+
 3. Repeat step 2. until no further pages exist after the `endCursor`.
 
 For explicit examples of `cursor` pagination, refer to [GraphQL Storefront API - Pagination](/docs/storefront/graphql#pagination).
@@ -79,9 +88,13 @@ By contrast with `cursor` pagination, `offset` pagination takes a `limit` and a 
 
 An example workflow for `offset` pagination is outlined below:
 
+
 1. Make a request with a set `limit` of returned data and an `offset` of `0`.
+
 2. When the response is returned, verify whether another request is required.
+
 3. If necessary, make another request with the same `limit` and `offset` increased by the value of `limit`.
+
 4. Repeat steps 2. and 3. until no further requests are required.
 
 ## Resources
@@ -89,32 +102,45 @@ An example workflow for `offset` pagination is outlined below:
 ### API platform
 
 * [Platform Limits (Help Center)](https://support.bigcommerce.com/s/article/Platform-Limits)
+
 * [API Terms of Service (bigcommerce.com)](https://www.bigcommerce.com/terms/api-terms/)
+
 * [Filtering Requests](/docs/start/about/common-query-params)
+
 * [API Status Codes](/docs/start/about/status-codes)
+
 * [About Our API: Response Headers](/docs/start/about#response-headers)
+
 * [API rate limits](/docs/start/best-practices/api-rate-limits)
+
 * [Guide to API Accounts](/docs/start/authentication/api-accounts)[webhook events and their payloads](/docs/integrations/webhooks/events)
+
 * [Release notes](/release-notes)
 
 ## Correlating requests
 
-When building a headless storefront, it's best practice to group related requests using the `X-Correlation-Id` header. This indicates to BigCommerce's infrastructure that an API call is part of a larger operation, and helps us track the handoff from request to request as the operation moves through our servers. To learn more about the header, see our [list of request headers](/docs/start/about#bigcommerce-specific-request-headers). For an example and a more in-depth explanation, see the [Introduction to Headless Commerce](/docs/storefront/headless#correlating-requests). 
+When building a headless storefront, it's best practice to group related requests using the `X-Correlation-Id` header. This indicates to BigCommerce's infrastructure that an API call is part of a larger operation, and helps us track the handoff from request to request as the operation moves through our servers. To learn more about the header, see our [list of request headers](/docs/start/about#bigcommerce-specific-request-headers). For an example and a more in-depth explanation, see the [Introduction to Headless Commerce](/docs/storefront/headless#correlating-requests).
 
 ## Resources
 
 ### Related articles
 
 * [Webhook Events](/docs/integrations/webhooks/events)
+
 * [About Webhooks](/docs/integrations/webhooks)
+
 * [Big Open Data Layer](/docs/integrations/hosted-analytics#bodl-event-schemas)
 
 ### API references and clients
 
 * [API Reference](/docs/api)
-* [REST Storefront Cart API](/docs/rest-storefront/carts) 
+
+* [REST Storefront Cart API](/docs/rest-storefront/carts)
+
 * [Upsert price list records](/docs/rest-management/price-lists/price-lists-records#upsert-price-list-records)
+
 * [BigCommerce Ruby API client (GitHub)](https://github.com/bigcommerce/bigcommerce-api-ruby)
+
 * [Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)
 
 ### External articles

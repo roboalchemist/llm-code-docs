@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-- A store-level or app-level API Account with [OAuth scopes](/docs/start/authentication#oauth-scopes) that include the following. Pass the API account's access token as the value of the `X-Auth-Token` header. For more information, see [Authentication and Example Requests](/docs/start/authentication#access-tokens).
+* A store-level or app-level API Account with [OAuth scopes](/docs/start/authentication#oauth-scopes) that include the following. Pass the API account's access token as the value of the `X-Auth-Token` header. For more information, see [Authentication and Example Requests](/docs/start/authentication#access-tokens).
 
 | UI Name | Permission | Parameter | Description |
 |:--------|:-----------|:----------|:------------|
@@ -31,14 +31,17 @@ You can use a number of query parameters to describe the page features you want 
 
 <Tabs items={["Request", "Response"]}>
   <Tab>
+
     ```http filename="Get a page snapshot" copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/content/page-widgets?channel_id={{CHANNEL_ID}}&template_file={{TEMPLATE_FILE}}&entity_id={{ENTITY_ID}}
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
+
     ```
   </Tab>
 
   <Tab>
+
     ```json filename="Get a page snapshot" showLineNumbers copy
     {
       "data": {
@@ -489,6 +492,7 @@ You can use a number of query parameters to describe the page features you want 
       },
       "meta": {}
     }
+
     ```
   </Tab>
 </Tabs>
@@ -516,6 +520,7 @@ A successful request to the [Publish or overwrite a page](/docs/rest-content/pag
 
 <Tabs items={["Request", "Response"]}>
   <Tab>
+
     ```http filename="Publish or overwrite a page" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/content/page-widgets
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -975,22 +980,25 @@ A successful request to the [Publish or overwrite a page](/docs/rest-content/pag
         }
       ]
     }
+
     ```
   </Tab>
 
   <Tab>
+
     ```http filename="Publish or overwrite a page" copy
       201 Created
+
     ```
   </Tab>
 </Tabs>
 
 ## Resources
 
-- [Page widgets overview](/docs/storefront/widgets/page-widgets)
+* [Page widgets overview](/docs/storefront/widgets/page-widgets)
 
 ### REST Content API reference
 
-- [Page widgets](/docs/rest-content/page-widgets)
-- [Widgets](/docs/rest-content/widgets)
+* [Page widgets](/docs/rest-content/page-widgets)
+* [Widgets](/docs/rest-content/widgets)
 

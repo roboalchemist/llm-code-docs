@@ -45,7 +45,8 @@ function createCart(route, cartItems) {
   .then(result => console.log(result))
   .catch(error => console.error(error));
 };
-```
+
+```javascript
 
 The `createCart()` function takes two arguments:
 
@@ -67,10 +68,12 @@ createCart(`/api/storefront/carts`, {
     }
   ]
 });
-```
+
+```javascript
 
 Your result should be similar to the one below.
 &nbsp;
+
 ```json filename="Example response: createCart()" showLineNumbers copy
 {
   "id": "d4e978c2-bdcf-41b0-a49b-fecf4f5223c1",
@@ -127,7 +130,9 @@ Your result should be similar to the one below.
   },
   ...
 }
-```
+
+```javascript
+
 <Callout type="info">
   Please take note of the value of the `cartId` as it will be used later in the tutorial.
 </Callout>
@@ -150,10 +155,14 @@ function getCart(route) {
   .then(result => console.log(result))
   .catch(error => console.error(error));
 };
-```
+
+```javascript
+
 ```js filename="Example call: getCart()" showLineNumbers copy
 getCart('/api/storefront/carts?include=lineItems.digitalItems.options,lineItems.physicalItems.options');
-```
+
+```javascript
+
 ```json filename="Example response: getCart()" showLineNumbers copy
 [
   {
@@ -214,7 +223,8 @@ getCart('/api/storefront/carts?include=lineItems.digitalItems.options,lineItems.
     ...
   }
 ]
-```
+
+```javascript
 
 ### Add a cart item
 
@@ -238,7 +248,9 @@ function addCartItem(routeStart, cartId, cartItems) {
   .then(result => console.log(result))
   .catch(error => console.error(error));
 };
-```
+
+```javascript
+
 Call the function to add a new line item to your cart. Make sure to replace the `cartId` and `productId` with your own values.
 
 
@@ -251,7 +263,9 @@ addCartItem(`/api/storefront/carts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5223c1`, {
     }
   ]
 });
-```
+
+```javascript
+
 ```json filename="Example response: addCartItem()" showLineNumbers copy
 {
   "id": "d4e978c2-bdcf-41b0-a49b-fecf4f5223c1",
@@ -323,7 +337,8 @@ addCartItem(`/api/storefront/carts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5223c1`, {
   },
   ...
 }
-```
+
+```javascript
 
 ### Delete a cart item
 
@@ -344,13 +359,15 @@ function deleteCartItem(routeStart, cartId, itemId) {
   .then(result => console.log(result))
   .catch(error => console.error(error));
 };
-```
+
+```javascript
 
 Pass your `cartId` and `itemId` to the `deleteCartItem()` helper function to delete the line item.
 
 ```js filename="Example call: deleteCartItem()" showLineNumbers copy
 deleteCartItem(`/api/storefront/carts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5223c1`, `3f8dd1ed-f917-41be-b7f7-20c10f406e09`);
-```
+
+```javascript
 
 ```json filename="Example response: deleteCartItem()" showLineNumbers copy
 {
@@ -408,7 +425,8 @@ deleteCartItem(`/api/storefront/carts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5223c1`,
   },
   ...
 }
-```
+
+```javascript
 
 ## Storefront Checkout
 
@@ -439,7 +457,8 @@ function addBillingAddress(url, cartId, data) {
   .then(response => response.json())
   .catch(error => console.error(error));
 };
-```
+
+```javascript
 
 Now call the `addBillingAddress()` function making sure to replace the `cartId` with your own value.
 
@@ -458,7 +477,8 @@ addBillingAddress(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
 })
 .then(data => console.log(JSON.stringify(data)))
 .catch(error => console.error(error));
-```
+
+```javascript
 
 ```json filename="Example response: addBillingAddress()" showLineNumbers copy
 {
@@ -554,7 +574,8 @@ addBillingAddress(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
   ...
   "customerMessage": ""
 }
-```
+
+```javascript
 
 ### Add a new consignment
 
@@ -579,7 +600,8 @@ function createConsignment(url, cartId, data) {
   .then(response => response.json())
   .catch(error => console.error(error));
 };
-```
+
+```javascript
 
 Copy and execute the code below to create a new consignment. Make sure to replace the `cartId` with your own value.
 
@@ -625,7 +647,8 @@ createConsignment(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
 )
 .then(data => console.log(JSON.stringify(data)))
 .catch(error => console.error(error));
-```
+
+```javascript
 
 ```json filename="Example response: createConsignment()" showLineNumbers copy
 {
@@ -818,7 +841,8 @@ createConsignment(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
     ...
     "customerMessage": ""
   }
-```
+
+```javascript
 
 ### Update a consignment to add a shipping option
 
@@ -844,7 +868,8 @@ function updateConsignment(url, cartId, consignmentId, data,) {
   .then(response => response.json())
   .catch(error => console.error(error));
 };
-```
+
+```javascript
 
 Execute the code below to update the consignment, replacing `cartId`, `consigmentId`, and `shippingOptionId` with your values.
 
@@ -855,7 +880,8 @@ updateConsignment(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
 })
 .then(data => console.log(JSON.stringify(data)))
 .catch(error => console.error(error));
-```
+
+```javascript
 
 ```json filename="Example response: updateConsignment()" showLineNumbers copy
 {
@@ -1012,19 +1038,22 @@ updateConsignment(`/api/storefront/checkouts/`, `d4e978c2-bdcf-41b0-a49b-fecf4f5
   "subtotal": 274.5,
   ...
 }
-```
+
+```javascript
 
 ## Troubleshooting
 
-**Did you get a 404?**
+## Did you get a 404?
 Make sure you have at least one item in your cart. Removing all items deletes the cart and returns a 404 error.
 
 
 ## Related resources
 
 ### Articles
-- [Let’s Talk About CORS](https://medium.com/bigcommerce-developer-blog/lets-talk-about-cors-84800c726919)
+
+* [Let’s Talk About CORS](https://medium.com/bigcommerce-developer-blog/lets-talk-about-cors-84800c726919)
 
 ### Endpoints
-- [Storefront Cart](/docs/rest-storefront/carts)
-- [Storefront Checkout](/docs/rest-management/checkouts)
+
+* [Storefront Cart](/docs/rest-storefront/carts)
+* [Storefront Checkout](/docs/rest-management/checkouts)

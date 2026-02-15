@@ -41,7 +41,8 @@ fetch('/api/storefront/carts', {
 }).catch(function (error) {
   console.log(error);
 });
-```
+
+```javascript
 
 ```js filename="Log checkout details to the console" showLineNumbers copy
 console.log('Log Checkout');
@@ -65,9 +66,11 @@ fetch('/api/storefront/carts', {
 }).catch(function (error) {
   console.log(error);
 });
-```
+
+```javascript
+
 <Callout type="info">
-  **Log order details**
+## Log order details
   To log order details to the console, use the [Scripts API](/docs/integrations/scripts) to inject the script into your theme's footer or use the [Script Manager](https://support.bigcommerce.com/s/article/Using-Script-Manager?language=en_US) to add the script directly to `order-confirmation.html`.
 </Callout>
 
@@ -82,7 +85,8 @@ fetch('/api/storefront/order/' + checkout.order.id, {
 }).catch(function (error) {
   console.log(error);
 });
-```
+
+```javascript
 
 To access `checkout.order.id` from `order-confirmation.html`, use the Stencil theme's page context to assign the value of `checkout.order.id` to a variable. The following example assigns the value returned by `{{checkout.order.id}}` to the variable `jsContextOrderId`, then fetches order details and logs them to the console.
 
@@ -102,7 +106,8 @@ fetch(`/api/storefront/order/${jsContextOrderId}`, {
   console.log(error);
 });
 </script>
-```
+
+```javascript
 
 
 ## REST Management Cart and Checkout
@@ -116,6 +121,7 @@ The REST Management APIs manage the contents of a shopping cart and checkout rem
 
 
 ## When to use
+
 * Modifying cart contents, such as price matching
 * Taking a shopper through the cart and checkout using an app
 * Quote Builder - Building a cart, then restoring it on the storefront
@@ -140,10 +146,10 @@ We will go over common errors from REST Storefront and REST Management cart and 
 
 ***Issue:*** When a cart contains a product with an incorrect or missing text modifier.
 
-***Resolution:***
+## Resolution:
 Options and modifiers refer to a list of choices on a product. Options used to build out variants and modifiers are not tied to variants. To learn more about options and modifiers, see [Products Overview](/docs/store-operations/catalog#products-overview_modifier-options).
 
-To update a cart line item to fix an incorrect or missing text modifier, use the [Update cart line item](https://developer.bigcommerce.com/docs/rest-management/carts/items#update-cart-line-item) endpoint. 
+To update a cart line item to fix an incorrect or missing text modifier, use the [Update cart line item](https://developer.bigcommerce.com/docs/rest-management/carts/items#update-cart-line-item) endpoint.
 
 ```http filename="Example cart line item request" showLineNumbers copy
 PUT https://api.bigcommerce.com/stores/{store_hash}/v3/carts/{cartId}/items/{itemId}
@@ -165,7 +171,8 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 To add a product to the cart with one option (radio button) associated with it, use just the `variant_id` in the request.
 
@@ -184,7 +191,8 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 To add a product with both an option and a modifier associated with it, use the `option_id` and `option_value`. This example uses a radio button (option) and a text field (modifier).
 
@@ -212,16 +220,17 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 ### Missing line_items in request body [422]
 
 *Server to Server Cart API*
 
-***Issue:***
+## Issue:
 When a required product modifier is missing, a product can have a modifier that is not required. You can add the product to the cart without the modifier in those cases.
 
-***Resolution:***
+## Resolution:
 Use the [Get Products](/docs/rest-catalog/products#get-all-products) or [Get Modifier](/docs/rest-catalog/product-modifiers#get-all-product-modifiers) endpoints to return the modifier ID. The `modifier_id` = `option_id`.
 
 To create a cart with a product modifier:
@@ -246,16 +255,18 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 ### A shipping address for this order is incomplete [422]
+
 *Server to Server Cart API*
 
-***Issue:***
+## Issue:
 This error can return when the customer ID of a cart has changed.
 
-***Resolution:***
-You can link the customer ID to discounts and pricing available to that customer. However, if coupons, discounts, taxes, or shipping changes, anything that affects the cart price is invalidated. 
+## Resolution:
+You can link the customer ID to discounts and pricing available to that customer. However, if coupons, discounts, taxes, or shipping changes, anything that affects the cart price is invalidated.
 
 A better option is to create a cart with the `customer_id` as part of the request body and use the [Get Customers](/docs/rest-management/customers-v2#get-all-customers) endpoint to get the `customer_id`.
 
@@ -276,7 +287,8 @@ Content-Type: application/json
     }
   ]
 }
-```
+
+```javascript
 
 ### This product has options; variant ID is required [422]
 
@@ -284,7 +296,7 @@ Content-Type: application/json
 
 ***Issue:***  When a product has options and variant ID is not supplied in either the create or update cart request.
 
-***Resolution:***
+## Resolution:
 To get the variant ID use the [Get Products](/docs/rest-catalog/products#get-a-product) endpoint or the [Get Variants](/docs/rest-catalog/product-variants#get-a-product-variant) endpoint.
 To create a cart with a variant ID:
 
@@ -303,12 +315,13 @@ Content-Type: application/json
     }
   ]
 }
-```
 
-***Issue:***
+```javascript
+
+## Issue:
 The `option_id` is incorrect.
 
-***Resolution:***
+## Resolution:
 To get the correct `option_id`, make a request to [Get Products](/docs/rest-catalog/products) or [Get Product Variant Options](/docs/rest-catalog/product-variant-options#get-all-product-variant-options).
 
 ```http filename="Create cart option ID" showLineNumbers copy
@@ -330,18 +343,19 @@ Content-Type: application/json
     ]
   }
 }
-```
+
+```javascript
 
 *REST Storefront API carts*
 
-***Issue:***
+## Issue:
 
 * The required modifier on the storefront is missing. This missing modifier can include a text modifier with no selection. Make sure the `optionValue` is not blank.
 
 * The variantID is incorrect.
 * The modifierID is incorrect.
 
-**Resolution:**
+## Resolution:
 To add a product to the cart with a single modifier (text field), POST to the [Cart API](/docs/rest-storefront/carts#create-a-cart) without the `variant_id`. Use the `optionId` and `optionValue` instead.
 
 ```http filename="Create cart optionId and optionValue" showLineNumbers copy
@@ -359,7 +373,8 @@ To add a product to the cart with a single modifier (text field), POST to the [C
     }
   ]
 }
-```
+
+```javascript
 
 To add a product to the cart with one option (radio button) associated with it, use just the `variant_id` in the request.
 
@@ -373,7 +388,8 @@ To add a product to the cart with one option (radio button) associated with it, 
     }
   ]
 }
-```
+
+```javascript
 
 To add a product that has both an option and a modifier associated with it, then use the `option_id` and `option_value`. This example uses a radio button (option) and a text field (modifier).
 
@@ -396,17 +412,18 @@ To add a product that has both an option and a modifier associated with it, then
     }
   ]
 }
-```
+
+```javascript
 
 ### You can only purchase a maximum of :qty of the :product per order [409]
 
 *Server to Server Cart API*
 
-***Issue:***
+## Issue:
 When you add less than a product’s minimum required purchase or more than the maximum purchase to a cart.
 
 
-***Resolution:***
+## Resolution:
 Check the product for `order_quantity_minimum` and `order_quantity_maximum` for the correct amount to add to the cart. Use the [Get Product](/docs/rest-catalog/products#get-a-product) endpoint.
 
 
@@ -414,19 +431,19 @@ Check the product for `order_quantity_minimum` and `order_quantity_maximum` for 
 
 *Server to Server Cart API*
 
-***Issue:***
+## Issue:
 Trying to edit a cart that does not exist.
 
-***Resolution:***
+## Resolution:
 Carts are only valid 30 days past the `date_last_modified`. Check the [Get Carts](/docs/rest-storefront/carts#get-a-cart) endpoint for the currently available session cart.
 
 
 *REST Storefront API carts*
 
-***Issue:***
+## Issue:
 When you add less than a product’s minimum required purchase or more than the maximum allowed purchase to a cart. Use the [Get Product](/docs/rest-catalog/products#get-a-product) endpoint to check for min/max purchase restrictions.
 
-***Resolution:***
+## Resolution:
 Check the product for `order_quantity_minimum` and `order_quantity_maximum` for the correct amount to add to the cart. Use the [Get Product](/docs/rest-catalog/products#get-a-product) endpoint.
 
 ## Related resources
@@ -443,6 +460,7 @@ Check the product for `order_quantity_minimum` and `order_quantity_maximum` for 
 * [Rest Management Checkout](/docs/rest-storefront/checkouts)
 
 ### Webhooks
+
 * [Orders](/docs/integrations/webhooks/events#webhook-events_orders)
 * [SKU](/docs/integrations/webhooks/events#webhook-events_sku)
 * [Cart](/docs/integrations/webhooks/events#webhook-events_cart)

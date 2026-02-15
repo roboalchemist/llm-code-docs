@@ -1,9 +1,8 @@
 # Widget Builder
 
-
 Widget Builder is a command-line tool that lets you build, edit, and preview custom storefront widgets in real time, outside the context of your BigCommerce store.
 
-This article is a guide to help you learn how to use Widget Builder. 
+This article is a guide to help you learn how to use Widget Builder.
 
 ## Prerequisites
 
@@ -25,7 +24,7 @@ For more information on authentication, see [Authentication](/docs/start/authent
 
 ## Install Widget Builder
 
-To install Widget Builder and its dependencies, follow these instructions: 
+To install Widget Builder and its dependencies, follow these instructions:
 
 1. Open a terminal, and verify that you are using supported versions of Node.js and `npm`.
 
@@ -33,19 +32,20 @@ To install Widget Builder and its dependencies, follow these instructions:
 Refer to the [Widget Builder README.md](https://github.com/bigcommerce/widget-builder) for the latest supported Node.js and `npm` versions.
 </Callout>
 
-
 2. Clone the [widget-builder](https://github.com/bigcommerce/widget-builder) GitHub repository.
 
 3. Navigate to the `widget-builder` directory, and install Widget Builder using the following command:
 
 ``` copy
 npm run install-cli
+
 ```
 
 To retrieve usage information and view supported options and commands, run the following command:
 
 ``` copy
 widget-builder -h
+
 ```
 
 **Sample output:**
@@ -65,6 +65,7 @@ Commands:
   publish <widget-template>      Releases the widget template to the store
                                  belonging to the env config
   help [command]                 display help for command
+
 ```
 
 ## Configure Widget Builder
@@ -76,13 +77,16 @@ Once you have installed Widget Builder, the next step is to configure your devel
 **Sample input:**
 
 ``` showLineNumbers copy
-# organized by name of store 
+
+# organized by name of store
+
 cd ~/bc-projects/tools-r-us
 mkdir widget-workshop
 cd widget-workshop
+
 ```
 
-2. Run the interactive sequence that generates the configuration file. The session will prompt you to enter your API account credentials. Begin by running `widget-builder init`. 
+2. Run the interactive sequence that generates the configuration file. The session will prompt you to enter your API account credentials. Begin by running `widget-builder init`.
 
 **Sample session:**
 
@@ -97,45 +101,47 @@ cd widget-workshop
   You'll need those credentials in order to generate the appropriate configurations.
   You can find more information here. https://support.bigcommerce.com/s/article/Store-API-Accounts#creating
 
-  ? Are you ready to continue? You may press any key to continue (Y/n) 
+  ? Are you ready to continue? You may press any key to continue (Y/n)
     > Y
-  ? What is the Client ID? 
+  ? What is the Client ID?
     > xxxxxxxxxxxxx
-  ? What is the Access Token? 
+  ? What is the Access Token?
     > xxxxxxxxxxxxx
-  ? What is the API Path? 
+  ? What is the API Path?
     > xxxxxxxxxxxxx
   [2021-09-08T15:12:40.271Z] Successfully created your configuration, you're all set!
+
 ```
+
 ## Reset or create parallel configurations
 
-If you need to reset the configuration, you can run the `widget-builder init` command in the same directory to overwrite the existing assignments. Running `widget-builder init` in a sibling directory will create a separate development environment. 
+If you need to reset the configuration, you can run the `widget-builder init` command in the same directory to overwrite the existing assignments. Running `widget-builder init` in a sibling directory will create a separate development environment.
 
 Initializing Widget Builder at multiple levels of a single file hierarchy can have unpredictable results and is not recommended.
- 
- 
+
 <Callout type="info">
 To use Widget Builder as a development tool, you must run `widget-builder` commands from the same directory where you ran `widget-builder init`.
 </Callout>
 
-  
 ## Generate a scaffold with `create`
 
 Jump-start widget development with Widget Builder's `create` command, which creates a child directory, populates it with blank template files, and starts a development server. To use the generator, run the following command:
 
 ``` copy
 widget-builder create <[path/to/]some-widget>
+
 ```
 
 **Sample output:**
 
 ``` copy
-[2021-09-08T17:29:38.868Z] Successfully created ./some-widget 
+[2021-09-08T17:29:38.868Z] Successfully created ./some-widget
 [2021-09-08T17:29:38.870Z] Successfully created schema.json in ./some-widget/schema.json
 [2021-09-08T17:29:38.871Z] Successfully created config.json in ./some-widget/config.json
 [2021-09-08T17:29:38.871Z] Successfully created widget.html in ./some-widget/widget.html
 [2021-09-08T17:29:39.564Z] Starting widget-builder at http://localhost:8080!
 [2021-09-08T17:29:39.887Z] Socket connected.
+
 ```
 
 Your default browser will open automatically and display a text widget on port 8080.
@@ -146,12 +152,14 @@ Widget Builder's `start` command will start the development server for an existi
 
 ``` copy
 widget-builder start <[path/to/]widget-name>
+
 ```
 **Sample output:**
 
 ``` copy
 [2021-09-08T17:29:39.564Z] Starting widget-builder at http://localhost:8080!
 [2021-09-08T17:29:39.887Z] Socket connected.
+
 ```
 
 Your default browser will open automatically on port 8080.
@@ -162,6 +170,7 @@ To publish a widget to your BigCommerce store, navigate to its environment root,
 
 ``` copy
 widget-builder publish <[path/to/]widget-name>
+
 ```
 
 Publishing a widget from the same path will update or overwrite your existing widget. If you have a widget with the same name currently deployed in your store, the updated widget will **immediately** replace the previous version on your live storefront.

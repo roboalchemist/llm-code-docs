@@ -1,7 +1,5 @@
 # Widget Versioning
 
-
-
 This article documents how to use [widget versioning](/docs/storefront/widgets#widget-versioning) to update a widget template without updating its widgets.
 
 ###  Prerequisites
@@ -13,7 +11,6 @@ This article documents how to use [widget versioning](/docs/storefront/widgets#w
 <Callout type="info">
   This tutorial uses [Cornerstone](https://github.com/bigcommerce/cornerstone) theme.
 </Callout>
-
 
 ## Create a widget template
 
@@ -50,13 +47,12 @@ Accept: application/json
   ],
   "template": "<h1>{{textContent}}</h1>"
 }
-```
 
+```
 
 <Callout type="info">
   Make a note of `uuid` and `current_version_uuid`. We will use them in the steps that follow.
 </Callout>
-
 
 You can use [Page Builder](https://support.bigcommerce.com/s/article/Page-Builder), BigCommerce's storefront editing and customization tool, to view your widget template in the control panel. It will be displayed in the left pane under **Custom**.
 
@@ -82,6 +78,7 @@ Accept: application/json
   },
   "widget_template_uuid": "{your-widget-template-uuid}"
 }
+
 ```
 
 Look for `version_uuid` and `current_version_uuid` in the response. The widget's `version_uuid`should match the `current_version_uuid` of the widget template.
@@ -113,13 +110,14 @@ Look for `version_uuid` and `current_version_uuid` in the response. The widget's
   },
   "meta": {}
 }
+
 ```
 
 ### Place the widget
 
 You can place the widget on the storefront by [creating a placement](/docs/rest-content/widgets/placement#create-a-placement). The following example uses the `home_below_featured_products` region. To get a list of all available regions, send a `GET` request to [`v3/content/regions`](/docs/rest-content/widgets/regions#get-theme-regions).
 
-To place your widget, send a `POST` request to [`/v3/content/placements`](/docs/rest-content/widgets/placement#create-a-placement). 
+To place your widget, send a `POST` request to [`/v3/content/placements`](/docs/rest-content/widgets/placement#create-a-placement).
 
 ```http filename="Example request: Place a widget" showLineNumbers copy
 POST /stores/{{STORE_HASH}}/v3/content/placements
@@ -136,6 +134,7 @@ Accept: application/json
   "sort_order": 1,
   "region": "home_below_featured_products"
 }
+
 ```
 
 The widget should now be visible on your store's homepage under **Featured Products**.
@@ -178,6 +177,7 @@ Accept: application/json
   "template": "<h1 style='color:red;'>{{textContent}}</h1>",
   "create_new_version": true
 }
+
 ```
 
 Send a `GET` request to [`/v3/content/widgets/{uuid}`](/docs/rest-content/widgets/widget#get-a-widget) to retrieve your widget's data.
@@ -185,7 +185,7 @@ You will notice that `current_version_uuid` has changed and is now different fro
 
 ### Create a new widget
 
-All widgets created after the update will be based on the most current version. Let's create another widget to test this functionality. 
+All widgets created after the update will be based on the most current version. Let's create another widget to test this functionality.
 
 Send a `POST` request to [`/v3/content/widgets`](/docs/rest-content/widgets/widget#create-a-widget) replacing the `widget_template_uuid` placeholder with your widget template `uuid`.
 
@@ -203,10 +203,10 @@ Accept: application/json
   },
   "widget_template_uuid": "{your-widget-template-uuid}"
 }
+
 ```
 
-
-To display the new widget next to the old one, place it in the same region. In our case, it is `home_below_featured_products`. 
+To display the new widget next to the old one, place it in the same region. In our case, it is `home_below_featured_products`.
 
 You should now see two different widgets displayed below **Featured Products**.
 
@@ -219,15 +219,16 @@ To upgrade the widget derived from the original widget template, send `"upgrade"
 ![Upgrade the widget](https://raw.githubusercontent.com/bigcommerce/dev-docs/master/assets/images/widget-versioning-03.png "Upgrade the widget")
 
 <Callout type="info">
-  If the newer version of your widget template contains different schema settings, you need to provide the necessary configuration values along with the `upgrade` flag to make sure the widget is updated correctly. 
+  If the newer version of your widget template contains different schema settings, you need to provide the necessary configuration values along with the `upgrade` flag to make sure the widget is updated correctly.
 </Callout>
-
 
 ## Related resources
 
 ### Articles
+
 * [Widgets Overview](/docs/storefront/widgets)
 * [Page Builder Overview](/docs/storefront/stencil/content/page-builder)
 
 ### Endpoints
+
 * [Widgets API](/docs/rest-content/widgets)

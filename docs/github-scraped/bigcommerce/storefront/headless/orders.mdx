@@ -31,6 +31,7 @@ Now that you have added a billing address and a consignment to your checkout, yo
     Accept: application/json
     Content-Type: application/json
     X-Auth-Token: {{ACCESS_TOKEN}}
+
   ```
 
   </Tab>
@@ -52,8 +53,8 @@ Now that you have added a billing address and a consignment to your checkout, yo
 
 Depending on the shopper's card-on-file authorization, you can use one of the following methods to process the payment.
 
-* **Stored Card** – A shopper has authorized a merchant to store their payment details.
-* **Credit Card** – A shopper has not authorized a merchant to store their payment details.
+- **Stored Card** – A shopper has authorized a merchant to store their payment details.
+- **Credit Card** – A shopper has not authorized a merchant to store their payment details.
 
 ### Using the Stored Card method
 
@@ -64,6 +65,7 @@ GET https://api.bigcommerce.com/stores/{store_hash}/v3/payments/methods
 Accept: application/json
 Content-Type: application/json
 X-Auth-Token: {{ACCESS_TOKEN}}
+
 ```
 
 2. To process a payment for an order, you must make a call to the Payments API, which requires a Payment Access Token. To generate a payment access token, or _PAT_, send a request to the [Create Payment Access Token](/docs/rest-payments/tokens#create-payment-access-token) endpoint.
@@ -80,6 +82,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     "is_recurring": false
   }
 }
+
 ```
 
 Make a note of the access token `id`. This token is required in the subsequent order payment call to the [Process Payment](/docs/rest-payments/processing#process-payment) endpoint.
@@ -107,6 +110,7 @@ Make a note of the access token `id`. This token is required in the subsequent o
       }
     }
   ```
+
   </Tab>
   <Tab>
 
@@ -139,6 +143,7 @@ If a shopper does not have a payment method saved on file, you can process a pay
     "transaction_type": "purchase"
   }
 }
+
 ```
 
 A successful transaction will return a `success` status. The order status is then automatically changed to `Awaiting Fulfillment`. If you get a different response, see [Error Codes](/docs/store-operations/payments#error-codes) for troubleshooting.

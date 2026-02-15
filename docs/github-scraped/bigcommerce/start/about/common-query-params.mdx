@@ -34,6 +34,7 @@ For more information about whether an endpoint supports the `include` parameter,
 Many of BigCommerce's REST API endpoints support both `include_fields` and `exclude_fields` query parameters.
 
 - `include_fields` query parameter will return ONLY the specified fields in the response.
+
 - `exclude_fields` query parameter will omit the specified fields from the response.
 
 You can request any field that is available on the object. Speed up your API request response time by excluding unnecessary fields from your request, especially large fields like descriptions.
@@ -41,6 +42,7 @@ You can request any field that is available on the object. Speed up your API req
 The following example shows product name and price included in a single request:
 
 ```http filename="Example response: Product name and price" showLineNumbers copy
+
 GET https://api.bigcommerce.com/stores/{{store_hash}}/v3/catalog/products?include_fields=name,price
 
 {
@@ -52,6 +54,7 @@ GET https://api.bigcommerce.com/stores/{{store_hash}}/v3/catalog/products?includ
         }
     ]
 }
+
 ```
 
 The availability of the `include_fields` and `exclude_fields` query parameters varies by endpoint. For up-to-date filter information, refer to the `GET` method documentation of each endpoint.
@@ -59,6 +62,9 @@ The availability of the `include_fields` and `exclude_fields` query parameters v
 ## Pagination and limit
 
 * `page` is the number of pages that are returned by the API.
+
 * `limit` is the number of results per page that are returned.
+
 * `page=2&limit=10` will return page 2 of the results with 10 items per page.
+
 * The maximum number of products returned is 250.

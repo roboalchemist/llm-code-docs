@@ -191,7 +191,7 @@ So far, the promotion should look like the following:
 
 After the Action object, you will need to set two configurations within the rule.
 
-**Apply once**
+### Apply once
 
 You can set `apply_once` to `true` or `false`. If set to `true`, the action will only happen once. If set to `false`, it will happen more than once. Set this carefully. In the promotion we are building, setting it to `false` means the shopper can add two products to the cart and get two of the same items for free.
 
@@ -200,13 +200,13 @@ You can set `apply_once` to `true` or `false`. If set to `true`, the action will
   Set `apply_once` carefully to avoid giving a more generous discount than intended.
 </Callout>
 
-**Stop**
+### Stop
 
 Stop determines whether the remaining rules apply. Promotions can have more than one rule. If you set stop to `true` on a rule, and it is applied successfully, you will end the evaluation. If you set stop to `false` the following rule will be evaluated regardless of the outcome.
 
 If there is only one rule, you can set stop to either `true` or `false` without affecting the results.
 
-**Currency code**
+### Currency code
 
 Promotions only apply to orders in the specified transactional currency. `currency_code` is optional and defaults to the store default currency if not supplied.
 
@@ -400,11 +400,11 @@ So far, the promotion should look like the following:
 
 ### Finishing the promotion
 
-**Priority**
+### Priority
 
 Priority determines the order in which you can apply promotions in your cart. A lower number means higher priority. You can use the sort query parameter of the Get All Promotions endpoint to sort promotions by priority.
 
-**Stop**
+### Stop
 
 Stop determines if you want to calculate any other promotions after this one. Setting it to `true` means no other promotions are taken into consideration after this one is applied.
 
@@ -419,19 +419,19 @@ Stop determines if you want to calculate any other promotions after this one. Se
 </Callout>
 
 
-**Max Uses**
+### Max Uses
 
 The number of times you can use a promotion before the status changes to **DISABLED**. `max_uses` is optional; if not set, the promotion will be active until manually disabled.
 
-**Start Date**
+### Start Date
 
 Time and date to start the promotion. If left blank, it will default to the current time.
 
-**End Date**
+### End Date
 
 Time and date to end the promotion.
 
-**Status**
+### Status
 Status is a way to enable and disable the promotion. You can set Status by start dates, end dates, and max uses.
 
 The following is the completed promotion for buy one, get one free.

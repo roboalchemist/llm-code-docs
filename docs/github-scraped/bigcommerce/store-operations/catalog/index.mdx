@@ -55,6 +55,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "weight": 4,
   "type": "physical"
 }
+
 ```
 
 ## Creating products with variant options
@@ -97,6 +98,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 <Callout type="info">
@@ -129,6 +131,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 <Callout type="info">
@@ -153,6 +156,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "description": "Yellow Large Bath Towel",
   "image_url": "{{image_url}}"
 }
+
 ```
 
 <Callout type="info">
@@ -181,6 +185,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "type": "youtube",
   "video_id": "R12345677"
 }
+
 ```
 
 <Callout type="info">
@@ -204,6 +209,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "name": "Release Year",
   "value": "2018"
 }
+
 ```
 
 
@@ -239,6 +245,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 For general information and use cases for product bulk pricing, see [Bulk Pricing](https://support.bigcommerce.com/s/article/Bulk-Pricing).
@@ -274,6 +281,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "resource_type": "product",
   "resource_id": 131
 }
+
 ```
 
 <Callout type="info">
@@ -301,6 +309,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "name": "BigCommerce",
   "date_reviewed": "2018-07-20T17:45:13+00:00"
 }
+
 ```
 
 <Callout type="info">
@@ -318,7 +327,7 @@ Example:
 
 This example results in selecting a combination of small and red on the storefront and correlates to a product variation, also called a SKU.
 
-**Variant options:**
+### Variant options:
 
 * Require the shopper to select a value
 * Only support “multiple choice” option types
@@ -382,6 +391,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 ## Variants
@@ -465,6 +475,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   }
 }
+
 ```
 
 In the above response, there are two variant options of size and color with three values each.
@@ -502,6 +513,7 @@ The `option_values` array combines the options small and blue to create the SKU 
     ...
   ]
 }
+
 ```
 
 ### Create a variant using the product endpoint
@@ -546,6 +558,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 
@@ -614,6 +627,7 @@ To [create a modifier](/docs/rest-catalog/product-modifiers#create-a-product-mod
       },
       "display_name": "Add a $5 Donation"
     }
+
     ```
 
 
@@ -662,6 +676,7 @@ To [create a modifier](/docs/rest-catalog/product-modifiers#create-a-product-mod
       ],
       "meta": {...}
     }
+
     ```
 
   </Tab>
@@ -691,6 +706,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
         }
     ]
 }
+
 ```
 
 ### Troubleshooting: 422 Errors
@@ -704,6 +720,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
         "product_id": "The product is currently associated with an option set, please remove it before editing an option or modifier."
     }
 }
+
 ```
 
 To fix this error:
@@ -763,6 +780,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 }
+
 ```
 
 
@@ -776,6 +794,7 @@ Complex rules must consist of multiple conditions that trigger the rule adjustme
     "title": "The rule must contain multiple modifier conditions with unique modifier ids or a variant condition and modifier condition",
     "type": "https://developer.bigcommerce.com/docs/start/about/status-codes"
 }
+
 ```
 
 ## Creating brands
@@ -799,6 +818,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   ],
   "image_url": "{{image_url}}"
 }
+
 ```
 
 For general information on brands and their use cases, see [Managing Brands](https://support.bigcommerce.com/s/article/Managing-Brands).
@@ -826,6 +846,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "page_title": "Shoes",
   "is_visible": true
 }
+
 ```
 
 ### Category tree
@@ -840,6 +861,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
     Content-Type: application/json
     X-Auth-Token: {{ACCESS_TOKEN}}
+
     ```
 
   </Tab>
@@ -878,6 +900,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
       ],
       "meta": {...}
     }
+
     ```
 
   </Tab>
@@ -895,6 +918,7 @@ GET https://api.bigcommerce.com/stores/{{store_hash}}/v3/catalog/summary
 Accept: application/json
 Content-Type: application/json
 X-Auth-Token: {{ACCESS_TOKEN}}
+
 ```
 </Tab>
 
@@ -916,6 +940,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   },
   "meta": {}
 }
+
 ```
 </Tab>
 </Tabs>

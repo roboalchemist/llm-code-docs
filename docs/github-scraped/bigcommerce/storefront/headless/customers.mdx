@@ -9,7 +9,7 @@ This section covers different ways to associate customers with headless carts.
 
 ## GraphQL Storefront API
 
-You can use the GraphQL Storefront API to sign in to a customer account using hosted client-side, headless client-side, or server-side code. 
+You can use the GraphQL Storefront API to sign in to a customer account using hosted client-side, headless client-side, or server-side code.
 
 ### Hosted client-side sign-in
 
@@ -39,7 +39,7 @@ mutation createRedirectUrl($input: CreateCartRedirectUrlsInput!) {
 }
 ```
 
-The other option is when a customer signs in to your headless storefront and your application redirects them to a BigCommerce-hosted page, such as checkout, you can use the [Customer Login API](/docs/start/authentication/customer-login) to sign them in to the hosted session. 
+The other option is when a customer signs in to your headless storefront and your application redirects them to a BigCommerce-hosted page, such as checkout, you can use the [Customer Login API](/docs/start/authentication/customer-login) to sign them in to the hosted session.
 
 You can sign a customer in to an embedded checkout by using the session-sync URL from the [createCartRedirectUrls mutation](https://developer.bigcommerce.com/graphql-storefront/reference#definition-CartMutations).
 
@@ -65,7 +65,7 @@ To address this need, BigCommerce provides the [Current Customer API](/docs/star
 
 ## Create a session sync JWT token
 
-The session sync token is a JWT (JSON Web Token) designed to seamlessly synchronize user sessions across different storefront environments—whether between headless and Stencil, Stencil and Stencil, or headless and headless setups. You can generate this token using the [generateSessionSyncJwt](https://developer.bigcommerce.com/graphql-storefront/reference#mutation-generateSessionSyncJwt) GraphQL mutation. 
+The session sync token is a JWT (JSON Web Token) designed to seamlessly synchronize user sessions across different storefront environments—whether between headless and Stencil, Stencil and Stencil, or headless and headless setups. You can generate this token using the [generateSessionSyncJwt](https://developer.bigcommerce.com/graphql-storefront/reference#mutation-generateSessionSyncJwt) GraphQL mutation.
 
 The token enables secure, transparent, and optional sharing of session-related data, including:
 
@@ -114,6 +114,7 @@ mutation sessionSyncJwt(
 }
 
 ```
+
 ```http filename="Variables" showLineNumbers copy
 {
   "redirectTo": "xyz789",
@@ -124,6 +125,7 @@ mutation sessionSyncJwt(
   "visitId": "3d077ee5-373a-42aa-91d2-dd43dc87dde9"
 }
 ```
+
 </Tab>
 <Tab>
 
@@ -140,6 +142,7 @@ mutation sessionSyncJwt(
     }
 }
 ```
+
 </Tab>
 </Tabs>
 
@@ -205,9 +208,10 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "meta": {}
 }
 ```
+
 </Tab>
 </Tabs>
 
 ## Next step
 
-- [Learn how to create an order](/docs/storefront/headless/orders)
+* [Learn how to create an order](/docs/storefront/headless/orders)

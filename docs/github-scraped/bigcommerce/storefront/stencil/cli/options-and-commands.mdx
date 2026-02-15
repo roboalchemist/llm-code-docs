@@ -14,6 +14,7 @@ The syntax to run a Stencil CLI command is as follows:
 
 ```shell filename="Stencil CLI command syntax" copy
 stencil COMMANDS [OPTIONS] <PARAMETERS>
+
 ```
 
 Running `stencil help` outputs a full list of commands and their descriptions. For more detailed information and usage examples, click a link in the table below:
@@ -38,8 +39,11 @@ Displays help and returns all options available for the specified command.
 
 ```shell filename="Usage: stencil help" copy
 stencil help COMMAND
+
 ```
+
 &nbsp;
+
 ```shell filename="Example: stencil help" copy showLineNumbers
 ~ $ stencil help
 Usage: stencil [OPTIONS] COMMAND
@@ -48,6 +52,7 @@ Options:
   -V, --version  output the version number
   -h, --help     output usage information
 ...
+
 ```
 
 ## stencil init
@@ -58,6 +63,7 @@ NOTE: For custom templates, use only the `config.stencil.json` file. The `config
 
 ```shell filename="Usage: stencil init" copy
 stencil init [--url STORE_URL] [--token API_TOKEN]
+
 ```
 
 | Option                  | Alias | Description                                                                               |
@@ -73,10 +79,14 @@ Starts the live theme preview using the theme files in the current directory.
 ```shell filename="Usage: stencil start" showLineNumbers copy
 stencil start [-V|--version] [-o|--open] [-v|--variation] [-t|--test] [-t|--tunnel] [-vb|--verbose]
 stencil start [-h|--help]
+
 ```
+
 &nbsp;
+
 ```shell filename="Example: stencil start" copy
 stencil start --open # opens live theme preview in default browser
+
 ```
 
 | Option                       |Alias| Description                                                                           |
@@ -109,6 +119,7 @@ Bundles up the theme into a structured `.zip` file, which can be uploaded to Big
 
 ```shell filename="Usage: stencil bundle" copy
 stencil bundle [OPTIONS]
+
 ```
 
 | Option                        |Alias| Description                                                                                         |
@@ -126,6 +137,7 @@ Pulls the configuration from the active theme on your live store and updates you
 
 ```shell filename="Usage: stencil pull" copy
 stencil pull [OPTIONS]
+
 ```
 
 | Option                        |Alias| Description                                                                         |
@@ -138,6 +150,7 @@ stencil pull [OPTIONS]
 
 ```shell filename="Example: stencil pull" copy
 stencil pull
+
 ```
 
 ## stencil push
@@ -146,6 +159,7 @@ Bundles up the theme into a structured `.zip file`; then directly uploads (pushe
 
 ```shell filename="Usage: stencil push" copy
 stencil push [<OPTIONS>]
+
 ```
 
 | Option                        |Alias| Description                                                                         |
@@ -165,7 +179,9 @@ stencil push [<OPTIONS>]
 
 ```shell filename="Example: stencil push" copy
 stencil push -f Cornerstone-2.3.2.zip # uploads specified file, skips bundling if file already exists
+
 ```
+
 <Callout type="info">
  #### --filename:
  You can use the `-f` or `--filename` option in cases where you have already run `stencil bundle` to bundle your theme, but the resulting .zip file has not yet been uploaded to BigCommerce. Use the generated .zip file's **filename** as a parameter to identify the generated file in your theme directory. An example of the command is outlined below.
@@ -179,6 +195,7 @@ Download the theme files from your live store, overwriting files in your local d
 
 ```shell filename="Usage: stencil download" copy
 stencil download [OPTIONS]
+
 ```
 
 | Option                        |Alias| Description                                                                         |
@@ -191,6 +208,7 @@ stencil download [OPTIONS]
  
 ```shell filename="Example: stencil download" copy
 stencil download -f package.json
+
 ```
 
 ## stencil release
@@ -200,6 +218,7 @@ Creates a new release in a theme’s GitHub repository. Developers outside BigCo
 
 ```shell filename="Usage: stencil release" copy
 stencil release [OPTIONS]
+
 ```
 
 | Option      | Alias | Description                |

@@ -31,11 +31,14 @@ See [B2B Buyer Portal Setup Overview](/b2b-edition/docs/buyer-portal#prerequisit
 
 1. Clone the [B2B Buyer Portal](https://github.com/bigcommerce/b2b-buyer-portal) repository.  
 2. Install dependencies:
+
    ```
    yarn install
    ```
+
 3. Copy `apps/storefront/.env-example` as `apps/storefront/.env`.  Note that, for initial development in the local environment, no values need to be changed in this file.
 4. Start the development server:
+
    ```
    yarn dev
    ```
@@ -82,11 +85,11 @@ For the following steps, you must know in advance the URL where your build files
 | `VITE_ASSETS_ABSOLUTE_PATH` | The absolute URL where the build files will be deployed. For example, if the build files from `dist` will be uploaded to the URL `https://my.custom/cdn/generated/b2b`/, this should be provided as the value. Make sure to include the trailing slash. |
 | `VITE_DISABLE_BUILD_HASH` | By default, build files will include a hash to invalidate previous caches. (For example, `index-{hash}.js`) Set this value to `TRUE` if you want to build files without the hash. (For example, `index.js`) This is appropriate if you are using a folder-based naming scheme for cache busting instead of file-based. |
 
-2. Run the build.
+1. Run the build.
 
 `yarn build`
 
-3. Copy the contents of `apps/storefront/dist` to your chosen CDN or hosting provider.
+1. Copy the contents of `apps/storefront/dist` to your chosen CDN or hosting provider.
 
    As an example for how the URLs of the final build files should be represented, consider that `dist` should contain these two files/directories (among others):  
    * `assets`  
@@ -96,7 +99,7 @@ For the following steps, you must know in advance the URL where your build files
    * `https://my.custom/cdn/generated/b2b/assets`  
    * `https://my.custom/cdn/generated/b2b/index.js`
 
-4. Navigate to Script Manager in the BigCommerce control panel and update the B2B Edition header and footer scripts as described in the [Stencil Guide](https://github.com/bigcommerce/b2b-buyer-portal/blob/main/docs/stencil.md#deploying-the-project) in the Buyer Portal repository, making sure once again to use the appropriate base URL.
+2. Navigate to Script Manager in the BigCommerce control panel and update the B2B Edition header and footer scripts as described in the [Stencil Guide](https://github.com/bigcommerce/b2b-buyer-portal/blob/main/docs/stencil.md#deploying-the-project) in the Buyer Portal repository, making sure once again to use the appropriate base URL.
 
 <Callout type="info">
 *When re-building and re-deploying your custom Buyer Portal, you should clear the local contents of `.turbo/cache` before running `yarn build` to ensure that all updated code is reflected in the build.  Also make sure to update your scripts in Script Manager again after deploying your new build files.*

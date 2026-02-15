@@ -5,6 +5,7 @@ You can create unique shopping experiences that fit the look and feel of a store
 This article will address using both [Open Source Checkout](https://github.com/bigcommerce/checkout-js) and [Checkout SDK](https://github.com/bigcommerce/checkout-sdk-js) powered checkouts.
 
 ## Obtaining the JavaScript loader file
+
 Custom checkouts must have a single JS loader file. The first step to using a custom checkout is generating this file. The loader file is responsible for the following:
 
 * Loading all the required assets, including all CSS files, no matter the location
@@ -32,12 +33,15 @@ If using [Open Source Checkout](https://github.com/bigcommerce/checkout-js), you
 
 ```bash showLineNumbers copy
 # Clone the repo
+
 git clone https://github.com/bigcommerce/checkout-js
 
 # Install dependencies
+
 cd checkout-js
 npm ci
-```
+
+```javascript
 
 2. (Optional) Start webpack in watch mode and launch the dev server.
 
@@ -45,11 +49,12 @@ npm ci
 
 ```bash copy
 npm run dev & npm run dev:server
-```
+
+```javascript
 
 <Callout type="info">
- - Open your browser and navigate to `http://127.0.0.1:8080/` to confirm the dev server is running. You should see content from the `/build` folder.
- - Enter the local URL for `auto-loader-dev.js` in **Checkout Settings** > **Custom Checkout** > **Script URL**. (e.g., `http://127.0.0.1:8080/auto-loader-dev.js`)
+ * Open your browser and navigate to `http://127.0.0.1:8080/` to confirm the dev server is running. You should see content from the `/build` folder.
+ * Enter the local URL for `auto-loader-dev.js` in **Checkout Settings** > **Custom Checkout** > **Script URL**. (e.g., `http://127.0.0.1:8080/auto-loader-dev.js`)
 </Callout>
 
 3. After you have made changes to the source code, run the following command to build it.
@@ -57,6 +62,7 @@ npm run dev & npm run dev:server
   ```bash copy
     npm run build
    ```
+
   This creates a `/dist` folder that contains the loader file (e.g., `auto-loader-1.564.0.js`). You will then need to host the `/dist` folder and enter the URL to the loader file in **Checkout Settings** > **Custom Checkout** > **Script URL**.
 
 ### Configuring to comply with PCI DSS 4.0
@@ -74,8 +80,9 @@ The steps to host a custom checkout on BigCommerce are below:
 ## Related resources
 
 ### Articles
-- [Checkout SDK](/docs/storefront/cart-checkout/checkout-sdk)
-- [Checkout SDK Tutorial](/docs/storefront/cart-checkout/checkout-sdk/tutorial)
-- [Configuring Open Checkout to comply with PCI DSS 4.0 Section 6.4.3](https://developer.bigcommerce.com/docs/storefront/cart-checkout/open-checkouts/pciguide)
-- [File Access (WebDAV)](https://support.bigcommerce.com/s/article/File-Access-WebDAV)
-- [Installing Custom Checkouts in the Control Panel](https://support.bigcommerce.com/s/blog-article/aAn4O000000CdFGSA0/installing-custom-checkouts-in-the-control-panel)
+
+* [Checkout SDK](/docs/storefront/cart-checkout/checkout-sdk)
+* [Checkout SDK Tutorial](/docs/storefront/cart-checkout/checkout-sdk/tutorial)
+* [Configuring Open Checkout to comply with PCI DSS 4.0 Section 6.4.3](https://developer.bigcommerce.com/docs/storefront/cart-checkout/open-checkouts/pciguide)
+* [File Access (WebDAV)](https://support.bigcommerce.com/s/article/File-Access-WebDAV)
+* [Installing Custom Checkouts in the Control Panel](https://support.bigcommerce.com/s/blog-article/aAn4O000000CdFGSA0/installing-custom-checkouts-in-the-control-panel)

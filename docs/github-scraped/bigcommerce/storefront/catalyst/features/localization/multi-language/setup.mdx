@@ -64,6 +64,7 @@ Let’s explore more of how this works! Static string translations are already p
       }
     }
     ```
+
 2. Open the Cart page component, `core/app/[locale]/(default)/cart/page.tsx`, for an example of how you can access the translations within a server component by calling `getTranslations`. `next-intl` imports translations based on the [current locale that it detects](https://next-intl.dev/docs/routing/middleware#locale-detection)`.`
 
     ```tsx
@@ -118,7 +119,7 @@ You can translate dynamic product data by sending GraphQL mutations with the [Gr
     - `channel_id` - the channel ID from your `env.local` file
     - `access_token` - a Store Level V2/V3 API token with the `Products` OAuth scope that you can get by [creating an API Account](https://support.bigcommerce.com/s/article/Store-API-Accounts?language=en_US#creating)
 
-	 Make sure to [make this environment active](https://learning.postman.com/docs/sending-requests/variables/managing-environments/#switch-between-environments) in Postman.
+  Make sure to [make this environment active](https://learning.postman.com/docs/sending-requests/variables/managing-environments/#switch-between-environments) in Postman.
    <br />
 3. Download and import the [Postman collection for translations](https://storage.googleapis.com/bigcommerce-production-dev-center/template-files/catalyst/translations.postman_collection.json).
 
@@ -224,11 +225,10 @@ Now you can now customize the content specifically for the French locale. Note t
 
 For non-default locales, make sure you [toggle the page to be online](https://docs.makeswift.com/product/page/metadata#metadata) in the sidebar before publishing.
 
-
 ## Wrap up
 
 Now, you should have a Catalyst app that fully supports multiple languages. Remember as you continue to build out and customize your app, you’ll need to keep in mind the three scenarios we covered.
 
-* Static string translations in components
-* Dynamic data from BigCommerce
-* Makeswift content
+- Static string translations in components
+- Dynamic data from BigCommerce
+- Makeswift content

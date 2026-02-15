@@ -3,6 +3,7 @@ title: Order Complexity Considerations
 description: Explore the key factors affecting order migration complexity in BigCommerce, such as products, customers, and order-level details, with actionable strategies for handling diverse scenarios during migration.
 keywords: order complexity, order migration, products, customers, order management, migration strategy, BigCommerce
 ---
+
 # Complexity Considerations
 
 While order migration can be considered as a strictly “move information from here to here” sort of operation, there are factors that result in higher or lower levels of complexity that will change the ideal strategy used in migration planning.
@@ -22,35 +23,37 @@ If your catalog is primarily simple products, the process only requires selectio
 | Products with modifiers only | `product_id` and `product_options` array | Product with custom text or other factors unaffected by inventory. |
 | Products with both | `product_id`, `product_options` array, and optionally `variant_id`.  | Product with color selections and  custom text |
 
-<Callout type="info">  
+<Callout type="info">
 While the table above indicates the use of `variant_id` for products with any variants, it can be helpful to split variant selections up in the `product_options` array for clarity in selections made.
 
-This splitting is reflected in the flowchart below, but it isn’t strictly necessary.  
+This splitting is reflected in the flowchart below, but it isn’t strictly necessary.
 </Callout>
 
 As these features occur on a product-to-product basis, your migration code should account for each possible case that affects your catalog. Ideally you should aim for the minimal implementation that accomplishes your catalog’s needs, but a simple flow-chart for product handling at any complexity follows:
 
-```mermaid  
-flowchart LR  
-    B[Get<br />Product]  
-    B --> C[Add<br /> ID & Name]  
-    C --> D{Variants?}  
-    D -->|No| F{Modifiers?}  
-    D -->|Single| G[Add<br />Variant ID] --> F  
-    D -->|Multiple| H[Add<br />Options] --> F  
-      
-    F -->|No| J[Output]  
-    F -->|Yes| I[Add<br />Options] --> J  
-      
-    J --> K{More?}  
-    K -->|Yes| B  
-    K -->|No| M[Complete]  
+```mermaid
+
+flowchart LR
+    B[Get<br />Product]
+    B --> C[Add<br /> ID & Name]
+    C --> D{Variants?}
+    D -->|No| F{Modifiers?}
+    D -->|Single| G[Add<br />Variant ID] --> F
+    D -->|Multiple| H[Add<br />Options] --> F
+
+    F -->|No| J[Output]
+    F -->|Yes| I[Add<br />Options] --> J
+
+    J --> K{More?}
+    K -->|Yes| B
+    K -->|No| M[Complete]
+
 ```
 
 More information on this will be explored when we cover the fields related to the [Create an Order](/docs/rest-management/orders#create-an-order) endpoint.
 
-<Callout type="info">  
-Older products no longer listed in your catalog can still be included in your customers’ order history as necessary, but it requires the use of the custom product workflow, which will be outlined when we cover fields.  
+<Callout type="info">
+Older products no longer listed in your catalog can still be included in your customers’ order history as necessary, but it requires the use of the custom product workflow, which will be outlined when we cover fields.
 </Callout>
 
 ## Customers
@@ -69,27 +72,29 @@ Complexity considerations for customers are outlined here:
 | Multiple shipping addresses | `shipping_addresses` array | Customer ordering for multiple locations at once. |
 | Consignments | `consignments.pickups` array | Customer picking up whole orders ‘in store’. |
 
-<Callout type="info">  
-If the `consignments` object is included in order data, both `shipping_addresses` and `products` must be excluded. This is a restriction on order processing preventing ‘pick up’ and ‘delivery’ from occurring on the same order.  
+<Callout type="info">
+If the `consignments` object is included in order data, both `shipping_addresses` and `products` must be excluded. This is a restriction on order processing preventing ‘pick up’ and ‘delivery’ from occurring on the same order.
 </Callout>
 
 Just as with products, customer order data may be mixed complexity. As a result, either a pre-migration analysis or an adaptive order workflow should be implemented to capture the full scope of your project. While the latter is more effective, the former can help establish the scope of the adaptive workflow ahead of time and decrease complexity overall.
 
-```mermaid  
-flowchart LR  
-    B{Has<br />`customer_id`} -->|No| C[Add Billing<br />Address]  
+```mermaid
+
+flowchart LR
+    B{Has<br />`customer_id`} -->|No| C[Add Billing<br />Address]
     B -->|Yes| D[Add ID] --> C
 
-    C --> E{Has<br />Consignments}  
-    E -->|No| F[Add<br />Products]  
-    E -->|Yes| G[Add<br />Consignments] --> H[Complete]  
-    F --> I --> H  
-    subgraph I[Shipping Addresses]  
-        I1{Has Addresses?} -->|No| I2[End]  
-        I1 -->|Yes| I3[Add to Array] --> I1  
+    C --> E{Has<br />Consignments}
+    E -->|No| F[Add<br />Products]
+    E -->|Yes| G[Add<br />Consignments] --> H[Complete]
+    F --> I --> H
+    subgraph I[Shipping Addresses]
+        I1{Has Addresses?} -->|No| I2[End]
+        I1 -->|Yes| I3[Add to Array] --> I1
     end
 
-    click F "#products"  
+    click F "#products"
+
 ```
 
 ## Order-level
@@ -108,25 +113,36 @@ There are too many possible causes for order-level complexity to lay them out, b
 
 ## FAQs
 
-1. **What should I do if my catalog contains custom products not present in BigCommerce?**  
+
+1. **What should I do if my catalog contains custom products not present in BigCommerce?**
    Use the custom product workflow, providing name, quantity, and price fields. See [Orders API - Create an Order](/docs/rest-management/orders#create-an-order) for details.
-2. **Can I migrate guest orders?**  
+
+2. **Can I migrate guest orders?**
    Yes. Omit the `customer_id` field for guest orders; use billing address/contact info for identification.
-3. **How do I handle orders with multiple shipping addresses?**  
+
+3. **How do I handle orders with multiple shipping addresses?**
    Include an array under `shipping_addresses` with each address object. Ensure each address is mapped correctly.
-4. **What if my order includes both consignments (pickups) and deliveries?**  
+
+4. **What if my order includes both consignments (pickups) and deliveries?**
    Consignments and shipping addresses/products are mutually exclusive in a single order. Split such orders into separate records if both are needed.
-5. **How do I map product variants and modifiers in order data?**  
+
+5. **How do I map product variants and modifiers in order data?**
    Include the relevant `product_id`, `variant_id`, and/or `product_options` array per product line item.
-6. **What fields are required for a minimal order migration?**  
+
+6. **What fields are required for a minimal order migration?**
    At minimum: `external_source`, `external_order_id`, `status_id`, `date_created`, `billing_address`, `products`. See [Prepare Data](/docs/start/migration/orders/prepare-data) for more.
-7. **How do I ensure order data is not duplicated?**  
+
+7. **How do I ensure order data is not duplicated?**
    Use unique identifiers and check for existing orders before creation. Log all migrated order IDs for auditing.
 
 ## Resources
 
 - [Orders API - Create an Order](/docs/rest-management/orders#create-an-order)
+
 - [Catalog API](/docs/rest-catalog)
+
 - [Order Management (Help Center)](https://support.bigcommerce.com/s/article/Guide-to-Order-Management)
+
 - [Payments API](/docs/rest-payments)
+
 - [API Best Practices](/docs/start/best-practices)

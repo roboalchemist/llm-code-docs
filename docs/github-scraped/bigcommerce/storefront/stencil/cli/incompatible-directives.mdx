@@ -31,6 +31,7 @@ $color: #1caf9a;
 body {
   background: change-color($color, $hue: 120);
 }
+
 ```
 
 Using `$hue` leads to different behavior in Stencil CLI versus in production. 
@@ -46,6 +47,7 @@ The following example demonstrates the context in which you might concatenate an
 
 ```scss filename="Example: Empty string concatenation" showLineNumbers copy
 @debug "\"foo\"" + "";
+
 ```
 
 Empty string arguments lead to divergent behavior between Stencil CLI, which supports empty string concatenation, and production, which unquotes strings. 
@@ -66,19 +68,23 @@ For example, consider the following function:
 test {
   color: foo();
 }
+
 ```
+
 In the preceding example, the fork's error in the evaluation of the `if()` method leads to the following divergent results:
 
 ```css filename="Stencil CLI output" showLineNumbers copy
 test {
   color: green;
 }
+
 ```
 
 ```css filename="Production output" showLineNumbers copy
 test {
   color: red;
 }
+
 ```
 
 For more information, see [Issue 2116 (GitHub / libsass)](https://github.com/sass/libsass/issues/2116).

@@ -1,6 +1,6 @@
 ---
 title: Orders Overview
-keywords: address, rest, management, v2, v3, orders, draft order, currency, currencies, 
+keywords: address, rest, management, v2, v3, orders, draft order, currency, currencies,
 ---
 
 # Orders Overview
@@ -49,9 +49,9 @@ Accept: application/json
 ```
 
 <Callout type="warning">
-**Migrating historical orders**
+### Migrating historical orders
 
-When migrating historical orders processed on another eCommerce platform to BigCommerce, supply the code **M-MIG** for the `external_source` field. This code will exclude historical orders from the store’s GMV/order count, which factors into pricing. 
+When migrating historical orders processed on another eCommerce platform to BigCommerce, supply the code **M-MIG** for the `external_source` field. This code will exclude historical orders from the store’s GMV/order count, which factors into pricing.
 </Callout>
 
 <Callout type= "info">
@@ -360,7 +360,7 @@ Accept: application/json
 
 ## Getting shipping quotes
 
-To [get shipping quotes](/docs/rest-management/orders/order-shipping-addresses-quotes#get-order-shipping-quotes), send the following `GET` request. See the example response that follows, or consult the [response schema](/docs/rest-management/orders/order-shipping-addresses-quotes#get-order-shipping-quotes#responses). 
+To [get shipping quotes](/docs/rest-management/orders/order-shipping-addresses-quotes#get-order-shipping-quotes), send the following `GET` request. See the example response that follows, or consult the [response schema](/docs/rest-management/orders/order-shipping-addresses-quotes#get-order-shipping-quotes#responses).
 <Tabs items={['Request', 'Response']}>
 <Tab>
 ```http filename="Example request: Get shipping quotes" showLineNumbers copy
@@ -535,33 +535,33 @@ You can override calculated values such as product prices, subtotals, and totals
 
 ## FAQ
 
-**Is adding coupons available?**
+### Is adding coupons available?
 
 Coupon redemption is unavailable. You can not write to the `coupon_discount` field. You can add a discount to the order by using the `discount_amount`.
 
-**How do I create an order for a guest?**
+### How do I create an order for a guest?
 
 To specify a guest checkout, set `customer_id` to 0.
 
-**How do I set the order source?**
+### How do I set the order source?
 
 You cannot specify the `order_source`; its value is external. You can optionally specify a value for `external_source` to define which external source the order is coming from - e.g., POS system X, accounting system Y, etc.
 
 > **Note:** To publish an app that creates orders, it must include the `external_source` field on new orders, with the app's ID as the value. See [App Store Approval Requirements](/docs/integrations/apps/guide/requirements#functionality) to learn more.
 
-**Can I create an order with only custom products?**
+### Can I create an order with only custom products?
 
 Yes, the store's catalog does not include products.
 
-**What is the difference between country_ISO2 and country?**
+### What is the difference between country_ISO2 and country?
 
 There is no requirement to specify country when you specify `country_ISO2` in the shipping and billing addresses and vice versa.
 
-**How can I take payment for an order?**
+### How can I take payment for an order?
 
 You can either process payment through a third party or using the control panel.
 
-**Can I generate a shipping quote from a carrier using the API?**
+### Can I generate a shipping quote from a carrier using the API?
 
 Not at this time. If you create an order either in the control panel or by API, it will return a 204 when trying to get a shipping quote.
 

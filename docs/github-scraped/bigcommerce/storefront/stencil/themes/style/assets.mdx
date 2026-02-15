@@ -1,13 +1,14 @@
 # Theme Assets
 
-
 Each Stencil theme’s `assets/` directory contains CSS, JavaScript, and image assets that help create the design of storefront pages. A minimal `assets/` directory contains the files and subdirectories that you can view on the [Cornerstone GitHub Repository](https://github.com/bigcommerce/cornerstone/tree/master/assets).
 
 <Callout type="warning">
   In parts of your theme's directory tree where you are free to add new subdirectories and files, be sure to:
+
   * Set newly added directories to permission `755 (drwxr-xr-x)`.
   * Set newly added files to permission `644 (rw-r--r--)`.
   * Without these permissions, running your theme locally will fail, with multiple error messages. Bundling your theme will also fail, blocking its upload to a store.
+
 </Callout>
 
 ## Cornerstone assets directory
@@ -29,8 +30,6 @@ Each Stencil theme’s `assets/` directory contains CSS, JavaScript, and image a
 | cornerstone/assets/scss/components/foundation | The /components/vendor/ subdirectory contains the consumed version of framework components from your chosen provider. There is some renaming of these components to match Stencil naming conventions. |
 | cornerstone/assets/scss/components/stencil | Read about the stencil directory below. |
 | cornerstone/assets/scss/components/vendor | The /components/vendor/ subdirectory contains the consumed version of framework components from your chosen provider. There is some renaming of these components to match Stencil naming conventions. |
-
-
 
 ## Citadel subdirectory
 
@@ -80,7 +79,7 @@ Variables are things that can change over time. Their names are in camel case, a
 
 | Mixin Name Design Pattern | Mixin Name Example |
 |---|---|
-| Mixins follow regular camel-case naming conventions. Namespacing is not universally required for mixins. However, where a mixin has been created for a utility, its name matches the utility’s name, including u- namespacing | @mixin buttonVariant; @mixin u-textTruncate;| 
+| Mixins follow regular camel-case naming conventions. Namespacing is not universally required for mixins. However, where a mixin has been created for a utility, its name matches the utility’s name, including u- namespacing | @mixin buttonVariant; @mixin u-textTruncate;|
 
 ## Stencil subdirectory
 
@@ -114,9 +113,11 @@ This subdirectory’s children contain CSS for the following page elements.
 ## Resources
 
 ### Sample apps
+
 * [Cornerstone GitHub Repository](https://github.com/bigcommerce/cornerstone) (BigCommerce GitHub)
 
 ### Additional resources
+
 * [Getting Started With Foundation 5](https://get.foundation/sites/docs-v5/) (Zurb)
 * [BEM](http://getbem.com/) (Get BEM)
 * [SUIT CSS](https://suitcss.github.io/) (GitHub)

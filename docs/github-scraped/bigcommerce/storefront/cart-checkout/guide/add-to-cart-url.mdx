@@ -43,7 +43,8 @@ Once constructed, a URL can be inserted directly as text or as an HTML link:
 
 ```html showLineNumbers copy
 <a href="https://example.com/cart.php?action=buy&product_id=123">Purchase Our New Product Now!</a>
-```
+
+```javascript
 
 ## Adding multiple products
 
@@ -59,32 +60,33 @@ The following gives a very basic example using jQuery.  You can also use async/a
 // when #addToCart is clicked...
 $("button#addToCart").click(function() {
 
-	// add product id 123
+    // add product id 123
     return $.get("/cart.php?action=add&product_id=123")
-	.done(function(data, status, xhr) {
-		console.log('first item complete with status ' + status);
-	})
-	.then(function() {
-		// add product id 456
-		return $.get("/cart.php?action=add&product_id=456");
-	})
-	.done(function(data, status, xhr) {
-		console.log('second item complete with status ' + status);
-	})
-	// chain more async GET requests using .then & .done
-	.fail(function(xhr, status, error) {
-		console.log('oh noes, error with status ' + status + ' and error: ');
-		console.error(error);
-		return xhr.done();
-	})
-	.always(function() {
-		// go to cart
-		return window.location = "/cart.php";
-	});
+    .done(function(data, status, xhr) {
+        console.log('first item complete with status ' + status);
+    })
+    .then(function() {
+        // add product id 456
+        return $.get("/cart.php?action=add&product_id=456");
+    })
+    .done(function(data, status, xhr) {
+        console.log('second item complete with status ' + status);
+    })
+    // chain more async GET requests using .then & .done
+    .fail(function(xhr, status, error) {
+        console.log('oh noes, error with status ' + status + ' and error: ');
+        console.error(error);
+        return xhr.done();
+    })
+    .always(function() {
+        // go to cart
+        return window.location = "/cart.php";
+    });
 
 });
 </script>
-```
+
+```javascript
 
 <Callout type="warning">
   Due to CORS (Cross Origin Resource Sharing), using JavaScript to make multiple carting requests only works in the BigCommerce storefront and only on the storefront with the domain the request is being made to.

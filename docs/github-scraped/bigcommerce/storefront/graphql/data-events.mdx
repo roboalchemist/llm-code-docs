@@ -10,7 +10,7 @@ A fundamental concept in BigCommerce analytics is the visit details. When sendin
 
 ## Enabling a headless storefront
 
-<Steps> 
+<Steps>
 ### Initiate a visit using the `VisitStartedEvent` mutation.
 
 Execute the `VisitStartedEvent` mutation at the start of a shopper's session. You must provide the `visitId` and `visitorId` (in UUID format) in the `initiator` input. This action registers a new visit in the data pipeline. Use the same `visitId` for all further events within the session to ensure they are linked to the same visit.
@@ -48,6 +48,7 @@ Execute the `VisitStartedEvent` mutation at the start of a shopper's session. Yo
     }
 }
   ```
+
   </Tab>
   <Tab>
 
@@ -62,9 +63,9 @@ Execute the `VisitStartedEvent` mutation at the start of a shopper's session. Yo
       }
     }
   ```
+
   </Tab>
 </Tabs>
-
 
 ### Track product views with the `ProductViewedEvent` mutation
 
@@ -107,6 +108,7 @@ Execute the `ProductViewedEvent` mutation whenever a shopper views product detai
     }
 }
   ```
+
   </Tab>
   <Tab>
 
@@ -121,12 +123,13 @@ Execute the `ProductViewedEvent` mutation whenever a shopper views product detai
       }
     }
   ```
+
   </Tab>
 </Tabs>
 
 ### Redirect to checkout with the `Redirect` mutation
 
-After adding a product to a cart and obtaining a `cart_id`, execute the `redirect` mutation. Use the same `visitId` and `visitorId` as in the `VisitStartedEvent` and specify the `cart_id`. This step generates a `redirectedCheckoutUrl`. 
+After adding a product to a cart and obtaining a `cart_id`, execute the `redirect` mutation. Use the same `visitId` and `visitorId` as in the `VisitStartedEvent` and specify the `cart_id`. This step generates a `redirectedCheckoutUrl`.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -157,6 +160,7 @@ After adding a product to a cart and obtaining a `cart_id`, execute the `redirec
     }
 }
  ```
+
   </Tab>
   <Tab>
 
@@ -172,6 +176,7 @@ After adding a product to a cart and obtaining a `cart_id`, execute the `redirec
       }
     }
   ```
+
   </Tab>
 </Tabs>
 

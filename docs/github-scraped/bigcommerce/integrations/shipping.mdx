@@ -12,8 +12,11 @@ Merchants can also use shipping provider endpoints to retrieve rates from custom
 Some use cases for the Shipping Provider API are:
 
 - A drop-shipper that requires their own rates
+
 - A merchant that already has a shipping table
+
 - Third-party logistics
+
 - Create a combination of in-store pickup and shipping options for shoppers
 
 This article is a guide to developing an app that will make your shipping rates available to merchants and shoppers on demand.
@@ -21,8 +24,8 @@ This article is a guide to developing an app that will make your shipping rates 
 ### Prerequisites
 
 * Required [OAuth](/docs/start/authentication/api-accounts#oauth-scopes) scopes: `Information and Settings`
-* BigCommerce [single-click app](/docs/integrations/apps/guide/types#single-click)
 
+* BigCommerce [single-click app](/docs/integrations/apps/guide/types#single-click)
 
 ## Shipping app overview
 
@@ -65,6 +68,7 @@ There are two types of configuration options: "connection" and "settings". For e
 Here are examples:
 
 ```json filename="Connection Configurations" showLineNumbers copy
+
 [
     {
         "code": "api_token",
@@ -88,10 +92,11 @@ Here are examples:
         "required": false
     }
 ]
+
 ```
 
-
 ```json filename="Settings Configurations" showLineNumbers copy
+
 [
     {
         "code": "destination_type",
@@ -118,11 +123,11 @@ Here are examples:
         }
     }
 ]
+
 ```
 
 ## Sign up
 When your app is complete, it will be listed in our carrier registry, so that your shipping rates are available for merchants and shoppers to use. Register your app and get a carrier ID to get started.
-
 
 ### Register your app
 
@@ -138,13 +143,21 @@ To get your app set up and request a carrier ID, send an email to
 Please include the following information:
 
 - Your name
+
 - Your app's name
+
 - Your partner ID
+
 - Your app's ID
+
 - Your email
+
 - A description of the app
+
 - [Your service URLs](#your-service-urls)
+
 - [Whether you prefer single-carrier or multi-carrier status](#single-carrier-versus-multi-carrier-apps)
+
 - [Carrier configurations](#carrier-configurations): Optional. If unsure, leave this out.
 
 ## Before development
@@ -174,6 +187,7 @@ In the case of errors, include human-readable error messages in the response pay
 **Example error response**
 
 ```json showLineNumbers copy
+
 {
   "valid": false,
   "messages": [
@@ -183,6 +197,7 @@ In the case of errors, include human-readable error messages in the response pay
     }
   ]
 }
+
 ```
 
 ## Developing the app
@@ -196,7 +211,6 @@ For more information, see our [Introduction to Building Apps](/docs/integrations
 ## Control Panel installation workflow
 
 During the app setup, if you configure the Check Connection Options URL for the carrier, an attempt to connect the carrier via the Shipping Manager UI or the Connect Carrier API causes a request to be made to that URL with the provided options. The resource should respond by indicating if the credentials are valid and explain what is wrong. If you did not configure this URL, this check is not required and the credentials are assumed valid as long as they pass type checks.
-
 
 **Example request to validate connection options**
 
@@ -212,11 +226,13 @@ Accept: application/json
     "account_id": "a1ty"
   }
 }
+
 ```
 
 **Example response**
 
 ```json showLineNumbers copy
+
 {
   "valid": false,
   "messages": [
@@ -226,9 +242,11 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
 <Callout type="info">
+
 #### Credential validation
 It is best practice to authenticate the user and store against your database or the downstream provider service.
 </Callout>
@@ -240,6 +258,7 @@ Once you install the app, it will be made available for configuration by merchan
 To set up a carrier using the API, first, connect it using the Connect Carrier API. Make a request containing the connection settings required by your carrier. The ID of the carrier is required. The carrier ID will be issued by BigCommerce when your carrier is registered. All connection fields are unique to each carrier. If your carrier doesn’t require any connection settings, send an empty object for the `connection` settings property.
 
 ```http filename="Example carrier connection request with connection settings" showLineNumbers copy
+
 POST https://example.com/shipping/carrier/connection
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
@@ -252,9 +271,13 @@ Accept: application/json
     "account_number": "userAccountNumber"
   }
 }
+
 ```
+
 &nbsp;
+
 ```http filename="Example carrier connection request without connection settings" showLineNumbers copy
+
 POST https://example.com/shipping/carrier/connection
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
@@ -264,12 +287,13 @@ Accept: application/json
   "carrier_id": "carrier_33",
   "connection": {}
 }
+
 ```
 
 Once connected, it’s possible to create shipping methods for a connected carrier in any shipping zone. You can query shipping zones using the Shipping Zones resource. For any zone, a request can be made to the Shipping Methods resource using the zone ID from the Shipping Zones resource to create a new method for the connected carrier. You are required to enter the shipping carrier’s ID in the type field.
 
-
 ```http filename="Example request: Create a shipping method in a specified zone" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{store_hash}}/v2/shipping/zones/{{zone_id}}/methods
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
@@ -284,9 +308,13 @@ Accept: application/json
   },
   "enabled": true
 }
+
 ```
+
 &nbsp;
+
 ```json filename="Example response: Create a shipping method in a specified zone" showLineNumbers copy
+
 {
   "id": 24,
   "name": "Per Order Test",
@@ -300,14 +328,15 @@ Accept: application/json
   },
   "is_fallback": false
 }
+
 ```
 
 ## Returning shipping quotes
 
 Whenever shipping rates are required, BigCommerce checks its internal cache for valid entries. BigCommerce uses valid entries and does not call the shipping carrier. If a valid cache entry does not exist, BigCommerce makes a request to the Quote URL with details of the items to be shipped, the shipping origin, and the shipping destination. If you configured any connection settings or zone settings, include these. The shipping carrier must then respond with zero or more shipping quotes.
 
-
 ```http filename="Example request: Shipping rates" showLineNumbers copy
+
 POST https://example.com/rate
 Content-Type: application/json
 Accept: application/json
@@ -397,9 +426,13 @@ Accept: application/json
   },
   "rate_options": []
 }
+
 ```
+
 &nbsp;
+
 ```json filename="Example response: Shipping rates" showLineNumbers copy
+
 {
   "quote_id": "example_quote",
   "messages": [],
@@ -478,16 +511,19 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
 If no shipping quotes are available, the shipping carrier will send a response with the following format for the shipping quote:
 
 ```json filename="Example response: No shipping rates" showLineNumbers copy
+
 {
   "quote_id": "example_quote",
   "messages": [],
   "carrier_quotes": []
 }
+
 ```
 
 When you uninstall an app with an associated shipping carrier, you also automatically remove all the shipping methods and connection info for that carrier from the store. You can no longer make quote requests, and users will no longer see shipping quotes for that carrier.
@@ -509,15 +545,17 @@ BigCommerce passes carrier-specific product metadata to a carrier service in a r
 To pass metadata in a rate request, the metafield must meet the following requirements:
 
 - it must be a product or variant metafield (you cannot pass category, brand, or other metafields in rate requests)
-- the metafield `permission_set` must be `read` or `write`
-- the metafield `namespace` must match this format: `shipping_carrier_<carrier_id>` (example: `shipping_carrier_72`)
 
+- the metafield `permission_set` must be `read` or `write`
+
+- the metafield `namespace` must match this format: `shipping_carrier_<carrier_id>` (example: `shipping_carrier_72`)
 
 The carrier registration process described in the [Sign up](#sign-up) section provides the `carrier_id`.
 
 For more information on product and variant metafields, see:
 
 - [API Reference > Store Management > Catalog > Product Metafields](/docs/rest-catalog/products/metafields)
+
 - [API Reference > Store Management > Catalog > Product Variant Metafields](/docs/rest-catalog/product-variants/metafields)
 
 ## Submitting the app
@@ -541,7 +579,6 @@ A 70x70 pixel logo that represents the shipping carrier app.
 Any shipping zone-specific or connection-specific fields to be made available to merchants or APIs for configuration. Configuration fields can include which rates to offer, packaging type, or packing method.
 
 To submit your app, send an email to <a href="mailto:shippingproviderapi@bigcommerce.com">shippingproviderapi@bigcommerce.com</a>.
-
 
 ## Definitions
 
@@ -567,14 +604,17 @@ No, you can only publish one app at a time. The others can be for use as testing
 ## Related resources
 
 ### Articles
-- [App Store Approval Requirements](/docs/integrations/apps/guide/requirements)
 
+- [App Store Approval Requirements](/docs/integrations/apps/guide/requirements)
 
 ### Endpoints
 
 - [Shipping Providers](/docs/integrations/shipping)
+
 - [Shipping Zones](/docs/rest-management/shipping-v2/shipping-zones)
+
 - [Shipping Methods](/docs/rest-management/shipping-v2/shipping-method)
+
 - [Shipping Carriers](/docs/rest-management/shipping-v2/shipping-carrier)
 
 ### Webhooks

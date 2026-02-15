@@ -7,7 +7,6 @@ keywords: channels, apps, headless, toolkit
 
 This article provides a guide to partners who would like to update or replace their existing sales channel apps to leverage new functionality available via Channels Toolkit.
 
-
 ## Step 1: Update API credentials
 
 Existing sales channel apps need app credentials with updated OAuth scopes to authenticate and authorize requests to Channels Toolkit APIs. Login to the [Developer Portal](https://devtools.bigcommerce.com) to update your app's credentials. Channel APIs require the following scopes:
@@ -28,7 +27,6 @@ To be visible in Channel Manager once installed, apps must meet certain requirem
 - [Create a Channel](/docs/rest-management/channels) (for each platform the app enables a merchant to sell on) - this enables the channel to be displayed within the “Manage” screen in the new Channel Manager for merchants, once the app has been installed.
 
 - [Create a Channel](/docs/rest-management/channels) request must include `app_id` at a minimum in the [app config object](#sample-configuration).
-
 
 ### Channel manager example
 
@@ -51,9 +49,10 @@ To be visible in Channel Manager once installed, apps must meet certain requirem
 ## Step 3: Migrate existing data
 
 - **Channels** - Register a channel for all existing merchants using the app.
-- **Orders** - Add `channel_id` with the corresponding channel ID for the merchant and which channel the order was placed on, if orders are synced to BigCommerce.
-- **Listings (optional)** - Create channel specific [product listings](/docs/rest-management/channels). This is primarily necessary for storefronts, marketplaces, and marketing type of channels.
 
+- **Orders** - Add `channel_id` with the corresponding channel ID for the merchant and which channel the order was placed on, if orders are synced to BigCommerce.
+
+- **Listings (optional)** - Create channel specific [product listings](/docs/rest-management/channels). This is primarily necessary for storefronts, marketplaces, and marketing type of channels.
 
 ## App requirements
 
@@ -73,13 +72,12 @@ The above "updating existing app" data applies; however, non-POS channel apps ar
 
 - Must use [Listings API](/docs/rest-management/channels) if supporting per product listings.
 
-
-
 ## Sample configuration
 
 To create or modify a channel app's configuration, send a `POST` or `PUT` request to `/stores/{{STORE_HASH}}/v3/channels`:
 
 ```http filename="Example request: Create a channel" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/channels
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
@@ -92,6 +90,7 @@ Accept: application/json
     "external_id": "",
     "status": "connected"
 }
+
 ```
 
 **Properties**
@@ -135,14 +134,21 @@ For a high-level overview and more information on Channels Toolkit, see [Channel
 ### Articles
 
 - [Channels Overview](/docs/integrations/channels)
+
 - [Building Channel Apps](/docs/integrations/channels/guide)
+
 - [Becoming a Partner](/docs/start/partner)
+
 - [Types of Apps](/docs/integrations/apps/guide/types)
+
 - [Guide to API Accounts](/docs/start/authentication/api-accounts)
+
 - [Building an App](/docs/integrations/apps)
+
 - [App Store Approval Requirements](/docs/integrations/apps/guide/requirements)
 
 ### Endpoints
 
 - [Channels API Reference](/docs/rest-management/channels)
+
 - [Sites and Rites API Reference](/docs/rest-management/sites)

@@ -11,7 +11,7 @@ Using the Catalog features of the Admin API, you can set and query product SEO i
 
 You can perform the following:
 - [Set global product SEO information](#set-product-seo-information-at-the-global-level) for the catalog. Channels inherit these by default.
-- [Create overrides for a channel and channel locale](#set-product-seo-information-for-a-locale) using the `overridesForLocale` mutation. 
+- [Create overrides for a channel and channel locale](#set-product-seo-information-for-a-locale) using the `overridesForLocale` mutation.
 - [Remove overrides for a channel and channel locale](#remove-product-seo-information-for-a-locale). A channel then inherits global values.
 - [Query product SEO information](#query-product-seo-information), those set at the global level and the overrides.
 
@@ -49,7 +49,9 @@ The following example sets global product SEO information for the store, from wh
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -60,6 +62,7 @@ The following example sets global product SEO information for the store, from wh
         }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -80,7 +83,8 @@ The following example sets global product SEO information for the store, from wh
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -116,21 +120,24 @@ The following example sets product SEO information for the specified storefront 
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
-    {                                           
-      "input": {                                
-        "productId": "bc/store/product/111",    
+    {
+      "input": {
+        "productId": "bc/store/product/111",
         "localeContext": {
-          "channelId": "bc/store/channel/2",      
+          "channelId": "bc/store/channel/2",
           "locale": "fr"
-        },                       
-        "data": {                               
+        },
+        "data": {
           "pageTitle": "Page title override FR",
           "metaDescription": "Meta description override FR"
-        }                                                       
+        }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -153,6 +160,7 @@ The following example sets product SEO information for the specified storefront 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -190,18 +198,21 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
         "productId": "bc/store/product/111",
         "localeContext": {
-          "channelId": "bc/store/channel/2",      
+          "channelId": "bc/store/channel/2",
           "locale": "fr"
-        },  
+        },
         "overridesToRemove": ["PRODUCT_PAGE_TITLE_FIELD"]
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -224,6 +235,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
   </Tab>
 </Tabs>
@@ -258,6 +270,7 @@ The following example retrieves product SEO information. You can retrieve global
         }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -282,12 +295,13 @@ The following example retrieves product SEO information. You can retrieve global
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
-</Tabs> 
+</Tabs>
 
 <Callout type="info">
-  - The `id` field contains the product's global ID that you can retrieve from the [Get all products](/docs/rest-catalog/products#get-all-products) endpoint. For example, a product with a global ID of 111 will have an `id` of `"bc/store/product/111"`.  
+  - The `id` field contains the product's global ID that you can retrieve from the [Get all products](/docs/rest-catalog/products#get-all-products) endpoint. For example, a product with a global ID of 111 will have an `id` of `"bc/store/product/111"`.
   - The `channelId` field contains the channel's global ID that you can retrieve from the [Get all channels](/docs/rest-management/channels#get-all-channels) endpoint. For example, a channel with a global ID of 2 will have a `channelId` of `"bc/store/channel/2"`.
 </Callout>

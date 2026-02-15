@@ -1,7 +1,7 @@
 # Locations
 
-_Locations_ allow merchants to track product inventory across multiple physical or virtual locations. 
-Locations also allow merchants to manage their store and warehouse physical addresses in a single source of truth, which can be used by tools such as store locator widgets or app integrations concerned with locations where a store’s business is conducted. 
+_Locations_ allow merchants to track product inventory across multiple physical or virtual locations.
+Locations also allow merchants to manage their store and warehouse physical addresses in a single source of truth, which can be used by tools such as store locator widgets or app integrations concerned with locations where a store’s business is conducted.
 
 **Default behavior:** By default, Stencil's native storefront and locations queries support stock levels from only the _default_ location. If the default location runs out of stock, the product will be considered out of stock on the storefront, even if there is inventory in other locations.
 
@@ -20,14 +20,14 @@ You can disable, remove visibility, and [delete locations](/docs/rest-management
 The `enabled` and `storefront_visibility` flags for a location determine whether a location is available for Storefront and Management APIs.
 - Both flags determine if a location will return through any of the Storefront APIs, including getting available pickup methods. The flags control location visibility through the Storefront APIs.
 - However, the `enabled` flag also controls:
-    - Whether a location can be used to create orders and pickup methods. 
+    - Whether a location can be used to create orders and pickup methods.
     - Whether you can edit stock levels through the management APIs
-    - If any stock for products at a location contribute to the "available to sell" total returned by the Storefront APIs.  
+    - If any stock for products at a location contribute to the "available to sell" total returned by the Storefront APIs.
 - For example, a location can be "enabled", allowing orders to be fulfilled at that location through the Order V2 or Checkout APIs. If its `storefront_visibility` is set to false, the details of that location are omitted from the Storefront APIs.
 
 The [Locations API](/docs/rest-management/locations) allows you to manage locations. For examples, see [Merchant Configuration](/docs/integrations/buy-online-pick-up-in-store/end-to-end-guide/configuration) under the End-to-end guides.
 
-You can query locations using the GraphQL Storefront API. For examples, see [Query Locations with the GraphQL Storefront API](/docs/storefront/graphql/locations/queries). 
+You can query locations using the GraphQL Storefront API. For examples, see [Query Locations with the GraphQL Storefront API](/docs/storefront/graphql/locations/queries).
 
 <Callout type="info">
   Due to the asynchronous nature of the Locations API, there may be a short delay before data is updated after the endpoints are called. Endpoints that manage these locations and inventory at these locations return a `transaction_id` for any write requests.
@@ -37,7 +37,7 @@ You can query locations using the GraphQL Storefront API. For examples, see [Que
 
 Manage location metafields using the [Locations API](/docs/rest-management/locations).
 
-To create a location metafield, send a request to the [Create a location metafield](/docs/rest-management/locations/metafields#create-a-metafield) endpoint. Each metafield must have a unique combination of `key` and `value` for a `namespace`. 
+To create a location metafield, send a request to the [Create a location metafield](/docs/rest-management/locations/metafields#create-a-metafield) endpoint. Each metafield must have a unique combination of `key` and `value` for a `namespace`.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -55,6 +55,7 @@ To create a location metafield, send a request to the [Create a location metafie
       "permission_set": "write_and_sf_access",
       "description": "new location"
     }
+
     ```
 
   </Tab>
@@ -76,6 +77,7 @@ To create a location metafield, send a request to the [Create a location metafie
     },
       "meta": {}
     }
+
     ```
 
   </Tab>
@@ -83,7 +85,7 @@ To create a location metafield, send a request to the [Create a location metafie
 
 
 Location metafields that have storefront access permissions (i.e. permission set as `read_and_sf_access` or `write_and_sf_access`) can be returned in the GraphQL Storefront API.
-For example queries of this, see [Query Locations with the GraphQL Storefront API](/docs/storefront/graphql/locations/queries). 
+For example queries of this, see [Query Locations with the GraphQL Storefront API](/docs/storefront/graphql/locations/queries).
 
 ## Resources
 

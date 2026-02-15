@@ -7,6 +7,7 @@ Our [reference implementation](https://github.com/bigcommerce/checkout-js) is a 
 This article will walk you through becoming familiar with Checkout SDK and experimenting with building checkouts using Cornerstone. At the end of the article, you will have installed the Checkout SDK, created a new JavaScript module for your custom checkout, and console-logged the checkout object.
 
 ## Prerequisites
+
 * This tutorial uses [Cornerstone](https://github.com/bigcommerce/cornerstone). Your theme may differ.
 * The theme should be set up for [local development](/docs/storefront/stencil/cli/install). Use Stencil CLI to preview your local changes.
 
@@ -20,7 +21,8 @@ For example, `cd cornerstone`
 
 ```html copy
 <script src="https://checkout-sdk.bigcommerce.com/v1/loader.js"></script>
-```
+
+```javascript
 
 3. Then, add an async function right after the Checkout SDK loader script in `templates/pages/checkout.html`.
 
@@ -33,7 +35,9 @@ For example, `cd cornerstone`
         };
         initSdk();
 </script>
-```
+
+```javascript
+
 <Callout type="info">
 * `initSdk()` is in charge of loading checkout-sdk, creating the service, and loading checkout with our current cart/checkout id.
 
@@ -93,14 +97,17 @@ The checkout.html page should look like this:
 {{/partial}}
 
 {{> layout/empty}}
-```
+
+```javascript
+
 4. Run Stencil CLI to view your changes.
 5. Before navigating to the checkout page, ensure you are logged in to collect cart and checkout information.
 6. Navigate to the checkout page, and from your developer’s console, execute the following command to fetch cart content:
 
 ```js copy
 state.data.getCart();
-```
+
+```javascript
 
 In the developer console, you can see the entire available cart object. The output will look like this:
 
@@ -165,7 +172,8 @@ In the developer console, you can see the entire available cart object. The outp
   "updatedTime": "2023-07-12T13:59:48+00:00",
   "locale": "en"
 }
-```
+
+```javascript
 
 <Callout type="info">
 We can, for example, get or set shipping and billing addresses, sign in customers, apply coupons or gift certificates, initialize payment, or complete orders.
@@ -173,7 +181,7 @@ We can, for example, get or set shipping and billing addresses, sign in customer
 
 ## FAQs
 
-**How can I find the Checkout SDK version my custom checkout is currently using?**
+## How can I find the Checkout SDK version my custom checkout is currently using?
 
 The Checkout SDK version is included in all API request headers from the checkout.
 
@@ -186,7 +194,9 @@ To find your version:
 ## Resources
 
 ### Sample apps
+
 * [Checkout SDK Source Code](https://github.com/bigcommerce/checkout-sdk-js) (BigCommerce GitHub)
 
 ## Related articles
+
 * [Installing Stencil CLI](/docs/storefront/stencil/cli/install)

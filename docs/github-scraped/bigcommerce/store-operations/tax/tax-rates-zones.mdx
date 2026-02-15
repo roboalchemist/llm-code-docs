@@ -8,9 +8,9 @@ This guide demonstrates how to use the Tax Rates and Zones API. The Tax Rates an
 
 A zone must be defined by one of the following location parameters:
 
-- Countries: Specify one or more countries for a zone.
-- Subdivisions: Specify one or more states, provinces, or territories. You can include subdivisions for more than one country in a subdivision-based zone.
-- Postal codes: Specify one or more postal codes within a country. Currently, zones based on postal codes are limited to a single country.
+* Countries: Specify one or more countries for a zone.
+* Subdivisions: Specify one or more states, provinces, or territories. You can include subdivisions for more than one country in a subdivision-based zone.
+* Postal codes: Specify one or more postal codes within a country. Currently, zones based on postal codes are limited to a single country.
 
 You can further narrow the scope of a zone by specifying one or more customer groups to whom the zone applies. You can also use zones to choose how a store displays prices to different customer groups; for example, whether prices are inclusive or exclusive of tax.
 
@@ -27,6 +27,7 @@ The response includes an `id` for each tax zone. Use the `id` to get, update, or
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Create tax zones" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/zones
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -66,8 +67,10 @@ The response includes an `id` for each tax zone. Use the `id` to get, update, or
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Create tax zones" showLineNumbers copy
     {
       "data": [
@@ -108,6 +111,7 @@ The response includes an `id` for each tax zone. Use the `id` to get, update, or
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -117,6 +121,7 @@ To modify a tax zone, send a request to the [Update tax zones](/docs/rest-manage
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Update tax zones" showLineNumbers copy
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/zones
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -140,8 +145,10 @@ To modify a tax zone, send a request to the [Update tax zones](/docs/rest-manage
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Update tax zones" showLineNumbers copy
     {
       "data": [
@@ -182,13 +189,14 @@ To modify a tax zone, send a request to the [Update tax zones](/docs/rest-manage
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
 <Callout type="info">
   #### Updating a tax zone
-  - You cannot adjust the `shopper_target_settings` for the default tax zone. 
-  - All zones must cover a specified location; `locations` cannot be an empty array in the request body.
+  * You cannot adjust the `shopper_target_settings` for the default tax zone.
+  * All zones must cover a specified location; `locations` cannot be an empty array in the request body.
 </Callout>
 
 ### Get tax zones
@@ -197,13 +205,16 @@ To modify a tax zone, send a request to the [Update tax zones](/docs/rest-manage
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get tax zones" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/zones?id:in=2
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Get tax zones" showLineNumbers copy
     {
       "data": [
@@ -244,6 +255,7 @@ To modify a tax zone, send a request to the [Update tax zones](/docs/rest-manage
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -253,16 +265,20 @@ To delete tax zones, send a request to the [Delete tax zones](/docs/rest-managem
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Delete tax zones" showLineNumbers copy
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/zones?id:in=3,7
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example response: Delete tax zones" showLineNumbers copy
     HTTP 204 No content
     ```
+
   </Tab>
 </Tabs>
 
@@ -278,6 +294,7 @@ The response includes an `id` for each tax rate. Use the tax rate `id` to get, u
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Create tax rates" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/rates
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -303,8 +320,10 @@ The response includes an `id` for each tax rate. Use the tax rate `id` to get, u
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Create tax rates" showLineNumbers copy
     {
       "data": [
@@ -328,6 +347,7 @@ The response includes an `id` for each tax rate. Use the tax rate `id` to get, u
       ]
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -337,6 +357,7 @@ To update tax rates, send a request to the [Update tax rates](/docs/rest-managem
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Update tax rates" showLineNumbers copy
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/rates
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -359,8 +380,10 @@ To update tax rates, send a request to the [Update tax rates](/docs/rest-managem
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Update tax rates" showLineNumbers copy
     {
       "data": [
@@ -384,6 +407,7 @@ To update tax rates, send a request to the [Update tax rates](/docs/rest-managem
       ]
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -393,13 +417,16 @@ To get tax rates, send a request to the [Get tax rates](/docs/rest-management/ta
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get tax rates" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/rates?tax_zone_id:in=2
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Get tax rates" showLineNumbers copy
     {
       "data": [
@@ -423,6 +450,7 @@ To get tax rates, send a request to the [Get tax rates](/docs/rest-management/ta
       ]
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -432,31 +460,37 @@ To delete tax rates, send a request to the [Delete tax rates](/docs/rest-managem
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Delete tax rates" showLineNumbers copy
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/rates?id:in=3,5
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example response: Delete tax rates" showLineNumbers copy
     HTTP 204 No content
     ```
+
   </Tab>
 </Tabs>
 
 ## Resources
 
-- [Tax Rates and Zones API Reference](/docs/rest-management/tax-rates-and-zones)
+* [Tax Rates and Zones API Reference](/docs/rest-management/tax-rates-and-zones)
 
 ### Tax Zones reference
-- [Create tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#create-tax-zones)
-- [Update tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#update-tax-zones)
-- [Get tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#get-tax-zones)
-- [Delete tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#delete-tax-zones)
+
+* [Create tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#create-tax-zones)
+* [Update tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#update-tax-zones)
+* [Get tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#get-tax-zones)
+* [Delete tax zones](/docs/rest-management/tax-rates-and-zones/tax-zones#delete-tax-zones)
 
 ### Tax Rates reference
-- [Create tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#create-tax-rates)
-- [Update tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#update-tax-rates)
-- [Get tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#get-tax-rates)
-- [Delete tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#delete-tax-rates)
+
+* [Create tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#create-tax-rates)
+* [Update tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#update-tax-rates)
+* [Get tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#get-tax-rates)
+* [Delete tax rates](/docs/rest-management/tax-rates-and-zones/tax-rates#delete-tax-rates)

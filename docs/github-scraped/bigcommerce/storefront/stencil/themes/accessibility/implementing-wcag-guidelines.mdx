@@ -14,9 +14,10 @@ To satisfy the [bypass blocks](https://www.w3.org/TR/WCAG21/#bypass-blocks) WCAG
     {{{this.content}}}
   {{/each}}
 {{/if}}
+
 ```
 
-**HTML output**
+### HTML output
 
 ![Skip to Main](https://raw.githubusercontent.com/bigcommerce/dev-docs/master/assets/images/WCAG_guideline_skip_to_main.png "Skip to Main")
 
@@ -26,6 +27,7 @@ To satisfy the [Location](https://www.w3.org/TR/WCAG21/#location) WCAG guideline
 ```handlebars
 {{#partial "page"}} {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 {{#unless theme_settings.hide_contact_us_page_heading}}
+
 ```
 
 **HTML output**
@@ -42,7 +44,9 @@ To satisfy the [unusual words](https://www.w3.org/TR/WCAG21/#unusual-words) WCAG
         $("footer article[data-section-type='footer-webPages'] ul").append("<li><a href='/page-link1/'>Add Link Name1</a></li><li><a href='/page-link2/'>Add Link Name2</a></li><li><a href='/page-link3/'>Add Link Name3</a></li>")
     });
 </script>
+
 ```
+
 **HTML output**
 
 ![footer categories](https://raw.githubusercontent.com/bigcommerce/dev-docs/master/assets/images/WCAG-guidelines-add_links.png "Footer categories")

@@ -13,7 +13,6 @@ Catalyst now supports end-to-end product reviews on the storefront, integrated w
 * New Storefront GraphQL setting for only accepting reviews from customers that have purchased the product (`site.settings.display.onlyAcceptPreviousCustomerReviews)`  
 * Native review submission UI on the product detail page (PDP)
 
-
 <img src='https://storage.googleapis.com/bigcommerce-production-dev-center/images/catalyst/release-notes/1-4-0/product-reviews.jpg' alt='Product Reviews form' className='rounded-xl mt-2' />
 
 ### Sample Storefront GraphQL Query
@@ -40,10 +39,9 @@ For more information on managing reviews in the Control Panel, refer to the [Man
 
 ## Newsletter subscriptions
 
-
 Catalyst now supports an end-to-end newsletter subscription experience, integrated with the BigCommerce Storefront GraphQL API. This includes:
 
-* Fully-functioning newsletter subscription UI on the home page that includes success confirmation and error handling   
+* Fully-functioning newsletter subscription UI on the home page that includes success confirmation and error handling
 * **Marketing preferences** section in the account settings page for managing newsletter preferences  
 * New Storefront GraphQL setting for controlling visibility of the signup UI (`site.settings.newsletter.showNewsletterSignup)`on the home page and account settings page  
 * New Storefront GraphQL setting for determining if a user is already subscribed (`site.customer.isSubscribedToNewsletter`)  
@@ -73,9 +71,9 @@ For more information on newsletter settings in the Control Panel, refer to the [
 
 ### What’s not included
 
-The Require Consent toggle in the store’s [Miscellaneous settings](https://support.bigcommerce.com/s/article/Using-the-Abandoned-Cart-Saver?language=en_US#notifications), which overrides the Newsletter Checkbox when enabled and allows customers to opt in to receive abandoned cart emails and other marketing emails, was not implemented in this release. 
+The Require Consent toggle in the store’s [Miscellaneous settings](https://support.bigcommerce.com/s/article/Using-the-Abandoned-Cart-Saver?language=en_US#notifications), which overrides the Newsletter Checkbox when enabled and allows customers to opt in to receive abandoned cart emails and other marketing emails, was not implemented in this release.
 
-Additionally, the [Show Newsletter Summary](https://support.bigcommerce.com/s/article/Collecting-Newsletter-Subscriptions?language=en_US#newsletter-settings) field is not supported. 
+Additionally, the [Show Newsletter Summary](https://support.bigcommerce.com/s/article/Collecting-Newsletter-Subscriptions?language=en_US#newsletter-settings) field is not supported.
 
 ## Inventory messaging on Product Listings & Product Details
 
@@ -85,13 +83,12 @@ This release adds **store-aware inventory messaging** across both Product Listin
 
 ### Product Listing Pages (PLPs)
 
-Product cards can now display inventory status messages based on store and product configuration. 
+Product cards can now display inventory status messages based on store and product configuration.
 
 An **Out of Stock** message will be displayed when:
 
 * The product is out of stock  
 * The store is configured to show out-of-stock messaging
-
 
 A **Backorder** message will be displayed when:
 
@@ -239,8 +236,8 @@ const privacyPolicyUrl = rootData.data.site.settings?.privacy?.privacyPolicyUrl;
 
 The privacy policy link:
 
-- Opens in a new tab (`target="_blank"`)  
-- Only renders if `privacyPolicyUrl` is provided as a non-empty string
+* Opens in a new tab (`target="_blank"`)  
+* Only renders if `privacyPolicyUrl` is provided as a non-empty string
 
 Add translatable `privacyPolicy` field to `Components.ConsentManager.CookieBanner` translation namespace for the privacy policy link text.
 
@@ -268,10 +265,10 @@ Previously, automatic discounts to a specific product (not the entire cart) were
 
 We have published new tags for the Core and Makeswift versions of Catalyst. Target these tags to pull the latest code:
 
-- [**@bigcommerce/catalyst-core@1.4.0**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-core%401.4.0)
-- [**@bigcommerce/catalyst-makeswift@1.4.0**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-makeswift%401.4.0)
+* [**@bigcommerce/catalyst-core@1.4.0**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-core%401.4.0)
+* [**@bigcommerce/catalyst-makeswift@1.4.0**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-makeswift%401.4.0)
 
 And as always, you can pull the latest stable release with these tags:
 
-- [**@bigcommerce/catalyst-core@latest**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-core%40latest)
-- [**@bigcommerce/catalyst-makeswift@latest**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-makeswift%40latest)
+* [**@bigcommerce/catalyst-core@latest**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-core%40latest)
+* [**@bigcommerce/catalyst-makeswift@latest**](https://github.com/bigcommerce/catalyst/releases/tag/%40bigcommerce%2Fcatalyst-makeswift%40latest)

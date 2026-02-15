@@ -1,13 +1,13 @@
 ---
 title: Data Layer Settings in the GraphQL Admin API
-keywords: GA4, ga4, data, graphql, admin, google analytics 4, 
+keywords: GA4, ga4, data, graphql, admin, google analytics 4,
 ---
 
 # Data Layer Settings in the GraphQL Admin API
 
 The GraphQL Admin API's data layer setting allows BigCommerce to send data from BigCommerce-hosted storefronts to third-party analytics providers through [Big Open Data Layer](/docs/integrations/hosted-analytics). BigCommerce can build native integrations to analytics providers, such as Google Analytics 4, using the data layer. Partners may also build their own integrations using the data layer. In each case, you must first enable the data layer using the GraphQL Admin API. The data layer is enabled at the global level.
 
-This guide shows you how to use the GraphQL Admin API's data layer queries and mutations. For full schema, see the [GraphQL Admin API reference](/graphql-admin/reference). 
+This guide shows you how to use the GraphQL Admin API's data layer queries and mutations. For full schema, see the [GraphQL Admin API reference](/graphql-admin/reference).
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ For more about API accounts that generate `access_token`s, see [API Accounts and
 
 ## Get data layer
 
-Send the following query to retrieve whether the data layer is enabled in the store: 
+Send the following query to retrieve whether the data layer is enabled in the store:
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -42,6 +42,7 @@ Send the following query to retrieve whether the data layer is enabled in the st
     }
   }
   ```
+
   </Tab>
   <Tab>
 
@@ -58,12 +59,13 @@ Send the following query to retrieve whether the data layer is enabled in the st
     }
   }
   ```
+
   </Tab>
 </Tabs>
 
 ## Enable data layer
 
-Send the following mutation to enable the data layer in the store: 
+Send the following mutation to enable the data layer in the store:
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -86,6 +88,7 @@ Send the following mutation to enable the data layer in the store:
     }
   }
   ```
+
   </Tab>
   <Tab>
 
@@ -110,7 +113,7 @@ Send the following mutation to enable the data layer in the store:
 
 ## Disable data layer
 
-Send the following mutation to disable the data layer in the store: 
+Send the following mutation to disable the data layer in the store:
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -157,5 +160,6 @@ Send the following mutation to disable the data layer in the store:
 </Tabs>
 
 ## Resources
-- [GraphQL Admin API reference](/graphql-admin/reference)
-- [Big Open Data Layer](/docs/integrations/hosted-analytics)
+
+* [GraphQL Admin API reference](/graphql-admin/reference)
+* [Big Open Data Layer](/docs/integrations/hosted-analytics)

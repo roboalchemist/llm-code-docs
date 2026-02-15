@@ -1,6 +1,6 @@
 # App Extensions Overview
 
-App Extensions help developers extend the capabilities of the BigCommerce control panel by registering custom menu items that appear on select native control panel pages. This article is a high-level explanation of what App Extensions are and what they can do, and covers the following topics: 
+App Extensions help developers extend the capabilities of the BigCommerce control panel by registering custom menu items that appear on select native control panel pages. This article is a high-level explanation of what App Extensions are and what they can do, and covers the following topics:
 
 * The App Extensions user experience
 * Registering App Extensions
@@ -23,7 +23,7 @@ App Extensions support all available control panel languages, so you can show th
 
 ### Navigation
 
-When a control panel user clicks an App Extension-generated menu item, the app can either render content in a side panel - without navigating the user away from the native page - or it can redirect the user to the app's home iFrame in the **Apps** sub-menu, and render App Extension-specific content there. 
+When a control panel user clicks an App Extension-generated menu item, the app can either render content in a side panel - without navigating the user away from the native page - or it can redirect the user to the app's home iFrame in the **Apps** sub-menu, and render App Extension-specific content there.
 
 The following set of tabs show example pictures of the menu item and two load contexts, along with the schemas that describe them. If image diagrams are not accessible to you, use the alt text to determine which sections of the [App Extensions Glossary](/docs/integrations/apps/app-extensions/glossary) to read instead.
 
@@ -122,8 +122,6 @@ The following tabs show both a panel and an example of an alternate user locale.
 
 ### Link
 
-
-
 <Tabs items={["Screenshot of deep link", "App Extension and JWT"]}>
   <Tab>
 
@@ -198,7 +196,7 @@ The simplest design pattern is registering identical App Extensions on each stor
 
 ## Sources of truth
 
-Several components go into using App Extensions effectively. The following table lists some of the key components of App Extensions and disambiguates the source of truth for each: 
+Several components go into using App Extensions effectively. The following table lists some of the key components of App Extensions and disambiguates the source of truth for each:
 
 | Component or feature | AppExtension schema object | Your app | signed_payload_jwt |
 |:---------------------|:---------------------------|:---------|:-------------------|
@@ -219,7 +217,6 @@ For supported models, see the [App Extensions Glossary](/docs/integrations/apps/
  There is a **limit** of two App Extensions per app, per [model](/docs/integrations/apps/app-extensions/glossary#model). Your app can register up to two App Extensions for the orders model, two for the products model, and two for customers. If these limits are detrimental to your use case or user experience, please reach out through our [Developer Community](/community).
 </Callout>
 
-
 ## Load context
 
 When you develop an App Extension, keep in mind the two available page load contexts: the side panel, or panel, and the deep link, or link. Panel-type App Extensions load in an `<iframe>` element that overlays the content of the control panel page in which they are embedded. Link-type App Extensions redirect to a detail view in the app's dedicated iFrame in the **Apps** sub-menu.
@@ -235,14 +232,14 @@ The App Extensions feature unlocks new use cases. The following sections organiz
 * Send receipts on request.
 * View and modify draft invoices.
 * Verify or manually retry order syncing between BigCommerce and an OMS or ERP system.
-* Generate and view a pick map that gives stockroom associates the fastest fulfillment trajectory through a warehouse, using data from the Catalog API or a third-party PIM system. 
+* Generate and view a pick map that gives stockroom associates the fastest fulfillment trajectory through a warehouse, using data from the Catalog API or a third-party PIM system.
 * Use Inventory and Location API features to help group or regroup multi-consignment order items.
 * Use the control panel to move orders through more complex fulfillment states than are available in the native control panel view.
 
 ### View Customers
 
-* Open equivalent customer objects in a CRM or help desk system. 
-* Check whether the merchant has received feedback, input, or requests from the customer in multiple channels, such as emails in a shared inbox. 
+* Open equivalent customer objects in a CRM or help desk system.
+* Check whether the merchant has received feedback, input, or requests from the customer in multiple channels, such as emails in a shared inbox.
 * Expose Customer attributes and other data in a CRM-like interface.
 * View multiple parts of a customer's shopper journeys from both BigCommerce and third-party providers, such as net promoter score, abandoned cart metrics, promotions used, and customer reviews.
 * Unlock extra features written into a headless storefront bundle on a per-customer basis.
@@ -256,6 +253,7 @@ The App Extensions feature unlocks new use cases. The following sections organiz
 ## Using App Extensions in public apps
 
 Public apps that use App Extensions have the following additional requirements for approval:
+
 * Must meet the [App Marketplace approval criteria](/docs/integrations/apps/guide/requirements)
 * Must follow the best practices outlined for App Extensions and the BigCommerce platform
 * Must use our [BigDesign component library](https://developer.bigcommerce.com/big-design/) to match the look and feel of the underlying control panel

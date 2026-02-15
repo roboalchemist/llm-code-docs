@@ -3,6 +3,7 @@
 This page is a how-to guide on creating end-to-end Buy Online Pickup In-Store (BOPIS) *customized* experiences for both merchants and shoppers through BigCommerce’s APIs. This guide lays out the API calls in sequence, framed from the perspective of an end-to-end user journey, i.e.
 
 ## 1.0 Prerequisites
+
 1. You've created your BigCommerce store and opted into the MLI BOPIS APIs Open Beta (**Settings** > **Inventory Settings** > Click "Try it now" button).
 2. Store settings have been configured (e.g. Payments, Shipping, Tax, Catalog, etc)
 3. You are not using BigCommerce's default Checkout, but are using a custom checkout, i.e.
@@ -15,10 +16,10 @@ This page is a how-to guide on creating end-to-end Buy Online Pickup In-Store (B
       - Order Fulfillment
 5. Obtain [Store API Credentials](/api-docs/getting-started/authentication/rest-api-authentication#store-api-accounts) containing the required [OAuth scopes](/api-docs/getting-started/authentication/rest-api-authentication#oauth-scopes).
 
-
 ----------
 
 ## 2.0 Setup and configure as a merchant
+
 ### 2.1 Create a location
 
 You start by first creating a location. Customers can pick up their orders from this location, i.e. a *pickup* location.
@@ -386,13 +387,15 @@ At this point, you may have created multiple locations and want to check on all 
 ### 2.4 Manage inventory for a location
 
 BigCommerce’s Inventory API enables two ways of managing inventory quantities:
-* **Absolute quantity** - the amount defined in the API payload is the inventory quantity that will be set for a product or variant.
-* **Relative quantity** - the amount defined in the API payload will be added to (or subtracted from) the existing inventory quantity that already exists for the product or variant.
+
+- **Absolute quantity** - the amount defined in the API payload is the inventory quantity that will be set for a product or variant.
+- **Relative quantity** - the amount defined in the API payload will be added to (or subtracted from) the existing inventory quantity that already exists for the product or variant.
 
 Before setting inventory quantity to a location, check the inventory tracking configurations that have been enabled. There are three inventory tracking configurations:
-* **Inventory is tracked by product** - This setting is used if your product has no variations, e.g. a champagne glass or a water glass tumbler.
-* **Inventory is tracked by variant** - This setting is used if your product has different attributes (variations), e.g. a shirt has various sizes and colors.
-* **Inventory is not tracked** - This setting is used if you do not have a need to track inventory quantity, e.g. you may sell a digital asset (like a PDF or music). When inventory is not tracked, the product will always be considered available to sell on your storefront, even if it may not be in your physical storage location.
+
+- **Inventory is tracked by product** - This setting is used if your product has no variations, e.g. a champagne glass or a water glass tumbler.
+- **Inventory is tracked by variant** - This setting is used if your product has different attributes (variations), e.g. a shirt has various sizes and colors.
+- **Inventory is not tracked** - This setting is used if you do not have a need to track inventory quantity, e.g. you may sell a digital asset (like a PDF or music). When inventory is not tracked, the product will always be considered available to sell on your storefront, even if it may not be in your physical storage location.
 
 It’s important to know the type of tracking when making absolute or relative adjustments, as this will ultimately determine how you author your API request to set inventory quantity.
 
@@ -840,6 +843,7 @@ Some merchants offer multiple pickup options at a single location (e.g. in-store
 ### 2.10 Update a specific detail for a pickup method
 
 If you need to update the original pickup method details, you have the ability to do so via the Pickup Methods API. You can update the:
+
 - `location_id`
 - `display_name`
 - `collection_instructions`
@@ -928,6 +932,7 @@ Once you have assigned the pickup methods to the location(s), you can check what
 ## 3.0 Browse and discover as a shopper
 
 There are two ways to access data on the storefront:
+
 - Storefront REST API
 - Storefront GraphQL API
 
@@ -1034,25 +1039,28 @@ Use this to show pickup options to customers on a storefront page (e.g. the prod
 #### 3.2.1 Get locations
 
 For info on getting locations, see [Get Locations](#).
-{/* https://bigcommerce.stoplight.io/docs/api-beta-buy-online-pick-up-in-store/api-docs/graphql/get-locations  */}
+{/*<https://bigcommerce.stoplight.io/docs/api-beta-buy-online-pick-up-in-store/api-docs/graphql/get-locations>*/}
 
 For info on getting location data in the storefront using Stencil Utils powered by GraphQL, see [Stencil Utils Reference- Get page by GraphQL](/stencil-docs/reference-docs/stencil-utils-api-reference#get-page-by-graphql).
 
 #### 3.2.2 Get inventory by location
 
 For info on getting inventory by location, see [Get Inventory by Location](#).
-{/* https://bigcommerce.stoplight.io/docs/api-beta-buy-online-pick-up-in-store/api-docs/graphql/get-inventory-by-location */}
+{/*<https://bigcommerce.stoplight.io/docs/api-beta-buy-online-pick-up-in-store/api-docs/graphql/get-inventory-by-location>*/}
 
 ----------
 
 ## 4.0 Manage checkout as a shopper
+
 The Checkout SDK and Server-to-Server (S2S) Checkout APIs have been updated to support BOPIS experiences. As a developer, you may wonder which to choose and when to use the SDK vs the API. If you’re developing:
-* A native storefront and custom checkout experience, use the Checkout SDK
-* An end-to-end headless experience, use the S2S Checkout APIs
+
+- A native storefront and custom checkout experience, use the Checkout SDK
+- An end-to-end headless experience, use the S2S Checkout APIs
 
 If you’re dependent on webhook events, all [existing Cart webhooks](/api-docs/store-management/webhooks/webhook-events) have been updated to support BOPIS.
 
 ### 4.1 Native storefront & custom checkout experience via Checkout SDK
+
 In order to fetch pickup-options via the Checkout SDK, you will need to be on SDK version 1.224.0 or above. This applies to existing custom checkouts as well as new custom checkouts.
 
 ```js filename="Example JavaScript Code" showLineNumbers copy
@@ -1083,7 +1091,6 @@ console.log(state.data.getPickupOptions(consignmentId, searchArea));
 ```
 
 If you want to show pickup method options to customers on a storefront page (e.g. the Product Detail Page), before having a consignment, refer to [4.2.2 Find available pickup methods with stock available](#422-find-available-pickup-methods-with-stock-available).
-
 
 ### 4.2 End-to-end headless experience (S2S APIs)
 
@@ -1137,8 +1144,9 @@ If you want to show pickup method options to customers on a storefront page (e.g
 </Tabs>
 
 For a successfully-created cart, the response will have:
-* The newly-created cart ID. In this example, the cart ID is `76f1bfe4-dbbe-4018-8ee6-2e3c36bf1518`.
-* The physical product ID. In this example, the cart ID is `67642f07-49d1-4501-8b7d-2e589aec34b8`.
+
+- The newly-created cart ID. In this example, the cart ID is `76f1bfe4-dbbe-4018-8ee6-2e3c36bf1518`.
+- The physical product ID. In this example, the cart ID is `67642f07-49d1-4501-8b7d-2e589aec34b8`.
 
 Cart ID is the same as Checkout ID and both represent the same identifier for a cart depending on which API is being consumed: the Cart API uses cart ID and the Checkout API uses Checkout ID.
 
@@ -1443,6 +1451,7 @@ This allows us to select a shipping option as described in the next request:
 We can see in the response above the `selected_shipping_option` contains the shipping method selected, and there isn’t any pickup object anymore.
 
 #### 4.2.4 Update pickup consignment in the cart/checkout
+
 If you want to update the consignment from shipping to pickup or select another pickup method you can edit the consignment and send a new pickup method ID, retrieved from the api call to the pickup endpoint earlier.
 
 <Tabs items={['Request', 'Response']}>
@@ -1529,6 +1538,7 @@ If you want to update the consignment from shipping to pickup or select another 
 Order ID is 126.
 
 ## 5.0 Manage order as a merchant
+
 ### 5.1 View the newly-created order’s pickup consignment
 
 <Tabs items={['Request', 'Response']}>
@@ -1618,11 +1628,12 @@ The `order_pickup_method_id` field is 13 (same value as the pickup consignment I
 ### 5.3 Update pickup consignment
 
 If you need to update the original pickup consignment details, you have the ability to do so via the Orders API. You can update the:
-* `pickup_method_id`
-* `pickup_method_display_name`
-* `collection_instructions`
-* `collection_time_description`
-* location attributes (except for the `location_id`)
+
+- `pickup_method_id`
+- `pickup_method_display_name`
+- `collection_instructions`
+- `collection_time_description`
+- location attributes (except for the `location_id`)
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -1763,6 +1774,7 @@ If you need to update the original pickup consignment details, you have the abil
 ## 7.0 Terminate configuration as a merchant
 
 ### 7.1 Reassign inventory from one location to another
+
 No dedicated endpoint exists to reassign inventory from one location to another. The existing inventory API endpoints can be used to achieve this outcome.
 
 ### 7.2 Location

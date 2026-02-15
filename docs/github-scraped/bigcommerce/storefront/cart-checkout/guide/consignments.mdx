@@ -1,6 +1,6 @@
 ---
 title: Checkout Consignment API
-keywords: address, checkout, checkouts, consignments, 
+keywords: address, checkout, checkouts, consignments,
 ---
 
 # Checkout Consignment API
@@ -116,7 +116,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     }
   ]
 
-```
+```javascript
 
 
 Copy and paste your `store_hash`,`access_token`, and `checkoutId` into the form, then click **Send**.
@@ -125,7 +125,7 @@ Copy and paste your `store_hash`,`access_token`, and `checkoutId` into the form,
 
 The [Update a consignment](/docs/rest-storefront/checkouts/checkout-consignments#update-a-consignment) endpoint requires the `checkoutId` and the `consignmentId`. You can find the consignment ID in the response from the preceding API call. The checkout ID is the same as the cart ID.
 
-There are two distinct kinds of consignment updates. The first selects a fulfillment option. The second can update the recipient's address and adjust the list of included line items. 
+There are two distinct kinds of consignment updates. The first selects a fulfillment option. The second can update the recipient's address and adjust the list of included line items.
 
 <Callout type="warning">
   You must choose one type of consignment update because changing the address and weight can change available fulfillment options. You can't do both in the same API call.
@@ -143,7 +143,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
   "shipping_option_id": "9241669174884c2f2e83b3adabf03f83"
 }
 
-```
+```javascript
 
 Copy and paste your `store_hash`,`access_token`, `checkoutId`, `consignmentId` and query parameter (`consignments.available_shipping_options`) into the form, then click **Send**.
 

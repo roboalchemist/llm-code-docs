@@ -23,7 +23,7 @@ For a more complete list of B2B Edition feature enhancements, including features
 
 ## Legacy Stencil Themes versus the Buyer Portal
 
-The shopping frontend of B2B Edition's Stencil storefront experience runs on specially modified Stencil storefronts alone, whereas the [B2B Edition Buyer Portal](https://support.bigcommerce.com/s/article/B2B-Edition-Buyer-Functions) is supported in any Stencil theme, and it also can be used with non-Stencil storefronts. 
+The shopping frontend of B2B Edition's Stencil storefront experience runs on specially modified Stencil storefronts alone, whereas the [B2B Edition Buyer Portal](https://support.bigcommerce.com/s/article/B2B-Edition-Buyer-Functions) is supported in any Stencil theme, and it also can be used with non-Stencil storefronts.
 
 The Buyer Portal uses the [Scripts API](/docs/integrations/scripts) to deploy a React app that accomplishes many of the same things as B2B Edition’s legacy experience. It is Stencil-compatible, but does not use Stencil's context or Handlebars theme objects.
 
@@ -59,15 +59,15 @@ B2B Edition's Stencil storefront experience renders client-facing pages and elem
 
 Use the following steps.
 
-1. Insert `window.b3themeConfig.useContainers = {}` into your theme's `assets/js/global.js` file. 
-2. Within `window.b3themeConfig.useContainers = {}`, create a property with the name of the B3 container as its key and the selector for the theme element on which it will mount as its value. 
+1. Insert `window.b3themeConfig.useContainers = {}` into your theme's `assets/js/global.js` file.
+2. Within `window.b3themeConfig.useContainers = {}`, create a property with the name of the B3 container as its key and the selector for the theme element on which it will mount as its value.
 
 When done, the object will resemble the example below.
 
 ```js filename="Example: Specify a custom mount node for the dashboard container" showLineNumbers copy
 window.b3themeConfig.useContainers = {
  /* B3 will append the dashboard container to the first returned DOM node with a class of "page" that is a descendant of an element with the class of "container" */
-	'dashboard.container': '.container .page',
+ 'dashboard.container': '.container .page',
 }
 ```
 
@@ -78,7 +78,8 @@ For a list of B3 container names and their default placements, see the [B3 conta
 You can customize the styling of many B3 elements using CSS, allowing you to improve cohesion between your B2B functionality and the rest of your storefront.
 
 To modify the styling of a B3 module, follow these steps:
-1. Insert `window.b3themeConfig.useStyles = {}` into your theme's `assets/js/global.js` file. 
+
+1. Insert `window.b3themeConfig.useStyles = {}` into your theme's `assets/js/global.js` file.
 2. Within `window.b3themeConfig.useStyles = {}`, create a property with the name of the B3 element as its key and an object that defines the desired CSS styles as its value.
 
 <Callout type="info">
@@ -117,7 +118,7 @@ In the Buyer Portal experience, you can use [B2B Edition’s settings](https://s
 
 To overwrite the default text that B2B Edition renders, follow these steps:
 
-1. Insert `window.b3themeConfig.useText = {}` into your theme's `assets/js/theme/global.js` file. 
+1. Insert `window.b3themeConfig.useText = {}` into your theme's `assets/js/theme/global.js` file.
 2. Within `window.b3themeConfig.useText = {}`, create a property for each element you would like to overwrite, using B3 element names as keys and strings containing the new display text as values.
 
 When done, the object will resemble the example below, where we adjusted the menu item text for the Quick Order Pad.
@@ -144,7 +145,7 @@ B2B Edition has lifecycle methods for many modules that allow you to inject cust
 
 To overwrite and/or inject custom functions for a supported B3 module, follow these steps:
 
-1. Insert `window.b3themeConfig.useJavaScript = {}` into your theme's `assets/js/global.js` file. 
+1. Insert `window.b3themeConfig.useJavaScript = {}` into your theme's `assets/js/global.js` file.
 2. Within `window.b3themeConfig.useJavaScript = {}`, create a property for each of the modules you'd like to customize. Uses the module name as the key and an object that defines values for the global keys as its value.
 
 When done, your object will resemble the following example that demonstrates the call stack of each function.

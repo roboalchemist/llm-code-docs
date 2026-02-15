@@ -10,8 +10,8 @@ WordPress has its own cron system for scheduling tasks such as checking for upda
 
 Differences between server cron and WP-Cron include:
 
-- Server cron runs automatically and is fired by server processes. There's no need for an external source for events firing.
-- WP-Cron only runs when someone is on the site.
+* Server cron runs automatically and is fired by server processes. There's no need for an external source for events firing.
+* WP-Cron only runs when someone is on the site.
 
 When you schedule a job to run once an hour with WP-cron, WordPress will set an execution time for that job. However, the job won't be performed until there's site traffic or there's an external request to WordPress.
 
@@ -30,6 +30,7 @@ To use server cron jobs, you need to disable WP-Cron events. This suspends curre
 
 ```php copy
 define('DISABLE_WP_CRON', true);
+
 ```
 
 ### Add new cron job to the server
@@ -54,6 +55,7 @@ The following example is for HostGator, but you can also use it for any other ho
 
 ```shell filename="Create a cPanel cron job" copy
 wget -q -O - https://example.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1
+
 ```
 6. Click **Add new cron job** to save the job.
 
@@ -72,5 +74,6 @@ The following is the basic set of commands required to set cron jobs with cronta
 
 ```shell filename="Create cron job with SSH" copy
 */5 * * * * wget -q -O - https://example.com/wp-cron.php?doing_wp_cron >/dev/null 2>&1
+
 ```
 4. Save and exit from crontab.

@@ -43,9 +43,9 @@ The following section describes the process for creating an app profile and app-
 <Steps>
   ### Create an app profile
 
-  Generate an [app-level API account](/docs/start/authentication/api-accounts#app-level-api-accounts) by [creating an app profile](/docs/integrations/apps/guide/developer-portal#create-an-app-profile) in a [Developer Portal account](https://devtools.bigcommerce.com/my/apps) registered to the same email account that owns the development store. 
-    
-  Add the [required OAuth scopes](#oauth-scopes) from the preceding section on the **Scopes** tab of the app editor, then click **Update & Close**. 
+  Generate an [app-level API account](/docs/start/authentication/api-accounts#app-level-api-accounts) by [creating an app profile](/docs/integrations/apps/guide/developer-portal#create-an-app-profile) in a [Developer Portal account](https://devtools.bigcommerce.com/my/apps) registered to the same email account that owns the development store.
+
+  Add the [required OAuth scopes](#oauth-scopes) from the preceding section on the **Scopes** tab of the app editor, then click **Update & Close**.
   
   For more information on creating app profiles, see [Managing Apps in the Developer Portal](/docs/integrations/apps/guide/developer-portal).
 
@@ -53,7 +53,7 @@ The following section describes the process for creating an app profile and app-
 
   ![App Extensions scope](https://storage.googleapis.com/bigcommerce-production-dev-center/images/app-extensions/next-app-extensions-scope-manage.png "App Extensions scope")
 
-  ### Create a draft app
+### Create a draft app
 
   You can fork our [Next.js starter app](https://github.com/bigcommerce/sample-app-nodejs) to get started quickly.
 
@@ -79,7 +79,7 @@ The following section describes the process for creating an app profile and app-
   ngrok http 3000
   ```
 
-  ### Edit the draft app's environment variables
+### Edit the draft app's environment variables
 
   Copy `.env-sample` and rename it `.env`. Add the app profile's **client ID** and **client secret**. Select a database type and enter your connection credentials. Configure the app callback URLs by replacing the [domain name](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#authority) segment of the pre-populated **auth callback URL** with the ngrok instance's domain name. For more on configuring additional environment variables, see the [starter app README](https://github.com/bigcommerce/sample-app-nodejs) and [.env-sample](https://github.com/bigcommerce/sample-app-nodejs/blob/main/.env-sample).
 
@@ -117,7 +117,7 @@ The following section describes the process for creating an app profile and app-
   API_URL=api.bigcommerce.com
   ```
 
-  ### Seed the database
+### Seed the database
 
   Use the starter app's [db:setup script](https://github.com/bigcommerce/sample-app-nodejs/blob/main/package.json#L12), then restart the development server.
 
@@ -127,13 +127,13 @@ The following section describes the process for creating an app profile and app-
   npm run dev
   ```
 
-  ### Add the ngrok callback URLs to the app profile
+### Add the ngrok callback URLs to the app profile
 
   Copy the ngrok domain name from the `.env` file to the matching inputs on the **Technical** tab of the **app profile**.
 
   ![Callback URLs](https://storage.googleapis.com/bigcommerce-production-dev-center/images/app-extensions/next-nextjs-ngrok-callbacks.png "Callback URLs")
 
-  ### Install the draft app on your store
+### Install the draft app on your store
 
   For directions, see the [Apps Quick Start](/docs/integrations/apps/quick-start#install-the-app).
 

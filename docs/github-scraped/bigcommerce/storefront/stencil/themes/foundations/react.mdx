@@ -13,10 +13,10 @@ In this example, we'll be making a drawer that sends a coupon code to the custom
 
 ### Prerequisites
 
-- Stencil CLI installed
-- BigCommerce store
-- Cornerstone Stencil theme with npm installed
-- Knowledge of HTML and JavaScript
+* Stencil CLI installed
+* BigCommerce store
+* Cornerstone Stencil theme with npm installed
+* Knowledge of HTML and JavaScript
 
 To set up a BigCommerce store, see [Creating a Trial Store](https://support.bigcommerce.com/s/article/Starting-a-Bigcommerce-Trial#creating).
 
@@ -31,12 +31,16 @@ For this example, we'll be using packages from [Material-UI](https://material-ui
 Navigate into the root Cornerstone theme folder, then install the following npm packages.
 
 ```shell showLineNumbers copy
+
 # navigate into theme dir
+
 cd ~/path/to/theme/dir
 
 # install dependencies
+
 npm install react react-dom @mui/material @mui/styles @emotion/react @emotion/styled
 npm install --save-dev @babel/preset-react
+
 ```
 
 ### Update webpack.common.js
@@ -50,6 +54,7 @@ presets: [
         ...
     }], '@babel/react',
   ],
+
 ```
 
 ### Create components
@@ -177,6 +182,7 @@ export default function VerticalLinearStepper() {
     </Box>
   );
 }
+
 ```
 
 8. In the same `/components` folder, create a `TextField.js` file.
@@ -235,6 +241,7 @@ const theme = createTheme({
         },
     },
 });
+
 ```
 
 2. At the bottom of the file, render the `CouponDrawer` component and assign it an id.
@@ -252,6 +259,7 @@ if (couponContainer) {
       </ThemeProvider>
   );
 }
+
 ```
 
 ### Add the CouponDrawer div to base.html
@@ -270,6 +278,7 @@ if (couponContainer) {
 
   ...
 </body>
+
 ```
 
 ## Final product
@@ -277,11 +286,15 @@ if (couponContainer) {
 View the finished product using the Stencil CLI command `stencil start` in the Cornerstone theme directory.
 
 ```shell filename="stencil start" showLineNumbers copy
+
 # move into theme dir
+
 cd ~/path/to/theme/dir
 
 # Preview store using Browsersync
+
 stencil start
+
 ```
 
 Open your browser and navigate to `localhost:3000` to view your local storefront.

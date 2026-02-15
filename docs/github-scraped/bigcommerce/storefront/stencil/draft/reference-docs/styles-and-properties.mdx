@@ -19,7 +19,9 @@ Used to toggle on theme settings (boolean value)
  "force_reload": true,
  "id": "hide_breadcrumbs"
 },
+
 ```
+
 Required fields: `type`, `label`, and `id`
 
 Optional field: `force_reload`
@@ -34,7 +36,9 @@ Used to set color value on theme setting (hex value)
  "label": "i18n.BannerBackground",
  "id": "color-primary"
 },
+
 ```
+
 Required fields: `type`, `label`, and  `id`
 
 ## Font
@@ -64,7 +68,9 @@ Used to select font value on theme setting
    }
  ]
 }
+
 ```
+
 Required fields: `type`, `label`, `id`, and `options`
 
 Optional field: `force_reload`
@@ -76,7 +82,9 @@ Optional field: `force_reload`
  "type": "heading",
  "content": "i18n.BackgroundAndLines"
 },
+
 ```
+
 Required fields: `type` and  `content`
 
 ## imageDimension
@@ -100,7 +108,9 @@ Used to set image ratio on theme setting
    }
  ]
 },
+
 ```
+
 Required fields: `type`, `label`, `id`, and `options`.
 
 Note: "custom" value option will allow users to specify the width/height. Else, use values set by the theme developer.
@@ -134,6 +144,7 @@ The reference field on a setting can show additional settings based on the value
    }
  ]
 },
+
 ```
 
 ```json filename="Example: ProductSaleBadgeLabel setting" showLineNumbers
@@ -145,6 +156,7 @@ The reference field on a setting can show additional settings based on the value
  "reference": "product_sale_badges",
  "reference_default": "none"
 },
+
 ```
 
 In this example, you can see that when `ShowProductSaleBadges` equals none, the `ProductSaleBadgeLabel` text setting is hidden. But when `ShowProductSaleBadges` has a value other than none, `ProductSaleBadgeLabel` text setting displays.
@@ -183,7 +195,9 @@ Note: Option types should all be the same (i.e., string, number, etc.).
    }
  ]
 },
+
 ```
+
 Required fields: `type`, `label`, `id`, and `options`
 
 Optional field: `force_reload`
@@ -200,7 +214,9 @@ Used to set string value for theme settings
  "force_reload": true,
  "id": "pdp-sale-price-label"
 },
+
 ```
+
 Required fields: `type`, `label`, and `id`.
 
 Optional field: `force_reload`

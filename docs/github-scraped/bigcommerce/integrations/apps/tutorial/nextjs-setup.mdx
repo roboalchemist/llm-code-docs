@@ -31,7 +31,6 @@ If you do not have Node.js installed, you can download it from [nodejs.org (down
   * This sample app uses custom dependencies and does not rely on the `create-next-app` CLI tool.
 </Callout>
 
-
 1. To create the project's `package.json` file, enter the [interactive initialization sequence](https://docs.npmjs.com/cli/v8/commands/npm-init). Run the following command in the terminal:
 
 ```shell copy filename="Initialize package.json"
@@ -50,7 +49,7 @@ To write a `package.json` file with default values, run `npm init -y` instead. D
 npm install --save @bigcommerce/big-design @bigcommerce/big-design-icons @bigcommerce/big-design-theme dotenv next react react-dom styled-components
 ```
 
-2. Install dev dependencies.
+1. Install dev dependencies.
 
 ```shell copy filename="Install devDependencies"
 npm install --save-dev babel-plugin-styled-components @types/node @types/react @types/react-dom @types/styled-components typescript
@@ -83,7 +82,7 @@ npm install --save-dev babel-plugin-styled-components @types/node @types/react @
 }
 ```
 
-3. Save your changes.
+1. Save your changes.
 
 ## Add the node and npm engines
 
@@ -101,8 +100,7 @@ npm install --save-dev babel-plugin-styled-components @types/node @types/react @
 }
 ```
 
-3. Save your changes.
-
+1. Save your changes.
 
 ## Create a starter page
 
@@ -122,7 +120,7 @@ The **Panel** component allows you to contain content in a structured format. To
 
 **Text** is one of the many predefined typography components in BigDesign. BigDesign offers multiple properties to customize the typographic palette. To view available typography components, see  [Typography](https://developer.bigcommerce.com/big-design/typography).
 
-5. Add the `Index` functional component below the import statements. You can [view index.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/index.tsx).
+1. Add the `Index` functional component below the import statements. You can [view index.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/index.tsx).
 
 ```tsx filename="Add functional component index.tsx" showLineNumbers copy
 const Index = () => (
@@ -151,7 +149,7 @@ import type { AppProps } from 'next/app'
 
 Importing the `GlobalStyles` component will set BigCommerce's base styles globally.
 
-3. Add the `MyApp` functional component below the import statements. You can [view _app.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/_app.tsx).
+1. Add the `MyApp` functional component below the import statements. You can [view _app.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/_app.tsx).
 
 ```tsx filename="Functional component _app.tsx" showLineNumbers copy
 const MyApp = ({ Component, pageProps }: AppProps) => (
@@ -178,13 +176,13 @@ Because BigDesign uses styled-components, we need to add additional configuratio
 import Document, { DocumentContext } from 'next/document';
 ```
 
-3. Import `ServerStyleSheet` from styled-components.
+1. Import `ServerStyleSheet` from styled-components.
 
 ```ts filename="Import component ServerStyleSheet"
 import { ServerStyleSheet } from 'styled-components';
 ```
 
-4. Extend the `Document` class. You can [view _document.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/_document.tsx).
+1. Extend the `Document` class. You can [view _document.tsx (GitHub)](https://github.com/bigcommerce/sample-app-nodejs/blob/step-1-app-foundation/pages/_document.tsx).
 
 ```tsx filename="Extend class Document" showLineNumbers copy
 export default class MyDocument extends Document {
@@ -224,7 +222,7 @@ export default class MyDocument extends Document {
 npm run dev
 ```
 
-2. Open `http://localhost:3000` from your browser. You should see the text “Hello world” displayed under **Homepage**.
+1. Open `http://localhost:3000` from your browser. You should see the text “Hello world” displayed under **Homepage**.
 
 ![Hello world](https://storage.googleapis.com/bigcommerce-production-dev-center/images/Sample_app/nextjs-app-01.png "Hello world")
 

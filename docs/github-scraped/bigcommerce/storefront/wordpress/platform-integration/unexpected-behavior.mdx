@@ -28,6 +28,7 @@ If your product sync is stuck, or you've come across the message below, steps ar
 
 ```shell showLineNumbers copy
 BigCommerce.NOTICE: No handler found for current import state {"state":"completed"}
+
 ```
 
 The following steps will get your products syncing once again.
@@ -65,6 +66,7 @@ If you cancel the product import or see the following error below, ensure your c
 ```shell showLineNumbers copy
 [502] Error connecting to the API (https://api.bigcommerce.com/stores/hash/v3/channels/channel_id/listings)
 [504] Error connecting to the API (https://api.bigcommerce.com/stores/hash/v3/channels/channel_id/listings/listing_id)
+
 ```
 
 Check that you have connected your WordPress store to BigCommerce and set the primary channel under **BigCommerce** > **Settings** > **Channel**. If you did not set the primary channel, re-install the plugin and connect it to the correct store channel.
@@ -112,6 +114,7 @@ If you encounter an error on the "Add to Cart" button, or get the message below,
 ```shell showLineNumbers copy
 Not Found: The requested URL /bigcommerce/cart/42 was not found on this server.
 Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.
+
 ```
 To reset the site's redirects use the following steps:
 
@@ -124,6 +127,7 @@ When the plugin floods the error log with the following message:
 
 ```shell showLineNumbers copy
 PHP message: PHP Warning: getenv() expects exactly 1 parameter, 2 given in wp-content/plugins/bigcommerce-for-wordpress-0.11.1/bigcommerce.php on line 58
+
 ```
 
 This message appears if you're running on PHP version 5.4 or lower. The plugin requires 5.6+ or higher to function properly.
@@ -134,6 +138,7 @@ When sending an API request and you get a 403 error, or encounter the following 
 
 ```txt showLineNumbers copy
 [429] Error connecting to the API (https://api.bigcommerce.com/stores/hash/v3/catalog/categories?id%3Ain=138%2C139%2C140%2C142%2C143%2C144%2C145%2C146%2C147%2C149&limit=10&include_fields=id)
+
 ```
 
 Ensure that either the server or service isn't blocking requests.
@@ -173,6 +178,7 @@ BigCommerce.ERROR: Could not retrieve the token
     #20 /path/wp-cron.php(188): do_action_ref_array('bigcommerce_con...', Array)
     #21 {main}"
 }
+
 ```
 
 When using the `Fast` (headless) import, apply the accurate scopes to your API keys. The Storefront API tokens and the Storefront API impersonation tokens require scopes. Create a new token with the correct scopes by going to **Dashboard** > **Settings** > **Store-level API accounts**.
@@ -183,6 +189,7 @@ If you encounter the following PHP errors (shown below) in your server logs rela
 
 ```shell showLineNumbers
 PHP Fatal error:  Uncaught Error: Call to undefined function BigCommerce\Import\Importers\Products\ctype_alpha() in path/wp-content/plugins/bigcommerce/src/BigCommerce/Import/Importers/Products/Product_Builder.php:461
+
 ```
 
 First, check that this is not a PHP extension specific issue, e.g. https://www.php.net/manual/en/function.ctype-alpha.php (function is disabled by hosting/service provider and similar). If that doesn't resolve the issue, contact BigCommerce support, or create an issue in the [GitHub repository](https://github.com/bigcommerce/bigcommerce-for-wordpress/issues).
@@ -193,6 +200,7 @@ If you see the following webhook error below, try resetting the webhooks in the 
 
 ```shell showLineNumbers copy
 BigCommerce-webhooks.ERROR: Incoming webhook password does not match
+
 ```
 
 Use the following steps to reset the webhook settings:
@@ -211,6 +219,7 @@ If you get the message below, the product must already exist.
 
 ```shell
 BigCommerce.DEBUG: Product entity exists. Skipping. {"product_id":xxxx,"channel_id":"xxxxx"} []
+
 ```
 
 The message in the error logs means that a product has already been imported to WordPress, and it won't be processed again.
@@ -221,6 +230,7 @@ If the images fail to download, or you come across the following error below, th
 
 ```shell
 BigCommerce.NOTICE: Failed to download image {"url":"https://cdn11.bigcommerce.com/s-hash/products/18id20/images/id/hps_bottle__13339.1611096484.1280.1280.png?c=2","error":["cURL error 28: Resolving timed out after 10000 milliseconds"]} []
+
 ```
 
 This issue occurs during a product/category image import. The issue is environment specific and can be caused by the server itself. Possible reasons for the issue include:

@@ -22,6 +22,7 @@ Use [Handlebars expressions](/docs/store-operations/emails/object-reference) to 
     <td style="padding:5px; font-size:12px; border-bottom:solid 1px #CACACA" width="100" align="center">{{ quantity }}</td>
 </tr>
 {{/each}}
+
 ```
 
 [Learn how to edit, test, and preview transactional email templates in the control panel](https://support.bigcommerce.com/s/article/Customizing-Emails).
@@ -41,6 +42,7 @@ To manage transactional email templates programmatically, use the [Email Templat
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/marketing/email-templates
     X-Auth-Token: {{ACCESS_TOKEN}}
     Accept: application/json
+
     ```
 
   </Tab>
@@ -58,6 +60,7 @@ To manage transactional email templates programmatically, use the [Email Templat
       ],
       "meta": {...}
     }
+
     ```
 
   </Tab>
@@ -85,6 +88,7 @@ Accept: application/json
   ],
   "subject": "Reset your password at {{store.name}}"
 }
+
 ```
 
 ## Overrides
@@ -110,6 +114,7 @@ Accept: application/json
   ],
   "subject": "Réinitialisez votre mot de passe sur {{store.name}}"
 }
+
 ```
 
 <Callout type="info">

@@ -5,12 +5,14 @@ The [Checkout SDK](/docs/storefront/cart-checkout/checkout-sdk) and [Server-to-S
 When building a _Buy Online, Pick up in Store_ solution, you can allow shoppers to find available pickup options and create checkout consignments that are fulfilled by a pickup method.
 
 As a developer, you may wonder which to choose and when to use the SDK vs the API. If you’re developing:
+
 * A native storefront and custom checkout experience, use the Checkout SDK
 * An end-to-end headless experience, use the S2S Checkout APIs
 
 If you’re dependent on webhook events, all [existing Cart webhooks](/docs/integrations/webhooks/events) have been updated to support _Buy Online, Pick up in Store_.
 
 ### 4.1 Native storefront & custom checkout experience using Checkout SDK
+
 To support _Buy Online, Pick up in Store_, we would be adding a `loadPickupOptions` method to the [CheckoutService](https://github.com/bigcommerce/checkout-sdk-js/blob/master/docs/classes/CheckoutService.md) class, allowing you to load pickup options to your storefront checkout. In order to fetch pickup options using the Checkout SDK, you will need to be on SDK version 1.224.0 or above. This applies to existing custom checkouts, as well as new custom checkouts.
 
 ```js filename="Example JavaScript Code" showLineNumbers copy
@@ -41,7 +43,6 @@ console.log(state.data.getPickupOptions(consignmentId, searchArea));
 ```
 
 You can show pickup method options to customers on a storefront page, such as the Product Detail Page, before having a consignment. For more information, see [4.2.2 Find available pickup methods with stock available](#422-find-available-pickup-methods-with-stock-available).
-
 
 ### 4.2 End-to-end headless experience (S2S APIs)
 
@@ -97,6 +98,7 @@ To create a cart, send a request to the [Create a cart](/docs/rest-management/ca
 </Tabs>
 
 For a successfully-created cart, the response will have:
+
 * The newly-created cart ID. In this example, the cart ID is `76f1bfe4-dbbe-4018-8ee6-2e3c36bf1518`.
 * The physical product ID. In this example, the cart ID is `67642f07-49d1-4501-8b7d-2e589aec34b8`.
 
@@ -407,6 +409,7 @@ This allows us to select a shipping option as described in the next request:
 We can see in the response above the `selected_shipping_option` contains the shipping method selected, and there is no longer a pickup object.
 
 #### 4.2.4 Update pickup consignment in the cart/checkout
+
 If you want to update the consignment from shipping to pickup or select another pickup method, you can edit the consignment and send a new pickup method ID. The pickup method ID is retrieved from the api call to the pickup endpoint earlier.
 
 <Tabs items={['Request', 'Response']}>
@@ -491,6 +494,5 @@ To finalize an order, send a request to the [Finalize an order](/docs/rest-manag
 
   </Tab>
 </Tabs>
-
 
 The order ID is 126.

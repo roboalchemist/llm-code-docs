@@ -1,8 +1,6 @@
 # Global Regions
 
-
-
-[Global regions](/docs/storefront/widgets#global-regions) are special regions you can use to place and manage content sitewide. 
+[Global regions](/docs/storefront/widgets#global-regions) are special regions you can use to place and manage content sitewide.
 In this tutorial, we will explore the concept of global regions by creating a global region and placing a widget in it using Page Builder.
 
 ###  Prerequisites
@@ -37,22 +35,25 @@ Let's start by creating a global region called `below_content--global` and addin
         {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
     {{/if}}
     {{{region name="home_below_new_products"}}}
-    {{{region name="below_content--global"}}} 
+    {{{region name="below_content--global"}}}
 </div>
+
 ```
 
 **category.html**
+
 ```html
 <main class="page-content" id="product-listing-container">
     {{> components/category/product-listing}}
     {{{region name="category_below_content"}}}
     {{{region name="below_content--global"}}}
 </main>
+
 ```
 
 If you are using Stencil CLI and editing theme files locally, push and apply your changes before proceeding to the next step.
 
-To preview the global region you just created, launch [Page Builder](https://support.bigcommerce.com/s/article/Page-Builder) by going to **Storefront** > **My Theme** in the control panel, then click **Customize**. 
+To preview the global region you just created, launch [Page Builder](https://support.bigcommerce.com/s/article/Page-Builder) by going to **Storefront** > **My Theme** in the control panel, then click **Customize**.
 
 Scroll to the bottom of your home page. You should see the `below_content--global` region under the non-global region below **New Products**.
 
@@ -67,8 +68,10 @@ To test your global region's functionality, drag and drop one of the basic widge
 ## Related resources
 
 ### Articles
+
 * [Widgets Overview](/docs/storefront/widgets)
 * [Page Builder Overview](/docs/storefront/stencil/content/page-builder)
 
 ### Endpoints
+
 * [Widgets API](/docs/rest-content/widgets)

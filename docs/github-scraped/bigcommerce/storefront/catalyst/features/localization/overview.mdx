@@ -27,7 +27,7 @@ Catalyst supports the following scenarios:
 
 In both cases, to fully localize a store for a language or region, you will need to customize both dynamic product catalog data and the static theme content:  
 
-* **Dynamic product data**: product-related content that is generated or retrieved from the backend, such as product names, descriptions, images, and more. 
+* **Dynamic product data**: product-related content that is generated or retrieved from the backend, such as product names, descriptions, images, and more.
 * **Static theme content**: fixed text elements within the storefront's shopper interface—such as buttons, labels, carousel text —that need to be translated into multiple languages. These predefined static strings ensure a consistent localized experience across all pages.
 
 ## Deployment
@@ -37,5 +37,5 @@ Here are your options for deploying Catalyst storefronts depending on your use c
 * If you have a single storefront setup for multi-language, deploy your storefront under one project.
 * If you have a multi-storefront setup routed using subpaths, map your locales to the storefront channels in your project’s [channels.config.ts](https://github.com/bigcommerce/catalyst/blob/canary/core/channels.config.ts) file. This applies regardless of whether you have multiple languages on each storefront.
 * If you have a multi-storefront setup routed with multiple domains, you can either
-    * Deploy multiple projects
-    * Add multi-domain routing into Catalyst
+  * Deploy multiple projects
+  * Add multi-domain routing into Catalyst

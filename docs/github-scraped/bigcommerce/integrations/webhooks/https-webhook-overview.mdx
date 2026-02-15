@@ -8,8 +8,8 @@ HTTPS webhooks are push APIs delivered over HTTPS, triggered by an event on the 
 <Tab>
 To create a webhook, send a `POST` request to the [Create a webhook](/docs/webhooks/webhooks/manage-webhooks-bulk#create-a-webhooks) endpoint. Set the `scope` property value equal to the **Name / Scope** of the webhook you want to create. If a hook fires twice for the same event, both request bodies rely on the same hash.
 
-
 ```http filename="Example request: Create a webhook" showLineNumbers copy
+
 POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/hooks
 X-Auth-Token: {{ACCESS_TOKEN}}
 Content-Type: application/json
@@ -24,11 +24,13 @@ Accept: application/json
 	"value": "My custom header value"
   }
 }
+
 ```
 
 {/* <!-- Consult the Webhooks API reference for more about the differences. --> */}
 
 ```json filename="Example response: Create a webhook" showLineNumbers copy
+
 {
   "created_at": 1580329317,
   "destination": "https://yourapp.example.com/webhooks", // custom ports are not supported
@@ -42,6 +44,7 @@ Accept: application/json
   "store_hash": "{{STORE_HASH}}",
   "updated_at": 1580329317
 }
+
 ```
 
 <Callout type="info">
@@ -51,6 +54,7 @@ Accept: application/json
 </Tab>
 
 <Tab>
+
 ```graphql filename="Example mutation: Create a GraphQL webhook" showLineNumbers copy
 
 mutation CreateHTTPWebhook($input:CreateHttpsWebhookInput!) {
@@ -67,6 +71,7 @@ mutation CreateHTTPWebhook($input:CreateHttpsWebhookInput!) {
     }
   }
 }
+
 ```
 ```graphql filename="Example GraphQL variables: Create a GraphQL webhook" showLineNumbers copy
 
@@ -76,6 +81,7 @@ mutation CreateHTTPWebhook($input:CreateHttpsWebhookInput!) {
     "destination": "https://yourapp.example.com/webhooks/order-updated"
   }
 }
+
 ```
 
 ```json filename="Example response: Create a GraphQL webhook" showLineNumbers copy
@@ -96,7 +102,9 @@ mutation CreateHTTPWebhook($input:CreateHttpsWebhookInput!) {
         }
     }
 }
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -108,6 +116,7 @@ mutation CreateHTTPWebhook($input:CreateHttpsWebhookInput!) {
 When a webhook is triggered, BigCommerce will `POST` a light payload containing event details to the destination server. For example, the `data` object for `store/order/statusUpdated` contains only the order `id`.
 
 ```json filename="HTTPS example: store/order/statusUpdated payload object" showLineNumbers copy
+
 {
     "store_id": "11111",
     "producer": "stores/abcde",
@@ -118,6 +127,7 @@ When a webhook is triggered, BigCommerce will `POST` a light payload containing 
     },
     "hash": "3f9ea420af83450d7ef9f78b08c8af25b2213637"
 }
+
 ```
 
 You can then make a request to the [Get an order](/docs/rest-management/orders#get-an-order) endpoint to obtain full order details.
@@ -126,6 +136,7 @@ For more information on specific webhook events and their payloads, see [Webhook
 </Tab>
 
 <Tab>
+
 ```json filename="GraphQL example: store/order/updated payload object" showLineNumbers copy
 
 {
@@ -139,7 +150,9 @@ For more information on specific webhook events and their payloads, see [Webhook
         "id": 272
     }
 }
+
 ```
+
 </Tab>
 </Tabs>
 
@@ -155,12 +168,15 @@ The webhooks service will do its best to deliver events to the destination callb
 
 The webhook service may send many payloads to a single URI in quick succession. Because of this, we use a sliding scale across a ** two-minute window** to calculate a callback response success rate for each remote destination. When the webhook service receives a `2xx` response, the destination's success count is increased. If there's no response or the remote server times out, the destination's failure count is increased. Based on these two numbers, a success ratio is calculated.
 
-
 The following process will determine whether the destination URI gets blocklisted:
 
+
 1. Once a webhook is triggered, the service checks if your callback URI is on the blocklist.
+
 2. If not, we calculate a success ratio for the remote server based on its success/failure count in a **two-minute window**.
+
 3. If at any point in the two-minute window, the success/failure ratio dips below **90%**, the destination URI's domain will be blocklisted for **three minutes**.
+
 4. Webhook events triggered during this time are sent to our retry queues to be executed later when the domain is no longer blocklisted and once the retry queue time has elapsed.
 
 Once a domain is no longer blocklisted, all new webhook requests will be sent as they occur. Event requests sent to the retry queue during a blocklisting period will be delivered according to the retry queue schedule.
@@ -193,8 +209,11 @@ After the final retry attempt (cumulatively **48 hours** after the first deliver
 To ensure webhook callback requests are secure, BigCommerce takes the following precautions:
 
 * Create webhook requests to accept a header object in every HTTP webhook, which you can use to authenticate callback requests.
+
 * We advise merchants to use libraries provided by [Standard Webhook](https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries) to verify the legitimacy of the events.
+
 * A timestamp is used to protect against replay attacks.
+
 * We recommend validating the signature and timestamp before processing any webhook event.
 
 ### Webhook signature
@@ -209,6 +228,7 @@ The code samples below show how to validate the webhook signature in different p
 Use the following command to run the calculation:
 
 ```py filename="Python" showLineNumbers copy
+
 import functions_framework
 from standardwebhooks.webhooks import Webhook
 from os import getenv
@@ -239,13 +259,16 @@ def hello_http(request):
 
     print(result)
     return result
+
 ```
+
 </Tab>
 
 <Tab>
 Use the following command to run the calculation:
 
 ```js filename="Node.js" showLineNumbers copy
+
 const functions = require('@google-cloud/functions-framework');
 const { Webhook } = require('standardwebhooks');
 
@@ -272,9 +295,12 @@ functions.http('helloHttp', (req, res) => {
 
     res.send(`Success`);
 });
+
 ```
+
 </Tab>
 </Tabs>
 
 ## Resources
+
 * [Verify Standard Webhooks](https://www.standardwebhooks.com/verify)

@@ -16,9 +16,11 @@ The following features are currently unavailable when the checkout URL is used:
 
 A checkout URL is formatted the following way:
 
-```
+```javascript
+
 https://{store-url}/checkout/?products={id}:{quantity},{id}:{quantity}&coupon={code}&order_source={order_source}&action=buy
-```
+
+```javascript
 
 * `store-url` — This is your storefront domain (such as *mystore.com*, or *mystore.mybigcommerce.com*).  
 * `id` — That can be a Product ID or a SKU.  
@@ -35,9 +37,11 @@ https://{store-url}/checkout/?products={id}:{quantity},{id}:{quantity}&coupon={c
 
 The following URL will add quantity 2 of product SKU “BIGC-MUG”:
 
-```
+```javascript
+
 https://mystore.com/checkout/?products=BIGC-MUG:2&action=buy
-```
+
+```javascript
 
 The following URL will:
 
@@ -46,6 +50,8 @@ The following URL will:
 * Apply coupon code “FREESHIPPING”.  
 * Attribute the order source to “www”.
 
-```
+```javascript
+
 https://mystore.mybigcommerce.com/checkout/?products=12:1,15:1&coupon=FREESHIPPING&order_source=www&action=buy
-```
+
+```javascript

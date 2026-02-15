@@ -27,6 +27,7 @@ We recommend using the CLI to create a new Catalyst project. The CLI will guide 
       ```shell copy
       git remote add origin git@github.com:<YOUR_GITHUB_USERNAME>/<YOUR_FORK_NAME>.git
       ```
+
     </Steps>
 
   </Tabs.Tab>
@@ -124,6 +125,7 @@ We recommend using the CLI to create a new Catalyst project. The CLI will guide 
       ```shell copy
       cp .vscode/settings.example.json .vscode/settings.json
       ```
+
     </Steps>
 
   </Tabs.Tab>
@@ -135,7 +137,8 @@ Finally, you can run the following command from the monorepo root to run the dev
 
 ```shell copy
 pnpm run dev
-```
+
+```javascript
 
 The following table lists localhost URLs with the default ports. When a port is unavailable, Catalyst uses the next available port. For example, if `3000` is in use, `core` will run on `3001`.
 
@@ -147,7 +150,7 @@ The following table lists localhost URLs with the default ports. When a port is 
 
 The structure of the Catalyst repository you just created is a [monorepo](https://en.wikipedia.org/wiki/Monorepo) with multiple codebases, including but not limited to the following:
 
-- [The core Next.js reference storefront application, in `/core`](https://github.com/bigcommerce/catalyst/tree/main/core)
-- [Packages published to NPM, in `/packages`](https://github.com/bigcommerce/catalyst/tree/main/packages)
+* [The core Next.js reference storefront application, in `/core`](https://github.com/bigcommerce/catalyst/tree/main/core)
+* [Packages published to NPM, in `/packages`](https://github.com/bigcommerce/catalyst/tree/main/packages)
 
 It's important to note that we use several tools throughout the Catalyst monorepo, such as [Turborepo](https://turbo.build/repo/docs) and [pnpm Workspaces](https://pnpm.io/workspaces); you'll notice references to these tools as you spend more time in the repository, but most developers likely won't need to change any files, code, or configuration related to these tools in their normal Catalyst workflows.

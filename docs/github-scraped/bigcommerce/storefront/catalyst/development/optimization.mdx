@@ -5,7 +5,7 @@ Optimization of your Catalyst storefront falls into two major categories:
 * **Resource utilization:** Optimizing CPU usage and reducing total inbound and outbound network requests is important for making your storefront scalable to high traffic scenarios, as well as managing cost on cloud hosting providers that implement usage-based billing.
 * **Page performance:** Your storefront should implement an optimized strategy for the frontend user experience, with critical page data loading as fast as possible.
 
-The default Catalyst experience includes a number of optimizations to address both of these categories and ensure highly performant storefronts. 
+The default Catalyst experience includes a number of optimizations to address both of these categories and ensure highly performant storefronts.
 
 The following checklist will familiarize you with the built-in optimization mechanisms Catalyst uses, practices you should keep in mind when building your own customizations, and other considerations for optimizing your storefront.
 
@@ -29,22 +29,26 @@ The `with-routes` middleware in Catalyst enables SEO-friendly URLs by fetching i
 
 For example, a URL like this:
 
-```
+```javascript
+
 /fancy-high-top
-```
+
+```javascript
 
 can be resolved into the URL pattern expected by the appropriate Next.js route, such as a product path with an ID:
 
-```
+```javascript
+
 /product/123
-```
+
+```javascript
 
 Resolving the path requires an additional blocking API request per page. To avoid unnecessary requests and maintain optimal performance, the resulting data should be cached.
 
 For caching route data in the Next.js middleware layer, Catalyst will automatically make use of a KV storage solution if it is configured in your environment. See [Middleware](/docs/storefront/catalyst/development/middleware) for more details. Any Catalyst production deployment should have KV storage configured.
 
 <Callout type="info">
-**Vercel Deployments**
+## Vercel Deployments
 
 When deployed on Vercel, route caching automatically takes advantage of the [Vercel Runtime Cache](https://vercel.com/changelog/introducing-the-runtime-cache-api). This provides optimal performance without requiring an external KV store or extra configuration.
 </Callout>
@@ -74,7 +78,8 @@ async function OuterComponent() {
     </>
   );
 }
-```
+
+```javascript
 
 Catalyst enhances the capabilities of `<Suspense>` with the custom `<Stream>` component, which is useful when a component relies on data fetching outside itself. `<Stream>` makes it possible to write clean component props that don’t need to be concerned with whether data is being fetched asynchronously.
 
@@ -88,10 +93,10 @@ async function OuterComponent() {
 
   return (
     <>
-      <Stream fallback={<FallbackComponent />} 
+      <Stream fallback={<FallbackComponent />}
         value={streamableProducts}>
-      
-        {(products) => (    
+
+        {(products) => (
           <ProductsComponent products={products} />
         )}
       </Stream>
@@ -106,7 +111,8 @@ function ProductsComponent({
 ) {
   ...
 }
-```
+
+```javascript
 
 ## Firewall Configuration
 

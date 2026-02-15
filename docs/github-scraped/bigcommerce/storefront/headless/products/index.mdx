@@ -13,7 +13,7 @@ BigCommerce's [GraphQL Storefront API](/docs/graphql-storefront) makes it possib
 
 The following example demonstrates how to fetch product data using the GraphQL Storefront API. It relies on the [GraphQL Cursor Connections Specification model](https://relay.dev/graphql/connections.htm) to handle pagination.
 
-**Product Listing Page query example**
+### Product Listing Page query example
 
 ```graphql showLineNumbers copy
 function getProductInfo(params) {
@@ -70,10 +70,12 @@ function getProductInfo(params) {
         store_url: null,
         token: null
     };
+
 ```
+
 Following the same API fetching logic, you can retrieve data for a single product.
 
-**Product Details Page query example**
+### Product Details Page query example
 
 ```graphql showLineNumbers copy
 query SingleProduct {
@@ -93,6 +95,7 @@ query SingleProduct {
     }
   }
 }
+
 ```
 
 <Callout type="info">
@@ -125,6 +128,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     "price": 100.99
   }
 ]
+
 ```
 
 To update a single product, send a `PUT` request to the [Update a Product](/docs/rest-catalog/products#update-a-product) endpoint.
@@ -140,6 +144,7 @@ X-Auth-Token: {{ACCESS_TOKEN}}
     "inventory_level": 10,
     "price": 55.97
 }
+
 ```
 
 ### Cache the catalog

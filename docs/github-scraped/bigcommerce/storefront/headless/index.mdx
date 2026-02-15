@@ -13,13 +13,13 @@ If you want to build a headless storefront powered by a BigCommerce backend with
 
 If you need to build a custom solution, BigCommerce has APIs and [SDKs](/tools-resources#sdks) available to support your headless architecture. For specific use cases, see the following sections of the guide:
 
-* [Create a channel and a channel site](/docs/storefront/headless/channels)
-* [Fetch and manage product data](/docs/storefront/headless/products)
-* [Create a cart](/docs/storefront/headless/cart-checkout/carts)
-* [Move a cart to checkout](/docs/storefront/headless/cart-checkout/checkout)
-* [Log in a customer](/docs/storefront/headless/customers)
-* [Create an order](/docs/storefront/headless/orders)
-* [Learn about PCI compliance](/docs/storefront/headless/pci-compliance)
+- [Create a channel and a channel site](/docs/storefront/headless/channels)
+- [Fetch and manage product data](/docs/storefront/headless/products)
+- [Create a cart](/docs/storefront/headless/cart-checkout/carts)
+- [Move a cart to checkout](/docs/storefront/headless/cart-checkout/checkout)
+- [Log in a customer](/docs/storefront/headless/customers)
+- [Create an order](/docs/storefront/headless/orders)
+- [Learn about PCI compliance](/docs/storefront/headless/pci-compliance)
 
 ## Sample integration
 
@@ -42,8 +42,8 @@ The Trusted Proxy feature allows merchants to set up authenticated proxy servers
 1. Merchant sets up a proxy server in front of BigCommerce
 2. BigCommerce provides a secret key to the merchant
 3. Proxy server includes two required headers in all requests:
-   - A secret key to authenticate the proxy
-   - The remote user's original IP address
+- A secret key to authenticate the proxy
+  - The remote user's original IP address
 
 ## Required Headers
 
@@ -56,9 +56,9 @@ The Trusted Proxy feature allows merchants to set up authenticated proxy servers
 
 1. Contact BigCommerce support to receive your trusted proxy secret
 2. Configure your proxy server to:
-   - Include the secret in the `X-BC-Trusted-Proxy-Secret` header
-   - Extract the remote user's IP address
-   - Pass the remote user's IP in the `True-Client-IP` header
+  - Include the secret in the `X-BC-Trusted-Proxy-Secret` header
+  - Extract the remote user's IP address
+  - Pass the remote user's IP in the `True-Client-IP` header
 
 ## Technical Notes
 - All headers must be included with every request
@@ -105,6 +105,7 @@ The following example uses the GraphQL Storefront API to complete a checkout and
         }
       }
     ```
+
   </Tab>
   <Tab>
 
@@ -121,6 +122,7 @@ The following example uses the GraphQL Storefront API to complete a checkout and
         }
       }
     ```
+
   </Tab>
 </Tabs>
 
@@ -193,7 +195,9 @@ mutation GenerateSessionSyncJwt ($redirectTo: String!,$cartId: String,$visitorId
         }
      }
   }
+
 ```
+
 </Tab>
   <Tab>
 
@@ -212,10 +216,13 @@ mutation GenerateSessionSyncJwt {
       }
    }
 }
+
 ```
+
   </Tab>
 
    <Tab>
+
 ```json #
 mutation ValidateJwt{
   validateSessionSyncJwt(jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJCQyIsImlhdCI6MTczMDQwMTc3MiwiZWF0IjoxNzMwNDAxODAyLCJqdGkiOiI2NTI5NDAyMi02MDA4LTRmY2YtOTUxOC03MWE5NjA0MjEyMjgiLCJvcGVyYXRpb24iOiJzZXNzaW9uX3N5bmMiLCJzaWQiOjczMzE5Nywic2Vzc2lvbl9wYXlsb2FkIjp7ImNhcnRfaWQiOm51bGwsImN1c3RvbWVyX2lkIjpudWxsLCJ2aXNpdG9yX2lkIjoiYWJjMTIzIn0sInJlcXVlc3RfaXAiOm51bGwsInJlZGlyZWN0X3RvIjoiaHR0cHM6Ly9iaWdjb21tZXJjZS5zdXBwb3J0L2ZvbyJ9.TAueByfTCdpw3UwwuKElUoeEjYcqCT13H3pt7UzIh6t6682_w4aaz1akS-FOyyOstOUYcjyUPLN5qi04eXXKKA"){
@@ -237,7 +244,9 @@ mutation ValidateJwt{
      }
    }
 }
+
 ```
+
 </Tab>
 </Tabs>
 

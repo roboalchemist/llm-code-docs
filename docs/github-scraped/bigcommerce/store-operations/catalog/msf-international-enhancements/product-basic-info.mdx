@@ -9,9 +9,9 @@
 
 Using the Catalog features of the Admin API, you can set and query basic product information, for example, product name and description.
 
-You can perform the following: 
+You can perform the following:
 - [Set global basic product information](#set-basic-product-information-at-the-global-level) for the catalog. Channels inherit these by default.
-- [Create overrides for a channel and channel locale](#set-basic-product-information-for-a-locale) using the `overridesForLocale` mutation. 
+- [Create overrides for a channel and channel locale](#set-basic-product-information-for-a-locale) using the `overridesForLocale` mutation.
 - [Remove overrides for a channel and channel locale](#remove-basic-product-information-for-a-locale). A channel then inherits global values.
 - [Query basic product information](#query-basic-product-information), those set at the global level and the overrides.
 
@@ -49,7 +49,9 @@ The following example sets global basic product information for the store, from 
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -60,6 +62,7 @@ The following example sets global basic product information for the store, from 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -81,6 +84,7 @@ The following example sets global basic product information for the store, from 
       }
     }
   }
+
   ```
 
   </Tab>
@@ -116,21 +120,24 @@ The following example sets basic product information for the specified storefron
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
-    {                                           
-      "input": {                                
-        "productId": "bc/store/product/111",    
+    {
+      "input": {
+        "productId": "bc/store/product/111",
         "localeContext": {
-          "channelId": "bc/store/channel/2",      
+          "channelId": "bc/store/channel/2",
           "locale": "fr"
-        },                       
-        "data": {                               
-          "name": "name override",              
-          "description": "description override" 
-        }                                                       
+        },
+        "data": {
+          "name": "name override",
+          "description": "description override"
+        }
       }
     }
+
     ```
 
   </Tab>
@@ -154,6 +161,7 @@ The following example sets basic product information for the specified storefron
         }
       }
     }
+
     ```
 
   </Tab>
@@ -190,18 +198,21 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
-    {                                           
-      "input": {                                
-        "productId": "bc/store/product/111",    
+    {
+      "input": {
+        "productId": "bc/store/product/111",
         "localeContext": {
-          "channelId": "bc/store/channel/2",      
+          "channelId": "bc/store/channel/2",
           "locale": "fr"
         },
-        "overridesToRemove": ["PRODUCT_NAME_FIELD"]                                                                    
+        "overridesToRemove": ["PRODUCT_NAME_FIELD"]
       }
-    }  
+    }
+
     ```
 
   </Tab>
@@ -224,6 +235,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
 
   </Tab>
@@ -263,6 +275,7 @@ The following example retrieves basic product information. You can retrieve glob
         }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -293,12 +306,13 @@ The following example retrieves basic product information. You can retrieve glob
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
 
 <Callout type="info">
-  - The `id` field contains the product's global ID that you can retrieve from the [Get all products](/docs/rest-catalog/products#get-all-products) endpoint. For example, a product with a global ID of 111 will have an `id` of `"bc/store/product/111"`.  
+  - The `id` field contains the product's global ID that you can retrieve from the [Get all products](/docs/rest-catalog/products#get-all-products) endpoint. For example, a product with a global ID of 111 will have an `id` of `"bc/store/product/111"`.
   - The `channelId` field contains the channel's global ID that you can retrieve from the [Get all channels](/docs/rest-management/channels#get-all-channels) endpoint. For example, a channel with a global ID of 2 will have a `channelId` of `"bc/store/channel/2"`.
 </Callout>

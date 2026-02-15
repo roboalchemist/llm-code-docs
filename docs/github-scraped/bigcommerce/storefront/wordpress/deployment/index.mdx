@@ -2,12 +2,12 @@
 
 This document outlines our recommended steps for launching a BigCommerce for WordPress site. It assumes that you have a reasonable understanding of WordPress and BigCommerce and know how to install the BigCommerce for WordPress plugin. For an overview of BigCommerce and the BigCommerce for WordPress plugin, see the following articles:
 
-- [BigCommerce Overview](https://support.bigcommerce.com/s/article/Getting-Started-with-the-New-Control-Panel)
-- [Store profile](https://support.bigcommerce.com/s/article/Store-Profile-Settings)
-- [Taxes](https://support.bigcommerce.com/s/article/Tax-Overview)
-- [Shipping](https://support.bigcommerce.com/s/article/Shipping-Setup)
-- [Payment methods](https://support.bigcommerce.com/s/article/Online-Payment-Methods)
-- [BigCommerce for WordPress Overview](/docs/storefront/wordpress) 
+* [BigCommerce Overview](https://support.bigcommerce.com/s/article/Getting-Started-with-the-New-Control-Panel)
+* [Store profile](https://support.bigcommerce.com/s/article/Store-Profile-Settings)
+* [Taxes](https://support.bigcommerce.com/s/article/Tax-Overview)
+* [Shipping](https://support.bigcommerce.com/s/article/Shipping-Setup)
+* [Payment methods](https://support.bigcommerce.com/s/article/Online-Payment-Methods)
+* [BigCommerce for WordPress Overview](/docs/storefront/wordpress)
 
 ## Required steps
 
@@ -38,6 +38,7 @@ define( 'BIGCOMMERCE_API_URL', 'https://api.bigcommerce.com/stores/xxxxxxxxxx/v3
 define( 'BIGCOMMERCE_CLIENT_ID', 'xxxxxxxxxx' );
 define( 'BIGCOMMERCE_CLIENT_SECRET', 'xxxxxxxxxx' );
 define( 'BIGCOMMERCE_ACCESS_TOKEN', 'xxxxxxxxxx' );
+
 ```
 
 ### Configure BigCommerce for WordPress product sync
@@ -55,15 +56,18 @@ Product, inventory, and checkout webhook events are automatically set up when th
 Within BigCommerce for WordPress, there are multiple ways to configure how the cart interactions work. Take the time to select the right experience from the following:
 
 #### Mini-cart
+
 * Keep the shopper on the page after they have added an item.
 * When the cart menu item is clicked, show a mini-cart overview as an overlay on the page, which details the items, total, and links to view cart or checkout.
 * Available as a widget to build into other parts of the template (for example, to display a persistent, dynamic sidebar cart).
 
 #### Ajax add-to-cart
+
 * Keep the shopper on the page after they have added an item.
 * When the cart menu item is clicked, navigate to the cart page.
 
 #### Redirect to cart
+
 * When the shopper adds an item to the cart, navigate to the cart page.
 
 ### Select checkout type
@@ -74,11 +78,11 @@ The checkout type determines which payment methods and checkout customizations a
 
 **Redirected Checkout** unlocks the full checkout experience of BigCommerce, including hosted wallets and ability to customize the checkout layout through the Stencil framework and Checkout SDK. To make the hand off from WordPress to BigCommerce seamless, set up a subdomain such as checkout.your-domain.com. For details on how to change your store domain, see [Changing Domains](https://support.bigcommerce.com/s/article/Changing-Domains).
 
-Note that in either case, the links within checkout, such as **Register Account** and **Edit Cart**, will be automatically set by the plugin to link back to the correct pages on the WordPress site using the [Sites and Routes API](/docs/rest-management/sites). 
+Note that in either case, the links within checkout, such as **Register Account** and **Edit Cart**, will be automatically set by the plugin to link back to the correct pages on the WordPress site using the [Sites and Routes API](/docs/rest-management/sites).
 
 ### Enable user registration on WordPress
 
-For BigCommerce for WordPress to handle registration of new customers, membership of new users needs to be enabled on the WordPress site. You can enable this in the **Settings** > **General** section of the WordPress admin by turning on **Anyone can register** for the Membership option. 
+For BigCommerce for WordPress to handle registration of new customers, membership of new users needs to be enabled on the WordPress site. You can enable this in the **Settings** > **General** section of the WordPress admin by turning on **Anyone can register** for the Membership option.
 
 ### Ensure dynamic pages are not cached
 
@@ -89,6 +93,7 @@ Customer specific pages such as Cart, My Account, and Checkout should not be cac
 Once you install BigCommerce for WordPress, you can access the BigCommerce section inside the WordPress Customizer. There you can customize the following areas of your theme:
 
 **Buttons**
+
 * *Add to Cart* button label
 * *Pre-Order Add to Cart* button label
 * *Buy Now* button label
@@ -97,6 +102,7 @@ Once you install BigCommerce for WordPress, you can access the BigCommerce secti
 * *View Product* button label
 
 **Colors and theme**
+
 * Use plugin CSS or disable built-in styles
 * Button color
 * Button text color
@@ -106,13 +112,15 @@ Once you install BigCommerce for WordPress, you can access the BigCommerce secti
 * Production condition color
 * Product condition color
 
-**Product single** 
+**Product single**
+
 * Related products to display
 * Default product image
 * Control how default prices display while waiting for Pricing API responses
 * Inventory display logic
 
-**Product catalog** 
+**Product catalog**
+
 * Catalog page title
 * Catalog page slug
 * Catalog page description
@@ -125,17 +133,19 @@ Once you install BigCommerce for WordPress, you can access the BigCommerce secti
     * Reviews
     * Price (low to high)
     * Price (high to low)
-* Filters 
+* Filters
     * Categories
     * Brands
     * Columns in product grid
     * Products per page
     * Whether quick view is enabled or not
 
-**Cart** 
+**Cart**
+
 * Enable mini-cart or not
 
-**Embedded checkout** 
+**Embedded checkout**
+
 * Background color
 * Text color
 * Link color
@@ -171,6 +181,7 @@ Multi-channel mode:
 
 ```js copy
 add_filter( 'bigcommerce/channels/enable-multi-channel', '__return_true' );
+
 ```
 
 For more details on how to build a multi-region storefront with BigCommerce for WordPress, see [Building a Multi-Region Storefront](https://medium.com/bigcommerce-developer-blog/build-a-multi-region-storefront-with-bigcommerce-for-wordpress-3-1-0-80cf56c3e8e9).
@@ -181,7 +192,7 @@ The import process will run faster and more reliably if run from the command lin
 
 1. Ensure that your host has [WP-CLI](https://wp-cli.org/) installed and configured to manage your WordPress site.
 
-2. The initial import will likely take longer than subsequent imports. Run the following command for the first import: 
+2. The initial import will likely take longer than subsequent imports. Run the following command for the first import:
 `wp bigcommerce import products`
 
 3. Set up a system cron job to run the import at your desired frequency. For example, to run every 10 minutes:
@@ -206,13 +217,16 @@ To disable WordPress's default cron, follow these steps:
 
 ```php copy
 define( 'DISABLE_WP_CRON', true );
+
 ```
 
 3. Enable WP cron events.
 4. Set up a system cron job to run WordPress's cron events from the command line:
 
 ```shell copy
+
 * * * * * /usr/bin/wp cron event run --due-now --quiet > /dev/null 2>&1
+
 ```
 Running the job every minute is generally recommended.
 
@@ -234,6 +248,7 @@ If network latency is causing your API requests to timeout, the timeout duration
 add_filter( 'bigcommerce/api/timeout', function () {
 	return 60;
 } );
+
 ```
 
 ### Expectations for performance
@@ -266,7 +281,7 @@ There is a growing list of plugins that support BigCommerce either through added
 
 ## Resources
 
-- [Customization Guide](/docs/storefront/wordpress/themes)
-- [Proxy REST API Endpoints](/docs/storefront/wordpress/platform-integration/rest-proxy)
-- [BigCommerce Plugin Code Reference](https://bc-wordpress-reference.vercel.app/)
-- [BigCommerce for WordPress Changelog](https://github.com/bigcommerce/bigcommerce-for-wordpress/releases) (GitHub)
+* [Customization Guide](/docs/storefront/wordpress/themes)
+* [Proxy REST API Endpoints](/docs/storefront/wordpress/platform-integration/rest-proxy)
+* [BigCommerce Plugin Code Reference](https://bc-wordpress-reference.vercel.app/)
+* [BigCommerce for WordPress Changelog](https://github.com/bigcommerce/bigcommerce-for-wordpress/releases) (GitHub)

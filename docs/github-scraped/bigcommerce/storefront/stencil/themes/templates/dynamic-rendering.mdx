@@ -2,17 +2,16 @@
 
 Stencil allows you to render dynamic components on the fly. For example, note this default code in <span class="fp">templates/components/products/quick-view.html</span> (note also this file name, which Handlebars will reference later in this example):
 
-
 ```handlebars filename="templates/components/products/quick-view.html" showLineNumbers copy
 <div class="modal-body quickView">
     {{> components/products/product-view schema=false}}
 </div>
+
 ```
 
 To render a different template, you would instead reference that template’s file name. For example, assume that you want to substitute a custom template that you’ve named: `templates/components/products/quicker-view.html`.
 
 This next code block is from the Stencil default theme’s `/assets/js/theme/global/quick-view.js` file. Note the `quicker-view.html` statements brought in to reference the new file name:
-
 
 ```js filename="/assets/js/theme/global/quick-view.js" showLineNumbers copy
 let $modal = $('#modal'),
@@ -40,6 +39,7 @@ $('body').on('click', '.quickview', (event) => {
       return new ProductDetails($modalContent, context);
   });
 });
+
 ```
 
 ## Handlebar partial blocks for Stencil
@@ -52,6 +52,7 @@ Stencil supports handlebar partial blocks to help you create reusable templates 
     {{> components/li text="Item 2" link="item_link_2"}}
     {{> components/li text="Item 3" link="item_link_3"}}
 {{/components/ul}}
+
 ```
 **component/ul**
 
@@ -59,6 +60,7 @@ Stencil supports handlebar partial blocks to help you create reusable templates 
 <ul>
     {{> @partial-block }}
 </ul>
+
 ```
 
 **component/li**
@@ -67,6 +69,7 @@ Stencil supports handlebar partial blocks to help you create reusable templates 
 <li>
     <a href="{{link}}">{{text}}</a>
 </li>
+
 ```
 
 **Result**:
@@ -83,5 +86,6 @@ Stencil supports handlebar partial blocks to help you create reusable templates 
        <a href="item_link_3">Item 3</a>
     </li>
 </ul>
+
 ```
 Content placed inside the block will replace the partial's default content, allowing you to inject custom content while preserving the partial’s structure and logic. This format makes it easier to reuse templates with varying content across your application.

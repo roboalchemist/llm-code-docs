@@ -32,32 +32,32 @@ The `/sites/{site_id}/routes` endpoints define redirect URLs for the default URL
 
 ## Channel Manager vs. App Marketplace
 
-The BigCommerce Channel Manager and App Marketplace are the two places where channel apps can be discovered and installed by merchants. While there are similar requirements for building an app that will be marketed in either of these two locations, there are unique benefits, requirements, and considerations for apps that are made available in the Channel Manager. 
+The BigCommerce Channel Manager and App Marketplace are the two places where channel apps can be discovered and installed by merchants. While there are similar requirements for building an app that will be marketed in either of these two locations, there are unique benefits, requirements, and considerations for apps that are made available in the Channel Manager.
 
 <a id="channels-sites-routes-app"></a>
 
 ## What Do I Need to Build a Channel App?
 
-The BigCommerce APIs, webhooks, UI components, and patterns that you need to make your channel app will vary depending on the type of channel, functionality, and where the app lives (Channel Manager in the Control Panel vs. App Marketplace). 
+The BigCommerce APIs, webhooks, UI components, and patterns that you need to make your channel app will vary depending on the type of channel, functionality, and where the app lives (Channel Manager in the Control Panel vs. App Marketplace).
 
-**APIs and Webhooks**
+## APIs and Webhooks
 
-The APIs that you integrate with and how you use them (read only vs. modify) will determine which BigCommerce scopes your app requests when it is installed by a merchant and which endpoints you’ll need to query. 
+The APIs that you integrate with and how you use them (read only vs. modify) will determine which BigCommerce scopes your app requests when it is installed by a merchant and which endpoints you’ll need to query.
 
-BigCommerce provides webhooks for 3rd-party developers, enabling them to respond in near real-time to events that occur within the BigCommerce system. Depending on the frequency of updates your channel app needs to manage, you can choose to either poll the API endpoints or integrate with webhooks — this is recommended if changes happen frequently or have downstream impacts, such as inventory changes that could impact a merchant’s SLA with a marketplace. 
+BigCommerce provides webhooks for 3rd-party developers, enabling them to respond in near real-time to events that occur within the BigCommerce system. Depending on the frequency of updates your channel app needs to manage, you can choose to either poll the API endpoints or integrate with webhooks — this is recommended if changes happen frequently or have downstream impacts, such as inventory changes that could impact a merchant’s SLA with a marketplace.
 
-**Required APIs**
+## Required APIs
 
 These APIs are required to build a functioning BigCommerce channel app:
 * Catalog: Products ([API docs](/docs/store-operations/catalog), [API reference](/docs/rest-catalog), [webhooks](/docs/integrations/webhooks/events#products))
 * [Catalog: Channel & Listings](# add here)
 * Orders: Orders API ([API docs](/docs/store-operations/orders), [API reference](/docs/rest-management/orders), [webhooks](/api-docs/store-management/webhooks/webhook-events#orders))
 
-**Recommended APIs**
+## Recommended APIs
 
 These APIs are not always required, but highly recommended for app developers based on certain use cases:
 * Catalog: Price Lists ([API docs](/api-docs/catalog/price-list-overview), [API reference](/docs/rest-management/price-lists))
-* Store Management: Shipping ([API docs](/api-docs/store-management/shipping/shipping-overview), [API reference](/docs/rest-management/shipping-v2)) 
+* Store Management: Shipping ([API docs](/api-docs/store-management/shipping/shipping-overview), [API reference](/docs/rest-management/shipping-v2))
 * Store Management: Store Information ([API reference](/api-docs/store-management/webhooks/webhook-events#customer), [webhooks](/api-docs/store-management/webhooks/webhook-events#store))
 * Customers & Subscribers: Customers ([API docs](/api-docs/customers/customers-subscribers-overview), [v2 API reference](/docs/rest-management/customers-v2), [v3 API Reference](/docs/rest-management/customers), [webhooks](/api-docs/store-management/webhooks/webhook-events#customer))
 * Cart & Checkout: Server to Server Cart ([API Docs](/api-docs/storefront/cart-and-checkout-overview), [API Reference](/docs/rest-management/carts))

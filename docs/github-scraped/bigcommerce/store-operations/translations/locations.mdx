@@ -1,20 +1,20 @@
 # Translations for Locations (Beta)
 
 <Callout type='info'>
-	The Translations Admin GraphQL API is currently available on Catalyst
-	storefronts only.
+    The Translations Admin GraphQL API is currently available on Catalyst
+    storefronts only.
 </Callout>
 
 The locations translatable fields are:
 
-- Name
-- Address 1
-- Address 2
-- Description
-- City
-- State (optional)
-- Meta Keywords
-- Name (Special hours)
+* Name
+* Address 1
+* Address 2
+* Description
+* City
+* State (optional)
+* Meta Keywords
+* Name (Special hours)
 
 ## Examples
 
@@ -28,6 +28,7 @@ This query returns a paginated list of translations by resourceType, channel, an
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```json filename="Example query: Query a list of translations" showLineNumbers copy
         GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
         X-Auth-Token: {{token}}
@@ -57,6 +58,7 @@ This query returns a paginated list of translations by resourceType, channel, an
 
   </Tab>
 <Tab>
+
 ```json filename="Example query: Query a list of translations" showLineNumbers copy
   {
     "data": {
@@ -101,21 +103,24 @@ This query returns a paginated list of translations by resourceType, channel, an
         }
     }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
 #### Query a translation by resourceId
 
 <Callout type='warning'>
-	When querying a translation by resourceId, you must provide the full
-	resourceId in the format `bc/store/inventoryLocation/{location_id}`.
+    When querying a translation by resourceId, you must provide the full
+    resourceId in the format `bc/store/inventoryLocation/{location_id}`.
 </Callout>
 
 This query returns a translation by resourceId.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```json filename="Example query: Query a translation by resource id" showLineNumbers copy
         GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
         X-Auth-Token: {{token}}
@@ -146,6 +151,7 @@ This query returns a translation by resourceId.
 
   </Tab>
 <Tab>
+
 ```json filename="Example query: Query a translation by resource id" showLineNumbers copy
   {
     "data": {
@@ -223,7 +229,9 @@ This query returns a translation by resourceId.
         }
     }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
@@ -233,6 +241,7 @@ This mutation updates a translation.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```json filename="Example mutation: Update a translation" showLineNumbers copy
         GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
         X-Auth-Token: {{token}}
@@ -285,8 +294,10 @@ This mutation updates a translation.
 }
 
 ````
+
   </Tab>
 <Tab>
+
 ```json filename="Example mutation: Update a translation" showLineNumbers copy
  {
     "data": {
@@ -298,6 +309,7 @@ This mutation updates a translation.
       }
     }
   }
+
 ````
 
 </Tab>
@@ -309,6 +321,7 @@ The following mutation deletes a translation.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
+
     ```json filename="Example mutation: Delete a translation" showLineNumbers copy
         GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
         X-Auth-Token: {{token}}
@@ -337,9 +350,11 @@ The following mutation deletes a translation.
     }
     }
 
-````
+````javascript
+
   </Tab>
 <Tab>
+
 ```json filename="Example mutation: Delete a translation" showLineNumbers copy
  {
   "data": {
@@ -351,6 +366,7 @@ The following mutation deletes a translation.
     }
   }
 }
+
 ````
 
 </Tab>

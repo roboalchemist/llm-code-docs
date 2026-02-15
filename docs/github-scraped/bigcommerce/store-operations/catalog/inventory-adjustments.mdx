@@ -21,12 +21,12 @@ Due to the asynchronous nature of the Inventory API, there may be a short delay 
 The total inventory for a product cannot exceed 2,147,483,647 _at a single location_. The total inventory includes that of its variants. The inventory for a variant can reach 2,147,483,647 at each location.
 
 Using shirts as an example, you can store 2,147,483,647 shirts at each location.
-For shirts with variants, this total includes all the shirts for its variants. 
+For shirts with variants, this total includes all the shirts for its variants.
 You can store up to 2,147,483,647 shirts for a variant. For example, you can have 2,147,483,647 small red shirts or 2,147,483,647 large blue shirts.
 
 <Callout type="info">
-  #### Limit handling in Inventory versus Catalog API 
-  - The Inventory API handles limits in a different way than the Catalog API. 
+  #### Limit handling in Inventory versus Catalog API
+  - The Inventory API handles limits in a different way than the Catalog API.
   - In the Inventory API, the store does not save the product or variant if you exceed the inventory limit.
   - In the Catalog API, the store sets the inventory level to the limit if you exceed the limit. If a product has variants, the store may not save the inventory for a variant. For more information, see the [Update a product variant](/docs/rest-catalog/product-variants#update-a-product-variant) endpoint.
 </Callout>
@@ -74,6 +74,7 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
 For the best performance, group the payload data by _location_, not item, for bulk adjustments, as shown in the following example:
@@ -103,9 +104,10 @@ For the best performance, group the payload data by _location_, not item, for bu
       "location_id": 2,
       "variant_id": 20,
       "quantity": 100
-    }    
+    }
   ]
 }
+
 ```
 
 ### Get location stock
@@ -118,6 +120,7 @@ For the best performance, group the payload data by _location_, not item, for bu
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
+
     ```
 
   </Tab>
@@ -142,6 +145,7 @@ For the best performance, group the payload data by _location_, not item, for bu
         }
       ]
     }
+
     ```
 
   </Tab>
@@ -165,7 +169,7 @@ To make a relative adjustment to an inventory level, send a request to the [Rela
 | Safety buffer | `0`      |
 | Adjustment    | `-25`    |
 
-### Create a relative adjustment 
+### Create a relative adjustment
 
 
 ```http filename="Example request: Create relative adjustment" showLineNumbers copy
@@ -184,9 +188,10 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
-### Get location stock 
+### Get location stock
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -196,6 +201,7 @@ Accept: application/json
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
+
     ```
 
   </Tab>
@@ -220,6 +226,7 @@ Accept: application/json
         }
       ]
     }
+
     ```
 
   </Tab>
@@ -257,6 +264,7 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
 ### Get location stock
@@ -269,6 +277,7 @@ Accept: application/json
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
+
     ```
 
   </Tab>
@@ -281,6 +290,7 @@ Accept: application/json
       "total_inventory_onhand": 30,
       ...
     }
+
     ```
 
   </Tab>
@@ -318,6 +328,7 @@ Accept: application/json
     }
   ]
 }
+
 ```
 
 Since the relative adjustment of `-41` would bring the item's stock below the safety buffer, the above request would error; stock would be unchanged.

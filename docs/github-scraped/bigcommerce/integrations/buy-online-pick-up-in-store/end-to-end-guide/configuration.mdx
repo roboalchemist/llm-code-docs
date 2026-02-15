@@ -1,13 +1,13 @@
 
 # Merchant configuration
 
-To build a _Buy Online, Pick up in Store_ solution, you must first create a location for pickup. 
+To build a _Buy Online, Pick up in Store_ solution, you must first create a location for pickup.
 You can then manage inventory for a location, configure inventory settings such as stock warning levels.
 Last, you must create a method for pickup. You can define collection instructions and assign the method to a location.
 
 ## Create locations
 
-Create one or more locations using the [Create locations](/docs/rest-management/locations#create-locations) endpoint. Include a *pickup location* from which customers can pick up their orders.
+Create one or more locations using the [Create locations](/docs/rest-management/locations#create-locations) endpoint. Include a _pickup location_ from which customers can pick up their orders.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -377,6 +377,7 @@ _Buy Online, Pick up in Store_ uses the [Inventory API](/docs/rest-management/in
 * **Relative quantity** adjusts a product or variant's inventory quantity by adding to or subtracting from the existing quantity.
 
 Before setting inventory quantity to a location, check the inventory tracking configurations that have been enabled. There are three inventory tracking configurations:
+
 * **Inventory is tracked by product** - This setting is used if your product has no variations. For example, champagne glasses or .
 * **Inventory is tracked by variant** - This setting is used if your product has different attributes (variations), e.g. a shirt has various sizes and colors.
 * **Inventory is not tracked** - This setting is used if you do not have a need to track inventory quantity, e.g. you may sell a digital asset like a PDF or digital music title. When inventory is not tracked, the product will always be considered available to sell on your storefront, even if it may not be in your physical storage location.
@@ -539,8 +540,8 @@ You can also make relative adjustments to inventory tracked by variant.
 
 In addition to making absolute or relative adjustments to inventory quantities, other inventory settings can also be set, including:
 
-- **Warning Level** - This is the same as the `inventory_warning_level` attribute in the Catalog API
-- **Safety Stock** - The quantity of product that is stored to prevent an out-of-stock situation. It serves as insurance against sudden or rapid fluctuations in demand. Safety stock quantity is not included in the "available to sell" quantity that may be displayed to customers on the storefront.
+* **Warning Level** - This is the same as the `inventory_warning_level` attribute in the Catalog API
+* **Safety Stock** - The quantity of product that is stored to prevent an out-of-stock situation. It serves as insurance against sudden or rapid fluctuations in demand. Safety stock quantity is not included in the "available to sell" quantity that may be displayed to customers on the storefront.
 
 To do so, send a request to the [Update inventory settings for a location](/docs/rest-management/inventory/items#update-inventory-settings-for-a-location) endpoint.
 
@@ -742,7 +743,7 @@ Alternatively, you can view aggregate inventory information for a product, acros
 
 Once locations have been created, you can create pickup methods and assign them to a location. To do so, send a request to the [Create pickup methods](/docs/rest-management/pickup-methods#create-pickup-methods) endpoint.
 
-{/* can a pickup method be used across more than one location? */}
+{/_can a pickup method be used across more than one location?_/}
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -832,10 +833,10 @@ Some merchants offer multiple pickup options at a single location. For example, 
 
 If you need to update the original pickup method details, you can use the [Pickup Methods API](/docs/rest-management/pickup-methods). Update any of the following details using the [Update pickup methods](/docs/rest-management/pickup-methods#update-pickup-methods) endpoint:
 
-- `location_id`
-- `display_name`
-- `collection_instructions`
-- `collection_time_description`
+* `location_id`
+* `display_name`
+* `collection_instructions`
+* `collection_time_description`
 
 <Tabs items={['Request', 'Response']}>
   <Tab>

@@ -1,6 +1,6 @@
 ---
 title: Adding JavaScript to Your Theme
-keywords: stencil, js, javascript, if, 
+keywords: stencil, js, javascript, if,
 ---
 
 # Adding JavaScript to Your Theme
@@ -86,6 +86,7 @@ export default class Blog extends PageManager {
             //Setup code goes here – attach to internals, and use internals as you would 'this'
         }
     }
+
 ```
 
 <Callout type="info">
@@ -113,6 +114,7 @@ var jsContext = JSON.parse({{jsContext}}); //jsContext would output "{\"myProduc
 
 console.log(jsContext.myProductName); // Will output: Sample Product
 </script>
+
 ```
 
 You can compose your JSON object across multiple pages, to create a different set of client-side data depending on the currently loaded template context.
@@ -189,6 +191,7 @@ const pageClasses = {
     wishlist: () => import('./theme/wishlist'),
     wishlists: () => import('./theme/wishlist'),
 };
+
 ```
 
 ### Mapping example in cart.js
@@ -240,6 +243,7 @@ export default class Cart extends PageManager {
         }
     }
 }
+
 ```
 
 ## Mapping custom templates to JavaScript modules
@@ -256,6 +260,7 @@ export default class Custom extends PageManager {
         alert("Hello world!");
     }
 }
+
 ```
 
 This is a basic module that creates a class called `Custom` which extends the PageManager class.
@@ -269,9 +274,11 @@ Some custom content!
 <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
 <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
 <script>window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();</script>
+
 ```
 
 In order to successfully map your custom module to a custom template file, that file must do the following:
+
 * Inject the custom template
 * Load webpack
 * Load the main theme bundle
@@ -287,11 +294,13 @@ const customClasses = {
     'pages\\custom\\product\\customProd': () => import('./theme/custom'), // Windows
 };
 /**
+
  * This function gets added to the global window and then called
  * on page load with the current template loaded and JS Context passed in
  * @param pageType String
  * @param contextJSON
  * @returns {*}
+
  */
 window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null, loadGlobal = true) {
     const context = JSON.parse(contextJSON || '{}');
@@ -328,6 +337,7 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
         },
     };
 };
+
 ```
 
 ## Summary

@@ -33,6 +33,7 @@ The response provides an `id` for each tax property. Use the `id` to get, update
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Create tax properties" showLineNumbers copy
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/properties
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -54,8 +55,10 @@ The response provides an `id` for each tax property. Use the `id` to get, update
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Create tax properties" showLineNumbers copy
     {
       "data": [
@@ -81,6 +84,7 @@ The response provides an `id` for each tax property. Use the `id` to get, update
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -90,6 +94,7 @@ Send a request to the [Update tax properties](/docs/rest-management/tax-properti
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Update tax properties" showLineNumbers copy
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/properties
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -103,8 +108,10 @@ Send a request to the [Update tax properties](/docs/rest-management/tax-properti
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Update tax properties" showLineNumbers
     {
       "data": [
@@ -121,6 +128,7 @@ Send a request to the [Update tax properties](/docs/rest-management/tax-properti
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -130,14 +138,17 @@ This endpoint supports batch operations. You can get all the tax properties in y
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get tax properties" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/properties?id:in=1,2
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Get tax properties" showLineNumbers copy
     {
       "data": [
@@ -174,6 +185,7 @@ This endpoint supports batch operations. You can get all the tax properties in y
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -183,17 +195,21 @@ To delete tax properties, send a request to the [Delete tax properties](/docs/re
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Delete tax properties" showLineNumbers copy
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/properties?id:in=2
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example response: Delete tax properties" showLineNumbers
     HTTP 204 No content
     ```
+
   </Tab>
 </Tabs>
 
@@ -214,6 +230,7 @@ To attach tax properties to a product, send a request to the [Update product tax
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Update product with tax properties" showLineNumbers copy
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/products/properties
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -237,8 +254,10 @@ To attach tax properties to a product, send a request to the [Update product tax
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Update product with tax properties" showLineNumbers copy
     {
       "data": [
@@ -271,6 +290,7 @@ To attach tax properties to a product, send a request to the [Update product tax
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -280,14 +300,17 @@ To get the tax properties attached to a product, send a request to the [Get prod
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get product tax properties" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/products/properties?product_id:in=113,117
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Get product tax properties" showLineNumbers copy
     {
       "data": [
@@ -320,6 +343,7 @@ To get the tax properties attached to a product, send a request to the [Get prod
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -335,17 +359,21 @@ To remove tax properties from a product, send a request to the [Delete product t
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Delete product tax properties" showLineNumbers copy
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/products/properties?product_id:in=117
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example response: Delete product tax properties" showLineNumbers copy
     HTTP 204 No content
     ```
+
   </Tab>
 </Tabs>
 
@@ -411,28 +439,35 @@ Accept: application/json
   ]
   ...
 }
-```
+
+```javascript
+
 BigCommerce also sends product tax properties to [commit](/docs/rest-contracts/tax#commit-tax-quote) and [adjust tax quotes](/docs/rest-contracts/tax#adjust-tax-quote).
 
 ## Resources
-- [Tax Properties API Reference](/docs/rest-management/tax-properties)
-- [Tax Provider API Reference](/docs/rest-contracts/tax)
+
+* [Tax Properties API Reference](/docs/rest-management/tax-properties)
+* [Tax Provider API Reference](/docs/rest-contracts/tax)
 
 ### Tax Properties reference
-- [Create tax properties](/docs/rest-management/tax-properties#create-tax-properties)
-- [Get tax properties](/docs/rest-management/tax-properties#get-tax-properties)
-- [Update tax properties](/docs/rest-management/tax-properties#update-tax-properties)
-- [Delete tax properties](/docs/rest-management/tax-properties#delete-tax-properties)
+
+* [Create tax properties](/docs/rest-management/tax-properties#create-tax-properties)
+* [Get tax properties](/docs/rest-management/tax-properties#get-tax-properties)
+* [Update tax properties](/docs/rest-management/tax-properties#update-tax-properties)
+* [Delete tax properties](/docs/rest-management/tax-properties#delete-tax-properties)
 
 ### Product Tax Properties reference
-- [Create and update product tax properties](/docs/rest-management/tax-properties/product-tax-properties#update-product-tax-properties)
-- [Get product tax properties](/docs/rest-management/tax-properties/product-tax-properties#get-product-tax-properties)
-- [Delete product tax properties](/docs/rest-management/tax-properties/product-tax-properties#delete-product-tax-properties)
+
+* [Create and update product tax properties](/docs/rest-management/tax-properties/product-tax-properties#update-product-tax-properties)
+* [Get product tax properties](/docs/rest-management/tax-properties/product-tax-properties#get-product-tax-properties)
+* [Delete product tax properties](/docs/rest-management/tax-properties/product-tax-properties#delete-product-tax-properties)
 
 ### Tax Provider reference
-- [Create a tax estimate](/docs/rest-contracts/tax#estimate-taxes)
-- [Create a tax commit](/docs/rest-contracts/tax#commit-tax-quote)
-- [Create a tax adjustment](/docs/rest-contracts/tax#adjust-tax-quote)
+
+* [Create a tax estimate](/docs/rest-contracts/tax#estimate-taxes)
+* [Create a tax commit](/docs/rest-contracts/tax#commit-tax-quote)
+* [Create a tax adjustment](/docs/rest-contracts/tax#adjust-tax-quote)
 
 ### Catalog reference
-- [Get all products](/docs/rest-catalog/products#get-all-products)
+
+* [Get all products](/docs/rest-catalog/products#get-all-products)

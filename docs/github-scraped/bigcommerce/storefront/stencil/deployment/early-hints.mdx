@@ -40,11 +40,14 @@ The following is an example of using the Early Hints arguments on the `{{cdn}}` 
 
 ```handlebars filename="Before"
 <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
+
 ```
+
 &nbsp;
 
 ```handlebars filename="After"
 <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+
 ```
 
 #### How to choose which scripts to preload

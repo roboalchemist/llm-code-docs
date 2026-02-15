@@ -39,7 +39,8 @@ Use the following code to obtain the `providerWithCustomCheckout` value from che
 const providerWithCustomCheckout = checkoutService
     .getState().data
     .getConfig()?.checkoutSettings.providerWithCustomCheckout;
-```
+
+```javascript
 
 ### Step 2: Initialize the customer step
 
@@ -54,8 +55,9 @@ await checkoutService.initializeCustomer({
         createBraintreeFastlaneCustomerStrategy,
         createPayPalCommerceFastlaneCustomerStrategy,
     ],
-});    
-```
+});
+
+```javascript
 
 See the [Checkout JS repository](https://github.com/bigcommerce/checkout-js/blob/v1.686.0/packages/core/src/app/customer/Customer.tsx#L99) for an example of how `checkoutSevice.initializeCustomer` is used.
 
@@ -71,7 +73,8 @@ window.paypalFastlane
     .then((result: FastlanePrivacySettings) => {
         result.render('#paypalFastlaneWatermark');
     });
-```
+
+```javascript
 
 See the [Checkout JS repository](https://github.com/bigcommerce/checkout-js/blob/master/packages/paypal-fastlane-integration/src/PayPalFastlaneWatermark.tsx#L34) for an example of rendering the Fastlane watermark.
 
@@ -95,7 +98,8 @@ await checkoutService.executePaymentMethodCheckout({
     methodId: providerWithCustomCheckout,
     continueWithCheckoutCallback: onContinueAsGuest,
 });
-```
+
+```javascript
 
 ### Step 5: De-initialize the customer step
 
@@ -107,7 +111,8 @@ Use the following code:
 await checkoutService.deinitializeCustomer({
     methodId: providerWithCustomCheckout,
 });
-```
+
+```javascript
 
 ### Default customer step example
 
@@ -131,8 +136,8 @@ After a shopper authenticates their Fastlane account in the customer step, you c
 
 ```js filename="Retrieve shipping address from Fastlane" showLineNumbers copy
 const customerFastlaneData = checkoutService
-	.getState().data
-	.getPaymentProviderCustomer();
+    .getState().data
+    .getPaymentProviderCustomer();
 
 interface CustomerFastlaneData {
    authenticationState?: string;
@@ -175,7 +180,8 @@ export interface CardInstrument extends BaseInstrument {
    method: string;
    type: string;
 }
-```
+
+```javascript
 
 Use `customerFastlaneData.addresses[0]` to render the default shipping address information.
 
@@ -187,7 +193,7 @@ The Fastlane logo should appear where the Fastlane address is used. See the [Che
 
 Use the `checkoutService.initializeShipping` method to initialize shipping through checkout-sdk. As part of this step, you should also create a variable for the `showPayPalFastlaneAddressSelector` callback, as we will use it in the next step.
 
-The following code includes options for each payment provider, but you can omit the options not associated with your connected gateway. 
+The following code includes options for each payment provider, but you can omit the options not associated with your connected gateway.
 
 ```js filename="Initialize the shipping step" showLineNumbers copy
 // Create a variable where showPayPalFastlaneAddressSelector will be saved
@@ -198,25 +204,26 @@ let renderFastlaneAddressComponent = null;
 await checkoutService.initializeShipping({
    methodId: providerWithCustomCheckout,
    ...(providerWithCustomCheckout === 'braintreeacceleratedcheckout' ? {
-	braintreefastlane: {
+    braintreefastlane: {
           onPayPalFastlaneAddressChange: (showPayPalFastlaneAddressSelector) => {
               renderFastlaneAddressComponent = showPayPalFastlaneAddressSelector; // Save showPayPalFastlaneAddressSelector callback somewhere to trigger it when customer clicks on the “Edit” button
           },
       },
     }),
    ...(providerWithCustomCheckout === 'paypalcommerceacceleratedcheckout' ? {
-	paypalcommercefastlane: {
+    paypalcommercefastlane: {
           onPayPalFastlaneAddressChange: (showPayPalFastlaneAddressSelector) => {
               renderFastlaneAddressComponent = showPayPalFastlaneAddressSelector; // Save showPayPalFastlaneAddressSelector callback somewhere to trigger it when customer clicks on the “Edit” button
           },
       },
     }),
 });
-```
+
+```javascript
 
 See the [Checkout JS repository](https://github.com/bigcommerce/checkout-js/blob/master/packages/core/src/app/shipping/PayPalFastlaneShippingAddress.tsx#L67) for an example of shipping initialization.
 
-### Step 4: Render the Fastlane shipping component 
+### Step 4: Render the Fastlane shipping component
 
 When a shopper clicks the **Edit** button, the shipping component should appear with a list of their saved addresses. Create an event handler that calls `renderFastlaneAddressComponent` from the previous step and save the selected address.
 
@@ -232,7 +239,8 @@ Use the following code:
 await checkoutService.deinitializeShipping({
     methodId: providerWithCustomCheckout,
 });
-```
+
+```javascript
 
 See the [Checkout JS repository](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/core/src/app/shipping/PayPalFastlaneShippingAddress.tsx#L98) for an example of shipping de-initialization.
 
@@ -294,7 +302,8 @@ await checkoutService.initializePayment({
        },
    },
 });
-```
+
+```javascript
 
 The Checkout JS repository includes examples of the initialization setup for [Braintree](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/braintree-integration/src/BraintreeFastlane/BraintreeFastlanePaymentMethod.tsx#L35) and [PayPal](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/paypal-commerce-integration/src/PayPalCommerceFastlane/PayPalCommerceFastlanePaymentMethod.tsx#L39) implementations.
 
@@ -304,12 +313,13 @@ The following code creates a variable that checks if a shopper has a Fastlane ac
 
 ```js filename="Define the payment component to render" showLineNumbers copy
 const customerFastlaneData = checkoutService
-	.getState().data
-	.getPaymentProviderCustomer();
+    .getState().data
+    .getPaymentProviderCustomer();
 
 
 const shouldShowInstrumentsForm = customerFastlaneData?.instruments.length > 0;
-```
+
+```javascript
 
 If `shouldShowInstrumentsForm` is true, the checkout should render the payment instrument component in step 4. If false, it should render the credit card form in step 3.
 
@@ -317,7 +327,7 @@ See the Checkout JS repository for examples of the variable in the [Braintree](h
 
 ### Step 3: Render the Fastlane credit card form
 
-The credit card form allows shoppers without a Fastlane account to enter their credit card details and create an account. 
+The credit card form allows shoppers without a Fastlane account to enter their credit card details and create an account.
 
 Use the `renderPayPalFastlaneCardComponent` callback saved in step 1 to render the form. Use the following code:
 
@@ -325,7 +335,8 @@ Use the `renderPayPalFastlaneCardComponent` callback saved in step 1 to render t
 if (typeof renderPayPalFastlaneCardComponent === 'function') {
    renderPayPalFastlaneCardComponent('#container-id');
 }
-```
+
+```javascript
 
 The Checkout JS repository includes examples of rendering the credit card form for [Braintree](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/braintree-integration/src/BraintreeFastlane/components/BraintreeFastlaneCreditCardForm.tsx#L15) and [PayPal](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/paypal-commerce-integration/src/PayPalCommerceFastlane/components/PayPalCommerceFastlaneCreditCardForm.tsx#L15) implementations.
 
@@ -339,12 +350,13 @@ This should return information related to the default card. Use the following co
 
 ```js filename="Get Fastlane instrument data" showLineNumbers copy
 const customerFastlaneData = checkoutService
-	.getState().data
-	.getPaymentProviderCustomer();
+    .getState().data
+    .getPaymentProviderCustomer();
 
 const fastlaneInstrumentsList = customerFastlaneData?.instruments || [];
 const defaultCardInstrument = fastlaneInstrumentsList[0];
-```
+
+```javascript
 
 You can then use `defaultCardInstrument.brand` to render the credit card brand icon and `defaultCardInstrument.last4` to render the last four digits of the card.
 
@@ -364,7 +376,8 @@ Use the `checkoutService.deinitializePayment` method to de-initialize the paymen
 
 ```js filename="De-initialize the payment step" showLineNumbers copy
 await checkoutService.deinitializePayment({ methodId });
-```
+
+```javascript
 
 The Checkout JS repository includes examples of payment de-initialization for [Braintree](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/braintree-integration/src/BraintreeFastlane/BraintreeFastlanePaymentMethod.tsx#L63) and [PayPal](https://github.com/bigcommerce/checkout-js/blob/3ed0ee63a9fc789e18672c93e4f18734ee3402ae/packages/paypal-commerce-integration/src/PayPalCommerceFastlane/PayPalCommerceFastlanePaymentMethod.tsx#L77) implementations.
 

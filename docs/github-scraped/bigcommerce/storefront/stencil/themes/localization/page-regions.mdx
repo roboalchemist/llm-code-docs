@@ -1,57 +1,58 @@
 # Translating Regions
 
-
-
-Themes now support translations for a specific region, which localizes the region name within Page Builder. Within the region HTML, we can now add a translation field to point to the correct localization from `schema_translations.json`. 
+Themes now support translations for a specific region, which localizes the region name within Page Builder. Within the region HTML, we can now add a translation field to point to the correct localization from `schema_translations.json`.
 
 ## Translating regions example
 
 In this example, we will translate several regions on the home page. The following code sample contains translated fields that localize the `layers` pane within PageBuilder.
 
-
 1. Add `translation` fields to the home page (/templates/pages/home.html).
 
 <Callout type="info">
- * Translation must follow prefix “i18n.RegionName.” 
- * You can only add a translation field to a `{{{ region }}}` field.
-</Callout>
 
+ * Translation must follow prefix “i18n.RegionName.”
+ * You can only add a translation field to a `{{{ region }}}` field.
+
+</Callout>
 
 ```html filename="home.html" showLineNumbers copy
 <div class="main full">
     {{#if products.featured}}
-        {{> components/products/featured products=products.featured 
+        {{> components/products/featured products=products.featured
 columns=theme_settings.homepage_featured_products_column_count}}
     {{/if}}
-    {{{region name="home_below_featured_products" 
+    {{{region name="home_below_featured_products"
 translation="i18n.RegionName.HomeBelowFeaturedProducts"}}}
 
     {{#if products.top_sellers}}
-        {{> components/products/top products=products.top_sellers 
+        {{> components/products/top products=products.top_sellers
 columns=theme_settings.homepage_top_products_column_count}}
     {{/if}}
-    {{{region name="home_below_top_products" 
+    {{{region name="home_below_top_products"
 translation="i18n.RegionName.HomeBelowTopProducts"}}}
 
     {{#if products.new}}
-        {{> components/products/new products=products.new 
+        {{> components/products/new products=products.new
 columns=theme_settings.homepage_new_products_column_count}}
     {{/if}}
-    {{{region name="home_below_new_products" 
+    {{{region name="home_below_new_products"
 translation="i18n.RegionName.HomeBelowNewProducts"}}}
-    {{{region name="below_content--global" 
-translation="i18n.RegionName.HomeBelowContentGlobal"}}} 
+    {{{region name="below_content--global"
+translation="i18n.RegionName.HomeBelowContentGlobal"}}}
 </div>
+
 ```
 
-2. Add region translations to the `schema_translations.json` file. 
+2. Add region translations to the `schema_translations.json` file.
 
 <Callout type="info">
+
  * Region translations must live within the `schema_translations.json` file.
  * Language code must contain a default value.
  * Language code outside of default will support two character language code as well as multiple character language code (which is formatted by two lowercase letters, a dash, and at least two alphanumeric characters after). Example provided below:
-   - Example of two character language code “en”, “fr”, “uk”, “zh”.
-   - Example of multiple character language code “fr-FR”, “zh-CN”, “en-US”, “uk-UA”, “es-419”.
+   * Example of two character language code “en”, “fr”, “uk”, “zh”.
+   * Example of multiple character language code “fr-FR”, “zh-CN”, “en-US”, “uk-UA”, “es-419”.
+
 </Callout>
 
 schemaTranslations.json
@@ -108,14 +109,12 @@ schemaTranslations.json
    "zh-CN": "标题底部"
  }
 }
+
 ```
 
 3. Change the language in the control panel settings to view the translated regions. Go to `My Profile > Edit Profile > Preferred language`.
 
-
 ![https://storage.googleapis.com/bigcommerce-production-dev-center/images/translating_regions_layers.png](https://storage.googleapis.com/bigcommerce-production-dev-center/images/translating_regions_layers.png)
-
-
 
 ## Resources
 
@@ -125,4 +124,4 @@ schemaTranslations.json
 * [Page Builder Overview](/docs/storefront/stencil/content/page-builder)
 * [Translation Keys](/docs/storefront/stencil/themes/localization/translation-keys)
 * [schemaTranslations.json](/docs/storefront/stencil/themes/foundations/directory-structure#schematranslationsjson)
- 
+

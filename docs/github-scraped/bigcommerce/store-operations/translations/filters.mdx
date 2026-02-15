@@ -31,6 +31,7 @@ Translated fields are returned whenever available, and the default locale values
 
 <Tabs items={['Request', 'Response']}>
 <Tab>
+
 ```graphql filename="Example query: Query a list of translations" showLineNumbers copy
 GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
 X-Auth-Token: {{token}}
@@ -56,7 +57,9 @@ query {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 <Tab>
 
@@ -84,7 +87,9 @@ query {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
@@ -98,6 +103,7 @@ This query returns translation(s) filtered by `resourceId`. For product filters,
 
 <Tabs items={['Request', 'Response']}>
 <Tab>
+
   ```graphql filename="Example query: Query a translation by resource id" showLineNumbers copy
 GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
 X-Auth-Token: {{token}}
@@ -124,7 +130,9 @@ query {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 <Tab>
 
@@ -152,7 +160,9 @@ query {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
@@ -169,6 +179,7 @@ Colorr -> neither Color, nor Colir would be valid
 
 <Tabs items={['Request', 'Response']}>
 <Tab>
+
 ```graphql filename="Example mutation: Update a translation" showLineNumbers copy
 GRAPHQL http://api.bigcommerce.com/stores/{{store_hash}}/graphql
 X-Auth-Token: {{token}}
@@ -201,7 +212,9 @@ mutation {
         }
     }
 }
-```
+
+```javascript
+
 </Tab>
 <Tab>
 
@@ -216,7 +229,9 @@ mutation {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
@@ -226,6 +241,7 @@ The following mutation deletes a translation.
 
 <Tabs items={['Request', 'Response']}>
 <Tab>
+
 ```graphql filename="Example mutation: Delete a translation" showLineNumbers copy
 GRAPHQL https://api.bigcommerce.com/stores/{{store_hash}}/graphql
 X-Auth-Token: {{token}}
@@ -253,7 +269,9 @@ mutation {
         }
     }
 }
-```
+
+```javascript
+
 </Tab>
 <Tab>
 
@@ -268,19 +286,21 @@ mutation {
     }
   }
 }
-```
+
+```javascript
+
 </Tab>
 </Tabs>
 
 ## Limitations
 
-- Product count and other numeric-only fields do not support localization.
-- Only displayable string content for filter names and values is translatable.
-- Currently available on Catalyst storefronts only.
+* Product count and other numeric-only fields do not support localization.
+* Only displayable string content for filter names and values is translatable.
+* Currently available on Catalyst storefronts only.
 
 ## Best Practices
 
-- Use the GraphQL Admin API to manage translations in bulk.
-- Check for existing translations before creating new ones to minimize overwrites.
-- Always use full `resourceId` values as required by the API.
-- Storefront GraphQL API automatically uses the shopper’s locale for product filter display names.
+* Use the GraphQL Admin API to manage translations in bulk.
+* Check for existing translations before creating new ones to minimize overwrites.
+* Always use full `resourceId` values as required by the API.
+* Storefront GraphQL API automatically uses the shopper’s locale for product filter display names.

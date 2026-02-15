@@ -1,11 +1,11 @@
 
-
 ## 7.0 Terminate configuration as a merchant
 
-It is possible to terminate the merchant configuration that supports _Buy Online, Pick up in Store_ . 
+It is possible to terminate the merchant configuration that supports _Buy Online, Pick up in Store_ .
 To do so, you can reassign inventory, disable a location and its storefront visibility, and delete pickup methods.
 
 ### 7.1 Reassign inventory from one location to another
+
 There is no dedicated endpoint for reassigning inventory from one location to another. Instead, use the existing inventory API endpoints.
 
 ### 7.2 Location
@@ -45,7 +45,7 @@ To disable a location, send a request to the [Update locations](/docs/rest-manag
 
 #### 7.2.2 Disable a location’s storefront visibility
 
-Storefront visibility is currently a shopper-facing property of a location. 
+Storefront visibility is currently a shopper-facing property of a location.
 If it is set to false, then details about the location (e.g. description, operating hours) on the location details page and inventory quantities at that location will be excluded from the "available to sell" quantity on the storefront.
 If it is set to true, then details about the location on the location details page and inventory quantities at that location will be included in the "available to sell" quantity on the storefront.
 

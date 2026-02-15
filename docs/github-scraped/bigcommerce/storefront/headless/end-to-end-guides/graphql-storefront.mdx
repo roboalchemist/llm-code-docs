@@ -11,22 +11,23 @@ You can use the GraphQL Storefront API playground to run the example queries in 
 ## Prerequisites
 
 To complete the guide, you need the following:
-* [BigCommerce sandbox store](https://start.bigcommerce.com/developer-sandbox/) 
+
+* [BigCommerce sandbox store](https://start.bigcommerce.com/developer-sandbox/)
 * Familiarity with creating a channel and a site
 
 ## Accessing the GraphQL Storefront API
 
-You can make requests to the GraphQL Storefront API in a server-to-server context. This guide describes creating and using a customer access token to authenticate and use the GraphQL Storefront API. 
+You can make requests to the GraphQL Storefront API in a server-to-server context. This guide describes creating and using a customer access token to authenticate and use the GraphQL Storefront API.
 
 ### Create a customer access token
 
-A customer access token is unique to an individual user's account. To generate a customer access token, enter your GraphQL variables (user email and password) and run the [login mutation](/docs/start/authentication/graphql-storefront#login-mutation). 
+A customer access token is unique to an individual user's account. To generate a customer access token, enter your GraphQL variables (user email and password) and run the [login mutation](/docs/start/authentication/graphql-storefront#login-mutation).
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
-    ```json filename="GraphQL variables" showLineNumbers copy 
+    ```json filename="GraphQL variables" showLineNumbers copy
     {
-      "email": "user@email.com", 
+      "email": "user@email.com",
       "pass": "password"
     }
     ```
@@ -51,6 +52,7 @@ A customer access token is unique to an individual user's account. To generate a
      }
    }
 }
+
 ```
 </Tab>
 
@@ -72,9 +74,9 @@ A customer access token is unique to an individual user's account. To generate a
     }
 }
 ```
+
 </Tab>
 </Tabs>
-
 
 In a tool like [Postman](https://postman.com/) or [Altair](https://altairgraphql.dev/), add the customer access token to the **Headers** tab as follows. For more information, see Using a [Customer Access Token](/docs/start/authentication/graphql-storefront#using-a-customer-access-token).
 
@@ -148,7 +150,8 @@ When possible, use the following best practices for queries to the GraphQL Store
             }
         }
     }
-}   
+}
+
 ```
   </Tab>
 </Tabs>

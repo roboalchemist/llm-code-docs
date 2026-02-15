@@ -25,9 +25,9 @@ Setting or removing information requires that you specify ID fields in the input
 
 ## Set product modifier options
 
-Set information about a product modifier option for a store or a locale within a storefront channel. 
+Set information about a product modifier option for a store or a locale within a storefront channel.
 
-The following mutations let you set the name and values for existing modifier options. You must first create the modifier option for the product through the control panel or the REST [Create a product modifier](/docs/rest-catalog/product-modifiers#create-a-product-modifier) endpoint. 
+The following mutations let you set the name and values for existing modifier options. You must first create the modifier option for the product through the control panel or the REST [Create a product modifier](/docs/rest-catalog/product-modifiers#create-a-product-modifier) endpoint.
 
 <Callout type="info">
   The responses may include all modifier options, including those that are shared. However, to _set_ shared modifier options, use the mutations in [Set shared modifier options](#set-shared-modifier-options).
@@ -44,8 +44,8 @@ The following example sets global product modifier information for the store, fr
   POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
   X-Auth-Token: {{ACCESS_TOKEN}}
   Content-Type: application/json
-  Accept: application/json  
-  
+  Accept: application/json
+
   mutation ($input: SetProductModifiersInformationInput!) {
     product {
       setProductModifiersInformation (input: $input) {
@@ -106,6 +106,7 @@ The following example sets global product modifier information for the store, fr
       }
     }
   }
+
   ```
 
   ```json filename="GraphQL variables" showLineNumbers copy
@@ -136,6 +137,7 @@ The following example sets global product modifier information for the store, fr
       }
     }
   }
+
   ```
 
 </Tab>
@@ -290,7 +292,8 @@ The following example sets global product modifier information for the store, fr
       }
     }
   }
-  ```    
+
+  ```
 
   </Tab>
 </Tabs>
@@ -306,8 +309,8 @@ The following example sets product modifier option information for the locale wi
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
-    Accept: application/json      
-    
+    Accept: application/json
+
     mutation ($input: SetProductModifiersInformationInput!) {
       product {
         setProductModifiersInformation (input: $input) {
@@ -395,6 +398,7 @@ The following example sets product modifier option information for the locale wi
         }
       }
     }
+
     ```
 
   ```json filename="GraphQL variables" showLineNumbers copy
@@ -429,6 +433,7 @@ The following example sets product modifier option information for the locale wi
       }
     }
   }
+
   ```
 
   </Tab>
@@ -572,7 +577,8 @@ The following example sets product modifier option information for the locale wi
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -601,12 +607,13 @@ The following example removes product modifier option information for the locale
                   id
                   displayName
                 }
-              }   
+              }
             }
           }
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -633,6 +640,7 @@ The following example removes product modifier option information for the locale
         }
       }
     }
+
     ```
 
   </Tab>
@@ -714,7 +722,8 @@ The following example removes product modifier option information for the locale
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -723,7 +732,7 @@ The following example removes product modifier option information for the locale
 
 You can set information about a shared modifier option for a store or a locale within a storefront channel. You must first create the shared modifier options through the control panel. Changing a shared modifier option affects all products that you assign to the shared modifier option. You cannot customize shared modifier options on a product level.
 
-The following mutations let you set the name and values for existing shared modifiers. 
+The following mutations let you set the name and values for existing shared modifiers.
 
 ### Set shared modifier options at the global level
 
@@ -747,6 +756,7 @@ The following example sets global shared modifier information for the store, fro
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -776,6 +786,7 @@ The following example sets global shared modifier information for the store, fro
         }
       }
     }
+
     ```
 
   </Tab>
@@ -795,7 +806,8 @@ The following example sets global shared modifier information for the store, fro
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -822,12 +834,13 @@ The following example sets shared modifier information for the locale within the
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
-        "localeContext": { 
+        "localeContext": {
           "channelId": "bc/store/channel/2",
           "locale": "fr"
         },
@@ -855,6 +868,7 @@ The following example sets shared modifier information for the locale within the
         }
       }
     }
+
     ```
 
   </Tab>
@@ -874,7 +888,8 @@ The following example sets shared modifier information for the locale within the
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -901,12 +916,13 @@ The following example removes shared modifier option information for the locale 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
-        "localeContext": { 
+        "localeContext": {
           "channelId": "bc/store/channel/2",
           "locale": "fr"
         },
@@ -924,6 +940,7 @@ The following example removes shared modifier option information for the locale 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -943,7 +960,8 @@ The following example removes shared modifier option information for the locale 
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -1310,13 +1328,14 @@ The following example retrieves modifier information. You can retrieve global in
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
 
 
-You can retrieve overrides for multiple locales in a channel, as shown in the following example: 
+You can retrieve overrides for multiple locales in a channel, as shown in the following example:
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -1374,6 +1393,7 @@ You can retrieve overrides for multiple locales in a channel, as shown in the fo
             }
         }
     }
+
     ```
 
   </Tab>
@@ -1440,7 +1460,8 @@ You can retrieve overrides for multiple locales in a channel, as shown in the fo
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>

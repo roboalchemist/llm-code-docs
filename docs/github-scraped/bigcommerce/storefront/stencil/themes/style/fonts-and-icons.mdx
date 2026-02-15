@@ -2,18 +2,20 @@
 
 <Callout type="warning">
   #### Custom fonts unavailable on Page Builder
+
   * BigCommerce widgets come with a list of pre-defined fonts and do not support custom fonts at this time.
   * Third-party widgets can support any font available in the theme. To learn more about third-party widgets, see [Third-Party Widgets](/docs/storefront/stencil/content/widgets).
-</Callout>
 
+</Callout>
 
 <a id="markdown-applying-custom-fonts" name="applying-custom-fonts"></a>
 
 ## Applying custom fonts
 
 There are two paths to take for using custom fonts. They are as follows:
-- Change to a new Google Font
-- Use a custom font
+
+* Change to a new Google Font
+* Use a custom font
 
 ### Google Fonts
 
@@ -31,13 +33,13 @@ You can update the fonts in `config.json`; make sure to follow the `Google_FontN
 {
   "body-font": "Google_Lato_700"
 }
+
 ```
 
 <Callout type="info">
   #### Check with your theme developer
   If you are using a different theme, please check with the theme developer on using Google Fonts.
 </Callout>
-
 
 ### Custom fonts
 
@@ -56,6 +58,7 @@ Next, edit the appropriate template file's `<head>` sections to reference your c
         src: url("{{cdn 'webdav:MyFontFile.ttf'}}");
     }
 </style>
+
 ```
 
 For all possible browser support use the following:
@@ -71,6 +74,7 @@ For all possible browser support use the following:
                 url("{{cdn 'webdav:MyFontFile.svg#svgFontName'}}"); /* Legacy iOS */
     }
 </style>
+
 ```
 
 ### Update the CSS
@@ -83,6 +87,7 @@ Finally, update the appropriate CSS to reference the same font. In this example,
   font-family: 'MyFont';
   [...]
 }
+
 ```
 
 <Callout type="info">
@@ -103,6 +108,7 @@ The default Stencil theme includes these function calls in the following stylesh
 
 ```
 {theme-name}/assets/scss/settings/foundation/type/_settings.scss
+
 ```
 
 If your theme relies on a Sass framework other than Foundation, the relevant stylesheet will be a different SCSS file name within `{theme-name}/assets/scss/`.
@@ -117,6 +123,7 @@ Assume that your theme's `config.json` contains the following key name and value
   "headings-font": "Google_Open+Sans_700"
   // ...
 }
+
 ```
 
 In your Sass stylesheet, you would call the `stencilFontFamily` and `stencilFontWeight` custom Sass functions on the corresponding `config.json` key name like so:
@@ -124,6 +131,7 @@ In your Sass stylesheet, you would call the `stencilFontFamily` and `stencilFont
 ```scss showLineNumbers
 $body-font-family: stencilFontFamily("body-font");
 $body-font-weight: stencilFontWeight("body-font");
+
 ```
 
 These functions would extract the corresponding `config.json` values as:
@@ -131,6 +139,7 @@ These functions would extract the corresponding `config.json` values as:
 ```scss showLineNumbers
 $body-font-family: 'Open Sans';
 $body-font-weight: 700;
+
 ```
 
 This transformation allows you to use the `$body-font-family` and `$body-font-weight` variables wherever needed in your theme. If a merchant uses Theme Editor to select a different font family and/or weight, the variables will propagate the change throughout your theme.
@@ -175,6 +184,7 @@ Simply add your new icon SVG file to the `assets/icons/ `folder. Then, from your
 ## Resources
 
 ### Additional resources
+
 * [Stencil Custom Sass Functions](/docs/storefront/stencil/themes/style/sass)
 * [Custom Icons Video Tutorial (BigCommerce YouTube)](https://youtube.com/watch?v=ZwrVN5QrEZY)
 * [Custom Fonts Video Tutorial (BigCommerce YouTube)](https://youtube.com/watch/-w7Hbn_p_pw)

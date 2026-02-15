@@ -26,6 +26,7 @@ Creating an API Account is recommended for backend users who need access to rele
 The process for setting up a store-level token is dependent on the appropriate BigCommerce permissions being enabled. Specifically, only users with the `Create store-level API Accounts` permission enabled can set up the necessary token.
 
 To create a token for server-to-server requests,
+
 1. Navigate to `Settings > Store-level API accounts` in the BigCommerce Control Panel.
 2. Click Create API Account.
 3. Create a V3 Token with the B2B Edition scope set to `modify`.
@@ -60,7 +61,7 @@ Server to server tokens can be configured to expire using this endpoint to set a
 
 <Callout type= "warning">
    This endpoint generates an `authToken`, which is deprecated. In addition, it does not support users with custom system user roles, even if those roles have API account creation permissions.
-</Callout> 
+</Callout>
 
 <Callout type="info">
 If you are still using the B2B Edition specific `authToken`, the store hash is not needed as the token includes that information. Including `X-Store-Hash` with `authToken` will have unexpected results. Please migrate to the unified token structure as soon as possible to avoid loss of functionality.
@@ -183,10 +184,9 @@ To learn more about the `login` mutation, see our [storefront authentication](/b
 
 If you want your integration to use an existing storefront session for a logged-in Company user to generate a storefront authToken, you can accomplish this with the `authorization` mutation. The request uses a JWT to retrieve a token that can be used to authenticate further requests to the GraphQL API while the user is logged in.
 
-To obtain a JWT for validation, make a request to the BigCommerce [Current Customer API](/docs/rest-authentication/current-customer) while passing the B2B Edition client ID (`dl7c39mdpul6hyc489yk0vzxl6jesyx`) with the `app-client-id` query parameter. 
+To obtain a JWT for validation, make a request to the BigCommerce [Current Customer API](/docs/rest-authentication/current-customer) while passing the B2B Edition client ID (`dl7c39mdpul6hyc489yk0vzxl6jesyx`) with the `app-client-id` query parameter.
 
 Here’s an example of a Fetch request that you can use to obtain a JWT for B2B Edition. Replace the example domain in the endpoint with your store’s domain.
-
 
 ```js filename="Fetch request example" showLineNumbers copy
 const options = {
@@ -204,13 +204,13 @@ You can pass the resulting JWT to the `authorization` mutation without decoding 
 
 ```graphql filename="Example authorization request" showLineNumbers copy
 mutation userAuth(
-	$bcToken: String!,
-	$channelId: Int!
+ $bcToken: String!,
+ $channelId: Int!
 ) {
     authorization(
         authData: {
             bcToken: $bcToken,
-	     channelId: $channelId
+      channelId: $channelId
         }
     ) {
         result {
@@ -222,8 +222,8 @@ mutation userAuth(
 
 ```graphql filename="Variables" showLineNumbers copy
 {
-	"bcToken": "{The JWT for the storefront session}",
-	"channelId": {BigCommerce storefront channel ID; use 1 for the default channel}
+ "bcToken": "{The JWT for the storefront session}",
+ "channelId": {BigCommerce storefront channel ID; use 1 for the default channel}
 }
 ```
 
@@ -244,7 +244,6 @@ See our article on [storefront authentication](/b2b-edition/apis/rest-storefront
 ### REST Management API Endpoints
 
 If your integration or headless solution is built to use server-side endpoints, you can also retrieve storefront authTokens via B2B Edition’s REST Management Authentication API. Each endpoint uses a server to server authToken for validation, but they also require specific fields or parameters based on their use case.  
- 
 
 | Request | Description | Use case |
 | :---- | :---- | :---- |
@@ -268,11 +267,9 @@ To sync a login with the token, you must include a customer access token (CAT) i
 
 Rather than targeting a specific Company user, this endpoint retrieves an existing storefront authToken based on the JWT associated with an active storefront session. As with the [authorization mutation](#the-authorization-mutation), you can use the [Current Customer API](/docs/storefront-auth/current-customer) to retrieve a JWT and pass it to the `jwtToken` query parameter of the request. Here are two examples of how you can format the request:
 
-
 ```curl filename="CURL request example"
 curl https://api-b2b.bigcommerce.com/api/io/auth/storefront?jwtToken=bigCommerce.currentCustomerResponse.jwtString&channelId=1
 ```
-
 
 ```js filename="Fetch request example"
 async function() {

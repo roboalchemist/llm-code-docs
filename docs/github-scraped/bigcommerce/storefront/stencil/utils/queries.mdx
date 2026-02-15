@@ -47,16 +47,21 @@ utils.api.cart.itemAdd(new FormData(form), (err, response) => {
         this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
     }
 });
+
 ```
 
 This final code snippet calls `cart.getContent` to fetch the cart contents, then display it in a preview format, which is specified by a template option with a value of `cart/preview`:
 
 ```js filename="cart.getContent" showLineNumbers copy
  /**
+
      * Get cart contents
+
      *
+
      * @param {String} cartItemHash
      * @param {Function} onComplete
+
      */
     getCartContent(cartItemHash, onComplete) {
         const options = {
@@ -75,4 +80,5 @@ This final code snippet calls `cart.getContent` to fetch the cart contents, then
 
         utils.api.cart.getContent(options, onComplete);
     }
+
 ```

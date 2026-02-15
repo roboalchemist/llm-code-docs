@@ -6,6 +6,7 @@ The queries can show online availability for products or availability at locatio
 **Default behavior:** By default, Stencil's native storefront and GraphQL's Get Stock by Locations queries support stock levels from only the _default_ location. Aggregated stock includes stock from only the default location; queries for stock at each location return stock from only the default location.
 
 **Alternate behavior:** Upon request, your store can have the following features:
+
 - Stock _per location_
 - Stock aggregated, or summed, from _all locations_
 
@@ -529,7 +530,6 @@ The query returns variant inventories if a variant has stock in at least one loc
     ```
   </Tab>
 </Tabs>
-
 
 If a variant is out of stock at all locations, the variant is not returned. In the following example, variant `entityId: 95` is out of stock at all locations, but variant `entityId: 96` has stock in at least one location.
 

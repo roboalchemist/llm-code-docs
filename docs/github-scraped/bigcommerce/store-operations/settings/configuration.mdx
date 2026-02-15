@@ -4,9 +4,9 @@
 
 BigCommerce's Settings APIs can manage many of the configuration settings that are exposed to merchants in their store control panel, such as the store's name and contact information, SEO settings, and search filters.
 
-These Settings APIs can be used to simplify the setup of new storefronts and other new sales channels, as well as to automate ongoing configuration changes. They enable developers to build configuration management tools that may be more efficient than the store control panel for a particular use case. 
+These Settings APIs can be used to simplify the setup of new storefronts and other new sales channels, as well as to automate ongoing configuration changes. They enable developers to build configuration management tools that may be more efficient than the store control panel for a particular use case.
 
-They are also useful for app developers who want to build integrations that can understand, respect, and work with the potentially complex states of a store's configuration. For example, knowing the settings that relate to the display of pricing in a storefront or other sales channel can be useful for an application that also displays pricing, automates the application of promotions, or sends emails containing prices. 
+They are also useful for app developers who want to build integrations that can understand, respect, and work with the potentially complex states of a store's configuration. For example, knowing the settings that relate to the display of pricing in a storefront or other sales channel can be useful for an application that also displays pricing, automates the application of promotions, or sends emails containing prices.
 
 Unlike many of BigCommerce's APIs, Settings APIs usually don't involve large collections of objects that can be created, deleted, and paginated. Instead, these APIs deal with a limited, static set of configurable properties that affect various aspects of store operations. They can be configured both on the **global** level and as channel-specific **contextual overrides** that apply to only one sales channel.
 
@@ -103,7 +103,7 @@ Accept: application/json
 </Tab>
 </Tabs>
 
-Because a custom store name exists for channel 123, the channel-specific store name overrides the global default. Shoppers who interact with this channel will see the custom store name at each place it appears in the channel. When the global default `store_name` in the merchant's store profile settings changes, this channel will not reflect that change. However, any other changes to the global default store profile will affect channel 123, because `store_name` is the only channel-specific value defined. 
+Because a custom store name exists for channel 123, the channel-specific store name overrides the global default. Shoppers who interact with this channel will see the custom store name at each place it appears in the channel. When the global default `store_name` in the merchant's store profile settings changes, this channel will not reflect that change. However, any other changes to the global default store profile will affect channel 123, because `store_name` is the only channel-specific value defined.
 
 The following request-response pair shows an example of a channel with a complete set of channel-specific store profile settings configured.
 
@@ -139,12 +139,12 @@ Because channel-specific values exist for all store profile object properties, t
 
 <Callout type="info">
 #### Global-only settings
-Currently, the following settings are inherently global and cannot be modified with channel-specific overrides: 
+Currently, the following settings are inherently global and cannot be modified with channel-specific overrides:
 * store_address_type
 * store_country
 </Callout>
 
-You can modify global and channel-specific settings alike by sending `PUT` requests to the relevant endpoints. 
+You can modify global and channel-specific settings alike by sending `PUT` requests to the relevant endpoints.
 
 The following example uses the [Update store profile settings](/docs/rest-management/settings/store-profile#update-store-profile-settings) endpoint to modify a store's global default configuration:
 
@@ -174,7 +174,7 @@ Accept: application/json
 
 If you wish to restore global defaults on a channel with a channel-specific configuration, you can "un-override" the channel's settings by sending a `PUT` request. Use the following in the request:
 * the `channel_id` query parameter
-* `null` as a value for _all_ fields. The endpoint does not support partial updates; you must remove overrides for all fields. 
+* `null` as a value for _all_ fields. The endpoint does not support partial updates; you must remove overrides for all fields.
 
 
 ```http filename="Example request: Reset channel-specific store profile settings to default" showLineNumbers copy
@@ -198,4 +198,4 @@ Accept: application/json
 
 At every point of contact a shopper has with a storefront or other sales channel, channel-specific settings are displayed first. Global default settings will only appear to shoppers when channel-specific values for those properties are not defined. This goes for viewing the storefront or product feed, reading a transactional email, receiving a packing slip, and all other interactions with the channel.
 
-The Settings APIs discussed in this article are primarily for use cases involved with the management or administration of store settings. If your application's proposed implementation of the Settings APIs is mostly concerned with presenting the correct shopper-facing details at their "touch point" with a storefront or other sales channel, consider using the [GraphQL Storefront API](/docs/storefront/graphql) to simplify your integration. Storefront API requests are run in the context of the shopper's active channel, so the relevant configuration is already correctly integrated with the data it returns. Stencil-powered storefront themes are also equipped with objects that represent the shopper-facing experience in context.  
+The Settings APIs discussed in this article are primarily for use cases involved with the management or administration of store settings. If your application's proposed implementation of the Settings APIs is mostly concerned with presenting the correct shopper-facing details at their "touch point" with a storefront or other sales channel, consider using the [GraphQL Storefront API](/docs/storefront/graphql) to simplify your integration. Storefront API requests are run in the context of the shopper's active channel, so the relevant configuration is already correctly integrated with the data it returns. Stencil-powered storefront themes are also equipped with objects that represent the shopper-facing experience in context.

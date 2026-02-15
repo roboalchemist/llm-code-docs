@@ -8,7 +8,7 @@ The steps in this guide enable Catalyst with the B2B Edition Buyer Portal, which
 
 This implementation primarily handles authentication with the B2B Storefront API and triggering the render of the Buyer Portal on top of Catalyst. It is similar to the experience currently available for BigCommerce's Stencil storefront framework.
 
-If you are looking to integrate directly into Catalyst's routes and components, this can be done by integrating B2B Edition's APIs(/b2b-edition/apis). 
+If you are looking to integrate directly into Catalyst's routes and components, this can be done by integrating B2B Edition's APIs(/b2b-edition/apis).
 
 <Callout type='info'>  
 Using the default B2B Edition implementation with Catalyst requires support for Customer Access Tokens (CAT). All new B2B Edition stores support this functionality by default. If your store had B2B Edition prior to July 2025, you must contact support to enable this feature.
@@ -53,7 +53,8 @@ Creating a B2B-enabled Catalyst storefront follows the CLI workflow described in
 
 ```bash copy
 pnpm create @bigcommerce/catalyst@latest --gh-ref @bigcommerce/catalyst-b2b-makeswift@latest
-```
+
+```javascript
 
 2. Supply a name for the project and respond to the interactive prompts to connect to your previously created storefront.  
 3. Add the following variables to `.env.local`:
@@ -67,7 +68,8 @@ pnpm create @bigcommerce/catalyst@latest --gh-ref @bigcommerce/catalyst-b2b-make
 
 ```bash copy
 pnpm run dev
-```
+
+```javascript
 
 5. Follow the standard steps to add a remote Git repository and push your project.
 
@@ -86,14 +88,16 @@ Catalyst and the Buyer Portal are separate applications, each with their own sou
 
 ```bash copy
 yarn install
-```
+
+```javascript
 
 3. Copy `apps/storefront/.env-example` as `apps/storefront/.env`.  Note that, for initial development in the local environment, no values need to be changed in this file.  
 4. Start the development server:
 
 ```bash copy
 yarn dev
-```
+
+```javascript
 
 While the development server is running, the necessary Buyer Portal loader files will be served via a local URL (usually `localhost:3001`). You should not browse directly to this URL; the next step will take care of updating your storefront to point to this local server.
 
@@ -136,7 +140,7 @@ The steps in this section only need to be followed once in your Catalyst project
      ],
    };
    ```
-     
+
 2. Add a new loader file at `core/b2b/script-production-custom.tsx` with the following contents:
 
 ```ts copy
@@ -207,7 +211,8 @@ export function ScriptProductionCustom({
     </>
   );
 }
-```
+
+```javascript
 
 3. In `core/b2b/loader.tsx`, add the import of `ScriptProductionCustom` and update `EnvironmentSchema` and the constants at the beginning of `B2BLoader` as shown.
 
@@ -232,7 +237,8 @@ export async function B2BLoader() {
 
   ...  
 }
-```
+
+```javascript
 
 4. Also in `core/b2b/loader.tsx`, add a new conditional block after the one for `LOCAL_BUYER_PORTAL_HOST`, as shown below:
 
@@ -243,7 +249,7 @@ export async function B2BLoader() {
   if (LOCAL_BUYER_PORTAL_HOST) {
     ...
   }
-    
+
   if (PROD_BUYER_PORTAL_BASE_URL) {
     return (
       <ScriptProductionCustom
@@ -258,7 +264,8 @@ export async function B2BLoader() {
 
   ...
 }
-```
+
+```javascript
 
 With these modifications in place, the Buyer Portal files injected into your Catalyst storefront will be loaded from the URL set in `PROD_BUYER_PORTAL_BASE_URL`, if it exists.
 
@@ -278,7 +285,8 @@ The remaining steps apply whenever new changes to your custom Buyer Portal are t
 
 ```bash
 yarn build
-```
+
+```javascript
 
 <Callout type='info'>
 When re-building and re-deploying your custom Buyer Portal, if only `.env` variables have changed, you should clear the local contents of `.turbo/cache` before running `yarn build` to ensure that all updated code is reflected in the build.
@@ -289,7 +297,7 @@ When re-building and re-deploying your custom Buyer Portal, if only `.env` varia
 1. Copy the contents of `apps/storefront/dist` from the Buyer Portal project into a date-based subdirectory like  `core/public/b2b/20260101.`
 
 2. Deploy the Catalyst project.  
-   
+
 
 As an example for how the URLs of the final build files should be represented, consider that the Buyer Portal `dist` directory should contain these two files/subdirectories (among others):  
 `assets`  

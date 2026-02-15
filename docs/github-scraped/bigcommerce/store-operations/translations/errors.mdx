@@ -12,17 +12,17 @@ Translation Management API performs two types of validation on requests:
 
 1. **Resource ID/Type Validation**:  
    Ensures that the specified resource (e.g., Category, Brand, Product) exists and is valid. If an incorrect or non-existent resource ID or type is provided, an error is returned.
-   - **EntityNotFoundError**:  
+   * **EntityNotFoundError**:  
      Returned when the specified resource does not exist.  
      Example: `"message": "Entity bc/store/category/28 not found."`
-   - **ValidationError**:  
+   * **ValidationError**:  
      Returned when the query fails validation rules. This can include incorrect `resourceType`, mismatched `resourceType` and `resourceId`, as well as missing fields.  
      Example: `"message": "Invalid value for resourceType"`  
      Example: `"message": "resourceId must be an integer for resourceType PRODUCTS."`
 
 2. **Field Name Validation**:  
    Ensures that the field names submitted in the translation request are valid for the specified resource type. Invalid or unsupported field names result in error responses.
-   - **InvalidTranslationEntityFieldsError**:  
+   * **InvalidTranslationEntityFieldsError**:  
      Returned when one or more field names are not valid for the specified resource type.  
      The response includes the invalid field names in the `fields` array.  
      Example: `"fields": ["invalidField1", "invalidField2"]`
@@ -37,6 +37,7 @@ Below is an example demonstrating how the API responds to a request containing b
 
 <Tabs items={['Mutation', 'Response']}>
 <Tab>
+
 ### Example Mutation
 
 The following example demonstrates a mutation call to the Translation Management API where the request includes both invalid resource IDs and invalid field names. This is useful for testing how the API handles multiple types of validation errors in a single request. The mutation attempts to update translations for a category resource, but includes two invalid field names (`invalidField1` and `invalidField2`) among otherwise valid fields.
@@ -95,7 +96,8 @@ mutation {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 <Tab>
@@ -127,7 +129,8 @@ This example response shows how the API reports multiple errors in a single resp
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 </Tabs>

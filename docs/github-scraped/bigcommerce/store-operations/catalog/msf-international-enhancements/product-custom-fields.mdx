@@ -7,14 +7,14 @@
   To become an enterprise customer, contact your BigCommerce Customer Service Manager or our [support team](https://support.bigcommerce.com/s/contact?language=en_US).
 </Callout>
 
-Using the Catalog features of the Admin API, you can localize custom fields for a product in a storefront channel. 
+Using the Catalog features of the Admin API, you can localize custom fields for a product in a storefront channel.
 
 You must first create the custom field through the control panel or [Create product custom field](/docs/rest-catalog/products/custom-fields#create-a-product-custom-field) endpoint of the REST Management API.
 
 You can perform the following:
 - [Set attributes for the custom field](#set-product-custom-fields):
-  
-  The `setProductCustomFieldsInformation` mutation lets you set global values for the store that channels inherit by default. The mutation also lets you set overrides for a channel locale, which will override global store information. 
+
+  The `setProductCustomFieldsInformation` mutation lets you set global values for the store that channels inherit by default. The mutation also lets you set overrides for a channel locale, which will override global store information.
 - [Remove overrides for a channel locale](#remove-product-custom-fields-for-a-locale). A channel then inherits global values.
 - [Query custom fields](#query-product-custom-fields), those set at the global level and the overrides.
 
@@ -26,7 +26,7 @@ Setting or removing information requires that you specify ID fields in the input
 
 ## Set product custom fields
 
-The following example sets custom fields for the global store and the specified channel locale. 
+The following example sets custom fields for the global store and the specified channel locale.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -73,7 +73,9 @@ The following example sets custom fields for the global store and the specified 
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -92,7 +94,7 @@ The following example sets custom fields for the global store and the specified 
                 "channelLocaleOverrides": {
                   "context": {
                     "channelId": "bc/store/channel/1",
-                    "locale": "en-US"     
+                    "locale": "en-US"
                   },
                   "data": {
                     "name": "Custom field name override",
@@ -106,6 +108,7 @@ The following example sets custom fields for the global store and the specified 
         ]
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -151,6 +154,7 @@ The following example sets custom fields for the global store and the specified 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -207,7 +211,9 @@ Omitting the `attributes` field from the input removes _all_ overrides for the c
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -226,6 +232,7 @@ Omitting the `attributes` field from the input removes _all_ overrides for the c
         ]
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -259,6 +266,7 @@ Omitting the `attributes` field from the input removes _all_ overrides for the c
         }
       }
     }
+
     ```
   </Tab>
 </Tabs>
@@ -310,6 +318,7 @@ The following example retrieves custom fields. You can retrieve global informati
         }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -353,7 +362,8 @@ The following example retrieves custom fields. You can retrieve global informati
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>

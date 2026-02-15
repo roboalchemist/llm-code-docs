@@ -14,11 +14,12 @@ As an example, if you have created a custom route for URLs starting with `/produ
 
 ```ts filename="middleware.ts"
 export const config = {
-	matcher: [
-		'/((?!product-configure|api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt).*)',
-	],
+    matcher: [
+        '/((?!product-configure|api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt).*)',
+    ],
 }
-```
+
+```javascript
 
 ## With auth
 
@@ -30,15 +31,19 @@ The `with-routes` middleware overrides the default [Next.js file-based routing b
 
 Let's look at an example. The following is a fairly typical terse, SEO-friendly URL path:
 
-```
+```javascript
+
 /fancy-high-top
-```
+
+```javascript
 
 In a hypothetical store, this might correspond with the URL path set on a product. However, the URL path itself does not contain any information to indicate it belongs to a product. And based on the file path of the route at `app/[locale]/default/product/[slug]/page.tsx`, the URL pattern Next.js actually expects is similar to the following example:
 
-```
+```javascript
+
 /product/123
-```
+
+```javascript
 
 Despite the param name `[slug]`, what the route expects in the segment is a product entity ID. The `with-routes` middleware sends the path `/fancy-high-top` to BigCommerce using the GraphQL Storefront API's [route() node](https://developer.bigcommerce.com/graphql-storefront/reference#definition-Route) to determine the entity (in this case, a product) that corresponds with the supplied path. It then performs an internal Next.js rewrite to the entity-specific path `/product/123`, resulting in the page being rendered by the appropriate route.
 
@@ -55,7 +60,7 @@ Using the `with-routes` middleware introduces a performance cost, since it requi
 Although path-to-entity mappings can be cached, Next.js middleware cannot use the built-in [Data Cache](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnextrevalidate) which is used to cache fetched data in other parts of Catalyst. Instead, a separate caching backend must be used. Catalyst uses a [caching implementation](https://github.com/bigcommerce/catalyst/tree/main/core/lib/kv) that’s flexible for multiple KV adapters.
 
 <Callout type="info">
-**Vercel Deployments**
+## Vercel Deployments
 
 When deployed on Vercel, route caching automatically takes advantage of the [Vercel Runtime Cache](https://vercel.com/changelog/introducing-the-runtime-cache-api). This provides optimal performance without requiring an external KV store or extra configuration.
 </Callout>

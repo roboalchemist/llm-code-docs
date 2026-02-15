@@ -19,14 +19,17 @@ To retrieve a list of tax customers, send a request to the [Get Tax Customers](/
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Get tax customers" showLineNumbers copy
     GET https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/customers?customer_id:in=157,158
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Get tax customers" showLineNumbers copy
     {
       "data": [
@@ -58,6 +61,7 @@ To retrieve a list of tax customers, send a request to the [Get Tax Customers](/
       }
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -67,6 +71,7 @@ To add or update tax data for one or more customers, send a request to the [Upda
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Update tax customers" showLineNumbers copy
     PUT https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/customers
     X-Auth-Token: {{ACCESS_TOKEN}}
@@ -89,8 +94,10 @@ To add or update tax data for one or more customers, send a request to the [Upda
       }
     ]
     ```
+
   </Tab>
   <Tab>
+
     ```json filename="Example response: Update tax customers" showLineNumbers copy
     {
       "data": [
@@ -111,6 +118,7 @@ To add or update tax data for one or more customers, send a request to the [Upda
       "meta": {}
     }
     ```
+
   </Tab>
 </Tabs>
 
@@ -125,21 +133,26 @@ To delete tax data associated with one or more customers, send a request to the 
 
 <Tabs items={[`Request`, `Response`]}>
   <Tab>
+
     ```http filename="Example request: Delete tax customers" showLineNumbers copy
     DELETE https://api.bigcommerce.com/stores/{{STORE_HASH}}/v3/tax/customers?customer_id:in=157
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
     ```
+
   </Tab>
   <Tab>
+
     ```http filename="Example response: Delete tax customers" showLineNumbers copy
     HTTP 204 No content
     ```
+
   </Tab>
 </Tabs>
 
 ## Resources
-- [Tax Customers API Reference](/docs/rest-management/tax-customers)
-- [Tax Properties API Reference](/docs/rest-management/tax-properties)
-- [Tax Provider API Reference](/docs/rest-contracts/tax)
+
+* [Tax Customers API Reference](/docs/rest-management/tax-customers)
+* [Tax Properties API Reference](/docs/rest-management/tax-properties)
+* [Tax Provider API Reference](/docs/rest-contracts/tax)

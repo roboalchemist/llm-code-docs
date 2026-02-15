@@ -69,7 +69,7 @@ The [Current customer API](/docs/start/authentication/current-customer) allows y
 
 The following endpoints are available:
 
-**GraphQL API**
+### GraphQL API
 - Customers GraphQL API
 
 ### GraphQL API
@@ -90,7 +90,7 @@ The [customers GraphQL storefront API](/docs/storefront/graphql/customers) offer
 
 See [GraphQL Storefront API: Customers](/docs/storefront/graphql/customers#example-queries-and-mutations), for example, queries and mutations.
 
-**REST API**
+### REST API
 - V3 customers REST API
 - V2 customers REST API
 
@@ -99,9 +99,9 @@ See [GraphQL Storefront API: Customers](/docs/storefront/graphql/customers#examp
 The [V3 customers API](/docs/rest-management/customers) consists of customers, customer address books, [customer attributes](/docs/rest-management/customers/attributes), customer addresses, customer form fields, and other endpoints that help manage the customer object.
 
 
-A customer can purchase from a store and create an account. The `customers` object comprises both customer details and a customer address book. 
+A customer can purchase from a store and create an account. The `customers` object comprises both customer details and a customer address book.
 
-Customer details include data preferences, attribute fields, form fields, and authentication. The V3 customers API can accomplish the same tasks as the existing V2 customers API, with greater efficiency. 
+Customer details include data preferences, attribute fields, form fields, and authentication. The V3 customers API can accomplish the same tasks as the existing V2 customers API, with greater efficiency.
 
 
 The customer address book stores a collection of addresses entered by the customer. Add an address to capture the customer address details where you can ship orders if selected.
@@ -143,7 +143,7 @@ This section covers the important differences between V2 and V3 customers APIs.
 
 The V3 customers API is easier to use. It reduces the number of API calls needed to accomplish a task. For example, to create a new customer with the V2 API, you have to make multiple API calls. With the V3 API, you can create customer attributes and their address in one step, allowing you to batch-create multiple customers and their subresources in a single API call.
 
-**Create a customer**
+### Create a customer
 
 Single customer on V3:
 
@@ -158,7 +158,7 @@ Single customer on V2:
 
 With the V3 customers API, queries become a powerful tool. There is one `GET` endpoint per resource with filters to refine the request. The V2 API necessitates using a different endpoint to get customer subresources.
 
-**Get customer addresses**
+### Get customer addresses
 Get customer address by name and company on V3:
 
 `/customers/addresses?company:in=bigcommerce,commongood&customer_id:in1,2,3`
@@ -185,6 +185,7 @@ Accept: application/json
     "last_name": "Doe"
   }
 ]
+
 ```
 
 ```http filename="Example request: Update a customer V2" showLineNumbers copy
@@ -198,6 +199,7 @@ Accept: application/json
   "email": "jane@example.com",
   "phone": "1234567890"
 }
+
 ```
 
 ### Upsert
@@ -235,6 +237,7 @@ Accept: application/json
   "consents": ["marketing_newsletter", "abandoned_cart"],
   "source": "storefront"
 }
+
 ```
 
 ```js filename="Example request: Update a subscriber V3" showLineNumbers copy
@@ -251,6 +254,7 @@ Accept: application/json
   "consents": [],
   "source": "order"
 }
+
 ```
 
 ## Related resources

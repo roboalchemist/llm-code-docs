@@ -1,8 +1,6 @@
 
 # Using Event Hooks
 
-
-
 Stencil themes provide access to remote resources through data tags and event hooks. Developers can use these hooks to trigger defined events. A theme can hook to an event to perform actions or calculations based on shopper behavior.
 
 Stencil themes incorporate event hooks by importing the stencil-utils module. Looking at [cornerstone/assets/js/theme/](https://github.com/bigcommerce/cornerstone/tree/master/assets/js/theme), you will see the import statement `'import utils from '@bigcommerce/stencil-utils';` at the top of files using leveraging event hooks.
@@ -34,6 +32,7 @@ export default function() {
     event.preventDefault();
   });
 }
+
 ```
 
 A theme would listen for the `cookie-privacy-notification` event to override the browser’s default notification UI.
@@ -45,13 +44,16 @@ In the following code snippet from Cornerstone in [templates/components/products
 ```handlebars filename="templates/components/products/product-view.html: data‑cart‑item‑add" showLineNumbers copy
 <form class="form" method="post" action="{{product.cart_url}}"
     enctype="multipart/form-data" data-cart-item-add>
+
 ```
 
 This data tag enables the emission of the `cart‑item‑add` event in this next snippet:
 
 ```js filename="Emitter, cart‑item‑add event" showLineNumbers copy
 /*
+
  * Import all product-specific js
+
  */
 [...]
 import utils from '@bigcommerce/stencil-utils';
@@ -61,9 +63,11 @@ addProductToCart() {
         event.preventDefault();
     });
 }
+
 ```
 
 ## Stencil Data Tags and Event Hooks
+
 Stencil themes provide the following chains of data tags, delegated DOM (Document Object Model) events, emitted Stencil event hooks, and Stencil event parameter(s).
 
 ### Cart Item Added
@@ -76,9 +80,8 @@ itemAdd() {
         this.emit('cart-item-add', event, event.target);
     });
 }
+
 ```
-
-
 
 | Data Tag | Delegated DOM Event | Stencil Event/Hook | Stencil Event Parameters |
 |---|---|---|--|
@@ -87,7 +90,6 @@ itemAdd() {
 ### Faceted-Search Events
 
 Hooks for faceted-search selections that the customer initiates or submits.
-
 
 ```js filename="Function signature: faceted-search events" showLineNumbers copy
 searchEvents() {
@@ -99,6 +101,7 @@ searchEvents() {
 		this.emit('facetedSearch-range-submitted', event);
   });
 }
+
 ```
 
 | Data Tag | Delegated DOM Event | Stencil Event/Hook | Stencil Event Parameter(s) |

@@ -9,6 +9,7 @@ Catalyst storefronts require the following variables to function.
 <Callout type="info">
 Required variables are CLI-configured: If you created your Catalyst storefront using the CLI and chose to connect to an existing store, the CLI configured these variables and added them to `.env.local`.
 </Callout>
+
 ### BIGCOMMERCE_STORE_HASH
 
 | Attribute            | Value  |
@@ -23,7 +24,8 @@ The store hash is visible as part of the store's canonical URL, and you can also
 
 ```shell copy
 https://store-{BIGCOMMERCE_STORE_HASH}-{channelId}.mybigcommerce.com/manage
-```
+
+```javascript
 
 You will not see the `{channelId}` portion of your canonical URL when viewing the control panel. However, you should always include `{channelId}` in any references to your canonical URL in the Catalyst environment. This ensures that your requests are using the [correct channel context](https://developer.bigcommerce.com/docs/storefront/graphql#i-want-to-run-requests-in-the-context-of-another-channel).
 
@@ -41,7 +43,7 @@ However, customer-specific tokens are sensitive. Do not expose them outside of e
 
 This bearer token authorizes access to the [GraphQL Storefront API](https://developer.bigcommerce.com/docs/storefront/graphql). It is used to generate the customer access token for requesting information specific to individual customers, such as getting wishlist items.
 
-**Without the CLI**
+## Without the CLI
 Create a store-level or app-level API account with the following token creation scope. Then use the API account access token to [Create a storefront token](https://developer.bigcommerce.com/docs/rest-authentication/tokens#create-a-token).
 
 | UI Name                                      | Permission | Parameter                                     |
@@ -58,7 +60,7 @@ Create a store-level or app-level API account with the following token creation 
 
 This numeric channel ID specifies which [sales channel](https://developer.bigcommerce.com/docs/rest-management/channels#channels) is associated with your Catalyst storefront.
 
-**Without the CLI**
+## Without the CLI
 We recommend that you create a new channel of type `storefront` and platform `catalyst`, although Catalyst will still function if you use an existing channel ID that references a channel that has a different storefront type.
 
 The default Stencil storefront that comes with every BigCommerce store by default has a channel ID of `1`. We do not recommend using any Stencil channel for a transactional Catalyst storefront, as Stencil channels do not support many headless features.
@@ -76,12 +78,13 @@ This token is a **sensitive secret**. Do not expose outside environment variable
 
 Auth.js, formerly NextAuth, uses this pseudo-random hex string to sign session JWTs.
 
-**Without the CLI**
+## Without the CLI
 To generate, open the terminal and run the following command. Then copy-paste the output into your environment variables file. Learn more about how generation works under the hood in the [OpenSSL docs](https://www.openssl.org/docs/manmaster/man1/openssl-rand.html).
 
 ```shell copy
 openssl rand -hex 32
-```
+
+```javascript
 
 ## Recommended
 
@@ -108,7 +111,8 @@ To generate, open the terminal and run the following command. Then copy-paste th
 
 ```shell copy
 openssl rand -hex 32
-```
+
+```javascript
 
 ## Optional
 
@@ -196,9 +200,9 @@ This environment variable turns the [request logger](/docs/storefront/catalyst/r
 
 When enabled, the client logger logs the following information:
 
-- Which GraphQL operation is being performed; for example, `getProducts`.
-- How long the request took in milliseconds.
-- The complexity score of the GraphQL request payload, as indicated by the `X-Bc-Graphql-Complexity` response header.
+* Which GraphQL operation is being performed; for example, `getProducts`.
+* How long the request took in milliseconds.
+* The complexity score of the GraphQL request payload, as indicated by the `X-Bc-Graphql-Complexity` response header.
 
 ### BIGCOMMERCE_TRUSTED_PROXY_SECRET
 

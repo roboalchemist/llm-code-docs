@@ -77,7 +77,6 @@ Use the payload claim data to identify the store and user. What your app should 
 | `GET /uninstall{:http}` | Compare user to store owner or existing user; only store owner or authorized users can uninstall an app. | Matches store owner |
 | `GET /remove_user{:http}` | Compare user to users stored in app database; remove matching user from database. | N/A |
 
-
 The following is an example of the payload claims encoded in the `signed_payload_jwt` that BigCommerce sends to your app callback endpoints:
 
 ```json filename="Example: app callback payload" showLineNumbers copy
@@ -107,24 +106,25 @@ The following is an example of the payload claims encoded in the `signed_payload
 
 | Property | Type | Description |
 |:---------|:-----|:------------|
-| `aud` | string | The app API account's client ID; the intended *audience*. |
-| `iss` | string | The *issuer*; the value is always `bc`. |
-| `iat` | integer, UNIX time | The *issued at* time; when the JWT was issued. |
-| `nbf` | integer, UNIX time | The *not valid before* time; when the JWT became or becomes valid. The value is always the same as `iat`.  |
-| `exp` | integer, UNIX time | The *expiration* time; when the JWT becomes invalid. Currently, 24 hours after `nbf`. |
-| `jti` | string, UUID | The *JWT ID*; a unique identifier for the JWT. |
-| `sub` | string | Identifies the *subject* store in API requests to `https://api.bigcommerce.com{:http}`; a string of the form `stores/{STORE_HASH}`. |
+| `aud` | string | The app API account's client ID; the intended _audience_. |
+| `iss` | string | The _issuer_; the value is always `bc`. |
+| `iat` | integer, UNIX time | The _issued at_ time; when the JWT was issued. |
+| `nbf` | integer, UNIX time | The _not valid before_ time; when the JWT became or becomes valid. The value is always the same as `iat`.  |
+| `exp` | integer, UNIX time | The _expiration_ time; when the JWT becomes invalid. Currently, 24 hours after `nbf`. |
+| `jti` | string, UUID | The _JWT ID_; a unique identifier for the JWT. |
+| `sub` | string | Identifies the _subject_ store in API requests to `https://api.bigcommerce.com{:http}`; a string of the form `stores/{STORE_HASH}`. |
 | `user.id` | integer | The ID of the store owner. |
 | `user.email` | string | The email address of the store owner. |
 | `user.locale` | string | The [BCP 47](https://www.rfc-editor.org/info/bcp47) language tag of the store owner. |
 | `owner.id` | integer | The ID of the store owner. |
 | `owner.email` | string | The email address of the store owner. |
-| `url` | string | Also known as a *deep link*. A developer-configured path that provides the app more information about the resource that initiated the load callback. |
+| `url` | string | Also known as a _deep link_. A developer-configured path that provides the app more information about the resource that initiated the load callback. |
 | `channel_id` | integer | The channel associated with the click event that dispatched the callback. The value is `null` when a click in the **Apps** menu sidebar initiates the load callback. |
 
 ## Helpful tools
 
 The following BigCommerce API clients expose helper methods for verifying the `signed_payload_jwt`:
+
 * [Python API client](https://github.com/bigcommerce/bigcommerce-api-python)
   * Fetches `access_token`
   * Verifies `signed_payload_jwt`
@@ -133,11 +133,13 @@ The following BigCommerce API clients expose helper methods for verifying the `s
   * Verifies `signed_payload_jwt`
 
 ## Next step
+
 * [Support multiple users](/docs/integrations/apps/guide/users)
 
 ## Resources
 
 ### Sample apps
+
 * [Node / React / Next.js](https://github.com/bigcommerce/sample-app-nodejs) with [quick start tutorial](/docs/integrations/apps/quick-start)
 * [Python / Flask](https://github.com/bigcommerce/hello-world-app-python-flask)
 * [PHP / Silex](https://github.com/bigcommerce/hello-world-app-php-silex)
@@ -145,6 +147,7 @@ The following BigCommerce API clients expose helper methods for verifying the `s
 * [Laravel / React](https://github.com/bigcommerce/laravel-react-sample-app)
 
 ### Tools
+
 * [Node API Client](https://github.com/bigcommerce/node-bigcommerce/)
 * [Python API Client](https://github.com/bigcommerce/bigcommerce-api-python)
 * [PHP API Client](https://github.com/bigcommerce/bigcommerce-api-php)
@@ -154,6 +157,7 @@ The following BigCommerce API clients expose helper methods for verifying the `s
 * [Figma Component Library](https://www.figma.com/community/file/1359989842592268260/bigdesign-component-library)
 
 ### Blog posts
+
 * [How to Test App Authentication Locally with ngrok](https://medium.com/bigcommerce-developer-blog/how-to-test-app-authentication-locally-with-ngrok-149150bfe4cf)
 * [Building a BigCommerce App Using Laravel and React](https://medium.com/bigcommerce-developer-blog/building-a-bigcommerce-app-using-laravel-and-react-711ceceb5006)
 * [BigDesign Tutorial](https://medium.com/bigcommerce-developer-blog/bigdesign-build-native-looking-uis-with-the-bigcommerce-design-system-fb06a01a24f2)

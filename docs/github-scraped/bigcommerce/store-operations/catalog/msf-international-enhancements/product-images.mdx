@@ -10,11 +10,11 @@
 
 Using the Catalog features of the Admin API, you can set and query information for product images.
 
-First, add an image to the product for the global store. You can do so using the [Create a product image](/docs/rest-catalog/products/images#create-a-product-image) endpoint of the REST Management API. 
+First, add an image to the product for the global store. You can do so using the [Create a product image](/docs/rest-catalog/products/images#create-a-product-image) endpoint of the REST Management API.
 
 By default, product images are visible on all storefront channels and locales. To change its visibility, see [Product image visibility](#product-image-visibility).
 
-You can change the details of an image that you have added to a product: 
+You can change the details of an image that you have added to a product:
 - [Set product image information](#set-image-information) for the catalog. You can set global values and overrides for the image information in a channel locale.
 - [Remove overrides for the product's image in a channel locale](#remove-image-information-from-a-locale). A channel then inherits global values.
 - [Query product image information](#query-image-information), those set at the global level and the overrides.
@@ -50,11 +50,11 @@ The following example makes a product image visible in a channel locale. To set 
               node {
                 id
 
-                # For the global store         
-                altText   
-                isThumbnail 
-                sortOrder  
-                urlStandard  
+                # For the global store
+                altText
+                isThumbnail
+                sortOrder
+                urlStandard
                 urlZoom
                 addedToProduct
 
@@ -80,6 +80,7 @@ The following example makes a product image visible in a channel locale. To set 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -95,6 +96,7 @@ The following example makes a product image visible in a channel locale. To set 
           "ids": ["bc/store/productImage/371", "bc/store/productImage/372"]
         }
     }
+
     ```
 
   </Tab>
@@ -141,6 +143,7 @@ The following example makes a product image visible in a channel locale. To set 
       }
     }
   }
+
   ```
 
   </Tab>
@@ -188,6 +191,7 @@ The following example makes a product image not visible in a channel locale. To 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -201,12 +205,13 @@ The following example makes a product image not visible in a channel locale. To 
         "ids": ["bc/store/productImage/371", "bc/store/productImage/372"]
       }
     }
+
     ```
 
   </Tab>
   <Tab>
 
-    ```json filename="Example mutation: Remove product image visibility from a channel locale" showLineNumbers copy    
+    ```json filename="Example mutation: Remove product image visibility from a channel locale" showLineNumbers copy
     {
       "data": {
         "product": {
@@ -271,6 +276,7 @@ The following example makes a product image not visible in a channel locale. To 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -280,7 +286,7 @@ The following example makes a product image not visible in a channel locale. To 
 
 ### Set image information
 
-The following example sets product image information for the global store and a channel locale. 
+The following example sets product image information for the global store and a channel locale.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -297,13 +303,13 @@ The following example sets product image information for the global store and a 
           images {
             edges {
               node {
-                id         
-                altText  
-                isThumbnail  
-                sortOrder  
-                urlStandard 
+                id
+                altText
+                isThumbnail
+                sortOrder
+                urlStandard
                 urlZoom
-                addedToProduct    
+                addedToProduct
                 overrides( context: {channelId: "bc/store/channel/1", locale: "en"}) {
                   edges {
                     node {
@@ -326,6 +332,7 @@ The following example sets product image information for the global store and a 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -335,34 +342,35 @@ The following example sets product image information for the global store and a 
         "data": [
           {
             "imageId": "bc/store/productImage/371",
-            "sortOrder": 2, 
-            "altText": "Global alt text", 
-            "isThumbnail": true, 
+            "sortOrder": 2,
+            "altText": "Global alt text",
+            "isThumbnail": true,
             "overrides": [
               {
                 "channelLocaleOverrides": {
                   "context": {
-                    "channelId": "bc/store/channel/1", 
+                    "channelId": "bc/store/channel/1",
                     "locale": "en"
                   },
                   "data": {
-                    "sortOrder": 1, 
+                    "sortOrder": 1,
                     "altText": "Channel-specific alt text",
-                    "isThumbnail": true 
+                    "isThumbnail": true
                   }
                 }
               }
             ]
           },
           {
-            "imageId": "bc/store/productImage/372", 
-            "sortOrder": 1, 
+            "imageId": "bc/store/productImage/372",
+            "sortOrder": 1,
             "altText": "Global alt text",
             "isThumbnail": false
           }
         ]
       }
     }
+
     ```
 
   </Tab>
@@ -395,7 +403,7 @@ The following example sets product image information for the global store and a 
                           "sortOrder": "1",
                           "altText": "Channel-specific alt text",
                           "isThumbnail": true,
-                          "addedToProduct": true                          
+                          "addedToProduct": true
                         }
                       }
                     ]
@@ -422,6 +430,7 @@ The following example sets product image information for the global store and a 
       }
     }
   }
+
   ```
 
   </Tab>
@@ -446,12 +455,12 @@ The following example removes product image overrides for the channel locale.
         removeProductImagePropertiesOverrides(input: $input) {
           images {
             edges {
-              node {            
-                id        
-                altText    
-                isThumbnail  
-                sortOrder  
-                urlStandard 
+              node {
+                id
+                altText
+                isThumbnail
+                sortOrder
+                urlStandard
                 urlZoom
                 addedToProduct
                 overrides ( context: { channelId: "bc/store/channel/1", locale: "en"}) {
@@ -470,13 +479,15 @@ The following example removes product image overrides for the channel locale.
                     }
                   }
                 }
-              } 
+              }
             }
           }
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -487,7 +498,7 @@ The following example removes product image overrides for the channel locale.
             "contexts": [
               {
                 "channelLocaleContext": {
-                  "channelId": "bc/store/channel/1", 
+                  "channelId": "bc/store/channel/1",
                   "locale": "en"
                 }
               }
@@ -496,6 +507,7 @@ The following example removes product image overrides for the channel locale.
         ]
       }
     }
+
     ```
 
   </Tab>
@@ -528,6 +540,7 @@ The following example removes product image overrides for the channel locale.
         }
       }
     }
+
     ```
 
   </Tab>
@@ -554,11 +567,11 @@ You can also use the `imagesOverrides` node to retrieve overrides. This node wil
           images {
             edges {
               node {
-                id        
-                altText    
-                isThumbnail  
-                sortOrder  
-                urlStandard 
+                id
+                altText
+                isThumbnail
+                sortOrder
+                urlStandard
                 urlZoom
                 addedToProduct
                 overrides( context: {channelId: "bc/store/channel/1", locale: "en"}) {
@@ -583,6 +596,7 @@ You can also use the `imagesOverrides` node to retrieve overrides. This node wil
         }
       }
     }
+
     ```
   </Tab>
   <Tab>
@@ -654,7 +668,8 @@ You can also use the `imagesOverrides` node to retrieve overrides. This node wil
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>

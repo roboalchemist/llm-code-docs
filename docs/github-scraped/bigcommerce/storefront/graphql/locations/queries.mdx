@@ -1,12 +1,12 @@
 # Query Locations with the GraphQL Storefront API
 
-The GraphQL Storefront API allows you to fetch data for your store's locations. Below are examples of GraphQL Storefront queries that allow you to fetch location data for storefront locations. 
+The GraphQL Storefront API allows you to fetch data for your store's locations. Below are examples of GraphQL Storefront queries that allow you to fetch location data for storefront locations.
 
 For a general overview of the GraphQL Storefront API usage and capabilities, see [GraphQL Storefront API Overview](/docs/storefront/graphql). See GraphQL Playground for documentation of the full schema.
 
 ## How to get location data for stores
 
-You can retrieve location data for store locations that are _enabled_ and _visible_. Here is an example query that returns location data, for example, address and operating hours on the specified days.    
+You can retrieve location data for store locations that are _enabled_ and _visible_. Here is an example query that returns location data, for example, address and operating hours on the specified days.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -227,8 +227,8 @@ You can retrieve location data for store locations that are _enabled_ and _visib
 Locations are identified by a unique ID (`entityId`) and code (`code`). The location's type ID (`typeId`) is the location type, either PHYSICAL or VIRTUAL. The location's code and type can be customized using [Locations API](/docs/rest-management/locations).
 
 The location identities and data that are returned from the response can be used to filter the data returned for certain locations. See [How to Filter Location Data](#how-to-filter-location-data).
- 
-When you query for metafields, only metafields with storefront access permissions will be returned. In other words, a metafield's `permission_set` field must be `write_and_sf_access` or `read_and_sf_access` when you create or update a metafield. The following example includes the metafields along with the location data that are returned. As shown, the `namespace` of the metafield you wish to query must be specified: 
+
+When you query for metafields, only metafields with storefront access permissions will be returned. In other words, a metafield's `permission_set` field must be `write_and_sf_access` or `read_and_sf_access` when you create or update a metafield. The following example includes the metafields along with the location data that are returned. As shown, the `namespace` of the metafield you wish to query must be specified:
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -312,18 +312,17 @@ When you query for metafields, only metafields with storefront access permission
 </Tabs>
 
 <Callout type="info">
-  A location's descriptions can be added using the [Create locations](/docs/rest-management/locations#create-locations) endpoint in the Locations API. 
-  A location's metafields can be added using [Create a metafield](/docs/rest-management/locations/metafields#create-a-metafield) endpoint in the Locations API. 
+  A location's descriptions can be added using the [Create locations](/docs/rest-management/locations#create-locations) endpoint in the Locations API.
+  A location's metafields can be added using [Create a metafield](/docs/rest-management/locations/metafields#create-a-metafield) endpoint in the Locations API.
 </Callout>
-
 
 ## How to filter location data  
 
-You can filter by the identities of locations, as well as the data for locations, so that data for only some locations will be returned. To do so, specify a filter in the argument for `locations`. 
+You can filter by the identities of locations, as well as the data for locations, so that data for only some locations will be returned. To do so, specify a filter in the argument for `locations`.
 
-### Filter by location identity 
+### Filter by location identity
 
-You can filter by the entityIds, codes, and typeIds of the locations you wish to return: 
+You can filter by the entityIds, codes, and typeIds of the locations you wish to return:
 
 ```graphql filename="Filters for Location Identity" showLineNumbers copy
 ...
@@ -504,7 +503,7 @@ Here is an example query that returns the locations that have a specific entityI
 
 ### Filter by location data
 
-You can also filter for locations by their data. For example, you can filter by location country, state, and city. You can also filter for locations that are within a specified distance from a shopper, specified by latitude and longitude coordinates. 
+You can also filter for locations by their data. For example, you can filter by location country, state, and city. You can also filter for locations that are within a specified distance from a shopper, specified by latitude and longitude coordinates.
 
 ```graphql filename="Filters for Location Data" showLineNumbers copy
 ...
@@ -703,4 +702,4 @@ This example query returns the stores that are in the specified country, state, 
   </Tab>
 </Tabs>
 
-The distance from the queried latitude and longitude is returned in the response. In this example, one store location was returned, in which the store was located 0 km from the queried latitude and longitude. 
+The distance from the queried latitude and longitude is returned in the response. In this example, one store location was returned, in which the store was located 0 km from the queried latitude and longitude.

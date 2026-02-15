@@ -105,9 +105,13 @@ When handling the OAuth flow, make sure your app requests read and write permiss
 You will be ready to set up a connection with the Tax Provider API when all the following are true:
 
 * You have [shared your tax provider details](#sharing-provider-details-with-bigcommerce) with BigCommerce through email, and we've replied confirming the tax provider configuration is now ready on all supplied merchant and/or partner test stores.
+
 * BigCommerce has shared the `provider_id` of the tax provider configuration with you through email after you [shared your tax provider details](#sharing-provider-details-with-bigcommerce).
+
 * You have [built a draft app](#building-the-app) that handles the OAuth flow during app installation.
+
 * During the [OAuth flow](#installing-the-app), the app requests that the merchant authorize read and write permissions on the Information and Settings API scopes.
+
 * During the [OAuth flow](#installing-the-app), you received and stored the `client_id` and `access_token`.
 
 To establish a connection, you **must** call the [Update Connection](/docs/rest-contracts/tax-app-connection#update-a-connection) Tax Connection endpoint to establish a connection.
@@ -145,14 +149,19 @@ After the merchant enables your app in the control panel, your app is ready to r
 Tax estimates will be requested, depending on the BigCommerce store's settings, multiple times during a standard BigCommerce checkout flow.
 
 * After selecting a shipping method when using the **Estimate Shipping & Tax functionality** on the cart page.
+
 * After specifying a shipping address during a checkout.
+
 * After specifying a billing address during a checkout.
 
 Estimate requests are not expected after the following events.
 
 * While browsing a store's home page, product catalog or product pages.
+
 * On the cart page prior to a shopper selecting a shipping method using the **Estimate Shipping & Tax** functionality.
+
 * On the checkout page prior to specifying a shipping address.
+
 * On the checkout page, when toggling any option related to using the shopper's shipping address as their billing address.
 
 Estimate calls will also be made in the control panel when using flows like the following:
@@ -208,7 +217,9 @@ If your tax provider supports document submission, merchants can enable this fea
 Before conducting any end-to-end testing of your tax provider, your store needs the following configured in the control panel:
 
 * The shipping origin address, found by navigating to **Settings > Setup > Shipping**, is configured. This value is included in tax estimate requests.
+
 * The tax provider, found by navigating to **Settings > Setup > Tax > _TaxProviderName_**, is enabled in the relevant countries or subdivisions.
+
 * If document submission is supported, navigate to **Settings > Setup > Tax > _TaxProviderName_** and ensure the **Submit Order Data** checkbox is checked.
 
 Also available is the test connection function, as covered by [Verifying your integration](#verifying-your-integration).

@@ -6,13 +6,11 @@ Catalyst includes built-in support for wishlists, providing functionality simila
 
 This documentation outlines the key behaviors, caveats, and code structure so developers can understand or extend the wishlist functionality in Catalyst storefronts.
 
-
 ## Functionality
 
 * Users can add products to a wishlist directly from the PDP using the wishlist button.  
 * Users can manage multiple wishlists (view, create, rename, delete) from their account page.  
 * Wishlists can be shared publicly via unique URLs.
-
 
 ## UX Behavior
 
@@ -20,7 +18,6 @@ This documentation outlines the key behaviors, caveats, and code structure so de
 | ----- | ----- |
 | User adds a product with selected options | The selected options are added to the wishlist *if* they form a complete variant (SKU). |
 | User is signed out and clicks wishlist button | They are prompted to sign in. After signing in, they are redirected back to the PDP to finish the action. |
-
 
 ## Developer Notes
 
@@ -31,7 +28,6 @@ This feature is **already implemented** in Catalyst. Developers **do not need to
 * Integrate analytics/events
 
 * Modify backend logic for wishlist creation and updates
-
 
 ## Key Code Paths
 
@@ -60,4 +56,3 @@ Here’s where to find and modify wishlist functionality in the Catalyst codebas
 | `components/wishlist/` | Common/shared wishlist components used across both Account and Public views. |
 | `components/wishlist/share-button.tsx` | Share button used on both Account and Public wishlist pages. |
 | `app/[locale]/(default)/product/[slug]/_components/wishlist-button` | PDP-specific wishlist button component. |
-

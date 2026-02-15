@@ -1,7 +1,5 @@
 # Defining Themes Styles
 
-
-
 ## Configuration file
 
 You can manage your theme's front-end components by configuring its `config.json` file. This file is made up of different keys and values that define your theme's global styles.
@@ -29,14 +27,13 @@ Apart from the aforementioned size constraints, there is no limit on the number 
 Carefully check your theme against all the listed requirements – including the required keys within the `meta` object and `variations` array. While some requirements are not enforced in local development, they will be validated when you upload your theme to BigCommerce.
 </Callout>
 
-
 ### Required config.json keys
 
 The `config.json` file must contain the following keys:
 
 * `name`
 * `version`
-* `settings` 
+* `settings`
 * `variations`
 * `meta` (see specific requirements below)
 
@@ -64,7 +61,7 @@ For illustration, below is a commented excerpt.
     "author_support_url": "http://example.com/contactus", //  Must be a string, should be a valid URL, not null
     "documentation_url": "http://example.com/guide", // Must be a string, limit of 255 characters, not null
     "composed_image": "path/to/composed.png", // Must be a string path to the composed-image file
-    "features": [ 
+    "features": [
       // Array of feature strings, all of which must be in the list enumerated here:
           // https://github.com/bigcommerce/theme-registry/blob/master/app/schemas/theme_config.json#L33
       "fully_responsive" // Must include at least one feature, and no duplicate entries
@@ -72,6 +69,7 @@ For illustration, below is a commented excerpt.
   },
   ...
 }
+
 ```
 
 ### Required variation keys
@@ -100,6 +98,7 @@ For illustration, consider the following code sample from Cornerstone:
   ],
   ...
 }
+
 ```
 
 ## New products example
@@ -114,6 +113,7 @@ To see how interactions with `config.json` values work, first note the default v
     "product_list_display_mode": "grid",
     }
 }
+
 ```
 
 Next, open your `templates/pages/home.html` file.
@@ -135,6 +135,7 @@ blog:
 <!-- [...] -->
 {{/partial}}
 {{> layout/base}}
+
 ```
 
 You should see five products displayed in a grid in the New Products section of your homepage.
@@ -148,6 +149,7 @@ products:
   featured:
       limit: {{theme_settings.homepage_featured_products_count}}
 <!-- [...] -->
+
 ```
 
 To set theme-wide configurations in the front matter using `config.json`, replace the `{{theme_settings.homepage_featured_products_count}}` statement in `home.html` with a hard-coded `2`. For reference, see the following example.
@@ -168,10 +170,13 @@ products:
 </div>
 {{/partial}}
 {{> layout/base}}
+
 ```
 
 Reload the page. You should see the number of products displayed in Featured Products change to two.
+
 ## Retrieving specific config.json values through Sass
+
 In `config.json`, global variables bring dynamic values into the framework. Sass imports these global variables' values to handle data, such as colors hexadecimal values, and to make the data available to Page Builder.
 
 The following is a snippet of color variables from `config.json`.
@@ -184,6 +189,7 @@ The following is a snippet of color variables from `config.json`.
   "color-highlightDarker": "#dfdfdf",
   ...
 }
+
 ```
 
 Below are the corresponding references in the theme's `assets/scss/settings/global/color/_color.scss` file.
@@ -194,10 +200,13 @@ $color-highlight:       stencilColor("color-highlight");
 $color-highlightDarker: stencilColor("color-highlightDarker");
 $color-highlightDark:   stencilColor("color-highlightDark");
 // ...
+
 ```
 
 In `config.json`, try redefining one or more color variables to hex values of your choice. Reload the page to see the effects.
+
 ## Adding and removing components
+
 The properties that Stencil abstracts as Handlebars resources are portable between HTML files. To see this in action, open any storefront page in a browser and navigate to the page's footer where you should see the Categories section.
 Open your theme's `footer.html` file located in `templates/components/common/footer.html`, navigate to the `footer-info` section, and remove the following `footer-categories` component:
 
@@ -212,6 +221,7 @@ Open your theme's `footer.html` file located in `templates/components/common/foo
       {{/each}}
   </ul>
 </article>
+
 ```
 
 Refresh the page. The Categories section should disappear from the footer.
@@ -228,6 +238,7 @@ Next, add a `footer` directory to `templates/components` and create a new `categ
       {{/each}}
   </ul>
 </article>
+
 ```
 
 In `templates/components/common/footer.html`, add a reference to the new template as shown below.
@@ -242,17 +253,19 @@ In `templates/components/common/footer.html`, add a reference to the new templat
       </section>
   </div>
 </footer>
+
 ```
+
 Refresh the page. The Categories list should reappear in the footer.
 
 ## Resources
 
 ### Additional resources
 
-- [Edit config.json file](https://bigcommerce.wistia.com/medias/rmsz7xfan1)
-- [Customize Components](https://bigcommerce.wistia.com/medias/sv3qsdehcw)
-- [Customize Layout and Pages](https://bigcommerce.wistia.com/medias/jlv5fbr954)
-- [Customize Assets](https://bigcommerce.wistia.com/medias/xtjm0ebnar)
-- [Language File](https://bigcommerce.wistia.com/medias/ovx95ctbb0)
-- [Theme Editor Text Fields](https://bigcommerce.wistia.com/medias/phggd7og8u)
-- [Debugging Your Stencil Theme](https://bigcommerce.wistia.com/medias/3fhjpgpvun)
+* [Edit config.json file](https://bigcommerce.wistia.com/medias/rmsz7xfan1)
+* [Customize Components](https://bigcommerce.wistia.com/medias/sv3qsdehcw)
+* [Customize Layout and Pages](https://bigcommerce.wistia.com/medias/jlv5fbr954)
+* [Customize Assets](https://bigcommerce.wistia.com/medias/xtjm0ebnar)
+* [Language File](https://bigcommerce.wistia.com/medias/ovx95ctbb0)
+* [Theme Editor Text Fields](https://bigcommerce.wistia.com/medias/phggd7og8u)
+* [Debugging Your Stencil Theme](https://bigcommerce.wistia.com/medias/3fhjpgpvun)

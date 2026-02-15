@@ -7,7 +7,7 @@
   To become an enterprise customer, contact your BigCommerce Customer Service Manager or our [support team](https://support.bigcommerce.com/s/contact?language=en_US).
 </Callout>
 
-Using the Catalog features of the Admin API, you can set and query information about a [product variant option](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#variations), such as option name and values. 
+Using the Catalog features of the Admin API, you can set and query information about a [product variant option](https://support.bigcommerce.com/s/article/Product-Options-v3?language=en_US#variations), such as option name and values.
 
 Perform the following for product variant options:
 - [Set global variant option information](#set-variant-options-at-the-global-level) for the catalog. Channels inherit global information by default.
@@ -24,9 +24,9 @@ Setting or removing information requires that you specify ID fields in the input
 
 ## Set variant options
 
-Set information about a product variant option for a store or a locale within a storefront channel. 
+Set information about a product variant option for a store or a locale within a storefront channel.
 
-The following mutations let you set the name and values for existing variant options. You must first create the variant option for the product through the control panel or the REST [Create a product variant option](/docs/rest-catalog/product-variant-options#create-a-product-variant-option) endpoint. 
+The following mutations let you set the name and values for existing variant options. You must first create the variant option for the product through the control panel or the REST [Create a product variant option](/docs/rest-catalog/product-variant-options#create-a-product-variant-option) endpoint.
 
 <Callout type="info">
   The responses may include all variant options, including those that are shared. However, to _set_ shared variant options, use the mutations in [Set shared variant options](#set-shared-variant-options).
@@ -43,8 +43,8 @@ The following example sets the store's global product variant option information
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
-    Accept: application/json      
-    
+    Accept: application/json
+
     mutation ($input: SetProductOptionsInformationInput!) {
       product {
         setProductOptionsInformation (input: $input) {
@@ -67,7 +67,9 @@ The following example sets the store's global product variant option information
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -100,6 +102,7 @@ The following example sets the store's global product variant option information
         }
       }
     }
+
     ```
 
   </Tab>
@@ -159,7 +162,8 @@ The following example sets the store's global product variant option information
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -175,8 +179,8 @@ The following example sets product variant option information for the locale wit
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
-    Accept: application/json      
-    
+    Accept: application/json
+
     mutation ($input: SetProductOptionsInformationInput!) {
       product {
         setProductOptionsInformation (input: $input) {
@@ -205,7 +209,9 @@ The following example sets product variant option information for the locale wit
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -233,7 +239,7 @@ The following example sets product variant option information for the locale wit
                     {
                       "valueId": "bc/store/productOptionValue/70",
                       "label": "Large UK"
-                    } 
+                    }
                   ]
                 }
               }
@@ -242,6 +248,7 @@ The following example sets product variant option information for the locale wit
         }
       }
     }
+
     ```
 
   </Tab>
@@ -294,7 +301,8 @@ The following example sets product variant option information for the locale wit
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -311,7 +319,7 @@ The following example removes product variant option information for the locale 
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
     Accept: application/json
-    
+
     mutation ($input: RemoveProductOptionsOverridesInput!) {
       product {
         removeProductOptionsOverrides (input: $input) {
@@ -340,13 +348,14 @@ The following example removes product variant option information for the locale 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
         "productId": "bc/store/product/111",
-        "localeContext": { 
+        "localeContext": {
           "channelId": "bc/store/channel/2",
           "locale": "uk"
         },
@@ -367,6 +376,7 @@ The following example removes product variant option information for the locale 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -441,7 +451,8 @@ The following example removes product variant option information for the locale 
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -450,7 +461,7 @@ The following example removes product variant option information for the locale 
 
 You can set information about a shared variant option for a store or a locale within a storefront channel. You must first create the shared variant options through the control panel. Changing a shared variant option affects all products that you assign to the shared variant option. You cannot customize shared variant options on a product level.
 
-The following mutations let you set the name and values for existing shared variant options. 
+The following mutations let you set the name and values for existing shared variant options.
 
 ### Set shared variant options at the global level
 
@@ -463,7 +474,7 @@ The following example sets global shared variant option information for the stor
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
-    Accept: application/json      
+    Accept: application/json
 
     mutation ($input: SetSharedProductOptionsInformationInput!) {
       sharedProductOptions {
@@ -474,7 +485,9 @@ The following example sets global shared variant option information for the stor
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -520,6 +533,7 @@ The following example sets global shared variant option information for the stor
         }
       }
     }
+
     ```
 
   </Tab>
@@ -542,7 +556,8 @@ The following example sets global shared variant option information for the stor
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -558,7 +573,7 @@ The following example sets shared variant option information for the locale with
     POST https://api.bigcommerce.com/stores/{{STORE_HASH}}/graphql
     X-Auth-Token: {{ACCESS_TOKEN}}
     Content-Type: application/json
-    Accept: application/json      
+    Accept: application/json
 
     mutation ($input: SetSharedProductOptionsInformationInput!) {
       sharedProductOptions {
@@ -569,7 +584,9 @@ The following example sets shared variant option information for the locale with
         }
       }
     }
+
     ```
+
     ```json filename="GraphQL variables" showLineNumbers copy
     {
       "input": {
@@ -619,6 +636,7 @@ The following example sets shared variant option information for the locale with
         }
       }
     }
+
     ```
 
   </Tab>
@@ -641,7 +659,8 @@ The following example sets shared variant option information for the locale with
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -668,6 +687,7 @@ The following example removes shared variant option information for the locale w
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -694,6 +714,7 @@ The following example removes shared variant option information for the locale w
         }
       }
     }
+
     ```
 
   </Tab>
@@ -713,7 +734,8 @@ The following example removes shared variant option information for the locale w
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>
@@ -760,7 +782,8 @@ The following example retrieves variant information. You can retrieve global inf
           }
         }
       }
-    }    
+    }
+
     ```
   </Tab>
   <Tab>
@@ -871,7 +894,8 @@ The following example retrieves variant information. You can retrieve global inf
         }
       }
     }
-    ```    
+
+    ```
 
   </Tab>
 </Tabs>

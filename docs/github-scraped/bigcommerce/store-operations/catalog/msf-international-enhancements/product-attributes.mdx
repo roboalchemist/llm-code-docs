@@ -9,7 +9,7 @@
 
 Using the Catalog features of the Admin API, you can set and query product attributes, for example, storefront details, pre-order messages, and whether a product is featured.
 
-Perform the following: 
+Perform the following:
 - Set a product's [pre-order settings](#pre-order-settings) for the store or a locale within a channel. Pre-order messages communicate info about products that aren't yet available for purchase.
 - Set a product's [storefront details](#storefront-details) for the store or a locale within a channel. Details include product warranty, availability, and search keywords.
 - Set a product as [featured](#featured-products) for the store or a channel. Channel values apply to all locales within the channel.
@@ -50,6 +50,7 @@ The following example sets a product's pre-order settings for a store, from whic
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -61,6 +62,7 @@ The following example sets a product's pre-order settings for a store, from whic
         }
       }
     }
+
     ```
 
   </Tab>
@@ -80,6 +82,7 @@ The following example sets a product's pre-order settings for a store, from whic
         }
       }
     }
+
     ```
 
   </Tab>
@@ -111,6 +114,7 @@ The following example sets a product's pre-order settings for the locale within 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -126,6 +130,7 @@ The following example sets a product's pre-order settings for the locale within 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -147,6 +152,7 @@ The following example sets a product's pre-order settings for the locale within 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -155,7 +161,7 @@ The following example sets a product's pre-order settings for the locale within 
 
 ### Remove pre-order settings for a locale
 
-The following example removes the overrides for a product's pre-order settings. This mutation removes the overrides for the locale within the storefront channel, and the pre-order setting defaults to its global store value.  
+The following example removes the overrides for a product's pre-order settings. This mutation removes the overrides for the locale within the storefront channel, and the pre-order setting defaults to its global store value.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -179,6 +185,7 @@ The following example removes the overrides for a product's pre-order settings. 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -192,6 +199,7 @@ The following example removes the overrides for a product's pre-order settings. 
         "overridesToRemove": ["PRODUCT_PRE_ORDER_MESSAGE"]
       }
     }
+
     ```
 
   </Tab>
@@ -211,6 +219,7 @@ The following example removes the overrides for a product's pre-order settings. 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -218,7 +227,7 @@ The following example removes the overrides for a product's pre-order settings. 
 
 ### Query pre-order settings
 
-The following example retrieves a product's pre-order settings. You can retrieve global information for the store and overrides for a locale within a storefront channel. 
+The following example retrieves a product's pre-order settings. You can retrieve global information for the store and overrides for a locale within a storefront channel.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -243,6 +252,7 @@ The following example retrieves a product's pre-order settings. You can retrieve
         }
       }
     }
+
     ```
 
   </Tab>
@@ -265,6 +275,7 @@ The following example retrieves a product's pre-order settings. You can retrieve
         }
       }
     }
+
     ```
 
   </Tab>
@@ -301,6 +312,7 @@ The following example sets a product's storefront details for a store, from whic
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -314,6 +326,7 @@ The following example sets a product's storefront details for a store, from whic
         }
       }
     }
+
     ```
 
   </Tab>
@@ -335,6 +348,7 @@ The following example sets a product's storefront details for a store, from whic
         }
       }
     }
+
     ```
 
   </Tab>
@@ -368,6 +382,7 @@ The following example sets a product's storefront details for the locale within 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -385,6 +400,7 @@ The following example sets a product's storefront details for the locale within 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -408,6 +424,7 @@ The following example sets a product's storefront details for the locale within 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -415,7 +432,7 @@ The following example sets a product's storefront details for the locale within 
 
 ### Remove storefront details for a locale
 
-The following example removes the overrides for a product's storefront details. This mutation removes the overrides for the locale within the storefront channel, and the storefront details default to their global store values.  
+The following example removes the overrides for a product's storefront details. This mutation removes the overrides for the locale within the storefront channel, and the storefront details default to their global store values.
 
 Omitting the `overridesToRemove` field from the input removes _all_ overrides for storefront details from the locale.
 
@@ -443,6 +460,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -456,6 +474,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         "overridesToRemove": ["PRODUCT_AVAILABILITY_DESCRIPTION_FIELD", "PRODUCT_SEARCH_KEYWORDS", "PRODUCT_WARRANTY"]
       }
     }
+
     ```
 
   </Tab>
@@ -479,6 +498,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
         }
       }
     }
+
     ```
 
   </Tab>
@@ -486,7 +506,7 @@ Omitting the `overridesToRemove` field from the input removes _all_ overrides fo
 
 ### Query storefront details
 
-The following example retrieves a product's storefront details. You can retrieve global information for the store and overrides for a locale within a storefront channel. 
+The following example retrieves a product's storefront details. You can retrieve global information for the store and overrides for a locale within a storefront channel.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -515,6 +535,7 @@ The following example retrieves a product's storefront details. You can retrieve
         }
       }
     }
+
     ```
 
   </Tab>
@@ -541,6 +562,7 @@ The following example retrieves a product's storefront details. You can retrieve
         }
       }
     }
+
     ```
 
   </Tab>
@@ -573,6 +595,7 @@ The following example sets whether to feature a product for a store, from which 
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -584,6 +607,7 @@ The following example sets whether to feature a product for a store, from which 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -601,6 +625,7 @@ The following example sets whether to feature a product for a store, from which 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -630,6 +655,7 @@ The following example sets whether to feature a product in a storefront channel.
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -642,6 +668,7 @@ The following example sets whether to feature a product in a storefront channel.
         }
       }
     }
+
     ```
 
   </Tab>
@@ -661,6 +688,7 @@ The following example sets whether to feature a product in a storefront channel.
         }
       }
     }
+
     ```
 
   </Tab>
@@ -668,7 +696,7 @@ The following example sets whether to feature a product in a storefront channel.
 
 ### Remove featured flag for a channel
 
-The following example removes the overrides for whether a product is featured. This mutation removes the override from the storefront channel, and the featured flag defaults to its global store value.  
+The following example removes the overrides for whether a product is featured. This mutation removes the override from the storefront channel, and the featured flag defaults to its global store value.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -690,6 +718,7 @@ The following example removes the overrides for whether a product is featured. T
         }
       }
     }
+
     ```
 
     ```json filename="GraphQL variables" showLineNumbers copy
@@ -699,6 +728,7 @@ The following example removes the overrides for whether a product is featured. T
         "productId": "bc/store/product/111"
       }
     }
+
     ```
 
   </Tab>
@@ -718,6 +748,7 @@ The following example removes the overrides for whether a product is featured. T
         }
       }
     }
+
     ```
 
   </Tab>
@@ -725,7 +756,7 @@ The following example removes the overrides for whether a product is featured. T
 
 ### Query featured flag
 
-The following example retrieves whether a product is featured. You can retrieve global information for the store and overrides for a storefront channel. 
+The following example retrieves whether a product is featured. You can retrieve global information for the store and overrides for a storefront channel.
 
 <Tabs items={['Request', 'Response']}>
   <Tab>
@@ -746,6 +777,7 @@ The following example retrieves whether a product is featured. You can retrieve 
         }
       }
     }
+
     ```
 
   </Tab>
@@ -764,6 +796,7 @@ The following example retrieves whether a product is featured. You can retrieve 
         }
       }
     }
+
     ```
 
   </Tab>

@@ -1,13 +1,10 @@
 # Working with Theme Variations
 
- 
-
 ## Naming your theme
 
-The basic details of the Cornerstone theme are outlined in the theme's configuration file, [`config.json`](https://github.com/bigcommerce/cornerstone/blob/master/config.json). You can update the Cornerstone's `config.json` file to reflect your theme's values, such as name, version number, and documentation URL. 
+The basic details of the Cornerstone theme are outlined in the theme's configuration file, [`config.json`](https://github.com/bigcommerce/cornerstone/blob/master/config.json). You can update the Cornerstone's `config.json` file to reflect your theme's values, such as name, version number, and documentation URL.
 
-
-Here are the first key-value sets in Cornerstone's `config.json`: 
+Here are the first key-value sets in Cornerstone's `config.json`:
 
 ```json filename="Cornerstone settings config.json" showLineNumbers copy
 {
@@ -19,10 +16,10 @@ Here are the first key-value sets in Cornerstone's `config.json`:
   // ...
   }
 }
+
 ```
 
 The following example shows how to change Cornerstone's configurations to reflect your own theme's name, version number, price on Theme Marketplace, and documentation URL:
-
 
 ```json filename="Cornerstone settings config.json" showLineNumbers copy
 {
@@ -34,12 +31,12 @@ The following example shows how to change Cornerstone's configurations to reflec
   // ...
   }
 }
+
 ```
 
 ## Creating and naming a new theme variation
 
 You define variations in your theme's `config.json` file. Below is the Cornerstone Light variation's definition from Cornerstone's `config.json`:
-
 
 ```json filename="Cornerstone Light theme variation settings config.json" showLineNumbers copy
   "variations": [
@@ -61,10 +58,10 @@ You define variations in your theme's `config.json` file. Below is the Cornersto
       },
       //..
     },
+
 ```
 
 Try inserting your custom variation into the `variations` object of Cornerstone's `config.json`. Your variation's definition might look something like this:
-
 
 ```json filename="Example theme variation definition config.json" showLineNumbers copy
 "variations": [
@@ -82,10 +79,10 @@ Try inserting your custom variation into the `variations` object of Cornerstone'
     },
   },
   // ...
+
 ```
 
 ## Changing a theme variation's font family
-
 
 To learn more about defining variations, see [Defining Global Styles](/docs/storefront/stencil/themes/foundations/global-styles). In particular, note the option to configure settings and variables that are scoped to each variation.
 
@@ -101,10 +98,10 @@ The following example shows how to set the body font of a theme variation to a s
     // ...
   }
 }
+
 ```
 
 ## Preparing a variation's thumbnails
-
 
 For details on preparing screenshots that enable merchants to preview each variation, and to preview your theme as a whole in the BigCommerce control panel and Theme Marketplace, see [Preparing Thumbnail Images](/docs/storefront/stencil/deployment/theme-images).
 
@@ -118,6 +115,7 @@ For details on preparing screenshots that enable merchants to preview each varia
 ## Resources
 
 ### Related articles
+
 * [Checking a Theme's Size](/docs/storefront/stencil/deployment/theme-size)
 * [Preparing Thumbnail Images](/docs/storefront/stencil/deployment/theme-images)
 * [Bundling and Pushing a Theme](/docs/storefront/stencil/deployment/upload)

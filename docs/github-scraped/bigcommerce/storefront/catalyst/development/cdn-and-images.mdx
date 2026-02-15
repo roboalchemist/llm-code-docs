@@ -16,7 +16,8 @@ Import `<Image />` as shown below.
 
 ```tsx
 import { Image } from '~/components/image';
-```
+
+```javascript
 
 ## GraphQL-Sourced Image URLs
 
@@ -30,7 +31,8 @@ These image URLs - for example, an image URL queried from a product’s `default
     src={product.defaultImage.urlTemplate}
     sizes=”(min-width: 42rem) 50vw, 100vw”
 />
-```
+
+```javascript
 
 See Best Practices below for more information about `urlTemplate` and `sizes`.
 
@@ -46,7 +48,8 @@ Usage:
 <Link href={contentAssetUrl('pdfs/user-manual.pdf')} >
    User Manual
 </Link>
-```
+
+```javascript
 
 For image assets uploaded to `/content`, you may use `contentImageUrl()` to build a resizeable image URL that can be used with `<Image>`.
 
@@ -57,7 +60,8 @@ Usage:
     alt="an assortment of brandless products against a blank background"
     src={contentImageUrl('newsletter-images/april.png')}
 />
-```
+
+```javascript
 
 You may optionally request a specific size for the image, using a size parameter of the form `123w`, `123x123`, or `original`.
 
@@ -67,7 +71,8 @@ Usage:
 <Image
     src={contentImageUrl('newsletter-images/april.png', '1000w')}
 />
-```
+
+```javascript
 
 
 ## Using Images uploaded to the Image Manager
@@ -81,7 +86,8 @@ Usage:
     alt="an assortment of brandless products against a blank background"
     src={imageManagerImageUrl('slideshow-bg-01.jpg')}
 />
-```
+
+```javascript
 
 You may optionally request a specific size for the image, using a size parameter of the form `123w`, `123x123`, or `original`.
 
@@ -91,7 +97,8 @@ Usage:
 <Image
     src={imageManagerImageUrl('slideshow-bg-01.jpg', '1000w')}
 />
-```
+
+```javascript
 
 ## Best Practices
 
@@ -102,7 +109,8 @@ Whenever feasible, utilize the [sizes](https://nextjs.org/docs/pages/api-referen
 ```tsx
 <Image src={product.defaultImage.urlTemplate}
   sizes=”(min-width: 42rem) 50vw, 100vw” />
-```
+
+```javascript
 
 With this `sizes` information, an appropriate `srcset` of CDN URLs will also be generated, ensuring a responsive image that can load the image resolution optimized for the user’s screen size.
 
@@ -122,13 +130,16 @@ query GetProduct(
     }
   }
 }
-```
+
+```javascript
 
 With a size specified, the URL returned will be similar to the following:
 
-```
+```javascript
+
 https://cdn11.bigcommerce.com/s-{store hash}/images/stencil/700w/image.png
-```
+
+```javascript
 
 As a CDN URL, this is ready for use with `<Image />`. However, in order to take full advantage of Next.js’s responsive image capability, a better practice is to query the `urlTemplate` field (available on the GraphQL [Image type](https://developer.bigcommerce.com/graphql-storefront/reference#definition-Image)):
 
@@ -144,12 +155,15 @@ query GetProduct(
     }
   }
 }
-```
+
+```javascript
 
 The URL returned in this case lacks the explicit size, instead including a placeholder:
 
-```
+```javascript
+
 https://cdn11.bigcommerce.com/s-{store hash}/images/stencil/{:size}/image.png
-```
+
+```javascript
 
 `<Image />` will handle using this templatized URL to generate the appropriate `srcset` of CDN URLs according to the `sizes` configuration.

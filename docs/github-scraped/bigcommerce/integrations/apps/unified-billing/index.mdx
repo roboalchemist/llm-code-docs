@@ -1,4 +1,5 @@
 # Unified Billing Overview
+
 **GraphQL Account API**
 
 Unified Billing allows merchants to buy apps through the BigCommerce App Marketplace and have the charges included on their BigCommerce invoice.
@@ -67,26 +68,29 @@ To integrate with the Unified Billing API, you'll need the following information
 | Merchant Account UUID | To retrieve the merchant account UUID, send a request to the [Get Store Information](/docs/rest-management/store-information#get-store-information) endpoint and record the merchant's account_uuid from the response. |
 
 ## Begin Integrating with Unified Billing
+
 You can now begin integrating with the Unified Billing API. See the [example queries and mutations](https://developer.bigcommerce.com/docs/integrations/apps/unified-billing/example-queries) for more information.
 
-### Test Unified Billing with your app:
+### Test Unified Billing with your app
 
 If your app is already published to production (i.e. visibility status = Public):
-* Connect your app to Unified Billing
-* Test using $0 checkouts, so that you don’t get charged real money.
-* After you create a checkout, you can test completing of the checkout by creating and logging into a sandbox store as the Store Owner, and completing the checkout as a merchant would do.
+
+- Connect your app to Unified Billing
+- Test using $0 checkouts, so that you don’t get charged real money.
+- After you create a checkout, you can test completing of the checkout by creating and logging into a sandbox store as the Store Owner, and completing the checkout as a merchant would do.
 
 If your app is NOT yet published to production (i.e. visibility status = Draft, Under Review):
-* Build your app and review the App Marketplace Approval Requirements
-* Connect your app to Unified Billing
-* Checkouts are limited to $0, so that you don't get charged real money.
-* After you create a checkout, you can test completing of the checkout by creating and logging into a sandbox store as the Store Owner, and completing the checkout as a merchant would do.
-* Submit your app for review and approval!
+
+- Build your app and review the App Marketplace Approval Requirements
+- Connect your app to Unified Billing
+- Checkouts are limited to $0, so that you don't get charged real money.
+- After you create a checkout, you can test completing of the checkout by creating and logging into a sandbox store as the Store Owner, and completing the checkout as a merchant would do.
+- Submit your app for review and approval!
 
 ## App Partner Responsibilities
 
-* Trial Abuse Prevention
-   * App Partners are responsible for detecting and preventing abuse of the trial system. Such as merchants creating multiple subscriptions to repeatedly access free trials. To help with this, App Partners can use the Subscriptions Query with a given scope to check for previous subscriptions before creating a new checkout.
+- Trial Abuse Prevention
+  - App Partners are responsible for detecting and preventing abuse of the trial system. Such as merchants creating multiple subscriptions to repeatedly access free trials. To help with this, App Partners can use the Subscriptions Query with a given scope to check for previous subscriptions before creating a new checkout.
 
-* Enforcement and Rules:
-   * Each App Partner should define its own trial eligibility rules and implement safeguards to enforce them, as this logic is not managed by the platform.
+- Enforcement and Rules:
+  - Each App Partner should define its own trial eligibility rules and implement safeguards to enforce them, as this logic is not managed by the platform.

@@ -21,13 +21,14 @@ export const getProduct =
       return data.site.product;
     }
   );
-```
+
+```javascript
 
 ## Data Cache
 
 Next.js extends the native `fetch` API to cache data across requests, allowing cached data reuse until it's invalidated. This ensures faster response times and reduces the load on external APIs, like the BigCommerce GraphQL Storefront API.
 
-Data Cache behavior is controlled by the `fetchOptions` parameter passed to the [Catalyst API Client](https://github.com/bigcommerce/catalyst/tree/canary/packages/client). 
+Data Cache behavior is controlled by the `fetchOptions` parameter passed to the [Catalyst API Client](https://github.com/bigcommerce/catalyst/tree/canary/packages/client).
 
 Example:
 
@@ -38,13 +39,14 @@ const { data } = await client.fetch({
   document: ProductQuery,
   fetchOptions: { next: { revalidate } },
 });
-```
+
+```javascript
 
 `fetchOptions` parameters are passed directly to `fetch` and follow the standard Next.js conventions. See the Next.js docs on the [cache](https://nextjs.org/docs/app/guides/caching#fetch-optionscache) and [next.revalidate](https://nextjs.org/docs/app/guides/caching#fetch-optionsnextrevalidate) parameters.
 
 ### Anonymous vs. Customer-Specific Requests
 
-By default, Catalyst utilizes the Data Cache for `fetch` requests for anonymous data, which account for the vast majority of requests on a typical storefront. 
+By default, Catalyst utilizes the Data Cache for `fetch` requests for anonymous data, which account for the vast majority of requests on a typical storefront.
 
 This setup ensures non-unique, repeatable requests benefit from caching while requests affected by customer context are appropriately dynamic.
 
@@ -57,7 +59,7 @@ This configuration is passed on a per-request basis, so you can configure cachin
 
 To ensure optimal performance, when crafting your own API requests, use `fetchOptions` to take advantage of the Data Cache for any anonymous data or disable it for customer-specific data.
 
-**Example of catalog data fetch:**
+## Example of catalog data fetch:
 
 ```ts
 import { getSessionCustomerAccessToken } from '~/auth';
@@ -70,9 +72,10 @@ const { data } = await client.fetch({
   customerAccessToken,
   fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } },
 });
-```
 
-**Example of cart data fetch:**
+```javascript
+
+## Example of cart data fetch:
 
 ```ts
 import { getSessionCustomerAccessToken } from '~/auth';
@@ -86,7 +89,8 @@ const { data } = await client.fetch({
     cache: 'no-store',
   },
 });
-```
+
+```javascript
 
 ### Controlling Cache Duration
 
@@ -102,6 +106,7 @@ For data that is not customer-specific, we usually apply a default caching strat
 <Callout type="warning">
 The lower the `DEFAULT_REVALIDATE_TARGET`, the more requests your store will make to the BigCommerce API, leading to rate limiting and increased costs. Monitor API usage and adjust the `DEFAULT_REVALIDATE_TARGET` accordingly.
 </Callout>
+
 ### Rate Limiting
 
 BigCommerce GraphQL mutations are rate-limited by the request IP. Catalyst adds the shopper’s IP address to the request headers when a `fetch` request has a `cache` value of `no-store` or `no-cache`. This helps prevent rate limiting and ensures your store can handle high traffic.

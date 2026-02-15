@@ -1,14 +1,14 @@
 # Translations for Customer Form Fields (Beta)
 
 <Callout type='info'>
-	The Translations Admin GraphQL API is currently available on Catalyst
-	storefronts only.
+    The Translations Admin GraphQL API is currently available on Catalyst
+    storefronts only.
 </Callout>
 
 The following entities are translatable for customer form fields:
 
-- Label as `label` - The display label for the form field
-- Option values as `option_{base64string}` - Option values where the base64 string encodes the original option text
+* Label as `label` - The display label for the form field
+* Option values as `option_{base64string}` - Option values where the base64 string encodes the original option text
 
 ## Resource fields
 
@@ -19,10 +19,10 @@ The entities listed above are referenced differently based on resource type and 
 
 ### Field Name Format for Options
 
-- `label` - The display label for the form field
-- `option_{base64string}` - Option values where the base64 string encodes the original option text
-  - Example: `option_SG9tZSBBZGRyZXNz` (where `SG9tZSBBZGRyZXNz` is base64 for "Home Address")
-  - Example: `option_TW9iaWxl` (where `TW9iaWxl` is base64 for "Mobile")
+* `label` - The display label for the form field
+* `option_{base64string}` - Option values where the base64 string encodes the original option text
+  * Example: `option_SG9tZSBBZGRyZXNz` (where `SG9tZSBBZGRyZXNz` is base64 for "Home Address")
+  * Example: `option_TW9iaWxl` (where `TW9iaWxl` is base64 for "Mobile")
 
 ## Examples
 
@@ -71,7 +71,8 @@ query {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 <Tab>
@@ -139,7 +140,8 @@ query {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 </Tabs>
@@ -181,7 +183,8 @@ query {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 <Tab>
@@ -243,7 +246,8 @@ query {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 </Tabs>
@@ -301,7 +305,8 @@ mutation {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 <Tab>
@@ -317,7 +322,8 @@ mutation {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 </Tabs>
@@ -326,6 +332,7 @@ mutation {
 The mutation example above shows a successful response. If an entity is not found, the API will return an error response. See the [Error Handling Reference](/docs/store-operations/translations/errors) for more details on error responses.
 
 Example error response for entity not found:
+
 ```json
 {
   "data": {
@@ -342,7 +349,9 @@ Example error response for entity not found:
     }
   }
 }
-```
+
+```javascript
+
 </Callout>
 
 ### Delete a Translation
@@ -364,11 +373,11 @@ mutation {
         localeId: "bc/store/locale/{{locale_code}}",
         resourceType: CUSTOMER_FORM_FIELDS,
         resources: [
-          { 
+          {
             resourceId: "bc/store/customerFormField/18",
             fields: ["label", "option_SG9tZSBBZGRyZXNz", "option_V29yayBBZGRyZXNz"]
           },
-          { 
+          {
             resourceId: "bc/store/customerFormField/19",
             fields: ["label", "option_TW9iaWxl"]
           }
@@ -390,7 +399,8 @@ mutation {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 <Tab>
@@ -406,7 +416,8 @@ mutation {
     }
   }
 }
-```
+
+```javascript
 
 </Tab>
 </Tabs>

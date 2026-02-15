@@ -1,7 +1,5 @@
 # Designing a Single-Click App's UI
 
-
-
 Your app's user interface is loaded inside an iFrame in a store's control panel after a user clicks the app's icon in the left nav and triggers the [load callback](/docs/integrations/apps/guide/callbacks). To ensure a seamless user experience, you should design your app's UI to match the design of BigCommerce's control panel. We've built a collection of reusable React components, design guidelines, and UI patterns (known collectively as [*BigDesign*](https://developer.bigcommerce.com/bigdesign)) that you can use to rapidly develop an app front-end that's consistent with BigCommerce's UI.
 
 ## Installing BigDesign React components
@@ -38,17 +36,20 @@ For additional installation and usage instructions, see the [bigcommerce/big-des
 The BigCommerce team has created [BigDesign](https://developer.bigcommerce.com/bigdesign), a complete and thorough design system that covers design, development and UX writing tools to speed up and enhance the design of your app's UI.
 
 ### Figma Libraries
+
 BigDesign also provides Figma assets to help you design your app's UI. The Figma libraries include components, icons, and design tokens that match the BigDesign React components. You can use these assets to create mockups and prototypes that align with BigCommerce's design language.
 
 * [Figma component library](https://www.figma.com/community/file/1359989842592268260/bigdesign-component-library)
 * [Figma pattern library](https://www.figma.com/community/file/1359996173044159467/bigdesign-pattern-library)
 
 ### Developer playground
+
 The BigDesign Playground showcases the visual style and behavior of each component, along with complete API documentation. You can customize each component using configurable props.
 
 [Go to the BigDesign Developer Playground](https://developer.bigcommerce.com/big-design).
 
 ### Patterns sandbox
+
 The BigDesign Patterns Sandbox is a collection of common UI patterns that you can use in your app. It includes examples of how to use BigDesign components to create common layouts and interactions, such as
 forms, tables, and modals. You can use these patterns as a starting point for your app's UI design.
 
@@ -56,6 +57,7 @@ forms, tables, and modals. You can use these patterns as a starting point for yo
 * [GitHub repo](https://github.com/bigcommerce/big-design-patterns-sandbox/).
 
 ### UX writing
+
 BigDesign also provides a set of UX writing guidelines to help you create clear and consistent copy for your app's UI. These guidelines cover topics such as tone, voice, and terminology, and provide examples of how to write effective UI copy. You can use these guidelines to ensure that your app's UI copy aligns with BigCommerce's design language and provides a consistent user experience.
 
 [BigDesign UX writing guidelines](https://developer.bigcommerce.com/docs/start/design/ux-writing).
@@ -64,12 +66,12 @@ In order to facilitate your app's UX writing, we have also developed a ChatGPT U
 
 [ChatGPT UX writing assistant](https://chatgpt.com/g/g-SggKlK4MR-bigdesign-ux-writing-assistant)
 
-
 ## Developing for the iFrame
 
 Single-click apps benefit from a high level of integration with the BigCommerce control panel. BigCommerce achieves this by rendering your app's UI in an iFrame. To meet [App Marketplace](https://www.bigcommerce.com/apps/) requirements, your app should perform all functions inside the iFrame. The iFrame approach requires special attention from app developers.
 
 To load inside the control panel iFrame, your app must do the following:
+
 1. **Serve app resources over HTTPS:** BigCommerce's control panel is served over HTTPS. Your app must also be served over HTTPS, including any remote resources referenced (such as CSS, JS, and image files). If any resources are served over HTTP, the user's browser will display a mixed content error and refuse to render your app's UI in the control panel iFrame.
 2. **Support browser same-origin policies:** Same-origin policies restrict apps running within iFrames from performing certain activities, such as interacting with other services. If your app requires this, open a new tab for actions that cannot occur in an iFrame<sup>1</sup>. [Learn more about same-origin policies](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) (developer.mozilla.org).
 
@@ -77,9 +79,8 @@ To load inside the control panel iFrame, your app must do the following:
   Apps that operate in the iFrame get strong preference during [App Marketplace](https://www.bigcommerce.com/apps/) consideration; however, we sometimes make exceptions for apps that need to interact with other services.
 </Callout>
 
-
-
 ## Next steps
+
 * [Create external installation buttons](/docs/integrations/apps/guide/buttons).
 * [Follow best practices](/docs/integrations/apps/guide/best-practices).
 * [Check requirements](/docs/integrations/apps/guide/requirements).
@@ -88,6 +89,7 @@ To load inside the control panel iFrame, your app must do the following:
 ## Resources
 
 ### Sample apps
+
 * [Node / React / Next.js](https://github.com/bigcommerce/sample-app-nodejs)
 * [Python / Flask](https://github.com/bigcommerce/hello-world-app-python-flask)
 * [PHP / Silex](https://github.com/bigcommerce/hello-world-app-php-silex)
@@ -95,6 +97,7 @@ To load inside the control panel iFrame, your app must do the following:
 * [Laravel / React](https://github.com/bigcommerce/laravel-react-sample-app)
 
 ### Tools
+
 * [Node API Client](https://github.com/bigcommerce/node-bigcommerce/)
 * [Python API Client](https://github.com/bigcommerce/bigcommerce-api-python)
 * [PHP API Client](https://github.com/bigcommerce/bigcommerce-api-php)
@@ -106,8 +109,8 @@ To load inside the control panel iFrame, your app must do the following:
 * [Figma pattern library](https://www.figma.com/community/file/1359996173044159467/bigdesign-pattern-library)
 * [ChatGPT UX writing assistant](https://chatgpt.com/g/g-SggKlK4MR-bigdesign-ux-writing-assistant)
 
-
 ### Blog posts
+
 * [How to Test App Authentication Locally with ngrok](https://medium.com/bigcommerce-developer-blog/how-to-test-app-authentication-locally-with-ngrok-149150bfe4cf)
 * [Building a BigCommerce App Using Laravel and React](https://medium.com/bigcommerce-developer-blog/building-a-bigcommerce-app-using-laravel-and-react-711ceceb5006)
 * [BigDesign Tutorial](https://medium.com/bigcommerce-developer-blog/bigdesign-build-native-looking-uis-with-the-bigcommerce-design-system-fb06a01a24f2)
