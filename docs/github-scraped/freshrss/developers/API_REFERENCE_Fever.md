@@ -8,12 +8,13 @@ FreshRSS implements the Fever API, a simpler but effective API for RSS clients. 
 
 All Fever API endpoints are accessed via:
 
-```
+```text
 https://<freshrss-instance>/api/fever.php
 ```
 
 Example:
-```
+
+```text
 https://freshrss.example.net/api/fever.php
 ```
 
@@ -24,7 +25,8 @@ https://freshrss.example.net/api/fever.php
 The Fever API uses MD5 hash-based authentication.
 
 **Generate API Key:**
-```
+
+```text
 MD5("username:api_password")
 ```
 
@@ -61,6 +63,7 @@ curl -s -F "api_key=" 'https://freshrss.example.net/api/fever.php?api'
 ```
 
 **Response (Unauthenticated):**
+
 ```json
 {
   "api_version": 3,
@@ -76,15 +79,17 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 ```
 
 **Response (Authenticated):**
+
 ```json
 {
   "api_version": 3,
   "auth": 1,
   "last_refreshed_on_time": "1520013061"
 }
-```
+```text
 
 **Fields:**
+
 - `api_version`: API version number
 - `auth`: Authentication status (0 = failed, 1 = success)
 - `last_refreshed_on_time`: Unix timestamp of last feed refresh
@@ -96,28 +101,32 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 #### Get API Status
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?api
-```
+```text
 
 **Form Parameters:**
-```
+
+```text
 api_key=<api_key>
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 ```
 
 **Response:**
+
 ```json
 {
   "api_version": 3,
   "auth": 1,
   "last_refreshed_on_time": "1520013061"
 }
-```
+```text
 
 ### Feeds and Groups
 
@@ -126,16 +135,19 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 Returns all feeds subscribed by the user.
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?feeds
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?feeds'
 ```
 
 **Response:**
+
 ```json
 {
   "feeds": [
@@ -165,9 +177,10 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?feeds'
     }
   ]
 }
-```
+```text
 
 **Feed Fields:**
+
 - `id`: Feed ID (numeric)
 - `favicon_id`: Favicon identifier for custom icon
 - `title`: Feed title
@@ -177,6 +190,7 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?feeds'
 - `last_updated_on_time`: Unix timestamp
 
 **Feeds Groups:**
+
 - `feed_ids`: Comma-separated list of feed IDs
 - `group_id`: Group/category ID
 
@@ -185,16 +199,19 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?feeds'
 Returns all feed groups/categories.
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?groups
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?groups'
 ```
 
 **Response:**
+
 ```json
 {
   "groups": [
@@ -210,9 +227,10 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?groups
     }
   ]
 }
-```
+```text
 
 **Group Fields:**
+
 - `id`: Group ID
 - `title`: Group/category name
 - `parent_id`: Parent group ID (0 for root)
@@ -224,28 +242,33 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?groups
 Returns IDs of all unread items.
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?unread_item_ids
 ```
 
 **Parameters:**
+
 - `since_id=<timestamp>`: Items newer than timestamp
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?unread_item_ids'
 ```
 
 **Response:**
+
 ```json
 {
   "unread_item_ids": "1,2,3,5,8,13,21,34",
   "max": 1234567890
 }
-```
+```text
 
 **Fields:**
+
 - `unread_item_ids`: Comma-separated list of unread item IDs
 - `max`: Unix timestamp (used for next sync)
 
@@ -256,26 +279,30 @@ curl -s -F "api_key=$api_key" \
 Returns IDs of all starred/saved items.
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?saved_item_ids
 ```
 
 **Parameters:**
+
 - `since_id=<timestamp>`: Items starred after timestamp
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?saved_item_ids'
 ```
 
 **Response:**
+
 ```json
 {
   "saved_item_ids": "100,150,200",
   "max": 1234567890
 }
-```
+```text
 
 ### Items (Articles)
 
@@ -284,34 +311,40 @@ curl -s -F "api_key=$api_key" \
 Returns feed items/articles.
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?items
 ```
 
 **Parameters:**
+
 - `since_id=<timestamp>`: Items modified after timestamp
 - `max_id=<item-id>`: Get items before this ID
 - `with_ids=<id-list>`: Get specific items (comma-separated IDs)
 
 **Example - Get Recent Items:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?items'
 ```
 
 **Example - Get Items Since Timestamp:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?items&since_id=1234567890'
 ```
 
 **Example - Get Specific Items:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?items&with_ids=1,2,3,5,8'
 ```
 
 **Response:**
+
 ```json
 {
   "items": [
@@ -341,9 +374,10 @@ curl -s -F "api_key=$api_key" \
   "total_items": 1,
   "max": 1234567890
 }
-```
+```text
 
 **Item Fields:**
+
 - `id`: Item ID
 - `feed_id`: Feed ID
 - `title`: Article title
@@ -358,120 +392,138 @@ curl -s -F "api_key=$api_key" \
 #### Mark Item as Read
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=item&as=read
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=123" \
   'https://freshrss.example.net/api/fever.php?mark=item&as=read'
-```
+```text
 
 #### Mark Item as Unread
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=item&as=unread
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=123" \
   'https://freshrss.example.net/api/fever.php?mark=item&as=unread'
-```
+```text
 
 #### Mark Item as Saved/Starred
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=item&as=saved
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=123" \
   'https://freshrss.example.net/api/fever.php?mark=item&as=saved'
-```
+```text
 
 #### Mark Item as Unsaved
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=item&as=unsaved
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=123" \
   'https://freshrss.example.net/api/fever.php?mark=item&as=unsaved'
-```
+```text
 
 ### Feed Operations
 
 #### Mark Feed as Read
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=feed&as=read
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<feed-id>
 before=<timestamp>   [optional - mark items before this timestamp]
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=1" \
   'https://freshrss.example.net/api/fever.php?mark=feed&as=read'
-```
+```text
 
 #### Mark Group as Read
 
 **Endpoint:**
-```
+
+```text
 POST /api/fever.php?mark=group&as=read
-```
+```text
 
 **Parameters:**
-```
+
+```text
 id=<group-id>
 before=<timestamp>   [optional]
 ```
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   -F "id=1" \
   'https://freshrss.example.net/api/fever.php?mark=group&as=read'
-```
+```text
 
 ### Favicons
 
@@ -480,20 +532,24 @@ curl -s -F "api_key=$api_key" \
 Returns favicon for a feed.
 
 **Endpoint:**
-```
+
+```text
 GET /api/fever.php?favicons
 ```
 
 **Parameters:**
+
 - `id=<feed-id>`: Feed ID
 
 **Example:**
+
 ```bash
 curl -s -F "api_key=$api_key" \
   'https://freshrss.example.net/api/fever.php?favicons&id=1'
 ```
 
 **Response:**
+
 ```json
 {
   "favicons": [
@@ -555,17 +611,20 @@ The following features are implemented in FreshRSS:
 ### Efficient Synchronization
 
 1. **Initial Sync:**
+
    - Get all feeds with `?feeds`
    - Get all groups with `?groups`
    - Get all unread item IDs with `?unread_item_ids`
    - Fetch items with `?items`
 
 2. **Incremental Sync:**
+
    - Use `max` timestamp from previous response
    - Query with `?items&since_id=<max-timestamp>`
    - Update local unread counts
 
 3. **Fetch Items:**
+
    - Use `?items&with_ids=<id-list>` to get specific items
    - Store `max` value for next sync
 

@@ -1,4 +1,4 @@
-# Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/06_LinuxInstall.md
+<!-- Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/06_LinuxInstall.md -->
 
 # Installation on Debian/Ubuntu
 

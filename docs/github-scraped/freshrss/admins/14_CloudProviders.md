@@ -1,4 +1,4 @@
-# Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/14_CloudProviders.md
+<!-- Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/14_CloudProviders.md -->
 
 # Installation on Cloud Providers
 

@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/04_Updating.md
 
-# Backing Up and Updating FreshRSS
+## Backing Up and Updating FreshRSS
 
 The following is general procedure; [specific commands for Linux may be found here](07_LinuxUpdate.md).
 

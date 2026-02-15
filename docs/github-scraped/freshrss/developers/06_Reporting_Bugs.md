@@ -30,8 +30,7 @@ Not everyone likes or uses GitHub for a variety of legitimate reasons. That is w
 
 Here are some tips to help you present your bug report or suggestion:
 
-
-* **Pay attention to spelling**. Even if it’s not always easy, try your best!
+* **Pay attention to spelling**. Even if it's not always easy, try your best!
 * **Give an explicit title to your request**, even if it’s a bit long. This not only helps us understand your request, but also to find your ticket later.
 * **One request = one ticket.** You may have lots of ideas while being afraid to spam the bug manager: it doesn’t matter. It’s better to have a few too many tickets than too many requests in one. We’ll close and consolidate requests when possible.
 * If you report a bug, think about **providing us with the FreshRSS logs** (accessible in the FreshRSS `data/log/` folder) and the **PHP logs** (the location may vary by distribution, but consider searching in `/var/log/httpd` or `/var/log/apache`).
@@ -77,4 +76,5 @@ To do that, you can launch the following command:
 ```sh
 wget <feed url> -O output.rss.txt
 ```
+
 Then you can drag-and-drop the generated file into the issue.

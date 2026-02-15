@@ -1,7 +1,9 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/index.md
 
 ---
+
 lang: en
+
 ---
 
 ![FreshRSS logo](img/logo_freshrss.png)

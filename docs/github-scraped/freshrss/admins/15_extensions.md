@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/15_extensions.md
 
-# Extensions
+## Extensions
 
 Not every feature is relevant for all users, but some special features are relevant to the right person. That is why FreshRSS is extendable.
 

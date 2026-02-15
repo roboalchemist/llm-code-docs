@@ -1,4 +1,4 @@
-# Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/09_AccessControl.md
+<!-- Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/09_AccessControl.md -->
 
 # Access Control
 
@@ -29,8 +29,7 @@ While FreshRSS does not treat these requests as unsafe by default — since many
 
 These steps are not necessary for trusted, single-user deployments, but are strongly advised in shared environments.
 
-> _Note: For Docker-based deployments, `localhost` refers to the container’s internal network._
-
+> _Note: For Docker-based deployments, `localhost` refers to the container's internal network._
 
 ## Form Authentication
 

@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/DatabaseConfig.md
 
-# Database configuration
+## Database configuration
 
 FreshRSS supports the databases SQLite (built-in), PostgreSQL, MariaDB / MySQL.
 

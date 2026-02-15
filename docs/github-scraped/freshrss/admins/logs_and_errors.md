@@ -1,4 +1,4 @@
-# Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/logs_and_errors.md
+<!-- Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/logs_and_errors.md -->
 
 # Logging and Error Messages
 
@@ -11,6 +11,7 @@ The log files are displayed in the config menu.
 ### Log as Text Files
 
 FreshRSS logs are located in:
+
 * user related: `./FreshRSS/data/users/*/log.txt`
 * general/system related: `./FreshRSS/data/users/_/log.txt`
 

@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/08_FeedUpdates.md
 
-# Setting Up Automatic Feed Updating
+## Setting Up Automatic Feed Updating
 
 FreshRSS is updated by the `./app/actualize_script.php` script. Knowing this, we can periodically trigger it to ensure up-to-date feeds.
 
@@ -35,6 +35,7 @@ It’s advisable that you run the Cron job as your Web server user (often `www-d
 To run the updater script every hour, and 10 minutes past the hour:
 
 Edit `/etc/crontab` and append the following line:
+
 ```text
 10 * * * * www-data php -f /usr/share/FreshRSS/app/actualize_script.php > /tmp/FreshRSS.log 2>&1
 ```

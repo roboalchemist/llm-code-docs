@@ -20,7 +20,7 @@ FreshRSS provides two different APIs for programmatic access: the **Google Reade
 
 ## Choosing Your API
 
-### Use Google Reader API if:
+### Use Google Reader API if
 
 - You're building a **feature-complete RSS client**
 - You need to **add/remove feeds programmatically**
@@ -29,7 +29,7 @@ FreshRSS provides two different APIs for programmatic access: the **Google Reade
 - You're targeting **desktop applications**
 - Your client needs **advanced categorization**
 
-### Use Fever API if:
+### Use Fever API if
 
 - You're building a **mobile RSS client**
 - You want a **simple, lightweight** integration
@@ -45,11 +45,13 @@ FreshRSS provides two different APIs for programmatic access: the **Google Reade
 Before using either API, you must:
 
 1. **Enable API Access** in FreshRSS:
+
    - Log in to FreshRSS web interface
    - Go to Settings > API access
    - Enable API and set an API password
 
 2. **Get Your API Address:**
+
    - Google Reader: `https://<your-instance>/api/greader.php`
    - Fever: `https://<your-instance>/api/fever.php`
 
@@ -63,7 +65,8 @@ curl -X POST 'https://freshrss.example.net/api/greader.php/accounts/ClientLogin'
 ```
 
 **Response:**
-```
+
+```text
 SID=alice/8e6845e089457af25303abc6f53356eb60bdb5f8
 Auth=alice/8e6845e089457af25303abc6f53356eb60bdb5f8
 ```
@@ -127,7 +130,7 @@ curl -s -F "api_key=$api_key" -F "id=123" \
 
 ## Common Workflows
 
-### Google Reader API: Full Sync
+### Google Reader API Full Sync
 
 ```bash
 #!/bin/bash
@@ -166,7 +169,7 @@ curl -s -H "Authorization: GoogleLogin auth=$AUTH" \
   "$BASE_URL/reader/api/0/stream/contents/reading-list?output=json&n=20" | jq .
 ```
 
-### Fever API: Sync and Mark as Read
+### Fever API Sync and Mark as Read
 
 ```bash
 #!/bin/bash
@@ -250,12 +253,14 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 ### Using Postman
 
 **For Google Reader API:**
+
 1. Create POST request to `/accounts/ClientLogin`
 2. Body: form-data with `Email` and `Passwd`
 3. Extract `Auth` token from response
 4. Use Authorization header: `GoogleLogin auth=<token>`
 
 **For Fever API:**
+
 1. Create POST request to `?api`
 2. Body: form-data with `api_key` field
 3. Send and verify `"auth": 1` in response
@@ -303,21 +308,25 @@ print(response.json())
 ### Best Practices
 
 1. **Sync Strategy:**
+
    - Use incremental sync with timestamps
    - Don't fetch all data on every sync
    - Implement exponential backoff for retries
 
 2. **API Key Management:**
+
    - Never hardcode API keys in applications
    - Use encrypted storage for sensitive data
    - Regenerate keys if compromised
 
 3. **Error Handling:**
+
    - Implement retry logic
    - Handle authentication failures gracefully
    - Log API errors for debugging
 
 4. **Performance:**
+
    - Batch operations when possible
    - Use appropriate page sizes
    - Cache metadata locally
@@ -327,11 +336,13 @@ print(response.json())
 ### Authentication Fails
 
 **Google Reader API:**
+
 - Verify Email and Passwd parameters
 - Check API password is set in FreshRSS settings
 - Ensure API access is enabled
 
 **Fever API:**
+
 - Verify MD5 hash calculation: `echo -n "user:pass" | md5sum`
 - Check API key is correctly passed
 - Ensure API access is enabled

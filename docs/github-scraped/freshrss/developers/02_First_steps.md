@@ -196,7 +196,7 @@ There should be a space before and after every operator.
 
 ```php
 if ($a == 10) {
-	// do something
+  // do something
 }
 
 echo $a ? 1 : 0;
@@ -208,11 +208,11 @@ There should be no spaces in between brackets. There should be no spaces before 
 
 ```php
 if ($a == 10) {
-	// do something
+  // do something
 }
 
 if ((int)$a == 10) {
-	// do something
+  // do something
 }
 ```
 
@@ -223,16 +223,16 @@ It happens most of the time in JavaScript files. When there are chained function
 ```javascript
 // First instruction
 shortcut.add(shortcuts.mark_read, function () {
-		//...
-	}, {
-		'disable_in_input': true
-	});
+    //...
+  }, {
+    'disable_in_input': true
+  });
 // Second instruction
 shortcut.add("shift+" + shortcuts.mark_read, function () {
-		//...
-	}, {
-		'disable_in_input': true
-	});
+    //...
+  }, {
+    'disable_in_input': true
+  });
 ```
 
 ## Line length
@@ -244,7 +244,7 @@ With functions, parameters can be declared on multiple lines.
 ```php
 function my_function($param_1, $param_2,
                      $param_3, $param_4) {
-	// do something
+  // do something
 }
 ```
 
@@ -259,7 +259,7 @@ Functions and variables must follow the "snake case" naming convention.
 ```php
 // a function
 function function_name() {
-	// do something
+  // do something
 }
 // a variable
 $variable_name;
@@ -271,7 +271,7 @@ Methods must follow the "lower camel case" naming convention.
 
 ```php
 private function methodName() {
-	// do something
+  // do something
 }
 ```
 
@@ -300,7 +300,7 @@ Operators must be at the end of the line if a condition is split over more than 
 ```php
 if ($a == 10 ||
     $a == 20) {
-	// do something
+  // do something
 }
 ```
 
@@ -314,8 +314,8 @@ If an array declaration runs on more than one line, each element must be followe
 
 ```php
 $variable = [
-	"value 1",
-	"value 2",
-	"value 3",
+  "value 1",
+  "value 2",
+  "value 3",
 ];
 ```

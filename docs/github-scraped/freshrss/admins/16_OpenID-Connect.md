@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/16_OpenID-Connect.md
 
-# OpenID Connect (OIDC)
+## OpenID Connect (OIDC)
 
 See: [What is OpenID Connect?](https://openid.net/connect/).
 

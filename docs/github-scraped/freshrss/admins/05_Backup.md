@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/05_Backup.md
 
-# Backup
+## Backup
 
 FreshRSS global settings are in `./data/config.php` and users' settings are in `./data/users/*/config.php`. You can also back up the whole `./data/` directory but exclude the things you do not want.
 
@@ -85,6 +85,7 @@ cd /usr/share/FreshRSS/
 ```
 
 Change your database setup:
+
 - if you like to change database type (e.g. from MySQL to PostgreSQL), edit `data/config.php` accordingly.
 - if you upgrade to a major PostgreSQL version, after a PostgreSQL backup, you may delete the old instance and start a new instance (remove the PostgreSQL volume if using Docker).
 

@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/02_Prerequisites.md
 
-# Server Requirements
+## Server Requirements
 
 FreshRSS is a web application. This means you’ll need a web server to run it. FreshRSS requirements are really low, so it should run on most shared host servers, or any old computer you happen to have on hand.
 

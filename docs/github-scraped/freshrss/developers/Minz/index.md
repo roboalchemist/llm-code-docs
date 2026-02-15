@@ -27,13 +27,13 @@ Code example:
 <?php
 
 class FreshRSS_hello_Controller extends FreshRSS_ActionController {
-	public function indexAction() {
-		$this->view->a_variable = 'FooBar';
-	}
+  public function indexAction() {
+    $this->view->a_variable = 'FooBar';
+  }
 
-	public function worldAction() {
-		$this->view->a_variable = 'Hello World!';
-	}
+  public function worldAction() {
+    $this->view->a_variable = 'Hello World!';
+  }
 }
 
 ?>
@@ -54,7 +54,7 @@ As explained above, the views consist of HTML mixed with PHP. Code example:
 
 ```html
 <p>
-	This is a parameter passed from the controller: <?= $this->a_variable ?>
+  This is a parameter passed from the controller: <?= $this->a_variable ?>
 </p>
 ```
 
@@ -99,7 +99,7 @@ To take full advantage of the Minz routing system, it is strongly discouraged to
 
 ```html
 <p>
-	Go to page <a href="http://example.com?c=hello&amp;a=world">Hello world</a>!
+  Go to page <a href="http://example.com?c=hello&amp;a=world">Hello world</a>!
 </p>
 ```
 
@@ -111,11 +111,11 @@ So use the `Minz_Url` class and its `display()` method instead. `Minz_Url::displ
 <?php
 
 $url_array = [
-	'c' => 'hello',
-	'a' => 'world',
-	'params' => [
-		'foo' => 'bar',
-	],
+  'c' => 'hello',
+  'a' => 'world',
+  'params' => [
+    'foo' => 'bar',
+  ],
 ];
 
 // Show something like .?c=hello&amp;a=world&amp;foo=bar
@@ -147,8 +147,8 @@ Code example:
 <?php
 
 $url_array = [
-	'c' => 'hello',
-	'a' => 'world',
+  'c' => 'hello',
+  'a' => 'world',
 ];
 
 // Tells Minz to redirect the user to the hello / world page.
@@ -169,8 +169,8 @@ It is very common to want display a message to the user while performing a redir
 <?php
 
 $url_array = [
-	'c' => 'hello',
-	'a' => 'world',
+  'c' => 'hello',
+  'a' => 'world',
 ];
 $feedback_good = 'All went well!';
 $feedback_bad = 'Oops, something went wrong.';

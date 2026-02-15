@@ -8,12 +8,13 @@ FreshRSS implements a Google Reader compatible API that allows mobile clients an
 
 All Google Reader API endpoints are accessed via:
 
-```
+```text
 https://<freshrss-instance>/api/greader.php/
 ```
 
 Example:
-```
+
+```text
 https://freshrss.example.net/api/greader.php/
 ```
 
@@ -24,29 +25,34 @@ https://freshrss.example.net/api/greader.php/
 Obtain authentication credentials using the ClientLogin endpoint.
 
 **Endpoint:**
-```
+
+```text
 POST /accounts/ClientLogin
 ```
 
 **Parameters:**
-```
+
+```text
 Email=<username>
 Passwd=<api-password>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST 'https://freshrss.example.net/api/greader.php/accounts/ClientLogin' \
   -d 'Email=alice&Passwd=Abcdef123456'
-```
+```text
 
 **Response:**
-```
+
+```text
 SID=alice/8e6845e089457af25303abc6f53356eb60bdb5f8
 Auth=alice/8e6845e089457af25303abc6f53356eb60bdb5f8
-```
+```text
 
 **Fields:**
+
 - `SID`: Session ID (Session Identifier)
 - `Auth`: Authentication token used in subsequent requests
 
@@ -54,15 +60,16 @@ Auth=alice/8e6845e089457af25303abc6f53356eb60bdb5f8
 
 Use the `Auth` token in subsequent requests with the Authorization header:
 
-```
+```text
 Authorization: GoogleLogin auth=<auth-token>
 ```
 
 **Example:**
+
 ```bash
 curl -H "Authorization: GoogleLogin auth=alice/8e6845e089457af25303abc6f53356eb60bdb5f8" \
   'https://freshrss.example.net/api/greader.php/reader/api/0/subscription/list?output=json'
-```
+```text
 
 ## Core API Endpoints
 
@@ -71,14 +78,17 @@ curl -H "Authorization: GoogleLogin auth=alice/8e6845e089457af25303abc6f53356eb6
 #### List All Subscriptions
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/subscription/list
 ```
 
 **Parameters:**
+
 - `output=json` (or xml): Response format
 
 **Response (JSON):**
+
 ```json
 {
   "subscriptions": [
@@ -98,9 +108,10 @@ GET /reader/api/0/subscription/list
     }
   ]
 }
-```
+```text
 
 **Fields:**
+
 - `id`: Feed identifier (format: `feed/<feed-url>`)
 - `title`: Feed title
 - `categories`: Array of labels/categories assigned to this feed
@@ -112,55 +123,63 @@ GET /reader/api/0/subscription/list
 #### Add Subscription
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/subscription/edit
-```
+```text
 
 **Parameters:**
-```
+
+```text
 ac=subscribe
 s=feed/<feed-url>
 t=<optional-title>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'ac=subscribe&s=feed/http://example.com/feed.xml&t=Example%20Blog' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/subscription/edit'
-```
+```text
 
 #### Unsubscribe
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/subscription/edit
-```
+```text
 
 **Parameters:**
-```
+
+```text
 ac=unsubscribe
 s=feed/<feed-id>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'ac=unsubscribe&s=feed/52' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/subscription/edit'
-```
+```text
 
 #### Update Subscription Metadata
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/subscription/edit
-```
+```text
 
 **Parameters:**
-```
+
+```text
 ac=edit
 s=feed/<feed-id>
 t=<new-title>
@@ -168,12 +187,13 @@ r=<new-category-id>   [optional]
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'ac=edit&s=feed/52&t=New%20Title&r=user/alice/label/News' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/subscription/edit'
-```
+```text
 
 ### Stream Contents (Articles)
 
@@ -182,29 +202,34 @@ curl -X POST \
 Retrieve articles from a specific stream (feed, category, or reading list).
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/stream/contents/<stream-id>
 ```
 
 **Stream IDs:**
+
 - `reading-list`: All articles
 - `starred`: Starred/saved articles
 - `feed/<feed-id>`: Specific feed
 - `user/<user-id>/label/<label-name>`: Category/label
 
 **Parameters:**
+
 - `output=json` (or xml): Response format
 - `n=<number>`: Max items to return (default: 20)
 - `xt=<exclude-tag>`: Exclude items with tag
 - `c=<continuation-token>`: For pagination
 
 **Example:**
+
 ```bash
 curl -s -H "Authorization: GoogleLogin auth=<auth-token>" \
   'https://freshrss.example.net/api/greader.php/reader/api/0/stream/contents/reading-list?output=json&n=20'
 ```
 
 **Response (JSON):**
+
 ```json
 {
   "direction": "ltr",
@@ -256,9 +281,10 @@ curl -s -H "Authorization: GoogleLogin auth=<auth-token>" \
   ],
   "continuation": "pagination-token-here"
 }
-```
+```text
 
 **Item Fields:**
+
 - `id`: Unique item identifier
 - `categories`: Array of tags/states (e.g., read, starred)
 - `title`: Article title
@@ -274,11 +300,13 @@ curl -s -H "Authorization: GoogleLogin auth=<auth-token>" \
 #### Get Unread Count
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/unread-count?output=json
 ```
 
 **Response (JSON):**
+
 ```json
 {
   "max": 1234567890,
@@ -295,18 +323,20 @@ GET /reader/api/0/unread-count?output=json
     }
   ]
 }
-```
+```text
 
 ### Tags and Labels
 
 #### List All Tags
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/tag/list?output=json
 ```
 
 **Response (JSON):**
+
 ```json
 {
   "tags": [
@@ -320,65 +350,74 @@ GET /reader/api/0/tag/list?output=json
     }
   ]
 }
-```
+```text
 
 #### Add Tag to Item
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/edit-tag
-```
+```text
 
 **Parameters:**
-```
+
+```text
 a=<tag-id>     [Add tag]
 r=<tag-id>     [Remove tag]
 i=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'a=user/alice/label/Important&i=tag:google.com,2005:entry/item-123' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/edit-tag'
-```
+```text
 
 #### Remove Tag from Item
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/edit-tag
-```
+```text
 
 **Parameters:**
-```
+
+```text
 r=<tag-id>
 i=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'r=user/alice/label/Technology&i=tag:google.com,2005:entry/item-123' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/edit-tag'
-```
+```text
 
 ### Item Actions
 
 #### Mark Item as Read/Unread
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/edit-tag
 ```
 
 **Read Tag IDs:**
+
 - Read: `user/<user-id>/state/com.google/read`
 - Unread: `user/<user-id>/state/com.google/kept-unread`
 
 **Example - Mark as Read:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
@@ -387,54 +426,61 @@ curl -X POST \
 ```
 
 **Example - Mark as Unread:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'a=user/alice/state/com.google/kept-unread&i=tag:google.com,2005:entry/item-123' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/edit-tag'
-```
+```text
 
 #### Star/Save Items
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/edit-tag
-```
+```text
 
 **Parameters:**
-```
+
+```text
 a=user/alice/state/com.google/starred
 i=<item-id>
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 'a=user/alice/state/com.google/starred&i=tag:google.com,2005:entry/item-123' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/edit-tag'
-```
+```text
 
 #### Mark All Items in Feed as Read
 
 **Endpoint:**
-```
+
+```text
 POST /reader/api/0/mark-all-as-read
-```
+```text
 
 **Parameters:**
-```
+
+```text
 s=<stream-id>
 ts=<timestamp>   [optional - mark items before this timestamp]
 ```
 
 **Example:**
+
 ```bash
 curl -X POST \
   -H "Authorization: GoogleLogin auth=<auth-token>" \
   -d 's=feed/http://example.com/feed.xml' \
   'https://freshrss.example.net/api/greader.php/reader/api/0/mark-all-as-read'
-```
+```text
 
 ### Token Generation
 
@@ -443,30 +489,35 @@ curl -X POST \
 Required for state-changing operations in some contexts.
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/token
-```
+```text
 
 **Response:**
-```
+
+```text
 8e6845e089457af25303abc6f53356eb60bdb5f8ZZZZZZZZZZZZZZZZZ
-```
+```text
 
 ### Search
 
 #### Search Items
 
 **Endpoint:**
-```
+
+```text
 GET /reader/api/0/search/items?q=<query>&output=json
 ```
 
 **Parameters:**
+
 - `q=<search-query>`: Search terms
 - `output=json`: Response format
 - `n=<number>`: Results per page
 
 **Example:**
+
 ```bash
 curl -s -H "Authorization: GoogleLogin auth=<auth-token>" \
   'https://freshrss.example.net/api/greader.php/reader/api/0/search/items?q=technology&output=json'

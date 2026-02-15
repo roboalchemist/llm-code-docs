@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/18_Pocket-ID.md
 
-# Setting up Pocket ID for FreshRSS
+## Setting up Pocket ID for FreshRSS
 
 **[Pocket ID](https://github.com/stonith404/pocket-id)** is a simple OIDC provider that allows users to authenticate with their passkeys to your services.
 (See [FreshRSS’ OpenID Connect documentation](16_OpenID-Connect.md)).

@@ -29,11 +29,11 @@ To replace the default icons, add an `icons` folder to your theme’s folder. Us
 
 ```json
 {
-	"name": "Theme name",
-	"author": "Theme author",
-	"description": "Theme description",
-	"version": 0.1,
-	"files": ["_frss.css", "file1.css", "file2.css"]
+  "name": "Theme name",
+  "author": "Theme author",
+  "description": "Theme description",
+  "version": 0.1,
+  "files": ["_frss.css", "file1.css", "file2.css"]
 }
 ```
 

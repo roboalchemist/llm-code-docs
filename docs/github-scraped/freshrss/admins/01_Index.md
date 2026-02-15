@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/01_Index.md
 
-# FreshRSS Administration
+## FreshRSS Administration
 
 Learn how to install, update, and backup FreshRSS, as well as how to use the command line tools.
 
@@ -41,4 +41,3 @@ Learn how to install, update, and backup FreshRSS, as well as how to use the com
 * [Installation on Debian 9/Ubuntu 16.04](06_LinuxInstall.md)
 * [Installation on Cloud Providers](14_CloudProviders.md)
 * [Updating on Debian 9/Ubuntu 16.04](07_LinuxUpdate.md)
-

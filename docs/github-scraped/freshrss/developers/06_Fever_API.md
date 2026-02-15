@@ -5,7 +5,6 @@
 See [Mobile access](../users/06_Mobile_access.md) for general aspects of API access.
 Additionally [page about our Google Reader compatible API](06_GoogleReader_API.md) for another possibility.
 
-
 ## RSS clients
 
 There are many RSS clients that support the Fever API, but they seem to understand the Fever API a bit differently.
@@ -56,12 +55,14 @@ The following features are not supported:
 If this API does not work as expected in your RSS reader, you can test it manually with a tool like [Postman](https://www.getpostman.com/).
 
 Configure a POST request to the URL <https://freshrss.example.net/api/fever.php?api> which should give you the result:
+
 ```json
 {
-	"api_version": 3,
-	"auth": 0
+  "api_version": 3,
+  "auth": 0
 }
 ```
+
 Great, the base setup seems to work!
 
 Now lets try an authenticated call. Fever uses an `api_key`, which is the MD5 hash of `"$username:$apiPassword"`.
@@ -78,14 +79,16 @@ curl -s -F "api_key=$api_key" 'https://freshrss.example.net/api/fever.php?api'
 ```
 
 This should give:
+
 ```json
 {
-	"api_version": 3,
-	"auth": 1,
-	"last_refreshed_on_time": "1520013061"
+  "api_version": 3,
+  "auth": 1,
+  "last_refreshed_on_time": "1520013061"
 }
 ```
-Perfect, you’re now authenticated and you can start testing the more advanced features. To do so, change the URL and append the possible API actions to your request parameters. Please refer to the [original Fever documentation](https://feedafever.com/api) for more information.
+
+Perfect, you're now authenticated and you can start testing the more advanced features. To do so, change the URL and append the possible API actions to your request parameters. Please refer to the [original Fever documentation](https://feedafever.com/api) for more information.
 
 Some basic calls are:
 

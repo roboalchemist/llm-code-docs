@@ -1,6 +1,6 @@
 # Source: https://github.com/FreshRSS/FreshRSS/blob/edge/docs/en/admins/11_Themes.md
 
-# Theming
+## Theming
 
 **Note: Currently personal themes are not officially supported and may be overwritten when updating. Be sure to keep backups!**
 
