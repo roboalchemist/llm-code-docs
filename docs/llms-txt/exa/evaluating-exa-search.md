@@ -50,14 +50,14 @@ exa.search_and_contents(
 #     highlights={"max_characters": 2000}
 # )
 
-# Option 3: Use context string for RAG (single string with total max characters)
-# Note: `Deep` search may require context=True to return results
+# Option 3 (Deprecated): Use context string for RAG
+# Note: The `context` parameter is deprecated. Use `text` or `highlights` instead.
 # exa.search_and_contents(
 #     query,
 #     type="deep",
-#     additional_queries=["variation 1", "variation 2"],  # Optional query variations
+#     additional_queries=["variation 1", "variation 2"],
 #     num_results=10,
-#     context={"max_characters": 20000}
+#     context={"max_characters": 20000}  # Deprecated
 # )
 
 # Option 4: Use full text (may result in very long content)
@@ -69,7 +69,7 @@ exa.search_and_contents(
 # )
 ```
 
-Setting a consistent `max_characters` ensures fair comparisons by standardizing content length across all queries. The `context` parameter returns a single RAG-ready string, while `text` returns individual content for each result. **Note: `Deep` search may require `context=True` to return detailed summaries.** Only add additional parameters (date filters, domain restrictions, etc.) when they're essential to your specific evaluation objective.
+Setting a consistent `max_characters` ensures fair comparisons by standardizing content length across all queries. Only add additional parameters (date filters, domain restrictions, etc.) when they're essential to your specific evaluation objective.
 
 ### Compare Within Latency Classes
 
@@ -155,7 +155,7 @@ result = exa.search_and_contents(
 
 * Median latency: \~5000ms
 * Automatic query expansion or custom query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript)
-* Rich contextual summaries for each result (requires `context=True`)
+* Rich contextual summaries for each result
 * Parallel search across multiple query formulations
 
 <Note>
@@ -179,8 +179,7 @@ result = exa.search_and_contents(
         "post-quantum cryptography research"
     ],
     num_results=10,
-    text=True,
-    context=True  # Required for `Deep` search summaries
+    text=True
 )
 ```
 
@@ -313,14 +312,14 @@ Aggregate metrics:
 
 ### Configuration Parameters
 
-| Parameter                                  | Purpose                      | Evaluation Recommendations                                                                                                 |
-| ------------------------------------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                     | Search method                | Match to benchmark type (fast/auto/deep)                                                                                   |
-| `num_results`                              | Number of results            | Fix at 10 for consistency across comparisons                                                                               |
-| `text`                                     | Retrieve full content        | Set to `true` for RAG-style evaluation                                                                                     |
-| `context`                                  | Get AI-generated summaries   | Set to `true` for Deep search                                                                                              |
-| `livecrawl`                                | Real-time web fetching       | Default `"fallback"` is recommended; use `"preferred"` for freshness tests                                                 |
-| `additional_queries` / `additionalQueries` | Query variations (Deep only) | Provide 2-3 variations for best Deep search results. Use `additional_queries` in Python, `additionalQueries` in JavaScript |
+| Parameter                                  | Purpose                                | Evaluation Recommendations                                                                                                 |
+| ------------------------------------------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                     | Search method                          | Match to benchmark type (fast/auto/deep)                                                                                   |
+| `num_results`                              | Number of results                      | Fix at 10 for consistency across comparisons                                                                               |
+| `text`                                     | Retrieve full content                  | Set to `true` for RAG-style evaluation                                                                                     |
+| `context`                                  | **Deprecated.** Combined result string | Use `text` or `highlights` instead                                                                                         |
+| `livecrawl`                                | Real-time web fetching                 | Default `"fallback"` is recommended; use `"preferred"` for freshness tests                                                 |
+| `additional_queries` / `additionalQueries` | Query variations (Deep only)           | Provide 2-3 variations for best Deep search results. Use `additional_queries` in Python, `additionalQueries` in JavaScript |
 
 ### Recommended Configuration Templates
 
@@ -417,7 +416,6 @@ For agentic and research evaluations:
       additional_queries=[variation1, variation2],
       num_results=10,
       text=True,
-      context=True,
       livecrawl="fallback"
   )
   ```
@@ -428,7 +426,6 @@ For agentic and research evaluations:
       additionalQueries: [variation1, variation2],
       numResults: 10,
       text: true,
-      context: true,
       livecrawl: "fallback"
   });
   ```
@@ -760,7 +757,7 @@ Example output:
 
 * Use `type="deep"`
 * Provide 2-3 query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript) for best results
-* Enable `context=True` for rich summaries
+* Use `text=True` for rich content retrieval
 * Set `livecrawl="fallback"` for freshness
 
 **For tool calling evaluations**: See the [Evaluating Exa with Tool Calling](#evaluating-exa-with-tool-calling) section below for guidance on setting up agents to autonomously invoke Exa search.

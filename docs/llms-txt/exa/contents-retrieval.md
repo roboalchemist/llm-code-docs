@@ -120,17 +120,13 @@ You can configure highlights in two ways:
    * `query`: The specific query to use for generating highlights (if different from search query)
    * `maxCharacters`: Maximum number of characters to return for highlights
 
-## Context String
+## Context String (Deprecated)
 
-Returns page contents as a single combined string ready for LLM RAG applications. When you set `context=True`, all result contents are joined together into one text block.
+<Warning>
+  The `context` parameter is deprecated and will be removed in a future version. Use `highlights` or `text` instead.
+</Warning>
 
-**Performance Note**: Context strings often perform better than highlights for RAG applications because they provide more complete information from each page.
-
-### How it works:
-
-* If you have 5 results and set a 1000 character limit, each result gets about 200 characters
-* We recommend using 10000+ characters for best results
-* No character limit works best when possible
+Returns page contents as a single combined string. When you set `context=True`, all result contents are joined together into one text block.
 
 ### Configuration:
 

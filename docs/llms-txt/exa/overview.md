@@ -1,42 +1,28 @@
 # Source: https://exa.ai/docs/websets/overview.md
 
-# Source: https://exa.ai/docs/websets/api/websets/overview.md
-
-# Source: https://exa.ai/docs/websets/api/overview.md
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Overview
+# Welcome to Websets
 
-> The Websets API helps you find, verify, and process web data at scale to build your unique collection of web content.
+> Our goal is to help you find anything you want on the web, no matter how complex.
 
-The Websets API helps you create your own unique slice of the web by organizing content in containers (`Webset`). These containers store structured results (`WebsetItem`) which are discovered by search agents (`WebsetSearch`) that find web pages matching your specific criteria. Once these items are added to your Webset, they can be further processed with enrichment agents to extract additional data.
+<br />
 
-Whether you're looking for companies, people, or research papers, each result becomes a structured Item with source content, verification status, and type-specific fields. These Items can be further enriched with enrichments.
+## Get Started
 
-## Key Features
+You can use Websets in two ways:
 
-At its core, the API is:
+1. Through our intuitive Dashboard interface - perfect for quickly finding what you need without any coding
+2. Via our powerful API - ideal for programmatic access and integration into your workflow
 
-* **Asynchronous**: It's an async-first API. Searches (`Webset Search`) can take from seconds to minutes, depending on the complexity.
+<CardGroup cols={2}>
+  <Card title={<div className="card-title">Dashboard</div>} icon="bolt-lightning" href="./dashboard">
+    <div className="text-lg">Use Websets through our Dashboard.</div>
+  </Card>
 
-* **Structured**: Every result (`Webset Item`) includes structured properties, webpage content, and verification against your criteria, with reasoning and references explaining why it matches.
-
-* **Event-Driven**: Events are published and delivered through webhooks to notify when items are found and when enrichments complete, allowing you to process data as it arrives.
-
-## Core Objects
-
-<img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=265cc07c934104d780743b8a5d7bb17e" alt="Core concepts diagram showing relationships between Webset, Search, Item and Enrichment objects" data-og-width="1178" width="1178" data-og-height="324" height="324" data-path="images/websets/api/core.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=280&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=4b97e35beadbc0a94efe7213ee1c5983 280w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=560&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=1af211849acd9d2f782e61b838e40fe6 560w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=840&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=e75ecf072cd81585e14fcce486b19289 840w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=1100&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=341874ad3c08788afe8f972f17134f39 1100w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=1650&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=60373085f9f70ff2dc0e5d319c1fb405 1650w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/api/core.png?w=2500&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5ea7a3540b5358338b1ea676fddc26b4 2500w" />
-
-* **Webset**: Container that organizes your unique collection of web content and its related searches
-* **Search**: An agent that searches and crawls the web to find precise entities matching your criteria, adding them to your Webset as structured WebsetItems
-* **Item**: A structured result with source content, verification status, and type-specific fields (company, person, research paper, etc.)
-* **Enrichment**: An agent that searches the web to enhance existing WebsetItems with additional structured data
-
-## Next Steps
-
-* Follow our [quickstart guide](/websets/api/get-started)
-* Learn more about [how it works](/websets/api/how-it-works)
-* Browse the [API reference](/websets/api/websets/create-a-webset)
+  <Card title={<div className="card-title">API</div>} icon="magnifying-glass" href="./api">
+    <div className="text-lg">Use Websets programatically through our API.</div>
+  </Card>
+</CardGroup>

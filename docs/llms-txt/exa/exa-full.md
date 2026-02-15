@@ -615,6 +615,107 @@ npm install exa-js@latest
 ```
 
 
+# Introducing Exa Instant Search
+Source: https://exa.ai/docs/changelog/instant-search-launch
+
+Exa Instant delivers improved neural search with better quality and sub-200ms latency. Use `type = "instant"` to enable the fastest search experience.
+
+***
+
+**Date: February 5, 2026**
+
+We're excited to announce Exa Instant, an improved neural search with both quality and latency benefits, designed for real-time applications where speed is critical.
+
+<Info>
+  Try Instant Search in our API with `type = "instant"`. [Try Instant Search in the dashboard](https://dashboard.exa.ai/playground/search?type=instant)
+</Info>
+
+## What's New
+
+**Sub-150ms latency**: Exa Instant delivers our fastest search response times, optimized for applications where every millisecond counts.
+
+**Real-time use cases**: Perfect for low-latency products like chat apps and voice AI, coding agents that need fast web lookups, autocomplete, and live suggestions.
+
+**Enhanced neural search**: Exa Instant combines our best neural search technology with optimized infrastructure to deliver state-of-the-art quality at unprecedented speed.
+
+## How to Use Instant Search
+
+Use `type="instant"` in your search requests:
+
+```bash theme={null}
+curl -X POST https://api.exa.ai/search \
+  -H "x-api-key: EXA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What is the capital of France?",
+    "type": "instant",
+    "numResults": 10,
+    "contents": {
+      "highlights": {
+        "maxCharacters": 1000
+      }
+    }
+  }'
+```
+
+### Python SDK
+
+```python theme={null}
+from exa_py import Exa
+
+exa = Exa('YOUR_EXA_API_KEY')
+
+results = exa.search(
+    "What is the capital of France?",
+    type="instant",
+    num_results=10,
+    contents = {
+      "highlights": {
+        "max_characters": 1000
+      }
+    }
+)
+
+print(results)
+```
+
+### TypeScript SDK
+
+```typescript theme={null}
+import Exa from 'exa-js';
+
+const exa = new Exa('YOUR_EXA_API_KEY');
+
+const results = await exa.search(
+    'What is the capital of France?',
+    {
+        type: 'instant',
+        numResults: 10,
+        contents: {
+          highlights: {
+            maxCharacters: 1000
+          }
+        }
+    }
+);
+
+console.log(results);
+```
+
+## Search Type Comparison
+
+| Type      | Latency   | Best For                             |
+| --------- | --------- | ------------------------------------ |
+| `auto`    | \~1s      | Highest quality results (default)    |
+| `instant` | sub-150ms | Real-time applications, autocomplete |
+| `fast`    | \~500ms   | Balance of speed and quality         |
+| `deep`    | \~5s      | Comprehensive research tasks         |
+
+## Need Help?
+
+If you have questions about Instant Search or want to learn more about optimizing for latency, reach out to [hello@exa.ai](mailto:hello@exa.ai).
+
+
 # Added Language Filtering
 Source: https://exa.ai/docs/changelog/language-filtering-default
 
@@ -824,6 +925,10 @@ curl -X POST https://api.exa.ai/search \
 ```
 
 ### What You Get Back
+
+<Warning>
+  The `context` parameter shown in examples below is now deprecated. Use `highlights` or `text` instead.
+</Warning>
 
 Deep search returns a `context` field that gives you detailed context:
 
@@ -4381,6 +4486,74 @@ agentops.end_session('Success')
 ```
 
 
+# Browserbase
+Source: https://exa.ai/docs/integrations/browserbase
+
+
+
+Automate your job applications by combining Exa's company search with Browserbase's browser automation.
+
+## What is Exa?
+
+[Exa](https://exa.ai) is the perfect web search API that finds exactly what you're looking for on the web. Instead of just matching keywords, Exa understands what you mean and returns the most relevant results. Exa is especially good at finding companies that match your criteria.
+
+## What is Browserbase?
+
+[Browserbase](https://www.browserbase.com/) lets you automate browser tasks at scale. Combined with [Stagehand](https://www.browserbase.com/stagehand), you can build AI agents that navigate and interact with any website.
+
+## How It Works
+
+The [Browserbase x Exa template](https://www.browserbase.com/templates/exa-browserbase) automates the entire job search and application process. Here's the 5-step workflow:
+
+<Steps>
+  <Step title="Step 1: Find Your Perfect Companies">
+    **Exa finds companies that match what you're looking for.**
+
+    Search for companies using natural language. For example, "AI startups in SF" or "fintech companies in NYC hiring engineers." Exa returns a list of relevant companies that fit your criteria.
+  </Step>
+
+  <Step title="Step 2: Find the Careers Page">
+    **Exa finds the careers page for each company.**
+
+    Once you have your target companies, Exa searches for their careers pages. You just ask Exa to find the "careers page" for each company URL, and it gives you the right link.
+  </Step>
+
+  <Step title="Step 3: Navigate to Job Postings">
+    **Browserbase goes to the job posting page.**
+
+    Browserbase opens the careers page and navigates to where the actual job listings are. This is important because often the careers page and the job postings page are different. Browserbase handles this navigation automatically.
+  </Step>
+
+  <Step title="Step 4: Pick the Right Job">
+    **Browserbase finds and selects the job that fits you.**
+
+    Browserbase looks at all the available jobs and picks the ones that match your preferences. It can filter by job title, requirements, location, or any other criteria you specify.
+  </Step>
+
+  <Step title="Step 5: Apply to the Job">
+    **Browserbase fills out and submits the application.**
+
+    Browserbase automatically fills in the application form with your information—name, email, resume, cover letter, and any other required fields. Then it submits the application for you.
+  </Step>
+</Steps>
+
+## Why Use Exa and Browserbase Together?
+
+* **Exa** is great at finding the right companies and pages using AI search
+* **Browserbase** is great at automating browser actions like clicking, filling forms, and navigating pages
+
+Together, they create a complete automated workflow for job applications at scale.
+
+## Get Started
+
+Visit the [Browserbase templates library](https://www.browserbase.com/templates/exa-browserbase) to see the full AI Job Application Automation template.
+
+**Open-source code for this project:**
+
+* [TypeScript implementation](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase)
+* [Python implementation](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase)
+
+
 # CrewAI Docs
 Source: https://exa.ai/docs/integrations/crew-ai-docs
 
@@ -4932,7 +5105,108 @@ Learn how to use Exa effectively with these recommended best practices.
 This page is under construction. Check back soon for detailed best practices and tips for using Exa's API effectively.
 
 
-# Company Research Claude Skill
+# Code Search
+Source: https://exa.ai/docs/reference/code-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you find code examples, API docs, and technical snippets.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=get_code_context_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: get-code-context-exa
+description: Code context using Exa. Finds real snippets and docs from GitHub, StackOverflow, and technical docs. Use when searching for code examples, API syntax, library documentation, or debugging help.
+context: fork
+---
+
+# Code Context (Exa)
+
+## Tool Restriction (Critical)
+
+ONLY use `get_code_context_exa`. Do NOT use other Exa tools.
+
+## Token Isolation (Critical)
+
+Never run Exa in main context. Always spawn Task agents:
+- Agent calls `get_code_context_exa`
+- Agent extracts the minimum viable snippet(s) + constraints
+- Agent deduplicates near-identical results (mirrors, forks, repeated StackOverflow answers) before presenting
+- Agent returns copyable snippets + brief explanation
+- Main context stays clean regardless of search volume
+
+## When to Use
+
+Use this tool for ANY programming-related request:
+- API usage and syntax
+- SDK/library examples
+- config and setup patterns
+- framework "how to" questions
+- debugging when you need authoritative snippets
+
+## Inputs (Supported)
+
+`get_code_context_exa` supports:
+- `query` (string, required)
+- `tokensNum` (number, optional; default ~5000; typical range 1000–50000)
+
+## Query Writing Patterns (High Signal)
+
+To reduce irrelevant results and cross-language noise:
+- Always include the **programming language** in the query.
+  - Example: use **"Go generics"** instead of just **"generics"**.
+- When applicable, also include **framework + version** (e.g., "Next.js 14", "React 19", "Python 3.12").
+- Include exact identifiers (function/class names, config keys, error messages) when you have them.
+
+## Dynamic Tuning
+
+Token strategy:
+- Focused snippet needed → tokensNum 1000–3000
+- Most tasks → tokensNum 5000
+- Complex integration → tokensNum 10000–20000
+- Only go larger when necessary (avoid dumping large context)
+
+## Output Format (Recommended)
+
+Return:
+1) Best minimal working snippet(s) (keep it copy/paste friendly)
+2) Notes on version / constraints / gotchas
+3) Sources (URLs if present in returned context)
+
+Before presenting:
+- Deduplicate similar results and keep only the best representative snippet per approach.
+
+## MCP Configuration
+
+```json
+{
+  "servers": {
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp?tools=get_code_context_exa"
+    }
+  }
+}
+```
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
+
+
+# Company Research
 Source: https://exa.ai/docs/reference/company-research-claude-skill
 
 This guide shows you how to set up a Claude skill and Exa MCP that helps you research companies.
@@ -4941,7 +5215,7 @@ This guide shows you how to set up a Claude skill and Exa MCP that helps you res
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
 </Card>
 
-```
+````
 Step 1: Install or update Exa MCP
 
 If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
@@ -4953,9 +5227,7 @@ Step 2: Add this Claude skill
 
 ---
 name: company-research
-description: Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists.
-triggers: company research, competitor analysis, market research, find companies, research company, company intel.
-requires_mcp: exa
+description: Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists. Use when researching companies, doing competitor analysis, market research, or building company lists.
 context: fork
 ---
 
@@ -4963,12 +5235,11 @@ context: fork
 
 ## Tool Restriction (Critical)
 
-ONLY use `web_search_advanced` from Exa. Do NOT use `web_search_exa` or any other Exa tools.
+ONLY use `web_search_advanced_exa`. Do NOT use `web_search_exa` or any other Exa tools.
 
 ## Token Isolation (Critical)
 
 Never run Exa searches in main context. Always spawn Task agents:
-
 - Agent runs Exa search internally
 - Agent processes results using LLM intelligence
 - Agent returns only distilled output (compact JSON or brief markdown)
@@ -4977,7 +5248,6 @@ Never run Exa searches in main context. Always spawn Task agents:
 ## Dynamic Tuning
 
 No hardcoded numResults. Tune to user intent:
-
 - User says "a few" → 10-20
 - User says "comprehensive" → 50-100
 - User specifies number → match it
@@ -4986,64 +5256,98 @@ No hardcoded numResults. Tune to user intent:
 ## Query Variation
 
 Exa returns different results for different phrasings. For coverage:
-
 - Generate 2-3 query variations
 - Run in parallel
 - Merge and deduplicate
 
 ## Categories
 
-Use appropriate Exa category:
+Use appropriate Exa `category` depending on what you need:
+- `company` → homepages, rich metadata (headcount, location, funding, revenue)
+- `news` → press coverage, announcements
+- `tweet` → social presence, public commentary
+- `people` → LinkedIn profiles (public data)
+- No category (`type: "auto"`) → general web results, deep dives, broader context
 
-- company → homepages, gargantuan amount of metadata such as headcount,
-  location, funding, revenue
-- news → press coverage
-- tweet → social presence
-- people → LinkedIn profiles (public data)
+Start with `category: "company"` for discovery, then use other categories or no category with `livecrawl: "fallback"` for deeper research.
+
+### Category-Specific Filter Restrictions
+
+When using `category: "company"`, these parameters cause 400 errors:
+- `includeDomains` / `excludeDomains`
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+
+When searching without a category (or with `news`), domain and date filters work fine.
+
+**Universal restriction:** `includeText` and `excludeText` only support **single-item arrays**. Multi-item arrays cause 400 errors across all categories.
 
 ## LinkedIn
 
-Public LinkedIn via Exa: category "people", no other filters
-Auth-required LinkedIn → use Claude in Chrome browser fallback
+Public LinkedIn via Exa: `category: "people"`, no other filters.
+Auth-required LinkedIn → use Claude in Chrome browser fallback.
 
 ## Browser Fallback
 
 Auto-fallback to Claude in Chrome when:
-
 - Exa returns insufficient results
 - Content is auth-gated
 - Dynamic pages need JavaScript
 
-## Models
+## Examples
 
-- haiku: fast extraction (listing, discovery)
-- opus: synthesis, analysis, browser automation
+### Discovery: find companies in a space
+```
+web_search_advanced_exa {
+  "query": "AI infrastructure startups San Francisco",
+  "category": "company",
+  "numResults": 20,
+  "type": "auto"
+}
+```
+
+### Deep dive: research a specific company
+```
+web_search_advanced_exa {
+  "query": "Anthropic funding rounds valuation 2024",
+  "type": "deep",
+  "livecrawl": "fallback",
+  "numResults": 10,
+  "includeDomains": ["techcrunch.com", "crunchbase.com", "bloomberg.com"]
+}
+```
+
+### News coverage
+```
+web_search_advanced_exa {
+  "query": "Anthropic AI safety",
+  "category": "news",
+  "numResults": 15,
+  "startPublishedDate": "2024-01-01"
+}
+```
+
+### LinkedIn profiles
+```
+web_search_advanced_exa {
+  "query": "VP Engineering AI infrastructure",
+  "category": "people",
+  "numResults": 20
+}
+```
+
+## Output Format
+
+Return:
+1) Results (structured list; one company per row)
+2) Sources (URLs; 1-line relevance each)
+3) Notes (uncertainty/conflicts)
 
 
 Step 3: Ask User to Restart Claude Code
 
 You should ask the user to restart Claude Code to have the config changes take effect.
-```
-
-## What This Skill Does
-
-Once you set up this skill, you can ask Claude to:
-
-* Research any company and get detailed information
-* Find competitors in a specific market
-* Get recent news about companies or look up LinkedIn profiles of company employees
-
-The skill is smart about how it searches - it will ask you how many results you want if you don't specify, and it uses different search strategies to get the best information.
-
-## How to Use It
-
-After setting up the skill, you can trigger it by saying things like:
-
-* "Do market research on \[industry]"
-* "Find competitors to \[company]"
-* "Get company intel on \[company]"
-
-The skill will automatically use Exa's powerful search tools to find and organize the information you need.
+````
 
 
 # Contents Best Practices
@@ -5074,7 +5378,7 @@ The `ids` parameter (list of URLs) is required. All other fields are optional. S
 | subpages         | int       | Maximum number of subpages to crawl from each URL.                                                                                      | 5                                                               |
 | subpageTarget    | string\[] | Keywords to prioritize when selecting subpages.                                                                                         | \["docs", "about", "pricing"]                                   |
 | summary          | bool/obj  | Return LLM-generated summary. Can specify custom `query` and JSON `schema` for structured extraction.                                   | `{"query": "Key takeaways"}`                                    |
-| context          | bool/obj  | Return all results combined into a single string for RAG. Can specify `maxCharacters`.                                                  | `true` or `{"maxCharacters": 10000}`                            |
+| context          | bool/obj  | **Deprecated.** Use `highlights` or `text` instead. Returns all results combined into a single string. Can specify `maxCharacters`.     | `true` or `{"maxCharacters": 10000}`                            |
 
 ## Content Extraction Options
 
@@ -5522,17 +5826,13 @@ You can configure highlights in two ways:
    * `query`: The specific query to use for generating highlights (if different from search query)
    * `maxCharacters`: Maximum number of characters to return for highlights
 
-## Context String
+## Context String (Deprecated)
 
-Returns page contents as a single combined string ready for LLM RAG applications. When you set `context=True`, all result contents are joined together into one text block.
+<Warning>
+  The `context` parameter is deprecated and will be removed in a future version. Use `highlights` or `text` instead.
+</Warning>
 
-**Performance Note**: Context strings often perform better than highlights for RAG applications because they provide more complete information from each page.
-
-### How it works:
-
-* If you have 5 results and set a 1000 character limit, each result gets about 200 characters
-* We recommend using 10000+ characters for best results
-* No character limit works best when possible
+Returns page contents as a single combined string. When you set `context=True`, all result contents are joined together into one text block.
 
 ### Configuration:
 
@@ -6592,14 +6892,14 @@ exa.search_and_contents(
 #     highlights={"max_characters": 2000}
 # )
 
-# Option 3: Use context string for RAG (single string with total max characters)
-# Note: `Deep` search may require context=True to return results
+# Option 3 (Deprecated): Use context string for RAG
+# Note: The `context` parameter is deprecated. Use `text` or `highlights` instead.
 # exa.search_and_contents(
 #     query,
 #     type="deep",
-#     additional_queries=["variation 1", "variation 2"],  # Optional query variations
+#     additional_queries=["variation 1", "variation 2"],
 #     num_results=10,
-#     context={"max_characters": 20000}
+#     context={"max_characters": 20000}  # Deprecated
 # )
 
 # Option 4: Use full text (may result in very long content)
@@ -6611,7 +6911,7 @@ exa.search_and_contents(
 # )
 ```
 
-Setting a consistent `max_characters` ensures fair comparisons by standardizing content length across all queries. The `context` parameter returns a single RAG-ready string, while `text` returns individual content for each result. **Note: `Deep` search may require `context=True` to return detailed summaries.** Only add additional parameters (date filters, domain restrictions, etc.) when they're essential to your specific evaluation objective.
+Setting a consistent `max_characters` ensures fair comparisons by standardizing content length across all queries. Only add additional parameters (date filters, domain restrictions, etc.) when they're essential to your specific evaluation objective.
 
 ### Compare Within Latency Classes
 
@@ -6697,7 +6997,7 @@ result = exa.search_and_contents(
 
 * Median latency: \~5000ms
 * Automatic query expansion or custom query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript)
-* Rich contextual summaries for each result (requires `context=True`)
+* Rich contextual summaries for each result
 * Parallel search across multiple query formulations
 
 <Note>
@@ -6721,8 +7021,7 @@ result = exa.search_and_contents(
         "post-quantum cryptography research"
     ],
     num_results=10,
-    text=True,
-    context=True  # Required for `Deep` search summaries
+    text=True
 )
 ```
 
@@ -6855,14 +7154,14 @@ Aggregate metrics:
 
 ### Configuration Parameters
 
-| Parameter                                  | Purpose                      | Evaluation Recommendations                                                                                                 |
-| ------------------------------------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                     | Search method                | Match to benchmark type (fast/auto/deep)                                                                                   |
-| `num_results`                              | Number of results            | Fix at 10 for consistency across comparisons                                                                               |
-| `text`                                     | Retrieve full content        | Set to `true` for RAG-style evaluation                                                                                     |
-| `context`                                  | Get AI-generated summaries   | Set to `true` for Deep search                                                                                              |
-| `livecrawl`                                | Real-time web fetching       | Default `"fallback"` is recommended; use `"preferred"` for freshness tests                                                 |
-| `additional_queries` / `additionalQueries` | Query variations (Deep only) | Provide 2-3 variations for best Deep search results. Use `additional_queries` in Python, `additionalQueries` in JavaScript |
+| Parameter                                  | Purpose                                | Evaluation Recommendations                                                                                                 |
+| ------------------------------------------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                     | Search method                          | Match to benchmark type (fast/auto/deep)                                                                                   |
+| `num_results`                              | Number of results                      | Fix at 10 for consistency across comparisons                                                                               |
+| `text`                                     | Retrieve full content                  | Set to `true` for RAG-style evaluation                                                                                     |
+| `context`                                  | **Deprecated.** Combined result string | Use `text` or `highlights` instead                                                                                         |
+| `livecrawl`                                | Real-time web fetching                 | Default `"fallback"` is recommended; use `"preferred"` for freshness tests                                                 |
+| `additional_queries` / `additionalQueries` | Query variations (Deep only)           | Provide 2-3 variations for best Deep search results. Use `additional_queries` in Python, `additionalQueries` in JavaScript |
 
 ### Recommended Configuration Templates
 
@@ -6959,7 +7258,6 @@ For agentic and research evaluations:
       additional_queries=[variation1, variation2],
       num_results=10,
       text=True,
-      context=True,
       livecrawl="fallback"
   )
   ```
@@ -6970,7 +7268,6 @@ For agentic and research evaluations:
       additionalQueries: [variation1, variation2],
       numResults: 10,
       text: true,
-      context: true,
       livecrawl: "fallback"
   });
   ```
@@ -7302,7 +7599,7 @@ Example output:
 
 * Use `type="deep"`
 * Provide 2-3 query variations via `additional_queries` (Python) / `additionalQueries` (JavaScript) for best results
-* Enable `context=True` for rich summaries
+* Use `text=True` for rich content retrieval
 * Set `livecrawl="fallback"` for freshness
 
 **For tool calling evaluations**: See the [Evaluating Exa with Tool Calling](#evaluating-exa-with-tool-calling) section below for guidance on setting up agents to autonomously invoke Exa search.
@@ -7669,20 +7966,16 @@ Column C: =EXA_CONTENTS(B2)
 Check out the [GitHub repository](https://github.com/exa-labs/exa-sheets).
 
 
-# Exa MCP
+# Exa MCP - The Web Search MCP
 Source: https://exa.ai/docs/reference/exa-mcp
 
-
+Complete setup guide for Exa MCP Server. Connect Claude Desktop, Cursor, VS Code, and 10+ AI assistants to Exa's web search and code search tools.
 
 Exa MCP connects AI assistants to Exa's search capabilities, including web search and code search. It is open-source and available on [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
+<br />
+
 ## Installation
-
-Connect to Exa MCP:
-
-```
-https://mcp.exa.ai/mcp
-```
 
 <Tabs>
   <Tab title="Cursor">
@@ -7811,6 +8104,20 @@ https://mcp.exa.ai/mcp
     ```
   </Tab>
 
+  <Tab title="Google Antigravity">
+    Go to the three-dot menu in the Agent panel, navigate to **Manage MCP Servers**, then **View Raw config** and add:
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "serverUrl": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
   <Tab title="v0 by Vercel">
     In v0, select **Prompt Tools** > **Add MCP** and enter:
 
@@ -7906,50 +8213,53 @@ https://mcp.exa.ai/mcp
   </Tab>
 </Tabs>
 
-<br />
-
-<br />
-
 ## Available Tools
 
-<Tabs>
-  <Tab title="Enabled by Default">
-    | Tool                   | Description                                                                                        |
-    | ---------------------- | -------------------------------------------------------------------------------------------------- |
-    | `web_search_exa`       | Search the web for any topic and get clean, ready-to-use content                                   |
-    | `get_code_context_exa` | Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs |
-    | `company_research_exa` | Research any company to get business information, news, and insights                               |
-  </Tab>
+**Enabled by default:**
 
-  <Tab title="Off by Default">
-    | Tool                      | Description                                                                             |
-    | ------------------------- | --------------------------------------------------------------------------------------- |
-    | `web_search_advanced_exa` | Advanced web search with full control over filters, domains, dates, and content options |
-    | `deep_search_exa`         | Deep search with automatic query expansion for thorough research                        |
-    | `crawling_exa`            | Get the full content of a specific webpage from a known URL                             |
-    | `people_search_exa`       | Find people and their professional profiles                                             |
-    | `deep_researcher_start`   | Start an AI research agent that searches, reads, and writes a detailed report           |
-    | `deep_researcher_check`   | Check status and get results from a deep research task                                  |
+| Tool                   | Description                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `web_search_exa`       | Search the web for any topic and get clean, ready-to-use content                                   |
+| `get_code_context_exa` | Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs |
+| `company_research_exa` | Research any company to get business information, news, and insights                               |
 
-    Enable these by adding the `tools` parameter to the URL:
+**Optional** (enable via `tools` parameter):
 
-    ```
-    https://mcp.exa.ai/mcp?tools=web_search_exa,deep_search_exa
-    ```
-  </Tab>
+| Tool                      | Description                                                                             |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `web_search_advanced_exa` | Advanced web search with full control over filters, domains, dates, and content options |
+| `crawling_exa`            | Get the full content of a specific webpage from a known URL                             |
+| `people_search_exa`       | Find people and their professional profiles                                             |
+| `deep_researcher_start`   | Start an AI research agent that searches, reads, and writes a detailed report           |
+| `deep_researcher_check`   | Check status and get results from a deep research task                                  |
 
-  <Tab title="Enable All">
-    Use this URL instead of the default to enable all tools:
+Enable specific tools:
 
-    ```
-    https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,deep_search_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
-    ```
-  </Tab>
-</Tabs>
+```
+https://mcp.exa.ai/mcp?tools=get_code_context_exa,people_search_exa
+```
+
+Enable all tools:
+
+```
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
+```
 
 <br />
 
+## API Key
+
+Exa MCP has a generous free plan. To overcome free plan rate limits, add your own API key:
+
+```
+https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
+```
+
+[Get your Exa API key](https://dashboard.exa.ai/api-keys)
+
 <br />
+
+## Resources
 
 <CardGroup>
   <Card title="GitHub" icon="github" href="https://github.com/exa-labs/exa-mcp-server">
@@ -7985,6 +8295,42 @@ https://mcp.exa.ai/mcp
   ```
   Create a detailed report on the current state of quantum computing startups.
   ```
+</Accordion>
+
+<Accordion title="Troubleshooting" icon="wrench">
+  **Rate limit error (429)**
+
+  You've hit the free plan rate limit. Add your own API key to continue:
+
+  ```
+  https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
+  ```
+
+  [Get your API key](https://dashboard.exa.ai/api-keys)
+
+  **Tools not appearing**
+
+  Restart your MCP client after updating the config file. Some clients require a full restart to detect new MCP servers.
+
+  **Claude Desktop not connecting**
+
+  Claude Desktop doesn't support remote MCP directly. Use the `mcp-remote` wrapper:
+
+  ```json theme={null}
+  {
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+  }
+  ```
+
+  **Config file not found**
+
+  Common config locations:
+
+  * Cursor: `~/.cursor/mcp.json`
+  * VS Code: `.vscode/mcp.json` (in project root)
+  * Claude Desktop (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`
+  * Claude Desktop (Windows): `%APPDATA%\Claude\claude_desktop_config.json`
 </Accordion>
 
 
@@ -8460,11 +8806,10 @@ result = exa.search("latest AI news", type="fast")
 
 ```Python Python theme={null}
 result = exa.search_and_contents(
-    "blog post about AI", 
+    "blog post about AI",
     type="deep",
     additional_queries=["AI blogpost", "machine learning blogs"],
-    text=True,
-    context=True
+    text=True
 )
 ```
 
@@ -8620,6 +8965,150 @@ Source: https://exa.ai/docs/reference/faqs
     * Solve search. No, really.
   </Accordion>
 </AccordionGroup>
+
+
+# Financial Report Search
+Source: https://exa.ai/docs/reference/financial-report-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you find SEC filings, earnings reports, and financial documents.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: web-search-advanced-financial-report
+description: Search for financial reports using Exa advanced search. Near-full filter support for finding SEC filings, earnings reports, and financial documents. Use when searching for 10-K filings, quarterly earnings, or annual reports.
+context: fork
+---
+
+# Web Search Advanced - Financial Report Category
+
+## Tool Restriction (Critical)
+
+ONLY use `web_search_advanced_exa` with `category: "financial report"`. Do NOT use other categories or tools.
+
+## Filter Restrictions (Critical)
+
+The `financial report` category has one known restriction:
+
+- `excludeText` - NOT SUPPORTED (causes 400 error)
+
+## Supported Parameters
+
+### Core
+- `query` (required)
+- `numResults`
+- `type` ("auto", "fast", "deep", "neural")
+
+### Domain filtering
+- `includeDomains` (e.g., ["sec.gov", "investor.apple.com"])
+- `excludeDomains`
+
+### Date filtering (ISO 8601) - Very useful for financial reports!
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+
+### Text filtering
+- `includeText` (must contain ALL) - **single-item arrays only**; multi-item causes 400
+- ~~`excludeText`~~ - NOT SUPPORTED
+
+### Content extraction
+- `textMaxCharacters` / `contextMaxCharacters`
+- `enableSummary` / `summaryQuery`
+- `enableHighlights` / `highlightsNumSentences` / `highlightsPerUrl` / `highlightsQuery`
+
+### Additional
+- `additionalQueries`
+- `livecrawl` / `livecrawlTimeout`
+- `subpages` / `subpageTarget`
+
+## Token Isolation (Critical)
+
+Never run Exa searches in main context. Always spawn Task agents:
+- Agent calls `web_search_advanced_exa` with `category: "financial report"`
+- Agent merges + deduplicates results before presenting
+- Agent returns distilled output (brief markdown or compact JSON)
+- Main context stays clean regardless of search volume
+
+## When to Use
+
+Use this category when you need:
+- SEC filings (10-K, 10-Q, 8-K, S-1)
+- Quarterly earnings reports
+- Annual reports
+- Investor presentations
+- Financial statements
+
+## Examples
+
+SEC filings for a company:
+```
+web_search_advanced_exa {
+  "query": "Anthropic SEC filing S-1",
+  "category": "financial report",
+  "numResults": 10,
+  "type": "auto"
+}
+```
+
+Recent earnings reports:
+```
+web_search_advanced_exa {
+  "query": "Q4 2025 earnings report technology",
+  "category": "financial report",
+  "startPublishedDate": "2025-10-01",
+  "numResults": 20,
+  "type": "auto"
+}
+```
+
+Specific filing type:
+```
+web_search_advanced_exa {
+  "query": "10-K annual report AI companies",
+  "category": "financial report",
+  "includeDomains": ["sec.gov"],
+  "startPublishedDate": "2025-01-01",
+  "numResults": 15,
+  "type": "deep"
+}
+```
+
+Risk factors analysis:
+```
+web_search_advanced_exa {
+  "query": "risk factors cybersecurity",
+  "category": "financial report",
+  "includeText": ["cybersecurity"],
+  "numResults": 10,
+  "enableHighlights": true,
+  "highlightsQuery": "What are the main cybersecurity risks?"
+}
+```
+
+## Output Format
+
+Return:
+1) Results (company name, filing type, date, key figures/highlights)
+2) Sources (Filing URLs)
+3) Notes (reporting period, any restatements, auditor notes)
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
 
 
 # Find similar links
@@ -10864,6 +11353,280 @@ You can view up-to-date versions of our OpenAPI specs here:
 * [Websets API Spec](https://raw.githubusercontent.com/exa-labs/openapi-spec/refs/heads/master/exa-websets-spec.yaml)
 
 
+# People Search
+Source: https://exa.ai/docs/reference/people-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you find LinkedIn profiles, professional backgrounds, and experts.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: people-research
+description: People research using Exa search. Finds LinkedIn profiles, professional backgrounds, experts, team members, and public bios across the web. Use when searching for people, finding experts, or looking up professional profiles.
+context: fork
+---
+
+# People Research
+
+## Tool Restriction (Critical)
+
+ONLY use `web_search_advanced_exa`. Do NOT use `web_search_exa` or any other Exa tools.
+
+## Token Isolation (Critical)
+
+Never run Exa searches in main context. Always spawn Task agents:
+- Agent runs Exa search internally
+- Agent processes results using LLM intelligence
+- Agent returns only distilled output (compact JSON or brief markdown)
+- Main context stays clean regardless of search volume
+
+## Dynamic Tuning
+
+No hardcoded numResults. Tune to user intent:
+- User says "a few" → 10-20
+- User says "comprehensive" → 50-100
+- User specifies number → match it
+- Ambiguous? Ask: "How many profiles would you like?"
+
+## Query Variation
+
+Exa returns different results for different phrasings. For coverage:
+- Generate 2-3 query variations
+- Run in parallel
+- Merge and deduplicate
+
+## Categories
+
+Use appropriate Exa `category` depending on what you need:
+- `people` → LinkedIn profiles, public bios (primary for discovery)
+- `personal site` → personal blogs, portfolio sites, about pages
+- `news` → press mentions, interviews, speaker bios
+- No category (`type: "auto"`) → general web results, broader context
+
+Start with `category: "people"` for profile discovery, then use other categories or no category with `livecrawl: "fallback"` for deeper research on specific individuals.
+
+### Category-Specific Filter Restrictions
+
+When using `category: "people"`, these parameters cause errors:
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+- `includeText` / `excludeText`
+- `excludeDomains`
+- `includeDomains` — **LinkedIn domains only** (e.g., "linkedin.com")
+
+When searching without a category, all parameters are available (but `includeText`/`excludeText` still only support single-item arrays).
+
+## LinkedIn
+
+Public LinkedIn via Exa: `category: "people"`, no other filters.
+Auth-required LinkedIn → use Claude in Chrome browser fallback.
+
+## Browser Fallback
+
+Auto-fallback to Claude in Chrome when:
+- Exa returns insufficient results
+- Content is auth-gated
+- Dynamic pages need JavaScript
+
+## Examples
+
+### Discovery: find people by role
+```
+web_search_advanced_exa {
+  "query": "VP Engineering AI infrastructure",
+  "category": "people",
+  "numResults": 20,
+  "type": "auto"
+}
+```
+
+### With query variations
+```
+web_search_advanced_exa {
+  "query": "machine learning engineer San Francisco",
+  "category": "people",
+  "additionalQueries": ["ML engineer SF", "AI engineer Bay Area"],
+  "numResults": 25,
+  "type": "deep"
+}
+```
+
+### Deep dive: research a specific person
+```
+web_search_advanced_exa {
+  "query": "Dario Amodei Anthropic CEO background",
+  "type": "auto",
+  "livecrawl": "fallback",
+  "numResults": 15
+}
+```
+
+### News mentions
+```
+web_search_advanced_exa {
+  "query": "Dario Amodei interview",
+  "category": "news",
+  "numResults": 10,
+  "startPublishedDate": "2024-01-01"
+}
+```
+
+## Output Format
+
+Return:
+1) Results (name, title, company, location if available)
+2) Sources (Profile URLs)
+3) Notes (profile completeness, verification status)
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
+
+
+# Personal Site Search
+Source: https://exa.ai/docs/reference/personal-site-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you find personal blogs, portfolios, and independent content.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: web-search-advanced-personal-site
+description: Search personal websites and blogs using Exa advanced search. Full filter support for finding individual perspectives, portfolios, and personal blogs. Use when searching for personal sites, blog posts, or portfolio websites.
+context: fork
+---
+
+# Web Search Advanced - Personal Site Category
+
+## Tool Restriction (Critical)
+
+ONLY use `web_search_advanced_exa` with `category: "personal site"`. Do NOT use other categories or tools.
+
+## Full Filter Support
+
+The `personal site` category supports ALL available parameters:
+
+### Core
+- `query` (required)
+- `numResults`
+- `type` ("auto", "fast", "deep", "neural")
+
+### Domain filtering
+- `includeDomains`
+- `excludeDomains` (e.g., exclude Medium if you want independent blogs)
+
+### Date filtering (ISO 8601)
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+
+### Text filtering
+- `includeText` (must contain ALL)
+- `excludeText` (exclude if ANY match)
+
+**Array size restriction:** `includeText` and `excludeText` only support **single-item arrays**. Multi-item arrays (2+ items) cause 400 errors. To match multiple terms, put them in the `query` string or run separate searches.
+
+### Content extraction
+- `textMaxCharacters` / `contextMaxCharacters`
+- `enableSummary` / `summaryQuery`
+- `enableHighlights` / `highlightsNumSentences` / `highlightsPerUrl` / `highlightsQuery`
+
+### Additional
+- `additionalQueries`
+- `livecrawl` / `livecrawlTimeout`
+- `subpages` / `subpageTarget` - useful for exploring portfolio sites
+
+## Token Isolation (Critical)
+
+Never run Exa searches in main context. Always spawn Task agents:
+- Agent calls `web_search_advanced_exa` with `category: "personal site"`
+- Agent merges + deduplicates results before presenting
+- Agent returns distilled output (brief markdown or compact JSON)
+- Main context stays clean regardless of search volume
+
+## When to Use
+
+Use this category when you need:
+- Individual expert opinions and experiences
+- Personal blog posts on technical topics
+- Portfolio websites
+- Independent analysis (not corporate content)
+- Deep dives and tutorials from practitioners
+
+## Examples
+
+Technical blog posts:
+```
+web_search_advanced_exa {
+  "query": "building production LLM applications lessons learned",
+  "category": "personal site",
+  "numResults": 15,
+  "type": "deep",
+  "enableSummary": true
+}
+```
+
+Recent posts on a topic:
+```
+web_search_advanced_exa {
+  "query": "Rust async runtime comparison",
+  "category": "personal site",
+  "startPublishedDate": "2025-01-01",
+  "numResults": 10,
+  "type": "auto"
+}
+```
+
+Exclude aggregators:
+```
+web_search_advanced_exa {
+  "query": "startup founder lessons",
+  "category": "personal site",
+  "excludeDomains": ["medium.com", "substack.com"],
+  "numResults": 15,
+  "type": "auto"
+}
+```
+
+## Output Format
+
+Return:
+1) Results (title, author/site name, date, key insights)
+2) Sources (URLs)
+3) Notes (author expertise, potential biases, depth of coverage)
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
+
+
 # Get started with Exa
 Source: https://exa.ai/docs/reference/quickstart
 
@@ -11326,12 +12089,133 @@ Our API endpoints have default rate limits to ensure reliable performance for al
 
 | Endpoint    | Limit               |
 | ----------- | ------------------- |
-| `/search`   | 5 QPS\*             |
-| `/contents` | 50 QPS              |
-| `/answer`   | 5 QPS               |
+| `/search`   | 10 QPS\*            |
+| `/contents` | 100 QPS             |
+| `/answer`   | 10 QPS              |
 | `/research` | 15 concurrent tasks |
 
 *\*QPS = Queries Per Second*
+
+
+# Research Paper Search
+Source: https://exa.ai/docs/reference/research-paper-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you find academic papers, arXiv preprints, and scientific research.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: web-search-advanced-research-paper
+description: Search for research papers and academic content using Exa advanced search. Full filter support including date ranges and text filtering. Use when searching for academic papers, arXiv preprints, or scientific research.
+context: fork
+---
+
+# Web Search Advanced - Research Paper Category
+
+## Tool Restriction (Critical)
+
+ONLY use `web_search_advanced_exa` with `category: "research paper"`. Do NOT use other categories or tools.
+
+## Full Filter Support
+
+The `research paper` category supports ALL available parameters:
+
+### Core
+- `query` (required)
+- `numResults`
+- `type` ("auto", "fast", "deep", "neural")
+
+### Domain filtering
+- `includeDomains` (e.g., ["arxiv.org", "openreview.net"])
+- `excludeDomains`
+
+### Date filtering (ISO 8601)
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+
+### Text filtering
+- `includeText` (must contain ALL)
+- `excludeText` (exclude if ANY match)
+
+**Array size restriction:** `includeText` and `excludeText` only support **single-item arrays**. Multi-item arrays (2+ items) cause 400 errors. To match multiple terms, put them in the `query` string or run separate searches.
+
+### Content extraction
+- `textMaxCharacters` / `contextMaxCharacters`
+- `enableSummary` / `summaryQuery`
+- `enableHighlights` / `highlightsNumSentences` / `highlightsPerUrl` / `highlightsQuery`
+
+### Additional
+- `userLocation`
+- `moderation`
+- `additionalQueries`
+- `livecrawl` / `livecrawlTimeout`
+- `subpages` / `subpageTarget`
+
+## Token Isolation (Critical)
+
+Never run Exa searches in main context. Always spawn Task agents:
+- Agent calls `web_search_advanced_exa` with `category: "research paper"`
+- Agent merges + deduplicates results before presenting
+- Agent returns distilled output (brief markdown or compact JSON)
+- Main context stays clean regardless of search volume
+
+## When to Use
+
+Use this category when you need:
+- Academic papers from arXiv, OpenReview, PubMed, etc.
+- Scientific research on specific topics
+- Literature reviews with date filtering
+- Papers containing specific methodologies or terms
+
+## Examples
+
+Recent papers on a topic:
+```
+web_search_advanced_exa {
+  "query": "transformer attention mechanisms efficiency",
+  "category": "research paper",
+  "startPublishedDate": "2024-01-01",
+  "numResults": 15,
+  "type": "auto"
+}
+```
+
+Papers from specific venues:
+```
+web_search_advanced_exa {
+  "query": "large language model agents",
+  "category": "research paper",
+  "includeDomains": ["arxiv.org", "openreview.net"],
+  "includeText": ["LLM"],
+  "numResults": 20,
+  "type": "deep"
+}
+```
+
+## Output Format
+
+Return:
+1) Results (structured list with title, authors, date, abstract summary)
+2) Sources (URLs with publication venue)
+3) Notes (methodology differences, conflicting findings)
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
 
 
 # Create a task
@@ -11394,33 +12278,30 @@ Exa's Search API returns a list of webpages and their contents based on a natura
 
 * **Token efficient**: Use `highlights` to get key excerpts relevant to your query, reducing token usage by 10x compared to full text, without adding latency.
 * **Specialized index coverage**: State of the art search performance on [people](https://exa.ai/blog/people-search-benchmark), [company](https://exa.ai/blog/company-search-benchmarks), and code using Exa's in-house search indexes.
-* **Incredible speed**: Providing the fastest search available without compromising on quality, allowing for search to be added to real-time workflows.
+* **Incredible speed**: From `auto` for highest quality to `instant` for sub-200ms latency, Exa provides the fastest search available without compromising on quality—enabling real-time workflows like autocomplete and live suggestions.
 
 ## Request Fields
 
 The `query` parameter is required for all search requests. The remaining fields are optional. See the [API Reference](/reference/search) for complete parameter details.
 
-| Field              | Type      | Notes                                                                                                                                   | Example                                        |
-| ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| query              | string    | The search query. Supports long, semantically rich descriptions for finding niche content.                                              | "blog post about embeddings and vector search" |
-| type               | string    | Search method: `auto` (highest quality search), `fast` (high quality and lower latency).                                                | "auto"                                         |
-| numResults         | int       | Number of results to return (1-100). Defaults to 10.                                                                                    | 10                                             |
-| text               | bool/obj  | Return full page text. Can specify `maxCharacters` and `includeHtmlTags`.                                                               | `true` or `{"maxCharacters": 5000}`            |
-| highlights         | bool      | Return token-efficient excerpts most relevant to your query.                                                                            | `true`                                         |
-| maxAgeHours        | int       | Maximum age of indexed content in hours. If older, fetches with livecrawl. `0` = always livecrawl, `-1` = never livecrawl (cache only). | 24                                             |
-| includeDomains     | string\[] | Only return results from these domains.                                                                                                 | \["arxiv.org", "nature.com"]                   |
-| excludeDomains     | string\[] | Exclude results from these domains.                                                                                                     | \["reddit.com", "quora.com"]                   |
-| startPublishedDate | string    | Filter to content published after this date (ISO 8601).                                                                                 | "2024-01-01T00:00:00.000Z"                     |
-| category           | string    | Target specific content types: `company`, `people`, `tweet`, `news`                                                                     | "company"                                      |
-| summary            | bool/obj  | Return LLM-generated summaries. Can specify custom `query` and JSON `schema` for structured extraction.                                 | `{"query": "Key technical contributions"}`     |
+| Field       | Type     | Notes                                                                                                                                             | Example                                        |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| query       | string   | The search query. Supports long, semantically rich descriptions for finding niche content.                                                        | "blog post about embeddings and vector search" |
+| type        | string   | Search method: `auto` (highest quality), `instant` (lowest latency), `deep` (comprehensive).                                                      | "auto"                                         |
+| numResults  | int      | Number of results to return (1-100). Defaults to 10.                                                                                              | 10                                             |
+| highlights  | bool/obj | Return token-efficient excerpts most relevant to your query. You can also request full text if needed—see the [API Reference](/reference/search). | `{ "maxCharacters": 2000 }`                    |
+| maxAgeHours | int      | Maximum age of indexed content in hours. If older, fetches with livecrawl. `0` = always livecrawl, `-1` = never livecrawl (cache only).           | 24                                             |
+| category    | string   | Target specific content types: `company`, `people`, `tweet`, `news`                                                                               | "company"                                      |
 
-## Search Type: Auto vs Fast
+## Search Types
 
 The `type` parameter selects the search method:
 
-* **`auto`** (default): Exa's highest quality search.
+* **`auto`** (default): Exa's highest quality search. Intelligently combines neural and other search methods.
 
-* **`fast`**: Streamlined, low-latency search. Best for real-time applications where speed is critical.
+* **`instant`**: Lowest latency search optimized for real-time applications like autocomplete or live suggestions.
+
+* **`deep`**: Comprehensive search with automatic query expansion and detailed context. Best for research tasks requiring thorough coverage.
 
 ## Token Efficiency
 
@@ -11438,7 +12319,7 @@ Choosing the right content mode can significantly reduce token usage while maint
 {
   "query": "What is the current Fed interest rate?",
   "contents": {
-    "highlights": true
+    "highlights": { "maxCharacters": 2000 }
   },
   // Real-time info requires livecrawl; this may increase latency
   "maxAgeHours": 0
@@ -12391,6 +13272,136 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
 </Accordion>
 
 
+# X/Twitter Search
+Source: https://exa.ai/docs/reference/x-search-claude-skill
+
+This guide shows you how to set up a Claude skill and Exa MCP that helps you search tweets and Twitter/X discussions.
+
+<Card title="Copy and Paste in Claude Code">
+  Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
+</Card>
+
+````
+Step 1: Install or update Exa MCP
+
+If Exa MCP already exists in your MCP configuration, either uninstall it first and install the new one, or update your existing MCP config with this endpoint. Run this command in your terminal:
+
+claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_advanced_exa"
+
+
+Step 2: Add this Claude skill
+
+---
+name: web-search-advanced-tweet
+description: Search tweets and Twitter/X content using Exa advanced search. Limited filter support - text and domain filters are NOT supported. Use when searching for tweets, Twitter/X discussions, or social media sentiment.
+context: fork
+---
+
+# Web Search Advanced - Tweet Category
+
+## Tool Restriction (Critical)
+
+ONLY use `web_search_advanced_exa` with `category: "tweet"`. Do NOT use other categories or tools.
+
+## Filter Restrictions (Critical)
+
+The `tweet` category has **LIMITED filter support**. The following parameters are **NOT supported** and will cause 400 errors:
+
+- `includeText` - NOT SUPPORTED
+- `excludeText` - NOT SUPPORTED
+- `includeDomains` - NOT SUPPORTED
+- `excludeDomains` - NOT SUPPORTED
+- `moderation` - NOT SUPPORTED (causes 500 server error)
+
+## Supported Parameters
+
+### Core
+- `query` (required)
+- `numResults`
+- `type` ("auto", "fast", "deep", "neural")
+
+### Date filtering (ISO 8601) - Use these instead of text filters!
+- `startPublishedDate` / `endPublishedDate`
+- `startCrawlDate` / `endCrawlDate`
+
+### Content extraction
+- `textMaxCharacters` / `contextMaxCharacters`
+- `enableHighlights` / `highlightsNumSentences` / `highlightsPerUrl` / `highlightsQuery`
+- `enableSummary` / `summaryQuery`
+
+### Additional
+- `additionalQueries` - useful for hashtag variations
+- `livecrawl` / `livecrawlTimeout` - use "preferred" for recent tweets
+
+## Token Isolation (Critical)
+
+Never run Exa searches in main context. Always spawn Task agents:
+- Agent calls `web_search_advanced_exa` with `category: "tweet"`
+- Agent merges + deduplicates results before presenting
+- Agent returns distilled output (brief markdown or compact JSON)
+- Main context stays clean regardless of search volume
+
+## When to Use
+
+Use this category when you need:
+- Social discussions on a topic
+- Product announcements from company accounts
+- Developer opinions and experiences
+- Trending topics and community sentiment
+- Expert takes and threads
+
+## Examples
+
+Recent tweets on a topic:
+```
+web_search_advanced_exa {
+  "query": "Claude Code MCP experience",
+  "category": "tweet",
+  "startPublishedDate": "2025-01-01",
+  "numResults": 20,
+  "type": "auto",
+  "livecrawl": "preferred"
+}
+```
+
+Search with specific keywords (put keywords in query, not includeText):
+```
+web_search_advanced_exa {
+  "query": "launching announcing new open source release",
+  "category": "tweet",
+  "startPublishedDate": "2025-12-01",
+  "numResults": 15,
+  "type": "auto"
+}
+```
+
+Developer sentiment (use specific query terms instead of excludeText):
+```
+web_search_advanced_exa {
+  "query": "developer experience DX frustrating painful",
+  "category": "tweet",
+  "numResults": 20,
+  "type": "deep",
+  "livecrawl": "preferred"
+}
+```
+
+## Output Format
+
+Return:
+1) Results (tweet content, author handle, date, engagement if visible)
+2) Sources (Tweet URLs)
+3) Notes (sentiment summary, notable accounts, threads vs single tweets)
+
+Important: Be aware that tweet content can be informal, sarcastic, or context-dependent.
+
+
+Step 3: Ask User to Restart Claude Code
+
+You should ask the user to restart Claude Code to have the config changes take effect.
+````
+
+
 # Python and TS Cheat Sheets
 Source: https://exa.ai/docs/sdks/cheat-sheet
 
@@ -12936,25 +13947,25 @@ deep_result = exa.search(
 
 ### Input Parameters
 
-| Parameter              | Type                                                                    | Description                                                                                                                                                                                                                                                                                                  | Default  |
-| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| query                  | str                                                                     | The query string.                                                                                                                                                                                                                                                                                            | Required |
-| contents               | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). Note: For deep search (type='deep'), context is always returned by the API. | None     |
-| num\_results           | Optional\[int]                                                          | Number of search results to return (default 10).  For deep search, recommend leaving blank - number of results will be determined dynamically for your query.                                                                                                                                                | None     |
-| include\_domains       | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                                                                                            | None     |
-| exclude\_domains       | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                                                                                                          | None     |
-| start\_crawl\_date     | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                                                                                                          | None     |
-| end\_crawl\_date       | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                                                                                                         | None     |
-| start\_published\_date | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                                                                                                        | None     |
-| end\_published\_date   | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                                                                                                       | None     |
-| include\_text          | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                                                                                                   | None     |
-| exclude\_text          | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                                                                                               | None     |
-| type                   | Optional\[Union\[[SearchType](#searchtype), str]]                       | Search type - 'auto' (default), 'fast', 'deep', or 'neural'.                                                                                                                                                                                                                                                 | None     |
-| category               | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                                                                                                        | None     |
-| flags                  | Optional\[List\[str]]                                                   | Experimental flags for Exa usage.                                                                                                                                                                                                                                                                            | None     |
-| moderation             | Optional\[bool]                                                         | If True, the search results will be moderated for safety.                                                                                                                                                                                                                                                    | None     |
-| user\_location         | Optional\[str]                                                          | Two-letter ISO country code of the user (e.g. US).                                                                                                                                                                                                                                                           | None     |
-| additional\_queries    | Optional\[List\[str]]                                                   | Alternative query formulations for deep search to skip automatic LLM-based query expansion. Max 5 queries. Only applicable when type='deep'. Example: \["machine learning", "ML algorithms", "neural networks"]                                                                                              | None     |
+| Parameter              | Type                                                                    | Description                                                                                                                                                                                                                                                                                           | Default  |
+| ---------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| query                  | str                                                                     | The query string.                                                                                                                                                                                                                                                                                     | Required |
+| contents               | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, etc.). Note: The `context` option is deprecated; use `highlights` or `text` instead. | None     |
+| num\_results           | Optional\[int]                                                          | Number of search results to return (default 10).  For deep search, recommend leaving blank - number of results will be determined dynamically for your query.                                                                                                                                         | None     |
+| include\_domains       | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                                                                                     | None     |
+| exclude\_domains       | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                                                                                                   | None     |
+| start\_crawl\_date     | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                                                                                                   | None     |
+| end\_crawl\_date       | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                                                                                                  | None     |
+| start\_published\_date | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                                                                                                 | None     |
+| end\_published\_date   | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                                                                                                | None     |
+| include\_text          | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                                                                                            | None     |
+| exclude\_text          | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                                                                                        | None     |
+| type                   | Optional\[Union\[[SearchType](#searchtype), str]]                       | Search type - 'auto' (default), 'fast', 'deep', or 'instant'.                                                                                                                                                                                                                                         | None     |
+| category               | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                                                                                                 | None     |
+| flags                  | Optional\[List\[str]]                                                   | Experimental flags for Exa usage.                                                                                                                                                                                                                                                                     | None     |
+| moderation             | Optional\[bool]                                                         | If True, the search results will be moderated for safety.                                                                                                                                                                                                                                             | None     |
+| user\_location         | Optional\[str]                                                          | Two-letter ISO country code of the user (e.g. US).                                                                                                                                                                                                                                                    | None     |
+| additional\_queries    | Optional\[List\[str]]                                                   | Alternative query formulations for deep search to skip automatic LLM-based query expansion. Max 5 queries. Only applicable when type='deep'. Example: \["machine learning", "ML algorithms", "neural networks"]                                                                                       | None     |
 
 ### Return Example
 
@@ -13015,22 +14026,22 @@ similar_results = exa.find_similar(
 
 ### Input Parameters
 
-| Parameter               | Type                                                                    | Description                                                                                                                                                                                                                      | Default  |
-| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| url                     | str                                                                     | The URL to find similar pages for.                                                                                                                                                                                               | Required |
-| contents                | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). | None     |
-| num\_results            | Optional\[int]                                                          | Number of results to return. Default is None (server default).                                                                                                                                                                   | None     |
-| include\_domains        | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                | None     |
-| exclude\_domains        | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                              | None     |
-| start\_crawl\_date      | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                              | None     |
-| end\_crawl\_date        | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                             | None     |
-| start\_published\_date  | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                            | None     |
-| end\_published\_date    | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                           | None     |
-| include\_text           | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                       | None     |
-| exclude\_text           | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                   | None     |
-| exclude\_source\_domain | Optional\[bool]                                                         | Whether to exclude the source domain.                                                                                                                                                                                            | None     |
-| category                | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                            | None     |
-| flags                   | Optional\[List\[str]]                                                   | Experimental flags.                                                                                                                                                                                                              | None     |
+| Parameter               | Type                                                                    | Description                                                                                                                                                                                                             | Default  |
+| ----------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| url                     | str                                                                     | The URL to find similar pages for.                                                                                                                                                                                      | Required |
+| contents                | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, etc.). | None     |
+| num\_results            | Optional\[int]                                                          | Number of results to return. Default is None (server default).                                                                                                                                                          | None     |
+| include\_domains        | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                       | None     |
+| exclude\_domains        | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                     | None     |
+| start\_crawl\_date      | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                     | None     |
+| end\_crawl\_date        | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                    | None     |
+| start\_published\_date  | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                   | None     |
+| end\_published\_date    | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                  | None     |
+| include\_text           | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                              | None     |
+| exclude\_text           | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                          | None     |
+| exclude\_source\_domain | Optional\[bool]                                                         | Whether to exclude the source domain.                                                                                                                                                                                   | None     |
+| category                | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                   | None     |
+| flags                   | Optional\[List\[str]]                                                   | Experimental flags.                                                                                                                                                                                                     | None     |
 
 ### Return Example
 
@@ -13509,14 +14520,20 @@ A class representing the options that you can specify when requesting summary
 
 A class representing the options that you can specify when requesting highlights.
 
-| Field           | Type | Description                                                                              |
-| --------------- | ---- | ---------------------------------------------------------------------------------------- |
-| query           | str  | The query string for highlight generation. Highlights will be biased towards this query. |
-| max\_characters | int  | Maximum characters for highlights.                                                       |
+| Field                | Type | Description                                                                                |
+| -------------------- | ---- | ------------------------------------------------------------------------------------------ |
+| query                | str  | The query string for highlight generation. Highlights will be biased towards this query.   |
+| max\_characters      | int  | The maximum number of characters to return for highlights. Default: None (server default). |
+| num\_sentences       | int  | Deprecated. Use max\_characters instead. The number of sentences per highlight.            |
+| highlights\_per\_url | int  | Deprecated. Use max\_characters instead. The number of highlights to return per URL.       |
 
 #### `ContextContentsOptions`
 
 Options for retrieving aggregated context from a set of search results.
+
+.. deprecated::
+Use `highlights` or `text` instead. The `context` option is deprecated
+and will be removed in a future version.
 
 | Field           | Type | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------------ |
@@ -13543,7 +14560,7 @@ max\_characters=10000 is returned by default.
 | text            | Union\[[TextContentsOptions](#textcontentsoptions), Literal\[True]]             | Options for text extraction, or True for defaults.                                                                                                                                                                                               |
 | highlights      | Union\[[HighlightsContentsOptions](#highlightscontentsoptions), Literal\[True]] | Options for highlight extraction, or True for defaults.                                                                                                                                                                                          |
 | summary         | Union\[[SummaryContentsOptions](#summarycontentsoptions), Literal\[True]]       | Options for summary generation, or True for defaults.                                                                                                                                                                                            |
-| context         | Union\[[ContextContentsOptions](#contextcontentsoptions), Literal\[True]]       | Options for context aggregation, or True for defaults.                                                                                                                                                                                           |
+| context         | Union\[[ContextContentsOptions](#contextcontentsoptions), Literal\[True]]       | Deprecated. Use `highlights` or `text` instead. Will be removed in a future version.                                                                                                                                                             |
 | max\_age\_hours | int                                                                             | Maximum age of cached content in hours. If content is older, it will be fetched fresh. Special values: 0 = always fetch fresh content, -1 = never fetch fresh (use cached content only). Example: 168 = fetch fresh for pages older than 7 days. |
 | subpages        | int                                                                             | Number of subpages to crawl.                                                                                                                                                                                                                     |
 | subpage\_target | Union\[str, List\[str]]                                                         | Target subpage path(s) to crawl.                                                                                                                                                                                                                 |
@@ -13733,10 +14750,11 @@ A class representing a single chunk of streaming data.
 
 A class representing the response for an answer operation.
 
-| Field     | Type                                 | Description                                      |
-| --------- | ------------------------------------ | ------------------------------------------------ |
-| answer    | Union\[str, dict\[str, Any]]         | The generated answer.                            |
-| citations | List\[[AnswerResult](#answerresult)] | A list of citations used to generate the answer. |
+| Field         | Type                                   | Description                                      |
+| ------------- | -------------------------------------- | ------------------------------------------------ |
+| answer        | Union\[str, dict\[str, Any]]           | The generated answer.                            |
+| citations     | List\[[AnswerResult](#answerresult)]   | A list of citations used to generate the answer. |
+| cost\_dollars | Optional\[[CostDollars](#costdollars)] | The cost breakdown for this request.             |
 
 #### `StreamAnswerResponse`
 
@@ -13760,14 +14778,15 @@ A class representing the status of a content retrieval operation.
 
 A class representing the response for a search operation.
 
-| Field                  | Type                                              | Description                                                  |
-| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| results                | List\[T]                                          | A list of search results.                                    |
-| resolved\_search\_type | Optional\[str]                                    | 'neural' or 'keyword' if auto.                               |
-| auto\_date             | Optional\[str]                                    | A date for filtering if autoprompt found one.                |
-| context                | Optional\[str]                                    | Combined context string when requested via contents.context. |
-| statuses               | Optional\[List\[[ContentStatus](#contentstatus)]] | Status list from get\_contents.                              |
-| cost\_dollars          | Optional\[[CostDollars](#costdollars)]            | Cost breakdown.                                              |
+| Field                  | Type                                              | Description                                                                                              |
+| ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| results                | List\[T]                                          | A list of search results.                                                                                |
+| resolved\_search\_type | Optional\[str]                                    | 'neural' or 'keyword' if auto.                                                                           |
+| auto\_date             | Optional\[str]                                    | A date for filtering if autoprompt found one.                                                            |
+| context                | Optional\[str]                                    | Deprecated. Combined context string when requested via contents.context. Use highlights or text instead. |
+| statuses               | Optional\[List\[[ContentStatus](#contentstatus)]] | Status list from get\_contents.                                                                          |
+| cost\_dollars          | Optional\[[CostDollars](#costdollars)]            | Cost breakdown.                                                                                          |
+| search\_time           | Optional\[float]                                  | Time taken for the search in milliseconds.                                                               |
 
 #### `CostDollars`
 
@@ -14048,9 +15067,14 @@ Data category to focus on when searching. Each category returns results speciali
 
 #### `SearchType`
 
-Search type that determines the search algorithm. 'auto' (default) automatically selects the best approach, 'fast' prioritizes speed, 'deep' performs comprehensive multi-query search, 'neural' uses embedding-based semantic search.
+Search type that determines the search algorithm:
 
-**Type:** Literal\['auto', 'fast', 'deep', 'neural']
+* **auto** (default): Automatically selects the best approach for highest quality results
+* **fast**: Prioritizes speed with streamlined search models
+* **deep**: Comprehensive multi-query search with automatic query expansion
+* **instant**: Lowest latency search optimized for real-time applications
+
+**Type:** Literal\['auto', 'fast', 'deep', 'instant']
 
 #### `VERBOSITY_OPTIONS`
 
@@ -14267,7 +15291,7 @@ const exa = new Exa();  // Reads EXA_API_KEY from environment
 
 ## `search` Method
 
-<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"neural"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
+<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
 ### Input Example
 
@@ -14305,18 +15329,18 @@ const result = await exa.search("hottest AI startups", {
 
 ### Result Object
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `searchAndContents` Method
 
-<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"neural"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
+<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
 ### Input Example
 
@@ -14361,14 +15385,14 @@ const result = await exa.searchAndContents("AI in healthcare", {
 
 ### Result Object
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `findSimilar` Method
 
@@ -14410,14 +15434,14 @@ const result = await exa.findSimilar("https://www.example.com/article", {
 
 ### Result Object
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `findSimilarAndContents` Method
 
@@ -14466,14 +15490,14 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
 
 ### Result Object
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `getContents` Method
 
@@ -14487,7 +15511,7 @@ const result = await exa.getContents([
   "https://www.example.com/article2"
 ], {
   text: { maxCharacters: 1000 },
-  highlights: { query: "AI", maxCharacters: 2000 }
+  highlights: { query: "AI", maxCharacters: 200 }
 });
 ```
 
@@ -14515,14 +15539,14 @@ const result = await exa.getContents([
 
 ### Result Object
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `answer` Method
 
@@ -14586,10 +15610,10 @@ for await (const chunk of exa.streamAnswer("What is quantum computing?", {
 
 ### Input Parameters
 
-| Parameter | Type                                                                                                                                         | Description | Default  |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
-| query     | `string`                                                                                                                                     | -           | Required |
-| options   | `{ text?: boolean; model?: "exa" \| "exa-pro"; systemPrompt?: string; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; }` | -           | Required |
+| Parameter | Type                                                                                                                                                                | Description | Default  |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
+| query     | `string`                                                                                                                                                            | -           | Required |
+| options   | `{ text?: boolean; model?: "exa" \| "exa-pro"; systemPrompt?: string; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; userLocation?: string; }` | -           | Required |
 
 ### Return Example
 
@@ -14747,7 +15771,7 @@ Options for retrieving page contents
 | subpages           | `number`                            | Number of subpages to return for each result.                                                                                                                                                                                       |
 | subpageTarget      | `string \| string[]`                | Text used to match/rank subpages in the returned list.                                                                                                                                                                              |
 | extras             | `ExtrasOptions`                     | Miscellaneous data derived from results.                                                                                                                                                                                            |
-| context            | `ContextOptions \| true`            | Options for retrieving context.                                                                                                                                                                                                     |
+| context            | `ContextOptions \| true`            | Deprecated. Use `highlights` or `text` instead. Will be removed in a future version.                                                                                                                                                |
 
 #### `BaseSearchOptions`
 
@@ -14774,24 +15798,24 @@ Options for performing a search query
 Search options for performing a search query.
 Uses a discriminated union to ensure additionalQueries is only allowed when type is "deep".
 
-| Field              | Type                                                                                                               | Description                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| type               | `"auto" \| "fast" \| "deep" \| "neural"`                                                                           | The type of search to perform. Default is "auto".                                        |
-| numResults         | `number`                                                                                                           | Number of search results to return. Default 10. Max 10 for basic plans.                  |
-| includeDomains     | `string[]`                                                                                                         | List of domains to include in the search.                                                |
-| excludeDomains     | `string[]`                                                                                                         | List of domains to exclude in the search.                                                |
-| startCrawlDate     | `string`                                                                                                           | Start date for results based on crawl date (ISO format).                                 |
-| endCrawlDate       | `string`                                                                                                           | End date for results based on crawl date (ISO format).                                   |
-| startPublishedDate | `string`                                                                                                           | Start date for results based on published date (ISO format).                             |
-| endPublishedDate   | `string`                                                                                                           | End date for results based on published date (ISO format).                               |
-| category           | `"company" \| "research paper" \| "news" \| "pdf" \| "tweet" \| "personal site" \| "financial report" \| "people"` | A data category to focus on.                                                             |
-| includeText        | `string[]`                                                                                                         | List of strings that must be present in webpage text. Max 1 string of up to 5 words.     |
-| excludeText        | `string[]`                                                                                                         | List of strings that must not be present in webpage text. Max 1 string of up to 5 words. |
-| contents           | `ContentsOptions`                                                                                                  | Options for retrieving page contents for each result.                                    |
-| moderation         | `boolean`                                                                                                          | If true, the search results are moderated for safety.                                    |
-| useAutoprompt      | `boolean`                                                                                                          | If true, uses autoprompt to enhance the query.                                           |
-| userLocation       | `string`                                                                                                           | The two-letter ISO country code of the user, e.g. US.                                    |
-| additionalQueries  | `string[]`                                                                                                         | Alternative query formulations for deep search. Max 5 queries. Only for type: "deep".    |
+| Field              | Type                                                                                                               | Description                                                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| type               | `"auto" \| "fast" \| "deep" \| "instant"`                                                                          | The type of search to perform. Default is "auto". "instant" provides the lowest latency optimized for real-time applications. |
+| numResults         | `number`                                                                                                           | Number of search results to return. Default 10. Max 10 for basic plans.                                                       |
+| includeDomains     | `string[]`                                                                                                         | List of domains to include in the search.                                                                                     |
+| excludeDomains     | `string[]`                                                                                                         | List of domains to exclude in the search.                                                                                     |
+| startCrawlDate     | `string`                                                                                                           | Start date for results based on crawl date (ISO format).                                                                      |
+| endCrawlDate       | `string`                                                                                                           | End date for results based on crawl date (ISO format).                                                                        |
+| startPublishedDate | `string`                                                                                                           | Start date for results based on published date (ISO format).                                                                  |
+| endPublishedDate   | `string`                                                                                                           | End date for results based on published date (ISO format).                                                                    |
+| category           | `"company" \| "research paper" \| "news" \| "pdf" \| "tweet" \| "personal site" \| "financial report" \| "people"` | A data category to focus on.                                                                                                  |
+| includeText        | `string[]`                                                                                                         | List of strings that must be present in webpage text. Max 1 string of up to 5 words.                                          |
+| excludeText        | `string[]`                                                                                                         | List of strings that must not be present in webpage text. Max 1 string of up to 5 words.                                      |
+| contents           | `ContentsOptions`                                                                                                  | Options for retrieving page contents for each result.                                                                         |
+| moderation         | `boolean`                                                                                                          | If true, the search results are moderated for safety.                                                                         |
+| useAutoprompt      | `boolean`                                                                                                          | If true, uses autoprompt to enhance the query.                                                                                |
+| userLocation       | `string`                                                                                                           | The two-letter ISO country code of the user, e.g. US.                                                                         |
+| additionalQueries  | `string[]`                                                                                                         | Alternative query formulations for deep search. Max 5 queries. Only for type: "deep".                                         |
 
 #### `FindSimilarOptions`
 
@@ -14824,10 +15848,12 @@ Options for retrieving highlights from page.
 NOTE: For search type "deep", these options will not be respected. Highlights will be generated with respect
 to your initial query, and may vary in quantity and length.
 
-| Field         | Type     | Description                        |
-| ------------- | -------- | ---------------------------------- |
-| query         | `string` | -                                  |
-| maxCharacters | `number` | Maximum characters for highlights. |
+| Field            | Type     | Description |
+| ---------------- | -------- | ----------- |
+| query            | `string` | -           |
+| maxCharacters    | `number` | -           |
+| numSentences     | `number` | -           |
+| highlightsPerUrl | `number` | -           |
 
 #### `SummaryContentsOptions`
 
@@ -14839,9 +15865,6 @@ Options for retrieving summary from page.
 | schema | `Record&lt;string, unknown&gt; \| ZodSchema` | -           |
 
 #### `ContextOptions`
-
-Options for retrieving the context from a list of search results. The context is a string
-representation of all the search results.
 
 | Field         | Type     | Description |
 | ------------- | -------- | ----------- |
@@ -14898,14 +15921,14 @@ Represents a search result object.
 
 Represents a search response object.
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 #### `Status`
 
@@ -20867,6 +21890,41 @@ At its core, the API is:
 * Follow our [quickstart guide](/websets/api/get-started)
 * Learn more about [how it works](/websets/api/how-it-works)
 * Browse the [API reference](/websets/api/websets/create-a-webset)
+
+
+# Get Team Info
+Source: https://exa.ai/docs/websets/api/teams/get-team-info
+
+websets-spec get /v0/teams/me
+Retrieve information about your team including concurrency usage and limits.
+
+## Overview
+
+The Get Team Info endpoint returns information about the authenticated team, including the team's current concurrency usage and configured limits. This is useful for monitoring your Websets API usage and understanding your rate limits.
+
+## Response
+
+The response includes:
+
+* **object**: Always "team"
+* **id**: Your team's unique identifier
+* **name**: Your team's name
+* **concurrency**: Current usage showing active and queued requests
+* **limits**: Your team's concurrency limits
+
+### Concurrency Fields
+
+The `concurrency` object shows your current request state:
+
+* **active**: Number of requests currently being processed
+* **queued**: Number of requests waiting to be processed
+
+### Limits Fields
+
+The `limits` object shows your team's configured limits:
+
+* **maxConcurrent**: Maximum number of requests that can be processed simultaneously (null means unlimited)
+* **maxQueued**: Maximum number of requests that can wait in the queue (null means unlimited)
 
 
 # List webhook attempts

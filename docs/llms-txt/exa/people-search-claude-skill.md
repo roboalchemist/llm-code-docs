@@ -1,12 +1,12 @@
-# Source: https://exa.ai/docs/reference/company-research-claude-skill.md
+# Source: https://exa.ai/docs/reference/people-search-claude-skill.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Company Research
+# People Search
 
-> This guide shows you how to set up a Claude skill and Exa MCP that helps you research companies.
+> This guide shows you how to set up a Claude skill and Exa MCP that helps you find LinkedIn profiles, professional backgrounds, and experts.
 
 <Card title="Copy and Paste in Claude Code">
   Click the copy button on the code block below and paste it into Claude Code. Claude will automatically set up both the MCP connection and the skill for you.
@@ -23,12 +23,12 @@ claude mcp add --transport http exa "https://mcp.exa.ai/mcp?tools=web_search_adv
 Step 2: Add this Claude skill
 
 ---
-name: company-research
-description: Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists. Use when researching companies, doing competitor analysis, market research, or building company lists.
+name: people-research
+description: People research using Exa search. Finds LinkedIn profiles, professional backgrounds, experts, team members, and public bios across the web. Use when searching for people, finding experts, or looking up professional profiles.
 context: fork
 ---
 
-# Company Research
+# People Research
 
 ## Tool Restriction (Critical)
 
@@ -48,7 +48,7 @@ No hardcoded numResults. Tune to user intent:
 - User says "a few" → 10-20
 - User says "comprehensive" → 50-100
 - User specifies number → match it
-- Ambiguous? Ask: "How many companies would you like?"
+- Ambiguous? Ask: "How many profiles would you like?"
 
 ## Query Variation
 
@@ -60,24 +60,23 @@ Exa returns different results for different phrasings. For coverage:
 ## Categories
 
 Use appropriate Exa `category` depending on what you need:
-- `company` → homepages, rich metadata (headcount, location, funding, revenue)
-- `news` → press coverage, announcements
-- `tweet` → social presence, public commentary
-- `people` → LinkedIn profiles (public data)
-- No category (`type: "auto"`) → general web results, deep dives, broader context
+- `people` → LinkedIn profiles, public bios (primary for discovery)
+- `personal site` → personal blogs, portfolio sites, about pages
+- `news` → press mentions, interviews, speaker bios
+- No category (`type: "auto"`) → general web results, broader context
 
-Start with `category: "company"` for discovery, then use other categories or no category with `livecrawl: "fallback"` for deeper research.
+Start with `category: "people"` for profile discovery, then use other categories or no category with `livecrawl: "fallback"` for deeper research on specific individuals.
 
 ### Category-Specific Filter Restrictions
 
-When using `category: "company"`, these parameters cause 400 errors:
-- `includeDomains` / `excludeDomains`
+When using `category: "people"`, these parameters cause errors:
 - `startPublishedDate` / `endPublishedDate`
 - `startCrawlDate` / `endCrawlDate`
+- `includeText` / `excludeText`
+- `excludeDomains`
+- `includeDomains` — **LinkedIn domains only** (e.g., "linkedin.com")
 
-When searching without a category (or with `news`), domain and date filters work fine.
-
-**Universal restriction:** `includeText` and `excludeText` only support **single-item arrays**. Multi-item arrays cause 400 errors across all categories.
+When searching without a category, all parameters are available (but `includeText`/`excludeText` still only support single-item arrays).
 
 ## LinkedIn
 
@@ -93,52 +92,53 @@ Auto-fallback to Claude in Chrome when:
 
 ## Examples
 
-### Discovery: find companies in a space
+### Discovery: find people by role
 ```
 web_search_advanced_exa {
-  "query": "AI infrastructure startups San Francisco",
-  "category": "company",
+  "query": "VP Engineering AI infrastructure",
+  "category": "people",
   "numResults": 20,
   "type": "auto"
 }
 ```
 
-### Deep dive: research a specific company
+### With query variations
 ```
 web_search_advanced_exa {
-  "query": "Anthropic funding rounds valuation 2024",
-  "type": "deep",
-  "livecrawl": "fallback",
-  "numResults": 10,
-  "includeDomains": ["techcrunch.com", "crunchbase.com", "bloomberg.com"]
-}
-```
-
-### News coverage
-```
-web_search_advanced_exa {
-  "query": "Anthropic AI safety",
-  "category": "news",
-  "numResults": 15,
-  "startPublishedDate": "2024-01-01"
-}
-```
-
-### LinkedIn profiles
-```
-web_search_advanced_exa {
-  "query": "VP Engineering AI infrastructure",
+  "query": "machine learning engineer San Francisco",
   "category": "people",
-  "numResults": 20
+  "additionalQueries": ["ML engineer SF", "AI engineer Bay Area"],
+  "numResults": 25,
+  "type": "deep"
+}
+```
+
+### Deep dive: research a specific person
+```
+web_search_advanced_exa {
+  "query": "Dario Amodei Anthropic CEO background",
+  "type": "auto",
+  "livecrawl": "fallback",
+  "numResults": 15
+}
+```
+
+### News mentions
+```
+web_search_advanced_exa {
+  "query": "Dario Amodei interview",
+  "category": "news",
+  "numResults": 10,
+  "startPublishedDate": "2024-01-01"
 }
 ```
 
 ## Output Format
 
 Return:
-1) Results (structured list; one company per row)
-2) Sources (URLs; 1-line relevance each)
-3) Notes (uncertainty/conflicts)
+1) Results (name, title, company, location if available)
+2) Sources (Profile URLs)
+3) Notes (profile completeness, verification status)
 
 
 Step 3: Ask User to Restart Claude Code

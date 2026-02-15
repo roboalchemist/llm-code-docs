@@ -66,6 +66,10 @@ curl -X POST https://api.exa.ai/search \
 
 ### What You Get Back
 
+<Warning>
+  The `context` parameter shown in examples below is now deprecated. Use `highlights` or `text` instead.
+</Warning>
+
 Deep search returns a `context` field that gives you detailed context:
 
 ```json  theme={null}

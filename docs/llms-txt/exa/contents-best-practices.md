@@ -31,7 +31,7 @@ The `ids` parameter (list of URLs) is required. All other fields are optional. S
 | subpages         | int       | Maximum number of subpages to crawl from each URL.                                                                                      | 5                                                               |
 | subpageTarget    | string\[] | Keywords to prioritize when selecting subpages.                                                                                         | \["docs", "about", "pricing"]                                   |
 | summary          | bool/obj  | Return LLM-generated summary. Can specify custom `query` and JSON `schema` for structured extraction.                                   | `{"query": "Key takeaways"}`                                    |
-| context          | bool/obj  | Return all results combined into a single string for RAG. Can specify `maxCharacters`.                                                  | `true` or `{"maxCharacters": 10000}`                            |
+| context          | bool/obj  | **Deprecated.** Use `highlights` or `text` instead. Returns all results combined into a single string. Can specify `maxCharacters`.     | `true` or `{"maxCharacters": 10000}`                            |
 
 ## Content Extraction Options
 

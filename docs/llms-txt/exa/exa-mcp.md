@@ -4,17 +4,15 @@
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Exa MCP
+# Exa MCP - The Web Search MCP
+
+> Complete setup guide for Exa MCP Server. Connect Claude Desktop, Cursor, VS Code, and 10+ AI assistants to Exa's web search and code search tools.
 
 Exa MCP connects AI assistants to Exa's search capabilities, including web search and code search. It is open-source and available on [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
+<br />
+
 ## Installation
-
-Connect to Exa MCP:
-
-```
-https://mcp.exa.ai/mcp
-```
 
 <Tabs>
   <Tab title="Cursor">
@@ -143,6 +141,20 @@ https://mcp.exa.ai/mcp
     ```
   </Tab>
 
+  <Tab title="Google Antigravity">
+    Go to the three-dot menu in the Agent panel, navigate to **Manage MCP Servers**, then **View Raw config** and add:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "serverUrl": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
   <Tab title="v0 by Vercel">
     In v0, select **Prompt Tools** > **Add MCP** and enter:
 
@@ -238,50 +250,53 @@ https://mcp.exa.ai/mcp
   </Tab>
 </Tabs>
 
-<br />
-
-<br />
-
 ## Available Tools
 
-<Tabs>
-  <Tab title="Enabled by Default">
-    | Tool                   | Description                                                                                        |
-    | ---------------------- | -------------------------------------------------------------------------------------------------- |
-    | `web_search_exa`       | Search the web for any topic and get clean, ready-to-use content                                   |
-    | `get_code_context_exa` | Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs |
-    | `company_research_exa` | Research any company to get business information, news, and insights                               |
-  </Tab>
+**Enabled by default:**
 
-  <Tab title="Off by Default">
-    | Tool                      | Description                                                                             |
-    | ------------------------- | --------------------------------------------------------------------------------------- |
-    | `web_search_advanced_exa` | Advanced web search with full control over filters, domains, dates, and content options |
-    | `deep_search_exa`         | Deep search with automatic query expansion for thorough research                        |
-    | `crawling_exa`            | Get the full content of a specific webpage from a known URL                             |
-    | `people_search_exa`       | Find people and their professional profiles                                             |
-    | `deep_researcher_start`   | Start an AI research agent that searches, reads, and writes a detailed report           |
-    | `deep_researcher_check`   | Check status and get results from a deep research task                                  |
+| Tool                   | Description                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `web_search_exa`       | Search the web for any topic and get clean, ready-to-use content                                   |
+| `get_code_context_exa` | Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs |
+| `company_research_exa` | Research any company to get business information, news, and insights                               |
 
-    Enable these by adding the `tools` parameter to the URL:
+**Optional** (enable via `tools` parameter):
 
-    ```
-    https://mcp.exa.ai/mcp?tools=web_search_exa,deep_search_exa
-    ```
-  </Tab>
+| Tool                      | Description                                                                             |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `web_search_advanced_exa` | Advanced web search with full control over filters, domains, dates, and content options |
+| `crawling_exa`            | Get the full content of a specific webpage from a known URL                             |
+| `people_search_exa`       | Find people and their professional profiles                                             |
+| `deep_researcher_start`   | Start an AI research agent that searches, reads, and writes a detailed report           |
+| `deep_researcher_check`   | Check status and get results from a deep research task                                  |
 
-  <Tab title="Enable All">
-    Use this URL instead of the default to enable all tools:
+Enable specific tools:
 
-    ```
-    https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,deep_search_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
-    ```
-  </Tab>
-</Tabs>
+```
+https://mcp.exa.ai/mcp?tools=get_code_context_exa,people_search_exa
+```
+
+Enable all tools:
+
+```
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
+```
 
 <br />
 
+## API Key
+
+Exa MCP has a generous free plan. To overcome free plan rate limits, add your own API key:
+
+```
+https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
+```
+
+[Get your Exa API key](https://dashboard.exa.ai/api-keys)
+
 <br />
+
+## Resources
 
 <CardGroup cols={2}>
   <Card title="GitHub" icon="github" iconType="brands" color="#000000" href="https://github.com/exa-labs/exa-mcp-server">
@@ -317,4 +332,40 @@ https://mcp.exa.ai/mcp
   ```
   Create a detailed report on the current state of quantum computing startups.
   ```
+</Accordion>
+
+<Accordion title="Troubleshooting" icon="wrench">
+  **Rate limit error (429)**
+
+  You've hit the free plan rate limit. Add your own API key to continue:
+
+  ```
+  https://mcp.exa.ai/mcp?exaApiKey=YOUR_EXA_KEY
+  ```
+
+  [Get your API key](https://dashboard.exa.ai/api-keys)
+
+  **Tools not appearing**
+
+  Restart your MCP client after updating the config file. Some clients require a full restart to detect new MCP servers.
+
+  **Claude Desktop not connecting**
+
+  Claude Desktop doesn't support remote MCP directly. Use the `mcp-remote` wrapper:
+
+  ```json  theme={null}
+  {
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+  }
+  ```
+
+  **Config file not found**
+
+  Common config locations:
+
+  * Cursor: `~/.cursor/mcp.json`
+  * VS Code: `.vscode/mcp.json` (in project root)
+  * Claude Desktop (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`
+  * Claude Desktop (Windows): `%APPDATA%\Claude\claude_desktop_config.json`
 </Accordion>

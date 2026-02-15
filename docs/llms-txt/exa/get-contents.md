@@ -322,28 +322,20 @@ components:
         context:
           oneOf:
             - type: boolean
+              deprecated: true
               description: >-
-                Return page contents as a context string for LLM. When true,
-                combines all result contents into one string. We recommend using
-                10000+ characters for best results, though no limit works best.
-                Context strings often perform better than highlights for RAG
-                applications.
+                Deprecated: Use highlights or text instead. Returns page
+                contents as a combined context string.
               example: true
             - type: object
+              deprecated: true
               description: >-
-                Return page contents as a context string for LLM. When true,
-                combines all result contents into one string. We recommend using
-                10000+ characters for best results, though no limit works best.
-                Context strings often perform better than highlights for RAG
-                applications.
+                Deprecated: Use highlights or text instead. Returns page
+                contents as a combined context string.
               properties:
                 maxCharacters:
                   type: integer
-                  description: >-
-                    Maximum character limit for the context string. If you have
-                    5 results and set 1000 characters, each result gets about
-                    200 characters. We recommend 10000+ characters for best
-                    performance.
+                  description: Deprecated. Maximum character limit for the context string.
                   example: 10000
     ResultWithContent:
       allOf:
@@ -600,9 +592,8 @@ components:
               context:
                 type: string
                 description: >-
-                  Return page contents as a context string for LLM. When true,
-                  combines all result contents into one string. Context strings
-                  often perform better than highlights for LLMs.
+                  Deprecated. Combined context string from search results. Use
+                  highlights or text instead.
               statuses:
                 type: array
                 description: Status information for each requested URL
