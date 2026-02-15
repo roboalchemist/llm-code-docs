@@ -25,6 +25,7 @@ Version x.y.z
 $ git tag -a x.y.z
 Version x.y.z
 $ git push && git push --tags
+
 ```
 
 ## Updating `update.freshrss.org`
@@ -56,15 +57,16 @@ Here’s an example of a `versions.php` file:
 ```php
 <?php
 return [
-	// STABLE
-	'0.8.0' => '1.0.0',
-	'0.8.1' => '1.0.0',
-	'1.0.0' => '1.0.1',  // doesn’t exist (yet)
-	// DEV
-	'1.1.2-dev' => 'dev',
-	'1.1.3-dev' => 'dev',
-	'1.1.4-dev' => 'dev',
+  // STABLE
+  '0.8.0' => '1.0.0',
+  '0.8.1' => '1.0.0',
+  '1.0.0' => '1.0.1',  // doesn’t exist (yet)
+  // DEV
+  '1.1.2-dev' => 'dev',
+  '1.1.3-dev' => 'dev',
+  '1.1.4-dev' => 'dev',
 ];
+
 ```
 
 And here’s how this table works:
@@ -108,6 +110,7 @@ $ vim constants.php
 $ vim CHANGELOG.md
 # Prepare the changelog for the next version
 $ git add CHANGELOG.md && git commit && git push
+
 ```
 
 Also remember to update update.freshrss.org so that it takes the current development version into account.

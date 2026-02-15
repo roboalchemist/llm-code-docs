@@ -11,13 +11,15 @@ Thus promoting one user to *admin* demotes the current *admin* user.
 
 The recommended way of promoting a user is with the help of the CLI tool.
 You only have to do is to run the following command:
+
 ```sh
 ./cli/reconfigure.php --default_user <username>
 ```
 
 Alternatively, you can edit configuration files manually.
 To do so, you need to change the *default_user* value in the file *./data/config.php*.
-As the file is a PHP file, you have to make sure that it’s still valid after the update by running the following command:
+As the file is a PHP file, you have to make sure that it's still valid after the update by running the following command:
+
 ```sh
 php -l ./data/config.php
 ```

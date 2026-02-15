@@ -102,11 +102,13 @@ See [SQLite export/import]( https://github.com/FreshRSS/FreshRSS/tree/edge/cli) 
 1. To export your list of feeds, go to “Subscriptions management”.
 2. Click on “Import / export”
 3. You can select for your export:
-	1. the list of feeds
-	2. labelled articles
-	3. favourite articles
-	4. and finally, you can select feeds you want to export (by default, all feeds are selected)
-4. Click on “export”.
+
+   1. the list of feeds
+   2. labelled articles
+   3. favourite articles
+   4. and finally, you can select feeds you want to export (by default, all feeds are selected)
+
+4. Click on "export".
 
 ## Import
 

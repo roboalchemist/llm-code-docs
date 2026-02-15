@@ -37,18 +37,18 @@ PHPMailer documentation](http://phpmailer.github.io/PHPMailer/classes/PHPMailer.
 ### Example code to configure SMTP server
 
 ```php
-	'mailer' => 'smtp', // instead of 'mail'
-	'smtp' => [
-		'hostname' => 'example.net',
-		'host' => 'smtp.example.net', // URL to your smtp server
-		'port' => 465,
-		'auth' => true,
-		'auth_type' => '',
-		'username' => 'alice', // or maybe alice@example.net
-		'password' => 'yoursecretpassword',
-		'secure' => 'ssl', // '', 'ssl' or 'tls'
-		'from' => 'alice@example.net',
-	],
+'mailer' => 'smtp', // instead of 'mail'
+'smtp' => [
+  'hostname' => 'example.net',
+  'host' => 'smtp.example.net', // URL to your smtp server
+  'port' => 465,
+  'auth' => true,
+  'auth_type' => '',
+  'username' => 'alice', // or maybe alice@example.net
+  'password' => 'yoursecretpassword',
+  'secure' => 'ssl', // '', 'ssl' or 'tls'
+  'from' => 'alice@example.net',
+],
 ```
 
 ## Check your SMTP server is correctly configured

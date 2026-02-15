@@ -12,12 +12,14 @@ As a developer, you can run the test suite on your PC easily with `make` command
 ```sh
 cd ./FreshRSS/
 make test-all
+
 ```
 
 Some syntax, formatting, whitespace, and i18n conventions can be fixed automatically with:
 
 ```sh
 make fix-all
+
 ```
 
 Some tests can run inside some Docker images, in particular to test against minimum and maximum versions of PHP:
@@ -31,6 +33,7 @@ docker build --pull --tag freshrss/freshrss:newest -f Docker/Dockerfile-Newest .
 # Run
 docker run --rm -e FRESHRSS_ENV=development -e TZ=UTC -v $(pwd):/var/www/FreshRSS freshrss/freshrss:oldest bin/composer test
 docker run --rm -e FRESHRSS_ENV=development -e TZ=UTC -v $(pwd):/var/www/FreshRSS freshrss/freshrss:newest bin/composer test
+
 ```
 
 ## GitHub Actions for Continuous Integration
@@ -55,28 +58,32 @@ If you do not have one, you need to create one.
 1. Inside the mock server home folder, create the ___file_ and _mappings_ folders.
 1. Copy or move your snapshots in the ___file_ folder.
 1. Create the _feed.json_ file in the _mappings_ folder with the following content:
-	```js
-	{
-		"request": {
-			"method": "GET",
-			"urlPathPattern": "/.*"
-		},
-		"response": {
-			"status": 200,
-			"bodyFileName": "{{ '{{' }}request.pathSegments.[0]}}",
-			"transformers": ["response-template"],
-			"headers": {
-				"Content-Type": "application/rss+xml"
-			}
-		}
-	}
-	```
+
+  ```js
+  {
+    "request": {
+      "method": "GET",
+      "urlPathPattern": "/.*"
+    },
+    "response": {
+      "status": 200,
+      "bodyFileName": "{{ '{{' }}request.pathSegments.[0]}}",
+      "transformers": ["response-template"],
+      "headers": {
+        "Content-Type": "application/rss+xml"
+      }
+    }
+  }
+  ```
+
 1. Launch the containerized server with the following command:
-	```sh
-	# <PORT> is the port used on the host to communicate with the server
-	# <NETWORK> is the name of the docker network used (by default, it’s freshrss-network)
-	docker run -it --rm -p <PORT>:8080 --name wiremock --network <NETWORK> -v $PWD:/home/wiremock wiremock/wiremock:latest-alpine --local-response-templating
-	```
+
+  ```sh
+  # <PORT> is the port used on the host to communicate with the server
+  # <NETWORK> is the name of the docker network used (by default, it’s freshrss-network)
+  docker run -it --rm -p <PORT>:8080 --name wiremock --network <NETWORK> -v $PWD:/home/wiremock wiremock/wiremock:latest-alpine --local-response-templating
+  ```
+
 1. You can access the `<RSS>` mock file directly:
    * from the host by sending a GET request to `http://localhost:<PORT>/<RSS>`,
    * from any container connected on the same network by sending a GET request to `http://wiremock:8080/<RSS>`.

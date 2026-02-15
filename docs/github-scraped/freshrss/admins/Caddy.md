@@ -12,15 +12,15 @@ To set up FreshRSS behind a reverse proxy with Caddy and using a subfolder, foll
 
     Update your Caddyfile with the following configuration:
 
-    ``` caddy
-	example.com {
-		redir /subfolder /subfolder/ # Just to redirect users that are missing the closing slash to the correct page
-		handle_path /subfolder/* { # Actually configures the used subfolder (also internally strips the path prefix)
-			reverse_proxy freshrss:80 { # Enables the reverse proxy for the configured program:port
-				header_up X-Forwarded-Prefix "/subfolder" # Sets the correct header for the login cookies
-			}
-		}
-	}
+    ```caddy
+    example.com {
+      redir /subfolder /subfolder/ # Just to redirect users that are missing the closing slash to the correct page
+      handle_path /subfolder/* { # Actually configures the used subfolder (also internally strips the path prefix)
+        reverse_proxy freshrss:80 { # Enables the reverse proxy for the configured program:port
+          header_up X-Forwarded-Prefix "/subfolder" # Sets the correct header for the login cookies
+        }
+      }
+    }
     ```
 
     Replace `example.com` with your actual domain and the four instances of `subfolder` with the subfolder where you want FreshRSS to be hosted.
@@ -63,10 +63,10 @@ To set up FreshRSS behind a reverse proxy with Caddy and using a subdomain, foll
 
     Update your Caddyfile with the following configuration:
 
-    ``` caddy
-	subdomain.example.com { # The url Caddy should serve the proxy on
-		reverse_proxy freshrss:80 # Enables the reverse proxy for the configured program:port
-	}
+    ```caddy
+    subdomain.example.com { # The url Caddy should serve the proxy on
+      reverse_proxy freshrss:80 # Enables the reverse proxy for the configured program:port
+    }
     ```
 
     Replace `example.com` with your actual domain and `subdomain` with the subfolder where you want FreshRSS to be hosted.

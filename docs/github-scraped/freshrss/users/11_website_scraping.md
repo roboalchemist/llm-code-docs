@@ -6,9 +6,10 @@ FreshRSS has a built-in [Web scraping](https://en.wikipedia.org/wiki/Web_scrapin
 
 ## How to add
 
-Go to “Subscription Management” where a new feed can be added.
-Change the “Type of feed source” to one of:
-- “HTML + XPath (Web scraping)”
+Go to "Subscription Management" where a new feed can be added.
+Change the "Type of feed source" to one of:
+
+- "HTML + XPath (Web scraping)"
 - JSON Feed (see [`jsonfeed.org`](https://www.jsonfeed.org/))
 - JSON (Dotted paths)
 
@@ -28,20 +29,20 @@ Suppose the JSON to which you are subscribing to (or scraping) looks like this:
 
 ```json
 {
-	"data": {
-		"items": [
-			{
-				"meta": {"title": "Some news item"},
-				"content": "Content of the news",
-				"links": ["https://example.net/1", "https://example.org/1"]
-			},
-			{
-				"meta": {"title": "Some other news item"},
-				"content": "Yet more content",
-				"links": ["https://example.net/2", "https://example.org/2"]
-			}
-		]
-	}
+  "data": {
+    "items": [
+      {
+        "meta": {"title": "Some news item"},
+        "content": "Content of the news",
+        "links": ["https://example.net/1", "https://example.org/1"]
+      },
+      {
+        "meta": {"title": "Some other news item"},
+        "content": "Yet more content",
+        "links": ["https://example.net/2", "https://example.org/2"]
+      }
+    ]
+  }
 }
 ```
 

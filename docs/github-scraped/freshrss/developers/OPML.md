@@ -30,19 +30,19 @@ The list of the custom FreshRSS attributes can be seen in [the source code](http
 The following attributes are using similar naming conventions than [RSS-Bridge](https://rss-bridge.github.io/rss-bridge/Bridge_API/XPathAbstract.html).
 
 * `frss:xPathItem`: XPath expression for extracting the feed items from the source page.
-	* Example: `//div[@class="news-item"]`
+  * Example: `//div[@class="news-item"]`
 * `frss:xPathItemTitle`: XPath expression for extracting the item’s title from the item context.
-	* Example: `descendant::h2`
+  * Example: `descendant::h2`
 * `frss:xPathItemContent`: XPath expression for extracting an item’s content from the item context.
-	* Example: `.`
+  * Example: `.`
 * `frss:xPathItemUri`: XPath expression for extracting an item link from the item context.
-	* Example: `descendant::a/@href`
+  * Example: `descendant::a/@href`
 * `frss:xPathItemAuthor`: XPath expression for extracting an item author from the item context.
-	* Example: `"Anonymous"`
+  * Example: `"Anonymous"`
 * `frss:xPathItemTimestamp`: XPath expression for extracting an item timestamp from the item context. The result will be parsed by [`strtotime()`](https://php.net/strtotime).
 * `frss:xPathItemTimeFormat`: Date/Time format to parse the timestamp, according to [`DateTime::createFromFormat()`](https://php.net/datetime.createfromformat).
 * `frss:xPathItemThumbnail`: XPath expression for extracting an item’s thumbnail (image) URL from the item context.
-	* Example: `descendant::img/@src`
+  * Example: `descendant::img/@src`
 * `frss:xPathItemCategories`: XPath expression for extracting a list of categories (tags) from the item context.
 * `frss:xPathItemUid`: XPath expression for extracting an item’s unique ID from the item context. If left empty, a hash is computed automatically.
 
@@ -51,13 +51,13 @@ The following attributes are using similar naming conventions than [RSS-Bridge](
 * `<outline type="JSON+DotNotation" ...`: Similar to `HTML+XPath` but for JSON and using a dot/bracket syntax such as `object.object.array[2].property`.
 
 * `frss:jsonItem`: JSON dot notation for extracting the feed items from the source page.
-	* Example: `data.items`
+  * Example: `data.items`
 * `frss:jsonItemTitle`: JSON dot notation for extracting the item’s title from the item context.
-	* Example: `meta.title`
+  * Example: `meta.title`
 * `frss:jsonItemContent`: JSON dot notation for extracting an item’s content from the item context.
-	* Example: `content`
+  * Example: `content`
 * `frss:jsonItemUri`: JSON dot notation for extracting an item link from the item context.
-	* Example: `meta.links[0]`
+  * Example: `meta.links[0]`
 * `frss:jsonItemAuthor`: JSON dot notation for extracting an item author from the item context.
 * `frss:jsonItemTimestamp`: JSON dot notation for extracting an item timestamp from the item context. The result will be parsed by [`strtotime()`](https://php.net/strtotime).
 * `frss:jsonItemTimeFormat`: Date/Time format to parse the timestamp, according to [`DateTime::createFromFormat()`](https://php.net/datetime.createfromformat).
@@ -72,7 +72,7 @@ The following attributes are using similar naming conventions than [RSS-Bridge](
 ### HTML+XPath+JSON
 
 * `<outline type="HTML+XPath+JSON+DotNotation" frss:xPathToJson="..." ...`: Same as `JSON+DotNotation` but first extracting the JSON string from an HTML document thanks to an XPath expression.
-	* Example: `//script[@type='application/json']`
+  * Example: `//script[@type='application/json']`
 
 ### cURL
 
@@ -95,9 +95,9 @@ A number of [cURL options](https://curl.se/libcurl/c/curl_easy_setopt.html) are 
 * `frss:unicityCriteria`: Criteria used for the unicity of articles. E.g. `id` (default), `link`, `sha1:link_published`, `sha1:link_published_title`, `sha1:title`, [etc](https://github.com/FreshRSS/FreshRSS/blob/1c92d55917029d291d00009b674d8552934a69ec/app/Models/Feed.php#L652-L666).
 * `frss:unicityCriteriaForced`: Boolean to force the usage of the selected unicity criterion even in the case of many duplicates (otherwise, the default behaviour is to fall back to a more precise unicity criteria).
 * `frss:cssFullContent`: [CSS Selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) to enable the download and extraction of the matching HTML section of each articles’ Web address.
-	* Example: `div.main, .summary`
+  * Example: `div.main, .summary`
 * `frss:cssContentFilter`: [CSS Selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) to remove the matching HTML elements from the article content or from the full content retrieved by `frss:cssFullContent`.
-	* Example: `.footer, .aside`
+  * Example: `.footer, .aside`
 . `frss:cssFullContentConditions`: List (separated by a new line) of search queries to trigger a full content retrieval as defined by `frss:cssFullContent`.
 * `frss:filtersActionRead`: List (separated by a new line) of search queries to automatically mark a new article as read.
 
@@ -110,25 +110,26 @@ A number of [cURL options](https://curl.se/libcurl/c/curl_easy_setopt.html) are 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
-	<head>
-		<title>FreshRSS OPML extension example</title>
-	</head>
-	<body>
-		<outline xmlns:frss="https://freshrss.org/opml"
-			text="Example"
-			type="HTML+XPath"
-			xmlUrl="https://www.example.net/page.html"
-			htmlUrl="https://www.example.net/page.html"
-			description="Example of Web scraping"
-			frss:priority="main"
-			frss:xPathItem="//a[contains(@href, '/interesting/')]/ancestor::article"
-			frss:xPathItemTitle="descendant::h2"
-			frss:xPathItemContent="."
-			frss:xPathItemUri="descendant::a[string-length(@href)&gt;0]/@href"
-			frss:xPathItemThumbnail="descendant::img/@src"
-			frss:cssFullContent="article"
-			frss:filtersActionRead="intitle:⚡️ OR intitle:🔥&#10;something"
-		/>
-	</body>
+  <head>
+    <title>FreshRSS OPML extension example</title>
+  </head>
+  <body>
+    <outline xmlns:frss="https://freshrss.org/opml"
+      text="Example"
+      type="HTML+XPath"
+      xmlUrl="https://www.example.net/page.html"
+      htmlUrl="https://www.example.net/page.html"
+      description="Example of Web scraping"
+      frss:priority="main"
+      frss:xPathItem="//a[contains(@href, '/interesting/')]/ancestor::article"
+      frss:xPathItemTitle="descendant::h2"
+      frss:xPathItemContent="."
+      frss:xPathItemUri="descendant::a[string-length(@href)&gt;0]/@href"
+      frss:xPathItemThumbnail="descendant::img/@src"
+      frss:cssFullContent="article"
+      frss:filtersActionRead="intitle:⚡️ OR intitle:🔥&#10;something"
+    />
+  </body>
 </opml>
+
 ```
