@@ -803,6 +803,13 @@ repositories:
     target_folder: "docs/github-scraped/bambu-lab-api"
     branch: "main"
 
+  - name: "BigCommerce"
+    description: "BigCommerce e-commerce platform API documentation - REST APIs (Catalog, Orders, Customers, Carts), GraphQL (Admin, Storefront, Account, B2B), authentication, webhooks, rate limits, and pagination"
+    repo_url: "https://github.com/bigcommerce/docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/bigcommerce"
+    branch: "main"
+
   - name: "ariakit"
     description: "Ariakit - React toolkit for building accessible web applications with unstyled WAI-ARIA components, includes guide, components, and examples documentation"
     repo_url: "https://github.com/ariakit/ariakit.git"

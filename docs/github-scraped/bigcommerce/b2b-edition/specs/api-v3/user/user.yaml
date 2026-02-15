@@ -1,0 +1,847 @@
+openapi: 3.0.1
+info:
+  title: Users
+  description: |-
+    > **NOTICE**
+    > 
+    > As of September 30, 2025, the B2B Edition API `authToken` will be deprecated and replaced by the standard BigCommerce API `X-Auth-Token`. For information concerning this change, see [B2B Authentication](/b2b-edition/docs/authentication).
+    > 
+    > While `authToken` authentication is not expected to be fully sunset in the near future, it is advised to migrate to the new system as soon as possible to prevent disruption of functionality.
+
+    > NOTE:  
+    > While Super Admins are B2B Edition user accounts, they are not included in the response data for this API. To manage Super Admin accounts, refer to the [B2B Edition Super Admin API](/b2b-edition/apis/rest-management/super-admin).
+
+    The Users API provides programmatic access to B2B Edition user management within BigCommerce. It enables storefront operations such as creating Company users, assigning roles, associating users with channels, and managing extra fields. This ensures that B2B customers can be onboarded, managed, and maintained according to your business logic and storefront requirements.
+
+    Each B2B Edition user account is associated with a BigCommerce customer account. To manage BigCommerce specific account information, refer to the [Customers API](/docs/rest-management/customers).
+
+    ### Limitations & Considerations  
+    - **Role Management:** Only built-in roles (admin, senior buyer, junior buyer) are supported in filters, but custom roles are still accessible for reading and updating.
+    - **Bulk Operations:** Bulk user creation is limited to 10 users per request.
+    - **Deletion Safeguards:** Deleting the last user in a Company is not allowed; deleting all admin users is permitted but may render Companies unable to transact.
+    - **Channel Assignments:** Users must be assigned to at least one storefront channel in order to perform business operations in a store with multiple storefront channels.
+  contact:
+    name: BigCommerce
+    url: 'https://www.bigcommerce.com'
+    email: support@bigcommerce.com
+  version: v3
+  termsOfService: 'https://www.bigcommerce.com/terms'
+servers:
+  - url: 'https://api-b2b.bigcommerce.com/api/v3/io'
+security:
+  - X-Auth-Token: []
+    X-Store-Hash: []
+tags:
+  - name: Users
+paths:
+  /users:
+    get:
+      summary: Get All B2B users
+      description: Returns a paginated list of B2B users with optional filters.
+      operationId: companies_users_list
+      tags: [Users]
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - name: companyId
+          in: query
+          schema:
+            type: integer
+            example: 42
+          description: "If included, filters users in the response based on their Company ID as reported by the [Server to Server Companies](/b2b-edition/apis/rest-management/company/companies) endpoints."
+        - name: roles
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              enum: [0,1,2]
+          description: |-
+            Filters users according to their assigned role ID. This filter is limited to admin (`0`), senior buyer (`1`), and junior buyer (`2`).
+
+            By default, custom roles are treated as junior buyer, but they can be differentiated in the response data by the `companyRoleId` and `companyRoleName` fields. For more information, see [Company Roles and Permissions](/b2b-edition/apis/rest-management/company/company-roles-and-permissions).
+        - name: minModified
+          in: query
+          schema:
+            type: string
+            example: "1751310365"
+          description: "Filters results by the `updatedAt` field, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) later than `minModified`."
+        - name: maxModified
+          in: query
+          schema:
+            type: string
+            example: "1751310365"
+          description: "Filters results by the `updatedAt` field, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) earlier than `maxModified`."
+        - name: minCreated
+          in: query
+          schema:
+            type: string
+            example: "1751310365"
+          description: "Filters results by the `createdAt` field, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) later than `minCreated`."
+        - name: maxCreated
+          in: query
+          schema:
+            type: string
+            example: "1751310365"
+          description: "Filters results by the `createdAt` field, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) earlier than `maxCreated`."
+        - name: email
+          in: query
+          schema:
+            type: string
+            format: email
+            example: "user@example.com"
+          description: "Filters users by email address. This field requires an exact match."
+        - name: channelId
+          in: query
+          schema:
+            type: integer
+            example: 1
+          description: "Filters users by their assigned BigCommerce channel ID."
+        - name: isIncludeExtraFields
+          in: query
+          schema:
+            type: string
+            enum: ["0", "1"]
+          description: "Indicates whether to include extra fields in the response. A value of `1` indicates they will be included, while a value of `0` indicates they will not."
+        - name: q
+          in: query
+          schema:
+            type: string
+            example: "Smith"
+          description: "Broader search term for filtering on supported fields. Currently this includes Company, email, and name fields."
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                          message:
+                            default: "Success"
+                      data:
+                        items:
+                          $ref: '#/components/schemas/userResponse'
+        '422':
+          description: |-
+            Validation Error
+
+            This error indicates some part of the request is invalid. See the `errMsg` field for more information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: { default: 422 }
+                      meta:
+                        properties:
+                          message: { default: "Parameter Error" }
+                      data:
+                        properties:
+                          errMsg:
+                            type: object
+                            description: "An object whose fields report errors within the request. Fields are included or excluded based only on whether their values were invalid."
+              examples:
+                Parameter Error:
+                  value:
+                    code: 422
+                    meta: {message: "Parameter Error"}
+                    data:
+                      errMsg:
+                        roles:
+                          0: 
+                            - "\"99\" is not a valid choice."
+    post:
+      summary: Create A Company User
+      description: |-
+        Create a Company user within an existing Company. This migrates the user's existing orders to the Company's Buyer Portal if their email address is associated with a B2C customer account.
+
+        With [Independent Company behavior](/b2b-edition/apis/rest-management/company/companies#independent-vs-dependent-companies-behavior) enabled, B2B Edition Company accounts are the source of truth for defining a Company user’s customer group assignment.
+        
+        On stores without Independent Company behavior, each Company account has a one-to-one relationship with its customer group.
+        
+        If no default customer group is configured, or the set value of `customerGroupId` is 0, the B2B Company will not be associated with any customer group. The Company users will have their corresponding customer records assigned to No Group in BigCommerce.
+      operationId: companies_users_create
+      tags: [Users]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/userPost"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        $ref: "#/components/schemas/newIds"
+        '422':
+          $ref: "#/components/responses/post422"
+  /users/bulk:
+    post:
+      summary: Bulk Create Users
+      description: |-
+        Create up to 10 Company users at once.
+
+        With (Independent Company behavior)[/b2b-edition/apis/rest-management/company/companies#independent-vs-dependent-companies-behavior] enabled, B2B Edition Company accounts are the source of truth for defining a Company user’s customer group assignment. If no default customer group is configured or the set value of `customerGroupId` is 0, the B2B Company will not be associated with any customer group. The Company users will have their corresponding customer records assigned to No Group in BigCommerce.
+      operationId: companies_users_bulk_create_create
+      tags: [Users]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              maxItems: 10
+              items:
+                $ref: "#/components/schemas/userPost"
+      responses:
+        '200':
+          description: Creation successful
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        items:
+                          $ref: "#/components/schemas/newIds"
+        '413':
+          description: |-
+            REQUEST TOO LARGE
+
+            This error is thrown when more than ten records are included in the body of the request.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 413
+                      meta:
+                        properties:
+                          message:
+                            default: "Request Entity Too Large"
+                      data:
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "Add up to ten data at a time"
+        '422':
+          $ref: "#/components/responses/post422"
+  /users/{userId}:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 123
+        description: "The unique identifier of the user as reported by [Get All Users](#get-all-users)."
+    get:
+      summary: Get User Details
+      description: "Returns detailed user information for the user specified by `userId`. Unlike [Get All Users](#get-all-users), this endpoint includes extra fields by default."
+      operationId: companies_user_by_id
+      tags: [Users]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/responseObject'
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        $ref: "#/components/schemas/userResponse"
+        '404':
+          $ref: "#/components/responses/userId404"
+    put:
+      summary: Update User Details
+      description: "Updates the B2B Edition user account associated with `userId`. All fields may be updated except `companyId` and `originChannelId`, which are read-only for a user account."
+      operationId: companies_user_update
+      tags: [Users]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/userStrict"
+                - properties:
+                    channelIds:
+                      $ref: "#/components/schemas/channelIds"
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/responseObject'
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        $ref: "#/components/schemas/userResponse"
+        '404':
+          $ref: "#/components/responses/userId404"
+        '422':
+          description: |-
+            Validation Error
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 422
+                      meta:
+                        properties:
+                          message:
+                            default: "Parameter Error"
+                      data:
+                        properties:
+                          errMsg:
+                            type: object
+                            properties:
+                              _fieldName:
+                                type: array
+                                description: "A variable field based on the errors in the request. A different `_fieldName` will be included for each reportable error. For example, if the email address is improperly formatted, the field will be called `email`."
+                                items:
+                                  type: string
+                                  example: ""
+                            example:
+                              email: ["Enter a valid email address."]
+                              role: ["The value \"5\" is not a valid role."]
+    delete:
+      summary: Delete a User
+      description: |-
+        Deletes a B2B Edition user account. This endpoint does not delete the BigCommerce customer account. Attempting to delete the last user in a Company will fail, but deleting all admin users will not.
+        
+        > NOTE:  
+        > Deleting the only admin user in a Company may result in the Company being unable to do business on your storefront. When using this endpoint, care must be taken to avoid deleting the last admin user.
+      operationId: companies_user_delete
+      tags: [Users]
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta: 
+                        properties:
+                          message: { example: "Success" }
+                      data: 
+                        properties:
+                          userId: { type: integer, example: 123, description: "The deleted user's ID." }
+        '404':
+          $ref: "#/components/responses/userId404"
+        '422':
+          description: |-
+            Last User Error
+            
+            This error returns when the user indicated by `userId` is the only user in its Company and cannot be deleted.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 422
+                      meta:
+                        properties:
+                          message:
+                            default: "Processing data contains logical errors"
+                      data:
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "The last user in company can not be deleted."
+  /users/customer/{customerId}:
+    parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 12345
+        description: "The unique numeric ID associated with the BigCommerce customer account. This does not match the `userId` assigned by B2B Edition."
+    get:
+      summary: Get User Details by BigCommerce Customer ID
+      description: "Returns detailed information for the user associated with `customerId`. Analogous to [Get User Details](#get-user-details). If the B2B Edition customer account associated with `customerId` has been deleted, this will return a `404` error."
+      operationId: companies_user_read
+      tags: [Users]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/responseObject'
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        $ref: "#/components/schemas/userResponse"
+        '404':
+          $ref: "#/components/responses/userId404"
+  /users/extra-fields:
+    get:
+      summary: List extra fields for users
+      description: Returns paginated list of extra field definitions for users.
+      operationId: get_users_extra_fields
+      tags: [Users]
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: integer, example: 200 }
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/extraFieldDetail'
+                  meta:
+                    type: object
+                    properties:
+                      pagination:
+                        $ref: '#/components/schemas/paginationObject'
+                      message: { type: string, example: "Success" }
+
+components:
+  schemas:
+    newIds:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: "The unique numeric identifier associated with the B2B Edition user account."
+        bcId:
+          type: integer
+          description: "The unique numeric identifier associated with the BigCommerce customer account corresponding to the B2B Edition user account."
+    channelIds:
+      type: array
+      items:
+        type: integer
+      description: "List of numeric channel IDs the user is associated with. These represent the storefront channels the user can log in to and do business."
+    userStrict:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: "User's first name."
+          example: "Marie"
+        lastName:
+          type: string
+          description: "User's last name."
+          example: "Curie"
+        email:
+          type: string
+          format: email
+          description: "User's email address. This must be unique within B2B Edition."
+          example: "john.doe@example.com"
+        phoneNumber:
+          type: string
+          description: "User's phone number."
+          example: "+1-555-123-4567"
+        role:
+          type: integer
+          enum: [0,1,2]
+          description: "Numeric code representing the user's role as admin (`0`), senior buyer (`1`), or junior buyer (`2`)."
+          example: 1
+        companyRoleId:
+          type: integer
+          example: 10
+          description: "Numeric code representing the user's Company-specific role. When present this field overrides the value of the `role` field."
+        uuid:
+          type: string
+          example: "user-uuid-1"
+          description: "External identifier for the user. This field may be used to represent any external user ID. Using the name `uuid`, B2B Edition does not require the field to be unique."
+        extraFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/extraField'
+    userPost:
+      allOf:
+        - $ref: "#/components/schemas/userBase"
+        - required:
+            - firstName
+            - lastName
+            - email
+            - companyId
+            - role
+            - channelIds
+          properties:
+            acceptWelcomeEmail:
+              type: boolean
+              description: "Indicates whether the user will receive a welcome email when the account is created."
+            originChannelId:
+              type: integer
+              example: 1
+              description: "The ID of the originating channel. A value of `0` will unset the user's origin channel, which may result in unexpected behavior. To avoid errors, ensure all necessary channels are included in `channelIds`."
+            channelIds:
+              $ref: "#/components/schemas/channelIds"
+    userResponse:
+      allOf:
+        - properties:
+            id:
+              type: integer
+        - $ref: "#/components/schemas/userBase"
+        - properties:
+            createdAt:
+              type: integer
+              description: "The [Unix timestamp](https://www.unixtimestamp.com/) for when the user's account was created."
+            updatedAt:
+              type: integer
+              description: "The [Unix timestamp](https://www.unixtimestamp.com/) for when the user's account was last modified."
+            customerId:
+              type: integer
+              example: 12345
+              description: "The unique numeric ID associated with the user's BigCommerce customer account."
+            companyRoleName:
+              type: string
+              example: "Approver"
+              description: "Display name of the user's Company-specific role."
+            channelList:
+              type: array
+              items:
+                type: object
+                properties:
+                  channelId: { type: integer, example: 1, description: "The unique numeric ID associated with the channel." }
+                  channelName: { type: string, example: "Default Storefront", description: "The display name of the channel, as shown in BigCommerce." }
+                  iconUrl: {type: string, example: "https://s3.amazonaws.com/bc-channel-platform/channel-icons/bigcommerce.svg", description: "The icon associated with the channel's type." }
+              description: "Channels the user is assigned to."
+    userBase:
+      allOf:
+        - $ref: "#/components/schemas/userStrict"
+        - properties:
+            companyId:
+              type: integer
+              description: "The unique numeric ID associated with the user's B2B Edition Company account."
+              example: 42
+    extraField:
+      type: object
+      properties:
+        fieldName:
+          type: string
+          example: "customField1"
+          description: "The name of the extra field displayed in B2B Edition."
+        fieldValue:
+          type: string
+          example: "value1"
+          description: "The user-specific value of the extra field."
+    extraFieldDetail:
+      type: object
+      properties:
+        id:
+          type: number
+          description: "The unique numeric ID for the extra field."
+        uuid:
+          type: string
+          format: uuid
+          description: "UUID of the extra field assigned by B2B Edition."
+        fieldName:
+          type: string
+          description: "The name of the extra field displayed in B2B Edition."
+        fieldType:
+          type: number
+          description: "The data type allowed by the extra field. The supported types are text (`0`), multiline text (`1`), number (`2`), and dropdown (`3`)."
+          enum: [0,1,2,3]
+        isRequired:
+          type: boolean
+          description: "Indicates whether the extra field requires a value when creating or updating the user account."
+        isUnique:
+          type: boolean
+          description: "Indicates whether the extra field's value is required to be unique when present."
+        visibleToEnduser:
+          type: boolean
+          description: "Indicates whether the extra field is visible on the storefront."
+        configType:
+          type: number
+          description: "Indicates whether the extra field is built in (`1`) or user defined (`2`)."
+          enum: [2,1]
+        defaultValue:
+          type: string
+          description: "The default value the extra field takes, if it exists."
+        maximumLength:
+          type: string
+          description: "The maximum character length for text extra fields (type `0`)."
+        numberOfRows:
+          type: string
+          description: "The maximum number of rows for textarea extra fields (type `1`)."
+        maximumValue:
+          type: string
+          description: "The maximum value of number extra fields (type `2`)."
+        listOfValue:
+          type: array
+          description: "The list of values for dropdown extra fields (type `3`)."
+          items:
+            type: string
+    errMsgPost:
+      oneOf:
+        - type: object
+          title: Missing Required Fields
+          description: |-
+            An unordered list of missing required fields. Fields will only be included in this list if they are missing from the request.
+          properties:
+            firstName:
+              type: array
+              items: {type: string, default: "This field may not be null."}
+            lastName:
+              type: array
+              items: {type: string, default: "This field may not be null."}
+            email:
+              type: array
+              items: {type: string, default: "This field may not be null."}
+            companyId:
+              type: array
+              items: {type: string, default: "This field may not be null."}
+        - type: object
+          title: Missing Role
+          properties:
+            non_field_errors: 
+              type: array
+              items: {type: string, default: "User must have a role."}
+          description: "A message indicating missing data not explicitly required for creation, but without which validation fails."
+        - type: string
+          title: Missing Channel Assignments
+          default: "At least one B2B storefront needs to be enabled for a Company user."
+        - type: string
+          title: Email Conflict
+          example: "Email already exists. ['john.doe@example.com']"
+        - type: object
+          title: Invalid Data
+          properties:
+            email:
+              type: array
+              items:
+                type: string
+                default: "Email is not correct."
+            role:
+              type: array
+              items:
+                type: string
+                default: "\"5\" is not a valid choice"
+    paginationObject:
+      type: object
+      properties:
+        totalCount: 
+          type: integer
+          example: 100
+          description: "Total number of records available."
+        limit: 
+          type: integer
+          example: 10
+          description: "The maximum number of records to return in the response."
+        offset: 
+          type: integer
+          example: 0
+          description: "The number of records to skip before beginning response data."
+    responseObject:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: "Operation status code."
+        data:
+          type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+              description: "Human-readable status message."
+    responseArray:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Operation status code.
+        data:
+          type: array
+          items:
+            type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+              example: "Success"
+              description: Human-readable status message.
+  responses:
+    post422:
+      description: |-
+        Validation Error
+
+        This error returns when one or more fields are invalid or if the email address provided already exists as a B2B Edition user.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/responseObject"
+              - properties:
+                  code:
+                    default: 422
+                  meta:
+                    properties:
+                      message:
+                        example: "Processing data contains logical errors"
+                  data:
+                    description: "The content and explanation of the error(s) associated with the request. The format of this field depends on what errors are present."
+                    properties:
+                      errMsg:
+                        $ref: "#/components/schemas/errMsgPost"
+          examples:
+            Missing Required Fields:
+              value:
+                code: 422
+                meta: {message: "Parameter Error"}
+                data:
+                  errMsg: {"firstName": ["This field may not be null"],"lastName": ["This field may not be null"],"companyId": ["This field may not be null"],"email": ["This field may not be null"]}
+            Missing Role:
+              value:
+                code: 422
+                meta: {message: "Parameter Error"}
+                data:
+                  errMsg: {"non_field_errors": ["User must have a role."]}
+            Missing Channel Assignments:
+              value:
+                code: 422
+                meta: {message: "Processing data contains logical errors"}
+                data:
+                  errMsg: "At least one B2B storefront needs to be enabled for a Company user."
+    userId404:
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/responseObject"
+              - properties:
+                  code:
+                    default: 404
+                  meta:
+                    properties:
+                      message:
+                        default: "Not Found Error"
+                  data:
+                    properties:
+                      errMsg:
+                        type: string
+                        default: "User matching query does not exist."
+  parameters:
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 250
+      description: "The maximum number of results to return."
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      description: "The number of items to skip before starting to collect the result set."
+    userId:
+      name: userId
+      in: path
+      description: "Unique numeric ID of a B2B Edition user account."
+      required: true
+      schema:
+        type: integer
+    companyId:
+      name: companyId
+      in: path
+      description: "Unique numeric ID of a B2B Edition Company account."
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    X-Store-Hash:
+      name: X-Store-Hash
+      description: |-
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Store-Hash` | `store_hash` | The unique store hash associated with a BigCommerce store that has B2B Edition enabled. |
+      type: apiKey
+      in: header
+    X-Auth-Token:
+      name: X-Auth-Token
+      description: |-
+
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Auth-Token` | `access_token` | For more about API accounts that generate `access_token`s, see our [Guide to API Accounts](/docs/start/authentication/api-accounts). |
+        
+        ### Further reading
+
+        For example requests and more information about authenticating BigCommerce APIs, see [Authentication and Example Requests](/docs/start/authentication#x-auth-token-header-example-requests).
+        
+        For more about BigCommerce OAuth scopes, see our [Guide to API Accounts](/docs/start/authentication/api-accounts#oauth-scopes).
+        
+        For a list of API status codes, see [API Status Codes](/docs/start/about/status-codes).
+      type: apiKey
+      in: header

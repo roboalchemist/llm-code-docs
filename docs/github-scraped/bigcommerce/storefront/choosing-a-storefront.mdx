@@ -1,0 +1,83 @@
+# Choosing the right storefront for your business
+
+BigCommerce provides developers multiple ways to build and customize ecommerce storefronts catering to different developer needs and use cases. This makes it crucial to understand their differences and similarities when choosing the right approach for your project. This guide will walk you through choosing between our primary storefront options, [Stencil](/docs/storefront/stencil/start) and [Catalyst](/docs/storefront/catalyst), as well as a custom headless implementation.
+
+## What is Stencil?
+
+Stencil is BigCommerce’s traditional storefront option, used for customizing storefronts within the BigCommerce platform. It’s an integrated, template-based design system that allows developers to build and modify themes using Handlebars.js templates, SCSS, and JavaScript.
+
+**Key Features of Stencil:**
+
+* Theme-Based Architecture – Uses predefined templates and layouts for easier customization  
+* Fully Hosted – Runs directly on the BigCommerce platform without requiring external hosting  
+* Uses Handlebars.js for Templating – Simplifies frontend development with templates  
+* Integrated with BigCommerce's Backend – Handles checkout, cart, and product rendering without needing API calls  
+* Optimized for Performance – Includes built-in caching and CDN delivery for fast load times
+
+## What is Catalyst?
+
+Catalyst is BigCommerce’s headless and composable reference architecture for building modern, high-performance storefronts. Catalyst leverages Next.js, React, and BigCommerce’s GraphQL Storefront API, enabling flexibility and speed while maintaining full control over the frontend experience. Catalyst is also integrated with the [Makeswift Visual Builder](https://www.makeswift.com), which allows users to fully customize the layout and design of their storefront without needing to get developers involved. 
+
+<Callout type="info">Catalyst is built with the [BigCommerce GraphQL Storefront API](/docs/storefront/graphql) which does not support all BigCommerce platform features. For a list of features and whether or not they are supported and to what extent in Catalyst, see the [Supported Features](/docs/storefront/catalyst/features/supported-features) page.</Callout>
+
+**Key Features of Catalyst:**
+
+* **Built on Next.js** – Uses React and server-side rendering (SSR) for optimized performance  
+* **Composability** – Decouples the frontend from the backend, offering flexibility in design and functionality  
+* **Makeswift Visual Builder**  – Allows you to customize the layout and design of your storefront  
+* **Uses the GraphQL Storefront API** – Fetches product data, categories, and cart details via GraphQL  
+* **Fully customizable** - Developers have full control over storefront design, UI/UX, client- and server-side functionality  
+* **Supports modern development workflows** – Works seamlessly with Git-based version control, CI/CD, and composable commerce architectures
+- **Requires hosting** - you are reponsible for hosting your deployed storefront code
+
+** Limitations of Catalyst:**
+
+* **GraphQL Storefront API Limitations:** - The GraphQL Storefront API that Catalyst depends on does not support all BigCommerce platform features which means some features are not supported out of the box in Catalyst
+* **Hosting:** - You are responsible for hosting your deployed storefront code
+* **App Marketplace** - Apps from the App Marketplace are not all supported
+* **Themes:** - Catalyst does not provide a theme marketplace to choose from. However, you can customise the existing theme in code or by using Makeswift
+
+## Custom Headless
+
+While Catalyst is a headless implementation, if you'd like to build a storefront using a different tech stack, you can do that as well. Building a headless storefront with BigCommerce’s GraphQL APIs enables a fast, flexible, and scalable ecommerce experience. By decoupling the frontend, you can use your preferred frameworks to create a dynamic, SEO-friendly site while BigCommerce powers commerce operations. The GraphQL Storefront API optimizes data fetching, improving performance and enabling seamless integrations. This modern, API-first approach allows for personalized experiences, custom checkout flows, and easy third-party integrations.
+
+
+## Key Differences
+
+| Feature | Stencil | Catalyst | Custom Headless |
+| --- | --- | --- | --- |
+| Architecture | Monolithic | Headless (Next.js) | Headless (any framework) |
+| Frontend Tech | Handlebars.js, SaaS, JavaScript | React, Next.js, GraphQL | Any (React, Vue, Svelte, Angular, etc.) |
+| Hosting | Fully hosted by BigCommerce | External (Vercel, AWS, etc.) | External (Vercel, AWS, etc.) |
+| API Usage | Directly integrated with BigCommerce backend | Storefront API (GraphQL) | Storefront API (GraphQL/REST) |
+| Customization | Limited customization | Fully customizable | Fully customizable |
+| Performance | Optimized via BigCommerce’s CDN | Optimized via caching | Manual optimization |
+| Development Workflow | Theme customization via CLI | Git, CI/CD, and modern tooling | Git, CI/CD, and modern tooling |
+| Integration Support | Supports BigCommerce apps and some third-party integrations | Integrate with external APIs and third-party services | Integrate with external APIs and third-party services     |
+
+## Choosing between these options
+
+**Choose Stencil if you need:**
+
+* A fully hosted, traditional BigCommerce storefront  
+* A quick time to market using theme-based development  
+* Built-in performance optimization without extra configuration  
+* Easier maintenance without managing external hosting
+
+**Choose Catalyst if you need:**
+
+* A modern, composable approach with React and Next.js  
+* Complete control over the entire frontend application  
+* A flexible API-driven architecture  
+
+**Choose a custom headless build if you need:** 
+
+* You want to build on a tech stack other than Next.js/React  
+* You want to build your own front-end from the ground up
+
+## Additional Resources: 
+
+* [Catalyst Documentation](/docs/storefront/catalyst)  
+* [Stencil Documentation](/docs/storefront/stencil/start)  
+* [BigCommerce API Reference](/docs/api)
+

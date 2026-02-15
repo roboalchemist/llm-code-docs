@@ -1,0 +1,535 @@
+openapi: 3.0.1
+info:
+  title: Payments
+  description: |-
+    > **NOTICE**
+    > 
+    > As of September 30, 2025, the B2B Edition API `authToken` will be deprecated and replaced by the standard BigCommerce API `X-Auth-Token`. For information concerning this change, see [B2B Authentication](/b2b-edition/docs/authentication).
+    > 
+    > While `authToken` authentication is not expected to be fully sunset in the near future, it is advised to migrate to the new system as soon as possible to prevent disruption of functionality.
+
+    The B2B Edition Payments API provides endpoints for enabling, disabling, and updating active payment methods on a Company-to-Company basis. Every payment method you have enabled on the store-level can be enabled or disabled as needed on the Company level. In addition, the specific behaviors for Company credit and payment on terms can be adjusted with this API.
+
+    > NOTE  
+    > The Company credit and payment on terms features must be enabled in order to use their respective API paths. Using either path with the corresponding store-level feature disabled will cause errors or unexpected behavior. Refer to each endpoint for details.
+
+    For information on managing the payment methods available to the B2B Edition Payments API, refer to [Payments (Help Center)](https://support.bigcommerce.com/s/article/Getting-Started-Payments), as this is not currently manageable via API. To learn more about Company credit and payment on terms, see [B2B Edition Settings](https://support.bigcommerce.com/s/article/B2B-Edition-Settings) and [Companies](https://support.bigcommerce.com/s/article/B2B-Edition-User-Guide-Company-and-Customer-Functions).
+    
+    ## Retrieving Payment Method Information for Companies
+    
+    The B2B Edition Payments API has three endpoints for returning the payment methods available to Company accounts, each with its own context and use cases.
+    
+     | Endpoint | Description | Use Cases |
+     | ---------- | ------------ | ------------ |
+     | [Get Payment Methods](#get-payment-methods) | Returns a list of all payment methods available on the store. | This endpoint allows you to confirm which payment methods and provides the payment's identifier for future requests. |
+     | [Get Company Payment Methods](#get-company-payment-methods) | Returns the list of payment methods for a specific Company account. | Use this endpoint to identify payment methods that are available for a particular Company, but not currently enabled. |
+     | [Get All Active Payment Methods](#get-all-active-payment-methods) | Get all currently enabled payment methods across Companies. | This allows you to identify enabled payment methods for all Company accounts in a store. Use the `companyid` parameter to identify enabled payment methods on a particular Company account more efficiently than the Get Company Payment Methods endpoint. | 
+  contact: {}
+  version: v3
+servers:
+  - url: 'https://api-b2b.bigcommerce.com/api/v3/io'
+security:
+  - X-Auth-Token: []
+    X-Store-Hash: []
+tags:
+  - name: Payment
+    description: Company payment & store payment manage.
+paths:
+  /payments:
+    get:
+      tags:
+        - Payment
+      summary: "Get Payment Methods"
+      operationId: get-payments
+      description: "Returns a list of all payment methods available on the store."
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              $ref: "#/components/schemas/paymentId"
+                            paymentCode:
+                              $ref: "#/components/schemas/paymentCode"
+                            paymentTitle:
+                              $ref: "#/components/schemas/paymentTitle"
+  /companies/{companyId}/payments:
+    parameters:
+      - $ref: "#/components/parameters/companyId"
+    get:
+      tags:
+        - Payment
+      summary: Get Company Payment Methods
+      operationId: get-companies-companyId-payments
+      description: "Returns the list of payment methods for the Company associated with `companyId`, indicating which ones are currently available to the Company users."
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            paymentId:
+                              $ref: "#/components/schemas/paymentId"
+                            code:
+                              $ref: "#/components/schemas/paymentCode"
+                            paymentTitle:
+                              $ref: "#/components/schemas/paymentTitle"
+                            isEnabled:
+                              $ref: "#/components/schemas/paymentEnabled"
+    put:
+      tags:
+        - Payment
+      summary: "Update Company Payment Methods"
+      operationId: put-companies-companyId-payments
+      description: "Updates whether the payment methods included in the request body are enabled for the Company associated with `companyId`."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payments:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - code
+                      - isEnabled
+                    properties:
+                      code:
+                        $ref: "#/components/schemas/paymentCode"
+                      isEnabled:
+                        $ref: "#/components/schemas/paymentEnabled"
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data: {default: []}
+        '400':
+          description: 'Invalid Request'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 400}
+                      meta: {properties: {message: {type: string, default: "Bad Requests Error"}}}
+                      data: 
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "Code is required.; "
+        '404':
+          description: 'Resource Not Found'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 404}
+                      meta: {properties: {message: {type: string, example: "No resource found."}}}
+                      data: 
+                        properties:
+                          errMsg:
+                            type: string
+                            example: "No resource found."
+              examples:
+                Invalid Code:
+                  value:
+                    code: 404
+                    meta:
+                      message: "Payment Does not Exist"
+                    data:
+                      errMsg: "Payment Does not Exist"
+                Missing Company:
+                  value:
+                    code: 404
+                    meta:
+                      message: "Company Does not Exist"
+                    data:
+                      errMsg: "Company Does not Exist"
+  /company-payment-methods:
+    get:
+      tags:
+        - Payment
+      summary: "Get All Active Payment Methods"
+      operationId: get-company-payment-methods
+      description: "Get all currently enabled payment methods across Companies. If multiple Companies have a given payment method enabled, each one will be returned in the results. Data is returned with pagination."
+      parameters:
+        - $ref: "#/components/parameters/orderBy"
+        - $ref: "#/components/parameters/sortBy"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+        - name: companyId
+          in: query
+          schema:
+            type: string
+          description: "Filters results by `companyId`, only showing payment methods enabled for the specified Company."
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: "The search string by which data should be filtered. Currently supports payment method code & payment method title, so that a value of `q=auth` would return any payment method with 'auth' in either the code or the title."
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code: {default: 200}
+                      meta:
+                        properties:
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                          message:
+                            default: "Success"
+                      data:
+                        uniqueItems: true
+                        items:
+                          type: object
+                          properties:
+                            companyId:
+                              type: number
+                              description: "The unique numeric identifier for the Company. If the `companyId` parameter is specified, this will match across all records."
+                              example: 7826480
+                            paymentId:
+                              $ref: "#/components/schemas/paymentId"
+                            createdAt:
+                              type: number
+                              description: "The [Unix Timestamp](https://www.unixtimestamp.com/) indicating when the payment method was enabled on the store."
+                              example: 1753818625
+                            updatedAt:
+                              type: number
+                              description: "The [Unix Timestamp](https://www.unixtimestamp.com/) indicating when the payment method was most recently updated."
+                              example: 1753818625
+                            paymentMethodCode:
+                              $ref: "#/components/schemas/paymentCode"
+                            paymentMethodTitle:
+                              $ref: "#/components/schemas/paymentTitle"
+  /companies/{companyId}/credit:
+    parameters:
+      - $ref: "#/components/parameters/companyId"
+    get:
+      tags:
+        - Payment
+      summary: Get Company Credit Status
+      operationId: get-companies-companyId-credit
+      description: "Returns the credit settings for the Company specified by `companyId`. If the Company credit feature is disabled, this request will fail. See [B2B Edition Settings](https://support.bigcommerce.com/s/article/B2B-Edition-Settings) for more information."
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        $ref: "#/components/schemas/creditStatus"
+        '400':
+          description: |-
+            Invalid Request
+
+            This error is returned if the credit feature is disabled for the store. Enable the feature in B2B Edition to get valid response data.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 400}
+                      meta: {properties: {message: {type: string, default: "API logic error"}}}
+                      data: 
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "Store company credit is not enabled"
+    put:
+      tags:
+        - Payment
+      summary: Update Company Credit Status
+      operationId: put-companies-companyId-credit
+      description: "Updates the credit settings for the Company specified by `companyId`. All fields are optional, but an empty request will result in unexpected behavior. If the Company credit feature is disabled, this request will fail. See [B2B Edition Settings](https://support.bigcommerce.com/s/article/B2B-Edition-Settings) for more information."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/creditStatus"
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        $ref: "#/components/schemas/creditStatus"
+  /companies/{companyId}/payment-terms:
+    parameters:
+      - $ref: "#/components/parameters/companyId"
+    get:
+      tags:
+        - Payment
+      summary: Get Company-Level Payment Terms
+      operationId: get-companies-companyId-payment-terms
+      description: "Returns the Company-level payment terms for the Company specified by `companyId`. If payment on terms is disabled for the Company, the value of `paymentTerms` in the response will reflect the store-level default."
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        $ref: "#/components/schemas/termsStatus"
+    put:
+      tags:
+        - Payment
+      summary: Update Company-Level Payment Terms
+      operationId: put-companies-companyId-payment-terms
+      description: "Updates the Company-level payment terms for the Company specified by `companyId`. If the value of `isEnabled` is set to `false`, the `paymentTerms` field will be ignored and will default to the store-level value."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/termsStatus"
+                - required:
+                    - isEnabled
+                    - paymentTerms
+      responses:
+        '200':
+          description: SUCCESS
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 200}
+                      meta: {properties: {message: {type: string, default: "Success"}}}
+                      data:
+                        $ref: "#/components/schemas/termsStatus"
+        '400':
+          description: 'Invalid Request'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code: {default: 400}
+                      meta: {properties: {message: {type: string, default: "Bad Requests Error"}}}
+                      data: 
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "Payment terms value error, must be in [0, 5, 15, 30, 45, 60]; "
+
+components:
+  schemas:
+    paymentCode:
+      type: string
+      description: "The string identifying the processor for the payment."
+      example: "authorizenet"
+    paymentTitle:
+      type: string
+      description: "The label for the payment displayed to customers."
+      example: "Authorize.net"
+    paymentEnabled:
+      type: boolean
+      description: "Indicates whether the payment is enabled for the specified Company."
+    paymentId:
+      type: integer
+      description: "The unique numeric ID for the payment method."
+      example: 1
+    creditStatus:
+      type: object
+      properties:
+        creditEnabled:
+          type: boolean
+          description: "Indicates whether credit is enabled for the Company."
+        creditCurrency:
+          type: string
+          description: "The 3-character currency code of the Company's credit account."
+          example: "USD"
+        availableCredit:
+          type: number
+          description: "The amount of credit available to the Company."
+          example: 123.45
+        limitPurchases:
+          type: boolean
+          description: "Indicates whether the Company users are allowed to make purchases using purchase orders when total price exceeds available credit."
+        creditHold:
+          type: boolean
+          description: "Indicates whether the Company account is on a credit hold. If `true`, this flag prevents all Company users from making purchases."
+    termsStatus:
+      type: object
+      properties:
+        isEnabled:
+          type: boolean
+          description: "Indicates whether payment on terms is available for the specified Company."
+        paymentTerms:
+          type: integer
+          enum: [0,5,15,30,45,60]
+          description: "The term set for the specified Company. This field takes the store-level default value if `isEnabled` is `false`."
+    paginationObject:
+      type: object
+      properties:
+        totalCount: 
+          type: integer
+          example: 100
+          description: "Total number of records available."
+        limit: 
+          type: integer
+          example: 10
+          description: "The maximum number of records to return in the response."
+        offset: 
+          type: integer
+          example: 0
+          description: "The number of records to skip before beginning response data."
+    responseObject:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: "Operation status code."
+        data:
+          type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+              description: "Human-readable status message."
+    responseArray:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: "Operation status code."
+        data:
+          type: array
+          items:
+            type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+              description: "Human-readable status message."
+
+  securitySchemes:
+    X-Store-Hash:
+      name: X-Store-Hash
+      description: |-
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Store-Hash` | `store_hash` | The unique store hash associated with a BigCommerce store that has B2B Edition enabled. |
+      type: apiKey
+      in: header
+    X-Auth-Token:
+      name: X-Auth-Token
+      description: |-
+
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Auth-Token` | `access_token` | For more about API accounts that generate `access_token`s, see our [Guide to API Accounts](/docs/start/authentication/api-accounts). |
+        
+        ### Further reading
+
+        For example requests and more information about authenticating BigCommerce APIs, see [Authentication and Example Requests](/docs/start/authentication#x-auth-token-header-example-requests).
+        
+        For more about BigCommerce OAuth scopes, see our [Guide to API Accounts](/docs/start/authentication/api-accounts#oauth-scopes).
+        
+        For a list of API status codes, see [API Status Codes](/docs/start/about/status-codes).
+      type: apiKey
+      in: header
+  parameters:
+    orderBy:
+      name: orderBy
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: ["DESC","ASC"]
+      description: "Specifies the order data should be returned in. If not included, defaults to 'DESC'."
+    sortBy:
+      name: sortBy
+      in: query
+      required: false
+      schema:
+        type: string
+        default: updatedAt
+        enum: ["updatedAt","createdAt"]
+      description: "Sorts data based on creation or modification time while respecting the `orderBy` parameter. If not included, defaults to 'updatedAt'."
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 10
+      description: "Sets the maximum number of records to display in the response."
+    offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: "Sets the number of records to skip before displaying the response."
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: "The unique numeric ID of the Company assigned by B2B Edition."

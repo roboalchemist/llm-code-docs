@@ -1,0 +1,884 @@
+openapi: '3.0.0'
+info:
+  title: Super Admin
+  version: v3
+  description: |-
+    > **NOTICE**
+    > 
+    > As of September 30, 2025, the B2B Edition API `authToken` will be deprecated and replaced by the standard BigCommerce API `X-Auth-Token`. For information concerning this change, see [B2B Authentication](/b2b-edition/docs/authentication).
+    > 
+    > While `authToken` authentication is not expected to be fully sunset in the near future, it is advised to migrate to the new system as soon as possible to prevent disruption of functionality.
+
+    B2B Edition Super Admins are specialized storefront user accounts with permissions to access and manage one or more Companies in BigCommerce B2B Edition. Super Admins can configure company settings, assign users, and serve as main contacts for B2B operations across their assigned Companies. Their access to Company Buyer Portal accounts, differs from standard users and Sales Reps, who manage Companies from the control panel.
+
+    The Super Admin API includes endpoints to create, update, assign, and retrieve Super Admin users, as well as manage their relationships with Companies and BigCommerce sales channels. These endpoints are intended for automating Super Admin account management, keeping user and company data in sync, and enforcing B2B access controls and hierarchies.
+
+    > **NOTE**  
+    > When a Company is part of an Account Hierarchy (see [Company API Specification](/b2b-edition/apis/rest-management/company)), Super Admins must be explicitly assigned to each Company they need to manage within the hierarchy.
+
+    For more information, see [BigCommerce B2B Edition](/b2b-edition/docs).
+  contact: {}
+servers:
+  - url: 'https://api-b2b.bigcommerce.com/api/v3/io'
+security:
+  - X-Auth-Token: []
+    X-Store-Hash: []
+tags:
+  - name: Super Admin                
+
+paths:
+  /super-admins:
+    post:
+      summary: Create a Super Admin
+      description: |-
+        Creates a new Super Admin user and assigns the new account to BigCommerce channels as provided in the request body. An existing BigCommerce customer account will be converted to a B2B Edition Super Admin account.
+
+        > **NOTE**  
+        > If there is already a B2B Edition Company user account associated with the email address provided, this endpoint will return a 400 error, regardless of the role assigned to the B2B Edition Company user account. Existing BigCommerce customer accounts will not throw the error as long as they are not also B2B Edition Company user accounts.
+
+        If a user account for the provided `email` doesn't currently exist within BigCommerce, it will be created when the request is called. 
+      operationId: post-super-admins
+      tags: [Super Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - firstName
+                - lastName
+                - email
+              allOf:
+                - $ref: "#/components/schemas/superAdminCore"
+                - properties:
+                    originChannelId:
+                      $ref: "#/components/schemas/superAdminOrigin"
+                    channelIds:
+                      $ref: "#/components/schemas/superAdminChannelIds"
+                    extraFields:
+                      $ref: "#/components/schemas/extraFieldsArray"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        properties:
+                          userId:
+                            $ref: "#/components/schemas/superAdminId"
+                          customerId:
+                            type: integer
+                            description: "The unique Customer ID assigned to the BigCommerce customer account. Can be used with core BigCommerce API endpoints (see [Customers](/docs/rest-management/customers) or [Customers-v2](/docs/rest-management/customers-v2) for more information). Does **not** match `userId`."
+                            example: 100
+        '400':
+          description: |-
+            BAD REQUEST.
+            
+            This response indicates that the body of the request was invalid in some way. The most common cause is that a B2B Edition user account exists for the provided email address already. See `meta.message` for more information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 400
+                      meta:
+                        properties:
+                          message:
+                            default: "The user already exists."
+
+  /super-admins/bulk:
+    post:
+      summary: Create Super Admins (Batch)
+      description: |-
+        Creates new Super Admin users and assign them to BigCommerce channels as provided in the request body. Existing BigCommerce customer accounts will be converted to B2B Edition Super Admin accounts.
+
+        In normal conditions, this endpoint supports creation of no more than `10` Super Admins in a single request.
+
+        > **NOTE**  
+        > If there is already a B2B Edition Company user account associated with an email address provided, this endpoint will return with errors, regardless of the role assigned to the B2B Edition Company user account. Existing BigCommerce customer accounts will not throw errors as long as they are not also B2B Edition Company user accounts.
+
+        If a user account for a given `email` doesn't currently exist within BigCommerce, it will be created when the request is called. 
+      operationId: post-super-admins-bulk
+      tags: [Super Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                required:
+                  - firstName
+                  - lastName
+                  - email
+                allOf:
+                  - $ref: "#/components/schemas/superAdminCore"
+                  - properties:
+                      originChannelId:
+                        $ref: "#/components/schemas/superAdminOrigin"
+                      channelIds:
+                        $ref: "#/components/schemas/superAdminChannelIds"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        properties:
+                          superAdminIds:
+                            type: array
+                            description: "An array of unique user IDs used to reference Super Admins via API."
+                            items:
+                              $ref: "#/components/schemas/superAdminId"
+        '400':
+          description: "BAD REQUEST"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 400
+                      meta:
+                        properties:
+                          message:
+                            default: "API logic error"
+                      data:
+                        type: object
+                        properties:
+                          errMsg:
+                            type: string
+                            default: "The super admin already exists"
+        '413':
+          description: "REQUEST TOO LARGE"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 413
+                      meta:
+                        properties:
+                          message:
+                            default: "Request Entity Too Large"
+        '422':
+          description: |-
+            INVALID REQUEST
+
+            This response is returned when required fields are missing from the request body. See the response data for specific details.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 422
+                      meta:
+                        properties:
+                          message:
+                            default: "Parameter Error"
+                      data:
+                        description: |-
+                          An array of objects containing field names with errors and corresponding messages for those errors.
+
+                          Each entry in the array corresponds directly to one of the elements in the response body.
+
+                          > **NOTE**  
+                          > Only fields for which there are errors will be present in the objects in this list.
+                        items:
+                          properties:
+                            firstName:
+                              type: array
+                              items:
+                                type: string
+                                default: "This field is required"
+                            lastName:
+                              type: array
+                              items:
+                                type: string
+                                default: "This field is required"
+                            email:
+                              type: array
+                              items:
+                                type: string
+                                default: "This field is required"
+
+  /super-admins/companies:
+    get:
+      summary: Get All Companies with Assigned Super Admins
+      description: |-
+        Returns a list of Companies with basic Company data and a count of Super Admins associated with them. The `companyId` returned with Company data may be used with B2B Edition Companies API endpoints (see [Company Management](/b2b-edition/apis/rest-management/company) or [Companies and Users](/b2b-edition/apis/rest-storefront/company) for more information).
+      operationId: get-super-admins-companies
+      tags: [Super Admin]
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/orderBy'
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                      data:
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/companyCore"
+                            - properties:
+                                description:
+                                  type: string
+                                  description: "The name of the business associated with the Company account."
+                                  example: "Great Buys"
+                                addressLine1:
+                                  type: string
+                                  maxLength: 200
+                                  description: "The first line of the primary address for the Company account."
+                                  example: "123 Main Street"
+                                addressLine2:
+                                  type: string
+                                  maxLength: 200
+                                  description: "The second line of the primary address for the Company account."
+                                  example: "Building 100"
+                                city:
+                                  type: string
+                                  maxLength: 100
+                                  description: "The city of the primary address for the Company account."
+                                  example: "Austin"
+                                state:
+                                  type: string
+                                  maxLength: 50
+                                  description: "The state of the primary address for the Company account, if applicable. This must be the full name and not an abbreviation."
+                                  example: "Texas"
+                                country:
+                                  type: string
+                                  maxLength: 200
+                                  description: "The country of the primary address for the Company account. This must be either the full name or the ISO2 country code."
+                                  example: "`United States` or `US`"
+                                zipCode:
+                                  type: string
+                                  maxLength: 50
+                                  description: "The postal code of the primary address for the Company account."
+                                  example: "78726"
+                                catalogId:
+                                  type: string
+                                  nullable: true
+                                  description: |-
+                                    The ID of the price list assigned to the Company account. This field is read-only for stores using [Independent Companies Behavior](/b2b-edition/apis/rest-management/company/companies/#independent-vs-dependent-companies-behavior).
+                                  example: null
+                                superAdminCount:
+                                  type: integer
+                                  description: "The number of Super Admin accounts assigned to this Company."
+                                  example: 1
+
+  /super-admins/{superAdminId}:
+    parameters:
+      - $ref: '#/components/parameters/superAdminId'
+    put:
+      summary: Update Super Admin Company Assignments
+      description: "Assigns or unassigns Companies for the Super Admin associated with `superAdminId`. This operation is non-destructive, meaning that only Companies represented in the request body will be affected by the request."
+      operationId: put-super-admins-superAdminId
+      tags: [Super Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - companies
+              type: object
+              properties:
+                companies:
+                  type: array
+                  items:
+                    required:
+                      - companyId
+                      - isAssigned
+                    type: object
+                    properties:
+                      companyId:
+                        $ref: "#/components/schemas/companyId"
+                      isAssigned:
+                        $ref: "#/components/schemas/isAssigned"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+        '404':
+          $ref: '#/components/responses/404'
+
+  /super-admins/{superAdminId}/companies:
+    parameters:
+      - $ref: '#/components/parameters/superAdminId'
+    get:
+      summary: Get A Super Admin's Assigned Companies
+      description: "Lists all Companies assigned to the Super Admin account associated with `superAdminId`. The response will contain limited information about each Company, but more information is available through the B2B Edition Companies API endpoints (see [Company Management](/b2b-edition/apis/rest-management/company) or [Companies and Users](/b2b-edition/apis/rest-storefront/company) for more information)."
+      operationId: get-super-admins-superAdminId-companies
+      tags: [Super Admin]
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                      data:
+                        items:
+                          $ref: "#/components/schemas/companyCore"
+        '404':
+          $ref: '#/components/responses/404'
+
+  /super-admins/info/{superAdminId}:
+    parameters:
+      - $ref: '#/components/parameters/superAdminId'
+    get:
+      summary: Get Super Admin Details
+      description: "Returns detailed information about the Super Admin account associated with `superAdminId`."
+      operationId: get-super-admins-info-superAdminId
+      tags: [Super Admin]
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/superAdminResponse"
+                          - properties:
+                              customerId:
+                                type: integer
+                                description: 'Customer ID of the Super Admin account.'
+                                example: 343
+                              extraFields:
+                                $ref: "#/components/schemas/extraFieldsArray"
+        '404':
+          $ref: '#/components/responses/404'
+
+    put:
+      summary: Update Super Admin Details
+      description: |-
+        Updates the account information of the Super Admin associated with `superAdminId`.
+        
+        > **NOTE**  
+        > A BigCommerce customer account and a B2B Edition user account are both uniquely identified by their email address. As such, the `email` field is considered read-only. Updating the email address should be avoided, but may be done with the [Update Customers](/docs/rest-management/customers#update-customers) endpoint.
+      operationId: put-super-admins-info-superAdminId
+      tags: [Super Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/superAdminBase"
+                - properties:
+                    channelIds:
+                      $ref: "#/components/schemas/superAdminChannelIds"
+                    extraFields:
+                      $ref: "#/components/schemas/extraFieldsArray"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/superAdminResponse"
+                          - properties:
+                              extraFields:
+                                $ref: "#/components/schemas/extraFieldsArray"
+        '404':
+          $ref: '#/components/responses/404'
+
+  /companies/super-admins:
+    get:
+      summary: Get All Super Admins with Assigned Companies
+      description: |-
+        Returns a list of Super Admins with basic account data and a count of Companies associated with them. The `id` returned with Super Admin data may be used with other Super Admin API endpoints as the `superAdminId`.
+      operationId: get-companies-super-admins
+      tags: [Super Admin]
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/orderBy'
+        - $ref: '#/components/parameters/queryString'
+        - name: uuid
+          in: query
+          schema:
+            type: string
+            example: "b2b-uuid-1"
+          description: "Filter results by `uuid`. An empty `uuid` parameter will return all results."
+        - name: maxCreated
+          in: query
+          schema:
+            type: string
+            example: "1745868780"
+          description: "Filter results by `createdAt`, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) value less than `maxCreated`."
+        - name: minCreated
+          in: query
+          schema:
+            type: string
+            example: "1745868780"
+          description: "Filter results by `createdAt`, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) value greater than `minCreated`."
+        - name: maxModified
+          in: query
+          schema:
+            type: string
+            example: "1745868780"
+          description: "Filter results by `updatedAt`, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) value less than `maxModified`."
+        - name: minModified
+          in: query
+          schema:
+            type: string
+            example: "1745868780"
+          description: "Filter results by `updatedAt`, returning only those with a [Unix timestamp](https://www.unixtimestamp.com/) value greater than `minModified`."
+        - $ref: '#/components/parameters/extraFields'
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                      data:
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/superAdminResponse"
+                            - properties:
+                                extraFields:
+                                  $ref: "#/components/schemas/extraFieldsArray"
+
+  /companies/{companyId}/super-admins:
+    parameters:
+      - $ref: '#/components/parameters/companyId'
+    get:
+      summary: Get Super Admins Assigned to a Company
+      description: |-
+        Lists all Super Admins assigned to the Company associated with `companyId`. This endpoint includes extended Super Admin account data for each Super Admin. The `id` returned in the response may be used with other Super Admin API endpoints as the `superAdminId`.
+      operationId: get-companies
+      tags: [Super Admin]
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/queryString'
+        - $ref: '#/components/parameters/extraFields'
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseArray"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+                          pagination:
+                            $ref: "#/components/schemas/paginationObject"
+                      data:
+                        items:
+                          allOf:
+                            - $ref: "#/components/schemas/superAdminResponse"
+                            - properties:
+                                extraFields:
+                                  $ref: "#/components/schemas/extraFieldsArray"
+        '404':
+          $ref: '#/components/responses/404'
+
+    put:
+      summary: Update Company Super Admins Assignments
+      description: "Assigns or unassigns Super Admins for the Company associated with `companyId`. This operation is non-destructive, meaning that only Super Admins represented in the request body will be affected by the request."
+      operationId: put-companies-companyId-super-admins
+      tags: [Super Admin]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - superAdmins
+              type: object
+              properties:
+                superAdmins:
+                  type: array
+                  items:
+                    required:
+                      - superAdminId
+                      - isAssigned
+                    type: object
+                    properties:
+                      superAdminId:
+                        $ref: "#/components/schemas/superAdminId"
+                      isAssigned:
+                        $ref: "#/components/schemas/isAssigned"
+      responses:
+        '200':
+          description: "SUCCESS"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/responseObject"
+                  - properties:
+                      code:
+                        default: 200
+                      meta:
+                        properties:
+                          message:
+                            default: "Success"
+        '404':
+          $ref: '#/components/responses/404'
+
+components:
+  securitySchemes:
+    X-Store-Hash:
+      name: X-Store-Hash
+      description: |-
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Store-Hash` | `store_hash` | The unique store hash associated with a BigCommerce store that has B2B Edition enabled. |
+      type: apiKey
+      in: header
+    X-Auth-Token:
+      name: X-Auth-Token
+      description: |-
+
+        ### Authentication header
+
+        | Header | Argument | Description |
+        |:-------|:---------|:------------|
+        | `X-Auth-Token` | `access_token` | For more about API accounts that generate `access_token`s, see our [Guide to API Accounts](/docs/start/authentication/api-accounts). |
+        
+        ### Further reading
+
+        For example requests and more information about authenticating BigCommerce APIs, see [Authentication and Example Requests](/docs/start/authentication#x-auth-token-header-example-requests).
+        
+        For more about BigCommerce OAuth scopes, see our [Guide to API Accounts](/docs/start/authentication/api-accounts#oauth-scopes).
+        
+        For a list of API status codes, see [API Status Codes](/docs/start/about/status-codes).
+      type: apiKey
+      in: header
+  schemas:
+    extraFieldsArray:
+      type: array
+      items:
+        type: object
+        properties:
+          fieldName:
+            type: string
+            description: "The name of the custom field"
+            example: "customField1"
+          fieldValue:
+            type: string
+            description: "Value for the custom field."
+            example: "Custom Field Value"
+    isAssigned:
+      type: boolean
+      description: "Indicates whether the Super Admin should be assigned to the Company. A value of `true` indicates the assignment will be added or will remain if already assigned. A value of `false` indicates the assignment will be removed or remain so if already unassigned."
+    companyId:
+      type: integer
+      description: |-
+        The unique numeric ID of a Company account.
+      example: 123456
+    companyCore:
+      type: object
+      properties:
+        companyId:
+          $ref: "#/components/schemas/companyId"
+        companyName:
+          type: string
+          maxLength: 200
+          description: "The name of the business associated with the Company account."
+          example: "Great Buys Inc."
+        companyEmail:
+          type: string
+          format: email
+          description: "The primary email address for the Company account."
+          example: "admin@greatbuys.com"
+    superAdminBase:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: "The first name listed on the Super Admin's BigCommerce customer account."
+          example: "Marie"
+        lastName:
+          type: string
+          description: "The last name listed on the Super Admin's BigCommerce customer account."
+          example: "Curie"
+        phone:
+          type: string
+          description: "The phone number listed on the Super Admin's BigCommerce customer account."
+          example: "string"
+        uuid:
+          type: string
+          format: uuid
+          description: |-
+            An external ID associated with the Super Admin account. B2B Edition does not require UUID to be unique, despite the field's label. B2B Edition will not assign a UUID by default.
+            
+            > NOTE  
+            > Some endpoints will only return this field if it has a non-empty value. If your code relies on the presence of a UUID in responses, ensure it is defined for each user, and prefer endpoints that provide more details.
+            > 
+            > Regardless of individual user status, make sure to check for existence before attempting to use the value of the `uuid` field.
+    superAdminCore:
+      allOf:
+        - $ref: "#/components/schemas/superAdminBase"
+        - properties:
+            email:
+              type: string
+              format: email
+              description: "The email address associated with the Super Admin's BigCommerce customer account."
+              example: "marie.curie@example.com"
+    superAdminResponse:
+      allOf:
+        - properties:
+            id:
+              $ref: "#/components/schemas/superAdminId"
+        - $ref: "#/components/schemas/superAdminCore"
+        - properties:
+            createdAt:
+              type: integer
+              description: "The [Unix timestamp](https://www.unixtimestamp.com/) indicating when the account was created."
+              example: 1745868780
+            updatedAt:
+              type: integer
+              description: "The [Unix timestamp](https://www.unixtimestamp.com/) indicating when the account was last modified."
+              example: 1750962754
+            channelList:
+              $ref: "#/components/schemas/superAdminChannels"
+    superAdminChannels:
+      type: array
+      items:
+        type: object
+        properties:
+          channelId:
+            type: integer
+            description: "The unique channel ID associated with the BigCommerce sales channel."
+            example: 1
+          channelName:
+            type: string
+            description: "The name associated with the BigCommerce sales channel."
+            example: "Great Buys Wholesale"
+          iconUrl:
+            type: string
+            description: "The specific icon associated with the BigCommerce sales channel's type."
+            example: "https://s3.amazonaws.com/bc-channel-platform/channel-icons/bigcommerce.svg"
+    superAdminChannelIds:
+      type: array
+      description: "An array of unique channel IDs associated with BigCommerce sales channels. The account will only be able to login on channels in this list."
+      items:
+        type: integer
+        example: 1
+    superAdminId:
+      type: integer
+      description: "The unique user ID assigned by B2B Edition and used to reference a Super Admin via API."
+      example: 123456
+    superAdminOrigin:
+      type: integer
+      example: 1
+      description: "The unique BigCommerce channel ID, used for the BigCommerce customer account's origin channel. This field is inactive if the store has a default B2B Edition channel set."
+    paginationObject:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: "The number of entries skipped before the results returned."
+          default: 0
+        limit:
+          type: integer
+          description: "The maximum number of entries allowed to return with the request. This may be greater than the actual number of returned entries."
+          default: 10
+        totalCount:
+          type: integer
+          description: "The total number of entries in the dataset."
+          example: 789
+    responseObject:
+      type: object
+      properties:
+        code:
+          type: integer
+        data:
+          type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+    responseArray:
+      type: object
+      properties:
+        code:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+        meta:
+          type: object
+          properties:
+            message:
+              type: string
+  parameters:
+    extraFields:
+      name: isIncludeExtraFields
+      in: query
+      schema:
+        type: string
+        default: "0"
+        enum: ["0", "1"]
+      description: "Indicates whether to include extra fields in the response. A value of `0` will exclude extra fields, while a value of `1` will include them."
+    queryString:
+      name: q
+      in: query
+      schema:
+        type: string
+        example: "alice"
+      description: "Search string for the request. Response data will be limited to accounts matching this string in `firstName`, `lastName`, or `email`."
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 14
+      description: "The unique ID of a Company. Can be used with the B2B Edition Companies API endpoints (see [Company Management](/b2b-edition/apis/rest-management/company) or [Companies and Users](/b2b-edition/apis/rest-storefront/company) for more information)."
+    limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 10
+        maximum: 200
+        minimum: 1
+      description: "Maximum number of entries to return per page of results."
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+      description: "The number of entries to skip before returning the current page of results."
+    superAdminId:
+      name: superAdminId
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 11
+      description: "The unique ID of the Super Admin account. Does **not** match the BigCommerce customer account ID."
+    orderBy:
+      name: orderBy
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: ["DESC","ASC"]
+        default: "DESC"
+      description: "Determines whether results will be sorted in ascending (`ASC`) or descending (`DESC`) order."
+  responses:
+    '404':
+      description: NOT FOUND
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "#/components/schemas/responseObject"
+              - properties:
+                  code:
+                    default: 404
+                  meta:
+                    properties:
+                      message:
+                        default: "The ID provided does not match an available resource of the appropriate type."

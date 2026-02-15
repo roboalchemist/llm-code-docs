@@ -1,0 +1,535 @@
+---
+title: GraphQL Storefront API Example Queries
+keywords: storefront, graphql
+---
+# GraphQL Storefront API Example Queries
+
+Below are example GraphQL queries for use with the BigCommerce GraphQL Storefront API. The purpose of these examples is to assist developers in getting familiar with the API. For a general overview of its usage and capabilities, see [GraphQL Storefront API overview](/docs/storefront/graphql).
+
+## Configuring the request
+
+To get started, you need a BigCommerce store and a Storefront API token. For more information, see the [Authenticating requests to the GraphQL Storefront API](/docs/start/authentication/graphql-storefront) or the [General authentication article](/docs/start/authentication#bigcommerce-generated-jwts).
+
+For more information on formatting the request payload, see [the query example section of the GraphQL Storefront API overview](/docs/start/authentication/graphql-storefront#querying-within-a-bigcommerce-storefront).
+
+To use this API from a coupled storefront, use the following HTTP configuration:
+
+```js filename="Example query: Same-origin GraphQL Storefront HTTP configuration" showLineNumbers copy
+  fetch('/graphql', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + {{storefrontToken}}
+    },
+    body: JSON.stringify({
+      query: gqlQueryString
+    })
+  })
+  .then(response => response.json())
+  .then(result => console.log(result))
+  .catch(error => console.error(error));
+```
+
+To use this API server-to-server, use the following HTTP configuration:
+
+```http filename="Server-to-server GraphQL Storefront HTTP configuration" showLineNumbers copy
+  POST https://{{storeDomain}}/graphql
+  Authorization: Bearer {{storefrontOrCustomerImpersonationToken}}
+  X-BC-Customer-ID: 123 # optional once a customer is signed in
+  Content-Type: application/json
+```
+
+## Get a customer's details
+
+```graphql filename="Example query: Get a customer's details" showLineNumbers copy
+query CustomerAttributes {
+  customer {
+    firstName
+    lastName
+    email
+    entityId
+    customerGroupId
+    attributeCount
+    attributes {
+      shirtSize: attribute(entityId:123) {
+        entityId
+        value
+      }
+      favoriteColor: attribute(entityId:456) {
+        entityId
+        value
+      }
+    }
+  }
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get first three levels of category tree
+
+```graphql filename="Example query: Get first three levels of category tree" showLineNumbers copy
+query CategoryTree3LevelsDeep {
+  site {
+    categoryTree {
+      ...CategoryFields
+      children {
+        ...CategoryFields
+        children {
+          ...CategoryFields
+        }
+      }
+    }
+  }
+}
+
+fragment CategoryFields on CategoryTreeItem {
+  name
+  path
+  entityId
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get category and products within by URL
+
+```graphql filename="Example query: Get category and products within by URL" showLineNumbers copy
+query CategoryByUrl {
+  site {
+    route(path: "/shop-all/") {
+      node {
+        id
+        ... on Category {
+          name
+          entityId
+          description
+          products {
+            edges {
+              node {
+                name
+                defaultImage {
+                  url(width: 1200)
+                }
+                brand {
+                  name
+                  defaultImage {
+                    url(width: 200)
+                  }
+                }
+                prices {
+                  price {
+                    ...PriceFields
+                  }
+                  priceRange {
+                    min {
+                      ...PriceFields
+                    }
+                    max {
+                      ...PriceFields
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment PriceFields on Money {
+  value
+  currencyCode
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Look up an object by URL
+
+```graphql filename="Example query: Look up an object by URL" showLineNumbers copy
+query LookUpUrl {
+  site {
+    route(path: "/shop-all/") {
+      node {
+        __typename
+        id
+        ... on Category {
+          name
+          description
+        }
+        ... on Brand {
+          name
+          defaultImage {
+            url(width: 200)
+          }
+        }
+        ... on Product {
+          name
+          description
+          images {
+            edges {
+              node {
+                url(width: 500, height: 500)
+              }
+            }
+          }
+          brand {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get popular brands
+
+```graphql filename="Example query: Get popular brands" showLineNumbers copy
+query {
+  site {
+    popularBrands {
+      edges {
+        node {
+          entityId
+          count
+          name
+          path
+        }
+      }
+    }
+  }
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get a favicon
+
+```graphql filename="Example query: Get the storefront's favicon" showLineNumbers copy
+query Favicon {
+  site {
+    settings {
+      faviconUrl
+    }
+  }
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get analytics ID
+
+<Callout type="info">
+Analytics IDs are available only after configuring the analytics service provider for your store.
+</Callout>
+
+```graphql filename="Example query: Get analytics ID" showLineNumbers copy
+ query {
+    site {
+      settings {
+        webAnalytics {
+          ga4 {
+            tagId
+        }
+          metaPixel {
+            pixelId
+        }
+          segment {
+            writeKey
+        }
+      }
+    }
+  }
+}
+```
+
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get a list of countries
+
+The `geography` node provides a list of all supported shipping countries and their corresponding states or provinces. By default, the full list is returned unless you apply a filter. To narrow down the list, you can use the **Settings** > **Shipping** >  **Checkout shipping options** filter in the control panel. This filter limits the results to only those countries included in your active shipping zones.
+
+The `geography` node currently supports two filters, both available on the level of `countries`: `code` and `name`. These require exact matches to the country's two-letter country code and full name, respectively.
+
+<Tabs  items={[`Geography Node`, `Geography Response`, `Shipping Settings`, `Shipping Response`]}>
+<Tab>
+
+```graphql filename="Example query: Get list of countries via geography" showLineNumbers copy
+ {
+  geography {
+    countries {
+      entityId
+      code
+      name
+      statesOrProvinces {
+        entityId
+        name
+        abbreviation
+      }
+    }
+  }
+}
+```
+</Tab>
+
+<Tab>
+**Note:** The example below shows the structure of the response, but omits most of the data.
+
+```json filename="Example response: Get list of countries via geography" showLineNumbers copy
+{
+  "data": {
+    "geography": {
+      "countries": [
+        {
+          "entityId": 1,
+          "code": "AF",
+          "name": "Afghanistan",
+          "statesOrProvinces": []
+        },
+        {
+          "entityId": 10,
+          "code": "AR",
+          "name": "Argentina",
+          "statesOrProvinces": [
+            {
+              "entityId": 309,
+              "name": "Ciudad Autónoma de Buenos Aires",
+              "abbreviation": "C"
+            },
+            {
+              "entityId": 310,
+              "name": "Buenos Aires",
+              "abbreviation": "B"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+```
+</Tab>
+
+<Tab>
+**Note:** The node `site.settings.shipping.supportedShippingDestinations` follows the same general schema as the `geography` node, but it is implicitly filtered based on store settings.
+
+```graphql filename="Example query: Get list of countries via shipping" showLineNumbers copy
+ {
+  site {
+    settings {
+      shipping {
+        supportedShippingDestinations {
+          countries {
+            entityId
+            code
+            name
+            statesOrProvinces {
+              entityId
+              name
+              abbreviation
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+</Tab>
+
+<Tab>
+**Note:** The example below shows the structure of the response. Your store's response will vary based on your shipping settings.
+
+```json filename="Example query: Get list of countries via shipping" showLineNumbers copy
+{
+  "data": {
+    "site": {
+      "settings": {
+        "shipping": {
+          "supportedShippingDestinations": {
+            "countries": [
+              {
+                "entityId": 13,
+                "code": "AU",
+                "name": "Australia",
+                "statesOrProvinces": [
+                  {
+                    "entityId": 208,
+                    "name": "Australian Capital Territory",
+                    "abbreviation": "ACT"
+                  },
+                  {
+                    "entityId": 209,
+                    "name": "New South Wales",
+                    "abbreviation": "NSW"
+                  }
+                 ]
+              },
+              {
+                "entityId": 38,
+                "code": "CA",
+                "name": "Canada",
+                "statesOrProvinces": [
+                  {
+                    "entityId": 78,
+                    "name": "Yukon Territory",
+                    "abbreviation": "YT"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+</Tab>
+</Tabs>
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
+
+## Get wishlist information
+
+Wishlists are accessible through GraphQL and offer access to all standard wishlist management functions. In addition to retrieving information through the queries `customers.wishlists` and `site.publicWishlist` outlined below, the mutations `createWishlist`, `addWishlistItems`, `deleteWishlistItems`, `updateWishlist`, and `deleteWishlists` are provided for managing customer wishlists.
+
+Public wishlists are read-only within GraphQL.
+
+<Callout type="warning">
+The `items` field in both customer and public wishlist queries greatly increases query complexity. This means that the cost for deeply nested or large queries involving wishlist items grows rapidly. As a result, complex queries may hit rate or complexity limits sooner than expected. For platform stability, plan queries with this in mind and retrieve only the data you need.
+</Callout>
+
+### Customer wishlists
+
+Customer wishlists are queried based on the current customer session, using the token generated during the authentication process to identify the customer for the query's response data.
+
+<Tabs items={['Query', 'Response']}>
+<Tab>
+
+```graphql copy filename="Example Query: Customer wishlists"
+query {
+  customer {
+    wishlists {
+      edges {
+        node {
+          id
+          name
+          items {
+            edges {
+              node {
+                entityId
+                productName
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+</Tab>
+<Tab>
+
+```json copy filename="Example Response: Customer wishlists"
+{
+  "data": {
+    "customer": {
+      "wishlists": {
+        "edges": [
+          {
+            "node": {
+              "id": "1",
+              "name": "My Wishlist",
+              "items": {
+                "edges": [
+                  {
+                    "node": {
+                      "entityId": 101,
+                      "productName": "T-shirt"
+                    }
+                  },
+                  {
+                    "node": {
+                      "entityId": 102,
+                      "productName": "Jeans"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+### Public wishlists
+
+You can also access public wishlists using a token. The `items` field in public wishlists is affected by the same complexity considerations:
+
+<Tabs items={['Query', 'Response']}>
+<Tab>
+
+```graphql copy filename="Example Query: Shared wishlists"
+query {
+  site {
+    publicWishlist(token: "TOKEN_HERE") {
+      id
+      name
+      items {
+        edges {
+          node {
+            entityId
+            productName
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+</Tab>
+<Tab>
+
+```json copy filename="Example Response: Shared wishlists"
+{
+  "data": {
+    "site": {
+      "publicWishlist": {
+        "id": "2",
+        "name": "Holiday Gifts",
+        "items": {
+          "edges": [
+            {
+              "node": {
+                "entityId": 201,
+                "productName": "Coffee Mug"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+<a href="https://developer.bigcommerce.com/graphql-storefront/playground" target="_blank">**Try it in GraphQL Playground**</a>
