@@ -2,9 +2,6 @@
 
 Getting Started with ShipStation API V2
 
-
-
-
 [![ShipStation Developer](/assets/logo-ss-api.ec8fa1da9c60670d3bcab24ceeb8f32be01e624584c3106975db87878853f13c.de6e0f62.svg)](/)
 
 [Docs](/getting-started)
@@ -41,8 +38,7 @@ Getting Started
 
 Last updated  1 week ago
 
-Getting Started with ShipStation API V2
-=======================================
+## Getting Started with ShipStation API V2
 
 Welcome to ShipStation API V2 documentation!
 
@@ -54,13 +50,11 @@ If you're new to REST APIs, be sure to read our [introduction to REST](/rest) to
 
 If you are looking for the ShipStation openAPI (AKA, ShipStation API V1), please visit the ShipStation API V1 docs page currently located at [shipstation.com/docs](https://www.shipstation.com/docs/api/).
 
-Using the Shipping API
-----------------------
+## Using the Shipping API
 
 To access the majority of the endpoints in this documentation, you will need to be on a plan that offers shipping functionality. You can check your API Settings page to see if your plan supports API access and grab your API key while you're there. Make sure to save your API key in a secure place, as it is only available when generated.
 
-Enable the Inventory API Add-On
--------------------------------
+## Enable the Inventory API Add-On
 
 To access the ShipStation API Inventory endpoints, you must first enable the Inventory API add-on in your ShipStation account settings.
 
@@ -72,8 +66,7 @@ To access the ShipStation API Inventory endpoints, you must first enable the Inv
 
 Once either of the add-ons are enabled, you can go to `Settings > Account > API Settings` and generate your API key.
 
-Shipping API Feautres
----------------------
+## Shipping API Feautres
 
 With the **Shipping API**, you can access the following capabilities:
 
@@ -127,8 +120,7 @@ With the [manifests endpoint](/manifests-scanforms), you can either specify exac
 
 You can now schedule and manage pickups with supported carriers via the [pickups endpoint](/schedule-pickups).
 
-Inventory API Features
-----------------------
+## Inventory API Features
 
 With the **Inventory API add-on**, you can access the following capabilities:
 

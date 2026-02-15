@@ -2,9 +2,6 @@
 
 Warehouses
 
-
-
-
 [![ShipStation Developer](/assets/logo-ss-api.ec8fa1da9c60670d3bcab24ceeb8f32be01e624584c3106975db87878853f13c.de6e0f62.svg)](/)
 
 [Docs](/getting-started)
@@ -75,8 +72,7 @@ Search/
 
 [Warehouses](/openapi/warehouses)
 
-ShipStation API v2 (2.0.0)
-==========================
+# ShipStation API v2 (2.0.0)
 
 Download OpenAPI description
 
@@ -100,8 +96,7 @@ Production
 
 https://api.shipstation.com/
 
-Batches
--------
+## Batches
 
 Process labels in bulk and receive a large number of labels and customs forms in bulk responses. Batching is ideal for workflows that need to process hundreds or thousands of labels quickly.
 
@@ -139,10 +134,9 @@ get
 
 /v2/batches/{batch\_id}/errorsShow 2 more...
 
-+ Show
+* Show
 
-Carriers
---------
+## Carriers
 
 Retreive useful details about the carriers connected to your accounts, including carrier IDs, service IDs, advanced options, and available carrier package types.
 
@@ -168,10 +162,9 @@ get
 
 /v2/carriers/{carrier\_id}/services
 
-+ Show
+* Show
 
-Downloads
----------
+## Downloads
 
 Download your label files in PDF, PNG, and ZPL.
 
@@ -181,10 +174,9 @@ get
 
 /v2/downloads/{dir}/{subdir}/{filename}
 
-+ Show
+* Show
 
-Fulfillments
-------------
+## Fulfillments
 
 Manage fulfillments which represent completed shipments. Create fulfillments to mark orders as shipped with tracking information and notify customers and marketplaces.
 
@@ -198,10 +190,9 @@ post
 
 /v2/fulfillments
 
-+ Show
+* Show
 
-Inventory
----------
+## Inventory
 
 Manage inventory, adjust quantities, and handle warehouses and locations.
 
@@ -239,10 +230,9 @@ get
 
 /v2/inventory\_locationsShow 4 more...
 
-+ Show
+* Show
 
-Labels
-------
+## Labels
 
 Purchase and print shipping labels for any carrier active on your account. The labels endpoint also supports creating return labels, voiding labels, and getting label details like tracking.
 
@@ -280,10 +270,9 @@ put
 
 /v2/labels/{label\_id}/void
 
-+ Show
+* Show
 
-Manifests
----------
+## Manifests
 
 A manifest is a document that provides a list of the day's shipments. It typically contains a barcode that allows the pickup driver to scan a single document to register all shipments, rather than scanning each shipment individually.
 
@@ -301,10 +290,9 @@ get
 
 /v2/manifests/{manifest\_id}
 
-+ Show
+* Show
 
-Package Pickups
----------------
+## Package Pickups
 
 Scheduled pickups and manage pickup requests for supported carriers.
 
@@ -326,10 +314,9 @@ delete
 
 /v2/pickups/{pickup\_id}
 
-+ Show
+* Show
 
-Package Types
--------------
+## Package Types
 
 Create custom package types to use for your shipments, rather than the carriers' default package types.
 
@@ -355,10 +342,9 @@ delete
 
 /v2/packages/{package\_id}
 
-+ Show
+* Show
 
-Products
---------
+## Products
 
 Manage products in your ShipStation account. Products represent the items you sell and ship to customers.
 
@@ -368,10 +354,9 @@ get
 
 /v2/products
 
-+ Show
+* Show
 
-Rates
------
+## Rates
 
 Quickly compare rates using the Rates endpoint. You can see and compare rates for the carriers connected to your account (as long as they support sending rates).
 
@@ -389,10 +374,9 @@ get
 
 /v2/rates/{rate\_id}
 
-+ Show
+* Show
 
-Shipments
----------
+## Shipments
 
 Shipments are at the core of most ShipStation capabilities. Shipment objects are required for cretaing labels and manifests, as well as getting rates.
 
@@ -430,10 +414,9 @@ delete
 
 /v2/shipments/{shipment\_id}/tags/{tag\_name}
 
-+ Show
+* Show
 
-Tags
-----
+## Tags
 
 Tags are text-based identifiers you can add to shipments to help in your shipment management workflows.
 
@@ -447,10 +430,9 @@ post
 
 /v2/tags/{tag\_name}
 
-+ Show
+* Show
 
-Tracking
---------
+## Tracking
 
 Use the tracking endpoint to stop receiving tracking updates (more dedicated tracking endpoint methods coming soon).
 
@@ -460,10 +442,9 @@ post
 
 /v2/tracking/stop
 
-+ Show
+* Show
 
-Warehouses
-----------
+## Warehouses
 
 Get warehouse details like warehouse ID and related addresses using the warehouses endpoint.
 
@@ -477,10 +458,9 @@ get
 
 /v2/warehouses/{warehouse\_id}
 
-List warehouses
----------------
+## List warehouses
 
-#### Request
+### Request
 
 Retrieve a list of warehouses associated with this account.
 
@@ -508,11 +488,11 @@ curl
 * R
 * Payload
 
-```
+```json
 curl -i -X GET \
   https://docs.shipstation.com/_mock/openapi/v2/warehouses \
   -H 'api-key: YOUR_API_KEY_HERE'
-```
+```json
 
 Try it
 
@@ -582,20 +562,19 @@ Response
 
 application/json
 
-```
+```json
 {
   "warehouses": [
     { … }
   ]
 }
-```
+```json
 
 #### Was this helpful?
 
-Get warehouse by id
--------------------
+## Get warehouse by id
 
-#### Request
+### Request (2)
 
 Retrieve warehouse data based on the warehouse ID
 
@@ -631,15 +610,15 @@ curl
 * R
 * Payload
 
-```
+```json
 curl -i -X GET \
   'https://docs.shipstation.com/_mock/openapi/v2/warehouses/{warehouse_id}' \
   -H 'api-key: YOUR_API_KEY_HERE'
-```
+```json
 
 Try it
 
-#### Responses
+#### Responses (2)
 
 1. 200
 2. 400
@@ -851,7 +830,7 @@ Response
 
 application/json
 
-```
+```json
 {
   "warehouse_id": "se-28529731",
   "is_default": true,
@@ -886,12 +865,11 @@ application/json
     "address_residential_indicator": "yes"
   }
 }
-```
+```json
 
-#### Was this helpful?
+#### Was this helpful? (2)
 
-Users
------
+## Users
 
 Manage and retrieve user information for the ShipStation account. This endpoint allows you to list users with various filtering options.
 
@@ -901,10 +879,9 @@ get
 
 /v2/users
 
-+ Show
+* Show
 
-Webhooks
---------
+## Webhooks
 
 Webhooks are a powerful feature that can save you from sending repeated polling requests to check on the state of something. With webhooks, ShipStation will automatically contact your servers when the stage changes. This can include parcel tracking events, notification when a batch operation completes, and more.
 
@@ -930,7 +907,7 @@ delete
 
 /v2/environment/webhooks/{webhook\_id}
 
-+ Show
+* Show
 
 ![Shipstation](./shipstation-logo.svg)
 

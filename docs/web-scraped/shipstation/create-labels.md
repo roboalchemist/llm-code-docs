@@ -2,9 +2,6 @@
 
 Create Labels
 
-
-
-
 [![ShipStation Developer](/assets/logo-ss-api.ec8fa1da9c60670d3bcab24ceeb8f32be01e624584c3106975db87878853f13c.de6e0f62.svg)](/)
 
 [Docs](/getting-started)
@@ -21,13 +18,13 @@ Search/
 
 * Guides
 
-+ Addresses
+* Addresses
 
-+ Rates
+* Rates
 
-+ Carriers
+* Carriers
 
-+ Shipping
+* Shipping
 
 [- List Shipments](/list-shipments)
 
@@ -49,15 +46,15 @@ Search/
 
 [- List Batches](/list-batches)
 
-+ Fulfillments
+* Fulfillments
 
-+ Manifests
+* Manifests
 
-+ Pickups
+* Pickups
 
-+ Tracking
+* Tracking
 
-+ Inventory
+* Inventory
 
 * Full API Reference
 
@@ -75,8 +72,7 @@ Create Labels
 
 Last updated  1 week ago
 
-Create Labels
-=============
+## Create Labels
 
 Creating a shipping label using the ShipStation API generally includes two basic steps: submitting the create label request and then downloading the label from the URLs provided in the response.
 
@@ -94,8 +90,7 @@ Using Our Code Samples
 
 When testing out these methods, you can copy/paste the code from any of our code samples below to help you get started. Change the **programming language** of the sample code using the drop-down list in the top right corner of the code block. You can then input your own values into the request for properties like `carrier_code`, `ship_date`, or any other properties relevant to or required by the request.
 
-Requirements
-------------
+## Requirements
 
 The requirements will vary depending on which options you are using to create the label.
 
@@ -103,8 +98,7 @@ The requirements will vary depending on which options you are using to create th
 * **Create label from a rate**: Requires the `rate_id` from an already existing shipment.
 * **Create label from a shipment**: Requires the `shipment_id` from an already existing shipment.
 
-Create a Shipping Label
------------------------
+## Create a Shipping Label
 
 Use this option when you have not previously created a shipment. In this case, you’ll need to define the properties in the shipment object, like `carrier_id` and `service_code`, `ship_from` and `ship_to` address, and any other properties required by the specific shipment.
 
@@ -123,9 +117,9 @@ Sample shipment details:
 
 ### Sample Request & Response
 
-**POST /v2/labels**
+### POST /v2/labels
 
-```
+```bash
 POST /v2/labels HTTP/1.1
 Host: api.shipstation.com
 API-Key: __YOUR_API_KEY_HERE__
@@ -178,7 +172,7 @@ Phone Number Formatting
 
 The `phone` property in the `ship_to` and `ship_from` objects is a string and is not validated based on format. However, some carriers may return an error if the format is not valid for the countries they deliver to. Best practice is to use the phone number format specific to the Ship To and Ship From country, including the calling-code prefix for the country.
 
-**Response**
+### Response
 
 If your request was successful, you'll receive an HTTP 200 response(/tk). The response payload includes all the details you need about the label, including (but not limited to):
 
@@ -191,7 +185,7 @@ If your request was successful, you'll receive an HTTP 200 response(/tk). The re
 * Label size
 * Tracking number
 
-```
+```json
 {
    "label_id": "se-396884371",
    "status": "completed",
@@ -275,12 +269,11 @@ If your request was successful, you'll receive an HTTP 200 response(/tk). The re
 }
 ```
 
-Download the Label
-------------------
+## Download the Label
 
 In your response, the `label_download` object includes the URLs you can use to download the label in the various [available formats](/download-labels).
 
-```
+```json
 {
  "label_download": {
    "pdf": "https://api.shipstation.com/v2/downloads/10/XNGDhq7uZ0CAEt5LOnCxIg/label-7764944.pdf",
@@ -295,7 +288,7 @@ These URLs are just like any other URLs in that you can paste them into a browse
 
 Copy the curl request below and replace the `__YOUR_LABEL_URL_HERE__` placeholder with the URL of the label format you wish to download.
 
-```
+```bash
 curl -iOX GET __YOUR_LABEL_URL_HERE__
 ```
 
@@ -303,8 +296,7 @@ Request and Download in One Call
 
 In the example above, two requests were necessary... one to create the label and another to download the `.pdf` file. You can accomplish both steps in a single request by setting `label_download_type: "inline"`. See [Download a Label](/download-labels) for more details.
 
-Create Label from a Rate
-------------------------
+## Create Label from a Rate
 
 If you have a rate ID, either from [previously calculating shipping rates](/retrieve-rates) or from an [already existing shipment](/list-shipments) with rate options, you can use the `rate_id` to create a label.
 
@@ -316,7 +308,7 @@ This sample also demonstrates adding `label_format` and `label_layout` propertie
 
 **POST v2/labels/rates/:rate\_id**
 
-```
+```bash
 POST /v2/labels/rates/se-2128728 HTTP/1.1
 Host: api.shipstation.com
 API-Key: __YOUR_API_KEY_HERE__
@@ -328,9 +320,9 @@ Content-Type: application/json
 }
 ```
 
-**Response**
+### Response
 
-```
+```json
 {
  "label_id": "se-test-2128728",
  "status": "completed",
@@ -372,8 +364,7 @@ Content-Type: application/json
 
 And that's it! The label is available for download using any of the `label_download` URLs provided in the response.
 
-Create Label from a Shipment
-----------------------------
+## Create Label from a Shipment
 
 If you have an [existing shipment](/list-shipments), you can create a label using just the `shipment_id`.
 
@@ -383,7 +374,7 @@ Using a `shipment_id` to create a label is the quickest way to create a label af
 
 **POST v2/labels/shipment/:shipment\_id**
 
-```
+```bash
 POST /v2/labels/shipment/se-2128732 HTTP/1.1
 Host: api.shipstation.com
 API-Key: __YOUR_API_KEY_HERE__
@@ -396,9 +387,9 @@ Content-Type: application/json
 }
 ```
 
-**Response**
+### Response
 
-```
+```json
 {
  "label_id": "se-test-2128732",
  "status": "completed",
@@ -440,8 +431,7 @@ Content-Type: application/json
 
 And that's it! The label is available for download using any of the `label_download` URLs provided in the response.
 
-Multi-Package Labels
---------------------
+## Multi-Package Labels
 
 You can also create multiple labels for a set of packages that are part of a single shipment. When you use multi-package labels, you can group packages together, get discounted rates, and retrieve a one-to-many “parent” tracking number for all packages in the shipment.
 
@@ -451,8 +441,8 @@ When submitting a request for multi-package labels, you'll add each package's de
 
 * You must have the weight, dimensions, and insurance properties (if applicable) for each package in the shipment.
 * You must use a carrier and service that supports multi-package labels.
-  + Not all carriers and services support multi-package shipping. To learn which services support multi-package check the `is_multi_package_supported` property when [listing carriers](/list-carriers) or [listing carrier services](/list-carriers#list-carrier-services-sample-request).
-  + Popular carriers that have multi-package services include FedEx, UPS, DHL Express, DHL Express Canada, DHL Express UK, FirstMile, and Purolator Canada.
+  * Not all carriers and services support multi-package shipping. To learn which services support multi-package check the `is_multi_package_supported` property when [listing carriers](/list-carriers) or [listing carrier services](/list-carriers#list-carrier-services-sample-request).
+  * Popular carriers that have multi-package services include FedEx, UPS, DHL Express, DHL Express Canada, DHL Express UK, FirstMile, and Purolator Canada.
 
 Package Types for Multi-Package Labels
 
@@ -464,9 +454,9 @@ Rate requests for multi-package labels that include carrier-specific package typ
 
 This sample includes weight, insurance, and dimension properties for two packages. When adding insurance for multi-package labels, you can specify unique insurance values for each package.
 
-**POST /v2/labels**
+### POST /v2/labels
 
-```
+```bash
 POST /v2/labels HTTP/1.1
 Host: api.shipstation.com
 API-Key: __YOUR_API_KEY_HERE__
@@ -536,11 +526,11 @@ Content-Type: application/json
 }
 ```
 
-**Response**
+### Response
 
 In the response, we consolidate all of the labels into a multi-page PDF or ZPL file in the `label_download` object. Currently, we don't support the PNG format for multi-package label downloads. However, each package will also have their own `label_download` object.
 
-```
+```json
 {
    "label_id": "se-120646641",
    "status": "completed",
