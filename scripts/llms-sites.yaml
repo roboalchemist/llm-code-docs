@@ -830,6 +830,9 @@ sites:
 - name: sherlockdomains
   base_url: https://www.sherlockdomains.com/
   description: Sherlockdomains documentation
+- name: shopify
+  base_url: https://shopify.dev/
+  description: Shopify developer platform with Admin API (GraphQL and REST), Storefront API, and developer tools
 - name: slack
   base_url: https://docs.slack.dev/
   description: Slack developer platform and API documentation
