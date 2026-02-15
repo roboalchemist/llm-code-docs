@@ -1173,3 +1173,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/web-vitals"
     branch: "main"
+
+  - name: "Cloudflare API"
+    description: "Cloudflare API - OpenAPI schemas for the Cloudflare API covering DNS, CDN, Workers, R2, D1, Zero Trust, WAF, Load Balancing, and all Cloudflare services"
+    repo_url: "https://github.com/cloudflare/api-schemas.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/cloudflare-api"
+    branch: "main"

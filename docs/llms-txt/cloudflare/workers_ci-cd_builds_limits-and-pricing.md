@@ -1,0 +1,36 @@
+# Source: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/index.md
+
+---
+
+title: Limits & pricing · Cloudflare Workers docs
+description: Limits & pricing for Workers Builds
+lastUpdated: 2025-11-22T00:08:40.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/
+  md: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/index.md
+---
+
+Workers Builds has the following limits.
+
+| Metric | Free plan | Paid plans |
+| - | - | - |
+| **Build minutes** | 3,000 per month | 6,000 per month (then, +$0.005 per minute) |
+| **Concurrent builds** | 1 | 6 |
+| **Build timeout** | 20 minutes | 20 minutes |
+| **CPU** | 2 vCPU | 4 vCPU |
+| **Memory** | 8 GB | 8 GB |
+| **Disk space** | 20 GB | 20 GB |
+| **Environment variables** | 64 | 64 |
+| **Size per environment variable** | 5 KB | 5 KB |
+
+## Definitions
+
+* **Build minutes**: The amount of minutes that it takes to build a project.
+* **Concurrent builds**: The number of builds that can run in parallel across an account.
+* **Build timeout**: The amount of time that a build can be run before it is terminated.
+* **vCPU**: The number of CPU cores available to your build.
+* **Memory**: The amount of memory available to your build.
+* **Disk space**: The amount of disk space available to your build.
+* **Environment variables**: The number of custom environment variables you can configure per Worker.
+* **Size per environment variable**: The maximum size for each individual environment variable.

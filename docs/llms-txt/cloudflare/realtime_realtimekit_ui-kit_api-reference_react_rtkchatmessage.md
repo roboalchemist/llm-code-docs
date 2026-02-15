@@ -1,0 +1,66 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkchatmessage/index.md
+
+---
+
+title: RtkChatMessage · Cloudflare Realtime docs
+description: API reference for RtkChatMessage component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkchatmessage/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkchatmessage/index.md
+---
+
+@deprecated `rtk-chat-message` is deprecated and will be removed soon. Use `rtk-message-view` instead.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `alignRight` | `boolean` | ✅ | - | aligns message to right |
+| `canDelete` | `boolean` | ✅ | - | can delete message |
+| `canEdit` | `boolean` | ✅ | - | can edit message |
+| `canPin` | `boolean` | ✅ | - | can pin this message |
+| `canReply` | `boolean` | ✅ | - | can quote reply this message |
+| `child` | `HTMLElement` | ✅ | - | Child |
+| `disableControls` | `boolean` | ✅ | - | disables controls |
+| `hideAvatar` | `boolean` | ✅ | - | hides avatar |
+| `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
+| `isContinued` | `boolean` | ✅ | - | is continued |
+| `isSelf` | `boolean` | ✅ | - | if sender is self |
+| `isUnread` | `boolean` | ✅ | - | is unread |
+| `leftAlign` | `boolean` | ✅ | - | Whether to left align the chat bubbles |
+| `message` | `Message` | ✅ | - | message item |
+| `senderDisplayPicture` | `string` | ✅ | - | sender display picture url |
+| `size` | `Size` | ✅ | - | Size |
+| `t` | `RtkI18n1` | ❌ | `useLanguage()` | Language |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkChatMessage } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkChatMessage />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkChatMessage } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkChatMessage
+      alignRight={true}
+      canDelete={true}
+      canEdit={true}
+    />
+  );
+}
+```

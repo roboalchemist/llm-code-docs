@@ -1,0 +1,58 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsstagelist/index.md
+
+---
+
+title: RtkParticipantsStageList · Cloudflare Realtime docs
+description: API reference for RtkParticipantsStageList component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsstagelist/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsstagelist/index.md
+---
+
+A component which lists all participants, with ability to run privileged actions on each participant according to your permissions.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `config` | `UIConfig` | ❌ | `createDefaultConfig()` | Config |
+| `hideHeader` | `boolean` | ✅ | - | Hide Stage Participants Count Header |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `meeting` | `Meeting` | ✅ | - | Meeting object |
+| `search` | `string` | ✅ | - | Search |
+| `size` | `Size` | ✅ | - | Size |
+| `states` | `States1` | ✅ | - | Meeting object |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+| `view` | `ParticipantsViewMode` | ✅ | - | View mode for participants list |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkParticipantsStageList } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkParticipantsStageList />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkParticipantsStageList } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantsStageList
+      hideHeader={true}
+      meeting={meeting}
+      search="example"
+    />
+  );
+}
+```

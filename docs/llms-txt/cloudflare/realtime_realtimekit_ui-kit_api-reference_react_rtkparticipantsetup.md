@@ -1,0 +1,61 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsetup/index.md
+
+---
+
+title: RtkParticipantSetup · Cloudflare Realtime docs
+description: API reference for RtkParticipantSetup component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsetup/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkparticipantsetup/index.md
+---
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `config` | `UIConfig` | ❌ | `createDefaultConfig()` | Config object |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `isPreview` | `boolean` | ✅ | - | Whether tile is used for preview |
+| `nameTagPosition` | `\| 'bottom-left' \| 'bottom-right' \| 'bottom-center' \| 'top-left' \| 'top-right' \| 'top-center'` | ✅ | - | Position of name tag |
+| `participant` | `Peer` | ✅ | - | Participant object |
+| `size` | `Size` | ✅ | - | Size |
+| `states` | `States` | ✅ | - | States object |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+| `variant` | `'solid' \| 'gradient'` | ✅ | - | Variant |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkParticipantSetup />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkParticipantSetup } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkParticipantSetup
+      isPreview={true}
+      nameTagPosition={| 'bottom-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'top-left'
+    | 'top-right'
+    | 'top-center'}
+      participant={participant}
+    />
+  );
+}
+```

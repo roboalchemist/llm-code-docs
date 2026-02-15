@@ -273,7 +273,7 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
     fail_count = 0
 
     for i, url in enumerate(urls):
-        # Extract filename from URL
+        # Extract filename from URL, preserving path structure to avoid collisions
         path = urlparse(url).path
         filename = Path(path).name
 
@@ -285,6 +285,13 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
         # Ensure .md extension
         if not filename.endswith('.md'):
             filename += '.md'
+
+        # If filename would collide (e.g. all "index.md"), use path-based naming
+        # Convert /workers/runtime-apis/fetch/index.md -> workers_runtime-apis_fetch.md
+        if filename == 'index.md':
+            parts = [p for p in path.strip('/').split('/') if p and p != 'index.md']
+            if parts:
+                filename = '_'.join(parts) + '.md'
 
         output_path = output_dir / filename
 
