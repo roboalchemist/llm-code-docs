@@ -1180,3 +1180,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/cloudflare-api"
     branch: "main"
+
+  - name: "Swift"
+    description: "The Swift Programming Language - Official Apple documentation covering language guide, syntax, standard library, and reference manual"
+    repo_url: "https://github.com/swiftlang/swift-book.git"
+    source_folder: "TSPL.docc"
+    target_folder: "docs/github-scraped/swift"
+    branch: "main"
