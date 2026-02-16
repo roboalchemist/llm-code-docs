@@ -1,4 +1,5 @@
 # Daily News Briefing | AI-Powered News Summaries for Obsidian
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/daily-news-briefing
 
 An Obsidian plugin that delivers AI-powered daily news summaries directly to your vault using Perplexity's Sonar API for intelligent content curation

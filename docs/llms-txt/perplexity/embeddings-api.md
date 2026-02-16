@@ -1,4 +1,5 @@
 # Embeddings API
+
 Source: https://docs.perplexity.ai/docs/embeddings/quickstart
 
 Generate high-quality text embeddings for semantic search, RAG, and machine learning applications.
@@ -29,8 +30,8 @@ All models use mean pooling and require no instruction prefix—you can embed te
 <Tip>
   **When to use which:**
 
-  * **Standard embeddings** (`pplx-embed-v1-*`) - Independent texts, search queries, single sentences
-  * **Contextualized embeddings** (`pplx-embed-context-v1-*`) - Document chunks that benefit from shared context (e.g., paragraphs from the same article)
+* **Standard embeddings** (`pplx-embed-v1-*`) - Independent texts, search queries, single sentences
+* **Contextualized embeddings** (`pplx-embed-context-v1-*`) - Document chunks that benefit from shared context (e.g., paragraphs from the same article)
 </Tip>
 
 ## Installation
@@ -43,6 +44,7 @@ All models use mean pooling and require no instruction prefix—you can embed te
   ```bash TypeScript/JavaScript theme={null}
   npm install @perplexity-ai/perplexity_ai
   ```
+
 </CodeGroup>
 
 ## Authentication

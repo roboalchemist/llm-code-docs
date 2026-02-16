@@ -1,9 +1,10 @@
 # Models
+
 Source: https://docs.perplexity.ai/docs/agent-api/models
 
 Explore available presets and third-party models for the Agent API, including Perplexity presets and third-party model support.
 
-### Available Models
+## Available Models
 
 The Agent API supports direct access to models from multiple providers. All models are accessed directly from first-party providers with transparent token-based pricing.
 
@@ -37,17 +38,18 @@ Pricing rates are updated monthly and **reflect direct first-party provider pric
 <Tip>
   **See Your Costs in Real-Time:** Every response includes a `usage` field with exact input tokens, output tokens, and cache read tokens. Calculate your cost instantly using the pricing table above.
 
-  Example response:
+Example response:
 
-  ```json theme={null}
-  {
-    "usage": {
-      "input_tokens": 150,
-      "output_tokens": 320,
-      "total_tokens": 470
-    }
+```json
+{
+  "usage": {
+    "input_tokens": 150,
+    "output_tokens": 320,
+    "total_tokens": 470
   }
-  ```
+}
+```
+
 </Tip>
 
 ## Configuration Options

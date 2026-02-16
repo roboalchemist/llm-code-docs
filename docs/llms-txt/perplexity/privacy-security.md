@@ -1,4 +1,5 @@
 # Privacy & Security
+
 Source: https://docs.perplexity.ai/docs/resources/privacy-security
 
 Learn about Perplexity's data privacy, retention policies, and security certifications for API users

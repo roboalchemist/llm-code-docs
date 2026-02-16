@@ -1,85 +1,54 @@
 # Get Async Chat Completion
-Source: https://docs.perplexity.ai/api-reference/async-chat-completions-api-request-get
 
 get /async/chat/completions/{api_request}
 Retrieve the response for a given asynchronous chat completion request.
 
-
-
 # List Async Chat Completions
-Source: https://docs.perplexity.ai/api-reference/async-chat-completions-get
 
 get /async/chat/completions
 Retrieve a list of all asynchronous chat completion requests for a given user.
 
-
-
 # Create Async Chat Completion
-Source: https://docs.perplexity.ai/api-reference/async-chat-completions-post
 
 post /async/chat/completions
 Submit an asynchronous chat completion request.
 
-
-
 # Create Chat Completion
-Source: https://docs.perplexity.ai/api-reference/chat-completions-post
 
 post /chat/completions
 Generate a chat completion response for the given conversation.
 
-
-
 # Create Contextualized Embeddings
-Source: https://docs.perplexity.ai/api-reference/contextualized-embeddings-post
 
 post /v1/contextualizedembeddings
 Generate contextualized embeddings for document chunks. Chunks from the same document share context awareness, improving retrieval quality for document-based applications.
 
-
-
 # Create Embeddings
-Source: https://docs.perplexity.ai/api-reference/embeddings-post
 
 post /v1/embeddings
 Generate embeddings for a list of texts. Use these embeddings for semantic search, clustering, and other machine learning applications.
 
-
-
 # Generate Auth Token
-Source: https://docs.perplexity.ai/api-reference/generate-auth-token-post
 
 post /generate_auth_token
 Generates a new authentication token for API access.
 
-
-
 # Create Response
-Source: https://docs.perplexity.ai/api-reference/responses-post
 
 post /v1/responses
 Generate a response for the provided input with optional web search and reasoning.
 
-
-
 # Revoke Auth Token
-Source: https://docs.perplexity.ai/api-reference/revoke-auth-token-post
 
 post /revoke_auth_token
 Revokes an existing authentication token.
 
-
-
 # Search the Web
-Source: https://docs.perplexity.ai/api-reference/search-post
 
 post /search
 Search the web and retrieve relevant web page contents.
 
-
-
 # API Key Management
-Source: https://docs.perplexity.ai/docs/admin/api-key-management
 
 Learn how to generate, revoke, and rotate API keys for secure access
 
@@ -337,10 +306,10 @@ Here's a complete example of an automated key rotation script:
   import logging
 
   logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger(__name__)
+  logger = logging.getLogger(**name**)
 
   class PerplexityKeyRotator:
-      def __init__(self, current_key):
+      def **init**(self, current_key):
           self.base_url = "https://api.perplexity.ai"
           self.current_key = current_key
 
@@ -588,11 +557,11 @@ Here's a complete example of an automated key rotation script:
 <Warning>
   **Never expose API keys in:**
 
-  * Client-side JavaScript code
-  * Mobile applications
-  * Public repositories
-  * Log files or error messages
-  * URLs or query parameters
+* Client-side JavaScript code
+* Mobile applications
+* Public repositories
+* Log files or error messages
+* URLs or query parameters
 </Warning>
 
 ### If a Key is Compromised
@@ -616,11 +585,7 @@ Here's a complete example of an automated key rotation script:
   For additional support with API key management, visit your [API settings page](https://www.perplexity.ai/settings/api) or contact our support team.
 </Info>
 
-
 # Rate Limits & Usage Tiers
-Source: https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers
-
-
 
 ## What are Usage Tiers?
 
@@ -883,9 +848,7 @@ When you exceed your rate limits:
   Higher tiers significantly improve your API experience with increased rate limits, especially important for production applications.
 </Check>
 
-
 # Search Filters
-Source: https://docs.perplexity.ai/docs/agent-api/filters
 
 Control and customize Agent API search results with filters
 
@@ -1052,9 +1015,7 @@ print(response.output_text)
 
 Ready to get started? Check out the [quickstart guide](/docs/agent-api/quickstart) to learn how to make your first API call with filters.
 
-
 # Image Attachments
-Source: https://docs.perplexity.ai/docs/agent-api/image-attachments
 
 Learn how to upload and analyze images using base64 encoding or HTTPS URLs
 
@@ -1307,9 +1268,7 @@ These image tokens are then priced according to the input token pricing of the m
   </Card>
 </CardGroup>
 
-
 # Model Fallback
-Source: https://docs.perplexity.ai/docs/agent-api/model-fallback
 
 Specify multiple models in a fallback chain for higher availability and automatic failover.
 
@@ -1486,9 +1445,7 @@ The `model` field in the response indicates which model was used, and the `usage
   </Card>
 </CardGroup>
 
-
 # Models
-Source: https://docs.perplexity.ai/docs/agent-api/models
 
 Explore available presets and third-party models for the Agent API, including Perplexity presets and third-party model support.
 
@@ -1587,9 +1544,7 @@ For high-availability applications, you can specify multiple models in a fallbac
   </Card>
 </CardGroup>
 
-
 # OpenAI Compatibility
-Source: https://docs.perplexity.ai/docs/agent-api/openai-compatibility
 
 Use your existing OpenAI SDKs with Perplexity's Agent API. Full compatibility with minimal code changes.
 
@@ -2163,9 +2118,7 @@ Switch to the Perplexity SDK for enhanced features and cleaner syntax. With the 
   </Step>
 </Steps>
 
-
 # Output Control
-Source: https://docs.perplexity.ai/docs/agent-api/output-control
 
 Streaming and structured outputs for the Agent API
 
@@ -2249,13 +2202,13 @@ Handle errors gracefully during streaming:
           input="Explain machine learning concepts",
           stream=True
       )
-      
+
       for event in stream:
           if event.type == "response.output_text.delta":
               print(event.delta, end="")
           elif event.type == "response.completed":
               print(f"\n\nCompleted: {event.response.usage}")
-              
+
   except perplexity.APIConnectionError as e:
       print(f"Network connection failed: {e}")
   except perplexity.RateLimitError as e:
@@ -2275,7 +2228,7 @@ Handle errors gracefully during streaming:
       input: "Explain machine learning concepts",
       stream: true
     });
-    
+
     for await (const event of stream) {
       if (event.type === "response.output_text.delta") {
         process.stdout.write(event.delta);
@@ -2448,9 +2401,7 @@ The `name` field is required and must be 1-64 alphanumeric characters. The schem
 
 * [Agent API Quickstart](/docs/agent-api/quickstart) - Getting started with the Agent API
 
-
 # Presets
-Source: https://docs.perplexity.ai/docs/agent-api/presets
 
 Explore Perplexity's Agent API presets - pre-configured setups optimized for different use cases with specific models, token limits, and tool access.
 
@@ -2774,7 +2725,6 @@ Each preset includes a tailored system prompt that guides the model's behavior, 
     - iteratively gathering information (`<information_gathering>`)
     - and, in a separate final turn, generating the answer to the user's query (`<answer_generation>`).
 
-
     <information_gathering>
     - Begin your turn by generating tool calls to gather information.
     - Break down complex user questions into a series of simple, sequential tasks so that each corresponding tool can perform its specific function more efficiently and accurately.
@@ -2782,8 +2732,6 @@ Each preset includes a tailored system prompt that guides the model's behavior, 
     - For topics that involve quantitative data, NEVER simulate real data by generating synthetic data. Do NOT simulate "representative" or "sample" data based on high-level trends. Any specific quantitative data you use must be directly sourced. Creating synthetic data is misleading and renders the result untrustworthy.
     - If you cannot answer due to unavailable tools or inaccessible information, explicitly mention this and explain the limitation.
     </information_gathering>
-
-
 
     <answer_generation>
     - In your final turn, generate text that answers only the user's question with in-depth insights that three domain experts would agree on.
@@ -2926,7 +2874,6 @@ Each preset includes a tailored system prompt that guides the model's behavior, 
     - Never expose or mention full raw IDs or their type prefixes in your final response, except through this approved citation format or special citation cases below.
     </citations>
 
-
     </answer_formatting>
     ```
   </Accordion>
@@ -2945,7 +2892,6 @@ Each preset includes a tailored system prompt that guides the model's behavior, 
     As a research expert, you are responsible for the following steps:
     - iteratively gather information (`<information_gathering>`)
     - in a final step, generate the final answer to the user's query (`<answer_generation>`)
-
 
     <information_gathering>
     - Begin your turn by generating tool calls to gather information.
@@ -3290,11 +3236,7 @@ Presets provide sensible defaults, but you can override any parameter by passing
   </Card>
 </CardGroup>
 
-
 # Prompt Guide
-Source: https://docs.perplexity.ai/docs/agent-api/prompt-guide
-
-
 
 ## Instructions
 
@@ -3304,9 +3246,9 @@ You can use the `instructions` parameter to provide instructions related to styl
   The real-time search component of our models does not attend to the system prompt.
 </Warning>
 
-**Example of a system prompt**
+## Example of a system prompt
 
-```
+```markdown
 You are a helpful AI assistant.
 
 Rules:
@@ -3323,9 +3265,9 @@ Steps:
 
 You should use the `input` parameter to pass in the actual query for which you need an answer. The input will be used to kick off a real-time web search to make sure the answer has the latest and the most relevant information needed.
 
-**Example of a user prompt**
+## Example of a user prompt
 
-```
+```markdown
 What are the best sushi restaurants in the world currently?
 ```
 
@@ -3438,9 +3380,9 @@ URLs and source information are automatically returned in the `search_results` f
 **Example of incorrect prompting:**
 
 ```
-❌ BAD: "From the past 5 days, identify high-potential Canadian news stories... 
+❌ BAD: "From the past 5 days, identify high-potential Canadian news stories...
 For each item, include:
-- A clear headline  
+- A clear headline
 - 1–2 sentence summary
 - Include a link to a source"
 ```
@@ -3451,7 +3393,7 @@ For each item, include:
 ✅ GOOD: "From the past 5 days, identify high-potential Canadian news stories...
 For each item, include:
 - A clear headline
-- 1–2 sentence summary  
+- 1–2 sentence summary
 - Why it matters from a thought-leadership perspective"
 
 // Then parse URLs from the search_results field in the API response
@@ -3505,23 +3447,23 @@ Large Language Models are trained to be assistive and will often try to provide 
 Include clear guidance in your prompts about what to do when information isn't available:
 
 ```
-✅ GOOD: "Search for recent developments in quantum computing breakthroughs. 
-If you are not able to get search results or find relevant information, 
+✅ GOOD: "Search for recent developments in quantum computing breakthroughs.
+If you are not able to get search results or find relevant information,
 please state that clearly rather than providing speculative information."
 ```
 
 **Set Clear Boundaries:**
 
 ```
-✅ GOOD: "Based on publicly available sources from the past week, what are the latest policy changes in Canadian healthcare? 
+✅ GOOD: "Based on publicly available sources from the past week, what are the latest policy changes in Canadian healthcare?
 If no recent information is found, please indicate that no recent updates were discovered."
 ```
 
 **Request Source Transparency:**
 
 ```
-✅ GOOD: "Find information about Tesla's latest earnings report. 
-Only provide information that you can verify from your search results, 
+✅ GOOD: "Find information about Tesla's latest earnings report.
+Only provide information that you can verify from your search results,
 and clearly state if certain details are not available."
 ```
 
@@ -3573,7 +3515,7 @@ When you want to control search behavior—such as limiting sources, filtering b
   "model": "sonar-pro",
   "messages": [
     {
-      "role": "user", 
+      "role": "user",
       "content": "Search only on Wikipedia and official government sites for information about climate change policies. Make sure to only look at sources from the past month."
     }
   ]
@@ -3589,7 +3531,7 @@ When you want to control search behavior—such as limiting sources, filtering b
   "model": "sonar-pro",
   "messages": [
     {
-      "role": "user", 
+      "role": "user",
       "content": "What are the latest climate change policies?"
     }
   ],
@@ -3650,9 +3592,7 @@ When you want to control search behavior—such as limiting sources, filtering b
 | **Technical Questions** | • Include relevant technical context  • Specify preferred programming language/framework  • Use domain filters for documentation sites |
 | **Analysis & Insights** | • Request step-by-step reasoning  • Ask for specific metrics or criteria                                                               |
 
-
 # Agent API
-Source: https://docs.perplexity.ai/docs/agent-api/quickstart
 
 The Agent API is a multi-provider, interoperable API specification for building LLM applications. Access models from multiple providers with integrated real-time web search, tool configuration, reasoning control, and token budgets—all through one unified interface.
 
@@ -4355,9 +4295,7 @@ Handle errors gracefully:
   Need help? Check out our [community](https://community.perplexity.ai) for support and discussions with other developers.
 </Info>
 
-
 # Tools
-Source: https://docs.perplexity.ai/docs/agent-api/tools
 
 Web search, URL fetching, and function calling tools for the Agent API
 
@@ -4711,9 +4649,7 @@ Function calling follows a multi-turn conversation pattern:
 
 Get started with tools in the Agent API by following the [quickstart guide](/docs/agent-api/quickstart).
 
-
 # Memory Management
-Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/README
 
 Advanced conversation memory solutions using LlamaIndex for persistent, context-aware applications
 
@@ -4780,9 +4716,7 @@ If you have found another way to tackle the same issue using LlamaIndex please f
 
 ***
 
-
 # Chat Summary Memory Buffer
-Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-summary-memory-buffer/README
 
 Token-aware conversation memory using summarization with LlamaIndex and Perplexity Sonar API
 
@@ -4845,17 +4779,15 @@ messages_dict = [
 **Multi-Turn Conversation:**
 
 ```python theme={null}
+
 # Initial query about astronomy
-print(chat_with_memory("What causes neutron stars to form?"))  # Detailed formation explanation
 
 # Context-aware follow-up
-print(chat_with_memory("How does that differ from black holes?"))  # Comparative analysis
 
 # Session persistence demo
-memory.persist("astrophysics_chat.json")
 
 # New session loading
-loaded_memory = ChatSummaryMemoryBuffer.from_defaults(
+
     persist_path="astrophysics_chat.json",
     llm=llm
 )
@@ -4922,9 +4854,7 @@ Citations:
 
 ***
 
-
 # Persistent Chat Memory
-Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-with-persistence/README
 
 Long-term conversation memory using LanceDB vector storage and Perplexity Sonar API
 
@@ -4946,8 +4876,9 @@ This implementation demonstrates long-term conversation memory preservation usin
 ### Core Components
 
 ```python theme={null}
+
 # Memory initialization
-vector_store = LanceDBVectorStore(uri="./lancedb", table_name="chat_history")
+
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 index = VectorStoreIndex([], storage_context=storage_context)
 ```
@@ -4962,8 +4893,9 @@ index = VectorStoreIndex([], storage_context=storage_context)
 ### API Integration
 
 ```python theme={null}
+
 # Sonar API call with conversation context
-messages = [
+
     {"role": "system", "content": f"Context: {context_nodes}"},
     {"role": "user", "content": user_query}
 ]
@@ -5043,9 +4975,7 @@ For full documentation, see [LlamaIndex Memory Guide](https://docs.llamaindex.ai
 ---
 ```
 
-
 # OpenAI Agents Integration
-Source: https://docs.perplexity.ai/docs/cookbook/articles/openai-agents-integration/README
 
 Complete guide for integrating Perplexity's Sonar API with the OpenAI Agents SDK
 
@@ -5100,14 +5030,13 @@ The `nest-asyncio` package is required for running async code in environments li
 Configure your environment variables:
 
 ```bash theme={null}
+
 # Required: Your Perplexity API key
-export EXAMPLE_API_KEY="your-perplexity-api-key"
 
 # Optional: Customize the API endpoint (defaults to official endpoint)
-export EXAMPLE_BASE_URL="https://api.perplexity.ai"
 
 # Optional: Choose your model (defaults to sonar-pro)
-export EXAMPLE_MODEL_NAME="sonar-pro"
+
 ```
 
 ## 💻 Complete Implementation
@@ -5115,44 +5044,42 @@ export EXAMPLE_MODEL_NAME="sonar-pro"
 Here's the full implementation with detailed explanations:
 
 ```python theme={null}
+
 # Import necessary standard libraries
-import asyncio  # For running asynchronous code
+
 import os       # To access environment variables
 
 # Import AsyncOpenAI for creating an async client
-from openai import AsyncOpenAI
 
 # Import custom classes and functions from the agents package.
-# These handle agent creation, model interfacing, running agents, and more.
+
 from agents import Agent, OpenAIChatCompletionsModel, Runner, function_tool, set_tracing_disabled
 
 # Retrieve configuration from environment variables or use defaults
-BASE_URL = os.getenv("EXAMPLE_BASE_URL") or "https://api.perplexity.ai"
-API_KEY = os.getenv("EXAMPLE_API_KEY") 
+
+API_KEY = os.getenv("EXAMPLE_API_KEY")
 MODEL_NAME = os.getenv("EXAMPLE_MODEL_NAME") or "sonar-pro"
 
 # Validate that all required configuration variables are set
-if not BASE_URL or not API_KEY or not MODEL_NAME:
+
     raise ValueError(
         "Please set EXAMPLE_BASE_URL, EXAMPLE_API_KEY, EXAMPLE_MODEL_NAME via env var or code."
     )
 
 # Initialize the custom OpenAI async client with the specified BASE_URL and API_KEY.
-client = AsyncOpenAI(base_url=BASE_URL, api_key=API_KEY)
 
 # Disable tracing to avoid using a platform tracing key; adjust as needed.
-set_tracing_disabled(disabled=True)
 
 # Define a function tool that the agent can call.
-# The decorator registers this function as a tool in the agents framework.
+
 @function_tool
 def get_weather(city: str):
     """
     Simulate fetching weather data for a given city.
-    
+
     Args:
         city (str): The name of the city to retrieve weather for.
-        
+
     Returns:
         str: A message with weather information.
     """
@@ -5160,16 +5087,15 @@ def get_weather(city: str):
     return f"The weather in {city} is sunny."
 
 # Import nest_asyncio to support nested event loops
-import nest_asyncio
 
-# Apply the nest_asyncio patch to enable running asyncio.run() 
-# even if an event loop is already running.
+# Apply the nest_asyncio patch to enable running asyncio.run()
+
 nest_asyncio.apply()
 
 async def main():
     """
     Main asynchronous function to set up and run the agent.
-    
+
     This function creates an Agent with a custom model and function tools,
     then runs a query to get the weather in Tokyo.
     """
@@ -5187,12 +5113,12 @@ async def main():
 
     # Execute the agent with the sample query.
     result = await Runner.run(agent, "What's the weather in Tokyo?")
-    
+
     # Print the final output from the agent.
     print(result.final_output)
 
 # Standard boilerplate to run the async main() function.
-if __name__ == "__main__":
+
     asyncio.run(main())
 ```
 
@@ -5260,14 +5186,13 @@ The weather in Tokyo is sunny.
 Choose the right model for your use case:
 
 ```python theme={null}
+
 # For quick, lightweight queries
-MODEL_NAME = "sonar"
 
 # For complex research and analysis (default)
-MODEL_NAME = "sonar-pro"
 
 # For deep reasoning tasks
-MODEL_NAME = "sonar-reasoning-pro"
+
 ```
 
 ### **Custom Instructions**
@@ -5325,10 +5250,10 @@ async def robust_main():
             model=OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=client),
             tools=[get_weather],
         )
-        
+
         result = await Runner.run(agent, "What's the weather in Tokyo?")
         return result.final_output
-        
+
     except Exception as e:
         print(f"Error running agent: {e}")
         return "Sorry, I encountered an error processing your request."
@@ -5341,8 +5266,8 @@ import aiohttp
 from openai import AsyncOpenAI
 
 # Configure client with custom timeout and retry settings
-client = AsyncOpenAI(
-    base_url=BASE_URL, 
+
+    base_url=BASE_URL,
     api_key=API_KEY,
     timeout=30.0,
     max_retries=3
@@ -5355,7 +5280,7 @@ client = AsyncOpenAI(
 import logging
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(**name**)
 
 @function_tool
 def get_weather(city: str):
@@ -5377,7 +5302,7 @@ async def stream_agent_response(query: str):
         model=OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=client),
         tools=[get_weather],
     )
-    
+
     async for chunk in Runner.stream(agent, query):
         print(chunk, end='', flush=True)
 ```
@@ -5388,7 +5313,7 @@ For multi-turn conversations:
 
 ```python theme={null}
 class ConversationManager:
-    def __init__(self):
+    def **init**(self):
         self.agent = Agent(
             name="Conversational Assistant",
             instructions="Maintain context across multiple interactions.",
@@ -5396,7 +5321,7 @@ class ConversationManager:
             tools=[get_weather],
         )
         self.conversation_history = []
-    
+
     async def chat(self, message: str):
         result = await Runner.run(self.agent, message)
         self.conversation_history.append({"user": message, "assistant": result.final_output})
@@ -5430,9 +5355,7 @@ This integration pattern is perfect for:
 
 **Ready to build?** This integration opens up powerful possibilities for creating intelligent, grounded agents. Start with the basic example and gradually add more sophisticated tools and capabilities! 🚀
 
-
 # Examples Overview
-Source: https://docs.perplexity.ai/docs/cookbook/examples/README
 
 Ready-to-use applications demonstrating Perplexity Sonar API capabilities
 
@@ -5616,9 +5539,7 @@ All examples are licensed under the [MIT License](https://github.com/ppl-ai/api-
 
 **Ready to explore?** Pick an example above and start building with Perplexity's Sonar API! 🚀
 
-
 # Daily Knowledge Bot
-Source: https://docs.perplexity.ai/docs/cookbook/examples/daily-knowledge-bot/README
 
 A Python application that delivers interesting facts about rotating topics using the Perplexity AI API
 
@@ -5649,11 +5570,11 @@ A Python application that delivers interesting facts about rotating topics using
 2. Install the required packages:
 
 ```bash theme={null}
+
 # Install from requirements file (recommended)
-pip install -r requirements.txt
 
 # Or install manually
-pip install requests python-dotenv
+
 ```
 
 3. Set up your Perplexity API key:
@@ -5701,11 +5622,11 @@ culinary science
 #### On Linux/macOS (using cron):
 
 ```bash theme={null}
+
 # Edit your crontab
-crontab -e
 
 # Add this line to run daily at 8:00 AM
-0 8 * * * /path/to/python3 /path/to/daily_knowledge_bot.py
+
 ```
 
 #### On Windows (using Task Scheduler):
@@ -5759,9 +5680,7 @@ Some ways to extend this bot:
 * This project uses the Perplexity AI API ([https://docs.perplexity.ai/](https://docs.perplexity.ai/))
 * Inspired by daily knowledge calendars and fact-of-the-day services
 
-
 # Perplexity Discord Bot
-Source: https://docs.perplexity.ai/docs/cookbook/examples/discord-py-bot/README
 
 A simple discord.py bot that integrates Perplexity's Sonar API to bring AI answers to your Discord server.
 
@@ -5813,12 +5732,13 @@ cd api-cookbook/docs/examples/discord-py-bot/
 ### 2. Install Dependencies
 
 ```bash theme={null}
+
 # Create a virtual environment (recommended)
-python -m venv venv
+
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install required packages
-pip install -r requirements.txt
+
 ```
 
 ### 3. Configure API Keys
@@ -5920,9 +5840,7 @@ This bot uses:
 * **Temperature**: 0.2 for consistent, factual responses
 * **No Permissions**: Anyone in the server can use the bot
 
-
 # Disease Information App
-Source: https://docs.perplexity.ai/docs/cookbook/examples/disease-qa/README
 
 An interactive browser-based application that provides structured information about diseases using Perplexity's Sonar API
 
@@ -5958,11 +5876,11 @@ An interactive browser-based application that provides structured information ab
 2. Install the required packages:
 
 ```bash theme={null}
+
 # Install from requirements file (recommended)
-pip install -r requirements.txt
 
 # Or install manually
-pip install requests pandas python-dotenv ipython
+
 ```
 
 3. Set up your Perplexity API key:
@@ -6065,9 +5983,7 @@ Potential extensions:
 * This project uses the [Perplexity AI Sonar API](https://docs.perplexity.ai/)
 * Inspired by interactive knowledge bases and medical information platforms
 
-
 # Fact Checker CLI
-Source: https://docs.perplexity.ai/docs/cookbook/examples/fact-checker-cli/README
 
 A command-line tool that identifies false or misleading claims in articles or statements using Perplexity's Sonar API
 
@@ -6089,11 +6005,11 @@ A command-line tool that identifies false or misleading claims in articles or st
 ### 1. Install required dependencies
 
 ```bash theme={null}
+
 # Install from requirements file (recommended)
-pip install -r requirements.txt
 
 # Or install manually
-pip install requests pydantic newspaper3k
+
 ```
 
 ### 2. Make the script executable
@@ -6225,9 +6141,9 @@ The claim that the Great Wall of China is visible from the moon is false. This i
 
 🔍 CLAIMS ANALYSIS:
 
-Claim 1: ❌ FALSE  
-  Statement: "The Great Wall of China is visible from the moon."  
-  Explanation: The Great Wall of China is not visible from the moon with the naked eye. NASA astronauts have confirmed this, including Neil Armstrong who stated he could not see the Wall from lunar orbit. The Wall is too narrow and is similar in color to its surroundings when viewed from such a distance.  
+Claim 1: ❌ FALSE
+  Statement: "The Great Wall of China is visible from the moon."
+  Explanation: The Great Wall of China is not visible from the moon with the naked eye. NASA astronauts have confirmed this, including Neil Armstrong who stated he could not see the Wall from lunar orbit. The Wall is too narrow and is similar in color to its surroundings when viewed from such a distance.
   Sources:
     - NASA.gov
     - Scientific American
@@ -6241,9 +6157,7 @@ Claim 1: ❌ FALSE
 * The structured outputs feature requires a Tier 3 or higher Perplexity API account.
 * The tool does not replace professional fact-checking services for highly sensitive or complex content.
 
-
 # Financial News Tracker
-Source: https://docs.perplexity.ai/docs/cookbook/examples/financial-news-tracker/README
 
 A real-time financial news monitoring tool that fetches and analyzes market news using Perplexity's Sonar API
 
@@ -6267,11 +6181,11 @@ A command-line tool that fetches and analyzes real-time financial news using Per
 ### 1. Install required dependencies
 
 ```bash theme={null}
+
 # Install from requirements file (recommended)
-pip install -r requirements.txt
 
 # Or install manually
-pip install requests pydantic
+
 ```
 
 ### 2. Make the script executable
@@ -6403,7 +6317,7 @@ Actionable recommendations and analysis based on the news
 📅 Period: Last 24 hours
 
 📝 EXECUTIVE SUMMARY:
-Tech stocks showed mixed performance today as AI-related companies surged while 
+Tech stocks showed mixed performance today as AI-related companies surged while
 semiconductor stocks faced pressure from supply chain concerns...
 
 📈 MARKET ANALYSIS:
@@ -6445,14 +6359,13 @@ semiconductor stocks faced pressure from supply chain concerns...
 You can combine multiple topics for comprehensive analysis:
 
 ```bash theme={null}
+
 # Get news about multiple related topics
-./financial_news_tracker.py "NVIDIA AMD semiconductor AI chips"
 
 # Track geopolitical impacts on markets
-./financial_news_tracker.py "oil prices Middle East geopolitics"
 
 # Monitor economic indicators
-./financial_news_tracker.py "inflation CPI unemployment Federal Reserve"
+
 ```
 
 ### JSON Output
@@ -6494,8 +6407,8 @@ The tool includes comprehensive error handling for:
 Create a script for daily updates:
 
 ```bash theme={null}
+
 #!/bin/bash
-# daily_market_report.sh
 
 echo "=== Daily Market Report ===" > market_report.txt
 echo "Date: $(date)" >> market_report.txt
@@ -6518,20 +6431,18 @@ def get_financial_news(query, time_range="24h"):
         capture_output=True,
         text=True
     )
-    
+
     if result.returncode == 0:
         return json.loads(result.stdout)
     else:
         raise Exception(f"Error fetching news: {result.stderr}")
 
 # Example usage
-news = get_financial_news("tech stocks", "1w")
+
 print(f"Market sentiment: {news['market_analysis']['market_sentiment']}")
 ```
 
-
 # Academic Research Finder CLI
-Source: https://docs.perplexity.ai/docs/cookbook/examples/research-finder/README
 
 A command-line tool that uses Perplexity's Sonar API to find and summarize academic literature
 
@@ -6555,11 +6466,11 @@ A command-line tool that uses Perplexity's Sonar API to find and summarize acade
 Ensure you are using the Python environment you intend to run the script with (e.g., `python3.10` if that's your target).
 
 ```bash theme={null}
+
 # Install from requirements file (recommended)
-pip install -r requirements.txt
 
 # Or install manually
-pip install requests
+
 ```
 
 ### 2. Make the script executable (Optional)
@@ -6595,23 +6506,19 @@ The tool requires a Perplexity API key (`PPLX_API_KEY`) to function. You can pro
 Run the script from the `sonar-use-cases/research_finder` directory or provide the full path.
 
 ```bash theme={null}
+
 # Basic usage
-python3 research_finder.py "What are the latest advancements in quantum computing?"
 
 # Using a specific model
-python3 research_finder.py "Explain the concept of Large Language Models" --model sonar-small-online
 
 # Getting output as JSON
-python3 research_finder.py "Summarize the plot of Dune Part Two" --json
 
 # Using a custom system prompt file
-python3 research_finder.py "Benefits of renewable energy" --prompt-file /path/to/your/custom_prompt.md
 
 # Using an API key via argument
-python3 research_finder.py "Who won the last FIFA World Cup?" --api-key sk-...
 
 # Using the executable (if chmod +x was used)
-./research_finder.py "Latest news about Mars exploration"
+
 ```
 
 ### Arguments
@@ -6647,9 +6554,7 @@ Recent studies on transformer models in Natural Language Processing (NLP) contin
 * Queries that are too broad or not well-suited for academic search might yield less relevant results.
 * Error handling for API rate limits or specific API errors could be more granular.
 
-
 # Perplexity API Cookbook
-Source: https://docs.perplexity.ai/docs/cookbook/index
 
 A collection of practical examples and guides for building with Perplexity's API Platform
 
@@ -6697,9 +6602,7 @@ Have a project built with API Platform? We'd love to feature it! Check our [Cont
 
 *Maintained by the Perplexity community*
 
-
 # 4Point Hoops | AI Basketball Analytics Platform
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/4point-Hoops
 
 Advanced NBA analytics platform that combines live Basketball-Reference data with Perplexity Sonar to deliver deep-dive player stats, cross-season comparisons and expert-grade AI explanations
 
@@ -6729,13 +6632,14 @@ Advanced NBA analytics platform that combines live Basketball-Reference data wit
 ## Installation
 
 ```bash theme={null}
+
 # Clone the frontend repository
-git clone https://github.com/rapha18th/hoop-ai-frontend-44.git
+
 cd hoop-ai-frontend-44
 npm install
 
 # Clone the backend repository
-git clone https://github.com/rapha18th/4Point-Hoops-Server.git
+
 cd 4Point-Hoops-Server
 pip install -r requirements.txt
 ```
@@ -6785,9 +6689,7 @@ FIREBASE_CLIENT_EMAIL=your_firebase_client_email
 * [Live Demo](https://4pointhoops.netlify.app/)
 * [Devpost Submission](https://devpost.com/software/4point-hoops)
 
-
 # Ellipsis | One-Click Podcast Generation Agent
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/Ellipsis
 
 A next-gen podcast generation agent that brings human-like, high-quality audio content to life on any topic with just one click
 
@@ -6813,23 +6715,24 @@ A next-gen podcast generation agent that brings human-like, high-quality audio c
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/dineshkannan010/Ellipsis.git
+
 cd Ellipsis
 
 # Backend setup
-cd backend
+
 python -m venv venv
 source venv/bin/activate    # macOS/Linux
 pip install -r requirements.txt
 
 # Install native packages
-pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+
 pip install git+https://github.com/freddyaboulton/orpheus-cpp.git
 pip install huggingface_hub[hf_xet] hf_xet
 
 # Frontend setup
-cd ../frontend
+
 npm install
 ```
 
@@ -6897,9 +6800,7 @@ REACT_APP_API_URL=http://your-backend-host:5000
 * [GitHub Repository](https://github.com/dineshkannan010/Ellipsis)
 * [Devpost Submission](https://devpost.com/software/ellipsis)
 
-
 # BazaarAISaathi | AI-Powered Indian Stock Market Assistant
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/bazaar-ai-saathi
 
 An AI-powered platform for Indian stock market analysis, portfolio optimization, and investment strategies using Perplexity Sonar API
 
@@ -6926,12 +6827,13 @@ An AI-powered platform for Indian stock market analysis, portfolio optimization,
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/mahanteshimath/BazaarAISaathi.git
+
 cd BazaarAISaathi
 
 # Install dependencies
-pip install -r requirements.txt
+
 ```
 
 ## Configuration
@@ -6940,8 +6842,8 @@ Create `secrets.toml` file for Streamlit secrets:
 
 ```ini theme={null}
 PERPLEXITY_API_KEY = "your_perplexity_api_key"
+
 # Add other API keys as needed
-```
 
 ## Usage
 
@@ -6982,9 +6884,7 @@ PERPLEXITY_API_KEY = "your_perplexity_api_key"
 * [Live Application](https://bazaar-ai-saathi.streamlit.app/)
 * [Architecture Diagram](https://github.com/mahanteshimath/BazaarAISaathi/raw/main/src/App_Architecture.jpg)
 
-
 # Briefo | Perplexity Powered News & Finance Social App
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/briefo
 
 AI curated newsfeed, social discussion, and deep research reports built on the Sonar API
 
@@ -7016,8 +6916,9 @@ npm install
 ### Environment variables
 
 ```ini theme={null}
+
 # .env              (project root)
-MY_SUPABASE_URL=https://<project>.supabase.co
+
 MY_SUPABASE_SERVICE_ROLE_KEY=...
 PERPLEXITY_API_KEY=...
 LINKPREVIEW_API_KEY=...
@@ -7025,7 +6926,7 @@ ALPACA_API_KEY=...
 ALPACA_SECRET_KEY=...
 
 # .env.local        (inside supabase/)
-# duplicate or override any secrets needed by Edge Functions
+
 ```
 
 ## Usage
@@ -7055,9 +6956,7 @@ supabase functions deploy perplexity-news perplexity-chat perplexity-research po
 [GitHub Repository](https://github.com/adamblackman/briefo-public)
 [Live Demo](https://www.briefo.fun/)
 
-
 # CityPulse | AI-Powered Geospatial Discovery Search
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/citypulse-ai-search
 
 Real-time local discovery search using Perplexity AI for personalized location insights and recommendations
 
@@ -7085,11 +6984,12 @@ CityPulse leverages two key Perplexity models:
 **Sonar for Real-Time Data**
 
 ```python theme={null}
+
 # Get current local information with geographic context
-response = client.chat.completions.create(
+
     model="sonar",
     messages=[{
-        "role": "user", 
+        "role": "user",
         "content": f"Find current events, restaurants, and alerts near {lat}, {lng}"
     }],
     response_format={"type": "json_schema", "json_schema": {"schema": LOCAL_INFO_SCHEMA}}
@@ -7099,8 +6999,9 @@ response = client.chat.completions.create(
 **Sonar Reasoning Pro for Personalized Insights**
 
 ```python theme={null}
+
 # Generate AI-powered location recommendations
-response = client.chat.completions.create(
+
     model="sonar-reasoning-pro",
     messages=[{
         "role": "user",
@@ -7119,9 +7020,7 @@ The app uses structured JSON schemas to ensure consistent data formatting and in
 * [Live Demo](https://citypulse-ppx.uc.r.appspot.com/)
 * **[Built with ❤️ by Alex Nevsky](https://alexnevsky.com)**
 
-
 # CycleSyncAI | Personalized Health Plans Powered by Sonar API
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/cycle-sync-ai
 
 iOS app that delivers personalized diet and workout recommendations for women, powered by Apple HealthKit and Perplexity's Sonar Pro API.
 
@@ -7157,17 +7056,17 @@ Unlike static wellness tools, **CycleSyncAI** leverages **Perplexity's Sonar Pro
 ## Repository Structure
 
 ```text theme={null}
-CycleSyncAI.xcodeproj          → Xcode project file  
-CycleSyncAI/                   → Source code  
-├── EatPlanViewController.swift        → Diet plan generation & display  
-├── WorkoutPlanViewController.swift    → Workout plan generation & display  
-├── HomepageViewController.swift       → Navigation & main screen  
-├── UserProfileViewController.swift    → Input & storage of user data  
-├── HealthManager.swift                → Apple HealthKit menstrual data  
-├── UserProfile.swift                  → Local profile model  
-Main.storyboard               → App UI & layout  
-Assets.xcassets              → Images & app icons  
-Info.plist                   → Permissions & configurations  
+CycleSyncAI.xcodeproj          → Xcode project file
+CycleSyncAI/                   → Source code
+├── EatPlanViewController.swift        → Diet plan generation & display
+├── WorkoutPlanViewController.swift    → Workout plan generation & display
+├── HomepageViewController.swift       → Navigation & main screen
+├── UserProfileViewController.swift    → Input & storage of user data
+├── HealthManager.swift                → Apple HealthKit menstrual data
+├── UserProfile.swift                  → Local profile model
+Main.storyboard               → App UI & layout
+Assets.xcassets              → Images & app icons
+Info.plist                   → Permissions & configurations
 ```
 
 ## Setup Instructions
@@ -7216,9 +7115,7 @@ It also reduces decision fatigue with automatically prepared grocery lists and u
 
 * [GitHub Repository](https://github.com/medhini98/cyclesyncai-api-cookbook)
 
-
 # Daily News Briefing | AI-Powered News Summaries for Obsidian
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/daily-news-briefing
 
 An Obsidian plugin that delivers AI-powered daily news summaries directly to your vault using Perplexity's Sonar API for intelligent content curation
 
@@ -7246,15 +7143,15 @@ An Obsidian plugin that delivers AI-powered daily news summaries directly to you
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/ChenziqiAdam/Daily-News-Briefing.git
+
 cd Daily-News-Briefing
 
 # Install dependencies
-npm install
 
 # Build the plugin
-npm run build
+
 ```
 
 ## Configuration
@@ -7307,9 +7204,7 @@ const summaryResponse = await perplexityClient.generate({
 
 * [GitHub Repository](https://github.com/ChenziqiAdam/Daily-News-Briefing)
 
-
 # Executive Intelligence | AI-Powered Strategic Decision Platform
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/executive-intelligence
 
 A comprehensive Perplexity Sonar-powered application that provides executives and board members with instant, accurate, and credible intelligence for strategic decision-making
 
@@ -7335,15 +7230,15 @@ A comprehensive Perplexity Sonar-powered application that provides executives an
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/raishs/perplexityhackathon.git
+
 cd perplexityhackathon
 
 # Install dependencies
-npm install
 
 # Set up environment variables
-cp .env.example .env.local
+
 ```
 
 ## Configuration
@@ -7386,9 +7281,7 @@ PERPLEXITY_API_KEY=your_perplexity_api_key
 
 * [GitHub Repository](https://github.com/raishs/perplexityhackathon)
 
-
 # Fact Dynamics | Real-time Fact-Checking Flutter App
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/fact-dynamics
 
 Cross-platform app for real-time fact-checking of debates, speeches, and images using Perplexity's Sonar API
 
@@ -7488,9 +7381,7 @@ Built two reusable packages for the Flutter community:
 * **[Live Demo](https://fact-pulse.web.app/)** - Try the web version
 * **[Devpost Submission](https://devpost.com/software/fact-dynamics)** - Hackathon entry
 
-
 # FirstPrinciples | AI Learning Roadmap Generator
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/first-principle
 
 An AI-powered learning roadmap generator that uses conversational AI to help users identify specific learning topics and provides personalized step-by-step learning plans
 
@@ -7517,16 +7408,17 @@ An AI-powered learning roadmap generator that uses conversational AI to help use
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/william-Dic/First-Principle.git
+
 cd First-Principle
 
 # Backend setup
-cd flask-server
+
 pip install -r requirements.txt
 
 # Frontend setup
-cd ../client
+
 npm install
 ```
 
@@ -7576,9 +7468,7 @@ PERPLEXITY_API_KEY=your_perplexity_api_key
 * [GitHub Repository](https://github.com/william-Dic/First-Principle.git)
 * [Demo Video](https://github.com/user-attachments/assets/6016c5dd-6c18-415e-b982-fafb56170b87)
 
-
 # FlameGuardAI | AI-powered wildfire prevention
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/flameguardai
 
 AI-powered wildfire prevention using OpenAI Vision + Perplexity Sonar API
 
@@ -7677,9 +7567,7 @@ We're proud to stand with homeowners — not just to raise awareness, but to ena
 
 **Contact us to know more: [info@dlyog.com](mailto:info@dlyog.com)**
 
-
 # Flow & Focus | Personalized News for Genuine Understanding
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/flow-and-focus
 
 A personalized news app combining vertical feed discovery with AI-powered deep dives using Perplexity Sonar Pro and Deep Research models
 
@@ -7707,15 +7595,15 @@ A personalized news app combining vertical feed discovery with AI-powered deep d
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/michitomo/NewsReel.git
+
 cd NewsReel
 
 # Install dependencies
-npm install
 
 # Set up environment variables
-cp .env.example .env.local
+
 ```
 
 ## Configuration
@@ -7759,9 +7647,7 @@ PERPLEXITY_FOCUS_MODEL=sonar-deep-research
 * [Perplexity Hackathon](https://perplexityhackathon.devpost.com/)
 * [Perplexity Hackathon Project](https://devpost.com/software/flow-focus)
 
-
 # Greenify | Localized community-driven greenification/plantation solution with AI
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/greenify
 
 A mobile application that analyzes photos and location data to suggest suitable plants and build sustainable communities using Perplexity Sonar API
 
@@ -7795,15 +7681,15 @@ A mobile application that analyzes photos and location data to suggest suitable 
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/deepjyotipaulhere/greenify.git
+
 cd greenify
 
 # Install frontend dependencies
-npm install
 
 # Install backend dependencies
-cd service
+
 pip install -r requirements.txt
 ```
 
@@ -7855,9 +7741,7 @@ PPLX_API_KEY=your_perplexity_api_key_here
 * [GitHub Repository](https://github.com/deepjyotipaulhere/greenify)
 * [Live Demo](https://greenify.expo.app)
 
-
 # Monday – Voice-First AI Learning Assistant
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/monday
 
 An accessible, multimodal AI learning companion that delivers contextual reasoning, 3D visualizations, and curated educational content via natural voice interaction.
 
@@ -7884,29 +7768,31 @@ An accessible, multimodal AI learning companion that delivers contextual reasoni
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/srivastavanik/monday.git
+
 cd monday
 git checkout final
 cd nidsmonday
 
 # Install dependencies
-npm install
+
 ```
 
 ```ini theme={null}
+
 # Create a .env file and set your API keys
-PERPLEXITY_API_KEY=your_api_key
+
 ELEVENLABS_API_KEY=your_api_key
 YOUTUBE_API_KEY=your_api_key
 ```
 
 ```bash theme={null}
+
 # Start Backend Server
-node backend-server.js
 
 # Start frontend
-npm run dev
+
 ```
 
 ## Usage
@@ -7936,9 +7822,7 @@ npm run dev
 
 * [GitHub Repository](https://github.com/srivastavanik/monday/tree/final)
 
-
 # MVP LifeLine | AI Youth Empowerment Platform
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/mvp-lifeline-ai-app
 
 A multilingual, offline-first AI platform that helps underserved youth Earn, Heal, and Grow using real-time AI and holistic tools
 
@@ -7967,18 +7851,17 @@ A multilingual, offline-first AI platform that helps underserved youth Earn, Hea
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/JohnUmoh/asgard.git
+
 cd asgard
 
 # Install Flutter dependencies
-flutter pub get
 
 # Configure Firebase
-flutterfire configure
 
 # Set up environment variables
-cp .env.example .env
+
 ```
 
 ## Configuration
@@ -8026,9 +7909,7 @@ TWILIO_AUTH_TOKEN=your_twilio_token
 * [GitHub Repository](https://github.com/JohnUmoh/asgard)
 * [Live Demo](https://mvplifelineaiapp.netlify.app)
 
-
 # PerplexiCart | AI-Powered Value-Aligned Shopping Assistant
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexicart
 
 An AI shopping assistant that uses Perplexity Sonar to deliver structured research, value-aligned recommendations, and transparent citations across the web
 
@@ -8058,18 +7939,19 @@ An AI shopping assistant that uses Perplexity Sonar to deliver structured resear
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/fizakhan90/perplexicart.git
+
 cd perplexicart
 
 # Backend (FastAPI) setup
-cd backend
+
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 # Frontend (Next.js) setup
-cd ../frontend
+
 npm install
 ```
 
@@ -8116,9 +7998,7 @@ PerplexiCart leverages the **Perplexity Sonar API** as its intelligence core, dy
 * **Live Demo**: [https://perplexicart.vercel.app/](https://perplexicart.vercel.app/)
 * **GitHub Repository**: [https://github.com/fizakhan90/perplexicart](https://github.com/fizakhan90/perplexicart)
 
-
 # PerplexiGrid | Interactive Analytics Dashboards
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexigrid
 
 Instantly generate analytics dashboards from natural language using live data via Perplexity Sonar API.
 
@@ -8194,9 +8074,7 @@ Explore our [main sonar-api service here.](https://github.com/PetarRan/perplexig
 * [Live Demo](https://app.perplexigrid.com)
 * [Website](https://www.perplexigrid.com)
 
-
 # Perplexity Client | Desktop AI Chat Interface with API Controls
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-client
 
 An Electron-based desktop client for Perplexity API with advanced features like model selection, custom system prompts, and API debugging mode
 
@@ -8222,12 +8100,12 @@ An Electron-based desktop client for Perplexity API with advanced features like 
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/straight-heart/Perplexity-client-.git
+
 cd Perplexity-client-
 
 # Install dependencies
-npm install
 
 npm run dev
 ```
@@ -8282,9 +8160,7 @@ For custom system prompts, use the **Spaces** feature to save and switch between
 
 * [GitHub Repository](https://github.com/straight-heart/Perplexity-client-)
 
-
 # Perplexity Dart & Flutter SDKs
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-flutter
 
 Lightweight, type-safe SDKs for seamless Perplexity API integration in Dart and Flutter applications
 
@@ -8375,9 +8251,7 @@ Uses flexible MessagePart system for multimodal content combining text and image
 * [Flutter Example App](https://github.com/vishnu32510/perplexity_dart/tree/main/example_flutter_app)
 * [Dart Examples](https://github.com/vishnu32510/perplexity_dart/tree/main/example)
 
-
 # Perplexity Lens | AI-Powered Knowledge Graph Browser Extension
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-lens
 
 A browser extension that builds personalized knowledge graphs using Perplexity AI for smart text selection, webpage summarization, and contextual insights
 
@@ -8407,15 +8281,15 @@ A browser extension that builds personalized knowledge graphs using Perplexity A
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/iamaayushijain/perplexity-lens.git
+
 cd perplexity_lens
 
 # Install dependencies
-npm install
 
 # Build the extension
-npm run build
+
 ```
 
 ## Configuration
@@ -8457,9 +8331,7 @@ export const FIREBASE_HOSTING_URL = 'https://your-project-id.web.app';
 * [GitHub Repository](https://github.com/iamaayushijain/perplexity-lens)
 * [Blog Post](https://ashjin.hashnode.dev/perplexity-lens-supercharge-your-web-experience-with-personalized-knowledge-graphs)
 
-
 # PosterLens | Scientific Poster Scanner & Research Assistant
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/posterlens
 
 An iOS app that transforms static scientific posters into interactive insights using OCR and Perplexity's Sonar Pro API for semantic search and context
 
@@ -8489,12 +8361,13 @@ An iOS app that transforms static scientific posters into interactive insights u
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/nickjlamb/PosterLens.git
+
 cd PosterLens
 
 # Open in Xcode
-open PosterLens.xcodeproj
+
 ```
 
 ## Configuration
@@ -8532,9 +8405,7 @@ PUBMED_API_KEY=your_pubmed_api_key
 * [GitHub Repository](https://github.com/nickjlamb/PosterLens)
 * [App Store](https://apps.apple.com/us/app/posterlens-research-scanner/id6745453368)
 
-
 # Sonar Chromium Browser | Native Search Omnibox and Context Menu
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/sonar-chromium-browser
 
 Chromium browser patch with native Perplexity Sonar API integration providing omnibox answers and context-menu summarization
 
@@ -8560,12 +8431,13 @@ Chromium browser patch with native Perplexity Sonar API integration providing om
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/KoushikBaagh/perplexity-hackathon-chromium.git
+
 cd perplexity-hackathon-chromium
 
 # Apply patches to Chromium source
-# Follow the README for detailed Chromium setup instructions
+
 ```
 
 ## Configuration
@@ -8602,9 +8474,7 @@ const std::string API_KEY = "your_perplexity_api_key_here";
 * [GitHub Repository](https://github.com/KoushikBaagh/perplexity-hackathon-chromium)
 * [Chromium Gerrit Repository](https://chromium-review.googlesource.com/c/chromium/src/+/6778540)
 
-
 # StarPlex | AI-Powered Startup Intelligence Platform
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/starplex
 
 An AI-powered startup intelligence platform that helps entrepreneurs validate their business ideas and find the right resources to succeed
 
@@ -8633,16 +8503,17 @@ An AI-powered startup intelligence platform that helps entrepreneurs validate th
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/JerryWu0430/StarPlex.git
+
 cd StarPlex
 
 # Backend setup
-cd backend
+
 pip install -r requirements.txt
 
 # Frontend setup
-cd ../frontend
+
 npm install
 ```
 
@@ -8709,9 +8580,7 @@ Combines Sonar's demographic insights with Mapbox geocoding to create interactiv
 * [Live Demo](https://starplex.app)
 * [Devpost Submission](https://devpost.com/software/starplex)
 
-
 # TruthTracer | AI-Powered Misinformation Detection Platform
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/truth-tracer
 
 A comprehensive misinformation detection platform that uses Perplexity's Sonar API to analyze claims, trace trust chains, and provide Socratic reasoning for fact verification
 
@@ -8741,19 +8610,19 @@ A comprehensive misinformation detection platform that uses Perplexity's Sonar A
 ## Installation
 
 ```bash theme={null}
+
 # Clone the backend repository
-git clone https://github.com/anthony-okoye/truth-tracer-backend.git
+
 cd truth-tracer-backend
 
 # Install dependencies
-npm install
 
 # Clone the frontend repository
-git clone https://github.com/anthony-okoye/truth-tracer-front.git
+
 cd truth-tracer-front
 
 # Install frontend dependencies
-npm install
+
 ```
 
 ## Configuration
@@ -8761,12 +8630,13 @@ npm install
 Create `.env` file in the backend directory:
 
 ```ini theme={null}
+
 # Required
-SONAR_API_KEY=your_perplexity_api_key
+
 SONAR_API_URL=https://api.perplexity.ai
 
 # Optional configuration
-SONAR_TIMEOUT=30000
+
 SONAR_MAX_RETRIES=3
 CONFIDENCE_WEIGHT_FACT_CHECK=0.35
 CONFIDENCE_WEIGHT_TRUST_CHAIN=0.25
@@ -8819,7 +8689,7 @@ const [factCheckResult, trustChainResult, socraticResult] = await Promise.all([
     max_tokens: 500
   }),
   sonarClient.chat.completions.create({
-    model: "sonar-deep-research", 
+    model: "sonar-deep-research",
     messages: [{ role: "user", content: trustChainPrompt }],
     max_tokens: 2500
   }),
@@ -8837,9 +8707,7 @@ const [factCheckResult, trustChainResult, socraticResult] = await Promise.all([
 * [Backend Repository](https://github.com/anthony-okoye/truth-tracer-backend)
 * [Frontend Repository](https://github.com/anthony-okoye/truth-tracer-front)
 
-
 # UnCovered | Real-Time Fact-Checking Chrome Extension
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/uncovered
 
 A Chrome extension that brings real-time fact-checking to anything you see online in just 2 clicks, powered by Perplexity's Sonar API for instant verification
 
@@ -8867,15 +8735,15 @@ A Chrome extension that brings real-time fact-checking to anything you see onlin
 ## Installation
 
 ```bash theme={null}
+
 # Clone the repository
-git clone https://github.com/aayushsingh7/UnCovered.git
+
 cd UnCovered
 
 # Install dependencies
-npm install
 
 # Build the Chrome extension
-npm run build
+
 ```
 
 ## Configuration
@@ -8931,7 +8799,7 @@ const quickResponse = await perplexityClient.chat.completions.create({
 
 // Deep Research for comprehensive analysis
 const deepResponse = await perplexityClient.chat.completions.create({
-  model: "sonar-deep-research", 
+  model: "sonar-deep-research",
   messages: [{ role: "user", content: deepAnalysisPrompt }]
 });
 ```
@@ -8945,9 +8813,7 @@ const deepResponse = await perplexityClient.chat.completions.create({
 * [GitHub Repository](https://github.com/aayushsingh7/UnCovered)
 * [Live Demo](https://uncovered.vercel.app)
 
-
 # Valetudo AI | Trusted Medical Answer Assistant
-Source: https://docs.perplexity.ai/docs/cookbook/showcase/valetudo-ai
 
 Sonar-powered medical assistant for fast, science-backed answers.
 
@@ -9009,9 +8875,7 @@ See Valetudo AI in action:
 
 ![Location filter](https://raw.githubusercontent.com/vero-code/valetudo-ai/refs/heads/master/screenshots/9-location-filter.png)
 
-
 # Best Practices
-Source: https://docs.perplexity.ai/docs/embeddings/best-practices
 
 Optimize your embeddings workflow with batch processing, caching, RAG patterns, and performance tips.
 
@@ -9455,9 +9319,7 @@ Process large datasets efficiently with async batching:
   </Card>
 </CardGroup>
 
-
 # Contextualized Embeddings
-Source: https://docs.perplexity.ai/docs/embeddings/contextualized-embeddings
 
 Generate document-aware embeddings for chunks that share context, improving retrieval quality for document-based applications.
 
@@ -9801,9 +9663,7 @@ Build a chunk retrieval system where chunks from the same document share context
   </Card>
 </CardGroup>
 
-
 # Embeddings API
-Source: https://docs.perplexity.ai/docs/embeddings/quickstart
 
 Generate high-quality text embeddings for semantic search, RAG, and machine learning applications.
 
@@ -9887,9 +9747,7 @@ Set your API key as an environment variable:
   </Card>
 </CardGroup>
 
-
 # Standard Embeddings
-Source: https://docs.perplexity.ai/docs/embeddings/standard-embeddings
 
 Generate embeddings for independent texts, search queries, and single sentences.
 
@@ -10138,9 +9996,7 @@ Build a simple semantic search system:
   </Card>
 </CardGroup>
 
-
 # API Groups & Billing
-Source: https://docs.perplexity.ai/docs/getting-started/api-groups
 
 Learn how to use the Perplexity API Portal to manage access, usage, billing, and team collaboration.
 
@@ -10400,9 +10256,7 @@ You can track billing for each of your API keys by following these steps:
   </Step>
 </Steps>
 
-
 # Perplexity with LangChain
-Source: https://docs.perplexity.ai/docs/getting-started/integrations/langchain
 
 Use Perplexity's chat models and search tool in your LangChain applications.
 
@@ -10478,7 +10332,7 @@ chat = ChatPerplexity(
 response = chat.invoke("How does the electoral college work?")
 
 # Access reasoning steps
-if reasoning := response.additional_kwargs.get("reasoning_steps"):
+
     for step in reasoning:
         print(f"Thought: {step['thought']}")
 ```
@@ -10498,7 +10352,7 @@ chat = ChatPerplexity(
 response = chat.invoke("Solar system planets")
 
 # Access citations and images
-print("Citations:", response.additional_kwargs.get("citations", []))
+
 print("Images:", response.additional_kwargs.get("images", []))
 ```
 
@@ -10644,9 +10498,7 @@ Need help with the integration?
 * Check the [LangChain documentation](https://docs.langchain.com)
 * Review our [FAQ](/docs/resources/faq)
 
-
 # Perplexity MCP Server
-Source: https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server
 
 Connect AI assistants to Perplexity's search and reasoning capabilities using the Model Context Protocol (MCP).
 
@@ -10868,11 +10720,7 @@ Get started instantly with these one-click installers:
   For detailed setup instructions, troubleshooting, and proxy configuration, visit our [GitHub repository](https://github.com/perplexityai/modelcontextprotocol).
 </Info>
 
-
 # null
-Source: https://docs.perplexity.ai/docs/getting-started/models
-
-
 
 <div>
   <div>
@@ -10896,11 +10744,7 @@ Source: https://docs.perplexity.ai/docs/getting-started/models
   <ModelOverviewCards />
 </div>
 
-
 # null
-Source: https://docs.perplexity.ai/docs/getting-started/overview
-
-
 
 <div>
   <div>
@@ -10946,11 +10790,7 @@ Source: https://docs.perplexity.ai/docs/getting-started/overview
   </div>
 </div>
 
-
 # Pricing
-Source: https://docs.perplexity.ai/docs/getting-started/pricing
-
-
 
 <Info>
   This page shows **pricing information** to help you understand API costs.
@@ -11210,9 +11050,7 @@ Generate high-quality text embeddings for semantic search, retrieval-augmented g
   </Card>
 </CardGroup>
 
-
 # Quickstart
-Source: https://docs.perplexity.ai/docs/getting-started/quickstart
 
 Generate an API key and make your first call in < 3 minutes.
 
@@ -11745,11 +11583,7 @@ Now that you've made your first API call, explore each API in depth:
   Need help? Check out our [community](https://community.perplexity.ai) for support and discussions with other developers.
 </Info>
 
-
 # Changelog
-Source: https://docs.perplexity.ai/docs/resources/changelog
-
-
 
 <Tip>
   Looking ahead? Check out our [Feature Roadmap](/docs/resources/feature-roadmap) to see what's coming next.
@@ -11822,7 +11656,7 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
   # Python
   pip install perplexityai
 
-  # Typescript  
+  # Typescript
   npm install @perplexity-ai/perplexity_ai
   ```
 
@@ -12362,11 +12196,7 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
   `pplx-7b-online`
 </Update>
 
-
 # Get in Touch
-Source: https://docs.perplexity.ai/docs/resources/discussions
-
-
 
 ## Join Our Developer Community
 
@@ -12432,11 +12262,7 @@ Need technical assistance? Our support team is here to help.
   </Step>
 </Steps>
 
-
 # Frequently Asked Questions
-Source: https://docs.perplexity.ai/docs/resources/faq
-
-
 
 <AccordionGroup>
   <Accordion title="Why isn't the `response_format` parameter working for reasoning models?">
@@ -12569,9 +12395,7 @@ Source: https://docs.perplexity.ai/docs/resources/faq
   </Accordion>
 </AccordionGroup>
 
-
 # API Roadmap
-Source: https://docs.perplexity.ai/docs/resources/feature-roadmap
 
 Upcoming features and improvements for the Perplexity API designed to enhance your development experience.
 
@@ -12775,9 +12599,7 @@ This roadmap represents our current development priorities. Features will be rel
 
 We'll announce new feature availability through our [changelog](/docs/resources/changelog) and via email notifications to API users.
 
-
 # Perplexity Crawlers
-Source: https://docs.perplexity.ai/docs/resources/perplexity-crawlers
 
 We strive to improve our service every day by delivering the best search experience possible. To achieve this, we collect data using web crawlers ("robots") and user agents that gather and index information from the internet, operating either automatically or in response to user requests. Webmasters can use the following robots.txt tags to manage how their sites and content interact with Perplexity. Each setting works independently, and it may take up to 24 hours for our systems to reflect changes.
 
@@ -12870,9 +12692,7 @@ For AWS WAF configuration, create IP sets and string match conditions:
   Changes to WAF configurations may take some time to propagate. Monitor your logs to ensure the rules are working as expected and that legitimate Perplexity bot traffic is being allowed through.
 </Note>
 
-
 # Privacy & Security
-Source: https://docs.perplexity.ai/docs/resources/privacy-security
 
 Learn about Perplexity's data privacy, retention policies, and security certifications for API users
 
@@ -12923,19 +12743,13 @@ For comprehensive details about our security measures, infrastructure protection
   All security measures and certifications are regularly updated and maintained to ensure the highest standards of data protection and service security.
 </Info>
 
-
 # System Status
-Source: https://docs.perplexity.ai/docs/resources/status
-
-
 
 You can check the status of our services [here](https://status.perplexity.com/).
 
 If you experience any issues or have any questions, please contact us at [api@perplexity.ai](mailto:api@perplexity.ai) or flag a bug report in our [Discord](https://discord.com/invite/perplexity-ai) channel.
 
-
 # Best Practices
-Source: https://docs.perplexity.ai/docs/sdk/best-practices
 
 Learn best practices for using the Perplexity SDKs in production, including environment variables, rate limiting, security, and efficient request patterns.
 
@@ -13042,7 +12856,7 @@ Always store API keys securely using environment variables:
           if not api_key:
               print("Error: PERPLEXITY_API_KEY environment variable is required")
               sys.exit(1)
-          
+
           return Perplexity(api_key=api_key)
 
       client = create_client()
@@ -13057,7 +12871,7 @@ Always store API keys securely using environment variables:
               console.error("Error: PERPLEXITY_API_KEY environment variable is required");
               process.exit(1);
           }
-          
+
           return new Perplexity({ apiKey });
       }
 
@@ -13079,12 +12893,12 @@ Implement secure API key rotation:
   from typing import Optional
 
   class SecurePerplexityClient:
-      def __init__(self, primary_key: Optional[str] = None, fallback_key: Optional[str] = None):
+      def **init**(self, primary_key: Optional[str] = None, fallback_key: Optional[str] = None):
           self.primary_key = primary_key or os.getenv("PERPLEXITY_API_KEY")
           self.fallback_key = fallback_key or os.getenv("PERPLEXITY_API_KEY_FALLBACK")
           self.current_client = Perplexity(api_key=self.primary_key)
-          self.logger = logging.getLogger(__name__)
-      
+          self.logger = logging.getLogger(**name**)
+
       def _switch_to_fallback(self):
           """Switch to fallback API key if available"""
           if self.fallback_key:
@@ -13092,7 +12906,7 @@ Implement secure API key rotation:
               self.current_client = Perplexity(api_key=self.fallback_key)
               return True
           return False
-      
+
       def search(self, query: str, **kwargs):
           try:
               return self.current_client.search.create(query=query, **kwargs)
@@ -13112,13 +12926,13 @@ Implement secure API key rotation:
       private primaryKey: string;
       private fallbackKey?: string;
       private currentClient: Perplexity;
-      
+
       constructor(primaryKey?: string, fallbackKey?: string) {
           this.primaryKey = primaryKey || process.env.PERPLEXITY_API_KEY!;
           this.fallbackKey = fallbackKey || process.env.PERPLEXITY_API_KEY_FALLBACK;
           this.currentClient = new Perplexity({ apiKey: this.primaryKey });
       }
-      
+
       private switchToFallback(): boolean {
           if (this.fallbackKey) {
               console.warn("Switching to fallback API key");
@@ -13127,7 +12941,7 @@ Implement secure API key rotation:
           }
           return false;
       }
-      
+
       async search(query: string, options?: any) {
           try {
               return await this.currentClient.search.create({ query, ...options });
@@ -13163,20 +12977,20 @@ Implement exponential backoff with jitter:
   T = TypeVar('T')
 
   class RateLimitedClient:
-      def __init__(self, client: Perplexity, max_retries: int = 5):
+      def **init**(self, client: Perplexity, max_retries: int = 5):
           self.client = client
           self.max_retries = max_retries
-      
+
       def _calculate_delay(self, attempt: int) -> float:
           """Calculate delay with exponential backoff and jitter"""
           base_delay = 2 ** attempt
           jitter = random.uniform(0.1, 0.5)
           return min(base_delay + jitter, 60.0)  # Cap at 60 seconds
-      
+
       def with_retry(self, func: Callable[[], T]) -> T:
           """Execute function with intelligent retry logic"""
           last_exception = None
-          
+
           for attempt in range(self.max_retries):
               try:
                   return func()
@@ -13196,9 +13010,9 @@ Implement exponential backoff with jitter:
                       time.sleep(delay)
                       continue
                   raise e
-          
+
           raise last_exception
-      
+
       def search(self, query: str, **kwargs):
           return self.with_retry(
               lambda: self.client.search.create(query=query, **kwargs)
@@ -13215,27 +13029,27 @@ Implement exponential backoff with jitter:
   class RateLimitedClient {
       private client: Perplexity;
       private maxRetries: number;
-      
+
       constructor(client: Perplexity, maxRetries: number = 5) {
           this.client = client;
           this.maxRetries = maxRetries;
       }
-      
+
       private calculateDelay(attempt: number): number {
           const baseDelay = 2 ** attempt * 1000; // Convert to milliseconds
           const jitter = Math.random() * 500; // 0-500ms jitter
           return Math.min(baseDelay + jitter, 60000); // Cap at 60 seconds
       }
-      
+
       async withRetry<T>(func: () => Promise<T>): Promise<T> {
           let lastError: any;
-          
+
           for (let attempt = 0; attempt < this.maxRetries; attempt++) {
               try {
                   return await func();
               } catch (error: any) {
                   lastError = error;
-                  
+
                   if (error.constructor.name === 'RateLimitError') {
                       if (attempt < this.maxRetries - 1) {
                           const delay = this.calculateDelay(attempt);
@@ -13251,16 +13065,16 @@ Implement exponential backoff with jitter:
                           continue;
                       }
                   }
-                  
+
                   throw error;
               }
           }
-          
+
           throw lastError;
       }
-      
+
       async search(query: string, options?: any) {
-          return this.withRetry(() => 
+          return this.withRetry(() =>
               this.client.search.create({ query, ...options })
           );
       }
@@ -13285,50 +13099,50 @@ Efficiently batch multiple requests:
   T = TypeVar('T')
 
   class BatchProcessor(Generic[T]):
-      def __init__(self, batch_size: int = 5, delay_between_batches: float = 1.0):
+      def **init**(self, batch_size: int = 5, delay_between_batches: float = 1.0):
           self.batch_size = batch_size
           self.delay_between_batches = delay_between_batches
-      
+
       async def process_batch(
-          self, 
-          items: List[str], 
+          self,
+          items: List[str],
           process_func: Callable[[str], Awaitable[T]]
       ) -> List[T]:
           """Process items in batches with rate limiting"""
           results = []
-          
+
           for i in range(0, len(items), self.batch_size):
               batch = items[i:i + self.batch_size]
-              
+
               # Process batch concurrently
               tasks = [process_func(item) for item in batch]
               batch_results = await asyncio.gather(*tasks, return_exceptions=True)
-              
+
               # Filter out exceptions and collect results
               for result in batch_results:
                   if not isinstance(result, Exception):
                       results.append(result)
-              
+
               # Delay between batches
               if i + self.batch_size < len(items):
                   await asyncio.sleep(self.delay_between_batches)
-          
+
           return results
 
   # Usage
   async def main():
       processor = BatchProcessor(batch_size=3, delay_between_batches=0.5)
-      
+
       async with AsyncPerplexity(
           http_client=DefaultAioHttpClient()
       ) as client:
-          
+
           async def search_query(query: str):
               return await client.search.create(query=query)
-          
+
           queries = ["AI", "ML", "DL", "NLP", "CV"]
           results = await processor.process_batch(queries, search_query)
-          
+
           print(f"Processed {len(results)} successful queries")
 
   asyncio.run(main())
@@ -13342,37 +13156,37 @@ Efficiently batch multiple requests:
           private batchSize: number = 5,
           private delayBetweenBatches: number = 1000
       ) {}
-      
+
       async processBatch<R>(
           items: T[],
           processFunc: (item: T) => Promise<R>
       ): Promise<R[]> {
           const results: R[] = [];
-          
+
           for (let i = 0; i < items.length; i += this.batchSize) {
               const batch = items.slice(i, i + this.batchSize);
-              
+
               // Process batch concurrently
-              const tasks = batch.map(item => 
+              const tasks = batch.map(item =>
                   processFunc(item).catch(error => error)
               );
               const batchResults = await Promise.all(tasks);
-              
+
               // Filter out exceptions and collect results
               for (const result of batchResults) {
                   if (!(result instanceof Error)) {
                       results.push(result);
                   }
               }
-              
+
               // Delay between batches
               if (i + this.batchSize < items.length) {
-                  await new Promise(resolve => 
+                  await new Promise(resolve =>
                       setTimeout(resolve, this.delayBetweenBatches)
                   );
               }
           }
-          
+
           return results;
       }
   }
@@ -13381,13 +13195,13 @@ Efficiently batch multiple requests:
   async function main() {
       const processor = new BatchProcessor<string>(3, 500);
       const client = new Perplexity();
-      
-      const searchQuery = (query: string) => 
+
+      const searchQuery = (query: string) =>
           client.search.create({ query });
-      
+
       const queries = ["AI", "ML", "DL", "NLP", "CV"];
       const results = await processor.processBatch(queries, searchQuery);
-      
+
       console.log(`Processed ${results.length} successful queries`);
   }
 
@@ -13417,14 +13231,14 @@ Use environment-based configuration for different deployment stages:
       max_connections: int = 100
       max_keepalive: int = 20
       environment: str = "production"
-      
+
       @classmethod
       def from_env(cls) -> "PerplexityConfig":
           """Load configuration from environment variables"""
           api_key = os.getenv("PERPLEXITY_API_KEY")
           if not api_key:
               raise ValueError("PERPLEXITY_API_KEY environment variable is required")
-          
+
           return cls(
               api_key=api_key,
               max_retries=int(os.getenv("PERPLEXITY_MAX_RETRIES", "3")),
@@ -13433,7 +13247,7 @@ Use environment-based configuration for different deployment stages:
               max_keepalive=int(os.getenv("PERPLEXITY_MAX_KEEPALIVE", "20")),
               environment=os.getenv("ENVIRONMENT", "production")
           )
-      
+
       def create_client(self) -> Perplexity:
           """Create optimized client based on configuration"""
           timeout = httpx.Timeout(
@@ -13442,13 +13256,13 @@ Use environment-based configuration for different deployment stages:
               write=10.0,
               pool=10.0
           )
-          
+
           limits = httpx.Limits(
               max_keepalive_connections=self.max_keepalive,
               max_connections=self.max_connections,
               keepalive_expiry=60.0 if self.environment == "production" else 30.0
           )
-          
+
           return Perplexity(
               api_key=self.api_key,
               max_retries=self.max_retries,
@@ -13480,7 +13294,7 @@ Use environment-based configuration for different deployment stages:
           if (!apiKey) {
               throw new Error("PERPLEXITY_API_KEY environment variable is required");
           }
-          
+
           return {
               apiKey,
               maxRetries: parseInt(process.env.PERPLEXITY_MAX_RETRIES || '3'),
@@ -13490,7 +13304,7 @@ Use environment-based configuration for different deployment stages:
               environment: process.env.NODE_ENV || 'production'
           };
       }
-      
+
       static createClient(config: PerplexityConfig): Perplexity {
           const httpsAgent = new https.Agent({
               keepAlive: true,
@@ -13499,7 +13313,7 @@ Use environment-based configuration for different deployment stages:
               maxFreeSockets: config.maxKeepalive,
               timeout: config.timeoutMs
           });
-          
+
           return new Perplexity({
               apiKey: config.apiKey,
               maxRetries: config.maxRetries,
@@ -13533,36 +13347,36 @@ Implement comprehensive monitoring:
       level=logging.INFO,
       format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
   )
-  logger = logging.getLogger(__name__)
+  logger = logging.getLogger(**name**)
 
   class MonitoredPerplexityClient:
-      def __init__(self, client: Perplexity):
+      def **init**(self, client: Perplexity):
           self.client = client
           self.request_count = 0
           self.error_count = 0
           self.total_response_time = 0.0
-      
+
       def _log_request(self, method: str, **kwargs):
           """Log request details"""
           self.request_count += 1
           logger.info(f"Making {method} request #{self.request_count}")
           logger.debug(f"Request parameters: {kwargs}")
-      
+
       def _log_response(self, method: str, duration: float, success: bool = True):
           """Log response details"""
           self.total_response_time += duration
           avg_response_time = self.total_response_time / self.request_count
-          
+
           if success:
               logger.info(f"{method} completed in {duration:.2f}s (avg: {avg_response_time:.2f}s)")
           else:
               self.error_count += 1
               logger.error(f"{method} failed after {duration:.2f}s (errors: {self.error_count})")
-      
+
       def search(self, query: str, **kwargs):
           self._log_request("search", query=query, **kwargs)
           start_time = time.time()
-          
+
           try:
               result = self.client.search.create(query=query, **kwargs)
               duration = time.time() - start_time
@@ -13571,9 +13385,9 @@ Implement comprehensive monitoring:
           except Exception as e:
               duration = time.time() - start_time
               self._log_response("search", duration, success=False)
-              logger.error(f"Search error: {type(e).__name__}: {e}")
+              logger.error(f"Search error: {type(e).**name**}: {e}")
               raise
-      
+
       def get_stats(self):
           """Get client statistics"""
           return {
@@ -13604,21 +13418,21 @@ Implement comprehensive monitoring:
       private requestCount: number = 0;
       private errorCount: number = 0;
       private totalResponseTime: number = 0;
-      
+
       constructor(client: Perplexity) {
           this.client = client;
       }
-      
+
       private logRequest(method: string, params: any): void {
           this.requestCount++;
           console.log(`Making ${method} request #${this.requestCount}`);
           console.debug(`Request parameters:`, params);
       }
-      
+
       private logResponse(method: string, duration: number, success: boolean = true): void {
           this.totalResponseTime += duration;
           const avgResponseTime = this.totalResponseTime / this.requestCount;
-          
+
           if (success) {
               console.log(`${method} completed in ${duration.toFixed(2)}ms (avg: ${avgResponseTime.toFixed(2)}ms)`);
           } else {
@@ -13626,11 +13440,11 @@ Implement comprehensive monitoring:
               console.error(`${method} failed after ${duration.toFixed(2)}ms (errors: ${this.errorCount})`);
           }
       }
-      
+
       async search(query: string, options?: any) {
           this.logRequest("search", { query, ...options });
           const startTime = performance.now();
-          
+
           try {
               const result = await this.client.search.create({ query, ...options });
               const duration = performance.now() - startTime;
@@ -13643,7 +13457,7 @@ Implement comprehensive monitoring:
               throw error;
           }
       }
-      
+
       getStats(): ClientStats {
           return {
               totalRequests: this.requestCount,
@@ -13674,31 +13488,31 @@ Implement fallback strategies for different error types:
   from perplexity import Perplexity
 
   class ResilientPerplexityClient:
-      def __init__(self, client: Perplexity):
+      def **init**(self, client: Perplexity):
           self.client = client
           self.circuit_breaker_threshold = 5
           self.circuit_breaker_count = 0
           self.circuit_breaker_open = False
-      
+
       def _should_circuit_break(self) -> bool:
           """Check if circuit breaker should be triggered"""
           return self.circuit_breaker_count >= self.circuit_breaker_threshold
-      
+
       def _record_failure(self):
           """Record a failure for circuit breaker"""
           self.circuit_breaker_count += 1
           if self._should_circuit_break():
               self.circuit_breaker_open = True
               print("Circuit breaker activated - temporarily disabling API calls")
-      
+
       def _record_success(self):
           """Record a success - reset circuit breaker"""
           self.circuit_breaker_count = 0
           self.circuit_breaker_open = False
-      
+
       def search_with_fallback(
-          self, 
-          query: str, 
+          self,
+          query: str,
           fallback_response: Optional[Dict[str, Any]] = None
       ):
           """Search with graceful degradation"""
@@ -13709,17 +13523,17 @@ Implement fallback strategies for different error types:
                   "results": [],
                   "status": "service_unavailable"
               }
-          
+
           try:
               result = self.client.search.create(query=query)
               self._record_success()
               return result
-              
+
           except perplexity.RateLimitError:
               print("Rate limited - implementing backoff strategy")
               # Could implement intelligent backoff here
               raise
-              
+
           except perplexity.APIConnectionError as e:
               print(f"Connection error: {e}")
               self._record_failure()
@@ -13728,7 +13542,7 @@ Implement fallback strategies for different error types:
                   "results": [],
                   "status": "connection_error"
               }
-              
+
           except Exception as e:
               print(f"Unexpected error: {e}")
               self._record_failure()
@@ -13757,15 +13571,15 @@ Implement fallback strategies for different error types:
       private circuitBreakerThreshold: number = 5;
       private circuitBreakerCount: number = 0;
       private circuitBreakerOpen: boolean = false;
-      
+
       constructor(client: Perplexity) {
           this.client = client;
       }
-      
+
       private shouldCircuitBreak(): boolean {
           return this.circuitBreakerCount >= this.circuitBreakerThreshold;
       }
-      
+
       private recordFailure(): void {
           this.circuitBreakerCount++;
           if (this.shouldCircuitBreak()) {
@@ -13773,12 +13587,12 @@ Implement fallback strategies for different error types:
               console.log("Circuit breaker activated - temporarily disabling API calls");
           }
       }
-      
+
       private recordSuccess(): void {
           this.circuitBreakerCount = 0;
           this.circuitBreakerOpen = false;
       }
-      
+
       async searchWithFallback(
           query: string,
           fallbackResponse?: FallbackResponse
@@ -13791,12 +13605,12 @@ Implement fallback strategies for different error types:
                   status: "service_unavailable"
               };
           }
-          
+
           try {
               const result = await this.client.search.create({ query });
               this.recordSuccess();
               return result;
-              
+
           } catch (error: any) {
               if (error.constructor.name === 'RateLimitError') {
                   console.log("Rate limited - implementing backoff strategy");
@@ -13844,7 +13658,7 @@ Create testable code with proper mocking:
   class TestPerplexityIntegration(unittest.TestCase):
       def setUp(self):
           self.mock_client = Mock(spec=Perplexity)
-          
+
       def test_search_success(self):
           # Mock successful response
           mock_result = SearchResult(
@@ -13852,33 +13666,33 @@ Create testable code with proper mocking:
               url="https://example.com",
               snippet="Test snippet"
           )
-          
+
           mock_response = SearchCreateResponse(
               query="test query",
               results=[mock_result]
           )
-          
+
           self.mock_client.search.create.return_value = mock_response
-          
+
           # Test your application logic
           result = self.mock_client.search.create(query="test query")
-          
+
           self.assertEqual(result.query, "test query")
           self.assertEqual(len(result.results), 1)
           self.assertEqual(result.results[0].title, "Test Result")
-      
+
       @patch('perplexity.Perplexity')
       def test_rate_limit_handling(self, mock_perplexity_class):
           # Mock rate limit error
           mock_client = Mock()
           mock_perplexity_class.return_value = mock_client
           mock_client.search.create.side_effect = perplexity.RateLimitError("Rate limited")
-          
+
           # Test your error handling logic here
           with self.assertRaises(perplexity.RateLimitError):
               mock_client.search.create(query="test")
 
-  if __name__ == '__main__':
+  if **name** == '**main**':
       unittest.main()
   ```
 
@@ -13892,38 +13706,38 @@ Create testable code with proper mocking:
 
   describe('Perplexity Integration', () => {
       let mockClient: jest.Mocked<Perplexity>;
-      
+
       beforeEach(() => {
           mockClient = new Perplexity() as jest.Mocked<Perplexity>;
       });
-      
+
       test('should handle successful search', async () => {
           const mockResult: SearchResult = {
               title: "Test Result",
               url: "https://example.com",
               snippet: "Test snippet"
           };
-          
+
           const mockResponse: SearchCreateResponse = {
               query: "test query",
               results: [mockResult]
           };
-          
+
           (mockClient.search.create as jest.Mock).mockResolvedValue(mockResponse);
-          
+
           const result = await mockClient.search.create({ query: "test query" });
-          
+
           expect(result.query).toBe("test query");
           expect(result.results).toHaveLength(1);
           expect(result.results[0].title).toBe("Test Result");
       });
-      
+
       test('should handle rate limit errors', async () => {
           const rateLimitError = new Error('Rate limited');
           rateLimitError.constructor.name = 'RateLimitError';
-          
+
           (mockClient.search.create as jest.Mock).mockRejectedValue(rateLimitError);
-          
+
           await expect(mockClient.search.create({ query: "test" })).rejects.toThrow('Rate limited');
       });
   });
@@ -13978,9 +13792,7 @@ Create testable code with proper mocking:
   </Card>
 </CardGroup>
 
-
 # Configuration
-Source: https://docs.perplexity.ai/docs/sdk/configuration
 
 Learn how to configure the Perplexity SDKs for retries, timeouts, proxies, and advanced HTTP client customization.
 
@@ -14069,7 +13881,7 @@ Set granular timeout controls for different phases of the request:
   });
 
   // Per-request timeout override
-  const result = await client.withOptions({ 
+  const result = await client.withOptions({
       timeout: 60000  // 1 minute for this specific request
   }).chat.completions.create({
       model: "llama-3.1-sonar-large-128k-online",
@@ -14361,7 +14173,7 @@ Settings optimized for development and debugging:
   const devClient = new Perplexity({
       maxRetries: 1,     // Fail fast in development
       timeout: 10000,    // 10 second timeout
-      
+
       // Custom fetch with logging
       fetch: (url, options) => {
           console.log(`Request: ${options?.method || 'GET'} ${url}`);
@@ -14448,15 +14260,15 @@ Use environment variables to configure the client:
           read=float(os.getenv('PERPLEXITY_READ_TIMEOUT', '30.0')),
           write=float(os.getenv('PERPLEXITY_WRITE_TIMEOUT', '10.0'))
       )
-      
+
       max_retries = int(os.getenv('PERPLEXITY_MAX_RETRIES', '3'))
-      
+
       # Optional proxy configuration
       proxy = os.getenv('PERPLEXITY_PROXY')
       http_client_kwargs = {}
       if proxy:
           http_client_kwargs['proxy'] = proxy
-      
+
       return Perplexity(
           max_retries=max_retries,
           timeout=timeout,
@@ -14473,17 +14285,17 @@ Use environment variables to configure the client:
   function createClient(): Perplexity {
       const maxRetries = parseInt(process.env.PERPLEXITY_MAX_RETRIES || '3');
       const timeout = parseInt(process.env.PERPLEXITY_TIMEOUT || '30000');
-      
+
       const config: any = {
           maxRetries,
           timeout
       };
-      
+
       // Optional proxy configuration
       if (process.env.PERPLEXITY_PROXY) {
           config.httpAgent = new HttpsProxyAgent(process.env.PERPLEXITY_PROXY);
       }
-      
+
       return new Perplexity(config);
   }
 
@@ -14507,7 +14319,7 @@ Create reusable configuration patterns:
               max_retries=1,
               timeout=httpx.Timeout(10.0)
           )
-      
+
       @staticmethod
       def production():
           return Perplexity(
@@ -14520,7 +14332,7 @@ Create reusable configuration patterns:
                   )
               )
           )
-      
+
       @staticmethod
       def high_throughput():
           return Perplexity(
@@ -14549,21 +14361,21 @@ Create reusable configuration patterns:
               timeout: 10000
           });
       }
-      
+
       static production(): Perplexity {
           const agent = new https.Agent({
               keepAlive: true,
               maxSockets: 100,
               timeout: 60000
           });
-          
+
           return new Perplexity({
               maxRetries: 3,
               timeout: 60000,
               httpAgent: agent
           });
       }
-      
+
       static highThroughput(): Perplexity {
           const agent = new https.Agent({
               keepAlive: true,
@@ -14571,7 +14383,7 @@ Create reusable configuration patterns:
               maxFreeSockets: 100,
               timeout: 30000
           });
-          
+
           return new Perplexity({
               maxRetries: 2,
               timeout: 30000,
@@ -14597,9 +14409,7 @@ Create reusable configuration patterns:
   </Card>
 </CardGroup>
 
-
 # Error Handling
-Source: https://docs.perplexity.ai/docs/sdk/error-handling
 
 Learn how to handle API errors gracefully with the Perplexity SDKs for Python and Typescript.
 
@@ -14633,7 +14443,7 @@ Handle common API errors with try-catch blocks:
       print(search.results)
   except perplexity.APIConnectionError as e:
       print("Network connection failed")
-      print(e.__cause__)
+      print(e.**cause**)
   except perplexity.RateLimitError as e:
       print("Rate limit exceeded, please retry later")
   except perplexity.APIStatusError as e:
@@ -14687,7 +14497,7 @@ Implement intelligent retry logic for rate limit errors:
           except perplexity.RateLimitError:
               if attempt == max_retries - 1:
                   raise  # Re-raise on final attempt
-              
+
               # Exponential backoff with jitter
               delay = (2 ** attempt) + random.uniform(0, 1)
               print(f"Rate limited. Retrying in {delay:.2f} seconds...")
@@ -14695,7 +14505,7 @@ Implement intelligent retry logic for rate limit errors:
           except perplexity.APIConnectionError:
               if attempt == max_retries - 1:
                   raise
-              
+
               # Shorter delay for connection errors
               delay = 1 + random.uniform(0, 1)
               print(f"Connection error. Retrying in {delay:.2f} seconds...")
@@ -14710,8 +14520,8 @@ Implement intelligent retry logic for rate limit errors:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function searchWithRetry(
-      client: Perplexity, 
-      query: string, 
+      client: Perplexity,
+      query: string,
       maxRetries: number = 3
   ) {
       for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -14721,7 +14531,7 @@ Implement intelligent retry logic for rate limit errors:
               if (attempt === maxRetries - 1) {
                   throw error; // Re-throw on final attempt
               }
-              
+
               if (error.constructor.name === 'RateLimitError') {
                   // Exponential backoff with jitter
                   const delay = (2 ** attempt + Math.random()) * 1000;
@@ -14765,18 +14575,18 @@ Extract detailed error information for debugging:
       print(f"Status Code: {e.status_code}")
       print(f"Error Type: {e.type}")
       print(f"Error Message: {e.message}")
-      
+
       # Access raw response for detailed debugging
       if hasattr(e, 'response'):
           print(f"Raw Response: {e.response.text}")
           print(f"Request ID: {e.response.headers.get('X-Request-ID')}")
-          
+
   except perplexity.ValidationError as e:
       print(f"Validation Error: {e}")
       # Handle parameter validation errors
-      
+
   except Exception as e:
-      print(f"Unexpected error: {type(e).__name__}: {e}")
+      print(f"Unexpected error: {type(e).**name**}: {e}")
   ```
 
   ```typescript Typescript theme={null}
@@ -14794,7 +14604,7 @@ Extract detailed error information for debugging:
           console.log(`Status Code: ${error.status}`);
           console.log(`Error Type: ${error.type}`);
           console.log(`Error Message: ${error.message}`);
-          
+
           // Access raw response for detailed debugging
           if (error.response) {
               console.log(`Raw Response: ${await error.response.text()}`);
@@ -14823,7 +14633,7 @@ Implement fallback mechanisms when API calls fail:
 
   def get_ai_response(query, fallback_response="I'm sorry, I'm temporarily unavailable."):
       client = Perplexity()
-      
+
       try:
           # Primary: Try online model
           response = client.chat.completions.create(
@@ -14831,7 +14641,7 @@ Implement fallback mechanisms when API calls fail:
               messages=[{"role": "user", "content": query}]
           )
           return response.choices[0].message.content
-          
+
       except perplexity.RateLimitError:
           try:
               # Fallback: Try offline model if rate limited
@@ -14842,11 +14652,11 @@ Implement fallback mechanisms when API calls fail:
               return response.choices[0].message.content
           except Exception:
               return fallback_response
-              
+
       except perplexity.APIConnectionError:
           # Network issues - return cached response or fallback
           return fallback_response
-          
+
       except Exception as e:
           print(f"Unexpected error: {e}")
           return fallback_response
@@ -14860,11 +14670,11 @@ Implement fallback mechanisms when API calls fail:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function getAIResponse(
-      query: string, 
+      query: string,
       fallbackResponse: string = "I'm sorry, I'm temporarily unavailable."
   ): Promise<string> {
       const client = new Perplexity();
-      
+
       try {
           // Primary: Try online model
           const response = await client.chat.completions.create({
@@ -14872,7 +14682,7 @@ Implement fallback mechanisms when API calls fail:
               messages: [{ role: "user", content: query }]
           });
           return response.choices[0].message.content || "";
-          
+
       } catch (error: any) {
           if (error.constructor.name === 'RateLimitError') {
               try {
@@ -14921,12 +14731,12 @@ Implement fallback mechanisms when API calls fail:
       import perplexity
 
       logging.basicConfig(level=logging.INFO)
-      logger = logging.getLogger(__name__)
+      logger = logging.getLogger(**name**)
 
       try:
           result = client.search.create(query="example")
       except perplexity.APIStatusError as e:
-          logger.error(f"API Error {e.status_code}: {e.message}", 
+          logger.error(f"API Error {e.status_code}: {e.message}",
                       extra={'request_id': e.response.headers.get('X-Request-ID')})
       ```
 
@@ -15003,9 +14813,7 @@ Implement fallback mechanisms when API calls fail:
   </Card>
 </CardGroup>
 
-
 # Quickstart
-Source: https://docs.perplexity.ai/docs/sdk/overview
 
 Learn how to use the official Perplexity SDKs for Python and Typescript to access the Perplexity APIs with type safety and async support.
 
@@ -15149,9 +14957,7 @@ Or use [python-dotenv](https://pypi.org/project/python-dotenv/) (Python) or [dot
   </Card>
 </CardGroup>
 
-
 # Performance Optimization
-Source: https://docs.perplexity.ai/docs/sdk/performance
 
 Learn how to optimize the Perplexity SDKs for high-throughput applications with async support, connection pooling, and raw response access.
 
@@ -15197,7 +15003,7 @@ For applications that need to handle multiple requests concurrently:
 
   async function main() {
       const client = new Perplexity();
-      
+
       // Async is built-in for Typescript
       const search = await client.search.create({ query: "machine learning" });
       console.log(search.results);
@@ -15226,9 +15032,9 @@ Process multiple requests simultaneously for better throughput:
               client.search.create(query=query)
               for query in queries
           ]
-          
+
           results = await asyncio.gather(*tasks)
-          
+
           for i, result in enumerate(results):
               print(f"Query '{queries[i]}': {len(result.results)} results")
 
@@ -15240,15 +15046,15 @@ Process multiple requests simultaneously for better throughput:
 
   async function concurrentSearches() {
       const client = new Perplexity();
-      
+
       // Concurrent requests
       const queries = ["AI", "machine learning", "deep learning", "neural networks"];
-      const tasks = queries.map(query => 
+      const tasks = queries.map(query =>
           client.search.create({ query })
       );
-      
+
       const results = await Promise.all(tasks);
-      
+
       results.forEach((result, i) => {
           console.log(`Query '${queries[i]}': ${result.results.length} results`);
       });
@@ -15272,23 +15078,23 @@ Process large numbers of requests while respecting rate limits:
           http_client=DefaultAioHttpClient()
       ) as client:
           results = []
-          
+
           for i in range(0, len(queries), batch_size):
               batch = queries[i:i + batch_size]
-              
+
               # Process batch concurrently
               tasks = [
                   client.search.create(query=query)
                   for query in batch
               ]
-              
+
               batch_results = await asyncio.gather(*tasks, return_exceptions=True)
               results.extend(batch_results)
-              
+
               # Delay between batches to respect rate limits
               if i + batch_size < len(queries):
                   await asyncio.sleep(delay)
-          
+
           return results
 
   # Usage
@@ -15300,30 +15106,30 @@ Process large numbers of requests while respecting rate limits:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function batchProcessWithLimit(
-      queries: string[], 
-      batchSize: number = 5, 
+      queries: string[],
+      batchSize: number = 5,
       delay: number = 1000
   ) {
       const client = new Perplexity();
       const results = [];
-      
+
       for (let i = 0; i < queries.length; i += batchSize) {
           const batch = queries.slice(i, i + batchSize);
-          
+
           // Process batch concurrently
-          const tasks = batch.map(query => 
+          const tasks = batch.map(query =>
               client.search.create({ query }).catch(error => error)
           );
-          
+
           const batchResults = await Promise.all(tasks);
           results.push(...batchResults);
-          
+
           // Delay between batches to respect rate limits
           if (i + batchSize < queries.length) {
               await new Promise(resolve => setTimeout(resolve, delay));
           }
       }
-      
+
       return results;
   }
 
@@ -15501,10 +15307,10 @@ Monitor performance metrics to identify bottlenecks:
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
   class PerformanceMonitor:
-      def __init__(self):
+      def **init**(self):
           self.request_times = []
           self.error_count = 0
-          
+
       async def timed_request(self, client, query):
           start_time = time.time()
           try:
@@ -15515,11 +15321,11 @@ Monitor performance metrics to identify bottlenecks:
           except Exception as e:
               self.error_count += 1
               raise e
-      
+
       def get_stats(self):
           if not self.request_times:
               return {"error": "No successful requests"}
-          
+
           return {
               "total_requests": len(self.request_times),
               "error_count": self.error_count,
@@ -15530,19 +15336,19 @@ Monitor performance metrics to identify bottlenecks:
 
   async def run_performance_test():
       monitor = PerformanceMonitor()
-      
+
       async with AsyncPerplexity(
           http_client=DefaultAioHttpClient()
       ) as client:
           queries = [f"test query {i}" for i in range(10)]
-          
+
           tasks = [
               monitor.timed_request(client, query)
               for query in queries
           ]
-          
+
           await asyncio.gather(*tasks, return_exceptions=True)
-          
+
       print(monitor.get_stats())
 
   asyncio.run(run_performance_test())
@@ -15554,7 +15360,7 @@ Monitor performance metrics to identify bottlenecks:
   class PerformanceMonitor {
       private requestTimes: number[] = [];
       private errorCount: number = 0;
-      
+
       async timedRequest(client: Perplexity, query: string) {
           const startTime = performance.now();
           try {
@@ -15567,12 +15373,12 @@ Monitor performance metrics to identify bottlenecks:
               throw error;
           }
       }
-      
+
       getStats() {
           if (this.requestTimes.length === 0) {
               return { error: "No successful requests" };
           }
-          
+
           return {
               totalRequests: this.requestTimes.length,
               errorCount: this.errorCount,
@@ -15586,15 +15392,15 @@ Monitor performance metrics to identify bottlenecks:
   async function runPerformanceTest() {
       const monitor = new PerformanceMonitor();
       const client = new Perplexity();
-      
+
       const queries = Array.from({ length: 10 }, (_, i) => `test query ${i}`);
-      
-      const tasks = queries.map(query => 
+
+      const tasks = queries.map(query =>
           monitor.timedRequest(client, query).catch(error => error)
       );
-      
+
       await Promise.all(tasks);
-      
+
       console.log(monitor.getStats());
   }
 
@@ -15615,11 +15421,11 @@ Process large datasets efficiently with streaming and pagination:
 
   async def process_large_dataset(queries, process_fn):
       """Process queries in batches to manage memory usage"""
-      
+
       async with AsyncPerplexity(
           http_client=DefaultAioHttpClient()
       ) as client:
-          
+
           async def process_single(query):
               try:
                   result = await client.search.create(query=query)
@@ -15630,20 +15436,20 @@ Process large datasets efficiently with streaming and pagination:
                   return processed
               except Exception as e:
                   return f"Error processing {query}: {e}"
-          
+
           # Process in small batches
           batch_size = 5
           for i in range(0, len(queries), batch_size):
               batch = queries[i:i + batch_size]
-              
+
               # Process batch
               tasks = [process_single(query) for query in batch]
               batch_results = await asyncio.gather(*tasks)
-              
+
               # Yield results instead of accumulating
               for result in batch_results:
                   yield result
-              
+
               # Optional: Small delay to prevent overwhelming the API
               await asyncio.sleep(0.1)
 
@@ -15658,7 +15464,7 @@ Process large datasets efficiently with streaming and pagination:
 
   async def main():
       queries = [f"query {i}" for i in range(100)]
-      
+
       async for processed_result in process_large_dataset(queries, summarize_result):
           print(processed_result)
 
@@ -15669,11 +15475,11 @@ Process large datasets efficiently with streaming and pagination:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function* processLargeDataset<T>(
-      queries: string[], 
+      queries: string[],
       processFn: (result: any) => T
   ): AsyncGenerator<T | string> {
       const client = new Perplexity();
-      
+
       async function processSingle(query: string): Promise<T | string> {
           try {
               const result = await client.search.create({ query });
@@ -15684,21 +15490,21 @@ Process large datasets efficiently with streaming and pagination:
               return `Error processing ${query}: ${error}`;
           }
       }
-      
+
       // Process in small batches
       const batchSize = 5;
       for (let i = 0; i < queries.length; i += batchSize) {
           const batch = queries.slice(i, i + batchSize);
-          
+
           // Process batch
           const tasks = batch.map(query => processSingle(query));
           const batchResults = await Promise.all(tasks);
-          
+
           // Yield results instead of accumulating
           for (const result of batchResults) {
               yield result;
           }
-          
+
           // Optional: Small delay to prevent overwhelming the API
           await new Promise(resolve => setTimeout(resolve, 100));
       }
@@ -15715,7 +15521,7 @@ Process large datasets efficiently with streaming and pagination:
 
   async function main() {
       const queries = Array.from({ length: 100 }, (_, i) => `query ${i}`);
-      
+
       for await (const processedResult of processLargeDataset(queries, summarizeResult)) {
           console.log(processedResult);
       }
@@ -15806,9 +15612,7 @@ Process large datasets efficiently with streaming and pagination:
   </Card>
 </CardGroup>
 
-
 # Type Safety
-Source: https://docs.perplexity.ai/docs/sdk/type-safety
 
 Learn how to leverage full Typescript definitions and Python type hints with the Perplexity SDKs for better development experience and code safety.
 
@@ -15881,15 +15685,15 @@ Python SDK uses Pydantic for runtime type validation:
           query="machine learning",
           max_results=10
       )
-      
+
       # Pydantic model methods for serialization
       json_data = search_response.to_json()
       dict_data = search_response.to_dict()
-      
+
       # Type validation on field access
       first_result = search_response.results[0]
       print(f"Result type: {type(first_result)}")
-      
+
   except ValueError as e:
       print(f"Type validation error: {e}")
   ```
@@ -15931,20 +15735,20 @@ Create reusable typed functions:
   R = TypeVar('R')
 
   class TypedPerplexityClient:
-      def __init__(self, client: Perplexity):
+      def **init**(self, client: Perplexity):
           self.client = client
-      
+
       def search_with_transform(
-          self, 
-          query: str, 
+          self,
+          query: str,
           transform: Callable[[SearchCreateResponse], T]
       ) -> T:
           """Perform search and transform the result with type safety"""
           response = self.client.search.create(query=query)
           return transform(response)
-      
+
       def batch_search(
-          self, 
+          self,
           queries: List[str]
       ) -> List[SearchCreateResponse]:
           """Perform multiple searches with proper typing"""
@@ -15969,7 +15773,7 @@ Create reusable typed functions:
 
   class TypedPerplexityClient {
       constructor(private client: Perplexity) {}
-      
+
       async searchWithTransform<T>(
           query: string,
           transform: (response: Perplexity.Search.SearchCreateResponse) => T
@@ -15977,9 +15781,9 @@ Create reusable typed functions:
           const response = await this.client.search.create({ query });
           return transform(response);
       }
-      
+
       async batchSearch(queries: string[]): Promise<Perplexity.Search.SearchCreateResponse[]> {
-          const tasks = queries.map(query => 
+          const tasks = queries.map(query =>
               this.client.search.create({ query })
           );
           return Promise.all(tasks);
@@ -16006,7 +15810,7 @@ Create type guards for safer type checking:
   ```python Python theme={null}
   from typing import Union, TypeGuard
   from perplexity.types import (
-      SearchCreateResponse, 
+      SearchCreateResponse,
       ChatCompletionCreateResponse,
       SearchResult
   )
@@ -16020,8 +15824,8 @@ Create type guards for safer type checking:
   def is_valid_search_result(result: SearchResult) -> TypeGuard[SearchResult]:
       """Type guard to validate search result structure"""
       return (
-          hasattr(result, 'title') and 
-          hasattr(result, 'url') and 
+          hasattr(result, 'title') and
+          hasattr(result, 'url') and
           hasattr(result, 'snippet') and
           result.title is not None and
           result.url is not None
@@ -16099,19 +15903,19 @@ Work with nested response structures safely:
       def extract_search_titles(response: SearchCreateResponse) -> List[str]:
           """Extract all search result titles with type safety"""
           return [result.title for result in response.results if result.title]
-      
+
       @staticmethod
       def extract_search_urls(response: SearchCreateResponse) -> List[str]:
           """Extract all search result URLs with type safety"""
           return [result.url for result in response.results if result.url]
-      
+
       @staticmethod
       def get_first_search_result(
           response: SearchCreateResponse
       ) -> Optional[SearchResult]:
           """Get first search result safely"""
           return response.results[0] if response.results else None
-      
+
       @staticmethod
       def extract_chat_content(
           response: ChatCompletionCreateResponse
@@ -16143,19 +15947,19 @@ Work with nested response structures safely:
               .filter(result => result.title)
               .map(result => result.title);
       }
-      
+
       static extractSearchUrls(response: Perplexity.Search.SearchCreateResponse): string[] {
           return response.results
               .filter(result => result.url)
               .map(result => result.url);
       }
-      
+
       static getFirstSearchResult(
           response: Perplexity.Search.SearchCreateResponse
       ) {
           return response.results[0];
       }
-      
+
       static extractChatContent(
           response: Perplexity.StreamChunk
       ): string | undefined {
@@ -16177,8 +15981,8 @@ Work with nested response structures safely:
 
   // Usage
   const client = new Perplexity();
-  const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({ 
-      query: "Python programming" 
+  const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
+      query: "Python programming"
   });
 
   const titles = ResponseUtils.extractSearchTitles(searchResponse);
@@ -16222,7 +16026,7 @@ Create typed mappers for domain-specific data structures:
           """Convert API response to simplified domain model"""
           simplified_results = []
           domains = set()
-          
+
           for result in response.results:
               if result.title and result.url and result.snippet:
                   # Extract domain from URL
@@ -16230,7 +16034,7 @@ Create typed mappers for domain-specific data structures:
                       from urllib.parse import urlparse
                       domain = urlparse(result.url).netloc
                       domains.add(domain)
-                      
+
                       simplified_results.append(SimplifiedSearchResult(
                           title=result.title,
                           url=result.url,
@@ -16240,7 +16044,7 @@ Create typed mappers for domain-specific data structures:
                   except Exception:
                       # Skip invalid URLs
                       continue
-          
+
           return SearchSummary(
               query=response.query,
               total_results=len(simplified_results),
@@ -16279,13 +16083,13 @@ Create typed mappers for domain-specific data structures:
       static toSimplified(response: Perplexity.Search.SearchCreateResponse): SearchSummary {
           const simplifiedResults: SimplifiedSearchResult[] = [];
           const domains = new Set<string>();
-          
+
           for (const result of response.results) {
               if (result.title && result.url && result.snippet) {
                   try {
                       const domain = new URL(result.url).hostname;
                       domains.add(domain);
-                      
+
                       simplifiedResults.push({
                           title: result.title,
                           url: result.url,
@@ -16298,7 +16102,7 @@ Create typed mappers for domain-specific data structures:
                   }
               }
           }
-          
+
           return {
               query: response.id, // response.id contains the search identifier
               totalResults: simplifiedResults.length,
@@ -16310,8 +16114,8 @@ Create typed mappers for domain-specific data structures:
 
   // Usage with type safety
   const client = new Perplexity();
-  const apiResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({ 
-      query: "machine learning frameworks" 
+  const apiResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
+      query: "machine learning frameworks"
   });
   const summary: SearchSummary = SearchResponseMapper.toSimplified(apiResponse);
 
@@ -16338,30 +16142,30 @@ Maximize IDE support with proper type usage:
       from perplexity.types import ChatCompletionCreateResponse
 
   class EnhancedClient:
-      def __init__(self):
+      def **init**(self):
           self.client = Perplexity()
-      
+
       def search(self, query: str, **kwargs) -> SearchCreateResponse:
           """
           Perform search with full type hints
-          
+
           Args:
               query: Search query string
               **kwargs: Additional search parameters
-              
+
           Returns:
               SearchCreateResponse: Typed search results
           """
           return self.client.search.create(query=query, **kwargs)
-      
+
       def chat(self, message: str, model: str = "sonar-pro") -> "ChatCompletionCreateResponse":
           """
           Chat completion with type hints
-          
+
           Args:
               message: User message
               model: Model to use for completion
-              
+
           Returns:
               ChatCompletionCreateResponse: Typed chat response
           """
@@ -16389,29 +16193,29 @@ Maximize IDE support with proper type usage:
 
   class EnhancedClient {
       private client: Perplexity;
-      
+
       constructor() {
           this.client = new Perplexity();
       }
-      
+
       /**
        * Perform search with full type hints
        */
       async search(
-          query: string, 
+          query: string,
           options?: Partial<Perplexity.Search.SearchCreateParams>
       ): Promise<Perplexity.Search.SearchCreateResponse> {
-          return this.client.search.create({ 
-              query, 
-              ...options 
+          return this.client.search.create({
+              query,
+              ...options
           });
       }
-      
+
       /**
        * Chat completion with type hints
        */
       async chat(
-          message: string, 
+          message: string,
           model: string = "sonar"
       ): Promise<Perplexity.StreamChunk> {
           return this.client.chat.completions.create({
@@ -16490,11 +16294,11 @@ Maximize IDE support with proper type usage:
       ) -> Dict[str, Any]:
           """
           Analyze search results with scoring
-          
+
           Args:
               response: Search API response
               min_score: Minimum quality score threshold
-              
+
           Returns:
               Analysis results with scores and recommendations
           """
@@ -16528,9 +16332,7 @@ Maximize IDE support with proper type usage:
   </Card>
 </CardGroup>
 
-
 # Best Practices
-Source: https://docs.perplexity.ai/docs/search/best-practices
 
 Learn best practices for optimizing search queries and implementing efficient async patterns with Perplexity's Search API.
 
@@ -16673,8 +16475,8 @@ This guide covers essential best practices for getting the most out of Perplexit
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
       async function searchWithRetry(
-          client: Perplexity, 
-          query: string, 
+          client: Perplexity,
+          query: string,
           maxRetries: number = 3
       ) {
           for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -16717,22 +16519,22 @@ This guide covers essential best practices for getting the most out of Perplexit
       async def batch_search(queries, batch_size=3, delay_ms=1000):
           async with AsyncPerplexity() as client:
               results = []
-              
+
               for i in range(0, len(queries), batch_size):
                   batch = queries[i:i + batch_size]
-                  
+
                   batch_tasks = [
                       client.search.create(query=query, max_results=5)
                       for query in batch
                   ]
-                  
+
                   batch_results = await asyncio.gather(*batch_tasks)
                   results.extend(batch_results)
-                  
+
                   # Add delay between batches
                   if i + batch_size < len(queries):
                       await asyncio.sleep(delay_ms / 1000)
-              
+
               return results
 
       # Usage
@@ -16751,26 +16553,26 @@ This guide covers essential best practices for getting the most out of Perplexit
       ) {
           const client = new Perplexity();
           const results = [];
-          
+
           for (let i = 0; i < queries.length; i += batchSize) {
               const batch = queries.slice(i, i + batchSize);
-              
+
               const batchPromises = batch.map(query =>
                   client.search.create({
                       query,
                       maxResults: 5
                   })
               );
-              
+
               const batchResults = await Promise.all(batchPromises);
               results.push(...batchResults);
-              
+
               // Add delay between batches
               if (i + batchSize < queries.length) {
                   await new Promise(resolve => setTimeout(resolve, delayMs));
               }
           }
-          
+
           return results;
       }
 
@@ -16809,9 +16611,9 @@ For high-performance applications requiring concurrent requests, use the async c
                   max_results=5
               )
           ]
-          
+
           results = await asyncio.gather(*tasks)
-          
+
           for i, search in enumerate(results):
               print(f"Query {i+1} results:")
               for result in search.results:
@@ -16842,9 +16644,9 @@ For high-performance applications requiring concurrent requests, use the async c
               maxResults: 5
           })
       ];
-      
+
       const results = await Promise.all(tasks);
-      
+
       results.forEach((search, i) => {
           console.log(`Query ${i+1} results:`);
           search.results.forEach(result => {
@@ -16878,9 +16680,9 @@ For high-performance applications requiring concurrent requests, use the async c
               maxResults: 5
           })
       ];
-      
+
       const results = await Promise.all(tasks);
-      
+
       results.forEach((search, i) => {
           console.log(`Query ${i+1} results:`);
           search.results.forEach(result => {
@@ -16906,30 +16708,30 @@ For large-scale applications, implement controlled concurrency with rate limitin
   from perplexity import AsyncPerplexity
 
   class SearchManager:
-      def __init__(self, max_concurrent=5, delay_between_batches=1.0):
+      def **init**(self, max_concurrent=5, delay_between_batches=1.0):
           self.max_concurrent = max_concurrent
           self.delay_between_batches = delay_between_batches
           self.semaphore = asyncio.Semaphore(max_concurrent)
-      
+
       async def search_single(self, client, query):
           async with self.semaphore:
               return await client.search.create(query=query, max_results=5)
-      
+
       async def search_many(self, queries):
           async with AsyncPerplexity() as client:
               tasks = [
-                  self.search_single(client, query) 
+                  self.search_single(client, query)
                   for query in queries
               ]
-              
+
               results = await asyncio.gather(*tasks, return_exceptions=True)
-              
+
               # Filter out exceptions and return successful results
               successful_results = [
-                  result for result in results 
+                  result for result in results
                   if not isinstance(result, Exception)
               ]
-              
+
               return successful_results
 
   # Usage
@@ -16942,7 +16744,7 @@ For large-scale applications, implement controlled concurrency with rate limitin
           "biotechnology breakthroughs",
           "space exploration updates"
       ]
-      
+
       results = await manager.search_many(queries)
       print(f"Successfully processed {len(results)} out of {len(queries)} searches")
 
@@ -16955,42 +16757,42 @@ For large-scale applications, implement controlled concurrency with rate limitin
   class SearchManager {
       private maxConcurrent: number;
       private delayBetweenBatches: number;
-      
+
       constructor(maxConcurrent: number = 5, delayBetweenBatches: number = 1000) {
           this.maxConcurrent = maxConcurrent;
           this.delayBetweenBatches = delayBetweenBatches;
       }
-      
+
       async searchMany(queries: string[]) {
           const client = new Perplexity();
           const results = [];
-          
+
           // Process in batches to respect rate limits
           for (let i = 0; i < queries.length; i += this.maxConcurrent) {
               const batch = queries.slice(i, i + this.maxConcurrent);
-              
+
               const batchPromises = batch.map(query =>
                   client.search.create({ query, maxResults: 5 })
                       .catch(error => ({ error, query }))
               );
-              
+
               const batchResults = await Promise.all(batchPromises);
-              
+
               // Filter out errors and collect successful results
               const successfulResults = batchResults.filter(
                   result => !('error' in result)
               );
-              
+
               results.push(...successfulResults);
-              
+
               // Add delay between batches
               if (i + this.maxConcurrent < queries.length) {
-                  await new Promise(resolve => 
+                  await new Promise(resolve =>
                       setTimeout(resolve, this.delayBetweenBatches)
                   );
               }
           }
-          
+
           return results;
       }
   }
@@ -17000,12 +16802,12 @@ For large-scale applications, implement controlled concurrency with rate limitin
       const manager = new SearchManager(3, 1000);
       const queries = [
           "AI research 2024",
-          "quantum computing advances", 
+          "quantum computing advances",
           "renewable energy innovations",
           "biotechnology breakthroughs",
           "space exploration updates"
       ];
-      
+
       const results = await manager.searchMany(queries);
       console.log(`Successfully processed ${results.length} out of ${queries.length} searches`);
   }
@@ -17025,7 +16827,7 @@ Implement robust error handling for async search operations:
   from perplexity import AsyncPerplexity, APIStatusError, RateLimitError
 
   logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger(__name__)
+  logger = logging.getLogger(**name**)
 
   async def resilient_search(client, query, max_retries=3):
       for attempt in range(max_retries):
@@ -17033,7 +16835,7 @@ Implement robust error handling for async search operations:
               result = await client.search.create(query=query, max_results=5)
               logger.info(f"Search successful for: {query}")
               return result
-              
+
           except RateLimitError as e:
               if attempt < max_retries - 1:
                   delay = 2 ** attempt
@@ -17042,11 +16844,11 @@ Implement robust error handling for async search operations:
               else:
                   logger.error(f"Max retries exceeded for: {query}")
                   return None
-                  
+
           except APIStatusError as e:
               logger.error(f"API error for '{query}': {e}")
               return None
-              
+
           except Exception as e:
               logger.error(f"Unexpected error for '{query}': {e}")
               return None
@@ -17054,10 +16856,10 @@ Implement robust error handling for async search operations:
   async def main():
       async with AsyncPerplexity() as client:
           queries = ["AI developments", "invalid query", "tech trends"]
-          
+
           tasks = [resilient_search(client, query) for query in queries]
           results = await asyncio.gather(*tasks)
-          
+
           successful_results = [r for r in results if r is not None]
           print(f"Successful searches: {len(successful_results)}/{len(queries)}")
 
@@ -17068,8 +16870,8 @@ Implement robust error handling for async search operations:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function resilientSearch(
-      client: Perplexity, 
-      query: string, 
+      client: Perplexity,
+      query: string,
       maxRetries: number = 3
   ) {
       for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -17077,7 +16879,7 @@ Implement robust error handling for async search operations:
               const result = await client.search.create({ query, maxResults: 5 });
               console.log(`Search successful for: ${query}`);
               return result;
-              
+
           } catch (error: any) {
               if (error.constructor.name === 'RateLimitError') {
                   if (attempt < maxRetries - 1) {
@@ -17094,17 +16896,17 @@ Implement robust error handling for async search operations:
               }
           }
       }
-      
+
       return null;
   }
 
   async function main() {
       const client = new Perplexity();
       const queries = ["AI developments", "invalid query", "tech trends"];
-      
+
       const tasks = queries.map(query => resilientSearch(client, query));
       const results = await Promise.all(tasks);
-      
+
       const successfulResults = results.filter(r => r !== null);
       console.log(`Successful searches: ${successfulResults.length}/${queries.length}`);
   }
@@ -17137,10 +16939,10 @@ Implement robust error handling for async search operations:
       from typing import Dict, Tuple, Optional
 
       class SearchCache:
-          def __init__(self, ttl_seconds=3600):  # 1 hour default
+          def **init**(self, ttl_seconds=3600):  # 1 hour default
               self.cache: Dict[str, Tuple[any, float]] = {}
               self.ttl = ttl_seconds
-          
+
           def get(self, query: str) -> Optional[any]:
               if query in self.cache:
                   result, timestamp = self.cache[query]
@@ -17149,7 +16951,7 @@ Implement robust error handling for async search operations:
                   else:
                       del self.cache[query]
               return None
-          
+
           def set(self, query: str, result: any):
               self.cache[query] = (result, time.time())
 
@@ -17160,7 +16962,7 @@ Implement robust error handling for async search operations:
           cached_result = cache.get(query)
           if cached_result:
               return cached_result
-          
+
           result = client.search.create(query=query)
           cache.set(query, result)
           return result
@@ -17170,11 +16972,11 @@ Implement robust error handling for async search operations:
       class SearchCache {
           private cache: Map<string, { result: any; timestamp: number }> = new Map();
           private ttl: number;
-          
+
           constructor(ttlSeconds: number = 3600) {  // 1 hour default
               this.ttl = ttlSeconds * 1000;  // Convert to milliseconds
           }
-          
+
           get(query: string): any | null {
               const cached = this.cache.get(query);
               if (cached) {
@@ -17186,7 +16988,7 @@ Implement robust error handling for async search operations:
               }
               return null;
           }
-          
+
           set(query: string, result: any): void {
               this.cache.set(query, { result, timestamp: Date.now() });
           }
@@ -17200,7 +17002,7 @@ Implement robust error handling for async search operations:
           if (cachedResult) {
               return cachedResult;
           }
-          
+
           const result = await client.search.create({ query });
           cache.set(query, result);
           return result;
@@ -17226,11 +17028,7 @@ Implement robust error handling for async search operations:
   </Card>
 </CardGroup>
 
-
 # Search Date and Time Filters
-Source: https://docs.perplexity.ai/docs/search/filters/date-time-filters
-
-
 
 <Note>
   The `search_after_date_filter` and `search_before_date_filter` parameters allow you to restrict search results to a specific publication date range. Only results with publication dates falling between these dates will be returned.
@@ -17697,14 +17495,15 @@ response = client.search(
 Compare different time periods by making multiple searches:
 
 ```python theme={null}
+
 # Recent trends
-recent = client.search(
+
     query="machine learning trends",
     search_recency_filter="month"
 )
 
 # Older trends for comparison
-older = client.search(
+
     query="machine learning trends",
     search_after_date_filter="1/1/2023",
     search_before_date_filter="1/31/2023"
@@ -17726,13 +17525,13 @@ When using date filters, ensure proper error handling for invalid date formats:
 
   def search_with_date_filter(query, after_date=None, before_date=None):
       client = Perplexity()
-      
+
       # Validate date formats
       if after_date and not validate_date_format(after_date):
           raise ValueError(f"Invalid date format: {after_date}")
       if before_date and not validate_date_format(before_date):
           raise ValueError(f"Invalid date format: {before_date}")
-      
+
       try:
           response = client.search(
               query=query,
@@ -17754,12 +17553,12 @@ When using date filters, ensure proper error handling for invalid date formats:
   }
 
   async function searchWithDateFilter(
-    query: string, 
-    afterDate?: string, 
+    query: string,
+    afterDate?: string,
     beforeDate?: string
   ) {
     const client = new Perplexity();
-    
+
     // Validate date formats
     if (afterDate && !validateDateFormat(afterDate)) {
       throw new Error(`Invalid date format: ${afterDate}`);
@@ -17767,7 +17566,7 @@ When using date filters, ensure proper error handling for invalid date formats:
     if (beforeDate && !validateDateFormat(beforeDate)) {
       throw new Error(`Invalid date format: ${beforeDate}`);
     }
-    
+
     try {
       const response = await client.search({
         query,
@@ -17783,11 +17582,7 @@ When using date filters, ensure proper error handling for invalid date formats:
   ```
 </CodeGroup>
 
-
 # Search Domain Filter
-Source: https://docs.perplexity.ai/docs/search/filters/domain-filter
-
-
 
 <Note>
   The `search_domain_filter` parameter allows you to limit search results to specific domains or exclude certain domains from search results. This supports domain-level filtering for precise content control.
@@ -17817,11 +17612,11 @@ The `search_domain_filter` parameter accepts an array of domain strings. The fil
 * **Denylist mode**: Exclude the specified domains (use `-` prefix)
 
 ```bash theme={null}
+
 # Allowlist: Only search these domains
-"search_domain_filter": ["nature.com", "science.org", "cell.com"]
 
 # Denylist: Exclude these domains
-"search_domain_filter": ["-reddit.com", "-pinterest.com", "-quora.com"]
+
 ```
 
 ## Filtering Capabilities
@@ -18335,7 +18130,7 @@ Validate domain formats on the client side before sending requests:
       if domain.startswith('.'):
           tld_pattern = r'^\.[a-zA-Z]{2,}$'
           return bool(re.match(tld_pattern, domain))
-      
+
       # Standard domain validation pattern
       pattern = r'^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$'
       return bool(re.match(pattern, domain))
@@ -18372,7 +18167,7 @@ Validate domain formats on the client side before sending requests:
       const tldPattern = /^\.[a-zA-Z]{2,}$/;
       return tldPattern.test(domain);
     }
-    
+
     // Standard domain validation pattern
     const pattern = /^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     return pattern.test(domain);
@@ -18416,11 +18211,7 @@ Validate domain formats on the client side before sending requests:
   For best results, combine domain filtering with other filters like `search_recency_filter` or `search_language_filter` to narrow down your search to highly relevant, timely content from your target sources. Use TLD filters like `.gov` or `.edu` when you need broad coverage across an entire category of authoritative sites.
 </Tip>
 
-
 # Search Language Filter
-Source: https://docs.perplexity.ai/docs/search/filters/language-filter
-
-
 
 <Note>
   The `search_language_filter` parameter allows you to filter search results by language using ISO 639-1 language codes. Only results in the specified languages will be returned.
@@ -18726,18 +18517,18 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
   def validate_language_filters(codes):
       if len(codes) > 10:
           raise ValueError("Maximum 10 language codes allowed")
-      
+
       for code in codes:
           if not validate_language_code(code):
               raise ValueError(f"Invalid language code: {code}")
-      
+
       return True
 
   # Usage
   try:
       codes = ["en", "fr", "de"]
       validate_language_filters(codes)
-      
+
       response = client.search.create(
           query="technology news",
           search_language_filter=codes
@@ -18756,7 +18547,7 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
     if (codes.length > 10) {
       throw new Error("Maximum 10 language codes allowed");
     }
-    
+
     for (const code of codes) {
       if (!validateLanguageCode(code)) {
         throw new Error(`Invalid language code: ${code}`);
@@ -18768,7 +18559,7 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
   try {
     const codes = ["en", "fr", "de"];
     validateLanguageFilters(codes);
-    
+
     const response = await client.search.create({
       query: "technology news",
       searchLanguageFilter: codes
@@ -18804,7 +18595,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Research a global topic in multiple languages
-languages = [
+
     ["en"],           # English-speaking countries
     ["zh", "ja"],     # East Asia
     ["es", "pt"],     # Latin America and Iberia
@@ -18822,7 +18613,7 @@ for lang_group in languages:
     results_by_region[", ".join(lang_group)] = response.results
 
 # Analyze results by language/region
-for region, results in results_by_region.items():
+
     print(f"Results in {region}: {len(results)} found")
 ```
 
@@ -18831,8 +18622,8 @@ for region, results in results_by_region.items():
 Find examples and references in target languages for localization projects:
 
 ```python theme={null}
+
 # Find product reviews in target markets
-target_languages = ["ja", "ko", "zh"]  # Asian markets
 
 response = client.search.create(
     query="smartphone reviews 2024",
@@ -18847,8 +18638,9 @@ response = client.search.create(
 Access scholarly content in different languages:
 
 ```python theme={null}
+
 # Search for research papers in multiple languages
-response = client.search.create(
+
     query="quantum computing algorithms",
     max_results=20,
     search_language_filter=["en", "de", "fr", "ru"],
@@ -18861,8 +18653,9 @@ response = client.search.create(
 Track news stories across different language regions:
 
 ```python theme={null}
+
 # Monitor breaking news in different languages
-news_queries = {
+
     "English": ["en"],
     "Chinese": ["zh"],
     "Spanish": ["es"],
@@ -18897,24 +18690,24 @@ When using language filters, implement proper error handling for validation issu
           # Validate language codes
           if not isinstance(languages, list):
               raise ValueError("Languages must be provided as a list")
-          
+
           if len(languages) > 10:
               raise ValueError("Maximum 10 language codes allowed")
-          
+
           # Validate each code format
           for lang in languages:
               if not isinstance(lang, str) or len(lang) != 2 or not lang.islower():
                   raise ValueError(f"Invalid language code format: {lang}")
-          
+
           # Perform search
           response = client.search.create(
               query=query,
               search_language_filter=languages,
               max_results=10
           )
-          
+
           return response
-          
+
       except ValueError as e:
           print(f"Validation error: {e}")
           return None
@@ -18949,29 +18742,29 @@ When using language filters, implement proper error handling for validation issu
       if (!Array.isArray(languages)) {
         throw new Error("Languages must be provided as an array");
       }
-      
+
       if (languages.length > 10) {
         throw new Error("Maximum 10 language codes allowed");
       }
-      
+
       // Validate each code format
       for (const lang of languages) {
-        if (typeof lang !== 'string' || 
-            lang.length !== 2 || 
+        if (typeof lang !== 'string' ||
+            lang.length !== 2 ||
             lang !== lang.toLowerCase()) {
           throw new Error(`Invalid language code format: ${lang}`);
         }
       }
-      
+
       // Perform search
       const response = await client.search.create({
         query,
         searchLanguageFilter: languages,
         maxResults: 10
       });
-      
+
       return response;
-      
+
     } catch (error) {
       if (error instanceof Perplexity.BadRequestError) {
         console.error("API error:", error.message);
@@ -18998,9 +18791,7 @@ When using language filters, implement proper error handling for validation issu
   For best results, combine language filtering with other filters like `search_domain_filter` or `search_recency_filter` to narrow down your search to highly relevant, timely content in your target languages.
 </Tip>
 
-
 # Perplexity Search API
-Source: https://docs.perplexity.ai/docs/search/quickstart
 
 Access real-time web search results with Perplexity's Search API. Get ranked results, domain filtering, multi-query search, and content extraction for developers.
 
@@ -19239,7 +19030,7 @@ Execute multiple related queries in a single request for comprehensive research:
   const search = await client.search.create({
       query: [
           "artificial intelligence trends 2024",
-          "machine learning breakthroughs recent", 
+          "machine learning breakthroughs recent",
           "AI applications in healthcare"
       ],
       maxResults: 5
@@ -19726,9 +19517,7 @@ The `max_tokens` parameter defaults to 10,000 tokens. The maximum allowed value 
   </Card>
 </CardGroup>
 
-
 # Core Features
-Source: https://docs.perplexity.ai/docs/sonar/features
 
 Streaming, structured outputs, and prompting best practices for the Sonar API
 
@@ -19764,24 +19553,24 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Create streaming completion
-stream = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "What is the latest in AI research?"}],
     stream=True
 )
 
 # Process streaming response
-content = ""
+
 for chunk in stream:
     if chunk.choices[0].delta.content:
         content_piece = chunk.choices[0].delta.content
         content += content_piece
         print(content_piece, end="", flush=True)
-    
+
     # Collect metadata from final chunks
     if hasattr(chunk, 'search_results') and chunk.search_results:
         search_results = chunk.search_results
-    
+
     if hasattr(chunk, 'usage') and chunk.usage:
         usage_info = chunk.usage
 ```
@@ -19931,9 +19720,7 @@ completion = client.chat.completions.create(
   </Card>
 </CardGroup>
 
-
 # Search Filters
-Source: https://docs.perplexity.ai/docs/sonar/filters
 
 Control and customize Sonar API search results with filters
 
@@ -19955,14 +19742,14 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Allowlist: Only search specific domains
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Tell me about space discoveries."}],
     search_domain_filter=["nasa.gov", "wikipedia.org", "space.com"]
 )
 
 # Denylist: Exclude specific domains
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "What are renewable energy advances?"}],
     search_domain_filter=["-reddit.com", "-pinterest.com"]
@@ -19991,7 +19778,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Publication date range
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Show me tech news from this week."}],
     search_after_date_filter="3/1/2025",
@@ -19999,7 +19786,7 @@ completion = client.chat.completions.create(
 )
 
 # Last updated date range
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "Show me recently updated articles."}],
     last_updated_after_filter="3/1/2025",
@@ -20007,7 +19794,7 @@ completion = client.chat.completions.create(
 )
 
 # Recency filter (convenient relative dates)
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "Latest AI developments?"}],
     search_recency_filter="week"
@@ -20036,7 +19823,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Full location specification (recommended)
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "What are good coffee shops nearby?"}],
     web_search_options={
@@ -20051,7 +19838,7 @@ completion = client.chat.completions.create(
 )
 
 # Country code only
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "Summarize today's news."}],
     web_search_options={
@@ -20080,14 +19867,14 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Single language
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Tell me about AI developments."}],
     search_language_filter=["en"]
 )
 
 # Multiple languages
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "Renewable energy in Europe?"}],
     search_language_filter=["en", "fr", "de"]
@@ -20119,7 +19906,7 @@ completion = client.chat.completions.create(
 )
 
 # Combine with date filters for recent research
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Latest findings on neural networks?"}],
     search_mode="academic",
@@ -20147,7 +19934,7 @@ completion = client.chat.completions.create(
 )
 
 # Combine with date filters for recent filings
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Summarize latest 10-K filings for Apple Inc."}],
     search_mode="sec",
@@ -20169,14 +19956,14 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Low context (cost-efficient, default)
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "How many stars in our galaxy?"}],
     web_search_options={"search_context_size": "low"}
 )
 
 # High context (comprehensive)
-completion = client.chat.completions.create(
+
     model="sonar",
     messages=[{"role": "user", "content": "Explain the 2008 financial crisis."}],
     web_search_options={"search_context_size": "high"}
@@ -20202,14 +19989,14 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Search classifier (AI decides when to search)
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "What are latest quantum computing developments?"}],
     enable_search_classifier=True
 )
 
 # Disable search completely
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "What is 2 + 2?"}],
     disable_search=True
@@ -20230,7 +20017,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Combine domain, language, date, and context size filters
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[{"role": "user", "content": "Recent quantum computing breakthroughs?"}],
     search_domain_filter=["nature.com", "science.org", "arxiv.org"],
@@ -20246,9 +20033,7 @@ completion = client.chat.completions.create(
   Get started with the Sonar API and learn the basics
 </Card>
 
-
 # Media & Attachments
-Source: https://docs.perplexity.ai/docs/sonar/media
 
 Send and receive images, videos, and files with the Sonar API
 
@@ -20276,12 +20061,12 @@ import base64
 client = Perplexity()
 
 # Read and encode image as base64
-with open("path/to/your/image.png", "rb") as image_file:
+
     base64_image = base64.b64encode(image_file.read()).decode("utf-8")
     image_data_uri = f"data:image/png;base64,{base64_image}"
 
 # Analyze the image
-completion = client.chat.completions.create(
+
     model="sonar-pro",
     messages=[
         {
@@ -20370,7 +20155,7 @@ import base64
 client = Perplexity()
 
 # Read and encode file (no prefix needed)
-with open("document.pdf", "rb") as file:
+
     encoded_file = base64.b64encode(file.read()).decode('utf-8')
 
 completion = client.chat.completions.create(
@@ -20435,7 +20220,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Exclude specific domains (prefix with -)
-completion = client.chat.completions.create(
+
     model="sonar",
     return_images=True,
     image_domain_filter=["-gettyimages.com", "-shutterstock.com"],
@@ -20445,7 +20230,7 @@ completion = client.chat.completions.create(
 )
 
 # Include only specific domains
-completion = client.chat.completions.create(
+
     model="sonar",
     return_images=True,
     image_domain_filter=["wikimedia.org", "nasa.gov"],
@@ -20465,7 +20250,7 @@ from perplexity import Perplexity
 client = Perplexity()
 
 # Only return GIF images
-completion = client.chat.completions.create(
+
     model="sonar",
     return_images=True,
     image_format_filter=["gif"],
@@ -20475,7 +20260,7 @@ completion = client.chat.completions.create(
 )
 
 # Allow multiple formats
-completion = client.chat.completions.create(
+
     model="sonar",
     return_images=True,
     image_format_filter=["jpg", "png", "webp"],
@@ -20570,9 +20355,7 @@ completion = client.chat.completions.create(
   Get started with the Sonar API and learn the fundamentals
 </Card>
 
-
 # OpenAI SDK Compatibility
-Source: https://docs.perplexity.ai/docs/sonar/openai-compatibility
 
 Use OpenAI SDKs with the Sonar API by changing the base URL and API key
 
@@ -20991,9 +20774,7 @@ See the [Perplexity SDK Guide](/docs/sdk/overview) for details.
   </Card>
 </CardGroup>
 
-
 # Pro Search Classifier
-Source: https://docs.perplexity.ai/docs/sonar/pro-search/classifier
 
 Optimize cost and performance with automatic query classification between Pro Search and Fast Search modes
 
@@ -21529,9 +21310,7 @@ You can verify the classification decision in the response metadata:
   </Card>
 </CardGroup>
 
-
 # Quickstart
-Source: https://docs.perplexity.ai/docs/sonar/pro-search/quickstart
 
 Get started with Pro Search for Sonar Pro - enhanced search with automated tools, multi-step reasoning, and real-time thought streaming
 
@@ -21581,7 +21360,7 @@ Here is an example of how to enable Pro Search with streaming:
 
   messages = [
       {
-          "role": "user", 
+          "role": "user",
           "content": "Analyze the latest developments in quantum computing and their potential impact on cryptography. Include recent research findings and expert opinions."
       }
   ]
@@ -21653,7 +21432,7 @@ Here is an example of how to enable Pro Search with streaming:
   ```json theme={null}
   {
     "id": "2f16f4a0-e1d7-48c7-832f-8757b96ec221",
-    "model": "sonar-pro", 
+    "model": "sonar-pro",
     "created": 1759957470,
     "usage": {
       "prompt_tokens": 15,
@@ -21699,7 +21478,7 @@ Here is an example of how to enable Pro Search with streaming:
       },
       {
         "thought": "Let me fetch detailed content from this research paper.",
-        "type": "fetch_url_content", 
+        "type": "fetch_url_content",
         "fetch_url_content": {
           "contents": [
             {
@@ -21958,9 +21737,7 @@ Pro Search pricing consists of token usage plus request fees that vary by search
   </Card>
 </CardGroup>
 
-
 # Stream Mode: Concise vs Full
-Source: https://docs.perplexity.ai/docs/sonar/pro-search/stream-mode
 
 Learn how to use stream_mode to control streaming response formats and optimize your integration
 
@@ -22397,7 +22174,7 @@ Final chunk indicating the stream is complete, including final search results, u
     from perplexity import Perplexity
 
     class ConciseStreamHandler:
-        def __init__(self):
+        def **init**(self):
             self.content = ""
             self.reasoning_steps = []
             self.search_results = []
@@ -22844,9 +22621,7 @@ If you're migrating from full mode to concise mode, here are the key changes:
 * [Sonar API Guide](/docs/sonar/quickstart) - Complete Sonar API guide
 * [API Reference - Sonar API](/api-reference/chat-completions-post) - API documentation
 
-
 # Built-in Tool Capabilities
-Source: https://docs.perplexity.ai/docs/sonar/pro-search/tools
 
 Learn about Pro Search's built-in tools: web search and URL content fetching
 
@@ -22937,9 +22712,7 @@ The model automatically combines multiple tools when needed. For example, when a
   </Card>
 </CardGroup>
 
-
 # Sonar API
-Source: https://docs.perplexity.ai/docs/sonar/quickstart
 
 Get started with Perplexity's Sonar API for web-grounded AI responses. Make your first API call in minutes.
 
@@ -23212,5 +22985,4 @@ Sonar API responses follow an OpenAI-compatible format:
 <Info>
   Need help? Check out our [community](https://community.perplexity.ai) for support and discussions with other developers.
 </Info>
-
 

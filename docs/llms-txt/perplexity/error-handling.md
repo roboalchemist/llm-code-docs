@@ -1,4 +1,5 @@
 # Error Handling
+
 Source: https://docs.perplexity.ai/docs/sdk/error-handling
 
 Learn how to handle API errors gracefully with the Perplexity SDKs for Python and Typescript.
@@ -87,7 +88,7 @@ Implement intelligent retry logic for rate limit errors:
           except perplexity.RateLimitError:
               if attempt == max_retries - 1:
                   raise  # Re-raise on final attempt
-              
+
               # Exponential backoff with jitter
               delay = (2 ** attempt) + random.uniform(0, 1)
               print(f"Rate limited. Retrying in {delay:.2f} seconds...")
@@ -95,7 +96,7 @@ Implement intelligent retry logic for rate limit errors:
           except perplexity.APIConnectionError:
               if attempt == max_retries - 1:
                   raise
-              
+
               # Shorter delay for connection errors
               delay = 1 + random.uniform(0, 1)
               print(f"Connection error. Retrying in {delay:.2f} seconds...")
@@ -110,8 +111,8 @@ Implement intelligent retry logic for rate limit errors:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function searchWithRetry(
-      client: Perplexity, 
-      query: string, 
+      client: Perplexity,
+      query: string,
       maxRetries: number = 3
   ) {
       for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -121,7 +122,7 @@ Implement intelligent retry logic for rate limit errors:
               if (attempt === maxRetries - 1) {
                   throw error; // Re-throw on final attempt
               }
-              
+
               if (error.constructor.name === 'RateLimitError') {
                   // Exponential backoff with jitter
                   const delay = (2 ** attempt + Math.random()) * 1000;
@@ -165,16 +166,16 @@ Extract detailed error information for debugging:
       print(f"Status Code: {e.status_code}")
       print(f"Error Type: {e.type}")
       print(f"Error Message: {e.message}")
-      
+
       # Access raw response for detailed debugging
       if hasattr(e, 'response'):
           print(f"Raw Response: {e.response.text}")
           print(f"Request ID: {e.response.headers.get('X-Request-ID')}")
-          
+
   except perplexity.ValidationError as e:
       print(f"Validation Error: {e}")
       # Handle parameter validation errors
-      
+
   except Exception as e:
       print(f"Unexpected error: {type(e).__name__}: {e}")
   ```
@@ -194,7 +195,7 @@ Extract detailed error information for debugging:
           console.log(`Status Code: ${error.status}`);
           console.log(`Error Type: ${error.type}`);
           console.log(`Error Message: ${error.message}`);
-          
+
           // Access raw response for detailed debugging
           if (error.response) {
               console.log(`Raw Response: ${await error.response.text()}`);
@@ -223,7 +224,7 @@ Implement fallback mechanisms when API calls fail:
 
   def get_ai_response(query, fallback_response="I'm sorry, I'm temporarily unavailable."):
       client = Perplexity()
-      
+
       try:
           # Primary: Try online model
           response = client.chat.completions.create(
@@ -231,7 +232,7 @@ Implement fallback mechanisms when API calls fail:
               messages=[{"role": "user", "content": query}]
           )
           return response.choices[0].message.content
-          
+
       except perplexity.RateLimitError:
           try:
               # Fallback: Try offline model if rate limited
@@ -242,11 +243,11 @@ Implement fallback mechanisms when API calls fail:
               return response.choices[0].message.content
           except Exception:
               return fallback_response
-              
+
       except perplexity.APIConnectionError:
           # Network issues - return cached response or fallback
           return fallback_response
-          
+
       except Exception as e:
           print(f"Unexpected error: {e}")
           return fallback_response
@@ -260,11 +261,11 @@ Implement fallback mechanisms when API calls fail:
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function getAIResponse(
-      query: string, 
+      query: string,
       fallbackResponse: string = "I'm sorry, I'm temporarily unavailable."
   ): Promise<string> {
       const client = new Perplexity();
-      
+
       try {
           // Primary: Try online model
           const response = await client.chat.completions.create({
@@ -272,7 +273,7 @@ Implement fallback mechanisms when API calls fail:
               messages: [{ role: "user", content: query }]
           });
           return response.choices[0].message.content || "";
-          
+
       } catch (error: any) {
           if (error.constructor.name === 'RateLimitError') {
               try {
@@ -326,7 +327,7 @@ Implement fallback mechanisms when API calls fail:
       try:
           result = client.search.create(query="example")
       except perplexity.APIStatusError as e:
-          logger.error(f"API Error {e.status_code}: {e.message}", 
+          logger.error(f"API Error {e.status_code}: {e.message}",
                       extra={'request_id': e.response.headers.get('X-Request-ID')})
       ```
 

@@ -1,4 +1,5 @@
 # Create Embeddings
+
 Source: https://docs.perplexity.ai/api-reference/embeddings-post
 
 post /v1/embeddings

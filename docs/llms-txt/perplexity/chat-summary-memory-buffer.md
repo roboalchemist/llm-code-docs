@@ -1,4 +1,6 @@
+
 # Chat Summary Memory Buffer
+
 Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-summary-memory-buffer/README
 
 Token-aware conversation memory using summarization with LlamaIndex and Perplexity Sonar API
@@ -32,9 +34,9 @@ memory = ChatSummaryMemoryBuffer.from_defaults(
 * Reserves 25% of context window for responses
 * Uses same LLM for summarization and chat completion
 
-2. \*\*Message Processing Flow
+1. **Message Processing Flow**
 
-```mermaid theme={null}
+```mermaid
 graph TD
     A[User Input] --> B{Store Message}
     B --> C[Check Token Limit]
@@ -45,7 +47,7 @@ graph TD
     G --> H[Build Optimized Payload]
 ```
 
-3. **API Compatibility Layer**
+1. **API Compatibility Layer**
 
 ```python theme={null}
 messages_dict = [

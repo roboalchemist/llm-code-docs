@@ -1,4 +1,5 @@
 # PerplexiGrid | Interactive Analytics Dashboards
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexigrid
 
 Instantly generate analytics dashboards from natural language using live data via Perplexity Sonar API.
@@ -36,12 +37,12 @@ The system uses structured JSON schema responses to ensure consistent, ECharts-c
 ![Prompt #2](https://www.perplexigrid.com/guide/move_dark.gif)
 ![Prompt #3](https://www.perplexigrid.com/guide/customize_dark.gif)
 
-5. Add your own datasources to blend your data with live web data
+4. Add your own datasources to blend your data with live web data
 
 ![Prompt #4](https://www.perplexigrid.com/guide/datasource_dark.gif)
 
-6. Refine them via text prompts or export the dashboard as needed
-7. Collaborate and share easily
+5. Refine them via text prompts or export the dashboard as needed
+6. Collaborate and share easily
 
 ![Prompt #5](https://www.perplexigrid.com/guide/invite_dark.gif)
 

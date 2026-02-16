@@ -1,4 +1,5 @@
 # StarPlex | AI-Powered Startup Intelligence Platform
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/starplex
 
 An AI-powered startup intelligence platform that helps entrepreneurs validate their business ideas and find the right resources to succeed

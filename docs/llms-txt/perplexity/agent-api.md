@@ -1,4 +1,6 @@
+
 # Agent API
+
 Source: https://docs.perplexity.ai/docs/agent-api/quickstart
 
 The Agent API is a multi-provider, interoperable API specification for building LLM applications. Access models from multiple providers with integrated real-time web search, tool configuration, reasoning control, and token budgets—all through one unified interface.
@@ -34,11 +36,11 @@ Install the SDK for your preferred language:
 <CodeGroup>
   ```bash Python theme={null}
   pip install perplexityai
-  ```
+  ```bash
 
   ```bash Typescript theme={null}
   npm install @perplexity-ai/perplexity_ai
-  ```
+  ```bash
 </CodeGroup>
 
 ## Authentication
@@ -49,13 +51,13 @@ Set your API key as an environment variable. The SDK will automatically read it:
   <Tab title="macOS/Linux">
     ```bash theme={null}
     export PERPLEXITY_API_KEY="your_api_key_here"
-    ```
+    ```bash
   </Tab>
 
   <Tab title="Windows">
     ```powershell theme={null}
     setx PERPLEXITY_API_KEY "your_api_key_here"
-    ```
+    ```bash
   </Tab>
 </Tabs>
 
@@ -89,7 +91,7 @@ Use third-party models from OpenAI, Anthropic, Google, xAI, and other providers 
 
   print(f"Response ID: {response.id}")
   print(response.output_text)
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -105,7 +107,7 @@ Use third-party models from OpenAI, Anthropic, Google, xAI, and other providers 
 
   console.log(`Response ID: ${response.id}`);
   console.log(response.output_text);
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -118,7 +120,7 @@ Use third-party models from OpenAI, Anthropic, Google, xAI, and other providers 
       "instructions": "You have access to a web_search tool. Use it for questions about current events.",
       "max_output_tokens": 1000
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ### With Web Search Tool
@@ -144,7 +146,7 @@ Enable web search capabilities using the `web_search` tool:
 
   if response.status == "completed":
       print(response.output_text)
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -165,7 +167,7 @@ Enable web search capabilities using the `web_search` tool:
   if (response.status === "completed") {
       console.log(response.output_text);
   }
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -177,7 +179,7 @@ Enable web search capabilities using the `web_search` tool:
       "tools": [{"type": "web_search"}],
       "instructions": "You have access to a web_search tool. Use it when you need current information."
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ### Using a Preset
@@ -198,7 +200,7 @@ Presets provide optimized defaults for specific use cases. Start with a preset f
 
   print(f"Response ID: {response.id}")
   print(response.output_text)
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -213,7 +215,7 @@ Presets provide optimized defaults for specific use cases. Start with a preset f
 
   console.log(`Response ID: ${response.id}`);
   console.log(response.output_text);
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -223,7 +225,7 @@ Presets provide optimized defaults for specific use cases. Start with a preset f
       "preset": "pro-search",
       "input": "What are the latest developments in AI?"
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Input Formats
@@ -244,7 +246,7 @@ Simple string input for straightforward queries:
       model="openai/gpt-5.2",
       input="What are the latest AI developments?",
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -255,7 +257,7 @@ Simple string input for straightforward queries:
       model: "openai/gpt-5.2",
       input: "What are the latest AI developments?",
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -265,7 +267,7 @@ Simple string input for straightforward queries:
       "model": "openai/gpt-5.2",
       "input": "What are the latest AI developments?"
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ### Message Array Input
@@ -286,7 +288,7 @@ Use message arrays for multi-turn conversations:
       ],
       instructions="Provide detailed, well-researched answers.",
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -301,7 +303,7 @@ Use message arrays for multi-turn conversations:
       ],
       instructions: "Provide detailed, well-researched answers.",
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -315,7 +317,7 @@ Use message arrays for multi-turn conversations:
       ],
       "instructions": "Provide detailed, well-researched answers."
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Instructions Parameter
@@ -336,7 +338,7 @@ The `instructions` parameter provides system instructions or guidelines for the 
       instructions="You have access to a web_search tool. Use it for questions about current events, news, or recent developments. Use 1 query for simple questions. Keep queries brief: 2-5 words. NEVER ask permission to search - just search when appropriate",
       tools=[{"type": "web_search"}],
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   const response = await client.responses.create({
@@ -345,7 +347,7 @@ The `instructions` parameter provides system instructions or guidelines for the 
       instructions: "You have access to a web_search tool. Use it for questions about current events, news, or recent developments. Use 1 query for simple questions. Keep queries brief: 2-5 words. NEVER ask permission to search - just search when appropriate",
       tools: [{ type: "web_search" }],
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -357,7 +359,7 @@ The `instructions` parameter provides system instructions or guidelines for the 
       "instructions": "You have access to a web_search tool. Use it for questions about current events, news, or recent developments. Use 1 query for simple questions. Keep queries brief: 2-5 words. NEVER ask permission to search - just search when appropriate",
       "tools": [{"type": "web_search"}]
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Tools
@@ -388,7 +390,7 @@ The `web_search` tool can optionally include user location for localized results
       ],
       instructions="Use web_search to find current information.",
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   const response = await client.responses.create({
@@ -408,7 +410,7 @@ The `web_search` tool can optionally include user location for localized results
       ],
       instructions: "Use web_search to find current information.",
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -431,7 +433,7 @@ The `web_search` tool can optionally include user location for localized results
       ],
       "instructions": "Use web_search to find current information."
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Generation Parameters
@@ -445,7 +447,7 @@ Control response generation with standard parameters:
       input="Explain quantum computing",
       max_output_tokens=1000,  # Maximum tokens to generate
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   const response = await client.responses.create({
@@ -453,7 +455,7 @@ Control response generation with standard parameters:
       input: "Explain quantum computing",
       max_output_tokens: 1000,  // Maximum tokens to generate
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -464,7 +466,7 @@ Control response generation with standard parameters:
       "input": "Explain quantum computing",
       "max_output_tokens": 1000,
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Reasoning Effort
@@ -488,7 +490,7 @@ Control the reasoning effort level for reasoning models:
           "effort": "high"  # Use maximum reasoning
       },
   )
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   const response = await client.responses.create({
@@ -498,7 +500,7 @@ Control the reasoning effort level for reasoning models:
           effort: "high"  // Use maximum reasoning
       },
   });
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -511,7 +513,7 @@ Control the reasoning effort level for reasoning models:
         "effort": "high"
       }
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Streaming Responses
@@ -532,7 +534,7 @@ The Agent API supports streaming responses using Server-Sent Events (SSE). Enabl
           print(chunk.delta, end="", flush=True)
       elif chunk.type == "response.completed":
           print(f"\n\nResponse completed: {chunk.response.output_text}")
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   const response = await client.responses.create({
@@ -549,7 +551,7 @@ The Agent API supports streaming responses using Server-Sent Events (SSE). Enabl
           console.log(`\n\nResponse completed: ${chunk.response.output_text}`);
       }
   }
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -560,7 +562,7 @@ The Agent API supports streaming responses using Server-Sent Events (SSE). Enabl
       "input": "Explain quantum computing in detail",
       "stream": true
     }'
-  ```
+  ```text
 </CodeGroup>
 
 <Info>
@@ -590,7 +592,7 @@ Handle errors gracefully:
   except APIError as e:
       print(f"API Error: {e.message}")
       print(f"Status Code: {e.status_code}")
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -614,7 +616,7 @@ Handle errors gracefully:
           console.error(`Status Code: ${error.status}`);
       }
   }
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl https://api.perplexity.ai/v1/responses \
@@ -624,7 +626,7 @@ Handle errors gracefully:
       "model": "openai/gpt-5.2",
       "input": "What is AI?"
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 ## Response Structure
@@ -667,7 +669,7 @@ Handle errors gracefully:
     }
   }
 
-  ```
+  ```text
 </Accordion>
 
 ## Next Steps

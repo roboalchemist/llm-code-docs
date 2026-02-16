@@ -1,7 +1,6 @@
 # Prompt Guide
+
 Source: https://docs.perplexity.ai/docs/agent-api/prompt-guide
-
-
 
 ## Instructions
 
@@ -11,9 +10,9 @@ You can use the `instructions` parameter to provide instructions related to styl
   The real-time search component of our models does not attend to the system prompt.
 </Warning>
 
-**Example of a system prompt**
+## Example of a system prompt
 
-```
+```markdown
 You are a helpful AI assistant.
 
 Rules:
@@ -30,9 +29,9 @@ Steps:
 
 You should use the `input` parameter to pass in the actual query for which you need an answer. The input will be used to kick off a real-time web search to make sure the answer has the latest and the most relevant information needed.
 
-**Example of a user prompt**
+## Example of a user prompt
 
-```
+```markdown
 What are the best sushi restaurants in the world currently?
 ```
 

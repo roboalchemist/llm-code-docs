@@ -1,4 +1,5 @@
 # PosterLens | Scientific Poster Scanner & Research Assistant
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/posterlens
 
 An iOS app that transforms static scientific posters into interactive insights using OCR and Perplexity's Sonar Pro API for semantic search and context

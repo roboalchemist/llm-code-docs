@@ -1,7 +1,7 @@
+
 # Changelog
+
 Source: https://docs.perplexity.ai/docs/resources/changelog
-
-
 
 <Tip>
   Looking ahead? Check out our [Feature Roadmap](/docs/resources/feature-roadmap) to see what's coming next.
@@ -18,10 +18,10 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Key capabilities:**
 
-  * **Automatic detection**: Analyzes queries to identify when visual content adds value
-  * **Smart media selection**: Intelligently chooses between images, videos, or both based on query type
-  * **Context-aware**: Perfect for educational content, geographic queries, processes, and demonstrations
-  * **Configurable control**: Enable/disable and override media types as needed
+* **Automatic detection**: Analyzes queries to identify when visual content adds value
+* **Smart media selection**: Intelligently chooses between images, videos, or both based on query type
+* **Context-aware**: Perfect for educational content, geographic queries, processes, and demonstrations
+* **Configurable control**: Enable/disable and override media types as needed
 
   Available exclusively with `sonar-pro`, the Media Classifier enhances responses for visual concepts, locations, step-by-step processes, and educational content. [Learn more →](/docs/sonar/media/media-classifier)
 
@@ -29,9 +29,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   We've made several improvements to the Search API:
 
-  * **New `max_tokens` parameter**: Control the maximum tokens extracted per page in search results. This gives you finer control over response size and costs. [Learn more →](/docs/search/quickstart)
-  * **`last_updated_filter` support**: Filter search results by when content was last updated, in addition to publication date. Perfect for finding the most current information. [Learn more →](/docs/search/filters/date-time-filters)
-  * **Vercel AI SDK Support**: The Search API is now compatible with the Vercel AI SDK, allowing you to build with Perplexity in a framework-agnostic way. [Learn more →](https://ai-sdk.dev/tools-registry/perplexity-search)
+* **New `max_tokens` parameter**: Control the maximum tokens extracted per page in search results. This gives you finer control over response size and costs. [Learn more →](/docs/search/quickstart)
+* **`last_updated_filter` support**: Filter search results by when content was last updated, in addition to publication date. Perfect for finding the most current information. [Learn more →](/docs/search/filters/date-time-filters)
+* **Vercel AI SDK Support**: The Search API is now compatible with the Vercel AI SDK, allowing you to build with Perplexity in a framework-agnostic way. [Learn more →](https://ai-sdk.dev/tools-registry/perplexity-search)
 
   **Ecosystem & Community**
 
@@ -45,10 +45,10 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Key capabilities:**
 
-  * **Multi-step reasoning**: The model automatically performs multiple web searches and fetches URL content to answer complex queries
-  * **Real-time thought streaming**: Watch the model's reasoning process as it works through your question
-  * **Automatic classification**: Use `search_type: "auto"` to let the system intelligently route queries based on complexity
-  * **Built-in tools**: Access `web_search` and `fetch_url_content` tools that the model uses automatically
+* **Multi-step reasoning**: The model automatically performs multiple web searches and fetches URL content to answer complex queries
+* **Real-time thought streaming**: Watch the model's reasoning process as it works through your question
+* **Automatic classification**: Use `search_type: "auto"` to let the system intelligently route queries based on complexity
+* **Built-in tools**: Access `web_search` and `fetch_url_content` tools that the model uses automatically
 
   Learn more about Pro Search in our [Pro Search Quickstart](/docs/sonar/pro-search/quickstart) guide.
 
@@ -56,9 +56,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   The [Perplexity MCP Server](/docs/getting-started/integrations/mcp-server) now supports **one-click installation** for popular AI development environments:
 
-  * **Cursor**: Click to auto-configure the Perplexity MCP server
-  * **VS Code**: One-click setup via the VS Code MCP extension
-  * **Claude Desktop & Claude Code**: Easy JSON configuration
+* **Cursor**: Click to auto-configure the Perplexity MCP server
+* **VS Code**: One-click setup via the VS Code MCP extension
+* **Claude Desktop & Claude Code**: Easy JSON configuration
 
   The MCP server provides four powerful tools: `perplexity_search`, `perplexity_ask`, `perplexity_research`, and `perplexity_reason` — enabling AI assistants to access Perplexity's search and reasoning capabilities directly.
 </Update>
@@ -74,16 +74,16 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
   # Python
   pip install perplexityai
 
-  # Typescript  
+  # Typescript
   npm install @perplexity-ai/perplexity_ai
   ```
 
   **Features:**
 
-  * Full type definitions for all request parameters and response fields
-  * Support for Sonar and Search APIs
-  * Streaming support with async iterators
-  * Automatic environment variable handling for API keys
+* Full type definitions for all request parameters and response fields
+* Support for Sonar and Search APIs
+* Streaming support with async iterators
+* Automatic environment variable handling for API keys
 
   Get started with our [SDK Quickstart Guide](/docs/sdk/overview) and explore the [Sonar API Guide](/docs/sonar/quickstart) for detailed usage examples.
 
@@ -93,9 +93,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **New Search API Capabilities**
 
-  * **`language_preference`**: Specify preferred languages for search results (available for `sonar` and `sonar-pro`)
-  * **`search_domain_filter`**: Filter results to specific domains for more targeted searches
-  * **Date/time filters**: Enhanced control over result freshness with publication and update filters
+* **`language_preference`**: Specify preferred languages for search results (available for `sonar` and `sonar-pro`)
+* **`search_domain_filter`**: Filter results to specific domains for more targeted searches
+* **Date/time filters**: Enhanced control over result freshness with publication and update filters
     **Ecosystem & Community**
 
   New community showcase: [**StarPlex**](/docs/cookbook/showcase/starplex) — An AI-powered startup intelligence platform featuring an interactive 3D globe interface. Built with Sonar Pro, it helps entrepreneurs validate business ideas by mapping competitors, VCs, and market opportunities worldwide. Featured at recent hackathon events!
@@ -108,11 +108,11 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Key capabilities:**
 
-  * **Document Analysis**: Ask questions about document content and get detailed answers
-  * **Content Extraction**: Pull out key information, data points, and insights
-  * **Multi-format Support**: Work with PDF, Word documents, text files, and Rich Text Format
-  * **Large Document Handling**: Process lengthy documents efficiently
-  * **Multi-language Support**: Analyze documents in various languages
+* **Document Analysis**: Ask questions about document content and get detailed answers
+* **Content Extraction**: Pull out key information, data points, and insights
+* **Multi-format Support**: Work with PDF, Word documents, text files, and Rich Text Format
+* **Large Document Handling**: Process lengthy documents efficiently
+* **Multi-language Support**: Analyze documents in various languages
 
   Upload documents either via publicly accessible URLs using the `file_url` content type, similar to our existing image upload functionality.
 
@@ -126,17 +126,17 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Perfect for:**
 
-  * Building custom search experiences
-  * Integrating search results into your own applications
-  * Creating specialized workflows that need search data without AI responses
-  * Applications requiring just the search functionality
+* Building custom search experiences
+* Integrating search results into your own applications
+* Creating specialized workflows that need search data without AI responses
+* Applications requiring just the search functionality
 
   **Key features:**
 
-  * Direct access to Perplexity's search index
-  * All existing search filters and controls
-  * Faster responses since no LLM processing is involved
-  * Same powerful filtering options (domain, date range, academic sources, etc.)
+* Direct access to Perplexity's search index
+* All existing search filters and controls
+* Faster responses since no LLM processing is involved
+* Same powerful filtering options (domain, date range, academic sources, etc.)
 
   This complements our existing chat completions API and gives developers more flexibility in how they use Perplexity's search capabilities.
 
@@ -150,11 +150,11 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Key features:**
 
-  * **Seamless Rotation**: Replace API keys without service interruption
-  * **Automated Workflows**: Set up automatic key rotation schedules
-  * **Enhanced Security**: Regularly refresh keys to minimize security risks
-  * **Audit Trail**: Track key usage and rotation history
-  * **Zero Downtime**: Smooth transitions between old and new keys
+* **Seamless Rotation**: Replace API keys without service interruption
+* **Automated Workflows**: Set up automatic key rotation schedules
+* **Enhanced Security**: Regularly refresh keys to minimize security risks
+* **Audit Trail**: Track key usage and rotation history
+* **Zero Downtime**: Smooth transitions between old and new keys
 
   **How it works:**
 
@@ -166,10 +166,10 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Best practices:**
 
-  * Rotate keys every 30-90 days depending on your security requirements
-  * Use environment variables to manage keys in your applications
-  * Test key rotation in staging environments first
-  * Monitor key usage to ensure successful transitions
+* Rotate keys every 30-90 days depending on your security requirements
+* Use environment variables to manage keys in your applications
+* Test key rotation in staging environments first
+* Monitor key usage to ensure successful transitions
 
   Access key rotation features through your [API Portal](https://perplexity.ai/account/api).
 </Update>
@@ -208,10 +208,10 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **What's included:**
 
-  * **input\_tokens\_cost**: Cost attributed to input tokens
-  * **output\_tokens\_cost**: Cost attributed to output tokens
-  * **request\_cost**: Fixed cost per request
-  * **total\_cost**: The total cost for this API call
+* **input\_tokens\_cost**: Cost attributed to input tokens
+* **output\_tokens\_cost**: Cost attributed to output tokens
+* **request\_cost**: Fixed cost per request
+* **total\_cost**: The total cost for this API call
 
   This update enables easier tracking of usage and billing directly from each API response, giving you complete transparency into the costs associated with each request.
 </Update>
@@ -223,10 +223,10 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   This feature is particularly valuable for:
 
-  * Financial analysts researching company fundamentals
-  * Investment professionals conducting due diligence
-  * Compliance officers tracking regulatory changes
-  * Anyone requiring authoritative financial information directly from official sources
+* Financial analysts researching company fundamentals
+* Investment professionals conducting due diligence
+* Compliance officers tracking regulatory changes
+* Anyone requiring authoritative financial information directly from official sources
 
   The SEC filter works seamlessly with other search parameters like date filters and search context size, giving you precise control over your financial research queries.
 
@@ -257,15 +257,15 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **New fields available:**
 
-  * `latest_updated`: Filter results based on when the webpage was last modified or updated
-  * `published_after`: Filter by original publication date (existing)
-  * `published_before`: Filter by original publication date (existing)
+* `latest_updated`: Filter results based on when the webpage was last modified or updated
+* `published_after`: Filter by original publication date (existing)
+* `published_before`: Filter by original publication date (existing)
 
   The `latest_updated` field is particularly useful for:
 
-  * Finding the most current version of frequently updated content
-  * Ensuring you're working with the latest data from news sites, blogs, and documentation
-  * Tracking changes and updates to specific web resources over time
+* Finding the most current version of frequently updated content
+* Ensuring you're working with the latest data from news sites, blogs, and documentation
+* Tracking changes and updates to specific web resources over time
 
   **Example:**
 
@@ -295,9 +295,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   This feature is particularly valuable for:
 
-  * Students and researchers working on academic papers
-  * Professionals requiring scientifically accurate information
-  * Anyone seeking research-based answers instead of general web content
+* Students and researchers working on academic papers
+* Professionals requiring scientifically accurate information
+* Anyone seeking research-based answers instead of general web content
 
   The academic filter works seamlessly with other search parameters like `search_context_size` and date filters, giving you precise control over your research queries.
 
@@ -330,9 +330,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **Options:**
 
-  * `"low"`: Faster, simpler answers with reduced token usage
-  * `"medium"`: Balanced approach (default)
-  * `"high"`: Deeper, more thorough responses with increased token usage
+* `"low"`: Faster, simpler answers with reduced token usage
+* `"medium"`: Balanced approach (default)
+* `"high"`: Deeper, more thorough responses with increased token usage
 
   **Example:**
 
@@ -382,9 +382,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   The `search_results` field includes:
 
-  * `title`: The title of the search result page
-  * `url`: The URL of the search result
-  * `date`: The publication date of the content
+* `title`: The title of the search result page
+* `url`: The URL of the search result
+* `date`: The publication date of the content
 
   **Example:**
 
@@ -405,9 +405,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   This update makes it easier to:
 
-  * Verify the sources used in generating responses
-  * Create custom citation formats for your applications
-  * Filter or prioritize certain sources based on your needs
+* Verify the sources used in generating responses
+* Create custom citation formats for your applications
+* Filter or prioritize certain sources based on your needs
 
   **Update: The `citations` field has been fully deprecated and removed.** All applications should now use the `search_results` field, which provides more detailed information including titles, URLs, and publication dates.
 
@@ -421,9 +421,9 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   With this portal, you can:
 
-  * Organize and manage your API keys more effectively.
-  * Gain insights into your API usage and team activity.
-  * Streamline collaboration within your organization.
+* Organize and manage your API keys more effectively.
+* Gain insights into your API usage and team activity.
+* Streamline collaboration within your organization.
 
   Check it out here:\
   [https://www.perplexity.ai/account/api/group](https://www.perplexity.ai/account/api/group)
@@ -484,7 +484,7 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   **What's available now:**
 
-  * JSON structured outputs are supported across all models
+* JSON structured outputs are supported across all models
 
   This change allows developers to create more reliable and consistent applications from day one. We believe in empowering our community with the tools they need to succeed, and we're committed to continuing to improve accessibility to our advanced features.
 
@@ -498,12 +498,12 @@ Source: https://docs.perplexity.ai/docs/resources/changelog
 
   Key updates include:
 
-  * **Three new search modes** across most Sonar models:
+* **Three new search modes** across most Sonar models:
     * High: Maximum depth for complex queries
     * Medium: Balanced approach for moderate complexity
     * Low: Cost-efficient for straightforward queries (equivalent to current pricing)
 
-  * **Simplified billing structure**:
+* **Simplified billing structure**:
     * Transparent pricing for input/output tokens
     * No charges for citation tokens in responses (except for Sonar Deep Research)
 

@@ -1,7 +1,6 @@
 # Search Domain Filter
+
 Source: https://docs.perplexity.ai/docs/search/filters/domain-filter
-
-
 
 <Note>
   The `search_domain_filter` parameter allows you to limit search results to specific domains or exclude certain domains from search results. This supports domain-level filtering for precise content control.

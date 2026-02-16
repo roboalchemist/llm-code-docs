@@ -1,4 +1,5 @@
 # Flow & Focus | Personalized News for Genuine Understanding
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/flow-and-focus
 
 A personalized news app combining vertical feed discovery with AI-powered deep dives using Perplexity Sonar Pro and Deep Research models

@@ -1,4 +1,5 @@
 # Presets
+
 Source: https://docs.perplexity.ai/docs/agent-api/presets
 
 Explore Perplexity's Agent API presets - pre-configured setups optimized for different use cases with specific models, token limits, and tool access.

@@ -1,7 +1,6 @@
 # Search Date and Time Filters
+
 Source: https://docs.perplexity.ai/docs/search/filters/date-time-filters
-
-
 
 <Note>
   The `search_after_date_filter` and `search_before_date_filter` parameters allow you to restrict search results to a specific publication date range. Only results with publication dates falling between these dates will be returned.
@@ -76,276 +75,286 @@ These filters will be applied in addition to any other search parameters.
 
 ## Examples
 
-**1. Limiting Results by Publication Date Range**
+## 1. Limiting Results by Publication Date Range
 
 This example limits search results to content published between March 1, 2025, and March 5, 2025.
 
-**Request Example**
+### Request Example
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  response = client.search(
-      query="latest AI developments",
-      max_results=10,
-      search_after_date_filter="3/1/2025",
-      search_before_date_filter="3/5/2025"
-  )
+client = Perplexity()
 
-  print(response)
-  ```
+response = client.search(
+    query="latest AI developments",
+    max_results=10,
+    search_after_date_filter="3/1/2025",
+    search_before_date_filter="3/5/2025"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+print(response)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const response = await client.search({
-    query: "latest AI developments",
-    max_results: 10,
-    search_after_date_filter: "3/1/2025",
-    search_before_date_filter: "3/5/2025"
-  });
+const client = new Perplexity();
 
-  console.log(response);
-  ```
+const response = await client.search({
+  query: "latest AI developments",
+  max_results: 10,
+  search_after_date_filter: "3/1/2025",
+  search_before_date_filter: "3/5/2025"
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "latest AI developments",
-      "max_results": 10,
-      "search_after_date_filter": "3/1/2025",
-      "search_before_date_filter": "3/5/2025"
-    }' | jq
-  ```
+console.log(response);
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "latest AI developments",
+    "max_results": 10,
+    "search_after_date_filter": "3/1/2025",
+    "search_before_date_filter": "3/5/2025"
+  }' | jq
+```
+
 </CodeGroup>
 
-**2. Filtering with a Single Publication Date Parameter**
+## 2. Filtering with a Single Publication Date Parameter
 
 If you only wish to restrict the results to those published on or after a specific date, include just the `search_after_date_filter`:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  response = client.search(
-      query="tech news published after March 1, 2025",
-      max_results=10,
-      search_after_date_filter="3/1/2025"
-  )
+client = Perplexity()
 
-  print(response)
-  ```
+response = client.search(
+    query="tech news published after March 1, 2025",
+    max_results=10,
+    search_after_date_filter="3/1/2025"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+print(response)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const response = await client.search({
-    query: "tech news published after March 1, 2025",
-    max_results: 10,
-    search_after_date_filter: "3/1/2025"
-  });
+const client = new Perplexity();
 
-  console.log(response);
-  ```
+const response = await client.search({
+  query: "tech news published after March 1, 2025",
+  max_results: 10,
+  search_after_date_filter: "3/1/2025"
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "tech news published after March 1, 2025",
-      "max_results": 10,
-      "search_after_date_filter": "3/1/2025"
-    }' | jq
-  ```
+console.log(response);
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "tech news published after March 1, 2025",
+    "max_results": 10,
+    "search_after_date_filter": "3/1/2025"
+  }' | jq
+```
+
 </CodeGroup>
 
-**3. Filtering by Last Updated Date Range**
+## 3. Filtering by Last Updated Date Range
 
 This example limits search results to content that was last updated between July 1, 2025, and December 30, 2025. This is useful for finding recently maintained or refreshed content.
 
-**Request Example**
+### Request Examples
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  response = client.search(
-      query="recently updated tech articles",
-      max_results=10,
-      last_updated_after_filter="07/01/2025",
-      last_updated_before_filter="12/30/2025"
-  )
+client = Perplexity()
 
-  print(response)
-  ```
+response = client.search(
+    query="recently updated tech articles",
+    max_results=10,
+    last_updated_after_filter="07/01/2025",
+    last_updated_before_filter="12/30/2025"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+print(response)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const response = await client.search({
-    query: "recently updated tech articles",
-    max_results: 10,
-    last_updated_after_filter: "07/01/2025",
-    last_updated_before_filter: "12/30/2025"
-  });
+const client = new Perplexity();
 
-  console.log(response);
-  ```
+const response = await client.search({
+  query: "recently updated tech articles",
+  max_results: 10,
+  last_updated_after_filter: "07/01/2025",
+  last_updated_before_filter: "12/30/2025"
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "recently updated tech articles",
-      "max_results": 10,
-      "last_updated_after_filter": "07/01/2025",
-      "last_updated_before_filter": "12/30/2025"
-    }' | jq
-  ```
+console.log(response);
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "recently updated tech articles",
+    "max_results": 10,
+    "last_updated_after_filter": "07/01/2025",
+    "last_updated_before_filter": "12/30/2025"
+  }' | jq
+```
+
 </CodeGroup>
 
-**4. Using Search Recency Filter**
+## 4. Using Search Recency Filter
 
 The `search_recency_filter` provides a convenient way to filter results by predefined time periods without specifying exact dates:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  response = client.search(
-      query="latest AI developments",
-      max_results=10,
-      search_recency_filter="week"
-  )
+client = Perplexity()
 
-  print(response)
-  ```
+response = client.search(
+    query="latest AI developments",
+    max_results=10,
+    search_recency_filter="week"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+print(response)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const response = await client.search({
-    query: "latest AI developments",
-    max_results: 10,
-    search_recency_filter: "week"
-  });
+const client = new Perplexity();
 
-  console.log(response);
-  ```
+const response = await client.search({
+  query: "latest AI developments",
+  max_results: 10,
+  search_recency_filter: "week"
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "latest AI developments",
-      "max_results": 10,
-      "search_recency_filter": "week"
-    }' | jq
-  ```
+console.log(response);
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "latest AI developments",
+    "max_results": 10,
+    "search_recency_filter": "week"
+  }' | jq
+```
+
 </CodeGroup>
 
 This example will return only content from the past 7 days, automatically calculated from the current date.
 
-**5. Different Recency Filter Options**
+## 5. Different Recency Filter Options
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  # Get content from the past day
-  day_response = client.search(
-      query="breaking tech news",
-      max_results=5,
-      search_recency_filter="day"
-  )
+client = Perplexity()
 
-  # Get content from the past month
-  month_response = client.search(
-      query="AI research developments",
-      max_results=10,
-      search_recency_filter="month"
-  )
+# Get content from the past day
+day_response = client.search(
+    query="breaking tech news",
+    max_results=5,
+    search_recency_filter="day"
+)
 
-  # Get content from the past year
-  year_response = client.search(
-      query="major tech trends",
-      max_results=15,
-      search_recency_filter="year"
-  )
-  ```
+# Get content from the past month
+month_response = client.search(
+    query="AI research developments",
+    max_results=10,
+    search_recency_filter="month"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+# Get content from the past year
+year_response = client.search(
+    query="major tech trends",
+    max_results=15,
+    search_recency_filter="year"
+)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // Get content from the past day
-  const dayResponse = await client.search({
-    query: "breaking tech news",
-    max_results: 5,
-    search_recency_filter: "day"
-  });
+const client = new Perplexity();
 
-  // Get content from the past month
-  const monthResponse = await client.search({
-    query: "AI research developments",
-    max_results: 10,
-    search_recency_filter: "month"
-  });
+// Get content from the past day
+const dayResponse = await client.search({
+  query: "breaking tech news",
+  max_results: 5,
+  search_recency_filter: "day"
+});
 
-  // Get content from the past year
-  const yearResponse = await client.search({
-    query: "major tech trends",
-    max_results: 15,
-    search_recency_filter: "year"
-  });
-  ```
+// Get content from the past month
+const monthResponse = await client.search({
+  query: "AI research developments",
+  max_results: 10,
+  search_recency_filter: "month"
+});
 
-  ```bash cURL theme={null}
-  # Get content from the past day
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "breaking tech news",
-      "max_results": 5,
-      "search_recency_filter": "day"
-    }' | jq
+// Get content from the past year
+const yearResponse = await client.search({
+  query: "major tech trends",
+  max_results: 15,
+  search_recency_filter: "year"
+});
+```
 
-  # Get content from the past month
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "AI research developments",
-      "max_results": 10,
-      "search_recency_filter": "month"
-    }' | jq
-  ```
+```bash
+# Get content from the past day
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "breaking tech news",
+    "max_results": 5,
+    "search_recency_filter": "day"
+  }' | jq
+
+# Get content from the past month
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "AI research developments",
+    "max_results": 10,
+    "search_recency_filter": "month"
+  }' | jq
+```
+
 </CodeGroup>
 
 ## Parameter Reference
@@ -392,45 +401,47 @@ This example will return only content from the past 7 days, automatically calcul
 
 ## Best Practices
 
-**Date Format**
+### Date Format
 
 * Strict Format: Dates must match the "%m/%d/%Y" format exactly. For example, "3/1/2025" or "03/01/2025" is acceptable.
 * Consistency: Use one or both date filters consistently based on your search needs. Combining both provides a clear range.
 
-**Filter Selection**
+### Filter Selection
 
 * Choose the Right Filter Type: Use publication date filters (`search_after_date_filter`/`search_before_date_filter`) when you care about when content was originally created. Use last updated filters (`last_updated_after_filter`/`last_updated_before_filter`) when you need recently maintained content. Use recency filters (`search_recency_filter`) for quick, relative time filtering.
 * Recency vs. Exact Dates: Use `search_recency_filter` for convenience when you want recent content (e.g., "past week"). Use specific date filters when you need precise control over the time range.
 * Combining Filters: You can use both publication and last updated filters together to find content that meets both criteria (e.g., published in 2024 but updated recently). Note that `search_recency_filter` cannot be combined with specific date filters (`search_after_date_filter`/`search_before_date_filter` or `last_updated_after_filter`/`last_updated_before_filter`).
 
-**Client-Side Validation**
+### Client-Side Validation
 
 * Regex Check: Validate date strings on the client side using a regex such as:
 
 <CodeGroup>
-  ```bash theme={null}
-  date_regex='^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[01])/[0-9]{4}$'
-  ```
 
-  ```python theme={null}
-  date_regex = r'^(0?[1-9]|1[0-2])/(0?[1-9]|[12]\d|3[01])/\d{4}$'
-  ```
+```bash
+date_regex='^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[01])/[0-9]{4}$'
+```
+
+```python
+date_regex = r'^(0?[1-9]|1[0-2])/(0?[1-9]|[12]\d|3[01])/\d{4}$'
+```
+
 </CodeGroup>
 
 This ensures that dates conform to the required format before sending the request.
 
-**Performance Considerations**
+### Performance Considerations
 
 * Narrowing the Search: Applying date range filters typically reduces the number of results, which may improve response times and result relevance.
 * Avoid Over-Restriction: Ensure that the date range is neither too narrow (limiting useful results) nor too broad (defeating the purpose of the filter).
 
 ## Advanced Usage Patterns
 
-**Finding Breaking News**
+### Finding Breaking News
 
 Use the `search_recency_filter` with "day" to find the most recent breaking news:
 
-```python theme={null}
+```python
 response = client.search(
     query="breaking news technology",
     max_results=5,
@@ -438,11 +449,11 @@ response = client.search(
 )
 ```
 
-**Historical Research**
+### Historical Research
 
 Use specific date ranges to research historical events or trends:
 
-```python theme={null}
+```python
 response = client.search(
     query="AI developments",
     max_results=20,
@@ -451,11 +462,11 @@ response = client.search(
 )
 ```
 
-**Finding Recently Maintained Content**
+### Finding Recently Maintained Content
 
 Use last updated filters to find content that has been refreshed or maintained recently:
 
-```python theme={null}
+```python
 response = client.search(
     query="React best practices",
     max_results=10,
@@ -463,8 +474,8 @@ response = client.search(
 )
 ```
 
-**Trend Analysis**
+### Trend Analysis
 
 Compare different time periods by making multiple searches:
 
-```python theme={null}
+```python

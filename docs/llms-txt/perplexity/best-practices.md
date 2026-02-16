@@ -1,4 +1,6 @@
+
 # Best Practices
+
 Source: https://docs.perplexity.ai/docs/search/best-practices
 
 Learn best practices for optimizing search queries and implementing efficient async patterns with Perplexity's Search API.
@@ -28,7 +30,7 @@ This guide covers essential best practices for getting the most out of Perplexit
           query="AI medical",
           max_results=10
       )
-      ```
+      ```text
 
       ```typescript Typescript theme={null}
       // Better: Specific query
@@ -42,7 +44,7 @@ This guide covers essential best practices for getting the most out of Perplexit
           query: "AI medical",
           maxResults: 10
       });
-      ```
+      ```text
     </CodeGroup>
 
     <Tip>
@@ -75,7 +77,7 @@ This guide covers essential best practices for getting the most out of Perplexit
           for result in query_results:
               print(f"  {result.title}: {result.url}")
           print("---")
-      ```
+      ```text
 
       ```typescript Typescript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -100,7 +102,7 @@ This guide covers essential best practices for getting the most out of Perplexit
           });
           console.log("---");
       });
-      ```
+      ```text
     </CodeGroup>
 
     <Info>
@@ -136,14 +138,14 @@ This guide covers essential best practices for getting the most out of Perplexit
               print(f"{result.title}: {result.url}")
       except RateLimitError:
           print("Maximum retries exceeded for search")
-      ```
+      ```text
 
       ```typescript Typescript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
       async function searchWithRetry(
-          client: Perplexity, 
-          query: string, 
+          client: Perplexity,
+          query: string,
           maxRetries: number = 3
       ) {
           for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -171,7 +173,7 @@ This guide covers essential best practices for getting the most out of Perplexit
       } catch (error) {
           console.log("Maximum retries exceeded for search");
       }
-      ```
+      ```text
     </CodeGroup>
   </Step>
 
@@ -186,29 +188,29 @@ This guide covers essential best practices for getting the most out of Perplexit
       async def batch_search(queries, batch_size=3, delay_ms=1000):
           async with AsyncPerplexity() as client:
               results = []
-              
+
               for i in range(0, len(queries), batch_size):
                   batch = queries[i:i + batch_size]
-                  
+
                   batch_tasks = [
                       client.search.create(query=query, max_results=5)
                       for query in batch
                   ]
-                  
+
                   batch_results = await asyncio.gather(*batch_tasks)
                   results.extend(batch_results)
-                  
+
                   # Add delay between batches
                   if i + batch_size < len(queries):
                       await asyncio.sleep(delay_ms / 1000)
-              
+
               return results
 
       # Usage
       queries = ["AI developments", "climate change", "space exploration"]
       results = asyncio.run(batch_search(queries))
       print(f"Processed {len(results)} searches")
-      ```
+      ```text
 
       ```typescript Typescript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -220,26 +222,26 @@ This guide covers essential best practices for getting the most out of Perplexit
       ) {
           const client = new Perplexity();
           const results = [];
-          
+
           for (let i = 0; i < queries.length; i += batchSize) {
               const batch = queries.slice(i, i + batchSize);
-              
+
               const batchPromises = batch.map(query =>
                   client.search.create({
                       query,
                       maxResults: 5
                   })
               );
-              
+
               const batchResults = await Promise.all(batchPromises);
               results.push(...batchResults);
-              
+
               // Add delay between batches
               if (i + batchSize < queries.length) {
                   await new Promise(resolve => setTimeout(resolve, delayMs));
               }
           }
-          
+
           return results;
       }
 
@@ -247,7 +249,7 @@ This guide covers essential best practices for getting the most out of Perplexit
       const queries = ["AI developments", "climate change", "space exploration"];
       const results = await batchSearch(queries);
       console.log(`Processed ${results.length} searches`);
-      ```
+      ```text
     </CodeGroup>
   </Step>
 </Steps>
@@ -278,9 +280,9 @@ For high-performance applications requiring concurrent requests, use the async c
                   max_results=5
               )
           ]
-          
+
           results = await asyncio.gather(*tasks)
-          
+
           for i, search in enumerate(results):
               print(f"Query {i+1} results:")
               for result in search.results:
@@ -288,7 +290,7 @@ For high-performance applications requiring concurrent requests, use the async c
               print("---")
 
   asyncio.run(main())
-  ```
+  ```python
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -311,9 +313,9 @@ For high-performance applications requiring concurrent requests, use the async c
               maxResults: 5
           })
       ];
-      
+
       const results = await Promise.all(tasks);
-      
+
       results.forEach((search, i) => {
           console.log(`Query ${i+1} results:`);
           search.results.forEach(result => {
@@ -324,7 +326,7 @@ For high-performance applications requiring concurrent requests, use the async c
   }
 
   main();
-  ```
+  ```text
 
   ```javascript JavaScript theme={null}
   const Perplexity = require('@perplexity-ai/perplexity_ai');
@@ -347,9 +349,9 @@ For high-performance applications requiring concurrent requests, use the async c
               maxResults: 5
           })
       ];
-      
+
       const results = await Promise.all(tasks);
-      
+
       results.forEach((search, i) => {
           console.log(`Query ${i+1} results:`);
           search.results.forEach(result => {
@@ -360,7 +362,7 @@ For high-performance applications requiring concurrent requests, use the async c
   }
 
   main();
-  ```
+  ```text
 </CodeGroup>
 
 ### Advanced Async Patterns
@@ -375,30 +377,30 @@ For large-scale applications, implement controlled concurrency with rate limitin
   from perplexity import AsyncPerplexity
 
   class SearchManager:
-      def __init__(self, max_concurrent=5, delay_between_batches=1.0):
+      def **init**(self, max_concurrent=5, delay_between_batches=1.0):
           self.max_concurrent = max_concurrent
           self.delay_between_batches = delay_between_batches
           self.semaphore = asyncio.Semaphore(max_concurrent)
-      
+
       async def search_single(self, client, query):
           async with self.semaphore:
               return await client.search.create(query=query, max_results=5)
-      
+
       async def search_many(self, queries):
           async with AsyncPerplexity() as client:
               tasks = [
-                  self.search_single(client, query) 
+                  self.search_single(client, query)
                   for query in queries
               ]
-              
+
               results = await asyncio.gather(*tasks, return_exceptions=True)
-              
+
               # Filter out exceptions and return successful results
               successful_results = [
-                  result for result in results 
+                  result for result in results
                   if not isinstance(result, Exception)
               ]
-              
+
               return successful_results
 
   # Usage
@@ -411,12 +413,12 @@ For large-scale applications, implement controlled concurrency with rate limitin
           "biotechnology breakthroughs",
           "space exploration updates"
       ]
-      
+
       results = await manager.search_many(queries)
       print(f"Successfully processed {len(results)} out of {len(queries)} searches")
 
   asyncio.run(main())
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -424,42 +426,42 @@ For large-scale applications, implement controlled concurrency with rate limitin
   class SearchManager {
       private maxConcurrent: number;
       private delayBetweenBatches: number;
-      
+
       constructor(maxConcurrent: number = 5, delayBetweenBatches: number = 1000) {
           this.maxConcurrent = maxConcurrent;
           this.delayBetweenBatches = delayBetweenBatches;
       }
-      
+
       async searchMany(queries: string[]) {
           const client = new Perplexity();
           const results = [];
-          
+
           // Process in batches to respect rate limits
           for (let i = 0; i < queries.length; i += this.maxConcurrent) {
               const batch = queries.slice(i, i + this.maxConcurrent);
-              
+
               const batchPromises = batch.map(query =>
                   client.search.create({ query, maxResults: 5 })
                       .catch(error => ({ error, query }))
               );
-              
+
               const batchResults = await Promise.all(batchPromises);
-              
+
               // Filter out errors and collect successful results
               const successfulResults = batchResults.filter(
                   result => !('error' in result)
               );
-              
+
               results.push(...successfulResults);
-              
+
               // Add delay between batches
               if (i + this.maxConcurrent < queries.length) {
-                  await new Promise(resolve => 
+                  await new Promise(resolve =>
                       setTimeout(resolve, this.delayBetweenBatches)
                   );
               }
           }
-          
+
           return results;
       }
   }
@@ -469,18 +471,18 @@ For large-scale applications, implement controlled concurrency with rate limitin
       const manager = new SearchManager(3, 1000);
       const queries = [
           "AI research 2024",
-          "quantum computing advances", 
+          "quantum computing advances",
           "renewable energy innovations",
           "biotechnology breakthroughs",
           "space exploration updates"
       ];
-      
+
       const results = await manager.searchMany(queries);
       console.log(`Successfully processed ${results.length} out of ${queries.length} searches`);
   }
 
   main();
-  ```
+  ```text
 </CodeGroup>
 
 #### Error Handling in Async Operations
@@ -494,7 +496,7 @@ Implement robust error handling for async search operations:
   from perplexity import AsyncPerplexity, APIStatusError, RateLimitError
 
   logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger(__name__)
+  logger = logging.getLogger(**name**)
 
   async def resilient_search(client, query, max_retries=3):
       for attempt in range(max_retries):
@@ -502,7 +504,7 @@ Implement robust error handling for async search operations:
               result = await client.search.create(query=query, max_results=5)
               logger.info(f"Search successful for: {query}")
               return result
-              
+
           except RateLimitError as e:
               if attempt < max_retries - 1:
                   delay = 2 ** attempt
@@ -511,11 +513,11 @@ Implement robust error handling for async search operations:
               else:
                   logger.error(f"Max retries exceeded for: {query}")
                   return None
-                  
+
           except APIStatusError as e:
               logger.error(f"API error for '{query}': {e}")
               return None
-              
+
           except Exception as e:
               logger.error(f"Unexpected error for '{query}': {e}")
               return None
@@ -523,22 +525,22 @@ Implement robust error handling for async search operations:
   async def main():
       async with AsyncPerplexity() as client:
           queries = ["AI developments", "invalid query", "tech trends"]
-          
+
           tasks = [resilient_search(client, query) for query in queries]
           results = await asyncio.gather(*tasks)
-          
+
           successful_results = [r for r in results if r is not None]
           print(f"Successful searches: {len(successful_results)}/{len(queries)}")
 
   asyncio.run(main())
-  ```
+  ```text
 
   ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function resilientSearch(
-      client: Perplexity, 
-      query: string, 
+      client: Perplexity,
+      query: string,
       maxRetries: number = 3
   ) {
       for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -546,7 +548,7 @@ Implement robust error handling for async search operations:
               const result = await client.search.create({ query, maxResults: 5 });
               console.log(`Search successful for: ${query}`);
               return result;
-              
+
           } catch (error: any) {
               if (error.constructor.name === 'RateLimitError') {
                   if (attempt < maxRetries - 1) {
@@ -563,23 +565,23 @@ Implement robust error handling for async search operations:
               }
           }
       }
-      
+
       return null;
   }
 
   async function main() {
       const client = new Perplexity();
       const queries = ["AI developments", "invalid query", "tech trends"];
-      
+
       const tasks = queries.map(query => resilientSearch(client, query));
       const results = await Promise.all(tasks);
-      
+
       const successfulResults = results.filter(r => r !== null);
       console.log(`Successful searches: ${successfulResults.length}/${queries.length}`);
   }
 
   main();
-  ```
+  ```text
 </CodeGroup>
 
 ## Performance Optimization Tips
@@ -594,7 +596,7 @@ Implement robust error handling for async search operations:
 
     # Avoid: Over-requesting results
     search = client.search.create(query="tech news", max_results=50)
-    ```
+    ```text
   </Step>
 
   <Step title="Cache frequently used searches">
@@ -606,10 +608,10 @@ Implement robust error handling for async search operations:
       from typing import Dict, Tuple, Optional
 
       class SearchCache:
-          def __init__(self, ttl_seconds=3600):  # 1 hour default
+          def **init**(self, ttl_seconds=3600):  # 1 hour default
               self.cache: Dict[str, Tuple[any, float]] = {}
               self.ttl = ttl_seconds
-          
+
           def get(self, query: str) -> Optional[any]:
               if query in self.cache:
                   result, timestamp = self.cache[query]
@@ -618,7 +620,7 @@ Implement robust error handling for async search operations:
                   else:
                       del self.cache[query]
               return None
-          
+
           def set(self, query: str, result: any):
               self.cache[query] = (result, time.time())
 
@@ -629,21 +631,21 @@ Implement robust error handling for async search operations:
           cached_result = cache.get(query)
           if cached_result:
               return cached_result
-          
+
           result = client.search.create(query=query)
           cache.set(query, result)
           return result
-      ```
+      ```text
 
       ```typescript Typescript theme={null}
       class SearchCache {
           private cache: Map<string, { result: any; timestamp: number }> = new Map();
           private ttl: number;
-          
+
           constructor(ttlSeconds: number = 3600) {  // 1 hour default
               this.ttl = ttlSeconds * 1000;  // Convert to milliseconds
           }
-          
+
           get(query: string): any | null {
               const cached = this.cache.get(query);
               if (cached) {
@@ -655,7 +657,7 @@ Implement robust error handling for async search operations:
               }
               return null;
           }
-          
+
           set(query: string, result: any): void {
               this.cache.set(query, { result, timestamp: Date.now() });
           }
@@ -669,12 +671,12 @@ Implement robust error handling for async search operations:
           if (cachedResult) {
               return cachedResult;
           }
-          
+
           const result = await client.search.create({ query });
           cache.set(query, result);
           return result;
       }
-      ```
+      ```text
     </CodeGroup>
   </Step>
 </Steps>

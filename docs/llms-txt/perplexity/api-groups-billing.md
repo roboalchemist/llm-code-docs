@@ -1,4 +1,6 @@
+
 # API Groups & Billing
+
 Source: https://docs.perplexity.ai/docs/getting-started/api-groups
 
 Learn how to use the Perplexity API Portal to manage access, usage, billing, and team collaboration.

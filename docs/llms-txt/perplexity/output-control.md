@@ -1,4 +1,5 @@
 # Output Control
+
 Source: https://docs.perplexity.ai/docs/agent-api/output-control
 
 Streaming and structured outputs for the Agent API
@@ -13,119 +14,115 @@ Streaming allows you to receive partial responses from the Perplexity API as the
 
 To enable streaming, set `stream=True` (Python) or `stream: true` (TypeScript) when creating responses:
 
-<CodeGroup>
-  ```python Python SDK theme={null}
-  from perplexity import Perplexity
+```python
+from perplexity import Perplexity
 
-  client = Perplexity()
+client = Perplexity()
 
-  # Create streaming response
-  stream = client.responses.create(
-      preset="fast-search",
-      input="What is the latest in AI research?",
-      stream=True
-  )
+# Create streaming response
+stream = client.responses.create(
+  preset="fast-search",
+  input="What is the latest in AI research?",
+  stream=True
+)
 
-  # Process streaming response
-  for event in stream:
-      if event.type == "response.output_text.delta":
-          print(event.delta, end="")
-      elif event.type == "response.completed":
-          print(f"\n\nCompleted: {event.response.usage}")
-  ```
+# Process streaming response
+for event in stream:
+  if event.type == "response.output_text.delta":
+      print(event.delta, end="")
+  elif event.type == "response.completed":
+      print(f"\n\nCompleted: {event.response.usage}")
+```
 
-  ```typescript TypeScript SDK theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const client = new Perplexity();
+const client = new Perplexity();
 
-  // Create streaming response
-  const stream = await client.responses.create({
-    preset: "fast-search",
-    input: "What is the latest in AI research?",
-    stream: true
-  });
+// Create streaming response
+const stream = await client.responses.create({
+preset: "fast-search",
+input: "What is the latest in AI research?",
+stream: true
+});
 
-  // Process streaming response
-  for await (const event of stream) {
-    if (event.type === "response.output_text.delta") {
-      process.stdout.write(event.delta);
-    }
-  }
-  ```
+// Process streaming response
+for await (const event of stream) {
+if (event.type === "response.output_text.delta") {
+  process.stdout.write(event.delta);
+}
+}
+```
 
-  ```bash cURL theme={null}
-  curl -X POST "https://api.perplexity.ai/v1/responses" \
-    -H "Authorization: Bearer YOUR_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "preset": "fast-search",
-      "input": "What is the latest in AI research?",
-      "stream": true
-    }'
-  ```
-</CodeGroup>
+```bash
+curl -X POST "https://api.perplexity.ai/v1/responses" \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+  "preset": "fast-search",
+  "input": "What is the latest in AI research?",
+  "stream": true
+}'
+```
 
 ### Error Handling
 
 Handle errors gracefully during streaming:
 
-<CodeGroup>
-  ```python Python SDK theme={null}
-  import perplexity
-  from perplexity import Perplexity
+```python
+import perplexity
+from perplexity import Perplexity
 
-  client = Perplexity()
+client = Perplexity()
 
-  try:
-      stream = client.responses.create(
-          preset="fast-search",
-          input="Explain machine learning concepts",
-          stream=True
-      )
-      
-      for event in stream:
-          if event.type == "response.output_text.delta":
-              print(event.delta, end="")
-          elif event.type == "response.completed":
-              print(f"\n\nCompleted: {event.response.usage}")
-              
-  except perplexity.APIConnectionError as e:
-      print(f"Network connection failed: {e}")
-  except perplexity.RateLimitError as e:
-      print(f"Rate limit exceeded, please retry later: {e}")
-  except perplexity.APIStatusError as e:
-      print(f"API error {e.status_code}: {e.response}")
-  ```
-
-  ```typescript TypeScript SDK theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  const client = new Perplexity();
-
-  try {
-    const stream = await client.responses.create({
-      preset: "fast-search",
-      input: "Explain machine learning concepts",
-      stream: true
-    });
+try:
+    stream = client.responses.create(
+        preset="fast-search",
+        input="Explain machine learning concepts",
+        stream=True
+    )
     
-    for await (const event of stream) {
-      if (event.type === "response.output_text.delta") {
-        process.stdout.write(event.delta);
-      }
-    }
-  } catch (error) {
-    if (error instanceof Perplexity.APIConnectionError) {
-      console.error("Network connection failed:", error.cause);
-    } else if (error instanceof Perplexity.RateLimitError) {
-      console.error("Rate limit exceeded, please retry later");
-    } else if (error instanceof Perplexity.APIError) {
-      console.error(`API error ${error.status}: ${error.message}`);
+    for event in stream:
+        if event.type == "response.output_text.delta":
+            print(event.delta, end="")
+        elif event.type == "response.completed":
+            print(f"\n\nCompleted: {event.response.usage}")
+            
+except perplexity.APIConnectionError as e:
+    print(f"Network connection failed: {e}")
+except perplexity.RateLimitError as e:
+    print(f"Rate limit exceeded, please retry later: {e}")
+except perplexity.APIStatusError as e:
+    print(f"API error {e.status_code}: {e.response}")
+```
+
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
+
+const client = new Perplexity();
+
+try {
+  const stream = await client.responses.create({
+    preset: "fast-search",
+    input: "Explain machine learning concepts",
+    stream: true
+  });
+  
+  for await (const event of stream) {
+    if (event.type === "response.output_text.delta") {
+      process.stdout.write(event.delta);
     }
   }
-  ```
-</CodeGroup>
+} catch (error) {
+  if (error instanceof Perplexity.APIConnectionError) {
+    console.error("Network connection failed:", error.cause);
+  } else if (error instanceof Perplexity.RateLimitError) {
+    console.error("Rate limit exceeded, please retry later");
+  } else if (error instanceof Perplexity.APIError) {
+    console.error(`API error ${error.status}: ${error.message}`);
+  }
+}
+```
 
 <Warning>
   If you need search results immediately for your user interface, consider using non-streaming requests for use cases where search result display is critical to the real-time user experience.
@@ -137,15 +134,15 @@ Structured outputs enable you to enforce specific response formats from Perplexi
 
 We currently support **JSON Schema** structured outputs. To enable structured outputs, add a `response_format` field to your request:
 
-```json theme={null}
+```json
 {
-  "response_format": {
-    "type": "json_schema",
-    "json_schema": {
-      "name": "your_schema_name",
-      "schema": { /* your JSON schema object */ }
-    }
+"response_format": {
+  "type": "json_schema",
+  "json_schema": {
+    "name": "your_schema_name",
+    "schema": { /* your JSON schema object */ }
   }
+}
 }
 ```
 
@@ -161,116 +158,114 @@ The `name` field is required and must be 1-64 alphanumeric characters. The schem
 
 ### Example
 
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
-  from typing import List, Optional
-  from pydantic import BaseModel
+```python
+from perplexity import Perplexity
+from typing import List, Optional
+from pydantic import BaseModel
 
-  class FinancialMetrics(BaseModel):
-      company: str
-      quarter: str
-      revenue: float
-      net_income: float
-      eps: float
-      revenue_growth_yoy: Optional[float] = None
-      key_highlights: Optional[List[str]] = None
+class FinancialMetrics(BaseModel):
+    company: str
+    quarter: str
+    revenue: float
+    net_income: float
+    eps: float
+    revenue_growth_yoy: Optional[float] = None
+    key_highlights: Optional[List[str]] = None
 
-  client = Perplexity()
+client = Perplexity()
 
-  response = client.responses.create(
-      preset="pro-search",
-      input="Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
-      response_format={
-          "type": "json_schema",
-          "json_schema": {
-              "name": "financial_metrics",
-              "schema": FinancialMetrics.model_json_schema()
+response = client.responses.create(
+    preset="pro-search",
+    input="Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
+    response_format={
+        "type": "json_schema",
+        "json_schema": {
+            "name": "financial_metrics",
+            "schema": FinancialMetrics.model_json_schema()
+        }
+    }
+)
+
+metrics = FinancialMetrics.model_validate_json(response.output_text)
+print(f"Revenue: ${metrics.revenue}B")
+```
+
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
+
+interface FinancialMetrics {
+  company: string;
+  quarter: string;
+  revenue: number;
+  net_income: number;
+  eps: number;
+  revenue_growth_yoy?: number;
+  key_highlights?: string[];
+}
+
+const client = new Perplexity();
+
+const response = await client.responses.create({
+  preset: 'pro-search',
+  input: 'Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.',
+  response_format: {
+    type: 'json_schema',
+    json_schema: {
+      name: 'financial_metrics',
+      schema: {
+        type: 'object',
+        properties: {
+          company: { type: 'string' },
+          quarter: { type: 'string' },
+          revenue: { type: 'number' },
+          net_income: { type: 'number' },
+          eps: { type: 'number' },
+          revenue_growth_yoy: { type: 'number' },
+          key_highlights: {
+            type: 'array',
+            items: { type: 'string' }
           }
+        },
+        required: ['company', 'quarter', 'revenue', 'net_income', 'eps']
       }
-  )
-
-  metrics = FinancialMetrics.model_validate_json(response.output_text)
-  print(f"Revenue: ${metrics.revenue}B")
-  ```
-
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  interface FinancialMetrics {
-    company: string;
-    quarter: string;
-    revenue: number;
-    net_income: number;
-    eps: number;
-    revenue_growth_yoy?: number;
-    key_highlights?: string[];
+    }
   }
+});
 
-  const client = new Perplexity();
+const metrics: FinancialMetrics = JSON.parse(response.output_text);
+```
 
-  const response = await client.responses.create({
-    preset: 'pro-search',
-    input: 'Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.',
-    response_format: {
-      type: 'json_schema',
-      json_schema: {
-        name: 'financial_metrics',
-        schema: {
-          type: 'object',
-          properties: {
-            company: { type: 'string' },
-            quarter: { type: 'string' },
-            revenue: { type: 'number' },
-            net_income: { type: 'number' },
-            eps: { type: 'number' },
-            revenue_growth_yoy: { type: 'number' },
-            key_highlights: {
-              type: 'array',
-              items: { type: 'string' }
+```bash
+curl -X POST "https://api.perplexity.ai/v1/responses" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "preset": "pro-search",
+    "input": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
+    "response_format": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "financial_metrics",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "company": {"type": "string"},
+            "quarter": {"type": "string"},
+            "revenue": {"type": "number"},
+            "net_income": {"type": "number"},
+            "eps": {"type": "number"},
+            "revenue_growth_yoy": {"type": "number"},
+            "key_highlights": {
+              "type": "array",
+              "items": {"type": "string"}
             }
           },
-          required: ['company', 'quarter', 'revenue', 'net_income', 'eps']
+          "required": ["company", "quarter", "revenue", "net_income", "eps"]
         }
       }
     }
-  });
-
-  const metrics: FinancialMetrics = JSON.parse(response.output_text);
-  ```
-
-  ```bash cURL theme={null}
-  curl -X POST "https://api.perplexity.ai/v1/responses" \
-    -H "Authorization: Bearer YOUR_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "preset": "pro-search",
-      "input": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
-      "response_format": {
-        "type": "json_schema",
-        "json_schema": {
-          "name": "financial_metrics",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "company": {"type": "string"},
-              "quarter": {"type": "string"},
-              "revenue": {"type": "number"},
-              "net_income": {"type": "number"},
-              "eps": {"type": "number"},
-              "revenue_growth_yoy": {"type": "number"},
-              "key_highlights": {
-                "type": "array",
-                "items": {"type": "string"}
-              }
-            },
-            "required": ["company", "quarter", "revenue", "net_income", "eps"]
-          }
-        }
-      }
-    }' | jq
-  ```
-</CodeGroup>
+  }' | jq
+```
 
 <Warning>
   **Links in JSON Responses**: Requesting links as part of a JSON response may not always work reliably and can result in hallucinations or broken links. Models may generate invalid URLs when forced to include links directly in structured outputs.

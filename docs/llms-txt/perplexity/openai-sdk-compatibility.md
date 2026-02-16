@@ -1,4 +1,5 @@
 # OpenAI SDK Compatibility
+
 Source: https://docs.perplexity.ai/docs/sonar/openai-compatibility
 
 Use OpenAI SDKs with the Sonar API by changing the base URL and API key
@@ -259,7 +260,7 @@ These parameters work exactly the same as OpenAI's API:
 * `top_p` - Nucleus sampling parameter
 * `response_format` - Response format specification
 
-### Perplexity-Specific Parameters
+### Additional Perplexity Parameters
 
 Sonar API supports additional search and response parameters:
 
@@ -293,7 +294,7 @@ Perplexity responses match OpenAI's format exactly, with additional fields:
 
 **Example Response:**
 
-```json theme={null}
+```json
 {
   "id": "pplx-1234567890",
   "model": "sonar-pro",
@@ -332,7 +333,7 @@ Perplexity responses match OpenAI's format exactly, with additional fields:
   <Step title="Use the correct base URL">
     Always use `https://api.perplexity.ai` for the Sonar API.
 
-    ```python theme={null}
+    ```python
     client = OpenAI(
         api_key="YOUR_API_KEY",
         base_url="https://api.perplexity.ai"  # Correct

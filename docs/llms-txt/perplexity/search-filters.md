@@ -1,4 +1,5 @@
 # Search Filters
+
 Source: https://docs.perplexity.ai/docs/sonar/filters
 
 Control and customize Sonar API search results with filters

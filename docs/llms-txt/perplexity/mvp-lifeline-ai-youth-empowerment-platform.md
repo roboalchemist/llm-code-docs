@@ -1,4 +1,5 @@
 # MVP LifeLine | AI Youth Empowerment Platform
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/mvp-lifeline-ai-app
 
 A multilingual, offline-first AI platform that helps underserved youth Earn, Heal, and Grow using real-time AI and holistic tools

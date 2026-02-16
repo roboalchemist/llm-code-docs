@@ -1,4 +1,6 @@
+
 # Core Features
+
 Source: https://docs.perplexity.ai/docs/sonar/features
 
 Streaming, structured outputs, and prompting best practices for the Sonar API

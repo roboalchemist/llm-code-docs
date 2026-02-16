@@ -1,4 +1,5 @@
 # FlameGuardAI | AI-powered wildfire prevention
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/flameguardai
 
 AI-powered wildfire prevention using OpenAI Vision + Perplexity Sonar API

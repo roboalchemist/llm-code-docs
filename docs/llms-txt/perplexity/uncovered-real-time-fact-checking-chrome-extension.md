@@ -1,4 +1,5 @@
 # UnCovered | Real-Time Fact-Checking Chrome Extension
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/uncovered
 
 A Chrome extension that brings real-time fact-checking to anything you see online in just 2 clicks, powered by Perplexity's Sonar API for instant verification

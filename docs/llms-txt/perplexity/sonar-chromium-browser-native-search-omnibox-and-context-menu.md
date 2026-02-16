@@ -1,4 +1,5 @@
 # Sonar Chromium Browser | Native Search Omnibox and Context Menu
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/sonar-chromium-browser
 
 Chromium browser patch with native Perplexity Sonar API integration providing omnibox answers and context-menu summarization

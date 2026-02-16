@@ -1,7 +1,6 @@
 # Pricing
+
 Source: https://docs.perplexity.ai/docs/getting-started/pricing
-
-
 
 <Info>
   This page shows **pricing information** to help you understand API costs.

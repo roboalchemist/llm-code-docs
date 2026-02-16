@@ -1,4 +1,5 @@
 # Media & Attachments
+
 Source: https://docs.perplexity.ai/docs/sonar/media
 
 Send and receive images, videos, and files with the Sonar API

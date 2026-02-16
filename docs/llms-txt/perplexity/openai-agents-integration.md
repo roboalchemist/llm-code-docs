@@ -1,4 +1,5 @@
 # OpenAI Agents Integration
+
 Source: https://docs.perplexity.ai/docs/cookbook/articles/openai-agents-integration/README
 
 Complete guide for integrating Perplexity's Sonar API with the OpenAI Agents SDK

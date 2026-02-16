@@ -1,4 +1,5 @@
 # Type Safety
+
 Source: https://docs.perplexity.ai/docs/sdk/type-safety
 
 Learn how to leverage full Typescript definitions and Python type hints with the Perplexity SDKs for better development experience and code safety.
@@ -14,48 +15,50 @@ Both Perplexity SDKs provide comprehensive type definitions to help you catch er
 Use type imports for better IDE support and type checking:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
-  from perplexity.types import (
-      SearchCreateResponse,
-      ChatCompletionCreateResponse,
-      SearchResult,
-      ChatCompletionMessage
-  )
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
+from perplexity.types import (
+    SearchCreateResponse,
+    ChatCompletionCreateResponse,
+    SearchResult,
+    ChatCompletionMessage
+)
 
-  # Type hints for better IDE support
-  search_response: SearchCreateResponse = client.search.create(
-      query="artificial intelligence"
-  )
+client = Perplexity()
 
-  # Access typed properties
-  result: SearchResult = search_response.results[0]
-  print(f"Title: {result.title}")
-  print(f"URL: {result.url}")
-  print(f"Snippet: {result.snippet}")
-  ```
+# Type hints for better IDE support
+search_response: SearchCreateResponse = client.search.create(
+    query="artificial intelligence"
+)
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+# Access typed properties
+result: SearchResult = search_response.results[0]
+print(f"Title: {result.title}")
+print(f"URL: {result.url}")
+print(f"Snippet: {result.snippet}")
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // Typescript provides full intellisense and type checking
-  const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
-      query: "artificial intelligence"
-  });
+const client = new Perplexity();
 
-  // Access typed properties with intellisense
-  const result = searchResponse.results[0];
-  console.log(`Title: ${result.title}`);
-  console.log(`URL: ${result.url}`);
-  console.log(`Snippet: ${result.snippet}`);
-  ```
+// Typescript provides full intellisense and type checking
+const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
+    query: "artificial intelligence"
+});
+
+// Access typed properties with intellisense
+const result = searchResponse.results[0];
+console.log(`Title: ${result.title}`);
+console.log(`URL: ${result.url}`);
+console.log(`Snippet: ${result.snippet}`);
+```
+
 </CodeGroup>
 
-### Runtime Type Validation
+## Runtime Type Validation
 
 Python SDK uses Pydantic for runtime type validation:
 

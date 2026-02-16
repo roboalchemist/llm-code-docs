@@ -1,4 +1,5 @@
 # Perplexity Lens | AI-Powered Knowledge Graph Browser Extension
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-lens
 
 A browser extension that builds personalized knowledge graphs using Perplexity AI for smart text selection, webpage summarization, and contextual insights

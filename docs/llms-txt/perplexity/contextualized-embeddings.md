@@ -1,4 +1,6 @@
+
 # Contextualized Embeddings
+
 Source: https://docs.perplexity.ai/docs/embeddings/contextualized-embeddings
 
 Generate document-aware embeddings for chunks that share context, improving retrieval quality for document-based applications.
@@ -83,7 +85,7 @@ Pass documents as nested arrays where each inner array represents chunks from a 
           console.log(`Doc ${doc.index}, Chunk ${chunk.index}: ${chunk.embedding}`);
       }
   }
-  ```
+  ```text
 
   ```bash cURL theme={null}
   curl -X POST 'https://api.perplexity.ai/v1/contextualizedembeddings' \
@@ -103,7 +105,7 @@ Pass documents as nested arrays where each inner array represents chunks from a 
       ],
       "model": "pplx-embed-context-v1-4b"
     }' | jq
-  ```
+  ```text
 </CodeGroup>
 
 <Accordion title="Response">
@@ -135,7 +137,7 @@ Pass documents as nested arrays where each inner array represents chunks from a 
       "total_tokens": 72
     }
   }
-  ```
+  ```text
 </Accordion>
 
 ## Parameters
@@ -230,7 +232,7 @@ Build a chunk retrieval system where chunks from the same document share context
   print("Top results:")
   for r in results[:3]:
       print(f"  [{r['doc_title']}] {r['score']:.4f}: {r['text'][:60]}...")
-  ```
+  ```text
 
   ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
@@ -312,7 +314,7 @@ Build a chunk retrieval system where chunks from the same document share context
   for (const r of results.slice(0, 3)) {
       console.log(`  [${r.docTitle}] ${r.score.toFixed(4)}: ${r.text.slice(0, 60)}...`);
   }
-  ```
+  ```text
 </CodeGroup>
 
 ## When to Use Contextualized vs Standard

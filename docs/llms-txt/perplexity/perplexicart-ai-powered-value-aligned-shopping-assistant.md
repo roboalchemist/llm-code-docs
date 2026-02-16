@@ -1,4 +1,5 @@
 # PerplexiCart | AI-Powered Value-Aligned Shopping Assistant
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexicart
 
 An AI shopping assistant that uses Perplexity Sonar to deliver structured research, value-aligned recommendations, and transparent citations across the web

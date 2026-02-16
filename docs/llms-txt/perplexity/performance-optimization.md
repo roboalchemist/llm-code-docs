@@ -1,4 +1,5 @@
 # Performance Optimization
+
 Source: https://docs.perplexity.ai/docs/sdk/performance
 
 Learn how to optimize the Perplexity SDKs for high-throughput applications with async support, connection pooling, and raw response access.
@@ -13,20 +14,17 @@ The Perplexity SDKs provide several features to optimize performance for high-th
 
 For applications that need to handle multiple requests concurrently:
 
-<CodeGroup>
-  ```bash Python Installation theme={null}
-  pip install perplexityai[aiohttp]
+```bash
+pip install perplexityai[aiohttp]
   ```
 
-  ```bash Typescript Installation theme={null}
-  npm install @perplexity-ai/perplexity_ai
+```bash
+npm install @perplexity-ai/perplexity_ai
   # Async support is built-in with Typescript
   ```
-</CodeGroup>
 
-<CodeGroup>
-  ```python Python theme={null}
-  import asyncio
+```python
+import asyncio
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
   async def main():
@@ -40,8 +38,8 @@ For applications that need to handle multiple requests concurrently:
   asyncio.run(main())
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function main() {
       const client = new Perplexity();
@@ -53,15 +51,13 @@ For applications that need to handle multiple requests concurrently:
 
   main();
   ```
-</CodeGroup>
 
 ### Concurrent Requests
 
 Process multiple requests simultaneously for better throughput:
 
-<CodeGroup>
-  ```python Python theme={null}
-  import asyncio
+```python
+import asyncio
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
   async def concurrent_searches():
@@ -83,8 +79,8 @@ Process multiple requests simultaneously for better throughput:
   asyncio.run(concurrent_searches())
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function concurrentSearches() {
       const client = new Perplexity();
@@ -104,15 +100,13 @@ Process multiple requests simultaneously for better throughput:
 
   concurrentSearches();
   ```
-</CodeGroup>
 
 ### Batch Processing with Rate Limiting
 
 Process large numbers of requests while respecting rate limits:
 
-<CodeGroup>
-  ```python Python theme={null}
-  import asyncio
+```python
+import asyncio
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
   async def batch_process_with_limit(queries, batch_size=5, delay=1.0):
@@ -144,8 +138,8 @@ Process large numbers of requests while respecting rate limits:
   results = asyncio.run(batch_process_with_limit(queries))
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function batchProcessWithLimit(
       queries: string[], 
@@ -179,15 +173,13 @@ Process large numbers of requests while respecting rate limits:
   const queries = Array.from({ length: 20 }, (_, i) => `query ${i}`);
   const results = await batchProcessWithLimit(queries);
   ```
-</CodeGroup>
 
 ## Raw Response Access
 
 Access headers, status codes, and raw response data for advanced use cases:
 
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
+```python
+from perplexity import Perplexity
 
   client = Perplexity()
 
@@ -206,8 +198,8 @@ Access headers, status codes, and raw response data for advanced use cases:
   print(f"Found {len(search.results)} results")
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
@@ -225,15 +217,13 @@ Access headers, status codes, and raw response data for advanced use cases:
   const search = response.parse();
   console.log(`Found ${search.results.length} results`);
   ```
-</CodeGroup>
 
 ### Response Streaming
 
 For chat completions, use streaming to get partial results as they arrive:
 
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
+```python
+from perplexity import Perplexity
 
   client = Perplexity()
 
@@ -249,8 +239,8 @@ For chat completions, use streaming to get partial results as they arrive:
           print(chunk.choices[0].delta.content, end="", flush=True)
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
@@ -267,7 +257,6 @@ For chat completions, use streaming to get partial results as they arrive:
       }
   }
   ```
-</CodeGroup>
 
 ## Connection Pooling
 
@@ -275,9 +264,8 @@ For chat completions, use streaming to get partial results as they arrive:
 
 Configure connection pooling for better performance:
 
-<CodeGroup>
-  ```python Python theme={null}
-  import httpx
+```python
+import httpx
   from perplexity import Perplexity, DefaultHttpxClient, AsyncPerplexity, DefaultAioHttpClient
 
   # Sync client with optimized connection pooling
@@ -304,8 +292,8 @@ Configure connection pooling for better performance:
       )
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
   // Optimized HTTPS agent for connection pooling
@@ -334,7 +322,6 @@ Configure connection pooling for better performance:
       httpAgent: highThroughputAgent
   });
   ```
-</CodeGroup>
 
 ## Performance Monitoring
 
@@ -342,9 +329,8 @@ Configure connection pooling for better performance:
 
 Monitor performance metrics to identify bottlenecks:
 
-<CodeGroup>
-  ```python Python theme={null}
-  import time
+```python
+import time
   import asyncio
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
@@ -396,8 +382,8 @@ Monitor performance metrics to identify bottlenecks:
   asyncio.run(run_performance_test())
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   class PerformanceMonitor {
       private requestTimes: number[] = [];
@@ -448,7 +434,6 @@ Monitor performance metrics to identify bottlenecks:
 
   runPerformanceTest();
   ```
-</CodeGroup>
 
 ## Memory Optimization
 
@@ -456,9 +441,8 @@ Monitor performance metrics to identify bottlenecks:
 
 Process large datasets efficiently with streaming and pagination:
 
-<CodeGroup>
-  ```python Python theme={null}
-  import asyncio
+```python
+import asyncio
   from perplexity import AsyncPerplexity, DefaultAioHttpClient
 
   async def process_large_dataset(queries, process_fn):
@@ -513,8 +497,8 @@ Process large datasets efficiently with streaming and pagination:
   asyncio.run(main())
   ```
 
-  ```typescript Typescript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function* processLargeDataset<T>(
       queries: string[], 
@@ -571,7 +555,6 @@ Process large datasets efficiently with streaming and pagination:
 
   main();
   ```
-</CodeGroup>
 
 ## Best Practices
 
@@ -587,26 +570,25 @@ Process large datasets efficiently with streaming and pagination:
   <Step title="Implement connection pooling">
     Configure appropriate connection limits based on your application's needs.
 
-    <CodeGroup>
-      ```python Python theme={null}
-      # Good: Optimized for your use case
-      limits = httpx.Limits(
-          max_keepalive_connections=20,  # Based on expected concurrency
-          max_connections=50,
-          keepalive_expiry=30.0
-      )
-      ```
+```python
+# Good: Optimized for your use case
+limits = httpx.Limits(
+    max_keepalive_connections=20,  # Based on expected concurrency
+    max_connections=50,
+    keepalive_expiry=30.0
+)
+```
 
-      ```typescript Typescript theme={null}
-      // Good: Optimized for your use case
-      const agent = new https.Agent({
-          keepAlive: true,
-          maxSockets: 20,  // Based on expected concurrency
-          keepAliveMsecs: 30000
-      });
-      ```
-    </CodeGroup>
-  </Step>
+```typescript
+// Good: Optimized for your use case
+const agent = new https.Agent({
+    keepAlive: true,
+    maxSockets: 20,  // Based on expected concurrency
+    keepAliveMsecs: 30000
+});
+```
+
+</Step>
 
   <Step title="Monitor and tune performance">
     Use metrics to identify bottlenecks and optimize accordingly.
@@ -619,9 +601,8 @@ Process large datasets efficiently with streaming and pagination:
   <Step title="Handle backpressure">
     Implement proper rate limiting and backpressure handling for high-throughput applications.
 
-    <CodeGroup>
-      ```python Python theme={null}
-      # Use semaphores to limit concurrent requests
+```python
+    # Use semaphores to limit concurrent requests
       semaphore = asyncio.Semaphore(10)  # Max 10 concurrent requests
 
       async def rate_limited_request(client, query):
@@ -629,8 +610,8 @@ Process large datasets efficiently with streaming and pagination:
               return await client.search.create(query=query)
       ```
 
-      ```typescript Typescript theme={null}
-      // Use a queue or throttling library
+```typescript
+    // Use a queue or throttling library
       import pLimit from 'p-limit';
 
       const limit = pLimit(10);  // Max 10 concurrent requests
@@ -638,8 +619,8 @@ Process large datasets efficiently with streaming and pagination:
       const rateLimitedRequest = (client: Perplexity, query: string) =>
           limit(() => client.search.create({ query }));
       ```
-    </CodeGroup>
-  </Step>
+
+</Step>
 </Steps>
 
 ## Related Resources

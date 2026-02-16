@@ -1,4 +1,5 @@
 # Quickstart
+
 Source: https://docs.perplexity.ai/docs/sonar/pro-search/quickstart
 
 Get started with Pro Search for Sonar Pro - enhanced search with automated tools, multi-step reasoning, and real-time thought streaming
@@ -49,7 +50,7 @@ Here is an example of how to enable Pro Search with streaming:
 
   messages = [
       {
-          "role": "user", 
+          "role": "user",
           "content": "Analyze the latest developments in quantum computing and their potential impact on cryptography. Include recent research findings and expert opinions."
       }
   ]
@@ -121,7 +122,7 @@ Here is an example of how to enable Pro Search with streaming:
   ```json theme={null}
   {
     "id": "2f16f4a0-e1d7-48c7-832f-8757b96ec221",
-    "model": "sonar-pro", 
+    "model": "sonar-pro",
     "created": 1759957470,
     "usage": {
       "prompt_tokens": 15,
@@ -167,7 +168,7 @@ Here is an example of how to enable Pro Search with streaming:
       },
       {
         "thought": "Let me fetch detailed content from this research paper.",
-        "type": "fetch_url_content", 
+        "type": "fetch_url_content",
         "fetch_url_content": {
           "contents": [
             {
@@ -276,7 +277,7 @@ Set `search_type: "auto"` to let the system intelligently route queries based on
   ```
 </CodeGroup>
 
-#### How Classification Works
+### How Classification Works
 
 The classifier analyzes your query and automatically routes it to:
 

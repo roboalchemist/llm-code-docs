@@ -1,4 +1,5 @@
 # Image Attachments
+
 Source: https://docs.perplexity.ai/docs/agent-api/image-attachments
 
 Learn how to upload and analyze images using base64 encoding or HTTPS URLs
@@ -196,7 +197,7 @@ The Agent API supports image analysis through direct image uploads. Images can b
 
 Images must be embedded in the `input` array when using message array format. Each image should be provided using the following structure:
 
-```json theme={null}
+```json
 {
   "role": "user",
   "content": [
@@ -221,7 +222,7 @@ The `image_url` field accepts either:
 
 Images are tokenized based on their pixel dimensions using the following formula:
 
-```
+```text
 tokens = (width px × height px) / 750
 ```
 

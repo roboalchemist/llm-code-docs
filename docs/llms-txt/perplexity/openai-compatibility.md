@@ -1,4 +1,5 @@
 # OpenAI Compatibility
+
 Source: https://docs.perplexity.ai/docs/agent-api/openai-compatibility
 
 Use your existing OpenAI SDKs with Perplexity's Agent API. Full compatibility with minimal code changes.
@@ -364,7 +365,7 @@ These parameters work exactly the same as OpenAI's API:
 
 ## Response Structure
 
-### Agent API
+### Agent API Response
 
 Perplexity Agent API matches OpenAI's Agent API format:
 

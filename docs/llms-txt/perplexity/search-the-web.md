@@ -1,4 +1,5 @@
 # Search the Web
+
 Source: https://docs.perplexity.ai/api-reference/search-post
 
 post /search

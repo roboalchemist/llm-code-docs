@@ -1,4 +1,5 @@
 # Monday – Voice-First AI Learning Assistant
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/monday
 
 An accessible, multimodal AI learning companion that delivers contextual reasoning, 3D visualizations, and curated educational content via natural voice interaction.

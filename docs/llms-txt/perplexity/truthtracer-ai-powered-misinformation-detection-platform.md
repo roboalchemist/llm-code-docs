@@ -1,4 +1,5 @@
 # TruthTracer | AI-Powered Misinformation Detection Platform
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/truth-tracer
 
 A comprehensive misinformation detection platform that uses Perplexity's Sonar API to analyze claims, trace trust chains, and provide Socratic reasoning for fact verification

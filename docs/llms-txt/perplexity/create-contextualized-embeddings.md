@@ -1,4 +1,5 @@
 # Create Contextualized Embeddings
+
 Source: https://docs.perplexity.ai/api-reference/contextualized-embeddings-post
 
 post /v1/contextualizedembeddings

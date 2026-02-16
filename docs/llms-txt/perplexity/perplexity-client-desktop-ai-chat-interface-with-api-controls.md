@@ -1,4 +1,5 @@
 # Perplexity Client | Desktop AI Chat Interface with API Controls
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-client
 
 An Electron-based desktop client for Perplexity API with advanced features like model selection, custom system prompts, and API debugging mode

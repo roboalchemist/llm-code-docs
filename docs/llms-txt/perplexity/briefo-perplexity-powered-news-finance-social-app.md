@@ -1,4 +1,6 @@
+
 # Briefo | Perplexity Powered News & Finance Social App
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/briefo
 
 AI curated newsfeed, social discussion, and deep research reports built on the Sonar API

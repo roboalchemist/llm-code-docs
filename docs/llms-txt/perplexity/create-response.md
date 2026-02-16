@@ -1,4 +1,5 @@
 # Create Response
+
 Source: https://docs.perplexity.ai/api-reference/responses-post
 
 post /v1/responses

@@ -1,4 +1,6 @@
+
 # 4Point Hoops | AI Basketball Analytics Platform
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/4point-Hoops
 
 Advanced NBA analytics platform that combines live Basketball-Reference data with Perplexity Sonar to deliver deep-dive player stats, cross-season comparisons and expert-grade AI explanations

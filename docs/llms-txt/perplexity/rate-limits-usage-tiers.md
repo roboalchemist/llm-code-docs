@@ -1,7 +1,6 @@
 # Rate Limits & Usage Tiers
+
 Source: https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers
-
-
 
 ## What are Usage Tiers?
 
@@ -231,11 +230,11 @@ When you exceed your rate limits:
 <Tip>
   **Best Practices:**
 
-  * Monitor your usage to predict when you'll need higher tiers
-  * Consider upgrading your tier proactively for production applications
-  * Implement exponential backoff with jitter in your code
-  * Take advantage of burst capacity for batch operations
-  * Don't artificially spread requests if you have available burst capacity
+* Monitor your usage to predict when you'll need higher tiers
+* Consider upgrading your tier proactively for production applications
+* Implement exponential backoff with jitter in your code
+* Take advantage of burst capacity for batch operations
+* Don't artificially spread requests if you have available burst capacity
 </Tip>
 
 ***

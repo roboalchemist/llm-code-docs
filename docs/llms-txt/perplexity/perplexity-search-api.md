@@ -1,4 +1,5 @@
 # Perplexity Search API
+
 Source: https://docs.perplexity.ai/docs/search/quickstart
 
 Access real-time web search results with Perplexity's Search API. Get ranked results, domain filtering, multi-query search, and content extraction for developers.

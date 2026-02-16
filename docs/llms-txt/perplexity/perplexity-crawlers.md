@@ -1,4 +1,5 @@
 # Perplexity Crawlers
+
 Source: https://docs.perplexity.ai/docs/resources/perplexity-crawlers
 
 We strive to improve our service every day by delivering the best search experience possible. To achieve this, we collect data using web crawlers ("robots") and user agents that gather and index information from the internet, operating either automatically or in response to user requests. Webmasters can use the following robots.txt tags to manage how their sites and content interact with Perplexity. Each setting works independently, and it may take up to 24 hours for our systems to reflect changes.

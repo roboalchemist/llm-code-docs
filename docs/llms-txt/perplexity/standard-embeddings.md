@@ -1,4 +1,5 @@
 # Standard Embeddings
+
 Source: https://docs.perplexity.ai/docs/embeddings/standard-embeddings
 
 Generate embeddings for independent texts, search queries, and single sentences.

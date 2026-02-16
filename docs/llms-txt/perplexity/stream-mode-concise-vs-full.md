@@ -1,4 +1,5 @@
 # Stream Mode: Concise vs Full
+
 Source: https://docs.perplexity.ai/docs/sonar/pro-search/stream-mode
 
 Learn how to use stream_mode to control streaming response formats and optimize your integration

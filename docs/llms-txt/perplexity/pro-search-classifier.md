@@ -1,4 +1,5 @@
 # Pro Search Classifier
+
 Source: https://docs.perplexity.ai/docs/sonar/pro-search/classifier
 
 Optimize cost and performance with automatic query classification between Pro Search and Fast Search modes

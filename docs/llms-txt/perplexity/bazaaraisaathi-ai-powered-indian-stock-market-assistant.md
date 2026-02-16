@@ -1,4 +1,6 @@
+
 # BazaarAISaathi | AI-Powered Indian Stock Market Assistant
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/bazaar-ai-saathi
 
 An AI-powered platform for Indian stock market analysis, portfolio optimization, and investment strategies using Perplexity Sonar API

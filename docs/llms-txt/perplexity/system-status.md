@@ -1,7 +1,6 @@
 # System Status
+
 Source: https://docs.perplexity.ai/docs/resources/status
-
-
 
 You can check the status of our services [here](https://status.perplexity.com/).
 

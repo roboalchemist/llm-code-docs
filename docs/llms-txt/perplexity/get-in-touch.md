@@ -1,7 +1,6 @@
 # Get in Touch
+
 Source: https://docs.perplexity.ai/docs/resources/discussions
-
-
 
 ## Join Our Developer Community
 

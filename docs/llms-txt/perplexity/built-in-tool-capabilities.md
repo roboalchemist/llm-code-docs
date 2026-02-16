@@ -1,4 +1,6 @@
+
 # Built-in Tool Capabilities
+
 Source: https://docs.perplexity.ai/docs/sonar/pro-search/tools
 
 Learn about Pro Search's built-in tools: web search and URL content fetching

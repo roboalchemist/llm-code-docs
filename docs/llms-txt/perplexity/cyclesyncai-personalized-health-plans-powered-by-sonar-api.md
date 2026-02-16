@@ -1,4 +1,5 @@
 # CycleSyncAI | Personalized Health Plans Powered by Sonar API
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/cycle-sync-ai
 
 iOS app that delivers personalized diet and workout recommendations for women, powered by Apple HealthKit and Perplexity's Sonar Pro API.

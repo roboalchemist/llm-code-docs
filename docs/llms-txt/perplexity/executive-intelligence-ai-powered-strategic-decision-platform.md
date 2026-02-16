@@ -1,4 +1,5 @@
 # Executive Intelligence | AI-Powered Strategic Decision Platform
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/executive-intelligence
 
 A comprehensive Perplexity Sonar-powered application that provides executives and board members with instant, accurate, and credible intelligence for strategic decision-making

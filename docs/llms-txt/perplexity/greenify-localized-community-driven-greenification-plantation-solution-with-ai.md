@@ -1,4 +1,5 @@
 # Greenify | Localized community-driven greenification/plantation solution with AI
+
 Source: https://docs.perplexity.ai/docs/cookbook/showcase/greenify
 
 A mobile application that analyzes photos and location data to suggest suitable plants and build sustainable communities using Perplexity Sonar API

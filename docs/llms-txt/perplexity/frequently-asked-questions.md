@@ -1,7 +1,6 @@
 # Frequently Asked Questions
+
 Source: https://docs.perplexity.ai/docs/resources/faq
-
-
 
 <AccordionGroup>
   <Accordion title="Why isn't the `response_format` parameter working for reasoning models?">

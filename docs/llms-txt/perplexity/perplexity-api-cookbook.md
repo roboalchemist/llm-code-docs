@@ -1,4 +1,5 @@
 # Perplexity API Cookbook
+
 Source: https://docs.perplexity.ai/docs/cookbook/index
 
 A collection of practical examples and guides for building with Perplexity's API Platform
@@ -45,4 +46,6 @@ Have a project built with API Platform? We'd love to feature it! Check our [Cont
 
 ***
 
-*Maintained by the Perplexity community*
+## Maintained
+
+Maintained by the Perplexity community

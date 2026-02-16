@@ -1,4 +1,5 @@
 # Perplexity Discord Bot
+
 Source: https://docs.perplexity.ai/docs/cookbook/examples/discord-py-bot/README
 
 A simple discord.py bot that integrates Perplexity's Sonar API to bring AI answers to your Discord server.

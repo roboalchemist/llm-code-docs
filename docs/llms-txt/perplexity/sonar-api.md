@@ -1,4 +1,5 @@
 # Sonar API
+
 Source: https://docs.perplexity.ai/docs/sonar/quickstart
 
 Get started with Perplexity's Sonar API for web-grounded AI responses. Make your first API call in minutes.
@@ -24,15 +25,16 @@ Install the SDK for your preferred language:
 
   ```bash Typescript theme={null}
   npm install @perplexity-ai/perplexity_ai
-  ```
+```
 
-  ```bash OpenAI Python (Compatible) theme={null}
-  pip install openai
-  ```
+```bash
+pip install openai
+```
 
-  ```bash OpenAI Typescript (Compatible) theme={null}
-  npm install openai
-  ```
+```bash
+npm install openai
+```
+
 </CodeGroup>
 
 ## Authentication
@@ -72,37 +74,38 @@ Set your API key as an environment variable. The SDK will automatically read it:
 ### Non-Streaming Request
 
 <CodeGroup>
-  ```python Python SDK theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  completion = client.chat.completions.create(
-      model="sonar-pro",
-      messages=[
-          {"role": "user", "content": "What were the results of the 2025 French Open Finals?"}
-      ]
-  )
+client = Perplexity()
 
-  print(completion.choices[0].message.content)
-  ```
+completion = client.chat.completions.create(
+    model="sonar-pro",
+    messages=[
+        {"role": "user", "content": "What were the results of the 2025 French Open Finals?"}
+    ]
+)
 
-  ```typescript Typescript SDK theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+print(completion.choices[0].message.content)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const completion = await client.chat.completions.create({
-      model: "sonar-pro",
-      messages: [
-          { role: "user", content: "What were the results of the 2025 French Open Finals?" }
-      ],
-  });
+const client = new Perplexity();
 
-  console.log(completion.choices[0].message.content);
-  ```
+const completion = await client.chat.completions.create({
+    model: "sonar-pro",
+    messages: [
+        { role: "user", content: "What were the results of the 2025 French Open Finals?" }
+    ],
+});
 
-  ```python OpenAI Python SDK theme={null}
+console.log(completion.choices[0].message.content);
+```
+
+```python
   from openai import OpenAI
 
   client = OpenAI(
