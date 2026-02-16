@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/transformers.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/transformers.md -->
 
 # Transformer
 

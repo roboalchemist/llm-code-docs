@@ -1,6 +1,6 @@
 # Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLX/Documentation.docc/MLX.md
 
-#  ``MLX``
+# ``MLX``
 
 MLX Swift is a Swift API for MLX.
 
@@ -8,7 +8,7 @@ MLX is an array framework for machine learning on Apple silicon. MLX Swift
 expands MLX to the Swift language, making research and experimentation easier
 on Apple silicon.
 
-The Swift API closely follows the 
+The Swift API closely follows the
 [C++ and Python MLX APIs](https://ml-explore.github.io/mlx/build/html/index.html), which in turn closely follow
 NumPy with a few exceptions. Here are some useful pages showing how MLX Swift works and is different
 from python:
@@ -19,15 +19,15 @@ from python:
 
 The main differences between MLX and NumPy are:
 
- - **Composable function transformations**: MLX has composable function
-   transformations for automatic differentiation, automatic vectorization,
-   and computation graph optimization.
- - **<doc:lazy-evaluation>**: Computations in MLX are lazy. Arrays are only
-   materialized when needed.
- - **Multi-device**: Operations can run on any of the supported devices (CPU,
-   GPU, ...)
+- **Composable function transformations**: MLX has composable function
+  transformations for automatic differentiation, automatic vectorization,
+  and computation graph optimization.
+- **<doc:lazy-evaluation>**: Computations in MLX are lazy. Arrays are only
+  materialized when needed.
+- **Multi-device**: Operations can run on any of the supported devices (CPU,
+  GPU, ...)
 
-The design of MLX is inspired by frameworks like 
+The design of MLX is inspired by frameworks like
 [PyTorch](https://pytorch.org/), [Jax](https://github.com/google/jax), and
 [ArrayFire](https://arrayfire.org/). A notable difference from these
 frameworks and MLX is the <doc:unified-memory>. Arrays in MLX live in shared

@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/MLXNN.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/MLXNN.md -->
 
 # ``MLXNN``
 
@@ -6,19 +6,19 @@ Neural Networks support for MLX
 
 ## Overview
 
-Writing arbitrarily complex neural networks in MLX can be done using only 
-`MLXArray` and `valueAndGrad()`. However, this requires the user to write 
-again and again the same simple neural network operations as well as handle 
+Writing arbitrarily complex neural networks in MLX can be done using only
+`MLXArray` and `valueAndGrad()`. However, this requires the user to write
+again and again the same simple neural network operations as well as handle
 all the parameter state and initialization manually and explicitly.
 
-The `MLXNN` package solves this problem by providing an intuitive way 
+The `MLXNN` package solves this problem by providing an intuitive way
 of composing neural network layers, initializing their parameters, freezing
 them for finetuning and more.
 
 ## Modules
 
-The workhorse of any neural network library is the ``Module`` class. In MLX 
-the ``Module`` class is a container of `MLXArray` or ``Module`` instances. Its 
+The workhorse of any neural network library is the ``Module`` class. In MLX
+the ``Module`` class is a container of `MLXArray` or ``Module`` instances. Its
 main function is to provide a way to recursively access and update its
 parameters and those of its submodules.
 
@@ -27,11 +27,11 @@ parameters and those of its submodules.
 
 ### Parameters
 
-A parameter of a module is any member of type `MLXArray` (its name should 
-not start with `_`). It can be nested in other ``Module`` instances 
+A parameter of a module is any member of type `MLXArray` (its name should
+not start with `_`). It can be nested in other ``Module`` instances
 or `Array` and `Dictionary`.
 
-``Module/parameters()`` can be used to extract a `NestedDictionary` 
+``Module/parameters()`` can be used to extract a `NestedDictionary`
 (``ModuleParameters``) with all the parameters of a module and its submodules.
 
 A Module can also keep track of “frozen” parameters. See the

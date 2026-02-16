@@ -1,6 +1,6 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/README.md
-
 # MLX Swift
+
+Source: https://github.com/ml-explore/mlx-swift/blob/main/README.md
 
 [**Installation**](#installation) | [**Documentation**](https://swiftpackageindex.com/ml-explore/mlx-swift/main/documentation/mlx) | [**Examples**](#examples)
 
@@ -91,16 +91,16 @@ dependencies: [.product(name: "MLX", package: "mlx-swift"),
 
 ### xcodebuild
 
-**Update the submodules**
+### Update the submodules
 
-The directories `Source/Cmlx/mlx` and `Source/Cmlx/mlx-c` are sourced as submodules. 
+The directories `Source/Cmlx/mlx` and `Source/Cmlx/mlx-c` are sourced as submodules.
 Before you attempt to build the project locally, pull down the updates for those submodules:
 
 ```shell
 git submodule update --init --recursive
 ```
 
-**Use Xcode to build the binaries and metal shaders**
+### Use Xcode to build the binaries and metal shaders
 
 Although `SwiftPM` (command line) cannot build the Metal shaders, `xcodebuild` can and
 it can be used to do command line builds:
@@ -117,7 +117,7 @@ xcodebuild build -scheme Tutorial -destination 'platform=OS X'
 
 #### (1) macOS
 
-**Install Dependencies**
+#### Install Dependencies
 
 Building with CMake requires both CMake and Ninja to be installed. You can do
 this with [Homebrew](https://brew.sh/):
@@ -127,7 +127,7 @@ brew install cmake
 brew install ninja
 ```
 
-**Build + Run Examples**
+#### Build + Run Examples
 
 - The examples use the Metal GPU backend by default on macOS.
 - Note that the CUDA GPU backend is exclusive to Linux.
@@ -143,13 +143,13 @@ ninja
 
 #### (2) Linux
 
-**Install Dependencies**
+#### Install Dependencies (Linux)
 
 - To build the example binaries, install all dependencies listed in the CI [scripts](.github/scripts/).
 - Note: The CUDA GPU backend requires the CUDA toolkit and additional dependencies.
 - For Swift installation on Linux, visit [swift.org](https://www.swift.org/install/linux/).
 
-**Build + Run Examples (CPU backend)**
+#### Build + Run Examples (CPU backend)
 
 On Linux, the examples use the CPU backend by default.
 
@@ -163,7 +163,7 @@ ninja
 popd
 ```
 
-**Build + Run Examples (GPU CUDA backend)**
+#### Build + Run Examples (GPU CUDA backend)
 
 ```shell
 mkdir -p build

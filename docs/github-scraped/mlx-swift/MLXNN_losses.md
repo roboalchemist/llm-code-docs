@@ -1,12 +1,10 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/losses.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/losses.md -->
 
 # Loss Functions
 
 Built-in loss functions
 
 ## Topics
-
-### Loss Functions
 
 - ``binaryCrossEntropy(logits:targets:weights:withLogits:reduction:)``
 - ``cosineSimilarityLoss(x1:x2:axis:eps:reduction:)``

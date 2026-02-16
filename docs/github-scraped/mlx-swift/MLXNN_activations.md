@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/activations.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/activations.md -->
 
 # Activation Functions and Layers
 
@@ -66,4 +66,3 @@ such as `alpha`.
 - ``Softsign``
 - ``Step``
 - ``Tanh``
-

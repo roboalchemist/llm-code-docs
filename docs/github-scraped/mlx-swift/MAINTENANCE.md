@@ -1,6 +1,6 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/MAINTENANCE.md
-
 # Maintenance Tasks
+
+Source: https://github.com/ml-explore/mlx-swift/blob/main/MAINTENANCE.md
 
 ## Updating Documentation
 
@@ -18,38 +18,38 @@ Here is adding `MLXOptimizers`:
 
 1. `Package.swift` add a new product (for anything that should be exported) and target:
 
-```
-products: [
-    ...
-    .library(name: "MLXOptimizers", targets: ["MLXOptimizers"]),
-```
+   ```swift
+   products: [
+       ...
+       .library(name: "MLXOptimizers", targets: ["MLXOptimizers"]),
+   ```
 
-```
-targets: [
-    ...
-    .target(
-        name: "MLXOptimizers",
-        dependencies: ["MLX"]
-    ),
-```
+   ```swift
+   targets: [
+       ...
+       .target(
+           name: "MLXOptimizers",
+           dependencies: ["MLX"]
+       ),
+   ```
 
-add to MLXTests:
+   add to MLXTests:
 
-```
-        .testTarget(
-            name: "MLXTests",
-            dependencies: ["MLX", "MLXNN", "MLXOptimizers"]
-        ),
-```
+   ```swift
+           .testTarget(
+               name: "MLXTests",
+               dependencies: ["MLX", "MLXNN", "MLXOptimizers"]
+           ),
+   ```
 
 2. Update `CMakeLists`
 
-```
-# MLXOptimizers package
-file(GLOB MLXOptimizers-src ${CMAKE_CURRENT_LIST_DIR}/Source/MLXOptimizers/*.swift)
-add_library(MLXOptimizers STATIC ${MLXOptimizers-src})
-target_link_libraries(MLXOptimizers PRIVATE MLX)
-```
+   ```cmake
+   # MLXOptimizers package
+   file(GLOB MLXOptimizers-src ${CMAKE_CURRENT_LIST_DIR}/Source/MLXOptimizers/*.swift)
+   add_library(MLXOptimizers STATIC ${MLXOptimizers-src})
+   target_link_libraries(MLXOptimizers PRIVATE MLX)
+   ```
 
 3. Create directory in `Source`
 
@@ -59,64 +59,64 @@ target_link_libraries(MLXOptimizers PRIVATE MLX)
 
 6. Add linkage to the other documentation, e.g. in `MLXOptimizers.md`
 
-```
-## Other MLX Packages
+   ```markdown
+   ## Other MLX Packages
 
-- [MLX](mlx)
-- [MLXNN](mlxnn)
+   - [MLX](mlx)
+   - [MLXNN](mlxnn)
 
-- [Python `mlx`](https://ml-explore.github.io/mlx/build/html/index.html)
-```
+   - [Python `mlx`](https://ml-explore.github.io/mlx/build/html/index.html)
+   ```
 
 7. Add linkage to new package in other documentation, e.g. `Documentation/MLX.md`, etc.
 
-```
-## Other MLX Packages
+   ```markdown
+   ## Other MLX Packages
 
-...
-- [MLXOptimizers](../mlxoptimizers/)
-```
+   ...
+   - [MLXOptimizers](../mlxoptimizers/)
+   ```
 
 8. Update README.md
 
-```
-dependencies: [.product(name: "MLX", package: "mlx-swift"),
-               .product(name: "MLXNN", package: "mlx-swift"),
-               .product(name: "MLXOptimizers", package: "mlx-swift")]
-```
+   ```swift
+   dependencies: [.product(name: "MLX", package: "mlx-swift"),
+                  .product(name: "MLXNN", package: "mlx-swift"),
+                  .product(name: "MLXOptimizers", package: "mlx-swift")]
+   ```
 
 9. Update install.md
 
-```
-dependencies: [.product(name: "MLX", package: "mlx-swift"),
-               .product(name: "MLXNN", package: "mlx-swift"),
-               .product(name: "MLXOptimizers", package: "mlx-swift")]
-```
+   ```swift
+   dependencies: [.product(name: "MLX", package: "mlx-swift"),
+                  .product(name: "MLXNN", package: "mlx-swift"),
+                  .product(name: "MLXOptimizers", package: "mlx-swift")]
+   ```
 
 10. Update `tools/generate_integration_tests.py` as needed
 
-```
-import MLXNN
-@testable import MLXOptimizers
-```
+    ```swift
+    import MLXNN
+    @testable import MLXOptimizers
+    ```
 
 11. Update tests as needed
 
 12. Update `tools/build-documentation.sh`
 
-```
-for x in MLX MLXNN MLXOptimizers; do
-```
+    ```bash
+    for x in MLX MLXNN MLXOptimizers; do
+    ```
 
 13. Add to `.spi.yml` for swift package index
 
-14. Run `pre-commit`
+14. Run pre-commit
 
-```
-pre-commit run --all-files
-```
+    ```bash
+    pre-commit run --all-files
+    ```
 
-14. Make a PR
+15. Make a PR
 
 ## Updating `mlx` and `mlx-c`
 
@@ -157,13 +157,13 @@ pre-generating the source when updating the `mlx` version.
 
 ## Updating `xcode/MLX.xcodeproj`
 
-### Updating
+### Updating the xcodeproj
 
-After updating the mlx/mlx-c version the xcodeproj needs to be brought up to date.  
+After updating the mlx/mlx-c version the xcodeproj needs to be brought up to date.
 
 - the headers in Cmlx/include-framework must all be public
 - no other headers in the project should be included as resources (public/private/project)
-    - the easiest way to adjust is look at Project -> Cmlx -> Build Phases and then look at the Headers task
+  - the easiest way to adjust is look at Project -> Cmlx -> Build Phases and then look at the Headers task
 - similarly there should be _no_ Copy Bundle Resources from the same section
 - compilation issues in .metal files typically mean they are new to the project and need to be removed from Cmlx target membership
 
@@ -180,7 +180,6 @@ Public headers are in `include-framework` and this is managed by tools/update-ml
 
 Settings, including header search paths are in xcode/xcconfig.
 
-### MLX, etc.
+### MLX, etc
 
-These are just normal frameworks that link to Cmlx and others as needed.  The source files are all swift and there are no special settings needed.
-
+These are just normal frameworks that link to Cmlx and others as needed. The source files are all swift and there are no special settings needed.

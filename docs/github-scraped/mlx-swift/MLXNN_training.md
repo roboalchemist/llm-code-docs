@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/training.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/training.md -->
 
 # Training a Model
 
@@ -11,7 +11,7 @@ The model training loop in `MLX` consists of:
 - using the ``valueAndGrad(model:_:)-12a2c`` function to create a new function to compute the gradient
 - presenting training data and expected values to the model, measuring the loss and computing the gradient
 - using an optimizer to apply the gradient to the model parameters
-    - see more about optimizers in [MLXOptimizers](https://ml-explore.github.io/mlx-swift/MLXOptimizers/documentation/mlxoptimizers/)
+  - see more about optimizers in [MLXOptimizers](https://ml-explore.github.io/mlx-swift/MLXOptimizers/documentation/mlxoptimizers/)
 - repeat
 
 Here is an example showing a simple model that learns a linear

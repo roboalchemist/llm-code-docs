@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/Module.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/Module.md -->
 
 # ``Module``
 
@@ -71,4 +71,3 @@ Functions useful for building the `map:` parameter in ``Module/filterMap(filter:
 - ``Module/mapModule(map:)``
 - ``Module/mapOther(map:)``
 - ``Module/mapParameters(map:)``
-

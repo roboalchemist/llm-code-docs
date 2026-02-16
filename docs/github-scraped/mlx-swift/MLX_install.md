@@ -1,6 +1,6 @@
 # Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLX/Documentation.docc/install.md
 
-#  Installation
+# Installation
 
 How to install and use.
 
@@ -37,4 +37,3 @@ Xcode or `xcodebuild`.
 ## Command Line Tools
 
 See <doc:troubleshooting> (Running From Command Line) for information about running command line tools from the shell.
-

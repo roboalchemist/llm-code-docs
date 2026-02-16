@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/module-filters.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/module-filters.md -->
 
 # Module Filter and Map Functions
 
@@ -16,7 +16,7 @@ See those methods for more information.
 
 The `filterMap()` method has several options for controlling the traversal of
 the modules, parameters and other values in the model.  Here is an example
-that limits the traversal to just local parameters and produces 
+that limits the traversal to just local parameters and produces
 a `NestedDictionary` of the shapes:
 
 ```swift

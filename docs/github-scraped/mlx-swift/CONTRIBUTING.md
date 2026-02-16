@@ -1,6 +1,6 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/CONTRIBUTING.md
-
 # Contributing to MLX Swift
+
+Source: https://github.com/ml-explore/mlx-swift/blob/main/CONTRIBUTING.md
 
 We want to make contributing to this project as easy and transparent as
 possible.

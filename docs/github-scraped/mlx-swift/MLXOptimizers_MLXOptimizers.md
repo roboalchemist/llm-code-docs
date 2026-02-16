@@ -1,13 +1,13 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXOptimizers/Documentation.docc/MLXOptimizers.md
-
 # ``MLXOptimizers``
+
+Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXOptimizers/Documentation.docc/MLXOptimizers.md
 
 Built-in optimizers.
 
 MLX has a number of built in optimizers that are useful for training models.  Here is a
 simple training loop:
 
-```
+```swift
 func loss(model: Model, x: MLXArray, y: MLXArray) -> MLXArray {
     // choose the loss function
     mseLoss(predictions: model(x), targets: y, reduction: .mean)
@@ -51,7 +51,6 @@ for _ in 0 ..< epochs {
 - ``Lion``
 - ``RMSprop``
 - ``SGD``
-
 
 ### Base Classes and Protocols
 

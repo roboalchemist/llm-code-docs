@@ -1,4 +1,4 @@
-# Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/custom-layers.md
+<!-- Source: https://github.com/ml-explore/mlx-swift/blob/main/Source/MLXNN/Documentation.docc/custom-layers.md -->
 
 # Creating Modules
 
@@ -50,8 +50,8 @@ public class FeedForward : Module, UnaryLayer {
 }
 ```
 
-This will declare a `FeedForward` layer similar to 
- [the layer in the Mistral Example](https://github.com/ml-explore/mlx-examples/blob/main/llms/mistral/mistral.py).
+This will declare a `FeedForward` layer similar to
+[the layer in the Mistral Example](https://github.com/ml-explore/mlx-examples/blob/main/llms/mistral/mistral.py).
 
 This layer can be used:
 
@@ -72,8 +72,8 @@ A parameter of a module is any public member of type `MLXArray` (its
 name should not start with `_`). It can be arbitrarily nested in other
 ``Module`` instances or `[MLXArray]` and `[String:MLXArray]`.
 
-``Module/parameters()`` can be used to extract a 
-`NestedDictionary` (``ModuleParameters``) with all the parameters of a 
+``Module/parameters()`` can be used to extract a
+`NestedDictionary` (``ModuleParameters``) with all the parameters of a
 module and its submodules.
 
 A ``Module`` can also keep track of "frozen" parameters. See the
@@ -103,7 +103,7 @@ print(layer)
 
 This will display:
 
-```
+```text
 FeedForward {
   w1: Linear(inputDimensions=20, outputDimensions=64, bias=false),
   w2: Linear(inputDimensions=64, outputDimensions=20, bias=false),
@@ -121,7 +121,7 @@ print(layer.mapParameters { $0.shape })
 
 resulting in:
 
-```
+```text
 [
   w1: [
     weight: [64, 20]
@@ -134,7 +134,6 @@ resulting in:
   ]
 ]
 ```
-
 
 ## ModuleInfo and ParameterInfo
 
@@ -161,7 +160,7 @@ class TransformerBlock(nn.Module):
         self.args = args
 ```
 
-The keys for modules and parameters are usually named after their instance variables, 
+The keys for modules and parameters are usually named after their instance variables,
 but `feed_forward` would not be a very Swifty variable name.  Instead we can use ``ModuleInfo`` to
 supply a replacement key:
 
