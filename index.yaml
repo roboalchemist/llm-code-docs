@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2026-02-16 13:20
+  last_updated: 2026-02-16 16:00
   total_sources: 628
   total_fetched: 628
   llms_txt_count: 342
@@ -4593,6 +4593,13 @@ web_scraped:
   file_count: 6
   size: 20.4KB
   last_updated: 2026-02-16 13:20
+- name: squarespace
+  description: Squarespace Developer Platform documentation
+  path: docs/web-scraped/squarespace/
+  status: fetched
+  file_count: 11
+  size: 97.5KB
+  last_updated: 2026-02-16 16:00
 - name: storybook
   description: storybook documentation
   path: docs/web-scraped/storybook/
