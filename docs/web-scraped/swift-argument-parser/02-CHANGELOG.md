@@ -272,7 +272,7 @@ The 1.2.1 release includes contributions from [Chamepp], [kkk669], [mtj0928],
 
   - `.allUnrecognized` captures all unrecognized inputs after parsing known
     flags, options, and arguments.
-	- `.postTerminator` collects any inputs that follow the `--` terminator.
+  - `.postTerminator` collects any inputs that follow the `--` terminator.
 
   See the [`ArgumentArrayParsingStrategy` documentation][arrayparse-docs] for
   more. ([#496])
@@ -955,9 +955,11 @@ The 0.0.3 release includes contributions from [compnerd], [elliottwilliams],
 - You can throw an `ExitCode` error to exit without printing any output.
 - You can now create optional Boolean flags with inversions that default to
   `nil`:
+
   ```swift
   @Flag(inversion: .prefixedNo) var takeMyShot: Bool?
   ```
+
 - You can now specify exclusivity for case-iterable flags and for Boolean flags
   with inversions.
 
@@ -1045,7 +1047,6 @@ This changelog's format is based on [Keep a Changelog](https://keepachangelog.co
 [#256]: https://github.com/apple/swift-argument-parser/pull/256
 [#276]: https://github.com/apple/swift-argument-parser/pull/276
 [#290]: https://github.com/apple/swift-argument-parser/pull/290
-[#299]: https://github.com/apple/swift-argument-parser/pull/299
 [#304]: https://github.com/apple/swift-argument-parser/pull/304
 [#308]: https://github.com/apple/swift-argument-parser/pull/308
 [#309]: https://github.com/apple/swift-argument-parser/pull/309
@@ -1139,7 +1140,6 @@ This changelog's format is based on [Keep a Changelog](https://keepachangelog.co
 [#676]: https://github.com/apple/swift-argument-parser/pull/676
 [#678]: https://github.com/apple/swift-argument-parser/pull/678
 [#680]: https://github.com/apple/swift-argument-parser/pull/680
-[#684]: https://github.com/apple/swift-argument-parser/pull/684
 [#685]: https://github.com/apple/swift-argument-parser/pull/685
 [#690]: https://github.com/apple/swift-argument-parser/pull/690
 [#692]: https://github.com/apple/swift-argument-parser/pull/692

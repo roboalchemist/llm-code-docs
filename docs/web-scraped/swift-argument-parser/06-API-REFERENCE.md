@@ -9,6 +9,7 @@ Swift Argument Parser provides a declarative, type-safe way to parse command-lin
 ## Main Types
 
 ### ParsableCommand Protocol
+
 The primary protocol for defining a command-line tool. Implement this protocol and decorate your struct with `@main` to create a command-line application.
 
 ```swift
@@ -20,6 +21,7 @@ struct MyCommand: ParsableCommand {
 ```
 
 ### AsyncParsableCommand Protocol
+
 Async version of ParsableCommand for modern async/await code patterns.
 
 ```swift
@@ -31,11 +33,13 @@ struct MyAsyncCommand: AsyncParsableCommand {
 ```
 
 ### ParsableArguments Protocol
+
 Protocol for defining a group of related arguments that can be reused across multiple commands.
 
 ## Property Wrappers
 
 ### @Argument
+
 Declares a positional argument (required by default).
 
 ```swift
@@ -47,6 +51,7 @@ var output: [String] = []
 ```
 
 ### @Option
+
 Declares a named option with values (--name value).
 
 ```swift
@@ -61,6 +66,7 @@ var verboseLevel: String
 ```
 
 ### @Flag
+
 Declares a boolean flag (--flag sets it to true).
 
 ```swift
@@ -72,6 +78,7 @@ var help = false
 ```
 
 ### @OptionGroup
+
 Groups related options together for better organization.
 
 ```swift
@@ -183,6 +190,7 @@ Add to your Package.swift:
 ## Examples
 
 See the Examples directory for complete working examples:
+
 - `repeat` - Basic argument and flag usage
 - `roll` - Simple command-line utility
 - `math` - Nested commands and subcommands

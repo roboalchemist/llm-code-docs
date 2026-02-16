@@ -461,4 +461,3 @@ struct CountLines: AsyncParsableCommand {
 }
 
 ```
-
