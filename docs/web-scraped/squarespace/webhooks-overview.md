@@ -1,13 +1,11 @@
 # Squarespace Developer Documentation
-# Source: https://developers.squarespace.com/webhooks/overview
+Source: https://developers.squarespace.com/webhooks/overview
 
 Overview — Squarespace Developers
 
 -
 
-[
-
-](/)
+[Home](/)
 
 [Template Docs](/quick-start)
 
@@ -21,23 +19,7 @@ Overview — Squarespace Developers
 
 [Get Started](/quick-start)
 
-[
-
-](/)
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-[Custom Code](/custom-code/about)
-
-[Upcoming Changes](/changes/upcoming-changes)
-
-[Get Started](/quick-start)
-
-Using Webhooks
+## Using Webhooks
 
 [Overview](/webhooks/overview)
 
@@ -45,17 +27,17 @@ Using Webhooks
 
 [Notification delivery](/webhooks/notification-delivery)
 
-Commerce Order Events
+## Commerce Order Events
 
 [Order create](/webhooks/events/order-create)
 
 [Order update](/webhooks/events/order-update)
 
-Extension Events
+## Extension Events
 
 [Extension uninstall](/webhooks/events/extension-uninstall)
 
-# Webhooks overview
+## Webhooks overview
 
 Instead of making repeated API calls, a client may subscribe to notifications from Squarespace for supported system events.
 
@@ -93,41 +75,28 @@ The request always contains headers, including a signature, and a JSON payload.
 
 ### Headers
 
-`User-Agent`: "Squarespace/1.0"
-
-`Content-Type`: "application/json"
-
-`Squarespace-Signature`: "<an HMAC-SHA256 signature>"
+- `User-Agent`: "Squarespace/1.0"
+- `Content-Type`: "application/json"
+- `Squarespace-Signature`: "<an HMAC-SHA256 signature>"
 
 ### Payload
 
-`{
-
-// String; unique notification id
-
-"id": "5c2ba184b63ed3cb411ce2b1",
-
-// String; Squarespace website id that triggered the notification.
-
-"websiteId": "5f3c3d55ac435e1a051f77b3",
-
-// String; unique Webhook Subscription id
-
-"subscriptionId": "5f3c2155d947844beedda991",
-
-// String; description of the event that triggered the notification.
-
-"topic": "extension.uninstall",
-
-// ISO 8601 UTC date and time string; represents when the notification was created.
-
-"createdOn": "2020-04-22T22:18+00:00",
-
-// Object; data associated with the event.
-
-"data": {...}
-
-}`
+```json
+{
+  // String; unique notification id
+  "id": "5c2ba184b63ed3cb411ce2b1",
+  // String; Squarespace website id that triggered the notification.
+  "websiteId": "5f3c3d55ac435e1a051f77b3",
+  // String; unique Webhook Subscription id
+  "subscriptionId": "5f3c2155d947844beedda991",
+  // String; description of the event that triggered the notification.
+  "topic": "extension.uninstall",
+  // ISO 8601 UTC date and time string; represents when the notification was created.
+  "createdOn": "2020-04-22T22:18+00:00",
+  // Object; data associated with the event.
+  "data": {...}
+}
+```
 
 ## Event notifications
 
@@ -149,13 +118,13 @@ See the Commerce [Authentication and permissions](/commerce-apis/authentication-
 
 - [Order update](/webhooks/events/order-update)
 
-# Squarespace
+## Squarespace
 
 [Main Site](https://www.squarespace.com)
 
 [Careers](https://www.squarespace.com/about/careers)
 
-# Developers
+## Developers
 
 [Home](/)
 
@@ -165,7 +134,7 @@ See the Commerce [Authentication and permissions](/commerce-apis/authentication-
 
 [Security Measures](https://www.squarespace.com/measures)
 
-# Documentation
+## Documentation
 
 [Template Docs](/quick-start)
 
@@ -173,7 +142,7 @@ See the Commerce [Authentication and permissions](/commerce-apis/authentication-
 
 [Webhooks](/webhooks/overview)
 
-# Community
+## Community
 
 [Circle](https://circle.squarespace.com)
 
@@ -181,7 +150,7 @@ See the Commerce [Authentication and permissions](/commerce-apis/authentication-
 
 [Forum](https://forum.squarespace.com)
 
-# Follow
+## Follow
 
 [Engineering Blog](https://engineering.squarespace.com)
 

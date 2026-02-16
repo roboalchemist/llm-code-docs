@@ -1,5 +1,6 @@
 # Squarespace Developer Documentation
-# Source: https://developers.squarespace.com/commerce-apis/products-overview
+
+Source: https://developers.squarespace.com/commerce-apis/products-overview
 
 Products API overview — Squarespace Developers
 
@@ -195,11 +196,7 @@ and every product details page is a child page of a Store Page.
 
 Consequently, a product details page may not belong to more than one Store Page.
 
-**Characteristics of Store Pages and product details pages directly impacts if a product is visible for purchase.
-
-A product is unavailable for purchase if a product’s Store Page is "Disabled"
-
-and/or if the status on a product details page is "Hidden".**
+**Characteristics of Store Pages and product details pages directly impacts if a product is visible for purchase. A product is unavailable for purchase if a product's Store Page is "Disabled" and/or if the status on a product details page is "Hidden".**
 
 How a merchant configures their site navigation for visitors (i.e., "[Not linking](https://support.squarespace.com/hc/en-us/articles/360025899552-The-Not-Linked-section)"
 

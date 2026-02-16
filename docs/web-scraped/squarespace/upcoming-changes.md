@@ -1,45 +1,6 @@
-# Squarespace Developer Documentation
-# Source: https://developers.squarespace.com/changes/upcoming-changes
+# Squarespace Developer Documentation: Upcoming changes
 
-Upcoming changes — Squarespace Developers
-
--
-
-[
-
-](/)
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-[Custom Code](/custom-code/about)
-
-[Upcoming Changes](/changes/upcoming-changes)
-
-[Get Started](/quick-start)
-
-[
-
-](/)
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-[Custom Code](/custom-code/about)
-
-[Upcoming Changes](/changes/upcoming-changes)
-
-[Get Started](/quick-start)
-
-Changes
-
-[Upcoming changes](/changes/upcoming-changes)
+Source: https://developers.squarespace.com/changes/upcoming-changes
 
 # Products V2 Update: Required Action
 
@@ -71,23 +32,11 @@ The updates apply to all PDP layout types (Simple, Full, Half, Wrap), the Produc
 
 ### Key Themes
 
-Top-level layout elements are now identified by a single data-product-detail-layout attribute.
-
--
-
-Legacy class names (e.g., `.ProductItem-*`) have been replaced by a new standardized prefix (`.product-*`).
-
--
-
-Deprecated `data-*` attributes have been removed.
-
--
-
-Structural wrappers for titles, prices, variants, and buttons have been unified across layouts.
-
--
-
-Related Products has the same HTML structure as the new PLP changes
+- Top-level layout elements are now identified by a single data-product-detail-layout attribute.
+- Legacy class names (e.g., `.ProductItem-*`) have been replaced by a new standardized prefix (`.product-*`).
+- Deprecated `data-*` attributes have been removed.
+- Structural wrappers for titles, prices, variants, and buttons have been unified across layouts.
+- Related Products has the same HTML structure as the new PLP changes
 
 ## Updates
 
@@ -114,22 +63,9 @@ rather than as the first child inside that element
 #### All Layouts
 
 - Tag (i.e. `.tag-<tagName>`), `.on-sale`, and `.sold-out` classes now exist on the top-level `.product-item` element
-
-- Product Price
-
-`.product-price-value` wrapper element added around price text
-
-- Product Payment Method Messaging
-
-`[data-afterpay]` element replaced by a [Stripe component](https://docs.stripe.com/elements/payment-method-messaging) rendered within a new `.product-payment-method-messaging`
-
-Also moved within `.product-price` element
-
-wrapper element
-
-- Product Status
-
-`.product-status` wrapper element added
+- Product Price: `.product-price-value` wrapper element added around price text
+- Product Payment Method Messaging: `[data-afterpay]` element replaced by a [Stripe component](https://docs.stripe.com/elements/payment-method-messaging) rendered within a new `.product-payment-method-messaging` wrapper element. Also moved within `.product-price` element
+- Product Status: `.product-status` wrapper element added
 
 #### Simple Layout
 
@@ -151,215 +87,140 @@ wrapper element
 
 - `.ProductItem-quantity-add-to-cart` wrapper element removed
 
-- Elements
-
-Gallery
+#### Elements: Gallery
 
 All classes with the prefix `ProductItem` have been changed to use the prefix `product`
 
-- Removed various attributes on the `.ProductItem-gallery-slides-item` element
+- Removed various attributes on the `.ProductItem-gallery-slides-item` element:
+  - `data-slide-index`
+  - `data-image-id`
+  - `data-slide-url`
+  - `data-test`
 
-`data-slide-index`
+#### Product Title
 
-- `data-image-id`
-
-- `data-slide-url`
-
-- `data-test`
-
-- Product Title
-
-`.ProductItem-details-title` element replaced by `.product-title`
-
-`data-content-field` attribute removed
-
+- `.ProductItem-details-title` element replaced by `.product-title`
+- `data-content-field` attribute removed
 - `data-test` attribute removed
 
-- Product Description
+#### Product Description
 
-`.ProductItem-details-excerpt` element replaced by `.product-description` element
-
-Removed `data-content-field` attribute
-
-- Removed various classes that were previously set based on element position
-
-`.ProductItem-details-excerpt-below-price`
-
-- `.ProductItem-details-excerpt-below-add-to-cart`
-
-- `.ProductItem-details-excerpt-below-add-ons`
+- `.ProductItem-details-excerpt` element replaced by `.product-description` element
+- Removed `data-content-field` attribute
+- Removed various classes that were previously set based on element position:
+  - `.ProductItem-details-excerpt-below-price`
+  - `.ProductItem-details-excerpt-below-add-to-cart`
+  - `.ProductItem-details-excerpt-below-add-ons`
 
 #### Full Layout
 
 - `.ProductItem` element replaced by `data-product-detail-layout="full"` element
-
-`data-item-id attribute` removed
-
+- `data-item-id` attribute removed
 - `data-layout` removed and replaced with `data-product-detail-layout`
-
 - `.pdp-layout pdp-layout-full-width-carousel` element removed
-
-- Removed various attributes on the `.ProductItem-gallery-slides-item` element
-
-`data-slide-index`
-
-- `data-image-id`
-
-- `data-slide-url`
-
-- `data-test`
-
+- Removed various attributes on the `.ProductItem-gallery-slides-item` element:
+  - `data-slide-index`
+  - `data-image-id`
+  - `data-slide-url`
+  - `data-test`
 - All classes with the prefix `ProductItem` have been changed to use the prefix `product`
-
 - `.product-details.pdp-details` replaced with `.product-meta`
-
-`data-current-context` removed
-
+- `data-current-context` removed
 - `.ProductItem-nav` replaced by `.product-nav`
-
 - `.ProductItem-nav-breadcrumb` removed
-
 - `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
 - `.ProductItem-nav-breadcrumb-separator` removed
-
-- `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
-- `.product-details.pdp-details` replaced with `.product-meta
-
-`data-current-context` removed
-
 - `.product-meta-section` added
 
-- Product Title
+##### Product Title
 
-`.pdp-details-title` replaced with `.product-title`
-
+- `.pdp-details-title` replaced with `.product-title`
 - `data-content-field` removed
-
 - `data-test` removed
 
+##### Product Price
+
 - `.pdp-details-price` replaced with `.product-price`
-
-`.product-price` replaced with `.product-price-value`
-
+- `.product-price` replaced with `.product-price-value`
 - `.product-scarcity` is moved out from `.product-price` and is a sibling
+- `.pdp-details-excerpt` replaced with `.product-description.hidden-md-down` and `.product-description.hidden-md-up` depending on description placement
 
-- `.pdp-details-excerpt` replaced with  `.product-description.hidden-md-down` and `.product-description.hidden-md-up` depending on description placement
+##### Product Variants and Add to Cart
 
-- `.product-variant data-item-id` and `data-variants` attributes removed
-
+- `.product-variant` element: `data-item-id` and `data-variants` attributes removed
 - `.variant-select-wrapper` or `.variant-radiobtn-wrapper` removed depending on which Variant Display option is selected
-
-- `.product-quantity-input` and `data-item-id` attribute removed `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) `.add-to-cart-inline-md-down` (mobile - inline)
+- `.product-quantity-input` and `data-item-id` attribute removed
+- `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) or `.add-to-cart-inline-md-down` (mobile - inline)
 
 #### Half Layout
 
 - `#pdp.pdp-layout.pdp-layout-full-bleed` element replaced by `data-product-detail-layout="half"` element
-
-`data-item-id` attribute removed
-
+- `data-item-id` attribute removed
 - `data-layout` removed and replaced with `data-product-detail-layout`
-
 - `pdp-gallery-images` replaced with `pdp-gallery-wrapper`
-
 - `class="pdp-gallery-images"` and `data-product-gallery="slideshow"` wraps all `.pdp-gallery-slides`
-
-- `.pdp-form-wrapper.hidden-sm-down` replaced by
-
-`.product-content-wrapper`
-
+- `.pdp-form-wrapper.hidden-sm-down` replaced by `.product-content-wrapper`
 - `.ProductItem-nav` replaced by `.product-nav`
-
 - `.ProductItem-nav-breadcrumb` removed
-
 - `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
 - `.ProductItem-nav-breadcrumb-separator` removed
-
-- `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
 - `.product-details.pdp-details` replaced with `.product-meta`
-
 - `data-current-context` removed
 
-- Product Meta
+##### Product Meta: Product Title
 
-Product Title
-
-`.pdp-details-title` replaced with `.product-title`
-
+- `.pdp-details-title` replaced with `.product-title`
 - `data-content-field` attribute removed
-
 - `data-test` attribute removed
 
+##### Product Price and Description
+
 - `.pdp-details-price` replaced with `.product-price`
-
-`.product-price` replaced with `.product-price-value`
-
+- `.product-price` replaced with `.product-price-value`
 - `.product-scarcity` is moved out from `.product-price` and is a sibling
-
 - `.pdp-details-excerpt` replaced with `.product-description.hidden-md-down` and `.product-description.hidden-md-up` depending on description placement
 
-- `.product-variant data-item-id` and `data-variants` attributes removed
+##### Product Variants and Add to Cart
 
-`.variant-select-wrapper` or `.variant-radiobtn-wrapper` removed depending on which Variant Display option is selected
-
-- `.product-quantity-input` and `data-item-id` attribute removed `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) `.add-to-cart-inline-md-down` (mobile - inline)
+- `.product-variant` element: `data-item-id` and `data-variants` attributes removed
+- `.variant-select-wrapper` or `.variant-radiobtn-wrapper` removed depending on which Variant Display option is selected
+- `.product-quantity-input` and `data-item-id` attribute removed
+- `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) or `.add-to-cart-inline-md-down` (mobile - inline)
 
 #### Wrap Layout
 
 - `#pdp.pdp-layout.pdp-layout-wrap-around` element replaced by `data-product-detail-layout="wrap"` element
-
-`data-item-id` attribute removed
-
+- `data-item-id` attribute removed
 - `data-layout` removed and replaced with `data-product-detail-layout`
-
 - `pdp-gallery-images` replaced with `pdp-gallery-wrapper`
-
 - `class="pdp-gallery-images"` and `data-product-gallery="slideshow"` wraps all `.pdp-gallery-slides`
-
-- `.pdp-form-wrapper.hidden-sm-down` replaced by
-
-`.product-content-wrapper`
-
+- `.pdp-form-wrapper.hidden-sm-down` replaced by `.product-content-wrapper`
 - `.ProductItem-nav` replaced by `.product-nav`
-
 - `.ProductItem-nav-breadcrumb` removed
-
 - `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
 - `.ProductItem-nav-breadcrumb-separator` removed
-
-- `.ProductItem-nav-breadcrumb-link` replaced by `.product-nav-breadcrumb-link`
-
 - `.product-details.pdp-details` replaced with `.product-meta`
-
 - `data-current-context` removed
 
-- Product Meta
+##### Product Meta: Product Title
 
-Product Title
-
-`.pdp-details-title` replaced with `.product-title`
-
+- `.pdp-details-title` replaced with `.product-title`
 - `data-content-field` attribute removed
-
 - `data-test` attribute removed
 
+##### Product Price and Description
+
 - `.pdp-details-price` replaced with `.product-price`
-
-`.product-price` replaced with `.product-price-value`
-
+- `.product-price` replaced with `.product-price-value`
 - `.product-scarcity` is moved out from `.product-price` and is a sibling
-
 - `.pdp-details-excerpt` replaced with `.product-description.hidden-md-down` and `.product-description.hidden-md-up` depending on description placement
 
-- `.product-variant data-item-id` and `data-variants` attributes removed
+##### Product Variants and Add to Cart
 
-`.variant-select-wrapper` or `.variant-radiobtn-wrapper` removed depending on which Variant Display option is selected
-
-- `.product-quantity-input` and `data-item-id` attribute removed `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) `.add-to-cart-inline-md-down` (mobile - inline)
+- `.product-variant` element: `data-item-id` and `data-variants` attributes removed
+- `.variant-select-wrapper` or `.variant-radiobtn-wrapper` removed depending on which Variant Display option is selected
+- `.product-quantity-input` and `data-item-id` attribute removed
+- `.product-quantity-input-wrapper` placed inside `.product-add-to-cart` > `.product-add-to-cart-layout-wrapper.add-to-cart-inline-md-up` (desktop - inline) or `.add-to-cart-inline-md-down` (mobile - inline)
 
 ### Product List Page and Related Products on the Product Detail Page
 
@@ -385,23 +246,16 @@ Product Title
 
 Tag (i.e. `.tag-<tagName>`), `.on-sale`, and `.sold-out` classes still exist on the `.product-list-item` element
 
-- Following classes and attributes removed from `.product-list-item`
+- Following classes and attributes removed from `.product-list-item`:
 
-`.hentry`
-
-- `.author-your-name`
-
-- `.post-type-store-item`
-
-- `.article-index`
-
-- `.sqs-product-quick-view-button-hover-area`
-
-- `id`
-
-- `data-item-id`
-
-- `data-current-context`
+  - `.hentry`
+  - `.author-your-name`
+  - `.post-type-store-item`
+  - `.article-index`
+  - `.sqs-product-quick-view-button-hover-area`
+  - `id`
+  - `data-item-id`
+  - `data-current-context`
 
 - `.grid-item-link.product-lists-item` replaced by `.product-list-item-link`
 
@@ -429,155 +283,109 @@ Tag (i.e. `.tag-<tagName>`), `.on-sale`, and `.sold-out` classes still exist on 
 
 ### Shared Elements between Product Detail Page and Product List Page
 
-- Product Scarcity
+#### Product Scarcity
 
-Only one `.product-scarcity` element now, rather than one for each variant
+- Only one `.product-scarcity` element now, rather than one for each variant
+- `data-variant-attributes` attribute removed
 
-`data-variant-attributes` attribute removed
+#### Product Variant Select
 
-- Product Variant Select
+- Removed various attributes from the `.product-variants` element:
+  - `data-item-id`
+  - `data-variants`
+  - `data-is-subscribable`
+  - `data-subscription-plan`
+  - `data-selected-variant`
+  - `data-unselected-options`
+  - `data-variant-in-stock`
+- Moved `data-variant-option-name` attribute to the `.variant-option` wrapper element
 
-Removed various attributes from the `.product-variants element`
+#### Restock Notification (Waitlist)
 
-`data-item-id`
-
-- `data-variants`
-
-- `data-is-subscribable`
-
-- `data-subscription-plan`
-
-- `data-selected-variant`
-
-- `data-unselected-options`
-
-- `data-variant-in-stock`
-
-- Moved `data-variant-option-name` attribute to the `.variant-option wrapper` element
-
-- Restock Notification (Waitlist)
-
-Only one `.product-restock-notification` element now, rather than one for each variant
-
-- Removed various attributes from the `.product-restock-notification` element
-
-`data-product-id`
-
-- `data-variant-id`
-
+- Only one `.product-restock-notification` element now, rather than one for each variant
+- Removed various attributes from the `.product-restock-notification` element:
+  - `data-product-id`
+  - `data-variant-id`
 - `.product-restock-mailing-list` checkbox name changed from `isJoinMailingList` to `join-mailing-list-checkbox`
 
-- Add to Cart
+#### Add to Cart
 
-Add `.product-add-to-cart` wrapper element containing subscription/one-time-payment select, quantity input, and add to cart button
+- Add `.product-add-to-cart` wrapper element containing subscription/one-time-payment select, quantity input, and add to cart button
 
-- Subscription/One-Time-Payment Select
+##### Subscription/One-Time-Payment Select
 
-`.ProductItem-Subs-Otp` element replaced with `.product-subs-otp` element
-
+- `.ProductItem-Subs-Otp` element replaced with `.product-subs-otp` element
 - Removed `data-variants` attribute from `.pdp-subscriptions-and-otp` element
-
 - `#one-time-purchase-radio` and `#one-time-purchase-radio-button` value changed from `one-time-purchase-radio` to `ONE_TIME_PURCHASE`
-
 - `#subscription-radio` and `#subscription-radio-button` value changed from `subscription-radio` to `SUBSCRIPTION`
 
-- Quantity Input
+##### Quantity Input
 
-`.product-quantity-input` element replaced with `.product-quantity-input-wrapper` element
+- `.product-quantity-input` element replaced with `.product-quantity-input-wrapper` element
+- Removed `data-item-id` attribute
 
-Removed `data-item-id` attribute
+##### Add to Cart Button
 
-- Add to Cart Button
+Changes on the `.sqs-add-to-cart-button` element:
 
-Changes on the `.sqs-add-to-cart-button` element
+- Removed `.use-form` class
+- Removed various attributes:
+  - `data-collection-id`
+  - `data-item-id`
+  - `data-product-type`
+  - `data-use-custom-label`
+  - `data-is-subscription`
+  - `data-original-label`
+  - `data-form`
+  - `Data-subscription-option-id`
+- Added extra `.add-to-cart-text` wrapper element around the text within the `.sqs-add-to-cart-button-inner` element
 
-Removed `.use-form` class
+#### Product Add-Ons
 
-- Removed various attributes
+- Replaced `.pdp-product-add-ons` element with `.product-add-ons` element
+- Removed various attributes from the `.add-on-add-to-cart-wrapper` element:
+  - `data-is-product-add-on`
+  - `data-current-context`
+- Changes on the `.sqs-add-to-cart-button` element:
+  - Removed `use-form` class
+  - Removed various attributes:
+    - `data-item-id`
+    - `data-collection-id`
+    - `data-product-type`
+    - `data-form`
+    - `Data-original-label`
+- Classes within the `.icons-container` element have changed:
+  - `.plus-icon` → `.add-icon`
+  - `.add-on-add-to-cart-loading` → `.loading-icon`
+  - `.checkmark-icon` → `.complete-icon`
 
-`data-collection-id`
+#### Product Reviews
 
-- `data-item-id`
-
-- `data-product-type`
-
-- `data-use-custom-label`
-
-- `data-is-subscription`
-
-- `data-original-label`
-
-- `data-form`
-
-- `Data-subscription-option-id`
-
-- Added extra `.add-to-cart-text wrapper` element around the text within the `.sqs-add-to-cart-button-inner` element
-
-- Product Add-Ons
-
-Replaced `.pdp-product-add-ons` element with `.product-add-ons` element
-
-- Removed various attributes from the `.add-on-add-to-cart-wrapper` element
-
-`data-is-product-add-on`
-
-- `data-current-context`
-
-- Changes on the `.sqs-add-to-cart-button` element
-
-Removed `use-form` class
-
-- Removed various attributes
-
-`data-item-id`
-
-- `data-collection-id`
-
-- `data-product-type`
-
-- `data-form`
-
-- `Data-original-label`
-
-- Classes within the `.icons-container` element have changed
-
-`.plus-icon` → `.add-icon`
-
-- `.add-on-add-to-cart-loading` → `.loading-icon`
-
-- `.checkmark-icon` → `.complete-icon`
-
-- Product Reviews
-
-`.reviewSummary` element replaced with `.product-review-summary` element
+- `.reviewSummary` element replaced with `.product-review-summary` element
 
 ## Layout Examples
 
 Please see some of these example layouts pre and post DOM changes below so you can use a tool like [Diffchecker](https://www.diffchecker.com/) to compare the differences.
 
-- Simple Layout
+### Simple Layout
 
-[Pre DOM Changes Simple Layout](https://forum.squarespace.com/pdpplp-before-after/pdp-simple-layout-before-dom)
-
+- [Pre DOM Changes Simple Layout](https://forum.squarespace.com/pdpplp-before-after/pdp-simple-layout-before-dom)
 - [Post DOM Changes Simple Layout](https://forum.squarespace.com/pdpplp-before-after/pdp-simple-layout-after-dom/)
 
-- Wrap Layout
+### Wrap Layout
 
-[Pre DOM Changes Wrap Layout](https://forum.squarespace.com/pdpplp-before-after/pre-dom-changes-wrap-layout)
-
+- [Pre DOM Changes Wrap Layout](https://forum.squarespace.com/pdpplp-before-after/pre-dom-changes-wrap-layout)
 - [Post DOM Changes Wrap Layout](https://forum.squarespace.com/pdpplp-before-after/post-dom-changes-wrap-layout/)
 
 ## Next Steps
 
-- **Audit** your site for any custom code targeting product pages and familiarize yourself with changes described in this article.
+1. **Audit** your site for any custom code targeting product pages and familiarize yourself with changes described in this article.
 
-- **Migrate** your site to Products V2 by going to your Site Settings > Selling > Products and follow the prompts. Complete this step between June 30 and August 30 to avoid automatic changes.
+1. **Migrate** your site to Products V2 by going to your Site Settings > Selling > Products and follow the prompts. Complete this step between June 30 and August 30 to avoid automatic changes. Note: After this step there is no option to return to the earlier version.
 
-After this step there is no option to return to the earlier version.
+1. **Update** your code that references the old selectors, classnames, and data-\* attributes to match the new structure.
 
-- **Update** your code that references the old selectors, classnames, and data-* attributes to match the new structure.
-
-- **Test** your updates thoroughly in production and make adjustments as needed.
+1. **Test** your updates thoroughly in production and make adjustments as needed.
 
 If you don’t opt in by the **August 30, 2025 deadline**, your site will be migrated automatically. Any unsupported or outdated custom code may stop working, potentially affecting how your product pages appear or behave. This update is not optional and there is no way to opt-out of making these changes.
 
@@ -585,7 +393,7 @@ If you don’t opt in by the **August 30, 2025 deadline**, your site will be mig
 
 #### What exactly is changing?
 
-We’re updating the DOM structure and changing the class and data attributes on Squarespace’s  Store Page (aka Product List Page or PLP) or Product Detail Pages (PDP). These changes are foundational for enabling future improvements to commerce design and functionality.
+We’re updating the DOM structure and changing the class and data attributes on Squarespace’s Store Page (aka Product List Page or PLP) or Product Detail Pages (PDP). These changes are foundational for enabling future improvements to commerce design and functionality.
 
 #### Will I be able to preview changes before publishing?
 
@@ -642,43 +450,3 @@ Not necessarily, but visual issues are possible if your custom code depends on c
 #### Will my custom styles disappear?
 
 Only if they target class names or structural elements that have changed or no longer exist. With proper updates, your site will look and function as expected.
-
-# Squarespace
-
-[Main Site](https://www.squarespace.com)
-
-[Careers](https://www.squarespace.com/about/careers)
-
-# Developers
-
-[Home](/)
-
-[Developer Terms of Use](https://www.squarespace.com/developer-terms)
-
-[Privacy Policy](https://www.squarespace.com/privacy)
-
-[Security Measures](https://www.squarespace.com/measures)
-
-# Documentation
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-# Community
-
-[Circle](https://circle.squarespace.com)
-
-[Specialists](https://specialists.squarespace.com)
-
-[Forum](https://forum.squarespace.com)
-
-# Follow
-
-[Engineering Blog](https://engineering.squarespace.com)
-
-[Github](https://github.com/squarespace)
-
-[NPM](https://www.npmjs.com/org/squarespace)

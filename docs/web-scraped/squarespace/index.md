@@ -1,4 +1,5 @@
 # Squarespace Developer Documentation
+
 # Source: https://developers.squarespace.com/
 
 Home — Squarespace Developers
@@ -35,7 +36,7 @@ Home — Squarespace Developers
 
 [Get Started](/quick-start)
 
-# Build Anything
+## Build Anything
 
 The Squarespace Developer Platform enables developers to create fully custom sites and integrate with 3rd party tools. Start with a template, or build your site from scratch.
 
@@ -49,7 +50,7 @@ Use our new **Profiles API** to read profiles for customers, subscribers, and we
 
 [
 
-# Web Platform
+## Web Platform
 
 Access the template files behind your Squarespace website. Edit markup, styles, and scripts using the tools you prefer to create a custom Squarespace-hosted template or website.
 
@@ -59,7 +60,7 @@ Get Started
 
 [
 
-# Commerce APIs
+## Commerce APIs
 
 APIs enabling you to build applications to manage the commerce features of your site. Connect your Squarespace store with other services, automate key tasks like shipping and tax filing, and more.
 
@@ -67,49 +68,49 @@ Learn More
 
 ](/commerce-apis/overview)
 
-# Focus on building your site. We'll take care of the rest.
+## Focus on building your site. We'll take care of the rest.
 
 Build your site using the tools we use to create Squarespace templates. With the Squarespace Developer Platform, your site will be backed by the same infrastructure that powers millions of Squarespace websites.
 
-# Full Code Control
+## Full Code Control
 
 Change anything from the doctype to the footer. With Developer Mode enabled, you have access to all the template files that make up your Squarespace website.
 
-# Local Development
+## Local Development
 
 Use the Squarespace Development Server to develop your site locally while working with your preferred native build tools.
 
-# Git Built-in
+## Git Built-in
 
 All Squarespace template repositories are exposed via Git automatically, so you can work with a team and easily roll back.
 
-# JSON Data Store
+## JSON Data Store
 
 Query any page as JSON to access your site's data in a structured way. Your website content is an API.
 
-# JSON-Template
+## JSON-Template
 
 Our familiar template language has very few language constructs to learn, yet offers the power and expressiveness needed to implement any design.
 
-# Infrastructure
+## Infrastructure
 
 Whether you have 10 or 10,000 visitors a day, your site will remain online. We host Squarespace.com on the same servers, so we're in this together.
 
-# Content Delivery Network
+## Content Delivery Network
 
 Our built-in CDN reduces load times using geographically distributed servers. Your assets will be delivered quickly to any place on Earth.
 
-# Site Manager
+## Site Manager
 
 Manage your client's content using the same robust backend that powers millions of sites on our consumer platform.
 
-# Squarespace
+## Squarespace
 
 [Main Site](https://www.squarespace.com)
 
 [Careers](https://www.squarespace.com/about/careers)
 
-# Developers
+## Developers
 
 [Home](/)
 
@@ -119,7 +120,7 @@ Manage your client's content using the same robust backend that powers millions 
 
 [Security Measures](https://www.squarespace.com/measures)
 
-# Documentation
+## Documentation
 
 [Template Docs](/quick-start)
 
@@ -127,7 +128,7 @@ Manage your client's content using the same robust backend that powers millions 
 
 [Webhooks](/webhooks/overview)
 
-# Community
+## Community
 
 [Circle](https://circle.squarespace.com)
 
@@ -135,7 +136,7 @@ Manage your client's content using the same robust backend that powers millions 
 
 [Forum](https://forum.squarespace.com)
 
-# Follow
+## Follow
 
 [Engineering Blog](https://engineering.squarespace.com)
 

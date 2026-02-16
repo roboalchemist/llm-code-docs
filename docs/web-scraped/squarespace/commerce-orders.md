@@ -1,13 +1,10 @@
 # Squarespace Developer Documentation
+
 # Source: https://developers.squarespace.com/commerce-apis/orders-overview
 
 Orders API overview — Squarespace Developers
 
--
-
-[
-
-](/)
+[Home](/)
 
 [Template Docs](/quick-start)
 
@@ -21,23 +18,7 @@ Orders API overview — Squarespace Developers
 
 [Get Started](/quick-start)
 
-[
-
-](/)
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-[Custom Code](/custom-code/about)
-
-[Upcoming Changes](/changes/upcoming-changes)
-
-[Get Started](/quick-start)
-
-Getting started
+## Getting started
 
 [Overview](/commerce-apis/overview)
 
@@ -47,7 +28,7 @@ Getting started
 
 [Retrieve basic site information](/commerce-apis/retrieve-basic-site-info)
 
-Using Commerce APIs
+## Using Commerce APIs
 
 [Idempotency-Key header](/commerce-apis/idempotency-key)
 
@@ -65,7 +46,7 @@ Using Commerce APIs
 
 [FAQ](/commerce-apis/faq)
 
-Inventory API
+## Inventory API
 
 [Overview](/commerce-apis/inventory-overview)
 
@@ -75,7 +56,7 @@ Inventory API
 
 [POST: Adjust stock quantities](/commerce-apis/adjust-stock-quantities)
 
-Orders API
+## Orders API
 
 [Overview](/commerce-apis/orders-overview)
 
@@ -87,7 +68,7 @@ Orders API
 
 [GET: Retrieve a specific order](/commerce-apis/retrieve-specific-order)
 
-Products API
+## Products API
 
 [Overview](/commerce-apis/products-overview)
 
@@ -125,7 +106,7 @@ Products API
 
 [DEL: Delete a product image](/commerce-apis/delete-product-image)
 
-Profiles API
+## Profiles API
 
 [Overview](/commerce-apis/profiles-overview)
 
@@ -133,7 +114,7 @@ Profiles API
 
 [GET: Retrieve specific profiles](/commerce-apis/retrieve-specific-profiles)
 
-Transactions API
+## Transactions API
 
 [Overview](/commerce-apis/transactions-overview)
 
@@ -141,7 +122,7 @@ Transactions API
 
 [GET: Retrieve specific transactions](/commerce-apis/retrieve-specific-transactions)
 
-Webhook Subscriptions API
+## Webhook Subscriptions API
 
 [Overview](/commerce-apis/webhook-subscriptions-overview)
 
@@ -193,13 +174,15 @@ Become familiar with [common commerce terms](/commerce-apis/glossary) and how th
 
 - Read the [FAQ](/commerce-apis/faq) guide for answers to common questions
 
-# Squarespace
+## Footer
+
+### Squarespace
 
 [Main Site](https://www.squarespace.com)
 
 [Careers](https://www.squarespace.com/about/careers)
 
-# Developers
+### Developers
 
 [Home](/)
 
@@ -209,7 +192,7 @@ Become familiar with [common commerce terms](/commerce-apis/glossary) and how th
 
 [Security Measures](https://www.squarespace.com/measures)
 
-# Documentation
+### Documentation
 
 [Template Docs](/quick-start)
 
@@ -217,7 +200,7 @@ Become familiar with [common commerce terms](/commerce-apis/glossary) and how th
 
 [Webhooks](/webhooks/overview)
 
-# Community
+### Community
 
 [Circle](https://circle.squarespace.com)
 
@@ -225,7 +208,7 @@ Become familiar with [common commerce terms](/commerce-apis/glossary) and how th
 
 [Forum](https://forum.squarespace.com)
 
-# Follow
+### Follow
 
 [Engineering Blog](https://engineering.squarespace.com)
 

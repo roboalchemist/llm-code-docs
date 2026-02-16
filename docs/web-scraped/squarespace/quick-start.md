@@ -1,119 +1,71 @@
 # Squarespace Developer Documentation
-# Source: https://developers.squarespace.com/quick-start
+
+Source: https://developers.squarespace.com/quick-start
 
 Quick Start — Squarespace Developers
 
--
+## Navigation
 
-[
+- [Template Docs](/quick-start)
+- [Commerce APIs](/commerce-apis/overview)
+- [Webhooks](/webhooks/overview)
+- [Custom Code](/custom-code/about)
+- [Upcoming Changes](/changes/upcoming-changes)
+- [Get Started](/quick-start)
 
-](/)
+## Start Here
 
-[Template Docs](/quick-start)
+- [Quick Start](/quick-start)
+- [Beginner Tutorial](/beginner-tutorial)
 
-[Commerce APIs](/commerce-apis/overview)
+## The Basics
 
-[Webhooks](/webhooks/overview)
+- [Template Overview](/template-overview)
+- [What is JSON?](/what-is-json)
+- [View JSON Data](/view-json-data)
+- [Templating Basics](/templating-basics)
 
-[Custom Code](/custom-code/about)
+## Template Files
 
-[Upcoming Changes](/changes/upcoming-changes)
+- [Template Configuration](/template-configuration)
+- [Layouts & Regions](/layouts-regions)
+- [Template Partials](/template-partials)
+- [Menus & Navigation](/menus-navigation)
+- [Folders & Indexes](/folders-indexes)
+- [Collections](/collections)
+- [Static Pages](/static-pages)
 
-[Get Started](/quick-start)
+## Template Language
 
-[
+- [What is JSON-T?](/what-is-json-t)
+- [JSON-T Directives](/json-t-directives)
+- [JSON-T Predicates](/json-t-predicates)
+- [JSON-T Formatters](/json-t-formatters)
+- [JSON-T Helpers](/json-t-helpers)
+- [JSON-T System Variables](/json-t-system-variables)
 
-](/)
+## Squarespace Tags
 
-[Template Docs](/quick-start)
+- [Open Block Field](/open-block-field)
+- [Navigation Tag](/navigation-tag)
+- [Category Tag](/category-tag)
+- [Custom Query Tag](/custom-query-tag)
 
-[Commerce APIs](/commerce-apis/overview)
+## JavaScript
 
-[Webhooks](/webhooks/overview)
+- [Custom JavaScript](/custom-javascript)
+- [Image Loader](/image-loader)
 
-[Custom Code](/custom-code/about)
+## Advanced
 
-[Upcoming Changes](/changes/upcoming-changes)
+- [Local Development](/local-development)
+- [Custom Post Types](/custom-post-types)
+- [Template Annotations](/template-annotations)
+- [Style Editor](/style-editor)
+- [Error Reporting](/error-reporting)
+- [URL Queries](/url-queries)
 
-[Get Started](/quick-start)
-
-Start Here
-
-[Quick Start](/quick-start)
-
-[Beginner Tutorial](/beginner-tutorial)
-
-The Basics
-
-[Template Overview](/template-overview)
-
-[What is JSON?](/what-is-json)
-
-[View JSON Data](/view-json-data)
-
-[Templating Basics](/templating-basics)
-
-Template Files
-
-[Template Configuration](/template-configuration)
-
-[Layouts & Regions](/layouts-regions)
-
-[Template Partials](/template-partials)
-
-[Menus & Navigation](/menus-navigation)
-
-[Folders & Indexes](/folders-indexes)
-
-[Collections](/collections)
-
-[Static Pages](/static-pages)
-
-Template Language
-
-[What is JSON-T?](/what-is-json-t)
-
-[JSON-T Directives](/json-t-directives)
-
-[JSON-T Predicates](/json-t-predicates)
-
-[JSON-T Formatters](/json-t-formatters)
-
-[JSON-T Helpers](/json-t-helpers)
-
-[JSON-T System Variables](/json-t-system-variables)
-
-Squarespace Tags
-
-[Open Block Field](/open-block-field)
-
-[Navigation Tag](/navigation-tag)
-
-[Category Tag](/category-tag)
-
-[Custom Query Tag](/custom-query-tag)
-
-JavaScript
-
-[Custom JavaScript](/custom-javascript)
-
-[Image Loader](/image-loader)
-
-Advanced
-
-[Local Development](/local-development)
-
-[Custom Post Types](/custom-post-types)
-
-[Template Annotations](/template-annotations)
-
-[Style Editor](/style-editor)
-
-[Error Reporting](/error-reporting)
-
-[URL Queries](/url-queries)
-
-# Quick Start
+## Quick Start
 
 The Squarespace Developer Platform enables web developers to access Squarespace template files (as provided to the consumer) and customize those files to create something unique. The advanced developer can go even further and create his or her own custom template from scratch.
 
@@ -137,70 +89,53 @@ Enabling Developer Mode will give you access to a copy of the template repositor
 
 *Note: Your site will not receive template updates from Squarespace when Developer Mode is enabled, and you will not be able to switch templates. Additionally, note that using Git will not allow you to run server-side code.*
 
-Before enabling Developer Mode, it’s important to note that disabling Developer Mode (or disconnecting GitHub Repository) is an irreversible action. You can expect the following if you disable it in the future:
+Before enabling Developer Mode, it's important to note that disabling Developer Mode (or disconnecting GitHub Repository) is an irreversible action. You can expect the following if you disable it in the future:
 
-Any changes to the template repository including custom collections, new or modified layouts and regions, new or modified scripts and styles, uploaded assets and custom types will be lost.
-
+- Any changes to the template repository including custom collections, new or modified layouts and regions, new or modified scripts and styles, uploaded assets and custom types will be lost.
 - All tweaks in the Site Styles panel will revert to their original settings before Developer Mode was enabled.
-
 - All content in block fields such as sidebars, headers and footers will be lost.
-
 - Existing content items based on custom types will still be editable as their base content items but without the custom fields.
-
 - The site's existing navigation structure will revert to the original navigation structure. Pages from the existing navigation structure will be moved to the Not Linked section of the Pages panel.
-
 - Existing custom collections will become uneditable.
 
-If you’ve decided to move forward with turning on Developer Mode, in the Site Manager, navigate to **Settings -> Developer Tools -> Developer Mode**. At the top right corner of the settings panel, there is a toggle that is set to off. Click the toggle to turn on Developer Mode.
+If you've decided to move forward with turning on Developer Mode, in the Site Manager, navigate to **Settings -> Developer Tools -> Developer Mode**. At the top right corner of the settings panel, there is a toggle that is set to off. Click the toggle to turn on Developer Mode.
 
 For new Developer Mode sites, the steps to connect to Git are:
 
 - Click Connect to GitHub
-
 - Authorize connection
-
 - Name repository
 
 To migrate an existing site to GitHub you will click a link in the banner of the Developer Mode panel and follow the same steps
 
 *Contact [Customer Care](https://support.squarespace.com/hc/requests/new) for help and troubleshooting Git connection.*
 
-# Squarespace
+## Squarespace
 
-[Main Site](https://www.squarespace.com)
+- [Main Site](https://www.squarespace.com)
+- [Careers](https://www.squarespace.com/about/careers)
 
-[Careers](https://www.squarespace.com/about/careers)
+## Developers
 
-# Developers
+- [Home](/)
+- [Developer Terms of Use](https://www.squarespace.com/developer-terms)
+- [Privacy Policy](https://www.squarespace.com/privacy)
+- [Security Measures](https://www.squarespace.com/measures)
 
-[Home](/)
+## Documentation
 
-[Developer Terms of Use](https://www.squarespace.com/developer-terms)
+- [Template Docs](/quick-start)
+- [Commerce APIs](/commerce-apis/overview)
+- [Webhooks](/webhooks/overview)
 
-[Privacy Policy](https://www.squarespace.com/privacy)
+## Community
 
-[Security Measures](https://www.squarespace.com/measures)
+- [Circle](https://circle.squarespace.com)
+- [Specialists](https://specialists.squarespace.com)
+- [Forum](https://forum.squarespace.com)
 
-# Documentation
+## Follow
 
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-# Community
-
-[Circle](https://circle.squarespace.com)
-
-[Specialists](https://specialists.squarespace.com)
-
-[Forum](https://forum.squarespace.com)
-
-# Follow
-
-[Engineering Blog](https://engineering.squarespace.com)
-
-[Github](https://github.com/squarespace)
-
-[NPM](https://www.npmjs.com/org/squarespace)
+- [Engineering Blog](https://engineering.squarespace.com)
+- [Github](https://github.com/squarespace)
+- [NPM](https://www.npmjs.com/org/squarespace)

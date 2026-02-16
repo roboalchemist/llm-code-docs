@@ -1,4 +1,5 @@
 # Squarespace Developer Documentation
+
 # Source: https://developers.squarespace.com/commerce-apis/profiles-overview
 
 Profiles API overview — Squarespace Developers
@@ -161,7 +162,7 @@ Webhook Subscriptions API
 
 # Profiles API overview
 
-**Current version: 1.0**
+## Current version: 1.0
 
 *For versioning details, read the [Upgrade](/commerce-apis/upgrade) guide.*
 

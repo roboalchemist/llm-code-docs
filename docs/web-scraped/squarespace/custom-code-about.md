@@ -1,23 +1,8 @@
 # Squarespace Developer Documentation
-# Source: https://developers.squarespace.com/custom-code/about
 
-About — Squarespace Developers
+Source: https://developers.squarespace.com/custom-code/about
 
-[
-
-](/)
-
-[Template Docs](/quick-start)
-
-[Commerce APIs](/commerce-apis/overview)
-
-[Webhooks](/webhooks/overview)
-
-[Custom Code](/custom-code/about)
-
-[Upcoming Changes](/changes/upcoming-changes)
-
-[Get Started](/quick-start)
+## About — Squarespace Developers
 
 [
 
@@ -35,13 +20,29 @@ About — Squarespace Developers
 
 [Get Started](/quick-start)
 
-Custom Code Specification
+[
+
+](/)
+
+[Template Docs](/quick-start)
+
+[Commerce APIs](/commerce-apis/overview)
+
+[Webhooks](/webhooks/overview)
+
+[Custom Code](/custom-code/about)
+
+[Upcoming Changes](/changes/upcoming-changes)
+
+[Get Started](/quick-start)
+
+## Custom Code Specification
 
 [About](/custom-code/about)
 
 [HTML Attributes](/custom-code/html)
 
-# Custom Code Specification
+## Overview
 
 The Custom Code Specification is a set of persistent HTML and CSS properties that you can rely on when [adding custom code](https://support.squarespace.com/hc/en-us/articles/205815928-Adding-custom-code-to-your-site) to a Squarespace website.
 
@@ -49,13 +50,13 @@ Squarespace is constantly evolving and releasing new features for our websites. 
 
 **HTML attributes, DOM structure, CSS selectors, CSS variables, and JavaScript variables that are not in the Custom Code Specification are more likely to change in ways that could break custom code.**
 
-# Squarespace
+## Squarespace
 
 [Main Site](https://www.squarespace.com)
 
 [Careers](https://www.squarespace.com/about/careers)
 
-# Developers
+## Developers
 
 [Home](/)
 
@@ -65,7 +66,7 @@ Squarespace is constantly evolving and releasing new features for our websites. 
 
 [Security Measures](https://www.squarespace.com/measures)
 
-# Documentation
+## Documentation
 
 [Template Docs](/quick-start)
 
@@ -73,7 +74,7 @@ Squarespace is constantly evolving and releasing new features for our websites. 
 
 [Webhooks](/webhooks/overview)
 
-# Community
+## Community
 
 [Circle](https://circle.squarespace.com)
 
@@ -81,7 +82,7 @@ Squarespace is constantly evolving and releasing new features for our websites. 
 
 [Forum](https://forum.squarespace.com)
 
-# Follow
+## Follow
 
 [Engineering Blog](https://engineering.squarespace.com)
 
