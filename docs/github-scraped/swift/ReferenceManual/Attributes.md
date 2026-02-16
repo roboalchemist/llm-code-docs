@@ -192,6 +192,7 @@ including important milestones.
   ```swift
   introduced: <#version number#>
   ```
+
   The *version number* consists of one to three positive integers,
   separated by periods.
 - The `deprecated` argument indicates the first version
@@ -201,6 +202,7 @@ including important milestones.
   ```swift
   deprecated: <#version number#>
   ```
+
   The optional *version number* consists of one to three positive integers,
   separated by periods.
   Omitting the version number indicates that the declaration is currently deprecated,
@@ -215,6 +217,7 @@ including important milestones.
   ```swift
   obsoleted: <#version number#>
   ```
+
   The *version number* consists of one to three positive integers, separated by periods.
 
 - The `noasync` argument indicates that
@@ -295,6 +298,7 @@ including important milestones.
   ```swift
   message: <#message#>
   ```
+
   The *message* consists of a string literal.
 - The `renamed` argument provides a textual message
   that indicates the new name for a declaration that's been renamed.
@@ -305,6 +309,7 @@ including important milestones.
   ```swift
   renamed: <#new name#>
   ```
+
   The *new name* consists of a string literal.
 
   You can apply the `available` attribute

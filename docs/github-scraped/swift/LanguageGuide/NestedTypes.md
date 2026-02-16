@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/NestedTypes.md
 
-# Nested Types
+## Nested Types
 
 Define types inside the scope of another type.
 

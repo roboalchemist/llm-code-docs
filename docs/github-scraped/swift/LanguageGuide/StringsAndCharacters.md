@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/StringsAndCharacters.md
 
-# Strings and Characters
+## Strings and Characters
 
 Store and manipulate text.
 

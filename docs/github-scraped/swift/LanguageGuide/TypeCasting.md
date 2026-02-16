@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/TypeCasting.md
 
-# Type Casting
+## Type Casting
 
 Determine a value's runtime type and give it more specific type information.
 

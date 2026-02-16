@@ -1373,7 +1373,6 @@ if you try to add concurrent code to this function,
 introducing a possible suspension point,
 you'll get a compile-time error instead of introducing a bug.
 
-
 ## Global Actors
 
 The main actor is a global singleton instance of the [`MainActor`][] type.
@@ -1393,7 +1392,6 @@ in the way that works best for you.
 You can define your own singleton global actors
 using the `@globalActor` attribute,
 as described in <doc:Attributes#globalActor>.
-
 
 <!--
   OUTLINE

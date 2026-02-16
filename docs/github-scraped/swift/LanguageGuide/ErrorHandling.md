@@ -836,6 +836,7 @@ func nonThrowingFunction() throws(Never) {
   // ...
 }
 ```
+
 This function can't throw because
 it's impossible to create a value of type `Never` to throw.
 

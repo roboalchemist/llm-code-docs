@@ -1032,7 +1032,7 @@ once the class instance is known to be valid at the end of the first phase.
 
 Here's how two-phase initialization plays out, based on the four safety checks above:
 
-**Phase 1**
+## Phase 1
 
 - A designated or convenience initializer is called on a class.
 - Memory for a new instance of that class is allocated.
@@ -1047,7 +1047,7 @@ Here's how two-phase initialization plays out, based on the four safety checks a
   and the final class in the chain has ensured that all of its stored properties have a value,
   the instance's memory is considered to be fully initialized, and phase 1 is complete.
 
-**Phase 2**
+## Phase 2
 
 - Working back down from the top of the chain,
   each designated initializer in the chain has the option to customize the instance further.

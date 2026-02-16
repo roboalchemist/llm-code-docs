@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/Protocols.md
 
-# Protocols
+## Protocols
 
 Define requirements that conforming types must implement.
 

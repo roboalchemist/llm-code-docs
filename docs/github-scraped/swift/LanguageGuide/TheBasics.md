@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/TheBasics.md
 
-# The Basics
+## The Basics
 
 Work with common kinds of data and write basic syntax.
 

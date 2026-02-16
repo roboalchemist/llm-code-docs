@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/OptionalChaining.md
 
-# Optional Chaining
+## Optional Chaining
 
 Access members of an optional value without unwrapping.
 

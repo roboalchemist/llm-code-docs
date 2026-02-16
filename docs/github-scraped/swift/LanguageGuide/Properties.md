@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/Properties.md
 
-# Properties
+## Properties
 
 Access stored and computed values that are part of an instance or type.
 

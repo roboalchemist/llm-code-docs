@@ -324,7 +324,7 @@ see [Operator Declarations](https://developer.apple.com/documentation/swift/oper
 > is initially understood as a flat list of five items,
 > `2`, `+`, `3`, `*`, and `5`.
 > This process transforms it into the tree (2 + (3 * 5)).
-
+>
 > Grammar of an infix expression:
 >
 > *infix-expression* → *infix-operator* *prefix-expression* \
@@ -840,11 +840,11 @@ except for the differences that the paragraphs below describe.
 
 A conditional expression appears only in the following contexts:
 
-  - As the value assigned to a variable.
-  - As the initial value in a variable or constant declaration.
-  - As the error thrown by a `throw` expression.
-  - As the value returned by a function, closure, or property getter.
-  - As the value inside a branch of a conditional expression.
+- As the value assigned to a variable.
+- As the initial value in a variable or constant declaration.
+- As the error thrown by a `throw` expression.
+- As the value returned by a function, closure, or property getter.
+- As the value inside a branch of a conditional expression.
 
 The branches of a conditional expression are exhaustive,
 ensuring that the expression always produces a value
@@ -2257,7 +2257,7 @@ see [Key-Value Coding Programming Guide](https://developer.apple.com/library/con
 and [Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i).
 
 > Note: Although the *property name* is an expression, it's never evaluated.
-
+>
 > Grammar of a key-path string expression:
 >
 > *key-path-string-expression* → **`#keyPath`** **`(`** *expression* **`)`**

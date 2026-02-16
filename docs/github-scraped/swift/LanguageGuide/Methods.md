@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/Methods.md
 
-# Methods
+## Methods
 
 Define and call functions that are part of an instance or type.
 

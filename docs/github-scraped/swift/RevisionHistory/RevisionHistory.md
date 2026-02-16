@@ -4,13 +4,13 @@
 
 Review the recent changes to this book.
 
-**2025-12-12**
+### 2025-12-12
 
 - Updated for Swift 6.2.3.
 - Added the <doc:Attributes#export> section
   with information about exporting definitions to client modules.
 
-**2025-11-03**
+### 2025-11-03
 
 - Updated for Swift 6.2.1.
 - Added the <doc:GenericParametersAndArguments#Integer-Generic-Parameters> section
@@ -19,7 +19,7 @@ Review the recent changes to this book.
   and <doc:TheBasics#Floating-Point-Numbers> sections
   about choosing between integers and floating-point numbers.
 
-**2025-09-15**
+### 2025-09-15
 
 - Updated for Swift 6.2.
 - Added the <doc:TheBasics#Memory-Safety> section
@@ -36,7 +36,7 @@ Review the recent changes to this book.
   with information about generic constraints
   that require conformance to common protocols.
 
-**2025-03-31**
+### 2025-03-31
 
 - Updated for Swift 6.1.
 - Added the <doc:OpaqueTypes#Opaque-Parameter-Types> section
@@ -44,7 +44,7 @@ Review the recent changes to this book.
 - Added information about the `noasync` argument
   to the <doc:Attributes#available> section.
 
-**2024-09-23**
+### 2024-09-23
 
 - Updated for Swift 6.
 - Added the <doc:Attributes#preconcurrency> section
@@ -56,7 +56,7 @@ Review the recent changes to this book.
 - Added information about package-level access
   to the <doc:AccessControl> chapter.
 
-**2024-03-05**
+### 2024-03-05
 
 - Updated for Swift 5.10.
 - Added information about nested protocols
@@ -65,7 +65,7 @@ Review the recent changes to this book.
   in the <doc:Attributes#UIApplicationMain>
   and <doc:Attributes#NSApplicationMain> sections.
 
-**2023-12-11**
+### 2023-12-11
 
 - Updated for Swift 5.9.2.
 - Added information about the `borrowing` and `consuming` modifiers
@@ -81,7 +81,7 @@ Review the recent changes to this book.
 - Added the <doc:Attributes#backDeployed> section
   with information about back deployment.
 
-**2023-09-18**
+### 2023-09-18
 
 - Updated for Swift 5.9.
 - Added information about `if` and `switch` expressions
@@ -101,7 +101,7 @@ Review the recent changes to this book.
   and <doc:Statements#Conditional-Compilation-Block>.
 - Formatted the formal grammar to use blank lines for grouping.
 
-**2023-03-30**
+### 2023-03-30
 
 - Updated for Swift 5.8.
 - Added the <doc:ControlFlow#Deferred-Actions> section,
@@ -109,7 +109,7 @@ Review the recent changes to this book.
 - Adopted Swift-DocC for publication.
 - Minor corrections and additions throughout.
 
-**2022-09-12**
+### 2022-09-12
 
 - Updated for Swift 5.7.
 - Added the <doc:Concurrency#Sendable-Types> section,
@@ -123,7 +123,7 @@ Review the recent changes to this book.
 - Added information about `#unavailable`
   to the <doc:ControlFlow#Checking-API-Availability> section.
 
-**2022-03-14**
+### 2022-03-14
 
 - Updated for Swift 5.6.
 - Updated the <doc:Expressions#Explicit-Member-Expression> section
@@ -131,7 +131,7 @@ Review the recent changes to this book.
   around chained method calls and other postfix expressions.
 - Updated the visual styling of figures throughout.
 
-**2021-09-20**
+### 2021-09-20
 
 - Updated for Swift 5.5.
 - Added information about asynchronous functions, tasks, and actors
@@ -142,7 +142,7 @@ Review the recent changes to this book.
 - Updated the <doc:LexicalStructure#Identifiers> section
   with information about identifiers that start with an underscore.
 
-**2021-04-26**
+### 2021-04-26
 
 - Updated for Swift 5.4.
 - Added the <doc:AdvancedOperators#Result-Builders>
@@ -157,7 +157,7 @@ Review the recent changes to this book.
 - Updated the <doc:Expressions#Implicit-Member-Expression> section,
   now that implicit member expressions can be chained together.
 
-**2020-09-16**
+### 2020-09-16
 
 - Updated for Swift 5.3.
 - Added information about multiple trailing closures
@@ -191,7 +191,7 @@ Review the recent changes to this book.
 - Updated the <doc:MemorySafety> chapter
   to mention atomic operations.
 
-**2020-03-24**
+### 2020-03-24
 
 - Updated for Swift 5.2.
 - Added information about passing a key path instead of a closure
@@ -207,7 +207,7 @@ Review the recent changes to this book.
   to make it clearer that an implicitly unwrapped optional value
   can be used as either an optional or non-optional value.
 
-**2019-09-10**
+### 2019-09-10
 
 - Updated for Swift 5.1.
 - Added information about functions
@@ -238,7 +238,7 @@ Review the recent changes to this book.
   now that `Self` can be used to refer to the type
   introduced by the current class, structure, or enumeration declaration.
 
-**2019-03-25**
+### 2019-03-25
 
 - Updated for Swift 5.0.
 - Added the <doc:StringsAndCharacters#Extended-String-Delimiters> section
@@ -256,7 +256,7 @@ Review the recent changes to this book.
 - Added information about using the less than (`<`) operator
   in platform conditions to the <doc:Statements#Conditional-Compilation-Block> section.
 
-**2018-09-17**
+### 2018-09-17
 
 - Updated for Swift 4.2.
 - Added information about accessing all of an enumeration's cases
@@ -277,7 +277,7 @@ Review the recent changes to this book.
 - Added information about `#dsohandle`
   to the <doc:Expressions#Literal-Expression> section.
 
-**2018-03-29**
+### 2018-03-29
 
 - Updated for Swift 4.1.
 - Added information about synthesized implementations of equivalence operators
@@ -293,13 +293,13 @@ Review the recent changes to this book.
   the `canImport()` and `targetEnvironment()` platform conditions
   to <doc:Statements#Conditional-Compilation-Block>.
 
-**2017-12-04**
+### 2017-12-04
 
 - Updated for Swift 4.0.3.
 - Updated the <doc:Expressions#Key-Path-Expression> section,
   now that key paths support subscript components.
 
-**2017-09-19**
+### 2017-09-19
 
 - Updated for Swift 4.0.
 - Added information about exclusive access to memory
@@ -329,7 +329,7 @@ Review the recent changes to this book.
 - Added information about preconditions and fatal errors
   to the <doc:TheBasics#Assertions-and-Preconditions> section.
 
-**2017-03-27**
+### 2017-03-27
 
 - Updated for Swift 3.1.
 - Added the <doc:Generics#Extensions-with-a-Generic-Where-Clause> section
@@ -353,7 +353,7 @@ Review the recent changes to this book.
   from the <doc:Expressions> chapter,
   now that `type(of:)` is a Swift standard library function.
 
-**2016-10-27**
+### 2016-10-27
 
 - Updated for Swift 3.0.1.
 - Updated the discussion of weak and unowned references
@@ -366,7 +366,7 @@ Review the recent changes to this book.
 - Updated the <doc:Expressions> chapter
   to separate the discussion of parenthesized expressions and tuple expressions.
 
-**2016-09-13**
+### 2016-09-13
 
 - Updated for Swift 3.0.
 - Updated the discussion of functions in the <doc:Functions> chapter
@@ -464,7 +464,7 @@ Review the recent changes to this book.
 - Corrected the discussion of the `@NSApplicationMain` attribute
   in the <doc:Attributes#Declaration-Attributes> section.
 
-**2016-03-21**
+### 2016-03-21
 
 - Updated for Swift 2.2.
 - Added information about how to conditionally compile code
@@ -510,7 +510,7 @@ Review the recent changes to this book.
 - Removed discussion of variable function arguments
   and the special syntax for curried functions.
 
-**2015-10-20**
+### 2015-10-20
 
 - Updated for Swift 2.1.
 - Updated the <doc:StringsAndCharacters#String-Interpolation>
@@ -534,7 +534,7 @@ Review the recent changes to this book.
 - Added an example that uses the `??` operator
   to the <doc:GuidedTour> chapter.
 
-**2015-09-16**
+### 2015-09-16
 
 - Updated for Swift 2.0.
 - Added information about error handling
@@ -654,7 +654,7 @@ Review the recent changes to this book.
   <doc:StringsAndCharacters#Special-Characters-in-String-Literals> section
   with a more precise definition of Unicode scalars.
 
-**2015-04-08**
+### 2015-04-08
 
 - Updated for Swift 1.2.
 - Swift now has a native `Set` collection type.
@@ -712,7 +712,7 @@ Review the recent changes to this book.
   and type casts that are guaranteed not to fail use the `as` operator.
   For more information, see <doc:Expressions#Type-Casting-Operators>.
 
-**2014-10-16**
+### 2014-10-16
 
 - Updated for Swift 1.1.
 - Added a full guide to <doc:Initialization#Failable-Initializers>.
@@ -737,7 +737,7 @@ Review the recent changes to this book.
   Removed a duplicate description of the valid set of operator characters
   from <doc:AdvancedOperators#Custom-Operators>.
 
-**2014-08-18**
+### 2014-08-18
 
 - New document that describes Swift 1.0,
   Apple’s new programming language for building iOS and OS X apps.

@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/Subscripts.md
 
-# Subscripts
+## Subscripts
 
 Access the elements of a collection.
 

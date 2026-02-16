@@ -1,6 +1,6 @@
 # Source: https://github.com/swiftlang/swift-book/blob/main/TSPL.docc/LanguageGuide/OpaqueTypes.md
 
-# Opaque and Boxed Protocol Types
+## Opaque and Boxed Protocol Types
 
 Hide implementation details about a value's type.
 
@@ -922,7 +922,6 @@ which means that the type of `twelve` is also inferred to be `Int`.
       return AnyP(p: result)
   }
 -->
-
 
 ## Opaque Parameter Types
 
