@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/model-fallback.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Model Fallback
+Source: https://docs.perplexity.ai/docs/agent-api/model-fallback
 
-> Specify multiple models in a fallback chain for higher availability and automatic failover.
+Specify multiple models in a fallback chain for higher availability and automatic failover.
 
 ## Overview
 
@@ -47,7 +42,7 @@ The `models` array takes precedence over the single `model` field when both are 
   print(f"Model used: {response.model}")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -93,7 +88,7 @@ For maximum reliability, use models from different providers:
   )
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -134,7 +129,7 @@ The `model` field in the response indicates which model was used, and the `usage
 <Accordion title="Example">
   **Request:**
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "models": ["openai/gpt-5.2", "openai/gpt-5.1"],
     "input": "..."
@@ -143,7 +138,7 @@ The `model` field in the response indicates which model was used, and the `usage
 
   **Response** (if first model failed):
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "model": "openai/gpt-5.1",
     "usage": {
@@ -163,20 +158,20 @@ The `model` field in the response indicates which model was used, and the `usage
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card title="Models" icon="brain" href="/docs/grounded-llm/responses/models">
+<CardGroup>
+  <Card title="Models" icon="brain" href="/docs/agent-api/models">
     Explore available models and their pricing.
   </Card>
 
-  <Card title="Presets" icon="gear" href="/docs/grounded-llm/responses/presets">
+  <Card title="Presets" icon="settings" href="/docs/agent-api/presets">
     Explore available presets and their configurations.
   </Card>
 
-  <Card title="Agentic Research API Quickstart" icon="rocket" href="/docs/grounded-llm/responses/quickstart">
-    Get started with your first Agentic Research API call.
+  <Card title="Agent API Quickstart" icon="rocket" href="/docs/agent-api/quickstart">
+    Get started with your first Agent API call.
   </Card>
 
-  <Card title="API Reference" icon="code" href="/api-reference/responses-post">
+  <Card title="API Reference" icon="code-circle" href="/api-reference/responses-post">
     View complete endpoint documentation.
   </Card>
 </CardGroup>

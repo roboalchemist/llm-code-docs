@@ -1,96 +1,354 @@
-# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/pro-search/tools.md
+# Tools
+Source: https://docs.perplexity.ai/docs/agent-api/tools
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
-# Built-in Tool Capabilities
-
-> Learn about Pro Search's built-in tools: web search and URL content fetching
+Web search, URL fetching, and function calling tools for the Agent API
 
 ## Overview
 
-Pro Search provides two built-in tools that the model uses automatically to answer your queries. The model decides which tools to use and when—you don't need to configure anything. These tools are called automatically by the system; you cannot register custom tools.
+The Agent API provides tools that extend model capabilities beyond their training data. Tools must be explicitly configured in your API request—once enabled, models autonomously decide when to use them based on your instructions.
 
-<Info>
-  All tool executions appear in the `reasoning_steps` array of streaming responses, giving you visibility into how the model researched your query.
-</Info>
+| Type         | Tools                     | Use Case                                   |
+| ------------ | ------------------------- | ------------------------------------------ |
+| **Built-in** | `web_search`, `fetch_url` | Real-time web information retrieval        |
+| **Custom**   | Your functions            | Connect to databases, APIs, business logic |
 
-## web\_search
+Enable tools by adding them to the `tools` array in your request:
 
-Conducts web searches to find current information, statistics, and expert opinions.
+<CodeGroup>
+  ```python Python theme={null}
+  from perplexity import Perplexity
 
-**Example in action:**
+  client = Perplexity()
 
-```json  theme={null}
-{
-  "thought": "I need current data on EV market trends",
-  "type": "web_search",
-  "web_search": {
-    "search_keywords": [
-      "EV Statistics 2023-2024",
-      "electric vehicle sales data",
-      "global EV market trends"
-    ],
-    "search_results": [
+  response = client.responses.create(
+      model="openai/gpt-5.2",
+      input="What are the latest AI developments?",
+      tools=[
+          {"type": "web_search"},
+          {"type": "fetch_url"}
+      ],
+      instructions="Use web_search for current information. Use fetch_url when you need full article content."
+  )
+
+  print(response.output_text)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Perplexity from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity();
+
+  const response = await client.responses.create({
+      model: "openai/gpt-5.2",
+      input: "What are the latest AI developments?",
+      tools: [
+          { type: "web_search" },
+          { type: "fetch_url" }
+      ],
+      instructions: "Use web_search for current information. Use fetch_url when you need full article content."
+  });
+
+  console.log(response.output_text);
+  ```
+</CodeGroup>
+
+## Web Search Tool
+
+The `web_search` tool allows models to perform web searches with advanced filtering capabilities. Use it when you need current information, news, or data beyond the model's training cutoff.
+
+**Pricing:** \$5.00 per 1,000 search calls (\$0.005 per search), plus token costs.
+
+### Example
+
+<CodeGroup>
+  ```python Python theme={null}
+  from perplexity import Perplexity
+
+  client = Perplexity()
+
+  response = client.responses.create(
+      model="openai/gpt-5.2",
+      input="What are recent academic findings on renewable energy?",
+      tools=[
+          {
+              "type": "web_search",
+              "filters": {
+                  "search_domain_filter": ["nature.com", "science.org", ".edu"],
+                  "search_language_filter": ["en"],
+                  "search_recency_filter": "month"
+              }
+          }
+      ],
+      instructions="Search for recent English-language academic publications."
+  )
+
+  print(response.output_text)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Perplexity from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity();
+
+  const response = await client.responses.create({
+      model: "openai/gpt-5.2",
+      input: "What are recent academic findings on renewable energy?",
+      tools: [
+          {
+              type: "web_search",
+              filters: {
+                  search_domain_filter: ["nature.com", "science.org", ".edu"],
+                  search_language_filter: ["en"],
+                  search_recency_filter: "month"
+              }
+          }
+      ],
+      instructions: "Search for recent English-language academic publications."
+  });
+
+  console.log(response.output_text);
+  ```
+</CodeGroup>
+
+### Key Parameters
+
+| Filter                   | Type             | Description                                                        | Limit            |
+| ------------------------ | ---------------- | ------------------------------------------------------------------ | ---------------- |
+| `search_domain_filter`   | Array of strings | Filter by specific domains (allowlist or denylist with `-` prefix) | Max 20 domains   |
+| `search_language_filter` | Array of strings | Filter by ISO 639-1 language codes                                 | Max 10 languages |
+| `search_recency_filter`  | String           | Filter by time period: `"day"`, `"week"`, `"month"`, `"year"`      | -                |
+| `search_after_date`      | String           | Filter results published after this date (format: `"M/D/YYYY"`)    | -                |
+| `search_before_date`     | String           | Filter results published before this date (format: `"M/D/YYYY"`)   | -                |
+| `max_tokens_per_page`    | Integer          | Control the amount of content retrieved per search result          | -                |
+
+<Tip>
+  Use `-` prefix to exclude domains: `"-reddit.com"` excludes Reddit from results. Lower `max_tokens_per_page` to reduce context token costs.
+</Tip>
+
+## Fetch URL Tool
+
+The `fetch_url` tool fetches and extracts content from specific URLs. Use it when you need the full content of a particular web page, article, or document rather than search results.
+
+**Pricing:** \$0.50 per 1,000 requests (\$0.0005 per fetch), plus token costs.
+
+### Example
+
+<CodeGroup>
+  ```python Python theme={null}
+  from perplexity import Perplexity
+
+  client = Perplexity()
+
+  response = client.responses.create(
+      model="openai/gpt-5.2",
+      input="Summarize the content at https://example.com/article",
+      tools=[
+          {
+              "type": "fetch_url"
+          }
+      ],
+      instructions="Use fetch_url to retrieve and summarize the article."
+  )
+
+  print(response.output_text)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Perplexity from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity();
+
+  const response = await client.responses.create({
+      model: "openai/gpt-5.2",
+      input: "Summarize the content at https://example.com/article",
+      tools: [
+          {
+              type: "fetch_url"
+          }
+      ],
+      instructions: "Use fetch_url to retrieve and summarize the article."
+  });
+
+  console.log(response.output_text);
+  ```
+</CodeGroup>
+
+### When to Use
+
+| Use `fetch_url` when...         | Use `web_search` when...                |
+| ------------------------------- | --------------------------------------- |
+| You have a specific URL         | You need to find relevant pages         |
+| You need full page content      | You need snippets from multiple sources |
+| Analyzing a particular document | Researching a broad topic               |
+| Verifying specific claims       | Finding current news or events          |
+
+<Tip>
+  Combine `web_search` and `fetch_url` for comprehensive research: search to find relevant pages, then fetch full content from the most relevant results.
+</Tip>
+
+## Function Calling
+
+Function calling allows you to define custom functions that models can invoke during a conversation. Unlike built-in tools, custom functions let you connect the model to your own systems—databases, APIs, business logic, or any external service.
+
+**Pricing:** No additional cost (standard token pricing applies).
+
+### How It Works
+
+Function calling follows a multi-turn conversation pattern:
+
+1. Define functions with names, descriptions, and parameter schemas
+2. Send your prompt with function definitions
+3. Model returns a `function_call` item if it needs to call a function
+4. Execute the function in your code
+5. Return results as a `function_call_output` item
+6. Model uses the results to generate its final response
+
+### Example
+
+<CodeGroup>
+  ```python Python theme={null}
+  from perplexity import Perplexity
+  import json
+
+  client = Perplexity()
+
+  # Define your function tools
+  tools = [
       {
-        "title": "Trends in electric cars",
-        "url": "https://www.iea.org/reports/global-ev-outlook-2024/trends-in-electric-cars",
-        "date": "2024-03-15",
-        "last_updated": null,
-        "snippet": "Electric car sales neared 14 million in 2023, 95% of which were in China, Europe and the United States...",
-        "source": "web"
+          "type": "function",
+          "name": "get_horoscope",
+          "description": "Get today's horoscope for an astrological sign.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "sign": {
+                      "type": "string",
+                      "description": "An astrological sign like Taurus or Aquarius"
+                  }
+              },
+              "required": ["sign"]
+          }
       }
-    ]
-  }
-}
-```
+  ]
 
-## fetch\_url\_content
+  # Your actual function implementation
+  def get_horoscope(sign: str) -> str:
+      return f"{sign}: Today brings new opportunities for growth."
 
-Retrieves full content from specific URLs to access detailed information beyond search result snippets.
+  # Send initial request with tools
+  response = client.responses.create(
+      model="openai/gpt-5.2",
+      tools=tools,
+      input="What is my horoscope? I am an Aquarius."
+  )
 
-**Example in action:**
+  # Process the response and handle function calls
+  next_input = [item.model_dump() for item in response.output]
 
-```json  theme={null}
-{
-  "thought": "This research paper contains detailed methodology I need to review",
-  "type": "fetch_url_content",
-  "fetch_url_content": {
-    "contents": [
+  for item in response.output:
+      if item.type == "function_call":
+          # Execute the function
+          args = json.loads(item.arguments)
+          result = get_horoscope(args["sign"])
+
+          # Add the function result to the input
+          next_input.append({
+              "type": "function_call_output",
+              "call_id": item.call_id,
+              "output": json.dumps({"horoscope": result})
+          })
+
+  # Send the function results back to get the final response
+  final_response = client.responses.create(
+      model="openai/gpt-5.2",
+      input=next_input
+  )
+
+  print(final_response.output_text)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Perplexity from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity();
+
+  // Define your function tools
+  const tools = [
       {
-        "title": "Attention Is All You Need",
-        "url": "https://arxiv.org/pdf/1706.03762",
-        "date": null,
-        "last_updated": null,
-        "snippet": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder...",
-        "source": "web"
+          type: "function" as const,
+          name: "get_horoscope",
+          description: "Get today's horoscope for an astrological sign.",
+          parameters: {
+              type: "object",
+              properties: {
+                  sign: {
+                      type: "string",
+                      description: "An astrological sign like Taurus or Aquarius"
+                  }
+              },
+              required: ["sign"]
+          }
       }
-    ]
+  ];
+
+  // Your actual function implementation
+  function getHoroscope(sign: string): string {
+      return `${sign}: Today brings new opportunities for growth.`;
   }
-}
-```
 
-## Multi-Tool Workflows
+  // Send initial request with tools
+  const response = await client.responses.create({
+      model: "openai/gpt-5.2",
+      tools: tools,
+      input: "What is my horoscope? I am an Aquarius."
+  });
 
-The model automatically combines multiple tools when needed. For example, when asked to research solar panel options, it might:
+  // Process the response and handle function calls
+  const nextInput: any[] = response.output.map(item => ({ ...item }));
 
-1. Use `web_search` to find current incentives and costs
-2. Use `fetch_url_content` to read detailed policy documents
-3. Use `web_search` again to verify electricity rates and compare providers
+  for (const item of response.output) {
+      if (item.type === "function_call") {
+          // Execute the function
+          const args = JSON.parse(item.arguments);
+          const result = getHoroscope(args.sign);
 
-## Related Resources
+          // Add the function result to the input
+          nextInput.push({
+              type: "function_call_output",
+              call_id: item.call_id,
+              output: JSON.stringify({ horoscope: result })
+          });
+      }
+  }
 
-<CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/docs/grounded-llm/chat-completions/pro-search/quickstart">
-    Get started with Pro Search basics
-  </Card>
+  // Send the function results back to get the final response
+  const finalResponse = await client.responses.create({
+      model: "openai/gpt-5.2",
+      input: nextInput
+  });
 
-  <Card title="Stream Mode Guide" icon="bolt" href="/docs/guides/stream-mode-guide">
-    Learn about streaming and real-time reasoning visibility
-  </Card>
+  console.log(finalResponse.output_text);
+  ```
+</CodeGroup>
 
-  <Card title="API Reference" icon="book" href="/api-reference/chat-completions-post">
-    Complete API documentation
-  </Card>
-</CardGroup>
+### Key Properties
+
+| Property      | Type    | Required | Description                                                    |
+| ------------- | ------- | -------- | -------------------------------------------------------------- |
+| `type`        | string  | Yes      | Must be `"function"`                                           |
+| `name`        | string  | Yes      | Function name the model will use to call it                    |
+| `description` | string  | Yes      | Clear description of what the function does and when to use it |
+| `parameters`  | object  | Yes      | JSON Schema defining the function's parameters                 |
+| `strict`      | boolean | No       | Enable strict schema validation                                |
+
+<Warning>
+  The `arguments` field in function calls is a JSON string, not a parsed object. Always use `json.loads()` (Python) or `JSON.parse()` (JavaScript) to parse it.
+</Warning>
+
+<Tip>
+  Write clear, specific function descriptions. The model uses these to decide when to call each function. Include details about what the function returns and any constraints.
+</Tip>
+
+## Next Steps
+
+Get started with tools in the Agent API by following the [quickstart guide](/docs/agent-api/quickstart).

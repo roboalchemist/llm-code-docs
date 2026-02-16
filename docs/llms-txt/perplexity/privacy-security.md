@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/resources/privacy-security.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Privacy & Security
+Source: https://docs.perplexity.ai/docs/resources/privacy-security
 
-> Learn about Perplexity's data privacy, retention policies, and security certifications for API users
+Learn about Perplexity's data privacy, retention policies, and security certifications for API users
 
 ## Data Privacy & Retention
 

@@ -1,17 +1,14 @@
-# Source: https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Rate Limits & Usage Tiers
+Source: https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers
+
+
 
 ## What are Usage Tiers?
 
-Usage tiers determine your **rate limits** and access to **beta features** based on your cumulative API spending. As you spend more on API credits over time, you automatically advance to higher tiers with increased rate limits.
+Usage tiers determine your **rate limits** and access to **beta features** based on your cumulative API spending. As you spend more on API credits over time, you automatically advance to higher tiers with increased rate limits. Higher tiers unlock significantly more requests per minute, and once you reach a tier, you keep it permanently with no downgrade.
 
 <Info>
-  You can check your current usage tier by visiting your [API settings page](https://www.perplexity.ai/settings/api).
+  You can check your current usage tier by visiting your [API settings page](https://www.perplexity.ai/account/api/billing).
 </Info>
 
 ***
@@ -31,15 +28,49 @@ Usage tiers determine your **rate limits** and access to **beta features** based
   Tiers are based on **cumulative purchases** across your account lifetime, not current balance.
 </Note>
 
+<Card title="Need Higher Rate Limits?" icon="file-pencil" href="https://perplexity.typeform.com/to/yctmfyVT">
+  Need custom rate limits beyond your current tier? Fill out our rate limit increase request form and we'll review your use case to accommodate your needs.
+</Card>
+
 ***
 
-## How Tiers Work
+## Agent API Rate Limits
 
-* **Automatic advancement** - Tiers increase based on your total lifetime credit purchases
-* **Rate limit increases** - Higher tiers get significantly more requests per minute
-* **Permanent status** - Once you reach a tier, you keep it (no downgrade)
+The Agent API uses tier-based rate limits that scale with your usage tier:
 
-## Rate Limits by Model
+|    Tier    | QPS (Queries per Second) | Requests per Minute |
+| :--------: | :----------------------: | :-----------------: |
+| **Tier 0** |           1 QPS          |        50/min       |
+| **Tier 1** |           3 QPS          |       150/min       |
+| **Tier 2** |           8 QPS          |       500/min       |
+| **Tier 3** |          17 QPS          |      1,000/min      |
+| **Tier 4** |          33 QPS          |      2,000/min      |
+| **Tier 5** |          33 QPS          |      2,000/min      |
+
+***
+
+## Search API Rate Limits
+
+The Search API has separate rate limits that apply to all usage tiers:
+
+| Endpoint       | Rate Limit             | Burst Capacity |
+| -------------- | ---------------------- | -------------- |
+| POST `/search` | 50 requests per second | 50 requests    |
+
+**Search Rate Limiter Behavior:**
+
+* **Burst**: Can handle 50 requests instantly
+* **Sustained**: Exactly 50 QPS average over time
+
+<Note>
+  Search rate limits are independent of your usage tier and apply consistently across all accounts using the same leaky bucket algorithm.
+</Note>
+
+***
+
+## Sonar API Rate Limits
+
+The Sonar API uses tier-based rate limits that scale with your usage tier:
 
 <Tabs>
   <Tab title="Tier 0">
@@ -117,63 +148,6 @@ Usage tiers determine your **rate limits** and access to **beta features** based
 
 ***
 
-## Chat Completions API Rate Limits
-
-The Chat Completions API uses tier-based rate limits that scale with your usage tier:
-
-|    Tier    | QPS (Queries per Second) | Requests per Minute |
-| :--------: | :----------------------: | :-----------------: |
-| **Tier 0** |           1 QPS          |        50/min       |
-| **Tier 1** |           3 QPS          |       150/min       |
-| **Tier 2** |           8 QPS          |       500/min       |
-| **Tier 3** |          17 QPS          |      1,000/min      |
-| **Tier 4** |          33 QPS          |      2,000/min      |
-| **Tier 5** |          33 QPS          |      2,000/min      |
-| **Tier 6** |          167 QPS         |      10,000/min     |
-
-***
-
-## Agentic Research API Rate Limits
-
-The Agentic Research API uses tier-based rate limits that scale with your usage tier:
-
-|    Tier    | QPS (Queries per Second) | Requests per Minute |
-| :--------: | :----------------------: | :-----------------: |
-| **Tier 0** |           1 QPS          |        50/min       |
-| **Tier 1** |           3 QPS          |       150/min       |
-| **Tier 2** |           8 QPS          |       500/min       |
-| **Tier 3** |          17 QPS          |      1,000/min      |
-| **Tier 4** |          33 QPS          |      2,000/min      |
-| **Tier 5** |          33 QPS          |      2,000/min      |
-| **Tier 6** |          167 QPS         |      10,000/min     |
-
-***
-
-## Search API Rate Limits
-
-The Search API has separate rate limits that apply to all usage tiers:
-
-| Endpoint       | Rate Limit             | Burst Capacity |
-| -------------- | ---------------------- | -------------- |
-| POST `/search` | 50 requests per second | 50 requests    |
-
-**Search Rate Limiter Behavior:**
-
-* **Burst**: Can handle 50 requests instantly
-* **Sustained**: Exactly 50 QPS average over time
-
-<Note>
-  Search rate limits are independent of your usage tier and apply consistently across all accounts using the same leaky bucket algorithm.
-</Note>
-
-<Info>
-  **Need Higher Search Rate Limits?**
-
-  If you require increased rate limits for the Search API beyond the standard 50 requests per second, please fill out our [rate limit increase request form](https://perplexity.typeform.com/to/yctmfyVT). We'll review your use case and work with you to accommodate your needs.
-</Info>
-
-***
-
 ## How Rate Limiting Works
 
 Our rate limiting system uses a **leaky bucket algorithm** that allows for burst traffic while maintaining strict long-term rate control.
@@ -185,47 +159,37 @@ Our rate limiting system uses a **leaky bucket algorithm** that allows for burst
     The leaky bucket algorithm works like a bucket with a small hole in the bottom:
 
     * **Bucket Capacity**: Maximum number of requests you can make instantly (burst capacity)
-    * **Leak Rate**: How quickly tokens refill over time (your rate limit)
-    * **Token Refill**: New requests become available at regular intervals
+    * **Leak Rate**: How quickly tokens leak out of the bucket (your rate limit)
+    * **Token Refill**: Tokens refill continuously at regular intervals based on your rate limit
 
-    **Key Benefits:**
-
-    * ✅ Allows legitimate burst traffic
-    * ✅ Prevents sustained abuse
-    * ✅ Predictable and fair rate enforcement
+    This design allows legitimate burst traffic when you need it, prevents sustained abuse, and ensures predictable and fair rate enforcement across all users.
   </Accordion>
 
   <Accordion title="Rate Limiter Behavior Example">
-    Let's examine how **50 requests per second** works in practice:
-
-    **Parameters:**
-
-    * Capacity: 50 tokens
-    * Leak rate: 50 tokens/second
-    * Refill: 1 token every 20ms
+    Let's examine how **50 requests per second** works in practice. With a capacity of 50 tokens and a leak rate of 50 tokens per second, one token refills every 20ms.
 
     **Scenario 1: Burst Traffic**
 
     ```
     Time 0.0s: Bucket full (50 tokens)
-    → Send 50 requests instantly → ALL ALLOWED ✅
-    → Send 51st request → REJECTED ❌ (bucket empty)
+    → Send 50 requests instantly → ALL ALLOWED
+    → Send 51st request → REJECTED (bucket empty)
 
     Time 0.020s: 1 token refilled
-    → Send 1 request → ALLOWED ✅
-    → Send 2nd request → REJECTED ❌
+    → Send 1 request → ALLOWED
+    → Send 2nd request → REJECTED
 
     Time 0.040s: 1 more token refilled
-    → Send 1 request → ALLOWED ✅
+    → Send 1 request → ALLOWED
     ```
 
     **Scenario 2: Steady 50 QPS**
 
     ```
     Request every 20ms:
-    Time 0.0s: Request → ✅ (50→49 tokens)
-    Time 0.020s: Request → ✅ (49+1-1=49 tokens)
-    Time 0.040s: Request → ✅ (49+1-1=49 tokens)
+    Time 0.0s: Request → ALLOWED (50→49 tokens)
+    Time 0.020s: Request → ALLOWED (49+1-1=49 tokens)
+    Time 0.040s: Request → ALLOWED (49+1-1=49 tokens)
     ... maintains 49-50 tokens, all requests pass
     ```
 
@@ -240,31 +204,11 @@ Our rate limiting system uses a **leaky bucket algorithm** that allows for burst
   </Accordion>
 
   <Accordion title="Real-World Implications">
-    **What this means for your applications:**
+    The leaky bucket design means you can handle your full rate limit instantly, making it perfect for batch operations or sudden traffic spikes. There's no need to artificially spread requests when you have available burst capacity.
 
-    **✅ Burst Tolerance:**
+    The system enforces strict average rate limits over time while allowing quick recovery after burst usage. This provides consistent performance across different usage patterns and prevents sustained over-limit usage while maintaining fair resource allocation.
 
-    * Can handle your full rate limit instantly
-    * Perfect for batch operations or sudden traffic spikes
-    * No need to artificially spread requests
-
-    **✅ Predictable Behavior:**
-
-    * Strict average rate enforcement over time
-    * Quick recovery after burst usage
-    * Consistent performance across different usage patterns
-
-    **❌ Abuse Prevention:**
-
-    * Prevents sustained over-limit usage
-    * Blocks excessive burst attempts
-    * Maintains fair resource allocation
-
-    **Best Practices:**
-
-    * Take advantage of burst capacity for batch operations
-    * Monitor your usage patterns to optimize request timing
-    * Implement proper error handling for 429 responses
+    When building your application, take advantage of burst capacity for batch operations, monitor your usage patterns to optimize request timing, and implement proper error handling for 429 responses.
   </Accordion>
 </AccordionGroup>
 
@@ -309,6 +253,10 @@ When you exceed your rate limits:
 
   <Step title="Verify Upgrade">
     Your new rate limits take effect immediately after the tier upgrade. Check your settings page to confirm.
+  </Step>
+
+  <Step title="Need Even Higher Limits?">
+    If you require custom rate limits beyond Tier 5, [fill out our rate limit increase request form](https://perplexity.typeform.com/to/yctmfyVT) and we'll review your use case to accommodate your needs.
   </Step>
 </Steps>
 

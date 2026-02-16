@@ -1,6 +1,7 @@
-# Source: https://docs.perplexity.ai/guides/search-language-filter.md
-
 # Search Language Filter
+Source: https://docs.perplexity.ai/docs/search/filters/language-filter
+
+
 
 <Note>
   The `search_language_filter` parameter allows you to filter search results by language using ISO 639-1 language codes. Only results in the specified languages will be returned.
@@ -23,7 +24,7 @@ The `search_language_filter` parameter accepts an array of ISO 639-1 language co
 
 To filter search results by language:
 
-```bash  theme={null}
+```bash theme={null}
 "search_language_filter": ["en", "fr", "de"]
 ```
 
@@ -53,7 +54,7 @@ This example limits search results to English language content only.
       print(f"{result.title}: {result.url}")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -102,7 +103,7 @@ Search across multiple languages to gather diverse perspectives or multilingual 
       print(f"{result.title}: {result.url}")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -156,7 +157,7 @@ Focus on content from specific regions by using their local languages:
   )
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -215,7 +216,7 @@ Language filters work seamlessly with other search parameters for precise contro
       print("---")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -326,7 +327,7 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
       print(f"Validation error: {e}")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   function validateLanguageCode(code: string): boolean {
     const pattern = /^[a-z]{2}$/;
     return pattern.test(code);
@@ -378,202 +379,7 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
 
 Conduct comprehensive research by searching across multiple languages:
 
-```python  theme={null}
+```python theme={null}
 from perplexity import Perplexity
 
 client = Perplexity()
-
-# Research a global topic in multiple languages
-languages = [
-    ["en"],           # English-speaking countries
-    ["zh", "ja"],     # East Asia
-    ["es", "pt"],     # Latin America and Iberia
-    ["fr", "de", "it"] # Western Europe
-]
-
-results_by_region = {}
-
-for lang_group in languages:
-    response = client.search.create(
-        query="sustainable development goals progress",
-        max_results=10,
-        search_language_filter=lang_group
-    )
-    results_by_region[", ".join(lang_group)] = response.results
-
-# Analyze results by language/region
-for region, results in results_by_region.items():
-    print(f"Results in {region}: {len(results)} found")
-```
-
-### Content Localization Research
-
-Find examples and references in target languages for localization projects:
-
-```python  theme={null}
-# Find product reviews in target markets
-target_languages = ["ja", "ko", "zh"]  # Asian markets
-
-response = client.search.create(
-    query="smartphone reviews 2024",
-    max_results=15,
-    search_language_filter=target_languages,
-    search_recency_filter="month"
-)
-```
-
-### Academic Research Across Languages
-
-Access scholarly content in different languages:
-
-```python  theme={null}
-# Search for research papers in multiple languages
-response = client.search.create(
-    query="quantum computing algorithms",
-    max_results=20,
-    search_language_filter=["en", "de", "fr", "ru"],
-    search_domain_filter=["arxiv.org", "nature.com", "science.org"]
-)
-```
-
-### News Monitoring by Language
-
-Track news stories across different language regions:
-
-```python  theme={null}
-# Monitor breaking news in different languages
-news_queries = {
-    "English": ["en"],
-    "Chinese": ["zh"],
-    "Spanish": ["es"],
-    "Arabic": ["ar"]
-}
-
-for region, langs in news_queries.items():
-    response = client.search.create(
-        query="breaking news technology",
-        max_results=5,
-        search_language_filter=langs,
-        search_recency_filter="day"
-    )
-    print(f"{region} News: {len(response.results)} articles")
-```
-
-## Error Handling
-
-When using language filters, implement proper error handling for validation issues:
-
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity, BadRequestError
-
-  client = Perplexity()
-
-  def safe_language_search(query, languages):
-      """
-      Perform a language-filtered search with error handling.
-      """
-      try:
-          # Validate language codes
-          if not isinstance(languages, list):
-              raise ValueError("Languages must be provided as a list")
-          
-          if len(languages) > 10:
-              raise ValueError("Maximum 10 language codes allowed")
-          
-          # Validate each code format
-          for lang in languages:
-              if not isinstance(lang, str) or len(lang) != 2 or not lang.islower():
-                  raise ValueError(f"Invalid language code format: {lang}")
-          
-          # Perform search
-          response = client.search.create(
-              query=query,
-              search_language_filter=languages,
-              max_results=10
-          )
-          
-          return response
-          
-      except ValueError as e:
-          print(f"Validation error: {e}")
-          return None
-      except BadRequestError as e:
-          print(f"API error: {e.message}")
-          return None
-      except Exception as e:
-          print(f"Unexpected error: {e}")
-          return None
-
-  # Usage
-  results = safe_language_search(
-      "artificial intelligence",
-      ["en", "fr", "de"]
-  )
-
-  if results:
-      print(f"Found {len(results.results)} results")
-  ```
-
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  const client = new Perplexity();
-
-  async function safeLanguageSearch(
-    query: string,
-    languages: string[]
-  ): Promise<any | null> {
-    try {
-      // Validate language codes
-      if (!Array.isArray(languages)) {
-        throw new Error("Languages must be provided as an array");
-      }
-      
-      if (languages.length > 10) {
-        throw new Error("Maximum 10 language codes allowed");
-      }
-      
-      // Validate each code format
-      for (const lang of languages) {
-        if (typeof lang !== 'string' || 
-            lang.length !== 2 || 
-            lang !== lang.toLowerCase()) {
-          throw new Error(`Invalid language code format: ${lang}`);
-        }
-      }
-      
-      // Perform search
-      const response = await client.search.create({
-        query,
-        searchLanguageFilter: languages,
-        maxResults: 10
-      });
-      
-      return response;
-      
-    } catch (error) {
-      if (error instanceof Perplexity.BadRequestError) {
-        console.error("API error:", error.message);
-      } else if (error instanceof Error) {
-        console.error("Error:", error.message);
-      }
-      return null;
-    }
-  }
-
-  // Usage
-  const results = await safeLanguageSearch(
-    "artificial intelligence",
-    ["en", "fr", "de"]
-  );
-
-  if (results) {
-    console.log(`Found ${results.results.length} results`);
-  }
-  ```
-</CodeGroup>
-
-<Tip>
-  For best results, combine language filtering with other filters like `search_domain_filter` or `search_recency_filter` to narrow down your search to highly relevant, timely content in your target languages.
-</Tip>

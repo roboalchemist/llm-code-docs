@@ -1,16 +1,38 @@
-# Source: https://docs.perplexity.ai/docs/getting-started/pricing.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Pricing
+Source: https://docs.perplexity.ai/docs/getting-started/pricing
+
+
 
 <Info>
   This page shows **pricing information** to help you understand API costs.
 
   For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](/docs/getting-started/api-groups). For **rate limits**, see the [Rate Limits & Usage Tiers](/docs/admin/rate-limits-usage-tiers) page.
 </Info>
+
+## Agent API Pricing
+
+The Agent API provides access to third-party models from OpenAI, Anthropic, Google, and xAI with **transparent, token-based pricing** at direct provider rates with no markup.
+
+### Model Pricing
+
+Agent API pricing varies by provider and model, with each provider offering multiple models at different price points.
+
+<Card title="View Complete Third-Party Model Pricing" icon="table" href="/docs/agent-api/models">
+  See the full pricing breakdown for all available models from OpenAI, Anthropic, Google, and xAI, including cache rates and provider documentation links on the [Agent API Models page](/docs/agent-api/models).
+</Card>
+
+### Tool Pricing
+
+When using web search tools with the Agent API:
+
+| Tool             |          Price          | Description                                           |
+| ---------------- | :---------------------: | ----------------------------------------------------- |
+| **`web_search`** |  \$0.005 per invocation | Performs web searches to retrieve current information |
+| **`fetch_url`**  | \$0.0005 per invocation | Fetches and extracts content from specific URLs       |
+
+<Note>
+  Tool costs are separate from model token costs. If a model makes 3 web searches during a request, you pay model tokens + (3 × \$0.005) for searches.
+</Note>
 
 ## Search API Pricing
 
@@ -22,32 +44,7 @@
   **No token costs:** Search API charges per request only, with no additional token-based pricing.
 </Note>
 
-## Agentic Research API Pricing
-
-The Agentic Research API provides access to third-party models from OpenAI, Anthropic, Google, and xAI with **transparent, token-based pricing** at direct provider rates with no markup.
-
-### Model Pricing
-
-Agentic Research API pricing varies by provider and model, with each provider offering multiple models at different price points.
-
-<Card title="View Complete Third-Party Model Pricing" icon="table" href="/docs/grounded-llm/responses/models">
-  See the full pricing breakdown for all available models from OpenAI, Anthropic, Google, and xAI, including cache rates and provider documentation links on the [Agentic Research API Models page](/docs/grounded-llm/responses/models).
-</Card>
-
-### Tool Pricing
-
-When using web search tools with the Agentic Research API:
-
-| Tool             |          Price          | Description                                           |
-| ---------------- | :---------------------: | ----------------------------------------------------- |
-| **`web_search`** |  \$0.005 per invocation | Performs web searches to retrieve current information |
-| **`fetch_url`**  | \$0.0005 per invocation | Fetches and extracts content from specific URLs       |
-
-<Note>
-  Tool costs are separate from model token costs. If a model makes 3 web searches during a request, you pay model tokens + (3 × \$0.005) for searches.
-</Note>
-
-## Grounded LLM Pricing
+## Sonar API Pricing
 
 <Info>
   **Total cost per query** = Token costs + Request fee (varies by search context size, applies to Sonar, Sonar Pro, and Sonar Reasoning Pro models only)
@@ -90,7 +87,7 @@ When using web search tools with the Agentic Research API:
   <Tab title="Pro Search Pricing">
     ## Pro Search Pricing (Pro Search for Sonar Pro)
 
-    **Pro Search** enhances Sonar Pro with automated tool usage and multi-step reasoning. When enabled, the model can perform multiple web searches and fetch URL content to answer complex queries. [Learn more about Pro Search here](/docs/grounded-llm/chat-completions/pro-search/quickstart).
+    **Pro Search** enhances Sonar Pro with automated tool usage and multi-step reasoning. When enabled, the model can perform multiple web searches and fetch URL content to answer complex queries. [Learn more about Pro Search here](/docs/sonar/pro-search/quickstart).
 
     <Info>
       Pro Search requires `stream: true` and is enabled via the `search_type` parameter in `web_search_options`.
@@ -105,10 +102,32 @@ When using web search tools with the Agentic Research API:
     | **`auto`**  | Automatic classification based on query complexity | Varies by classification |
 
     <Note>
-      Request fees vary by search context size (Low / Medium / High). Token pricing remains the same as standard Sonar Pro (\$3 per 1M input, \$15 pe r 1M output).
+      Request fees vary by search context size (Low / Medium / High). Token pricing remains the same as standard Sonar Pro (\$3 per 1M input, \$15 per 1M output).
     </Note>
   </Tab>
 </Tabs>
+
+## Embeddings API Pricing
+
+Generate high-quality text embeddings for semantic search, retrieval-augmented generation (RAG), and other machine learning applications.
+
+### Standard Embeddings
+
+| Model                | Dimensions | Price (\$/1M tokens) |
+| -------------------- | :--------: | :------------------: |
+| `pplx-embed-v1-0.6b` |    1024    |        \$0.004       |
+| `pplx-embed-v1-4b`   |    2560    |        \$0.03        |
+
+### Contextualized Embeddings
+
+| Model                        | Dimensions | Price (\$/1M tokens) |
+| ---------------------------- | :--------: | :------------------: |
+| `pplx-embed-context-v1-0.6b` |    1024    |        \$0.008       |
+| `pplx-embed-context-v1-4b`   |    2560    |        \$0.05        |
+
+<Card title="View Embeddings API Documentation" icon="cube" href="/docs/embeddings/quickstart">
+  Learn how to use the Embeddings API for semantic search, RAG, and more.
+</Card>
 
 <AccordionGroup>
   <Accordion title="Token and Cost Glossary">
@@ -168,7 +187,7 @@ When using web search tools with the Agentic Research API:
 
 ## Cost Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sonar Web Search Example" icon="calculator">
     **Sonar** • 500 input + 200 output tokens
 
@@ -202,7 +221,7 @@ When using web search tools with the Agentic Research API:
     </Tabs>
   </Card>
 
-  <Card title="Deep Research Example" icon="chart-line">
+  <Card title="Deep Research Example" icon="chart-area-line">
     **Sonar Deep Research**
 
     <Tabs>

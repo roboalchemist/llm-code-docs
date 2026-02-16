@@ -1,464 +1,427 @@
-# Source: https://docs.perplexity.ai/docs/search/quickstart.md
-
-# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/quickstart.md
-
-# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/quickstart.md
-
-# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/pro-search/quickstart.md
-
-# Source: https://docs.perplexity.ai/docs/getting-started/quickstart.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Quickstart
+Source: https://docs.perplexity.ai/docs/sonar/pro-search/quickstart
 
-> Generate an API key and make your first call in < 3 minutes.
+Get started with Pro Search for Sonar Pro - enhanced search with automated tools, multi-step reasoning, and real-time thought streaming
 
 ## Overview
 
-The Perplexity API provides three core APIs for different use cases: **Chat Completions** for web-grounded AI responses with Sonar models, **Agentic Research** for accessing OpenAI, Anthropic, Google, and xAI models with unified search tools and transparent pricing, and **Search** for ranked web search results.
+Pro Search enhances [Sonar Pro](/docs/getting-started/models/models/sonar-pro) with automated tool usage, enabling multi-step reasoning through intelligent tool orchestration including web search and URL content fetching.
 
-All APIs support both REST and SDK access with streaming, filtering, and advanced controls.
+<Warning>
+  Pro Search only works when streaming is enabled. Non-streaming requests will fall back to standard Sonar Pro behavior.
+</Warning>
 
-## Available APIs
+<div>
+  <div>
+    <h3>Standard Sonar Pro</h3>
 
-<CardGroup cols={3}>
-  <Card title="Chat Completions" icon="message" href="/docs/grounded-llm/chat-completions/quickstart">
-    Web-grounded AI responses with citations, conversation context, and streaming support.
-  </Card>
+    <ul>
+      <li>Single web search execution</li>
+      <li>Fast response synthesis</li>
+      <li>Fixed search strategy</li>
+      <li>Static result processing</li>
+    </ul>
+  </div>
 
-  <Card title="Agentic Research" icon="code" href="/docs/grounded-llm/responses/quickstart">
-    Third-party models from OpenAI, Anthropic, Google, and more with presets and web search tools.
-  </Card>
+  <div>
+    <h3>Pro Search for Sonar Pro</h3>
 
-  <Card title="Search" icon="magnifying-glass" href="/docs/search/quickstart">
-    Ranked web search results with filtering, multi-query support, and domain controls.
-  </Card>
-</CardGroup>
+    <ul>
+      <li>Multi-step reasoning with automated tools</li>
+      <li>Dynamic tool execution</li>
+      <li>Real-time thought streaming</li>
+      <li>Adaptive research strategies</li>
+    </ul>
+  </div>
+</div>
 
-## Choosing the Right API
+## Basic Usage
 
-<AccordionGroup>
-  <Accordion title="Use the Chat Completions API when..." icon="message">
-    * You want **Perplexity's Sonar models** optimized for research and Q\&A
-    * You need **built-in citations** and conversation context
-    * You prefer **simplicity**—just send a message and get a researched answer
+Enabling Pro Search requires setting `stream` to `true` and specifying `"search_type": "pro"` in your API request. The default search type is `"fast"` for regular Sonar Pro.
 
-    **Best for:** AI assistants, research tools, Q\&A applications
-  </Accordion>
-
-  <Accordion title="Use the Agentic Research API when..." icon="code">
-    * You need **multi-provider access** to OpenAI, Anthropic, Google, and more models through one API
-    * You want **granular control** over model selection, reasoning, token budgets, and tools
-    * You want **presets** for common use configurations or full customization for advanced workflows
-
-    **Best for:** Agentic workflows, custom AI applications, multi-model experimentation
-  </Accordion>
-
-  <Accordion title="Use the Search API when..." icon="magnifying-glass">
-    * You need **raw search results** without LLM processing
-    * You want to **build custom AI workflows** with your own models
-    * You need **search data** for indexing, analysis, or training
-
-    **Best for:** Custom AI pipelines, data collection, search integration
-  </Accordion>
-</AccordionGroup>
-
-## Generating an API Key
-
-<Card title="Get your Perplexity API Key" icon="key" arrow="True" horizontal="True" iconType="solid" cta="Click here" href="https://perplexity.ai/account/api">
-  Navigate to the **API Keys** tab in the API Portal and generate a new key.
-</Card>
-
-<Info>
-  See the [API Groups](/docs/getting-started/api-groups) page to set up an API group.
-</Info>
-
-## Installation
-
-Install the SDK for your preferred language:
+Here is an example of how to enable Pro Search with streaming:
 
 <CodeGroup>
-  ```bash Python theme={null}
-  pip install perplexityai
+  ```python Python SDK theme={null}
+  from perplexity import Perplexity
+
+  client = Perplexity(api_key="YOUR_API_KEY")
+
+  messages = [
+      {
+          "role": "user", 
+          "content": "Analyze the latest developments in quantum computing and their potential impact on cryptography. Include recent research findings and expert opinions."
+      }
+  ]
+
+  response = client.chat.completions.create(
+      model="sonar-pro",
+      messages=messages,
+      stream=True,
+      web_search_options={
+          "search_type": "pro"
+      }
+  )
+
+  for chunk in response:
+      if chunk.choices[0].delta.content:
+          print(chunk.choices[0].delta.content, end="")
   ```
 
-  ```bash TypeScript/JavaScript theme={null}
-  npm install @perplexity-ai/perplexity_ai
+  ```typescript Typescript SDK theme={null}
+  import { Perplexity } from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity({
+    apiKey: 'YOUR_API_KEY'
+  });
+
+  const response = await client.chat.completions.create({
+    model: 'sonar-pro',
+    messages: [
+      {
+        role: 'user',
+        content: 'Analyze the latest developments in quantum computing and their potential impact on cryptography. Include recent research findings and expert opinions.'
+      }
+    ],
+    stream: true,
+    web_search_options: {
+      search_type: 'pro'
+    }
+  });
+
+  for await (const chunk of response) {
+    if (chunk.choices[0]?.delta?.content) {
+      process.stdout.write(chunk.choices[0].delta.content);
+    }
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl --request POST \
+    --url https://api.perplexity.ai/chat/completions \
+    --header "Authorization: Bearer YOUR_API_KEY" \
+    --header "Content-Type: application/json" \
+    --data '{
+      "model": "sonar-pro",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Analyze the latest developments in quantum computing and their potential impact on cryptography. Include recent research findings and expert opinions."
+        }
+      ],
+      "stream": true,
+      "web_search_options": {
+        "search_type": "pro"
+      }
+    }' --no-buffer
   ```
 </CodeGroup>
 
-## Authentication
-
-Set your API key as an environment variable:
-
-<Tabs>
-  <Tab title="macOS/Linux">
-    ```bash  theme={null}
-    export PERPLEXITY_API_KEY="your_api_key_here"
-    ```
-  </Tab>
-
-  <Tab title="Windows">
-    ```powershell  theme={null}
-    setx PERPLEXITY_API_KEY "your_api_key_here"
-    ```
-  </Tab>
-</Tabs>
-
-Or use a `.env` file in your project:
-
-```bash .env theme={null}
-PERPLEXITY_API_KEY=your_api_key_here
-```
-
-<Note>
-  **OpenAI SDK Compatible:** Perplexity's API supports the OpenAI Chat Completions format. You can use OpenAI client libraries by pointing to our endpoint. See our [OpenAI Compatibility Guide](/docs/grounded-llm/openai-compatibility) for examples.
-</Note>
-
-## Making Your First API Call
-
-Choose your API based on your use case:
-
-<Tabs>
-  <Tab title="Agentic Research API">
-    Use for third-party models with web search tools and presets:
-
-    <CodeGroup>
-      ```python Python theme={null}
-      from perplexity import Perplexity
-
-      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-      client = Perplexity()
-
-      # Make the API call with a preset
-      response = client.responses.create(
-          preset="pro-search",
-          input="What are the latest developments in AI?"
-      )
-
-      # Print the AI's response
-      print(response.output_text)
-      ```
-
-      ```typescript TypeScript theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-      const client = new Perplexity();
-
-      // Make the API call with a preset
-      const response = await client.responses.create({
-          preset: "pro-search",
-          input: "What are the latest developments in AI?"
-      });
-
-      // Print the AI's response
-      console.log(response.output_text);
-      ```
-
-      ```bash cURL theme={null}
-      curl https://api.perplexity.ai/v1/responses \
-        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "preset": "pro-search",
-          "input": "What are the latest developments in AI?"
-        }' | jq
-      ```
-    </CodeGroup>
-
-    <Accordion title="Example Response">
-      The response includes structured output with tool usage and citations:
-
-      ```json  theme={null}
+<Accordion title="Response">
+  ```json theme={null}
+  {
+    "id": "2f16f4a0-e1d7-48c7-832f-8757b96ec221",
+    "model": "sonar-pro", 
+    "created": 1759957470,
+    "usage": {
+      "prompt_tokens": 15,
+      "completion_tokens": 98,
+      "total_tokens": 113,
+      "search_context_size": "low",
+      "cost": {
+        "input_tokens_cost": 0.0,
+        "output_tokens_cost": 0.001,
+        "request_cost": 0.014,
+        "total_cost": 0.015
+      }
+    },
+    "search_results": [
       {
-        "id": "resp_1234567890",
-        "object": "response",
-        "created_at": 1756485272,
-        "model": "openai/gpt-5.1",
-        "status": "completed",
-        "output": [
-          {
-            "type": "message",
-            "role": "assistant",
-            "content": [
-              {
-                "type": "output_text",
-                "text": "Recent developments in AI include...",
-                "annotations": [
-                  {
-                    "type": "citation",
-                    "url": "https://example.com/article1"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "usage": {
-          "input_tokens": 20,
-          "output_tokens": 250,
-          "total_tokens": 270
+        "title": "Quantum Computing Breakthrough 2024",
+        "url": "https://example.com/quantum-breakthrough",
+        "date": "2024-03-15",
+        "snippet": "Researchers at MIT have developed a new quantum error correction method...",
+        "source": "web"
+      }
+    ],
+    "reasoning_steps": [
+      {
+        "thought": "I need to search for recent quantum computing developments first.",
+        "type": "web_search",
+        "web_search": {
+          "search_keywords": [
+            "quantum computing developments 2024 cryptography impact",
+            "post-quantum cryptography"
+          ],
+          "search_results": [
+            {
+              "title": "Quantum Computing Breakthrough 2024",
+              "url": "https://example.com/quantum-breakthrough",
+              "date": "2024-03-15",
+              "last_updated": "2024-03-20",
+              "snippet": "Researchers at MIT have developed a new quantum error correction method...",
+              "source": "web"
+            }
+          ]
+        }
+      },
+      {
+        "thought": "Let me fetch detailed content from this research paper.",
+        "type": "fetch_url_content", 
+        "fetch_url_content": {
+          "contents": [
+            {
+              "title": "Quantum Error Correction Paper",
+              "url": "https://arxiv.org/abs/2024.quantum",
+              "date": null,
+              "last_updated": null,
+              "snippet": "Abstract: This paper presents a novel approach to quantum error correction...",
+              "source": "web"
+            }
+          ]
         }
       }
-      ```
-    </Accordion>
-  </Tab>
-
-  <Tab title="Chat Completions API">
-    Use for web-grounded AI responses with Perplexity's Sonar models:
-
-    <CodeGroup>
-      ```python Python theme={null}
-      from perplexity import Perplexity
-
-      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-      client = Perplexity()
-
-      # Make the API call
-      completion = client.chat.completions.create(
-          model="sonar-pro",
-          messages=[
-              {"role": "user", "content": "What are the latest developments in AI?"}
-          ]
-      )
-
-      # Print the AI's response
-      print(completion.choices[0].message.content)
-      ```
-
-      ```typescript TypeScript theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-      const client = new Perplexity();
-
-      // Make the API call
-      const completion = await client.chat.completions.create({
-          model: "sonar-pro",
-          messages: [
-              { role: "user", content: "What are the latest developments in AI?" }
-          ]
-      });
-
-      // Print the AI's response
-      console.log(completion.choices[0].message.content);
-      ```
-
-      ```bash cURL theme={null}
-      curl https://api.perplexity.ai/chat/completions \
-        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "sonar-pro",
-          "messages": [
-            {
-              "role": "user",
-              "content": "What are the latest developments in AI?"
-            }
-          ]
-        }' | jq
-      ```
-    </CodeGroup>
-
-    <Accordion title="Example Response">
-      The response includes the AI's answer with citations and search results:
-
-      ```json  theme={null}
+    ],
+    "object": "chat.completion.chunk",
+    "choices": [
       {
-        "id": "66f3900f-e32e-4d59-b677-1a55de188262",
-        "model": "sonar-pro",
-        "created": 1756485272,
-        "object": "chat.completion",
-        "choices": [
+        "index": 0,
+        "delta": {
+          "role": "assistant",
+          "content": "## Latest Quantum Computing Developments\n\nBased on my research and analysis..."
+        }
+      }
+    ]
+  }
+  ```
+</Accordion>
+
+## Enabling Automatic Classification
+
+Sonar Pro can be configured to automatically classify queries into Pro Search or Fast Search based on complexity. This is the recommended approach for most applications.
+
+Set `search_type: "auto"` to let the system intelligently route queries based on complexity.
+
+<CodeGroup>
+  ```python Python SDK theme={null}
+  from perplexity import Perplexity
+
+  client = Perplexity(api_key="YOUR_API_KEY")
+
+  response = client.chat.completions.create(
+      model="sonar-pro",
+      messages=[
           {
-            "index": 0,
-            "finish_reason": "stop",
-            "message": {
-              "role": "assistant",
-              "content": "Recent developments in AI include...[1][2]"
-            }
-          }
-        ],
-        "usage": {
-          "prompt_tokens": 12,
-          "completion_tokens": 315,
-          "total_tokens": 327
-        },
-        "citations": [
-          "https://example.com/article1",
-          "https://example.com/article2"
-        ]
-      }
-      ```
-    </Accordion>
-  </Tab>
-</Tabs>
-
-## Streaming Responses
-
-Enable streaming for real-time output with either API:
-
-<Tabs>
-  <Tab title="Agentic Research API">
-    <CodeGroup>
-      ```python Python theme={null}
-      from perplexity import Perplexity
-
-      client = Perplexity()
-
-      # Make the streaming API call
-      stream = client.responses.create(
-          preset="pro-search",
-          input="Explain quantum computing",
-          stream=True
-      )
-
-      # Process the streaming response
-      for chunk in stream:
-          if chunk.type == "response.output_text.delta":
-              print(chunk.delta, end="", flush=True)
-      ```
-
-      ```typescript TypeScript theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      const client = new Perplexity();
-
-      // Make the streaming API call
-      const stream = await client.responses.create({
-          preset: "pro-search",
-          input: "Explain quantum computing",
-          stream: true
-      });
-
-      // Process the streaming response
-      for await (const chunk of stream) {
-          if (chunk.type === "response.output_text.delta") {
-              process.stdout.write(chunk.delta);
-          }
-      }
-      ```
-
-      ```bash cURL theme={null}
-      curl https://api.perplexity.ai/v1/responses \
-        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "preset": "pro-search",
-          "input": "Explain quantum computing",
-          "stream": true
-        }'
-      ```
-    </CodeGroup>
-  </Tab>
-
-  <Tab title="Chat Completions API">
-    <CodeGroup>
-      ```python Python theme={null}
-      from perplexity import Perplexity
-
-      client = Perplexity()
-
-      # Make the streaming API call
-      stream = client.chat.completions.create(
-          model="sonar-pro",
-          messages=[
-              {"role": "user", "content": "Explain quantum computing"}
-          ],
-          stream=True
-      )
-
-      # Process the streaming response
-      for chunk in stream:
-          if chunk.choices[0].delta.content:
-              print(chunk.choices[0].delta.content, end="")
-      ```
-
-      ```typescript TypeScript theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      const client = new Perplexity();
-
-      // Make the streaming API call
-      const stream = await client.chat.completions.create({
-          model: "sonar-pro",
-          messages: [
-              { role: "user", content: "Explain quantum computing" }
-          ],
-          stream: true
-      });
-
-      // Process the streaming response
-      for await (const chunk of stream) {
-          if (chunk.choices[0]?.delta?.content) {
-              process.stdout.write(chunk.choices[0].delta.content);
-          }
-      }
-      ```
-
-      ```bash cURL theme={null}
-      curl https://api.perplexity.ai/chat/completions \
-        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "sonar-pro",
-          "messages": [
-            {
               "role": "user",
-              "content": "Explain quantum computing"
-            }
-          ],
-          "stream": true
-        }'
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+              "content": "Compare the energy efficiency of Tesla Model 3, Chevrolet Bolt, and Nissan Leaf"
+          }
+      ],
+      stream=True,
+      web_search_options={
+          "search_type": "auto"  # Automatic classification
+      }
+  )
 
-<Info title="Complete Streaming Guide" href="/docs/grounded-llm/output-control/streaming-responses">
-  For a full guide on streaming, including parsing, error handling, citation management, and best practices, see our [streaming guide](/docs/grounded-llm/output-control/streaming-responses).
+  for chunk in response:
+      if chunk.choices[0].delta.content:
+          print(chunk.choices[0].delta.content, end="")
+  ```
+
+  ```typescript Typescript SDK theme={null}
+  import { Perplexity } from '@perplexity-ai/perplexity_ai';
+
+  const client = new Perplexity({
+    apiKey: 'YOUR_API_KEY'
+  });
+
+  const response = await client.chat.completions.create({
+    model: 'sonar-pro',
+    messages: [
+      {
+        role: 'user',
+        content: 'Compare the energy efficiency of Tesla Model 3, Chevrolet Bolt, and Nissan Leaf'
+      }
+    ],
+    stream: true,
+    web_search_options: {
+      search_type: 'auto'  // Automatic classification
+    }
+  });
+
+  for await (const chunk of response) {
+    if (chunk.choices[0]?.delta?.content) {
+      process.stdout.write(chunk.choices[0].delta.content);
+    }
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl --request POST \
+    --url https://api.perplexity.ai/chat/completions \
+    --header "Authorization: Bearer YOUR_API_KEY" \
+    --header "Content-Type: application/json" \
+    --data '{
+      "model": "sonar-pro",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Compare the energy efficiency of Tesla Model 3, Chevrolet Bolt, and Nissan Leaf"
+        }
+      ],
+      "stream": true,
+      "web_search_options": {
+        "search_type": "auto"
+      }
+    }' --no-buffer
+  ```
+</CodeGroup>
+
+#### How Classification Works
+
+The classifier analyzes your query and automatically routes it to:
+
+* **Pro Search** for complex queries requiring:
+  * Multi-step reasoning or analysis
+  * Comparative analysis across multiple sources
+  * Deep research workflows
+
+* **Fast Search** for straightforward queries like:
+  * Simple fact lookups
+  * Direct information retrieval
+  * Basic question answering
+
+#### Billing with Auto Classification
+
+**You are billed based on which search type your query triggers:**
+
+* If classified as **Pro Search**: \$14–\$22 per 1,000 requests (based on context size)
+* If classified as **Fast Search**: \$6–\$14 per 1,000 requests (based on context size - same as standard Sonar Pro)
+
+To see the full pricing details, see the <a href="/docs/sonar/pro-search/quickstart#pricing">Pricing</a> section.
+
+<Tip>
+  Automatic classification is recommended for most applications as it balances cost optimization with query performance. You get Pro Search capabilities when needed without overpaying for simple queries.
+</Tip>
+
+### Manually Specifying the Search Type
+
+If needed, you can manually specify the search type. This is useful for specific use cases where you know the query requires Pro Search capabilities.
+
+* **`"search_type": "pro"`** — Manually specify Pro Search for complex queries when you know multi-step tool usage is needed
+* **`"search_type": "fast"`** — Manually specify Fast Search for simple queries to optimize speed and cost (this is also the default when `search_type` is omitted)
+
+## Built-in Tool Capabilities
+
+Pro Search provides access to two powerful built-in tools that the model can use automatically:
+
+<CardGroup>
+  <Card title="web_search" icon="search" href="/docs/sonar/pro-search/tools#web-search">
+    Conduct targeted web searches with custom queries, filters, and search strategies based on the evolving research context.
+  </Card>
+
+  <Card title="fetch_url_content" icon="globe" href="/docs/sonar/pro-search/tools#fetch-url-content">
+    Retrieve and analyze content from specific URLs to gather detailed information beyond search result snippets.
+  </Card>
+</CardGroup>
+
+<Info>
+  The model automatically decides which tools to use and when, creating dynamic research workflows tailored to each specific query. These are built-in tools that the system calls for you—you cannot register custom tools. Learn more in the [Built-in Tool Capabilities](/docs/sonar/pro-search/tools) guide.
+</Info>
+
+## Additional Capabilities
+
+Pro Search also provides access to advanced Sonar Pro features that enhance your development experience:
+
+* **[Stream Mode Guide](/docs/sonar/pro-search/stream-mode)**: Control streaming response formats with concise or full mode for optimized bandwidth usage and enhanced reasoning visibility.
+
+## Pricing
+
+Pro Search pricing consists of token usage plus request fees that vary by search type and context size.
+
+<div>
+  <div>
+    <h3>Token Usage (Same for All Search Types)</h3>
+
+    <div>
+      <div>
+        <span>Input Tokens</span>
+        <span>\$3 per 1M</span>
+      </div>
+
+      <div>
+        <span>Output Tokens</span>
+        <span>\$15 per 1M</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3>Request Fees (per 1,000 requests)</h3>
+
+    <div>
+      <h4>Pro Search (Complex Queries)</h4>
+
+      <div>
+        <div>
+          <span>High Context</span>
+          <span>\$22</span>
+        </div>
+
+        <div>
+          <span>Medium Context</span>
+          <span>\$18</span>
+        </div>
+
+        <div>
+          <span>Low Context</span>
+          <span>\$14</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h4>Fast Search (Simple Queries)</h4>
+
+      <div>
+        <div>
+          <span>High Context</span>
+          <span>\$14</span>
+        </div>
+
+        <div>
+          <span>Medium Context</span>
+          <span>\$10</span>
+        </div>
+
+        <div>
+          <span>Low Context</span>
+          <span>\$6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<Info>
+  When using `search_type: "auto"`, you're billed at the Pro Search rate if your query is classified as complex, or the Fast Search rate if classified as simple. See the full pricing details <a href="/docs/getting-started/pricing">here</a>.
 </Info>
 
 ## Next Steps
 
-Now that you've made your first API call, explore each API in depth:
-
-<CardGroup cols={3}>
-  <Card title="Chat Completions API" icon="message" href="/docs/grounded-llm/chat-completions/quickstart">
-    Get started with web-grounded AI responses
+<CardGroup>
+  <Card title="Pro Search Tools" icon="brain" href="/docs/sonar/pro-search/tools">
+    Learn about the tools available to the model for Pro Search.
   </Card>
 
-  <Card title="Agentic Research API" icon="code" href="/docs/grounded-llm/responses/quickstart">
-    Get started with third-party models and presets
+  <Card title="Pro Search Classifier" icon="brain" href="/docs/sonar/pro-search/classifier">
+    Learn about the classifier that automatically determines whether a query requires Pro Search or Fast Search.
   </Card>
 
-  <Card title="Search API" icon="magnifying-glass" href="/docs/search/quickstart">
-    Get started with web search results
-  </Card>
-</CardGroup>
-
-<CardGroup cols={2}>
-  <Card title="Perplexity SDK" icon="book" href="/docs/sdk/overview">
-    Learn about the official Perplexity SDK with type safety and async support
+  <Card title="Pro Search Stream Mode" icon="bolt" href="/docs/sonar/pro-search/stream-mode">
+    Learn about the streaming mode for Pro Search.
   </Card>
 
-  <Card title="Models" icon="brain" href="/docs/getting-started/models">
-    Explore available models and their capabilities
-  </Card>
-
-  <Card title="API Reference" icon="code" href="/api-reference/chat-completions-post">
-    View complete API documentation with detailed endpoint specifications
-  </Card>
-
-  <Card title="Examples" icon="play" href="/docs/cookbook/index">
-    Explore code examples, tutorials, and integration patterns
+  <Card title="Agent API Quickstart" icon="rocket" href="/docs/agent-api/quickstart">
+    Get started with the Agent API.
   </Card>
 </CardGroup>
-
-<Info>
-  Need help? Check out our [community](https://community.perplexity.ai) for support and discussions with other developers.
-</Info>

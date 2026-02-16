@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/sdk/configuration.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Configuration
+Source: https://docs.perplexity.ai/docs/sdk/configuration
 
-> Learn how to configure the Perplexity SDKs for retries, timeouts, proxies, and advanced HTTP client customization.
+Learn how to configure the Perplexity SDKs for retries, timeouts, proxies, and advanced HTTP client customization.
 
 ## Overview
 
@@ -34,7 +29,7 @@ Configure how the SDK handles failed requests:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity({
@@ -79,7 +74,7 @@ Set granular timeout controls for different phases of the request:
   client_long = Perplexity(timeout=long_timeout)
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Basic timeout (applies to entire request)
@@ -135,7 +130,7 @@ Configure the SDK to work with corporate proxies:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import { HttpsProxyAgent } from 'https-proxy-agent';
   import { SocksProxyAgent } from 'socks-proxy-agent';
@@ -194,7 +189,7 @@ Add custom headers to all requests:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Custom headers
@@ -257,7 +252,7 @@ Configure SSL verification and certificates:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -321,7 +316,7 @@ Optimize performance with connection pooling:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -378,7 +373,7 @@ Settings optimized for development and debugging:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Development configuration
@@ -432,7 +427,7 @@ Settings optimized for production environments:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -490,7 +485,7 @@ Use environment variables to configure the client:
   client = create_client()
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import { HttpsProxyAgent } from 'https-proxy-agent';
 
@@ -562,7 +557,7 @@ Create reusable configuration patterns:
   client = PerplexityClientFactory.production()
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -611,8 +606,8 @@ Create reusable configuration patterns:
 
 ## Related Resources
 
-<CardGroup cols={2}>
-  <Card title="Error Handling" icon="triangle-exclamation" href="/docs/sdk/error-handling">
+<CardGroup>
+  <Card title="Error Handling" icon="alert-triangle" href="/docs/sdk/error-handling">
     Handle timeouts and connection errors
   </Card>
 

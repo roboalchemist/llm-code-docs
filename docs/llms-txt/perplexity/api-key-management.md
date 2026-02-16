@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/admin/api-key-management.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # API Key Management
+Source: https://docs.perplexity.ai/docs/admin/api-key-management
 
-> Learn how to generate, revoke, and rotate API keys for secure access
+Learn how to generate, revoke, and rotate API keys for secure access
 
 ## Overview
 
@@ -94,7 +89,7 @@ Create new API keys programmatically with optional naming for better organizatio
   print(f"Created at: {data['created_at_epoch_seconds']}")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   const response = await fetch("https://api.perplexity.ai/generate_auth_token", {
     method: "POST",
     headers: {
@@ -114,7 +109,7 @@ Create new API keys programmatically with optional naming for better organizatio
 
 ### Response
 
-```json  theme={null}
+```json theme={null}
 {
   "auth_token": "pplx-1234567890abcdef",
   "created_at_epoch_seconds": 1735689600,
@@ -160,7 +155,7 @@ Revoke API keys that are no longer needed or may have been compromised.
       print("API key successfully revoked")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   const response = await fetch("https://api.perplexity.ai/revoke_auth_token", {
     method: "POST",
     headers: {
@@ -192,7 +187,7 @@ Regular key rotation is a security best practice that minimizes the impact of po
   <Step title="Generate New Key">
     Create a new API key while your current key is still active:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Generate new key
     new_key_response = requests.post(
         "https://api.perplexity.ai/generate_auth_token",
@@ -206,7 +201,7 @@ Regular key rotation is a security best practice that minimizes the impact of po
   <Step title="Update Applications">
     Deploy the new key to your applications:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Update environment variables or secrets management
     os.environ["PERPLEXITY_API_KEY"] = new_key
 
@@ -226,7 +221,7 @@ Regular key rotation is a security best practice that minimizes the impact of po
   <Step title="Monitor Transition">
     Ensure all services are using the new key before proceeding:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Monitor your application logs to confirm
     # all instances are using the new key
     time.sleep(300)  # Wait for propagation
@@ -236,7 +231,7 @@ Regular key rotation is a security best practice that minimizes the impact of po
   <Step title="Revoke Old Key">
     Once confirmed, revoke the old key:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Revoke old key
     revoke_response = requests.post(
         "https://api.perplexity.ai/revoke_auth_token",
@@ -357,7 +352,7 @@ Here's a complete example of an automated key rotation script:
   print(f"Rotation complete. New key: {new_key[:10]}...")
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import fetch from 'node-fetch';
 
   class PerplexityKeyRotator {
@@ -480,7 +475,7 @@ Here's a complete example of an automated key rotation script:
 
 ## Best Practices
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Use Environment Variables">
     Never hardcode API keys in your source code. Store them in environment variables or secure secret management systems.
 

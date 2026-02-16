@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/sdk/error-handling.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Error Handling
+Source: https://docs.perplexity.ai/docs/sdk/error-handling
 
-> Learn how to handle API errors gracefully with the Perplexity SDKs for Python and TypeScript/JavaScript.
+Learn how to handle API errors gracefully with the Perplexity SDKs for Python and Typescript.
 
 ## Overview
 
@@ -46,7 +41,7 @@ Handle common API errors with try-catch blocks:
       print(e.response)
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -111,7 +106,7 @@ Implement intelligent retry logic for rate limit errors:
   result = search_with_retry(client, "artificial intelligence")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function searchWithRetry(
@@ -184,7 +179,7 @@ Extract detailed error information for debugging:
       print(f"Unexpected error: {type(e).__name__}: {e}")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
@@ -261,7 +256,7 @@ Implement fallback mechanisms when API calls fail:
   print(response)
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function getAIResponse(
@@ -335,7 +330,7 @@ Implement fallback mechanisms when API calls fail:
                       extra={'request_id': e.response.headers.get('X-Request-ID')})
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript Typescript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
       try {
@@ -362,7 +357,7 @@ Implement fallback mechanisms when API calls fail:
       )
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript Typescript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
       const client = new Perplexity({
@@ -383,7 +378,7 @@ Implement fallback mechanisms when API calls fail:
           print("Invalid API key. Please check your PERPLEXITY_API_KEY environment variable.")
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript Typescript theme={null}
       try {
           const result = await client.search.create({ query: "test" });
       } catch (error: any) {
@@ -398,8 +393,8 @@ Implement fallback mechanisms when API calls fail:
 
 ## Related Resources
 
-<CardGroup cols={2}>
-  <Card title="Configuration" icon="gear" href="/docs/sdk/configuration">
+<CardGroup>
+  <Card title="Configuration" icon="settings" href="/docs/sdk/configuration">
     Configure timeouts and retries
   </Card>
 

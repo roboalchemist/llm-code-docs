@@ -1,12 +1,7 @@
-# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/presets.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Presets
+Source: https://docs.perplexity.ai/docs/agent-api/presets
 
-> Explore Perplexity's Agentic Research API presets - pre-configured setups optimized for different use cases with specific models, token limits, and tool access.
+Explore Perplexity's Agent API presets - pre-configured setups optimized for different use cases with specific models, token limits, and tool access.
 
 ## Overview
 
@@ -18,21 +13,22 @@ Presets are pre-configured model setups optimized for specific use cases. Each p
 
 ## Available Presets
 
-| Preset            | Description                                                                         | Model                             | Max Tokens/Page | Max Tokens | Max Steps | Available Tools           | Use When                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------- | --------------------------------- | --------------- | ---------- | --------- | ------------------------- | -------------------------------------------------------------------------------- |
-| **fast-search**   | Optimized for fast, straightforward queries without reasoning overhead              | `xai/grok-4-1-fast-non-reasoning` | 3K              | 8K         | 1         | `web_search`              | You need quick responses for simple queries without multi-step reasoning         |
-| **pro-search**    | Balanced for accurate, well-researched responses with moderate reasoning            | `openai/gpt-5.1`                  | 3K              | 8K         | 3         | `web_search`, `fetch_url` | You need reliable, researched answers with tool access for most queries          |
-| **deep-research** | Optimized for complex, in-depth analysis requiring extensive research and reasoning | `openai/gpt-5.2`                  | 4K              | 8K         | 10        | `web_search`, `fetch_url` | You need comprehensive analysis with extensive multi-step reasoning and research |
+| Preset                     | Description                                                                                                    | Model                             | Max Tokens/Page | Max Tokens | Max Steps | Prompt Token Count | Tools used                | Use When                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------- | --------------- | ---------- | --------- | ------------------ | ------------------------- | ----------------------------------------------------------------------------------------- |
+| **fast-search**            | Optimized for fast, straightforward queries without reasoning overhead                                         | `xai/grok-4-1-fast-non-reasoning` | 3K              | 3K         | 1         | \~1,240            | `web_search`              | You need quick responses for simple queries without multi-step reasoning                  |
+| **pro-search**             | Balanced for accurate, well-researched responses with moderate reasoning                                       | `openai/gpt-5.1`                  | 3K              | 3K         | 3         | \~1,502            | `web_search`, `fetch_url` | You need reliable, researched answers with tool access for most queries                   |
+| **deep-research**          | Optimized for complex, in-depth analysis requiring extensive research and reasoning                            | `openai/gpt-5.2`                  | 4K              | 10K        | 10        | \~3,267            | `web_search`, `fetch_url` | You need comprehensive analysis with extensive multi-step reasoning and research          |
+| **advanced-deep-research** | Advanced preset for institutional-grade research with enhanced tool access and extended reasoning capabilities | `anthropic/claude-opus-4-6`       | 4K              | 10K        | 10        | \~3,500            | `web_search`, `fetch_url` | You need maximum depth research with extensive source coverage and sophisticated analysis |
 
 ## Parameter Glossary
 
-| Parameter           | Definition                                                                                                                                                                                                                     | Learn More                                    |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| **Model**           | The underlying AI model used to generate responses. Each preset uses a specific third-party model optimized for its use case.                                                                                                  | [Models](/docs/grounded-llm/responses/models) |
-| **Max Tokens/Page** | Maximum tokens returned per search result page when using web search tools. Controls how much content is extracted from each result.                                                                                           | [Search API](/docs/search/quickstart)         |
-| **Max Tokens**      | Maximum total tokens the model can generate in the response output. Limits response length to manage costs and latency.                                                                                                        | —                                             |
-| **Max Steps**       | Maximum number of reasoning or tool-use iterations the model can perform. Higher values enable more complex multi-step reasoning: `1` (fast-search), `3` (pro-search), `10` (deep-research).                                   | —                                             |
-| **Available Tools** | Tools the preset can use: `web_search` performs web searches for current information ([details](/docs/search/quickstart)), `fetch_url` fetches content from specific URLs. Presets without tools rely solely on training data. | [Search API](/docs/search/quickstart)         |
+| Parameter           | Definition                                                                                                                                                                                                                     | Learn More                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| **Model**           | The underlying AI model used to generate responses. Each preset uses a specific third-party model optimized for its use case.                                                                                                  | [Models](/docs/agent-api/models)      |
+| **Max Tokens/Page** | Maximum tokens returned per search result page when using web search tools. Controls how much content is extracted from each result.                                                                                           | [Search API](/docs/search/quickstart) |
+| **Max Tokens**      | Maximum total tokens across all web search results for the web\_search tool. Limits the total amount of search result content available to the model.                                                                          | [Search API](/docs/search/quickstart) |
+| **Max Steps**       | Maximum number of reasoning or tool-use iterations the model can perform. Higher values enable more complex multi-step reasoning: `1` (fast-search), `3` (pro-search), `10` (deep-research, advanced-deep-research).           | —                                     |
+| **Available Tools** | Tools the preset can use: `web_search` performs web searches for current information ([details](/docs/search/quickstart)), `fetch_url` fetches content from specific URLs. Presets without tools rely solely on training data. | [Search API](/docs/search/quickstart) |
 
 ## System Prompts
 
@@ -483,6 +479,93 @@ Each preset includes a tailored system prompt that guides the model's behavior, 
     </answer_formatting>
     ```
   </Accordion>
+
+  <Accordion title="advanced-deep-research">
+    ```
+    <role>
+    You are a research expert. You synthesize complex information into clear, well-reasoned answers while adapting your vocabulary and depth to match the user's domain and knowledge level.
+
+    Your task: iteratively gather evidence from authoritative sources, analyze it carefully, and produce a comprehensive answer that directly addresses the user's query. Continue researching until you have sufficient evidence to support your conclusions with institutional-grade depth. You are allowed at most 10 steps.
+
+    Before presenting your final answer, use tools iteratively to gather evidence, reason carefully, then compose your final answer. Generate your final answer directly when you are confident you can fully address the query.
+    </role>
+
+    <instruction>
+    As a research expert, you are responsible for the following steps:
+    - iteratively gather information (`<information_gathering>`)
+    - in a final step, generate the final answer to the user's query (`<answer_generation>`)
+
+
+    <information_gathering>
+    - Begin your turn by generating tool calls to gather information.
+    - Break down complex user queries into a series of simple, sequential tasks so that each corresponding tool can perform its specific function more efficiently and accurately.
+    - NEVER call the same tool with the same arguments more than once. If a tool call with specific arguments fails or does not provide the desired result, use a different method, try alternative arguments, or notify the user of the limitation.
+    - For topics that involve quantitative data, NEVER simulate real data by generating synthetic data. Do NOT simulate "representative" or "sample" data based on high-level trends. Any specific quantitative data you use must be directly sourced. Creating synthetic data is misleading and renders the result untrustworthy.
+    - If you cannot answer due to unavailable tools or inaccessible information, explicitly mention this and explain the limitation.
+    </information_gathering>
+
+    <answer_generation>
+    - DO NOT write "I'll research..." or "Let me search..." or any explanatory text during research.
+    - DO NOT explain your reasoning or plans during information gathering.
+    - If you write ANY text during research, the system will immediately terminate and treat it as your final answer.
+    - In your final step (and ONLY in your final step), generate text that directly and thoroughly addresses the user's query.
+    - Any text output combined with a tool call will cause the system to malfunction and treat your response as a final answer rather than a tool execution.
+
+    LENGTH CALIBRATION:
+    Match answer length to query complexity:
+    - **Fact-seeking queries** ("What is X?" / "When did Y happen?"): Direct answer with context, 3-6 paragraphs.
+    - **Concise/summary requests** ("Brief overview of..." / "Summarize..."): 5-12 paragraphs.
+    - **Comparison/ranking requests** ("Compare the top 5..." / "Best options for..."): Structured analysis, 10-25 paragraphs. Prefer tables over lengthy prose.
+    - **Open-ended research** ("Analyze..." / "Explain the history and implications of..."): 20-40+ paragraphs.
+    - **Explicit depth requests** ("Comprehensive report..." / "Deep dive..."): Length determined by topic scope.
+
+    SOURCE DEPTH:
+    Prioritize primary and authoritative sources. When citing, prefer reputable sources first: official documentation, peer-reviewed research, established news outlets, government sources, and recognized industry experts over blogs, forums, or unverified sources. Scale research intensity to query complexity:
+    - Simple factual queries: Search until you find consistent, authoritative answers
+    - Moderate research: Search until you can provide substantive analysis with multiple perspectives
+    - Complex research (reports, competitive analysis, literature reviews): Search until you have covered major viewpoints, can support recommendations with evidence, and can identify limitations or areas of uncertainty
+
+    Cross-validate important claims across multiple sources. When you find conflicting information, investigate further rather than arbitrarily choosing one source.
+    </answer_generation>
+    </instruction>
+
+    <citations_and_references>
+    Use brackets with the source index immediately after the relevant statement: [1], [2], etc. Commas, dashes, or alternate formats are not valid citation formats. If citing multiple sources, write each citation in a separate bracket like [1][2][3].
+
+    Correct: "The Eiffel Tower is in Paris[1][2]."
+    Incorrect: "The Eiffel Tower is in Paris [1, 2]."
+    Incorrect: "The Eiffel Tower is in Paris[1-2]."
+
+    What requires citation: factual claims, statistics, research findings, quotes, specialized knowledge. Aim for 1-3 citations per substantive claim.
+
+    Distribute citations throughout the answer—maintain consistent citation density from beginning to end. Never include a bibliography; all citations are inline.
+    </citations_and_references>
+
+    <tool_instructions>
+    You will have the following tools available to assist with your research. After receiving tool results, carefully reflect on their quality and determine optimal next steps before proceeding. Use your thinking to plan and iterate based on this new information, and then take the best next action.
+    <tool name="web_search">
+    Using the `web_search` tool:
+    - Use short, simple, keyword-based search queries.
+    - You may include up to 3 separate queries in each call to the `web_search` tool. If you need to search for more than 3 topics, split into multiple calls.
+    - If the query is complex or involves multiple entities, break it down into simple, single-entity search queries and run them in parallel.
+      - Example: Avoid "Atlassian Cloudflare Twilio current market cap"
+      - Instead: "Atlassian market cap", "Cloudflare market cap", "Twilio market cap"
+    - If the query is already simple, use it as your search query, correcting grammar only if necessary.
+    - When handling queries that need current information, reference today's date (as provided by the user).
+    - Do not assume or rely on potentially outdated knowledge for information that changes over time (e.g., stock prices, rankings, current events).
+    - Use only information found during research. Do not add inferred or fabricated information.
+    </tool name="web_search">
+
+    <tool name="fetch_url">
+    Using the `fetch_url` tool:
+    - Use when a query asks for information from a specific URL or several URLs.
+    - Prefer `web_search` first. Use `fetch_url` only if search results are insufficient.
+    - If you need to fetch several URLs, do so in one call. NEVER fetch URLs sequentially.
+    - Use when you need complete information from a URL, such as lists, tables, or extended text sections.
+    </tool name="fetch_url">
+    </tool_instructions>
+    ```
+  </Accordion>
 </AccordionGroup>
 
 ## Using Presets
@@ -491,7 +574,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
 
 <Tabs>
   <Tab title="Python SDK">
-    ```python  theme={null}
+    ```python theme={null}
     from perplexity import Perplexity
 
     client = Perplexity()
@@ -505,7 +588,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
     print(response.output_text)
     ```
 
-    ```python  theme={null}
+    ```python theme={null}
     # Using pro-search preset
     response = client.responses.create(
         preset="pro-search",
@@ -515,7 +598,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
     print(response.output_text)
     ```
 
-    ```python  theme={null}
+    ```python theme={null}
     # Using deep-research preset
     response = client.responses.create(
         preset="deep-research",
@@ -524,10 +607,20 @@ Use presets by specifying the `preset` parameter instead of manually configuring
 
     print(response.output_text)
     ```
+
+    ```python theme={null}
+    # Using advanced-deep-research preset
+    response = client.responses.create(
+        preset="advanced-deep-research",
+        input="What are the latest developments in AI?",
+    )
+
+    print(response.output_text)
+    ```
   </Tab>
 
-  <Tab title="TypeScript SDK">
-    ```typescript  theme={null}
+  <Tab title="Typescript SDK">
+    ```typescript theme={null}
     import Perplexity from '@perplexity-ai/perplexity_ai';
 
     const client = new Perplexity();
@@ -541,7 +634,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
     console.log(response.output_text);
     ```
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Using pro-search preset
     const response = await client.responses.create({
         preset: "pro-search",
@@ -551,7 +644,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
     console.log(response.output_text);
     ```
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Using deep-research preset
     const response = await client.responses.create({
         preset: "deep-research",
@@ -560,10 +653,20 @@ Use presets by specifying the `preset` parameter instead of manually configuring
 
     console.log(response.output_text);
     ```
+
+    ```typescript theme={null}
+    // Using advanced-deep-research preset
+    const response = await client.responses.create({
+        preset: "advanced-deep-research",
+        input: "What are the latest developments in AI?",
+    });
+
+    console.log(response.output_text);
+    ```
   </Tab>
 
   <Tab title="cURL">
-    ```bash  theme={null}
+    ```bash theme={null}
     # Using fast-search preset
     curl https://api.perplexity.ai/v1/responses \
       -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
@@ -574,7 +677,7 @@ Use presets by specifying the `preset` parameter instead of manually configuring
       }' | jq
     ```
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Using pro-search preset
     curl https://api.perplexity.ai/v1/responses \
       -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
@@ -585,13 +688,24 @@ Use presets by specifying the `preset` parameter instead of manually configuring
       }' | jq
     ```
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Using deep-research preset
     curl https://api.perplexity.ai/v1/responses \
       -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
         "preset": "deep-research",
+        "input": "What are the latest developments in AI?"
+      }' | jq
+    ```
+
+    ```bash theme={null}
+    # Using advanced-deep-research preset
+    curl https://api.perplexity.ai/v1/responses \
+      -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "preset": "advanced-deep-research",
         "input": "What are the latest developments in AI?"
       }' | jq
     ```
@@ -604,7 +718,7 @@ Presets provide sensible defaults, but you can override any parameter by passing
 
 <Tabs>
   <Tab title="Python SDK">
-    ```python  theme={null}
+    ```python theme={null}
     from perplexity import Perplexity
 
     client = Perplexity()
@@ -635,8 +749,8 @@ Presets provide sensible defaults, but you can override any parameter by passing
     ```
   </Tab>
 
-  <Tab title="TypeScript SDK">
-    ```typescript  theme={null}
+  <Tab title="Typescript SDK">
+    ```typescript theme={null}
     import Perplexity from '@perplexity-ai/perplexity_ai';
 
     const client = new Perplexity();
@@ -668,7 +782,7 @@ Presets provide sensible defaults, but you can override any parameter by passing
   </Tab>
 
   <Tab title="cURL">
-    ```bash  theme={null}
+    ```bash theme={null}
     # Override max_steps while using pro-search preset defaults
     curl https://api.perplexity.ai/v1/responses \
       -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
@@ -680,7 +794,7 @@ Presets provide sensible defaults, but you can override any parameter by passing
       }' | jq
     ```
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Override max_output_tokens
     curl https://api.perplexity.ai/v1/responses \
       -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
@@ -707,19 +821,20 @@ Presets provide sensible defaults, but you can override any parameter by passing
 * **fast-search**: Simple questions, quick answers, minimal latency
 * **pro-search**: Standard queries requiring research and tool use
 * **deep-research**: Complex analysis, multi-step reasoning, comprehensive research
+* **advanced-deep-research**: Maximum depth research with institutional-grade analysis, enhanced tool access, and sophisticated source coverage
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card title="Agentic Research API Quickstart" icon="rocket" href="/docs/grounded-llm/responses/quickstart">
-    Get started with the Agentic Research API.
+<CardGroup>
+  <Card title="Agent API Quickstart" icon="rocket" href="/docs/agent-api/quickstart">
+    Get started with the Agent API.
   </Card>
 
-  <Card title="Models" icon="brain" href="/docs/grounded-llm/responses/models">
+  <Card title="Models" icon="brain" href="/docs/agent-api/models">
     Explore direct model selection and third-party models.
   </Card>
 
-  <Card title="API Reference" icon="code" href="/api-reference/responses-post">
+  <Card title="API Reference" icon="code-circle" href="/api-reference/responses-post">
     View complete endpoint documentation.
   </Card>
 </CardGroup>
