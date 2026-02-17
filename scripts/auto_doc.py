@@ -47,7 +47,29 @@ def _ensure_exa_key():
         pass
 
 
+def _ensure_github_token():
+    """Load GitHub token for authenticated API access (5000 req/hr vs 60).
+
+    Priority: GH_TOKEN env var > GITHUB_TOKEN env var > `gh auth token` CLI.
+    """
+    if os.environ.get("GH_TOKEN"):
+        return
+    if os.environ.get("GITHUB_TOKEN"):
+        os.environ["GH_TOKEN"] = os.environ["GITHUB_TOKEN"]
+        return
+    try:
+        result = subprocess.run(
+            ["gh", "auth", "token"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            os.environ["GH_TOKEN"] = result.stdout.strip()
+    except Exception:
+        pass
+
+
 _ensure_exa_key()
+_ensure_github_token()
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -689,7 +711,13 @@ def probe_llms_txt(domain: str) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def _github_api_get(path: str, timeout: float = 10.0) -> Optional[dict]:
-    """Call GitHub API, trying gh CLI first, falling back to requests."""
+    """Call GitHub API, trying gh CLI first, falling back to authenticated requests.
+
+    Authentication priority:
+      1. gh CLI (uses its own auth)
+      2. Direct HTTP with GH_TOKEN (set by _ensure_github_token at startup)
+      3. Unauthenticated (60 req/hr — last resort)
+    """
     # Try gh cli first
     meta_json = _run_cmd(["gh", "api", path], timeout=int(timeout))
     if meta_json:
@@ -698,10 +726,14 @@ def _github_api_get(path: str, timeout: float = 10.0) -> Optional[dict]:
         except json.JSONDecodeError:
             pass
 
-    # Fallback: direct HTTP (unauthenticated, 60 req/hr)
+    # Fallback: direct HTTP with auth token if available
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    token = os.environ.get("GH_TOKEN")
+    if token:
+        headers["Authorization"] = f"token {token}"
     try:
         r = SESSION.get(f"https://api.github.com/{path}", timeout=timeout,
-                        headers={"Accept": "application/vnd.github.v3+json"})
+                        headers=headers)
         if r.status_code == 200:
             return r.json()
     except Exception:
