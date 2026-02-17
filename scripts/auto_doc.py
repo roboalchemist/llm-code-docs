@@ -1635,6 +1635,99 @@ def _extract_library_name(title: str) -> str:
     return result.strip().lower()
 
 
+# ---------------------------------------------------------------------------
+# Markdownlint cleanup
+# ---------------------------------------------------------------------------
+
+# Rules disabled by project convention (not auto-fixed):
+#   MD013 - line length
+#   MD033 - inline HTML
+#   MD034 - bare URLs
+#   MD055 - table pipe style
+#   MD056 - table body row count
+#   MD059 - table column count
+#   MD060 - table header delimiter
+_MARKDOWNLINT_DISABLED_RULES = [
+    "MD013", "MD033", "MD034", "MD055", "MD056", "MD059", "MD060",
+]
+
+_MARKDOWNLINT_BATCH_SIZE = 50
+
+
+def cleanup_markdownlint(docs_dir: Path) -> dict:
+    """Run markdownlint --fix on all markdown files in *docs_dir*.
+
+    Processes files in batches to avoid command-line length limits.
+    Returns a summary dict::
+
+        {
+            "files_checked": int,
+            "files_with_issues": int,
+            "issues_fixed": int,
+            "errors": [],
+        }
+    """
+    result: dict = {
+        "files_checked": 0,
+        "files_with_issues": 0,
+        "issues_fixed": 0,
+        "errors": [],
+    }
+
+    # Collect all .md files
+    md_files = sorted(docs_dir.rglob("*.md"))
+    if not md_files:
+        return result
+
+    result["files_checked"] = len(md_files)
+
+    # Build the shared flags
+    disable_flags: list[str] = ["--disable"] + _MARKDOWNLINT_DISABLED_RULES
+
+    files_with_issues: set[str] = set()
+    total_issues = 0
+
+    # Process in batches
+    for i in range(0, len(md_files), _MARKDOWNLINT_BATCH_SIZE):
+        batch = md_files[i : i + _MARKDOWNLINT_BATCH_SIZE]
+        cmd = ["npx", "markdownlint", "--fix"] + [str(f) for f in batch] + disable_flags
+
+        try:
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=60,
+            )
+        except FileNotFoundError:
+            result["errors"].append("npx not found - install Node.js and npx to use markdownlint")
+            return result
+        except subprocess.TimeoutExpired:
+            result["errors"].append(f"markdownlint timed out on batch starting at index {i}")
+            continue
+        except Exception as exc:
+            result["errors"].append(f"unexpected error: {exc}")
+            continue
+
+        # markdownlint exits non-zero when it finds (and fixes) issues.
+        # Output lines look like: "path/file.md:10 MD010/no-hard-tabs ..."
+        # or "path/file.md:10:5 MD010/no-hard-tabs ..."
+        output = (proc.stdout or "") + (proc.stderr or "")
+        for line in output.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            # Match pattern: filepath:line or filepath:line:col followed by rule
+            match = re.match(r"^(.+?):(\d+)(:\d+)?\s+(MD\d+)", line)
+            if match:
+                files_with_issues.add(match.group(1))
+                total_issues += 1
+
+    result["files_with_issues"] = len(files_with_issues)
+    result["issues_fixed"] = total_issues
+
+    return result
+
 
 def _format_size(size_bytes: int) -> str:
     if size_bytes < 1024:
