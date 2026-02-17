@@ -106,7 +106,7 @@ This section configures the top-level navigation sections visible in the Navigat
 ```
 
 Then in your templates, access navigation data with:
-```json-t
+```json
 {.section mainNav}
   {navigationMarkup}
 {.end}
@@ -140,7 +140,6 @@ If you create a file named `reset.css` in the `/styles/` folder, it automaticall
 {
   "name": "Modern Blog Template",
   "author": "Design Studio Inc.",
-
   "layouts": {
     "default": {
       "name": "Blog with Sidebar",
@@ -224,9 +223,8 @@ Use a JSON validator to verify your configuration:
 ```json
 {
   "name": "Template",
-  "author": "Author",  ← No comma after last property
+  "author": "Author",
   "layouts": {
-    ...
   }
 }
 ```

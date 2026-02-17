@@ -127,7 +127,7 @@ Y.all('.items').each(function(item) {
 
 ### Code Organization
 
-```
+```text
 /scripts/
   ├── site.js          (main site functionality)
   ├── plugins.js       (third-party plugins)

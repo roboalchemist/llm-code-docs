@@ -17,7 +17,7 @@ JSON-T employs special markers to designate where data appears on a page. The la
 
 Variables pull information from JSON context and display it on the page. Nested data is accessible using dot notation:
 
-```
+```json-t
 {foo.bar.baz}
 ```
 
@@ -116,7 +116,7 @@ Squarespace stores website content as JSON data. You can view this data structur
 
 Use dot notation to access nested values directly without scoping:
 
-```
+```json-t
 {collection.title}
 {item.metadata.datePublished}
 ```

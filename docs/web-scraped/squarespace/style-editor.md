@@ -18,25 +18,31 @@ Tweaks are defined in CSS/LESS files using comments with a specific format:
 ## Tweak Types
 
 ### Value
+
 Range sliders that return measurement units with configurable min/max values, step increments, and sensitivity settings.
 
 Example:
+
 ```css
 // tweak: { "type": "value", "title": "Font Size", "min": 12, "max": 48, "step": 1 }
 @baseFontSize: 16px;
 ```
 
 ### Color
+
 Color picker returning colors in the original CSS format (hex, rgba, etc.).
 
 Example:
+
 ```css
 // tweak: { "type": "color", "title": "Primary Color" }
 @primaryColor: #3498db;
 ```
 
 ### Typography
+
 Provides font customization options matching CSS properties:
+
 - Font family
 - Font weight
 - Font size
@@ -45,33 +51,40 @@ Provides font customization options matching CSS properties:
 - Text transform
 
 Example:
+
 ```css
 // tweak: { "type": "typography", "title": "Heading Font" }
 @headingFont: Georgia, serif;
 ```
 
 ### Checkbox
+
 Toggles a CSS class on the body element when activated, enabling conditional styling.
 
 Example:
+
 ```css
 // tweak: { "type": "checkbox", "title": "Dark Mode" }
 @darkModeEnabled: false;
 ```
 
 ### Dropdown
+
 Applies selected class to body element based on user choice from defined options.
 
 Example:
+
 ```css
 // tweak: { "type": "dropdown", "title": "Layout", "options": ["wide", "narrow", "fluid"] }
 @layoutType: wide;
 ```
 
 ### Image
+
 Upload field for presentational images, particularly useful for background images in CSS.
 
 Example:
+
 ```css
 // tweak: { "type": "image", "title": "Background Image" }
 @bgImage: "";
@@ -80,9 +93,11 @@ Example:
 ## Organization Features
 
 ### Categories
+
 Group related tweaks by adding a `"category"` key/value pair; matching values group tweaks under shared headings.
 
 Example:
+
 ```css
 // tweak: { "type": "value", "title": "Page Width", "category": "Layout", "min": 500, "max": 1400 }
 @pageWidth: 600px;
@@ -92,18 +107,22 @@ Example:
 ```
 
 ### Targets
+
 Allow users to click elements and view associated style options using the `"target"` property with CSS selectors.
 
 Example:
+
 ```css
 // tweak: { "type": "color", "title": "Button Color", "target": "button" }
 @buttonColor: #3498db;
 ```
 
 ### showOnlyWhenPresent
+
 Display tweaks conditionally based on HTML element presence (comma-separated selectors).
 
 Example:
+
 ```css
 // tweak: { "type": "color", "title": "Sidebar Color", "showOnlyWhenPresent": ".sidebar, aside" }
 @sidebarColor: #ecf0f1;
@@ -114,11 +133,13 @@ Example:
 Developers can access tweak values and listen for changes in custom JavaScript.
 
 ### Retrieve Tweak Values
+
 ```javascript
 Y.Squarespace.Template.getTweakValue('variableName')
 ```
 
 ### Listen for Tweak Changes
+
 ```javascript
 Y.Global.on('tweak:change', function(f) {
   // Handle tweak change
@@ -128,6 +149,7 @@ Y.Global.on('tweak:change', function(f) {
 ```
 
 ### Listen for Tweak Resets
+
 ```javascript
 Y.Global.on('tweak:reset', function(f) {
   // Handle tweak reset to default
@@ -135,6 +157,7 @@ Y.Global.on('tweak:reset', function(f) {
 ```
 
 ### Enable JavaScript Access
+
 Add `"js" : true` to the tweak definition to enable JavaScript integration:
 
 ```css
@@ -143,6 +166,7 @@ Add `"js" : true` to the tweak definition to enable JavaScript integration:
 ```
 
 Once enabled, retrieve the value in your custom script:
+
 ```javascript
 var pageWidth = Y.Squarespace.Template.getTweakValue('pageWidth');
 ```

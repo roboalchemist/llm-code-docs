@@ -220,7 +220,7 @@ In your template, you'd access this data with JSON-T syntax to display the conte
 
 Append `?format=json-pretty` to any Squarespace page URL to see the underlying JSON structure:
 
-```
+```text
 https://your-site.squarespace.com/blog?format=json-pretty
 ```
 

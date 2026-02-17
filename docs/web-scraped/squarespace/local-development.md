@@ -51,20 +51,24 @@ The server runs on port 9000 by default. Access your site at `http://localhost:9
 ## Important Notes
 
 ### Trial Sites
+
 Trial sites require the `--auth` flag during startup:
 ```bash
 squarespace-server https://site-name.squarespace.com --auth
 ```
 
 ### CMS Structure Requirements
+
 Custom collections, post types, and static pages must be committed and pushed to Squarespace before local preview. Once pushed, these items can be edited locally after creating them in the CMS.
 
 ### Preview Limitations
+
 The local development server previews template changes but cannot create new content types—those must be defined in the CMS interface.
 
 ## Advanced Options
 
 ### View All Commands
+
 ```bash
 squarespace-server --help
 ```
@@ -72,24 +76,28 @@ squarespace-server --help
 ### Common Options
 
 #### Directory
+
 Specify template source location:
 ```bash
 squarespace-server https://site-name.squarespace.com -d, --directory=/path/to/template
 ```
 
 #### Port
+
 Change server port:
 ```bash
 squarespace-server https://site-name.squarespace.com -p, --port=8080
 ```
 
 #### Authentication
+
 Authenticate for password-protected or trial sites:
 ```bash
 squarespace-server https://site-name.squarespace.com --auth
 ```
 
 #### Verbose Logging
+
 Enable detailed logging:
 ```bash
 squarespace-server https://site-name.squarespace.com --verbose
@@ -98,9 +106,10 @@ squarespace-server https://site-name.squarespace.com --verbose
 ## Accessing Assets
 
 ### Site CSS
+
 For local development, access compiled CSS at:
 
-```
+```text
 http://localhost:9000/local-assets/site.css
 ```
 
@@ -109,18 +118,22 @@ This endpoint is exclusive to the local development server and allows inspection
 ## Development Best Practices
 
 ### Live Reloading
+
 The local development server automatically reflects changes when you refresh your browser. No need to restart the server for template modifications.
 
 ### CSS and JavaScript
+
 Changes to stylesheets and scripts in `/styles/` and `/scripts/` directories are reflected immediately on refresh.
 
 ### Collection Changes
+
 If you modify collection configurations or add new collections:
 1. Commit and push changes to the repository
 2. Verify they're visible in the CMS
 3. Refresh the local development server
 
 ### Performance Testing
+
 Use the local development environment to test:
 - Template rendering performance
 - JavaScript execution and event handling
@@ -130,18 +143,21 @@ Use the local development environment to test:
 ## Troubleshooting
 
 ### Server Won't Start
+
 - Verify NPM is installed: `npm --version`
 - Ensure port 9000 is not in use
 - Check that your site URL is correct
 - Verify you have developer mode enabled
 
 ### Changes Not Appearing
+
 - Ensure you're accessing http://localhost:9000 (not localhost:8000 or another port)
 - Clear browser cache (Ctrl+Shift+Delete or Cmd+Shift+Delete)
 - Verify files are saved locally
 - Check terminal for error messages with `--verbose` flag
 
 ### Port Already in Use
+
 Use the `-p` flag to specify a different port:
 ```bash
 squarespace-server https://site-name.squarespace.com -p 8080

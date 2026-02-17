@@ -19,7 +19,8 @@ A basic layout includes:
 
 ### Minimal Example
 
-**site.region:**
+#### site.region
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -71,7 +72,8 @@ Advanced sites can support different layouts for different pages. A common use c
 
 Create individual region files for reusable components:
 
-**header.region:**
+#### header.region
+
 ```html
 <header>
   <h1>{websiteTitle}</h1>
@@ -79,21 +81,24 @@ Create individual region files for reusable components:
 </header>
 ```
 
-**footer.region:**
+#### footer.region
+
 ```html
 <footer>
   <p>&copy; {year} {websiteTitle}</p>
 </footer>
 ```
 
-**full-width.region:**
+#### full-width.region
+
 ```html
 <main id="main-content">
   {main-content}
 </main>
 ```
 
-**sidebar.region:**
+#### sidebar.region
+
 ```html
 <div class="container">
   <main id="main-content">
@@ -182,7 +187,8 @@ Defined as "homepage" in configuration. Takes precedence for the site homepage.
 ### 2. Folder-Specific
 Set per folder configuration. Allows different layouts for different section branches.
 
-**In folder.conf:**
+#### In folder.conf
+
 ```json
 {
   "layout": "sidebar"
@@ -192,7 +198,8 @@ Set per folder configuration. Allows different layouts for different section bra
 ### 3. Collection-Specific
 Set in individual collection configs. Blog collection can use different layout than gallery.
 
-**In collections/blog.conf:**
+#### In collections/blog.conf
+
 ```json
 {
   "layouts": {
