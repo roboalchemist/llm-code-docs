@@ -764,6 +764,177 @@ def assess_github(owner_repo: str) -> Optional[dict]:
 
 
 # ---------------------------------------------------------------------------
+# Decision logic
+# ---------------------------------------------------------------------------
+
+def decide(probe_output: dict) -> dict:
+    """Decide which documentation source to use based on probe results.
+
+    Applies deterministic rules in priority order:
+      1. llms-txt with valid content (not stub, >5KB, score>=75)
+      2. GitHub repo with substantial docs (>5 files, has markdown, not fork)
+      3. Web docs site found via exa (2+ results from same domain)
+      4. Skip if nothing viable
+
+    Returns: {"source": "llms-txt"|"github"|"web"|"skip", "url": "...", "reason": "..."}
+    """
+
+    # --- Rule 1: llms-txt ---
+    # Build set of domains that are relevant to this library
+    library = probe_output.get("library", "").lower()
+    lib_clean = library.replace("-", "").replace("_", "")
+    discovery = probe_output.get("discovery", {})
+    best_guess = discovery.get("best_guess", {})
+    best_domain = best_guess.get("domain", "")
+
+    # A domain is relevant if it's from a registry (strong signal),
+    # matches best_guess backed by a registry or name match, or contains
+    # the library name as a domain segment
+    relevant_domains: set[str] = set()
+
+    # Registry domains are trusted (PyPI, npm, crates.io verified ownership)
+    registries = discovery.get("registries", {})
+    has_registry = len(registries) > 0
+    for reg_info in registries.values():
+        if reg_info.get("domain"):
+            relevant_domains.add(reg_info["domain"])
+    # GitHub search: only add homepage from the best-guess repo, not all candidates
+    best_github = best_guess.get("github", "")
+    if best_github:
+        for c in discovery.get("github_search", {}).get("candidates", []):
+            if c.get("full_name") == best_github:
+                hp = c.get("homepage", "")
+                if hp:
+                    host = urlparse(hp).netloc
+                    if host and host not in NOISE_DOMAINS:
+                        relevant_domains.add(host)
+                break
+
+    # Add best_guess domain only if backed by registry or already in relevant set
+    # (prevents trusting garbage discovery for nonexistent libraries)
+    if best_domain and (best_domain in relevant_domains or has_registry):
+        relevant_domains.add(best_domain)
+
+    def _is_relevant_llms_domain(url: str) -> bool:
+        """Check if an llms-txt URL is from a domain relevant to this library."""
+        host = urlparse(url).netloc.lower()
+        # Exact match with a known relevant domain
+        if host in relevant_domains:
+            return True
+        # Any relevant domain is a suffix (e.g. docs.fastapi.tiangolo.com matches fastapi.tiangolo.com)
+        for rd in relevant_domains:
+            if host.endswith("." + rd) or rd.endswith("." + host):
+                return True
+        # Check if the library name appears as a dot-separated domain segment
+        # e.g., "fastapi.tiangolo.com" has segment "fastapi" matching library "fastapi"
+        # but "fastapi-mcp.tadata.com" has segment "fastapi-mcp" which does NOT match
+        dot_parts = host.split(".")
+        if library and library in dot_parts:
+            return True
+        # For multi-word libs like "drizzle-orm", check if all key parts appear as
+        # dot-separated segments: "orm.drizzle.team" -> ["orm", "drizzle", "team"]
+        lib_parts = re.split(r"[\-_]", library)
+        if len(lib_parts) > 1 and all(p in dot_parts for p in lib_parts):
+            return True
+        return False
+
+    viable_llms = []
+    for r in probe_output.get("llms_txt", []):
+        if (
+            r.get("http_status") == 200
+            and not r.get("is_stub", True)
+            and r.get("size_bytes", 0) > 5120
+            and _is_relevant_llms_domain(r.get("url", ""))
+        ):
+            score = r.get("validation_score")
+            if score is None or score >= 75:
+                viable_llms.append(r)
+
+    if viable_llms:
+        # Pick best: highest validation_score first, then largest size
+        def _llms_sort_key(r):
+            score = r.get("validation_score")
+            # Treat None as -1 so entries with actual scores win ties
+            return (score if score is not None else -1, r.get("size_bytes", 0))
+
+        best = max(viable_llms, key=_llms_sort_key)
+        url = best["url"]
+        domain = urlparse(url).netloc
+        size_kb = best.get("size_bytes", 0) / 1024
+        score = best.get("validation_score", "n/a")
+        headings = best.get("num_headings", 0)
+        # Derive the filename from the URL path
+        path_tail = urlparse(url).path.rstrip("/").rsplit("/", 1)[-1] or "llms.txt"
+        return {
+            "source": "llms-txt",
+            "url": url,
+            "reason": f"{path_tail} at {domain}: {size_kb:.0f}KB, score {score}, {headings} headings",
+        }
+
+    # --- Rule 2: GitHub ---
+    viable_gh = []
+    for gh in probe_output.get("github_candidates", []):
+        if (
+            gh.get("docs_file_count", 0) > 5
+            and gh.get("has_markdown", False)
+            and not gh.get("is_fork", True)
+        ):
+            viable_gh.append(gh)
+
+    if viable_gh:
+        best = max(viable_gh, key=lambda g: g.get("docs_file_count", 0))
+        repo = best["repo"]
+        count = best["docs_file_count"]
+        folder = best.get("docs_folder", "docs")
+        return {
+            "source": "github",
+            "url": repo,
+            "reason": f"github {repo}: {count} doc files in {folder}/",
+        }
+
+    # --- Rule 3: Web (exa search) ---
+    # Re-use discovery/best_guess from Rule 1 scope (already set above)
+    exa = discovery.get("exa_search", {})
+
+    if exa.get("search_results") and best_domain and (best_domain in relevant_domains or has_registry):
+        # Count exa results from each domain
+        domain_counts: dict[str, int] = {}
+        for sr in exa["search_results"]:
+            host = urlparse(sr.get("url", "")).netloc
+            if host:
+                domain_counts[host] = domain_counts.get(host, 0) + 1
+
+        # Check if best_guess domain has 2+ results, or find any domain with 2+
+        target_domain = None
+        target_count = 0
+
+        if domain_counts.get(best_domain, 0) >= 2:
+            target_domain = best_domain
+            target_count = domain_counts[best_domain]
+        else:
+            # Fall back to any domain with 2+ results (pick highest count)
+            for d, c in sorted(domain_counts.items(), key=lambda x: x[1], reverse=True):
+                if c >= 2 and d not in NOISE_DOMAINS:
+                    target_domain = d
+                    target_count = c
+                    break
+
+        if target_domain:
+            return {
+                "source": "web",
+                "url": f"https://{target_domain}/",
+                "reason": f"web docs at {target_domain}: {target_count} exa results from this domain",
+            }
+
+    # --- Rule 4: Skip ---
+    return {
+        "source": "skip",
+        "url": "",
+        "reason": "no viable sources found",
+    }
+
+
+# ---------------------------------------------------------------------------
 # probe command
 # ---------------------------------------------------------------------------
 
@@ -948,13 +1119,8 @@ def probe(
     else:
         _print_probe_report(output)
 
-    # Exit code
-    if output["recommendation"] == "nothing_found":
-        raise typer.Exit(1)
-    elif output["recommendation"] == "already_exists":
-        raise typer.Exit(0)
-    else:
-        raise typer.Exit(0)
+    # Return output for programmatic use
+    return output
 
 
 def _print_probe_report(output: dict):
@@ -1138,6 +1304,7 @@ def _find_docs_folder_local(repo_path: Path) -> Optional[str]:
             if doc_files:
                 return folder
     return None
+
 
 
 def _fetch_github(library: str, repo: str, force: bool) -> dict:
