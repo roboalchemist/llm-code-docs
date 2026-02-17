@@ -143,7 +143,7 @@ def tmp_docs(tmp_path):
 class TestAddLlmsTxt:
     """Test add_library with llms-txt source."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -173,7 +173,7 @@ class TestAddLlmsTxt:
         assert result["quality_score"] == "pass"
         assert result["error"] is None
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -204,7 +204,7 @@ class TestAddLlmsTxt:
 class TestAddGitHub:
     """Test add_library with GitHub source."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_github")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -238,7 +238,7 @@ class TestAddGitHub:
 class TestAddWebScraper:
     """Test add_library with web scraper source."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc.decide")
     @patch("auto_doc.generate_and_run_scraper")
     @patch("auto_doc.cleanup_markdownlint")
@@ -282,7 +282,7 @@ class TestAddWebScraper:
 class TestAddDryRun:
     """Test --dry-run flag."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     def test_dry_run_stops_after_decide(self, mock_probe, mock_probe_output):
         mock_probe.return_value = mock_probe_output
 
@@ -293,7 +293,7 @@ class TestAddDryRun:
         assert result["files_added"] == 0
         assert result["commit_sha"] is None
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     def test_dry_run_skip_returns_error(self, mock_probe, mock_probe_nothing):
         mock_probe.return_value = mock_probe_nothing
 
@@ -311,7 +311,7 @@ class TestAddDryRun:
 class TestAddAlreadyExists:
     """Test that add fails for existing libraries."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     def test_already_exists(self, mock_probe, mock_probe_exists):
         mock_probe.return_value = mock_probe_exists
 
@@ -328,7 +328,7 @@ class TestAddAlreadyExists:
 class TestAddNothingFound:
     """Test graceful failure when no docs are found."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     def test_nothing_found(self, mock_probe, mock_probe_nothing):
         mock_probe.return_value = mock_probe_nothing
 
@@ -346,7 +346,7 @@ class TestAddNothingFound:
 class TestAddFetchFailure:
     """Test handling of fetch failures."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     def test_fetch_fails(self, mock_fetch, mock_probe, mock_probe_output):
         mock_probe.return_value = mock_probe_output
@@ -366,7 +366,7 @@ class TestAddFetchFailure:
 class TestAddReviewFailure:
     """Test handling of LLM review failure."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -406,7 +406,7 @@ class TestAddReviewFailure:
 class TestAddGitFailure:
     """Test handling of git commit/push failure."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -431,7 +431,7 @@ class TestAddGitFailure:
         assert result["success"] is False
         assert "nothing to commit" in result["error"]
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -570,7 +570,7 @@ class TestAddCLI:
 class TestAddEdgeCases:
     """Test edge cases and boundary conditions."""
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     def test_probe_raises_exception(self, mock_probe):
         """If probe itself raises, add_library should handle gracefully."""
         mock_probe.side_effect = Exception("network error")
@@ -580,7 +580,7 @@ class TestAddEdgeCases:
         # Should fail, not crash
         assert result["success"] is False
 
-    @patch("auto_doc.probe")
+    @patch("auto_doc._invoke_probe")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
@@ -637,3 +637,59 @@ class TestGitCommitAndPush:
 
         assert result["commit_sha"] is None
         assert "nothing to commit" in result["error"]
+
+
+# ---------------------------------------------------------------------------
+# Integration tests: invoke add via CliRunner (no probe mocking)
+# ---------------------------------------------------------------------------
+
+class TestAddIntegration:
+    """Integration tests that invoke add through CliRunner without mocking probe.
+
+    These tests verify the full probe → decide → add pipeline works end-to-end
+    through the typer CLI layer, catching issues like the OptionInfo bug where
+    calling typer commands directly as Python functions fails.
+    """
+
+    def test_add_dry_run_nonexistent_library(self):
+        """add --dry-run for a nonexistent library should return structured JSON error."""
+        from typer.testing import CliRunner
+        runner = CliRunner()
+
+        result = runner.invoke(auto_doc.app, ["add", "nonexistent_xyz_12345", "--dry-run", "--json"])
+        assert result.exit_code in (0, 1)  # either is fine
+
+        output = json.loads(result.output)
+        assert output["library"] == "nonexistent_xyz_12345"
+        assert output["success"] is False
+        # Should get a structured error, not a traceback
+        assert output["error"] is not None
+        assert "OptionInfo" not in result.output  # The original bug
+
+    def test_add_dry_run_returns_valid_json(self):
+        """add --dry-run --json should always return parseable JSON, never a traceback."""
+        from typer.testing import CliRunner
+        runner = CliRunner()
+
+        result = runner.invoke(auto_doc.app, ["add", "some-test-lib", "--dry-run", "--json"])
+        # Must be valid JSON regardless of success/failure
+        try:
+            output = json.loads(result.output)
+        except json.JSONDecodeError:
+            pytest.fail(f"add --dry-run --json returned non-JSON output: {result.output[:500]}")
+
+        assert "library" in output
+        assert "success" in output
+        assert "error" in output
+
+    def test_probe_invoked_via_clirunner(self):
+        """Verify _invoke_probe works correctly through CliRunner."""
+        # This directly tests the fix: _invoke_probe should return a dict, not crash
+        try:
+            result = auto_doc._invoke_probe("nonexistent_xyz_99999")
+            # If it succeeds, it should be a dict with expected keys
+            assert isinstance(result, dict)
+            assert "library" in result
+        except RuntimeError as e:
+            # RuntimeError is the expected error path (probe failed or invalid JSON)
+            assert "OptionInfo" not in str(e)  # The original bug

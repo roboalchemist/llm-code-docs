@@ -2139,6 +2139,27 @@ def _count_files_in_dir(docs_dir: Path) -> int:
     return len(list(docs_dir.rglob("*.md")))
 
 
+def _invoke_probe(library: str) -> dict:
+    """Invoke the probe command via CliRunner and return parsed JSON output.
+
+    Since probe is a typer @app.command(), calling it directly as a Python
+    function results in typer OptionInfo objects instead of real values.
+    We use CliRunner to invoke it properly through the CLI layer.
+
+    Returns parsed probe output dict.
+    Raises RuntimeError if probe fails or returns invalid JSON.
+    """
+    from typer.testing import CliRunner as _CliRunner
+    _runner = _CliRunner()
+    probe_result = _runner.invoke(app, ["probe", library, "--json"])
+    if probe_result.exit_code != 0:
+        raise RuntimeError(f"probe failed: {probe_result.output[:300]}")
+    try:
+        return json.loads(probe_result.output)
+    except json.JSONDecodeError:
+        raise RuntimeError(f"probe returned invalid JSON: {probe_result.output[:300]}")
+
+
 def add_library(
     library: str,
     dry_run: bool = False,
@@ -2162,22 +2183,9 @@ def add_library(
 
     # Step 1: Probe
     try:
-        probe_output = probe(library, json_output=True)
-    except SystemExit:
-        # typer may raise SystemExit; capture probe output via invoke
-        from typer.testing import CliRunner
-        runner = CliRunner()
-        probe_result = runner.invoke(app, ["probe", library, "--json"])
-        if probe_result.exit_code != 0:
-            result["error"] = f"probe failed: {probe_result.output[:300]}"
-            return result
-        try:
-            probe_output = json.loads(probe_result.output)
-        except json.JSONDecodeError:
-            result["error"] = f"probe returned invalid JSON: {probe_result.output[:300]}"
-            return result
-    except Exception as e:
-        result["error"] = f"probe failed: {e}"
+        probe_output = _invoke_probe(library)
+    except (RuntimeError, Exception) as e:
+        result["error"] = str(e)
         return result
 
     # Check if already exists
