@@ -12,7 +12,7 @@
     vertical-align: top;
   }
   /* Dark mode border color */
-  body:not([data-custom-theme="light"]) table.mattermost-plans th, 
+  body:not([data-custom-theme="light"]) table.mattermost-plans th,
   body:not([data-custom-theme="light"]) table.mattermost-plans td {
     border-color: #666;
   }

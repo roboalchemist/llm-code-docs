@@ -3,14 +3,16 @@
 This page describes Mattermost’s release policy, and our recommended practices around releases, including extended support releases, so that you can allocate your IT resources effectively.
 
 To ensure a secure, functional, performant, and efficient Mattermost deployment, system admins managing a self-hosted deployment need to be proactive in:
+
 - monitoring Mattermost release cycles and planning upgrades before life cycles end,
 - considering the use of [extended support releases](#extended-support-releases) for longer-term stability, and
 - keeping both server and client applications updated.
 
 (release-types)=
+
 ## Release Types
 
-Mattermost releases include feature, extended support, and major releases. Each release has a specified life cycle start and end date, and life cycles depend on the release type. 
+Mattermost releases include feature, extended support, and major releases. Each release has a specified life cycle start and end date, and life cycles depend on the release type.
 
 - **Feature**: Feature releases contain new features and include high severity and high impact security backported to the previous 3 monthly releases. This is to ensure your organization's Mattermost deployment remains secure and stable. It's crucial to apply feature updates to maintain the security of your Mattermost deployment.
 - **Extended**: Releases maintained for a longer period of time that receive backports for security fixes and major bug fixes for the length of their life cycle. Learn more about [Mattermost extended support releases](#extended-support-releases) below.
@@ -21,13 +23,15 @@ With multiple release types, you can plan the upgrade path that best suits your 
 See the full list of all Mattermost Server and desktop app releases and life cycles.
 
 (extended-support-releases)=
+
 ## Extended Support Releases
 
 Mattermost Extended Support Releases (ESRs) are a strategic choice for organizations looking for stability and reduced frequency of updates. Using ESRs can minimize disruptions associated with frequent upgrades, making them an attractive option for environments where stability is paramount.
 
-Starting with the August 2025 Mattermost server and desktop app releases (server v10.11 and desktop app v5.13), Mattermost has adjusted the ESR life cycle as follows: 
- - **Extended Cadence**: The ESR release cycle has changed from every 6 months to every 9 months. 
- - **Prolonged Support**: The support window has increased from 9 months to 12 months. 
+Starting with the August 2025 Mattermost server and desktop app releases (server v10.11 and desktop app v5.13), Mattermost has adjusted the ESR life cycle as follows:
+
+- **Extended Cadence**: The ESR release cycle has changed from every 6 months to every 9 months.
+- **Prolonged Support**: The support window has increased from 9 months to 12 months.
 
 We strongly recommend planning ahead for upgrades before the end of an ESR's life cycle to ensure continuity in receiving security updates.
 
@@ -63,13 +67,15 @@ gantt
 
 **Timeline Legend:**
 The chart above shows both release dates and end-of-life dates for each version. ESRs provide longer-term stability for organizations preferring less frequent updates.
+
 - 🔵 **Blue bars**: Regular feature releases (monthly releases with standard support lifecycle)
 - 🔴 **Red bars**: Extended Support Releases (ESRs) - Released every 6-9 months with extended 9-12 month support
 
 (esr-notifications)=
+
 ### ESR Notifications
 
-When an ESR is at the end of its life cycle, there will be announcements ahead of time to provide time for people to test, certify, and deploy a newer ESR version before support ends. After a release reaches its end-of-life, no further updates will be provided for that version. 
+When an ESR is at the end of its life cycle, there will be announcements ahead of time to provide time for people to test, certify, and deploy a newer ESR version before support ends. After a release reaches its end-of-life, no further updates will be provided for that version.
 
 To receive updates about Extended Support Releases, sign up for [our mailing list](https://mattermost.com/newsletter/).
 
@@ -86,7 +92,7 @@ The following table lists all releases across Mattermost v7.0, v8.0, and v9.0, i
 - Upgrading from one Extended Support Release (ESR) to the next ESR (``major`` -> ``major_next``) is fully supported and tested. However, upgrading across multiple ESR versions (``major`` to ``major+2``) is supported, but not tested. If you plan to skip versions, we strongly recommend upgrading only between ESR releases. For example, if you're upgrading from v8.1 ESR, upgrade to the v9.5 ESR or the v9.11 ESR before attempting to upgrade to the [v10.5 ESR](https://docs.mattermost.com/product-overview/mattermost-v10-changelog.html#release-v10-5-extended-support-release) or the [v10.11 ESR](https://docs.mattermost.com/product-overview/mattermost-v10-changelog.html#release-v10-11-extended-support-release).
 ```
 
-| **Release** | **Release Type** | **Support ended** | 
+| **Release** | **Release Type** | **Support ended** |
 |:---|:---|:---|
 | v9.11 | Extended | 2025-05-15 |
 | v9.10 | Feature | 2024-10-15 |

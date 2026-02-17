@@ -22,7 +22,7 @@ From Mattermost v10.3, Agents comes installed automatically and ready for you to
 
 #### Install latest version
 
-For the most recent features and improvements, you can download and install the latest plugin version from the [GitHub releases page](https://github.com/mattermost/mattermost-plugin-ai/releases). 
+For the most recent features and improvements, you can download and install the latest plugin version from the [GitHub releases page](https://github.com/mattermost/mattermost-plugin-ai/releases).
 
 Install the plugin through the System Console by navigating to **System Console > Plugin Management**, clicking **Upload Plugin**, selecting the downloaded plugin file (.tar.gz), and clicking **Upload**. Enable the plugin after upload completes, then configure plugin settings as detailed in the Configuration section below.
 
@@ -108,7 +108,7 @@ Select **Save** to create the agent.
 
 ### Custom instructions
 
-Text input in the custom instructions field is included in the prompt for every request. Use this to give your agents extra context or instructions. 
+Text input in the custom instructions field is included in the prompt for every request. Use this to give your agents extra context or instructions.
 
 For example, you could list your organization's specific acronyms so the agent knows your vernacular and users can ask for definitions. Or you could give it specialized instructions like adopting a specific personality or following a certain workflow. By customizing the instructions for each individual agent, you can create a more tailored AI experience for your specific needs.
 
@@ -204,7 +204,7 @@ To obtain Google Custom Search credentials:
 - Agents are limited to **3 web searches per conversation** to manage API costs and prevent LLMs from looping indefinitely
 - Agents cannot repeat the same search query within a conversation
 - Search results include clickable citations that link back to source websites
-- Domain denylisting applies to all providers and is enforced for _web page fetching only_. 
+- Domain denylisting applies to all providers and is enforced for _web page fetching only_.
 
 ### Embed search configuration
 
@@ -274,7 +274,7 @@ Post indexing occurs automatically during initial setup and when changing embedd
 
 1. Navigate to **System Console > Plugins > Agents > Embedding Search**
 2. Use the reindex controls to:
-   
+
    - Monitor indexing progress during initial setup.
    - Trigger reindexing when changing embedding providers.
    - Check indexing status.
@@ -296,6 +296,7 @@ The plugin uses a service-based architecture stored in the Mattermost database a
 This separation allows multiple bots to share the same LLM service configuration.
 
 **Configuration structure:**
+
 ```json
 {
   "config": {
@@ -392,7 +393,7 @@ The Model Context Protocol (MCP) integration allows Agents to connect to externa
    - **Custom Headers**: Additional headers required by your MCP server (optional).
    - **Server Name**: Descriptive name for the server (auto-generated if not provided).
 
-4. Select **Save** to add the server.
+3. Select **Save** to add the server.
 
 ### Management
 
@@ -412,6 +413,7 @@ When users connect to the Atlassian MCP server, they may encounter an authorizat
 4. Select **Save**.
 
 **Important:** The `/**` path wildcard is required. Example domain patterns:
+
 - Single instance: `https://your-company.mattermost.cloud/**`
 - All subdomains: `https://*.mattermost.cloud/**`
 - Custom domain: `https://chat.yourcompany.com/**`
@@ -419,6 +421,7 @@ When users connect to the Atlassian MCP server, they may encounter an authorizat
 After adding the domain, wait 1-2 minutes for changes to propagate before users retry the connection.
 
 **Troubleshooting:**
+
 - Verify you have Organization Admin permissions (Site Admin is insufficient)
 - Confirm you're configuring the organization that owns the Atlassian site
 - Ensure the domain includes `https://` and the `/**` wildcard
@@ -426,11 +429,11 @@ After adding the domain, wait 1-2 minutes for changes to propagate before users 
 
 For more information, see [Atlassian's documentation on MCP server settings](https://support.atlassian.com/security-and-access-policies/docs/control-atlassian-rovo-mcp-server-settings/).
 
-> **Note:** The plugin currently doesn't render Markdown links (e.g., JIRA ticket links) in bot responses. URLs are displayed in plain text rather than as clickable Markdown-rendered links. This is not a bug but intended security behavior to prevent potential data exfiltration through links. While this limitation exists, improvements to link handling are being considered for future development. 
+> **Note:** The plugin currently doesn't render Markdown links (e.g., JIRA ticket links) in bot responses. URLs are displayed in plain text rather than as clickable Markdown-rendered links. This is not a bug but intended security behavior to prevent potential data exfiltration through links. While this limitation exists, improvements to link handling are being considered for future development.
 
 ## Mattermost MCP Server
 
-The Mattermost MCP Server enables AI agents and external applications to interact with your Mattermost instance through the Model Context Protocol (MCP). This is a standardized protocol that allows AI assistants to read messages, search content, create posts, and manage channels and teams programmatically. 
+The Mattermost MCP Server enables AI agents and external applications to interact with your Mattermost instance through the Model Context Protocol (MCP). This is a standardized protocol that allows AI assistants to read messages, search content, create posts, and manage channels and teams programmatically.
 
 ### Overview
 
@@ -486,6 +489,7 @@ Agents will automatically use these tools when appropriate to complete user requ
 You can enable external MCP clients, such as Claude web, Claude Code, or other MCP-compatible applications, to interact with your Mattermost instance.
 
 **Requirements:**
+
 - Mattermost Server v11.2 or later
 - Valid authentication method (OAuth or Personal Access Token)
 
@@ -499,27 +503,30 @@ The MCP server will be available at: `https://your-mattermost-server/plugins/mat
 
 **Authentication:**
 
-*OAuth 2.0*
+_OAuth 2.0_
 
 The MCP server supports OAuth 2.0 authentication with both manual and automatic client registration.
 
 **Prerequisites:**
+
 - Enable OAuth 2.0 service provider in **System Console > Integrations > Integration Management**:
   - Set **Enable OAuth 2.0 Service Provider** to **True**
   - For automatic client registration, set **Enable OAuth 2.0 Dynamic Client Registration** to **True** (Note: DCR is an unprotected endpoint, meaning it is publicly accessible and does not require authentication—anyone can register OAuth clients if this feature is enabled. See the [OAuth 2.0 documentation](https://developers.mattermost.com/integrate/apps/authentication/oauth2/) for security considerations.)
 
 **Client Registration Methods:**
+
 - **Dynamic Client Registration (DCR/RFC 7591)**: External clients can automatically register and obtain credentials without manual setup.
 - **Manual Registration**: Create OAuth applications through **Product menu > Integrations > OAuth 2.0 Applications**. See the [OAuth 2.0 documentation](https://developers.mattermost.com/integrate/apps/authentication/oauth2/) for details.
 
 **Additional Details:**
+
 - Supports both public clients (e.g., desktop applications) and confidential clients (e.g., server applications)
 - Authorization through standard Mattermost OAuth flows
 - OAuth metadata endpoints:
   - Protected resource metadata: `https://your-mattermost-server/plugins/mattermost-ai/mcp-server/.well-known/oauth-protected-resource`
   - Authorization server metadata: `https://your-mattermost-server/.well-known/oauth-authorization-server`
 
-*Personal Access Tokens*
+_Personal Access Tokens_
 
 You can authenticate using Mattermost Personal Access Tokens (PAT):
 

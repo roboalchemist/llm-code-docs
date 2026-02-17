@@ -7,6 +7,7 @@ This changelog summarizes updates to Mattermost desktop app releases for [Matter
 ```
 
 (release-v6-0)=
+
 ## Release v6.0
 
 - **v6.0.4, released 2026-01-20**
@@ -54,7 +55,8 @@ Mattermost Desktop App v6.0.0 contains low severity level security fixes. Upgrad
 ### Highlights
 
 #### Desktop App Multi-View Architecture
- - Mattermost Desktop App v6.0 introduces a new Multi-View Architecture that replaces the previous fixed-tab layout. This enhancement introduces a dynamic, flexible system where users can open, close, and manage multiple views or windows, including any part of the Mattermost app (e.g., Channels, Boards, Playbooks). This architectural update provides a more customizable and efficient workspace experience while laying the foundation for advanced multi-window and pop-out features in future releases.
+
+- Mattermost Desktop App v6.0 introduces a new Multi-View Architecture that replaces the previous fixed-tab layout. This enhancement introduces a dynamic, flexible system where users can open, close, and manage multiple views or windows, including any part of the Mattermost app (e.g., Channels, Boards, Playbooks). This architectural update provides a more customizable and efficient workspace experience while laying the foundation for advanced multi-window and pop-out features in future releases.
 
 ![image](../images/desktop-multi.png)
 
@@ -101,6 +103,7 @@ Mattermost Desktop App v6.0.0 contains low severity level security fixes. Upgrad
 - [devinbinnie](https://github.com/devinbinnie), [BenCookie95](https://github.com/BenCookie95).
 
 (release-v5-13)=
+
 ## Release v5.13 (Extended Support Release)
 
 - **v5.13.4, released 2026-01-29**
@@ -135,7 +138,7 @@ Mattermost Desktop App v6.0.0 contains low severity level security fixes. Upgrad
 
 #### All Platforms
 
-- Enhanced ``mattermost://`` protocol handling to open in-app links within the desktop application instead of external protocol dialogs. 
+- Enhanced ``mattermost://`` protocol handling to open in-app links within the desktop application instead of external protocol dialogs.
 
 ### Architectural Changes
 
@@ -167,6 +170,7 @@ Mattermost Desktop App v6.0.0 contains low severity level security fixes. Upgrad
 - [devinbinnie](https://github.com/devinbinnie), [hmhealey](https://github.com/hmhealey), [toffguy77](https://github.com/toffguy77).
 
 (release-v5-12)=
+
 ## Release v5.12
 
 - **v5.12.1, released 2025-05-31**
@@ -194,9 +198,9 @@ Mattermost Desktop App v5.12.0 contains a medium severity level security fix. Up
 #### All Platforms
 
 - Refreshed the **Settings** modal designs.
-- Refreshed all built-in dialogs with new designs. 
-- Added a changelog link for when the app auto-updates. 
-- Updated the certificate error message. 
+- Refreshed all built-in dialogs with new designs.
+- Added a changelog link for when the app auto-updates.
+- Updated the certificate error message.
 - Removed bootstrap and dependencies.
 
 ### Architectural Changes
@@ -227,6 +231,7 @@ Mattermost Desktop App v5.12.0 contains a medium severity level security fix. Up
 - [devinbinnie](https://github.com/devinbinnie), [j0794](https://github.com/j0794).
 
 (release-v5-11)=
+
 ## Release v5.11 (Extended Support Release)
 
 - **v5.11.3, released 2025-05-23**
@@ -318,6 +323,7 @@ Mattermost Desktop App v5.11.0 contains a low severity level security fix. Upgra
 - [andr-sokolov](https://github.com/andr-sokolov), [devinbinnie](https://github.com/devinbinnie), [jonathan-dove](https://github.com/jonathan-dove), [pvev](https://github.com/pvev), [s1Sharp](https://github.com/s1Sharp), [streamer45](https://github.com/streamer45).
 
 (release-v5-10)=
+
 ## Release v5.10
 
 - **v5.10.2, released 2024-12-17**
@@ -410,6 +416,7 @@ Mattermost Desktop App v5.10.0 contains a low severity level security fix. Upgra
 - [devinbinnie](https://github.com/devinbinnie), [streamer45](https://github.com/streamer45), [theaino](https://github.com/theaino).
 
 (release-v5-9)=
+
 ## Release v5.9 (Extended Support Release)
 
 - **v5.9.2, released 2024-12-17**
@@ -491,6 +498,7 @@ v5.9.0 is the first Extended Support Release for the Desktop App. See more detai
 - [enzowritescode](https://github.com/enzowritescode), [devinbinnie](https://github.com/devinbinnie), [mvitale1989](https://github.com/mvitale1989), [Rajat-Dabade](https://github.com/Rajat-Dabade), [streamer45](https://github.com/streamer45), [tnir](https://github.com/tnir), [toninis](https://github.com/toninis), [yasserfaraazkhan](https://github.com/yasserfaraazkhan).
 
 (release-v5-8)=
+
 ## Release v5.8
 
 - **v5.8.1, released 2024-06-13**
@@ -560,6 +568,7 @@ Mattermost v5.8.0 contains low to medium severity level security fixes. Upgradin
 ----
 
 (release-v5-7)=
+
 ## Release v5.7
 
 **Release Date: March 15, 2024**
@@ -612,6 +621,7 @@ Mattermost v5.8.0 contains low to medium severity level security fixes. Upgradin
 ----
 
 (release-v5-6)=
+
 ## Release v5.6
 
 **Release Date: December 15, 2023**
@@ -668,6 +678,7 @@ Mattermost v5.8.0 contains low to medium severity level security fixes. Upgradin
 ----
 
 (release-v5-5)=
+
 ## Release v5.5
 
 - **v5.5.1, released 2023-10-03**
@@ -725,6 +736,7 @@ Mattermost v5.5.0 contains a medium severity level security fix. Upgrading is hi
 ----
 
 (release-v5-4)=
+
 ## Release v5.4
 
 **Release Day: June 19, 2023**
@@ -776,6 +788,7 @@ Mattermost v5.5.0 contains a medium severity level security fix. Upgrading is hi
 ----
 
 (release-v5-3)=
+
 ## Release v5.3
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v5.3.1)
@@ -848,6 +861,7 @@ Mattermost v5.3.0 contains a medium severity level security fix. Upgrading is hi
 ----
 
 (release-v5-2)=
+
 ## Release v5.2
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v5.2.2)
@@ -942,6 +956,7 @@ Mattermost v5.3.0 contains a medium severity level security fix. Upgrading is hi
 ----
 
 (release-v5-1)=
+
 ## Release v5.1
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v5.1.1)
@@ -1039,6 +1054,7 @@ Mattermost v5.1.0 contains a low severity level security fix. Upgrading is highl
 ----
 
 (release-v5-0)=
+
 ## Release v5.0
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v5.0.4)
@@ -1073,7 +1089,7 @@ Mattermost v5.1.0 contains a low severity level security fix. Upgrading is highl
 
 - **v5.0.0, released 2021-10-13**
 
- - Original v5.0.0 release
+- Original v5.0.0 release
 
 ```{Note}
 Mattermost v5.0.0 contains a low level security fix. Upgrading is highly recommended. Details will be posted on our [security updates page](https://mattermost.com/security-updates/) 30 days after release as per the [Mattermost Responsible Disclosure Policy](https://mattermost.com/security-vulnerability-report/).
@@ -1144,6 +1160,7 @@ Mattermost v5.0.0 contains a low level security fix. Upgrading is highly recomme
 ----
 
 (release-v4-7)=
+
 ## Release v4.7
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v4.7.2)
@@ -1255,6 +1272,7 @@ Mattermost v4.7.0 contains low to medium level security fixes. Upgrading is high
 ----
 
 (release-v4-6)=
+
 ## Release v4.6
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v4.6.2)
@@ -1313,6 +1331,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-5)=
+
 ## Release v4.5
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v4.5.4)
@@ -1341,7 +1360,7 @@ Many thanks to all our contributors. In alphabetical order:
 
 #### All Platforms
 
-- Added a spell checker for Polish language. 
+- Added a spell checker for Polish language.
 - Added support for triggering a desktop notification when a file download is complete.
 - Added support for the cursor focus to be on the Server Name field when clicking on the `+` tab to add a new server.
 - Defaulted "Flash app window and taskbar icon when a new message is received" setting to `True`.
@@ -1401,6 +1420,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-4)=
+
 ## Release v4.4
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/v4.4.2)
@@ -1486,6 +1506,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-3)=
+
 ## Release v4.3
 
 **Download Binaries:** [Mattermost Desktop on GitHub](https://github.com/mattermost/desktop/releases/tag/4.3.2)
@@ -1585,6 +1606,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-2-3)=
+
 ## Release v4.2.3
 
 This release contains a bug fix for all platforms.
@@ -1602,6 +1624,7 @@ This release contains a bug fix for all platforms.
 ----
 
 (release-v4-2-2)=
+
 ## Release v4.2.2
 
 This release contains a bug fix for all platforms.
@@ -1617,6 +1640,7 @@ This release contains a bug fix for all platforms.
 ----
 
 (release-v4-2-1)=
+
 ## Release v4.2.1
 
 This release contains a bug fix for all platforms.
@@ -1634,6 +1658,7 @@ This release contains a bug fix for all platforms.
 ----
 
 (release-v4-2-0)=
+
 ## Release v4.2.0
 
 - **Release date:** November 27, 2018
@@ -1683,6 +1708,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-1-2)=
+
 ## Release v4.1.2
 
 This release contains a bug fix for all platforms.
@@ -1700,6 +1726,7 @@ This release contains a bug fix for all platforms.
 ----
 
 (release-v4-1-1)=
+
 ## Release v4.1.1
 
 This release contains multiple bug fixes for Mac due to an incorrect build for v4.1.0. Windows and Linux apps are not affected.
@@ -1725,6 +1752,7 @@ Each of the issues listed below are already fixed for Windows and Linux v4.1.0.
 ----
 
 (release-v4-1-0)=
+
 ## Release v4.1.0
 
 Release date: May 16, 2018
@@ -1804,6 +1832,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v4-0-1)=
+
 ## Release v4.0.1
 
 Release date: March 28, 2018
@@ -1823,6 +1852,7 @@ This release contains multiple security updates for Windows, Mac and Linux, and 
 ----
 
 (release-v4-0-0)=
+
 ## Release 4.0.0
 
 Release date: January 29, 2018
@@ -1922,6 +1952,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v3-7-1)=
+
 ## Release 3.7.1
 
 Release date: August 30, 2017
@@ -2017,6 +2048,7 @@ Thanks also to those who reported bugs that benefited the release, in alphabetic
 ----
 
 (release-v3-6-0)=
+
 ## Release 3.6.0
 
 Release date: February 28, 2017
@@ -2100,6 +2132,7 @@ Many thanks to all our contributors. In alphabetical order:
 ----
 
 (release-v3-5-0)=
+
 ## Release v3.5.0
 
 Release date: December 14, 2016
@@ -2180,6 +2213,7 @@ Thanks also to those who reported bugs that benefited the release, in alphabetic
 ----
 
 (release-v3-4-1)=
+
 ## Release v3.4.1
 
 Release date: September 30, 2016
@@ -2190,11 +2224,11 @@ Version number updated to 3.4 to make numbering consistent with Mattermost serve
 
 - v3.4.1, released 2016-09-30
 
- - (Mac) Fixed an issue where the app window pops up second to foreground when a new message is received
+- (Mac) Fixed an issue where the app window pops up second to foreground when a new message is received
 
 - v3.4.0, released 2016-09-22
 
-   - Original v3.4 release
+  - Original v3.4 release
 
 ### Improvements
 
@@ -2286,6 +2320,7 @@ Many thanks to all our contributors. In alphabetical order:
 --------------
 
 (release-v1-3-0)=
+
 ## Release v1.3.0
 
 Release date: 2016-07-18
@@ -2305,26 +2340,26 @@ Release date: 2016-07-18
 
   - Adjust text size
 
-   - CTRL+0 (Menu Bar -> View -> Actual Size): Reset the zoom level.
-   - CTRL+PLUS (Menu Bar -> View -> Zoom In): Increase text size
-   - CTRL+MINUS (Menu Bar -> View -> Zoom Out): Decrease text size
+  - CTRL+0 (Menu Bar -> View -> Actual Size): Reset the zoom level.
+  - CTRL+PLUS (Menu Bar -> View -> Zoom In): Increase text size
+  - CTRL+MINUS (Menu Bar -> View -> Zoom Out): Decrease text size
 
   - Control window
 
-   - CTRL+W (Menu Bar -> Window -> Close): On Linux, this minimizes the main window.
-   - CTRL+M (Menu Bar -> Window -> Minimize)
+  - CTRL+W (Menu Bar -> Window -> Close): On Linux, this minimizes the main window.
+  - CTRL+M (Menu Bar -> Window -> Minimize)
 
   - Switch teams (these shotcuts also reopen the main window)
 
-   - CTRL+{1-9} (Menu Bar -> Window -> [Team name]): Open the *n*-th tab.
-   - CTRL+TAB or ALT+CMD+Right (Menu Bar -> Window -> Select Next Team): Switch to the next window.
-   - CTRL+SHIFT+TAB or ALT+CMD+Left (Menu Bar -> Window -> Select Previous Team): Switch to the previous window.
-   - Right click on the tray item, to see an overview of all your teams. You can also select one and jump right into it.
+  - CTRL+{1-9} (Menu Bar -> Window -> [Team name]): Open the *n*-th tab.
+  - CTRL+TAB or ALT+CMD+Right (Menu Bar -> Window -> Select Next Team): Switch to the next window.
+  - CTRL+SHIFT+TAB or ALT+CMD+Left (Menu Bar -> Window -> Select Previous Team): Switch to the previous window.
+  - Right click on the tray item, to see an overview of all your teams. You can also select one and jump right into it.
 
   - Added **Help** to the Menu Bar, which includes
 
-   - Link to [Mattermost Docs](https://docs.mattermost.com)
-   - Field to indicate the application version number.
+  - Link to [Mattermost Docs](https://docs.mattermost.com)
+  - Field to indicate the application version number.
 
 ##### Settings Page
 
@@ -2393,6 +2428,7 @@ Many thanks to all our contributors. In alphabetical order:
 --------------
 
 (release-v1-2-1-Beta)=
+
 ## Release v1.2.1 (Beta)
 
 Release date: 2016-05-24
@@ -2454,6 +2490,7 @@ Many thanks to all our contributors. In alphabetical order:
 - [yuya-oc](https://github.com/yuya-oc).
 
 (release-v1-1-1-Beta)=
+
 ## Release v1.1.1 (Beta)
 
 Release date: 2016-04-13

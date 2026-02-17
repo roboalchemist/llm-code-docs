@@ -48,7 +48,7 @@ This document provides information on how to successfully make the Calls plugin 
     vertical-align: top;
   }
   /* Dark mode border color */
-  body:not([data-custom-theme="light"]) table.network-requirements th, 
+  body:not([data-custom-theme="light"]) table.network-requirements th,
   body:not([data-custom-theme="light"]) table.network-requirements td {
     border-color: #666;
   }
@@ -550,7 +550,7 @@ Metrics for the `rtcd` service are exposed through the `/metrics` API endpoint u
 
 A sample Prometheus configuration to scrape both plugin and `rtcd` metrics could look like this:
 
-```
+```yaml
 scrape_configs:
 - job_name: node
   static_configs:
@@ -568,7 +568,7 @@ scrape_configs:
 
 If you want to host many calls or calls with a large number of participants, take a look at the following platform specific (Linux) tunings (this is the only officially supported target for the plugin right now):
 
-```
+```bash
 # Setting the maximum buffer size of the receiving UDP buffer to 16MB
 net.core.rmem_max = 16777216
 

@@ -61,7 +61,7 @@ To summarize a discussion thread:
 
 1. Hover over the first message in any [conversation thread](https://docs.mattermost.com/collaborate/organize-conversations.html).
 2. Select the **AI Actions** icon.
-3. Select **Summarize Thread**. 
+3. Select **Summarize Thread**.
 
 The thread summary is generated in the Agents pane, and only you can view the summary.
 
@@ -75,7 +75,7 @@ To summarize unread Mattermost channels:
 
 1. Scroll to the **New Messages** cutoff line in a channel with unread messages.
 2. Select **Ask AI**.
-3. Select **Summarize new messages**. 
+3. Select **Summarize new messages**.
 
 The channel summary is generated in the Agents pane, and only you can view the summary.
 

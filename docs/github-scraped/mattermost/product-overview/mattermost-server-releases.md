@@ -1,4 +1,5 @@
 (mattermost-server-releases)=
+
 # Server Releases
 
 ```{eval-rst}
@@ -11,8 +12,10 @@
 ```
 
 ## Frequency
-Mattermost releases a new server version on the 16th of each month in [binary form](https://docs.mattermost.com/administration-guide/upgrade/upgrading-mattermost-server.html). 
-- See the [v11 changelog](https://docs.mattermost.com/product-overview/mattermost-v11-changelog.html) for details on what's coming and changing in the next major release. 
+
+Mattermost releases a new server version on the 16th of each month in [binary form](https://docs.mattermost.com/administration-guide/upgrade/upgrading-mattermost-server.html).
+
+- See the [v11 changelog](https://docs.mattermost.com/product-overview/mattermost-v11-changelog.html) for details on what's coming and changing in the next major release.
 - See the [unsupported Mattermost legacy releases](https://docs.mattermost.com/product-overview/unsupported-legacy-releases.html) documentation for details on older, unsupported Mattermost releases.
 
 ## Latest releases
