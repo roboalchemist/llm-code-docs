@@ -1863,6 +1863,194 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
         "summary": str(parsed.get("summary", "")),
     }
 
+# ---------------------------------------------------------------------------
+# Web scraper generation via GLM-5
+# ---------------------------------------------------------------------------
+
+def _read_example_scrapers() -> list[dict]:
+    """Read 2 small existing scraper scripts from scripts/ as pattern examples.
+
+    Returns a list of {"filename": str, "content": str} dicts.
+    """
+    candidates = []
+    for p in SCRIPT_DIR.glob("*-docs.py"):
+        if p.name == "auto_doc.py":
+            continue
+        try:
+            size = p.stat().st_size
+            candidates.append((p, size))
+        except OSError:
+            continue
+
+    # Sort by size ascending, pick the 2 smallest
+    candidates.sort(key=lambda x: x[1])
+    examples = []
+    for p, _ in candidates[:2]:
+        try:
+            content = p.read_text(encoding="utf-8")
+            examples.append({"filename": p.name, "content": content})
+        except Exception:
+            continue
+    return examples
+
+
+def _extract_python_code(text: str) -> Optional[str]:
+    """Extract Python code from between ```python and ``` markers in LLM response.
+
+    Returns the extracted code or None if no code block found.
+    """
+    # Try ```python ... ``` first
+    pattern = r"```python\s*\n(.*?)```"
+    match = re.search(pattern, text, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+
+    # Fallback: try ``` ... ``` (any language or none)
+    pattern = r"```\s*\n(.*?)```"
+    match = re.search(pattern, text, re.DOTALL)
+    if match:
+        code = match.group(1).strip()
+        # Basic sanity check: does it look like Python?
+        if "import " in code or "def " in code or "print(" in code:
+            return code
+
+    return None
+
+
+def generate_and_run_scraper(library: str, docs_url: str) -> dict:
+    """Generate a web scraper script using GLM-5 and run it.
+
+    1. Reads 2 existing scraper scripts from scripts/ as patterns
+    2. Builds a prompt for GLM-5 asking it to generate a Python scraper
+    3. Calls GLM-5 via subprocess: clauded-glm --prompt "<prompt>"
+    4. Extracts the Python code from the response
+    5. Writes it to scripts/<library>-docs.py
+    6. Runs the scraper with timeout=300s
+    7. Validates output exists in docs/web-scraped/<library>/
+
+    Returns: {"success": bool, "scraper_path": str, "output_dir": str,
+              "file_count": int, "error": str|None}
+    """
+    scraper_path = str(SCRIPT_DIR / f"{library}-docs.py")
+    output_dir = str(DOCS_DIR / "web-scraped" / library)
+    result = {
+        "success": False,
+        "scraper_path": scraper_path,
+        "output_dir": output_dir,
+        "file_count": 0,
+        "error": None,
+    }
+
+    # Step 1: Check if clauded-glm is available
+    try:
+        check = subprocess.run(
+            ["which", "clauded-glm"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if check.returncode != 0:
+            result["error"] = "clauded-glm not found in PATH"
+            return result
+    except Exception as e:
+        result["error"] = f"Failed to check for clauded-glm: {e}"
+        return result
+
+    # Step 2: Read example scrapers as patterns
+    examples = _read_example_scrapers()
+    if not examples:
+        result["error"] = "No example scraper scripts found in scripts/"
+        return result
+
+    # Step 3: Build the prompt
+    examples_text = ""
+    for ex in examples:
+        examples_text += f"\n--- Example: {ex['filename']} ---\n{ex['content']}\n"
+
+    prompt = f"""Generate a Python web scraper script that downloads documentation from {docs_url} and saves it as markdown files.
+
+The scraper should:
+- Use requests to fetch pages and BeautifulSoup/markdownify to convert HTML to markdown
+- Crawl the documentation pages starting from {docs_url}
+- Save each page as a separate .md file in the output directory
+- Output directory must be: docs/web-scraped/{library}/ (relative to the repo root)
+- Use Path(__file__).parent.parent / "docs" / "web-scraped" / "{library}" for the output path
+- Include a main() function that returns 0 on success, 1 on failure
+- Handle errors gracefully (timeouts, HTTP errors, etc.)
+- Add a rate limit of 0.5 seconds between requests
+- Print progress as it scrapes
+
+Here are 2 existing scraper scripts as patterns to follow:
+{examples_text}
+Generate ONLY the Python script, no explanation. The script should be complete and runnable."""
+
+    # Step 4: Call GLM-5
+    try:
+        glm_result = subprocess.run(
+            ["clauded-glm", "--prompt", prompt],
+            capture_output=True, text=True, timeout=120,
+        )
+        if glm_result.returncode != 0:
+            result["error"] = f"clauded-glm failed (exit {glm_result.returncode}): {glm_result.stderr[:500]}"
+            return result
+
+        glm_output = glm_result.stdout
+    except subprocess.TimeoutExpired:
+        result["error"] = "clauded-glm timed out after 120s"
+        return result
+    except Exception as e:
+        result["error"] = f"Failed to run clauded-glm: {e}"
+        return result
+
+    # Step 5: Extract Python code from the response
+    code = _extract_python_code(glm_output)
+    if not code:
+        # If the entire output looks like Python (no markdown wrapping), use it directly
+        if "import " in glm_output and ("def " in glm_output or "print(" in glm_output):
+            code = glm_output.strip()
+        else:
+            result["error"] = "Could not extract Python code from GLM-5 response"
+            return result
+
+    # Step 6: Write the scraper script
+    scraper_file = Path(scraper_path)
+    try:
+        scraper_file.write_text(code, encoding="utf-8")
+        scraper_file.chmod(0o755)
+    except Exception as e:
+        result["error"] = f"Failed to write scraper script: {e}"
+        return result
+
+    # Step 7: Run the scraper
+    try:
+        run_result = subprocess.run(
+            [sys.executable, str(scraper_file)],
+            capture_output=True, text=True, timeout=300,
+            cwd=str(REPO_ROOT),
+        )
+        if run_result.returncode != 0:
+            result["error"] = f"Scraper exited with code {run_result.returncode}: {run_result.stderr[:500]}"
+            return result
+    except subprocess.TimeoutExpired:
+        result["error"] = "Scraper timed out after 300s"
+        return result
+    except Exception as e:
+        result["error"] = f"Failed to run scraper: {e}"
+        return result
+
+    # Step 8: Validate output
+    output_path = Path(output_dir)
+    if not output_path.exists():
+        result["error"] = f"Output directory {output_dir} was not created by scraper"
+        return result
+
+    md_files = list(output_path.rglob("*.md"))
+    if not md_files:
+        result["error"] = f"No markdown files found in {output_dir}"
+        return result
+
+    result["success"] = True
+    result["file_count"] = len(md_files)
+    return result
+
 
 def _format_size(size_bytes: int) -> str:
     if size_bytes < 1024:
