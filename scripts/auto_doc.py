@@ -2341,6 +2341,147 @@ def add(
 
 
 # ---------------------------------------------------------------------------
+# Plow: batch mode — process tickets from the DOCS queue
+# ---------------------------------------------------------------------------
+
+def plow_batch(
+    limit: int = 0,
+    dry_run: bool = False,
+    project_id: str = DOCS_PROJECT_ID,
+) -> dict:
+    """Process documentation tickets from a trckr project queue.
+
+    Pulls todo tickets one at a time, extracts the library name, runs
+    add_library(), and updates the ticket status based on the result.
+
+    Args:
+        limit: Maximum tickets to process (0 = unlimited).
+        dry_run: If True, probe+decide only — don't fetch or commit.
+        project_id: trckr project UUID to pull tickets from.
+
+    Returns:
+        Summary dict with processed/succeeded/failed counts and per-ticket details.
+    """
+    summary: dict = {
+        "processed": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "skipped": 0,
+        "tickets": [],
+        "stopped_reason": None,
+    }
+
+    while True:
+        # Check limit
+        if limit > 0 and summary["processed"] >= limit:
+            summary["stopped_reason"] = f"reached --limit {limit}"
+            break
+
+        # Pull next todo ticket
+        ticket = trckr_get_next_ticket(project_id)
+        if ticket is None:
+            summary["stopped_reason"] = "queue empty"
+            break
+
+        identifier = ticket["identifier"]
+        library = ticket["library_name"]
+        ticket_result: dict = {
+            "identifier": identifier,
+            "title": ticket["title"],
+            "library": library,
+            "success": False,
+            "error": None,
+            "source_used": None,
+            "files_added": 0,
+        }
+
+        if not library:
+            ticket_result["error"] = "could not extract library name from title"
+            trckr_update_ticket(
+                identifier, "in-review",
+                f"auto-doc plow: could not extract library name from title '{ticket['title']}'",
+            )
+            summary["skipped"] += 1
+            summary["processed"] += 1
+            summary["tickets"].append(ticket_result)
+            continue
+
+        # Mark in-progress
+        trckr_update_ticket(identifier, "in-progress", f"auto-doc plow: processing '{library}'")
+
+        # Run add_library
+        try:
+            result = add_library(library, dry_run=dry_run)
+        except Exception as e:
+            result = {
+                "library": library,
+                "source_used": None,
+                "files_added": 0,
+                "quality_score": None,
+                "commit_sha": None,
+                "success": False,
+                "error": str(e),
+            }
+
+        ticket_result["success"] = result.get("success", False)
+        ticket_result["error"] = result.get("error")
+        ticket_result["source_used"] = result.get("source_used")
+        ticket_result["files_added"] = result.get("files_added", 0)
+
+        # Update ticket based on result
+        if result.get("success"):
+            parts = [f"auto-doc plow: successfully added docs for '{library}'"]
+            if result.get("source_used"):
+                parts.append(f"Source: {result['source_used']}")
+            if result.get("files_added"):
+                parts.append(f"Files: {result['files_added']}")
+            if result.get("commit_sha"):
+                parts.append(f"Commit: {result['commit_sha'][:12]}")
+            if dry_run:
+                parts.append("(dry run — no files fetched)")
+            comment = "\n".join(parts)
+            trckr_update_ticket(identifier, "done", comment)
+            summary["succeeded"] += 1
+        else:
+            error_msg = result.get("error", "unknown error")
+            trckr_update_ticket(
+                identifier, "in-review",
+                f"auto-doc plow: failed to add docs for '{library}': {error_msg}",
+            )
+            summary["failed"] += 1
+
+        summary["processed"] += 1
+        summary["tickets"].append(ticket_result)
+
+    return summary
+
+
+@app.command()
+def plow(
+    limit: int = typer.Option(0, "--limit", help="Max tickets to process (0 = unlimited)"),
+    dry_run: bool = typer.Option(False, "--dry-run", help="Probe and decide only, don't fetch or commit"),
+    project_id: str = typer.Option(DOCS_PROJECT_ID, "--project-id", help="trckr project UUID"),
+    json_output: bool = typer.Option(False, "--json", help="Output structured JSON"),
+):
+    """Batch-process documentation tickets from the DOCS project queue."""
+    summary = plow_batch(limit=limit, dry_run=dry_run, project_id=project_id)
+
+    if json_output:
+        typer.echo(json.dumps(summary, indent=2))
+    else:
+        typer.echo(f"Plow complete: {summary['processed']} processed, "
+                   f"{summary['succeeded']} succeeded, {summary['failed']} failed, "
+                   f"{summary['skipped']} skipped")
+        if summary["stopped_reason"]:
+            typer.echo(f"Stopped: {summary['stopped_reason']}")
+
+        for t in summary["tickets"]:
+            status = "OK" if t["success"] else "FAIL"
+            typer.echo(f"  [{status}] {t['identifier']} ({t['library']}): "
+                       f"{t.get('source_used') or t.get('error', 'unknown')}")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
