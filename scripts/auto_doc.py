@@ -1729,6 +1729,141 @@ def cleanup_markdownlint(docs_dir: Path) -> dict:
     return result
 
 
+def review_content(library: str, docs_dir: Path) -> dict:
+    """Review fetched documentation content using GLM-5 via clauded-glm.
+
+    Reads markdown files from docs_dir, samples up to 10 (prioritizing largest),
+    and asks GLM-5 to evaluate identity, substance, encoding, duplication,
+    coverage, and completeness.
+
+    Returns: {"pass": bool, "issues": [...], "files_to_delete": [...], "summary": "..."}
+    On any failure: returns a failing result with the reason.
+    """
+    fail_result = lambda reason: {
+        "pass": False,
+        "issues": [f"review failed: {reason}"],
+        "files_to_delete": [],
+        "summary": f"GLM-5 review failed: {reason}",
+    }
+
+    # Collect markdown files
+    if not docs_dir.exists() or not docs_dir.is_dir():
+        return fail_result(f"docs_dir does not exist: {docs_dir}")
+
+    md_files = sorted(docs_dir.rglob("*.md"), key=lambda f: f.stat().st_size, reverse=True)
+    if not md_files:
+        return fail_result("no markdown files found")
+
+    # Sample up to 10 files, prioritizing largest
+    sampled = md_files[:10]
+
+    # Build file listing (name + size)
+    file_listing = []
+    for f in sampled:
+        size = f.stat().st_size
+        rel = f.relative_to(docs_dir)
+        file_listing.append(f"  {rel} ({_format_size(size)})")
+
+    # Content samples from the 3 largest files (first 2000 chars each)
+    content_samples = []
+    for f in sampled[:3]:
+        try:
+            text = f.read_text(encoding="utf-8", errors="replace")[:2000]
+        except Exception as e:
+            text = f"<error reading file: {e}>"
+        rel = f.relative_to(docs_dir)
+        content_samples.append(f"--- {rel} ---\n{text}\n--- end ---")
+
+    prompt = f"""You are reviewing fetched documentation files for the library "{library}".
+
+FILE LISTING ({len(sampled)} files sampled from {len(md_files)} total):
+{chr(10).join(file_listing)}
+
+CONTENT SAMPLES (3 largest files, first 2000 chars each):
+{chr(10).join(content_samples)}
+
+Evaluate these docs on the following criteria:
+1. Identity: Is this actually documentation for "{library}"? (not a different library or project)
+2. Substance: Is this real documentation content, or boilerplate/nav cruft/cookie banners/placeholder text?
+3. Encoding: Any mojibake, unconverted HTML entities, or garbled text?
+4. Duplication: Are there near-identical files that should be deduplicated?
+5. Coverage: Does this doc set make sense for a library like "{library}"?
+6. Completeness: Are there obvious gaps or broken cross-references?
+
+Respond with ONLY valid JSON matching this exact schema:
+{{
+  "pass": true/false,
+  "issues": ["list of specific issues found, empty if none"],
+  "files_to_delete": ["relative paths of files that should be removed (duplicates, cruft, wrong library)"],
+  "summary": "one-sentence overall assessment"
+}}
+
+Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to false if there are serious problems (wrong library, mostly cruft, severe encoding issues).
+"""
+
+    # Check if clauded-glm is available
+    import shutil
+    if not shutil.which("clauded-glm"):
+        return fail_result("clauded-glm not found in PATH")
+
+    # Call GLM-5 via subprocess
+    try:
+        result = subprocess.run(
+            ["clauded-glm", "--prompt", prompt, "--json"],
+            capture_output=True, text=True, timeout=120,
+        )
+    except subprocess.TimeoutExpired:
+        return fail_result("clauded-glm timed out after 120s")
+    except Exception as e:
+        return fail_result(f"clauded-glm execution error: {e}")
+
+    if result.returncode != 0:
+        stderr_snippet = (result.stderr or "")[:200]
+        return fail_result(f"clauded-glm returned exit code {result.returncode}: {stderr_snippet}")
+
+    # Parse JSON response
+    stdout = result.stdout.strip()
+    if not stdout:
+        return fail_result("clauded-glm returned empty output")
+
+    # Try to extract JSON from the output (may have non-JSON preamble)
+    try:
+        parsed = json.loads(stdout)
+    except json.JSONDecodeError:
+        # Try to find JSON object in the output
+        match = re.search(r'\{[^{}]*"pass"\s*:', stdout)
+        if match:
+            # Find the matching closing brace
+            json_start = match.start()
+            brace_depth = 0
+            for i in range(json_start, len(stdout)):
+                if stdout[i] == '{':
+                    brace_depth += 1
+                elif stdout[i] == '}':
+                    brace_depth -= 1
+                    if brace_depth == 0:
+                        try:
+                            parsed = json.loads(stdout[json_start:i + 1])
+                            break
+                        except json.JSONDecodeError:
+                            pass
+            else:
+                return fail_result(f"could not parse JSON from clauded-glm output: {stdout[:200]}")
+        else:
+            return fail_result(f"could not parse JSON from clauded-glm output: {stdout[:200]}")
+
+    # Validate expected schema fields
+    if not isinstance(parsed, dict) or "pass" not in parsed:
+        return fail_result(f"clauded-glm response missing 'pass' field: {stdout[:200]}")
+
+    return {
+        "pass": bool(parsed.get("pass", False)),
+        "issues": list(parsed.get("issues", [])),
+        "files_to_delete": list(parsed.get("files_to_delete", [])),
+        "summary": str(parsed.get("summary", "")),
+    }
+
+
 def _format_size(size_bytes: int) -> str:
     if size_bytes < 1024:
         return f"{size_bytes}B"
