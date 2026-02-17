@@ -2064,6 +2064,243 @@ def _format_size(size_bytes: int) -> str:
 
 
 # ---------------------------------------------------------------------------
+# add command – full pipeline for a single library
+# ---------------------------------------------------------------------------
+
+def _git_commit_and_push(library: str, source: str, docs_dir: Path) -> dict:
+    """Stage docs, commit, and push to origin.
+
+    Returns: {"commit_sha": str|None, "error": str|None}
+    """
+    result: dict = {"commit_sha": None, "error": None}
+
+    # Stage the docs directory
+    rel_docs = str(docs_dir.relative_to(REPO_ROOT))
+    stage_cmd = ["git", "add", rel_docs]
+
+    # Also stage config changes (llms-sites.yaml, repo_config.yaml)
+    config_files = ["scripts/llms-sites.yaml", "scripts/repo_config.yaml"]
+
+    proc = subprocess.run(stage_cmd, capture_output=True, text=True, timeout=30,
+                          cwd=str(REPO_ROOT))
+    if proc.returncode != 0:
+        result["error"] = f"git add failed: {proc.stderr[:200]}"
+        return result
+
+    for cf in config_files:
+        cf_path = REPO_ROOT / cf
+        if cf_path.exists():
+            subprocess.run(["git", "add", cf], capture_output=True, text=True,
+                           timeout=10, cwd=str(REPO_ROOT))
+
+    # Check if there's anything to commit
+    status_proc = subprocess.run(
+        ["git", "diff", "--cached", "--quiet"],
+        capture_output=True, text=True, timeout=10, cwd=str(REPO_ROOT),
+    )
+    if status_proc.returncode == 0:
+        result["error"] = "nothing to commit (no changes staged)"
+        return result
+
+    # Commit
+    msg = f"Add {library} docs via {source}\n\nCo-Authored-By: auto-doc pipeline"
+    commit_proc = subprocess.run(
+        ["git", "commit", "-m", msg],
+        capture_output=True, text=True, timeout=30, cwd=str(REPO_ROOT),
+    )
+    if commit_proc.returncode != 0:
+        result["error"] = f"git commit failed: {commit_proc.stderr[:200]}"
+        return result
+
+    # Get commit SHA
+    sha_proc = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        capture_output=True, text=True, timeout=10, cwd=str(REPO_ROOT),
+    )
+    if sha_proc.returncode == 0:
+        result["commit_sha"] = sha_proc.stdout.strip()
+
+    # Push
+    push_proc = subprocess.run(
+        ["git", "push"],
+        capture_output=True, text=True, timeout=60, cwd=str(REPO_ROOT),
+    )
+    if push_proc.returncode != 0:
+        # Non-fatal — commit succeeded but push failed
+        result["error"] = f"push failed (commit saved locally): {push_proc.stderr[:200]}"
+
+    return result
+
+
+def _count_files_in_dir(docs_dir: Path) -> int:
+    """Count markdown files in a directory."""
+    if not docs_dir.exists():
+        return 0
+    return len(list(docs_dir.rglob("*.md")))
+
+
+def add_library(
+    library: str,
+    dry_run: bool = False,
+    no_commit: bool = False,
+) -> dict:
+    """Orchestrate the full add pipeline for a single library.
+
+    Steps: probe → decide → fetch/scrape → markdownlint → LLM review → git commit+push
+
+    Returns structured result dict.
+    """
+    result: dict = {
+        "library": library,
+        "source_used": None,
+        "files_added": 0,
+        "quality_score": None,
+        "commit_sha": None,
+        "success": False,
+        "error": None,
+    }
+
+    # Step 1: Probe
+    try:
+        probe_output = probe(library, json_output=True)
+    except SystemExit:
+        # typer may raise SystemExit; capture probe output via invoke
+        from typer.testing import CliRunner
+        runner = CliRunner()
+        probe_result = runner.invoke(app, ["probe", library, "--json"])
+        if probe_result.exit_code != 0:
+            result["error"] = f"probe failed: {probe_result.output[:300]}"
+            return result
+        try:
+            probe_output = json.loads(probe_result.output)
+        except json.JSONDecodeError:
+            result["error"] = f"probe returned invalid JSON: {probe_result.output[:300]}"
+            return result
+    except Exception as e:
+        result["error"] = f"probe failed: {e}"
+        return result
+
+    # Check if already exists
+    if probe_output.get("already_exists"):
+        result["error"] = f"library '{library}' already has docs at: {', '.join(probe_output.get('existing_paths', []))}"
+        return result
+
+    # Step 2: Decide
+    decision = decide(probe_output)
+    source = decision.get("source", "skip")
+    url = decision.get("url", "")
+    reason = decision.get("reason", "")
+
+    result["source_used"] = source
+
+    if source == "skip":
+        result["error"] = f"no viable documentation source found: {reason}"
+        return result
+
+    # Dry run stops here
+    if dry_run:
+        result["success"] = True
+        result["error"] = None
+        return result
+
+    # Step 3: Fetch or scrape
+    fetch_result: dict = {}
+
+    if source == "llms-txt":
+        fetch_result = _fetch_llms_txt(library, url, force=False)
+    elif source == "github":
+        fetch_result = _fetch_github(library, url, force=False)
+    elif source == "web":
+        fetch_result = generate_and_run_scraper(library, url)
+    else:
+        result["error"] = f"unknown source type: {source}"
+        return result
+
+    if not fetch_result.get("success"):
+        result["error"] = f"fetch failed ({source}): {fetch_result.get('error', 'unknown')}"
+        return result
+
+    result["files_added"] = fetch_result.get("file_count", 0)
+
+    # Determine the docs directory
+    if source == "llms-txt":
+        docs_dir = DOCS_DIR / "llms-txt" / library
+    elif source == "github":
+        docs_dir = DOCS_DIR / "github-scraped" / library
+    elif source == "web":
+        docs_dir = DOCS_DIR / "web-scraped" / library
+    else:
+        docs_dir = DOCS_DIR / library
+
+    # Step 4: Markdownlint cleanup
+    if docs_dir.exists():
+        cleanup_markdownlint(docs_dir)
+
+    # Step 5: LLM content review
+    review = review_content(library, docs_dir)
+    if review.get("pass"):
+        result["quality_score"] = "pass"
+    else:
+        # Delete files flagged by review
+        for rel_path in review.get("files_to_delete", []):
+            target = docs_dir / rel_path
+            if target.exists():
+                target.unlink()
+
+        result["quality_score"] = "fail"
+        issues = review.get("issues", [])
+        summary = review.get("summary", "")
+        result["error"] = f"content review failed: {summary}. Issues: {'; '.join(issues[:3])}"
+        return result
+
+    # Step 6: Git commit + push
+    if no_commit:
+        result["success"] = True
+        return result
+
+    git_result = _git_commit_and_push(library, source, docs_dir)
+    result["commit_sha"] = git_result.get("commit_sha")
+
+    if git_result.get("error") and not git_result.get("commit_sha"):
+        # Commit itself failed
+        result["error"] = git_result["error"]
+        return result
+
+    result["success"] = True
+    return result
+
+
+@app.command()
+def add(
+    library: str = typer.Argument(help="Library name to add documentation for"),
+    json_output: bool = typer.Option(False, "--json", help="Output structured JSON"),
+    no_commit: bool = typer.Option(False, "--no-commit", help="Skip git commit and push"),
+    dry_run: bool = typer.Option(False, "--dry-run", help="Probe and decide only, don't fetch or commit"),
+):
+    """Add documentation for a library: probe, decide, fetch, clean, review, commit."""
+    result = add_library(library, dry_run=dry_run, no_commit=no_commit)
+
+    if json_output:
+        typer.echo(json.dumps(result, indent=2))
+    else:
+        if result["success"]:
+            typer.echo(f"Successfully added docs for '{library}'")
+            if result["source_used"]:
+                typer.echo(f"  Source: {result['source_used']}")
+            if result["files_added"]:
+                typer.echo(f"  Files: {result['files_added']}")
+            if result["commit_sha"]:
+                typer.echo(f"  Commit: {result['commit_sha'][:12]}")
+            if dry_run:
+                typer.echo(f"  (dry run — no files fetched or committed)")
+        else:
+            typer.echo(f"Failed to add docs for '{library}': {result.get('error', 'unknown')}", err=True)
+
+    if not result["success"]:
+        raise typer.Exit(1)
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
