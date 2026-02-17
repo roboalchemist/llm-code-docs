@@ -1372,6 +1372,79 @@ def status(
         typer.echo(f"{'=' * 50}\n")
 
 
+# ---------------------------------------------------------------------------
+# trckr integration
+# ---------------------------------------------------------------------------
+
+DOCS_PROJECT_ID = "0e5104bf-8740-4115-9d70-5036b76186b3"
+
+
+def trckr_get_next_ticket(project_id: str = DOCS_PROJECT_ID) -> Optional[dict]:
+    """Get the next todo ticket from a trckr project. Returns {identifier, title, library_name} or None."""
+    stdout = _run_cmd(
+        ["trckr", "issue", "list", "--status", "todo", "--project-id", project_id, "--limit", "1"],
+        timeout=15,
+    )
+    if not stdout:
+        return None
+
+    try:
+        data = json.loads(stdout)
+    except (json.JSONDecodeError, TypeError):
+        return None
+
+    issues = data.get("issues", [])
+    if not issues:
+        return None
+
+    issue = issues[0]
+    identifier = issue.get("identifier", "")
+    title = issue.get("title", "")
+    library_name = _extract_library_name(title)
+
+    return {
+        "identifier": identifier,
+        "title": title,
+        "library_name": library_name,
+    }
+
+
+def trckr_update_ticket(identifier: str, status: str, comment: str):
+    """Update a trckr ticket's status and add a comment."""
+    _run_cmd(
+        ["trckr", "issue", "update", identifier, "--status", status],
+        timeout=15,
+    )
+    _run_cmd(
+        ["trckr", "comment", "add", "--issue", identifier, "--body", comment, "--author", "auto-doc"],
+        timeout=15,
+    )
+
+
+def _extract_library_name(title: str) -> str:
+    """Extract library name from ticket title like 'Add docs for fastapi' or just 'fastapi'."""
+    prefixes = [
+        "Add docs for ",
+        "Add documentation for ",
+        "Documentation for ",
+        "Add ",
+        "Docs for ",
+    ]
+    result = title
+    for prefix in prefixes:
+        if result.lower().startswith(prefix.lower()):
+            result = result[len(prefix):]
+            break
+    # Strip trailing qualifiers like " docs"
+    suffixes = [" docs", " documentation"]
+    for suffix in suffixes:
+        if result.lower().endswith(suffix.lower()):
+            result = result[: -len(suffix)]
+            break
+    return result.strip().lower()
+
+
+
 def _format_size(size_bytes: int) -> str:
     if size_bytes < 1024:
         return f"{size_bytes}B"
