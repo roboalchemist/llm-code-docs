@@ -145,6 +145,13 @@ repositories:
     target_folder: "docs/github-scraped/loghouse"
     branch: "master"
 
+  - name: "Mattermost"
+    description: "Mattermost - Open source platform for secure collaboration with REST API, webhooks, and integrations documentation"
+    repo_url: "https://github.com/mattermost/docs.git"
+    source_folder: "source"
+    target_folder: "docs/github-scraped/mattermost"
+    branch: "master"
+
   - name: "Laravel"
     description: "Laravel - PHP framework with elegant middleware system for HTTP request handling"
     repo_url: "https://github.com/laravel/docs.git"
