@@ -1073,7 +1073,7 @@ def fetch(
     else:
         if result.get("success"):
             typer.echo(f"Fetched {library} from {source} successfully.")
-            if result.get("file_count"):
+            if result.get("file_count") is not None:
                 typer.echo(f"  Files: {result['file_count']}")
             if result.get("output_dir"):
                 typer.echo(f"  Output: {result['output_dir']}")
@@ -1115,13 +1115,29 @@ def _fetch_llms_txt(library: str, url: str, force: bool) -> dict:
 
     try:
         stats = scraper.process_site(site_config, mode="both", force=force)
-        result["success"] = stats.get("success", False)
-        result["file_count"] = stats.get("individual_success", 0)
+        individual = stats.get("individual_success", 0)
+        full = 1 if stats.get("full_success") else 0
+        result["success"] = individual > 0 or full > 0
+        result["file_count"] = individual + full
         result["output_dir"] = str(output_dir.relative_to(REPO_ROOT))
     except Exception as e:
         result["error"] = str(e)
 
     return result
+
+
+def _find_docs_folder_local(repo_path: Path) -> Optional[str]:
+    """Scan a cloned repo for common docs folders."""
+    candidates = ["docs", "doc", "documentation", "docs/en/docs", "website/docs"]
+    for folder in candidates:
+        candidate_path = repo_path / folder
+        if candidate_path.is_dir():
+            # Check it actually has doc files
+            doc_files = list(candidate_path.rglob("*.md")) + list(candidate_path.rglob("*.mdx")) + \
+                        list(candidate_path.rglob("*.rst")) + list(candidate_path.rglob("*.txt"))
+            if doc_files:
+                return folder
+    return None
 
 
 def _fetch_github(library: str, repo: str, force: bool) -> dict:
@@ -1136,19 +1152,16 @@ def _fetch_github(library: str, repo: str, force: bool) -> dict:
     output_dir = DOCS_DIR / "github-scraped" / library
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Find docs folder
+    # Try to find docs folder via API first (fast, no clone needed)
+    docs_folder = None
     gh_info = assess_github(repo)
-    if not gh_info or not gh_info.get("docs_folder"):
-        result["error"] = f"No docs folder found in {repo}"
-        return result
+    if gh_info and gh_info.get("docs_folder"):
+        docs_folder = gh_info["docs_folder"]
 
-    docs_folder = gh_info["docs_folder"]
     clone_url = f"https://github.com/{repo}.git"
 
-    # Add to repo_config.yaml
-    _ensure_repo_config(library, clone_url, docs_folder, str(output_dir.relative_to(REPO_ROOT)))
-
     # Shallow clone and extract
+    import shutil
     try:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp) / "repo"
@@ -1156,13 +1169,24 @@ def _fetch_github(library: str, repo: str, force: bool) -> dict:
                 ["git", "clone", "--depth", "1", "--single-branch", clone_url, str(tmp_path)],
                 capture_output=True, text=True, timeout=300, check=True,
             )
+
+            # If API didn't find docs folder (e.g. rate limited), scan locally
+            if not docs_folder:
+                docs_folder = _find_docs_folder_local(tmp_path)
+                if not docs_folder:
+                    result["error"] = f"No docs folder found in {repo}"
+                    return result
+
+
             source_path = tmp_path / docs_folder
             if not source_path.exists():
                 result["error"] = f"Docs folder '{docs_folder}' not found in clone"
                 return result
 
+            # Add to repo_config.yaml (after we confirmed docs_folder exists)
+            _ensure_repo_config(library, clone_url, docs_folder, str(output_dir.relative_to(REPO_ROOT)))
+
             # Copy docs
-            import shutil
             if output_dir.exists() and force:
                 shutil.rmtree(output_dir)
                 output_dir.mkdir(parents=True, exist_ok=True)
