@@ -1220,3 +1220,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/pandas
   branch: main
+- name: numpy
+  description: numpy from GitHub
+  repo_url: https://github.com/numpy/numpy.git
+  source_folder: doc
+  target_folder: docs/github-scraped/numpy
+  branch: main
