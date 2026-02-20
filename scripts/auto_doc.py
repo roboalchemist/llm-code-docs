@@ -1392,7 +1392,7 @@ def _fetch_github(library: str, repo: str, force: bool) -> dict:
 
             file_count = 0
             for src_file in source_path.rglob("*"):
-                if src_file.is_file() and src_file.suffix in (".md", ".mdx", ".rst", ".txt"):
+                if src_file.is_file() and src_file.suffix in (".md", ".mdx", ".rst"):
                     rel = src_file.relative_to(source_path)
                     dst = output_dir / rel
                     dst.parent.mkdir(parents=True, exist_ok=True)
@@ -1604,16 +1604,34 @@ DOCS_PROJECT_ID = "0e5104bf-8740-4115-9d70-5036b76186b3"
 
 def trckr_get_next_ticket(project_id: str = DOCS_PROJECT_ID) -> Optional[dict]:
     """Get the next todo ticket from a trckr project. Returns {identifier, title, library_name} or None."""
-    stdout = _run_cmd(
-        ["trckr", "issue", "list", "--status", "todo", "--project-id", project_id, "--limit", "1"],
-        timeout=15,
-    )
-    if not stdout:
-        return None
+    data = None
+    for priority in ("urgent", "high", "medium", "low"):
+        stdout = _run_cmd(
+            ["trckr", "issue", "list", "--status", "todo", "--project-id", project_id,
+             "--priority", priority, "--sort", "created", "--desc", "--limit", "1"],
+            timeout=15,
+        )
+        if stdout:
+            try:
+                data = json.loads(stdout)
+            except (json.JSONDecodeError, TypeError):
+                continue
+            if data.get("issues"):
+                break
+    else:
+        stdout = _run_cmd(
+            ["trckr", "issue", "list", "--status", "todo", "--project-id", project_id,
+             "--sort", "created", "--desc", "--limit", "1"],
+            timeout=15,
+        )
+        if not stdout:
+            return None
+        try:
+            data = json.loads(stdout)
+        except (json.JSONDecodeError, TypeError):
+            return None
 
-    try:
-        data = json.loads(stdout)
-    except (json.JSONDecodeError, TypeError):
+    if not data:
         return None
 
     issues = data.get("issues", [])
@@ -1664,6 +1682,7 @@ def _extract_library_name(title: str) -> str:
         if result.lower().endswith(suffix.lower()):
             result = result[: -len(suffix)]
             break
+    result = re.sub(r"\s+", "-", result)
     return result.strip().lower()
 
 
@@ -1782,7 +1801,10 @@ def review_content(library: str, docs_dir: Path) -> dict:
     if not docs_dir.exists() or not docs_dir.is_dir():
         return fail_result(f"docs_dir does not exist: {docs_dir}")
 
-    md_files = sorted(docs_dir.rglob("*.md"), key=lambda f: f.stat().st_size, reverse=True)
+    md_files = sorted(
+        [f for ext in ("*.md", "*.mdx", "*.rst") for f in docs_dir.rglob(ext)],
+        key=lambda f: f.stat().st_size, reverse=True,
+    )
     if not md_files:
         return fail_result("no markdown files found")
 
@@ -1841,8 +1863,8 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
     # Call GLM-5 via subprocess
     try:
         result = subprocess.run(
-            ["clauded-glm", "--prompt", prompt, "--json"],
-            capture_output=True, text=True, timeout=120,
+            ["clauded-glm", "-p"],
+            input=prompt, capture_output=True, text=True, timeout=120,
         )
     except subprocess.TimeoutExpired:
         return fail_result("clauded-glm timed out after 120s")
@@ -2017,8 +2039,8 @@ Generate ONLY the Python script, no explanation. The script should be complete a
     # Step 4: Call GLM-5
     try:
         glm_result = subprocess.run(
-            ["clauded-glm", "--prompt", prompt],
-            capture_output=True, text=True, timeout=120,
+            ["clauded-glm", "-p"],
+            input=prompt, capture_output=True, text=True, timeout=300,
         )
         if glm_result.returncode != 0:
             result["error"] = f"clauded-glm failed (exit {glm_result.returncode}): {glm_result.stderr[:500]}"
@@ -2026,7 +2048,7 @@ Generate ONLY the Python script, no explanation. The script should be complete a
 
         glm_output = glm_result.stdout
     except subprocess.TimeoutExpired:
-        result["error"] = "clauded-glm timed out after 120s"
+        result["error"] = "clauded-glm timed out after 300s"
         return result
     except Exception as e:
         result["error"] = f"Failed to run clauded-glm: {e}"
@@ -2222,7 +2244,9 @@ def add_library(
 
     # Check if already exists
     if probe_output.get("already_exists"):
-        result["error"] = f"library '{library}' already has docs at: {', '.join(probe_output.get('existing_paths', []))}"
+        result["success"] = True
+        result["source_used"] = "already_exists"
+        result["error"] = None
         return result
 
     # Step 2: Decide
@@ -2291,6 +2315,11 @@ def add_library(
         issues = review.get("issues", [])
         summary = review.get("summary", "")
         result["error"] = f"content review failed: {summary}. Issues: {'; '.join(issues[:3])}"
+        import shutil
+        if docs_dir.exists():
+            shutil.rmtree(docs_dir)
+        subprocess.run(["git", "checkout", "--", "scripts/llms-sites.yaml", "scripts/repo_config.yaml"],
+                       capture_output=True, cwd=str(REPO_ROOT), timeout=10)
         return result
 
     # Step 6: Git commit + push
