@@ -953,9 +953,34 @@ def decide(probe_output: dict) -> dict:
                     break
 
         if target_domain:
+            # Find the best docs URL from exa results — pick the most common
+            # path prefix (e.g., /docs/, /en/docs/) rather than just the domain root
+            domain_urls = [
+                sr["url"] for sr in exa["search_results"]
+                if urlparse(sr.get("url", "")).netloc == target_domain
+            ]
+            docs_url = f"https://{target_domain}/"
+            if domain_urls:
+                # Find common path prefix among exa results
+                paths = [urlparse(u).path for u in domain_urls]
+                # Try common docs path patterns
+                for pattern in ("/docs/", "/documentation/", "/guide/", "/en/docs/", "/api/"):
+                    matching = [u for u in domain_urls if pattern in urlparse(u).path]
+                    if matching:
+                        # Use the shortest matching URL as the docs root
+                        docs_url = min(matching, key=len)
+                        # Trim to the docs root path (e.g., /en/docs/foo/bar → /en/docs/)
+                        parsed = urlparse(docs_url)
+                        idx = parsed.path.find(pattern)
+                        docs_root = parsed.path[:idx + len(pattern)]
+                        docs_url = f"{parsed.scheme}://{parsed.netloc}{docs_root}"
+                        break
+                else:
+                    # No docs pattern found — use the first exa result URL
+                    docs_url = domain_urls[0]
             return {
                 "source": "web",
-                "url": f"https://{target_domain}/",
+                "url": docs_url,
                 "reason": f"web docs at {target_domain}: {target_count} exa results from this domain",
             }
 
