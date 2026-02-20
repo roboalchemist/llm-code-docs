@@ -914,7 +914,17 @@ def decide(probe_output: dict) -> dict:
             viable_gh.append(gh)
 
     if viable_gh:
-        best = max(viable_gh, key=lambda g: g.get("docs_file_count", 0))
+        # Prefer the repo matching best_guess.github (from discovery scoring)
+        # Fall back to most doc files if best_guess isn't in the viable list
+        best_github = best_guess.get("github", "")
+        best = None
+        if best_github:
+            for gh in viable_gh:
+                if gh["repo"] == best_github:
+                    best = gh
+                    break
+        if not best:
+            best = max(viable_gh, key=lambda g: g.get("docs_file_count", 0))
         repo = best["repo"]
         count = best["docs_file_count"]
         folder = best.get("docs_folder", "docs")
