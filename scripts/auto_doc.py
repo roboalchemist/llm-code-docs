@@ -904,35 +904,26 @@ def decide(probe_output: dict) -> dict:
         }
 
     # --- Rule 2: GitHub ---
-    viable_gh = []
-    for gh in probe_output.get("github_candidates", []):
-        if (
-            gh.get("docs_file_count", 0) > 5
-            and gh.get("has_markdown", False)
-            and not gh.get("is_fork", True)
-        ):
-            viable_gh.append(gh)
-
-    if viable_gh:
-        # Prefer the repo matching best_guess.github (from discovery scoring)
-        # Fall back to most doc files if best_guess isn't in the viable list
-        best_github = best_guess.get("github", "")
-        best = None
-        if best_github:
-            for gh in viable_gh:
-                if gh["repo"] == best_github:
-                    best = gh
-                    break
-        if not best:
-            best = max(viable_gh, key=lambda g: g.get("docs_file_count", 0))
-        repo = best["repo"]
-        count = best["docs_file_count"]
-        folder = best.get("docs_folder", "docs")
-        return {
-            "source": "github",
-            "url": repo,
-            "reason": f"github {repo}: {count} doc files in {folder}/",
-        }
+    # Only consider the best_guess repo (from discovery scoring).
+    # Never pick a random repo that happens to have docs — that's how
+    # we end up with GinSkeleton instead of gin-gonic/gin.
+    best_github = best_guess.get("github", "")
+    if best_github:
+        for gh in probe_output.get("github_candidates", []):
+            if (
+                gh["repo"] == best_github
+                and gh.get("docs_file_count", 0) > 5
+                and gh.get("has_markdown", False)
+                and not gh.get("is_fork", True)
+            ):
+                repo = gh["repo"]
+                count = gh["docs_file_count"]
+                folder = gh.get("docs_folder", "docs")
+                return {
+                    "source": "github",
+                    "url": repo,
+                    "reason": f"github {repo}: {count} doc files in {folder}/",
+                }
 
     # --- Rule 3: Web (exa search) ---
     # Re-use discovery/best_guess from Rule 1 scope (already set above)
@@ -1928,191 +1919,235 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
     }
 
 # ---------------------------------------------------------------------------
-# Web scraper generation via GLM-5
+# Web scraping via Jina Reader
 # ---------------------------------------------------------------------------
 
-def _read_example_scrapers() -> list[dict]:
-    """Read 2 small existing scraper scripts from scripts/ as pattern examples.
+def _slugify_url_path(url: str) -> str:
+    """Convert a URL path into a filesystem-safe filename slug.
 
-    Returns a list of {"filename": str, "content": str} dicts.
+    Examples:
+        https://example.com/docs/getting-started/ -> getting-started
+        https://example.com/docs/api/v2/auth     -> api-v2-auth
+        https://example.com/                      -> index
     """
-    candidates = []
-    for p in SCRIPT_DIR.glob("*-docs.py"):
-        if p.name == "auto_doc.py":
-            continue
-        try:
-            size = p.stat().st_size
-            candidates.append((p, size))
-        except OSError:
-            continue
-
-    # Sort by size ascending, pick the 2 smallest
-    candidates.sort(key=lambda x: x[1])
-    examples = []
-    for p, _ in candidates[:2]:
-        try:
-            content = p.read_text(encoding="utf-8")
-            examples.append({"filename": p.name, "content": content})
-        except Exception:
-            continue
-    return examples
+    parsed = urlparse(url)
+    path = parsed.path.strip("/")
+    if not path:
+        return "index"
+    # Replace path separators and non-alphanumeric chars with hyphens
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", path).strip("-")
+    # Collapse multiple hyphens
+    slug = re.sub(r"-{2,}", "-", slug)
+    # Truncate to a reasonable length for filenames
+    if len(slug) > 120:
+        slug = slug[:120].rsplit("-", 1)[0]
+    return slug or "index"
 
 
-def _extract_python_code(text: str) -> Optional[str]:
-    """Extract Python code from between ```python and ``` markers in LLM response.
+def _extract_links_from_markdown(markdown_text: str, docs_prefix: str) -> list[str]:
+    """Extract all links from markdown that match the docs path prefix.
 
-    Returns the extracted code or None if no code block found.
+    Finds markdown links [text](url) and bare URLs that start with docs_prefix.
+    Returns deduplicated list preserving discovery order.
     """
-    # Try ```python ... ``` first
-    pattern = r"```python\s*\n(.*?)```"
-    match = re.search(pattern, text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
+    # Match markdown links: [text](url) and bare URLs
+    link_pattern = re.compile(
+        r"\[(?:[^\]]*)\]\((https?://[^)]+)\)"  # [text](url)
+        r"|"
+        r"(?<!\()(https?://\S+)"                # bare URLs
+    )
+    seen = set()
+    links = []
+    for match in link_pattern.finditer(markdown_text):
+        url = match.group(1) or match.group(2)
+        # Strip trailing punctuation that isn't part of the URL
+        url = url.rstrip(".,;:!?)")
+        # Strip fragment identifiers
+        url = url.split("#")[0]
+        if not url:
+            continue
+        if url.startswith(docs_prefix) and url not in seen:
+            seen.add(url)
+            links.append(url)
+    return links
 
-    # Fallback: try ``` ... ``` (any language or none)
-    pattern = r"```\s*\n(.*?)```"
-    match = re.search(pattern, text, re.DOTALL)
-    if match:
-        code = match.group(1).strip()
-        # Basic sanity check: does it look like Python?
-        if "import " in code or "def " in code or "print(" in code:
-            return code
 
-    return None
+def fetch_via_jina(library: str, docs_url: str) -> dict:
+    """Fetch documentation pages via Jina Reader and save as markdown.
 
+    1. Fetches the docs index page via https://r.jina.ai/{docs_url}
+    2. Extracts all links matching the docs path prefix
+    3. Fetches each linked page (up to 100) via Jina Reader
+    4. Saves each page as a markdown file in docs/web-scraped/{library}/
 
-def generate_and_run_scraper(library: str, docs_url: str) -> dict:
-    """Generate a web scraper script using GLM-5 and run it.
+    Rate limit: 0.5s between requests (well under Jina free tier 20 RPM).
+    Timeout: 30s per page request.
 
-    1. Reads 2 existing scraper scripts from scripts/ as patterns
-    2. Builds a prompt for GLM-5 asking it to generate a Python scraper
-    3. Calls GLM-5 via subprocess: clauded-glm --prompt "<prompt>"
-    4. Extracts the Python code from the response
-    5. Writes it to scripts/<library>-docs.py
-    6. Runs the scraper with timeout=300s
-    7. Validates output exists in docs/web-scraped/<library>/
-
-    Returns: {"success": bool, "scraper_path": str, "output_dir": str,
+    Returns: {"success": bool, "scraper_path": None, "output_dir": str,
               "file_count": int, "error": str|None}
     """
-    scraper_path = str(SCRIPT_DIR / f"{library}-docs.py")
     output_dir = str(DOCS_DIR / "web-scraped" / library)
+    output_path = Path(output_dir)
     result = {
         "success": False,
-        "scraper_path": scraper_path,
+        "scraper_path": None,
         "output_dir": output_dir,
         "file_count": 0,
         "error": None,
     }
 
-    # Step 1: Check if clauded-glm is available
+    MAX_PAGES = 100
+    MIN_CONTENT_BYTES = 500
+    REQUEST_TIMEOUT = 30
+    RATE_LIMIT_DELAY = 3.5  # Jina free tier: 20 RPM, stay safely under
+
+    jina_headers = {
+        "User-Agent": "auto-doc/1.0 (llm-code-docs pipeline)",
+        "Accept": "text/markdown",
+    }
+
+    # Normalize the docs URL prefix for link matching
+    # e.g. https://example.com/docs/ -> match all links under /docs/
+    parsed_docs = urlparse(docs_url)
+    docs_prefix = f"{parsed_docs.scheme}://{parsed_docs.netloc}{parsed_docs.path}"
+    if not docs_prefix.endswith("/"):
+        # Go up one level for prefix matching if URL points to a file
+        docs_prefix = docs_prefix.rsplit("/", 1)[0] + "/"
+
+    # Step 1: Fetch the index page via Jina Reader
+    jina_index_url = f"https://r.jina.ai/{docs_url}"
     try:
-        check = subprocess.run(
-            ["which", "clauded-glm"],
-            capture_output=True, text=True, timeout=5,
-        )
-        if check.returncode != 0:
-            result["error"] = "clauded-glm not found in PATH"
+        r = SESSION.get(jina_index_url, headers=jina_headers, timeout=REQUEST_TIMEOUT)
+        if r.status_code != 200:
+            result["error"] = f"Jina Reader returned {r.status_code} for index page {docs_url}"
             return result
-    except Exception as e:
-        result["error"] = f"Failed to check for clauded-glm: {e}"
-        return result
-
-    # Step 2: Read example scrapers as patterns
-    examples = _read_example_scrapers()
-    if not examples:
-        result["error"] = "No example scraper scripts found in scripts/"
-        return result
-
-    # Step 3: Build the prompt
-    examples_text = ""
-    for ex in examples:
-        examples_text += f"\n--- Example: {ex['filename']} ---\n{ex['content']}\n"
-
-    prompt = f"""Generate a Python web scraper script that downloads documentation from {docs_url} and saves it as markdown files.
-
-The scraper should:
-- Use requests to fetch pages and BeautifulSoup/markdownify to convert HTML to markdown
-- Crawl the documentation pages starting from {docs_url}
-- Save each page as a separate .md file in the output directory
-- Output directory must be: docs/web-scraped/{library}/ (relative to the repo root)
-- Use Path(__file__).parent.parent / "docs" / "web-scraped" / "{library}" for the output path
-- Include a main() function that returns 0 on success, 1 on failure
-- Handle errors gracefully (timeouts, HTTP errors, etc.)
-- Add a rate limit of 0.5 seconds between requests
-- Print progress as it scrapes
-
-Here are 2 existing scraper scripts as patterns to follow:
-{examples_text}
-Generate ONLY the Python script, no explanation. The script should be complete and runnable."""
-
-    # Step 4: Call GLM-5
-    try:
-        glm_result = subprocess.run(
-            ["clauded-glm", "-p"],
-            input=prompt, capture_output=True, text=True, timeout=300,
-        )
-        if glm_result.returncode != 0:
-            result["error"] = f"clauded-glm failed (exit {glm_result.returncode}): {glm_result.stderr[:500]}"
-            return result
-
-        glm_output = glm_result.stdout
-    except subprocess.TimeoutExpired:
-        result["error"] = "clauded-glm timed out after 300s"
+        index_markdown = r.text
+    except requests.exceptions.Timeout:
+        result["error"] = f"Timeout fetching index page via Jina Reader: {docs_url}"
         return result
     except Exception as e:
-        result["error"] = f"Failed to run clauded-glm: {e}"
+        result["error"] = f"Failed to fetch index page via Jina Reader: {e}"
         return result
 
-    # Step 5: Extract Python code from the response
-    code = _extract_python_code(glm_output)
-    if not code:
-        # If the entire output looks like Python (no markdown wrapping), use it directly
-        if "import " in glm_output and ("def " in glm_output or "print(" in glm_output):
-            code = glm_output.strip()
-        else:
-            result["error"] = "Could not extract Python code from GLM-5 response"
-            return result
-
-    # Step 6: Write the scraper script
-    scraper_file = Path(scraper_path)
-    try:
-        scraper_file.write_text(code, encoding="utf-8")
-        scraper_file.chmod(0o755)
-    except Exception as e:
-        result["error"] = f"Failed to write scraper script: {e}"
+    if len(index_markdown.encode("utf-8")) < MIN_CONTENT_BYTES:
+        result["error"] = f"Index page too small ({len(index_markdown.encode('utf-8'))} bytes): {docs_url}"
         return result
 
-    # Step 7: Run the scraper
-    try:
-        run_result = subprocess.run(
-            [sys.executable, str(scraper_file)],
-            capture_output=True, text=True, timeout=300,
-            cwd=str(REPO_ROOT),
-        )
-        if run_result.returncode != 0:
-            result["error"] = f"Scraper exited with code {run_result.returncode}: {run_result.stderr[:500]}"
-            return result
-    except subprocess.TimeoutExpired:
-        result["error"] = "Scraper timed out after 300s"
-        return result
-    except Exception as e:
-        result["error"] = f"Failed to run scraper: {e}"
-        return result
+    # Step 2: Extract links matching the docs prefix
+    links = _extract_links_from_markdown(index_markdown, docs_prefix)
 
-    # Step 8: Validate output
-    output_path = Path(output_dir)
-    if not output_path.exists():
-        result["error"] = f"Output directory {output_dir} was not created by scraper"
-        return result
+    # If few links found, try to discover a docs subpath.
+    # Common pattern: domain root has links to /docs/, /en/docs/, /documentation/, etc.
+    if len(links) < 10:
+        # Extract ALL links from the page, find common docs-like subpaths
+        all_page_links = re.findall(r'\[([^\]]*)\]\((https?://[^)]+)\)', index_markdown)
+        base_host = parsed_docs.netloc
+        doc_path_candidates: dict[str, int] = {}
+        for _, url in all_page_links:
+            p = urlparse(url)
+            if p.netloc == base_host and p.path:
+                # Find path segments that look like docs roots
+                parts = p.path.strip("/").split("/")
+                for i, part in enumerate(parts):
+                    if part in ("docs", "documentation", "guide", "guides", "api", "reference"):
+                        candidate = f"{p.scheme}://{p.netloc}/{'/'.join(parts[:i+1])}/"
+                        doc_path_candidates[candidate] = doc_path_candidates.get(candidate, 0) + 1
+                        break
+        # Pick the docs subpath with the most links
+        if doc_path_candidates:
+            best_subpath = max(doc_path_candidates, key=doc_path_candidates.get)
+            if doc_path_candidates[best_subpath] >= 2:
+                # Re-fetch the docs subpath index to get real doc links
+                sub_jina_url = f"https://r.jina.ai/{best_subpath}"
+                try:
+                    time.sleep(RATE_LIMIT_DELAY)
+                    sub_resp = SESSION.get(sub_jina_url, headers=jina_headers, timeout=REQUEST_TIMEOUT)
+                    if sub_resp.status_code == 200:
+                        sub_links = _extract_links_from_markdown(sub_resp.text, best_subpath)
+                        if len(sub_links) > len(links):
+                            links = sub_links
+                            docs_prefix = best_subpath
+                            docs_url = best_subpath
+                except Exception:
+                    pass  # Fall back to original links
 
-    md_files = list(output_path.rglob("*.md"))
-    if not md_files:
-        result["error"] = f"No markdown files found in {output_dir}"
+    # Always include the index page itself
+    all_urls = [docs_url] + [l for l in links if l != docs_url]
+    all_urls = all_urls[:MAX_PAGES]
+
+    print(f"  Jina Reader: found {len(links)} doc links, will fetch {len(all_urls)} pages (including index)")
+
+    # Step 3: Create output directory
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    # Step 4: Fetch each page and save as markdown
+    saved_count = 0
+    errors = []
+
+    for i, page_url in enumerate(all_urls):
+        if i > 0:
+            time.sleep(RATE_LIMIT_DELAY)
+
+        slug = _slugify_url_path(page_url)
+        filename = f"{slug}.md"
+        filepath = output_path / filename
+
+        # Avoid overwriting: append a numeric suffix if needed
+        counter = 1
+        while filepath.exists():
+            filepath = output_path / f"{slug}-{counter}.md"
+            counter += 1
+
+        jina_page_url = f"https://r.jina.ai/{page_url}"
+        try:
+            # Retry on 429 (rate limit) with exponential backoff
+            r = None
+            for attempt in range(3):
+                r = SESSION.get(jina_page_url, headers=jina_headers, timeout=REQUEST_TIMEOUT)
+                if r.status_code == 429:
+                    wait = RATE_LIMIT_DELAY * (2 ** attempt)
+                    print(f"  [{i+1}/{len(all_urls)}] 429 rate limited, waiting {wait:.0f}s...")
+                    time.sleep(wait)
+                    continue
+                break
+            if r.status_code != 200:
+                errors.append(f"HTTP {r.status_code} for {page_url}")
+                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (HTTP {r.status_code})")
+                continue
+
+            page_markdown = r.text
+            content_size = len(page_markdown.encode("utf-8"))
+            if content_size < MIN_CONTENT_BYTES:
+                errors.append(f"Too small ({content_size}b) for {page_url}")
+                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (too small: {content_size}b)")
+                continue
+
+            # Write with source header
+            full_content = f"# Source: {page_url}\n\n{page_markdown}"
+            filepath.write_text(full_content, encoding="utf-8")
+            saved_count += 1
+            print(f"  [{i+1}/{len(all_urls)}] OK   {page_url} -> {filepath.name} ({content_size}b)")
+
+        except requests.exceptions.Timeout:
+            errors.append(f"Timeout for {page_url}")
+            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (timeout)")
+            continue
+        except Exception as e:
+            errors.append(f"Error for {page_url}: {e}")
+            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} ({e})")
+            continue
+
+    # Step 5: Validate results
+    if saved_count == 0:
+        result["error"] = f"No pages saved. Errors: {'; '.join(errors[:5])}"
         return result
 
     result["success"] = True
-    result["file_count"] = len(md_files)
+    result["file_count"] = saved_count
+    if errors:
+        print(f"  Jina Reader: {saved_count} pages saved, {len(errors)} skipped")
+    else:
+        print(f"  Jina Reader: {saved_count} pages saved successfully")
     return result
 
 
@@ -2285,7 +2320,7 @@ def add_library(
     elif source == "github":
         fetch_result = _fetch_github(library, url, force=False)
     elif source == "web":
-        fetch_result = generate_and_run_scraper(library, url)
+        fetch_result = fetch_via_jina(library, url)
     else:
         result["error"] = f"unknown source type: {source}"
         return result
