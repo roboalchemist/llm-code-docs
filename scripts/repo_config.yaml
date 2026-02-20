@@ -1184,3 +1184,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/cryptography
   branch: main
+- name: terraform
+  description: terraform from GitHub
+  repo_url: https://github.com/hashicorp/terraform.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terraform
+  branch: main
