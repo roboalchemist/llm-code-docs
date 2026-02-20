@@ -1238,3 +1238,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/zustand
   branch: main
+- name: redux
+  description: redux from GitHub
+  repo_url: https://github.com/reduxjs/redux.git
+  source_folder: docs
+  target_folder: docs/github-scraped/redux
+  branch: main
