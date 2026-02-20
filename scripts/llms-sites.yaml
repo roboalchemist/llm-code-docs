@@ -1081,3 +1081,6 @@ sites:
 - name: three.js
   base_url: https://threejs.org/docs/
   description: three.js documentation
+- name: firebase
+  base_url: https://firebase.google.com/docs/
+  description: firebase documentation
