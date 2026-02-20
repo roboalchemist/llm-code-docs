@@ -1232,3 +1232,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/jotai
   branch: main
+- name: zustand
+  description: zustand from GitHub
+  repo_url: https://github.com/pmndrs/zustand.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zustand
+  branch: main
