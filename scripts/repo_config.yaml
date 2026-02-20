@@ -1190,3 +1190,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/terraform
   branch: main
+- name: flask
+  description: flask from GitHub
+  repo_url: https://github.com/pallets/flask.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flask
+  branch: main
