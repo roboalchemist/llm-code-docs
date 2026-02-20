@@ -1347,6 +1347,23 @@ def _fetch_llms_txt(library: str, url: str, force: bool) -> dict:
     except Exception as e:
         result["error"] = str(e)
 
+    # Fallback: if scraper found nothing, directly download the specific URL
+    # that probe found (scraper may have tried different paths)
+    if not result["success"]:
+        try:
+            resp = _get(url, timeout=30.0)
+            if resp and len(resp.text.strip()) > 500:
+                # Save as {library}-full.md
+                filename = f"{library}-full.md"
+                filepath = output_dir / filename
+                filepath.write_text(resp.text, encoding="utf-8")
+                result["success"] = True
+                result["file_count"] = 1
+                result["output_dir"] = str(output_dir.relative_to(REPO_ROOT))
+                result["error"] = None
+        except Exception:
+            pass
+
     return result
 
 
