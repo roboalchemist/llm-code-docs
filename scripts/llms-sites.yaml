@@ -440,7 +440,8 @@ sites:
   description: Ideogram AI image generation platform
 - name: icepanel
   base_url: https://docs.icepanel.io/
-  description: IcePanel visual architecture modeling tool using C4 model for software teams
+  description: IcePanel visual architecture modeling tool using C4 model for software
+    teams
 - name: infera
   base_url: https://docs.infera.org/
   description: Infera AI inference optimization platform
@@ -805,7 +806,8 @@ sites:
   description: Rspack Rust-based bundler
 - name: runpod
   base_url: https://docs.runpod.io/
-  description: RunPod GPU cloud computing platform - serverless endpoints, pods, templates, and SDK
+  description: RunPod GPU cloud computing platform - serverless endpoints, pods, templates,
+    and SDK
 - name: saaspegasus
   base_url: https://docs.saaspegasus.com/
   description: Saaspegasus documentation
@@ -832,7 +834,8 @@ sites:
   description: Sherlockdomains documentation
 - name: shopify
   base_url: https://shopify.dev/
-  description: Shopify developer platform with Admin API (GraphQL and REST), Storefront API, and developer tools
+  description: Shopify developer platform with Admin API (GraphQL and REST), Storefront
+    API, and developer tools
 - name: slack
   base_url: https://docs.slack.dev/
   description: Slack developer platform and API documentation
@@ -1075,3 +1078,6 @@ sites:
 - name: langgraph-js
   base_url: https://langchain-ai.github.io/langgraphjs/
   description: LangGraph.js documentation
+- name: three.js
+  base_url: https://threejs.org/docs/
+  description: three.js documentation
