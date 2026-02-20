@@ -1244,3 +1244,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/redux
   branch: main
+- name: grpc
+  description: grpc from GitHub
+  repo_url: https://github.com/grpc/grpc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/grpc
+  branch: main
