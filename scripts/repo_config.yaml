@@ -1202,3 +1202,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/marshmallow
   branch: main
+- name: date-fns
+  description: date-fns from GitHub
+  repo_url: https://github.com/date-fns/date-fns.git
+  source_folder: docs
+  target_folder: docs/github-scraped/date-fns
+  branch: main
