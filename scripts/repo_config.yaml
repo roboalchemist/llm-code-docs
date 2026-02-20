@@ -1226,3 +1226,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/numpy
   branch: main
+- name: jotai
+  description: jotai from GitHub
+  repo_url: https://github.com/pmndrs/jotai.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jotai
+  branch: main
