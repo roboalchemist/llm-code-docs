@@ -1286,3 +1286,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/structlog
   branch: main
+- name: pyjwt
+  description: pyjwt from GitHub
+  repo_url: https://github.com/jpadilla/pyjwt.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pyjwt
+  branch: main
