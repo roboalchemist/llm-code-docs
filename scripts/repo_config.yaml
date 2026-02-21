@@ -1280,3 +1280,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/grafana
   branch: main
+- name: structlog
+  description: structlog from GitHub
+  repo_url: https://github.com/hynek/structlog.git
+  source_folder: docs
+  target_folder: docs/github-scraped/structlog
+  branch: main
