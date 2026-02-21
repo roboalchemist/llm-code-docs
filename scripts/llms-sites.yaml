@@ -1084,3 +1084,6 @@ sites:
 - name: firebase
   base_url: https://firebase.google.com/docs/
   description: firebase documentation
+- name: applitools
+  base_url: https://applitools.gitbook.io/
+  description: applitools documentation
