@@ -1093,3 +1093,6 @@ sites:
 - name: wiremock
   base_url: https://docs.wiremock.io/
   description: wiremock documentation
+- name: '0'
+  base_url: https://docs.0g.ai/
+  description: 0 documentation
