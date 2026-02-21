@@ -10,4 +10,3 @@ API](https://manifoldcad.org/docs/jsapi/)[C++
 API](https://manifoldcad.org/docs/html/)[Algorithm
 Description](https://github.com/elalish/manifold/wiki/Manifold-Library)[Blog
 Posts](https://elalish.blogspot.com/search/label/Manifold)[GitHub](https://github.com/elalish/manifold)
-

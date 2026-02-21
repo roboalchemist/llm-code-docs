@@ -52,6 +52,7 @@ npm install manifold-3d
 ### C++
 
 Via vcpkg:
+
 ```bash
 vcpkg install manifold
 ```
