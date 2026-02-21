@@ -1262,3 +1262,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/pytest
   branch: main
+- name: playwright
+  description: playwright from GitHub
+  repo_url: https://github.com/microsoft/playwright.git
+  source_folder: docs
+  target_folder: docs/github-scraped/playwright
+  branch: main
