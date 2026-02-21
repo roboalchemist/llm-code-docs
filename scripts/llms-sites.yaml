@@ -1087,3 +1087,6 @@ sites:
 - name: applitools
   base_url: https://applitools.gitbook.io/
   description: applitools documentation
+- name: testcontainers
+  base_url: https://testcontainers.gitbook.io/
+  description: testcontainers documentation
