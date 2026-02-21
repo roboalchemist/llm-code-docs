@@ -1,0 +1,50 @@
+# Curvature¶
+
+An example of the discrete gaussian curvature measure.
+    
+    
+    import matplotlib.pyplot as plt
+    import numpy as np
+    
+    import trimesh
+    from trimesh.curvature import (
+        discrete_gaussian_curvature_measure,
+        discrete_mean_curvature_measure,
+        sphere_ball_intersection,
+    )
+    
+    %matplotlib inline
+    
+    mesh = trimesh.creation.icosphere()
+    
+    
+    
+    radii = np.linspace(0.1, 2.0, 10)
+    gauss = np.array(
+        [
+            discrete_gaussian_curvature_measure(mesh, mesh.vertices, r)
+            / sphere_ball_intersection(1, r)
+            for r in radii
+        ]
+    )
+    mean = np.array(
+        [
+            discrete_mean_curvature_measure(mesh, mesh.vertices, r)
+            / sphere_ball_intersection(1, r)
+            for r in radii
+        ]
+    )
+    
+    
+    
+    plt.figure()
+    plt.plot(radii, gauss.mean(axis=1))
+    plt.title("Gaussian Curvature")
+    plt.show()
+    plt.figure()
+    plt.plot(radii, mean.mean(axis=1))
+    plt.title("Mean Curvature")
+    plt.show();
+    
+
+![_images/curvature_3_0.png](_images/curvature_3_0.png) ![_images/curvature_3_1.png](_images/curvature_3_1.png)
