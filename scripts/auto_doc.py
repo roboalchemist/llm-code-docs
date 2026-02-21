@@ -937,17 +937,21 @@ def decide(probe_output: dict) -> dict:
             if host:
                 domain_counts[host] = domain_counts.get(host, 0) + 1
 
-        # Check if best_guess domain has 2+ results, or find any domain with 2+
+        # Prefer best_guess.domain (from discovery scoring) — same principle
+        # as GitHub: trust the scored best guess, don't pick random domains.
+        # Only fall back to other domains if best_guess has zero exa results.
         target_domain = None
         target_count = 0
 
-        if domain_counts.get(best_domain, 0) >= 2:
+        if domain_counts.get(best_domain, 0) >= 1:
+            # Best guess domain has at least one exa result — use it
             target_domain = best_domain
             target_count = domain_counts[best_domain]
         else:
-            # Fall back to any domain with 2+ results (pick highest count)
+            # Best guess domain not in exa results — find the best alternative
+            # Only consider domains in relevant_domains (from registries/discovery)
             for d, c in sorted(domain_counts.items(), key=lambda x: x[1], reverse=True):
-                if c >= 2 and d not in NOISE_DOMAINS:
+                if c >= 2 and d not in NOISE_DOMAINS and d in relevant_domains:
                     target_domain = d
                     target_count = c
                     break
@@ -963,17 +967,15 @@ def decide(probe_output: dict) -> dict:
             if domain_urls:
                 # Find common path prefix among exa results
                 paths = [urlparse(u).path for u in domain_urls]
-                # Try common docs path patterns
-                for pattern in ("/docs/", "/documentation/", "/guide/", "/en/docs/", "/api/"):
-                    matching = [u for u in domain_urls if pattern in urlparse(u).path]
+                # Try common docs path patterns — prefer English/root paths
+                for pattern in ("/docs/", "/en/docs/", "/documentation/", "/guide/", "/api/"):
+                    matching = [
+                        u for u in domain_urls
+                        if urlparse(u).path.startswith(pattern)
+                        or urlparse(u).path == pattern.rstrip("/")
+                    ]
                     if matching:
-                        # Use the shortest matching URL as the docs root
-                        docs_url = min(matching, key=len)
-                        # Trim to the docs root path (e.g., /en/docs/foo/bar → /en/docs/)
-                        parsed = urlparse(docs_url)
-                        idx = parsed.path.find(pattern)
-                        docs_root = parsed.path[:idx + len(pattern)]
-                        docs_url = f"{parsed.scheme}://{parsed.netloc}{docs_root}"
+                        docs_url = f"https://{target_domain}{pattern}"
                         break
                 else:
                     # No docs pattern found — use the first exa result URL
