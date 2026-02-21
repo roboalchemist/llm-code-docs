@@ -244,9 +244,14 @@ def _discover_npm(library: str) -> dict:
     return info
 
 
-NOISE_DOMAINS = {"pypi.org", "npmjs.com", "crates.io", "github.com", "docs.rs",
-                 "pkg.go.dev", "rubygems.org", "packagist.org", "stackoverflow.com",
+NOISE_DOMAINS = {"pypi.org", "npmjs.com", "crates.io", "github.com",
+                 "rubygems.org", "packagist.org", "stackoverflow.com",
                  "en.wikipedia.org", "medium.com", "dev.to", "reddit.com"}
+
+# Language-specific doc hosts — these are VALID targets, not noise
+LANG_DOC_HOSTS = {"docs.rs", "pkg.go.dev", "hexdocs.pm", "metacpan.org",
+                  "javadoc.io", "hackage.haskell.org", "rubydoc.info",
+                  "pub.dev"}
 
 
 def _discover_crates_io(library: str) -> dict:
@@ -802,11 +807,12 @@ def assess_github(owner_repo: str) -> Optional[dict]:
 def decide(probe_output: dict) -> dict:
     """Decide which documentation source to use based on probe results.
 
-    Applies deterministic rules in priority order:
+    Applies rules in priority order:
       1. llms-txt with valid content (not stub, >5KB, score>=75)
-      2. GitHub repo with substantial docs (>5 files, has markdown, not fork)
-      3. Web docs site found via exa (2+ results from same domain)
-      4. Skip if nothing viable
+      2. Language-specific doc hosts (docs.rs, pkg.go.dev) + GitHub homepage
+      3. GitHub repo with substantial docs (>5 files, has markdown, not fork)
+      4. LLM-guided URL selection via GLM-5
+      5. Skip if nothing viable
 
     Returns: {"source": "llms-txt"|"github"|"web"|"skip", "url": "...", "reason": "..."}
     """
@@ -903,11 +909,80 @@ def decide(probe_output: dict) -> dict:
             "reason": f"{path_tail} at {domain}: {size_kb:.0f}KB, score {score}, {headings} headings",
         }
 
-    # --- Rule 2: GitHub ---
+    # --- Rule 2: Language-specific doc hosts (NEW) ---
+    # Deterministic checks based on which registry found the library.
+
+    # 2a: crates.io → docs.rs always exists for published crates
+    if "crates.io" in registries and registries["crates.io"].get("found"):
+        crate_name = library  # crate name matches library name
+        docs_rs_url = f"https://docs.rs/{crate_name}/latest/{crate_name}/"
+        return {
+            "source": "web",
+            "url": docs_rs_url,
+            "reason": f"docs.rs/{crate_name}: crates.io crate has auto-generated docs",
+        }
+
+    # 2b: Elixir/Erlang hex.pm → hexdocs.pm
+    if "hex" in registries or any(
+        c.get("language", "").lower() in ("elixir", "erlang")
+        for c in discovery.get("github_search", {}).get("candidates", [])
+        if c.get("full_name") == best_github
+    ):
+        hex_url = f"https://hexdocs.pm/{library}"
+        if 200 <= _head(hex_url) < 400:
+            return {
+                "source": "web",
+                "url": hex_url,
+                "reason": f"hexdocs.pm/{library}: Elixir/Erlang package docs",
+            }
+
+    # 2c: Perl CPAN → metacpan.org
+    if any(
+        c.get("language", "").lower() == "perl"
+        for c in discovery.get("github_search", {}).get("candidates", [])
+        if c.get("full_name") == best_github
+    ):
+        cpan_name = library.replace("-", "::")
+        metacpan_url = f"https://metacpan.org/pod/{cpan_name}"
+        if 200 <= _head(metacpan_url) < 400:
+            return {
+                "source": "web",
+                "url": metacpan_url,
+                "reason": f"metacpan.org/{cpan_name}: Perl CPAN module docs",
+            }
+
+    # 2d: Go module → pkg.go.dev
+    if best_github:
+        for c in discovery.get("github_search", {}).get("candidates", []):
+            if c.get("full_name") == best_github and c.get("language", "").lower() == "go":
+                pkg_url = f"https://pkg.go.dev/{best_github}"
+                return {
+                    "source": "web",
+                    "url": pkg_url,
+                    "reason": f"pkg.go.dev/{best_github}: Go module auto-docs",
+                }
+
+    # 2c: GitHub repo homepage field → often points to docs site
+    if best_github:
+        for c in discovery.get("github_search", {}).get("candidates", []):
+            if c.get("full_name") == best_github:
+                homepage = c.get("homepage", "")
+                if homepage:
+                    hp_host = urlparse(homepage).netloc
+                    if hp_host and hp_host not in NOISE_DOMAINS:
+                        status = _head(homepage)
+                        if 200 <= status < 400:
+                            return {
+                                "source": "web",
+                                "url": homepage,
+                                "reason": f"GitHub repo homepage: {homepage} (HTTP {status})",
+                            }
+                break
+
+    # --- Rule 3: GitHub with substantial docs (unchanged) ---
     # Only consider the best_guess repo (from discovery scoring).
     # Never pick a random repo that happens to have docs — that's how
     # we end up with GinSkeleton instead of gin-gonic/gin.
-    best_github = best_guess.get("github", "")
     if best_github:
         for gh in probe_output.get("github_candidates", []):
             if (
@@ -925,68 +1000,123 @@ def decide(probe_output: dict) -> dict:
                     "reason": f"github {repo}: {count} doc files in {folder}/",
                 }
 
-    # --- Rule 3: Web (exa search) ---
-    # Re-use discovery/best_guess from Rule 1 scope (already set above)
-    exa = discovery.get("exa_search", {})
+    # --- Rule 4: LLM-guided URL selection (NEW) ---
+    # Pass the full discovery context to GLM-5 to pick the best docs URL.
+    import shutil
+    if shutil.which("clauded-glm"):
+        # Build discovery data summary for the prompt
+        _github_candidates = discovery.get("github_search", {}).get("candidates", [])[:5]
+        gh_summary_lines = []
+        for c in _github_candidates:
+            stars = c.get("stargazers_count", c.get("stars", 0))
+            lang = c.get("language", "unknown")
+            hp = c.get("homepage", "")
+            gh_summary_lines.append(
+                f"  - {c.get('full_name', '?')} ({stars} stars, {lang})"
+                + (f" homepage: {hp}" if hp else "")
+            )
+        gh_summary = "\n".join(gh_summary_lines) if gh_summary_lines else "  (none)"
 
-    if exa.get("search_results") and best_domain and (best_domain in relevant_domains or has_registry):
-        # Count exa results from each domain
-        domain_counts: dict[str, int] = {}
-        for sr in exa["search_results"]:
-            host = urlparse(sr.get("url", "")).netloc
-            if host:
-                domain_counts[host] = domain_counts.get(host, 0) + 1
+        exa = discovery.get("exa_search", {})
+        exa_results = (exa.get("search_results") or [])[:10]
+        exa_summary_lines = []
+        for sr in exa_results:
+            title = sr.get("title", "")[:80]
+            url = sr.get("url", "")
+            exa_summary_lines.append(f"  - {title}: {url}")
+        exa_summary = "\n".join(exa_summary_lines) if exa_summary_lines else "  (none)"
 
-        # Prefer best_guess.domain (from discovery scoring) — same principle
-        # as GitHub: trust the scored best guess, don't pick random domains.
-        # Only fall back to other domains if best_guess has zero exa results.
-        target_domain = None
-        target_count = 0
+        reg_names = [k for k, v in registries.items() if v.get("found")]
+        reg_summary = ", ".join(reg_names) if reg_names else "(none)"
 
-        if domain_counts.get(best_domain, 0) >= 1:
-            # Best guess domain has at least one exa result — use it
-            target_domain = best_domain
-            target_count = domain_counts[best_domain]
-        else:
-            # Best guess domain not in exa results — find the best alternative
-            # Only consider domains in relevant_domains (from registries/discovery)
-            for d, c in sorted(domain_counts.items(), key=lambda x: x[1], reverse=True):
-                if c >= 2 and d not in NOISE_DOMAINS and d in relevant_domains:
-                    target_domain = d
-                    target_count = c
-                    break
+        glm_prompt = f"""Given these discovery results for the library "{library}", pick the single
+best URL to fetch documentation from.
 
-        if target_domain:
-            # Find the best docs URL from exa results — pick the most common
-            # path prefix (e.g., /docs/, /en/docs/) rather than just the domain root
-            domain_urls = [
-                sr["url"] for sr in exa["search_results"]
-                if urlparse(sr.get("url", "")).netloc == target_domain
-            ]
-            docs_url = f"https://{target_domain}/"
-            if domain_urls:
-                # Find common path prefix among exa results
-                paths = [urlparse(u).path for u in domain_urls]
-                # Try common docs path patterns — prefer English/root paths
-                for pattern in ("/docs/", "/en/docs/", "/documentation/", "/guide/", "/api/"):
-                    matching = [
-                        u for u in domain_urls
-                        if urlparse(u).path.startswith(pattern)
-                        or urlparse(u).path == pattern.rstrip("/")
-                    ]
-                    if matching:
-                        docs_url = f"https://{target_domain}{pattern}"
-                        break
-                else:
-                    # No docs pattern found — use the first exa result URL
-                    docs_url = domain_urls[0]
-            return {
-                "source": "web",
-                "url": docs_url,
-                "reason": f"web docs at {target_domain}: {target_count} exa results from this domain",
-            }
+Consider:
+- Name collisions: "{library}" may refer to different projects in different
+  ecosystems. Use the registry data and GitHub stars to determine which
+  project the user most likely means.
+- Language-specific canonical doc hosts (always prefer these when applicable):
+  * Rust: docs.rs/CRATE (always exists for published crates)
+  * Go: pkg.go.dev/MODULE-PATH (always exists for Go modules)
+  * Elixir/Erlang: hexdocs.pm/PACKAGE (always exists on hex.pm)
+  * Dart/Flutter: pub.dev/documentation/PACKAGE/latest/
+  * Perl: metacpan.org/pod/MODULE-NAME
+  * Haskell: hackage.haskell.org/package/NAME/docs/
+  * Ruby: rubydoc.info/gems/GEM
+  * Java/Scala: javadoc.io/doc/GROUP-ID/ARTIFACT-ID/
+  * OCaml: ocaml.org/p/PACKAGE/VERSION/doc/
+  * R: cran.r-project.org/web/packages/PKG/
+- GitHub Pages: the repo homepage field often points to a docs site.
+- ReadTheDocs: many Python projects host docs on readthedocs.io.
+- Separate doc repos: some projects host docs in a different repo
+  (e.g., pact-foundation/docs.pact.io, kubernetes/website).
+- Mirror sites: chromium.googlesource.com, code mirrors, etc.
+  are NOT primary sources. Avoid them.
+- Prefer official documentation over third-party tutorials or blog posts.
 
-    # --- Rule 4: Skip ---
+DISCOVERY DATA:
+Library: {library}
+Registries found in: {reg_summary}
+Best guess domain: {best_domain or "(none)"}
+Best guess GitHub: {best_github or "(none)"}
+
+Top GitHub candidates:
+{gh_summary}
+
+Top Exa search results:
+{exa_summary}
+
+Respond with ONLY valid JSON:
+{{"url": "https://...", "reason": "one sentence explanation"}}
+
+If no good documentation URL can be determined, respond with:
+{{"url": "", "reason": "explanation of why no URL was found"}}"""
+
+        try:
+            result = subprocess.run(
+                ["clauded-glm", "-p"],
+                input=glm_prompt, capture_output=True, text=True, timeout=60,
+            )
+        except (subprocess.TimeoutExpired, Exception):
+            result = None
+
+        if result and result.returncode == 0 and result.stdout.strip():
+            stdout = result.stdout.strip()
+            parsed = None
+            try:
+                parsed = json.loads(stdout)
+            except json.JSONDecodeError:
+                # Try to find JSON object in the output
+                match = re.search(r'\{[^{}]*"url"\s*:', stdout)
+                if match:
+                    json_start = match.start()
+                    brace_depth = 0
+                    for i in range(json_start, len(stdout)):
+                        if stdout[i] == '{':
+                            brace_depth += 1
+                        elif stdout[i] == '}':
+                            brace_depth -= 1
+                            if brace_depth == 0:
+                                try:
+                                    parsed = json.loads(stdout[json_start:i + 1])
+                                except json.JSONDecodeError:
+                                    pass
+                                break
+
+            if (
+                isinstance(parsed, dict)
+                and parsed.get("url")
+                and parsed["url"].startswith("http")
+            ):
+                return {
+                    "source": "web",
+                    "url": parsed["url"],
+                    "reason": parsed.get("reason", "GLM-5 selected URL"),
+                }
+        # GLM failed or returned invalid — fall through to skip
+
+    # --- Rule 5: Skip ---
     return {
         "source": "skip",
         "url": "",
