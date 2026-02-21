@@ -1096,3 +1096,6 @@ sites:
 - name: '0'
   base_url: https://docs.0g.ai/
   description: 0 documentation
+- name: elasticsearch
+  base_url: https://elastic.co/docs/
+  description: elasticsearch documentation
