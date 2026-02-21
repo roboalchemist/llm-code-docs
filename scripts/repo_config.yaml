@@ -1304,3 +1304,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/rich
   branch: main
+- name: pgx
+  description: pgx from GitHub
+  repo_url: https://github.com/sotetsuk/pgx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pgx
+  branch: main
