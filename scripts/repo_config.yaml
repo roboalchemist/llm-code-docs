@@ -1268,3 +1268,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/playwright
   branch: main
+- name: moto
+  description: moto from GitHub
+  repo_url: https://github.com/getmoto/moto.git
+  source_folder: docs
+  target_folder: docs/github-scraped/moto
+  branch: main
