@@ -1099,3 +1099,6 @@ sites:
 - name: elasticsearch
   base_url: https://elastic.co/docs/
   description: elasticsearch documentation
+- name: lottie
+  base_url: https://developers.lottiefiles.com/
+  description: lottie documentation
