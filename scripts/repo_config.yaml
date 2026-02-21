@@ -1292,3 +1292,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pyjwt
   branch: main
+- name: click
+  description: click from GitHub
+  repo_url: https://github.com/pallets/click.git
+  source_folder: docs
+  target_folder: docs/github-scraped/click
+  branch: main
