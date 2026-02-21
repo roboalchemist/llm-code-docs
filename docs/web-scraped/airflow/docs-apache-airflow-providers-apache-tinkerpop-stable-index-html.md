@@ -1,0 +1,56 @@
+# Source: https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html
+
+Title: apache-airflow-providers-apache-tinkerpop — apache-airflow-providers-apache-tinkerpop Documentation
+
+URL Source: https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html
+
+Markdown Content:
+apache-airflow-providers-apache-tinkerpop package[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#apache-airflow-providers-apache-tinkerpop-package "Link to this heading")
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[Apache TinkerPop](https://tinkerpop.apache.org/). Apache TinkerPop is a graph computing framework for both graph databases (OLTP) and graph analytic systems (OLAP) and Gremlin is its graph traversal language.
+
+Release: 1.1.1
+
+Provider package[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#provider-package "Link to this heading")
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This package is for the `apache.tinkerpop` provider. All classes for this package are included in the `airflow.providers.apache.tinkerpop` python package.
+
+Installation[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#installation "Link to this heading")
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can install this package on top of an existing Airflow installation via `pip install apache-airflow-providers-apache-tinkerpop`. For the minimum Airflow version supported, see `Requirements` below.
+
+Requirements[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#requirements "Link to this heading")
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+The minimum Apache Airflow version supported by this provider distribution is `2.11.0`.
+
+| PIP package | Version required |
+| --- | --- |
+| `apache-airflow` | `>=2.11.0` |
+| `apache-airflow-providers-common-compat` | `>=1.8.0` |
+| `gremlinpython` | `>=3.7.3` |
+
+Cross provider package dependencies[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#cross-provider-package-dependencies "Link to this heading")
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Those are dependencies that might be needed in order to use all the features of the package. You need to install the specified provider distributions in order to use them.
+
+You can install such cross-provider dependencies when installing from PyPI. For example:
+
+pip install apache-airflow-providers-apache-tinkerpop[common.compat]
+
+| Dependent package | Extra |
+| --- | --- |
+| [apache-airflow-providers-common-compat](https://airflow.apache.org/docs/apache-airflow-providers-common-compat) | `common.compat` |
+
+Downloading official packages[¶](https://airflow.apache.org/docs/apache-airflow-providers-apache-tinkerpop/stable/index.html#downloading-official-packages "Link to this heading")
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can download officially released packages and verify their checksums and signatures from the [Official Apache Download site](https://downloads.apache.org/airflow/providers/)
+
+*   [The apache-airflow-providers-apache-tinkerpop 1.1.1 sdist package](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1.tar.gz) ([asc](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1.tar.gz.asc), [sha512](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1.tar.gz.sha512))
+
+*   [The apache-airflow-providers-apache-tinkerpop 1.1.1 wheel package](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1-py3-none-any.whl) ([asc](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1-py3-none-any.whl.asc), [sha512](https://downloads.apache.org/airflow/providers/apache_airflow_providers_apache_tinkerpop-1.1.1-py3-none-any.whl.sha512))
