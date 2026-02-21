@@ -1256,3 +1256,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/onnx
   branch: main
+- name: pytest
+  description: pytest from GitHub
+  repo_url: https://github.com/pytest-dev/pytest.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pytest
+  branch: main
