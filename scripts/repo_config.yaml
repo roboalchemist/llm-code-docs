@@ -1298,3 +1298,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/click
   branch: main
+- name: rich
+  description: rich from GitHub
+  repo_url: https://github.com/Textualize/rich.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rich
+  branch: main
