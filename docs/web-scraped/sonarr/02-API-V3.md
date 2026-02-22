@@ -2,7 +2,7 @@
 
 ## Servers
 
-- {protocol}://{hostpath}: 
+- {protocol}://{hostpath}:
 
 ## API Information
 
@@ -15,7 +15,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /
 
-#### GET
+#### GET /
 
 **Parameters:**
 
@@ -27,7 +27,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api
 
-#### GET
+#### GET /api
 
 **Responses:**
 
@@ -35,7 +35,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/autotagging
 
-#### POST
+#### POST /api/v3/autotagging
 
 **Request Body:**
 
@@ -55,7 +55,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/autotagging
 
 **Responses:**
 
@@ -63,7 +63,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/autotagging/schema
 
-#### GET
+#### GET /api/v3/autotagging/schema
 
 **Responses:**
 
@@ -71,7 +71,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/autotagging/{id}
 
-#### PUT
+#### PUT /api/v3/autotagging/{id}
 
 **Parameters:**
 
@@ -95,7 +95,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/autotagging/{id}
 
 **Parameters:**
 
@@ -105,7 +105,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/autotagging/{id}
 
 **Parameters:**
 
@@ -117,7 +117,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/blocklist
 
-#### GET
+#### GET /api/v3/blocklist
 
 **Parameters:**
 
@@ -134,7 +134,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/blocklist/bulk
 
-#### DELETE
+#### DELETE /api/v3/blocklist/bulk
 
 **Request Body:**
 
@@ -157,7 +157,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/blocklist/{id}
 
-#### DELETE
+#### DELETE /api/v3/blocklist/{id}
 
 **Parameters:**
 
@@ -169,7 +169,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/calendar
 
-#### GET
+#### GET /api/v3/calendar
 
 **Parameters:**
 
@@ -187,7 +187,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/calendar/{id}
 
-#### GET
+#### GET /api/v3/calendar/{id}
 
 **Parameters:**
 
@@ -199,7 +199,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/command
 
-#### POST
+#### POST /api/v3/command
 
 **Request Body:**
 
@@ -219,7 +219,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/command
 
 **Responses:**
 
@@ -227,7 +227,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/command/{id}
 
-#### DELETE
+#### DELETE /api/v3/command/{id}
 
 **Parameters:**
 
@@ -237,7 +237,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/command/{id}
 
 **Parameters:**
 
@@ -249,7 +249,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/downloadclient
 
-#### GET
+#### GET /api/v3/config/downloadclient
 
 **Responses:**
 
@@ -257,7 +257,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/downloadclient/{id}
 
-#### PUT
+#### PUT /api/v3/config/downloadclient/{id}
 
 **Parameters:**
 
@@ -281,7 +281,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/downloadclient/{id}
 
 **Parameters:**
 
@@ -293,7 +293,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/host
 
-#### GET
+#### GET /api/v3/config/host
 
 **Responses:**
 
@@ -301,7 +301,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/host/{id}
 
-#### PUT
+#### PUT /api/v3/config/host/{id}
 
 **Parameters:**
 
@@ -326,7 +326,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/host/{id}
 
 **Parameters:**
 
@@ -338,7 +338,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/importlist
 
-#### GET
+#### GET /api/v3/config/importlist
 
 **Responses:**
 
@@ -346,7 +346,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/importlist/{id}
 
-#### PUT
+#### PUT /api/v3/config/importlist/{id}
 
 **Parameters:**
 
@@ -370,7 +370,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/importlist/{id}
 
 **Parameters:**
 
@@ -382,7 +382,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/indexer
 
-#### GET
+#### GET /api/v3/config/indexer
 
 **Responses:**
 
@@ -390,7 +390,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/indexer/{id}
 
-#### PUT
+#### PUT /api/v3/config/indexer/{id}
 
 **Parameters:**
 
@@ -414,7 +414,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/indexer/{id}
 
 **Parameters:**
 
@@ -426,7 +426,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/mediamanagement
 
-#### GET
+#### GET /api/v3/config/mediamanagement
 
 **Responses:**
 
@@ -434,7 +434,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/mediamanagement/{id}
 
-#### PUT
+#### PUT /api/v3/config/mediamanagement/{id}
 
 **Parameters:**
 
@@ -458,7 +458,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/mediamanagement/{id}
 
 **Parameters:**
 
@@ -470,7 +470,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/naming
 
-#### GET
+#### GET /api/v3/config/naming
 
 **Responses:**
 
@@ -478,7 +478,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/naming/examples
 
-#### GET
+#### GET /api/v3/config/naming/examples
 
 **Parameters:**
 
@@ -502,7 +502,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/naming/{id}
 
-#### PUT
+#### PUT /api/v3/config/naming/{id}
 
 **Parameters:**
 
@@ -527,7 +527,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/naming/{id}
 
 **Parameters:**
 
@@ -539,7 +539,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/ui
 
-#### GET
+#### GET /api/v3/config/ui
 
 **Responses:**
 
@@ -547,7 +547,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/config/ui/{id}
 
-#### PUT
+#### PUT /api/v3/config/ui/{id}
 
 **Parameters:**
 
@@ -571,7 +571,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/config/ui/{id}
 
 **Parameters:**
 
@@ -583,13 +583,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customfilter
 
-#### GET
+#### GET /api/v3/customfilter
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/customfilter
 
 **Request Body:**
 
@@ -611,7 +611,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customfilter/{id}
 
-#### PUT
+#### PUT /api/v3/customfilter/{id}
 
 **Parameters:**
 
@@ -635,7 +635,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/customfilter/{id}
 
 **Parameters:**
 
@@ -645,7 +645,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/customfilter/{id}
 
 **Parameters:**
 
@@ -657,13 +657,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customformat
 
-#### GET
+#### GET /api/v3/customformat
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/customformat
 
 **Request Body:**
 
@@ -685,7 +685,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customformat/bulk
 
-#### PUT
+#### PUT /api/v3/customformat/bulk
 
 **Request Body:**
 
@@ -705,7 +705,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/customformat/bulk
 
 **Request Body:**
 
@@ -727,7 +727,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customformat/schema
 
-#### GET
+#### GET /api/v3/customformat/schema
 
 **Responses:**
 
@@ -735,7 +735,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/customformat/{id}
 
-#### PUT
+#### PUT /api/v3/customformat/{id}
 
 **Parameters:**
 
@@ -759,7 +759,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/customformat/{id}
 
 **Parameters:**
 
@@ -769,7 +769,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/customformat/{id}
 
 **Parameters:**
 
@@ -781,7 +781,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/delayprofile
 
-#### POST
+#### POST /api/v3/delayprofile
 
 **Request Body:**
 
@@ -801,7 +801,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/delayprofile
 
 **Responses:**
 
@@ -809,7 +809,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/delayprofile/reorder/{id}
 
-#### PUT
+#### PUT /api/v3/delayprofile/reorder/{id}
 
 **Parameters:**
 
@@ -822,7 +822,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/delayprofile/{id}
 
-#### DELETE
+#### DELETE /api/v3/delayprofile/{id}
 
 **Parameters:**
 
@@ -832,7 +832,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/delayprofile/{id}
 
 **Parameters:**
 
@@ -856,7 +856,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/delayprofile/{id}
 
 **Parameters:**
 
@@ -868,7 +868,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/diskspace
 
-#### GET
+#### GET /api/v3/diskspace
 
 **Responses:**
 
@@ -876,13 +876,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient
 
-#### GET
+#### GET /api/v3/downloadclient
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/downloadclient
 
 **Parameters:**
 
@@ -908,7 +908,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/action/{name}
 
-#### POST
+#### POST /api/v3/downloadclient/action/{name}
 
 **Parameters:**
 
@@ -934,7 +934,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/bulk
 
-#### PUT
+#### PUT /api/v3/downloadclient/bulk
 
 **Request Body:**
 
@@ -954,7 +954,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/downloadclient/bulk
 
 **Request Body:**
 
@@ -976,7 +976,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/schema
 
-#### GET
+#### GET /api/v3/downloadclient/schema
 
 **Responses:**
 
@@ -984,7 +984,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/test
 
-#### POST
+#### POST /api/v3/downloadclient/test
 
 **Parameters:**
 
@@ -1010,7 +1010,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/testall
 
-#### POST
+#### POST /api/v3/downloadclient/testall
 
 **Responses:**
 
@@ -1018,7 +1018,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/downloadclient/{id}
 
-#### PUT
+#### PUT /api/v3/downloadclient/{id}
 
 **Parameters:**
 
@@ -1043,7 +1043,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/downloadclient/{id}
 
 **Parameters:**
 
@@ -1053,7 +1053,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/downloadclient/{id}
 
 **Parameters:**
 
@@ -1065,7 +1065,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episode
 
-#### GET
+#### GET /api/v3/episode
 
 **Parameters:**
 
@@ -1083,7 +1083,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episode/monitor
 
-#### PUT
+#### PUT /api/v3/episode/monitor
 
 **Parameters:**
 
@@ -1109,7 +1109,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episode/{id}
 
-#### PUT
+#### PUT /api/v3/episode/{id}
 
 **Parameters:**
 
@@ -1133,7 +1133,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/episode/{id}
 
 **Parameters:**
 
@@ -1145,7 +1145,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episodefile
 
-#### GET
+#### GET /api/v3/episodefile
 
 **Parameters:**
 
@@ -1158,7 +1158,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episodefile/bulk
 
-#### DELETE
+#### DELETE /api/v3/episodefile/bulk
 
 **Request Body:**
 
@@ -1178,7 +1178,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/episodefile/bulk
 
 **Request Body:**
 
@@ -1203,7 +1203,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episodefile/editor
 
-#### PUT
+#### PUT /api/v3/episodefile/editor
 
 **Request Body:**
 
@@ -1225,7 +1225,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/episodefile/{id}
 
-#### PUT
+#### PUT /api/v3/episodefile/{id}
 
 **Parameters:**
 
@@ -1249,7 +1249,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/episodefile/{id}
 
 **Parameters:**
 
@@ -1259,7 +1259,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/episodefile/{id}
 
 **Parameters:**
 
@@ -1271,7 +1271,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/filesystem
 
-#### GET
+#### GET /api/v3/filesystem
 
 **Parameters:**
 
@@ -1285,7 +1285,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/filesystem/mediafiles
 
-#### GET
+#### GET /api/v3/filesystem/mediafiles
 
 **Parameters:**
 
@@ -1297,7 +1297,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/filesystem/type
 
-#### GET
+#### GET /api/v3/filesystem/type
 
 **Parameters:**
 
@@ -1309,7 +1309,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/health
 
-#### GET
+#### GET /api/v3/health
 
 **Responses:**
 
@@ -1317,7 +1317,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/history
 
-#### GET
+#### GET /api/v3/history
 
 **Parameters:**
 
@@ -1340,7 +1340,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/history/failed/{id}
 
-#### POST
+#### POST /api/v3/history/failed/{id}
 
 **Parameters:**
 
@@ -1352,7 +1352,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/history/series
 
-#### GET
+#### GET /api/v3/history/series
 
 **Parameters:**
 
@@ -1368,7 +1368,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/history/since
 
-#### GET
+#### GET /api/v3/history/since
 
 **Parameters:**
 
@@ -1383,13 +1383,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist
 
-#### GET
+#### GET /api/v3/importlist
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/importlist
 
 **Parameters:**
 
@@ -1415,7 +1415,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/action/{name}
 
-#### POST
+#### POST /api/v3/importlist/action/{name}
 
 **Parameters:**
 
@@ -1441,7 +1441,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/bulk
 
-#### PUT
+#### PUT /api/v3/importlist/bulk
 
 **Request Body:**
 
@@ -1461,7 +1461,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/importlist/bulk
 
 **Request Body:**
 
@@ -1483,7 +1483,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/schema
 
-#### GET
+#### GET /api/v3/importlist/schema
 
 **Responses:**
 
@@ -1491,7 +1491,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/test
 
-#### POST
+#### POST /api/v3/importlist/test
 
 **Parameters:**
 
@@ -1517,7 +1517,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/testall
 
-#### POST
+#### POST /api/v3/importlist/testall
 
 **Responses:**
 
@@ -1525,7 +1525,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlist/{id}
 
-#### PUT
+#### PUT /api/v3/importlist/{id}
 
 **Parameters:**
 
@@ -1550,7 +1550,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/importlist/{id}
 
 **Parameters:**
 
@@ -1560,7 +1560,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/importlist/{id}
 
 **Parameters:**
 
@@ -1572,13 +1572,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlistexclusion
 
-#### GET
+#### GET /api/v3/importlistexclusion
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/importlistexclusion
 
 **Request Body:**
 
@@ -1600,7 +1600,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlistexclusion/bulk
 
-#### DELETE
+#### DELETE /api/v3/importlistexclusion/bulk
 
 **Request Body:**
 
@@ -1623,7 +1623,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlistexclusion/paged
 
-#### GET
+#### GET /api/v3/importlistexclusion/paged
 
 **Parameters:**
 
@@ -1638,7 +1638,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/importlistexclusion/{id}
 
-#### PUT
+#### PUT /api/v3/importlistexclusion/{id}
 
 **Parameters:**
 
@@ -1662,7 +1662,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/importlistexclusion/{id}
 
 **Parameters:**
 
@@ -1672,7 +1672,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/importlistexclusion/{id}
 
 **Parameters:**
 
@@ -1684,13 +1684,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer
 
-#### GET
+#### GET /api/v3/indexer
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/indexer
 
 **Parameters:**
 
@@ -1716,7 +1716,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/action/{name}
 
-#### POST
+#### POST /api/v3/indexer/action/{name}
 
 **Parameters:**
 
@@ -1742,7 +1742,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/bulk
 
-#### PUT
+#### PUT /api/v3/indexer/bulk
 
 **Request Body:**
 
@@ -1762,7 +1762,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/indexer/bulk
 
 **Request Body:**
 
@@ -1784,7 +1784,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/schema
 
-#### GET
+#### GET /api/v3/indexer/schema
 
 **Responses:**
 
@@ -1792,7 +1792,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/test
 
-#### POST
+#### POST /api/v3/indexer/test
 
 **Parameters:**
 
@@ -1818,7 +1818,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/testall
 
-#### POST
+#### POST /api/v3/indexer/testall
 
 **Responses:**
 
@@ -1826,7 +1826,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexer/{id}
 
-#### PUT
+#### PUT /api/v3/indexer/{id}
 
 **Parameters:**
 
@@ -1851,7 +1851,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/indexer/{id}
 
 **Parameters:**
 
@@ -1861,7 +1861,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/indexer/{id}
 
 **Parameters:**
 
@@ -1873,7 +1873,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/indexerflag
 
-#### GET
+#### GET /api/v3/indexerflag
 
 **Responses:**
 
@@ -1881,7 +1881,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/language
 
-#### GET
+#### GET /api/v3/language
 
 **Responses:**
 
@@ -1889,7 +1889,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/language/{id}
 
-#### GET
+#### GET /api/v3/language/{id}
 
 **Parameters:**
 
@@ -1901,7 +1901,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/languageprofile
 
-#### POST
+#### POST /api/v3/languageprofile
 
 **Request Body:**
 
@@ -1921,7 +1921,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/languageprofile
 
 **Responses:**
 
@@ -1929,7 +1929,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/languageprofile/schema
 
-#### GET
+#### GET /api/v3/languageprofile/schema
 
 **Responses:**
 
@@ -1937,7 +1937,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/languageprofile/{id}
 
-#### DELETE
+#### DELETE /api/v3/languageprofile/{id}
 
 **Parameters:**
 
@@ -1947,7 +1947,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/languageprofile/{id}
 
 **Parameters:**
 
@@ -1971,7 +1971,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/languageprofile/{id}
 
 **Parameters:**
 
@@ -1983,7 +1983,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/localization
 
-#### GET
+#### GET /api/v3/localization
 
 **Responses:**
 
@@ -1991,7 +1991,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/localization/language
 
-#### GET
+#### GET /api/v3/localization/language
 
 **Responses:**
 
@@ -1999,7 +1999,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/localization/{id}
 
-#### GET
+#### GET /api/v3/localization/{id}
 
 **Parameters:**
 
@@ -2011,7 +2011,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/log
 
-#### GET
+#### GET /api/v3/log
 
 **Parameters:**
 
@@ -2027,7 +2027,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/log/file
 
-#### GET
+#### GET /api/v3/log/file
 
 **Responses:**
 
@@ -2035,7 +2035,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/log/file/update
 
-#### GET
+#### GET /api/v3/log/file/update
 
 **Responses:**
 
@@ -2043,7 +2043,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/log/file/update/{filename}
 
-#### GET
+#### GET /api/v3/log/file/update/{filename}
 
 **Parameters:**
 
@@ -2055,7 +2055,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/log/file/{filename}
 
-#### GET
+#### GET /api/v3/log/file/{filename}
 
 **Parameters:**
 
@@ -2067,7 +2067,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/manualimport
 
-#### GET
+#### GET /api/v3/manualimport
 
 **Parameters:**
 
@@ -2081,7 +2081,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/manualimport
 
 **Request Body:**
 
@@ -2105,7 +2105,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/mediacover/{seriesId}/{filename}
 
-#### GET
+#### GET /api/v3/mediacover/{seriesId}/{filename}
 
 **Parameters:**
 
@@ -2118,13 +2118,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata
 
-#### GET
+#### GET /api/v3/metadata
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/metadata
 
 **Parameters:**
 
@@ -2150,7 +2150,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata/action/{name}
 
-#### POST
+#### POST /api/v3/metadata/action/{name}
 
 **Parameters:**
 
@@ -2176,7 +2176,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata/schema
 
-#### GET
+#### GET /api/v3/metadata/schema
 
 **Responses:**
 
@@ -2184,7 +2184,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata/test
 
-#### POST
+#### POST /api/v3/metadata/test
 
 **Parameters:**
 
@@ -2210,7 +2210,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata/testall
 
-#### POST
+#### POST /api/v3/metadata/testall
 
 **Responses:**
 
@@ -2218,7 +2218,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/metadata/{id}
 
-#### PUT
+#### PUT /api/v3/metadata/{id}
 
 **Parameters:**
 
@@ -2243,7 +2243,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/metadata/{id}
 
 **Parameters:**
 
@@ -2253,7 +2253,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/metadata/{id}
 
 **Parameters:**
 
@@ -2265,13 +2265,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification
 
-#### GET
+#### GET /api/v3/notification
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/notification
 
 **Parameters:**
 
@@ -2297,7 +2297,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification/action/{name}
 
-#### POST
+#### POST /api/v3/notification/action/{name}
 
 **Parameters:**
 
@@ -2323,7 +2323,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification/schema
 
-#### GET
+#### GET /api/v3/notification/schema
 
 **Responses:**
 
@@ -2331,7 +2331,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification/test
 
-#### POST
+#### POST /api/v3/notification/test
 
 **Parameters:**
 
@@ -2357,7 +2357,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification/testall
 
-#### POST
+#### POST /api/v3/notification/testall
 
 **Responses:**
 
@@ -2365,7 +2365,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/notification/{id}
 
-#### PUT
+#### PUT /api/v3/notification/{id}
 
 **Parameters:**
 
@@ -2390,7 +2390,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/notification/{id}
 
 **Parameters:**
 
@@ -2400,7 +2400,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/notification/{id}
 
 **Parameters:**
 
@@ -2412,7 +2412,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/parse
 
-#### GET
+#### GET /api/v3/parse
 
 **Parameters:**
 
@@ -2425,7 +2425,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualitydefinition
 
-#### GET
+#### GET /api/v3/qualitydefinition
 
 **Responses:**
 
@@ -2433,7 +2433,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualitydefinition/limits
 
-#### GET
+#### GET /api/v3/qualitydefinition/limits
 
 **Responses:**
 
@@ -2441,7 +2441,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualitydefinition/update
 
-#### PUT
+#### PUT /api/v3/qualitydefinition/update
 
 **Request Body:**
 
@@ -2465,7 +2465,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualitydefinition/{id}
 
-#### PUT
+#### PUT /api/v3/qualitydefinition/{id}
 
 **Parameters:**
 
@@ -2490,7 +2490,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/qualitydefinition/{id}
 
 **Parameters:**
 
@@ -2502,7 +2502,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualityprofile
 
-#### POST
+#### POST /api/v3/qualityprofile
 
 **Request Body:**
 
@@ -2522,7 +2522,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/qualityprofile
 
 **Responses:**
 
@@ -2530,7 +2530,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualityprofile/schema
 
-#### GET
+#### GET /api/v3/qualityprofile/schema
 
 **Responses:**
 
@@ -2538,7 +2538,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/qualityprofile/{id}
 
-#### DELETE
+#### DELETE /api/v3/qualityprofile/{id}
 
 **Parameters:**
 
@@ -2548,7 +2548,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/qualityprofile/{id}
 
 **Parameters:**
 
@@ -2572,7 +2572,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/qualityprofile/{id}
 
 **Parameters:**
 
@@ -2584,7 +2584,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue
 
-#### GET
+#### GET /api/v3/queue
 
 **Parameters:**
 
@@ -2607,7 +2607,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/bulk
 
-#### DELETE
+#### DELETE /api/v3/queue/bulk
 
 **Parameters:**
 
@@ -2637,7 +2637,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/details
 
-#### GET
+#### GET /api/v3/queue/details
 
 **Parameters:**
 
@@ -2652,7 +2652,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/grab/bulk
 
-#### POST
+#### POST /api/v3/queue/grab/bulk
 
 **Request Body:**
 
@@ -2674,7 +2674,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/grab/{id}
 
-#### POST
+#### POST /api/v3/queue/grab/{id}
 
 **Parameters:**
 
@@ -2686,7 +2686,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/status
 
-#### GET
+#### GET /api/v3/queue/status
 
 **Responses:**
 
@@ -2694,7 +2694,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/queue/{id}
 
-#### DELETE
+#### DELETE /api/v3/queue/{id}
 
 **Parameters:**
 
@@ -2710,7 +2710,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/release
 
-#### POST
+#### POST /api/v3/release
 
 **Request Body:**
 
@@ -2730,7 +2730,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/release
 
 **Parameters:**
 
@@ -2744,7 +2744,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/release/push
 
-#### POST
+#### POST /api/v3/release/push
 
 **Request Body:**
 
@@ -2766,7 +2766,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/releaseprofile
 
-#### POST
+#### POST /api/v3/releaseprofile
 
 **Request Body:**
 
@@ -2787,7 +2787,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/releaseprofile
 
 **Responses:**
 
@@ -2795,7 +2795,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/releaseprofile/{id}
 
-#### DELETE
+#### DELETE /api/v3/releaseprofile/{id}
 
 **Parameters:**
 
@@ -2805,7 +2805,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/releaseprofile/{id}
 
 **Parameters:**
 
@@ -2830,7 +2830,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/releaseprofile/{id}
 
 **Parameters:**
 
@@ -2842,7 +2842,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/remotepathmapping
 
-#### POST
+#### POST /api/v3/remotepathmapping
 
 **Request Body:**
 
@@ -2862,7 +2862,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/remotepathmapping
 
 **Responses:**
 
@@ -2870,7 +2870,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/remotepathmapping/{id}
 
-#### DELETE
+#### DELETE /api/v3/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -2880,7 +2880,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -2905,7 +2905,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -2917,7 +2917,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/rename
 
-#### GET
+#### GET /api/v3/rename
 
 **Parameters:**
 
@@ -2930,7 +2930,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/rootfolder
 
-#### POST
+#### POST /api/v3/rootfolder
 
 **Request Body:**
 
@@ -2950,7 +2950,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/rootfolder
 
 **Responses:**
 
@@ -2958,7 +2958,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/rootfolder/{id}
 
-#### DELETE
+#### DELETE /api/v3/rootfolder/{id}
 
 **Parameters:**
 
@@ -2968,7 +2968,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/rootfolder/{id}
 
 **Parameters:**
 
@@ -2980,7 +2980,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/seasonpass
 
-#### POST
+#### POST /api/v3/seasonpass
 
 **Request Body:**
 
@@ -3002,7 +3002,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series
 
-#### GET
+#### GET /api/v3/series
 
 **Parameters:**
 
@@ -3013,7 +3013,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/series
 
 **Request Body:**
 
@@ -3035,7 +3035,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series/editor
 
-#### PUT
+#### PUT /api/v3/series/editor
 
 **Request Body:**
 
@@ -3056,7 +3056,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/series/editor
 
 **Request Body:**
 
@@ -3079,7 +3079,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series/import
 
-#### POST
+#### POST /api/v3/series/import
 
 **Request Body:**
 
@@ -3103,7 +3103,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series/lookup
 
-#### GET
+#### GET /api/v3/series/lookup
 
 **Parameters:**
 
@@ -3115,7 +3115,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series/{id}
 
-#### GET
+#### GET /api/v3/series/{id}
 
 **Parameters:**
 
@@ -3126,7 +3126,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v3/series/{id}
 
 **Parameters:**
 
@@ -3151,7 +3151,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/series/{id}
 
 **Parameters:**
 
@@ -3165,7 +3165,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/series/{id}/folder
 
-#### GET
+#### GET /api/v3/series/{id}/folder
 
 **Parameters:**
 
@@ -3177,7 +3177,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/backup
 
-#### GET
+#### GET /api/v3/system/backup
 
 **Responses:**
 
@@ -3185,7 +3185,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/backup/restore/upload
 
-#### POST
+#### POST /api/v3/system/backup/restore/upload
 
 **Responses:**
 
@@ -3193,7 +3193,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/backup/restore/{id}
 
-#### POST
+#### POST /api/v3/system/backup/restore/{id}
 
 **Parameters:**
 
@@ -3205,7 +3205,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/backup/{id}
 
-#### DELETE
+#### DELETE /api/v3/system/backup/{id}
 
 **Parameters:**
 
@@ -3217,7 +3217,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/restart
 
-#### POST
+#### POST /api/v3/system/restart
 
 **Responses:**
 
@@ -3225,7 +3225,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/routes
 
-#### GET
+#### GET /api/v3/system/routes
 
 **Responses:**
 
@@ -3233,7 +3233,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/routes/duplicate
 
-#### GET
+#### GET /api/v3/system/routes/duplicate
 
 **Responses:**
 
@@ -3241,7 +3241,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/shutdown
 
-#### POST
+#### POST /api/v3/system/shutdown
 
 **Responses:**
 
@@ -3249,7 +3249,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/status
 
-#### GET
+#### GET /api/v3/system/status
 
 **Responses:**
 
@@ -3257,7 +3257,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/task
 
-#### GET
+#### GET /api/v3/system/task
 
 **Responses:**
 
@@ -3265,7 +3265,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/system/task/{id}
 
-#### GET
+#### GET /api/v3/system/task/{id}
 
 **Parameters:**
 
@@ -3277,13 +3277,13 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/tag
 
-#### GET
+#### GET /api/v3/tag
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v3/tag
 
 **Request Body:**
 
@@ -3305,7 +3305,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/tag/detail
 
-#### GET
+#### GET /api/v3/tag/detail
 
 **Responses:**
 
@@ -3313,7 +3313,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/tag/detail/{id}
 
-#### GET
+#### GET /api/v3/tag/detail/{id}
 
 **Parameters:**
 
@@ -3325,7 +3325,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/tag/{id}
 
-#### PUT
+#### PUT /api/v3/tag/{id}
 
 **Parameters:**
 
@@ -3349,7 +3349,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v3/tag/{id}
 
 **Parameters:**
 
@@ -3359,7 +3359,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /api/v3/tag/{id}
 
 **Parameters:**
 
@@ -3371,7 +3371,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/update
 
-#### GET
+#### GET /api/v3/update
 
 **Responses:**
 
@@ -3379,7 +3379,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/wanted/cutoff
 
-#### GET
+#### GET /api/v3/wanted/cutoff
 
 **Parameters:**
 
@@ -3398,7 +3398,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/wanted/cutoff/{id}
 
-#### GET
+#### GET /api/v3/wanted/cutoff/{id}
 
 **Parameters:**
 
@@ -3410,7 +3410,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/wanted/missing
 
-#### GET
+#### GET /api/v3/wanted/missing
 
 **Parameters:**
 
@@ -3428,7 +3428,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /api/v3/wanted/missing/{id}
 
-#### GET
+#### GET /api/v3/wanted/missing/{id}
 
 **Parameters:**
 
@@ -3440,7 +3440,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /content/{path}
 
-#### GET
+#### GET /content/{path}
 
 **Parameters:**
 
@@ -3452,7 +3452,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /feed/v3/calendar/sonarr.ics
 
-#### GET
+#### GET /feed/v3/calendar/sonarr.ics
 
 **Parameters:**
 
@@ -3469,7 +3469,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /login
 
-#### POST
+#### POST /login
 
 **Parameters:**
 
@@ -3494,7 +3494,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 - `200`: OK
 
-#### GET
+#### GET /login
 
 **Responses:**
 
@@ -3502,7 +3502,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /logout
 
-#### GET
+#### GET /logout
 
 **Responses:**
 
@@ -3510,7 +3510,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /ping
 
-#### GET
+#### GET /ping
 
 **Responses:**
 
@@ -3518,7 +3518,7 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 
 ### /{path}
 
-#### GET
+#### GET /{path}
 
 **Parameters:**
 
@@ -3684,4 +3684,3 @@ Sonarr API docs - The v3 API docs apply to both v3 and v4 versions of Sonarr. So
 - `type` (string): N/A
 - `label` (string): N/A
 - `filters` (array): N/A
-

@@ -1,7 +1,5 @@
 # Contributing to Sonarr
 
-# How to Contribute
-
 We're always looking for people to help make Sonarr even better, there are a number of ways to contribute.
 
 ## Documentation
@@ -36,7 +34,7 @@ Setup guides, [FAQ](https://wiki.servarr.com/sonarr/faq), the more information w
 - Feel free to make a pull request before work is complete, this will let us see where its at and make comments/suggest improvements
 - Reach out to us on our [forums](https://forums.sonarr.tv/), [subreddit](https://www.reddit.com/r/sonarr/), [discord](https://discord.gg/Ex7FmFK), or [IRC](https://web.libera.chat/?channels=#sonarr) if you have any questions
 - Add tests (unit/integration)
-- Commit with *nix line endings for consistency (We checkout Windows and commit *nix)
+- Commit with `*nix` line endings for consistency (We checkout Windows and commit `*nix`)
 - One feature/bug fix per pull request to keep things clean and easy to understand
 - Use 4 spaces instead of tabs, this should be the default for VS 2019 and WebStorm
 

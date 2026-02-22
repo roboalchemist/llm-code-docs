@@ -2,7 +2,7 @@
 
 ## Servers
 
-- {protocol}://{hostpath}: 
+- {protocol}://{hostpath}:
 
 ## API Information
 
@@ -15,7 +15,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /
 
-#### GET
+#### GET /
 
 **Parameters:**
 
@@ -27,7 +27,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api
 
-#### GET
+#### GET /api
 
 **Responses:**
 
@@ -35,7 +35,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/blocklist
 
-#### GET
+#### GET /api/v5/blocklist
 
 **Parameters:**
 
@@ -52,7 +52,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/blocklist/bulk
 
-#### DELETE
+#### DELETE /api/v5/blocklist/bulk
 
 **Request Body:**
 
@@ -75,7 +75,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/blocklist/{id}
 
-#### DELETE
+#### DELETE /api/v5/blocklist/{id}
 
 **Parameters:**
 
@@ -87,7 +87,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/calendar
 
-#### GET
+#### GET /api/v5/calendar
 
 **Parameters:**
 
@@ -104,7 +104,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/calendar/{id}
 
-#### GET
+#### GET /api/v5/calendar/{id}
 
 **Parameters:**
 
@@ -116,7 +116,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/command
 
-#### POST
+#### POST /api/v5/command
 
 **Request Body:**
 
@@ -136,7 +136,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/command
 
 **Responses:**
 
@@ -144,7 +144,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/command/{id}
 
-#### DELETE
+#### DELETE /api/v5/command/{id}
 
 **Parameters:**
 
@@ -154,7 +154,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/command/{id}
 
 **Parameters:**
 
@@ -166,13 +166,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection
 
-#### GET
+#### GET /api/v5/connection
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/connection
 
 **Parameters:**
 
@@ -198,7 +198,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection/action/{name}
 
-#### POST
+#### POST /api/v5/connection/action/{name}
 
 **Parameters:**
 
@@ -224,7 +224,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection/schema
 
-#### GET
+#### GET /api/v5/connection/schema
 
 **Responses:**
 
@@ -232,7 +232,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection/test
 
-#### POST
+#### POST /api/v5/connection/test
 
 **Parameters:**
 
@@ -258,7 +258,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection/testall
 
-#### POST
+#### POST /api/v5/connection/testall
 
 **Responses:**
 
@@ -266,7 +266,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/connection/{id}
 
-#### PUT
+#### PUT /api/v5/connection/{id}
 
 **Parameters:**
 
@@ -291,7 +291,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/connection/{id}
 
 **Parameters:**
 
@@ -301,7 +301,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/connection/{id}
 
 **Parameters:**
 
@@ -313,13 +313,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/customfilter
 
-#### GET
+#### GET /api/v5/customfilter
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/customfilter
 
 **Request Body:**
 
@@ -341,7 +341,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/customfilter/{id}
 
-#### PUT
+#### PUT /api/v5/customfilter/{id}
 
 **Parameters:**
 
@@ -365,7 +365,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/customfilter/{id}
 
 **Parameters:**
 
@@ -375,7 +375,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/customfilter/{id}
 
 **Parameters:**
 
@@ -387,7 +387,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/diskspace
 
-#### GET
+#### GET /api/v5/diskspace
 
 **Responses:**
 
@@ -395,7 +395,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episode
 
-#### GET
+#### GET /api/v5/episode
 
 **Parameters:**
 
@@ -411,7 +411,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episode/monitor
 
-#### PUT
+#### PUT /api/v5/episode/monitor
 
 **Parameters:**
 
@@ -437,7 +437,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episode/{id}
 
-#### PUT
+#### PUT /api/v5/episode/{id}
 
 **Parameters:**
 
@@ -461,7 +461,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/episode/{id}
 
 **Parameters:**
 
@@ -473,7 +473,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episodefile
 
-#### GET
+#### GET /api/v5/episodefile
 
 **Parameters:**
 
@@ -486,7 +486,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episodefile/bulk
 
-#### DELETE
+#### DELETE /api/v5/episodefile/bulk
 
 **Request Body:**
 
@@ -506,7 +506,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/episodefile/bulk
 
 **Request Body:**
 
@@ -531,7 +531,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/episodefile/{id}
 
-#### PUT
+#### PUT /api/v5/episodefile/{id}
 
 **Parameters:**
 
@@ -555,7 +555,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/episodefile/{id}
 
 **Parameters:**
 
@@ -565,7 +565,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/episodefile/{id}
 
 **Parameters:**
 
@@ -577,7 +577,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/filesystem
 
-#### GET
+#### GET /api/v5/filesystem
 
 **Parameters:**
 
@@ -591,7 +591,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/filesystem/mediafiles
 
-#### GET
+#### GET /api/v5/filesystem/mediafiles
 
 **Parameters:**
 
@@ -603,7 +603,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/filesystem/type
 
-#### GET
+#### GET /api/v5/filesystem/type
 
 **Parameters:**
 
@@ -615,7 +615,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/health
 
-#### GET
+#### GET /api/v5/health
 
 **Responses:**
 
@@ -623,7 +623,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history
 
-#### GET
+#### GET /api/v5/history
 
 **Parameters:**
 
@@ -645,7 +645,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history/episode
 
-#### GET
+#### GET /api/v5/history/episode
 
 **Parameters:**
 
@@ -659,7 +659,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history/failed/{id}
 
-#### POST
+#### POST /api/v5/history/failed/{id}
 
 **Parameters:**
 
@@ -671,7 +671,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history/season
 
-#### GET
+#### GET /api/v5/history/season
 
 **Parameters:**
 
@@ -686,7 +686,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history/series
 
-#### GET
+#### GET /api/v5/history/series
 
 **Parameters:**
 
@@ -700,7 +700,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/history/since
 
-#### GET
+#### GET /api/v5/history/since
 
 **Parameters:**
 
@@ -714,7 +714,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/localization
 
-#### GET
+#### GET /api/v5/localization
 
 **Responses:**
 
@@ -722,7 +722,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/localization/language
 
-#### GET
+#### GET /api/v5/localization/language
 
 **Responses:**
 
@@ -730,7 +730,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/localization/{id}
 
-#### GET
+#### GET /api/v5/localization/{id}
 
 **Parameters:**
 
@@ -742,7 +742,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/log
 
-#### GET
+#### GET /api/v5/log
 
 **Parameters:**
 
@@ -758,7 +758,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/log/file
 
-#### GET
+#### GET /api/v5/log/file
 
 **Responses:**
 
@@ -766,7 +766,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/log/file/update
 
-#### GET
+#### GET /api/v5/log/file/update
 
 **Responses:**
 
@@ -774,7 +774,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/log/file/update/{filename}
 
-#### GET
+#### GET /api/v5/log/file/update/{filename}
 
 **Parameters:**
 
@@ -786,7 +786,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/log/file/{filename}
 
-#### GET
+#### GET /api/v5/log/file/{filename}
 
 **Parameters:**
 
@@ -798,7 +798,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/manualimport
 
-#### GET
+#### GET /api/v5/manualimport
 
 **Parameters:**
 
@@ -812,7 +812,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/manualimport
 
 **Request Body:**
 
@@ -836,13 +836,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata
 
-#### GET
+#### GET /api/v5/metadata
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/metadata
 
 **Parameters:**
 
@@ -868,7 +868,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata/action/{name}
 
-#### POST
+#### POST /api/v5/metadata/action/{name}
 
 **Parameters:**
 
@@ -894,7 +894,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata/schema
 
-#### GET
+#### GET /api/v5/metadata/schema
 
 **Responses:**
 
@@ -902,7 +902,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata/test
 
-#### POST
+#### POST /api/v5/metadata/test
 
 **Parameters:**
 
@@ -928,7 +928,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata/testall
 
-#### POST
+#### POST /api/v5/metadata/testall
 
 **Responses:**
 
@@ -936,7 +936,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/metadata/{id}
 
-#### PUT
+#### PUT /api/v5/metadata/{id}
 
 **Parameters:**
 
@@ -961,7 +961,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/metadata/{id}
 
 **Parameters:**
 
@@ -971,7 +971,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/metadata/{id}
 
 **Parameters:**
 
@@ -983,7 +983,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/parse
 
-#### GET
+#### GET /api/v5/parse
 
 **Parameters:**
 
@@ -996,13 +996,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/qualitydefinition
 
-#### GET
+#### GET /api/v5/qualitydefinition
 
 **Responses:**
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/qualitydefinition
 
 **Request Body:**
 
@@ -1026,7 +1026,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/qualitydefinition/{id}
 
-#### PUT
+#### PUT /api/v5/qualitydefinition/{id}
 
 **Parameters:**
 
@@ -1051,7 +1051,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/qualitydefinition/{id}
 
 **Parameters:**
 
@@ -1063,7 +1063,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/qualityprofile
 
-#### POST
+#### POST /api/v5/qualityprofile
 
 **Request Body:**
 
@@ -1083,7 +1083,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/qualityprofile
 
 **Responses:**
 
@@ -1091,7 +1091,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/qualityprofile/schema
 
-#### GET
+#### GET /api/v5/qualityprofile/schema
 
 **Responses:**
 
@@ -1099,7 +1099,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/qualityprofile/{id}
 
-#### DELETE
+#### DELETE /api/v5/qualityprofile/{id}
 
 **Parameters:**
 
@@ -1109,7 +1109,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/qualityprofile/{id}
 
 **Parameters:**
 
@@ -1133,7 +1133,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/qualityprofile/{id}
 
 **Parameters:**
 
@@ -1145,7 +1145,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue
 
-#### GET
+#### GET /api/v5/queue
 
 **Parameters:**
 
@@ -1167,7 +1167,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/bulk
 
-#### DELETE
+#### DELETE /api/v5/queue/bulk
 
 **Parameters:**
 
@@ -1198,7 +1198,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/details
 
-#### GET
+#### GET /api/v5/queue/details
 
 **Parameters:**
 
@@ -1212,7 +1212,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/grab/bulk
 
-#### POST
+#### POST /api/v5/queue/grab/bulk
 
 **Request Body:**
 
@@ -1234,7 +1234,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/grab/{id}
 
-#### POST
+#### POST /api/v5/queue/grab/{id}
 
 **Parameters:**
 
@@ -1246,7 +1246,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/status
 
-#### GET
+#### GET /api/v5/queue/status
 
 **Responses:**
 
@@ -1254,7 +1254,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/queue/{id}
 
-#### DELETE
+#### DELETE /api/v5/queue/{id}
 
 **Parameters:**
 
@@ -1271,7 +1271,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/release
 
-#### POST
+#### POST /api/v5/release
 
 **Request Body:**
 
@@ -1291,7 +1291,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/release
 
 **Parameters:**
 
@@ -1305,7 +1305,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/release/push
 
-#### POST
+#### POST /api/v5/release/push
 
 **Request Body:**
 
@@ -1327,7 +1327,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/release/push/{id}
 
-#### GET
+#### GET /api/v5/release/push/{id}
 
 **Parameters:**
 
@@ -1339,7 +1339,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/releaseprofile
 
-#### POST
+#### POST /api/v5/releaseprofile
 
 **Request Body:**
 
@@ -1360,7 +1360,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/releaseprofile
 
 **Responses:**
 
@@ -1368,7 +1368,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/releaseprofile/{id}
 
-#### DELETE
+#### DELETE /api/v5/releaseprofile/{id}
 
 **Parameters:**
 
@@ -1378,7 +1378,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/releaseprofile/{id}
 
 **Parameters:**
 
@@ -1403,7 +1403,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/releaseprofile/{id}
 
 **Parameters:**
 
@@ -1415,7 +1415,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/remotepathmapping
 
-#### POST
+#### POST /api/v5/remotepathmapping
 
 **Request Body:**
 
@@ -1435,7 +1435,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/remotepathmapping
 
 **Responses:**
 
@@ -1443,7 +1443,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/remotepathmapping/{id}
 
-#### DELETE
+#### DELETE /api/v5/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -1453,7 +1453,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -1478,7 +1478,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/remotepathmapping/{id}
 
 **Parameters:**
 
@@ -1490,7 +1490,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/rename
 
-#### GET
+#### GET /api/v5/rename
 
 **Parameters:**
 
@@ -1503,7 +1503,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/rename/bulk
 
-#### GET
+#### GET /api/v5/rename/bulk
 
 **Parameters:**
 
@@ -1515,7 +1515,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/rootfolder
 
-#### POST
+#### POST /api/v5/rootfolder
 
 **Request Body:**
 
@@ -1535,7 +1535,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/rootfolder
 
 **Responses:**
 
@@ -1543,7 +1543,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/rootfolder/{id}
 
-#### DELETE
+#### DELETE /api/v5/rootfolder/{id}
 
 **Parameters:**
 
@@ -1553,7 +1553,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/rootfolder/{id}
 
 **Parameters:**
 
@@ -1565,7 +1565,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/seasonpass
 
-#### POST
+#### POST /api/v5/seasonpass
 
 **Request Body:**
 
@@ -1587,7 +1587,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series
 
-#### GET
+#### GET /api/v5/series
 
 **Parameters:**
 
@@ -1598,7 +1598,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/series
 
 **Request Body:**
 
@@ -1620,7 +1620,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/editor
 
-#### PUT
+#### PUT /api/v5/series/editor
 
 **Request Body:**
 
@@ -1641,7 +1641,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/series/editor
 
 **Request Body:**
 
@@ -1664,7 +1664,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/import
 
-#### POST
+#### POST /api/v5/series/import
 
 **Request Body:**
 
@@ -1688,7 +1688,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/lookup
 
-#### GET
+#### GET /api/v5/series/lookup
 
 **Parameters:**
 
@@ -1700,7 +1700,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/{id}
 
-#### GET
+#### GET /api/v5/series/{id}
 
 **Parameters:**
 
@@ -1711,7 +1711,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/series/{id}
 
 **Parameters:**
 
@@ -1736,7 +1736,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/series/{id}
 
 **Parameters:**
 
@@ -1750,7 +1750,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/{id}/folder
 
-#### GET
+#### GET /api/v5/series/{id}/folder
 
 **Parameters:**
 
@@ -1762,7 +1762,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/series/{id}/season
 
-#### PUT
+#### PUT /api/v5/series/{id}/season
 
 **Parameters:**
 
@@ -1788,7 +1788,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/mediamanagement
 
-#### GET
+#### GET /api/v5/settings/mediamanagement
 
 **Responses:**
 
@@ -1796,7 +1796,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/mediamanagement/{id}
 
-#### PUT
+#### PUT /api/v5/settings/mediamanagement/{id}
 
 **Parameters:**
 
@@ -1820,7 +1820,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/settings/mediamanagement/{id}
 
 **Parameters:**
 
@@ -1832,7 +1832,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/naming
 
-#### GET
+#### GET /api/v5/settings/naming
 
 **Responses:**
 
@@ -1840,7 +1840,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/naming/examples
 
-#### GET
+#### GET /api/v5/settings/naming/examples
 
 **Parameters:**
 
@@ -1864,7 +1864,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/naming/{id}
 
-#### PUT
+#### PUT /api/v5/settings/naming/{id}
 
 **Parameters:**
 
@@ -1889,7 +1889,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/settings/naming/{id}
 
 **Parameters:**
 
@@ -1901,7 +1901,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/ui
 
-#### GET
+#### GET /api/v5/settings/ui
 
 **Responses:**
 
@@ -1909,7 +1909,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/ui/{id}
 
-#### PUT
+#### PUT /api/v5/settings/ui/{id}
 
 **Parameters:**
 
@@ -1933,7 +1933,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/settings/ui/{id}
 
 **Parameters:**
 
@@ -1945,13 +1945,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/update
 
-#### GET
+#### GET /api/v5/settings/update
 
 **Responses:**
 
 - `200`: OK
 
-#### PUT
+#### PUT /api/v5/settings/update
 
 **Request Body:**
 
@@ -1974,7 +1974,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/settings/update/{id}
 
-#### GET
+#### GET /api/v5/settings/update/{id}
 
 **Parameters:**
 
@@ -1986,7 +1986,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/backup
 
-#### GET
+#### GET /api/v5/system/backup
 
 **Responses:**
 
@@ -1994,7 +1994,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/backup/restore/upload
 
-#### POST
+#### POST /api/v5/system/backup/restore/upload
 
 **Responses:**
 
@@ -2002,7 +2002,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/backup/restore/{id}
 
-#### POST
+#### POST /api/v5/system/backup/restore/{id}
 
 **Parameters:**
 
@@ -2014,7 +2014,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/backup/{id}
 
-#### DELETE
+#### DELETE /api/v5/system/backup/{id}
 
 **Parameters:**
 
@@ -2026,7 +2026,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/restart
 
-#### POST
+#### POST /api/v5/system/restart
 
 **Responses:**
 
@@ -2034,7 +2034,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/routes
 
-#### GET
+#### GET /api/v5/system/routes
 
 **Responses:**
 
@@ -2042,7 +2042,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/routes/duplicate
 
-#### GET
+#### GET /api/v5/system/routes/duplicate
 
 **Responses:**
 
@@ -2050,7 +2050,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/shutdown
 
-#### POST
+#### POST /api/v5/system/shutdown
 
 **Responses:**
 
@@ -2058,7 +2058,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/status
 
-#### GET
+#### GET /api/v5/system/status
 
 **Responses:**
 
@@ -2066,7 +2066,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/task
 
-#### GET
+#### GET /api/v5/system/task
 
 **Responses:**
 
@@ -2074,7 +2074,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/system/task/{id}
 
-#### GET
+#### GET /api/v5/system/task/{id}
 
 **Parameters:**
 
@@ -2086,13 +2086,13 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/tag
 
-#### GET
+#### GET /api/v5/tag
 
 **Responses:**
 
 - `200`: OK
 
-#### POST
+#### POST /api/v5/tag
 
 **Request Body:**
 
@@ -2114,7 +2114,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/tag/detail
 
-#### GET
+#### GET /api/v5/tag/detail
 
 **Responses:**
 
@@ -2122,7 +2122,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/tag/detail/{id}
 
-#### GET
+#### GET /api/v5/tag/detail/{id}
 
 **Parameters:**
 
@@ -2134,7 +2134,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/tag/{id}
 
-#### PUT
+#### PUT /api/v5/tag/{id}
 
 **Parameters:**
 
@@ -2158,7 +2158,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### DELETE
+#### DELETE /api/v5/tag/{id}
 
 **Parameters:**
 
@@ -2168,7 +2168,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /api/v5/tag/{id}
 
 **Parameters:**
 
@@ -2180,7 +2180,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/update
 
-#### GET
+#### GET /api/v5/update
 
 **Responses:**
 
@@ -2188,7 +2188,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/wanted/cutoff
 
-#### GET
+#### GET /api/v5/wanted/cutoff
 
 **Parameters:**
 
@@ -2205,7 +2205,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/wanted/cutoff/{id}
 
-#### GET
+#### GET /api/v5/wanted/cutoff/{id}
 
 **Parameters:**
 
@@ -2217,7 +2217,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/wanted/missing
 
-#### GET
+#### GET /api/v5/wanted/missing
 
 **Parameters:**
 
@@ -2234,7 +2234,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /api/v5/wanted/missing/{id}
 
-#### GET
+#### GET /api/v5/wanted/missing/{id}
 
 **Parameters:**
 
@@ -2246,7 +2246,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /content/{path}
 
-#### GET
+#### GET /content/{path}
 
 **Parameters:**
 
@@ -2258,7 +2258,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /feed/v5/calendar/sonarr.ics
 
-#### GET
+#### GET /feed/v5/calendar/sonarr.ics
 
 **Parameters:**
 
@@ -2276,7 +2276,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /login
 
-#### POST
+#### POST /login
 
 **Parameters:**
 
@@ -2301,7 +2301,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 - `200`: OK
 
-#### GET
+#### GET /login
 
 **Responses:**
 
@@ -2309,7 +2309,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /logout
 
-#### GET
+#### GET /logout
 
 **Responses:**
 
@@ -2317,7 +2317,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /ping
 
-#### GET
+#### GET /ping
 
 **Responses:**
 
@@ -2325,7 +2325,7 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 
 ### /{path}
 
-#### GET
+#### GET /{path}
 
 **Parameters:**
 
@@ -2535,4 +2535,3 @@ Sonarr API docs - The v5 API docs apply to Sonarr v5 only.
 - `required` (boolean): N/A
 - `fields` (array): N/A
 - `presets` (array): N/A
-

@@ -12,15 +12,17 @@ Sonarr provides a comprehensive REST API for programmatic access to its function
 ## Authentication
 
 Most API endpoints require an API key for authentication. You can find your API key in:
+
 - **Settings > General > API Key**
 
 Include the API key in all requests:
+
 - **Header method:** `X-Api-Key: {api-key}`
 - **Query parameter method:** `?apikey={api-key}`
 
 ## Base URL
 
-```
+```bash
 http://localhost:8989/api/v3
 ```
 
@@ -29,6 +31,7 @@ Replace `localhost` with your Sonarr host and `8989` with your configured port.
 ## Common Endpoints
 
 ### Series Management
+
 - `GET /series` - List all series
 - `GET /series/{id}` - Get series details
 - `POST /series` - Add a new series
@@ -36,19 +39,23 @@ Replace `localhost` with your Sonarr host and `8989` with your configured port.
 - `DELETE /series/{id}` - Delete series
 
 ### Episodes
+
 - `GET /episode` - List episodes
 - `GET /episode/{id}` - Get episode details
 - `GET /episode/monitor` - Monitor status
 
 ### Release Search
+
 - `GET /release` - Search for releases
 - `GET /release/{id}` - Get release details
 
 ### Queue
+
 - `GET /queue` - Get download queue
 - `DELETE /queue/{id}` - Remove from queue
 
 ### System
+
 - `GET /system/status` - System status
 - `GET /health` - Health check
 - `GET /system/logs` - Application logs
@@ -74,5 +81,6 @@ curl -X GET "http://localhost:8989/api/v3/series" \
 ## Documentation
 
 For complete endpoint documentation, visit:
+
 - [Sonarr API Docs](https://sonarr.tv/docs/api)
 - [Wiki Documentation](https://wiki.servarr.com/Sonarr)
