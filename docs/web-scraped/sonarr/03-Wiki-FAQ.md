@@ -415,8 +415,7 @@ Some examples of other shows that commonly have issues, most of which may be
 resolved by TheXEM mappings are: Arrested Development, Kitchen Nightmares
 (US), Mythbusters, Pawn Stars.
 
-## ¶ Why can't Sonarr import episode files for series X? / Why can't Sonarr
-find releases for series X
+## ¶ Why can't Sonarr import episode files for series X? / Why can't Sonarr find releases for series X
 
 There can be multiple reasons why Sonarr is not able to find or import
 episodes for a particular series, and there are two methods for "correcting"
@@ -562,8 +561,7 @@ Depending on your OS, there are multiple possible ways.
 * When a torrent that is still seeding is imported, it is copied or hard linked (if enabled and _possible_) so that the torrent client can continue seeding. In an ideal setup, the torrent download folder and the library folder will be on the same file system and _look like it_ (Docker and network shares make this easy to get wrong), which makes hard links possible and minimizes wasted space.
 * In addition, you can configure your seed time/ratio goals in Sonarr or your download client, setup your download client to _pause_ or _stop_ when they're met and enable Remove under Completed and Failed Download Handler. That way, torrents that finish seeding will be removed from the download client by Sonarr.
 
-## ¶ Help, my Mac says Sonarr cannot be opened because the developer cannot be
-verified
+## ¶ Help, my Mac says Sonarr cannot be opened because the developer cannot be verified
 
 * This is simple, please see this link for more information [in the Mac help documentation](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
 [![Developer Cannot be verified](/assets/general/faq_1_mac.png)]
@@ -605,8 +603,7 @@ verified
   * If you're using an SMB mount ensure `nobrl` is enabled for your mount.
 * For Windows: In short: the user *Arr is running as (if service) or under (if tray app) cannot access the file path on the remote server. This can be for various reasons, but the most common is *Arr is running as a service, which causes the issues described below.
 
-### ¶ Sonarr runs under the LocalService account by default which doesn't have
-access to protected remote file shares
+### ¶ Sonarr runs under the LocalService account by default which doesn't have access to protected remote file shares
 
 * Run Sonarr's service as another user that has access to that share
 * Open the Administrative Tools > Services window on your Windows server.
@@ -656,8 +653,7 @@ episode you were expecting to be grabbed.
   3. **If there is at least one valid manual search result from step 2** , then an automatic download should have happened. If it didn't, the most likely reason is a temporary communication problem preventing an RSS Sync from your indexer. It is recommended to have several indexers set up for best results.
   4. **If there is no manual result from a show, but you can find it when you browse your indexer's website** \- This can be caused by a number of reasons, for example the release is not properly tagged on your indexer causing it to not be returned to sonarr in an automatic search. This [troubleshooting entry](/sonarr/troubleshooting#searches-indexers-and-trackers) provides some tips on how to determine the cause. Having several indexers active can help solve this by providing more sources to the same content.
 
-## ¶ Found matching series via grab history, but release was matched to series
-by ID. Automatic import is not possible
+## ¶ Found matching series via grab history, but release was matched to series by ID. Automatic import is not possible
 
 * See [this troubleshooting entry](/sonarr/troubleshooting#found-matching-series-via-grab-history-but-series-was-matched-by-series-id-automatic-import-is-not-possible)
 
@@ -730,4 +726,3 @@ by ID. Automatic import is not possible
 * Some torrent clients do not have this ability. See [this page](/sonarr/settings#torrent-client-remove-download-compatibility) for details for your client.
 
 * Setting extremely low seed times or ratios will not work, and is also poor torrent etiquette. You should **always** seed to at least a 1.0x ratio, or a couple of hours, for public trackers and whatever the requirements are for private trackers (plus a little buffer, because the way your download client calculates time and ratio is slightly different than your private tracker, and you don't want a hit and run for being a few minutes short of your requirement). Seeding for less than 1.0x ratio will mean that we will not provide you support in discord.
-
