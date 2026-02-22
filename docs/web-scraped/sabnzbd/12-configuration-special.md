@@ -2,83 +2,83 @@
 
 Toggle navigation [![SABnzbd](/images/logo-full.svg)](/)
 
-  * [Home](/)
-  * [Downloads](/downloads)
-  * Documentation 
-    * [Wiki](/wiki/)
-    *     * [FAQ](/wiki/faq)
-    *     * [Quick Setup](/wiki/introduction/quick-setup)
-    * [Configuration](/wiki/configuration/4.5/configure)
-    * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-    * [Extensions](/wiki/extensions-for-sabnzbd)
-    * [API reference](/wiki/configuration/4.5/api)
-  * [Forum](https://forums.sabnzbd.org/)
-  * [Live Chat](/live-chat.html)
-  * [Donate](/donate)
-  * [GitHub](https://github.com/sabnzbd/sabnzbd)
+* [Home](/)
+* [Downloads](/downloads)
+* Documentation
+  * [Wiki](/wiki/)
+  *     * [FAQ](/wiki/faq)
+  *     * [Quick Setup](/wiki/introduction/quick-setup)
+  * [Configuration](/wiki/configuration/4.5/configure)
+  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+  * [Extensions](/wiki/extensions-for-sabnzbd)
+  * [API reference](/wiki/configuration/4.5/api)
+* [Forum](https://forums.sabnzbd.org/)
+* [Live Chat](/live-chat.html)
+* [Donate](/donate)
+* [GitHub](https://github.com/sabnzbd/sabnzbd)
 
 ![SABnzbd](/images/logo-full.svg)
 
-#  Wiki menu  Wiki 
+## Wiki menu  Wiki
 
 [User Manual](/wiki/) [FAQ](/wiki/faq) [Contact](/wiki/contact)
 
-Introduction 
+Introduction
 
-  * [Quick Setup](/wiki/introduction/quick-setup)
-  * [Using SABnzbd](/wiki/introduction/usage)
-  * [NZB Sources](/wiki/introduction/nzb-sources)
-  * [How To's](/wiki/introduction/howto)
-  * [Known issues](/wiki/introduction/known-issues)
+* [Quick Setup](/wiki/introduction/quick-setup)
+* [Using SABnzbd](/wiki/introduction/usage)
+* [NZB Sources](/wiki/introduction/nzb-sources)
+* [How To's](/wiki/introduction/howto)
+* [Known issues](/wiki/introduction/known-issues)
 
-Installation 
+Installation
 
-  * [Windows](/wiki/installation/install-windows)
-  * [macOS](/wiki/installation/install-macos)
-  * [Unix](/wiki/installation/install-unix)
-  * [NAS](/wiki/installation/install-nas)
-  * [From source](/wiki/installation/install-off-modules)
+* [Windows](/wiki/installation/install-windows)
+* [macOS](/wiki/installation/install-macos)
+* [Unix](/wiki/installation/install-unix)
+* [NAS](/wiki/installation/install-nas)
+* [From source](/wiki/installation/install-off-modules)
 
-Configuration 
+Configuration
 
-  * [Configure](/wiki/configuration/4.5/configure)
-  * [General](/wiki/configuration/4.5/general)
-  * [Folders](/wiki/configuration/4.5/folders)
-  * [Servers](/wiki/configuration/4.5/servers)
-  * [Categories](/wiki/configuration/4.5/categories)
-  * [Switches](/wiki/configuration/4.5/switches)
-  * [Sorting](/wiki/configuration/4.5/sorting)
-  * [Notifications](/wiki/configuration/4.5/notifications)
-  * [Scheduling](/wiki/configuration/4.5/scheduling)
-  * [RSS](/wiki/configuration/4.5/rss)
-  * [Special Settings](/wiki/configuration/4.5/special)
-  * [API Reference](/wiki/configuration/4.5/api)
+* [Configure](/wiki/configuration/4.5/configure)
+* [General](/wiki/configuration/4.5/general)
+* [Folders](/wiki/configuration/4.5/folders)
+* [Servers](/wiki/configuration/4.5/servers)
+* [Categories](/wiki/configuration/4.5/categories)
+* [Switches](/wiki/configuration/4.5/switches)
+* [Sorting](/wiki/configuration/4.5/sorting)
+* [Notifications](/wiki/configuration/4.5/notifications)
+* [Scheduling](/wiki/configuration/4.5/scheduling)
+* [RSS](/wiki/configuration/4.5/rss)
+* [Special Settings](/wiki/configuration/4.5/special)
+* [API Reference](/wiki/configuration/4.5/api)
 
-Scripts 
+Scripts
 
-  * [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
-  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-  * [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
+* [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
+* [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+* [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
 
-Advanced Topics 
+Advanced Topics
 
-  * [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
-  * [HTTPS for the Web UI](/wiki/advanced/https)
-  * [Command line options](/wiki/advanced/command-line-parameters)
-  * [Folder setup](/wiki/advanced/directory-setup)
-  * [Unix permissions](/wiki/advanced/unix-permissions)
-  * [RAR with password](/wiki/advanced/password-protected-rars)
-  * [IPv6](/wiki/advanced/ipv6)
-  * [SSL/TLS security](/wiki/advanced/certificate-errors)
-  * [SSL Ciphers](/wiki/advanced/ssl-ciphers)
-  * [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
-  * [Android](/wiki/advanced/android)
+* [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
+* [HTTPS for the Web UI](/wiki/advanced/https)
+* [Command line options](/wiki/advanced/command-line-parameters)
+* [Folder setup](/wiki/advanced/directory-setup)
+* [Unix permissions](/wiki/advanced/unix-permissions)
+* [RAR with password](/wiki/advanced/password-protected-rars)
+* [IPv6](/wiki/advanced/ipv6)
+* [SSL/TLS security](/wiki/advanced/certificate-errors)
+* [SSL Ciphers](/wiki/advanced/ssl-ciphers)
+* [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
+* [Android](/wiki/advanced/android)
 
 [Extensions for SABnzbd](/wiki/extensions-for-sabnzbd)
 
 [Special Newshosting offer for SABnzbd users: 70% Off + 3 FREE MONTHS!](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wt)
 
-##  [ Incorrect or missing information? ](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Special+settings&body=%23%23+URL%3A+%2Fwiki%2Fconfiguration%2F4.5%2Fspecial.html%0A%0AImprovement:%0A) Special settings 
+## [Incorrect or missing information?](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Special+settings&body=%23%23+URL%3A+%2Fwiki%2Fconfiguration%2F4.5%2Fspecial.html%0A%0AImprovement:%0A) Special settings
 
 ## Switches
 
@@ -90,14 +90,14 @@ Field name | Default | Meaning
 `ipv6_servers` |  | Allow connections to IPv6 addresses if they are available for your news server.  
 `ipv6_staging` |  |  Enable IPv6 features that are non yet mainstream:  
 Add IPv6 hostnames during address selection.  
-Internet Bandwidth is measured separately for IPv4 and IPv6.   
+Internet Bandwidth is measured separately for IPv4 and IPv6.  
 `fast_fail` |  | When starting a download, the first article of each file is downloaded. If `Abort jobs that cannot be completed` is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below `req_completion_rate`.  
 `overwrite_files` |  | When unpacking, this will overwrite existing files instead of creating an alternative name.  
 `enable_par_cleanup` |  | Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded.  
 `process_unpacked_par2` |  | During post-processing, if there are any `.par2` files unpacked, they will be analysed and any renames will be performed. Only performed if the job is set to `+Delete`.  
 `queue_complete_pers` |  | Check this if you want end-of-queue actions to be persistent (remembered) after restarts of SABnzbd.  
 `api_warnings` |  |  When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot remove the cause of the warnings, you can choose to disable the warning.  
-If disabled, for blocked requests no error message (such as `Access denied`) is returned to the client.   
+If disabled, for blocked requests no error message (such as `Access denied`) is returned to the client.  
 `helpful_warnings` |  | Option to disable helpful warnings about issues on your system such as the usage of FAT filesystems, too long password-files, required `unrar` versions, etc.  
 `ampm` |  | Display ETA in AM/PM notation, only applicable to some locations in older skins.  
 `enable_unrar`, `enable_unzip`, `enable_7zip`, `enable_filejoin`, `enable_tsjoin` |  | Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.  
@@ -110,7 +110,7 @@ If disabled, for blocked requests no error message (such as `Access denied`) is 
 `empty_postproc` |  | Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1.  
 `new_nzb_on_failure` |  | Some indexers provide an alternative NZB through a HTTP-header (`X-DNZB-Failure`) when the download is added as an URL. If the first download fails, try and fetch the alternative NZB.  
 `html_login` |  | HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.  
-`disable_archive` |  | Enable to always skip the Archive when jobs are deleted.   
+`disable_archive` |  | Enable to always skip the Archive when jobs are deleted.  
 Does not delete jobs that are already in the Archive or jobs moved to the Archive using the History Retention option.  
 `wait_for_dfolder` |  | Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.  
 `enable_broadcast` |  | Make announcements on the local network using Simple Service Discovery Protocol (SSDP) and Apple's [Bonjour](/wiki/extra/bonjour-support) protocol, allowing other systems to auto-discover SABnzbd.  
@@ -133,23 +133,23 @@ Field name | Default | Meaning
 `size_limit` | `0` | Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G.  
 `nomedia_marker` |  | Just before unpacking of files into the final folder, SABnzbd will put a special marker file (e.g. ".nomedia") in the folder. Afterwards it will be deleted. This prevents some media player software from trying to index the folder while still incomplete. You can disable the feature by clearing the field, or you can set an alternative name. Check your media software's manual.  
 `max_url_retries` | `10` | How many times failed NZB fetches will be retried. Each retry increases the waiting interval (60, 120, 180, etc seconds). Only applies to errors that might be resolved when trying again later, like a server being temporarily unresponsive.  
-`req_completion_rate` | `100.2` |  Minimum percentage to allow pre-check to continue downloading.   
+`req_completion_rate` | `100.2` |  Minimum percentage to allow pre-check to continue downloading.  
 A perfect download (with the usual 10% par2 files) would have 110%.  
 100% means that the rar files and the par2-files combined are the same amount of bytes as only the rar-set, if it was fully complete.  
-Anything less than 100% is by definition not repairable.   
+Anything less than 100% is by definition not repairable.  
 `wait_ext_drive` | `5` | When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed.  
 `max_foldername_length` | `246` | On most filesystems, the size of each path segment in a filename is limited to 255 characters. Set this option to limit each element of the total path to the provided number of characters. Each element will be truncated to the specified number. Note that this should not be raised above the default (such as to the 'full' 255) since space needs to be reserved for modifications by SABnzbd processes such as automated unpacking.  
 `url_base` |  | When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Trailing slash is not allowed and is automatically removed. Leading slash is required and automatically added.  
 SABnzbd will forcefully restart after changing this setting, you will need to reload the page after the restart completes.  
-`receive_threads` | `2` |  Number of threads being used to read and decode data concurrently. Setting it to 1 may reduce CPU consumption and make bandwidth limiting smoother. Increasing it may improve download speed.   
+`receive_threads` | `2` |  Number of threads being used to read and decode data concurrently. Setting it to 1 may reduce CPU consumption and make bandwidth limiting smoother. Increasing it may improve download speed.  
 If you configure a [Maximum line speed](/wiki/configuration/4.5/general) of more than `150MB` it will automatically be set from `2` to `4`.  
-Requires manual restart of SABnzbd to become active.   
-`assembler_max_queue_size` | `12` |  Maximum size of the queue of articles waiting to be written to disk. Increasing it may improve download speed.   
+Requires manual restart of SABnzbd to become active.  
+`assembler_max_queue_size` | `12` |  Maximum size of the queue of articles waiting to be written to disk. Increasing it may improve download speed.  
 If you configure a [Maximum line speed](/wiki/configuration/4.5/general) of more than `150MB` it will automatically be set from `12` to `30`.  
-Requires manual restart of SABnzbd to become active.   
-`switchinterval` | `0.005` |  The number of seconds a thread is allowed to run before switching to another. Setting a lower number may improve disk write speed.   
-Requires manual restart of SABnzbd to become active.   
-`direct_unpack_threads` | `3` | When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks.   
+Requires manual restart of SABnzbd to become active.  
+`switchinterval` | `0.005` |  The number of seconds a thread is allowed to run before switching to another. Setting a lower number may improve disk write speed.  
+Requires manual restart of SABnzbd to become active.  
+`direct_unpack_threads` | `3` | When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks.  
 Note that there can be an additional unpack active if a job is also being post-processed.  
 `selftest_host` | `self-test.sabnzbd.org` | In order to check proper IPv6 connectivity and your external IPv4 address, SABnzbd needs to connect to a known external IPv6 address and a server that returns the external IP address. By default we use our own server for this (we don't send any data). You can choose to use another known IPv6 host, e.g. `http://ipv6.google.com`. However, this will cause the external IPv4 address detection to fail in the status window, this does not affect the functioning of SABnzbd.  
 `ssdp_broadcast_interval` | `15` | Interval between Simple Service Discovery Protocol (SSDP) broadcasts, announcing the presence of SABnzbd to other systems on the local network.  
@@ -168,7 +168,7 @@ Network ranges should be set in their standard notation with a prefix or netmask
 ## Very special option
 
 Below is one option that cannot be set from the Web UI, because it would defeat its security purpose.  
-You can only access it by directly editing the `sabnzbd.ini` file, while SABnzbd is not running. 
+You can only access it by directly editing the `sabnzbd.ini` file, while SABnzbd is not running.
 
 Field name | Default | Meaning  
 ---|---|---  
@@ -176,7 +176,7 @@ Field name | Default | Meaning
   
 * * *
 
-[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)   
+[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)  
 
-SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")   
+SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")  
 Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).  

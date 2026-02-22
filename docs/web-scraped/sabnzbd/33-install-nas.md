@@ -2,109 +2,107 @@
 
 Toggle navigation [![SABnzbd](/images/logo-full.svg)](/)
 
-  * [Home](/)
-  * [Downloads](/downloads)
-  * Documentation 
-    * [Wiki](/wiki/)
+* [Home](/)
+* [Downloads](/downloads)
+  * Documentation
+  * [Wiki](/wiki/)
     *     * [FAQ](/wiki/faq)
     *     * [Quick Setup](/wiki/introduction/quick-setup)
-    * [Configuration](/wiki/configuration/4.5/configure)
-    * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-    * [Extensions](/wiki/extensions-for-sabnzbd)
-    * [API reference](/wiki/configuration/4.5/api)
-  * [Forum](https://forums.sabnzbd.org/)
-  * [Live Chat](/live-chat.html)
-  * [Donate](/donate)
-  * [GitHub](https://github.com/sabnzbd/sabnzbd)
+  * [Configuration](/wiki/configuration/4.5/configure)
+  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+  * [Extensions](/wiki/extensions-for-sabnzbd)
+  * [API reference](/wiki/configuration/4.5/api)
+* [Forum](https://forums.sabnzbd.org/)
+* [Live Chat](/live-chat.html)
+* [Donate](/donate)
+* [GitHub](https://github.com/sabnzbd/sabnzbd)
 
-[ ![Special Newshosting offer for SABnzbd users](/images/specials/nh_corner.png) ](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wc1)
+[![Special Newshosting offer for SABnzbd users](/images/specials/nh_corner.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wc1)
 
 ![SABnzbd](/images/logo-full.svg)
 
-#  Wiki menu  Wiki 
+# Wiki menu Wiki
 
 [User Manual](/wiki/) [FAQ](/wiki/faq) [Contact](/wiki/contact)
 
-Introduction 
+Introduction
 
-  * [Quick Setup](/wiki/introduction/quick-setup)
-  * [Using SABnzbd](/wiki/introduction/usage)
-  * [NZB Sources](/wiki/introduction/nzb-sources)
-  * [How To's](/wiki/introduction/howto)
-  * [Known issues](/wiki/introduction/known-issues)
+* [Quick Setup](/wiki/introduction/quick-setup)
+* [Using SABnzbd](/wiki/introduction/usage)
+* [NZB Sources](/wiki/introduction/nzb-sources)
+* [How To's](/wiki/introduction/howto)
+* [Known issues](/wiki/introduction/known-issues)
 
-Installation 
+Installation
 
-  * [Windows](/wiki/installation/install-windows)
-  * [macOS](/wiki/installation/install-macos)
-  * [Unix](/wiki/installation/install-unix)
-  * [NAS](/wiki/installation/install-nas)
-  * [From source](/wiki/installation/install-off-modules)
+* [Windows](/wiki/installation/install-windows)
+* [macOS](/wiki/installation/install-macos)
+* [Unix](/wiki/installation/install-unix)
+* [NAS](/wiki/installation/install-nas)
+* [From source](/wiki/installation/install-off-modules)
 
-Configuration 
+Configuration
 
-  * [Configure](/wiki/configuration/4.5/configure)
-  * [General](/wiki/configuration/4.5/general)
-  * [Folders](/wiki/configuration/4.5/folders)
-  * [Servers](/wiki/configuration/4.5/servers)
-  * [Categories](/wiki/configuration/4.5/categories)
-  * [Switches](/wiki/configuration/4.5/switches)
-  * [Sorting](/wiki/configuration/4.5/sorting)
-  * [Notifications](/wiki/configuration/4.5/notifications)
-  * [Scheduling](/wiki/configuration/4.5/scheduling)
-  * [RSS](/wiki/configuration/4.5/rss)
-  * [Special Settings](/wiki/configuration/4.5/special)
-  * [API Reference](/wiki/configuration/4.5/api)
+* [Configure](/wiki/configuration/4.5/configure)
+* [General](/wiki/configuration/4.5/general)
+* [Folders](/wiki/configuration/4.5/folders)
+* [Servers](/wiki/configuration/4.5/servers)
+* [Categories](/wiki/configuration/4.5/categories)
+* [Switches](/wiki/configuration/4.5/switches)
+* [Sorting](/wiki/configuration/4.5/sorting)
+* [Notifications](/wiki/configuration/4.5/notifications)
+* [Scheduling](/wiki/configuration/4.5/scheduling)
+* [RSS](/wiki/configuration/4.5/rss)
+* [Special Settings](/wiki/configuration/4.5/special)
+* [API Reference](/wiki/configuration/4.5/api)
 
-Scripts 
+Scripts
 
-  * [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
-  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-  * [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
+* [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
+* [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+* [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
 
-Advanced Topics 
+Advanced Topics
 
-  * [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
-  * [HTTPS for the Web UI](/wiki/advanced/https)
-  * [Command line options](/wiki/advanced/command-line-parameters)
-  * [Folder setup](/wiki/advanced/directory-setup)
-  * [Unix permissions](/wiki/advanced/unix-permissions)
-  * [RAR with password](/wiki/advanced/password-protected-rars)
-  * [IPv6](/wiki/advanced/ipv6)
-  * [SSL/TLS security](/wiki/advanced/certificate-errors)
-  * [SSL Ciphers](/wiki/advanced/ssl-ciphers)
-  * [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
-  * [Android](/wiki/advanced/android)
+* [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
+* [HTTPS for the Web UI](/wiki/advanced/https)
+* [Command line options](/wiki/advanced/command-line-parameters)
+* [Folder setup](/wiki/advanced/directory-setup)
+* [Unix permissions](/wiki/advanced/unix-permissions)
+* [RAR with password](/wiki/advanced/password-protected-rars)
+* [IPv6](/wiki/advanced/ipv6)
+* [SSL/TLS security](/wiki/advanced/certificate-errors)
+* [SSL Ciphers](/wiki/advanced/ssl-ciphers)
+* [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
+* [Android](/wiki/advanced/android)
 
 [Extensions for SABnzbd](/wiki/extensions-for-sabnzbd)
 
 [Special Newshosting offer for SABnzbd users: 70% Off + 3 FREE MONTHS!](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wt)
 
-##  [ Incorrect or missing information? ](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbd+on+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A) Install SABnzbd on a NAS 
-
-Packages maintained by the community.
+## [Incorrect or missing information?](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbd+on+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A) Install SABnzbd on a NAS Packages maintained by the community.
 
 ## Synology
 
-  * [Add SynoCommunity to your Package Center](https://synocommunity.com/#easy-install) and search for `SABnzbd`
-  * [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
+* [Add SynoCommunity to your Package Center](https://synocommunity.com/#easy-install) and search for `SABnzbd`
+* [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
 
 ## QNAP
 
-  * Install with the [sherpa mini package manager](https://git.io/sherpa)
-  * Add the [MyQNAP](https://www.myqnap.org/product/sabnzbdplus-apache83) repository to your App Center (also requires purchase of the Apache83 QPKG from MyQNAP)
-  * [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
+* Install with the [sherpa mini package manager](https://git.io/sherpa)
+* Add the [MyQNAP](https://www.myqnap.org/product/sabnzbdplus-apache83) repository to your App Center (also requires purchase of the Apache83 QPKG from MyQNAP)
+* [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
 
 ## ASUSTOR
 
-  * [SABnzbdplus](https://www.asustor.com/app_central/app_detail?id=98)
+* [SABnzbdplus](https://www.asustor.com/app_central/app_detail?id=98)
   * [SABnzbd](https://www.asustor.com/app_central/app_detail?id=1075) (uses Docker, not supported on all models)
 
 Do you have a NAS instruction we should add? [Let us know](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbdon+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A)
 
 * * *
 
-[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)   
+[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)
 
-SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")   
-Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).  
+SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")
+Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).

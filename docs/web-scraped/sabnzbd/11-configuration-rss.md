@@ -2,94 +2,94 @@
 
 Toggle navigation [![SABnzbd](/images/logo-full.svg)](/)
 
-  * [Home](/)
-  * [Downloads](/downloads)
-  * Documentation 
-    * [Wiki](/wiki/)
-    *     * [FAQ](/wiki/faq)
-    *     * [Quick Setup](/wiki/introduction/quick-setup)
-    * [Configuration](/wiki/configuration/4.5/configure)
-    * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-    * [Extensions](/wiki/extensions-for-sabnzbd)
-    * [API reference](/wiki/configuration/4.5/api)
-  * [Forum](https://forums.sabnzbd.org/)
-  * [Live Chat](/live-chat.html)
-  * [Donate](/donate)
-  * [GitHub](https://github.com/sabnzbd/sabnzbd)
+* [Home](/)
+* [Downloads](/downloads)
+* Documentation
+  * [Wiki](/wiki/)
+  *     * [FAQ](/wiki/faq)
+  *     * [Quick Setup](/wiki/introduction/quick-setup)
+  * [Configuration](/wiki/configuration/4.5/configure)
+  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+  * [Extensions](/wiki/extensions-for-sabnzbd)
+  * [API reference](/wiki/configuration/4.5/api)
+* [Forum](https://forums.sabnzbd.org/)
+* [Live Chat](/live-chat.html)
+* [Donate](/donate)
+* [GitHub](https://github.com/sabnzbd/sabnzbd)
 
 ![SABnzbd](/images/logo-full.svg)
 
-#  Wiki menu  Wiki 
+## Wiki menu  Wiki
 
 [User Manual](/wiki/) [FAQ](/wiki/faq) [Contact](/wiki/contact)
 
-Introduction 
+Introduction
 
-  * [Quick Setup](/wiki/introduction/quick-setup)
-  * [Using SABnzbd](/wiki/introduction/usage)
-  * [NZB Sources](/wiki/introduction/nzb-sources)
-  * [How To's](/wiki/introduction/howto)
-  * [Known issues](/wiki/introduction/known-issues)
+* [Quick Setup](/wiki/introduction/quick-setup)
+* [Using SABnzbd](/wiki/introduction/usage)
+* [NZB Sources](/wiki/introduction/nzb-sources)
+* [How To's](/wiki/introduction/howto)
+* [Known issues](/wiki/introduction/known-issues)
 
-Installation 
+Installation
 
-  * [Windows](/wiki/installation/install-windows)
-  * [macOS](/wiki/installation/install-macos)
-  * [Unix](/wiki/installation/install-unix)
-  * [NAS](/wiki/installation/install-nas)
-  * [From source](/wiki/installation/install-off-modules)
+* [Windows](/wiki/installation/install-windows)
+* [macOS](/wiki/installation/install-macos)
+* [Unix](/wiki/installation/install-unix)
+* [NAS](/wiki/installation/install-nas)
+* [From source](/wiki/installation/install-off-modules)
 
-Configuration 
+Configuration
 
-  * [Configure](/wiki/configuration/4.5/configure)
-  * [General](/wiki/configuration/4.5/general)
-  * [Folders](/wiki/configuration/4.5/folders)
-  * [Servers](/wiki/configuration/4.5/servers)
-  * [Categories](/wiki/configuration/4.5/categories)
-  * [Switches](/wiki/configuration/4.5/switches)
-  * [Sorting](/wiki/configuration/4.5/sorting)
-  * [Notifications](/wiki/configuration/4.5/notifications)
-  * [Scheduling](/wiki/configuration/4.5/scheduling)
-  * [RSS](/wiki/configuration/4.5/rss)
-  * [Special Settings](/wiki/configuration/4.5/special)
-  * [API Reference](/wiki/configuration/4.5/api)
+* [Configure](/wiki/configuration/4.5/configure)
+* [General](/wiki/configuration/4.5/general)
+* [Folders](/wiki/configuration/4.5/folders)
+* [Servers](/wiki/configuration/4.5/servers)
+* [Categories](/wiki/configuration/4.5/categories)
+* [Switches](/wiki/configuration/4.5/switches)
+* [Sorting](/wiki/configuration/4.5/sorting)
+* [Notifications](/wiki/configuration/4.5/notifications)
+* [Scheduling](/wiki/configuration/4.5/scheduling)
+* [RSS](/wiki/configuration/4.5/rss)
+* [Special Settings](/wiki/configuration/4.5/special)
+* [API Reference](/wiki/configuration/4.5/api)
 
-Scripts 
+Scripts
 
-  * [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
-  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-  * [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
+* [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
+* [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
+* [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
 
-Advanced Topics 
+Advanced Topics
 
-  * [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
-  * [HTTPS for the Web UI](/wiki/advanced/https)
-  * [Command line options](/wiki/advanced/command-line-parameters)
-  * [Folder setup](/wiki/advanced/directory-setup)
-  * [Unix permissions](/wiki/advanced/unix-permissions)
-  * [RAR with password](/wiki/advanced/password-protected-rars)
-  * [IPv6](/wiki/advanced/ipv6)
-  * [SSL/TLS security](/wiki/advanced/certificate-errors)
-  * [SSL Ciphers](/wiki/advanced/ssl-ciphers)
-  * [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
-  * [Android](/wiki/advanced/android)
+* [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
+* [HTTPS for the Web UI](/wiki/advanced/https)
+* [Command line options](/wiki/advanced/command-line-parameters)
+* [Folder setup](/wiki/advanced/directory-setup)
+* [Unix permissions](/wiki/advanced/unix-permissions)
+* [RAR with password](/wiki/advanced/password-protected-rars)
+* [IPv6](/wiki/advanced/ipv6)
+* [SSL/TLS security](/wiki/advanced/certificate-errors)
+* [SSL Ciphers](/wiki/advanced/ssl-ciphers)
+* [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
+* [Android](/wiki/advanced/android)
 
 [Extensions for SABnzbd](/wiki/extensions-for-sabnzbd)
 
 [Special Newshosting offer for SABnzbd users: 70% Off + 3 FREE MONTHS!](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wt)
 
-##  [ Incorrect or missing information? ](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+RSS&body=%23%23+URL%3A+%2Fwiki%2Fconfiguration%2F4.5%2Frss.html%0A%0AImprovement:%0A) RSS 
+## [Incorrect or missing information?](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+RSS&body=%23%23+URL%3A+%2Fwiki%2Fconfiguration%2F4.5%2Frss.html%0A%0AImprovement:%0A) RSS
 
 SABnzbd can read RSS-feeds provided by indexers or public RSS websites. These sites offer the latest downloads or return results based on a query. For a list of supported RSS sites, [see here.](/wiki/introduction/nzb-sources)
 
-Each feed is analyzed using filters. A filter looks for a text-pattern in the title of entries and will reject or accept a job based on that pattern. A filter "matches" a title if the filter text is found inside that title. You can add `*` to match arbitrary parts of the title or `?` for one arbitrary character at that place. The filters are analyzed in order and the first one matched will be selected. 
+Each feed is analyzed using filters. A filter looks for a text-pattern in the title of entries and will reject or accept a job based on that pattern. A filter "matches" a title if the filter text is found inside that title. You can add `*` to match arbitrary parts of the title or `?` for one arbitrary character at that place. The filters are analyzed in order and the first one matched will be selected.
 
 * * *
 
 ## An example
 
-Suppose you subscribe to a feed and the output of titles in this feed is: 
-    
+Suppose you subscribe to a feed and the output of titles in this feed is:
+  
     My first baby steps hdtv xvid Part 1
     You and me and the dog Part 1
     You and me and the dog Part 2
@@ -97,31 +97,31 @@ Suppose you subscribe to a feed and the output of titles in this feed is:
     My first baby steps xvid Part 1
     My first baby steps hdtv xvid Part 2
     The making of My first baby steps xvid hdtv
-    
+  
 Now, suppose you want to get all `My ... first steps` episodes, but only when marked `hdtv` and you're not interested in `Making of`:
-    
+  
     Reject || making of
     Accept || first*steps*hdtv
-    
+  
 The `Reject` filter should be placed first, otherwise the `Accept` filter will also pick the `Making of`.
 
 It's also possible to setup a `Required` filter. This means that the following filters are only applied when a title matches the `Required` filter.  
 
-For example: if you are only interested in `hdtv` format, you would create filters like this: 
-    
+For example: if you are only interested in `hdtv` format, you would create filters like this:
+  
     Reject || making of
     Requires || hdtv
     Accept || first*steps
     Accept || second*steps
-    
+  
 * * *
 
 ## Categories
 
 For each feed you can set the category or the [job options](/wiki/extra/job-options) for all jobs in the feed in the top row, or for each `Accept` filter specifically.  
-If all category settings are left as `Default` and the indexer category matches one of your categories (by category name or by [custom `Indexer tag`](/wiki/configuration/4.5/categories)), it will be automatically assigned to that category.   
+If all category settings are left as `Default` and the indexer category matches one of your categories (by category name or by [custom `Indexer tag`](/wiki/configuration/4.5/categories)), it will be automatically assigned to that category.  
 
-The assigned or automatically matched category is shown in the Category column. 
+The assigned or automatically matched category is shown in the Category column.
 
 * * *
 
@@ -131,21 +131,21 @@ Filter name | Meaning
 ---|---  
 `Accept` | Accept job when the title matches the expression.  
 If not matched, go to next filter.  
-`Requires` | Require job title to contain this expression.   
+`Requires` | Require job title to contain this expression.  
 If matched, go to next filter. If not matched, reject job.  
 `Reject` | Reject job when the title matches the expression.  
 If not matched, go to next filter.  
-`RequiresCat` | Require job to have this category (**after** mapping the indexer category to your own categories).   
+`RequiresCat` | Require job to have this category (**after** mapping the indexer category to your own categories).  
 If matched, go to next filter. If not matched, reject job.  
-`At Least` | The size of the job should be at least this. You can use `K/M/G` notation, where `100M` means at least 100Mbyte.   
+`At Least` | The size of the job should be at least this. You can use `K/M/G` notation, where `100M` means at least 100Mbyte.  
 If size correct, go to next filter. If size not correct, reject job.  
-`At Most` | The size of the job should be at most this. You can use `K/M/G` notation, where `200M` means at most 200Mbyte.   
+`At Most` | The size of the job should be at most this. You can use `K/M/G` notation, where `200M` means at most 200Mbyte.  
 If size correct, go to next filter. If size not correct, reject job.  
-`From SxxEyy` | Only this season/episode and newer will be accepted.   
+`From SxxEyy` | Only this season/episode and newer will be accepted.  
 If matched, go to next filter. If not matched, reject job.  
-`From Show SxxEyy` |  Accept this and newer episodes of this specific show.   
+`From Show SxxEyy` |  Accept this and newer episodes of this specific show.  
 Accept if matched. If not matched, go to next filter.  
-Directly accepts job, this permits multiple shows in a single feed.   
+Directly accepts job, this permits multiple shows in a single feed.  
   
 WARNING The `,` (comma) and `#` characters are **not** allowed.
 
@@ -167,29 +167,29 @@ Apply Filters | New or altered filters are not directly applied to existing resu
 
 ## Regular expressions
 
-If you prefix a filter with `re:` it will be interpreted as a Python regular expression (case-insensitive). 
+If you prefix a filter with `re:` it will be interpreted as a Python regular expression (case-insensitive).
 
-Here's a [tutorial on regular expressions](https://regexone.com/). For all the details see [the Python manual](http://docs.python.org/dev/howto/regex.html). 
+Here's a [tutorial on regular expressions](https://regexone.com/). For all the details see [the Python manual](http://docs.python.org/dev/howto/regex.html).
 
-Simple example: `re: this|that` will match all jobs containing `this` or `that` in the title. 
+Simple example: `re: this|that` will match all jobs containing `this` or `that` in the title.
 
 * * *
 
 ## Automatic processing
 
-If you check the checkbox next to the name of the feed, it will be automatically processed. The time between scans can be set with `RSS checking rate`. This can be overridden by using the Scheduler. 
+If you check the checkbox next to the name of the feed, it will be automatically processed. The time between scans can be set with `RSS checking rate`. This can be overridden by using the Scheduler.
 
 * * *
 
 ## First batch
 
-To prevent the download of a (potentially) large backlog, the first batch of NZBs will **not** automatically download. These lines are marked with an asterisk `*`. If you want these matched feed items in this first batch to download, click the `Force Download` button. 
+To prevent the download of a (potentially) large backlog, the first batch of NZBs will **not** automatically download. These lines are marked with an asterisk `*`. If you want these matched feed items in this first batch to download, click the `Force Download` button.
 
-Then, new feed items in subsequent RSS reads will download automatically (if the feed is enabled). 
+Then, new feed items in subsequent RSS reads will download automatically (if the feed is enabled).
 
 * * *
 
-[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)   
+[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)  
 
-SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")   
+SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")  
 Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).  

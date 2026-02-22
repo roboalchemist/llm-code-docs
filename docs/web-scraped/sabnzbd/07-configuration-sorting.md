@@ -1,94 +1,12 @@
-# Source: https://sabnzbd.org/wiki/configuration/4.5/sorting
+# SABnzbd Configuration - Sorting
 
-Toggle navigation [![SABnzbd](/images/logo-full.svg)](/)
+## External sorting tools
 
-  * [Home](/)
-  * [Downloads](/downloads)
-  * Documentation 
-    * [Wiki](/wiki/)
-    *     * [FAQ](/wiki/faq)
-    *     * [Quick Setup](/wiki/introduction/quick-setup)
-    * [Configuration](/wiki/configuration/4.5/configure)
-    * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-    * [Extensions](/wiki/extensions-for-sabnzbd)
-    * [API reference](/wiki/configuration/4.5/api)
-  * [Forum](https://forums.sabnzbd.org/)
-  * [Live Chat](/live-chat.html)
-  * [Donate](/donate)
-  * [GitHub](https://github.com/sabnzbd/sabnzbd)
-
-![SABnzbd](/images/logo-full.svg)
-
-#  Wiki menu  Wiki 
-
-[User Manual](/wiki/) [FAQ](/wiki/faq) [Contact](/wiki/contact)
-
-Introduction 
-
-  * [Quick Setup](/wiki/introduction/quick-setup)
-  * [Using SABnzbd](/wiki/introduction/usage)
-  * [NZB Sources](/wiki/introduction/nzb-sources)
-  * [How To's](/wiki/introduction/howto)
-  * [Known issues](/wiki/introduction/known-issues)
-
-Installation 
-
-  * [Windows](/wiki/installation/install-windows)
-  * [macOS](/wiki/installation/install-macos)
-  * [Unix](/wiki/installation/install-unix)
-  * [NAS](/wiki/installation/install-nas)
-  * [From source](/wiki/installation/install-off-modules)
-
-Configuration 
-
-  * [Configure](/wiki/configuration/4.5/configure)
-  * [General](/wiki/configuration/4.5/general)
-  * [Folders](/wiki/configuration/4.5/folders)
-  * [Servers](/wiki/configuration/4.5/servers)
-  * [Categories](/wiki/configuration/4.5/categories)
-  * [Switches](/wiki/configuration/4.5/switches)
-  * [Sorting](/wiki/configuration/4.5/sorting)
-  * [Notifications](/wiki/configuration/4.5/notifications)
-  * [Scheduling](/wiki/configuration/4.5/scheduling)
-  * [RSS](/wiki/configuration/4.5/rss)
-  * [Special Settings](/wiki/configuration/4.5/special)
-  * [API Reference](/wiki/configuration/4.5/api)
-
-Scripts 
-
-  * [Pre-queue scripts](/wiki/configuration/4.5/scripts/pre-queue-scripts)
-  * [Post-processing scripts](/wiki/configuration/4.5/scripts/post-processing-scripts)
-  * [Notification scripts](/wiki/configuration/4.5/scripts/notification-scripts)
-
-Advanced Topics 
-
-  * [High-Speed Tweaks](/wiki/advanced/highspeed-downloading)
-  * [HTTPS for the Web UI](/wiki/advanced/https)
-  * [Command line options](/wiki/advanced/command-line-parameters)
-  * [Folder setup](/wiki/advanced/directory-setup)
-  * [Unix permissions](/wiki/advanced/unix-permissions)
-  * [RAR with password](/wiki/advanced/password-protected-rars)
-  * [IPv6](/wiki/advanced/ipv6)
-  * [SSL/TLS security](/wiki/advanced/certificate-errors)
-  * [SSL Ciphers](/wiki/advanced/ssl-ciphers)
-  * [Windows Service](/wiki/advanced/sabnzbd-as-a-windows-service)
-  * [Android](/wiki/advanced/android)
-
-[Extensions for SABnzbd](/wiki/extensions-for-sabnzbd)
-
-[Special Newshosting offer for SABnzbd users: 70% Off + 3 FREE MONTHS!](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=wt)
-
-##  [ Incorrect or missing information? ](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Sorting&body=%23%23+URL%3A+%2Fwiki%2Fconfiguration%2F4.5%2Fsorting.html%0A%0AImprovement:%0A) Sorting 
-
-# External sorting tools
-
-NOTE While SABnzbd supports a number of ways to rename files, external tools (like Sonarr, Radarr, etc.) allow for much more extensive automated download management. These tools can automatically search, add and handle renaming in almost every possible way!
+NOTE: While SABnzbd supports a number of ways to rename files, external tools (like Sonarr, Radarr, etc.) allow for much more extensive automated download management. These tools can automatically search, add and handle renaming in almost every possible way!
 
 Overview of available [Automation Extensions for SABnzbd](/wiki/extensions-for-sabnzbd#automation).
 
-* * *
-
-# Sorting
+## Sorting
 
 Sorting replaces any pattern keys in the sort string (such as _%sn_ for the show or movie name) with real values, before creating the directory structure and renaming files. The sort string as well as the affected categories and job types can be set for every sorter. Sorters are tried in order of appearance, and can be reordered by dragging and dropping in the web interface. The first active sorter that meets both selection criteria (affected category and job type) is applied.
 
@@ -100,58 +18,60 @@ NOTE If Sorting is active for a specific job, the "Deobfuscate final filenames" 
 
 ## Basic settings
 
-**Enabled** | Enable or disable a configured sorter.  
----|---  
-**Name** | Set the name of the sorter.  
-**Sort String** | The sorting expression with pattern keys, constructing a path of your choice. If the sort string ends in a pattern that indicates a file name (_.%ext_ or _%fn_), its last part will be used for renaming files; otherwise, the constructed path will be created as a directory and the downloaded files moved there without renaming. See the presets and the sort string examples section below for examples.  
-**Affected Job Types**  
-Advanced | The job type(s) this sorter should apply to. Use _Ctrl_ or _Shift_ to select multiple options.  
-**Affected Categories** | One or more categories this sorter should apply to. Use _Ctrl_ or _Shift_ to select multiple options.  
-**Minimum Filesize**  
-Advanced | The minimum file size that at least one file in a job must meet for the sorter to kick in.  
-**Multi-part Label**  
-Advanced | Label to apply to sequences of files (such as _CD1, CD2, ..._). Rarely used nowadays; previously defaulted to _CD%1_ for movie sorting, where pattern key _%1_ is the sequence number.  
-  
+| Setting | Description |
+|---------|-------------|
+| **Enabled** | Enable or disable a configured sorter |
+**Name** | Set the name of the sorter.
+**Sort String** | The sorting expression with pattern keys, constructing a path of your choice. If the sort string ends in a pattern that indicates a file name (_.%ext_ or _%fn_), its last part will be used for renaming files; otherwise, the constructed path will be created as a directory and the downloaded files moved there without renaming. See the presets and the sort string examples section below for examples.
+**Affected Job Types**
+Advanced | The job type(s) this sorter should apply to. Use _Ctrl_ or _Shift_ to select multiple options.
+**Affected Categories** | One or more categories this sorter should apply to. Use _Ctrl_ or _Shift_ to select multiple options.
+**Minimum Filesize**
+Advanced | The minimum file size that at least one file in a job must meet for the sorter to kick in.
+**Multi-part Label**
+Advanced | Label to apply to sequences of files (such as _CD1, CD2, ..._). Rarely used nowadays; previously defaulted to _CD%1_ for movie sorting, where pattern key _%1_ is the sequence number.
+
 * * *
 
 ## Pattern Keys
 
-Meaning | Pattern | Result  
----|---|---  
-Show or Movie Name | %sn | Show or Movie Name (case-adjusted)  
-| %s.n | Show.or.Movie.Name (case-adjusted)  
-| %s_n | Show_or_Movie_Name (case-adjusted)  
-Show or Movie Name | %sN | Show or Movie Name  
-| %s.N | Show.or.Movie.Name  
-| %s_N | Show_or_Movie_Name  
-| %title | Show or Movie Name  
-| %.title | Show.or.Movie.Name  
-| %_title | Show.or.Movie_Name  
-Resolution | %r | 1080p  
-Year | %y | 2021  
-Decade | %decade | 20  
-| %0decade | 2020  
-Season Number | %s | 1  
-| %0s | 01  
-Episode Number | %e | 5  
-| %0e | 05  
-Episode Name | %en | Episode Name  
-| %e.n | Episode.Name  
-| %e_n | Episode_Name  
-File Extension | %ext | mkv  
-Original File Name | %fn | file name  
-Original Job Name | %dn | folder name  
-Lower Case | {TEXT} | text (in case of folders, apply to each part separately: _{%sn}/{%dn.%ext}_)  
-  
+Meaning | Pattern | Result
+---|---|---
+Show or Movie Name | %sn | Show or Movie Name (case-adjusted)
+| %s.n | Show.or.Movie.Name (case-adjusted)
+| %s_n | Show_or_Movie_Name (case-adjusted)
+Show or Movie Name | %sN | Show or Movie Name
+| %s.N | Show.or.Movie.Name
+| %s_N | Show_or_Movie_Name
+| %title | Show or Movie Name
+| %.title | Show.or.Movie.Name
+| %_title | Show.or.Movie_Name
+Resolution | %r | 1080p
+Year | %y | 2021
+Decade | %decade | 20
+| %0decade | 2020
+Season Number | %s | 1
+| %0s | 01
+Episode Number | %e | 5
+| %0e | 05
+Episode Name | %en | Episode Name
+| %e.n | Episode.Name
+| %e_n | Episode_Name
+File Extension | %ext | mkv
+Original File Name | %fn | file name
+Original Job Name | %dn | folder name
+Lower Case | {TEXT} | text (in case of folders, apply to each part separately: _{%sn}/{%dn.%ext}_)
+
 Behind the scenes, the GuessIt module does much of the sorting-related guess work. In addition to the commonly-used features above that get their own pattern keys, the full suite of GuessIt properties is exposed. The available properties depend on the installed GuessIt version and are listed in the web interface under the pattern key.
 
-**GuessIt Property**  
-Advanced | %GI<property> | GuessIt Property  
----|---|---  
-| %G.I<property> | GuessIt.Property  
-| %G_I<property> | GuessIt_Property  
-For example: | %GI<audio_codec> | DTS  
-  
+| Pattern | Description |
+|---------|-------------|
+| **GuessIt Property** | Pattern for GuessIt properties |
+| %GI<property> | GuessIt Property |
+| %G.I<property> | GuessIt.Property
+| %G_I<property> | GuessIt_Property
+For example: | %GI<audio_codec> | DTS
+
 * * *
 
 ## Job names
@@ -160,28 +80,28 @@ For example: | %GI<audio_codec> | DTS
 
 Common, well recognized formats for season and episode numbers include **1x01** (Series**x** Episode) or **S01E01** (**S** series**E** episode).
 
-For example:   
-`Show Name - 1x01 - Episode Name.nzb`   
-`Show.Name.S01E01.Episode.Name.nzb`   
+For example:
+`Show Name - 1x01 - Episode Name.nzb`
+`Show.Name.S01E01.Episode.Name.nzb`
 `Show Name.1x01.nzb`
 
 ### Season packs
 
-The sorting includes support for season packs. Episode numbers are detected from the names of the downloaded files; all other information is based on the job name or metadata. To qualify for season pack handling, a job must be detected as type _tv_ , its name must indicate a single _season_ and either _multiple episodes_ , or _no episodes_ at all. 
+The sorting includes support for season packs. Episode numbers are detected from the names of the downloaded files; all other information is based on the job name or metadata. To qualify for season pack handling, a job must be detected as type _tv_ , its name must indicate a single _season_ and either _multiple episodes_ , or _no episodes_ at all.
 
-Examples of job names that would be recognised as season packs include:   
-`Show Name S02E04-05-06 Resolution-Group.nzb`   
-`Show.Name.S04.Resolution.Source.Codec-Group.nzb`   
-`Show Name S03E02E05E66.nzb`   
+Examples of job names that would be recognised as season packs include:
+`Show Name S02E04-05-06 Resolution-Group.nzb`
+`Show.Name.S04.Resolution.Source.Codec-Group.nzb`
+`Show Name S03E02E05E66.nzb`
 `Show Name 4x01-02.nzb`
 
-Season pack handling is automatically activated for qualifying jobs, unless it has been disabled globally via the [Special](/wiki/configuration/4.5/special) `enable_season_sorting` setting. 
+Season pack handling is automatically activated for qualifying jobs, unless it has been disabled globally via the [Special](/wiki/configuration/4.5/special) `enable_season_sorting` setting.
 
 ### Date naming
 
 Most standard date formats are recognized, including `MM-DD-YYYY`, `MM.DD.YYYY` and `YYYY-MM-DD/YYYY.MM.DD`.
 
-For example:   
+For example:
 `Show.Name.25.12.2022.HDTV-RLS.nzb`
 
 * * *
@@ -190,67 +110,67 @@ For example:
 
 ### General examples
 
-**Job Name as File Name:**  
-`%dn.%ext`  
-Example: Job Name.mkv 
+**Job Name as File Name:**
+`%dn.%ext`
+Example: Job Name.mkv
 
 ### Series examples
 
-**1x01 Season Folder:**  
-`%sn/Season %s/%sn - %sx%0e - %en.%ext`  
-Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.mkv 
+**1x01 Season Folder:**
+`%sn/Season %s/%sn - %sx%0e - %en.%ext`
+Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.mkv
 
-**S01E01 Season Folder:**  
-`%sn/Season %s/%sn - S%0sE%0e - %en.%ext`  
-Example: Show Name/Season 1/Show Name - S01E05 - Episode Name.mkv 
+**S01E01 Season Folder:**
+`%sn/Season %s/%sn - S%0sE%0e - %en.%ext`
+Example: Show Name/Season 1/Show Name - S01E05 - Episode Name.mkv
 
-**1x01 Individual Episode Folder:**  
-`%sn/%sx%0e - %en/%sn - %sx%0e - %en.%ext`  
-Example: Show Name/1x05 - Episode Name/Show Name - 1x05 - Episode Name.mkv 
+**1x01 Individual Episode Folder:**
+`%sn/%sx%0e - %en/%sn - %sx%0e - %en.%ext`
+Example: Show Name/1x05 - Episode Name/Show Name - 1x05 - Episode Name.mkv
 
-**S01E01 Individual Episode Folder:**  
-`%sn/S%0sE%0e - %en/%sn - S%0sE%0e - %en.%ext`  
-Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.mkv 
+**S01E01 Individual Episode Folder:**
+`%sn/S%0sE%0e - %en/%sn - S%0sE%0e - %en.%ext`
+Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.mkv
 
-**Show name and season directories without file renaming:**  
-`%sn/Season %s`  
-Example: Show Name/Season 1/old file name.avi 
+**Show name and season directories without file renaming:**
+`%sn/Season %s`
+Example: Show Name/Season 1/old file name.avi
 
 ### Movie examples
 
-**In folders:**  
-`%title (%y)/%title (%y).%ext` with multipart label `CD%1`  
-Example: Movie Name (2000)/Movie Name (2000) CD1.mkv 
+**In folders:**
+`%title (%y)/%title (%y).%ext` with multipart label `CD%1`
+Example: Movie Name (2000)/Movie Name (2000) CD1.mkv
 
-**No folders:**  
-`%title (%y).%ext`  
-Example: Movie Name (2000).mkv 
+**No folders:**
+`%title (%y).%ext`
+Example: Movie Name (2000).mkv
 
 ### Date examples
 
-**Decades 1:**  
-`%0decade/%title (%y).%ext`  
-Example: 2000/Movie Name (2000).mkv 
+**Decades 1:**
+`%0decade/%title (%y).%ext`
+Example: 2000/Movie Name (2000).mkv
 
-**Decades 2:**  
-`%decade/%title (%y).%ext`  
-Example: 00/Movie Name (2000).mkv 
+**Decades 2:**
+`%decade/%title (%y).%ext`
+Example: 00/Movie Name (2000).mkv
 
-**Show Name folder:**  
-`%t/%t - %y-%0m-%0d - %desc.%ext`  
-Example: Show Name/Show Name - 2009-01-02 - Episode Name.mkv 
+**Show Name folder:**
+`%t/%t - %y-%0m-%0d - %desc.%ext`
+Example: Show Name/Show Name - 2009-01-02 - Episode Name.mkv
 
-**Year-Month folders:**  
-`%y-%0m/%t - %y-%0m-%0d - %desc.%ext`  
-Example: 2009-01/Show Name - 2009-01-02 - Episode Name.mkv 
+**Year-Month folders:**
+`%y-%0m/%t - %y-%0m-%0d - %desc.%ext`
+Example: 2009-01/Show Name - 2009-01-02 - Episode Name.mkv
 
-**Daily folders:**  
-`%y-%0m-%0d/%t - %y-%0m-%0d - %desc.%ext`  
-Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.mkv 
+**Daily folders:**
+`%y-%0m-%0d/%t - %y-%0m-%0d - %desc.%ext`
+Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.mkv
 
 * * *
 
-[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)   
+[![Special Newshosting offer for SABnzbd users](/images/specials/nh_horizontal.png)](https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd&chan=mb2)
 
-SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")   
-Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).  
+SABnzbd is (C) [the SABnzbd-Team](/wiki/contact) [![SABnzbd on Twitter](/images/twitter-logo.svg)](https://twitter.com/sabnzbd "SABnzbd on Twitter")
+Unless stated otherwise, text content of this page is licensed under [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/).
