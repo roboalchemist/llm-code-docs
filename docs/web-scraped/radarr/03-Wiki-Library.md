@@ -110,13 +110,14 @@ It is required that movie folders and files have the year in their name to be im
 
 Your download client downloads to a download folder and Radarr imports it to your media folder (final destination) that your media server uses.
 
-**Your download folder and media folder can’t be the same location**
+## Your download folder and media folder can’t be the same location
 
 # [¶](#collections) Collections
 
 The wiki is developed and maintained by the community.
 
 This section has not had any contributions made to it to reflect and describe the collections page in Radarr.
+
 # [¶](#discover) Discover
 
 Discover shows recommended Movies

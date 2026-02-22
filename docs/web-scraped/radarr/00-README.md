@@ -10,13 +10,16 @@ Radarr is a movie collection manager and automation tool (PVR for movies).
 ## Contents
 
 ### Getting Started
+
 - **00-README.md** - Official project README
 - **01-CONTRIBUTING.md** - Contributing guidelines
 
 ### API Documentation
+
 - **02-API-V3.md** - Radarr API v3 reference
 
 ### Wiki Pages
+
 - **03-Wiki-Installation.md** - Installation guide
 - **03-Wiki-Settings.md** - Settings and configuration
 - **03-Wiki-Workflow.md** - Workflow and initial setup
@@ -24,11 +27,13 @@ Radarr is a movie collection manager and automation tool (PVR for movies).
 - **03-Wiki-Wanted.md** - Wanted/missing movies
 
 ### Configuration
+
 - **03-Wiki-Profiles.md** - Quality and release profiles
 - **03-Wiki-Quality.md** - Quality settings
 - **03-Wiki-CustomFormats.md** - Custom format configuration
 
 ### Advanced
+
 - **03-Wiki-AppData.md** - AppData folder reference
 - **03-Wiki-PostgreSQL.md** - PostgreSQL database setup
 
@@ -64,6 +69,7 @@ Requires API key authentication via `X-Api-Key` header or `apikey` query paramet
 ## Related Projects
 
 The Servarr project includes several related services:
+
 - **Sonarr** - TV series automation (PVR for TV)
 - **Lidarr** - Music library management
 - **Prowlarr** - Indexer management

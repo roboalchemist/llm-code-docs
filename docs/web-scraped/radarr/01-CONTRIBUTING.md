@@ -3,11 +3,11 @@
 
 We're always looking for people to help make Radarr even better, there are a number of ways to contribute.
 
-# Documentation
+## Documentation
 
 Setup guides, [FAQ](/radarr/faq), the more information we have on the [wiki](https://wiki.servarr.com/radarr) the better.
 
-# Development
+## Development
 
 Radarr is written in C# (backend) and JS (frontend). The backend is built on the .NET6 (and _soon_ .NET8) framework, while the frontend utilizes Reactjs.
 
@@ -134,7 +134,7 @@ While not always fun, we encourage writing unit tests for any backend code chang
 
 If you have any questions about any of this, please let us know.
 
-# Translation
+## Translation
 
 Radarr uses a self hosted open access [Weblate](https://translate.servarr.com) instance to manage its json translation files. These files are stored in the repo at `src/NzbDrone.Core/Localization`
 
