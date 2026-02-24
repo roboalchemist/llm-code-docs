@@ -39,7 +39,6 @@ class MySpider(Spider):
 
 Each request automatically gets the next proxy in the rotation. The proxy used is stored in `response.meta["proxy"]` so you can track which proxy fetched which page.
 
-
 When you use it with browser sessions, you will need some adjustments, like below:
 
 ```python
@@ -115,7 +114,6 @@ def weighted_strategy(proxies, current_index):
 rotator = ProxyRotator(proxies, strategy=weighted_strategy)
 ```
 
-
 ## Per-Request Proxy Override
 
 You can override the rotator for individual requests by passing `proxy=` as a keyword argument:
@@ -184,7 +182,6 @@ Override `retry_blocked_request()` to modify the request before retrying. The `m
 from scrapling.spiders import Spider, SessionManager, Request, Response
 from scrapling.fetchers import FetcherSession, AsyncStealthySession
 
-
 class MySpider(Spider):
     name = "my_spider"
     start_urls = ["https://example.com"]
@@ -205,13 +202,11 @@ class MySpider(Spider):
 
 What happened above is that I left the blocking detection logic unchanged and had the spider mainly use requests until it got blocked, then switch to the stealthy browser.
 
-
 Putting it all together:
 
 ```python
 from scrapling.spiders import Spider, SessionManager, Request, Response
 from scrapling.fetchers import FetcherSession, AsyncStealthySession, ProxyRotator
-
 
 cheap_proxies = ProxyRotator([ "http://proxy1:8080", "http://proxy2:8080"])
 
@@ -222,7 +217,6 @@ expensive_proxies = ProxyRotator([
     {"server": "http://mobile_proxy1:8080", "username": "user", "password": "pass"},
     {"server": "http://mobile_proxy2:8080", "username": "user", "password": "pass"},
 ])
-
 
 class MySpider(Spider):
     name = "my_spider"

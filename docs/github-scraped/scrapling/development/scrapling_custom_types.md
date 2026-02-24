@@ -2,7 +2,10 @@
 
 > You can take advantage of the custom-made types for Scrapling and use them outside the library if you want. It's better than copying their code, after all :)
 
+## Custom Type Imports
+
 ### All current types can be imported alone, like below
+
 ```python
 >>> from scrapling.core.custom_types import TextHandler, AttributesHandler
 

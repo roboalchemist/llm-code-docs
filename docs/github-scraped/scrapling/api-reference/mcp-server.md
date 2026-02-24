@@ -26,14 +26,22 @@ server.serve(http=False, host="0.0.0.0", port=8000)
 
 The standardized response structure that's returned by all MCP server tools:
 
-## ::: scrapling.core.ai.ResponseModel
+## ResponseModel API
+
+```python
+::: scrapling.core.ai.ResponseModel
     handler: python
     :docstring:
+```
 
 ## MCP Server Class
 
 The main MCP server class that provides all web scraping tools:
 
-## ::: scrapling.core.ai.ScraplingMCPServer
+## ScraplingMCPServer API
+
+```python
+::: scrapling.core.ai.ScraplingMCPServer
     handler: python
     :docstring:
+```

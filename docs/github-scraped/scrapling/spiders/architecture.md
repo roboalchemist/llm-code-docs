@@ -25,27 +25,24 @@ Here's what happens step by step when you run a spider without many details:
 6. The cycle repeats from step 2 until the scheduler is empty and no tasks are active, or the spider is paused.
 7. If `crawldir` is set while starting the spider, the **Crawler Engine** periodically saves a checkpoint (pending requests + seen URLs set) to disk. On graceful shutdown (Ctrl+C), a final checkpoint is saved. The next time the spider runs with the same `crawldir`, it resumes from where it left off — skipping `start_requests()` and restoring the scheduler state.
 
-
 ## Components
 
 ### Spider
 
 The central class you interact with. You subclass `Spider`, define your `start_urls` and `parse()` method, and optionally configure sessions and override lifecycle hooks.
 
-```python
-from scrapling.spiders import Spider, Response, Request
+    from scrapling.spiders import Spider, Response, Request
 
-class MySpider(Spider):
-    name = "my_spider"
-    start_urls = ["https://example.com"]
+    class MySpider(Spider):
+        name = "my_spider"
+        start_urls = ["https://example.com"]
 
-    async def parse(self, response: Response):
-        for link in response.css("a::attr(href)").getall():
-            yield response.follow(link, callback=self.parse_page)
+        async def parse(self, response: Response):
+            for link in response.css("a::attr(href)").getall():
+                yield response.follow(link, callback=self.parse_page)
 
-    async def parse_page(self, response: Response):
-        yield {"title": response.css("h1::text").get("")}
-```
+        async def parse_page(self, response: Response):
+            yield {"title": response.css("h1::text").get("")}
 
 ### Crawler Engine
 
@@ -72,7 +69,6 @@ An optional system that, if enabled, saves the crawler's state (pending requests
 ### Output
 
 Scraped items are collected in an `ItemList` (a list subclass with `to_json()` and `to_jsonl()` export methods). Crawl statistics are tracked in a `CrawlStats` dataclass which contains a lot of useful info.
-
 
 ## Comparison with Scrapy
 

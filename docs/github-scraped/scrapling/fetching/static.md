@@ -9,6 +9,7 @@ The `Fetcher` class provides rapid and lightweight HTTP requests using the high-
     3. You've completed or read the [Main classes](../parsing/main_classes.md) page to know what properties/methods the [Response](../fetching/choosing.md#response-object) class is inheriting from the [Selector](../parsing/main_classes.md#selector) class.
 
 ## Basic Usage
+
 You have one primary way to import this Fetcher, which is the same for all fetchers.
 
 ```python
@@ -17,6 +18,7 @@ You have one primary way to import this Fetcher, which is the same for all fetch
 Check out how to configure the parsing options [here](choosing.md#parser-configuration-in-all-fetchers)
 
 ### Shared arguments
+
 All methods for making requests here share some arguments, so let's discuss them first.
 
 - **url**: The targeted URL
@@ -47,12 +49,15 @@ All methods for making requests here share some arguments, so let's discuss them
 Other than this, for further customization, you can pass any arguments that `curl_cffi` supports for any method if that method doesn't already support them.
 
 ### HTTP Methods
+
 There are additional arguments for each method, depending on the method, such as `params` for GET requests and `data`/`json` for POST/PUT/DELETE requests.
 
 Examples are the best way to explain this:
 
 > Hence: `OPTIONS` and `HEAD` methods are not supported.
+
 #### GET
+
 ```python
 >>> from scrapling.fetchers import Fetcher
 >>> # Basic GET
@@ -71,7 +76,7 @@ Examples are the best way to explain this:
 >>> # HTTP/3 support
 >>> page = Fetcher.get('https://example.com', http3=True)
 ```
-And for asynchronous requests, it's a small adjustment 
+And for asynchronous requests, it's a small adjustment
 ```python
 >>> from scrapling.fetchers import AsyncFetcher
 >>> # Basic GET
@@ -107,7 +112,9 @@ Needless to say, the `page` object in all cases is [Response](choosing.md#respon
   'repo': {'id': '<redacted>',
 ...
 ```
+
 #### POST
+
 ```python
 >>> from scrapling.fetchers import Fetcher
 >>> # Basic POST
@@ -131,7 +138,9 @@ And for asynchronous requests, it's a small adjustment
 >>> # JSON data
 >>> page = await AsyncFetcher.post('https://example.com/api', json={'key': 'value'})
 ```
+
 #### PUT
+
 ```python
 >>> from scrapling.fetchers import Fetcher
 >>> # Basic PUT
@@ -153,6 +162,7 @@ And for asynchronous requests, it's a small adjustment
 ```
 
 #### DELETE
+
 ```python
 >>> from scrapling.fetchers import Fetcher
 >>> page = Fetcher.delete('https://example.com/resource/123')
@@ -177,6 +187,7 @@ The `FetcherSession` class can accept nearly all the arguments that the methods 
 from scrapling.fetchers import FetcherSession
 
 # Create a session with default configuration
+
 with FetcherSession(
     impersonate='chrome',
     http3=True,
@@ -239,6 +250,7 @@ import asyncio
 from scrapling.fetchers import FetcherSession
 
 # Async session usage
+
 async with FetcherSession(impersonate="safari") as session:
     urls = ['https://example.com/page1', 'https://example.com/page2']
 
@@ -259,6 +271,7 @@ The `Fetcher` class uses `FetcherSession` to create a temporary session with eac
 - **Centralized configuration**: Single place to manage request settings
 
 ## Examples
+
 Some well-rounded examples to aid newcomers to Web Scraping
 
 ### Basic HTTP Request
@@ -267,9 +280,11 @@ Some well-rounded examples to aid newcomers to Web Scraping
 from scrapling.fetchers import Fetcher
 
 # Make a request
+
 page = Fetcher.get('https://example.com')
 
 # Check the status
+
 if page.status == 200:
     # Extract title
     title = page.css('title::text').get()
@@ -287,10 +302,10 @@ from scrapling.fetchers import Fetcher
 
 def scrape_products():
     page = Fetcher.get('https://example.com/products')
-    
+
     # Find all product elements
     products = page.css('.product')
-    
+
     results = []
     for product in products:
         results.append({
@@ -299,7 +314,7 @@ def scrape_products():
             'description': product.css('.description::text').get(),
             'in_stock': product.has_class('in-stock')
         })
-    
+
     return results
 ```
 
@@ -322,26 +337,26 @@ def scrape_all_pages():
     base_url = 'https://example.com/products?page={}'
     page_num = 1
     all_products = []
-    
+
     while True:
         # Get current page
         page = Fetcher.get(base_url.format(page_num))
-        
+
         # Find products
         products = page.css('.product')
         if not products:
             break
-            
+
         # Process products
         for product in products:
             all_products.append({
                 'name': product.css('.name::text').get(),
                 'price': product.css('.price::text').get()
             })
-            
+
         # Next page
         page_num += 1
-        
+
     return all_products
 ```
 
@@ -351,6 +366,7 @@ def scrape_all_pages():
 from scrapling.fetchers import Fetcher
 
 # Submit login form
+
 response = Fetcher.post(
     'https://example.com/login',
     data={
@@ -360,6 +376,7 @@ response = Fetcher.post(
 )
 
 # Check login success
+
 if response.status == 200:
     # Extract user info
     user_name = response.css('.user-name::text').get()
@@ -373,21 +390,21 @@ from scrapling.fetchers import Fetcher
 
 def extract_table():
     page = Fetcher.get('https://example.com/data')
-    
+
     # Find table
     table = page.css('table')[0]
-    
+
     # Extract headers
     headers = [
         th.text for th in table.css('thead th')
     ]
-    
+
     # Extract rows
     rows = []
     for row in table.css('tbody tr'):
         cells = [td.text for td in row.css('td')]
         rows.append(dict(zip(headers, cells)))
-        
+
     return rows
 ```
 
@@ -398,10 +415,10 @@ from scrapling.fetchers import Fetcher
 
 def extract_menu():
     page = Fetcher.get('https://example.com')
-    
+
     # Find navigation
     nav = page.css('nav')[0]
-    
+
     menu = {}
     for item in nav.css('li'):
         links = item.css('a')
@@ -411,7 +428,7 @@ def extract_menu():
                 'url': link['href'],
                 'has_submenu': bool(item.css('.submenu'))
             }
-            
+
     return menu
 ```
 

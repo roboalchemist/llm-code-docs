@@ -16,48 +16,82 @@ from scrapling.fetchers import (
 )
 ```
 
-## ::: scrapling.fetchers.Fetcher
+## Fetcher API
+
+```python
+::: scrapling.fetchers.Fetcher
     handler: python
     :docstring:
+```
 
-## ::: scrapling.fetchers.AsyncFetcher
+## AsyncFetcher API
+
+```python
+::: scrapling.fetchers.AsyncFetcher
     handler: python
     :docstring:
+```
 
-## ::: scrapling.fetchers.DynamicFetcher
+## DynamicFetcher API
+
+```python
+::: scrapling.fetchers.DynamicFetcher
     handler: python
     :docstring:
+```
 
-## ::: scrapling.fetchers.StealthyFetcher
+## StealthyFetcher API
+
+```python
+::: scrapling.fetchers.StealthyFetcher
     handler: python
     :docstring:
-
+```
 
 ## Session Classes
 
 ### HTTP Sessions
 
-## ::: scrapling.fetchers.FetcherSession
+## FetcherSession API
+
+```python
+::: scrapling.fetchers.FetcherSession
     handler: python
     :docstring:
+```
 
 ### Stealth Sessions
 
-## ::: scrapling.fetchers.StealthySession
-    handler: python
-    :docstring:
+## StealthySession API
 
-## ::: scrapling.fetchers.AsyncStealthySession
+```python
+::: scrapling.fetchers.StealthySession
     handler: python
     :docstring:
+```
+
+## AsyncStealthySession API
+
+```python
+::: scrapling.fetchers.AsyncStealthySession
+    handler: python
+    :docstring:
+```
 
 ### Dynamic Sessions
 
-## ::: scrapling.fetchers.DynamicSession
+## DynamicSession API
+
+```python
+::: scrapling.fetchers.DynamicSession
     handler: python
     :docstring:
+```
 
-## ::: scrapling.fetchers.AsyncDynamicSession
+## AsyncDynamicSession API
+
+```python
+::: scrapling.fetchers.AsyncDynamicSession
     handler: python
     :docstring:
-
+```

@@ -1,3 +1,4 @@
+# External Browser (Scrapeless)
 
 If you have issues with the browser installation, such as resource management, we recommend you try the Cloud Browser from [Scrapeless](https://www.scrapeless.com/en/product/scraping-browser?utm_source=official&utm_term=scrapling) for free!
 
@@ -27,6 +28,7 @@ with DynamicSession(cdp_url=ws_endpoint, disable_resources=True) as s:
     print(f"Page loaded, content length: {len(page.body)}")
     print(page.json())
 ```
+
 The `DynamicSession` class instance will work as usual, so no further explanation is needed.
 
 However, the Scrapeless Cloud Browser can be configured with proxy options, like the proxy country in the config above, [custom fingerprint](https://docs.scrapeless.com/en/scraping-browser/features/advanced-privacy-anti-detection/custom-fingerprint/?utm_source=official&utm_term=scrapling) configuration, [captcha solving](https://docs.scrapeless.com/en/scraping-browser/features/advanced-privacy-anti-detection/supported-captchas/?utm_source=official&utm_term=scrapling), and more.

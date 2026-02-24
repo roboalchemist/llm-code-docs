@@ -6,7 +6,6 @@ Below is a table that covers the most common operations you'll perform when scra
 
 You will notice that some shortcuts in BeautifulSoup are missing in Scrapling, which is one of the reasons BeautifulSoup is slower than Scrapling. The point is: If the same feature can be used in a short one-liner, there is no need to sacrifice performance to shorten that short line :)
 
-
 | Task                                                            | BeautifulSoup Code                                                                                            | Scrapling Code                                                                    |
 |-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | Parser import                                                   | `from bs4 import BeautifulSoup`                                                                               | `from scrapling.parser import Selector`                                           |
@@ -43,12 +42,11 @@ You will notice that some shortcuts in BeautifulSoup are missing in Scrapling, w
 | Get all descendants of an element                               | `children = list(element.descendants)`                                                                        | `children = element.below_elements`                                               |
 | Filtering a group of elements that satisfies a condition        | `group = soup.find('p', 'story').css.filter('a')`                                                             | `group = page.find_all('p', 'story').filter(lambda p: p.tag == 'a')`              |
 
-
 ¹ **Note:** BS4's `find_previous`/`find_all_previous` searches all preceding elements in document order, while Scrapling's `path` only returns ancestors (the parent chain). These are not exact equivalents, but ancestor search covers the most common use case.
 
 **One key point to remember**: BeautifulSoup offers features for modifying and manipulating the page after it has been parsed. Scrapling focuses more on scraping the page faster for you, and then you can do what you want with the extracted information. So, two different tools can be used in Web Scraping, but one of them specializes in Web Scraping :)
 
-### Putting It All Together
+## Putting It All Together
 
 Here's a simple example of scraping a web page to extract all the links using BeautifulSoup and Scrapling.
 
@@ -82,12 +80,12 @@ for link in links:
 
 As you can see, Scrapling simplifies the process by combining fetching and parsing into a single step, making your code cleaner and more efficient.
 
-!!! abstract "**Additional Notes:**"
+**Additional Notes:**
 
-    - **Different parsers**: BeautifulSoup allows you to set the parser engine to use, and one of them is `lxml`. Scrapling doesn't do that and uses the `lxml` library by default for performance reasons.
-    - **Element Types**: In BeautifulSoup, elements are `Tag` objects; in Scrapling, they are `Selector` objects. However, they provide similar methods and properties for navigation and data extraction.
-    - **Error Handling**: Both libraries return `None` when an element is not found (e.g., `soup.find()` or `page.find()`). In Scrapling, `page.css()` returns an empty `Selectors` list when no elements match, and you can use `page.css('.foo').first` to safely get the first match or `None`. To avoid errors, check for `None` or empty results before accessing properties.
-    - **Text Extraction**: Scrapling provides additional methods for handling text through `TextHandler`, such as `clean()`, which can help remove extra whitespace, consecutive spaces, or unwanted characters. Please check out the documentation for the complete list.
+- **Different parsers**: BeautifulSoup allows you to set the parser engine to use, and one of them is `lxml`. Scrapling doesn't do that and uses the `lxml` library by default for performance reasons.
+- **Element Types**: In BeautifulSoup, elements are `Tag` objects; in Scrapling, they are `Selector` objects. However, they provide similar methods and properties for navigation and data extraction.
+- **Error Handling**: Both libraries return `None` when an element is not found (e.g., `soup.find()` or `page.find()`). In Scrapling, `page.css()` returns an empty `Selectors` list when no elements match, and you can use `page.css('.foo').first` to safely get the first match or `None`. To avoid errors, check for `None` or empty results before accessing properties.
+- **Text Extraction**: Scrapling provides additional methods for handling text through `TextHandler`, such as `clean()`, which can help remove extra whitespace, consecutive spaces, or unwanted characters. Please check out the documentation for the complete list.
 
 The documentation provides more details on Scrapling's features and the complete list of arguments that can be passed to all methods.
 

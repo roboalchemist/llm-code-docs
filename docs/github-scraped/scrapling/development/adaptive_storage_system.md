@@ -10,8 +10,8 @@ So first, to make your storage class work, it must do the big 3:
 2. Use the decorator `functools.lru_cache` on top of the class to follow the Singleton design pattern as other classes.
 3. Implement methods `save` and `retrieve`, as you see from the type hints:
     - The method `save` returns nothing and will get two arguments from the library
-        * The first one is of type `lxml.html.HtmlElement`, which is the element itself. It must be converted to a dictionary using the `element_to_dict` function in the submodule `scrapling.core.utils._StorageTools` to maintain the same format, and then saved to your database as you wish.
-        * The second one is a string, the identifier used for retrieval. The combination result of this identifier and the `url` argument from initialization must be unique for each row, or the `adaptive` data will be messed up.
+        - The first one is of type `lxml.html.HtmlElement`, which is the element itself. It must be converted to a dictionary using the `element_to_dict` function in the submodule `scrapling.core.utils._StorageTools` to maintain the same format, and then saved to your database as you wish.
+        - The second one is a string, the identifier used for retrieval. The combination result of this identifier and the `url` argument from initialization must be unique for each row, or the `adaptive` data will be messed up.
     - The method `retrieve` takes a string, which is the identifier; using it with the `url` passed on initialization, the element's dictionary is retrieved from the database and returned if it exists; otherwise, it returns `None`.
 
 > If the instructions weren't clear enough for you, you can check my implementation using SQLite3 in [storage_adaptors](https://github.com/D4Vinci/Scrapling/blob/main/scrapling/core/storage.py) file
@@ -19,7 +19,6 @@ So first, to make your storage class work, it must do the big 3:
 If your class meets these criteria, the rest is straightforward. If you plan to use the library in a threaded application, ensure your class supports it. The default used class is thread-safe.
 
 Some helper functions are added to the abstract class if you want to use them. It's easier to see it for yourself in the [code](https://github.com/D4Vinci/Scrapling/blob/main/scrapling/core/storage.py); it's heavily commented :)
-
 
 ## Real-World Example: Redis Storage
 
