@@ -30,17 +30,21 @@
 
 - [Terms of Service & Usage Policies](https://vast.ai/terms): Comprehensive terms of service covering acceptable use policies, billing terms, and legal framework for using Vast.ai's GPU cloud infrastructure.
 
-**Available GPU Hardware Catalog**
------------------------------------
+Available GPU Hardware Catalog
+-------------------------------
 
-**NVIDIA RTX 50 Series (Latest Generation)**
+NVIDIA RTX 50 Series (Latest Generation)
+----------------------------------------
+
 - [RTX 5090 GPU Rental](https://vast.ai/pricing/gpu/RTX-5090): NVIDIA's flagship Ada Lovelace GPU with 24GB GDDR6X memory, 16384 CUDA cores, and exceptional AI performance for the most demanding workloads.
 - [RTX 5080 GPU Rental](https://vast.ai/pricing/gpu/RTX-5080): High-performance Ada Lovelace GPU offering excellent price-to-performance ratio for professional AI development and training.
 - [RTX 5070 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-5070-TI): Powerful mid-range GPU ideal for AI experimentation, model fine-tuning, and development workflows.
 - [RTX 5070 GPU Rental](https://vast.ai/pricing/gpu/RTX-5070): Cost-effective Ada Lovelace GPU perfect for learning AI/ML, prototyping, and smaller-scale training projects.
 - [RTX 5060 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-5060-TI): Entry-level Ada Lovelace GPU suitable for AI inference, experimentation, and educational use cases.
 
-**NVIDIA RTX 40 Series (Current Generation)**
+NVIDIA RTX 40 Series (Current Generation)
+-----------------------------------------
+
 - [RTX 4090 GPU Rental](https://vast.ai/pricing/gpu/RTX-4090): Top-tier consumer GPU with 24GB GDDR6X, exceptional for large model training, research, and high-performance AI workloads.
 - [RTX 4090D GPU Rental](https://vast.ai/pricing/gpu/RTX-4090D): China-specific variant of RTX 4090 with modified specifications for compliance with export regulations.
 - [RTX 4080 Super GPU Rental](https://vast.ai/pricing/gpu/RTX-4080S): Enhanced version of RTX 4080 with improved performance and efficiency for professional AI applications.
@@ -52,7 +56,9 @@
 - [RTX 4060 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-4060-TI): Entry-level GPU ideal for AI experimentation, small model training, and educational purposes.
 - [RTX 4060 GPU Rental](https://vast.ai/pricing/gpu/RTX-4060): Budget-friendly GPU perfect for AI inference, learning, and lightweight development tasks.
 
-**NVIDIA RTX 30 Series (Previous Generation)**
+NVIDIA RTX 30 Series (Previous Generation)
+------------------------------------------
+
 - [RTX 3090 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-3090-TI): Enhanced RTX 3090 with 24GB GDDR6X, excellent for large model training and professional AI workloads.
 - [RTX 3090 GPU Rental](https://vast.ai/pricing/gpu/RTX-3090): Popular 24GB GPU widely used for AI training, research, and development with excellent price-to-performance.
 - [RTX 3080 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-3080-TI): High-performance GPU with 12GB memory, ideal for AI training and professional applications.
@@ -65,7 +71,9 @@
 - [RTX 3060 Laptop GPU Rental](https://vast.ai/pricing/gpu/RTX-3060-LAPTOP): Mobile RTX 3060 for portable AI development and testing environments.
 - [RTX 3050 GPU Rental](https://vast.ai/pricing/gpu/RTX-3050): Entry-level GPU ideal for AI learning, inference, and basic development tasks.
 
-**NVIDIA RTX 20 Series**
+NVIDIA RTX 20 Series
+--------------------
+
 - [RTX 2080 Ti GPU Rental](https://vast.ai/pricing/gpu/RTX-2080-TI): Former flagship with 11GB memory, still capable for AI training and development work.
 - [RTX 2080 Super GPU Rental](https://vast.ai/pricing/gpu/RTX-2080S): Enhanced RTX 2080 with improved performance for AI applications.
 - [RTX 2080 GPU Rental](https://vast.ai/pricing/gpu/RTX-2080): Solid GPU for AI experimentation and medium-scale training projects.
@@ -74,7 +82,9 @@
 - [RTX 2060 Super GPU Rental](https://vast.ai/pricing/gpu/RTX-2060S): Entry-level RTX GPU perfect for AI experimentation and education.
 - [RTX 2060 GPU Rental](https://vast.ai/pricing/gpu/RTX-2060): Budget-friendly GPU suitable for AI inference and learning.
 
-**NVIDIA Data Center GPUs (Professional/Enterprise)**
+NVIDIA Data Center GPUs (Professional/Enterprise)
+-------------------------------------------------
+
 - [H200 GPU Rental](https://vast.ai/pricing/gpu/H200): NVIDIA's latest Hopper architecture GPU with HBM3e memory for cutting-edge AI training and inference.
 - [H100 SXM GPU Rental](https://vast.ai/pricing/gpu/H100-SXM): Top-tier data center GPU with 80GB HBM3 memory, ideal for large-scale AI training and research.
 - [H100 PCIe GPU Rental](https://vast.ai/pricing/gpu/H100-PCIE): PCIe variant of H100 with exceptional AI performance for enterprise workloads.
@@ -83,7 +93,9 @@
 - [L40 GPU Rental](https://vast.ai/pricing/gpu/L40): Professional GPU combining AI performance with visualization capabilities.
 - [L4 GPU Rental](https://vast.ai/pricing/gpu/L4): Energy-efficient GPU ideal for AI inference and edge computing applications.
 
-**NVIDIA Tesla Series (Legacy Data Center)**
+NVIDIA Tesla Series (Legacy Data Center)
+----------------------------------------
+
 - [Tesla V100 GPU Rental](https://vast.ai/pricing/gpu/TESLA-V100): Volta architecture GPU with 16GB HBM2, proven for AI training and research.
 - [Tesla P100 GPU Rental](https://vast.ai/pricing/gpu/TESLA-P100): Pascal architecture GPU with 16GB memory, suitable for AI experimentation.
 - [Tesla P40 GPU Rental](https://vast.ai/pricing/gpu/TESLA-P40): High-memory GPU with 24GB GDDR5 for large model training.
@@ -93,7 +105,9 @@
 - [Tesla K80 GPU Rental](https://vast.ai/pricing/gpu/TESLA-K80): Legacy dual-GPU card suitable for learning and experimentation.
 - [Tesla K20C GPU Rental](https://vast.ai/pricing/gpu/TESLA-K20C): Older Kepler architecture GPU for basic AI workloads.
 
-**NVIDIA Professional Workstation GPUs**
+NVIDIA Professional Workstation GPUs
+------------------------------------
+
 - [RTX 6000 Ada GPU Rental](https://vast.ai/pricing/gpu/RTX-6000ADA): Latest professional GPU with 48GB memory for high-end AI and visualization.
 - [RTX 5880 Ada GPU Rental](https://vast.ai/pricing/gpu/RTX-5880ADA): Professional Ada Lovelace GPU for enterprise AI applications.
 - [RTX 5000 Ada GPU Rental](https://vast.ai/pricing/gpu/RTX-5000ADA): Mid-range professional GPU with excellent AI performance.
@@ -105,7 +119,9 @@
 - [RTX A4000 GPU Rental](https://vast.ai/pricing/gpu/RTX-A4000): Compact professional GPU perfect for AI development workstations.
 - [RTX A2000 GPU Rental](https://vast.ai/pricing/gpu/RTX-A2000): Entry-level professional GPU ideal for AI inference and learning.
 
-**NVIDIA Quadro Series (Legacy Professional)**
+NVIDIA Quadro Series (Legacy Professional)
+------------------------------------------
+
 - [Quadro RTX 8000 GPU Rental](https://vast.ai/pricing/gpu/Q-RTX-8000): High-end Quadro with 48GB memory for professional AI and visualization.
 - [Quadro RTX 6000 GPU Rental](https://vast.ai/pricing/gpu/Q-RTX-6000): Professional GPU with 24GB memory for demanding AI applications.
 - [Quadro RTX 5000 GPU Rental](https://vast.ai/pricing/gpu/Q-RTX-5000): Mid-range Quadro ideal for AI development and professional workflows.
@@ -118,7 +134,9 @@
 - [Quadro K2200 GPU Rental](https://vast.ai/pricing/gpu/QUADRO-K2200): Legacy Quadro suitable for basic AI workloads.
 - [Quadro K620 GPU Rental](https://vast.ai/pricing/gpu/QUADRO-K620): Entry-level legacy Quadro for AI learning and experimentation.
 
-**NVIDIA GTX Series (Legacy Gaming)**
+NVIDIA GTX Series (Legacy Gaming)
+---------------------------------
+
 - [GTX Titan X GPU Rental](https://vast.ai/pricing/gpu/GTX-TITAN-X): High-end Maxwell GPU with 12GB memory for AI training.
 - [GTX 1080 Ti GPU Rental](https://vast.ai/pricing/gpu/GTX-1080-TI): Popular Pascal GPU with 11GB memory, still capable for AI work.
 - [GTX 1080 GPU Rental](https://vast.ai/pricing/gpu/GTX-1080): Pascal architecture GPU suitable for AI experimentation.
@@ -126,18 +144,24 @@
 - [GTX 1660 GPU Rental](https://vast.ai/pricing/gpu/GTX-1660): Turing architecture GPU without RT cores, suitable for basic AI tasks.
 - [GTX 750 Ti GPU Rental](https://vast.ai/pricing/gpu/GTX-750-TI): Legacy Maxwell GPU for basic AI inference and learning.
 
-**NVIDIA Titan Series (Enthusiast)**
+NVIDIA Titan Series (Enthusiast)
+--------------------------------
+
 - [Titan RTX GPU Rental](https://vast.ai/pricing/gpu/TITAN-RTX): Turing architecture Titan with 24GB memory for professional AI work.
 - [Titan V CEO GPU Rental](https://vast.ai/pricing/gpu/TITAN-V-CEO): Special edition Volta Titan for high-performance computing.
 - [Titan V GPU Rental](https://vast.ai/pricing/gpu/TITAN-V): Volta architecture Titan with Tensor Cores for AI acceleration.
 - [Titan XP GPU Rental](https://vast.ai/pricing/gpu/TITAN-XP): Pascal architecture Titan with 12GB memory for AI training.
 - [Titan X GPU Rental](https://vast.ai/pricing/gpu/TITAN-X): Maxwell architecture Titan suitable for AI experimentation.
 
-**NVIDIA Mining/Compute Cards**
+NVIDIA Mining/Compute Cards
+---------------------------
+
 - [P106-100 GPU Rental](https://vast.ai/pricing/gpu/P106-100): Pascal mining card repurposed for AI compute applications.
 - [P104-100 GPU Rental](https://vast.ai/pricing/gpu/P104-100): Mining-specific Pascal GPU available for AI workloads.
 
-**AMD GPUs (Alternative Architecture)**
+AMD GPUs (Alternative Architecture)
+-----------------------------------
+
 - [RX 7900 XTX GPU Rental](https://vast.ai/pricing/gpu/RX-7900-XTX): AMD's flagship RDNA 3 GPU with 24GB memory for AI experimentation.
 - [RX 7900 XT GPU Rental](https://vast.ai/pricing/gpu/RX-7900-XT): High-performance RDNA 3 GPU suitable for AI development.
 - [RX 7900 GRE GPU Rental](https://vast.ai/pricing/gpu/RX-7900-GRE): Golden Rabbit Edition variant with enhanced specifications.
@@ -149,7 +173,9 @@
 - [RX 6800 XT GPU Rental](https://vast.ai/pricing/gpu/RX-6800-XT): Mid-range RDNA 2 GPU ideal for AI development.
 - [RX 6800 GPU Rental](https://vast.ai/pricing/gpu/RX-6800): Balanced RDNA 2 GPU suitable for AI learning.
 
-**AMD Professional/Data Center GPUs**
+AMD Professional/Data Center GPUs
+---------------------------------
+
 - [Radeon Pro W7900 GPU Rental](https://vast.ai/pricing/gpu/PRO-W7900): Professional RDNA 3 GPU with 48GB memory for enterprise AI.
 - [Radeon Pro W7800 GPU Rental](https://vast.ai/pricing/gpu/PRO-W7800): Professional GPU with 32GB memory for AI workloads.
 - [Radeon Pro W6800 GPU Rental](https://vast.ai/pricing/gpu/PRO-W6800): RDNA 2 professional GPU suitable for AI development.
@@ -157,7 +183,9 @@
 - [Radeon VII GPU Rental](https://vast.ai/pricing/gpu/RADEON-VII): High-memory consumer GPU with 16GB HBM2.
 - [Radeon Pro VII GPU Rental](https://vast.ai/pricing/gpu/RADEON-PRO-VII): Professional variant with enhanced specifications.
 
-**AMD Instinct Series (HPC/AI)**
+AMD Instinct Series (HPC/AI)
+----------------------------
+
 - [Instinct MI100 GPU Rental](https://vast.ai/pricing/gpu/INSTINCTMI100): CDNA architecture GPU designed specifically for AI and HPC workloads.
 - [Instinct MI50 GPU Rental](https://vast.ai/pricing/gpu/INSTINCTMI50): Vega architecture compute GPU for AI acceleration and research.
 
