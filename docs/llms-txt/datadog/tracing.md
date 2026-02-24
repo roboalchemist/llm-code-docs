@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/tracing.md
-
 # Source: https://docs.datadoghq.com/tracing.md
 
 ---

@@ -1,7 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/security.md
-
-# Source: https://docs.datadoghq.com/datadog_cloudcraft/overlays/security.md
-
 # Source: https://docs.datadoghq.com/security.md
 
 ---
@@ -118,3 +114,4 @@ After you [set up Sensitive Data Scanner](https://docs.datadoghq.com/sensitive_d
 - [Key metrics for measuring your organization's security posture](https://www.datadoghq.com/blog/key-security-metrics/)
 - [Security and SRE: How Datadog's combined approach aims to tackle security and reliability challenges](https://www.datadoghq.com/blog/datadogs-approach-sre-security/)
 - [2025 cloud security roundup: How attackers abused identities, supply chains, and AI](https://www.datadoghq.com/blog/cloud-security-roundup-2025)
+- [Mitigation for Node.js denial-of-service vulnerability affecting Datadog APM](https://www.datadoghq.com/blog/nodejs-vulnerability-apm)

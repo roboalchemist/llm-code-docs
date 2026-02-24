@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/account_management/scim.md
-
 # Source: https://docs.datadoghq.com/api/latest/scim.md
 
 ---

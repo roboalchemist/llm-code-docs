@@ -1,7 +1,3 @@
-# Source: https://docs.datadoghq.com/containers/amazon_ecs/tags.md
-
-# Source: https://docs.datadoghq.com/cloud_cost_management/tags.md
-
 # Source: https://docs.datadoghq.com/api/latest/tags.md
 
 ---
@@ -161,7 +157,7 @@ Error response object.
 
 ```python
 """
-Get Tags returns "OK" response
+Get All Host Tags returns "OK" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -182,7 +178,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```ruby
-# Get Tags returns "OK" response
+# Get All Host Tags returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::TagsAPI.new
@@ -196,7 +192,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```go
-// Get Tags returns "OK" response
+// Get All Host Tags returns "OK" response
 
 package main
 
@@ -234,7 +230,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Get Tags returns "OK" response
+// Get All Host Tags returns "OK" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -267,7 +263,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```rust
-// Get Tags returns "OK" response
+// Get All Host Tags returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_tags::ListHostTagsOptionalParams;
 use datadog_api_client::datadogV1::api_tags::TagsAPI;
@@ -295,7 +291,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Get Tags returns "OK" response
+ * Get All Host Tags returns "OK" response
  */
 
 import { client, v1 } from "@datadog/datadog-api-client";
@@ -467,7 +463,7 @@ Error response object.
 
 ```python
 """
-Get host tags returns "OK" response
+Get Host Tags returns "OK" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -490,7 +486,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```ruby
-# Get host tags returns "OK" response
+# Get Host Tags returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::TagsAPI.new
@@ -504,7 +500,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```go
-// Get host tags returns "OK" response
+// Get Host Tags returns "OK" response
 
 package main
 
@@ -542,7 +538,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Get host tags returns "OK" response
+// Get Host Tags returns "OK" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -575,7 +571,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```rust
-// Get host tags returns "OK" response
+// Get Host Tags returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_tags::GetHostTagsOptionalParams;
 use datadog_api_client::datadogV1::api_tags::TagsAPI;
@@ -606,7 +602,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Get host tags returns "OK" response
+ * Get Host Tags returns "OK" response
  */
 
 import { client, v1 } from "@datadog/datadog-api-client";

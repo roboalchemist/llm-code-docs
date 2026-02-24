@@ -1,9 +1,3 @@
-# Source: https://docs.datadoghq.com/error_tracking/rum.md
-
-# Source: https://docs.datadoghq.com/account_management/billing/rum.md
-
-# Source: https://docs.datadoghq.com/tracing/other_telemetry/rum.md
-
 # Source: https://docs.datadoghq.com/api/latest/rum.md
 
 ---

@@ -11,15 +11,6 @@ breadcrumbs: Docs > Cloudcraft in Datadog
 
 # Cloudcraft in Datadog
 
-{% callout %}
-# Important note for users on the following Datadog sites: app.ddog-gov.com
-
-{% alert level="danger" %}
-This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
-{% /alert %}
-
-{% /callout %}
-
 ## Overview{% #overview %}
 
 Cloudcraft offers a powerful, live read-only visualization tool for cloud architecture, enabling you to explore, analyze, and manage your infrastructure with ease. Not to be confused with the [Standalone Cloudcraft documentation](https://docs.datadoghq.com/cloudcraft), this guide outlines the functionality, setup, and use cases of Cloudcraft *in Datadog*, detailing its benefits for various user personas, and highlighting key features and capabilities.

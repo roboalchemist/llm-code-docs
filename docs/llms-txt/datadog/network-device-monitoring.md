@@ -32,12 +32,12 @@ Get the list of devices.
 
 #### Query Strings
 
-| Name         | Type    | Description                                              |
-| ------------ | ------- | -------------------------------------------------------- |
-| page[size]   | integer | Size for a given page. The maximum allowed value is 100. |
-| page[number] | integer | Specific page number to return.                          |
-| sort         | string  | The field to sort the devices by.                        |
-| filter[tag]  | string  | Filter devices by tag.                                   |
+| Name         | Type    | Description                                                              |
+| ------------ | ------- | ------------------------------------------------------------------------ |
+| page[size]   | integer | Size for a given page. The maximum allowed value is 500. Defaults to 50. |
+| page[number] | integer | Specific page number to return. Defaults to 0.                           |
+| sort         | string  | The field to sort the devices by. Defaults to `name`.                    |
+| filter[tag]  | string  | Filter devices by tag.                                                   |
 
 ### Response
 
@@ -1820,4 +1820,354 @@ apiInstance
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## List tags for an interface{% #list-tags-for-an-interface %}
+
+{% tab title="v2" %}
+
+| Datadog site      | API endpoint                                                                |
+| ----------------- | --------------------------------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/ndm/tags/interfaces/{interface_id}      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/ndm/tags/interfaces/{interface_id}      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id}     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+
+### Overview
+
+Returns the tags associated with the specified interface.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                           | Type   | Description                                         |
+| ------------------------------ | ------ | --------------------------------------------------- |
+| interface_id [*required*] | string | The ID of the interface for which to retrieve tags. |
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+Response for listing interface tags.
+
+| Parent field | Field      | Type     | Description                                                |
+| ------------ | ---------- | -------- | ---------------------------------------------------------- |
+|              | data       | object   | Response data for listing interface tags.                  |
+| data         | attributes | object   | The definition of ListTagsResponseDataAttributes object.   |
+| attributes   | tags       | [string] | The list of tags                                           |
+| data         | id         | string   | The interface ID                                           |
+| data         | type       | string   | The type of the resource. The value should always be tags. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "tags": [
+        "tag:test",
+        "tag:testbis"
+      ]
+    },
+    "id": "example:1.2.3.4:1",
+    "type": "string"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport interface_id="example:1.2.3.4:1"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ndm/tags/interfaces/${interface_id}" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+{% /tab %}
+
+## Update the tags for an interface{% #update-the-tags-for-an-interface %}
+
+{% tab title="v2" %}
+
+| Datadog site      | API endpoint                                                                  |
+| ----------------- | ----------------------------------------------------------------------------- |
+| ap1.datadoghq.com | PATCH https://api.ap1.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| ap2.datadoghq.com | PATCH https://api.ap2.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| app.datadoghq.eu  | PATCH https://api.datadoghq.eu/api/v2/ndm/tags/interfaces/{interface_id}      |
+| app.ddog-gov.com  | PATCH https://api.ddog-gov.com/api/v2/ndm/tags/interfaces/{interface_id}      |
+| app.datadoghq.com | PATCH https://api.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id}     |
+| us3.datadoghq.com | PATCH https://api.us3.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+| us5.datadoghq.com | PATCH https://api.us5.datadoghq.com/api/v2/ndm/tags/interfaces/{interface_id} |
+
+### Overview
+
+Updates the tags associated with the specified interface.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                           | Type   | Description                                       |
+| ------------------------------ | ------ | ------------------------------------------------- |
+| interface_id [*required*] | string | The ID of the interface for which to update tags. |
+
+### Request
+
+#### Body Data (required)
+
+
+
+{% tab title="Model" %}
+
+| Parent field | Field      | Type     | Description                                                |
+| ------------ | ---------- | -------- | ---------------------------------------------------------- |
+|              | data       | object   | Response data for listing interface tags.                  |
+| data         | attributes | object   | The definition of ListTagsResponseDataAttributes object.   |
+| attributes   | tags       | [string] | The list of tags                                           |
+| data         | id         | string   | The interface ID                                           |
+| data         | type       | string   | The type of the resource. The value should always be tags. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "tags": [
+        "tag:test",
+        "tag:testbis"
+      ]
+    },
+    "id": "example:1.2.3.4:1",
+    "type": "tags"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+Response for listing interface tags.
+
+| Parent field | Field      | Type     | Description                                                |
+| ------------ | ---------- | -------- | ---------------------------------------------------------- |
+|              | data       | object   | Response data for listing interface tags.                  |
+| data         | attributes | object   | The definition of ListTagsResponseDataAttributes object.   |
+| attributes   | tags       | [string] | The list of tags                                           |
+| data         | id         | string   | The interface ID                                           |
+| data         | type       | string   | The type of the resource. The value should always be tags. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "tags": [
+        "tag:test",
+        "tag:testbis"
+      ]
+    },
+    "id": "example:1.2.3.4:1",
+    "type": "string"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                          \# Path parametersexport interface_id="example:1.2.3.4:1"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ndm/tags/interfaces/${interface_id}" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "tags": [
+        "tag:test",
+        "tag:testbis"
+      ]
+    },
+    "id": "example:1.2.3.4:1",
+    "type": "tags"
+  }
+}
+EOF
+                        
 {% /tab %}

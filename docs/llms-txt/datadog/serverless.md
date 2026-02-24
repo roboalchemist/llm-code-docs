@@ -1,11 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/serverless.md
-
-# Source: https://docs.datadoghq.com/security/workload_protection/inventory/serverless.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/serverless.md
-
-# Source: https://docs.datadoghq.com/account_management/billing/serverless.md
-
 # Source: https://docs.datadoghq.com/serverless.md
 
 ---

@@ -4092,4 +4092,255 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Patch a deployment event returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.dora_metrics_api import DORAMetricsApi
+from datadog_api_client.v2.model.dora_deployment_patch_remediation import DORADeploymentPatchRemediation
+from datadog_api_client.v2.model.dora_deployment_patch_remediation_type import DORADeploymentPatchRemediationType
+from datadog_api_client.v2.model.dora_deployment_patch_request import DORADeploymentPatchRequest
+from datadog_api_client.v2.model.dora_deployment_patch_request_attributes import DORADeploymentPatchRequestAttributes
+from datadog_api_client.v2.model.dora_deployment_patch_request_data import DORADeploymentPatchRequestData
+from datadog_api_client.v2.model.dora_deployment_patch_request_data_type import DORADeploymentPatchRequestDataType
+
+body = DORADeploymentPatchRequest(
+    data=DORADeploymentPatchRequestData(
+        attributes=DORADeploymentPatchRequestAttributes(
+            change_failure=True,
+            remediation=DORADeploymentPatchRemediation(
+                id="eG42zNIkVjM",
+                type=DORADeploymentPatchRemediationType.ROLLBACK,
+            ),
+        ),
+        id="z_RwVLi7v4Y",
+        type=DORADeploymentPatchRequestDataType.DORA_DEPLOYMENT_PATCH_REQUEST,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = DORAMetricsApi(api_client)
+    api_instance.patch_dora_deployment(deployment_id="deployment_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Patch a deployment event returns "Accepted" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::DORAMetricsAPI.new
+
+body = DatadogAPIClient::V2::DORADeploymentPatchRequest.new({
+  data: DatadogAPIClient::V2::DORADeploymentPatchRequestData.new({
+    attributes: DatadogAPIClient::V2::DORADeploymentPatchRequestAttributes.new({
+      change_failure: true,
+      remediation: DatadogAPIClient::V2::DORADeploymentPatchRemediation.new({
+        id: "eG42zNIkVjM",
+        type: DatadogAPIClient::V2::DORADeploymentPatchRemediationType::ROLLBACK,
+      }),
+    }),
+    id: "z_RwVLi7v4Y",
+    type: DatadogAPIClient::V2::DORADeploymentPatchRequestDataType::DORA_DEPLOYMENT_PATCH_REQUEST,
+  }),
+})
+p api_instance.patch_dora_deployment("deployment_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Patch a deployment event returns "Accepted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.DORADeploymentPatchRequest{
+		Data: datadogV2.DORADeploymentPatchRequestData{
+			Attributes: datadogV2.DORADeploymentPatchRequestAttributes{
+				ChangeFailure: datadog.PtrBool(true),
+				Remediation: &datadogV2.DORADeploymentPatchRemediation{
+					Id:   "eG42zNIkVjM",
+					Type: datadogV2.DORADEPLOYMENTPATCHREMEDIATIONTYPE_ROLLBACK,
+				},
+			},
+			Id:   "z_RwVLi7v4Y",
+			Type: datadogV2.DORADEPLOYMENTPATCHREQUESTDATATYPE_DORA_DEPLOYMENT_PATCH_REQUEST,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewDORAMetricsApi(apiClient)
+	r, err := api.PatchDORADeployment(ctx, "deployment_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.PatchDORADeployment`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Patch a deployment event returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.DoraMetricsApi;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRemediation;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRemediationType;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequest;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestAttributes;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestData;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestDataType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    DoraMetricsApi apiInstance = new DoraMetricsApi(defaultClient);
+
+    DORADeploymentPatchRequest body =
+        new DORADeploymentPatchRequest()
+            .data(
+                new DORADeploymentPatchRequestData()
+                    .attributes(
+                        new DORADeploymentPatchRequestAttributes()
+                            .changeFailure(true)
+                            .remediation(
+                                new DORADeploymentPatchRemediation()
+                                    .id("eG42zNIkVjM")
+                                    .type(DORADeploymentPatchRemediationType.ROLLBACK)))
+                    .id("z_RwVLi7v4Y")
+                    .type(DORADeploymentPatchRequestDataType.DORA_DEPLOYMENT_PATCH_REQUEST));
+
+    try {
+      apiInstance.patchDORADeployment("deployment_id", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DoraMetricsApi#patchDORADeployment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Patch a deployment event returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_dora_metrics::DORAMetricsAPI;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRemediation;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRemediationType;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequest;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestAttributes;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestData;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestDataType;
+
+#[tokio::main]
+async fn main() {
+    let body = DORADeploymentPatchRequest::new(DORADeploymentPatchRequestData::new(
+        DORADeploymentPatchRequestAttributes::new()
+            .change_failure(true)
+            .remediation(DORADeploymentPatchRemediation::new(
+                "eG42zNIkVjM".to_string(),
+                DORADeploymentPatchRemediationType::ROLLBACK,
+            )),
+        "z_RwVLi7v4Y".to_string(),
+        DORADeploymentPatchRequestDataType::DORA_DEPLOYMENT_PATCH_REQUEST,
+    ));
+    let configuration = datadog::Configuration::new();
+    let api = DORAMetricsAPI::with_config(configuration);
+    let resp = api
+        .patch_dora_deployment("deployment_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Patch a deployment event returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.DORAMetricsApi(configuration);
+
+const params: v2.DORAMetricsApiPatchDORADeploymentRequest = {
+  body: {
+    data: {
+      attributes: {
+        changeFailure: true,
+        remediation: {
+          id: "eG42zNIkVjM",
+          type: "rollback",
+        },
+      },
+      id: "z_RwVLi7v4Y",
+      type: "dora_deployment_patch_request",
+    },
+  },
+  deploymentId: "deployment_id",
+};
+
+apiInstance
+  .patchDORADeployment(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}

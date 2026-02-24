@@ -588,6 +588,7 @@ from datadog_api_client.v2.model.project_resource_type import ProjectResourceTyp
 body = ProjectCreateRequest(
     data=ProjectCreate(
         attributes=ProjectCreateAttributes(
+            enabled_custom_case_types=[],
             key="SEC",
             name="Security Investigation",
         ),
@@ -618,6 +619,7 @@ api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 body = DatadogAPIClient::V2::ProjectCreateRequest.new({
   data: DatadogAPIClient::V2::ProjectCreate.new({
     attributes: DatadogAPIClient::V2::ProjectCreateAttributes.new({
+      enabled_custom_case_types: [],
       key: "SEC",
       name: "Security Investigation",
     }),
@@ -652,8 +654,9 @@ func main() {
 	body := datadogV2.ProjectCreateRequest{
 		Data: datadogV2.ProjectCreate{
 			Attributes: datadogV2.ProjectCreateAttributes{
-				Key:  "SEC",
-				Name: "Security Investigation",
+				EnabledCustomCaseTypes: []string{},
+				Key:                    "SEC",
+				Name:                   "Security Investigation",
 			},
 			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
 		},
@@ -737,7 +740,8 @@ use datadog_api_client::datadogV2::model::ProjectResourceType;
 #[tokio::main]
 async fn main() {
     let body = ProjectCreateRequest::new(ProjectCreate::new(
-        ProjectCreateAttributes::new("SEC".to_string(), "Security Investigation".to_string()),
+        ProjectCreateAttributes::new("SEC".to_string(), "Security Investigation".to_string())
+            .enabled_custom_case_types(vec![]),
         ProjectResourceType::PROJECT,
     ));
     let configuration = datadog::Configuration::new();
@@ -771,6 +775,7 @@ const params: v2.CaseManagementApiCreateProjectRequest = {
   body: {
     data: {
       attributes: {
+        enabledCustomCaseTypes: [],
         key: "SEC",
         name: "Security Investigation",
       },
@@ -1055,6 +1060,172 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Get notification rules returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    response = api_instance.get_project_notification_rules(
+        project_id="project_id",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get notification rules returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+p api_instance.get_project_notification_rules("project_id")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Get notification rules returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	resp, r, err := api.GetProjectNotificationRules(ctx, "project_id")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProjectNotificationRules`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProjectNotificationRules`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Get notification rules returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.CaseNotificationRulesResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    try {
+      CaseNotificationRulesResponse result =
+          apiInstance.getProjectNotificationRules("e555e290-ed65-49bd-ae18-8acbfcf18db7");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#getProjectNotificationRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Get notification rules returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .get_project_notification_rules("project_id".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get notification rules returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiGetProjectNotificationRulesRequest = {
+  projectId: "project_id",
+};
+
+apiInstance
+  .getProjectNotificationRules(params)
+  .then((data: v2.CaseNotificationRulesResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Search cases{% #search-cases %}
@@ -2678,6 +2849,308 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Create a notification rule returns "CREATED" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.case_notification_rule_create import CaseNotificationRuleCreate
+from datadog_api_client.v2.model.case_notification_rule_create_attributes import CaseNotificationRuleCreateAttributes
+from datadog_api_client.v2.model.case_notification_rule_create_request import CaseNotificationRuleCreateRequest
+from datadog_api_client.v2.model.case_notification_rule_recipient import CaseNotificationRuleRecipient
+from datadog_api_client.v2.model.case_notification_rule_recipient_data import CaseNotificationRuleRecipientData
+from datadog_api_client.v2.model.case_notification_rule_resource_type import CaseNotificationRuleResourceType
+from datadog_api_client.v2.model.case_notification_rule_trigger import CaseNotificationRuleTrigger
+from datadog_api_client.v2.model.case_notification_rule_trigger_data import CaseNotificationRuleTriggerData
+
+body = CaseNotificationRuleCreateRequest(
+    data=CaseNotificationRuleCreate(
+        attributes=CaseNotificationRuleCreateAttributes(
+            is_enabled=True,
+            recipients=[
+                CaseNotificationRuleRecipient(
+                    data=CaseNotificationRuleRecipientData(),
+                    type="EMAIL",
+                ),
+            ],
+            triggers=[
+                CaseNotificationRuleTrigger(
+                    data=CaseNotificationRuleTriggerData(),
+                    type="CASE_CREATED",
+                ),
+            ],
+        ),
+        type=CaseNotificationRuleResourceType.NOTIFICATION_RULE,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    response = api_instance.create_project_notification_rule(project_id="project_id", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create a notification rule returns "CREATED" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::CaseNotificationRuleCreateRequest.new({
+  data: DatadogAPIClient::V2::CaseNotificationRuleCreate.new({
+    attributes: DatadogAPIClient::V2::CaseNotificationRuleCreateAttributes.new({
+      is_enabled: true,
+      recipients: [
+        DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
+          data: DatadogAPIClient::V2::CaseNotificationRuleRecipientData.new({}),
+          type: "EMAIL",
+        }),
+      ],
+      triggers: [
+        DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
+          data: DatadogAPIClient::V2::CaseNotificationRuleTriggerData.new({}),
+          type: "CASE_CREATED",
+        }),
+      ],
+    }),
+    type: DatadogAPIClient::V2::CaseNotificationRuleResourceType::NOTIFICATION_RULE,
+  }),
+})
+p api_instance.create_project_notification_rule("project_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Create a notification rule returns "CREATED" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CaseNotificationRuleCreateRequest{
+		Data: datadogV2.CaseNotificationRuleCreate{
+			Attributes: datadogV2.CaseNotificationRuleCreateAttributes{
+				IsEnabled: datadog.PtrBool(true),
+				Recipients: []datadogV2.CaseNotificationRuleRecipient{
+					{
+						Data: &datadogV2.CaseNotificationRuleRecipientData{},
+						Type: datadog.PtrString("EMAIL"),
+					},
+				},
+				Triggers: []datadogV2.CaseNotificationRuleTrigger{
+					{
+						Data: &datadogV2.CaseNotificationRuleTriggerData{},
+						Type: datadog.PtrString("CASE_CREATED"),
+					},
+				},
+			},
+			Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	resp, r, err := api.CreateProjectNotificationRule(ctx, "project_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateProjectNotificationRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateProjectNotificationRule`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Create a notification rule returns "CREATED" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.CaseNotificationRuleCreate;
+import com.datadog.api.client.v2.model.CaseNotificationRuleCreateAttributes;
+import com.datadog.api.client.v2.model.CaseNotificationRuleCreateRequest;
+import com.datadog.api.client.v2.model.CaseNotificationRuleRecipient;
+import com.datadog.api.client.v2.model.CaseNotificationRuleRecipientData;
+import com.datadog.api.client.v2.model.CaseNotificationRuleResourceType;
+import com.datadog.api.client.v2.model.CaseNotificationRuleResponse;
+import com.datadog.api.client.v2.model.CaseNotificationRuleTrigger;
+import com.datadog.api.client.v2.model.CaseNotificationRuleTriggerData;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    CaseNotificationRuleCreateRequest body =
+        new CaseNotificationRuleCreateRequest()
+            .data(
+                new CaseNotificationRuleCreate()
+                    .attributes(
+                        new CaseNotificationRuleCreateAttributes()
+                            .isEnabled(true)
+                            .recipients(
+                                Collections.singletonList(
+                                    new CaseNotificationRuleRecipient()
+                                        .data(new CaseNotificationRuleRecipientData())
+                                        .type("EMAIL")))
+                            .triggers(
+                                Collections.singletonList(
+                                    new CaseNotificationRuleTrigger()
+                                        .data(new CaseNotificationRuleTriggerData())
+                                        .type("CASE_CREATED"))))
+                    .type(CaseNotificationRuleResourceType.NOTIFICATION_RULE));
+
+    try {
+      CaseNotificationRuleResponse result =
+          apiInstance.createProjectNotificationRule("e555e290-ed65-49bd-ae18-8acbfcf18db7", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#createProjectNotificationRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Create a notification rule returns "CREATED" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleCreate;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleCreateAttributes;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleCreateRequest;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleRecipient;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleRecipientData;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleResourceType;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleTrigger;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleTriggerData;
+
+#[tokio::main]
+async fn main() {
+    let body = CaseNotificationRuleCreateRequest::new(CaseNotificationRuleCreate::new(
+        CaseNotificationRuleCreateAttributes::new(
+            vec![CaseNotificationRuleRecipient::new()
+                .data(CaseNotificationRuleRecipientData::new())
+                .type_("EMAIL".to_string())],
+            vec![CaseNotificationRuleTrigger::new()
+                .data(CaseNotificationRuleTriggerData::new())
+                .type_("CASE_CREATED".to_string())],
+        )
+        .is_enabled(true),
+        CaseNotificationRuleResourceType::NOTIFICATION_RULE,
+    ));
+    let configuration = datadog::Configuration::new();
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .create_project_notification_rule("project_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create a notification rule returns "CREATED" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiCreateProjectNotificationRuleRequest = {
+  body: {
+    data: {
+      attributes: {
+        isEnabled: true,
+        recipients: [
+          {
+            data: {},
+            type: "EMAIL",
+          },
+        ],
+        triggers: [
+          {
+            data: {},
+            type: "CASE_CREATED",
+          },
+        ],
+      },
+      type: "notification_rule",
+    },
+  },
+  projectId: "project_id",
+};
+
+apiInstance
+  .createProjectNotificationRule(params)
+  .then((data: v2.CaseNotificationRuleResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get all projects{% #get-all-projects %}
@@ -4803,6 +5276,302 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Update a notification rule returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.case_notification_rule_attributes import CaseNotificationRuleAttributes
+from datadog_api_client.v2.model.case_notification_rule_recipient import CaseNotificationRuleRecipient
+from datadog_api_client.v2.model.case_notification_rule_recipient_data import CaseNotificationRuleRecipientData
+from datadog_api_client.v2.model.case_notification_rule_resource_type import CaseNotificationRuleResourceType
+from datadog_api_client.v2.model.case_notification_rule_trigger import CaseNotificationRuleTrigger
+from datadog_api_client.v2.model.case_notification_rule_trigger_data import CaseNotificationRuleTriggerData
+from datadog_api_client.v2.model.case_notification_rule_update import CaseNotificationRuleUpdate
+from datadog_api_client.v2.model.case_notification_rule_update_request import CaseNotificationRuleUpdateRequest
+
+body = CaseNotificationRuleUpdateRequest(
+    data=CaseNotificationRuleUpdate(
+        attributes=CaseNotificationRuleAttributes(
+            recipients=[
+                CaseNotificationRuleRecipient(
+                    data=CaseNotificationRuleRecipientData(),
+                    type="EMAIL",
+                ),
+            ],
+            triggers=[
+                CaseNotificationRuleTrigger(
+                    data=CaseNotificationRuleTriggerData(),
+                    type="CASE_CREATED",
+                ),
+            ],
+        ),
+        type=CaseNotificationRuleResourceType.NOTIFICATION_RULE,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.update_project_notification_rule(
+        project_id="project_id", notification_rule_id="notification_rule_id", body=body
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update a notification rule returns "No Content" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::CaseNotificationRuleUpdateRequest.new({
+  data: DatadogAPIClient::V2::CaseNotificationRuleUpdate.new({
+    attributes: DatadogAPIClient::V2::CaseNotificationRuleAttributes.new({
+      recipients: [
+        DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
+          data: DatadogAPIClient::V2::CaseNotificationRuleRecipientData.new({}),
+          type: "EMAIL",
+        }),
+      ],
+      triggers: [
+        DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
+          data: DatadogAPIClient::V2::CaseNotificationRuleTriggerData.new({}),
+          type: "CASE_CREATED",
+        }),
+      ],
+    }),
+    type: DatadogAPIClient::V2::CaseNotificationRuleResourceType::NOTIFICATION_RULE,
+  }),
+})
+api_instance.update_project_notification_rule("project_id", "notification_rule_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Update a notification rule returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CaseNotificationRuleUpdateRequest{
+		Data: datadogV2.CaseNotificationRuleUpdate{
+			Attributes: &datadogV2.CaseNotificationRuleAttributes{
+				Recipients: []datadogV2.CaseNotificationRuleRecipient{
+					{
+						Data: &datadogV2.CaseNotificationRuleRecipientData{},
+						Type: datadog.PtrString("EMAIL"),
+					},
+				},
+				Triggers: []datadogV2.CaseNotificationRuleTrigger{
+					{
+						Data: &datadogV2.CaseNotificationRuleTriggerData{},
+						Type: datadog.PtrString("CASE_CREATED"),
+					},
+				},
+			},
+			Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.UpdateProjectNotificationRule(ctx, "project_id", "notification_rule_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProjectNotificationRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Update a notification rule returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.CaseNotificationRuleAttributes;
+import com.datadog.api.client.v2.model.CaseNotificationRuleRecipient;
+import com.datadog.api.client.v2.model.CaseNotificationRuleRecipientData;
+import com.datadog.api.client.v2.model.CaseNotificationRuleResourceType;
+import com.datadog.api.client.v2.model.CaseNotificationRuleTrigger;
+import com.datadog.api.client.v2.model.CaseNotificationRuleTriggerData;
+import com.datadog.api.client.v2.model.CaseNotificationRuleUpdate;
+import com.datadog.api.client.v2.model.CaseNotificationRuleUpdateRequest;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    CaseNotificationRuleUpdateRequest body =
+        new CaseNotificationRuleUpdateRequest()
+            .data(
+                new CaseNotificationRuleUpdate()
+                    .attributes(
+                        new CaseNotificationRuleAttributes()
+                            .recipients(
+                                Collections.singletonList(
+                                    new CaseNotificationRuleRecipient()
+                                        .data(new CaseNotificationRuleRecipientData())
+                                        .type("EMAIL")))
+                            .triggers(
+                                Collections.singletonList(
+                                    new CaseNotificationRuleTrigger()
+                                        .data(new CaseNotificationRuleTriggerData())
+                                        .type("CASE_CREATED"))))
+                    .type(CaseNotificationRuleResourceType.NOTIFICATION_RULE));
+
+    try {
+      apiInstance.updateProjectNotificationRule(
+          "e555e290-ed65-49bd-ae18-8acbfcf18db7", "e555e290-ed65-49bd-ae18-8acbfcf18db7", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#updateProjectNotificationRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Update a notification rule returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleAttributes;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleRecipient;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleRecipientData;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleResourceType;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleTrigger;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleTriggerData;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleUpdate;
+use datadog_api_client::datadogV2::model::CaseNotificationRuleUpdateRequest;
+
+#[tokio::main]
+async fn main() {
+    let body = CaseNotificationRuleUpdateRequest::new(
+        CaseNotificationRuleUpdate::new(CaseNotificationRuleResourceType::NOTIFICATION_RULE)
+            .attributes(
+                CaseNotificationRuleAttributes::new()
+                    .recipients(vec![CaseNotificationRuleRecipient::new()
+                        .data(CaseNotificationRuleRecipientData::new())
+                        .type_("EMAIL".to_string())])
+                    .triggers(vec![CaseNotificationRuleTrigger::new()
+                        .data(CaseNotificationRuleTriggerData::new())
+                        .type_("CASE_CREATED".to_string())]),
+            ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .update_project_notification_rule(
+            "project_id".to_string(),
+            "notification_rule_id".to_string(),
+            body,
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update a notification rule returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiUpdateProjectNotificationRuleRequest = {
+  body: {
+    data: {
+      attributes: {
+        recipients: [
+          {
+            data: {},
+            type: "EMAIL",
+          },
+        ],
+        triggers: [
+          {
+            data: {},
+            type: "CASE_CREATED",
+          },
+        ],
+      },
+      type: "notification_rule",
+    },
+  },
+  projectId: "project_id",
+  notificationRuleId: "notification_rule_id",
+};
+
+apiInstance
+  .updateProjectNotificationRule(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Delete a notification rule{% #delete-a-notification-rule %}
@@ -4924,6 +5693,169 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Delete a notification rule returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.delete_project_notification_rule(
+        project_id="project_id",
+        notification_rule_id="notification_rule_id",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete a notification rule returns "No Content" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+api_instance.delete_project_notification_rule("project_id", "notification_rule_id")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete a notification rule returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.DeleteProjectNotificationRule(ctx, "project_id", "notification_rule_id")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteProjectNotificationRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Delete a notification rule returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    try {
+      apiInstance.deleteProjectNotificationRule(
+          "e555e290-ed65-49bd-ae18-8acbfcf18db7", "e555e290-ed65-49bd-ae18-8acbfcf18db7");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#deleteProjectNotificationRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete a notification rule returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .delete_project_notification_rule(
+            "project_id".to_string(),
+            "notification_rule_id".to_string(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete a notification rule returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiDeleteProjectNotificationRuleRequest = {
+  projectId: "project_id",
+  notificationRuleId: "notification_rule_id",
+};
+
+apiInstance
+  .deleteProjectNotificationRule(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Remove a project{% #remove-a-project %}
@@ -6186,7 +7118,7 @@ func main() {
 	body := datadogV2.CaseUpdateStatusRequest{
 		Data: datadogV2.CaseUpdateStatus{
 			Attributes: datadogV2.CaseUpdateStatusAttributes{
-				Status: datadogV2.CASESTATUS_IN_PROGRESS,
+				Status: datadogV2.CASESTATUS_IN_PROGRESS.Ptr(),
 			},
 			Type: datadogV2.CASERESOURCETYPE_CASE,
 		},
@@ -6342,7 +7274,7 @@ async fn main() {
     // there is a valid "case" in the system
     let case_id = std::env::var("CASE_ID").unwrap();
     let body = CaseUpdateStatusRequest::new(CaseUpdateStatus::new(
-        CaseUpdateStatusAttributes::new(CaseStatus::IN_PROGRESS),
+        CaseUpdateStatusAttributes::new().status(CaseStatus::IN_PROGRESS),
         CaseResourceType::CASE,
     ));
     let configuration = datadog::Configuration::new();
@@ -7685,6 +8617,231 @@ API error response.
 }
 EOF
                         
+##### 
+
+```go
+// Update a project returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.ProjectUpdateRequest{
+		Data: datadogV2.ProjectUpdate{
+			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+			Attributes: &datadogV2.ProjectUpdateAttributes{
+				Name: datadog.PtrString("Updated Project Name Example-Case-Management"),
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	resp, r, err := api.UpdateProject(ctx, "d4bbe1af-f36e-42f1-87c1-493ca35c320e", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProject`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateProject`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Update a project returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.ProjectResourceType;
+import com.datadog.api.client.v2.model.ProjectResponse;
+import com.datadog.api.client.v2.model.ProjectUpdate;
+import com.datadog.api.client.v2.model.ProjectUpdateAttributes;
+import com.datadog.api.client.v2.model.ProjectUpdateRequest;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    ProjectUpdateRequest body =
+        new ProjectUpdateRequest()
+            .data(
+                new ProjectUpdate()
+                    .type(ProjectResourceType.PROJECT)
+                    .attributes(
+                        new ProjectUpdateAttributes()
+                            .name("Updated Project Name Example-Case-Management")));
+
+    try {
+      ProjectResponse result =
+          apiInstance.updateProject("d4bbe1af-f36e-42f1-87c1-493ca35c320e", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#updateProject");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```python
+"""
+Update a project returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.project_resource_type import ProjectResourceType
+from datadog_api_client.v2.model.project_update import ProjectUpdate
+from datadog_api_client.v2.model.project_update_attributes import ProjectUpdateAttributes
+from datadog_api_client.v2.model.project_update_request import ProjectUpdateRequest
+
+body = ProjectUpdateRequest(
+    data=ProjectUpdate(
+        type=ProjectResourceType.PROJECT,
+        attributes=ProjectUpdateAttributes(
+            name="Updated Project Name Example-Case-Management",
+        ),
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    response = api_instance.update_project(project_id="d4bbe1af-f36e-42f1-87c1-493ca35c320e", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update a project returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::ProjectUpdateRequest.new({
+  data: DatadogAPIClient::V2::ProjectUpdate.new({
+    type: DatadogAPIClient::V2::ProjectResourceType::PROJECT,
+    attributes: DatadogAPIClient::V2::ProjectUpdateAttributes.new({
+      name: "Updated Project Name Example-Case-Management",
+    }),
+  }),
+})
+p api_instance.update_project("d4bbe1af-f36e-42f1-87c1-493ca35c320e", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```rust
+// Update a project returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::ProjectResourceType;
+use datadog_api_client::datadogV2::model::ProjectUpdate;
+use datadog_api_client::datadogV2::model::ProjectUpdateAttributes;
+use datadog_api_client::datadogV2::model::ProjectUpdateRequest;
+
+#[tokio::main]
+async fn main() {
+    let body = ProjectUpdateRequest::new(
+        ProjectUpdate::new(ProjectResourceType::PROJECT).attributes(
+            ProjectUpdateAttributes::new()
+                .name("Updated Project Name Example-Case-Management".to_string()),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .update_project("d4bbe1af-f36e-42f1-87c1-493ca35c320e".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update a project returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiUpdateProjectRequest = {
+  body: {
+    data: {
+      type: "project",
+      attributes: {
+        name: "Updated Project Name Example-Case-Management",
+      },
+    },
+  },
+  projectId: "d4bbe1af-f36e-42f1-87c1-493ca35c320e",
+};
+
+apiInstance
+  .updateProject(params)
+  .then((data: v2.ProjectResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Update case priority{% #update-case-priority %}
@@ -13300,6 +14457,3770 @@ const params: v2.CaseManagementApiDeleteCaseCustomAttributeRequest = {
 apiInstance
   .deleteCaseCustomAttribute(params)
   .then((data: v2.CaseResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Update case project{% #update-case-project %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                     |
+| ----------------- | -------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | PATCH https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/project |
+| ap2.datadoghq.com | PATCH https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/project |
+| app.datadoghq.eu  | PATCH https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/project      |
+| app.ddog-gov.com  | PATCH https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/project      |
+| app.datadoghq.com | PATCH https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/project     |
+| us3.datadoghq.com | PATCH https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/project |
+| us5.datadoghq.com | PATCH https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/project |
+
+### Overview
+
+Update the project associated with a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+Project update request
+
+{% tab title="Model" %}
+
+| Parent field | Field                  | Type   | Description                                          |
+| ------------ | ---------------------- | ------ | ---------------------------------------------------- |
+|              | data [*required*] | object | Relationship to project object                       |
+| data         | id [*required*]   | string | A unique identifier that represents the project      |
+| data         | type [*required*] | enum   | Project resource type Allowed enum values: `project` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "id": "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+    "type": "project"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+Case response
+
+| Parent field         | Field                        | Type          | Description                                                                                                                                                                                           |
+| -------------------- | ---------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                         | object        | A case                                                                                                                                                                                                |
+| data                 | attributes [*required*] | object        | Case resource attributes                                                                                                                                                                              |
+| attributes           | archived_at                  | date-time     | Timestamp of when the case was archived                                                                                                                                                               |
+| attributes           | attributes                   | object        | The definition of `CaseObjectAttributes` object.                                                                                                                                                      |
+| additionalProperties | <any-key>                    | [string]      |
+| attributes           | closed_at                    | date-time     | Timestamp of when the case was closed                                                                                                                                                                 |
+| attributes           | created_at                   | date-time     | Timestamp of when the case was created                                                                                                                                                                |
+| attributes           | custom_attributes            | object        | Case custom attributes                                                                                                                                                                                |
+| additionalProperties | <any-key>                    | object        | Custom attribute values                                                                                                                                                                               |
+| <any-key>            | is_multi [*required*]   | boolean       | If true, value must be an array                                                                                                                                                                       |
+| <any-key>            | type [*required*]       | enum          | Custom attributes type Allowed enum values: `URL,TEXT,NUMBER,SELECT`                                                                                                                                  |
+| <any-key>            | value [*required*]      |  <oneOf> | Union of supported value for a custom attribute                                                                                                                                                       |
+| value                | Option 1                     | string        | Value of TEXT/URL/NUMBER/SELECT custom attribute                                                                                                                                                      |
+| value                | Option 2                     | [string]      | Value of multi TEXT/URL/NUMBER/SELECT custom attribute                                                                                                                                                |
+| value                | Option 3                     | double        | Value of NUMBER custom attribute                                                                                                                                                                      |
+| value                | Option 4                     | [number]      | Values of multi NUMBER custom attribute                                                                                                                                                               |
+| attributes           | description                  | string        | Description                                                                                                                                                                                           |
+| attributes           | jira_issue                   | object        | Jira issue attached to case                                                                                                                                                                           |
+| jira_issue           | result                       | object        | Jira issue information                                                                                                                                                                                |
+| result               | issue_id                     | string        | Jira issue ID                                                                                                                                                                                         |
+| result               | issue_key                    | string        | Jira issue key                                                                                                                                                                                        |
+| result               | issue_url                    | string        | Jira issue URL                                                                                                                                                                                        |
+| result               | project_key                  | string        | Jira project key                                                                                                                                                                                      |
+| jira_issue           | status                       | enum          | Case status Allowed enum values: `IN_PROGRESS,COMPLETED,FAILED`                                                                                                                                       |
+| attributes           | key                          | string        | Key                                                                                                                                                                                                   |
+| attributes           | modified_at                  | date-time     | Timestamp of when the case was last modified                                                                                                                                                          |
+| attributes           | priority                     | enum          | Case priority Allowed enum values: `NOT_DEFINED,P1,P2,P3,P4,P5`                                                                                                                                       |
+| attributes           | service_now_ticket           | object        | ServiceNow ticket attached to case                                                                                                                                                                    |
+| service_now_ticket   | result                       | object        | ServiceNow ticket information                                                                                                                                                                         |
+| result               | sys_target_link              | string        | Link to the Incident created on ServiceNow                                                                                                                                                            |
+| service_now_ticket   | status                       | enum          | Case status Allowed enum values: `IN_PROGRESS,COMPLETED,FAILED`                                                                                                                                       |
+| attributes           | status                       | enum          | **DEPRECATED**: Deprecated way of representing the case status, which only supports OPEN, IN_PROGRESS, and CLOSED statuses. Use `status_name` instead. Allowed enum values: `OPEN,IN_PROGRESS,CLOSED` |
+| attributes           | status_group                 | enum          | Status group of the case. Allowed enum values: `SG_OPEN,SG_IN_PROGRESS,SG_CLOSED`                                                                                                                     |
+| attributes           | status_name                  | string        | Status of the case. Must be one of the existing statuses for the case's type.                                                                                                                         |
+| attributes           | title                        | string        | Title                                                                                                                                                                                                 |
+| attributes           | type                         | enum          | **DEPRECATED**: Case type Allowed enum values: `STANDARD`                                                                                                                                             |
+| attributes           | type_id                      | string        | Case type UUID                                                                                                                                                                                        |
+| data                 | id [*required*]         | string        | Case's identifier                                                                                                                                                                                     |
+| data                 | relationships                | object        | Resources related to a case                                                                                                                                                                           |
+| relationships        | assignee                     | object        | Relationship to user.                                                                                                                                                                                 |
+| assignee             | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | created_by                   | object        | Relationship to user.                                                                                                                                                                                 |
+| created_by           | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | modified_by                  | object        | Relationship to user.                                                                                                                                                                                 |
+| modified_by          | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | project                      | object        | Relationship to project                                                                                                                                                                               |
+| project              | data [*required*]       | object        | Relationship to project object                                                                                                                                                                        |
+| data                 | id [*required*]         | string        | A unique identifier that represents the project                                                                                                                                                       |
+| data                 | type [*required*]       | enum          | Project resource type Allowed enum values: `project`                                                                                                                                                  |
+| data                 | type [*required*]       | enum          | Case resource type Allowed enum values: `case`                                                                                                                                                        |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "archived_at": "2019-09-19T10:00:00.000Z",
+      "attributes": {
+        "<any-key>": []
+      },
+      "closed_at": "2019-09-19T10:00:00.000Z",
+      "created_at": "2019-09-19T10:00:00.000Z",
+      "custom_attributes": {
+        "<any-key>": {
+          "is_multi": false,
+          "type": "NUMBER",
+          "value": {
+            "description": "",
+            "type": ""
+          }
+        }
+      },
+      "description": "string",
+      "jira_issue": {
+        "result": {
+          "issue_id": "string",
+          "issue_key": "string",
+          "issue_url": "string",
+          "project_key": "string"
+        },
+        "status": "COMPLETED"
+      },
+      "key": "CASEM-4523",
+      "modified_at": "2019-09-19T10:00:00.000Z",
+      "priority": "NOT_DEFINED",
+      "service_now_ticket": {
+        "result": {
+          "sys_target_link": "string"
+        },
+        "status": "COMPLETED"
+      },
+      "status": "OPEN",
+      "status_group": "SG_OPEN",
+      "status_name": "Open",
+      "title": "Memory leak investigation on API",
+      "type": "STANDARD",
+      "type_id": "3b010bde-09ce-4449-b745-71dd5f861963"
+    },
+    "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+    "relationships": {
+      "assignee": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "created_by": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "modified_by": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "project": {
+        "data": {
+          "id": "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+          "type": "project"
+        }
+      }
+    },
+    "type": "case"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/project" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "id": "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+    "type": "project"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Update case project returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.project_relationship import ProjectRelationship
+from datadog_api_client.v2.model.project_relationship_data import ProjectRelationshipData
+from datadog_api_client.v2.model.project_resource_type import ProjectResourceType
+
+body = ProjectRelationship(
+    data=ProjectRelationshipData(
+        id="e555e290-ed65-49bd-ae18-8acbfcf18db7",
+        type=ProjectResourceType.PROJECT,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["move_case_to_project"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    response = api_instance.move_case_to_project(case_id="case_id", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update case project returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.move_case_to_project".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::ProjectRelationship.new({
+  data: DatadogAPIClient::V2::ProjectRelationshipData.new({
+    id: "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+    type: DatadogAPIClient::V2::ProjectResourceType::PROJECT,
+  }),
+})
+p api_instance.move_case_to_project("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Update case project returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.ProjectRelationship{
+		Data: datadogV2.ProjectRelationshipData{
+			Id:   "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.MoveCaseToProject", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	resp, r, err := api.MoveCaseToProject(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.MoveCaseToProject`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.MoveCaseToProject`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Update case project returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.CaseResponse;
+import com.datadog.api.client.v2.model.ProjectRelationship;
+import com.datadog.api.client.v2.model.ProjectRelationshipData;
+import com.datadog.api.client.v2.model.ProjectResourceType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.moveCaseToProject", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    ProjectRelationship body =
+        new ProjectRelationship()
+            .data(
+                new ProjectRelationshipData()
+                    .id("e555e290-ed65-49bd-ae18-8acbfcf18db7")
+                    .type(ProjectResourceType.PROJECT));
+
+    try {
+      CaseResponse result =
+          apiInstance.moveCaseToProject("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#moveCaseToProject");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Update case project returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::ProjectRelationship;
+use datadog_api_client::datadogV2::model::ProjectRelationshipData;
+use datadog_api_client::datadogV2::model::ProjectResourceType;
+
+#[tokio::main]
+async fn main() {
+    let body = ProjectRelationship::new(ProjectRelationshipData::new(
+        "e555e290-ed65-49bd-ae18-8acbfcf18db7".to_string(),
+        ProjectResourceType::PROJECT,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.MoveCaseToProject", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api.move_case_to_project("case_id".to_string(), body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update case project returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.moveCaseToProject"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiMoveCaseToProjectRequest = {
+  body: {
+    data: {
+      id: "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+      type: "project",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .moveCaseToProject(params)
+  .then((data: v2.CaseResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Link incident to case{% #link-incident-to-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                      |
+| ----------------- | --------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/incidents |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/incidents |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/incidents      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/incidents      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/incidents     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/incidents |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/incidents |
+
+### Overview
+
+Link an incident to a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+Incident link request
+
+{% tab title="Model" %}
+
+| Parent field | Field                  | Type   | Description                                             |
+| ------------ | ---------------------- | ------ | ------------------------------------------------------- |
+|              | data [*required*] | object | Incident relationship data                              |
+| data         | id [*required*]   | string | Incident identifier                                     |
+| data         | type [*required*] | enum   | Incident resource type Allowed enum values: `incidents` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "type": "incidents"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="201" %}
+Created
+{% tab title="Model" %}
+Case response
+
+| Parent field         | Field                        | Type          | Description                                                                                                                                                                                           |
+| -------------------- | ---------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                         | object        | A case                                                                                                                                                                                                |
+| data                 | attributes [*required*] | object        | Case resource attributes                                                                                                                                                                              |
+| attributes           | archived_at                  | date-time     | Timestamp of when the case was archived                                                                                                                                                               |
+| attributes           | attributes                   | object        | The definition of `CaseObjectAttributes` object.                                                                                                                                                      |
+| additionalProperties | <any-key>                    | [string]      |
+| attributes           | closed_at                    | date-time     | Timestamp of when the case was closed                                                                                                                                                                 |
+| attributes           | created_at                   | date-time     | Timestamp of when the case was created                                                                                                                                                                |
+| attributes           | custom_attributes            | object        | Case custom attributes                                                                                                                                                                                |
+| additionalProperties | <any-key>                    | object        | Custom attribute values                                                                                                                                                                               |
+| <any-key>            | is_multi [*required*]   | boolean       | If true, value must be an array                                                                                                                                                                       |
+| <any-key>            | type [*required*]       | enum          | Custom attributes type Allowed enum values: `URL,TEXT,NUMBER,SELECT`                                                                                                                                  |
+| <any-key>            | value [*required*]      |  <oneOf> | Union of supported value for a custom attribute                                                                                                                                                       |
+| value                | Option 1                     | string        | Value of TEXT/URL/NUMBER/SELECT custom attribute                                                                                                                                                      |
+| value                | Option 2                     | [string]      | Value of multi TEXT/URL/NUMBER/SELECT custom attribute                                                                                                                                                |
+| value                | Option 3                     | double        | Value of NUMBER custom attribute                                                                                                                                                                      |
+| value                | Option 4                     | [number]      | Values of multi NUMBER custom attribute                                                                                                                                                               |
+| attributes           | description                  | string        | Description                                                                                                                                                                                           |
+| attributes           | jira_issue                   | object        | Jira issue attached to case                                                                                                                                                                           |
+| jira_issue           | result                       | object        | Jira issue information                                                                                                                                                                                |
+| result               | issue_id                     | string        | Jira issue ID                                                                                                                                                                                         |
+| result               | issue_key                    | string        | Jira issue key                                                                                                                                                                                        |
+| result               | issue_url                    | string        | Jira issue URL                                                                                                                                                                                        |
+| result               | project_key                  | string        | Jira project key                                                                                                                                                                                      |
+| jira_issue           | status                       | enum          | Case status Allowed enum values: `IN_PROGRESS,COMPLETED,FAILED`                                                                                                                                       |
+| attributes           | key                          | string        | Key                                                                                                                                                                                                   |
+| attributes           | modified_at                  | date-time     | Timestamp of when the case was last modified                                                                                                                                                          |
+| attributes           | priority                     | enum          | Case priority Allowed enum values: `NOT_DEFINED,P1,P2,P3,P4,P5`                                                                                                                                       |
+| attributes           | service_now_ticket           | object        | ServiceNow ticket attached to case                                                                                                                                                                    |
+| service_now_ticket   | result                       | object        | ServiceNow ticket information                                                                                                                                                                         |
+| result               | sys_target_link              | string        | Link to the Incident created on ServiceNow                                                                                                                                                            |
+| service_now_ticket   | status                       | enum          | Case status Allowed enum values: `IN_PROGRESS,COMPLETED,FAILED`                                                                                                                                       |
+| attributes           | status                       | enum          | **DEPRECATED**: Deprecated way of representing the case status, which only supports OPEN, IN_PROGRESS, and CLOSED statuses. Use `status_name` instead. Allowed enum values: `OPEN,IN_PROGRESS,CLOSED` |
+| attributes           | status_group                 | enum          | Status group of the case. Allowed enum values: `SG_OPEN,SG_IN_PROGRESS,SG_CLOSED`                                                                                                                     |
+| attributes           | status_name                  | string        | Status of the case. Must be one of the existing statuses for the case's type.                                                                                                                         |
+| attributes           | title                        | string        | Title                                                                                                                                                                                                 |
+| attributes           | type                         | enum          | **DEPRECATED**: Case type Allowed enum values: `STANDARD`                                                                                                                                             |
+| attributes           | type_id                      | string        | Case type UUID                                                                                                                                                                                        |
+| data                 | id [*required*]         | string        | Case's identifier                                                                                                                                                                                     |
+| data                 | relationships                | object        | Resources related to a case                                                                                                                                                                           |
+| relationships        | assignee                     | object        | Relationship to user.                                                                                                                                                                                 |
+| assignee             | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | created_by                   | object        | Relationship to user.                                                                                                                                                                                 |
+| created_by           | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | modified_by                  | object        | Relationship to user.                                                                                                                                                                                 |
+| modified_by          | data [*required*]       | object        | Relationship to user object.                                                                                                                                                                          |
+| data                 | id [*required*]         | string        | A unique identifier that represents the user.                                                                                                                                                         |
+| data                 | type [*required*]       | enum          | User resource type. Allowed enum values: `user`                                                                                                                                                       |
+| relationships        | project                      | object        | Relationship to project                                                                                                                                                                               |
+| project              | data [*required*]       | object        | Relationship to project object                                                                                                                                                                        |
+| data                 | id [*required*]         | string        | A unique identifier that represents the project                                                                                                                                                       |
+| data                 | type [*required*]       | enum          | Project resource type Allowed enum values: `project`                                                                                                                                                  |
+| data                 | type [*required*]       | enum          | Case resource type Allowed enum values: `case`                                                                                                                                                        |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "archived_at": "2019-09-19T10:00:00.000Z",
+      "attributes": {
+        "<any-key>": []
+      },
+      "closed_at": "2019-09-19T10:00:00.000Z",
+      "created_at": "2019-09-19T10:00:00.000Z",
+      "custom_attributes": {
+        "<any-key>": {
+          "is_multi": false,
+          "type": "NUMBER",
+          "value": {
+            "description": "",
+            "type": ""
+          }
+        }
+      },
+      "description": "string",
+      "jira_issue": {
+        "result": {
+          "issue_id": "string",
+          "issue_key": "string",
+          "issue_url": "string",
+          "project_key": "string"
+        },
+        "status": "COMPLETED"
+      },
+      "key": "CASEM-4523",
+      "modified_at": "2019-09-19T10:00:00.000Z",
+      "priority": "NOT_DEFINED",
+      "service_now_ticket": {
+        "result": {
+          "sys_target_link": "string"
+        },
+        "status": "COMPLETED"
+      },
+      "status": "OPEN",
+      "status_group": "SG_OPEN",
+      "status_name": "Open",
+      "title": "Memory leak investigation on API",
+      "type": "STANDARD",
+      "type_id": "3b010bde-09ce-4449-b745-71dd5f861963"
+    },
+    "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+    "relationships": {
+      "assignee": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "created_by": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "modified_by": {
+        "data": {
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "user"
+        }
+      },
+      "project": {
+        "data": {
+          "id": "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+          "type": "project"
+        }
+      }
+    },
+    "type": "case"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/incidents" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "type": "incidents"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Link incident to case returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.incident_relationship_data import IncidentRelationshipData
+from datadog_api_client.v2.model.incident_resource_type import IncidentResourceType
+from datadog_api_client.v2.model.relationship_to_incident_request import RelationshipToIncidentRequest
+
+body = RelationshipToIncidentRequest(
+    data=IncidentRelationshipData(
+        id="00000000-0000-0000-0000-000000000000",
+        type=IncidentResourceType.INCIDENTS,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["link_incident"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    response = api_instance.link_incident(case_id="case_id", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Link incident to case returns "Created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.link_incident".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::RelationshipToIncidentRequest.new({
+  data: DatadogAPIClient::V2::IncidentRelationshipData.new({
+    id: "00000000-0000-0000-0000-000000000000",
+    type: DatadogAPIClient::V2::IncidentResourceType::INCIDENTS,
+  }),
+})
+p api_instance.link_incident("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Link incident to case returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.RelationshipToIncidentRequest{
+		Data: datadogV2.IncidentRelationshipData{
+			Id:   "00000000-0000-0000-0000-000000000000",
+			Type: datadogV2.INCIDENTRESOURCETYPE_INCIDENTS,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.LinkIncident", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	resp, r, err := api.LinkIncident(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkIncident`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.LinkIncident`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Link incident to case returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.CaseResponse;
+import com.datadog.api.client.v2.model.IncidentRelationshipData;
+import com.datadog.api.client.v2.model.IncidentResourceType;
+import com.datadog.api.client.v2.model.RelationshipToIncidentRequest;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.linkIncident", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    RelationshipToIncidentRequest body =
+        new RelationshipToIncidentRequest()
+            .data(
+                new IncidentRelationshipData()
+                    .id("00000000-0000-0000-0000-000000000000")
+                    .type(IncidentResourceType.INCIDENTS));
+
+    try {
+      CaseResponse result = apiInstance.linkIncident("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#linkIncident");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Link incident to case returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::IncidentRelationshipData;
+use datadog_api_client::datadogV2::model::IncidentResourceType;
+use datadog_api_client::datadogV2::model::RelationshipToIncidentRequest;
+
+#[tokio::main]
+async fn main() {
+    let body = RelationshipToIncidentRequest::new(IncidentRelationshipData::new(
+        "00000000-0000-0000-0000-000000000000".to_string(),
+        IncidentResourceType::INCIDENTS,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.LinkIncident", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api.link_incident("case_id".to_string(), body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Link incident to case returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.linkIncident"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiLinkIncidentRequest = {
+  body: {
+    data: {
+      id: "00000000-0000-0000-0000-000000000000",
+      type: "incidents",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .linkIncident(params)
+  .then((data: v2.CaseResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Create Jira issue for case{% #create-jira-issue-for-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                        |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+
+### Overview
+
+Create a new Jira issue and link it to a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+Jira issue creation request
+
+{% tab title="Model" %}
+
+| Parent field | Field                             | Type   | Description                                            |
+| ------------ | --------------------------------- | ------ | ------------------------------------------------------ |
+|              | data [*required*]            | object | Jira issue creation data                               |
+| data         | attributes [*required*]      | object | Jira issue creation attributes                         |
+| attributes   | fields                            | object | Additional Jira fields                                 |
+| attributes   | issue_type_id [*required*]   | string | Jira issue type ID                                     |
+| attributes   | jira_account_id [*required*] | string | Jira account ID                                        |
+| attributes   | project_id [*required*]      | string | Jira project ID                                        |
+| data         | type [*required*]            | enum   | Jira issue resource type Allowed enum values: `issues` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "fields": {},
+      "issue_type_id": "10001",
+      "jira_account_id": "1234",
+      "project_id": "5678"
+    },
+    "type": "issues"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="202" %}
+Accepted
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "issue_type_id": "10001",
+      "jira_account_id": "1234",
+      "project_id": "5678"
+    },
+    "type": "issues"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Create Jira issue for case returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.jira_issue_create_attributes import JiraIssueCreateAttributes
+from datadog_api_client.v2.model.jira_issue_create_data import JiraIssueCreateData
+from datadog_api_client.v2.model.jira_issue_create_request import JiraIssueCreateRequest
+from datadog_api_client.v2.model.jira_issue_resource_type import JiraIssueResourceType
+
+body = JiraIssueCreateRequest(
+    data=JiraIssueCreateData(
+        attributes=JiraIssueCreateAttributes(
+            fields=dict(),
+            issue_type_id="10001",
+            jira_account_id="1234",
+            project_id="5678",
+        ),
+        type=JiraIssueResourceType.ISSUES,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_case_jira_issue"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.create_case_jira_issue(case_id="case_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create Jira issue for case returns "Accepted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_case_jira_issue".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::JiraIssueCreateRequest.new({
+  data: DatadogAPIClient::V2::JiraIssueCreateData.new({
+    attributes: DatadogAPIClient::V2::JiraIssueCreateAttributes.new({
+      fields: {},
+      issue_type_id: "10001",
+      jira_account_id: "1234",
+      project_id: "5678",
+    }),
+    type: DatadogAPIClient::V2::JiraIssueResourceType::ISSUES,
+  }),
+})
+p api_instance.create_case_jira_issue("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Create Jira issue for case returns "Accepted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.JiraIssueCreateRequest{
+		Data: datadogV2.JiraIssueCreateData{
+			Attributes: datadogV2.JiraIssueCreateAttributes{
+				Fields:        map[string]interface{}{},
+				IssueTypeId:   "10001",
+				JiraAccountId: "1234",
+				ProjectId:     "5678",
+			},
+			Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateCaseJiraIssue", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.CreateCaseJiraIssue(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseJiraIssue`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Create Jira issue for case returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.JiraIssueCreateAttributes;
+import com.datadog.api.client.v2.model.JiraIssueCreateData;
+import com.datadog.api.client.v2.model.JiraIssueCreateRequest;
+import com.datadog.api.client.v2.model.JiraIssueResourceType;
+import java.util.Map;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createCaseJiraIssue", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    JiraIssueCreateRequest body =
+        new JiraIssueCreateRequest()
+            .data(
+                new JiraIssueCreateData()
+                    .attributes(
+                        new JiraIssueCreateAttributes()
+                            .fields(Map.ofEntries())
+                            .issueTypeId("10001")
+                            .jiraAccountId("1234")
+                            .projectId("5678"))
+                    .type(JiraIssueResourceType.ISSUES));
+
+    try {
+      apiInstance.createCaseJiraIssue("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#createCaseJiraIssue");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Create Jira issue for case returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::JiraIssueCreateAttributes;
+use datadog_api_client::datadogV2::model::JiraIssueCreateData;
+use datadog_api_client::datadogV2::model::JiraIssueCreateRequest;
+use datadog_api_client::datadogV2::model::JiraIssueResourceType;
+use std::collections::BTreeMap;
+
+#[tokio::main]
+async fn main() {
+    let body = JiraIssueCreateRequest::new(JiraIssueCreateData::new(
+        JiraIssueCreateAttributes::new("10001".to_string(), "1234".to_string(), "5678".to_string())
+            .fields(BTreeMap::from([])),
+        JiraIssueResourceType::ISSUES,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateCaseJiraIssue", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .create_case_jira_issue("case_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create Jira issue for case returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createCaseJiraIssue"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiCreateCaseJiraIssueRequest = {
+  body: {
+    data: {
+      attributes: {
+        fields: {},
+        issueTypeId: "10001",
+        jiraAccountId: "1234",
+        projectId: "5678",
+      },
+      type: "issues",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .createCaseJiraIssue(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Link existing Jira issue to case{% #link-existing-jira-issue-to-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| ap1.datadoghq.com | PATCH https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| ap2.datadoghq.com | PATCH https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| app.datadoghq.eu  | PATCH https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.ddog-gov.com  | PATCH https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.datadoghq.com | PATCH https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues     |
+| us3.datadoghq.com | PATCH https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| us5.datadoghq.com | PATCH https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+
+### Overview
+
+Link an existing Jira issue to a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+Jira issue link request
+
+{% tab title="Model" %}
+
+| Parent field | Field                            | Type   | Description                                            |
+| ------------ | -------------------------------- | ------ | ------------------------------------------------------ |
+|              | data [*required*]           | object | Jira issue link data                                   |
+| data         | attributes [*required*]     | object | Jira issue link attributes                             |
+| attributes   | jira_issue_url [*required*] | string | URL of the Jira issue                                  |
+| data         | type [*required*]           | enum   | Jira issue resource type Allowed enum values: `issues` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "jira_issue_url": "https://jira.example.com/browse/PROJ-123"
+    },
+    "type": "issues"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="204" %}
+No Content
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="409" %}
+Conflict
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "jira_issue_url": "https://jira.example.com/browse/PROJ-123"
+    },
+    "type": "issues"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Link existing Jira issue to case returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.jira_issue_link_attributes import JiraIssueLinkAttributes
+from datadog_api_client.v2.model.jira_issue_link_data import JiraIssueLinkData
+from datadog_api_client.v2.model.jira_issue_link_request import JiraIssueLinkRequest
+from datadog_api_client.v2.model.jira_issue_resource_type import JiraIssueResourceType
+
+body = JiraIssueLinkRequest(
+    data=JiraIssueLinkData(
+        attributes=JiraIssueLinkAttributes(
+            jira_issue_url="https://jira.example.com/browse/PROJ-123",
+        ),
+        type=JiraIssueResourceType.ISSUES,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["link_jira_issue_to_case"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.link_jira_issue_to_case(case_id="case_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Link existing Jira issue to case returns "No Content" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.link_jira_issue_to_case".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::JiraIssueLinkRequest.new({
+  data: DatadogAPIClient::V2::JiraIssueLinkData.new({
+    attributes: DatadogAPIClient::V2::JiraIssueLinkAttributes.new({
+      jira_issue_url: "https://jira.example.com/browse/PROJ-123",
+    }),
+    type: DatadogAPIClient::V2::JiraIssueResourceType::ISSUES,
+  }),
+})
+api_instance.link_jira_issue_to_case("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Link existing Jira issue to case returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.JiraIssueLinkRequest{
+		Data: datadogV2.JiraIssueLinkData{
+			Attributes: datadogV2.JiraIssueLinkAttributes{
+				JiraIssueUrl: "https://jira.example.com/browse/PROJ-123",
+			},
+			Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.LinkJiraIssueToCase", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.LinkJiraIssueToCase(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkJiraIssueToCase`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Link existing Jira issue to case returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.JiraIssueLinkAttributes;
+import com.datadog.api.client.v2.model.JiraIssueLinkData;
+import com.datadog.api.client.v2.model.JiraIssueLinkRequest;
+import com.datadog.api.client.v2.model.JiraIssueResourceType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.linkJiraIssueToCase", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    JiraIssueLinkRequest body =
+        new JiraIssueLinkRequest()
+            .data(
+                new JiraIssueLinkData()
+                    .attributes(
+                        new JiraIssueLinkAttributes()
+                            .jiraIssueUrl("https://jira.example.com/browse/PROJ-123"))
+                    .type(JiraIssueResourceType.ISSUES));
+
+    try {
+      apiInstance.linkJiraIssueToCase("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#linkJiraIssueToCase");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Link existing Jira issue to case returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::JiraIssueLinkAttributes;
+use datadog_api_client::datadogV2::model::JiraIssueLinkData;
+use datadog_api_client::datadogV2::model::JiraIssueLinkRequest;
+use datadog_api_client::datadogV2::model::JiraIssueResourceType;
+
+#[tokio::main]
+async fn main() {
+    let body = JiraIssueLinkRequest::new(JiraIssueLinkData::new(
+        JiraIssueLinkAttributes::new("https://jira.example.com/browse/PROJ-123".to_string()),
+        JiraIssueResourceType::ISSUES,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.LinkJiraIssueToCase", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .link_jira_issue_to_case("case_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Link existing Jira issue to case returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.linkJiraIssueToCase"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiLinkJiraIssueToCaseRequest = {
+  body: {
+    data: {
+      attributes: {
+        jiraIssueUrl: "https://jira.example.com/browse/PROJ-123",
+      },
+      type: "issues",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .linkJiraIssueToCase(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Remove Jira issue link from case{% #remove-jira-issue-link-from-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | DELETE https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| ap2.datadoghq.com | DELETE https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| app.datadoghq.eu  | DELETE https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.ddog-gov.com  | DELETE https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/jira_issues      |
+| app.datadoghq.com | DELETE https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues     |
+| us3.datadoghq.com | DELETE https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+| us5.datadoghq.com | DELETE https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/jira_issues |
+
+### Overview
+
+Remove the link between a Jira issue and a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Response
+
+{% tab title="204" %}
+No Content
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Remove Jira issue link from case returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+
+configuration = Configuration()
+configuration.unstable_operations["unlink_jira_issue"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.unlink_jira_issue(
+        case_id="case_id",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Remove Jira issue link from case returns "No Content" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.unlink_jira_issue".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+api_instance.unlink_jira_issue("case_id")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Remove Jira issue link from case returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.UnlinkJiraIssue", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.UnlinkJiraIssue(ctx, "case_id")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnlinkJiraIssue`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Remove Jira issue link from case returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.unlinkJiraIssue", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    try {
+      apiInstance.unlinkJiraIssue("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#unlinkJiraIssue");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Remove Jira issue link from case returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UnlinkJiraIssue", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api.unlink_jira_issue("case_id".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Remove Jira issue link from case returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.unlinkJiraIssue"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiUnlinkJiraIssueRequest = {
+  caseId: "case_id",
+};
+
+apiInstance
+  .unlinkJiraIssue(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Create ServiceNow ticket for case{% #create-servicenow-ticket-for-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------ |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/servicenow_tickets |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/servicenow_tickets |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/servicenow_tickets      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/servicenow_tickets      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/servicenow_tickets     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/servicenow_tickets |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/servicenow_tickets |
+
+### Overview
+
+Create a new ServiceNow incident ticket and link it to a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+ServiceNow ticket creation request
+
+{% tab title="Model" %}
+
+| Parent field | Field                           | Type   | Description                                                    |
+| ------------ | ------------------------------- | ------ | -------------------------------------------------------------- |
+|              | data [*required*]          | object | ServiceNow ticket creation data                                |
+| data         | attributes [*required*]    | object | ServiceNow ticket creation attributes                          |
+| attributes   | assignment_group                | string | ServiceNow assignment group                                    |
+| attributes   | instance_name [*required*] | string | ServiceNow instance name                                       |
+| data         | type [*required*]          | enum   | ServiceNow ticket resource type Allowed enum values: `tickets` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "assignment_group": "IT Support",
+      "instance_name": "my-instance"
+    },
+    "type": "tickets"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="202" %}
+Accepted
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/servicenow_tickets" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "instance_name": "my-instance"
+    },
+    "type": "tickets"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Create ServiceNow ticket for case returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.service_now_ticket_create_attributes import ServiceNowTicketCreateAttributes
+from datadog_api_client.v2.model.service_now_ticket_create_data import ServiceNowTicketCreateData
+from datadog_api_client.v2.model.service_now_ticket_create_request import ServiceNowTicketCreateRequest
+from datadog_api_client.v2.model.service_now_ticket_resource_type import ServiceNowTicketResourceType
+
+body = ServiceNowTicketCreateRequest(
+    data=ServiceNowTicketCreateData(
+        attributes=ServiceNowTicketCreateAttributes(
+            assignment_group="IT Support",
+            instance_name="my-instance",
+        ),
+        type=ServiceNowTicketResourceType.TICKETS,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_case_service_now_ticket"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.create_case_service_now_ticket(case_id="case_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create ServiceNow ticket for case returns "Accepted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_case_service_now_ticket".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::ServiceNowTicketCreateRequest.new({
+  data: DatadogAPIClient::V2::ServiceNowTicketCreateData.new({
+    attributes: DatadogAPIClient::V2::ServiceNowTicketCreateAttributes.new({
+      assignment_group: "IT Support",
+      instance_name: "my-instance",
+    }),
+    type: DatadogAPIClient::V2::ServiceNowTicketResourceType::TICKETS,
+  }),
+})
+p api_instance.create_case_service_now_ticket("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Create ServiceNow ticket for case returns "Accepted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.ServiceNowTicketCreateRequest{
+		Data: datadogV2.ServiceNowTicketCreateData{
+			Attributes: datadogV2.ServiceNowTicketCreateAttributes{
+				AssignmentGroup: datadog.PtrString("IT Support"),
+				InstanceName:    "my-instance",
+			},
+			Type: datadogV2.SERVICENOWTICKETRESOURCETYPE_TICKETS,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateCaseServiceNowTicket", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.CreateCaseServiceNowTicket(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseServiceNowTicket`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Create ServiceNow ticket for case returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.ServiceNowTicketCreateAttributes;
+import com.datadog.api.client.v2.model.ServiceNowTicketCreateData;
+import com.datadog.api.client.v2.model.ServiceNowTicketCreateRequest;
+import com.datadog.api.client.v2.model.ServiceNowTicketResourceType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createCaseServiceNowTicket", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    ServiceNowTicketCreateRequest body =
+        new ServiceNowTicketCreateRequest()
+            .data(
+                new ServiceNowTicketCreateData()
+                    .attributes(
+                        new ServiceNowTicketCreateAttributes()
+                            .assignmentGroup("IT Support")
+                            .instanceName("my-instance"))
+                    .type(ServiceNowTicketResourceType.TICKETS));
+
+    try {
+      apiInstance.createCaseServiceNowTicket("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#createCaseServiceNowTicket");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Create ServiceNow ticket for case returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::ServiceNowTicketCreateAttributes;
+use datadog_api_client::datadogV2::model::ServiceNowTicketCreateData;
+use datadog_api_client::datadogV2::model::ServiceNowTicketCreateRequest;
+use datadog_api_client::datadogV2::model::ServiceNowTicketResourceType;
+
+#[tokio::main]
+async fn main() {
+    let body = ServiceNowTicketCreateRequest::new(ServiceNowTicketCreateData::new(
+        ServiceNowTicketCreateAttributes::new("my-instance".to_string())
+            .assignment_group("IT Support".to_string()),
+        ServiceNowTicketResourceType::TICKETS,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateCaseServiceNowTicket", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api
+        .create_case_service_now_ticket("case_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create ServiceNow ticket for case returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createCaseServiceNowTicket"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiCreateCaseServiceNowTicketRequest = {
+  body: {
+    data: {
+      attributes: {
+        assignmentGroup: "IT Support",
+        instanceName: "my-instance",
+      },
+      type: "tickets",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .createCaseServiceNowTicket(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Create investigation notebook for case{% #create-investigation-notebook-for-case %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                     |
+| ----------------- | -------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v2/cases/{case_id}/relationships/notebook |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v2/cases/{case_id}/relationships/notebook |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v2/cases/{case_id}/relationships/notebook      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v2/cases/{case_id}/relationships/notebook      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v2/cases/{case_id}/relationships/notebook     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v2/cases/{case_id}/relationships/notebook |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v2/cases/{case_id}/relationships/notebook |
+
+### Overview
+
+Create a new investigation notebook and link it to a case
+
+OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
+
+
+
+### Arguments
+
+#### Path Parameters
+
+| Name                      | Type   | Description        |
+| ------------------------- | ------ | ------------------ |
+| case_id [*required*] | string | Case's UUID or key |
+
+### Request
+
+#### Body Data (required)
+
+Notebook creation request
+
+{% tab title="Model" %}
+
+| Parent field | Field                  | Type   | Description                                            |
+| ------------ | ---------------------- | ------ | ------------------------------------------------------ |
+|              | data [*required*] | object | Notebook creation data                                 |
+| data         | type [*required*] | enum   | Notebook resource type Allowed enum values: `notebook` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "type": "notebook"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="204" %}
+No Content
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/notebook" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "type": "notebook"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Create investigation notebook for case returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.case_management_api import CaseManagementApi
+from datadog_api_client.v2.model.notebook_create_data import NotebookCreateData
+from datadog_api_client.v2.model.notebook_create_request import NotebookCreateRequest
+from datadog_api_client.v2.model.notebook_resource_type import NotebookResourceType
+
+body = NotebookCreateRequest(
+    data=NotebookCreateData(
+        type=NotebookResourceType.NOTEBOOK,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_case_notebook"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = CaseManagementApi(api_client)
+    api_instance.create_case_notebook(case_id="case_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create investigation notebook for case returns "No Content" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_case_notebook".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
+
+body = DatadogAPIClient::V2::NotebookCreateRequest.new({
+  data: DatadogAPIClient::V2::NotebookCreateData.new({
+    type: DatadogAPIClient::V2::NotebookResourceType::NOTEBOOK,
+  }),
+})
+api_instance.create_case_notebook("case_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Create investigation notebook for case returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.NotebookCreateRequest{
+		Data: datadogV2.NotebookCreateData{
+			Type: datadogV2.NOTEBOOKRESOURCETYPE_NOTEBOOK,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateCaseNotebook", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCaseManagementApi(apiClient)
+	r, err := api.CreateCaseNotebook(ctx, "case_id", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseNotebook`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Create investigation notebook for case returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CaseManagementApi;
+import com.datadog.api.client.v2.model.NotebookCreateData;
+import com.datadog.api.client.v2.model.NotebookCreateRequest;
+import com.datadog.api.client.v2.model.NotebookResourceType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createCaseNotebook", true);
+    CaseManagementApi apiInstance = new CaseManagementApi(defaultClient);
+
+    NotebookCreateRequest body =
+        new NotebookCreateRequest()
+            .data(new NotebookCreateData().type(NotebookResourceType.NOTEBOOK));
+
+    try {
+      apiInstance.createCaseNotebook("f98a5a5b-e0ff-45d4-b2f5-afe6e74de504", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaseManagementApi#createCaseNotebook");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Create investigation notebook for case returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_case_management::CaseManagementAPI;
+use datadog_api_client::datadogV2::model::NotebookCreateData;
+use datadog_api_client::datadogV2::model::NotebookCreateRequest;
+use datadog_api_client::datadogV2::model::NotebookResourceType;
+
+#[tokio::main]
+async fn main() {
+    let body = NotebookCreateRequest::new(NotebookCreateData::new(NotebookResourceType::NOTEBOOK));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateCaseNotebook", true);
+    let api = CaseManagementAPI::with_config(configuration);
+    let resp = api.create_case_notebook("case_id".to_string(), body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create investigation notebook for case returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createCaseNotebook"] = true;
+const apiInstance = new v2.CaseManagementApi(configuration);
+
+const params: v2.CaseManagementApiCreateCaseNotebookRequest = {
+  body: {
+    data: {
+      type: "notebook",
+    },
+  },
+  caseId: "case_id",
+};
+
+apiInstance
+  .createCaseNotebook(params)
+  .then((data: any) => {
     console.log(
       "API called successfully. Returned data: " + JSON.stringify(data)
     );

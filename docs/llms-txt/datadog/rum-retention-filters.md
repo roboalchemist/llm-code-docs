@@ -921,7 +921,7 @@ public class Example {
                             .name("Test creating retention filter")
                             .eventType(RumRetentionFilterEventType.SESSION)
                             .query("custom_query")
-                            .sampleRate(50L)
+                            .sampleRate(50.0)
                             .enabled(true)));
 
     try {
@@ -956,6 +956,7 @@ from datadog_api_client.v2.model.rum_retention_filter_create_attributes import R
 from datadog_api_client.v2.model.rum_retention_filter_create_data import RumRetentionFilterCreateData
 from datadog_api_client.v2.model.rum_retention_filter_create_request import RumRetentionFilterCreateRequest
 from datadog_api_client.v2.model.rum_retention_filter_event_type import RumRetentionFilterEventType
+from datadog_api_client.v2.model.rum_retention_filter_sample_rate import RumRetentionFilterSampleRate
 from datadog_api_client.v2.model.rum_retention_filter_type import RumRetentionFilterType
 
 body = RumRetentionFilterCreateRequest(
@@ -965,7 +966,7 @@ body = RumRetentionFilterCreateRequest(
             name="Test creating retention filter",
             event_type=RumRetentionFilterEventType.SESSION,
             query="custom_query",
-            sample_rate=50,
+            sample_rate=RumRetentionFilterSampleRate(50.0),
             enabled=True,
         ),
     ),
@@ -1028,7 +1029,7 @@ async fn main() {
         RumRetentionFilterCreateAttributes::new(
             RumRetentionFilterEventType::SESSION,
             "Test creating retention filter".to_string(),
-            50,
+            50.0,
         )
         .enabled(true)
         .query("custom_query".to_string()),
@@ -1357,7 +1358,7 @@ func main() {
 				Name:       datadog.PtrString("Test updating retention filter"),
 				EventType:  datadogV2.RUMRETENTIONFILTEREVENTTYPE_VIEW.Ptr(),
 				Query:      datadog.PtrString("view_query"),
-				SampleRate: datadog.PtrInt64(100),
+				SampleRate: datadog.PtrFloat64(100),
 				Enabled:    datadog.PtrBool(true),
 			},
 		},
@@ -1413,7 +1414,7 @@ public class Example {
                             .name("Test updating retention filter")
                             .eventType(RumRetentionFilterEventType.VIEW)
                             .query("view_query")
-                            .sampleRate(100L)
+                            .sampleRate(100.0)
                             .enabled(true)));
 
     try {
@@ -1446,6 +1447,7 @@ Update a RUM retention filter returns "Updated" response
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.rum_retention_filters_api import RumRetentionFiltersApi
 from datadog_api_client.v2.model.rum_retention_filter_event_type import RumRetentionFilterEventType
+from datadog_api_client.v2.model.rum_retention_filter_sample_rate import RumRetentionFilterSampleRate
 from datadog_api_client.v2.model.rum_retention_filter_type import RumRetentionFilterType
 from datadog_api_client.v2.model.rum_retention_filter_update_attributes import RumRetentionFilterUpdateAttributes
 from datadog_api_client.v2.model.rum_retention_filter_update_data import RumRetentionFilterUpdateData
@@ -1459,7 +1461,7 @@ body = RumRetentionFilterUpdateRequest(
             name="Test updating retention filter",
             event_type=RumRetentionFilterEventType.VIEW,
             query="view_query",
-            sample_rate=100,
+            sample_rate=RumRetentionFilterSampleRate(100.0),
             enabled=True,
         ),
     ),
@@ -1527,7 +1529,7 @@ async fn main() {
             .event_type(RumRetentionFilterEventType::VIEW)
             .name("Test updating retention filter".to_string())
             .query("view_query".to_string())
-            .sample_rate(100),
+            .sample_rate(100.0 as f64),
         "4b95d361-f65d-4515-9824-c9aaeba5ac2a".to_string(),
         RumRetentionFilterType::RETENTION_FILTERS,
     ));

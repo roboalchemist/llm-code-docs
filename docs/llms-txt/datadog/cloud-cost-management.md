@@ -5583,48 +5583,51 @@ OK
 {% tab title="Model" %}
 The definition of `RulesetRespArray` object.
 
-| Parent field         | Field                                     | Type     | Description                                                                   |
-| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-|                      | data [*required*]                    | [object] | The `RulesetRespArray` `data`.                                                |
-| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                         |
-| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                  |
-| created              | nanos                                     | int32    | The `created` `nanos`.                                                        |
-| created              | seconds                                   | int64    | The `created` `seconds`.                                                      |
-| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                   |
-| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                   |
-| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                 |
-| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                       |
-| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                     |
-| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                      |
-| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                  |
-| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                         |
-| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                     |
-| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                        |
-| rules                | mapping                                   | object   | The definition of `RulesetRespDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                              |
-| mapping              | if_not_exists [*required*]           | boolean  | The `mapping` `if_not_exists`.                                                |
-| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                  |
-| rules                | metadata                                  | object   | The `items` `metadata`.                                                       |
+| Parent field         | Field                                     | Type     | Description                                                                                     |
+| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data [*required*]                    | [object] | The `RulesetRespArray` `data`.                                                                  |
+| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                                           |
+| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                                    |
+| created              | nanos                                     | int32    | The `created` `nanos`.                                                                          |
+| created              | seconds                                   | int64    | The `created` `seconds`.                                                                        |
+| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                                     |
+| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                                   |
+| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                                         |
+| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                                       |
+| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                                        |
+| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                                    |
+| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                                           |
+| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                                   | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                                  | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                                 | string   |
-| rules                | name [*required*]                    | string   | The `items` `name`.                                                           |
-| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]                     | string   | The `addition` `key`.                                                         |
-| addition             | value [*required*]                   | string   | The `addition` `value`.                                                       |
-| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                             |
-| query                | if_not_exists [*required*]           | boolean  | The `query` `if_not_exists`.                                                  |
-| query                | query [*required*]                   | string   | The `query` `query`.                                                          |
-| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                   |
-| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                          |
-| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                   |
-| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                     |
-| reference_table      | if_not_exists                             | boolean  | The `reference_table` `if_not_exists`.                                        |
-| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                          |
-| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                           |
-| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                   |
-| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                   |
-| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                         |
+| rules                | name [*required*]                    | string   | The `items` `name`.                                                                             |
+| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.                            |
+| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.                    |
+| addition             | key [*required*]                     | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]                   | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]                   | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object.                   |
+| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                                             |
+| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                                     |
+| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                                     |
+| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                                           |
 
 {% /tab %}
 
@@ -5653,7 +5656,7 @@ The definition of `RulesetRespArray` object.
                 "value": "production"
               },
               "case_insensitivity": false,
-              "if_not_exists": true,
+              "if_tag_exists": "do_not_apply",
               "query": "billingcurrency:\"USD\" AND account_name:\"prod-account\""
             },
             "reference_table": null
@@ -5662,7 +5665,7 @@ The definition of `RulesetRespArray` object.
             "enabled": true,
             "mapping": {
               "destination_key": "team_owner",
-              "if_not_exists": true,
+              "if_tag_exists": "do_not_apply",
               "source_keys": [
                 "account_name",
                 "service"
@@ -5691,7 +5694,7 @@ The definition of `RulesetRespArray` object.
                   "output_key": "dess"
                 }
               ],
-              "if_not_exists": false,
+              "if_tag_exists": "append",
               "source_keys": [
                 "http_status",
                 "status_description"
@@ -5725,7 +5728,7 @@ The definition of `RulesetRespArray` object.
                 "value": "engineering"
               },
               "case_insensitivity": true,
-              "if_not_exists": true,
+              "if_tag_exists": "do_not_apply",
               "query": "account_name:\"dev-*\""
             },
             "reference_table": null
@@ -5966,41 +5969,45 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 
 {% tab title="Model" %}
 
-| Parent field         | Field                             | Type     | Description                                                                            |
-| -------------------- | --------------------------------- | -------- | -------------------------------------------------------------------------------------- |
-|                      | data                              | object   | The definition of `CreateRulesetRequestData` object.                                   |
-| data                 | attributes                        | object   | The definition of `CreateRulesetRequestDataAttributes` object.                         |
-| attributes           | enabled                           | boolean  | The `attributes` `enabled`.                                                            |
-| attributes           | rules [*required*]           | [object] | The `attributes` `rules`.                                                              |
-| rules                | enabled [*required*]         | boolean  | The `items` `enabled`.                                                                 |
-| rules                | mapping                           | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*] | string   | The `mapping` `destination_key`.                                                       |
-| mapping              | if_not_exists [*required*]   | boolean  | The `mapping` `if_not_exists`.                                                         |
-| mapping              | source_keys [*required*]     | [string] | The `mapping` `source_keys`.                                                           |
-| rules                | metadata                          | object   | The `items` `metadata`.                                                                |
+| Parent field         | Field                             | Type     | Description                                                                                     |
+| -------------------- | --------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data                              | object   | The definition of `CreateRulesetRequestData` object.                                            |
+| data                 | attributes                        | object   | The definition of `CreateRulesetRequestDataAttributes` object.                                  |
+| attributes           | enabled                           | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | rules [*required*]           | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]         | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                           | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*] | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]     | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                          | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                         | string   |
-| rules                | name [*required*]            | string   | The `items` `name`.                                                                    |
-| rules                | query                             | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]        | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]             | string   | The `addition` `key`.                                                                  |
-| addition             | value [*required*]           | string   | The `addition` `value`.                                                                |
-| query                | case_insensitivity                | boolean  | The `query` `case_insensitivity`.                                                      |
-| query                | if_not_exists [*required*]   | boolean  | The `query` `if_not_exists`.                                                           |
-| query                | query [*required*]           | string   | The `query` `query`.                                                                   |
-| rules                | reference_table                   | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                | boolean  | The `reference_table` `case_insensitivity`.                                            |
-| reference_table      | field_pairs [*required*]     | [object] | The `reference_table` `field_pairs`.                                                   |
-| field_pairs          | input_column [*required*]    | string   | The `items` `input_column`.                                                            |
-| field_pairs          | output_key [*required*]      | string   | The `items` `output_key`.                                                              |
-| reference_table      | if_not_exists                     | boolean  | The `reference_table` `if_not_exists`.                                                 |
-| reference_table      | source_keys [*required*]     | [string] | The `reference_table` `source_keys`.                                                   |
-| reference_table      | table_name [*required*]      | string   | The `reference_table` `table_name`.                                                    |
-| data                 | id                                | string   | The `CreateRulesetRequestData` `id`.                                                   |
-| data                 | type [*required*]            | enum     | Create ruleset resource type. Allowed enum values: `create_ruleset`                    |
+| rules                | name [*required*]            | string   | The `items` `name`.                                                                             |
+| rules                | query                             | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsQuery` object.                   |
+| query                | addition [*required*]        | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsQueryAddition` object.           |
+| addition             | key [*required*]             | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]           | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]           | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                   | object   | The definition of `CreateRulesetRequestDataAttributesRulesItemsReferenceTable` object.          |
+| reference_table      | case_insensitivity                | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]     | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]    | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]      | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]     | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]      | string   | The `reference_table` `table_name`.                                                             |
+| data                 | id                                | string   | The `CreateRulesetRequestData` `id`.                                                            |
+| data                 | type [*required*]            | enum     | Create ruleset resource type. Allowed enum values: `create_ruleset`                             |
 
 {% /tab %}
 
 {% tab title="Example" %}
+##### 
 
 ```json
 {
@@ -6031,6 +6038,37 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 }
 ```
 
+##### 
+
+```json
+{
+  "data": {
+    "attributes": {
+      "enabled": true,
+      "rules": [
+        {
+          "enabled": true,
+          "mapping": null,
+          "name": "Add Cost Center Tag",
+          "query": {
+            "addition": {
+              "key": "cost_center",
+              "value": "engineering"
+            },
+            "case_insensitivity": false,
+            "if_tag_exists": "replace",
+            "query": "account_id:\"123456789\" AND service:\"web-api\""
+          },
+          "reference_table": null
+        }
+      ]
+    },
+    "id": "New Ruleset",
+    "type": "create_ruleset"
+  }
+}
+```
+
 {% /tab %}
 
 ### Response
@@ -6040,48 +6078,51 @@ OK
 {% tab title="Model" %}
 The definition of `RulesetResp` object.
 
-| Parent field         | Field                                     | Type     | Description                                                                   |
-| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-|                      | data                                      | object   | The definition of `RulesetRespData` object.                                   |
-| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                         |
-| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                  |
-| created              | nanos                                     | int32    | The `created` `nanos`.                                                        |
-| created              | seconds                                   | int64    | The `created` `seconds`.                                                      |
-| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                   |
-| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                   |
-| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                 |
-| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                       |
-| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                     |
-| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                      |
-| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                  |
-| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                         |
-| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                     |
-| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                        |
-| rules                | mapping                                   | object   | The definition of `RulesetRespDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                              |
-| mapping              | if_not_exists [*required*]           | boolean  | The `mapping` `if_not_exists`.                                                |
-| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                  |
-| rules                | metadata                                  | object   | The `items` `metadata`.                                                       |
+| Parent field         | Field                                     | Type     | Description                                                                                     |
+| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data                                      | object   | The definition of `RulesetRespData` object.                                                     |
+| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                                           |
+| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                                    |
+| created              | nanos                                     | int32    | The `created` `nanos`.                                                                          |
+| created              | seconds                                   | int64    | The `created` `seconds`.                                                                        |
+| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                                     |
+| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                                   |
+| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                                         |
+| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                                       |
+| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                                        |
+| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                                    |
+| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                                           |
+| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                                   | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                                  | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                                 | string   |
-| rules                | name [*required*]                    | string   | The `items` `name`.                                                           |
-| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]                     | string   | The `addition` `key`.                                                         |
-| addition             | value [*required*]                   | string   | The `addition` `value`.                                                       |
-| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                             |
-| query                | if_not_exists [*required*]           | boolean  | The `query` `if_not_exists`.                                                  |
-| query                | query [*required*]                   | string   | The `query` `query`.                                                          |
-| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                   |
-| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                          |
-| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                   |
-| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                     |
-| reference_table      | if_not_exists                             | boolean  | The `reference_table` `if_not_exists`.                                        |
-| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                          |
-| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                           |
-| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                   |
-| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                   |
-| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                         |
+| rules                | name [*required*]                    | string   | The `items` `name`.                                                                             |
+| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.                            |
+| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.                    |
+| addition             | key [*required*]                     | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]                   | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]                   | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object.                   |
+| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                                             |
+| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                                     |
+| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                                     |
+| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                                           |
 
 {% /tab %}
 
@@ -6109,7 +6150,7 @@ The definition of `RulesetResp` object.
               "value": "ww"
             },
             "case_insensitivity": false,
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "query": "billingcurrency:\"USD\" AND account_name:\"SZA96462\" AND billingcurrency:\"USD\""
           },
           "reference_table": null
@@ -6118,7 +6159,7 @@ The definition of `RulesetResp` object.
           "enabled": true,
           "mapping": {
             "destination_key": "h",
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "source_keys": [
               "accountname",
               "accountownerid"
@@ -6147,7 +6188,7 @@ The definition of `RulesetResp` object.
                 "output_key": "dess"
               }
             ],
-            "if_not_exists": false,
+            "if_tag_exists": "append",
             "source_keys": [
               "http_status",
               "status_description"
@@ -6231,6 +6272,41 @@ API error response.
 EOF
                         
 ##### 
+                          \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "enabled": true,
+      "rules": [
+        {
+          "enabled": true,
+          "mapping": null,
+          "name": "Add Cost Center Tag",
+          "query": {
+            "addition": {
+              "key": "cost_center",
+              "value": "engineering"
+            },
+            "case_insensitivity": false,
+            "if_tag_exists": "replace",
+            "query": "account_id:\"123456789\" AND service:\"web-api\""
+          },
+          "reference_table": null
+        }
+      ]
+    },
+    "id": "New Ruleset",
+    "type": "create_ruleset"
+  }
+}
+EOF
+                        
+##### 
 
 ```go
 // Create tag pipeline ruleset returns "OK" response
@@ -6255,7 +6331,7 @@ func main() {
 				Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
 					{
 						Enabled: true,
-						Mapping: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsMapping(nil),
+						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
 						Name:    "Add Cost Center Tag",
 						Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
 							Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
@@ -6263,7 +6339,67 @@ func main() {
 								Value: "engineering",
 							}),
 							CaseInsensitivity: datadog.PtrBool(false),
-							IfNotExists:       true,
+							IfNotExists:       datadog.PtrBool(true),
+							Query:             `account_id:"123456789" AND service:"web-api"`,
+						}),
+						ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+					},
+				},
+			},
+			Id:   datadog.PtrString("New Ruleset"),
+			Type: datadogV2.CREATERULESETREQUESTDATATYPE_CREATE_RULESET,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCloudCostManagementApi(apiClient)
+	resp, r, err := api.CreateTagPipelinesRuleset(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateTagPipelinesRuleset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateTagPipelinesRuleset`:\n%s\n", responseContent)
+}
+```
+
+##### 
+
+```go
+// Create tag pipeline ruleset with if_tag_exists returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CreateRulesetRequest{
+		Data: &datadogV2.CreateRulesetRequestData{
+			Attributes: &datadogV2.CreateRulesetRequestDataAttributes{
+				Enabled: datadog.PtrBool(true),
+				Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
+					{
+						Enabled: true,
+						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
+						Name:    "Add Cost Center Tag",
+						Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
+							Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
+								Key:   "cost_center",
+								Value: "engineering",
+							}),
+							CaseInsensitivity: datadog.PtrBool(false),
+							IfTagExists:       datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
 							Query:             `account_id:"123456789" AND service:"web-api"`,
 						}),
 						ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
@@ -6360,6 +6496,74 @@ account_id:"123456789" AND service:"web-api"
 }
 ```
 
+##### 
+
+```java
+// Create tag pipeline ruleset with if_tag_exists returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CloudCostManagementApi;
+import com.datadog.api.client.v2.model.CreateRulesetRequest;
+import com.datadog.api.client.v2.model.CreateRulesetRequestData;
+import com.datadog.api.client.v2.model.CreateRulesetRequestDataAttributes;
+import com.datadog.api.client.v2.model.CreateRulesetRequestDataAttributesRulesItems;
+import com.datadog.api.client.v2.model.CreateRulesetRequestDataAttributesRulesItemsQuery;
+import com.datadog.api.client.v2.model.CreateRulesetRequestDataAttributesRulesItemsQueryAddition;
+import com.datadog.api.client.v2.model.CreateRulesetRequestDataType;
+import com.datadog.api.client.v2.model.DataAttributesRulesItemsIfTagExists;
+import com.datadog.api.client.v2.model.RulesetResp;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CloudCostManagementApi apiInstance = new CloudCostManagementApi(defaultClient);
+
+    CreateRulesetRequest body =
+        new CreateRulesetRequest()
+            .data(
+                new CreateRulesetRequestData()
+                    .attributes(
+                        new CreateRulesetRequestDataAttributes()
+                            .enabled(true)
+                            .rules(
+                                Collections.singletonList(
+                                    new CreateRulesetRequestDataAttributesRulesItems()
+                                        .enabled(true)
+                                        .mapping(null)
+                                        .name("Add Cost Center Tag")
+                                        .query(
+                                            new CreateRulesetRequestDataAttributesRulesItemsQuery()
+                                                .addition(
+                                                    new CreateRulesetRequestDataAttributesRulesItemsQueryAddition()
+                                                        .key("cost_center")
+                                                        .value("engineering"))
+                                                .caseInsensitivity(false)
+                                                .ifTagExists(
+                                                    DataAttributesRulesItemsIfTagExists.REPLACE)
+                                                .query(
+                                                    """
+account_id:"123456789" AND service:"web-api"
+"""))
+                                        .referenceTable(null))))
+                    .id("New Ruleset")
+                    .type(CreateRulesetRequestDataType.CREATE_RULESET));
+
+    try {
+      RulesetResp result = apiInstance.createTagPipelinesRuleset(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudCostManagementApi#createTagPipelinesRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
@@ -6422,6 +6626,65 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
+##### 
+
+```python
+"""
+Create tag pipeline ruleset with if_tag_exists returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
+from datadog_api_client.v2.model.create_ruleset_request import CreateRulesetRequest
+from datadog_api_client.v2.model.create_ruleset_request_data import CreateRulesetRequestData
+from datadog_api_client.v2.model.create_ruleset_request_data_attributes import CreateRulesetRequestDataAttributes
+from datadog_api_client.v2.model.create_ruleset_request_data_attributes_rules_items import (
+    CreateRulesetRequestDataAttributesRulesItems,
+)
+from datadog_api_client.v2.model.create_ruleset_request_data_attributes_rules_items_query import (
+    CreateRulesetRequestDataAttributesRulesItemsQuery,
+)
+from datadog_api_client.v2.model.create_ruleset_request_data_attributes_rules_items_query_addition import (
+    CreateRulesetRequestDataAttributesRulesItemsQueryAddition,
+)
+from datadog_api_client.v2.model.create_ruleset_request_data_type import CreateRulesetRequestDataType
+from datadog_api_client.v2.model.data_attributes_rules_items_if_tag_exists import DataAttributesRulesItemsIfTagExists
+
+body = CreateRulesetRequest(
+    data=CreateRulesetRequestData(
+        attributes=CreateRulesetRequestDataAttributes(
+            enabled=True,
+            rules=[
+                CreateRulesetRequestDataAttributesRulesItems(
+                    enabled=True,
+                    mapping=None,
+                    name="Add Cost Center Tag",
+                    query=CreateRulesetRequestDataAttributesRulesItemsQuery(
+                        addition=CreateRulesetRequestDataAttributesRulesItemsQueryAddition(
+                            key="cost_center",
+                            value="engineering",
+                        ),
+                        case_insensitivity=False,
+                        if_tag_exists=DataAttributesRulesItemsIfTagExists.REPLACE,
+                        query='account_id:"123456789" AND service:"web-api"',
+                    ),
+                    reference_table=None,
+                ),
+            ],
+        ),
+        id="New Ruleset",
+        type=CreateRulesetRequestDataType.CREATE_RULESET,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CloudCostManagementApi(api_client)
+    response = api_instance.create_tag_pipelines_ruleset(body=body)
+
+    print(response)
+```
+
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
@@ -6450,6 +6713,43 @@ body = DatadogAPIClient::V2::CreateRulesetRequest.new({
             }),
             case_insensitivity: false,
             if_not_exists: true,
+            query: 'account_id:"123456789" AND service:"web-api"',
+          }),
+          reference_table: nil,
+        }),
+      ],
+    }),
+    id: "New Ruleset",
+    type: DatadogAPIClient::V2::CreateRulesetRequestDataType::CREATE_RULESET,
+  }),
+})
+p api_instance.create_tag_pipelines_ruleset(body)
+```
+
+##### 
+
+```ruby
+# Create tag pipeline ruleset with if_tag_exists returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
+
+body = DatadogAPIClient::V2::CreateRulesetRequest.new({
+  data: DatadogAPIClient::V2::CreateRulesetRequestData.new({
+    attributes: DatadogAPIClient::V2::CreateRulesetRequestDataAttributes.new({
+      enabled: true,
+      rules: [
+        DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItems.new({
+          enabled: true,
+          mapping: nil,
+          name: "Add Cost Center Tag",
+          query: DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItemsQuery.new({
+            addition: DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItemsQueryAddition.new({
+              key: "cost_center",
+              value: "engineering",
+            }),
+            case_insensitivity: false,
+            if_tag_exists: DatadogAPIClient::V2::DataAttributesRulesItemsIfTagExists::REPLACE,
             query: 'account_id:"123456789" AND service:"web-api"',
           }),
           reference_table: nil,
@@ -6500,10 +6800,66 @@ async fn main() {
                                     "engineering".to_string(),
                                 ),
                             ),
-                            true,
                             r#"account_id:"123456789" AND service:"web-api""#.to_string(),
                         )
-                        .case_insensitivity(false),
+                        .case_insensitivity(false)
+                        .if_not_exists(true),
+                    ))
+                    .reference_table(None),
+                ])
+                .enabled(true),
+            )
+            .id("New Ruleset".to_string()),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = CloudCostManagementAPI::with_config(configuration);
+    let resp = api.create_tag_pipelines_ruleset(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+##### 
+
+```rust
+// Create tag pipeline ruleset with if_tag_exists returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
+use datadog_api_client::datadogV2::model::CreateRulesetRequest;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestData;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestDataAttributes;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestDataAttributesRulesItems;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestDataAttributesRulesItemsQuery;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestDataAttributesRulesItemsQueryAddition;
+use datadog_api_client::datadogV2::model::CreateRulesetRequestDataType;
+use datadog_api_client::datadogV2::model::DataAttributesRulesItemsIfTagExists;
+
+#[tokio::main]
+async fn main() {
+    let body = CreateRulesetRequest::new().data(
+        CreateRulesetRequestData::new(CreateRulesetRequestDataType::CREATE_RULESET)
+            .attributes(
+                CreateRulesetRequestDataAttributes::new(vec![
+                    CreateRulesetRequestDataAttributesRulesItems::new(
+                        true,
+                        "Add Cost Center Tag".to_string(),
+                    )
+                    .mapping(None)
+                    .query(Some(
+                        CreateRulesetRequestDataAttributesRulesItemsQuery::new(
+                            Some(
+                                CreateRulesetRequestDataAttributesRulesItemsQueryAddition::new(
+                                    "cost_center".to_string(),
+                                    "engineering".to_string(),
+                                ),
+                            ),
+                            r#"account_id:"123456789" AND service:"web-api""#.to_string(),
+                        )
+                        .case_insensitivity(false)
+                        .if_tag_exists(DataAttributesRulesItemsIfTagExists::REPLACE),
                     ))
                     .reference_table(None),
                 ])
@@ -6577,6 +6933,57 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
+##### 
+
+```typescript
+/**
+ * Create tag pipeline ruleset with if_tag_exists returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CloudCostManagementApi(configuration);
+
+const params: v2.CloudCostManagementApiCreateTagPipelinesRulesetRequest = {
+  body: {
+    data: {
+      attributes: {
+        enabled: true,
+        rules: [
+          {
+            enabled: true,
+            mapping: undefined,
+            name: "Add Cost Center Tag",
+            query: {
+              addition: {
+                key: "cost_center",
+                value: "engineering",
+              },
+              caseInsensitivity: false,
+              ifTagExists: "replace",
+              query: `account_id:"123456789" AND service:"web-api"`,
+            },
+            referenceTable: undefined,
+          },
+        ],
+      },
+      id: "New Ruleset",
+      type: "create_ruleset",
+    },
+  },
+};
+
+apiInstance
+  .createTagPipelinesRuleset(params)
+  .then((data: v2.RulesetResp) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
@@ -6621,42 +7028,46 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 
 {% tab title="Model" %}
 
-| Parent field         | Field                             | Type     | Description                                                                            |
-| -------------------- | --------------------------------- | -------- | -------------------------------------------------------------------------------------- |
-|                      | data                              | object   | The definition of `UpdateRulesetRequestData` object.                                   |
-| data                 | attributes                        | object   | The definition of `UpdateRulesetRequestDataAttributes` object.                         |
-| attributes           | enabled [*required*]         | boolean  | The `attributes` `enabled`.                                                            |
-| attributes           | last_version                      | int64    | The `attributes` `last_version`.                                                       |
-| attributes           | rules [*required*]           | [object] | The `attributes` `rules`.                                                              |
-| rules                | enabled [*required*]         | boolean  | The `items` `enabled`.                                                                 |
-| rules                | mapping                           | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*] | string   | The `mapping` `destination_key`.                                                       |
-| mapping              | if_not_exists [*required*]   | boolean  | The `mapping` `if_not_exists`.                                                         |
-| mapping              | source_keys [*required*]     | [string] | The `mapping` `source_keys`.                                                           |
-| rules                | metadata                          | object   | The `items` `metadata`.                                                                |
+| Parent field         | Field                             | Type     | Description                                                                                     |
+| -------------------- | --------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data                              | object   | The definition of `UpdateRulesetRequestData` object.                                            |
+| data                 | attributes                        | object   | The definition of `UpdateRulesetRequestDataAttributes` object.                                  |
+| attributes           | enabled [*required*]         | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | last_version                      | int64    | The `attributes` `last_version`.                                                                |
+| attributes           | rules [*required*]           | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]         | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                           | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*] | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]     | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                          | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                         | string   |
-| rules                | name [*required*]            | string   | The `items` `name`.                                                                    |
-| rules                | query                             | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]        | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]             | string   | The `addition` `key`.                                                                  |
-| addition             | value [*required*]           | string   | The `addition` `value`.                                                                |
-| query                | case_insensitivity                | boolean  | The `query` `case_insensitivity`.                                                      |
-| query                | if_not_exists [*required*]   | boolean  | The `query` `if_not_exists`.                                                           |
-| query                | query [*required*]           | string   | The `query` `query`.                                                                   |
-| rules                | reference_table                   | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                | boolean  | The `reference_table` `case_insensitivity`.                                            |
-| reference_table      | field_pairs [*required*]     | [object] | The `reference_table` `field_pairs`.                                                   |
-| field_pairs          | input_column [*required*]    | string   | The `items` `input_column`.                                                            |
-| field_pairs          | output_key [*required*]      | string   | The `items` `output_key`.                                                              |
-| reference_table      | if_not_exists                     | boolean  | The `reference_table` `if_not_exists`.                                                 |
-| reference_table      | source_keys [*required*]     | [string] | The `reference_table` `source_keys`.                                                   |
-| reference_table      | table_name [*required*]      | string   | The `reference_table` `table_name`.                                                    |
-| data                 | id                                | string   | The `UpdateRulesetRequestData` `id`.                                                   |
-| data                 | type [*required*]            | enum     | Update ruleset resource type. Allowed enum values: `update_ruleset`                    |
+| rules                | name [*required*]            | string   | The `items` `name`.                                                                             |
+| rules                | query                             | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsQuery` object.                   |
+| query                | addition [*required*]        | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsQueryAddition` object.           |
+| addition             | key [*required*]             | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]           | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]           | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                   | object   | The definition of `UpdateRulesetRequestDataAttributesRulesItemsReferenceTable` object.          |
+| reference_table      | case_insensitivity                | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]     | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]    | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]      | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                     | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                     | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]     | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]      | string   | The `reference_table` `table_name`.                                                             |
+| data                 | id                                | string   | The `UpdateRulesetRequestData` `id`.                                                            |
+| data                 | type [*required*]            | enum     | Update ruleset resource type. Allowed enum values: `update_ruleset`                             |
 
 {% /tab %}
 
 {% tab title="Example" %}
+##### 
 
 ```json
 {
@@ -6687,6 +7098,37 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 }
 ```
 
+##### 
+
+```json
+{
+  "data": {
+    "attributes": {
+      "enabled": true,
+      "last_version": 3611102,
+      "rules": [
+        {
+          "enabled": true,
+          "mapping": {
+            "destination_key": "team_owner",
+            "if_tag_exists": "replace",
+            "source_keys": [
+              "account_name",
+              "account_id"
+            ]
+          },
+          "name": "Account Name Mapping",
+          "query": null,
+          "reference_table": null
+        }
+      ]
+    },
+    "id": "New Ruleset",
+    "type": "update_ruleset"
+  }
+}
+```
+
 {% /tab %}
 
 ### Response
@@ -6696,48 +7138,51 @@ OK
 {% tab title="Model" %}
 The definition of `RulesetResp` object.
 
-| Parent field         | Field                                     | Type     | Description                                                                   |
-| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-|                      | data                                      | object   | The definition of `RulesetRespData` object.                                   |
-| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                         |
-| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                  |
-| created              | nanos                                     | int32    | The `created` `nanos`.                                                        |
-| created              | seconds                                   | int64    | The `created` `seconds`.                                                      |
-| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                   |
-| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                   |
-| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                 |
-| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                       |
-| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                     |
-| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                      |
-| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                  |
-| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                         |
-| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                     |
-| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                        |
-| rules                | mapping                                   | object   | The definition of `RulesetRespDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                              |
-| mapping              | if_not_exists [*required*]           | boolean  | The `mapping` `if_not_exists`.                                                |
-| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                  |
-| rules                | metadata                                  | object   | The `items` `metadata`.                                                       |
+| Parent field         | Field                                     | Type     | Description                                                                                     |
+| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data                                      | object   | The definition of `RulesetRespData` object.                                                     |
+| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                                           |
+| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                                    |
+| created              | nanos                                     | int32    | The `created` `nanos`.                                                                          |
+| created              | seconds                                   | int64    | The `created` `seconds`.                                                                        |
+| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                                     |
+| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                                   |
+| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                                         |
+| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                                       |
+| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                                        |
+| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                                    |
+| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                                           |
+| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                                   | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                                  | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                                 | string   |
-| rules                | name [*required*]                    | string   | The `items` `name`.                                                           |
-| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]                     | string   | The `addition` `key`.                                                         |
-| addition             | value [*required*]                   | string   | The `addition` `value`.                                                       |
-| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                             |
-| query                | if_not_exists [*required*]           | boolean  | The `query` `if_not_exists`.                                                  |
-| query                | query [*required*]                   | string   | The `query` `query`.                                                          |
-| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                   |
-| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                          |
-| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                   |
-| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                     |
-| reference_table      | if_not_exists                             | boolean  | The `reference_table` `if_not_exists`.                                        |
-| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                          |
-| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                           |
-| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                   |
-| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                   |
-| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                         |
+| rules                | name [*required*]                    | string   | The `items` `name`.                                                                             |
+| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.                            |
+| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.                    |
+| addition             | key [*required*]                     | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]                   | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]                   | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object.                   |
+| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                                             |
+| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                                     |
+| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                                     |
+| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                                           |
 
 {% /tab %}
 
@@ -6765,7 +7210,7 @@ The definition of `RulesetResp` object.
               "value": "ww"
             },
             "case_insensitivity": false,
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "query": "billingcurrency:\"USD\" AND account_name:\"SZA96462\" AND billingcurrency:\"USD\""
           },
           "reference_table": null
@@ -6774,7 +7219,7 @@ The definition of `RulesetResp` object.
           "enabled": true,
           "mapping": {
             "destination_key": "h",
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "source_keys": [
               "accountname",
               "accountownerid"
@@ -6803,7 +7248,7 @@ The definition of `RulesetResp` object.
                 "output_key": "dess"
               }
             ],
-            "if_not_exists": false,
+            "if_tag_exists": "append",
             "source_keys": [
               "http_status",
               "status_description"
@@ -6887,6 +7332,41 @@ API error response.
 EOF
                         
 ##### 
+                          \# Path parametersexport ruleset_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/${ruleset_id}" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "enabled": true,
+      "last_version": 3611102,
+      "rules": [
+        {
+          "enabled": true,
+          "mapping": {
+            "destination_key": "team_owner",
+            "if_tag_exists": "replace",
+            "source_keys": [
+              "account_name",
+              "account_id"
+            ]
+          },
+          "name": "Account Name Mapping",
+          "query": null,
+          "reference_table": null
+        }
+      ]
+    },
+    "id": "New Ruleset",
+    "type": "update_ruleset"
+  }
+}
+EOF
+                        
+##### 
 
 ```go
 // Update tag pipeline ruleset returns "OK" response
@@ -6912,9 +7392,69 @@ func main() {
 				Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
 					{
 						Enabled: true,
-						Mapping: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsMapping(&datadogV2.UpdateRulesetRequestDataAttributesRulesItemsMapping{
+						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
 							DestinationKey: "team_owner",
-							IfNotExists:    true,
+							IfNotExists:    datadog.PtrBool(true),
+							SourceKeys: []string{
+								"account_name",
+								"account_id",
+							},
+						}),
+						Name:           "Account Name Mapping",
+						Query:          *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsQuery(nil),
+						ReferenceTable: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+					},
+				},
+			},
+			Id:   datadog.PtrString("New Ruleset"),
+			Type: datadogV2.UPDATERULESETREQUESTDATATYPE_UPDATE_RULESET,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCloudCostManagementApi(apiClient)
+	resp, r, err := api.UpdateTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateTagPipelinesRuleset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateTagPipelinesRuleset`:\n%s\n", responseContent)
+}
+```
+
+##### 
+
+```go
+// Update tag pipeline ruleset with if_tag_exists returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.UpdateRulesetRequest{
+		Data: &datadogV2.UpdateRulesetRequestData{
+			Attributes: &datadogV2.UpdateRulesetRequestDataAttributes{
+				Enabled:     true,
+				LastVersion: datadog.PtrInt64(3611102),
+				Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
+					{
+						Enabled: true,
+						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
+							DestinationKey: "team_owner",
+							IfTagExists:    datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
 							SourceKeys: []string{
 								"account_name",
 								"account_id",
@@ -6958,12 +7498,12 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v2.api.CloudCostManagementApi;
+import com.datadog.api.client.v2.model.DataAttributesRulesItemsMapping;
 import com.datadog.api.client.v2.model.RulesetResp;
 import com.datadog.api.client.v2.model.UpdateRulesetRequest;
 import com.datadog.api.client.v2.model.UpdateRulesetRequestData;
 import com.datadog.api.client.v2.model.UpdateRulesetRequestDataAttributes;
 import com.datadog.api.client.v2.model.UpdateRulesetRequestDataAttributesRulesItems;
-import com.datadog.api.client.v2.model.UpdateRulesetRequestDataAttributesRulesItemsMapping;
 import com.datadog.api.client.v2.model.UpdateRulesetRequestDataType;
 import java.util.Arrays;
 import java.util.Collections;
@@ -6986,9 +7526,73 @@ public class Example {
                                     new UpdateRulesetRequestDataAttributesRulesItems()
                                         .enabled(true)
                                         .mapping(
-                                            new UpdateRulesetRequestDataAttributesRulesItemsMapping()
+                                            new DataAttributesRulesItemsMapping()
                                                 .destinationKey("team_owner")
                                                 .ifNotExists(true)
+                                                .sourceKeys(
+                                                    Arrays.asList("account_name", "account_id")))
+                                        .name("Account Name Mapping")
+                                        .query(null)
+                                        .referenceTable(null))))
+                    .id("New Ruleset")
+                    .type(UpdateRulesetRequestDataType.UPDATE_RULESET));
+
+    try {
+      RulesetResp result =
+          apiInstance.updateTagPipelinesRuleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudCostManagementApi#updateTagPipelinesRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+##### 
+
+```java
+// Update tag pipeline ruleset with if_tag_exists returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CloudCostManagementApi;
+import com.datadog.api.client.v2.model.DataAttributesRulesItemsIfTagExists;
+import com.datadog.api.client.v2.model.DataAttributesRulesItemsMapping;
+import com.datadog.api.client.v2.model.RulesetResp;
+import com.datadog.api.client.v2.model.UpdateRulesetRequest;
+import com.datadog.api.client.v2.model.UpdateRulesetRequestData;
+import com.datadog.api.client.v2.model.UpdateRulesetRequestDataAttributes;
+import com.datadog.api.client.v2.model.UpdateRulesetRequestDataAttributesRulesItems;
+import com.datadog.api.client.v2.model.UpdateRulesetRequestDataType;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CloudCostManagementApi apiInstance = new CloudCostManagementApi(defaultClient);
+
+    UpdateRulesetRequest body =
+        new UpdateRulesetRequest()
+            .data(
+                new UpdateRulesetRequestData()
+                    .attributes(
+                        new UpdateRulesetRequestDataAttributes()
+                            .enabled(true)
+                            .lastVersion(3611102L)
+                            .rules(
+                                Collections.singletonList(
+                                    new UpdateRulesetRequestDataAttributesRulesItems()
+                                        .enabled(true)
+                                        .mapping(
+                                            new DataAttributesRulesItemsMapping()
+                                                .destinationKey("team_owner")
+                                                .ifTagExists(
+                                                    DataAttributesRulesItemsIfTagExists.REPLACE)
                                                 .sourceKeys(
                                                     Arrays.asList("account_name", "account_id")))
                                         .name("Account Name Mapping")
@@ -7025,14 +7629,12 @@ Update tag pipeline ruleset returns "OK" response
 
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
+from datadog_api_client.v2.model.data_attributes_rules_items_mapping import DataAttributesRulesItemsMapping
 from datadog_api_client.v2.model.update_ruleset_request import UpdateRulesetRequest
 from datadog_api_client.v2.model.update_ruleset_request_data import UpdateRulesetRequestData
 from datadog_api_client.v2.model.update_ruleset_request_data_attributes import UpdateRulesetRequestDataAttributes
 from datadog_api_client.v2.model.update_ruleset_request_data_attributes_rules_items import (
     UpdateRulesetRequestDataAttributesRulesItems,
-)
-from datadog_api_client.v2.model.update_ruleset_request_data_attributes_rules_items_mapping import (
-    UpdateRulesetRequestDataAttributesRulesItemsMapping,
 )
 from datadog_api_client.v2.model.update_ruleset_request_data_type import UpdateRulesetRequestDataType
 
@@ -7044,9 +7646,63 @@ body = UpdateRulesetRequest(
             rules=[
                 UpdateRulesetRequestDataAttributesRulesItems(
                     enabled=True,
-                    mapping=UpdateRulesetRequestDataAttributesRulesItemsMapping(
+                    mapping=DataAttributesRulesItemsMapping(
                         destination_key="team_owner",
                         if_not_exists=True,
+                        source_keys=[
+                            "account_name",
+                            "account_id",
+                        ],
+                    ),
+                    name="Account Name Mapping",
+                    query=None,
+                    reference_table=None,
+                ),
+            ],
+        ),
+        id="New Ruleset",
+        type=UpdateRulesetRequestDataType.UPDATE_RULESET,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CloudCostManagementApi(api_client)
+    response = api_instance.update_tag_pipelines_ruleset(ruleset_id="ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body=body)
+
+    print(response)
+```
+
+##### 
+
+```python
+"""
+Update tag pipeline ruleset with if_tag_exists returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
+from datadog_api_client.v2.model.data_attributes_rules_items_if_tag_exists import DataAttributesRulesItemsIfTagExists
+from datadog_api_client.v2.model.data_attributes_rules_items_mapping import DataAttributesRulesItemsMapping
+from datadog_api_client.v2.model.update_ruleset_request import UpdateRulesetRequest
+from datadog_api_client.v2.model.update_ruleset_request_data import UpdateRulesetRequestData
+from datadog_api_client.v2.model.update_ruleset_request_data_attributes import UpdateRulesetRequestDataAttributes
+from datadog_api_client.v2.model.update_ruleset_request_data_attributes_rules_items import (
+    UpdateRulesetRequestDataAttributesRulesItems,
+)
+from datadog_api_client.v2.model.update_ruleset_request_data_type import UpdateRulesetRequestDataType
+
+body = UpdateRulesetRequest(
+    data=UpdateRulesetRequestData(
+        attributes=UpdateRulesetRequestDataAttributes(
+            enabled=True,
+            last_version=3611102,
+            rules=[
+                UpdateRulesetRequestDataAttributesRulesItems(
+                    enabled=True,
+                    mapping=DataAttributesRulesItemsMapping(
+                        destination_key="team_owner",
+                        if_tag_exists=DataAttributesRulesItemsIfTagExists.REPLACE,
                         source_keys=[
                             "account_name",
                             "account_id",
@@ -7091,9 +7747,46 @@ body = DatadogAPIClient::V2::UpdateRulesetRequest.new({
       rules: [
         DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
           enabled: true,
-          mapping: DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItemsMapping.new({
+          mapping: DatadogAPIClient::V2::DataAttributesRulesItemsMapping.new({
             destination_key: "team_owner",
             if_not_exists: true,
+            source_keys: [
+              "account_name",
+              "account_id",
+            ],
+          }),
+          name: "Account Name Mapping",
+          query: nil,
+          reference_table: nil,
+        }),
+      ],
+    }),
+    id: "New Ruleset",
+    type: DatadogAPIClient::V2::UpdateRulesetRequestDataType::UPDATE_RULESET,
+  }),
+})
+p api_instance.update_tag_pipelines_ruleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+```
+
+##### 
+
+```ruby
+# Update tag pipeline ruleset with if_tag_exists returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
+
+body = DatadogAPIClient::V2::UpdateRulesetRequest.new({
+  data: DatadogAPIClient::V2::UpdateRulesetRequestData.new({
+    attributes: DatadogAPIClient::V2::UpdateRulesetRequestDataAttributes.new({
+      enabled: true,
+      last_version: 3611102,
+      rules: [
+        DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
+          enabled: true,
+          mapping: DatadogAPIClient::V2::DataAttributesRulesItemsMapping.new({
+            destination_key: "team_owner",
+            if_tag_exists: DatadogAPIClient::V2::DataAttributesRulesItemsIfTagExists::REPLACE,
             source_keys: [
               "account_name",
               "account_id",
@@ -7122,11 +7815,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 // Update tag pipeline ruleset returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
+use datadog_api_client::datadogV2::model::DataAttributesRulesItemsMapping;
 use datadog_api_client::datadogV2::model::UpdateRulesetRequest;
 use datadog_api_client::datadogV2::model::UpdateRulesetRequestData;
 use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataAttributes;
 use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataAttributesRulesItems;
-use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataAttributesRulesItemsMapping;
 use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataType;
 
 #[tokio::main]
@@ -7141,11 +7834,63 @@ async fn main() {
                         "Account Name Mapping".to_string(),
                     )
                     .mapping(Some(
-                        UpdateRulesetRequestDataAttributesRulesItemsMapping::new(
+                        DataAttributesRulesItemsMapping::new(
                             "team_owner".to_string(),
-                            true,
                             vec!["account_name".to_string(), "account_id".to_string()],
-                        ),
+                        )
+                        .if_not_exists(true),
+                    ))
+                    .query(None)
+                    .reference_table(None)],
+                )
+                .last_version(3611102),
+            )
+            .id("New Ruleset".to_string()),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = CloudCostManagementAPI::with_config(configuration);
+    let resp = api
+        .update_tag_pipelines_ruleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+##### 
+
+```rust
+// Update tag pipeline ruleset with if_tag_exists returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
+use datadog_api_client::datadogV2::model::DataAttributesRulesItemsIfTagExists;
+use datadog_api_client::datadogV2::model::DataAttributesRulesItemsMapping;
+use datadog_api_client::datadogV2::model::UpdateRulesetRequest;
+use datadog_api_client::datadogV2::model::UpdateRulesetRequestData;
+use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataAttributes;
+use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataAttributesRulesItems;
+use datadog_api_client::datadogV2::model::UpdateRulesetRequestDataType;
+
+#[tokio::main]
+async fn main() {
+    let body = UpdateRulesetRequest::new().data(
+        UpdateRulesetRequestData::new(UpdateRulesetRequestDataType::UPDATE_RULESET)
+            .attributes(
+                UpdateRulesetRequestDataAttributes::new(
+                    true,
+                    vec![UpdateRulesetRequestDataAttributesRulesItems::new(
+                        true,
+                        "Account Name Mapping".to_string(),
+                    )
+                    .mapping(Some(
+                        DataAttributesRulesItemsMapping::new(
+                            "team_owner".to_string(),
+                            vec!["account_name".to_string(), "account_id".to_string()],
+                        )
+                        .if_tag_exists(DataAttributesRulesItemsIfTagExists::REPLACE),
                     ))
                     .query(None)
                     .reference_table(None)],
@@ -7195,6 +7940,55 @@ const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
             mapping: {
               destinationKey: "team_owner",
               ifNotExists: true,
+              sourceKeys: ["account_name", "account_id"],
+            },
+            name: "Account Name Mapping",
+            query: undefined,
+            referenceTable: undefined,
+          },
+        ],
+      },
+      id: "New Ruleset",
+      type: "update_ruleset",
+    },
+  },
+  rulesetId: "ee10c3ff-312f-464c-b4f6-46adaa6d00a1",
+};
+
+apiInstance
+  .updateTagPipelinesRuleset(params)
+  .then((data: v2.RulesetResp) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+##### 
+
+```typescript
+/**
+ * Update tag pipeline ruleset with if_tag_exists returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CloudCostManagementApi(configuration);
+
+const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
+  body: {
+    data: {
+      attributes: {
+        enabled: true,
+        lastVersion: 3611102,
+        rules: [
+          {
+            enabled: true,
+            mapping: {
+              destinationKey: "team_owner",
+              ifTagExists: "replace",
               sourceKeys: ["account_name", "account_id"],
             },
             name: "Account Name Mapping",
@@ -7490,48 +8284,51 @@ OK
 {% tab title="Model" %}
 The definition of `RulesetResp` object.
 
-| Parent field         | Field                                     | Type     | Description                                                                   |
-| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-|                      | data                                      | object   | The definition of `RulesetRespData` object.                                   |
-| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                         |
-| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                  |
-| created              | nanos                                     | int32    | The `created` `nanos`.                                                        |
-| created              | seconds                                   | int64    | The `created` `seconds`.                                                      |
-| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                   |
-| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                   |
-| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                 |
-| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                       |
-| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                     |
-| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                      |
-| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                  |
-| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                         |
-| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                     |
-| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                        |
-| rules                | mapping                                   | object   | The definition of `RulesetRespDataAttributesRulesItemsMapping` object.        |
-| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                              |
-| mapping              | if_not_exists [*required*]           | boolean  | The `mapping` `if_not_exists`.                                                |
-| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                  |
-| rules                | metadata                                  | object   | The `items` `metadata`.                                                       |
+| Parent field         | Field                                     | Type     | Description                                                                                     |
+| -------------------- | ----------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+|                      | data                                      | object   | The definition of `RulesetRespData` object.                                                     |
+| data                 | attributes                                | object   | The definition of `RulesetRespDataAttributes` object.                                           |
+| attributes           | created [*required*]                 | object   | The definition of `RulesetRespDataAttributesCreated` object.                                    |
+| created              | nanos                                     | int32    | The `created` `nanos`.                                                                          |
+| created              | seconds                                   | int64    | The `created` `seconds`.                                                                        |
+| attributes           | enabled [*required*]                 | boolean  | The `attributes` `enabled`.                                                                     |
+| attributes           | last_modified_user_uuid [*required*] | string   | The `attributes` `last_modified_user_uuid`.                                                     |
+| attributes           | modified [*required*]                | object   | The definition of `RulesetRespDataAttributesModified` object.                                   |
+| modified             | nanos                                     | int32    | The `modified` `nanos`.                                                                         |
+| modified             | seconds                                   | int64    | The `modified` `seconds`.                                                                       |
+| attributes           | name [*required*]                    | string   | The `attributes` `name`.                                                                        |
+| attributes           | position [*required*]                | int32    | The `attributes` `position`.                                                                    |
+| attributes           | processing_status                         | string   | The `attributes` `processing_status`.                                                           |
+| attributes           | rules [*required*]                   | [object] | The `attributes` `rules`.                                                                       |
+| rules                | enabled [*required*]                 | boolean  | The `items` `enabled`.                                                                          |
+| rules                | mapping                                   | object   | The definition of `DataAttributesRulesItemsMapping` object.                                     |
+| mapping              | destination_key [*required*]         | string   | The `mapping` `destination_key`.                                                                |
+| mapping              | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `mapping` `if_not_exists`.         |
+| mapping              | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| mapping              | source_keys [*required*]             | [string] | The `mapping` `source_keys`.                                                                    |
+| rules                | metadata                                  | object   | The `items` `metadata`.                                                                         |
 | additionalProperties | <any-key>                                 | string   |
-| rules                | name [*required*]                    | string   | The `items` `name`.                                                           |
-| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.          |
-| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.  |
-| addition             | key [*required*]                     | string   | The `addition` `key`.                                                         |
-| addition             | value [*required*]                   | string   | The `addition` `value`.                                                       |
-| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                             |
-| query                | if_not_exists [*required*]           | boolean  | The `query` `if_not_exists`.                                                  |
-| query                | query [*required*]                   | string   | The `query` `query`.                                                          |
-| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object. |
-| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                   |
-| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                          |
-| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                   |
-| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                     |
-| reference_table      | if_not_exists                             | boolean  | The `reference_table` `if_not_exists`.                                        |
-| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                          |
-| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                           |
-| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                   |
-| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                   |
-| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                         |
+| rules                | name [*required*]                    | string   | The `items` `name`.                                                                             |
+| rules                | query                                     | object   | The definition of `RulesetRespDataAttributesRulesItemsQuery` object.                            |
+| query                | addition [*required*]                | object   | The definition of `RulesetRespDataAttributesRulesItemsQueryAddition` object.                    |
+| addition             | key [*required*]                     | string   | The `addition` `key`.                                                                           |
+| addition             | value [*required*]                   | string   | The `addition` `value`.                                                                         |
+| query                | case_insensitivity                        | boolean  | The `query` `case_insensitivity`.                                                               |
+| query                | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `query` `if_not_exists`.           |
+| query                | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| query                | query [*required*]                   | string   | The `query` `query`.                                                                            |
+| rules                | reference_table                           | object   | The definition of `RulesetRespDataAttributesRulesItemsReferenceTable` object.                   |
+| reference_table      | case_insensitivity                        | boolean  | The `reference_table` `case_insensitivity`.                                                     |
+| reference_table      | field_pairs [*required*]             | [object] | The `reference_table` `field_pairs`.                                                            |
+| field_pairs          | input_column [*required*]            | string   | The `items` `input_column`.                                                                     |
+| field_pairs          | output_key [*required*]              | string   | The `items` `output_key`.                                                                       |
+| reference_table      | if_not_exists                             | boolean  | **DEPRECATED**: Deprecated. Use `if_tag_exists` instead. The `reference_table` `if_not_exists`. |
+| reference_table      | if_tag_exists                             | enum     | The behavior when the tag already exists. Allowed enum values: `append,do_not_apply,replace`    |
+| reference_table      | source_keys [*required*]             | [string] | The `reference_table` `source_keys`.                                                            |
+| reference_table      | table_name [*required*]              | string   | The `reference_table` `table_name`.                                                             |
+| attributes           | version [*required*]                 | int64    | The `attributes` `version`.                                                                     |
+| data                 | id                                        | string   | The `RulesetRespData` `id`.                                                                     |
+| data                 | type [*required*]                    | enum     | Ruleset resource type. Allowed enum values: `ruleset`                                           |
 
 {% /tab %}
 
@@ -7559,7 +8356,7 @@ The definition of `RulesetResp` object.
               "value": "ww"
             },
             "case_insensitivity": false,
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "query": "billingcurrency:\"USD\" AND account_name:\"SZA96462\" AND billingcurrency:\"USD\""
           },
           "reference_table": null
@@ -7568,7 +8365,7 @@ The definition of `RulesetResp` object.
           "enabled": true,
           "mapping": {
             "destination_key": "h",
-            "if_not_exists": true,
+            "if_tag_exists": "do_not_apply",
             "source_keys": [
               "accountname",
               "accountownerid"
@@ -7597,7 +8394,7 @@ The definition of `RulesetResp` object.
                 "output_key": "dess"
               }
             ],
-            "if_not_exists": false,
+            "if_tag_exists": "append",
             "source_keys": [
               "http_status",
               "status_description"
@@ -13672,10 +14469,14 @@ Create or update a budget returns "OK" response
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
 from datadog_api_client.v2.model.budget_attributes import BudgetAttributes
-from datadog_api_client.v2.model.budget_entry import BudgetEntry
 from datadog_api_client.v2.model.budget_with_entries import BudgetWithEntries
 from datadog_api_client.v2.model.budget_with_entries_data import BudgetWithEntriesData
-from datadog_api_client.v2.model.tag_filter import TagFilter
+from datadog_api_client.v2.model.budget_with_entries_data_attributes_entries_items import (
+    BudgetWithEntriesDataAttributesEntriesItems,
+)
+from datadog_api_client.v2.model.budget_with_entries_data_attributes_entries_items_tag_filters_items import (
+    BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems,
+)
 
 body = BudgetWithEntries(
     data=BudgetWithEntriesData(
@@ -13684,14 +14485,9 @@ body = BudgetWithEntries(
             created_by="00000000-0a0a-0a0a-aaa0-00000000000a",
             end_month=202502,
             entries=[
-                BudgetEntry(
-                    amount=500.0,
-                    month=202501,
+                BudgetWithEntriesDataAttributesEntriesItems(
                     tag_filters=[
-                        TagFilter(
-                            tag_key="service",
-                            tag_value="ec2",
-                        ),
+                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(),
                     ],
                 ),
             ],
@@ -13704,6 +14500,7 @@ body = BudgetWithEntries(
             updated_by="00000000-0a0a-0a0a-aaa0-00000000000a",
         ),
         id="00000000-0a0a-0a0a-aaa0-00000000000a",
+        type="",
     ),
 )
 
@@ -13734,14 +14531,9 @@ body = DatadogAPIClient::V2::BudgetWithEntries.new({
       created_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
       end_month: 202502,
       entries: [
-        DatadogAPIClient::V2::BudgetEntry.new({
-          amount: 500,
-          month: 202501,
+        DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
           tag_filters: [
-            DatadogAPIClient::V2::TagFilter.new({
-              tag_key: "service",
-              tag_value: "ec2",
-            }),
+            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({}),
           ],
         }),
       ],
@@ -13754,6 +14546,7 @@ body = DatadogAPIClient::V2::BudgetWithEntries.new({
       updated_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
     }),
     id: "00000000-0a0a-0a0a-aaa0-00000000000a",
+    type: "",
   }),
 })
 p api_instance.upsert_budget(body)
@@ -13787,15 +14580,10 @@ func main() {
 				CreatedAt: datadog.PtrInt64(1738258683590),
 				CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
 				EndMonth:  datadog.PtrInt64(202502),
-				Entries: []datadogV2.BudgetEntry{
+				Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
 					{
-						Amount: datadog.PtrFloat64(500),
-						Month:  datadog.PtrInt64(202501),
-						TagFilters: []datadogV2.TagFilter{
-							{
-								TagKey:   datadog.PtrString("service"),
-								TagValue: datadog.PtrString("ec2"),
-							},
+						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+							{},
 						},
 					},
 				},
@@ -13807,7 +14595,8 @@ func main() {
 				UpdatedAt:    datadog.PtrInt64(1738258683590),
 				UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
 			},
-			Id: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+			Id:   datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+			Type: datadog.PtrString(""),
 		},
 	}
 	ctx := datadog.NewDefaultContext(context.Background())
@@ -13839,10 +14628,10 @@ import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v2.api.CloudCostManagementApi;
 import com.datadog.api.client.v2.model.BudgetAttributes;
-import com.datadog.api.client.v2.model.BudgetEntry;
 import com.datadog.api.client.v2.model.BudgetWithEntries;
 import com.datadog.api.client.v2.model.BudgetWithEntriesData;
-import com.datadog.api.client.v2.model.TagFilter;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataAttributesEntriesItems;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems;
 import java.util.Collections;
 
 public class Example {
@@ -13861,14 +14650,10 @@ public class Example {
                             .endMonth(202502L)
                             .entries(
                                 Collections.singletonList(
-                                    new BudgetEntry()
-                                        .amount(500.0)
-                                        .month(202501L)
+                                    new BudgetWithEntriesDataAttributesEntriesItems()
                                         .tagFilters(
                                             Collections.singletonList(
-                                                new TagFilter()
-                                                    .tagKey("service")
-                                                    .tagValue("ec2")))))
+                                                new BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems()))))
                             .metricsQuery("aws.cost.amortized{service:ec2} by {service}")
                             .name("my budget")
                             .orgId(123L)
@@ -13876,7 +14661,8 @@ public class Example {
                             .totalAmount(1000.0)
                             .updatedAt(1738258683590L)
                             .updatedBy("00000000-0a0a-0a0a-aaa0-00000000000a"))
-                    .id("00000000-0a0a-0a0a-aaa0-00000000000a"));
+                    .id("00000000-0a0a-0a0a-aaa0-00000000000a")
+                    .type(""));
 
     try {
       BudgetWithEntries result = apiInstance.upsertBudget(body);
@@ -13903,10 +14689,10 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
 use datadog_api_client::datadogV2::model::BudgetAttributes;
-use datadog_api_client::datadogV2::model::BudgetEntry;
 use datadog_api_client::datadogV2::model::BudgetWithEntries;
 use datadog_api_client::datadogV2::model::BudgetWithEntriesData;
-use datadog_api_client::datadogV2::model::TagFilter;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataAttributesEntriesItems;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems;
 
 #[tokio::main]
 async fn main() {
@@ -13917,12 +14703,10 @@ async fn main() {
                     .created_at(1738258683590)
                     .created_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string())
                     .end_month(202502)
-                    .entries(vec![BudgetEntry::new()
-                        .amount(500.0 as f64)
-                        .month(202501)
-                        .tag_filters(vec![TagFilter::new()
-                            .tag_key("service".to_string())
-                            .tag_value("ec2".to_string())])])
+                    .entries(vec![BudgetWithEntriesDataAttributesEntriesItems::new()
+                        .tag_filters(vec![
+                            BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new(),
+                        ])])
                     .metrics_query("aws.cost.amortized{service:ec2} by {service}".to_string())
                     .name("my budget".to_string())
                     .org_id(123)
@@ -13931,7 +14715,8 @@ async fn main() {
                     .updated_at(1738258683590)
                     .updated_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string()),
             )
-            .id("00000000-0a0a-0a0a-aaa0-00000000000a".to_string()),
+            .id("00000000-0a0a-0a0a-aaa0-00000000000a".to_string())
+            .type_("".to_string()),
     );
     let configuration = datadog::Configuration::new();
     let api = CloudCostManagementAPI::with_config(configuration);
@@ -13969,14 +14754,7 @@ const params: v2.CloudCostManagementApiUpsertBudgetRequest = {
         endMonth: 202502,
         entries: [
           {
-            amount: 500,
-            month: 202501,
-            tagFilters: [
-              {
-                tagKey: "service",
-                tagValue: "ec2",
-              },
-            ],
+            tagFilters: [{}],
           },
         ],
         metricsQuery: "aws.cost.amortized{service:ec2} by {service}",
@@ -13988,6 +14766,7 @@ const params: v2.CloudCostManagementApiUpsertBudgetRequest = {
         updatedBy: "00000000-0a0a-0a0a-aaa0-00000000000a",
       },
       id: "00000000-0a0a-0a0a-aaa0-00000000000a",
+      type: "",
     },
   },
 };
@@ -14173,6 +14952,424 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Validate budget returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
+from datadog_api_client.v2.model.budget_validation_request import BudgetValidationRequest
+from datadog_api_client.v2.model.budget_validation_request_data import BudgetValidationRequestData
+from datadog_api_client.v2.model.budget_with_entries_data_attributes import BudgetWithEntriesDataAttributes
+from datadog_api_client.v2.model.budget_with_entries_data_attributes_entries_items import (
+    BudgetWithEntriesDataAttributesEntriesItems,
+)
+from datadog_api_client.v2.model.budget_with_entries_data_attributes_entries_items_tag_filters_items import (
+    BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems,
+)
+from datadog_api_client.v2.model.budget_with_entries_data_type import BudgetWithEntriesDataType
+
+body = BudgetValidationRequest(
+    data=BudgetValidationRequestData(
+        attributes=BudgetWithEntriesDataAttributes(
+            created_at=1738258683590,
+            created_by="00000000-0a0a-0a0a-aaa0-00000000000a",
+            end_month=202502,
+            entries=[
+                BudgetWithEntriesDataAttributesEntriesItems(
+                    amount=500.0,
+                    month=202501,
+                    tag_filters=[
+                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
+                            tag_key="service",
+                            tag_value="ec2",
+                        ),
+                    ],
+                ),
+                BudgetWithEntriesDataAttributesEntriesItems(
+                    amount=500.0,
+                    month=202502,
+                    tag_filters=[
+                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
+                            tag_key="service",
+                            tag_value="ec2",
+                        ),
+                    ],
+                ),
+            ],
+            metrics_query="aws.cost.amortized{service:ec2} by {service}",
+            name="my budget",
+            org_id=123,
+            start_month=202501,
+            total_amount=1000.0,
+            updated_at=1738258683590,
+            updated_by="00000000-0a0a-0a0a-aaa0-00000000000a",
+        ),
+        id="1",
+        type=BudgetWithEntriesDataType.BUDGET,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CloudCostManagementApi(api_client)
+    response = api_instance.validate_budget(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Validate budget returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
+
+body = DatadogAPIClient::V2::BudgetValidationRequest.new({
+  data: DatadogAPIClient::V2::BudgetValidationRequestData.new({
+    attributes: DatadogAPIClient::V2::BudgetWithEntriesDataAttributes.new({
+      created_at: 1738258683590,
+      created_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
+      end_month: 202502,
+      entries: [
+        DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
+          amount: 500,
+          month: 202501,
+          tag_filters: [
+            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
+              tag_key: "service",
+              tag_value: "ec2",
+            }),
+          ],
+        }),
+        DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
+          amount: 500,
+          month: 202502,
+          tag_filters: [
+            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
+              tag_key: "service",
+              tag_value: "ec2",
+            }),
+          ],
+        }),
+      ],
+      metrics_query: "aws.cost.amortized{service:ec2} by {service}",
+      name: "my budget",
+      org_id: 123,
+      start_month: 202501,
+      total_amount: 1000,
+      updated_at: 1738258683590,
+      updated_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
+    }),
+    id: "1",
+    type: DatadogAPIClient::V2::BudgetWithEntriesDataType::BUDGET,
+  }),
+})
+p api_instance.validate_budget(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Validate budget returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.BudgetValidationRequest{
+		Data: &datadogV2.BudgetValidationRequestData{
+			Attributes: &datadogV2.BudgetWithEntriesDataAttributes{
+				CreatedAt: datadog.PtrInt64(1738258683590),
+				CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+				EndMonth:  datadog.PtrInt64(202502),
+				Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
+					{
+						Amount: datadog.PtrFloat64(500),
+						Month:  datadog.PtrInt64(202501),
+						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+							{
+								TagKey:   datadog.PtrString("service"),
+								TagValue: datadog.PtrString("ec2"),
+							},
+						},
+					},
+					{
+						Amount: datadog.PtrFloat64(500),
+						Month:  datadog.PtrInt64(202502),
+						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+							{
+								TagKey:   datadog.PtrString("service"),
+								TagValue: datadog.PtrString("ec2"),
+							},
+						},
+					},
+				},
+				MetricsQuery: datadog.PtrString("aws.cost.amortized{service:ec2} by {service}"),
+				Name:         datadog.PtrString("my budget"),
+				OrgId:        datadog.PtrInt64(123),
+				StartMonth:   datadog.PtrInt64(202501),
+				TotalAmount:  datadog.PtrFloat64(1000),
+				UpdatedAt:    datadog.PtrInt64(1738258683590),
+				UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+			},
+			Id:   datadog.PtrString("1"),
+			Type: datadogV2.BUDGETWITHENTRIESDATATYPE_BUDGET,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCloudCostManagementApi(apiClient)
+	resp, r, err := api.ValidateBudget(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateBudget`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateBudget`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Validate budget returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CloudCostManagementApi;
+import com.datadog.api.client.v2.model.BudgetValidationRequest;
+import com.datadog.api.client.v2.model.BudgetValidationRequestData;
+import com.datadog.api.client.v2.model.BudgetValidationResponse;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataAttributes;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataAttributesEntriesItems;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems;
+import com.datadog.api.client.v2.model.BudgetWithEntriesDataType;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CloudCostManagementApi apiInstance = new CloudCostManagementApi(defaultClient);
+
+    BudgetValidationRequest body =
+        new BudgetValidationRequest()
+            .data(
+                new BudgetValidationRequestData()
+                    .attributes(
+                        new BudgetWithEntriesDataAttributes()
+                            .createdAt(1738258683590L)
+                            .createdBy("00000000-0a0a-0a0a-aaa0-00000000000a")
+                            .endMonth(202502L)
+                            .entries(
+                                Arrays.asList(
+                                    new BudgetWithEntriesDataAttributesEntriesItems()
+                                        .amount(500.0)
+                                        .month(202501L)
+                                        .tagFilters(
+                                            Collections.singletonList(
+                                                new BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems()
+                                                    .tagKey("service")
+                                                    .tagValue("ec2"))),
+                                    new BudgetWithEntriesDataAttributesEntriesItems()
+                                        .amount(500.0)
+                                        .month(202502L)
+                                        .tagFilters(
+                                            Collections.singletonList(
+                                                new BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems()
+                                                    .tagKey("service")
+                                                    .tagValue("ec2")))))
+                            .metricsQuery("aws.cost.amortized{service:ec2} by {service}")
+                            .name("my budget")
+                            .orgId(123L)
+                            .startMonth(202501L)
+                            .totalAmount(1000.0)
+                            .updatedAt(1738258683590L)
+                            .updatedBy("00000000-0a0a-0a0a-aaa0-00000000000a"))
+                    .id("1")
+                    .type(BudgetWithEntriesDataType.BUDGET));
+
+    try {
+      BudgetValidationResponse result = apiInstance.validateBudget(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudCostManagementApi#validateBudget");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Validate budget returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
+use datadog_api_client::datadogV2::model::BudgetValidationRequest;
+use datadog_api_client::datadogV2::model::BudgetValidationRequestData;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataAttributes;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataAttributesEntriesItems;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems;
+use datadog_api_client::datadogV2::model::BudgetWithEntriesDataType;
+
+#[tokio::main]
+async fn main() {
+    let body = BudgetValidationRequest::new().data(
+        BudgetValidationRequestData::new(BudgetWithEntriesDataType::BUDGET)
+            .attributes(
+                BudgetWithEntriesDataAttributes::new()
+                    .created_at(1738258683590)
+                    .created_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string())
+                    .end_month(202502)
+                    .entries(vec![
+                        BudgetWithEntriesDataAttributesEntriesItems::new()
+                            .amount(500.0 as f64)
+                            .month(202501)
+                            .tag_filters(vec![
+                                BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
+                                    .tag_key("service".to_string())
+                                    .tag_value("ec2".to_string()),
+                            ]),
+                        BudgetWithEntriesDataAttributesEntriesItems::new()
+                            .amount(500.0 as f64)
+                            .month(202502)
+                            .tag_filters(vec![
+                                BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
+                                    .tag_key("service".to_string())
+                                    .tag_value("ec2".to_string()),
+                            ]),
+                    ])
+                    .metrics_query("aws.cost.amortized{service:ec2} by {service}".to_string())
+                    .name("my budget".to_string())
+                    .org_id(123)
+                    .start_month(202501)
+                    .total_amount(1000.0 as f64)
+                    .updated_at(1738258683590)
+                    .updated_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string()),
+            )
+            .id("1".to_string()),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = CloudCostManagementAPI::with_config(configuration);
+    let resp = api.validate_budget(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Validate budget returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CloudCostManagementApi(configuration);
+
+const params: v2.CloudCostManagementApiValidateBudgetRequest = {
+  body: {
+    data: {
+      attributes: {
+        createdAt: 1738258683590,
+        createdBy: "00000000-0a0a-0a0a-aaa0-00000000000a",
+        endMonth: 202502,
+        entries: [
+          {
+            amount: 500,
+            month: 202501,
+            tagFilters: [
+              {
+                tagKey: "service",
+                tagValue: "ec2",
+              },
+            ],
+          },
+          {
+            amount: 500,
+            month: 202502,
+            tagFilters: [
+              {
+                tagKey: "service",
+                tagValue: "ec2",
+              },
+            ],
+          },
+        ],
+        metricsQuery: "aws.cost.amortized{service:ec2} by {service}",
+        name: "my budget",
+        orgId: 123,
+        startMonth: 202501,
+        totalAmount: 1000,
+        updatedAt: 1738258683590,
+        updatedBy: "00000000-0a0a-0a0a-aaa0-00000000000a",
+      },
+      id: "1",
+      type: "budget",
+    },
+  },
+};
+
+apiInstance
+  .validateBudget(params)
+  .then((data: v2.BudgetValidationResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Validate CSV budget{% #validate-csv-budget %}
@@ -14263,6 +15460,163 @@ API error response.
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget/csv/validate" \
 -H "Accept: application/json"
                 
+##### 
+
+```python
+"""
+Validate CSV budget returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = CloudCostManagementApi(api_client)
+    response = api_instance.validate_csv_budget()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" python3 "example.py"
+##### 
+
+```ruby
+# Validate CSV budget returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
+p api_instance.validate_csv_budget()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" rb "example.rb"
+##### 
+
+```go
+// Validate CSV budget returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewCloudCostManagementApi(apiClient)
+	resp, r, err := api.ValidateCsvBudget(ctx)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateCsvBudget`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateCsvBudget`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" go run "main.go"
+##### 
+
+```java
+// Validate CSV budget returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.CloudCostManagementApi;
+import com.datadog.api.client.v2.model.ValidationResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    CloudCostManagementApi apiInstance = new CloudCostManagementApi(defaultClient);
+
+    try {
+      ValidationResponse result = apiInstance.validateCsvBudget();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CloudCostManagementApi#validateCsvBudget");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" java "Example.java"
+##### 
+
+```rust
+// Validate CSV budget returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = CloudCostManagementAPI::with_config(configuration);
+    let resp = api.validate_csv_budget().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" cargo run
+##### 
+
+```typescript
+/**
+ * Validate CSV budget returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.CloudCostManagementApi(configuration);
+
+apiInstance
+  .validateCsvBudget()
+  .then((data: v2.ValidationResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" tsc "example.ts"
 {% /tab %}
 
 ## Get budget{% #get-budget %}
@@ -14399,7 +15753,7 @@ API error response.
 
 ```python
 """
-Get a budget returns "OK" response
+Get budget returns "OK" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -14422,7 +15776,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```ruby
-# Get a budget returns "OK" response
+# Get budget returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
@@ -14436,7 +15790,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```go
-// Get a budget returns "OK" response
+// Get budget returns "OK" response
 
 package main
 
@@ -14474,7 +15828,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Get a budget returns "OK" response
+// Get budget returns "OK" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -14507,7 +15861,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```rust
-// Get a budget returns "OK" response
+// Get budget returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
 
@@ -14532,7 +15886,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Get a budget returns "OK" response
+ * Get budget returns "OK" response
  */
 
 import { client, v2 } from "@datadog/datadog-api-client";
@@ -14628,7 +15982,7 @@ API error response.
 
 ```python
 """
-Delete a budget returns "No Content" response
+Delete budget returns "No Content" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -14649,7 +16003,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```ruby
-# Delete a budget returns "No Content" response
+# Delete budget returns "No Content" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
@@ -14663,7 +16017,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```go
-// Delete a budget returns "No Content" response
+// Delete budget returns "No Content" response
 
 package main
 
@@ -14697,7 +16051,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Delete a budget returns "No Content" response
+// Delete budget returns "No Content" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -14728,7 +16082,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```rust
-// Delete a budget returns "No Content" response
+// Delete budget returns "No Content" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_cloud_cost_management::CloudCostManagementAPI;
 
@@ -14753,7 +16107,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Delete a budget returns "No Content" response
+ * Delete budget returns "No Content" response
  */
 
 import { client, v2 } from "@datadog/datadog-api-client";

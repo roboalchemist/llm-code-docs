@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/session_replay.md
-
 # Source: https://docs.datadoghq.com/session_replay.md
 
 ---

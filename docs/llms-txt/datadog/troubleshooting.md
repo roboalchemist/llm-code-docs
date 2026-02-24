@@ -1,55 +1,3 @@
-# Source: https://docs.datadoghq.com/incident_response/case_management/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/error_tracking/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/code_security/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/cloud_security_management/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/python/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/php/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/java/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/go/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/ruby/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/security/application_security/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/setup_sql_server/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/setup_postgres/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/setup_oracle/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/setup_mysql/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/setup_mongodb/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/database_monitoring/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/continuous_testing/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/continuous_integration/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/containers/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/coscreen/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/cloudprem/operate/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/agent/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/account_management/saml/troubleshooting.md
-
-# Source: https://docs.datadoghq.com/tracing/trace_collection/single-step-apm/troubleshooting.md
-
 # Source: https://docs.datadoghq.com/tracing/troubleshooting.md
 
 ---
@@ -392,6 +340,12 @@ These logs can surface instrumentation errors or integration-specific errors. Fo
 #### Startup logs
 
 During startup, Datadog tracing libraries emit logs that reflect the configurations applied in a JSON object, as well as any errors encountered, including if the Agent can be reached in languages where this is possible. Some languages require these startup logs to be enabled with the environment variable `DD_TRACE_STARTUP_LOGS=true`. For more information, see the [Startup logs](https://docs.datadoghq.com/tracing/troubleshooting/tracer_startup_logs/).
+{% /collapsible-section %}
+
+{% collapsible-section %}
+#### SDK configurations
+
+Configuration values are automatically reported by the SDKs and can be viewed in the UI. This can be used to troubleshoot instrumentation issues caused by misconfiguration. For details, see the [SDK configurations page](https://docs.datadoghq.com/tracing/troubleshooting/sdk_configurations/).
 {% /collapsible-section %}
 
 ## Additional support{% #additional-support %}

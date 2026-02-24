@@ -1,14 +1,12 @@
 # Source: https://docs.datadoghq.com/tracing/error_tracking.md
 
-# Source: https://docs.datadoghq.com/error_tracking.md
-
 ---
-title: Error Tracking
-description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Error Tracking
+title: Error Tracking for Backend Services
+description: Learn how to search and manage errors collected from your backend services.
+breadcrumbs: Docs > APM > Error Tracking for Backend Services
 ---
 
-# Error Tracking
+# Error Tracking for Backend Services
 
 ## Overview{% #overview %}
 
@@ -31,39 +29,46 @@ Error Tracking enables you to:
 - Set monitors on error tracking events, such as high error volume or new issues
 - Follow issues over time to know when they first started, if they are still ongoing, and how often they occur
 
-Additional features are available depending on the source of the error. See supported error sources.
-
-## Getting started{% #getting-started %}
-
-- Take a tour of key Error Tracking features in the [Error Tracking Explorer](https://docs.datadoghq.com/error_tracking/explorer) documentation.
-- Use the product-specific links in the next section to set up Error Tracking for a particular error source.
-
 ## Setup{% #setup %}
 
-- [Agentic Onboarding](https://docs.datadoghq.com/agentic_onboarding/setup)
-- [Browser](https://docs.datadoghq.com/error_tracking/frontend/browser)
-- [Android](https://docs.datadoghq.com/error_tracking/frontend/mobile/android)
-- [iOS](https://docs.datadoghq.com/error_tracking/frontend/mobile/ios)
-- [Expo](https://docs.datadoghq.com/error_tracking/frontend/mobile/expo)
-- [React Native](https://docs.datadoghq.com/error_tracking/frontend/mobile/reactnative)
-- [Flutter](https://docs.datadoghq.com/error_tracking/frontend/mobile/flutter)
-- [Kotlin Multiplatform](https://docs.datadoghq.com/error_tracking/frontend/mobile/kotlin_multiplatform)
-- [Logs](https://docs.datadoghq.com/error_tracking/frontend/logs)
+Error Tracking is available for all languages supported by APM. It requires no additional SDK and no configuration changes.
 
-## Supported error sources{% #supported-error-sources %}
+Optionally, to see code snippets in your stack traces, set up the [GitHub integration](https://docs.datadoghq.com/tracing).
 
-Error Tracking captures and processes errors across your web, mobile, and backend applications. You can instrument your applications and services using the [Browser SDK](https://docs.datadoghq.com/error_tracking/frontend/browser), [Mobile SDK](https://docs.datadoghq.com/error_tracking/frontend/mobile), or ingest errors from your Logs, Traces, and Real User Monitoring events.
+{% image
+   source="https://datadog-docs.imgix.net/images/tracing/error_tracking/inline_code_snippet.d66611583dc16b5ed75b660043cae0ab.png?auto=format"
+   alt="An inline code snippet in a stack trace" /%}
 
-Additional features are available depending on the source of the error. For example, in errors originating from an APM trace, the [Exception Replay](https://docs.datadoghq.com/error_tracking/backend/exception_replay) feature automatically captures production variable values.
+To get started with configuring your repository, see the [Source Code Integration documentation](https://docs.datadoghq.com/integrations/guide/source-code-integration).
 
-For details, see the product-specific Error Tracking documentation:
+## Use span attributes to track error spans{% #use-span-attributes-to-track-error-spans %}
 
-- [APM](https://docs.datadoghq.com/tracing/error_tracking#setup)
-- [Log Management](https://docs.datadoghq.com/logs/error_tracking#setup)
-- [Real User Monitoring](https://docs.datadoghq.com/real_user_monitoring/error_tracking#setup)
+The Datadog tracers collect errors through integrations and the manual instrumentation of your backend services' source code. An error span must contain the `error.stack`, `error.message`, and `error.type` [span attributes](https://docs.datadoghq.com/tracing/visualization/trace/?tab=spantags#more-information) and belong to a complete trace to be tracked. If an error is reported multiple times within a service, only the top-most error is kept.
 
-## Further reading{% #further-reading %}
+{% image
+   source="https://datadog-docs.imgix.net/images/tracing/error_tracking/flamegraph_with_errors.0d4a1c89fc86e42851e4e533013b8061.png?auto=format"
+   alt="Flame graph with errors" /%}
 
-- [Troubleshoot faster with the GitLab Source Code integration in Datadog](https://www.datadoghq.com/blog/gitlab-source-code-integration)
-- [Troubleshoot root causes with GitHub commit and ownership data in Error Tracking](https://www.datadoghq.com/blog/error-tracking-and-github/)
-- [A practical guide to error handling in Go](https://www.datadoghq.com/blog/go-error-handling/)
+Error Tracking computes a fingerprint for each error span it processes using the error type, the error message, and the frames that form the stack trace. Errors with the same fingerprint are grouped together and belong to the same issue. For more information, see the [Trace Explorer documentation](https://docs.datadoghq.com/tracing/trace_explorer/trace_view/?tab=spantags).
+
+## Control which errors are tracked{% #control-which-errors-are-tracked %}
+
+Error Tracking automatically processes all error spans, but you can control which errors are ingested and how they are managed:
+
+- **Filter errors with inclusion and exclusion rules**: Define rules to include or exclude errors based on attributes such as service, environment, or error type. See [Manage Data Collection](https://docs.datadoghq.com/error_tracking/manage_data_collection/).
+- **Set rate limits**: Control the volume of errors ingested per day to manage costs. See [Manage Data Collection](https://docs.datadoghq.com/error_tracking/manage_data_collection/).
+- **Exclude specific issues**: Mark recurring non-actionable issues as `EXCLUDED` to stop collecting them. See [Issue States](https://docs.datadoghq.com/error_tracking/issue_states/).
+- **Filter entire traces**: Prevent traces from being sent to Datadog (rather than filtering errors). See [Ignoring Unwanted Resources in APM](https://docs.datadoghq.com/tracing/guide/ignoring_apm_resources/).
+
+## Examine issues to start troubleshooting or debugging{% #examine-issues-to-start-troubleshooting-or-debugging %}
+
+Error Tracking automatically categorizes errors into issues collected from your backend services in the [Error Tracking Explorer](https://app.datadoghq.com/apm/error-tracking). See the [Error Tracking Explorer documentation](https://docs.datadoghq.com/tracing/error_tracking/explorer) for a tour of key features.
+
+Issues created from APM include the distribution of impacted spans, the latest most relevant stack trace, span attributes, host tags, container tags, and metrics.
+
+## Further Reading{% #further-reading %}
+
+- [Explore a centralized view into service telemetry, Error Tracking, SLOs, and more](https://www.datadoghq.com/blog/service-page/)
+- [Learn about the Trace Explorer](https://docs.datadoghq.com/tracing/trace_explorer/trace_view/)
+- [Learn about the Error Tracking Explorer](https://docs.datadoghq.com/tracing/error_tracking/explorer)
+- [Create an Error Tracking monitor](https://docs.datadoghq.com/monitors/types/error_tracking/)

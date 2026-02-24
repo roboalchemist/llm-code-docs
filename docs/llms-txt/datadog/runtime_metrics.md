@@ -118,7 +118,7 @@ Enable [DogStatsD for the Agent](https://docs.datadoghq.com/developers/dogstatsd
 
 When running the Agent in containerized environments, additional configuration is required:
 
-1. Set `dogstatsd_non_local_traffic: true` in your main [`datadog.yaml` configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files/#main-configuration-file), or set the [environment variable](https://docs.datadoghq.com/agent/docker/#dogstatsd-custom-metrics) `DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true`. **Note**: DogStatsD nonâlocal traffic is enabled by default, so you only need to set this if you've overridden it.
+1. Verify that DogStatsD non-local traffic is enabled. This setting is enabled by default. If you have previously disabled it, set `dogstatsd_non_local_traffic: true` in your main [`datadog.yaml` configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files/#main-configuration-file), or set the [environment variable](https://docs.datadoghq.com/agent/docker/#dogstatsd-custom-metrics) `DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true`.
 1. Follow these container-specific setup instructions:
 
 - [Docker](https://docs.datadoghq.com/containers/docker/?tab=standard#dogstatsd-custom-metrics)
@@ -409,6 +409,8 @@ jvm.gc.parnew.time => jvm.gc.minor_collection_time
 | **runtime.node.mem.rss**(gauge)                            | Resident set size*Shown as byte*                                         |
 | **runtime.node.mem.heap\_total**(gauge)                    | Total heap memory*Shown as byte*                                         |
 | **runtime.node.mem.heap\_used**(gauge)                     | Heap memory usage*Shown as byte*                                         |
+| **runtime.node.mem.total**(gauge)                          | Total system memory size*Shown as byte*                                  |
+| **runtime.node.mem.free**(gauge)                           | Free system memory size*Shown as byte*                                   |
 | **runtime.node.mem.external**(gauge)                       | External memory*Shown as byte*                                           |
 | **runtime.node.heap.total\_heap\_size**(gauge)             | Total heap size*Shown as byte*                                           |
 | **runtime.node.heap.total\_heap\_size\_executable**(gauge) | Total executable heap size*Shown as byte*                                |
@@ -429,6 +431,7 @@ jvm.gc.parnew.time => jvm.gc.minor_collection_time
 | **runtime.node.event\_loop.delay.median**(gauge)           | Median event loop delay*Shown as nanosecond*                             |
 | **runtime.node.event\_loop.delay.95percentile**(gauge)     | 95th percentile event loop delay*Shown as nanosecond*                    |
 | **runtime.node.event\_loop.delay.count**(rate)             | Event loop iteration count where a delay is detected*Shown as execution* |
+| **runtime.node.event\_loop.utilization**(gauge)            | Fraction of time the event loop is active*Shown as unit*                 |
 | **runtime.node.gc.pause.max**(gauge)                       | Maximum garbage collection pause*Shown as nanosecond*                    |
 | **runtime.node.gc.pause.min**(gauge)                       | Minimum garbage collection pause*Shown as nanosecond*                    |
 | **runtime.node.gc.pause.avg**(gauge)                       | Average garbage collection pause*Shown as nanosecond*                    |

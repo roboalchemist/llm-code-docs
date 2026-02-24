@@ -2317,25 +2317,26 @@ OK
 {% tab title="Model" %}
 Response containing information about multiple roles.
 
-| Parent field  | Field                  | Type      | Description                                                                           |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------- |
-|               | data                   | [object]  | Array of returned roles.                                                              |
-| data          | attributes             | object    | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time | Time of last role modification.                                                       |
-| attributes    | name                   | string    | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64     | Number of users with that role.                                                       |
-| data          | id                     | string    | The unique identifier of the role.                                                    |
-| data          | relationships          | object    | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]  | Relationships to permission objects.                                                  |
-| data          | id                     | string    | ID of the permission.                                                                 |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions`                         |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                                              |
-|               | meta                   | object    | Object describing meta attributes of response.                                        |
-| meta          | page                   | object    | Pagination object.                                                                    |
-| page          | total_count            | int64     | Total count.                                                                          |
-| page          | total_filtered_count   | int64     | Total count of elements matched by the filter.                                        |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | [object]  | Array of returned roles.                                                                                                                                                                                                                                                                      |
+| data          | attributes                | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string    | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64     | Number of users with that role.                                                                                                                                                                                                                                                               |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+|               | meta                      | object    | Object describing meta attributes of response.                                                                                                                                                                                                                                                |
+| meta          | page                      | object    | Pagination object.                                                                                                                                                                                                                                                                            |
+| page          | total_count               | int64     | Total count.                                                                                                                                                                                                                                                                                  |
+| page          | total_filtered_count      | int64     | Total count of elements matched by the filter.                                                                                                                                                                                                                                                |
 
 {% /tab %}
 
@@ -2349,6 +2350,7 @@ Response containing information about multiple roles.
         "created_at": "2019-09-19T10:00:00.000Z",
         "modified_at": "2019-09-19T10:00:00.000Z",
         "name": "string",
+        "receives_permissions_from": [],
         "user_count": "integer"
       },
       "id": "string",

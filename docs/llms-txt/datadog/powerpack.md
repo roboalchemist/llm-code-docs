@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/dashboards/widgets/powerpack.md
-
 # Source: https://docs.datadoghq.com/api/latest/powerpack.md
 
 ---

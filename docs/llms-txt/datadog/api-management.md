@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/cloudcraft/components-azure/api-management.md
-
 # Source: https://docs.datadoghq.com/api/latest/api-management.md
 
 ---

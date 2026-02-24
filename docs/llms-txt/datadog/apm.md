@@ -1,11 +1,3 @@
-# Source: https://docs.datadoghq.com/error_tracking/apm.md
-
-# Source: https://docs.datadoghq.com/containers/kubernetes/apm.md
-
-# Source: https://docs.datadoghq.com/containers/docker/apm.md
-
-# Source: https://docs.datadoghq.com/containers/amazon_ecs/apm.md
-
 # Source: https://docs.datadoghq.com/api/latest/apm.md
 
 ---
@@ -39,6 +31,14 @@ Observe, troubleshoot, and improve cloud-scale applications with all telemetry i
 OAuth apps require the `apm_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#apm) to access this endpoint.
 
 
+
+### Arguments
+
+#### Query Strings
+
+| Name                          | Type   | Description                                                                                       |
+| ----------------------------- | ------ | ------------------------------------------------------------------------------------------------- |
+| filter[env] [*required*] | string | Filter services by environment. Can be set to `*` to return all services across all environments. |
 
 ### Response
 
@@ -111,7 +111,7 @@ API error response.
 ### Code Example
 
 ##### 
-                  \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/services" \
+                  \# Required query argumentsexport filter[env]="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/services?filter[env]=${filter[env]}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
@@ -129,7 +129,9 @@ from datadog_api_client.v2.api.apm_api import APMApi
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = APMApi(api_client)
-    response = api_instance.get_service_list()
+    response = api_instance.get_service_list(
+        filter_env="filter[env]",
+    )
 
     print(response)
 ```
@@ -145,7 +147,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::APMAPI.new
-p api_instance.get_service_list()
+p api_instance.get_service_list("filter[env]")
 ```
 
 #### Instructions
@@ -174,7 +176,7 @@ func main() {
 	configuration := datadog.NewConfiguration()
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewAPMApi(apiClient)
-	resp, r, err := api.GetServiceList(ctx)
+	resp, r, err := api.GetServiceList(ctx, "filter[env]")
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `APMApi.GetServiceList`: %v\n", err)
@@ -206,7 +208,7 @@ public class Example {
     ApmApi apiInstance = new ApmApi(defaultClient);
 
     try {
-      ServiceList result = apiInstance.getServiceList();
+      ServiceList result = apiInstance.getServiceList("filter[env]");
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ApmApi#getServiceList");
@@ -234,7 +236,7 @@ use datadog_api_client::datadogV2::api_apm::APMAPI;
 async fn main() {
     let configuration = datadog::Configuration::new();
     let api = APMAPI::with_config(configuration);
-    let resp = api.get_service_list().await;
+    let resp = api.get_service_list("filter[env]".to_string()).await;
     if let Ok(value) = resp {
         println!("{:#?}", value);
     } else {
@@ -259,8 +261,12 @@ import { client, v2 } from "@datadog/datadog-api-client";
 const configuration = client.createConfiguration();
 const apiInstance = new v2.APMApi(configuration);
 
+const params: v2.APMApiGetServiceListRequest = {
+  filterEnv: "filter[env]",
+};
+
 apiInstance
-  .getServiceList()
+  .getServiceList(params)
   .then((data: v2.ServiceList) => {
     console.log(
       "API called successfully. Returned data: " + JSON.stringify(data)

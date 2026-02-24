@@ -5905,17 +5905,6 @@ func main() {
 					}},
 				AwsAccountId: "123456789012",
 				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("my-bucket"),
-							BucketRegion: datadog.PtrString("us-east-1"),
-							ReportName:   datadog.PtrString("my-report"),
-							ReportPrefix: datadog.PtrString("reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
 				LogsConfig: &datadogV2.AWSLogsConfig{
 					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
 						Lambdas: []string{
@@ -6006,17 +5995,6 @@ func main() {
 					}},
 				AwsAccountId: "123456789012",
 				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("my-bucket"),
-							BucketRegion: datadog.PtrString("us-east-1"),
-							ReportName:   datadog.PtrString("my-report"),
-							ReportPrefix: datadog.PtrString("reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
 				LogsConfig: &datadogV2.AWSLogsConfig{
 					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
 						Lambdas: []string{
@@ -6096,7 +6074,6 @@ import com.datadog.api.client.v2.model.AWSAccountResponse;
 import com.datadog.api.client.v2.model.AWSAccountType;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigRole;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -6105,7 +6082,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -6125,16 +6101,6 @@ public class Example {
                                     new AWSAuthConfigRole().roleName("DatadogIntegrationRole")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("my-bucket")
-                                                .bucketRegion("us-east-1")
-                                                .reportName("my-report")
-                                                .reportPrefix("reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -6200,7 +6166,6 @@ import com.datadog.api.client.v2.model.AWSAccountResponse;
 import com.datadog.api.client.v2.model.AWSAccountType;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigKeys;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -6209,7 +6174,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -6232,16 +6196,6 @@ public class Example {
                                             "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("my-bucket")
-                                                .bucketRegion("us-east-1")
-                                                .reportName("my-report")
-                                                .reportPrefix("reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -6320,8 +6274,6 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 body = AWSAccountCreateRequest(
     data=AWSAccountCreateRequestData(
@@ -6334,17 +6286,6 @@ body = AWSAccountCreateRequest(
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="my-bucket",
-                        bucket_region="us-east-1",
-                        report_name="my-report",
-                        report_prefix="reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
                     lambdas=[
@@ -6422,8 +6363,6 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 body = AWSAccountCreateRequest(
     data=AWSAccountCreateRequestData(
@@ -6437,17 +6376,6 @@ body = AWSAccountCreateRequest(
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="my-bucket",
-                        bucket_region="us-east-1",
-                        report_name="my-report",
-                        report_prefix="reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
                     lambdas=[
@@ -6523,17 +6451,6 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "my-bucket",
-            bucket_region: "us-east-1",
-            report_name: "my-report",
-            report_prefix: "reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
           lambdas: [
@@ -6600,17 +6517,6 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "my-bucket",
-            bucket_region: "us-east-1",
-            report_name: "my-report",
-            report_prefix: "reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
           lambdas: [
@@ -6674,7 +6580,6 @@ use datadog_api_client::datadogV2::model::AWSAccountPartition;
 use datadog_api_client::datadogV2::model::AWSAccountType;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigRole;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -6683,7 +6588,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -6696,14 +6600,6 @@ async fn main() {
             AWSAccountPartition::AWS,
         )
         .account_tags(Some(vec!["key:value".to_string()]))
-        .ccm_config(AWSCCMConfig::new().data_export_configs(vec![
-                                DataExportConfig::new()
-                                    .bucket_name("my-bucket".to_string())
-                                    .bucket_region("us-east-1".to_string())
-                                    .report_name("my-report".to_string())
-                                    .report_prefix("reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ]))
         .logs_config(
             AWSLogsConfig::new().lambda_forwarder(
                 AWSLambdaForwarderConfig::new()
@@ -6763,7 +6659,6 @@ use datadog_api_client::datadogV2::model::AWSAccountPartition;
 use datadog_api_client::datadogV2::model::AWSAccountType;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigKeys;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -6772,7 +6667,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -6786,14 +6680,6 @@ async fn main() {
             AWSAccountPartition::AWS,
         )
         .account_tags(Some(vec!["key:value".to_string()]))
-        .ccm_config(AWSCCMConfig::new().data_export_configs(vec![
-                                DataExportConfig::new()
-                                    .bucket_name("my-bucket".to_string())
-                                    .bucket_region("us-east-1".to_string())
-                                    .report_name("my-report".to_string())
-                                    .report_prefix("reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ]))
         .logs_config(
             AWSLogsConfig::new().lambda_forwarder(
                 AWSLambdaForwarderConfig::new()
@@ -6866,17 +6752,6 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "my-bucket",
-              bucketRegion: "us-east-1",
-              reportName: "my-report",
-              reportPrefix: "reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
             lambdas: [
@@ -6949,17 +6824,6 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "my-bucket",
-              bucketRegion: "us-east-1",
-              reportName: "my-report",
-              reportPrefix: "reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
             lambdas: [
@@ -8280,17 +8144,6 @@ func main() {
 					}},
 				AwsAccountId: "123456789012",
 				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS.Ptr(),
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("updated-bucket"),
-							BucketRegion: datadog.PtrString("us-west-2"),
-							ReportName:   datadog.PtrString("updated-report"),
-							ReportPrefix: datadog.PtrString("cost-reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
 				LogsConfig: &datadogV2.AWSLogsConfig{
 					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
 						Lambdas: []string{
@@ -8370,7 +8223,6 @@ import com.datadog.api.client.v2.model.AWSAccountUpdateRequestAttributes;
 import com.datadog.api.client.v2.model.AWSAccountUpdateRequestData;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigRole;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -8379,7 +8231,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -8402,16 +8253,6 @@ public class Example {
                                     new AWSAuthConfigRole().roleName("DatadogIntegrationRole")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("updated-bucket")
-                                                .bucketRegion("us-west-2")
-                                                .reportName("updated-report")
-                                                .reportPrefix("cost-reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -8491,8 +8332,6 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 # there is a valid "aws_account_v2" in the system
 AWS_ACCOUNT_V2_DATA_ID = environ["AWS_ACCOUNT_V2_DATA_ID"]
@@ -8508,17 +8347,6 @@ body = AWSAccountUpdateRequest(
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="updated-bucket",
-                        bucket_region="us-west-2",
-                        report_name="updated-report",
-                        report_prefix="cost-reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
                     lambdas=[
@@ -8597,17 +8425,6 @@ body = DatadogAPIClient::V2::AWSAccountUpdateRequest.new({
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "updated-bucket",
-            bucket_region: "us-west-2",
-            report_name: "updated-report",
-            report_prefix: "cost-reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
           lambdas: [
@@ -8671,7 +8488,6 @@ use datadog_api_client::datadogV2::model::AWSAccountUpdateRequestAttributes;
 use datadog_api_client::datadogV2::model::AWSAccountUpdateRequestData;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigRole;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -8680,7 +8496,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -8697,19 +8512,6 @@ async fn main() {
                         ),
                     )
                     .aws_partition(AWSAccountPartition::AWS)
-                    .ccm_config(
-                        AWSCCMConfig
-                        ::new().data_export_configs(
-                            vec![
-                                DataExportConfig::new()
-                                    .bucket_name("updated-bucket".to_string())
-                                    .bucket_region("us-west-2".to_string())
-                                    .report_name("updated-report".to_string())
-                                    .report_prefix("cost-reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ],
-                        ),
-                    )
                     .logs_config(
                         AWSLogsConfig
                         ::new().lambda_forwarder(
@@ -8797,17 +8599,6 @@ const params: v2.AWSIntegrationApiUpdateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "updated-bucket",
-              bucketRegion: "us-west-2",
-              reportName: "updated-report",
-              reportPrefix: "cost-reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
             lambdas: [

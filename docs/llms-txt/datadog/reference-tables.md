@@ -2764,7 +2764,6 @@ body = PatchTableRequest(
                     "id",
                 ],
             ),
-            sync_enabled=False,
             tags=[
                 "test_tag",
             ],
@@ -2820,7 +2819,6 @@ body = DatadogAPIClient::V2::PatchTableRequest.new({
           "id",
         ],
       }),
-      sync_enabled: false,
       tags: [
         "test_tag",
       ],
@@ -2882,7 +2880,6 @@ func main() {
 						"id",
 					},
 				},
-				SyncEnabled: datadog.PtrBool(false),
 				Tags: []string{
 					"test_tag",
 				},
@@ -2963,7 +2960,6 @@ public class Example {
                                                 .name("name")
                                                 .type(ReferenceTableSchemaFieldType.STRING)))
                                     .primaryKeys(Collections.singletonList("id")))
-                            .syncEnabled(false)
                             .tags(Collections.singletonList("test_tag")))
                     .type(PatchTableRequestDataType.REFERENCE_TABLE));
 
@@ -3046,7 +3042,6 @@ async fn main() {
                             vec!["id".to_string()],
                         ),
                     )
-                    .sync_enabled(false)
                     .tags(vec!["test_tag".to_string()]),
             ),
         );
@@ -3105,7 +3100,6 @@ const params: v2.ReferenceTablesApiUpdateReferenceTableRequest = {
           ],
           primaryKeys: ["id"],
         },
-        syncEnabled: false,
         tags: ["test_tag"],
       },
       type: "reference_table",
@@ -3649,10 +3643,7 @@ body = BatchUpsertRowsRequestArray(
     data=[
         BatchUpsertRowsRequestData(
             attributes=BatchUpsertRowsRequestDataAttributes(
-                values=dict(
-                    example_key_value="primary_key_value",
-                    name="row_name",
-                ),
+                values=dict(),
             ),
             id="primary_key_value",
             type=TableRowResourceDataType.ROW,
@@ -3682,9 +3673,7 @@ body = DatadogAPIClient::V2::BatchUpsertRowsRequestArray.new({
   data: [
     DatadogAPIClient::V2::BatchUpsertRowsRequestData.new({
       attributes: DatadogAPIClient::V2::BatchUpsertRowsRequestDataAttributes.new({
-        values: {
-          example_key_value: "primary_key_value", name: "row_name",
-        },
+        values: {},
       }),
       id: "primary_key_value",
       type: DatadogAPIClient::V2::TableRowResourceDataType::ROW,
@@ -3719,10 +3708,7 @@ func main() {
 		Data: []datadogV2.BatchUpsertRowsRequestData{
 			{
 				Attributes: &datadogV2.BatchUpsertRowsRequestDataAttributes{
-					Values: map[string]interface{}{
-						"example_key_value": "primary_key_value",
-						"name":              "row_name",
-					},
+					Values: map[string]datadogV2.BatchUpsertRowsRequestDataAttributesValue{},
 				},
 				Id:   "primary_key_value",
 				Type: datadogV2.TABLEROWRESOURCEDATATYPE_ROW,
@@ -3772,11 +3758,7 @@ public class Example {
                 Collections.singletonList(
                     new BatchUpsertRowsRequestData()
                         .attributes(
-                            new BatchUpsertRowsRequestDataAttributes()
-                                .values(
-                                    Map.ofEntries(
-                                        Map.entry("example_key_value", "primary_key_value"),
-                                        Map.entry("name", "row_name"))))
+                            new BatchUpsertRowsRequestDataAttributes().values(Map.ofEntries()))
                         .id("primary_key_value")
                         .type(TableRowResourceDataType.ROW)));
 
@@ -3807,7 +3789,6 @@ use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestArray;
 use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestData;
 use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestDataAttributes;
 use datadog_api_client::datadogV2::model::TableRowResourceDataType;
-use serde_json::Value;
 use std::collections::BTreeMap;
 
 #[tokio::main]
@@ -3816,13 +3797,9 @@ async fn main() {
         "primary_key_value".to_string(),
         TableRowResourceDataType::ROW,
     )
-    .attributes(BatchUpsertRowsRequestDataAttributes::new(BTreeMap::from([
-        (
-            "example_key_value".to_string(),
-            Value::from("primary_key_value"),
-        ),
-        ("name".to_string(), Value::from("row_name")),
-    ])))]);
+    .attributes(BatchUpsertRowsRequestDataAttributes::new(
+        BTreeMap::from([]),
+    ))]);
     let configuration = datadog::Configuration::new();
     let api = ReferenceTablesAPI::with_config(configuration);
     let resp = api.upsert_rows("id".to_string(), body).await;
@@ -3855,10 +3832,7 @@ const params: v2.ReferenceTablesApiUpsertRowsRequest = {
     data: [
       {
         attributes: {
-          values: {
-            example_key_value: "primary_key_value",
-            name: "row_name",
-          },
+          values: {},
         },
         id: "primary_key_value",
         type: "row",

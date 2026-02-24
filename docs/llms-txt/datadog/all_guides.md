@@ -108,6 +108,9 @@ Log Management](https://docs.datadoghq.com/logs/guide)
 - [
   {% icon name="icon-pipelines" /%}
 Observability Pipelines](https://docs.datadoghq.com/observability_pipelines/guide)
+- [
+  {% icon name="icon-upload-wui" /%}
+CloudPrem](https://docs.datadoghq.com/cloudprem/guides/)
 
 - [
   {% icon name="icon-cog-2" /%}

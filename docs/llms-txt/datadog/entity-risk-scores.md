@@ -329,4 +329,172 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+List Entity Risk Scores returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.entity_risk_scores_api import EntityRiskScoresApi
+
+configuration = Configuration()
+configuration.unstable_operations["list_entity_risk_scores"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = EntityRiskScoresApi(api_client)
+    response = api_instance.list_entity_risk_scores()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# List Entity Risk Scores returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.list_entity_risk_scores".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::EntityRiskScoresAPI.new
+p api_instance.list_entity_risk_scores()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// List Entity Risk Scores returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.ListEntityRiskScores", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewEntityRiskScoresApi(apiClient)
+	resp, r, err := api.ListEntityRiskScores(ctx, *datadogV2.NewListEntityRiskScoresOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EntityRiskScoresApi.ListEntityRiskScores`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `EntityRiskScoresApi.ListEntityRiskScores`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// List Entity Risk Scores returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.EntityRiskScoresApi;
+import com.datadog.api.client.v2.model.SecurityEntityRiskScoresResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.listEntityRiskScores", true);
+    EntityRiskScoresApi apiInstance = new EntityRiskScoresApi(defaultClient);
+
+    try {
+      SecurityEntityRiskScoresResponse result = apiInstance.listEntityRiskScores();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling EntityRiskScoresApi#listEntityRiskScores");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// List Entity Risk Scores returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_entity_risk_scores::EntityRiskScoresAPI;
+use datadog_api_client::datadogV2::api_entity_risk_scores::ListEntityRiskScoresOptionalParams;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.ListEntityRiskScores", true);
+    let api = EntityRiskScoresAPI::with_config(configuration);
+    let resp = api
+        .list_entity_risk_scores(ListEntityRiskScoresOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * List Entity Risk Scores returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.listEntityRiskScores"] = true;
+const apiInstance = new v2.EntityRiskScoresApi(configuration);
+
+apiInstance
+  .listEntityRiskScores()
+  .then((data: v2.SecurityEntityRiskScoresResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}

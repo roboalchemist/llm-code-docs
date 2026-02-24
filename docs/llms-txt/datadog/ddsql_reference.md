@@ -587,26 +587,48 @@ SELECT
 
 Supported extraction units:
 
-| Literal           | Input Type               | Description                                  |
-| ----------------- | ------------------------ | -------------------------------------------- |
-| `day`             | `timestamp` / `interval` | day of the month                             |
-| `dow`             | `timestamp`              | day of the week `1` (Monday) to `7` (Sunday) |
-| `doy`             | `timestamp`              | day of the year (`1` - `366`)                |
-| `hour`            | `timestamp` / `interval` | hour of the day (`0` - `23`)                 |
-| `minute`          | `timestamp` / `interval` | minute of the hour (`0` - `59`)              |
-| `second`          | `timestamp` / `interval` | second of the minute (`0` - `59`)            |
-| `week`            | `timestamp`              | week of the year (`1` - `53`)                |
-| `month`           | `timestamp`              | month of the year (`1` - `12`)               |
-| `quarter`         | `timestamp`              | quarter of the year (`1` - `4`)              |
-| `year`            | `timestamp`              | year                                         |
-| `timezone_hour`   | `timestamp`              | hour of the time zone offset                 |
-| `timezone_minute` | `timestamp`              | minute of the time zone offset               |
+| Literal           | Input Type               | Description                                                                                        |
+| ----------------- | ------------------------ | -------------------------------------------------------------------------------------------------- |
+| `day`             | `timestamp` / `interval` | day of the month                                                                                   |
+| `dow`             | `timestamp`              | day of the week `1` (Monday) to `7` (Sunday)                                                       |
+| `doy`             | `timestamp`              | day of the year (`1` - `366`)                                                                      |
+| `epoch`           | `timestamp` / `interval` | seconds since 1970-01-01 00:00:00 UTC (for timestamps), or total number of seconds (for intervals) |
+| `hour`            | `timestamp` / `interval` | hour of the day (`0` - `23`)                                                                       |
+| `minute`          | `timestamp` / `interval` | minute of the hour (`0` - `59`)                                                                    |
+| `second`          | `timestamp` / `interval` | second of the minute (`0` - `59`)                                                                  |
+| `week`            | `timestamp`              | week of the year (`1` - `53`)                                                                      |
+| `month`           | `timestamp`              | month of the year (`1` - `12`)                                                                     |
+| `quarter`         | `timestamp`              | quarter of the year (`1` - `4`)                                                                    |
+| `year`            | `timestamp`              | year                                                                                               |
+| `timezone_hour`   | `timestamp`              | hour of the time zone offset                                                                       |
+| `timezone_minute` | `timestamp`              | minute of the time zone offset                                                                     |
 
 ```sql
 SELECT
   EXTRACT(year FROM purchase_date) AS purchase_year
 FROM
   sales
+```
+
+```sql
+-- Get the Unix epoch of a timestamp
+SELECT EXTRACT(epoch FROM TIMESTAMP '2021-01-01 00:00:00+00')
+-- Returns: 1609459200
+```
+
+```sql
+-- Get the total seconds in an interval
+SELECT EXTRACT(epoch FROM INTERVAL '1 day 2 hours')
+-- Returns: 93600
+```
+
+```sql
+-- Calculate how many seconds ago each event occurred
+SELECT
+  event_time,
+  EXTRACT(epoch FROM now()) - EXTRACT(epoch FROM event_time) AS seconds_ago
+FROM
+  events
 ```
 
 ### `TO_TIMESTAMP`{% #to_timestamp %}
@@ -976,15 +998,7 @@ This table provides an overview of the supported window functions. For comprehen
 
 ## Table functions{% #table-functions %}
 
-{% callout %}
-##### Join the Preview!
-
-Querying Logs and Metrics through DDSQL is in Preview. Use this form to request access.
-
-[Request Access](https://www.datadoghq.com/product-preview/logs-metrics-support-in-ddsql-editor/)
-{% /callout %}
-
-Table functions are used to query Logs and Metrics
+Table functions are used to query logs, metrics, and other unstructured data sources.
 
 | Function                                                                                                                                                                                                 | Description                                                                                                                                                                                                                                                          | Example                                                                                                                                                                                                                                                                                 |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

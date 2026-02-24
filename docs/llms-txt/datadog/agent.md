@@ -1,17 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/agent.md
-
-# Source: https://docs.datadoghq.com/events/guides/agent.md
-
-# Source: https://docs.datadoghq.com/security/workload_protection/setup/agent.md
-
-# Source: https://docs.datadoghq.com/security/workload_protection/agent.md
-
-# Source: https://docs.datadoghq.com/security/threats/agent.md
-
-# Source: https://docs.datadoghq.com/security/cloud_security_management/setup/agent.md
-
-# Source: https://docs.datadoghq.com/cloudprem/ingest/agent.md
-
 # Source: https://docs.datadoghq.com/agent.md
 
 ---

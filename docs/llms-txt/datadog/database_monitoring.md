@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/database_monitoring.md
-
 # Source: https://docs.datadoghq.com/database_monitoring.md
 
 ---

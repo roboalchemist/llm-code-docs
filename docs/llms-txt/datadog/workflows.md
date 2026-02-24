@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/security/cloud_security_management/review_remediate/workflows.md
-
 # Source: https://docs.datadoghq.com/actions/workflows.md
 
 ---

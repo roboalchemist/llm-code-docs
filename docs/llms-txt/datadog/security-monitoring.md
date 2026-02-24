@@ -269,6 +269,274 @@ API error response.
 }
 EOF
                         
+##### 
+
+```go
+// Create a critical asset returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.SecurityMonitoringCriticalAssetCreateRequest{
+		Data: datadogV2.SecurityMonitoringCriticalAssetCreateData{
+			Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
+			Attributes: datadogV2.SecurityMonitoringCriticalAssetCreateAttributes{
+				Query:     "host:examplesecuritymonitoring",
+				RuleQuery: "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
+				Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE,
+				Tags: []string{
+					"team:security",
+					"env:test",
+				},
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.CreateSecurityMonitoringCriticalAsset(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Create a critical asset returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetCreateAttributes;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetCreateData;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetCreateRequest;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetResponse;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetSeverity;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetType;
+import java.util.Arrays;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    SecurityMonitoringCriticalAssetCreateRequest body =
+        new SecurityMonitoringCriticalAssetCreateRequest()
+            .data(
+                new SecurityMonitoringCriticalAssetCreateData()
+                    .type(SecurityMonitoringCriticalAssetType.CRITICAL_ASSETS)
+                    .attributes(
+                        new SecurityMonitoringCriticalAssetCreateAttributes()
+                            .query("host:examplesecuritymonitoring")
+                            .ruleQuery(
+                                "type:(log_detection OR signal_correlation OR workload_security OR"
+                                    + " application_security) source:cloudtrail")
+                            .severity(SecurityMonitoringCriticalAssetSeverity.DECREASE)
+                            .tags(Arrays.asList("team:security", "env:test"))));
+
+    try {
+      SecurityMonitoringCriticalAssetResponse result =
+          apiInstance.createSecurityMonitoringCriticalAsset(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#createSecurityMonitoringCriticalAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```python
+"""
+Create a critical asset returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.security_monitoring_critical_asset_create_attributes import (
+    SecurityMonitoringCriticalAssetCreateAttributes,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_create_data import (
+    SecurityMonitoringCriticalAssetCreateData,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_create_request import (
+    SecurityMonitoringCriticalAssetCreateRequest,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_severity import (
+    SecurityMonitoringCriticalAssetSeverity,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_type import SecurityMonitoringCriticalAssetType
+
+body = SecurityMonitoringCriticalAssetCreateRequest(
+    data=SecurityMonitoringCriticalAssetCreateData(
+        type=SecurityMonitoringCriticalAssetType.CRITICAL_ASSETS,
+        attributes=SecurityMonitoringCriticalAssetCreateAttributes(
+            query="host:examplesecuritymonitoring",
+            rule_query="type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
+            severity=SecurityMonitoringCriticalAssetSeverity.DECREASE,
+            tags=[
+                "team:security",
+                "env:test",
+            ],
+        ),
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.create_security_monitoring_critical_asset(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create a critical asset returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+body = DatadogAPIClient::V2::SecurityMonitoringCriticalAssetCreateRequest.new({
+  data: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetCreateData.new({
+    type: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetType::CRITICAL_ASSETS,
+    attributes: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetCreateAttributes.new({
+      query: "host:examplesecuritymonitoring",
+      rule_query: "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
+      severity: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetSeverity::DECREASE,
+      tags: [
+        "team:security",
+        "env:test",
+      ],
+    }),
+  }),
+})
+p api_instance.create_security_monitoring_critical_asset(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```rust
+// Create a critical asset returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetCreateAttributes;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetCreateData;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetCreateRequest;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetSeverity;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetType;
+
+#[tokio::main]
+async fn main() {
+    let body =
+        SecurityMonitoringCriticalAssetCreateRequest::new(
+            SecurityMonitoringCriticalAssetCreateData::new(
+                SecurityMonitoringCriticalAssetCreateAttributes::new(
+                    "host:examplesecuritymonitoring".to_string(),
+                    "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail".to_string(),
+                    SecurityMonitoringCriticalAssetSeverity::DECREASE,
+                ).tags(vec!["team:security".to_string(), "env:test".to_string()]),
+                SecurityMonitoringCriticalAssetType::CRITICAL_ASSETS,
+            ),
+        );
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.create_security_monitoring_critical_asset(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create a critical asset returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiCreateSecurityMonitoringCriticalAssetRequest =
+  {
+    body: {
+      data: {
+        type: "critical_assets",
+        attributes: {
+          query: "host:examplesecuritymonitoring",
+          ruleQuery:
+            "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
+          severity: "decrease",
+          tags: ["team:security", "env:test"],
+        },
+      },
+    },
+  };
+
+apiInstance
+  .createSecurityMonitoringCriticalAsset(params)
+  .then((data: v2.SecurityMonitoringCriticalAssetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Create a suppression rule{% #create-a-suppression-rule %}
@@ -1253,6 +1521,183 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Delete a critical asset returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = environ["CRITICAL_ASSET_DATA_ID"]
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    api_instance.delete_security_monitoring_critical_asset(
+        critical_asset_id=CRITICAL_ASSET_DATA_ID,
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete a critical asset returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = ENV["CRITICAL_ASSET_DATA_ID"]
+api_instance.delete_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete a critical asset returns "OK" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	// there is a valid "critical_asset" in the system
+	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	r, err := api.DeleteSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringCriticalAsset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Delete a critical asset returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    // there is a valid "critical_asset" in the system
+    String CRITICAL_ASSET_DATA_ID = System.getenv("CRITICAL_ASSET_DATA_ID");
+
+    try {
+      apiInstance.deleteSecurityMonitoringCriticalAsset(CRITICAL_ASSET_DATA_ID);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#deleteSecurityMonitoringCriticalAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete a critical asset returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    // there is a valid "critical_asset" in the system
+    let critical_asset_data_id = std::env::var("CRITICAL_ASSET_DATA_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .delete_security_monitoring_critical_asset(critical_asset_data_id.clone())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete a critical asset returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+// there is a valid "critical_asset" in the system
+const CRITICAL_ASSET_DATA_ID = process.env.CRITICAL_ASSET_DATA_ID as string;
+
+const params: v2.SecurityMonitoringApiDeleteSecurityMonitoringCriticalAssetRequest =
+  {
+    criticalAssetId: CRITICAL_ASSET_DATA_ID,
+  };
+
+apiInstance
+  .deleteSecurityMonitoringCriticalAsset(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Delete a suppression rule{% #delete-a-suppression-rule %}
@@ -1735,6 +2180,192 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Get a critical asset returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = environ["CRITICAL_ASSET_DATA_ID"]
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.get_security_monitoring_critical_asset(
+        critical_asset_id=CRITICAL_ASSET_DATA_ID,
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get a critical asset returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = ENV["CRITICAL_ASSET_DATA_ID"]
+p api_instance.get_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Get a critical asset returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	// there is a valid "critical_asset" in the system
+	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.GetSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Get a critical asset returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    // there is a valid "critical_asset" in the system
+    String CRITICAL_ASSET_DATA_ID = System.getenv("CRITICAL_ASSET_DATA_ID");
+
+    try {
+      SecurityMonitoringCriticalAssetResponse result =
+          apiInstance.getSecurityMonitoringCriticalAsset(CRITICAL_ASSET_DATA_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#getSecurityMonitoringCriticalAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Get a critical asset returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    // there is a valid "critical_asset" in the system
+    let critical_asset_data_id = std::env::var("CRITICAL_ASSET_DATA_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .get_security_monitoring_critical_asset(critical_asset_data_id.clone())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get a critical asset returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+// there is a valid "critical_asset" in the system
+const CRITICAL_ASSET_DATA_ID = process.env.CRITICAL_ASSET_DATA_ID as string;
+
+const params: v2.SecurityMonitoringApiGetSecurityMonitoringCriticalAssetRequest =
+  {
+    criticalAssetId: CRITICAL_ASSET_DATA_ID,
+  };
+
+apiInstance
+  .getSecurityMonitoringCriticalAsset(params)
+  .then((data: v2.SecurityMonitoringCriticalAssetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get a suppression rule{% #get-a-suppression-rule %}
@@ -2683,6 +3314,170 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Get all critical assets returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.list_security_monitoring_critical_assets()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get all critical assets returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+p api_instance.list_security_monitoring_critical_assets()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Get all critical assets returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.ListSecurityMonitoringCriticalAssets(ctx, *datadogV2.NewListSecurityMonitoringCriticalAssetsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Get all critical assets returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetsResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    try {
+      SecurityMonitoringCriticalAssetsResponse result =
+          apiInstance.listSecurityMonitoringCriticalAssets();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#listSecurityMonitoringCriticalAssets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Get all critical assets returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::ListSecurityMonitoringCriticalAssetsOptionalParams;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .list_security_monitoring_critical_assets(
+            ListSecurityMonitoringCriticalAssetsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get all critical assets returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+apiInstance
+  .listSecurityMonitoringCriticalAssets()
+  .then((data: v2.SecurityMonitoringCriticalAssetsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get all suppression rules{% #get-all-suppression-rules %}
@@ -2711,12 +3506,12 @@ OAuth apps require the `security_monitoring_suppressions_read` authorization [sc
 
 #### Query Strings
 
-| Name         | Type    | Description                                                                                                                                                                                                                                    |
-| ------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| query        | string  | Query string.                                                                                                                                                                                                                                  |
-| sort         | enum    | Attribute used to sort the list of suppression rules. Prefix with `-` to sort in descending order.Allowed enum values: `name, start_date, expiration_date, update_date, enabled, -name, -start_date, -expiration_date, -update_date, -enabled` |
-| page[size]   | integer | Size for a given page. Use `-1` to return all items.                                                                                                                                                                                           |
-| page[number] | integer | Specific page number to return.                                                                                                                                                                                                                |
+| Name         | Type    | Description                                                                                                                                                                                                                                                    |
+| ------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| query        | string  | Query string.                                                                                                                                                                                                                                                  |
+| sort         | enum    | Attribute used to sort the list of suppression rules. Prefix with `-` to sort in descending order.Allowed enum values: `name, start_date, expiration_date, update_date, enabled, -name, -start_date, -expiration_date, -update_date, -creation_date, -enabled` |
+| page[size]   | integer | Size for a given page. Use `-1` to return all items.                                                                                                                                                                                                           |
+| page[number] | integer | Specific page number to return.                                                                                                                                                                                                                                |
 
 ### Response
 
@@ -2948,7 +3743,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v2.api.SecurityMonitoringApi;
-import com.datadog.api.client.v2.model.SecurityMonitoringSuppressionsResponse;
+import com.datadog.api.client.v2.model.SecurityMonitoringPaginatedSuppressionsResponse;
 
 public class Example {
   public static void main(String[] args) {
@@ -2956,7 +3751,7 @@ public class Example {
     SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
 
     try {
-      SecurityMonitoringSuppressionsResponse result =
+      SecurityMonitoringPaginatedSuppressionsResponse result =
           apiInstance.listSecurityMonitoringSuppressions();
       System.out.println(result);
     } catch (ApiException e) {
@@ -3018,7 +3813,7 @@ const apiInstance = new v2.SecurityMonitoringApi(configuration);
 
 apiInstance
   .listSecurityMonitoringSuppressions()
-  .then((data: v2.SecurityMonitoringSuppressionsResponse) => {
+  .then((data: v2.SecurityMonitoringPaginatedSuppressionsResponse) => {
     console.log(
       "API called successfully. Returned data: " + JSON.stringify(data)
     );
@@ -3217,6 +4012,191 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Get critical assets affecting a specific rule returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+# there is a valid "security_rule" in the system
+SECURITY_RULE_ID = environ["SECURITY_RULE_ID"]
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.get_critical_assets_affecting_rule(
+        rule_id=SECURITY_RULE_ID,
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get critical assets affecting a specific rule returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+# there is a valid "security_rule" in the system
+SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
+p api_instance.get_critical_assets_affecting_rule(SECURITY_RULE_ID)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Get critical assets affecting a specific rule returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	// there is a valid "security_rule" in the system
+	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.GetCriticalAssetsAffectingRule(ctx, SecurityRuleID)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Get critical assets affecting a specific rule returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetsResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    // there is a valid "security_rule" in the system
+    String SECURITY_RULE_ID = System.getenv("SECURITY_RULE_ID");
+
+    try {
+      SecurityMonitoringCriticalAssetsResponse result =
+          apiInstance.getCriticalAssetsAffectingRule(SECURITY_RULE_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#getCriticalAssetsAffectingRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Get critical assets affecting a specific rule returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    // there is a valid "security_rule" in the system
+    let security_rule_id = std::env::var("SECURITY_RULE_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .get_critical_assets_affecting_rule(security_rule_id.clone())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get critical assets affecting a specific rule returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+// there is a valid "security_rule" in the system
+const SECURITY_RULE_ID = process.env.SECURITY_RULE_ID as string;
+
+const params: v2.SecurityMonitoringApiGetCriticalAssetsAffectingRuleRequest = {
+  ruleId: SECURITY_RULE_ID,
+};
+
+apiInstance
+  .getCriticalAssetsAffectingRule(params)
+  .then((data: v2.SecurityMonitoringCriticalAssetsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get suppressions affecting a specific rule{% #get-suppressions-affecting-a-specific-rule %}
@@ -3656,6 +4636,7 @@ OAuth apps require the `security_monitoring_suppressions_read` authorization [sc
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -3747,6 +4728,7 @@ OAuth apps require the `security_monitoring_suppressions_read` authorization [sc
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -4727,6 +5709,308 @@ API error response.
 }
 EOF
                         
+##### 
+
+```go
+// Update a critical asset returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	// there is a valid "critical_asset" in the system
+	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+
+	body := datadogV2.SecurityMonitoringCriticalAssetUpdateRequest{
+		Data: datadogV2.SecurityMonitoringCriticalAssetUpdateData{
+			Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
+			Attributes: datadogV2.SecurityMonitoringCriticalAssetUpdateAttributes{
+				Enabled:   datadog.PtrBool(false),
+				Query:     datadog.PtrString("no:alert"),
+				RuleQuery: datadog.PtrString("type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq"),
+				Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE.Ptr(),
+				Tags: []string{
+					"env:production",
+				},
+				Version: datadog.PtrInt32(1),
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.UpdateSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Update a critical asset returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetResponse;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetSeverity;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetType;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetUpdateAttributes;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetUpdateData;
+import com.datadog.api.client.v2.model.SecurityMonitoringCriticalAssetUpdateRequest;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    // there is a valid "critical_asset" in the system
+    String CRITICAL_ASSET_DATA_ID = System.getenv("CRITICAL_ASSET_DATA_ID");
+
+    SecurityMonitoringCriticalAssetUpdateRequest body =
+        new SecurityMonitoringCriticalAssetUpdateRequest()
+            .data(
+                new SecurityMonitoringCriticalAssetUpdateData()
+                    .type(SecurityMonitoringCriticalAssetType.CRITICAL_ASSETS)
+                    .attributes(
+                        new SecurityMonitoringCriticalAssetUpdateAttributes()
+                            .enabled(false)
+                            .query("no:alert")
+                            .ruleQuery(
+                                "type:(log_detection OR signal_correlation OR workload_security OR"
+                                    + " application_security) ruleId:djg-ktx-ipq")
+                            .severity(SecurityMonitoringCriticalAssetSeverity.DECREASE)
+                            .tags(Collections.singletonList("env:production"))
+                            .version(1)));
+
+    try {
+      SecurityMonitoringCriticalAssetResponse result =
+          apiInstance.updateSecurityMonitoringCriticalAsset(CRITICAL_ASSET_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#updateSecurityMonitoringCriticalAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```python
+"""
+Update a critical asset returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.security_monitoring_critical_asset_severity import (
+    SecurityMonitoringCriticalAssetSeverity,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_type import SecurityMonitoringCriticalAssetType
+from datadog_api_client.v2.model.security_monitoring_critical_asset_update_attributes import (
+    SecurityMonitoringCriticalAssetUpdateAttributes,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_update_data import (
+    SecurityMonitoringCriticalAssetUpdateData,
+)
+from datadog_api_client.v2.model.security_monitoring_critical_asset_update_request import (
+    SecurityMonitoringCriticalAssetUpdateRequest,
+)
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = environ["CRITICAL_ASSET_DATA_ID"]
+
+body = SecurityMonitoringCriticalAssetUpdateRequest(
+    data=SecurityMonitoringCriticalAssetUpdateData(
+        type=SecurityMonitoringCriticalAssetType.CRITICAL_ASSETS,
+        attributes=SecurityMonitoringCriticalAssetUpdateAttributes(
+            enabled=False,
+            query="no:alert",
+            rule_query="type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq",
+            severity=SecurityMonitoringCriticalAssetSeverity.DECREASE,
+            tags=[
+                "env:production",
+            ],
+            version=1,
+        ),
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.update_security_monitoring_critical_asset(
+        critical_asset_id=CRITICAL_ASSET_DATA_ID, body=body
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update a critical asset returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+# there is a valid "critical_asset" in the system
+CRITICAL_ASSET_DATA_ID = ENV["CRITICAL_ASSET_DATA_ID"]
+
+body = DatadogAPIClient::V2::SecurityMonitoringCriticalAssetUpdateRequest.new({
+  data: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetUpdateData.new({
+    type: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetType::CRITICAL_ASSETS,
+    attributes: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetUpdateAttributes.new({
+      enabled: false,
+      query: "no:alert",
+      rule_query: "type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq",
+      severity: DatadogAPIClient::V2::SecurityMonitoringCriticalAssetSeverity::DECREASE,
+      tags: [
+        "env:production",
+      ],
+      version: 1,
+    }),
+  }),
+})
+p api_instance.update_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID, body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```rust
+// Update a critical asset returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetSeverity;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetType;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetUpdateAttributes;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetUpdateData;
+use datadog_api_client::datadogV2::model::SecurityMonitoringCriticalAssetUpdateRequest;
+
+#[tokio::main]
+async fn main() {
+    // there is a valid "critical_asset" in the system
+    let critical_asset_data_id = std::env::var("CRITICAL_ASSET_DATA_ID").unwrap();
+    let body =
+        SecurityMonitoringCriticalAssetUpdateRequest::new(
+            SecurityMonitoringCriticalAssetUpdateData::new(
+                SecurityMonitoringCriticalAssetUpdateAttributes::new()
+                    .enabled(false)
+                    .query("no:alert".to_string())
+                    .rule_query(
+                        "type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq".to_string(),
+                    )
+                    .severity(SecurityMonitoringCriticalAssetSeverity::DECREASE)
+                    .tags(vec!["env:production".to_string()])
+                    .version(1),
+                SecurityMonitoringCriticalAssetType::CRITICAL_ASSETS,
+            ),
+        );
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .update_security_monitoring_critical_asset(critical_asset_data_id.clone(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update a critical asset returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+// there is a valid "critical_asset" in the system
+const CRITICAL_ASSET_DATA_ID = process.env.CRITICAL_ASSET_DATA_ID as string;
+
+const params: v2.SecurityMonitoringApiUpdateSecurityMonitoringCriticalAssetRequest =
+  {
+    body: {
+      data: {
+        type: "critical_assets",
+        attributes: {
+          enabled: false,
+          query: "no:alert",
+          ruleQuery:
+            "type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq",
+          severity: "decrease",
+          tags: ["env:production"],
+          version: 1,
+        },
+      },
+    },
+    criticalAssetId: CRITICAL_ASSET_DATA_ID,
+  };
+
+apiInstance
+  .updateSecurityMonitoringCriticalAsset(params)
+  .then((data: v2.SecurityMonitoringCriticalAssetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Update a suppression rule{% #update-a-suppression-rule %}
@@ -5697,6 +6981,324 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
+## Deactivate content pack{% #deactivate-content-pack %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | PUT https://api.ap1.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate |
+| ap2.datadoghq.com | PUT https://api.ap2.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate |
+| app.datadoghq.eu  | PUT https://api.datadoghq.eu/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate      |
+| app.ddog-gov.com  | PUT https://api.ddog-gov.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate      |
+| app.datadoghq.com | PUT https://api.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate     |
+| us3.datadoghq.com | PUT https://api.us3.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate |
+| us5.datadoghq.com | PUT https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/deactivate |
+
+### Overview
+
+Deactivate a security monitoring content pack. This operation removes the content pack's configuration from log filters or security filters and updates the content pack activation state.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                              | Type   | Description                               |
+| --------------------------------- | ------ | ----------------------------------------- |
+| content_pack_id [*required*] | string | The ID of the content pack to deactivate. |
+
+### Response
+
+{% tab title="202" %}
+Accepted
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport content_pack_id="aws-cloudtrail"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/${content_pack_id}/deactivate" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Deactivate content pack returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+configuration = Configuration()
+configuration.unstable_operations["deactivate_content_pack"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    api_instance.deactivate_content_pack(
+        content_pack_id="aws-cloudtrail",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Deactivate content pack returns "Accepted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.deactivate_content_pack".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+p api_instance.deactivate_content_pack("aws-cloudtrail")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Deactivate content pack returns "Accepted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.DeactivateContentPack", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	r, err := api.DeactivateContentPack(ctx, "aws-cloudtrail")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeactivateContentPack`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Deactivate content pack returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.deactivateContentPack", true);
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    try {
+      apiInstance.deactivateContentPack("aws-cloudtrail");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#deactivateContentPack");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Deactivate content pack returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.DeactivateContentPack", true);
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .deactivate_content_pack("aws-cloudtrail".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Deactivate content pack returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.deactivateContentPack"] = true;
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiDeactivateContentPackRequest = {
+  contentPackId: "aws-cloudtrail",
+};
+
+apiInstance
+  .deactivateContentPack(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
 ## List findings{% #list-findings %}
 
 {% tab title="v2" %}
@@ -6421,6 +8023,484 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+List security findings returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.list_security_findings()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# List security findings returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+p api_instance.list_security_findings()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// List security findings returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.ListSecurityFindings(ctx, *datadogV2.NewListSecurityFindingsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityFindings`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityFindings`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// List security findings returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.ListSecurityFindingsResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    try {
+      ListSecurityFindingsResponse result = apiInstance.listSecurityFindings();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#listSecurityFindings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// List security findings returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::ListSecurityFindingsOptionalParams;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .list_security_findings(ListSecurityFindingsOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * List security findings returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+apiInstance
+  .listSecurityFindings()
+  .then((data: v2.ListSecurityFindingsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Activate content pack{% #activate-content-pack %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                                          |
+| ----------------- | ----------------------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | PUT https://api.ap1.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate |
+| ap2.datadoghq.com | PUT https://api.ap2.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate |
+| app.datadoghq.eu  | PUT https://api.datadoghq.eu/api/v2/security_monitoring/content_packs/{content_pack_id}/activate      |
+| app.ddog-gov.com  | PUT https://api.ddog-gov.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate      |
+| app.datadoghq.com | PUT https://api.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate     |
+| us3.datadoghq.com | PUT https://api.us3.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate |
+| us5.datadoghq.com | PUT https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/{content_pack_id}/activate |
+
+### Overview
+
+Activate a security monitoring content pack. This operation configures the necessary log filters or security filters depending on the pricing model and updates the content pack activation state.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                              | Type   | Description                             |
+| --------------------------------- | ------ | --------------------------------------- |
+| content_pack_id [*required*] | string | The ID of the content pack to activate. |
+
+### Response
+
+{% tab title="202" %}
+Accepted
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport content_pack_id="aws-cloudtrail"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/${content_pack_id}/activate" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Activate content pack returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+configuration = Configuration()
+configuration.unstable_operations["activate_content_pack"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    api_instance.activate_content_pack(
+        content_pack_id="aws-cloudtrail",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Activate content pack returns "Accepted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.activate_content_pack".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+p api_instance.activate_content_pack("aws-cloudtrail")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Activate content pack returns "Accepted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.ActivateContentPack", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	r, err := api.ActivateContentPack(ctx, "aws-cloudtrail")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ActivateContentPack`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Activate content pack returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.activateContentPack", true);
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    try {
+      apiInstance.activateContentPack("aws-cloudtrail");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#activateContentPack");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Activate content pack returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.ActivateContentPack", true);
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api
+        .activate_content_pack("aws-cloudtrail".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Activate content pack returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.activateContentPack"] = true;
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiActivateContentPackRequest = {
+  contentPackId: "aws-cloudtrail",
+};
+
+apiInstance
+  .activateContentPack(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get a finding{% #get-a-finding %}
@@ -7827,6 +9907,789 @@ EOF
 }
 EOF
                         
+##### 
+
+```go
+// Search security findings returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.SecurityFindingsSearchRequest{
+		Data: &datadogV2.SecurityFindingsSearchRequestData{
+			Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
+				Filter: datadog.PtrString("@severity:(critical OR high)"),
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.SearchSecurityFindings(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
+}
+```
+
+##### 
+
+```go
+// Search security findings returns "OK" response with pagination
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.SecurityFindingsSearchRequest{
+		Data: &datadogV2.SecurityFindingsSearchRequestData{
+			Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
+				Filter: datadog.PtrString("@severity:(critical OR high)"),
+				Page: &datadogV2.SecurityFindingsSearchRequestPage{
+					Limit: datadog.PtrInt64(1),
+				},
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.SearchSecurityFindings(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Search security findings returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.ListSecurityFindingsResponse;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequest;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequestData;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequestDataAttributes;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    SecurityFindingsSearchRequest body =
+        new SecurityFindingsSearchRequest()
+            .data(
+                new SecurityFindingsSearchRequestData()
+                    .attributes(
+                        new SecurityFindingsSearchRequestDataAttributes()
+                            .filter("@severity:(critical OR high)")));
+
+    try {
+      ListSecurityFindingsResponse result = apiInstance.searchSecurityFindings(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#searchSecurityFindings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+##### 
+
+```java
+// Search security findings returns "OK" response with pagination
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.ListSecurityFindingsResponse;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequest;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequestData;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequestDataAttributes;
+import com.datadog.api.client.v2.model.SecurityFindingsSearchRequestPage;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    SecurityFindingsSearchRequest body =
+        new SecurityFindingsSearchRequest()
+            .data(
+                new SecurityFindingsSearchRequestData()
+                    .attributes(
+                        new SecurityFindingsSearchRequestDataAttributes()
+                            .filter("@severity:(critical OR high)")
+                            .page(new SecurityFindingsSearchRequestPage().limit(1L))));
+
+    try {
+      ListSecurityFindingsResponse result = apiInstance.searchSecurityFindings(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#searchSecurityFindings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```python
+"""
+Search security findings returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.security_findings_search_request import SecurityFindingsSearchRequest
+from datadog_api_client.v2.model.security_findings_search_request_data import SecurityFindingsSearchRequestData
+from datadog_api_client.v2.model.security_findings_search_request_data_attributes import (
+    SecurityFindingsSearchRequestDataAttributes,
+)
+
+body = SecurityFindingsSearchRequest(
+    data=SecurityFindingsSearchRequestData(
+        attributes=SecurityFindingsSearchRequestDataAttributes(
+            filter="@severity:(critical OR high)",
+        ),
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.search_security_findings(body=body)
+
+    print(response)
+```
+
+##### 
+
+```python
+"""
+Search security findings returns "OK" response with pagination
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.security_findings_search_request import SecurityFindingsSearchRequest
+from datadog_api_client.v2.model.security_findings_search_request_data import SecurityFindingsSearchRequestData
+from datadog_api_client.v2.model.security_findings_search_request_data_attributes import (
+    SecurityFindingsSearchRequestDataAttributes,
+)
+from datadog_api_client.v2.model.security_findings_search_request_page import SecurityFindingsSearchRequestPage
+
+body = SecurityFindingsSearchRequest(
+    data=SecurityFindingsSearchRequestData(
+        attributes=SecurityFindingsSearchRequestDataAttributes(
+            filter="@severity:(critical OR high)",
+            page=SecurityFindingsSearchRequestPage(
+                limit=1,
+            ),
+        ),
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.search_security_findings(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Search security findings returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+body = DatadogAPIClient::V2::SecurityFindingsSearchRequest.new({
+  data: DatadogAPIClient::V2::SecurityFindingsSearchRequestData.new({
+    attributes: DatadogAPIClient::V2::SecurityFindingsSearchRequestDataAttributes.new({
+      filter: "@severity:(critical OR high)",
+    }),
+  }),
+})
+p api_instance.search_security_findings(body)
+```
+
+##### 
+
+```ruby
+# Search security findings returns "OK" response with pagination
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+body = DatadogAPIClient::V2::SecurityFindingsSearchRequest.new({
+  data: DatadogAPIClient::V2::SecurityFindingsSearchRequestData.new({
+    attributes: DatadogAPIClient::V2::SecurityFindingsSearchRequestDataAttributes.new({
+      filter: "@severity:(critical OR high)",
+      page: DatadogAPIClient::V2::SecurityFindingsSearchRequestPage.new({
+        limit: 1,
+      }),
+    }),
+  }),
+})
+p api_instance.search_security_findings(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```rust
+// Search security findings returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequest;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequestData;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequestDataAttributes;
+
+#[tokio::main]
+async fn main() {
+    let body = SecurityFindingsSearchRequest::new().data(
+        SecurityFindingsSearchRequestData::new().attributes(
+            SecurityFindingsSearchRequestDataAttributes::new()
+                .filter("@severity:(critical OR high)".to_string()),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.search_security_findings(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+##### 
+
+```rust
+// Search security findings returns "OK" response with pagination
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequest;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequestData;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequestDataAttributes;
+use datadog_api_client::datadogV2::model::SecurityFindingsSearchRequestPage;
+
+#[tokio::main]
+async fn main() {
+    let body = SecurityFindingsSearchRequest::new().data(
+        SecurityFindingsSearchRequestData::new().attributes(
+            SecurityFindingsSearchRequestDataAttributes::new()
+                .filter("@severity:(critical OR high)".to_string())
+                .page(SecurityFindingsSearchRequestPage::new().limit(1)),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.search_security_findings(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Search security findings returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiSearchSecurityFindingsRequest = {
+  body: {
+    data: {
+      attributes: {
+        filter: "@severity:(critical OR high)",
+      },
+    },
+  },
+};
+
+apiInstance
+  .searchSecurityFindings(params)
+  .then((data: v2.ListSecurityFindingsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+##### 
+
+```typescript
+/**
+ * Search security findings returns "OK" response with pagination
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiSearchSecurityFindingsRequest = {
+  body: {
+    data: {
+      attributes: {
+        filter: "@severity:(critical OR high)",
+        page: {
+          limit: 1,
+        },
+      },
+    },
+  },
+};
+
+apiInstance
+  .searchSecurityFindings(params)
+  .then((data: v2.ListSecurityFindingsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Get content pack states{% #get-content-pack-states %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                      |
+| ----------------- | --------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/security_monitoring/content_packs/states |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/security_monitoring/content_packs/states |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/security_monitoring/content_packs/states      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/security_monitoring/content_packs/states      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/security_monitoring/content_packs/states     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/security_monitoring/content_packs/states |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/states |
+
+### Overview
+
+Get the activation and configuration states for all security monitoring content packs. This endpoint returns status information about each content pack including activation state, integration status, and log collection status.
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+Response containing content pack states.
+
+| Parent field | Field                                         | Type     | Description                                                                                                                                              |
+| ------------ | --------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|              | data [*required*]                        | [object] | Array of content pack states.                                                                                                                            |
+| data         | attributes [*required*]                  | object   | Attributes of a content pack state                                                                                                                       |
+| attributes   | cloud_siem_index_incorrect [*required*]  | boolean  | Whether the cloud SIEM index configuration is incorrect (only applies to certain pricing models)                                                         |
+| attributes   | cp_activation [*required*]               | enum     | The activation status of a content pack Allowed enum values: `never_activated,activated,deactivated`                                                     |
+| attributes   | filters_configured_for_logs [*required*] | boolean  | Whether filters (Security Filters or Index Query depending on the pricing model) are configured for logs                                                 |
+| attributes   | integration_installed_status                  | enum     | The installation status of the related integration Allowed enum values: `installed,available,partially_installed,detected,error`                         |
+| attributes   | logs_last_collected [*required*]         | enum     | Timestamp bucket indicating when logs were last collected Allowed enum values: `not_seen,within_24_hours,within_24_to_72_hours,over_72h_to_30d,over_30d` |
+| attributes   | logs_seen_from_any_index [*required*]    | boolean  | Whether logs have been seen from any index                                                                                                               |
+| attributes   | state [*required*]                       | enum     | The current status of a content pack Allowed enum values: `install,activate,initializing,active,warning,broken`                                          |
+| data         | id [*required*]                          | string   | The content pack identifier.                                                                                                                             |
+| data         | type [*required*]                        | enum     | Type for content pack state object Allowed enum values: `content_pack_state`                                                                             |
+|              | meta [*required*]                        | object   | Metadata for content pack states                                                                                                                         |
+| meta         | cloud_siem_index_incorrect [*required*]  | boolean  | Whether the cloud SIEM index configuration is incorrect at the organization level                                                                        |
+| meta         | sku [*required*]                         | enum     | The SIEM pricing model (SKU) for the organization Allowed enum values: `per_gb_analyzed,per_event_in_siem_index_2023,add_on_2024`                        |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "cloud_siem_index_incorrect": false,
+        "cp_activation": "activated",
+        "filters_configured_for_logs": true,
+        "integration_installed_status": "installed",
+        "logs_last_collected": "within_24_hours",
+        "logs_seen_from_any_index": true,
+        "state": "active"
+      },
+      "id": "aws-cloudtrail",
+      "type": "content_pack_state"
+    }
+  ],
+  "meta": {
+    "cloud_siem_index_incorrect": false,
+    "sku": "add_on_2024"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/states" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Get content pack states returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_content_packs_states"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.get_content_packs_states()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get content pack states returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_content_packs_states".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+p api_instance.get_content_packs_states()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Get content pack states returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetContentPacksStates", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.GetContentPacksStates(ctx)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetContentPacksStates`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetContentPacksStates`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Get content pack states returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringContentPackStatesResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getContentPacksStates", true);
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    try {
+      SecurityMonitoringContentPackStatesResponse result = apiInstance.getContentPacksStates();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#getContentPacksStates");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Get content pack states returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetContentPacksStates", true);
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.get_content_packs_states().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get content pack states returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getContentPacksStates"] = true;
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+apiInstance
+  .getContentPacksStates()
+  .then((data: v2.SecurityMonitoringContentPackStatesResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Add a security signal to an incident{% #add-a-security-signal-to-an-incident %}
@@ -9753,6 +12616,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -9844,6 +12708,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -10113,6 +12978,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -10217,6 +13083,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -10335,6 +13202,7 @@ Create a new rule.
     "anomalyDetectionOptions": {
       "bucketDuration": 300,
       "detectionTolerance": 5,
+      "instantaneousBaseline": false,
       "learningDuration": "integer",
       "learningPeriodBaseline": "integer"
     },
@@ -12781,11 +15649,12 @@ OAuth apps require the `security_monitoring_rules_read` authorization [scope](ht
 
 #### Query Strings
 
-| Name         | Type    | Description                                                                                             |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------- |
-| page[size]   | integer | Size for a given page. The maximum allowed value is 100.                                                |
-| page[number] | integer | Specific page number to return.                                                                         |
-| query        | string  | A search query to filter security rules. You can filter by attributes such as `type`, `source`, `tags`. |
+| Name         | Type    | Description                                                                                                                                                                                                                                                  |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| page[size]   | integer | Size for a given page. The maximum allowed value is 100.                                                                                                                                                                                                     |
+| page[number] | integer | Specific page number to return.                                                                                                                                                                                                                              |
+| query        | string  | A search query to filter security rules. You can filter by attributes such as `type`, `source`, `tags`.                                                                                                                                                      |
+| sort         | enum    | Attribute used to sort rules. Prefix with `-` to sort in descending order.Allowed enum values: `name, creation_date, update_date, enabled, type, highest_severity, source, -name, -creation_date, -update_date, -enabled, -type, -highest_severity, -source` |
 
 ### Response
 
@@ -12839,6 +15708,7 @@ List of rules.
 | options                  | anomalyDetectionOptions         | object          | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum            | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum            | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean         | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum            | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64           | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object          | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -12943,6 +15813,7 @@ List of rules.
 | options                  | anomalyDetectionOptions         | object          | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum            | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum            | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean         | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum            | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64           | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object          | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -13067,6 +15938,7 @@ List of rules.
         "anomalyDetectionOptions": {
           "bucketDuration": 300,
           "detectionTolerance": 5,
+          "instantaneousBaseline": false,
           "learningDuration": "integer",
           "learningPeriodBaseline": "integer"
         },
@@ -14044,6 +16916,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -14148,6 +17021,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -14266,6 +17140,7 @@ Create a new rule.
     "anomalyDetectionOptions": {
       "bucketDuration": 300,
       "detectionTolerance": 5,
+      "instantaneousBaseline": false,
       "learningDuration": "integer",
       "learningPeriodBaseline": "integer"
     },
@@ -15591,6 +18466,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions         | object          | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum            | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum            | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean         | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum            | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64           | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object          | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -15791,6 +18667,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -15895,6 +18772,7 @@ Create a new rule.
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -16013,6 +18891,7 @@ Create a new rule.
     "anomalyDetectionOptions": {
       "bucketDuration": 300,
       "detectionTolerance": 5,
+      "instantaneousBaseline": false,
       "learningDuration": "integer",
       "learningPeriodBaseline": "integer"
     },
@@ -17509,6 +20388,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions         | object        | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum          | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum          | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean       | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum          | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64         | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object        | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -17635,6 +20515,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
       "anomalyDetectionOptions": {
         "bucketDuration": 300,
         "detectionTolerance": 5,
+        "instantaneousBaseline": false,
         "learningDuration": "integer",
         "learningPeriodBaseline": "integer"
       },
@@ -18283,6 +21164,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions         | object        | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum          | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum          | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean       | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum          | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64         | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object        | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -19222,6 +22104,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -19315,6 +22198,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions                   | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                            | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance                        | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline                     | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                          | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline                    | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions                     | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -20651,7 +23535,7 @@ api_instance.validate_security_monitoring_rule(body)
 
 ```ruby
 # Validate a detection rule with detection method 'new_value' with enabled feature 'instantaneousBaseline' returns "OK"
-response
+# response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
@@ -22178,6 +25062,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -22271,6 +25156,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions         | object   | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object   | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -23132,6 +26018,261 @@ API error response.
 }
 EOF
                         
+##### 
+
+```go
+// Bulk export security monitoring rules returns "OK" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	// there is a valid "security_rule" in the system
+	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+
+	body := datadogV2.SecurityMonitoringRuleBulkExportPayload{
+		Data: datadogV2.SecurityMonitoringRuleBulkExportData{
+			Attributes: datadogV2.SecurityMonitoringRuleBulkExportAttributes{
+				RuleIds: []string{
+					SecurityRuleID,
+				},
+			},
+			Type: datadogV2.SECURITYMONITORINGRULEBULKEXPORTDATATYPE_SECURITY_MONITORING_RULES_BULK_EXPORT,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.BulkExportSecurityMonitoringRules(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := ioutil.ReadAll(resp)
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Bulk export security monitoring rules returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.SecurityMonitoringRuleBulkExportAttributes;
+import com.datadog.api.client.v2.model.SecurityMonitoringRuleBulkExportData;
+import com.datadog.api.client.v2.model.SecurityMonitoringRuleBulkExportDataType;
+import com.datadog.api.client.v2.model.SecurityMonitoringRuleBulkExportPayload;
+import java.io.File;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    // there is a valid "security_rule" in the system
+    String SECURITY_RULE_ID = System.getenv("SECURITY_RULE_ID");
+
+    SecurityMonitoringRuleBulkExportPayload body =
+        new SecurityMonitoringRuleBulkExportPayload()
+            .data(
+                new SecurityMonitoringRuleBulkExportData()
+                    .attributes(
+                        new SecurityMonitoringRuleBulkExportAttributes()
+                            .ruleIds(Collections.singletonList(SECURITY_RULE_ID)))
+                    .type(
+                        SecurityMonitoringRuleBulkExportDataType
+                            .SECURITY_MONITORING_RULES_BULK_EXPORT));
+
+    try {
+      File result = apiInstance.bulkExportSecurityMonitoringRules(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling SecurityMonitoringApi#bulkExportSecurityMonitoringRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```python
+"""
+Bulk export security monitoring rules returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.security_monitoring_rule_bulk_export_attributes import (
+    SecurityMonitoringRuleBulkExportAttributes,
+)
+from datadog_api_client.v2.model.security_monitoring_rule_bulk_export_data import SecurityMonitoringRuleBulkExportData
+from datadog_api_client.v2.model.security_monitoring_rule_bulk_export_data_type import (
+    SecurityMonitoringRuleBulkExportDataType,
+)
+from datadog_api_client.v2.model.security_monitoring_rule_bulk_export_payload import (
+    SecurityMonitoringRuleBulkExportPayload,
+)
+
+# there is a valid "security_rule" in the system
+SECURITY_RULE_ID = environ["SECURITY_RULE_ID"]
+
+body = SecurityMonitoringRuleBulkExportPayload(
+    data=SecurityMonitoringRuleBulkExportData(
+        attributes=SecurityMonitoringRuleBulkExportAttributes(
+            rule_ids=[
+                SECURITY_RULE_ID,
+            ],
+        ),
+        type=SecurityMonitoringRuleBulkExportDataType.SECURITY_MONITORING_RULES_BULK_EXPORT,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.bulk_export_security_monitoring_rules(body=body)
+
+    print(response.read())
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Bulk export security monitoring rules returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+# there is a valid "security_rule" in the system
+SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
+
+body = DatadogAPIClient::V2::SecurityMonitoringRuleBulkExportPayload.new({
+  data: DatadogAPIClient::V2::SecurityMonitoringRuleBulkExportData.new({
+    attributes: DatadogAPIClient::V2::SecurityMonitoringRuleBulkExportAttributes.new({
+      rule_ids: [
+        SECURITY_RULE_ID,
+      ],
+    }),
+    type: DatadogAPIClient::V2::SecurityMonitoringRuleBulkExportDataType::SECURITY_MONITORING_RULES_BULK_EXPORT,
+  }),
+})
+p api_instance.bulk_export_security_monitoring_rules(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```rust
+// Bulk export security monitoring rules returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::SecurityMonitoringRuleBulkExportAttributes;
+use datadog_api_client::datadogV2::model::SecurityMonitoringRuleBulkExportData;
+use datadog_api_client::datadogV2::model::SecurityMonitoringRuleBulkExportDataType;
+use datadog_api_client::datadogV2::model::SecurityMonitoringRuleBulkExportPayload;
+
+#[tokio::main]
+async fn main() {
+    // there is a valid "security_rule" in the system
+    let security_rule_id = std::env::var("SECURITY_RULE_ID").unwrap();
+    let body =
+        SecurityMonitoringRuleBulkExportPayload::new(SecurityMonitoringRuleBulkExportData::new(
+            SecurityMonitoringRuleBulkExportAttributes::new(vec![security_rule_id.clone()]),
+            SecurityMonitoringRuleBulkExportDataType::SECURITY_MONITORING_RULES_BULK_EXPORT,
+        ));
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.bulk_export_security_monitoring_rules(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Bulk export security monitoring rules returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+// there is a valid "security_rule" in the system
+const SECURITY_RULE_ID = process.env.SECURITY_RULE_ID as string;
+
+const params: v2.SecurityMonitoringApiBulkExportSecurityMonitoringRulesRequest =
+  {
+    body: {
+      data: {
+        attributes: {
+          ruleIds: [SECURITY_RULE_ID],
+        },
+        type: "security_monitoring_rules_bulk_export",
+      },
+    },
+  };
+
+apiInstance
+  .bulkExportSecurityMonitoringRules(params)
+  .then((data: client.HttpFile) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get a list of security signals{% #get-a-list-of-security-signals %}
@@ -29011,6 +32152,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 | options                  | anomalyDetectionOptions      | object   | Options on anomaly detection method.                                                                                                                                                                                                                                           |
 | anomalyDetectionOptions  | bucketDuration               | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                 |
 | anomalyDetectionOptions  | detectionTolerance           | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                      |
+| anomalyDetectionOptions  | instantaneousBaseline        | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                            |
 | anomalyDetectionOptions  | learningDuration             | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                       |
 | anomalyDetectionOptions  | learningPeriodBaseline       | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                           |
 | options                  | detectionMethod              | enum     | The detection method. Allowed enum values: `threshold,new_value,anomaly_detection,impossible_travel,hardcoded,third_party,anomaly_threshold,sequence_detection`                                                                                                                |
@@ -29821,6 +32963,7 @@ List of threat hunting jobs.
 | options                  | anomalyDetectionOptions      | object   | Options on anomaly detection method.                                                                                                                                                                                                                                           |
 | anomalyDetectionOptions  | bucketDuration               | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                 |
 | anomalyDetectionOptions  | detectionTolerance           | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                      |
+| anomalyDetectionOptions  | instantaneousBaseline        | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                            |
 | anomalyDetectionOptions  | learningDuration             | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                       |
 | anomalyDetectionOptions  | learningPeriodBaseline       | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                           |
 | options                  | detectionMethod              | enum     | The detection method. Allowed enum values: `threshold,new_value,anomaly_detection,impossible_travel,hardcoded,third_party,anomaly_threshold,sequence_detection`                                                                                                                |
@@ -29932,6 +33075,7 @@ List of threat hunting jobs.
             "anomalyDetectionOptions": {
               "bucketDuration": 300,
               "detectionTolerance": 5,
+              "instantaneousBaseline": false,
               "learningDuration": "integer",
               "learningPeriodBaseline": "integer"
             },
@@ -32363,6 +35507,7 @@ Threat hunting job response.
 | options                  | anomalyDetectionOptions      | object   | Options on anomaly detection method.                                                                                                                                                                                                                                           |
 | anomalyDetectionOptions  | bucketDuration               | enum     | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                 |
 | anomalyDetectionOptions  | detectionTolerance           | enum     | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                      |
+| anomalyDetectionOptions  | instantaneousBaseline        | boolean  | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                            |
 | anomalyDetectionOptions  | learningDuration             | enum     | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                       |
 | anomalyDetectionOptions  | learningPeriodBaseline       | int64    | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                           |
 | options                  | detectionMethod              | enum     | The detection method. Allowed enum values: `threshold,new_value,anomaly_detection,impossible_travel,hardcoded,third_party,anomaly_threshold,sequence_detection`                                                                                                                |
@@ -32471,6 +35616,7 @@ Threat hunting job response.
           "anomalyDetectionOptions": {
             "bucketDuration": 300,
             "detectionTolerance": 5,
+            "instantaneousBaseline": false,
             "learningDuration": "integer",
             "learningPeriodBaseline": "integer"
           },
@@ -34157,6 +37303,7 @@ Response for getting the rule version history.
 | options                  | anomalyDetectionOptions         | object        | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum          | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum          | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean       | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum          | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64         | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object        | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -34261,6 +37408,7 @@ Response for getting the rule version history.
 | options                  | anomalyDetectionOptions         | object        | Options on anomaly detection method.                                                                                                                                                                                                                                                                                                                                                                             |
 | anomalyDetectionOptions  | bucketDuration                  | enum          | Duration in seconds of the time buckets used to aggregate events matched by the rule. Must be greater than or equal to 300. Allowed enum values: `300,600,900,1800,3600,10800`                                                                                                                                                                                                                                   |
 | anomalyDetectionOptions  | detectionTolerance              | enum          | An optional parameter that sets how permissive anomaly detection is. Higher values require higher deviations before triggering a signal. Allowed enum values: `1,2,3,4,5`                                                                                                                                                                                                                                        |
+| anomalyDetectionOptions  | instantaneousBaseline           | boolean       | When set to true, Datadog uses previous values that fall within the defined learning window to construct the baseline, enabling the system to establish an accurate baseline more rapidly rather than relying solely on gradual learning over time.                                                                                                                                                              |
 | anomalyDetectionOptions  | learningDuration                | enum          | Learning duration in hours. Anomaly detection waits for at least this amount of historical data before it starts evaluating. Allowed enum values: `1,6,12,24,48,168,336`                                                                                                                                                                                                                                         |
 | anomalyDetectionOptions  | learningPeriodBaseline          | int64         | An optional override baseline to apply while the rule is in the learning period. Must be greater than or equal to 0.                                                                                                                                                                                                                                                                                             |
 | options                  | complianceRuleOptions           | object        | Options for cloud_configuration rules. Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration` rules.                                                                                                                                                                                                                                                                      |
@@ -34394,6 +37542,7 @@ Response for getting the rule version history.
               "anomalyDetectionOptions": {
                 "bucketDuration": 300,
                 "detectionTolerance": 5,
+                "instantaneousBaseline": false,
                 "learningDuration": "integer",
                 "learningPeriodBaseline": "integer"
               },
@@ -36780,7 +39929,6 @@ from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoring
 from datadog_api_client.v2.model.asset_type import AssetType
 
 configuration = Configuration()
-configuration.unstable_operations["get_sbom"] = True
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     response = api_instance.get_sbom(
@@ -36801,9 +39949,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 # Get SBOM returns "OK" response
 
 require "datadog_api_client"
-DatadogAPIClient.configure do |config|
-  config.unstable_operations["v2.get_sbom".to_sym] = true
-end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_sbom(AssetType::REPOSITORY, "github.com/datadog/datadog-agent")
 ```
@@ -36832,7 +39977,6 @@ import (
 func main() {
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSBOM", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewSecurityMonitoringApi(apiClient)
 	resp, r, err := api.GetSBOM(ctx, datadogV2.ASSETTYPE_REPOSITORY, "github.com/datadog/datadog-agent", *datadogV2.NewGetSBOMOptionalParameters())
@@ -36865,7 +40009,6 @@ import com.datadog.api.client.v2.model.GetSBOMResponse;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = ApiClient.getDefaultApiClient();
-    defaultClient.setUnstableOperationEnabled("v2.getSBOM", true);
     SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
 
     try {
@@ -36898,8 +40041,7 @@ use datadog_api_client::datadogV2::model::AssetType;
 
 #[tokio::main]
 async fn main() {
-    let mut configuration = datadog::Configuration::new();
-    configuration.set_unstable_operation_enabled("v2.GetSBOM", true);
+    let configuration = datadog::Configuration::new();
     let api = SecurityMonitoringAPI::with_config(configuration);
     let resp = api
         .get_sbom(
@@ -36930,7 +40072,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 import { client, v2 } from "@datadog/datadog-api-client";
 
 const configuration = client.createConfiguration();
-configuration.unstableOperations["v2.getSBOM"] = true;
 const apiInstance = new v2.SecurityMonitoringApi(configuration);
 
 const params: v2.SecurityMonitoringApiGetSBOMRequest = {
@@ -37792,7 +40933,6 @@ from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoring
 from datadog_api_client.v2.model.asset_type import AssetType
 
 configuration = Configuration()
-configuration.unstable_operations["list_assets_sbo_ms"] = True
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     response = api_instance.list_assets_sbo_ms(
@@ -37813,9 +40953,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 # List assets SBOMs returns "OK" response
 
 require "datadog_api_client"
-DatadogAPIClient.configure do |config|
-  config.unstable_operations["v2.list_assets_sbo_ms".to_sym] = true
-end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 opts = {
   filter_package_name: "pandas",
@@ -37848,7 +40985,6 @@ import (
 func main() {
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListAssetsSBOMs", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewSecurityMonitoringApi(apiClient)
 	resp, r, err := api.ListAssetsSBOMs(ctx, *datadogV2.NewListAssetsSBOMsOptionalParameters().WithFilterPackageName("pandas").WithFilterAssetType(datadogV2.ASSETTYPE_SERVICE))
@@ -37882,7 +41018,6 @@ import com.datadog.api.client.v2.model.ListAssetsSBOMsResponse;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = ApiClient.getDefaultApiClient();
-    defaultClient.setUnstableOperationEnabled("v2.listAssetsSBOMs", true);
     SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
 
     try {
@@ -37918,8 +41053,7 @@ use datadog_api_client::datadogV2::model::AssetType;
 
 #[tokio::main]
 async fn main() {
-    let mut configuration = datadog::Configuration::new();
-    configuration.set_unstable_operation_enabled("v2.ListAssetsSBOMs", true);
+    let configuration = datadog::Configuration::new();
     let api = SecurityMonitoringAPI::with_config(configuration);
     let resp = api
         .list_assets_sbo_ms(
@@ -37950,7 +41084,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 import { client, v2 } from "@datadog/datadog-api-client";
 
 const configuration = client.createConfiguration();
-configuration.unstableOperations["v2.listAssetsSBOMs"] = true;
 const apiInstance = new v2.SecurityMonitoringApi(configuration);
 
 const params: v2.SecurityMonitoringApiListAssetsSBOMsRequest = {
@@ -44555,6 +47688,132 @@ EOF
 ##### 
 
 ```go
+// Create Jira issue for security finding returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CreateJiraIssueRequestArray{
+		Data: []datadogV2.CreateJiraIssueRequestData{
+			{
+				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+					Title:       datadog.PtrString("A title"),
+					Description: datadog.PtrString("A description"),
+				},
+				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+					Findings: datadogV2.Findings{
+						Data: []datadogV2.FindingData{
+							{
+								Id:   "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
+								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+							},
+						},
+					},
+					Project: datadogV2.CaseManagementProject{
+						Data: datadogV2.CaseManagementProjectData{
+							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+						},
+					},
+				},
+				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.CreateJiraIssues(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
+}
+```
+
+##### 
+
+```go
+// Create Jira issue for security findings returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CreateJiraIssueRequestArray{
+		Data: []datadogV2.CreateJiraIssueRequestData{
+			{
+				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+					Title:       datadog.PtrString("A title"),
+					Description: datadog.PtrString("A description"),
+				},
+				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+					Findings: datadogV2.Findings{
+						Data: []datadogV2.FindingData{
+							{
+								Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+							},
+							{
+								Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+							},
+						},
+					},
+					Project: datadogV2.CaseManagementProject{
+						Data: datadogV2.CaseManagementProjectData{
+							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+						},
+					},
+				},
+				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+			},
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewSecurityMonitoringApi(apiClient)
+	resp, r, err := api.CreateJiraIssues(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
+}
+```
+
+##### 
+
+```go
 // Create Jira issues for security findings returns "Created" response
 
 package main
@@ -44574,28 +47833,44 @@ func main() {
 		Data: []datadogV2.CreateJiraIssueRequestData{
 			{
 				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
-					AssigneeId:  datadog.PtrString("f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0"),
-					Description: datadog.PtrString("A description of the Jira issue."),
-					Fields: map[string]interface{}{
-						"key1": "value",
-						"key2": "['value']",
-						"key3": "{'key4': 'value'}",
-					},
-					Priority: datadogV2.CASEPRIORITY_NOT_DEFINED.Ptr(),
-					Title:    datadog.PtrString("A title for the Jira issue."),
+					Title:       datadog.PtrString("A title"),
+					Description: datadog.PtrString("A description"),
 				},
 				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
 					Findings: datadogV2.Findings{
 						Data: []datadogV2.FindingData{
 							{
-								Id:   "ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==",
+								Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
 								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
 							},
 						},
 					},
 					Project: datadogV2.CaseManagementProject{
 						Data: datadogV2.CaseManagementProjectData{
-							Id:   "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+						},
+					},
+				},
+				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+			},
+			{
+				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+					Title:       datadog.PtrString("A title"),
+					Description: datadog.PtrString("A description"),
+				},
+				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+					Findings: datadogV2.Findings{
+						Data: []datadogV2.FindingData{
+							{
+								Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+							},
+						},
+					},
+					Project: datadogV2.CaseManagementProject{
+						Data: datadogV2.CaseManagementProjectData{
+							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
 							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
 						},
 					},
@@ -44606,7 +47881,6 @@ func main() {
 	}
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateJiraIssues", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewSecurityMonitoringApi(apiClient)
 	resp, r, err := api.CreateJiraIssues(ctx, body)
@@ -44628,7 +47902,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Create Jira issues for security findings returns "Created" response
+// Create Jira issue for security finding returns "Created" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -44636,7 +47910,6 @@ import com.datadog.api.client.v2.api.SecurityMonitoringApi;
 import com.datadog.api.client.v2.model.CaseManagementProject;
 import com.datadog.api.client.v2.model.CaseManagementProjectData;
 import com.datadog.api.client.v2.model.CaseManagementProjectDataType;
-import com.datadog.api.client.v2.model.CasePriority;
 import com.datadog.api.client.v2.model.CreateJiraIssueRequestArray;
 import com.datadog.api.client.v2.model.CreateJiraIssueRequestData;
 import com.datadog.api.client.v2.model.CreateJiraIssueRequestDataAttributes;
@@ -44647,12 +47920,10 @@ import com.datadog.api.client.v2.model.FindingDataType;
 import com.datadog.api.client.v2.model.Findings;
 import com.datadog.api.client.v2.model.JiraIssuesDataType;
 import java.util.Collections;
-import java.util.Map;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = ApiClient.getDefaultApiClient();
-    defaultClient.setUnstableOperationEnabled("v2.createJiraIssues", true);
     SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
 
     CreateJiraIssueRequestArray body =
@@ -44662,15 +47933,8 @@ public class Example {
                     new CreateJiraIssueRequestData()
                         .attributes(
                             new CreateJiraIssueRequestDataAttributes()
-                                .assigneeId("f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0")
-                                .description("A description of the Jira issue.")
-                                .fields(
-                                    Map.ofEntries(
-                                        Map.entry("key1", "value"),
-                                        Map.entry("key2", "['value']"),
-                                        Map.entry("key3", "{'key4': 'value'}")))
-                                .priority(CasePriority.NOT_DEFINED)
-                                .title("A title for the Jira issue."))
+                                .title("A title")
+                                .description("A description"))
                         .relationships(
                             new CreateJiraIssueRequestDataRelationships()
                                 .findings(
@@ -44679,13 +47943,177 @@ public class Example {
                                             Collections.singletonList(
                                                 new FindingData()
                                                     .id(
-                                                        "ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==")
+                                                        "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=")
                                                     .type(FindingDataType.FINDINGS))))
                                 .project(
                                     new CaseManagementProject()
                                         .data(
                                             new CaseManagementProjectData()
-                                                .id("aeadc05e-98a8-11ec-ac2c-da7ad0900001")
+                                                .id("959a6f71-bac8-4027-b1d3-2264f569296f")
+                                                .type(CaseManagementProjectDataType.PROJECTS))))
+                        .type(JiraIssuesDataType.JIRA_ISSUES)));
+
+    try {
+      FindingCaseResponseArray result = apiInstance.createJiraIssues(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#createJiraIssues");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+##### 
+
+```java
+// Create Jira issue for security findings returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.CaseManagementProject;
+import com.datadog.api.client.v2.model.CaseManagementProjectData;
+import com.datadog.api.client.v2.model.CaseManagementProjectDataType;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestArray;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestData;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestDataAttributes;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestDataRelationships;
+import com.datadog.api.client.v2.model.FindingCaseResponseArray;
+import com.datadog.api.client.v2.model.FindingData;
+import com.datadog.api.client.v2.model.FindingDataType;
+import com.datadog.api.client.v2.model.Findings;
+import com.datadog.api.client.v2.model.JiraIssuesDataType;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    CreateJiraIssueRequestArray body =
+        new CreateJiraIssueRequestArray()
+            .data(
+                Collections.singletonList(
+                    new CreateJiraIssueRequestData()
+                        .attributes(
+                            new CreateJiraIssueRequestDataAttributes()
+                                .title("A title")
+                                .description("A description"))
+                        .relationships(
+                            new CreateJiraIssueRequestDataRelationships()
+                                .findings(
+                                    new Findings()
+                                        .data(
+                                            Arrays.asList(
+                                                new FindingData()
+                                                    .id(
+                                                        "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==")
+                                                    .type(FindingDataType.FINDINGS),
+                                                new FindingData()
+                                                    .id(
+                                                        "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==")
+                                                    .type(FindingDataType.FINDINGS))))
+                                .project(
+                                    new CaseManagementProject()
+                                        .data(
+                                            new CaseManagementProjectData()
+                                                .id("959a6f71-bac8-4027-b1d3-2264f569296f")
+                                                .type(CaseManagementProjectDataType.PROJECTS))))
+                        .type(JiraIssuesDataType.JIRA_ISSUES)));
+
+    try {
+      FindingCaseResponseArray result = apiInstance.createJiraIssues(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling SecurityMonitoringApi#createJiraIssues");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+##### 
+
+```java
+// Create Jira issues for security findings returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.SecurityMonitoringApi;
+import com.datadog.api.client.v2.model.CaseManagementProject;
+import com.datadog.api.client.v2.model.CaseManagementProjectData;
+import com.datadog.api.client.v2.model.CaseManagementProjectDataType;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestArray;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestData;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestDataAttributes;
+import com.datadog.api.client.v2.model.CreateJiraIssueRequestDataRelationships;
+import com.datadog.api.client.v2.model.FindingCaseResponseArray;
+import com.datadog.api.client.v2.model.FindingData;
+import com.datadog.api.client.v2.model.FindingDataType;
+import com.datadog.api.client.v2.model.Findings;
+import com.datadog.api.client.v2.model.JiraIssuesDataType;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    SecurityMonitoringApi apiInstance = new SecurityMonitoringApi(defaultClient);
+
+    CreateJiraIssueRequestArray body =
+        new CreateJiraIssueRequestArray()
+            .data(
+                Arrays.asList(
+                    new CreateJiraIssueRequestData()
+                        .attributes(
+                            new CreateJiraIssueRequestDataAttributes()
+                                .title("A title")
+                                .description("A description"))
+                        .relationships(
+                            new CreateJiraIssueRequestDataRelationships()
+                                .findings(
+                                    new Findings()
+                                        .data(
+                                            Collections.singletonList(
+                                                new FindingData()
+                                                    .id(
+                                                        "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==")
+                                                    .type(FindingDataType.FINDINGS))))
+                                .project(
+                                    new CaseManagementProject()
+                                        .data(
+                                            new CaseManagementProjectData()
+                                                .id("959a6f71-bac8-4027-b1d3-2264f569296f")
+                                                .type(CaseManagementProjectDataType.PROJECTS))))
+                        .type(JiraIssuesDataType.JIRA_ISSUES),
+                    new CreateJiraIssueRequestData()
+                        .attributes(
+                            new CreateJiraIssueRequestDataAttributes()
+                                .title("A title")
+                                .description("A description"))
+                        .relationships(
+                            new CreateJiraIssueRequestDataRelationships()
+                                .findings(
+                                    new Findings()
+                                        .data(
+                                            Collections.singletonList(
+                                                new FindingData()
+                                                    .id(
+                                                        "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==")
+                                                    .type(FindingDataType.FINDINGS))))
+                                .project(
+                                    new CaseManagementProject()
+                                        .data(
+                                            new CaseManagementProjectData()
+                                                .id("959a6f71-bac8-4027-b1d3-2264f569296f")
                                                 .type(CaseManagementProjectDataType.PROJECTS))))
                         .type(JiraIssuesDataType.JIRA_ISSUES)));
 
@@ -44711,7 +48139,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```python
 """
-Create Jira issues for security findings returns "Created" response
+Create Jira issue for security finding returns "Created" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -44719,7 +48147,6 @@ from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoring
 from datadog_api_client.v2.model.case_management_project import CaseManagementProject
 from datadog_api_client.v2.model.case_management_project_data import CaseManagementProjectData
 from datadog_api_client.v2.model.case_management_project_data_type import CaseManagementProjectDataType
-from datadog_api_client.v2.model.case_priority import CasePriority
 from datadog_api_client.v2.model.create_jira_issue_request_array import CreateJiraIssueRequestArray
 from datadog_api_client.v2.model.create_jira_issue_request_data import CreateJiraIssueRequestData
 from datadog_api_client.v2.model.create_jira_issue_request_data_attributes import CreateJiraIssueRequestDataAttributes
@@ -44735,24 +48162,21 @@ body = CreateJiraIssueRequestArray(
     data=[
         CreateJiraIssueRequestData(
             attributes=CreateJiraIssueRequestDataAttributes(
-                assignee_id="f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0",
-                description="A description of the Jira issue.",
-                fields=dict([("key1", "value"), ("key2", "['value']"), ("key3", "{'key4': 'value'}")]),
-                priority=CasePriority.NOT_DEFINED,
-                title="A title for the Jira issue.",
+                title="A title",
+                description="A description",
             ),
             relationships=CreateJiraIssueRequestDataRelationships(
                 findings=Findings(
                     data=[
                         FindingData(
-                            id="ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==",
+                            id="YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
                             type=FindingDataType.FINDINGS,
                         ),
                     ],
                 ),
                 project=CaseManagementProject(
                     data=CaseManagementProjectData(
-                        id="aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+                        id="959a6f71-bac8-4027-b1d3-2264f569296f",
                         type=CaseManagementProjectDataType.PROJECTS,
                     ),
                 ),
@@ -44763,7 +48187,151 @@ body = CreateJiraIssueRequestArray(
 )
 
 configuration = Configuration()
-configuration.unstable_operations["create_jira_issues"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.create_jira_issues(body=body)
+
+    print(response)
+```
+
+##### 
+
+```python
+"""
+Create Jira issue for security findings returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.case_management_project import CaseManagementProject
+from datadog_api_client.v2.model.case_management_project_data import CaseManagementProjectData
+from datadog_api_client.v2.model.case_management_project_data_type import CaseManagementProjectDataType
+from datadog_api_client.v2.model.create_jira_issue_request_array import CreateJiraIssueRequestArray
+from datadog_api_client.v2.model.create_jira_issue_request_data import CreateJiraIssueRequestData
+from datadog_api_client.v2.model.create_jira_issue_request_data_attributes import CreateJiraIssueRequestDataAttributes
+from datadog_api_client.v2.model.create_jira_issue_request_data_relationships import (
+    CreateJiraIssueRequestDataRelationships,
+)
+from datadog_api_client.v2.model.finding_data import FindingData
+from datadog_api_client.v2.model.finding_data_type import FindingDataType
+from datadog_api_client.v2.model.findings import Findings
+from datadog_api_client.v2.model.jira_issues_data_type import JiraIssuesDataType
+
+body = CreateJiraIssueRequestArray(
+    data=[
+        CreateJiraIssueRequestData(
+            attributes=CreateJiraIssueRequestDataAttributes(
+                title="A title",
+                description="A description",
+            ),
+            relationships=CreateJiraIssueRequestDataRelationships(
+                findings=Findings(
+                    data=[
+                        FindingData(
+                            id="a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                            type=FindingDataType.FINDINGS,
+                        ),
+                        FindingData(
+                            id="eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                            type=FindingDataType.FINDINGS,
+                        ),
+                    ],
+                ),
+                project=CaseManagementProject(
+                    data=CaseManagementProjectData(
+                        id="959a6f71-bac8-4027-b1d3-2264f569296f",
+                        type=CaseManagementProjectDataType.PROJECTS,
+                    ),
+                ),
+            ),
+            type=JiraIssuesDataType.JIRA_ISSUES,
+        ),
+    ],
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = SecurityMonitoringApi(api_client)
+    response = api_instance.create_jira_issues(body=body)
+
+    print(response)
+```
+
+##### 
+
+```python
+"""
+Create Jira issues for security findings returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.security_monitoring_api import SecurityMonitoringApi
+from datadog_api_client.v2.model.case_management_project import CaseManagementProject
+from datadog_api_client.v2.model.case_management_project_data import CaseManagementProjectData
+from datadog_api_client.v2.model.case_management_project_data_type import CaseManagementProjectDataType
+from datadog_api_client.v2.model.create_jira_issue_request_array import CreateJiraIssueRequestArray
+from datadog_api_client.v2.model.create_jira_issue_request_data import CreateJiraIssueRequestData
+from datadog_api_client.v2.model.create_jira_issue_request_data_attributes import CreateJiraIssueRequestDataAttributes
+from datadog_api_client.v2.model.create_jira_issue_request_data_relationships import (
+    CreateJiraIssueRequestDataRelationships,
+)
+from datadog_api_client.v2.model.finding_data import FindingData
+from datadog_api_client.v2.model.finding_data_type import FindingDataType
+from datadog_api_client.v2.model.findings import Findings
+from datadog_api_client.v2.model.jira_issues_data_type import JiraIssuesDataType
+
+body = CreateJiraIssueRequestArray(
+    data=[
+        CreateJiraIssueRequestData(
+            attributes=CreateJiraIssueRequestDataAttributes(
+                title="A title",
+                description="A description",
+            ),
+            relationships=CreateJiraIssueRequestDataRelationships(
+                findings=Findings(
+                    data=[
+                        FindingData(
+                            id="eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                            type=FindingDataType.FINDINGS,
+                        ),
+                    ],
+                ),
+                project=CaseManagementProject(
+                    data=CaseManagementProjectData(
+                        id="959a6f71-bac8-4027-b1d3-2264f569296f",
+                        type=CaseManagementProjectDataType.PROJECTS,
+                    ),
+                ),
+            ),
+            type=JiraIssuesDataType.JIRA_ISSUES,
+        ),
+        CreateJiraIssueRequestData(
+            attributes=CreateJiraIssueRequestDataAttributes(
+                title="A title",
+                description="A description",
+            ),
+            relationships=CreateJiraIssueRequestDataRelationships(
+                findings=Findings(
+                    data=[
+                        FindingData(
+                            id="a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                            type=FindingDataType.FINDINGS,
+                        ),
+                    ],
+                ),
+                project=CaseManagementProject(
+                    data=CaseManagementProjectData(
+                        id="959a6f71-bac8-4027-b1d3-2264f569296f",
+                        type=CaseManagementProjectDataType.PROJECTS,
+                    ),
+                ),
+            ),
+            type=JiraIssuesDataType.JIRA_ISSUES,
+        ),
+    ],
+)
+
+configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     response = api_instance.create_jira_issues(body=body)
@@ -44778,38 +48346,133 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```ruby
-# Create Jira issues for security findings returns "Created" response
+# Create Jira issue for security finding returns "Created" response
 
 require "datadog_api_client"
-DatadogAPIClient.configure do |config|
-  config.unstable_operations["v2.create_jira_issues".to_sym] = true
-end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 
 body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
   data: [
     DatadogAPIClient::V2::CreateJiraIssueRequestData.new({
       attributes: DatadogAPIClient::V2::CreateJiraIssueRequestDataAttributes.new({
-        assignee_id: "f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0",
-        description: "A description of the Jira issue.",
-        fields: {
-          "key1": "value", "key2": "['value']", "key3": "{'key4': 'value'}",
-        },
-        priority: DatadogAPIClient::V2::CasePriority::NOT_DEFINED,
-        title: "A title for the Jira issue.",
+        title: "A title",
+        description: "A description",
       }),
       relationships: DatadogAPIClient::V2::CreateJiraIssueRequestDataRelationships.new({
         findings: DatadogAPIClient::V2::Findings.new({
           data: [
             DatadogAPIClient::V2::FindingData.new({
-              id: "ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==",
+              id: "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
               type: DatadogAPIClient::V2::FindingDataType::FINDINGS,
             }),
           ],
         }),
         project: DatadogAPIClient::V2::CaseManagementProject.new({
           data: DatadogAPIClient::V2::CaseManagementProjectData.new({
-            id: "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+            id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+            type: DatadogAPIClient::V2::CaseManagementProjectDataType::PROJECTS,
+          }),
+        }),
+      }),
+      type: DatadogAPIClient::V2::JiraIssuesDataType::JIRA_ISSUES,
+    }),
+  ],
+})
+p api_instance.create_jira_issues(body)
+```
+
+##### 
+
+```ruby
+# Create Jira issue for security findings returns "Created" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
+  data: [
+    DatadogAPIClient::V2::CreateJiraIssueRequestData.new({
+      attributes: DatadogAPIClient::V2::CreateJiraIssueRequestDataAttributes.new({
+        title: "A title",
+        description: "A description",
+      }),
+      relationships: DatadogAPIClient::V2::CreateJiraIssueRequestDataRelationships.new({
+        findings: DatadogAPIClient::V2::Findings.new({
+          data: [
+            DatadogAPIClient::V2::FindingData.new({
+              id: "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+              type: DatadogAPIClient::V2::FindingDataType::FINDINGS,
+            }),
+            DatadogAPIClient::V2::FindingData.new({
+              id: "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+              type: DatadogAPIClient::V2::FindingDataType::FINDINGS,
+            }),
+          ],
+        }),
+        project: DatadogAPIClient::V2::CaseManagementProject.new({
+          data: DatadogAPIClient::V2::CaseManagementProjectData.new({
+            id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+            type: DatadogAPIClient::V2::CaseManagementProjectDataType::PROJECTS,
+          }),
+        }),
+      }),
+      type: DatadogAPIClient::V2::JiraIssuesDataType::JIRA_ISSUES,
+    }),
+  ],
+})
+p api_instance.create_jira_issues(body)
+```
+
+##### 
+
+```ruby
+# Create Jira issues for security findings returns "Created" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
+
+body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
+  data: [
+    DatadogAPIClient::V2::CreateJiraIssueRequestData.new({
+      attributes: DatadogAPIClient::V2::CreateJiraIssueRequestDataAttributes.new({
+        title: "A title",
+        description: "A description",
+      }),
+      relationships: DatadogAPIClient::V2::CreateJiraIssueRequestDataRelationships.new({
+        findings: DatadogAPIClient::V2::Findings.new({
+          data: [
+            DatadogAPIClient::V2::FindingData.new({
+              id: "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+              type: DatadogAPIClient::V2::FindingDataType::FINDINGS,
+            }),
+          ],
+        }),
+        project: DatadogAPIClient::V2::CaseManagementProject.new({
+          data: DatadogAPIClient::V2::CaseManagementProjectData.new({
+            id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+            type: DatadogAPIClient::V2::CaseManagementProjectDataType::PROJECTS,
+          }),
+        }),
+      }),
+      type: DatadogAPIClient::V2::JiraIssuesDataType::JIRA_ISSUES,
+    }),
+    DatadogAPIClient::V2::CreateJiraIssueRequestData.new({
+      attributes: DatadogAPIClient::V2::CreateJiraIssueRequestDataAttributes.new({
+        title: "A title",
+        description: "A description",
+      }),
+      relationships: DatadogAPIClient::V2::CreateJiraIssueRequestDataRelationships.new({
+        findings: DatadogAPIClient::V2::Findings.new({
+          data: [
+            DatadogAPIClient::V2::FindingData.new({
+              id: "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+              type: DatadogAPIClient::V2::FindingDataType::FINDINGS,
+            }),
+          ],
+        }),
+        project: DatadogAPIClient::V2::CaseManagementProject.new({
+          data: DatadogAPIClient::V2::CaseManagementProjectData.new({
+            id: "959a6f71-bac8-4027-b1d3-2264f569296f",
             type: DatadogAPIClient::V2::CaseManagementProjectDataType::PROJECTS,
           }),
         }),
@@ -44828,13 +48491,12 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```rust
-// Create Jira issues for security findings returns "Created" response
+// Create Jira issue for security finding returns "Created" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
 use datadog_api_client::datadogV2::model::CaseManagementProject;
 use datadog_api_client::datadogV2::model::CaseManagementProjectData;
 use datadog_api_client::datadogV2::model::CaseManagementProjectDataType;
-use datadog_api_client::datadogV2::model::CasePriority;
 use datadog_api_client::datadogV2::model::CreateJiraIssueRequestArray;
 use datadog_api_client::datadogV2::model::CreateJiraIssueRequestData;
 use datadog_api_client::datadogV2::model::CreateJiraIssueRequestDataAttributes;
@@ -44843,8 +48505,67 @@ use datadog_api_client::datadogV2::model::FindingData;
 use datadog_api_client::datadogV2::model::FindingDataType;
 use datadog_api_client::datadogV2::model::Findings;
 use datadog_api_client::datadogV2::model::JiraIssuesDataType;
-use serde_json::Value;
-use std::collections::BTreeMap;
+
+#[tokio::main]
+async fn main() {
+    let body =
+        CreateJiraIssueRequestArray::new(
+            vec![
+                CreateJiraIssueRequestData::new(JiraIssuesDataType::JIRA_ISSUES)
+                    .attributes(
+                        CreateJiraIssueRequestDataAttributes::new()
+                            .description("A description".to_string())
+                            .title("A title".to_string()),
+                    )
+                    .relationships(
+                        CreateJiraIssueRequestDataRelationships::new(
+                            Findings
+                            ::new().data(
+                                vec![
+                                    FindingData::new(
+                                        "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=".to_string(),
+                                        FindingDataType::FINDINGS,
+                                    )
+                                ],
+                            ),
+                            CaseManagementProject::new(
+                                CaseManagementProjectData::new(
+                                    "959a6f71-bac8-4027-b1d3-2264f569296f".to_string(),
+                                    CaseManagementProjectDataType::PROJECTS,
+                                ),
+                            ),
+                        ),
+                    )
+            ],
+        );
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.create_jira_issues(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+##### 
+
+```rust
+// Create Jira issue for security findings returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::CaseManagementProject;
+use datadog_api_client::datadogV2::model::CaseManagementProjectData;
+use datadog_api_client::datadogV2::model::CaseManagementProjectDataType;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestArray;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestData;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestDataAttributes;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestDataRelationships;
+use datadog_api_client::datadogV2::model::FindingData;
+use datadog_api_client::datadogV2::model::FindingDataType;
+use datadog_api_client::datadogV2::model::Findings;
+use datadog_api_client::datadogV2::model::JiraIssuesDataType;
 
 #[tokio::main]
 async fn main() {
@@ -44853,24 +48574,91 @@ async fn main() {
     )
     .attributes(
         CreateJiraIssueRequestDataAttributes::new()
-            .assignee_id("f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0".to_string())
-            .description("A description of the Jira issue.".to_string())
-            .fields(BTreeMap::from([("key1".to_string(), Value::from("value"))]))
-            .priority(CasePriority::NOT_DEFINED)
-            .title("A title for the Jira issue.".to_string()),
+            .description("A description".to_string())
+            .title("A title".to_string()),
     )
     .relationships(CreateJiraIssueRequestDataRelationships::new(
-        Findings::new().data(vec![FindingData::new(
-            "ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==".to_string(),
-            FindingDataType::FINDINGS,
-        )]),
+        Findings::new().data(vec![
+            FindingData::new(
+                "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==".to_string(),
+                FindingDataType::FINDINGS,
+            ),
+            FindingData::new(
+                "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==".to_string(),
+                FindingDataType::FINDINGS,
+            ),
+        ]),
         CaseManagementProject::new(CaseManagementProjectData::new(
-            "aeadc05e-98a8-11ec-ac2c-da7ad0900001".to_string(),
+            "959a6f71-bac8-4027-b1d3-2264f569296f".to_string(),
             CaseManagementProjectDataType::PROJECTS,
         )),
     ))]);
-    let mut configuration = datadog::Configuration::new();
-    configuration.set_unstable_operation_enabled("v2.CreateJiraIssues", true);
+    let configuration = datadog::Configuration::new();
+    let api = SecurityMonitoringAPI::with_config(configuration);
+    let resp = api.create_jira_issues(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+##### 
+
+```rust
+// Create Jira issues for security findings returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_security_monitoring::SecurityMonitoringAPI;
+use datadog_api_client::datadogV2::model::CaseManagementProject;
+use datadog_api_client::datadogV2::model::CaseManagementProjectData;
+use datadog_api_client::datadogV2::model::CaseManagementProjectDataType;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestArray;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestData;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestDataAttributes;
+use datadog_api_client::datadogV2::model::CreateJiraIssueRequestDataRelationships;
+use datadog_api_client::datadogV2::model::FindingData;
+use datadog_api_client::datadogV2::model::FindingDataType;
+use datadog_api_client::datadogV2::model::Findings;
+use datadog_api_client::datadogV2::model::JiraIssuesDataType;
+
+#[tokio::main]
+async fn main() {
+    let body = CreateJiraIssueRequestArray::new(vec![
+        CreateJiraIssueRequestData::new(JiraIssuesDataType::JIRA_ISSUES)
+            .attributes(
+                CreateJiraIssueRequestDataAttributes::new()
+                    .description("A description".to_string())
+                    .title("A title".to_string()),
+            )
+            .relationships(CreateJiraIssueRequestDataRelationships::new(
+                Findings::new().data(vec![FindingData::new(
+                    "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==".to_string(),
+                    FindingDataType::FINDINGS,
+                )]),
+                CaseManagementProject::new(CaseManagementProjectData::new(
+                    "959a6f71-bac8-4027-b1d3-2264f569296f".to_string(),
+                    CaseManagementProjectDataType::PROJECTS,
+                )),
+            )),
+        CreateJiraIssueRequestData::new(JiraIssuesDataType::JIRA_ISSUES)
+            .attributes(
+                CreateJiraIssueRequestDataAttributes::new()
+                    .description("A description".to_string())
+                    .title("A title".to_string()),
+            )
+            .relationships(CreateJiraIssueRequestDataRelationships::new(
+                Findings::new().data(vec![FindingData::new(
+                    "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==".to_string(),
+                    FindingDataType::FINDINGS,
+                )]),
+                CaseManagementProject::new(CaseManagementProjectData::new(
+                    "959a6f71-bac8-4027-b1d3-2264f569296f".to_string(),
+                    CaseManagementProjectDataType::PROJECTS,
+                )),
+            )),
+    ]);
+    let configuration = datadog::Configuration::new();
     let api = SecurityMonitoringAPI::with_config(configuration);
     let resp = api.create_jira_issues(body).await;
     if let Ok(value) = resp {
@@ -44889,13 +48677,12 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Create Jira issues for security findings returns "Created" response
+ * Create Jira issue for security finding returns "Created" response
  */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
 const configuration = client.createConfiguration();
-configuration.unstableOperations["v2.createJiraIssues"] = true;
 const apiInstance = new v2.SecurityMonitoringApi(configuration);
 
 const params: v2.SecurityMonitoringApiCreateJiraIssuesRequest = {
@@ -44903,28 +48690,152 @@ const params: v2.SecurityMonitoringApiCreateJiraIssuesRequest = {
     data: [
       {
         attributes: {
-          assigneeId: "f315bdaf-9ee7-4808-a9c1-99c15bf0f4d0",
-          description: "A description of the Jira issue.",
-          fields: {
-            key1: "value",
-            key2: "['value']",
-            key3: "{'key4': 'value'}",
-          },
-          priority: "NOT_DEFINED",
-          title: "A title for the Jira issue.",
+          title: "A title",
+          description: "A description",
         },
         relationships: {
           findings: {
             data: [
               {
-                id: "ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw==",
+                id: "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
                 type: "findings",
               },
             ],
           },
           project: {
             data: {
-              id: "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+              id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+              type: "projects",
+            },
+          },
+        },
+        type: "jira_issues",
+      },
+    ],
+  },
+};
+
+apiInstance
+  .createJiraIssues(params)
+  .then((data: v2.FindingCaseResponseArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+##### 
+
+```typescript
+/**
+ * Create Jira issue for security findings returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiCreateJiraIssuesRequest = {
+  body: {
+    data: [
+      {
+        attributes: {
+          title: "A title",
+          description: "A description",
+        },
+        relationships: {
+          findings: {
+            data: [
+              {
+                id: "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                type: "findings",
+              },
+              {
+                id: "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                type: "findings",
+              },
+            ],
+          },
+          project: {
+            data: {
+              id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+              type: "projects",
+            },
+          },
+        },
+        type: "jira_issues",
+      },
+    ],
+  },
+};
+
+apiInstance
+  .createJiraIssues(params)
+  .then((data: v2.FindingCaseResponseArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+##### 
+
+```typescript
+/**
+ * Create Jira issues for security findings returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.SecurityMonitoringApi(configuration);
+
+const params: v2.SecurityMonitoringApiCreateJiraIssuesRequest = {
+  body: {
+    data: [
+      {
+        attributes: {
+          title: "A title",
+          description: "A description",
+        },
+        relationships: {
+          findings: {
+            data: [
+              {
+                id: "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                type: "findings",
+              },
+            ],
+          },
+          project: {
+            data: {
+              id: "959a6f71-bac8-4027-b1d3-2264f569296f",
+              type: "projects",
+            },
+          },
+        },
+        type: "jira_issues",
+      },
+      {
+        attributes: {
+          title: "A title",
+          description: "A description",
+        },
+        relationships: {
+          findings: {
+            data: [
+              {
+                id: "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                type: "findings",
+              },
+            ],
+          },
+          project: {
+            data: {
+              id: "959a6f71-bac8-4027-b1d3-2264f569296f",
               type: "projects",
             },
           },

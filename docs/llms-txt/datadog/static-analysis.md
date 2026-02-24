@@ -592,6 +592,222 @@ API error response.
 {}
 EOF
                 
+##### 
+
+```python
+"""
+Revert Custom Rule Revision returns "Successfully reverted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+from datadog_api_client.v2.model.revert_custom_rule_revision_data_type import RevertCustomRuleRevisionDataType
+from datadog_api_client.v2.model.revert_custom_rule_revision_request import RevertCustomRuleRevisionRequest
+from datadog_api_client.v2.model.revert_custom_rule_revision_request_data import RevertCustomRuleRevisionRequestData
+from datadog_api_client.v2.model.revert_custom_rule_revision_request_data_attributes import (
+    RevertCustomRuleRevisionRequestDataAttributes,
+)
+
+body = RevertCustomRuleRevisionRequest(
+    data=RevertCustomRuleRevisionRequestData(
+        attributes=RevertCustomRuleRevisionRequestDataAttributes(),
+        type=RevertCustomRuleRevisionDataType.REVERT_CUSTOM_RULE_REVISION_REQUEST,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["revert_custom_rule_revision"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    api_instance.revert_custom_rule_revision(ruleset_name="ruleset_name", rule_name="rule_name", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Revert Custom Rule Revision returns "Successfully reverted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.revert_custom_rule_revision".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+
+body = DatadogAPIClient::V2::RevertCustomRuleRevisionRequest.new({
+  data: DatadogAPIClient::V2::RevertCustomRuleRevisionRequestData.new({
+    attributes: DatadogAPIClient::V2::RevertCustomRuleRevisionRequestDataAttributes.new({}),
+    type: DatadogAPIClient::V2::RevertCustomRuleRevisionDataType::REVERT_CUSTOM_RULE_REVISION_REQUEST,
+  }),
+})
+p api_instance.revert_custom_rule_revision("ruleset_name", "rule_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Revert Custom Rule Revision returns "Successfully reverted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.RevertCustomRuleRevisionRequest{
+		Data: &datadogV2.RevertCustomRuleRevisionRequestData{
+			Attributes: &datadogV2.RevertCustomRuleRevisionRequestDataAttributes{},
+			Type:       datadogV2.REVERTCUSTOMRULEREVISIONDATATYPE_REVERT_CUSTOM_RULE_REVISION_REQUEST.Ptr(),
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.RevertCustomRuleRevision", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	r, err := api.RevertCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.RevertCustomRuleRevision`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Revert Custom Rule Revision returns "Successfully reverted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.RevertCustomRuleRevisionDataType;
+import com.datadog.api.client.v2.model.RevertCustomRuleRevisionRequest;
+import com.datadog.api.client.v2.model.RevertCustomRuleRevisionRequestData;
+import com.datadog.api.client.v2.model.RevertCustomRuleRevisionRequestDataAttributes;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.revertCustomRuleRevision", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    RevertCustomRuleRevisionRequest body =
+        new RevertCustomRuleRevisionRequest()
+            .data(
+                new RevertCustomRuleRevisionRequestData()
+                    .attributes(new RevertCustomRuleRevisionRequestDataAttributes())
+                    .type(RevertCustomRuleRevisionDataType.REVERT_CUSTOM_RULE_REVISION_REQUEST));
+
+    try {
+      apiInstance.revertCustomRuleRevision("ruleset_name", "rule_name", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#revertCustomRuleRevision");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Revert Custom Rule Revision returns "Successfully reverted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+use datadog_api_client::datadogV2::model::RevertCustomRuleRevisionDataType;
+use datadog_api_client::datadogV2::model::RevertCustomRuleRevisionRequest;
+use datadog_api_client::datadogV2::model::RevertCustomRuleRevisionRequestData;
+use datadog_api_client::datadogV2::model::RevertCustomRuleRevisionRequestDataAttributes;
+
+#[tokio::main]
+async fn main() {
+    let body = RevertCustomRuleRevisionRequest::new().data(
+        RevertCustomRuleRevisionRequestData::new()
+            .attributes(RevertCustomRuleRevisionRequestDataAttributes::new())
+            .type_(RevertCustomRuleRevisionDataType::REVERT_CUSTOM_RULE_REVISION_REQUEST),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.RevertCustomRuleRevision", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .revert_custom_rule_revision("ruleset_name".to_string(), "rule_name".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Revert Custom Rule Revision returns "Successfully reverted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.revertCustomRuleRevision"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiRevertCustomRuleRevisionRequest = {
+  body: {
+    data: {
+      attributes: {},
+      type: "revert_custom_rule_revision_request",
+    },
+  },
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+};
+
+apiInstance
+  .revertCustomRuleRevision(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Post dependencies for analysis{% #post-dependencies-for-analysis %}
@@ -1719,6 +1935,188 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Show Custom Rule Revision returns "Successful response" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_custom_rule_revision"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.get_custom_rule_revision(
+        ruleset_name="ruleset_name",
+        rule_name="rule_name",
+        id="id",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Show Custom Rule Revision returns "Successful response" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_custom_rule_revision".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.get_custom_rule_revision("ruleset_name", "rule_name", "id")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Show Custom Rule Revision returns "Successful response" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetCustomRuleRevision", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.GetCustomRuleRevision(ctx, "ruleset_name", "rule_name", "id")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleRevision`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleRevision`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Show Custom Rule Revision returns "Successful response" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.CustomRuleRevisionResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getCustomRuleRevision", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      CustomRuleRevisionResponse result =
+          apiInstance.getCustomRuleRevision("ruleset_name", "rule_name", "id");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#getCustomRuleRevision");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Show Custom Rule Revision returns "Successful response" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetCustomRuleRevision", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .get_custom_rule_revision(
+            "ruleset_name".to_string(),
+            "rule_name".to_string(),
+            "id".to_string(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Show Custom Rule Revision returns "Successful response" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getCustomRuleRevision"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiGetCustomRuleRevisionRequest = {
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+  id: "id",
+};
+
+apiInstance
+  .getCustomRuleRevision(params)
+  .then((data: v2.CustomRuleRevisionResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Create Custom Rule Revision{% #create-custom-rule-revision %}
@@ -2041,6 +2439,414 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Create Custom Rule Revision returns "Successfully created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+from datadog_api_client.v2.model.argument import Argument
+from datadog_api_client.v2.model.custom_rule_revision_attributes_category import CustomRuleRevisionAttributesCategory
+from datadog_api_client.v2.model.custom_rule_revision_attributes_severity import CustomRuleRevisionAttributesSeverity
+from datadog_api_client.v2.model.custom_rule_revision_data_type import CustomRuleRevisionDataType
+from datadog_api_client.v2.model.custom_rule_revision_input_attributes import CustomRuleRevisionInputAttributes
+from datadog_api_client.v2.model.custom_rule_revision_request import CustomRuleRevisionRequest
+from datadog_api_client.v2.model.custom_rule_revision_request_data import CustomRuleRevisionRequestData
+from datadog_api_client.v2.model.custom_rule_revision_test import CustomRuleRevisionTest
+from datadog_api_client.v2.model.language import Language
+
+body = CustomRuleRevisionRequest(
+    data=CustomRuleRevisionRequestData(
+        attributes=CustomRuleRevisionInputAttributes(
+            arguments=[
+                Argument(
+                    description="YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                    name="YXJndW1lbnRfbmFtZQ==",
+                ),
+            ],
+            category=CustomRuleRevisionAttributesCategory.SECURITY,
+            code="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+            creation_message="Initial revision",
+            cve="CVE-2024-1234",
+            cwe="CWE-79",
+            description="bG9uZyBkZXNjcmlwdGlvbg==",
+            documentation_url="https://docs.example.com/rules/my-rule",
+            is_published=False,
+            is_testing=False,
+            language=Language.PYTHON,
+            severity=CustomRuleRevisionAttributesSeverity.ERROR,
+            short_description="c2hvcnQgZGVzY3JpcHRpb24=",
+            should_use_ai_fix=False,
+            tags=[
+                "security",
+                "custom",
+            ],
+            tests=[
+                CustomRuleRevisionTest(
+                    annotation_count=1,
+                    code="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                    filename="test.yaml",
+                ),
+            ],
+            tree_sitter_query="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+        ),
+        type=CustomRuleRevisionDataType.CUSTOM_RULE_REVISION,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_custom_rule_revision"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    api_instance.create_custom_rule_revision(ruleset_name="ruleset_name", rule_name="rule_name", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create Custom Rule Revision returns "Successfully created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_custom_rule_revision".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+
+body = DatadogAPIClient::V2::CustomRuleRevisionRequest.new({
+  data: DatadogAPIClient::V2::CustomRuleRevisionRequestData.new({
+    attributes: DatadogAPIClient::V2::CustomRuleRevisionInputAttributes.new({
+      arguments: [
+        DatadogAPIClient::V2::Argument.new({
+          description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+          name: "YXJndW1lbnRfbmFtZQ==",
+        }),
+      ],
+      category: DatadogAPIClient::V2::CustomRuleRevisionAttributesCategory::SECURITY,
+      code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+      creation_message: "Initial revision",
+      cve: "CVE-2024-1234",
+      cwe: "CWE-79",
+      description: "bG9uZyBkZXNjcmlwdGlvbg==",
+      documentation_url: "https://docs.example.com/rules/my-rule",
+      is_published: false,
+      is_testing: false,
+      language: DatadogAPIClient::V2::Language::PYTHON,
+      severity: DatadogAPIClient::V2::CustomRuleRevisionAttributesSeverity::ERROR,
+      short_description: "c2hvcnQgZGVzY3JpcHRpb24=",
+      should_use_ai_fix: false,
+      tags: [
+        "security",
+        "custom",
+      ],
+      tests: [
+        DatadogAPIClient::V2::CustomRuleRevisionTest.new({
+          annotation_count: 1,
+          code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+          filename: "test.yaml",
+        }),
+      ],
+      tree_sitter_query: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+    }),
+    type: DatadogAPIClient::V2::CustomRuleRevisionDataType::CUSTOM_RULE_REVISION,
+  }),
+})
+p api_instance.create_custom_rule_revision("ruleset_name", "rule_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Create Custom Rule Revision returns "Successfully created" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CustomRuleRevisionRequest{
+		Data: &datadogV2.CustomRuleRevisionRequestData{
+			Attributes: &datadogV2.CustomRuleRevisionInputAttributes{
+				Arguments: []datadogV2.Argument{
+					{
+						Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+						Name:        "YXJndW1lbnRfbmFtZQ==",
+					},
+				},
+				Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
+				Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+				CreationMessage:  "Initial revision",
+				Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
+				Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
+				Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
+				DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
+				IsPublished:      false,
+				IsTesting:        false,
+				Language:         datadogV2.LANGUAGE_PYTHON,
+				Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
+				ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+				ShouldUseAiFix:   false,
+				Tags: []string{
+					"security",
+					"custom",
+				},
+				Tests: []datadogV2.CustomRuleRevisionTest{
+					{
+						AnnotationCount: 1,
+						Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+						Filename:        "test.yaml",
+					},
+				},
+				TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+			},
+			Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION.Ptr(),
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateCustomRuleRevision", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	r, err := api.CreateCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRuleRevision`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Create Custom Rule Revision returns "Successfully created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.Argument;
+import com.datadog.api.client.v2.model.CustomRuleRevisionAttributesCategory;
+import com.datadog.api.client.v2.model.CustomRuleRevisionAttributesSeverity;
+import com.datadog.api.client.v2.model.CustomRuleRevisionDataType;
+import com.datadog.api.client.v2.model.CustomRuleRevisionInputAttributes;
+import com.datadog.api.client.v2.model.CustomRuleRevisionRequest;
+import com.datadog.api.client.v2.model.CustomRuleRevisionRequestData;
+import com.datadog.api.client.v2.model.CustomRuleRevisionTest;
+import com.datadog.api.client.v2.model.Language;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createCustomRuleRevision", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    CustomRuleRevisionRequest body =
+        new CustomRuleRevisionRequest()
+            .data(
+                new CustomRuleRevisionRequestData()
+                    .attributes(
+                        new CustomRuleRevisionInputAttributes()
+                            .arguments(
+                                Collections.singletonList(
+                                    new Argument()
+                                        .description("YXJndW1lbnQgZGVzY3JpcHRpb24=")
+                                        .name("YXJndW1lbnRfbmFtZQ==")))
+                            .category(CustomRuleRevisionAttributesCategory.SECURITY)
+                            .code("Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==")
+                            .creationMessage("Initial revision")
+                            .cve("CVE-2024-1234")
+                            .cwe("CWE-79")
+                            .description("bG9uZyBkZXNjcmlwdGlvbg==")
+                            .documentationUrl("https://docs.example.com/rules/my-rule")
+                            .isPublished(false)
+                            .isTesting(false)
+                            .language(Language.PYTHON)
+                            .severity(CustomRuleRevisionAttributesSeverity.ERROR)
+                            .shortDescription("c2hvcnQgZGVzY3JpcHRpb24=")
+                            .shouldUseAiFix(false)
+                            .tags(Arrays.asList("security", "custom"))
+                            .tests(
+                                Collections.singletonList(
+                                    new CustomRuleRevisionTest()
+                                        .annotationCount(1L)
+                                        .code("Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==")
+                                        .filename("test.yaml")))
+                            .treeSitterQuery("Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ=="))
+                    .type(CustomRuleRevisionDataType.CUSTOM_RULE_REVISION));
+
+    try {
+      apiInstance.createCustomRuleRevision("ruleset_name", "rule_name", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#createCustomRuleRevision");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Create Custom Rule Revision returns "Successfully created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+use datadog_api_client::datadogV2::model::Argument;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionAttributesCategory;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionAttributesSeverity;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionDataType;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionInputAttributes;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionRequest;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionRequestData;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionTest;
+use datadog_api_client::datadogV2::model::Language;
+
+#[tokio::main]
+async fn main() {
+    let body = CustomRuleRevisionRequest::new().data(
+        CustomRuleRevisionRequestData::new()
+            .attributes(CustomRuleRevisionInputAttributes::new(
+                vec![Argument::new(
+                    "YXJndW1lbnQgZGVzY3JpcHRpb24=".to_string(),
+                    "YXJndW1lbnRfbmFtZQ==".to_string(),
+                )],
+                CustomRuleRevisionAttributesCategory::SECURITY,
+                "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+                "Initial revision".to_string(),
+                Some("CVE-2024-1234".to_string()),
+                Some("CWE-79".to_string()),
+                "bG9uZyBkZXNjcmlwdGlvbg==".to_string(),
+                Some("https://docs.example.com/rules/my-rule".to_string()),
+                false,
+                false,
+                Language::PYTHON,
+                CustomRuleRevisionAttributesSeverity::ERROR,
+                "c2hvcnQgZGVzY3JpcHRpb24=".to_string(),
+                false,
+                vec!["security".to_string(), "custom".to_string()],
+                vec![CustomRuleRevisionTest::new(
+                    1,
+                    "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+                    "test.yaml".to_string(),
+                )],
+                "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+            ))
+            .type_(CustomRuleRevisionDataType::CUSTOM_RULE_REVISION),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateCustomRuleRevision", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .create_custom_rule_revision("ruleset_name".to_string(), "rule_name".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create Custom Rule Revision returns "Successfully created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createCustomRuleRevision"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiCreateCustomRuleRevisionRequest = {
+  body: {
+    data: {
+      attributes: {
+        arguments: [
+          {
+            description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+            name: "YXJndW1lbnRfbmFtZQ==",
+          },
+        ],
+        category: "SECURITY",
+        code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+        creationMessage: "Initial revision",
+        cve: "CVE-2024-1234",
+        cwe: "CWE-79",
+        description: "bG9uZyBkZXNjcmlwdGlvbg==",
+        documentationUrl: "https://docs.example.com/rules/my-rule",
+        isPublished: false,
+        isTesting: false,
+        language: "PYTHON",
+        severity: "ERROR",
+        shortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+        shouldUseAiFix: false,
+        tags: ["security", "custom"],
+        tests: [
+          {
+            annotationCount: 1,
+            code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+            filename: "test.yaml",
+          },
+        ],
+        treeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+      },
+      type: "custom_rule_revision",
+    },
+  },
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+};
+
+apiInstance
+  .createCustomRuleRevision(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## List Custom Rule Revisions{% #list-custom-rule-revisions %}
@@ -2350,6 +3156,187 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+List Custom Rule Revisions returns "Successful response" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["list_custom_rule_revisions"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.list_custom_rule_revisions(
+        ruleset_name="ruleset_name",
+        rule_name="rule_name",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# List Custom Rule Revisions returns "Successful response" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.list_custom_rule_revisions".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.list_custom_rule_revisions("ruleset_name", "rule_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// List Custom Rule Revisions returns "Successful response" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.ListCustomRuleRevisions", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.ListCustomRuleRevisions(ctx, "ruleset_name", "rule_name", *datadogV2.NewListCustomRuleRevisionsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.ListCustomRuleRevisions`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.ListCustomRuleRevisions`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// List Custom Rule Revisions returns "Successful response" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.CustomRuleRevisionsResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.listCustomRuleRevisions", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      CustomRuleRevisionsResponse result =
+          apiInstance.listCustomRuleRevisions("ruleset_name", "rule_name");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#listCustomRuleRevisions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// List Custom Rule Revisions returns "Successful response" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::ListCustomRuleRevisionsOptionalParams;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.ListCustomRuleRevisions", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .list_custom_rule_revisions(
+            "ruleset_name".to_string(),
+            "rule_name".to_string(),
+            ListCustomRuleRevisionsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * List Custom Rule Revisions returns "Successful response" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.listCustomRuleRevisions"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiListCustomRuleRevisionsRequest = {
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+};
+
+apiInstance
+  .listCustomRuleRevisions(params)
+  .then((data: v2.CustomRuleRevisionsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Delete Custom Rule{% #delete-custom-rule %}
@@ -2547,6 +3534,173 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Delete Custom Rule returns "Successfully deleted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["delete_custom_rule"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    api_instance.delete_custom_rule(
+        ruleset_name="ruleset_name",
+        rule_name="rule_name",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete Custom Rule returns "Successfully deleted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.delete_custom_rule".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.delete_custom_rule("ruleset_name", "rule_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete Custom Rule returns "Successfully deleted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.DeleteCustomRule", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	r, err := api.DeleteCustomRule(ctx, "ruleset_name", "rule_name")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Delete Custom Rule returns "Successfully deleted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.deleteCustomRule", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      apiInstance.deleteCustomRule("ruleset_name", "rule_name");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#deleteCustomRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete Custom Rule returns "Successfully deleted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.DeleteCustomRule", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .delete_custom_rule("ruleset_name".to_string(), "rule_name".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete Custom Rule returns "Successfully deleted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.deleteCustomRule"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiDeleteCustomRuleRequest = {
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+};
+
+apiInstance
+  .deleteCustomRule(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Show Custom Rule{% #show-custom-rule %}
@@ -2845,6 +3999,181 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Show Custom Rule returns "Successful response" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_custom_rule"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.get_custom_rule(
+        ruleset_name="ruleset_name",
+        rule_name="rule_name",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Show Custom Rule returns "Successful response" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_custom_rule".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.get_custom_rule("ruleset_name", "rule_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Show Custom Rule returns "Successful response" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetCustomRule", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.GetCustomRule(ctx, "ruleset_name", "rule_name")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRule`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Show Custom Rule returns "Successful response" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.CustomRuleResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getCustomRule", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      CustomRuleResponse result = apiInstance.getCustomRule("ruleset_name", "rule_name");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#getCustomRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Show Custom Rule returns "Successful response" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetCustomRule", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .get_custom_rule("ruleset_name".to_string(), "rule_name".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Show Custom Rule returns "Successful response" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getCustomRule"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiGetCustomRuleRequest = {
+  rulesetName: "ruleset_name",
+  ruleName: "rule_name",
+};
+
+apiInstance
+  .getCustomRule(params)
+  .then((data: v2.CustomRuleResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Create Custom Rule{% #create-custom-rule %}
@@ -3223,6 +4552,227 @@ API error response.
 {}
 EOF
                 
+##### 
+
+```python
+"""
+Create Custom Rule returns "Successfully created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+from datadog_api_client.v2.model.custom_rule_data_type import CustomRuleDataType
+from datadog_api_client.v2.model.custom_rule_request import CustomRuleRequest
+from datadog_api_client.v2.model.custom_rule_request_data import CustomRuleRequestData
+from datadog_api_client.v2.model.custom_rule_request_data_attributes import CustomRuleRequestDataAttributes
+
+body = CustomRuleRequest(
+    data=CustomRuleRequestData(
+        attributes=CustomRuleRequestDataAttributes(),
+        type=CustomRuleDataType.CUSTOM_RULE,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_custom_rule"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.create_custom_rule(ruleset_name="ruleset_name", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create Custom Rule returns "Successfully created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_custom_rule".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+
+body = DatadogAPIClient::V2::CustomRuleRequest.new({
+  data: DatadogAPIClient::V2::CustomRuleRequestData.new({
+    attributes: DatadogAPIClient::V2::CustomRuleRequestDataAttributes.new({}),
+    type: DatadogAPIClient::V2::CustomRuleDataType::CUSTOM_RULE,
+  }),
+})
+p api_instance.create_custom_rule("ruleset_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Create Custom Rule returns "Successfully created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CustomRuleRequest{
+		Data: &datadogV2.CustomRuleRequestData{
+			Attributes: &datadogV2.CustomRuleRequestDataAttributes{},
+			Type:       datadogV2.CUSTOMRULEDATATYPE_CUSTOM_RULE.Ptr(),
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateCustomRule", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.CreateCustomRule(ctx, "ruleset_name", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRule`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.CreateCustomRule`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Create Custom Rule returns "Successfully created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.CustomRuleDataType;
+import com.datadog.api.client.v2.model.CustomRuleRequest;
+import com.datadog.api.client.v2.model.CustomRuleRequestData;
+import com.datadog.api.client.v2.model.CustomRuleRequestDataAttributes;
+import com.datadog.api.client.v2.model.CustomRuleResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createCustomRule", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    CustomRuleRequest body =
+        new CustomRuleRequest()
+            .data(
+                new CustomRuleRequestData()
+                    .attributes(new CustomRuleRequestDataAttributes())
+                    .type(CustomRuleDataType.CUSTOM_RULE));
+
+    try {
+      CustomRuleResponse result = apiInstance.createCustomRule("ruleset_name", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#createCustomRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Create Custom Rule returns "Successfully created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+use datadog_api_client::datadogV2::model::CustomRuleDataType;
+use datadog_api_client::datadogV2::model::CustomRuleRequest;
+use datadog_api_client::datadogV2::model::CustomRuleRequestData;
+use datadog_api_client::datadogV2::model::CustomRuleRequestDataAttributes;
+
+#[tokio::main]
+async fn main() {
+    let body = CustomRuleRequest::new().data(
+        CustomRuleRequestData::new()
+            .attributes(CustomRuleRequestDataAttributes::new())
+            .type_(CustomRuleDataType::CUSTOM_RULE),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateCustomRule", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .create_custom_rule("ruleset_name".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create Custom Rule returns "Successfully created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createCustomRule"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiCreateCustomRuleRequest = {
+  body: {
+    data: {
+      attributes: {},
+      type: "custom_rule",
+    },
+  },
+  rulesetName: "ruleset_name",
+};
+
+apiInstance
+  .createCustomRule(params)
+  .then((data: v2.CustomRuleResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Delete Custom Ruleset{% #delete-custom-ruleset %}
@@ -3419,6 +4969,169 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Delete Custom Ruleset returns "Successfully deleted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["delete_custom_ruleset"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    api_instance.delete_custom_ruleset(
+        ruleset_name="ruleset_name",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete Custom Ruleset returns "Successfully deleted" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.delete_custom_ruleset".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.delete_custom_ruleset("ruleset_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete Custom Ruleset returns "Successfully deleted" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.DeleteCustomRuleset", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	r, err := api.DeleteCustomRuleset(ctx, "ruleset_name")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRuleset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Delete Custom Ruleset returns "Successfully deleted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.deleteCustomRuleset", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      apiInstance.deleteCustomRuleset("ruleset_name");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#deleteCustomRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete Custom Ruleset returns "Successfully deleted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.DeleteCustomRuleset", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api.delete_custom_ruleset("ruleset_name".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete Custom Ruleset returns "Successfully deleted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.deleteCustomRuleset"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiDeleteCustomRulesetRequest = {
+  rulesetName: "ruleset_name",
+};
+
+apiInstance
+  .deleteCustomRuleset(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Update Custom Ruleset{% #update-custom-ruleset %}
@@ -3905,6 +5618,554 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Update Custom Ruleset returns "Successfully updated" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+from datadog_api_client.v2.model.argument import Argument
+from datadog_api_client.v2.model.custom_rule import CustomRule
+from datadog_api_client.v2.model.custom_rule_revision import CustomRuleRevision
+from datadog_api_client.v2.model.custom_rule_revision_attributes import CustomRuleRevisionAttributes
+from datadog_api_client.v2.model.custom_rule_revision_attributes_category import CustomRuleRevisionAttributesCategory
+from datadog_api_client.v2.model.custom_rule_revision_attributes_severity import CustomRuleRevisionAttributesSeverity
+from datadog_api_client.v2.model.custom_rule_revision_data_type import CustomRuleRevisionDataType
+from datadog_api_client.v2.model.custom_rule_revision_test import CustomRuleRevisionTest
+from datadog_api_client.v2.model.custom_ruleset_data_type import CustomRulesetDataType
+from datadog_api_client.v2.model.custom_ruleset_request import CustomRulesetRequest
+from datadog_api_client.v2.model.custom_ruleset_request_data import CustomRulesetRequestData
+from datadog_api_client.v2.model.custom_ruleset_request_data_attributes import CustomRulesetRequestDataAttributes
+from datadog_api_client.v2.model.language import Language
+from datetime import datetime
+from dateutil.tz import tzutc
+
+body = CustomRulesetRequest(
+    data=CustomRulesetRequestData(
+        attributes=CustomRulesetRequestDataAttributes(
+            rules=[
+                CustomRule(
+                    created_at=datetime(2026, 1, 9, 13, 0, 57, 473141, tzinfo=tzutc()),
+                    created_by="foobarbaz",
+                    last_revision=CustomRuleRevision(
+                        attributes=CustomRuleRevisionAttributes(
+                            arguments=[
+                                Argument(
+                                    description="YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                                    name="YXJndW1lbnRfbmFtZQ==",
+                                ),
+                            ],
+                            category=CustomRuleRevisionAttributesCategory.SECURITY,
+                            checksum="8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
+                            code="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                            created_at=datetime(2026, 1, 9, 13, 0, 57, 473141, tzinfo=tzutc()),
+                            created_by="foobarbaz",
+                            creation_message="Initial revision",
+                            cve="CVE-2024-1234",
+                            cwe="CWE-79",
+                            description="bG9uZyBkZXNjcmlwdGlvbg==",
+                            documentation_url="https://docs.example.com/rules/my-rule",
+                            is_published=False,
+                            is_testing=False,
+                            language=Language.PYTHON,
+                            severity=CustomRuleRevisionAttributesSeverity.ERROR,
+                            short_description="c2hvcnQgZGVzY3JpcHRpb24=",
+                            should_use_ai_fix=False,
+                            tags=[
+                                "security",
+                                "custom",
+                            ],
+                            tests=[
+                                CustomRuleRevisionTest(
+                                    annotation_count=1,
+                                    code="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                                    filename="test.yaml",
+                                ),
+                            ],
+                            tree_sitter_query="Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                        ),
+                        id="revision-123",
+                        type=CustomRuleRevisionDataType.CUSTOM_RULE_REVISION,
+                    ),
+                    name="my-rule",
+                ),
+            ],
+        ),
+        type=CustomRulesetDataType.CUSTOM_RULESET,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["update_custom_ruleset"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.update_custom_ruleset(ruleset_name="ruleset_name", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update Custom Ruleset returns "Successfully updated" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.update_custom_ruleset".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+
+body = DatadogAPIClient::V2::CustomRulesetRequest.new({
+  data: DatadogAPIClient::V2::CustomRulesetRequestData.new({
+    attributes: DatadogAPIClient::V2::CustomRulesetRequestDataAttributes.new({
+      rules: [
+        DatadogAPIClient::V2::CustomRule.new({
+          created_at: "2026-01-09T13:00:57.473141Z",
+          created_by: "foobarbaz",
+          last_revision: DatadogAPIClient::V2::CustomRuleRevision.new({
+            attributes: DatadogAPIClient::V2::CustomRuleRevisionAttributes.new({
+              arguments: [
+                DatadogAPIClient::V2::Argument.new({
+                  description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                  name: "YXJndW1lbnRfbmFtZQ==",
+                }),
+              ],
+              category: DatadogAPIClient::V2::CustomRuleRevisionAttributesCategory::SECURITY,
+              checksum: "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
+              code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+              created_at: "2026-01-09T13:00:57.473141Z",
+              created_by: "foobarbaz",
+              creation_message: "Initial revision",
+              cve: "CVE-2024-1234",
+              cwe: "CWE-79",
+              description: "bG9uZyBkZXNjcmlwdGlvbg==",
+              documentation_url: "https://docs.example.com/rules/my-rule",
+              is_published: false,
+              is_testing: false,
+              language: DatadogAPIClient::V2::Language::PYTHON,
+              severity: DatadogAPIClient::V2::CustomRuleRevisionAttributesSeverity::ERROR,
+              short_description: "c2hvcnQgZGVzY3JpcHRpb24=",
+              should_use_ai_fix: false,
+              tags: [
+                "security",
+                "custom",
+              ],
+              tests: [
+                DatadogAPIClient::V2::CustomRuleRevisionTest.new({
+                  annotation_count: 1,
+                  code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                  filename: "test.yaml",
+                }),
+              ],
+              tree_sitter_query: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+            }),
+            id: "revision-123",
+            type: DatadogAPIClient::V2::CustomRuleRevisionDataType::CUSTOM_RULE_REVISION,
+          }),
+          name: "my-rule",
+        }),
+      ],
+    }),
+    type: DatadogAPIClient::V2::CustomRulesetDataType::CUSTOM_RULESET,
+  }),
+})
+p api_instance.update_custom_ruleset("ruleset_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Update Custom Ruleset returns "Successfully updated" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+	"time"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.CustomRulesetRequest{
+		Data: &datadogV2.CustomRulesetRequestData{
+			Attributes: &datadogV2.CustomRulesetRequestDataAttributes{
+				Rules: []datadogV2.CustomRule{
+					{
+						CreatedAt: time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
+						CreatedBy: "foobarbaz",
+						LastRevision: datadogV2.CustomRuleRevision{
+							Attributes: datadogV2.CustomRuleRevisionAttributes{
+								Arguments: []datadogV2.Argument{
+									{
+										Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+										Name:        "YXJndW1lbnRfbmFtZQ==",
+									},
+								},
+								Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
+								Checksum:         "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
+								Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+								CreatedAt:        time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
+								CreatedBy:        "foobarbaz",
+								CreationMessage:  "Initial revision",
+								Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
+								Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
+								Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
+								DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
+								IsPublished:      false,
+								IsTesting:        false,
+								Language:         datadogV2.LANGUAGE_PYTHON,
+								Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
+								ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+								ShouldUseAiFix:   false,
+								Tags: []string{
+									"security",
+									"custom",
+								},
+								Tests: []datadogV2.CustomRuleRevisionTest{
+									{
+										AnnotationCount: 1,
+										Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+										Filename:        "test.yaml",
+									},
+								},
+								TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+							},
+							Id:   "revision-123",
+							Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION,
+						},
+						Name: "my-rule",
+					},
+				},
+			},
+			Type: datadogV2.CUSTOMRULESETDATATYPE_CUSTOM_RULESET.Ptr(),
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.UpdateCustomRuleset", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.UpdateCustomRuleset(ctx, "ruleset_name", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.UpdateCustomRuleset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.UpdateCustomRuleset`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Update Custom Ruleset returns "Successfully updated" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.Argument;
+import com.datadog.api.client.v2.model.CustomRule;
+import com.datadog.api.client.v2.model.CustomRuleRevision;
+import com.datadog.api.client.v2.model.CustomRuleRevisionAttributes;
+import com.datadog.api.client.v2.model.CustomRuleRevisionAttributesCategory;
+import com.datadog.api.client.v2.model.CustomRuleRevisionAttributesSeverity;
+import com.datadog.api.client.v2.model.CustomRuleRevisionDataType;
+import com.datadog.api.client.v2.model.CustomRuleRevisionTest;
+import com.datadog.api.client.v2.model.CustomRulesetDataType;
+import com.datadog.api.client.v2.model.CustomRulesetRequest;
+import com.datadog.api.client.v2.model.CustomRulesetRequestData;
+import com.datadog.api.client.v2.model.CustomRulesetRequestDataAttributes;
+import com.datadog.api.client.v2.model.CustomRulesetResponse;
+import com.datadog.api.client.v2.model.Language;
+import java.time.OffsetDateTime;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.updateCustomRuleset", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    CustomRulesetRequest body =
+        new CustomRulesetRequest()
+            .data(
+                new CustomRulesetRequestData()
+                    .attributes(
+                        new CustomRulesetRequestDataAttributes()
+                            .rules(
+                                Collections.singletonList(
+                                    new CustomRule()
+                                        .createdAt(
+                                            OffsetDateTime.parse("2026-01-09T13:00:57.473141Z"))
+                                        .createdBy("foobarbaz")
+                                        .lastRevision(
+                                            new CustomRuleRevision()
+                                                .attributes(
+                                                    new CustomRuleRevisionAttributes()
+                                                        .arguments(
+                                                            Collections.singletonList(
+                                                                new Argument()
+                                                                    .description(
+                                                                        "YXJndW1lbnQgZGVzY3JpcHRpb24=")
+                                                                    .name("YXJndW1lbnRfbmFtZQ==")))
+                                                        .category(
+                                                            CustomRuleRevisionAttributesCategory
+                                                                .SECURITY)
+                                                        .checksum(
+                                                            "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99")
+                                                        .code(
+                                                            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==")
+                                                        .createdAt(
+                                                            OffsetDateTime.parse(
+                                                                "2026-01-09T13:00:57.473141Z"))
+                                                        .createdBy("foobarbaz")
+                                                        .creationMessage("Initial revision")
+                                                        .cve("CVE-2024-1234")
+                                                        .cwe("CWE-79")
+                                                        .description("bG9uZyBkZXNjcmlwdGlvbg==")
+                                                        .documentationUrl(
+                                                            "https://docs.example.com/rules/my-rule")
+                                                        .isPublished(false)
+                                                        .isTesting(false)
+                                                        .language(Language.PYTHON)
+                                                        .severity(
+                                                            CustomRuleRevisionAttributesSeverity
+                                                                .ERROR)
+                                                        .shortDescription(
+                                                            "c2hvcnQgZGVzY3JpcHRpb24=")
+                                                        .shouldUseAiFix(false)
+                                                        .tags(Arrays.asList("security", "custom"))
+                                                        .tests(
+                                                            Collections.singletonList(
+                                                                new CustomRuleRevisionTest()
+                                                                    .annotationCount(1L)
+                                                                    .code(
+                                                                        "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==")
+                                                                    .filename("test.yaml")))
+                                                        .treeSitterQuery(
+                                                            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ=="))
+                                                .id("revision-123")
+                                                .type(
+                                                    CustomRuleRevisionDataType
+                                                        .CUSTOM_RULE_REVISION))
+                                        .name("my-rule"))))
+                    .type(CustomRulesetDataType.CUSTOM_RULESET));
+
+    try {
+      CustomRulesetResponse result = apiInstance.updateCustomRuleset("ruleset_name", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#updateCustomRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Update Custom Ruleset returns "Successfully updated" response
+use chrono::{DateTime, Utc};
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+use datadog_api_client::datadogV2::model::Argument;
+use datadog_api_client::datadogV2::model::CustomRule;
+use datadog_api_client::datadogV2::model::CustomRuleRevision;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionAttributes;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionAttributesCategory;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionAttributesSeverity;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionDataType;
+use datadog_api_client::datadogV2::model::CustomRuleRevisionTest;
+use datadog_api_client::datadogV2::model::CustomRulesetDataType;
+use datadog_api_client::datadogV2::model::CustomRulesetRequest;
+use datadog_api_client::datadogV2::model::CustomRulesetRequestData;
+use datadog_api_client::datadogV2::model::CustomRulesetRequestDataAttributes;
+use datadog_api_client::datadogV2::model::Language;
+
+#[tokio::main]
+async fn main() {
+    let body = CustomRulesetRequest::new().data(
+        CustomRulesetRequestData::new()
+            .attributes(CustomRulesetRequestDataAttributes::new().rules(Some(
+                vec![CustomRule::new(
+                    DateTime::parse_from_rfc3339("2026-01-09T13:00:57.473141+00:00")
+                        .expect("Failed to parse datetime")
+                        .with_timezone(&Utc),
+                    "foobarbaz".to_string(),
+                    CustomRuleRevision::new(
+                        CustomRuleRevisionAttributes::new(
+                            vec![Argument::new(
+                                "YXJndW1lbnQgZGVzY3JpcHRpb24=".to_string(),
+                                "YXJndW1lbnRfbmFtZQ==".to_string(),
+                            )],
+                            CustomRuleRevisionAttributesCategory::SECURITY,
+                            "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99"
+                                .to_string(),
+                            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+                            DateTime::parse_from_rfc3339("2026-01-09T13:00:57.473141+00:00")
+                                .expect("Failed to parse datetime")
+                                .with_timezone(&Utc),
+                            "foobarbaz".to_string(),
+                            "Initial revision".to_string(),
+                            Some("CVE-2024-1234".to_string()),
+                            Some("CWE-79".to_string()),
+                            "bG9uZyBkZXNjcmlwdGlvbg==".to_string(),
+                            Some("https://docs.example.com/rules/my-rule".to_string()),
+                            false,
+                            false,
+                            Language::PYTHON,
+                            CustomRuleRevisionAttributesSeverity::ERROR,
+                            "c2hvcnQgZGVzY3JpcHRpb24=".to_string(),
+                            false,
+                            vec!["security".to_string(), "custom".to_string()],
+                            vec![CustomRuleRevisionTest::new(
+                                1,
+                                "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+                                "test.yaml".to_string(),
+                            )],
+                            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==".to_string(),
+                        ),
+                        "revision-123".to_string(),
+                        CustomRuleRevisionDataType::CUSTOM_RULE_REVISION,
+                    ),
+                    "my-rule".to_string(),
+                )],
+            )))
+            .type_(CustomRulesetDataType::CUSTOM_RULESET),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UpdateCustomRuleset", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api
+        .update_custom_ruleset("ruleset_name".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update Custom Ruleset returns "Successfully updated" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.updateCustomRuleset"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiUpdateCustomRulesetRequest = {
+  body: {
+    data: {
+      attributes: {
+        rules: [
+          {
+            createdAt: new Date(2026, 1, 9, 13, 0, 57, 473141),
+            createdBy: "foobarbaz",
+            lastRevision: {
+              attributes: {
+                arguments: [
+                  {
+                    description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                    name: "YXJndW1lbnRfbmFtZQ==",
+                  },
+                ],
+                category: "SECURITY",
+                checksum:
+                  "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
+                code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                createdAt: new Date(2026, 1, 9, 13, 0, 57, 473141),
+                createdBy: "foobarbaz",
+                creationMessage: "Initial revision",
+                cve: "CVE-2024-1234",
+                cwe: "CWE-79",
+                description: "bG9uZyBkZXNjcmlwdGlvbg==",
+                documentationUrl: "https://docs.example.com/rules/my-rule",
+                isPublished: false,
+                isTesting: false,
+                language: "PYTHON",
+                severity: "ERROR",
+                shortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+                shouldUseAiFix: false,
+                tags: ["security", "custom"],
+                tests: [
+                  {
+                    annotationCount: 1,
+                    code: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                    filename: "test.yaml",
+                  },
+                ],
+                treeSitterQuery:
+                  "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+              },
+              id: "revision-123",
+              type: "custom_rule_revision",
+            },
+            name: "my-rule",
+          },
+        ],
+      },
+      type: "custom_ruleset",
+    },
+  },
+  rulesetName: "ruleset_name",
+};
+
+apiInstance
+  .updateCustomRuleset(params)
+  .then((data: v2.CustomRulesetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Show Custom Ruleset{% #show-custom-ruleset %}
@@ -4217,4 +6478,175 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Show Custom Ruleset returns "Successful response" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.static_analysis_api import StaticAnalysisApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_custom_ruleset"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = StaticAnalysisApi(api_client)
+    response = api_instance.get_custom_ruleset(
+        ruleset_name="ruleset_name",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Show Custom Ruleset returns "Successful response" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_custom_ruleset".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::StaticAnalysisAPI.new
+p api_instance.get_custom_ruleset("ruleset_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Show Custom Ruleset returns "Successful response" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetCustomRuleset", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewStaticAnalysisApi(apiClient)
+	resp, r, err := api.GetCustomRuleset(ctx, "ruleset_name")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleset`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleset`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Show Custom Ruleset returns "Successful response" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.StaticAnalysisApi;
+import com.datadog.api.client.v2.model.CustomRulesetResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getCustomRuleset", true);
+    StaticAnalysisApi apiInstance = new StaticAnalysisApi(defaultClient);
+
+    try {
+      CustomRulesetResponse result = apiInstance.getCustomRuleset("ruleset_name");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StaticAnalysisApi#getCustomRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Show Custom Ruleset returns "Successful response" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_static_analysis::StaticAnalysisAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetCustomRuleset", true);
+    let api = StaticAnalysisAPI::with_config(configuration);
+    let resp = api.get_custom_ruleset("ruleset_name".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Show Custom Ruleset returns "Successful response" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getCustomRuleset"] = true;
+const apiInstance = new v2.StaticAnalysisApi(configuration);
+
+const params: v2.StaticAnalysisApiGetCustomRulesetRequest = {
+  rulesetName: "ruleset_name",
+};
+
+apiInstance
+  .getCustomRuleset(params)
+  .then((data: v2.CustomRulesetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}

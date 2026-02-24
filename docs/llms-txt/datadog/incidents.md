@@ -3334,7 +3334,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
+
+
 Create a postmortem attachment for an incident.
+
+The endpoint accepts markdown for notebooks created in Confluence or Google Docs. Postmortems created from notebooks need to be formatted using frontend notebook cells, in addition to markdown format.
+
+
 
 ### Arguments
 
@@ -3572,6 +3578,349 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Create postmortem attachment returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.incident_attachment_type import IncidentAttachmentType
+from datadog_api_client.v2.model.postmortem_attachment_request import PostmortemAttachmentRequest
+from datadog_api_client.v2.model.postmortem_attachment_request_attributes import PostmortemAttachmentRequestAttributes
+from datadog_api_client.v2.model.postmortem_attachment_request_data import PostmortemAttachmentRequestData
+from datadog_api_client.v2.model.postmortem_cell import PostmortemCell
+from datadog_api_client.v2.model.postmortem_cell_attributes import PostmortemCellAttributes
+from datadog_api_client.v2.model.postmortem_cell_definition import PostmortemCellDefinition
+from datadog_api_client.v2.model.postmortem_cell_type import PostmortemCellType
+
+body = PostmortemAttachmentRequest(
+    data=PostmortemAttachmentRequestData(
+        attributes=PostmortemAttachmentRequestAttributes(
+            cells=[
+                PostmortemCell(
+                    attributes=PostmortemCellAttributes(
+                        definition=PostmortemCellDefinition(
+                            content="## Incident Summary\nThis incident was caused by...",
+                        ),
+                    ),
+                    id="cell-1",
+                    type=PostmortemCellType.MARKDOWN,
+                ),
+            ],
+            content="# Incident Report - IR-123\n[...]",
+            postmortem_template_id="93645509-874e-45c4-adfa-623bfeaead89-123",
+            title="Postmortem-IR-123",
+        ),
+        type=IncidentAttachmentType.INCIDENT_ATTACHMENTS,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_incident_postmortem_attachment"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.create_incident_postmortem_attachment(
+        incident_id="00000000-0000-0000-0000-000000000000", body=body
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create postmortem attachment returns "Created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_incident_postmortem_attachment".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::PostmortemAttachmentRequest.new({
+  data: DatadogAPIClient::V2::PostmortemAttachmentRequestData.new({
+    attributes: DatadogAPIClient::V2::PostmortemAttachmentRequestAttributes.new({
+      cells: [
+        DatadogAPIClient::V2::PostmortemCell.new({
+          attributes: DatadogAPIClient::V2::PostmortemCellAttributes.new({
+            definition: DatadogAPIClient::V2::PostmortemCellDefinition.new({
+              content: '## Incident Summary\nThis incident was caused by...',
+            }),
+          }),
+          id: "cell-1",
+          type: DatadogAPIClient::V2::PostmortemCellType::MARKDOWN,
+        }),
+      ],
+      content: '# Incident Report - IR-123\n[...]',
+      postmortem_template_id: "93645509-874e-45c4-adfa-623bfeaead89-123",
+      title: "Postmortem-IR-123",
+    }),
+    type: DatadogAPIClient::V2::IncidentAttachmentType::INCIDENT_ATTACHMENTS,
+  }),
+})
+p api_instance.create_incident_postmortem_attachment("00000000-0000-0000-0000-000000000000", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Create postmortem attachment returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.PostmortemAttachmentRequest{
+		Data: datadogV2.PostmortemAttachmentRequestData{
+			Attributes: datadogV2.PostmortemAttachmentRequestAttributes{
+				Cells: []datadogV2.PostmortemCell{
+					{
+						Attributes: &datadogV2.PostmortemCellAttributes{
+							Definition: &datadogV2.PostmortemCellDefinition{
+								Content: datadog.PtrString(`## Incident Summary
+This incident was caused by...`),
+							},
+						},
+						Id:   datadog.PtrString("cell-1"),
+						Type: datadogV2.POSTMORTEMCELLTYPE_MARKDOWN.Ptr(),
+					},
+				},
+				Content: datadog.PtrString(`# Incident Report - IR-123
+[...]`),
+				PostmortemTemplateId: datadog.PtrString("93645509-874e-45c4-adfa-623bfeaead89-123"),
+				Title:                datadog.PtrString("Postmortem-IR-123"),
+			},
+			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemAttachment", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.CreateIncidentPostmortemAttachment(ctx, "00000000-0000-0000-0000-000000000000", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemAttachment`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemAttachment`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Create postmortem attachment returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.Attachment;
+import com.datadog.api.client.v2.model.IncidentAttachmentType;
+import com.datadog.api.client.v2.model.PostmortemAttachmentRequest;
+import com.datadog.api.client.v2.model.PostmortemAttachmentRequestAttributes;
+import com.datadog.api.client.v2.model.PostmortemAttachmentRequestData;
+import com.datadog.api.client.v2.model.PostmortemCell;
+import com.datadog.api.client.v2.model.PostmortemCellAttributes;
+import com.datadog.api.client.v2.model.PostmortemCellDefinition;
+import com.datadog.api.client.v2.model.PostmortemCellType;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createIncidentPostmortemAttachment", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    PostmortemAttachmentRequest body =
+        new PostmortemAttachmentRequest()
+            .data(
+                new PostmortemAttachmentRequestData()
+                    .attributes(
+                        new PostmortemAttachmentRequestAttributes()
+                            .cells(
+                                Collections.singletonList(
+                                    new PostmortemCell()
+                                        .attributes(
+                                            new PostmortemCellAttributes()
+                                                .definition(
+                                                    new PostmortemCellDefinition()
+                                                        .content(
+                                                            """
+## Incident Summary
+This incident was caused by...
+""")))
+                                        .id("cell-1")
+                                        .type(PostmortemCellType.MARKDOWN)))
+                            .content("""
+# Incident Report - IR-123
+[...]
+""")
+                            .postmortemTemplateId("93645509-874e-45c4-adfa-623bfeaead89-123")
+                            .title("Postmortem-IR-123"))
+                    .type(IncidentAttachmentType.INCIDENT_ATTACHMENTS));
+
+    try {
+      Attachment result =
+          apiInstance.createIncidentPostmortemAttachment(
+              "00000000-0000-0000-0000-000000000000", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#createIncidentPostmortemAttachment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Create postmortem attachment returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::model::IncidentAttachmentType;
+use datadog_api_client::datadogV2::model::PostmortemAttachmentRequest;
+use datadog_api_client::datadogV2::model::PostmortemAttachmentRequestAttributes;
+use datadog_api_client::datadogV2::model::PostmortemAttachmentRequestData;
+use datadog_api_client::datadogV2::model::PostmortemCell;
+use datadog_api_client::datadogV2::model::PostmortemCellAttributes;
+use datadog_api_client::datadogV2::model::PostmortemCellDefinition;
+use datadog_api_client::datadogV2::model::PostmortemCellType;
+
+#[tokio::main]
+async fn main() {
+    let body = PostmortemAttachmentRequest::new(PostmortemAttachmentRequestData::new(
+        PostmortemAttachmentRequestAttributes::new()
+            .cells(vec![PostmortemCell::new()
+                .attributes(
+                    PostmortemCellAttributes::new().definition(
+                        PostmortemCellDefinition::new().content(
+                            r#"## Incident Summary
+This incident was caused by..."#
+                                .to_string(),
+                        ),
+                    ),
+                )
+                .id("cell-1".to_string())
+                .type_(PostmortemCellType::MARKDOWN)])
+            .content(
+                r#"# Incident Report - IR-123
+[...]"#
+                    .to_string(),
+            )
+            .postmortem_template_id("93645509-874e-45c4-adfa-623bfeaead89-123".to_string())
+            .title("Postmortem-IR-123".to_string()),
+        IncidentAttachmentType::INCIDENT_ATTACHMENTS,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateIncidentPostmortemAttachment", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .create_incident_postmortem_attachment(
+            "00000000-0000-0000-0000-000000000000".to_string(),
+            body,
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create postmortem attachment returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createIncidentPostmortemAttachment"] =
+  true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiCreateIncidentPostmortemAttachmentRequest = {
+  body: {
+    data: {
+      attributes: {
+        cells: [
+          {
+            attributes: {
+              definition: {
+                content: "## Incident Summary\nThis incident was caused by...",
+              },
+            },
+            id: "cell-1",
+            type: "markdown",
+          },
+        ],
+        content: "# Incident Report - IR-123\n[...]",
+        postmortemTemplateId: "93645509-874e-45c4-adfa-623bfeaead89-123",
+        title: "Postmortem-IR-123",
+      },
+      type: "incident_attachments",
+    },
+  },
+  incidentId: "00000000-0000-0000-0000-000000000000",
+};
+
+apiInstance
+  .createIncidentPostmortemAttachment(params)
+  .then((data: v2.Attachment) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Get a list of incidents{% #get-a-list-of-incidents %}
@@ -21274,15 +21623,19 @@ API error response.
 List incident attachments returns "OK" response
 """
 
+from os import environ
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = environ["INCIDENT_DATA_ID"]
 
 configuration = Configuration()
 configuration.unstable_operations["list_incident_attachments"] = True
 with ApiClient(configuration) as api_client:
     api_instance = IncidentsApi(api_client)
     response = api_instance.list_incident_attachments(
-        incident_id="incident_id",
+        incident_id=INCIDENT_DATA_ID,
     )
 
     print(response)
@@ -21302,7 +21655,10 @@ DatadogAPIClient.configure do |config|
   config.unstable_operations["v2.list_incident_attachments".to_sym] = true
 end
 api_instance = DatadogAPIClient::V2::IncidentsAPI.new
-p api_instance.list_incident_attachments("incident_id")
+
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = ENV["INCIDENT_DATA_ID"]
+p api_instance.list_incident_attachments(INCIDENT_DATA_ID)
 ```
 
 #### Instructions
@@ -21327,12 +21683,15 @@ import (
 )
 
 func main() {
+	// there is a valid "incident" in the system
+	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
 	configuration.SetUnstableOperationEnabled("v2.ListIncidentAttachments", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentAttachments(ctx, "incident_id", *datadogV2.NewListIncidentAttachmentsOptionalParameters())
+	resp, r, err := api.ListIncidentAttachments(ctx, IncidentDataID, *datadogV2.NewListIncidentAttachmentsOptionalParameters())
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentAttachments`: %v\n", err)
@@ -21364,8 +21723,11 @@ public class Example {
     defaultClient.setUnstableOperationEnabled("v2.listIncidentAttachments", true);
     IncidentsApi apiInstance = new IncidentsApi(defaultClient);
 
+    // there is a valid "incident" in the system
+    String INCIDENT_DATA_ID = System.getenv("INCIDENT_DATA_ID");
+
     try {
-      AttachmentArray result = apiInstance.listIncidentAttachments("incident_id");
+      AttachmentArray result = apiInstance.listIncidentAttachments(INCIDENT_DATA_ID);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#listIncidentAttachments");
@@ -21392,12 +21754,14 @@ use datadog_api_client::datadogV2::api_incidents::ListIncidentAttachmentsOptiona
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "incident" in the system
+    let incident_data_id = std::env::var("INCIDENT_DATA_ID").unwrap();
     let mut configuration = datadog::Configuration::new();
     configuration.set_unstable_operation_enabled("v2.ListIncidentAttachments", true);
     let api = IncidentsAPI::with_config(configuration);
     let resp = api
         .list_incident_attachments(
-            "incident_id".to_string(),
+            incident_data_id.clone(),
             ListIncidentAttachmentsOptionalParams::default(),
         )
         .await;
@@ -21426,8 +21790,11 @@ const configuration = client.createConfiguration();
 configuration.unstableOperations["v2.listIncidentAttachments"] = true;
 const apiInstance = new v2.IncidentsApi(configuration);
 
+// there is a valid "incident" in the system
+const INCIDENT_DATA_ID = process.env.INCIDENT_DATA_ID as string;
+
 const params: v2.IncidentsApiListIncidentAttachmentsRequest = {
-  incidentId: "incident_id",
+  incidentId: INCIDENT_DATA_ID,
 };
 
 apiInstance
@@ -21728,16 +22095,18 @@ import (
 )
 
 func main() {
+	// there is a valid "incident" in the system
+	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+
 	body := datadogV2.CreateAttachmentRequest{
 		Data: &datadogV2.CreateAttachmentRequestData{
 			Attributes: &datadogV2.CreateAttachmentRequestDataAttributes{
 				Attachment: &datadogV2.CreateAttachmentRequestDataAttributesAttachment{
-					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/123/Postmortem-IR-123"),
-					Title:       datadog.PtrString("Postmortem-IR-123"),
+					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident"),
+					Title:       datadog.PtrString("Example-Incident"),
 				},
 				AttachmentType: datadogV2.ATTACHMENTDATAATTRIBUTESATTACHMENTTYPE_POSTMORTEM.Ptr(),
 			},
-			Id:   datadog.PtrString("00000000-0000-0000-0000-000000000000"),
 			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
 		},
 	}
@@ -21746,7 +22115,7 @@ func main() {
 	configuration.SetUnstableOperationEnabled("v2.CreateIncidentAttachment", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentAttachment(ctx, "incident_id", body, *datadogV2.NewCreateIncidentAttachmentOptionalParameters())
+	resp, r, err := api.CreateIncidentAttachment(ctx, IncidentDataID, body, *datadogV2.NewCreateIncidentAttachmentOptionalParameters())
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentAttachment`: %v\n", err)
@@ -21784,6 +22153,9 @@ public class Example {
     defaultClient.setUnstableOperationEnabled("v2.createIncidentAttachment", true);
     IncidentsApi apiInstance = new IncidentsApi(defaultClient);
 
+    // there is a valid "incident" in the system
+    String INCIDENT_DATA_ID = System.getenv("INCIDENT_DATA_ID");
+
     CreateAttachmentRequest body =
         new CreateAttachmentRequest()
             .data(
@@ -21793,14 +22165,13 @@ public class Example {
                             .attachment(
                                 new CreateAttachmentRequestDataAttributesAttachment()
                                     .documentUrl(
-                                        "https://app.datadoghq.com/notebook/123/Postmortem-IR-123")
-                                    .title("Postmortem-IR-123"))
+                                        "https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident")
+                                    .title("Example-Incident"))
                             .attachmentType(AttachmentDataAttributesAttachmentType.POSTMORTEM))
-                    .id("00000000-0000-0000-0000-000000000000")
                     .type(IncidentAttachmentType.INCIDENT_ATTACHMENTS));
 
     try {
-      Attachment result = apiInstance.createIncidentAttachment("incident_id", body);
+      Attachment result = apiInstance.createIncidentAttachment(INCIDENT_DATA_ID, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#createIncidentAttachment");
@@ -21824,6 +22195,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create incident attachment returns "Created" response
 """
 
+from os import environ
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.incidents_api import IncidentsApi
 from datadog_api_client.v2.model.attachment_data_attributes_attachment_type import (
@@ -21837,16 +22209,18 @@ from datadog_api_client.v2.model.create_attachment_request_data_attributes_attac
 )
 from datadog_api_client.v2.model.incident_attachment_type import IncidentAttachmentType
 
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = environ["INCIDENT_DATA_ID"]
+
 body = CreateAttachmentRequest(
     data=CreateAttachmentRequestData(
         attributes=CreateAttachmentRequestDataAttributes(
             attachment=CreateAttachmentRequestDataAttributesAttachment(
-                document_url="https://app.datadoghq.com/notebook/123/Postmortem-IR-123",
-                title="Postmortem-IR-123",
+                document_url="https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident",
+                title="Example-Incident",
             ),
             attachment_type=AttachmentDataAttributesAttachmentType.POSTMORTEM,
         ),
-        id="00000000-0000-0000-0000-000000000000",
         type=IncidentAttachmentType.INCIDENT_ATTACHMENTS,
     ),
 )
@@ -21855,7 +22229,7 @@ configuration = Configuration()
 configuration.unstable_operations["create_incident_attachment"] = True
 with ApiClient(configuration) as api_client:
     api_instance = IncidentsApi(api_client)
-    response = api_instance.create_incident_attachment(incident_id="incident_id", body=body)
+    response = api_instance.create_incident_attachment(incident_id=INCIDENT_DATA_ID, body=body)
 
     print(response)
 ```
@@ -21875,20 +22249,22 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::IncidentsAPI.new
 
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = ENV["INCIDENT_DATA_ID"]
+
 body = DatadogAPIClient::V2::CreateAttachmentRequest.new({
   data: DatadogAPIClient::V2::CreateAttachmentRequestData.new({
     attributes: DatadogAPIClient::V2::CreateAttachmentRequestDataAttributes.new({
       attachment: DatadogAPIClient::V2::CreateAttachmentRequestDataAttributesAttachment.new({
-        document_url: "https://app.datadoghq.com/notebook/123/Postmortem-IR-123",
-        title: "Postmortem-IR-123",
+        document_url: "https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident",
+        title: "Example-Incident",
       }),
       attachment_type: DatadogAPIClient::V2::AttachmentDataAttributesAttachmentType::POSTMORTEM,
     }),
-    id: "00000000-0000-0000-0000-000000000000",
     type: DatadogAPIClient::V2::IncidentAttachmentType::INCIDENT_ATTACHMENTS,
   }),
 })
-p api_instance.create_incident_attachment("incident_id", body)
+p api_instance.create_incident_attachment(INCIDENT_DATA_ID, body)
 ```
 
 #### Instructions
@@ -21911,28 +22287,28 @@ use datadog_api_client::datadogV2::model::IncidentAttachmentType;
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "incident" in the system
+    let incident_data_id = std::env::var("INCIDENT_DATA_ID").unwrap();
     let body = CreateAttachmentRequest::new().data(
-        CreateAttachmentRequestData::new(IncidentAttachmentType::INCIDENT_ATTACHMENTS)
-            .attributes(
-                CreateAttachmentRequestDataAttributes::new()
-                    .attachment(
-                        CreateAttachmentRequestDataAttributesAttachment::new()
-                            .document_url(
-                                "https://app.datadoghq.com/notebook/123/Postmortem-IR-123"
-                                    .to_string(),
-                            )
-                            .title("Postmortem-IR-123".to_string()),
-                    )
-                    .attachment_type(AttachmentDataAttributesAttachmentType::POSTMORTEM),
-            )
-            .id("00000000-0000-0000-0000-000000000000".to_string()),
+        CreateAttachmentRequestData::new(IncidentAttachmentType::INCIDENT_ATTACHMENTS).attributes(
+            CreateAttachmentRequestDataAttributes::new()
+                .attachment(
+                    CreateAttachmentRequestDataAttributesAttachment::new()
+                        .document_url(
+                            "https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident"
+                                .to_string(),
+                        )
+                        .title("Example-Incident".to_string()),
+                )
+                .attachment_type(AttachmentDataAttributesAttachmentType::POSTMORTEM),
+        ),
     );
     let mut configuration = datadog::Configuration::new();
     configuration.set_unstable_operation_enabled("v2.CreateIncidentAttachment", true);
     let api = IncidentsAPI::with_config(configuration);
     let resp = api
         .create_incident_attachment(
-            "incident_id".to_string(),
+            incident_data_id.clone(),
             body,
             CreateIncidentAttachmentOptionalParams::default(),
         )
@@ -21962,22 +22338,24 @@ const configuration = client.createConfiguration();
 configuration.unstableOperations["v2.createIncidentAttachment"] = true;
 const apiInstance = new v2.IncidentsApi(configuration);
 
+// there is a valid "incident" in the system
+const INCIDENT_DATA_ID = process.env.INCIDENT_DATA_ID as string;
+
 const params: v2.IncidentsApiCreateIncidentAttachmentRequest = {
   body: {
     data: {
       attributes: {
         attachment: {
           documentUrl:
-            "https://app.datadoghq.com/notebook/123/Postmortem-IR-123",
-          title: "Postmortem-IR-123",
+            "https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident",
+          title: "Example-Incident",
         },
         attachmentType: "postmortem",
       },
-      id: "00000000-0000-0000-0000-000000000000",
       type: "incident_attachments",
     },
   },
-  incidentId: "incident_id",
+  incidentId: INCIDENT_DATA_ID,
 };
 
 apiInstance
@@ -22147,16 +22525,23 @@ API error response.
 Delete incident attachment returns "No Content" response
 """
 
+from os import environ
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = environ["INCIDENT_DATA_ID"]
+
+# there is a valid "incident_attachment" in the system
+INCIDENT_ATTACHMENT_DATA_ID = environ["INCIDENT_ATTACHMENT_DATA_ID"]
 
 configuration = Configuration()
 configuration.unstable_operations["delete_incident_attachment"] = True
 with ApiClient(configuration) as api_client:
     api_instance = IncidentsApi(api_client)
     api_instance.delete_incident_attachment(
-        incident_id="incident_id",
-        attachment_id="00000000-0000-0000-0000-000000000002",
+        incident_id=INCIDENT_DATA_ID,
+        attachment_id=INCIDENT_ATTACHMENT_DATA_ID,
     )
 ```
 
@@ -22174,7 +22559,13 @@ DatadogAPIClient.configure do |config|
   config.unstable_operations["v2.delete_incident_attachment".to_sym] = true
 end
 api_instance = DatadogAPIClient::V2::IncidentsAPI.new
-api_instance.delete_incident_attachment("incident_id", "00000000-0000-0000-0000-000000000002")
+
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = ENV["INCIDENT_DATA_ID"]
+
+# there is a valid "incident_attachment" in the system
+INCIDENT_ATTACHMENT_DATA_ID = ENV["INCIDENT_ATTACHMENT_DATA_ID"]
+api_instance.delete_incident_attachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_DATA_ID)
 ```
 
 #### Instructions
@@ -22198,12 +22589,18 @@ import (
 )
 
 func main() {
+	// there is a valid "incident" in the system
+	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+
+	// there is a valid "incident_attachment" in the system
+	IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
+
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
 	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentAttachment", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentAttachment(ctx, "incident_id", "00000000-0000-0000-0000-000000000002")
+	r, err := api.DeleteIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID)
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentAttachment`: %v\n", err)
@@ -22231,8 +22628,14 @@ public class Example {
     defaultClient.setUnstableOperationEnabled("v2.deleteIncidentAttachment", true);
     IncidentsApi apiInstance = new IncidentsApi(defaultClient);
 
+    // there is a valid "incident" in the system
+    String INCIDENT_DATA_ID = System.getenv("INCIDENT_DATA_ID");
+
+    // there is a valid "incident_attachment" in the system
+    String INCIDENT_ATTACHMENT_DATA_ID = System.getenv("INCIDENT_ATTACHMENT_DATA_ID");
+
     try {
-      apiInstance.deleteIncidentAttachment("incident_id", "00000000-0000-0000-0000-000000000002");
+      apiInstance.deleteIncidentAttachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_DATA_ID);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#deleteIncidentAttachment");
       System.err.println("Status code: " + e.getCode());
@@ -22254,17 +22657,21 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 // Delete incident attachment returns "No Content" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
-use serde_json::Value;
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "incident" in the system
+    let incident_data_id = std::env::var("INCIDENT_DATA_ID").unwrap();
+
+    // there is a valid "incident_attachment" in the system
+    let incident_attachment_data_id = std::env::var("INCIDENT_ATTACHMENT_DATA_ID").unwrap();
     let mut configuration = datadog::Configuration::new();
     configuration.set_unstable_operation_enabled("v2.DeleteIncidentAttachment", true);
     let api = IncidentsAPI::with_config(configuration);
     let resp = api
         .delete_incident_attachment(
-            "incident_id".to_string(),
-            Value::from("00000000-0000-0000-0000-000000000002"),
+            incident_data_id.clone(),
+            incident_attachment_data_id.clone(),
         )
         .await;
     if let Ok(value) = resp {
@@ -22292,9 +22699,16 @@ const configuration = client.createConfiguration();
 configuration.unstableOperations["v2.deleteIncidentAttachment"] = true;
 const apiInstance = new v2.IncidentsApi(configuration);
 
+// there is a valid "incident" in the system
+const INCIDENT_DATA_ID = process.env.INCIDENT_DATA_ID as string;
+
+// there is a valid "incident_attachment" in the system
+const INCIDENT_ATTACHMENT_DATA_ID = process.env
+  .INCIDENT_ATTACHMENT_DATA_ID as string;
+
 const params: v2.IncidentsApiDeleteIncidentAttachmentRequest = {
-  incidentId: "incident_id",
-  attachmentId: "00000000-0000-0000-0000-000000000002",
+  incidentId: INCIDENT_DATA_ID,
+  attachmentId: INCIDENT_ATTACHMENT_DATA_ID,
 };
 
 apiInstance
@@ -22620,14 +23034,21 @@ import (
 )
 
 func main() {
+	// there is a valid "incident" in the system
+	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+
+	// there is a valid "incident_attachment" in the system
+	IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
+
 	body := datadogV2.PatchAttachmentRequest{
 		Data: &datadogV2.PatchAttachmentRequestData{
 			Attributes: &datadogV2.PatchAttachmentRequestDataAttributes{
 				Attachment: &datadogV2.PatchAttachmentRequestDataAttributesAttachment{
-					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/124/Postmortem-IR-124"),
-					Title:       datadog.PtrString("Postmortem-IR-124"),
+					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/124/Example-Incident"),
+					Title:       datadog.PtrString("Example-Incident"),
 				},
 			},
+			Id:   datadog.PtrString(IncidentAttachmentDataID),
 			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
 		},
 	}
@@ -22636,7 +23057,7 @@ func main() {
 	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentAttachment", true)
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentAttachment(ctx, "incident_id", "00000000-0000-0000-0000-000000000002", body, *datadogV2.NewUpdateIncidentAttachmentOptionalParameters())
+	resp, r, err := api.UpdateIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID, body, *datadogV2.NewUpdateIncidentAttachmentOptionalParameters())
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentAttachment`: %v\n", err)
@@ -22673,6 +23094,12 @@ public class Example {
     defaultClient.setUnstableOperationEnabled("v2.updateIncidentAttachment", true);
     IncidentsApi apiInstance = new IncidentsApi(defaultClient);
 
+    // there is a valid "incident" in the system
+    String INCIDENT_DATA_ID = System.getenv("INCIDENT_DATA_ID");
+
+    // there is a valid "incident_attachment" in the system
+    String INCIDENT_ATTACHMENT_DATA_ID = System.getenv("INCIDENT_ATTACHMENT_DATA_ID");
+
     PatchAttachmentRequest body =
         new PatchAttachmentRequest()
             .data(
@@ -22682,14 +23109,14 @@ public class Example {
                             .attachment(
                                 new PatchAttachmentRequestDataAttributesAttachment()
                                     .documentUrl(
-                                        "https://app.datadoghq.com/notebook/124/Postmortem-IR-124")
-                                    .title("Postmortem-IR-124")))
+                                        "https://app.datadoghq.com/notebook/124/Example-Incident")
+                                    .title("Example-Incident")))
+                    .id(INCIDENT_ATTACHMENT_DATA_ID)
                     .type(IncidentAttachmentType.INCIDENT_ATTACHMENTS));
 
     try {
       Attachment result =
-          apiInstance.updateIncidentAttachment(
-              "incident_id", "00000000-0000-0000-0000-000000000002", body);
+          apiInstance.updateIncidentAttachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_DATA_ID, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IncidentsApi#updateIncidentAttachment");
@@ -22713,6 +23140,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update incident attachment returns "OK" response
 """
 
+from os import environ
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.incidents_api import IncidentsApi
 from datadog_api_client.v2.model.incident_attachment_type import IncidentAttachmentType
@@ -22723,14 +23151,21 @@ from datadog_api_client.v2.model.patch_attachment_request_data_attributes_attach
     PatchAttachmentRequestDataAttributesAttachment,
 )
 
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = environ["INCIDENT_DATA_ID"]
+
+# there is a valid "incident_attachment" in the system
+INCIDENT_ATTACHMENT_DATA_ID = environ["INCIDENT_ATTACHMENT_DATA_ID"]
+
 body = PatchAttachmentRequest(
     data=PatchAttachmentRequestData(
         attributes=PatchAttachmentRequestDataAttributes(
             attachment=PatchAttachmentRequestDataAttributesAttachment(
-                document_url="https://app.datadoghq.com/notebook/124/Postmortem-IR-124",
-                title="Postmortem-IR-124",
+                document_url="https://app.datadoghq.com/notebook/124/Example-Incident",
+                title="Example-Incident",
             ),
         ),
+        id=INCIDENT_ATTACHMENT_DATA_ID,
         type=IncidentAttachmentType.INCIDENT_ATTACHMENTS,
     ),
 )
@@ -22740,7 +23175,7 @@ configuration.unstable_operations["update_incident_attachment"] = True
 with ApiClient(configuration) as api_client:
     api_instance = IncidentsApi(api_client)
     response = api_instance.update_incident_attachment(
-        incident_id="incident_id", attachment_id="00000000-0000-0000-0000-000000000002", body=body
+        incident_id=INCIDENT_DATA_ID, attachment_id=INCIDENT_ATTACHMENT_DATA_ID, body=body
     )
 
     print(response)
@@ -22761,18 +23196,25 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::IncidentsAPI.new
 
+# there is a valid "incident" in the system
+INCIDENT_DATA_ID = ENV["INCIDENT_DATA_ID"]
+
+# there is a valid "incident_attachment" in the system
+INCIDENT_ATTACHMENT_DATA_ID = ENV["INCIDENT_ATTACHMENT_DATA_ID"]
+
 body = DatadogAPIClient::V2::PatchAttachmentRequest.new({
   data: DatadogAPIClient::V2::PatchAttachmentRequestData.new({
     attributes: DatadogAPIClient::V2::PatchAttachmentRequestDataAttributes.new({
       attachment: DatadogAPIClient::V2::PatchAttachmentRequestDataAttributesAttachment.new({
-        document_url: "https://app.datadoghq.com/notebook/124/Postmortem-IR-124",
-        title: "Postmortem-IR-124",
+        document_url: "https://app.datadoghq.com/notebook/124/Example-Incident",
+        title: "Example-Incident",
       }),
     }),
+    id: INCIDENT_ATTACHMENT_DATA_ID,
     type: DatadogAPIClient::V2::IncidentAttachmentType::INCIDENT_ATTACHMENTS,
   }),
 })
-p api_instance.update_incident_attachment("incident_id", "00000000-0000-0000-0000-000000000002", body)
+p api_instance.update_incident_attachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_DATA_ID, body)
 ```
 
 #### Instructions
@@ -22791,28 +23233,34 @@ use datadog_api_client::datadogV2::model::PatchAttachmentRequest;
 use datadog_api_client::datadogV2::model::PatchAttachmentRequestData;
 use datadog_api_client::datadogV2::model::PatchAttachmentRequestDataAttributes;
 use datadog_api_client::datadogV2::model::PatchAttachmentRequestDataAttributesAttachment;
-use serde_json::Value;
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "incident" in the system
+    let incident_data_id = std::env::var("INCIDENT_DATA_ID").unwrap();
+
+    // there is a valid "incident_attachment" in the system
+    let incident_attachment_data_id = std::env::var("INCIDENT_ATTACHMENT_DATA_ID").unwrap();
     let body = PatchAttachmentRequest::new().data(
-        PatchAttachmentRequestData::new(IncidentAttachmentType::INCIDENT_ATTACHMENTS).attributes(
-            PatchAttachmentRequestDataAttributes::new().attachment(
-                PatchAttachmentRequestDataAttributesAttachment::new()
-                    .document_url(
-                        "https://app.datadoghq.com/notebook/124/Postmortem-IR-124".to_string(),
-                    )
-                    .title("Postmortem-IR-124".to_string()),
-            ),
-        ),
+        PatchAttachmentRequestData::new(IncidentAttachmentType::INCIDENT_ATTACHMENTS)
+            .attributes(
+                PatchAttachmentRequestDataAttributes::new().attachment(
+                    PatchAttachmentRequestDataAttributesAttachment::new()
+                        .document_url(
+                            "https://app.datadoghq.com/notebook/124/Example-Incident".to_string(),
+                        )
+                        .title("Example-Incident".to_string()),
+                ),
+            )
+            .id(incident_attachment_data_id.clone()),
     );
     let mut configuration = datadog::Configuration::new();
     configuration.set_unstable_operation_enabled("v2.UpdateIncidentAttachment", true);
     let api = IncidentsAPI::with_config(configuration);
     let resp = api
         .update_incident_attachment(
-            "incident_id".to_string(),
-            Value::from("00000000-0000-0000-0000-000000000002"),
+            incident_data_id.clone(),
+            incident_attachment_data_id.clone(),
             body,
             UpdateIncidentAttachmentOptionalParams::default(),
         )
@@ -22842,21 +23290,29 @@ const configuration = client.createConfiguration();
 configuration.unstableOperations["v2.updateIncidentAttachment"] = true;
 const apiInstance = new v2.IncidentsApi(configuration);
 
+// there is a valid "incident" in the system
+const INCIDENT_DATA_ID = process.env.INCIDENT_DATA_ID as string;
+
+// there is a valid "incident_attachment" in the system
+const INCIDENT_ATTACHMENT_DATA_ID = process.env
+  .INCIDENT_ATTACHMENT_DATA_ID as string;
+
 const params: v2.IncidentsApiUpdateIncidentAttachmentRequest = {
   body: {
     data: {
       attributes: {
         attachment: {
           documentUrl:
-            "https://app.datadoghq.com/notebook/124/Postmortem-IR-124",
-          title: "Postmortem-IR-124",
+            "https://app.datadoghq.com/notebook/124/Example-Incident",
+          title: "Example-Incident",
         },
       },
+      id: INCIDENT_ATTACHMENT_DATA_ID,
       type: "incident_attachments",
     },
   },
-  incidentId: "incident_id",
-  attachmentId: "00000000-0000-0000-0000-000000000002",
+  incidentId: INCIDENT_DATA_ID,
+  attachmentId: INCIDENT_ATTACHMENT_DATA_ID,
 };
 
 apiInstance
@@ -23007,6 +23463,171 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Get global incident settings returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_global_incident_settings"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.get_global_incident_settings()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get global incident settings returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_global_incident_settings".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+p api_instance.get_global_incident_settings()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Get global incident settings returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetGlobalIncidentSettings", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.GetGlobalIncidentSettings(ctx)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetGlobalIncidentSettings`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetGlobalIncidentSettings`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Get global incident settings returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getGlobalIncidentSettings", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      GlobalIncidentSettingsResponse result = apiInstance.getGlobalIncidentSettings();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#getGlobalIncidentSettings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Get global incident settings returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetGlobalIncidentSettings", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api.get_global_incident_settings().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get global incident settings returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getGlobalIncidentSettings"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+apiInstance
+  .getGlobalIncidentSettings()
+  .then((data: v2.GlobalIncidentSettingsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Update global incident settings{% #update-global-incident-settings %}
@@ -23181,6 +23802,240 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Update global incident settings returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.global_incident_settings_attributes_request import (
+    GlobalIncidentSettingsAttributesRequest,
+)
+from datadog_api_client.v2.model.global_incident_settings_data_request import GlobalIncidentSettingsDataRequest
+from datadog_api_client.v2.model.global_incident_settings_request import GlobalIncidentSettingsRequest
+from datadog_api_client.v2.model.global_incident_settings_type import GlobalIncidentSettingsType
+
+body = GlobalIncidentSettingsRequest(
+    data=GlobalIncidentSettingsDataRequest(
+        attributes=GlobalIncidentSettingsAttributesRequest(
+            analytics_dashboard_id="abc-123-def",
+        ),
+        type=GlobalIncidentSettingsType.INCIDENTS_GLOBAL_SETTINGS,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["update_global_incident_settings"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.update_global_incident_settings(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update global incident settings returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.update_global_incident_settings".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::GlobalIncidentSettingsRequest.new({
+  data: DatadogAPIClient::V2::GlobalIncidentSettingsDataRequest.new({
+    attributes: DatadogAPIClient::V2::GlobalIncidentSettingsAttributesRequest.new({
+      analytics_dashboard_id: "abc-123-def",
+    }),
+    type: DatadogAPIClient::V2::GlobalIncidentSettingsType::INCIDENTS_GLOBAL_SETTINGS,
+  }),
+})
+p api_instance.update_global_incident_settings(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Update global incident settings returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.GlobalIncidentSettingsRequest{
+		Data: datadogV2.GlobalIncidentSettingsDataRequest{
+			Attributes: &datadogV2.GlobalIncidentSettingsAttributesRequest{
+				AnalyticsDashboardId: datadog.PtrString("abc-123-def"),
+			},
+			Type: datadogV2.GLOBALINCIDENTSETTINGSTYPE_INCIDENTS_GLOBAL_SETTINGS,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentSettings", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.UpdateGlobalIncidentSettings(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentSettings`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentSettings`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Update global incident settings returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsAttributesRequest;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsDataRequest;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsRequest;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsResponse;
+import com.datadog.api.client.v2.model.GlobalIncidentSettingsType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.updateGlobalIncidentSettings", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    GlobalIncidentSettingsRequest body =
+        new GlobalIncidentSettingsRequest()
+            .data(
+                new GlobalIncidentSettingsDataRequest()
+                    .attributes(
+                        new GlobalIncidentSettingsAttributesRequest()
+                            .analyticsDashboardId("abc-123-def"))
+                    .type(GlobalIncidentSettingsType.INCIDENTS_GLOBAL_SETTINGS));
+
+    try {
+      GlobalIncidentSettingsResponse result = apiInstance.updateGlobalIncidentSettings(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#updateGlobalIncidentSettings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Update global incident settings returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::model::GlobalIncidentSettingsAttributesRequest;
+use datadog_api_client::datadogV2::model::GlobalIncidentSettingsDataRequest;
+use datadog_api_client::datadogV2::model::GlobalIncidentSettingsRequest;
+use datadog_api_client::datadogV2::model::GlobalIncidentSettingsType;
+
+#[tokio::main]
+async fn main() {
+    let body = GlobalIncidentSettingsRequest::new(
+        GlobalIncidentSettingsDataRequest::new(
+            GlobalIncidentSettingsType::INCIDENTS_GLOBAL_SETTINGS,
+        )
+        .attributes(
+            GlobalIncidentSettingsAttributesRequest::new()
+                .analytics_dashboard_id("abc-123-def".to_string()),
+        ),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UpdateGlobalIncidentSettings", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api.update_global_incident_settings(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update global incident settings returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.updateGlobalIncidentSettings"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiUpdateGlobalIncidentSettingsRequest = {
+  body: {
+    data: {
+      attributes: {
+        analyticsDashboardId: "abc-123-def",
+      },
+      type: "incidents_global_settings",
+    },
+  },
+};
+
+apiInstance
+  .updateGlobalIncidentSettings(params)
+  .then((data: v2.GlobalIncidentSettingsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## List global incident handles{% #list-global-incident-handles %}
@@ -23431,6 +24286,174 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+List global incident handles returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["list_global_incident_handles"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.list_global_incident_handles()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# List global incident handles returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.list_global_incident_handles".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+p api_instance.list_global_incident_handles()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// List global incident handles returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.ListGlobalIncidentHandles", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.ListGlobalIncidentHandles(ctx, *datadogV2.NewListGlobalIncidentHandlesOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListGlobalIncidentHandles`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListGlobalIncidentHandles`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// List global incident handles returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.IncidentHandlesResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.listGlobalIncidentHandles", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      IncidentHandlesResponse result = apiInstance.listGlobalIncidentHandles();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#listGlobalIncidentHandles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// List global incident handles returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::api_incidents::ListGlobalIncidentHandlesOptionalParams;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.ListGlobalIncidentHandles", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .list_global_incident_handles(ListGlobalIncidentHandlesOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * List global incident handles returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.listGlobalIncidentHandles"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+apiInstance
+  .listGlobalIncidentHandles()
+  .then((data: v2.IncidentHandlesResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Create global incident handle{% #create-global-incident-handle %}
@@ -23768,6 +24791,363 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Create global incident handle returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.incident_handle_attributes_fields import IncidentHandleAttributesFields
+from datadog_api_client.v2.model.incident_handle_attributes_request import IncidentHandleAttributesRequest
+from datadog_api_client.v2.model.incident_handle_data_request import IncidentHandleDataRequest
+from datadog_api_client.v2.model.incident_handle_relationship import IncidentHandleRelationship
+from datadog_api_client.v2.model.incident_handle_relationship_data import IncidentHandleRelationshipData
+from datadog_api_client.v2.model.incident_handle_relationships_request import IncidentHandleRelationshipsRequest
+from datadog_api_client.v2.model.incident_handle_request import IncidentHandleRequest
+from datadog_api_client.v2.model.incident_handle_type import IncidentHandleType
+
+body = IncidentHandleRequest(
+    data=IncidentHandleDataRequest(
+        attributes=IncidentHandleAttributesRequest(
+            fields=IncidentHandleAttributesFields(
+                severity=[
+                    "SEV-1",
+                ],
+            ),
+            name="@incident-sev-1",
+        ),
+        id="b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+        relationships=IncidentHandleRelationshipsRequest(
+            commander_user=IncidentHandleRelationship(
+                data=IncidentHandleRelationshipData(
+                    id="f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                    type="incident_types",
+                ),
+            ),
+            incident_type=IncidentHandleRelationship(
+                data=IncidentHandleRelationshipData(
+                    id="f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                    type="incident_types",
+                ),
+            ),
+        ),
+        type=IncidentHandleType.INCIDENTS_HANDLES,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_global_incident_handle"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.create_global_incident_handle(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create global incident handle returns "Created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_global_incident_handle".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::IncidentHandleRequest.new({
+  data: DatadogAPIClient::V2::IncidentHandleDataRequest.new({
+    attributes: DatadogAPIClient::V2::IncidentHandleAttributesRequest.new({
+      fields: DatadogAPIClient::V2::IncidentHandleAttributesFields.new({
+        severity: [
+          "SEV-1",
+        ],
+      }),
+      name: "@incident-sev-1",
+    }),
+    id: "b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+    relationships: DatadogAPIClient::V2::IncidentHandleRelationshipsRequest.new({
+      commander_user: DatadogAPIClient::V2::IncidentHandleRelationship.new({
+        data: DatadogAPIClient::V2::IncidentHandleRelationshipData.new({
+          id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+          type: "incident_types",
+        }),
+      }),
+      incident_type: DatadogAPIClient::V2::IncidentHandleRelationship.new({
+        data: DatadogAPIClient::V2::IncidentHandleRelationshipData.new({
+          id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+          type: "incident_types",
+        }),
+      }),
+    }),
+    type: DatadogAPIClient::V2::IncidentHandleType::INCIDENTS_HANDLES,
+  }),
+})
+p api_instance.create_global_incident_handle(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Create global incident handle returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.IncidentHandleRequest{
+		Data: datadogV2.IncidentHandleDataRequest{
+			Attributes: datadogV2.IncidentHandleAttributesRequest{
+				Fields: &datadogV2.IncidentHandleAttributesFields{
+					Severity: []string{
+						"SEV-1",
+					},
+				},
+				Name: "@incident-sev-1",
+			},
+			Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
+			Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
+				CommanderUser: &datadogV2.IncidentHandleRelationship{
+					Data: datadogV2.IncidentHandleRelationshipData{
+						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+						Type: "incident_types",
+					},
+				},
+				IncidentType: datadogV2.IncidentHandleRelationship{
+					Data: datadogV2.IncidentHandleRelationshipData{
+						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+						Type: "incident_types",
+					},
+				},
+			}),
+			Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateGlobalIncidentHandle", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.CreateGlobalIncidentHandle(ctx, body, *datadogV2.NewCreateGlobalIncidentHandleOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateGlobalIncidentHandle`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateGlobalIncidentHandle`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Create global incident handle returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.IncidentHandleAttributesFields;
+import com.datadog.api.client.v2.model.IncidentHandleAttributesRequest;
+import com.datadog.api.client.v2.model.IncidentHandleDataRequest;
+import com.datadog.api.client.v2.model.IncidentHandleRelationship;
+import com.datadog.api.client.v2.model.IncidentHandleRelationshipData;
+import com.datadog.api.client.v2.model.IncidentHandleRelationshipsRequest;
+import com.datadog.api.client.v2.model.IncidentHandleRequest;
+import com.datadog.api.client.v2.model.IncidentHandleResponse;
+import com.datadog.api.client.v2.model.IncidentHandleType;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createGlobalIncidentHandle", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    IncidentHandleRequest body =
+        new IncidentHandleRequest()
+            .data(
+                new IncidentHandleDataRequest()
+                    .attributes(
+                        new IncidentHandleAttributesRequest()
+                            .fields(
+                                new IncidentHandleAttributesFields()
+                                    .severity(Collections.singletonList("SEV-1")))
+                            .name("@incident-sev-1"))
+                    .id("b2494081-cdf0-4205-b366-4e1dd4fdf0bf")
+                    .relationships(
+                        new IncidentHandleRelationshipsRequest()
+                            .commanderUser(
+                                new IncidentHandleRelationship()
+                                    .data(
+                                        new IncidentHandleRelationshipData()
+                                            .id("f7b538b1-ed7c-4e84-82de-fdf84a539d40")
+                                            .type("incident_types")))
+                            .incidentType(
+                                new IncidentHandleRelationship()
+                                    .data(
+                                        new IncidentHandleRelationshipData()
+                                            .id("f7b538b1-ed7c-4e84-82de-fdf84a539d40")
+                                            .type("incident_types"))))
+                    .type(IncidentHandleType.INCIDENTS_HANDLES));
+
+    try {
+      IncidentHandleResponse result = apiInstance.createGlobalIncidentHandle(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#createGlobalIncidentHandle");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Create global incident handle returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::CreateGlobalIncidentHandleOptionalParams;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::model::IncidentHandleAttributesFields;
+use datadog_api_client::datadogV2::model::IncidentHandleAttributesRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleDataRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationship;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationshipData;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationshipsRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleType;
+
+#[tokio::main]
+async fn main() {
+    let body = IncidentHandleRequest::new(
+        IncidentHandleDataRequest::new(
+            IncidentHandleAttributesRequest::new("@incident-sev-1".to_string())
+                .fields(IncidentHandleAttributesFields::new().severity(vec!["SEV-1".to_string()])),
+            IncidentHandleType::INCIDENTS_HANDLES,
+        )
+        .id("b2494081-cdf0-4205-b366-4e1dd4fdf0bf".to_string())
+        .relationships(Some(
+            IncidentHandleRelationshipsRequest::new(IncidentHandleRelationship::new(
+                IncidentHandleRelationshipData::new(
+                    "f7b538b1-ed7c-4e84-82de-fdf84a539d40".to_string(),
+                    "incident_types".to_string(),
+                ),
+            ))
+            .commander_user(IncidentHandleRelationship::new(
+                IncidentHandleRelationshipData::new(
+                    "f7b538b1-ed7c-4e84-82de-fdf84a539d40".to_string(),
+                    "incident_types".to_string(),
+                ),
+            )),
+        )),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateGlobalIncidentHandle", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .create_global_incident_handle(body, CreateGlobalIncidentHandleOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create global incident handle returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createGlobalIncidentHandle"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiCreateGlobalIncidentHandleRequest = {
+  body: {
+    data: {
+      attributes: {
+        fields: {
+          severity: ["SEV-1"],
+        },
+        name: "@incident-sev-1",
+      },
+      id: "b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+      relationships: {
+        commanderUser: {
+          data: {
+            id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+            type: "incident_types",
+          },
+        },
+        incidentType: {
+          data: {
+            id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+            type: "incident_types",
+          },
+        },
+      },
+      type: "incidents_handles",
+    },
+  },
+};
+
+apiInstance
+  .createGlobalIncidentHandle(params)
+  .then((data: v2.IncidentHandleResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Update global incident handle{% #update-global-incident-handle %}
@@ -24105,6 +25485,363 @@ API error response.
 }
 EOF
                 
+##### 
+
+```python
+"""
+Update global incident handle returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.incident_handle_attributes_fields import IncidentHandleAttributesFields
+from datadog_api_client.v2.model.incident_handle_attributes_request import IncidentHandleAttributesRequest
+from datadog_api_client.v2.model.incident_handle_data_request import IncidentHandleDataRequest
+from datadog_api_client.v2.model.incident_handle_relationship import IncidentHandleRelationship
+from datadog_api_client.v2.model.incident_handle_relationship_data import IncidentHandleRelationshipData
+from datadog_api_client.v2.model.incident_handle_relationships_request import IncidentHandleRelationshipsRequest
+from datadog_api_client.v2.model.incident_handle_request import IncidentHandleRequest
+from datadog_api_client.v2.model.incident_handle_type import IncidentHandleType
+
+body = IncidentHandleRequest(
+    data=IncidentHandleDataRequest(
+        attributes=IncidentHandleAttributesRequest(
+            fields=IncidentHandleAttributesFields(
+                severity=[
+                    "SEV-1",
+                ],
+            ),
+            name="@incident-sev-1",
+        ),
+        id="b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+        relationships=IncidentHandleRelationshipsRequest(
+            commander_user=IncidentHandleRelationship(
+                data=IncidentHandleRelationshipData(
+                    id="f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                    type="incident_types",
+                ),
+            ),
+            incident_type=IncidentHandleRelationship(
+                data=IncidentHandleRelationshipData(
+                    id="f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                    type="incident_types",
+                ),
+            ),
+        ),
+        type=IncidentHandleType.INCIDENTS_HANDLES,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["update_global_incident_handle"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.update_global_incident_handle(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update global incident handle returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.update_global_incident_handle".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::IncidentHandleRequest.new({
+  data: DatadogAPIClient::V2::IncidentHandleDataRequest.new({
+    attributes: DatadogAPIClient::V2::IncidentHandleAttributesRequest.new({
+      fields: DatadogAPIClient::V2::IncidentHandleAttributesFields.new({
+        severity: [
+          "SEV-1",
+        ],
+      }),
+      name: "@incident-sev-1",
+    }),
+    id: "b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+    relationships: DatadogAPIClient::V2::IncidentHandleRelationshipsRequest.new({
+      commander_user: DatadogAPIClient::V2::IncidentHandleRelationship.new({
+        data: DatadogAPIClient::V2::IncidentHandleRelationshipData.new({
+          id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+          type: "incident_types",
+        }),
+      }),
+      incident_type: DatadogAPIClient::V2::IncidentHandleRelationship.new({
+        data: DatadogAPIClient::V2::IncidentHandleRelationshipData.new({
+          id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+          type: "incident_types",
+        }),
+      }),
+    }),
+    type: DatadogAPIClient::V2::IncidentHandleType::INCIDENTS_HANDLES,
+  }),
+})
+p api_instance.update_global_incident_handle(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Update global incident handle returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.IncidentHandleRequest{
+		Data: datadogV2.IncidentHandleDataRequest{
+			Attributes: datadogV2.IncidentHandleAttributesRequest{
+				Fields: &datadogV2.IncidentHandleAttributesFields{
+					Severity: []string{
+						"SEV-1",
+					},
+				},
+				Name: "@incident-sev-1",
+			},
+			Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
+			Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
+				CommanderUser: &datadogV2.IncidentHandleRelationship{
+					Data: datadogV2.IncidentHandleRelationshipData{
+						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+						Type: "incident_types",
+					},
+				},
+				IncidentType: datadogV2.IncidentHandleRelationship{
+					Data: datadogV2.IncidentHandleRelationshipData{
+						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+						Type: "incident_types",
+					},
+				},
+			}),
+			Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentHandle", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.UpdateGlobalIncidentHandle(ctx, body, *datadogV2.NewUpdateGlobalIncidentHandleOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentHandle`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentHandle`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Update global incident handle returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.IncidentHandleAttributesFields;
+import com.datadog.api.client.v2.model.IncidentHandleAttributesRequest;
+import com.datadog.api.client.v2.model.IncidentHandleDataRequest;
+import com.datadog.api.client.v2.model.IncidentHandleRelationship;
+import com.datadog.api.client.v2.model.IncidentHandleRelationshipData;
+import com.datadog.api.client.v2.model.IncidentHandleRelationshipsRequest;
+import com.datadog.api.client.v2.model.IncidentHandleRequest;
+import com.datadog.api.client.v2.model.IncidentHandleResponse;
+import com.datadog.api.client.v2.model.IncidentHandleType;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.updateGlobalIncidentHandle", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    IncidentHandleRequest body =
+        new IncidentHandleRequest()
+            .data(
+                new IncidentHandleDataRequest()
+                    .attributes(
+                        new IncidentHandleAttributesRequest()
+                            .fields(
+                                new IncidentHandleAttributesFields()
+                                    .severity(Collections.singletonList("SEV-1")))
+                            .name("@incident-sev-1"))
+                    .id("b2494081-cdf0-4205-b366-4e1dd4fdf0bf")
+                    .relationships(
+                        new IncidentHandleRelationshipsRequest()
+                            .commanderUser(
+                                new IncidentHandleRelationship()
+                                    .data(
+                                        new IncidentHandleRelationshipData()
+                                            .id("f7b538b1-ed7c-4e84-82de-fdf84a539d40")
+                                            .type("incident_types")))
+                            .incidentType(
+                                new IncidentHandleRelationship()
+                                    .data(
+                                        new IncidentHandleRelationshipData()
+                                            .id("f7b538b1-ed7c-4e84-82de-fdf84a539d40")
+                                            .type("incident_types"))))
+                    .type(IncidentHandleType.INCIDENTS_HANDLES));
+
+    try {
+      IncidentHandleResponse result = apiInstance.updateGlobalIncidentHandle(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#updateGlobalIncidentHandle");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Update global incident handle returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::api_incidents::UpdateGlobalIncidentHandleOptionalParams;
+use datadog_api_client::datadogV2::model::IncidentHandleAttributesFields;
+use datadog_api_client::datadogV2::model::IncidentHandleAttributesRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleDataRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationship;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationshipData;
+use datadog_api_client::datadogV2::model::IncidentHandleRelationshipsRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleRequest;
+use datadog_api_client::datadogV2::model::IncidentHandleType;
+
+#[tokio::main]
+async fn main() {
+    let body = IncidentHandleRequest::new(
+        IncidentHandleDataRequest::new(
+            IncidentHandleAttributesRequest::new("@incident-sev-1".to_string())
+                .fields(IncidentHandleAttributesFields::new().severity(vec!["SEV-1".to_string()])),
+            IncidentHandleType::INCIDENTS_HANDLES,
+        )
+        .id("b2494081-cdf0-4205-b366-4e1dd4fdf0bf".to_string())
+        .relationships(Some(
+            IncidentHandleRelationshipsRequest::new(IncidentHandleRelationship::new(
+                IncidentHandleRelationshipData::new(
+                    "f7b538b1-ed7c-4e84-82de-fdf84a539d40".to_string(),
+                    "incident_types".to_string(),
+                ),
+            ))
+            .commander_user(IncidentHandleRelationship::new(
+                IncidentHandleRelationshipData::new(
+                    "f7b538b1-ed7c-4e84-82de-fdf84a539d40".to_string(),
+                    "incident_types".to_string(),
+                ),
+            )),
+        )),
+    );
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UpdateGlobalIncidentHandle", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .update_global_incident_handle(body, UpdateGlobalIncidentHandleOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update global incident handle returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.updateGlobalIncidentHandle"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiUpdateGlobalIncidentHandleRequest = {
+  body: {
+    data: {
+      attributes: {
+        fields: {
+          severity: ["SEV-1"],
+        },
+        name: "@incident-sev-1",
+      },
+      id: "b2494081-cdf0-4205-b366-4e1dd4fdf0bf",
+      relationships: {
+        commanderUser: {
+          data: {
+            id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+            type: "incident_types",
+          },
+        },
+        incidentType: {
+          data: {
+            id: "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+            type: "incident_types",
+          },
+        },
+      },
+      type: "incidents_handles",
+    },
+  },
+};
+
+apiInstance
+  .updateGlobalIncidentHandle(params)
+  .then((data: v2.IncidentHandleResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}
 
 ## Delete global incident handle{% #delete-global-incident-handle %}
@@ -24206,4 +25943,2043 @@ API error response.
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
                 
+##### 
+
+```python
+"""
+Delete global incident handle returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["delete_global_incident_handle"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    api_instance.delete_global_incident_handle()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete global incident handle returns "No Content" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.delete_global_incident_handle".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+api_instance.delete_global_incident_handle()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete global incident handle returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.DeleteGlobalIncidentHandle", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	r, err := api.DeleteGlobalIncidentHandle(ctx)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteGlobalIncidentHandle`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Delete global incident handle returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.deleteGlobalIncidentHandle", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      apiInstance.deleteGlobalIncidentHandle();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#deleteGlobalIncidentHandle");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete global incident handle returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.DeleteGlobalIncidentHandle", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api.delete_global_incident_handle().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete global incident handle returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.deleteGlobalIncidentHandle"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+apiInstance
+  .deleteGlobalIncidentHandle()
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## List postmortem templates{% #list-postmortem-templates %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                   |
+| ----------------- | ------------------------------------------------------------------------------ |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/incidents/config/postmortem-templates      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/incidents/config/postmortem-templates      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/incidents/config/postmortem-templates     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+
+### Overview
+
+Retrieve a list of all postmortem templates for incidents.
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type      | Description                                                                  |
+| ------------ | ---------------------------- | --------- | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | [object]  |
+| data         | attributes [*required*] | object    |
+| attributes   | createdAt [*required*]  | date-time | When the template was created                                                |
+| attributes   | modifiedAt [*required*] | date-time | When the template was last modified                                          |
+| attributes   | name [*required*]       | string    | The name of the template                                                     |
+| data         | id [*required*]         | string    | The ID of the template                                                       |
+| data         | type [*required*]       | enum      | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": [
+    {
+      "attributes": {
+        "createdAt": "2026-01-13T17:15:53.208340Z",
+        "modifiedAt": "2026-01-13T17:15:53.208340Z",
+        "name": "Standard Postmortem Template"
+      },
+      "id": "template-456",
+      "type": "postmortem_template"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+List postmortem templates returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["list_incident_postmortem_templates"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.list_incident_postmortem_templates()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# List postmortem templates returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.list_incident_postmortem_templates".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+p api_instance.list_incident_postmortem_templates()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// List postmortem templates returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.ListIncidentPostmortemTemplates", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.ListIncidentPostmortemTemplates(ctx)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentPostmortemTemplates`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentPostmortemTemplates`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// List postmortem templates returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.PostmortemTemplatesResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.listIncidentPostmortemTemplates", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      PostmortemTemplatesResponse result = apiInstance.listIncidentPostmortemTemplates();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#listIncidentPostmortemTemplates");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// List postmortem templates returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.ListIncidentPostmortemTemplates", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api.list_incident_postmortem_templates().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * List postmortem templates returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.listIncidentPostmortemTemplates"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+apiInstance
+  .listIncidentPostmortemTemplates()
+  .then((data: v2.PostmortemTemplatesResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Create postmortem template{% #create-postmortem-template %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                    |
+| ----------------- | ------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v2/incidents/config/postmortem-templates      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v2/incidents/config/postmortem-templates      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v2/incidents/config/postmortem-templates     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates |
+
+### Overview
+
+Create a new postmortem template for incidents.
+
+### Request
+
+#### Body Data (required)
+
+
+
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type   | Description                                                                  |
+| ------------ | ---------------------------- | ------ | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | object |
+| data         | attributes [*required*] | object |
+| attributes   | name [*required*]       | string | The name of the template                                                     |
+| data         | type [*required*]       | enum   | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "name": "Standard Postmortem Template"
+    },
+    "type": "postmortem_template"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="201" %}
+Created
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type      | Description                                                                  |
+| ------------ | ---------------------------- | --------- | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | object    |
+| data         | attributes [*required*] | object    |
+| attributes   | createdAt [*required*]  | date-time | When the template was created                                                |
+| attributes   | modifiedAt [*required*] | date-time | When the template was last modified                                          |
+| attributes   | name [*required*]       | string    | The name of the template                                                     |
+| data         | id [*required*]         | string    | The ID of the template                                                       |
+| data         | type [*required*]       | enum      | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "createdAt": "2026-01-13T17:15:53.208340Z",
+      "modifiedAt": "2026-01-13T17:15:53.208340Z",
+      "name": "Standard Postmortem Template"
+    },
+    "id": "template-456",
+    "type": "postmortem_template"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "name": "Standard Postmortem Template"
+    },
+    "type": "postmortem_template"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Create postmortem template returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.postmortem_template_attributes_request import PostmortemTemplateAttributesRequest
+from datadog_api_client.v2.model.postmortem_template_data_request import PostmortemTemplateDataRequest
+from datadog_api_client.v2.model.postmortem_template_request import PostmortemTemplateRequest
+from datadog_api_client.v2.model.postmortem_template_type import PostmortemTemplateType
+
+body = PostmortemTemplateRequest(
+    data=PostmortemTemplateDataRequest(
+        attributes=PostmortemTemplateAttributesRequest(
+            name="Standard Postmortem Template",
+        ),
+        type=PostmortemTemplateType.POSTMORTEM_TEMPLATE,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["create_incident_postmortem_template"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.create_incident_postmortem_template(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Create postmortem template returns "Created" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.create_incident_postmortem_template".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::PostmortemTemplateRequest.new({
+  data: DatadogAPIClient::V2::PostmortemTemplateDataRequest.new({
+    attributes: DatadogAPIClient::V2::PostmortemTemplateAttributesRequest.new({
+      name: "Standard Postmortem Template",
+    }),
+    type: DatadogAPIClient::V2::PostmortemTemplateType::POSTMORTEM_TEMPLATE,
+  }),
+})
+p api_instance.create_incident_postmortem_template(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Create postmortem template returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.PostmortemTemplateRequest{
+		Data: datadogV2.PostmortemTemplateDataRequest{
+			Attributes: datadogV2.PostmortemTemplateAttributesRequest{
+				Name: "Standard Postmortem Template",
+			},
+			Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemTemplate", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.CreateIncidentPostmortemTemplate(ctx, body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemTemplate`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemTemplate`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Create postmortem template returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.PostmortemTemplateAttributesRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateDataRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateResponse;
+import com.datadog.api.client.v2.model.PostmortemTemplateType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createIncidentPostmortemTemplate", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    PostmortemTemplateRequest body =
+        new PostmortemTemplateRequest()
+            .data(
+                new PostmortemTemplateDataRequest()
+                    .attributes(
+                        new PostmortemTemplateAttributesRequest()
+                            .name("Standard Postmortem Template"))
+                    .type(PostmortemTemplateType.POSTMORTEM_TEMPLATE));
+
+    try {
+      PostmortemTemplateResponse result = apiInstance.createIncidentPostmortemTemplate(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#createIncidentPostmortemTemplate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Create postmortem template returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::model::PostmortemTemplateAttributesRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateDataRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateType;
+
+#[tokio::main]
+async fn main() {
+    let body = PostmortemTemplateRequest::new(PostmortemTemplateDataRequest::new(
+        PostmortemTemplateAttributesRequest::new("Standard Postmortem Template".to_string()),
+        PostmortemTemplateType::POSTMORTEM_TEMPLATE,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateIncidentPostmortemTemplate", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api.create_incident_postmortem_template(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Create postmortem template returns "Created" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.createIncidentPostmortemTemplate"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiCreateIncidentPostmortemTemplateRequest = {
+  body: {
+    data: {
+      attributes: {
+        name: "Standard Postmortem Template",
+      },
+      type: "postmortem_template",
+    },
+  },
+};
+
+apiInstance
+  .createIncidentPostmortemTemplate(params)
+  .then((data: v2.PostmortemTemplateResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Get postmortem template{% #get-postmortem-template %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id}     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+
+### Overview
+
+Retrieve details of a specific postmortem template.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                          | Type   | Description                       |
+| ----------------------------- | ------ | --------------------------------- |
+| template_id [*required*] | string | The ID of the postmortem template |
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type      | Description                                                                  |
+| ------------ | ---------------------------- | --------- | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | object    |
+| data         | attributes [*required*] | object    |
+| attributes   | createdAt [*required*]  | date-time | When the template was created                                                |
+| attributes   | modifiedAt [*required*] | date-time | When the template was last modified                                          |
+| attributes   | name [*required*]       | string    | The name of the template                                                     |
+| data         | id [*required*]         | string    | The ID of the template                                                       |
+| data         | type [*required*]       | enum      | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "createdAt": "2026-01-13T17:15:53.208340Z",
+      "modifiedAt": "2026-01-13T17:15:53.208340Z",
+      "name": "Standard Postmortem Template"
+    },
+    "id": "template-456",
+    "type": "postmortem_template"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport template_id="template-456"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Get postmortem template returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_incident_postmortem_template"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.get_incident_postmortem_template(
+        template_id="template-456",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get postmortem template returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_incident_postmortem_template".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+p api_instance.get_incident_postmortem_template("template-456")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Get postmortem template returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.GetIncidentPostmortemTemplate", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.GetIncidentPostmortemTemplate(ctx, "template-456")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentPostmortemTemplate`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentPostmortemTemplate`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Get postmortem template returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.PostmortemTemplateResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getIncidentPostmortemTemplate", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      PostmortemTemplateResponse result = apiInstance.getIncidentPostmortemTemplate("template-456");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#getIncidentPostmortemTemplate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Get postmortem template returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetIncidentPostmortemTemplate", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .get_incident_postmortem_template("template-456".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get postmortem template returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getIncidentPostmortemTemplate"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiGetIncidentPostmortemTemplateRequest = {
+  templateId: "template-456",
+};
+
+apiInstance
+  .getIncidentPostmortemTemplate(params)
+  .then((data: v2.PostmortemTemplateResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Update postmortem template{% #update-postmortem-template %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                                   |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | PATCH https://api.ap1.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| ap2.datadoghq.com | PATCH https://api.ap2.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| app.datadoghq.eu  | PATCH https://api.datadoghq.eu/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.ddog-gov.com  | PATCH https://api.ddog-gov.com/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.datadoghq.com | PATCH https://api.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id}     |
+| us3.datadoghq.com | PATCH https://api.us3.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| us5.datadoghq.com | PATCH https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+
+### Overview
+
+Update an existing postmortem template.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                          | Type   | Description                       |
+| ----------------------------- | ------ | --------------------------------- |
+| template_id [*required*] | string | The ID of the postmortem template |
+
+### Request
+
+#### Body Data (required)
+
+
+
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type   | Description                                                                  |
+| ------------ | ---------------------------- | ------ | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | object |
+| data         | attributes [*required*] | object |
+| attributes   | name [*required*]       | string | The name of the template                                                     |
+| data         | type [*required*]       | enum   | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "name": "Standard Postmortem Template"
+    },
+    "type": "postmortem_template"
+  }
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+
+| Parent field | Field                        | Type      | Description                                                                  |
+| ------------ | ---------------------------- | --------- | ---------------------------------------------------------------------------- |
+|              | data [*required*]       | object    |
+| data         | attributes [*required*] | object    |
+| attributes   | createdAt [*required*]  | date-time | When the template was created                                                |
+| attributes   | modifiedAt [*required*] | date-time | When the template was last modified                                          |
+| attributes   | name [*required*]       | string    | The name of the template                                                     |
+| data         | id [*required*]         | string    | The ID of the template                                                       |
+| data         | type [*required*]       | enum      | Postmortem template resource type Allowed enum values: `postmortem_template` |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "createdAt": "2026-01-13T17:15:53.208340Z",
+      "modifiedAt": "2026-01-13T17:15:53.208340Z",
+      "name": "Standard Postmortem Template"
+    },
+    "id": "template-456",
+    "type": "postmortem_template"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport template_id="template-456"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "data": {
+    "attributes": {
+      "name": "Standard Postmortem Template"
+    },
+    "type": "postmortem_template"
+  }
+}
+EOF
+                
+##### 
+
+```python
+"""
+Update postmortem template returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+from datadog_api_client.v2.model.postmortem_template_attributes_request import PostmortemTemplateAttributesRequest
+from datadog_api_client.v2.model.postmortem_template_data_request import PostmortemTemplateDataRequest
+from datadog_api_client.v2.model.postmortem_template_request import PostmortemTemplateRequest
+from datadog_api_client.v2.model.postmortem_template_type import PostmortemTemplateType
+
+body = PostmortemTemplateRequest(
+    data=PostmortemTemplateDataRequest(
+        attributes=PostmortemTemplateAttributesRequest(
+            name="Standard Postmortem Template",
+        ),
+        type=PostmortemTemplateType.POSTMORTEM_TEMPLATE,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["update_incident_postmortem_template"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    response = api_instance.update_incident_postmortem_template(template_id="template-456", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update postmortem template returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.update_incident_postmortem_template".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+
+body = DatadogAPIClient::V2::PostmortemTemplateRequest.new({
+  data: DatadogAPIClient::V2::PostmortemTemplateDataRequest.new({
+    attributes: DatadogAPIClient::V2::PostmortemTemplateAttributesRequest.new({
+      name: "Standard Postmortem Template",
+    }),
+    type: DatadogAPIClient::V2::PostmortemTemplateType::POSTMORTEM_TEMPLATE,
+  }),
+})
+p api_instance.update_incident_postmortem_template("template-456", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Update postmortem template returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	body := datadogV2.PostmortemTemplateRequest{
+		Data: datadogV2.PostmortemTemplateDataRequest{
+			Attributes: datadogV2.PostmortemTemplateAttributesRequest{
+				Name: "Standard Postmortem Template",
+			},
+			Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentPostmortemTemplate", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	resp, r, err := api.UpdateIncidentPostmortemTemplate(ctx, "template-456", body)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentPostmortemTemplate`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentPostmortemTemplate`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Update postmortem template returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+import com.datadog.api.client.v2.model.PostmortemTemplateAttributesRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateDataRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateRequest;
+import com.datadog.api.client.v2.model.PostmortemTemplateResponse;
+import com.datadog.api.client.v2.model.PostmortemTemplateType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.updateIncidentPostmortemTemplate", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    PostmortemTemplateRequest body =
+        new PostmortemTemplateRequest()
+            .data(
+                new PostmortemTemplateDataRequest()
+                    .attributes(
+                        new PostmortemTemplateAttributesRequest()
+                            .name("Standard Postmortem Template"))
+                    .type(PostmortemTemplateType.POSTMORTEM_TEMPLATE));
+
+    try {
+      PostmortemTemplateResponse result =
+          apiInstance.updateIncidentPostmortemTemplate("template-456", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#updateIncidentPostmortemTemplate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Update postmortem template returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+use datadog_api_client::datadogV2::model::PostmortemTemplateAttributesRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateDataRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateRequest;
+use datadog_api_client::datadogV2::model::PostmortemTemplateType;
+
+#[tokio::main]
+async fn main() {
+    let body = PostmortemTemplateRequest::new(PostmortemTemplateDataRequest::new(
+        PostmortemTemplateAttributesRequest::new("Standard Postmortem Template".to_string()),
+        PostmortemTemplateType::POSTMORTEM_TEMPLATE,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UpdateIncidentPostmortemTemplate", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .update_incident_postmortem_template("template-456".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update postmortem template returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.updateIncidentPostmortemTemplate"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiUpdateIncidentPostmortemTemplateRequest = {
+  body: {
+    data: {
+      attributes: {
+        name: "Standard Postmortem Template",
+      },
+      type: "postmortem_template",
+    },
+  },
+  templateId: "template-456",
+};
+
+apiInstance
+  .updateIncidentPostmortemTemplate(params)
+  .then((data: v2.PostmortemTemplateResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Delete postmortem template{% #delete-postmortem-template %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in preview and is subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                                                    |
+| ----------------- | ----------------------------------------------------------------------------------------------- |
+| ap1.datadoghq.com | DELETE https://api.ap1.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| ap2.datadoghq.com | DELETE https://api.ap2.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| app.datadoghq.eu  | DELETE https://api.datadoghq.eu/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.ddog-gov.com  | DELETE https://api.ddog-gov.com/api/v2/incidents/config/postmortem-templates/{template_id}      |
+| app.datadoghq.com | DELETE https://api.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id}     |
+| us3.datadoghq.com | DELETE https://api.us3.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+| us5.datadoghq.com | DELETE https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/{template_id} |
+
+### Overview
+
+Delete a postmortem template.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                          | Type   | Description                       |
+| ----------------------------- | ------ | --------------------------------- |
+| template_id [*required*] | string | The ID of the postmortem template |
+
+### Response
+
+{% tab title="204" %}
+No Content
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport template_id="template-456"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Delete postmortem template returns "No Content" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.incidents_api import IncidentsApi
+
+configuration = Configuration()
+configuration.unstable_operations["delete_incident_postmortem_template"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = IncidentsApi(api_client)
+    api_instance.delete_incident_postmortem_template(
+        template_id="template-456",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Delete postmortem template returns "No Content" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.delete_incident_postmortem_template".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::IncidentsAPI.new
+api_instance.delete_incident_postmortem_template("template-456")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Delete postmortem template returns "No Content" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentPostmortemTemplate", true)
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV2.NewIncidentsApi(apiClient)
+	r, err := api.DeleteIncidentPostmortemTemplate(ctx, "template-456")
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentPostmortemTemplate`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Delete postmortem template returns "No Content" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.IncidentsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.deleteIncidentPostmortemTemplate", true);
+    IncidentsApi apiInstance = new IncidentsApi(defaultClient);
+
+    try {
+      apiInstance.deleteIncidentPostmortemTemplate("template-456");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IncidentsApi#deleteIncidentPostmortemTemplate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Delete postmortem template returns "No Content" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_incidents::IncidentsAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.DeleteIncidentPostmortemTemplate", true);
+    let api = IncidentsAPI::with_config(configuration);
+    let resp = api
+        .delete_incident_postmortem_template("template-456".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Delete postmortem template returns "No Content" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.deleteIncidentPostmortemTemplate"] = true;
+const apiInstance = new v2.IncidentsApi(configuration);
+
+const params: v2.IncidentsApiDeleteIncidentPostmortemTemplateRequest = {
+  templateId: "template-456",
+};
+
+apiInstance
+  .deleteIncidentPostmortemTemplate(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
 {% /tab %}

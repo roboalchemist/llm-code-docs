@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/continuous_testing.md
-
 # Source: https://docs.datadoghq.com/continuous_testing.md
 
 ---

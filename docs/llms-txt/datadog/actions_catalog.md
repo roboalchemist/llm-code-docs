@@ -794,21 +794,21 @@ Anthropic
  List embeddable graphs
 {% icon name="icon-graph-bar" /%}
  Revoke embeddable graph
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Datadog Error Tracking 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
 \>
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Delete issue assignee
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Get issue
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Search issues
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Update issue assignee
-{% icon name="icon-bug" /%}
+{% icon name="icon-error-tracking" /%}
  Update issue state
 {% icon name="icon-events" /%}
  Datadog Events 
@@ -885,6 +885,8 @@ Anthropic
 {% icon name="icon-check-bold" /%}
 \>
 {% icon name="icon-incidents" /%}
+ Add attachment
+{% icon name="icon-incidents" /%}
  Add responder to incident
 {% icon name="icon-incidents" /%}
  Add task to incident
@@ -896,6 +898,8 @@ Anthropic
  Create incident page
 {% icon name="icon-incidents" /%}
  Create or attach ServiceNow incident
+{% icon name="icon-incidents" /%}
+ Delete incident
 {% icon name="icon-incidents" /%}
  Delete incident impact
 {% icon name="icon-incidents" /%}
@@ -913,9 +917,15 @@ Anthropic
 {% icon name="icon-incidents" /%}
  Get responders
 {% icon name="icon-incidents" /%}
+ Get timeline
+{% icon name="icon-incidents" /%}
  List incident impacts
 {% icon name="icon-incidents" /%}
  List incident pages
+{% icon name="icon-incidents" /%}
+ List incidents
+{% icon name="icon-incidents" /%}
+ Render postmortem template
 {% icon name="icon-incidents" /%}
  Search incidents
 {% icon name="icon-incidents" /%}
@@ -1907,7 +1917,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Create controller revision Create daemon set Create deployment Create replica set Create stateful set Delete controller revision Delete daemon set Delete deployment Delete multiple controller revisions Delete multiple daemon sets Delete multiple deployments Delete multiple replica sets Delete multiple stateful sets Delete replica set Delete stateful set Get controller revision Get daemon set Get deployment Get replica set Get stateful set List controller revision List daemon set List deployment List replica set List stateful set Patch controller revision Patch daemon set Patch deployment Patch replica set Patch stateful set Restart deployment Rollback deployment Scale deployment horizontally Update controller revision Update daemon set Update deployment Update replica set Update stateful setKubernetes Batch 
+\> Create controller revision Create daemon set Create deployment Create replica set Create stateful set Delete controller revision Delete daemon set Delete deployment Delete multiple controller revisions Delete multiple daemon sets Delete multiple deployments Delete multiple replica sets Delete multiple stateful sets Delete replica set Delete stateful set Get controller revision Get daemon set Get deployment Get replica set Get stateful set List controller revision List daemon set List deployment List replica set List stateful set Patch controller revision Patch daemon set Patch deployment Patch replica set Patch stateful set Restart deployment Rollback deployment Scale deployment horizontally Scale deployment vertically Update controller revision Update daemon set Update deployment Update replica set Update stateful setKubernetes Batch 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -2063,7 +2073,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Get user Make a decision Send messageNIST 
+\> Get user Make a decision Send message Update messageNIST 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -2099,7 +2109,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Run Predefined ScriptServiceNow 
+\> Run Predefined PowerShell Script Run Predefined ScriptServiceNow 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}

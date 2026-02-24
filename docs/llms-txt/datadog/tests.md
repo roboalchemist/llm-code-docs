@@ -17,9 +17,17 @@ This product is not supported for your selected [Datadog site](https://docs.data
 
 {% /callout %}
 
+{% callout %}
+##### Try Getting Started with Test Optimization in the Learning Center
+
+Learn how to accelerate your CI pipelines by setting up test monitoring, identifying flaky tests and using Test Impact Analysis to run only the tests that matter.
+
+[ENROLL NOW](https://learn.datadoghq.com/courses/getting-started-test-optimization)
+{% /callout %}
+
 ## Overview{% #overview %}
 
-[Test Optimization](https://app.datadoghq.com/ci/test-repositories) provides a test-first view into your CI health by displaying important metrics and results from your tests. It can help you investigate performance problems and test failures that are most relevant to your work, focusing on the code you are responsible for, rather than the pipelines which run your tests.
+[Test Optimization](https://app.datadoghq.com/ci/test/health) provides a test-first view into your CI health by displaying important metrics and results from your tests. It can help you investigate performance problems and test failures that are most relevant to your work, focusing on the code you are responsible for, rather than the pipelines which run your tests.
 
 ## Setup{% #setup %}
 
@@ -184,6 +192,7 @@ When you're evaluating failed or flaky tests, or the performance of a CI test, y
 
 ## Further reading{% #further-reading %}
 
+- [Getting Started with Test Optimization](https://learn.datadoghq.com/courses/getting-started-test-optimization)
 - [Check out the latest Software Delivery releases! (App login required)](https://app.datadoghq.com/release-notes?category=Software%20Delivery)
 - [Monitor your CI pipelines and tests with Datadog CI Visibility](https://www.datadoghq.com/blog/datadog-ci-visibility/)
 - [Troubleshoot end-to-end tests with CI Visibility and RUM](https://www.datadoghq.com/blog/ci-test-visibility-with-rum/)

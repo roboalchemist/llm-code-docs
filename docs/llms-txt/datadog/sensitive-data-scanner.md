@@ -60,6 +60,10 @@ Get all groups response.
 | attributes                     | namespaces                        | [string]        | Attributes included in the scan. If namespaces is empty or missing, all attributes except excluded_namespaces are scanned. If both are missing the whole event is scanned.                                                                                                                                                                                                                                                                                                            |
 | attributes                     | pattern                           | string          | Not included if there is a relationship to a standard pattern.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | priority                          | int64           | Integer from 1 (high) to 5 (low) indicating rule issue severity.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| attributes                     | suppressions                      | object          | Object describing the suppressions for a rule. There are three types of suppressions, `starts_with`, `ends_with`, and `exact_match`. Suppressed matches are not obfuscated, counted in metrics, or displayed in the Findings page.                                                                                                                                                                                                                                                    |
+| suppressions                   | ends_with                         | [string]        | List of strings to use for suppression of matches ending with these strings.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| suppressions                   | exact_match                       | [string]        | List of strings to use for suppression of matches exactly matching these strings.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| suppressions                   | starts_with                       | [string]        | List of strings to use for suppression of matches starting with these strings.                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | tags                              | [string]        | List of tags.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | attributes                     | text_replacement                  | object          | Object describing how the scanned event will be replaced.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | text_replacement               | number_of_chars                   | int64           | Required if type == 'partial_replacement_from_beginning' or 'partial_replacement_from_end'. It must be > 0.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -138,8 +142,9 @@ Get all groups response.
         "included_keyword_configuration": {
           "character_count": 30,
           "keywords": [
-            "credit card",
-            "cc"
+            "email",
+            "address",
+            "login"
           ],
           "use_recommended_keywords": false
         },
@@ -150,6 +155,20 @@ Get all groups response.
         ],
         "pattern": "string",
         "priority": "integer",
+        "suppressions": {
+          "ends_with": [
+            "@example.com",
+            "another.example.com"
+          ],
+          "exact_match": [
+            "admin@example.com",
+            "user@example.com"
+          ],
+          "starts_with": [
+            "admin",
+            "user"
+          ]
+        },
         "tags": [],
         "text_replacement": {
           "number_of_chars": "integer",
@@ -1366,7 +1385,7 @@ Create a scanning group. The request MAY include a configuration relationship. A
 
 ### Response
 
-{% tab title="200" %}
+{% tab title="201" %}
 OK
 {% tab title="Model" %}
 Create group response.
@@ -3058,6 +3077,10 @@ Create a scanning rule in a sensitive data scanner group, ordered last. The post
 | attributes                     | namespaces                        | [string] | Attributes included in the scan. If namespaces is empty or missing, all attributes except excluded_namespaces are scanned. If both are missing the whole event is scanned.                                                                                                                                                                                                                                                                                                            |
 | attributes                     | pattern                           | string   | Not included if there is a relationship to a standard pattern.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | priority                          | int64    | Integer from 1 (high) to 5 (low) indicating rule issue severity.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| attributes                     | suppressions                      | object   | Object describing the suppressions for a rule. There are three types of suppressions, `starts_with`, `ends_with`, and `exact_match`. Suppressed matches are not obfuscated, counted in metrics, or displayed in the Findings page.                                                                                                                                                                                                                                                    |
+| suppressions                   | ends_with                         | [string] | List of strings to use for suppression of matches ending with these strings.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| suppressions                   | exact_match                       | [string] | List of strings to use for suppression of matches exactly matching these strings.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| suppressions                   | starts_with                       | [string] | List of strings to use for suppression of matches starting with these strings.                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | tags                              | [string] | List of tags.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | attributes                     | text_replacement                  | object   | Object describing how the scanned event will be replaced.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | text_replacement               | number_of_chars                   | int64    | Required if type == 'partial_replacement_from_beginning' or 'partial_replacement_from_end'. It must be > 0.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -3160,7 +3183,7 @@ Create a scanning rule in a sensitive data scanner group, ordered last. The post
 
 ### Response
 
-{% tab title="200" %}
+{% tab title="201" %}
 OK
 {% tab title="Model" %}
 Create rule response.
@@ -3180,6 +3203,10 @@ Create rule response.
 | attributes                     | namespaces                        | [string] | Attributes included in the scan. If namespaces is empty or missing, all attributes except excluded_namespaces are scanned. If both are missing the whole event is scanned.                                                                                                                                                                                                                                                                                                            |
 | attributes                     | pattern                           | string   | Not included if there is a relationship to a standard pattern.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | priority                          | int64    | Integer from 1 (high) to 5 (low) indicating rule issue severity.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| attributes                     | suppressions                      | object   | Object describing the suppressions for a rule. There are three types of suppressions, `starts_with`, `ends_with`, and `exact_match`. Suppressed matches are not obfuscated, counted in metrics, or displayed in the Findings page.                                                                                                                                                                                                                                                    |
+| suppressions                   | ends_with                         | [string] | List of strings to use for suppression of matches ending with these strings.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| suppressions                   | exact_match                       | [string] | List of strings to use for suppression of matches exactly matching these strings.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| suppressions                   | starts_with                       | [string] | List of strings to use for suppression of matches starting with these strings.                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | tags                              | [string] | List of tags.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | attributes                     | text_replacement                  | object   | Object describing how the scanned event will be replaced.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | text_replacement               | number_of_chars                   | int64    | Required if type == 'partial_replacement_from_beginning' or 'partial_replacement_from_end'. It must be > 0.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -3215,8 +3242,9 @@ Create rule response.
       "included_keyword_configuration": {
         "character_count": 30,
         "keywords": [
-          "credit card",
-          "cc"
+          "email",
+          "address",
+          "login"
         ],
         "use_recommended_keywords": false
       },
@@ -3227,6 +3255,20 @@ Create rule response.
       ],
       "pattern": "string",
       "priority": "integer",
+      "suppressions": {
+        "ends_with": [
+          "@example.com",
+          "another.example.com"
+        ],
+        "exact_match": [
+          "admin@example.com",
+          "user@example.com"
+        ],
+        "starts_with": [
+          "admin",
+          "user"
+        ]
+      },
       "tags": [],
       "text_replacement": {
         "number_of_chars": "integer",
@@ -4260,6 +4302,10 @@ Update a scanning rule. The request body MUST NOT include a standard_pattern rel
 | attributes                     | namespaces                        | [string] | Attributes included in the scan. If namespaces is empty or missing, all attributes except excluded_namespaces are scanned. If both are missing the whole event is scanned.                                                                                                                                                                                                                                                                                                            |
 | attributes                     | pattern                           | string   | Not included if there is a relationship to a standard pattern.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | priority                          | int64    | Integer from 1 (high) to 5 (low) indicating rule issue severity.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| attributes                     | suppressions                      | object   | Object describing the suppressions for a rule. There are three types of suppressions, `starts_with`, `ends_with`, and `exact_match`. Suppressed matches are not obfuscated, counted in metrics, or displayed in the Findings page.                                                                                                                                                                                                                                                    |
+| suppressions                   | ends_with                         | [string] | List of strings to use for suppression of matches ending with these strings.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| suppressions                   | exact_match                       | [string] | List of strings to use for suppression of matches exactly matching these strings.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| suppressions                   | starts_with                       | [string] | List of strings to use for suppression of matches starting with these strings.                                                                                                                                                                                                                                                                                                                                                                                                        |
 | attributes                     | tags                              | [string] | List of tags.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | attributes                     | text_replacement                  | object   | Object describing how the scanned event will be replaced.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | text_replacement               | number_of_chars                   | int64    | Required if type == 'partial_replacement_from_beginning' or 'partial_replacement_from_end'. It must be > 0.                                                                                                                                                                                                                                                                                                                                                                           |

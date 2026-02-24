@@ -1,9 +1,3 @@
-# Source: https://docs.datadoghq.com/incident_response/on-call/teams.md
-
-# Source: https://docs.datadoghq.com/cloudcraft/api/teams.md
-
-# Source: https://docs.datadoghq.com/account_management/teams.md
-
 # Source: https://docs.datadoghq.com/api/latest/teams.md
 
 ---
@@ -4264,7 +4258,7 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 {
   "data": {
     "attributes": {
-      "role": "string"
+      "role": "admin"
     },
     "type": "team_memberships"
   }
@@ -4276,7 +4270,7 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Response
 
 {% tab title="200" %}
-Represents a user's association to a team
+OK
 {% tab title="Model" %}
 Team membership response
 
@@ -4453,6 +4447,31 @@ Team membership response
 
 {% /tab %}
 
+{% tab title="400" %}
+API error response.
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
 {% tab title="403" %}
 Forbidden
 {% tab title="Model" %}
@@ -4531,7 +4550,7 @@ API error response.
 ### Code Example
 
 ##### 
-                  \# Path parametersexport team_id="CHANGE_ME"export user_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships/${user_id}" \
+                          \# Path parametersexport team_id="CHANGE_ME"export user_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships/${user_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -4539,74 +4558,18 @@ API error response.
 -d @- << EOF
 {
   "data": {
+    "attributes": {
+      "role": "admin"
+    },
     "type": "team_memberships"
   }
 }
 EOF
-                
-##### 
-
-```python
-"""
-Update a user's membership attributes on a team returns "Represents a user's association to a team" response
-"""
-
-from datadog_api_client import ApiClient, Configuration
-from datadog_api_client.v2.api.teams_api import TeamsApi
-from datadog_api_client.v2.model.user_team_attributes import UserTeamAttributes
-from datadog_api_client.v2.model.user_team_role import UserTeamRole
-from datadog_api_client.v2.model.user_team_type import UserTeamType
-from datadog_api_client.v2.model.user_team_update import UserTeamUpdate
-from datadog_api_client.v2.model.user_team_update_request import UserTeamUpdateRequest
-
-body = UserTeamUpdateRequest(
-    data=UserTeamUpdate(
-        attributes=UserTeamAttributes(
-            role=UserTeamRole.ADMIN,
-        ),
-        type=UserTeamType.TEAM_MEMBERSHIPS,
-    ),
-)
-
-configuration = Configuration()
-with ApiClient(configuration) as api_client:
-    api_instance = TeamsApi(api_client)
-    response = api_instance.update_team_membership(team_id="team_id", user_id="user_id", body=body)
-
-    print(response)
-```
-
-#### Instructions
-
-First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
-    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
-
-```ruby
-# Update a user's membership attributes on a team returns "Represents a user's association to a team" response
-
-require "datadog_api_client"
-api_instance = DatadogAPIClient::V2::TeamsAPI.new
-
-body = DatadogAPIClient::V2::UserTeamUpdateRequest.new({
-  data: DatadogAPIClient::V2::UserTeamUpdate.new({
-    attributes: DatadogAPIClient::V2::UserTeamAttributes.new({
-      role: DatadogAPIClient::V2::UserTeamRole::ADMIN,
-    }),
-    type: DatadogAPIClient::V2::UserTeamType::TEAM_MEMBERSHIPS,
-  }),
-})
-p api_instance.update_team_membership("team_id", "user_id", body)
-```
-
-#### Instructions
-
-First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
-    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+                        
 ##### 
 
 ```go
-// Update a user's membership attributes on a team returns "Represents a user's association to a team" response
+// Update a user's membership attributes on a team returns "OK" response
 
 package main
 
@@ -4621,6 +4584,12 @@ import (
 )
 
 func main() {
+	// there is a valid "dd_team" in the system
+	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+
+	// there is a valid "user" in the system
+	UserDataID := os.Getenv("USER_DATA_ID")
+
 	body := datadogV2.UserTeamUpdateRequest{
 		Data: datadogV2.UserTeamUpdate{
 			Attributes: &datadogV2.UserTeamAttributes{
@@ -4633,7 +4602,7 @@ func main() {
 	configuration := datadog.NewConfiguration()
 	apiClient := datadog.NewAPIClient(configuration)
 	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeamMembership(ctx, "team_id", "user_id", body)
+	resp, r, err := api.UpdateTeamMembership(ctx, DdTeamDataID, UserDataID, body)
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamMembership`: %v\n", err)
@@ -4652,8 +4621,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 ##### 
 
 ```java
-// Update a user's membership attributes on a team returns "Represents a user's association to a
-// team" response
+// Update a user's membership attributes on a team returns "OK" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -4670,6 +4638,12 @@ public class Example {
     ApiClient defaultClient = ApiClient.getDefaultApiClient();
     TeamsApi apiInstance = new TeamsApi(defaultClient);
 
+    // there is a valid "dd_team" in the system
+    String DD_TEAM_DATA_ID = System.getenv("DD_TEAM_DATA_ID");
+
+    // there is a valid "user" in the system
+    String USER_DATA_ID = System.getenv("USER_DATA_ID");
+
     UserTeamUpdateRequest body =
         new UserTeamUpdateRequest()
             .data(
@@ -4678,7 +4652,8 @@ public class Example {
                     .type(UserTeamType.TEAM_MEMBERSHIPS));
 
     try {
-      UserTeamResponse result = apiInstance.updateTeamMembership("team_id", "user_id", body);
+      UserTeamResponse result =
+          apiInstance.updateTeamMembership(DD_TEAM_DATA_ID, USER_DATA_ID, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TeamsApi#updateTeamMembership");
@@ -4697,9 +4672,80 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
 ##### 
 
+```python
+"""
+Update a user's membership attributes on a team returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.teams_api import TeamsApi
+from datadog_api_client.v2.model.user_team_attributes import UserTeamAttributes
+from datadog_api_client.v2.model.user_team_role import UserTeamRole
+from datadog_api_client.v2.model.user_team_type import UserTeamType
+from datadog_api_client.v2.model.user_team_update import UserTeamUpdate
+from datadog_api_client.v2.model.user_team_update_request import UserTeamUpdateRequest
+
+# there is a valid "dd_team" in the system
+DD_TEAM_DATA_ID = environ["DD_TEAM_DATA_ID"]
+
+# there is a valid "user" in the system
+USER_DATA_ID = environ["USER_DATA_ID"]
+
+body = UserTeamUpdateRequest(
+    data=UserTeamUpdate(
+        attributes=UserTeamAttributes(
+            role=UserTeamRole.ADMIN,
+        ),
+        type=UserTeamType.TEAM_MEMBERSHIPS,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TeamsApi(api_client)
+    response = api_instance.update_team_membership(team_id=DD_TEAM_DATA_ID, user_id=USER_DATA_ID, body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update a user's membership attributes on a team returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::TeamsAPI.new
+
+# there is a valid "dd_team" in the system
+DD_TEAM_DATA_ID = ENV["DD_TEAM_DATA_ID"]
+
+# there is a valid "user" in the system
+USER_DATA_ID = ENV["USER_DATA_ID"]
+
+body = DatadogAPIClient::V2::UserTeamUpdateRequest.new({
+  data: DatadogAPIClient::V2::UserTeamUpdate.new({
+    attributes: DatadogAPIClient::V2::UserTeamAttributes.new({
+      role: DatadogAPIClient::V2::UserTeamRole::ADMIN,
+    }),
+    type: DatadogAPIClient::V2::UserTeamType::TEAM_MEMBERSHIPS,
+  }),
+})
+p api_instance.update_team_membership(DD_TEAM_DATA_ID, USER_DATA_ID, body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
 ```rust
-// Update a user's membership attributes on a team returns "Represents a user's
-// association to a team" response
+// Update a user's membership attributes on a team returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_teams::TeamsAPI;
 use datadog_api_client::datadogV2::model::UserTeamAttributes;
@@ -4710,6 +4756,11 @@ use datadog_api_client::datadogV2::model::UserTeamUpdateRequest;
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "dd_team" in the system
+    let dd_team_data_id = std::env::var("DD_TEAM_DATA_ID").unwrap();
+
+    // there is a valid "user" in the system
+    let user_data_id = std::env::var("USER_DATA_ID").unwrap();
     let body = UserTeamUpdateRequest::new(
         UserTeamUpdate::new(UserTeamType::TEAM_MEMBERSHIPS)
             .attributes(UserTeamAttributes::new().role(Some(UserTeamRole::ADMIN))),
@@ -4717,7 +4768,7 @@ async fn main() {
     let configuration = datadog::Configuration::new();
     let api = TeamsAPI::with_config(configuration);
     let resp = api
-        .update_team_membership("team_id".to_string(), "user_id".to_string(), body)
+        .update_team_membership(dd_team_data_id.clone(), user_data_id.clone(), body)
         .await;
     if let Ok(value) = resp {
         println!("{:#?}", value);
@@ -4735,13 +4786,19 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ```typescript
 /**
- * Update a user's membership attributes on a team returns "Represents a user's association to a team" response
+ * Update a user's membership attributes on a team returns "OK" response
  */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
 const configuration = client.createConfiguration();
 const apiInstance = new v2.TeamsApi(configuration);
+
+// there is a valid "dd_team" in the system
+const DD_TEAM_DATA_ID = process.env.DD_TEAM_DATA_ID as string;
+
+// there is a valid "user" in the system
+const USER_DATA_ID = process.env.USER_DATA_ID as string;
 
 const params: v2.TeamsApiUpdateTeamMembershipRequest = {
   body: {
@@ -4752,8 +4809,8 @@ const params: v2.TeamsApiUpdateTeamMembershipRequest = {
       type: "team_memberships",
     },
   },
-  teamId: "team_id",
-  userId: "user_id",
+  teamId: DD_TEAM_DATA_ID,
+  userId: USER_DATA_ID,
 };
 
 apiInstance

@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/incident_response/on-call.md
-
 # Source: https://docs.datadoghq.com/api/latest/on-call.md
 
 ---

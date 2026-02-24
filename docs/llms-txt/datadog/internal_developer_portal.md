@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/internal_developer_portal.md
-
 # Source: https://docs.datadoghq.com/internal_developer_portal.md
 
 ---
