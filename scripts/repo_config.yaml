@@ -1008,6 +1008,14 @@ repositories:
   source_folder: doc/source
   target_folder: docs/github-scraped/ray
   branch: master
+- name: Scrapling
+  description: Scrapling - Adaptive web scraping framework with fetcher selection, spider
+    architecture, proxy rotation, stealth features, and MCP server integration for modern
+    web scraping
+  repo_url: https://github.com/D4Vinci/Scrapling.git
+  source_folder: docs
+  target_folder: docs/github-scraped/scrapling
+  branch: main
 - name: SiYuan
   description: SiYuan - Privacy-first, self-hosted personal knowledge management system
     with Markdown editing, block-level references, and local-first data storage
