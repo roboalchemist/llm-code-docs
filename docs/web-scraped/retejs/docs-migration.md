@@ -17,8 +17,8 @@ Migration - Rete.js
 [Development](/docs/development)[Rete CLI](/docs/development/rete-cli)[Rete Kit](/docs/development/rete-kit)- AI Assistance**
 [AI Assistance](/docs/development/ai-assistance)[LLMs.txt](/docs/development/ai-assistance/llms)[Rete Kit AI](/docs/development/ai-assistance/rete-kit-ai)[Troubleshooting](/docs/troubleshooting)[Licensing](/docs/licensing)[Code of Conduct](/docs/code-of-conduct)[Contribution](/docs/contribution)- API**
 [API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)
-      
-      [Rete.js](/)[GitHub](https://github.com/retejs)[YouTube](https://www.youtube.com/@rete_js)[Twitter](https://twitter.com/rete_js)[Discord](https://discord.gg/cxSFkPZdsV)[Docs](/docs)[Examples](/examples)[Studio](https://studio.retejs.org)[Sponsor](/sponsor)en# Documentation[Introduction](/docs)[Getting started](/docs/getting-started)- Concepts**
+
+[Rete.js](/)[GitHub](https://github.com/retejs)[YouTube](https://www.youtube.com/@rete_js)[Twitter](https://twitter.com/rete_js)[Discord](https://discord.gg/cxSFkPZdsV)[Docs](/docs)[Examples](/examples)[Studio](https://studio.retejs.org)[Sponsor](/sponsor)en# Documentation[Introduction](/docs)[Getting started](/docs/getting-started)- Concepts**
 [Plugin system](/docs/concepts/plugin-system)[Presets](/docs/concepts/presets)[Editor](/docs/concepts/editor)[Engine](/docs/concepts/engine)[Integration](/docs/concepts/integration)- Guides**
 [Basic editor](/docs/guides/basic)- Renderers**
 [React.js](/docs/guides/renderers/react)[Vue.js](/docs/guides/renderers/vue)[Angular](/docs/guides/renderers/angular)[Svelte](/docs/guides/renderers/svelte)[Lit](/docs/guides/renderers/lit)- Processing**
@@ -75,22 +75,43 @@ node.addControl(&#39;num&#39;, new NumControl(&#39;num&#39;))
 node.addOutput(&#39;num&#39;, new ClassicPreset.Output(numSocket, "Number"));
 
 await editor.addNode(node)
-## [Saving data in a node](#save-data-in-nodes)The data can be saved using method `putData`. It is expected that the data should be in a valid JSON format, as it may be used for import/export.
-ts// v1
-node.putData(&#39;myData&#39;, &#39;data&#39;)
-control.putData(&#39;myData&#39;, &#39;data&#39;) // where control is part of node
+## [Saving data in a node](#save-data-in-nodes)
+
+The data can be saved using method `putData`. It is expected that the data should be in a valid JSON format, as it may be used for import/export.
+
+```ts
+// v1
+node.putData('myData', 'data')
+control.putData('myData', 'data') // where control is part of node
+```
+
 There are no rigid import/export guidelines to follow in the current version, which means you have complete flexibility in how you store your data in nodes.
-ts// v2
+
+```ts
+// v2
 class MyNode extends ClassicPreset.Node {
-  myData = &#39;data&#39;
+  myData = 'data'
 }
-## [Import/export](#import-export)Because of the limitations mentioned earlier, the editor can be effortlessly exported and imported.
-ts// v1
+```
+
+## [Import/export](#import-export)
+
+Because of the limitations mentioned earlier, the editor can be effortlessly exported and imported.
+
+```ts
+// v1
 const data = editor.toJSON();
 await editor.fromJSON(data);
+```
+
 The current version incorporates a revised approach that requires implementation, as demonstrated in [Import/export](/docs/guides/import-export).
-## [Selectable nodes](#selectable-nodes)Selecting elements is a feature integrated within the editor
-ts// v1
+
+## [Selectable nodes](#selectable-nodes)
+
+Selecting elements is a feature integrated within the editor
+
+```ts
+// v1
 editor.selected.list
 
 editor.selected.add(node, accumulate)
@@ -104,60 +125,75 @@ const nodeSelector = AreaExtensions.selectableNodes(area, selector, { accumulati
 
 editor.getNodes().filter(node => node.selected)
 nodeSelector.select(add.id)
-## [Events listening](#events-listening)The typical way to listen to events that can be prevented
-ts// v1
-editor.on(&#39;nodecreate&#39;, node => {
+## [Events listening](#events-listening)
+
+The typical way to listen to events that can be prevented
+
+```ts
+// v1
+editor.on('nodecreate', node => {
  return node.canCreate
 });
-* - unchanged
+```
 
-** - moved to different package
+* unchanged
 
-*** - removed### [`rete` package events](#rete-package-events-v1)- nodecreate *
-- nodecreated *
-- noderemove *
-- noderemoved *
-- connectioncreate *
-- connectioncreated *
-- connectionremove *
-- connectionremoved *
-- translatenode ***
-- nodetranslate **
-- nodetranslated **
-- nodedraged ***
-- nodedragged **
-- selectnode ***
-- multiselectnode ***
-- nodeselect ***
-- nodeselected ***
-- rendernode ** (renamed to &#39;render&#39;)
-- rendersocket ** (renamed to &#39;render&#39;)
-- rendercontrol ** (renamed to &#39;render&#39;)
-- renderconnection ** (renamed to &#39;render&#39;)
-- updateconnection ***
-- keydown ***
-- keyup ***
-- translate **
-- translated **
-- zoom **
-- zoomed **
-- click ** (renamed to &#39;nodepicked&#39;)
-- mousemove *** (renamed to &#39;pointermove&#39;)
-- contextmenu **
-- import ***
-- export ***
-- process ***
-- clear **
-### [`rete-connection-plugin` package events](#rete-connection-plugin-package-events-v1)- connectionpath **
-- connectiondrop *
-- connectionpick *
-- resetconnection ***
+** moved to different package
+
+*** removed
+
+### [`rete` package events](#rete-package-events-v1)- nodecreate *
+* nodecreated *
+* noderemove *
+* noderemoved *
+* connectioncreate *
+* connectioncreated *
+* connectionremove *
+* connectionremoved *
+* translatenode ***
+* nodetranslate **
+* nodetranslated **
+* nodedraged ***
+* nodedragged **
+* selectnode ***
+* multiselectnode ***
+* nodeselect ***
+* nodeselected ***
+* rendernode ** (renamed to 'render')
+* rendersocket ** (renamed to 'render')
+* rendercontrol ** (renamed to 'render')
+* renderconnection ** (renamed to 'render')
+* updateconnection ***
+* keydown ***
+* keyup ***
+* translate **
+* translated **
+* zoom **
+* zoomed **
+* click ** (renamed to 'nodepicked')
+* mousemove *** (renamed to 'pointermove')
+* contextmenu **
+* import ***
+* export ***
+* process ***
+* clear **
+
+### [`rete-connection-plugin` package events](#rete-connection-plugin-package-events-v1)
+
+* connectionpath **
+* connectiondrop *
+* connectionpick *
+* resetconnection ***
+
 The current version uses a specific kind of signal implementation that involves object-based signals. Additionally, pipes are used to either manipulate these objects or prevent signal propagation.
-ts// v2
+
+```ts
+// v2
 editor.addPipe(context => {
-  if (context.type === &#39;nodecreate&#39;) return
+  if (context.type === 'nodecreate') return
   return context
 })
+```
 ### [`rete` package events](#rete-package-events-v2)- nodecreate
 - nodecreated
 - noderemove

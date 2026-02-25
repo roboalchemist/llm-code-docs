@@ -17,8 +17,8 @@ Troubleshooting - Rete.js
 [Development](/docs/development)[Rete CLI](/docs/development/rete-cli)[Rete Kit](/docs/development/rete-kit)- AI Assistance**
 [AI Assistance](/docs/development/ai-assistance)[LLMs.txt](/docs/development/ai-assistance/llms)[Rete Kit AI](/docs/development/ai-assistance/rete-kit-ai)[Troubleshooting](/docs/troubleshooting)[Licensing](/docs/licensing)[Code of Conduct](/docs/code-of-conduct)[Contribution](/docs/contribution)- API**
 [API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)
-      
-      [Rete.js](/)[GitHub](https://github.com/retejs)[YouTube](https://www.youtube.com/@rete_js)[Twitter](https://twitter.com/rete_js)[Discord](https://discord.gg/cxSFkPZdsV)[Docs](/docs)[Examples](/examples)[Studio](https://studio.retejs.org)[Sponsor](/sponsor)en# Documentation[Introduction](/docs)[Getting started](/docs/getting-started)- Concepts**
+
+[Rete.js](/)[GitHub](https://github.com/retejs)[YouTube](https://www.youtube.com/@rete_js)[Twitter](https://twitter.com/rete_js)[Discord](https://discord.gg/cxSFkPZdsV)[Docs](/docs)[Examples](/examples)[Studio](https://studio.retejs.org)[Sponsor](/sponsor)en# Documentation[Introduction](/docs)[Getting started](/docs/getting-started)- Concepts**
 [Plugin system](/docs/concepts/plugin-system)[Presets](/docs/concepts/presets)[Editor](/docs/concepts/editor)[Engine](/docs/concepts/engine)[Integration](/docs/concepts/integration)- Guides**
 [Basic editor](/docs/guides/basic)- Renderers**
 [React.js](/docs/guides/renderers/react)[Vue.js](/docs/guides/renderers/vue)[Angular](/docs/guides/renderers/angular)[Svelte](/docs/guides/renderers/svelte)[Lit](/docs/guides/renderers/lit)- Processing**
@@ -28,11 +28,34 @@ Troubleshooting - Rete.js
 [Performance](/docs/best-practices/performance)[Quality assurance](/docs/quality-assurance)- Development**
 [Development](/docs/development)[Rete CLI](/docs/development/rete-cli)[Rete Kit](/docs/development/rete-kit)- AI Assistance**
 [AI Assistance](/docs/development/ai-assistance)[LLMs.txt](/docs/development/ai-assistance/llms)[Rete Kit AI](/docs/development/ai-assistance/rete-kit-ai)[Troubleshooting](/docs/troubleshooting)[Licensing](/docs/licensing)[Code of Conduct](/docs/code-of-conduct)[Contribution](/docs/contribution)- API**
-[API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)# Troubleshooting## [Check the documentation](#check-docs)First, take a look at the framework documentation. Frequently, common problems are addressed in the documentation, and you may find a solution to your problem by utilizing the search function on the website or documentation
-## [Explore community resources](#explore-community)When the documentation falls short, explore community resources. Search for answers on the [Discord server](https://discord.com/invite/cxSFkPZdsV) and [GitHub issues](https://github.com/search?q=org%3Aretejs&type=issues)
-## [Check your dependencies](#check-dependencies)Ensure that you&#39;re using the latest package versions. Updates frequently include bug fixes and enhancements that can potentially resolve the problem at hand.
+[API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)# Troubleshooting
+
+## [Check the documentation](#check-docs)
+
+First, take a look at the framework documentation. Frequently, common problems are addressed in the documentation, and you may find a solution to your problem by utilizing the search function on the website or documentation.
+
+## [Explore community resources](#explore-community)
+
+When the documentation falls short, explore community resources. Search for answers on the [Discord server](https://discord.com/invite/cxSFkPZdsV) and [GitHub issues](https://github.com/search?q=org%3Aretejs&type=issues).
+
+## [Check your dependencies](#check-dependencies)
+
+Ensure that you're using the latest package versions. Updates frequently include bug fixes and enhancements that can potentially resolve the problem at hand.
+
 Additionally, ensure that dependencies use their peer dependencies correctly. Avoid situations where your application is using multiple copies of the same dependency (for example, via `npm link`), which may lead to incorrect behavior of operators such as `instanceof`.
-## [Debugging](#debugging)Leverage your browser&#39;s devtools to debug the issue. The console is an effective tool for diagnosing errors, warnings, and other issues. Additionally, you can take advantage of breakpoints, conditional breakpoints, or logpoints to facilitate the debugging process.  In case of extreme difficulty, you can clone the repository, make modifications for debugging purposes, and build it in development mode for your project using the [Rete CLI](/docs/development/rete-cli)
-## [Reproduce the issue](#reproduce-issue)Build a minimal example that reproduces the problem you&#39;re facing. This can assist in identifying the issue&#39;s origin. External factors may frequently be the cause of the problem, since JS allows you to delve into implementation details and patch them
-## [Ask for help](#ask-for-help)If you have followed all the preceding steps and are still unable to find a solution, don&#39;t hesitate to seek help from the community. Make sure to include a live example that reproduces the problem or your attempts to achieve the desired outcome.
-Released under the [MIT License](https://opensource.org/license/mit/)Copyright © 2018-2026 Vitaliy Stoliarov
+
+## [Debugging](#debugging)
+
+Leverage your browser's devtools to debug the issue. The console is an effective tool for diagnosing errors, warnings, and other issues. Additionally, you can take advantage of breakpoints, conditional breakpoints, or logpoints to facilitate the debugging process. In case of extreme difficulty, you can clone the repository, make modifications for debugging purposes, and build it in development mode for your project using the [Rete CLI](/docs/development/rete-cli).
+
+## [Reproduce the issue](#reproduce-issue)
+
+Build a minimal example that reproduces the problem you're facing. This can assist in identifying the issue's origin. External factors may frequently be the cause of the problem, since JS allows you to delve into implementation details and patch them.
+
+## [Ask for help](#ask-for-help)
+
+If you have followed all the preceding steps and are still unable to find a solution, don't hesitate to seek help from the community. Make sure to include a live example that reproduces the problem or your attempts to achieve the desired outcome.
+
+Released under the [MIT License](https://opensource.org/license/mit/)
+
+Copyright © 2018-2026 Vitaliy Stoliarov

@@ -17,7 +17,7 @@ Data structures - Rete.js
 [Development](/docs/development)[Rete CLI](/docs/development/rete-cli)[Rete Kit](/docs/development/rete-kit)- AI Assistance**
 [AI Assistance](/docs/development/ai-assistance)[LLMs.txt](/docs/development/ai-assistance/llms)[Rete Kit AI](/docs/development/ai-assistance/rete-kit-ai)[Troubleshooting](/docs/troubleshooting)[Licensing](/docs/licensing)[Code of Conduct](/docs/code-of-conduct)[Contribution](/docs/contribution)- API**
 [API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)
-      
+
       [Rete.js](/)[GitHub](https://github.com/retejs)[YouTube](https://www.youtube.com/@rete_js)[Twitter](https://twitter.com/rete_js)[Discord](https://discord.gg/cxSFkPZdsV)[Docs](/docs)[Examples](/examples)[Studio](https://studio.retejs.org)[Sponsor](/sponsor)en# Documentation[Introduction](/docs)[Getting started](/docs/getting-started)- Concepts**
 [Plugin system](/docs/concepts/plugin-system)[Presets](/docs/concepts/presets)[Editor](/docs/concepts/editor)[Engine](/docs/concepts/engine)[Integration](/docs/concepts/integration)- Guides**
 [Basic editor](/docs/guides/basic)- Renderers**
@@ -30,12 +30,15 @@ Data structures - Rete.js
 [AI Assistance](/docs/development/ai-assistance)[LLMs.txt](/docs/development/ai-assistance/llms)[Rete Kit AI](/docs/development/ai-assistance/rete-kit-ai)[Troubleshooting](/docs/troubleshooting)[Licensing](/docs/licensing)[Code of Conduct](/docs/code-of-conduct)[Contribution](/docs/contribution)- API**
 [API](/docs/api)[Overview](/docs/api/overview)[rete](/docs/api/rete)[rete-area-plugin](/docs/api/rete-area-plugin)[rete-area-3d-plugin](/docs/api/rete-area-3d-plugin)[rete-connection-plugin](/docs/api/rete-connection-plugin)[rete-auto-arrange-plugin](/docs/api/rete-auto-arrange-plugin)[rete-context-menu-plugin](/docs/api/rete-context-menu-plugin)[rete-engine](/docs/api/rete-engine)[rete-history-plugin](/docs/api/rete-history-plugin)[rete-minimap-plugin](/docs/api/rete-minimap-plugin)[rete-readonly-plugin](/docs/api/rete-readonly-plugin)[rete-angular-plugin](/docs/api/rete-angular-plugin)[@retejs/lit-plugin](/docs/api/rete-lit-plugin)[rete-react-plugin](/docs/api/rete-react-plugin)[rete-svelte-plugin](/docs/api/rete-svelte-plugin)[rete-vue-plugin](/docs/api/rete-vue-plugin)[rete-render-utils](/docs/api/rete-render-utils)[rete-scopes-plugin](/docs/api/rete-scopes-plugin)[rete-dock-plugin](/docs/api/rete-dock-plugin)[rete-comment-plugin](/docs/api/rete-comment-plugin)[rete-connection-path-plugin](/docs/api/rete-connection-path-plugin)[rete-connection-reroute-plugin](/docs/api/rete-connection-reroute-plugin)[FAQ](/docs/faq)[Migration](/docs/migration)# Data structuresSimilar to a graph, this framework contains data as nodes and edges. One correction: in the editor&#39;s terminology, the graph edges are known as connections.
 The `NodeEditor` instance stores this data in a normalized format, specifically as two distinct lists containing objects of the following type:
+
 - `{ id: <string> }` for a nodes
 - `{ id: <string>, source: <string>, target: <string> }` for a connections
+
 NodeEditorInitializing the editor involves using a basic scheme without any supplementary fields to start with:
 tsimport { NodeEditor, BaseSchemes, getUID } from &#39;rete&#39;
 
 const editor = new NodeEditor<BaseSchemes>()
+
 ## [Add nodes and connections](#add-nodes-and-connections)When dealing with graph data, you have the option to create arbitrary identifiers for nodes and connections, or utilize the existing ones.
 tsconst a = { id: getUID() }
 const b = { id: getUID() }
@@ -44,26 +47,32 @@ const connection = { id: getUID(), source: a.id, target: b.id }
 await editor.addNode(a)
 await editor.addNode(b)
 await editor.addConnection(connection)
+
 ## [Retrieve nodes and connections](#retrieve-nodes-and-connections)We can now retrieve a list of newly added nodes and connections
 tseditor.getNodes() // returns [a, b]
 editor.getConnections() // returns [connection]
 You have all the necessary methods to process the graph, such as retrieving a list of input connections or all incoming nodes, as we will discuss in the following sections.
+
 ## [Incoming/outgoing connections](#incoming-outgoing-connections)Incoming/outgoing connectionsThe following code shows how to retrieve a list of incoming and outgoing connections for `node`:
 tsconst connections = editor.getConnections()
 
 const incomingConnections = connections.filter(connection => connection.target === node.id)
 const outgoingConnections = connections.filter(connection => connection.source === node.id)
+
 ## [Incoming/outgoing nodes](#incoming-outgoing-nodes)Incoming/outgoing nodesWe can use variables from the previous section to retrieve incoming or outgoing nodes:
 tsconst incomers = incomingConnections.map(connection => editor.getNode(connection.source))
 const outgoers = outgoingConnections.map(connection => editor.getNode(connection.target))
 In general, this is sufficient for simple cases, but if there are more than one connections between nodes, we will have to remove duplicates:
 tsArray.from(new Set(incomers))
 Array.from(new Set(outgoers))
+
 ## [Advanced methods](#advanced-methods)The previously mentioned approaches are fairly flexible, but they require the implementation of more advanced methods on your own. Fortunately, the [`rete-structures` package](https://github.com/retejs/structures) offers such methods divided into 4 categories:
+
 - **Mapping**: iterating through a list of nodes while transforming or filtering it
 - **Sets**: techniques for working with graphs as sets, including union, difference and intersection.
 - **Subgraph**: graphs that have parent-child relationships between nodes.
 - **Traverse**: traversing nodes by their connections, such as retrieving only incoming nodes or all predecessors.
+
 rete-structures### [Usage](#rete-structures-usage)Install the dependency
 bashnpm i rete-structures
 Use the following import statement and declaration
