@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Application Load Balancers should be configured to use defensive or strictest desync mitigation mode
- 
+
 ## Description{% #description %}
 
 This check verifies whether an Application Load Balancer is set to use either the defensive or strictest desync mitigation mode. The verification is considered unsuccessful if the Application Load Balancer is not configured with one of these modes.

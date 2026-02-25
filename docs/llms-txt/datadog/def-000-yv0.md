@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set Lockout Time for Failed Password Attempts
- 
+
 ## Description{% #description %}
 
 This rule configures the system to lock out accounts during a specified time period after a number of incorrect login attempts using `pam_faillock.so`. Ensure that the file `/etc/security/faillock.conf` contains the following entry: `unlock_time=<interval-in-seconds>` where `interval-in-seconds` is `0` or greater. pam_faillock.so module requires multiple entries in pam files. These entries must be carefully defined to work as expected. In order to avoid any errors when manually editing these files, it is recommended to use the appropriate tools, such as `authselect` or `authconfig`, depending on the OS version. If `unlock_time` is set to `0`, manual intervention by an administrator is required to unlock a user. This should be done using the `faillock` tool.
@@ -46,7 +46,7 @@ authselect enable-feature with-faillock
 
 authselect apply-changes -b
 else
-    
+
 conf_name=cac_faillock
 
 if [ ! -f /usr/share/pam-configs/"$conf_name" ]; then
@@ -93,7 +93,7 @@ if [ -f $FAILLOCK_CONF ] || [ "$SKIP_FAILLOCK_CHECK" = "true" ]; then
     else
         sed -i --follow-symlinks 's|^\s*\(unlock_time\s*=\s*\)\(\S\+\)|\1'"$var_accounts_passwords_pam_faillock_unlock_time"'|g' $FAILLOCK_CONF
     fi
-    
+
 else
     for pam_file in "${AUTH_FILES[@]}"
     do

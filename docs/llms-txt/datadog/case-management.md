@@ -30,8 +30,6 @@ Create a project.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
@@ -66,6 +64,7 @@ Project payload
     "type": "project"
   }
 }
+
 ```
 
 {% /tab %}
@@ -131,7 +130,7 @@ Project response
 | value                          | Option 1                                        | string              |
 | value                          | Option 2                                        | double              |
 | value                          | Option 3                                        | object              |
-| value                          | Option 4                                        | [ <oneOf>]     |
+| value                          | Option 4                                        | [<oneOf>]     |
 | Option 4                       | Option 1                                        | string              |
 | Option 4                       | Option 2                                        | double              |
 | Option 4                       | Option 3                                        | object              |
@@ -228,16 +227,14 @@ Project response
   "data": {
     "attributes": {
       "columns_config": {
-        "columns": [
-          {
+        "columns": [{
             "sort": {
               "ascending": false,
               "priority": "integer"
             },
             "sort_field": "string",
             "type": "string"
-          }
-        ]
+          }]
       },
       "enabled_custom_case_types": [],
       "key": "CASEM",
@@ -255,12 +252,10 @@ Project response
           "auto_escalation_query": "string",
           "default_incident_commander": "string",
           "enabled": false,
-          "field_mappings": [
-            {
+          "field_mappings": [{
               "case_field": "string",
               "incident_user_defined_field_id": "string"
-            }
-          ],
+            }],
           "incident_type": "string",
           "severity_config": {
             "priority_mapping": {
@@ -335,8 +330,7 @@ Project response
         "integration_on_call": {
           "auto_assign_on_call": false,
           "enabled": false,
-          "escalation_queries": [
-            {
+          "escalation_queries": [{
               "enabled": false,
               "id": "string",
               "query": "string",
@@ -345,8 +339,7 @@ Project response
                 "team_id": "string",
                 "user_id": "string"
               }
-            }
-          ]
+            }]
         },
         "integration_service_now": {
           "assignment_group": "string",
@@ -398,28 +391,25 @@ Project response
     "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
     "relationships": {
       "member_team": {
-        "data": [
-          {
+        "data": [{
             "id": "f9bb8444-af7f-11ec-ac2c-da7ad0900001",
             "type": "team_links"
-          }
-        ],
+          }],
         "links": {
           "related": "/api/v2/team/c75a4a8e-20c7-11ee-a3a5-da7ad0900002/links"
         }
       },
       "member_user": {
-        "data": [
-          {
+        "data": [{
             "id": "00000000-0000-0000-0000-000000000000",
             "type": "user"
-          }
-        ]
+          }]
       }
     },
     "type": "project"
   }
 }
+
 ```
 
 {% /tab %}
@@ -441,10 +431,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -466,10 +455,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -491,10 +479,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -516,10 +503,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -541,10 +527,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -553,7 +538,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -570,8 +555,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -602,13 +587,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_project(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a project returns "CREATED" response
@@ -627,13 +613,14 @@ body = DatadogAPIClient::V2::ProjectCreateRequest.new({
   }),
 })
 p api_instance.create_project(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create a project returns "CREATED" response
@@ -641,47 +628,48 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ProjectCreateRequest{
-		Data: datadogV2.ProjectCreate{
-			Attributes: datadogV2.ProjectCreateAttributes{
-				EnabledCustomCaseTypes: []string{},
-				Key:                    "SEC",
-				Name:                   "Security Investigation",
-			},
-			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.CreateProject(ctx, body)
+    body := datadogV2.ProjectCreateRequest{
+        Data: datadogV2.ProjectCreate{
+            Attributes: datadogV2.ProjectCreateAttributes{
+                EnabledCustomCaseTypes: []string{},
+                Key:                    "SEC",
+                Name:                   "Security Investigation",
+            },
+            Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.CreateProject(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateProject`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateProject`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateProject`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateProject`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a project returns "CREATED" response
@@ -720,13 +708,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create a project returns "CREATED" response
@@ -753,13 +742,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -792,6 +782,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -819,8 +810,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all notification rules for a project.
 
 OAuth apps require the `cases_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -877,13 +866,11 @@ Response with notification rules
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "is_enabled": false,
         "query": "string",
-        "recipients": [
-          {
+        "recipients": [{
             "data": {
               "channel": "string",
               "channel_id": "string",
@@ -900,10 +887,8 @@ Response with notification rules
               "workspace_id": "string"
             },
             "type": "EMAIL"
-          }
-        ],
-        "triggers": [
-          {
+          }],
+        "triggers": [{
             "data": {
               "change_type": "string",
               "field": "string",
@@ -913,14 +898,13 @@ Response with notification rules
               "to_status_name": "string"
             },
             "type": "CASE_CREATED"
-          }
-        ]
+          }]
       },
       "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
       "type": "notification_rule"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -942,10 +926,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -967,10 +950,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -992,10 +974,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1017,10 +998,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1042,10 +1022,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1054,13 +1033,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}/notification_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1078,13 +1057,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get notification rules returns "OK" response
@@ -1092,13 +1072,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 p api_instance.get_project_notification_rules("project_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get notification rules returns "OK" response
@@ -1106,37 +1087,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.GetProjectNotificationRules(ctx, "project_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.GetProjectNotificationRules(ctx, "project_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProjectNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProjectNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProjectNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProjectNotificationRules`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get notification rules returns "OK" response
@@ -1164,13 +1146,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get notification rules returns "OK" response
@@ -1190,13 +1173,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1220,6 +1204,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1247,8 +1232,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Search cases.
 
 OAuth apps require the `cases_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1339,8 +1322,7 @@ Response with cases
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "archived_at": "2019-09-19T10:00:00.000Z",
         "attributes": {
@@ -1412,8 +1394,7 @@ Response with cases
         }
       },
       "type": "case"
-    }
-  ],
+    }],
   "meta": {
     "page": {
       "current": "integer",
@@ -1422,6 +1403,7 @@ Response with cases
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -1443,10 +1425,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1468,10 +1449,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1493,10 +1473,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1518,10 +1497,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1543,10 +1521,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1555,13 +1532,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1577,13 +1554,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.search_cases()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search cases returns "OK" response
@@ -1591,13 +1569,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 p api_instance.search_cases()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search cases returns "OK" response
@@ -1605,37 +1584,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.SearchCases(ctx, *datadogV2.NewSearchCasesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.SearchCases(ctx, *datadogV2.NewSearchCasesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.SearchCases`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.SearchCases`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.SearchCases`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.SearchCases`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search cases returns "OK" response
@@ -1662,13 +1642,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search cases returns "OK" response
@@ -1687,13 +1668,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1713,6 +1695,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1740,8 +1723,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a Case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Request
 
@@ -1809,6 +1790,7 @@ Case payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -1959,6 +1941,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -1980,10 +1963,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2005,10 +1987,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2030,10 +2011,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2055,10 +2035,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2080,10 +2059,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2092,7 +2070,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2124,8 +2102,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a case returns "CREATED" response
@@ -2133,64 +2111,65 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.CaseCreateRequest{
-		Data: datadogV2.CaseCreate{
-			Attributes: datadogV2.CaseCreateAttributes{
-				Priority: datadogV2.CASEPRIORITY_NOT_DEFINED.Ptr(),
-				Title:    "Security breach investigation in 0cfbc5cbc676ee71",
-				TypeId:   "00000000-0000-0000-0000-000000000001",
-			},
-			Relationships: &datadogV2.CaseCreateRelationships{
-				Assignee: *datadogV2.NewNullableNullableUserRelationship(&datadogV2.NullableUserRelationship{
-					Data: *datadogV2.NewNullableNullableUserRelationshipData(&datadogV2.NullableUserRelationshipData{
-						Id:   UserDataID,
-						Type: datadogV2.USERRESOURCETYPE_USER,
-					}),
-				}),
-				Project: datadogV2.ProjectRelationship{
-					Data: datadogV2.ProjectRelationshipData{
-						Id:   "d4bbe1af-f36e-42f1-87c1-493ca35c320e",
-						Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
-					},
-				},
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.CreateCase(ctx, body)
+    body := datadogV2.CaseCreateRequest{
+        Data: datadogV2.CaseCreate{
+            Attributes: datadogV2.CaseCreateAttributes{
+                Priority: datadogV2.CASEPRIORITY_NOT_DEFINED.Ptr(),
+                Title:    "Security breach investigation in 0cfbc5cbc676ee71",
+                TypeId:   "00000000-0000-0000-0000-000000000001",
+            },
+            Relationships: &datadogV2.CaseCreateRelationships{
+                Assignee: *datadogV2.NewNullableNullableUserRelationship(&datadogV2.NullableUserRelationship{
+                    Data: *datadogV2.NewNullableNullableUserRelationshipData(&datadogV2.NullableUserRelationshipData{
+                        Id:   UserDataID,
+                        Type: datadogV2.USERRESOURCETYPE_USER,
+                    }),
+                }),
+                Project: datadogV2.ProjectRelationship{
+                    Data: datadogV2.ProjectRelationshipData{
+                        Id:   "d4bbe1af-f36e-42f1-87c1-493ca35c320e",
+                        Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+                    },
+                },
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.CreateCase(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a case returns "CREATED" response
@@ -2257,13 +2236,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2320,13 +2300,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_case(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a case returns "CREATED" response
@@ -2362,13 +2343,14 @@ body = DatadogAPIClient::V2::CaseCreateRequest.new({
   }),
 })
 p api_instance.create_case(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a case returns "CREATED" response
@@ -2419,13 +2401,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2475,6 +2458,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2502,8 +2486,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a notification rule for a project.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -2564,8 +2546,7 @@ Notification rule payload
     "attributes": {
       "is_enabled": false,
       "query": "string",
-      "recipients": [
-        {
+      "recipients": [{
           "data": {
             "channel": "string",
             "channel_id": "string",
@@ -2582,10 +2563,8 @@ Notification rule payload
             "workspace_id": "string"
           },
           "type": "EMAIL"
-        }
-      ],
-      "triggers": [
-        {
+        }],
+      "triggers": [{
           "data": {
             "change_type": "string",
             "field": "string",
@@ -2595,12 +2574,12 @@ Notification rule payload
             "to_status_name": "string"
           },
           "type": "CASE_CREATED"
-        }
-      ]
+        }]
     },
     "type": "notification_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2656,8 +2635,7 @@ Notification rule response
     "attributes": {
       "is_enabled": false,
       "query": "string",
-      "recipients": [
-        {
+      "recipients": [{
           "data": {
             "channel": "string",
             "channel_id": "string",
@@ -2674,10 +2652,8 @@ Notification rule response
             "workspace_id": "string"
           },
           "type": "EMAIL"
-        }
-      ],
-      "triggers": [
-        {
+        }],
+      "triggers": [{
           "data": {
             "change_type": "string",
             "field": "string",
@@ -2687,13 +2663,13 @@ Notification rule response
             "to_status_name": "string"
           },
           "type": "CASE_CREATED"
-        }
-      ]
+        }]
     },
     "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
     "type": "notification_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2715,10 +2691,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2740,10 +2715,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2765,10 +2739,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2790,10 +2763,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2815,10 +2787,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2827,7 +2798,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}/notification_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2837,19 +2808,15 @@ API error response.
 {
   "data": {
     "attributes": {
-      "recipients": [
-        {}
-      ],
-      "triggers": [
-        {}
-      ]
+      "recipients": [{}],
+      "triggers": [{}]
     },
     "type": "notification_rule"
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2871,18 +2838,14 @@ body = CaseNotificationRuleCreateRequest(
     data=CaseNotificationRuleCreate(
         attributes=CaseNotificationRuleCreateAttributes(
             is_enabled=True,
-            recipients=[
-                CaseNotificationRuleRecipient(
+            recipients=[CaseNotificationRuleRecipient(
                     data=CaseNotificationRuleRecipientData(),
                     type="EMAIL",
-                ),
-            ],
-            triggers=[
-                CaseNotificationRuleTrigger(
+                ),],
+            triggers=[CaseNotificationRuleTrigger(
                     data=CaseNotificationRuleTriggerData(),
                     type="CASE_CREATED",
-                ),
-            ],
+                ),],
         ),
         type=CaseNotificationRuleResourceType.NOTIFICATION_RULE,
     ),
@@ -2894,13 +2857,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_project_notification_rule(project_id="project_id", body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a notification rule returns "CREATED" response
@@ -2912,30 +2876,27 @@ body = DatadogAPIClient::V2::CaseNotificationRuleCreateRequest.new({
   data: DatadogAPIClient::V2::CaseNotificationRuleCreate.new({
     attributes: DatadogAPIClient::V2::CaseNotificationRuleCreateAttributes.new({
       is_enabled: true,
-      recipients: [
-        DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
+      recipients: [DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
           data: DatadogAPIClient::V2::CaseNotificationRuleRecipientData.new({}),
           type: "EMAIL",
-        }),
-      ],
-      triggers: [
-        DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
+        }),],
+      triggers: [DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
           data: DatadogAPIClient::V2::CaseNotificationRuleTriggerData.new({}),
           type: "CASE_CREATED",
-        }),
-      ],
+        }),],
     }),
     type: DatadogAPIClient::V2::CaseNotificationRuleResourceType::NOTIFICATION_RULE,
   }),
 })
 p api_instance.create_project_notification_rule("project_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create a notification rule returns "CREATED" response
@@ -2943,57 +2904,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CaseNotificationRuleCreateRequest{
-		Data: datadogV2.CaseNotificationRuleCreate{
-			Attributes: datadogV2.CaseNotificationRuleCreateAttributes{
-				IsEnabled: datadog.PtrBool(true),
-				Recipients: []datadogV2.CaseNotificationRuleRecipient{
-					{
-						Data: &datadogV2.CaseNotificationRuleRecipientData{},
-						Type: datadog.PtrString("EMAIL"),
-					},
-				},
-				Triggers: []datadogV2.CaseNotificationRuleTrigger{
-					{
-						Data: &datadogV2.CaseNotificationRuleTriggerData{},
-						Type: datadog.PtrString("CASE_CREATED"),
-					},
-				},
-			},
-			Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.CreateProjectNotificationRule(ctx, "project_id", body)
+    body := datadogV2.CaseNotificationRuleCreateRequest{
+        Data: datadogV2.CaseNotificationRuleCreate{
+            Attributes: datadogV2.CaseNotificationRuleCreateAttributes{
+                IsEnabled: datadog.PtrBool(true),
+                Recipients: []datadogV2.CaseNotificationRuleRecipient{
+                    {
+                        Data: &datadogV2.CaseNotificationRuleRecipientData{},
+                        Type: datadog.PtrString("EMAIL"),
+                    },
+                },
+                Triggers: []datadogV2.CaseNotificationRuleTrigger{
+                    {
+                        Data: &datadogV2.CaseNotificationRuleTriggerData{},
+                        Type: datadog.PtrString("CASE_CREATED"),
+                    },
+                },
+            },
+            Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.CreateProjectNotificationRule(ctx, "project_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateProjectNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateProjectNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateProjectNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CreateProjectNotificationRule`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a notification rule returns "CREATED" response
@@ -3049,13 +3011,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create a notification rule returns "CREATED" response
@@ -3095,13 +3058,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3118,18 +3082,14 @@ const params: v2.CaseManagementApiCreateProjectNotificationRuleRequest = {
     data: {
       attributes: {
         isEnabled: true,
-        recipients: [
-          {
+        recipients: [{
             data: {},
             type: "EMAIL",
-          },
-        ],
-        triggers: [
-          {
+          },],
+        triggers: [{
             data: {},
             type: "CASE_CREATED",
-          },
-        ],
+          },],
       },
       type: "notification_rule",
     },
@@ -3145,6 +3105,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3172,8 +3133,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all projects.
 
 OAuth apps require the `cases_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Response
 
@@ -3236,7 +3195,7 @@ Response with projects
 | value                          | Option 1                                        | string              |
 | value                          | Option 2                                        | double              |
 | value                          | Option 3                                        | object              |
-| value                          | Option 4                                        | [ <oneOf>]     |
+| value                          | Option 4                                        | [<oneOf>]     |
 | Option 4                       | Option 1                                        | string              |
 | Option 4                       | Option 2                                        | double              |
 | Option 4                       | Option 3                                        | object              |
@@ -3330,20 +3289,17 @@ Response with projects
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "columns_config": {
-          "columns": [
-            {
+          "columns": [{
               "sort": {
                 "ascending": false,
                 "priority": "integer"
               },
               "sort_field": "string",
               "type": "string"
-            }
-          ]
+            }]
         },
         "enabled_custom_case_types": [],
         "key": "CASEM",
@@ -3361,12 +3317,10 @@ Response with projects
             "auto_escalation_query": "string",
             "default_incident_commander": "string",
             "enabled": false,
-            "field_mappings": [
-              {
+            "field_mappings": [{
                 "case_field": "string",
                 "incident_user_defined_field_id": "string"
-              }
-            ],
+              }],
             "incident_type": "string",
             "severity_config": {
               "priority_mapping": {
@@ -3441,8 +3395,7 @@ Response with projects
           "integration_on_call": {
             "auto_assign_on_call": false,
             "enabled": false,
-            "escalation_queries": [
-              {
+            "escalation_queries": [{
                 "enabled": false,
                 "id": "string",
                 "query": "string",
@@ -3451,8 +3404,7 @@ Response with projects
                   "team_id": "string",
                   "user_id": "string"
                 }
-              }
-            ]
+              }]
           },
           "integration_service_now": {
             "assignment_group": "string",
@@ -3504,29 +3456,25 @@ Response with projects
       "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
       "relationships": {
         "member_team": {
-          "data": [
-            {
+          "data": [{
               "id": "f9bb8444-af7f-11ec-ac2c-da7ad0900001",
               "type": "team_links"
-            }
-          ],
+            }],
           "links": {
             "related": "/api/v2/team/c75a4a8e-20c7-11ee-a3a5-da7ad0900002/links"
           }
         },
         "member_user": {
-          "data": [
-            {
+          "data": [{
               "id": "00000000-0000-0000-0000-000000000000",
               "type": "user"
-            }
-          ]
+            }]
         }
       },
       "type": "project"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3548,10 +3496,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3573,10 +3520,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3598,10 +3544,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3623,10 +3568,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3648,10 +3592,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3660,13 +3603,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3682,13 +3625,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_projects()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all projects returns "OK" response
@@ -3696,13 +3640,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 p api_instance.get_projects()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all projects returns "OK" response
@@ -3710,37 +3655,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.GetProjects(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.GetProjects(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProjects`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProjects`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProjects`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProjects`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all projects returns "OK" response
@@ -3767,13 +3713,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all projects returns "OK" response
@@ -3791,13 +3738,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3817,6 +3765,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3844,8 +3793,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the details of case by `case_id`
 
 OAuth apps require the `cases_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4001,6 +3948,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4022,10 +3970,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4047,10 +3994,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4072,10 +4018,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4097,10 +4042,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4122,10 +4066,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4134,13 +4077,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4162,13 +4105,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the details of a case returns "OK" response
@@ -4179,13 +4123,14 @@ api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 # there is a valid "case" in the system
 CASE_ID = ENV["CASE_ID"]
 p api_instance.get_case(CASE_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the details of a case returns "OK" response
@@ -4193,40 +4138,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.GetCase(ctx, CaseID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.GetCase(ctx, CaseID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the details of a case returns "OK" response
@@ -4256,13 +4202,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the details of a case returns "OK" response
@@ -4282,13 +4229,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4315,6 +4263,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4342,8 +4291,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the details of a project by `project_id`.
 
 OAuth apps require the `cases_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4414,7 +4361,7 @@ Project response
 | value                          | Option 1                                        | string              |
 | value                          | Option 2                                        | double              |
 | value                          | Option 3                                        | object              |
-| value                          | Option 4                                        | [ <oneOf>]     |
+| value                          | Option 4                                        | [<oneOf>]     |
 | Option 4                       | Option 1                                        | string              |
 | Option 4                       | Option 2                                        | double              |
 | Option 4                       | Option 3                                        | object              |
@@ -4511,16 +4458,14 @@ Project response
   "data": {
     "attributes": {
       "columns_config": {
-        "columns": [
-          {
+        "columns": [{
             "sort": {
               "ascending": false,
               "priority": "integer"
             },
             "sort_field": "string",
             "type": "string"
-          }
-        ]
+          }]
       },
       "enabled_custom_case_types": [],
       "key": "CASEM",
@@ -4538,12 +4483,10 @@ Project response
           "auto_escalation_query": "string",
           "default_incident_commander": "string",
           "enabled": false,
-          "field_mappings": [
-            {
+          "field_mappings": [{
               "case_field": "string",
               "incident_user_defined_field_id": "string"
-            }
-          ],
+            }],
           "incident_type": "string",
           "severity_config": {
             "priority_mapping": {
@@ -4618,8 +4561,7 @@ Project response
         "integration_on_call": {
           "auto_assign_on_call": false,
           "enabled": false,
-          "escalation_queries": [
-            {
+          "escalation_queries": [{
               "enabled": false,
               "id": "string",
               "query": "string",
@@ -4628,8 +4570,7 @@ Project response
                 "team_id": "string",
                 "user_id": "string"
               }
-            }
-          ]
+            }]
         },
         "integration_service_now": {
           "assignment_group": "string",
@@ -4681,28 +4622,25 @@ Project response
     "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
     "relationships": {
       "member_team": {
-        "data": [
-          {
+        "data": [{
             "id": "f9bb8444-af7f-11ec-ac2c-da7ad0900001",
             "type": "team_links"
-          }
-        ],
+          }],
         "links": {
           "related": "/api/v2/team/c75a4a8e-20c7-11ee-a3a5-da7ad0900002/links"
         }
       },
       "member_user": {
-        "data": [
-          {
+        "data": [{
             "id": "00000000-0000-0000-0000-000000000000",
             "type": "user"
-          }
-        ]
+          }]
       }
     },
     "type": "project"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4724,10 +4662,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4749,10 +4686,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4774,10 +4710,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4799,10 +4734,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4824,10 +4758,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4836,13 +4769,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4860,13 +4793,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the details of a project returns "OK" response
@@ -4874,13 +4808,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 p api_instance.get_project("project_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the details of a project returns "OK" response
@@ -4888,37 +4823,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.GetProject(ctx, "project_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.GetProject(ctx, "project_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProject`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.GetProject`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProject`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.GetProject`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the details of a project returns "OK" response
@@ -4945,13 +4881,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the details of a project returns "OK" response
@@ -4969,13 +4906,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4999,6 +4937,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5026,8 +4965,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update a notification rule.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5089,8 +5026,7 @@ Notification rule payload
     "attributes": {
       "is_enabled": false,
       "query": "string",
-      "recipients": [
-        {
+      "recipients": [{
           "data": {
             "channel": "string",
             "channel_id": "string",
@@ -5107,10 +5043,8 @@ Notification rule payload
             "workspace_id": "string"
           },
           "type": "EMAIL"
-        }
-      ],
-      "triggers": [
-        {
+        }],
+      "triggers": [{
           "data": {
             "change_type": "string",
             "field": "string",
@@ -5120,12 +5054,12 @@ Notification rule payload
             "to_status_name": "string"
           },
           "type": "CASE_CREATED"
-        }
-      ]
+        }]
     },
     "type": "notification_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5151,10 +5085,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5176,10 +5109,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5201,10 +5133,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5226,10 +5157,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5251,10 +5181,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5263,7 +5192,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"export notification_rule_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}/notification_rules/${notification_rule_id}" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -5275,8 +5204,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5297,18 +5226,14 @@ from datadog_api_client.v2.model.case_notification_rule_update_request import Ca
 body = CaseNotificationRuleUpdateRequest(
     data=CaseNotificationRuleUpdate(
         attributes=CaseNotificationRuleAttributes(
-            recipients=[
-                CaseNotificationRuleRecipient(
+            recipients=[CaseNotificationRuleRecipient(
                     data=CaseNotificationRuleRecipientData(),
                     type="EMAIL",
-                ),
-            ],
-            triggers=[
-                CaseNotificationRuleTrigger(
+                ),],
+            triggers=[CaseNotificationRuleTrigger(
                     data=CaseNotificationRuleTriggerData(),
                     type="CASE_CREATED",
-                ),
-            ],
+                ),],
         ),
         type=CaseNotificationRuleResourceType.NOTIFICATION_RULE,
     ),
@@ -5320,13 +5245,14 @@ with ApiClient(configuration) as api_client:
     api_instance.update_project_notification_rule(
         project_id="project_id", notification_rule_id="notification_rule_id", body=body
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a notification rule returns "No Content" response
@@ -5337,30 +5263,27 @@ api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 body = DatadogAPIClient::V2::CaseNotificationRuleUpdateRequest.new({
   data: DatadogAPIClient::V2::CaseNotificationRuleUpdate.new({
     attributes: DatadogAPIClient::V2::CaseNotificationRuleAttributes.new({
-      recipients: [
-        DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
+      recipients: [DatadogAPIClient::V2::CaseNotificationRuleRecipient.new({
           data: DatadogAPIClient::V2::CaseNotificationRuleRecipientData.new({}),
           type: "EMAIL",
-        }),
-      ],
-      triggers: [
-        DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
+        }),],
+      triggers: [DatadogAPIClient::V2::CaseNotificationRuleTrigger.new({
           data: DatadogAPIClient::V2::CaseNotificationRuleTriggerData.new({}),
           type: "CASE_CREATED",
-        }),
-      ],
+        }),],
     }),
     type: DatadogAPIClient::V2::CaseNotificationRuleResourceType::NOTIFICATION_RULE,
   }),
 })
 api_instance.update_project_notification_rule("project_id", "notification_rule_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update a notification rule returns "No Content" response
@@ -5368,52 +5291,53 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CaseNotificationRuleUpdateRequest{
-		Data: datadogV2.CaseNotificationRuleUpdate{
-			Attributes: &datadogV2.CaseNotificationRuleAttributes{
-				Recipients: []datadogV2.CaseNotificationRuleRecipient{
-					{
-						Data: &datadogV2.CaseNotificationRuleRecipientData{},
-						Type: datadog.PtrString("EMAIL"),
-					},
-				},
-				Triggers: []datadogV2.CaseNotificationRuleTrigger{
-					{
-						Data: &datadogV2.CaseNotificationRuleTriggerData{},
-						Type: datadog.PtrString("CASE_CREATED"),
-					},
-				},
-			},
-			Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.UpdateProjectNotificationRule(ctx, "project_id", "notification_rule_id", body)
+    body := datadogV2.CaseNotificationRuleUpdateRequest{
+        Data: datadogV2.CaseNotificationRuleUpdate{
+            Attributes: &datadogV2.CaseNotificationRuleAttributes{
+                Recipients: []datadogV2.CaseNotificationRuleRecipient{
+                    {
+                        Data: &datadogV2.CaseNotificationRuleRecipientData{},
+                        Type: datadog.PtrString("EMAIL"),
+                    },
+                },
+                Triggers: []datadogV2.CaseNotificationRuleTrigger{
+                    {
+                        Data: &datadogV2.CaseNotificationRuleTriggerData{},
+                        Type: datadog.PtrString("CASE_CREATED"),
+                    },
+                },
+            },
+            Type: datadogV2.CASENOTIFICATIONRULERESOURCETYPE_NOTIFICATION_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.UpdateProjectNotificationRule(ctx, "project_id", "notification_rule_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProjectNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProjectNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a notification rule returns "No Content" response
@@ -5466,13 +5390,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update a notification rule returns "No Content" response
@@ -5516,13 +5441,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5538,18 +5464,14 @@ const params: v2.CaseManagementApiUpdateProjectNotificationRuleRequest = {
   body: {
     data: {
       attributes: {
-        recipients: [
-          {
+        recipients: [{
             data: {},
             type: "EMAIL",
-          },
-        ],
-        triggers: [
-          {
+          },],
+        triggers: [{
             data: {},
             type: "CASE_CREATED",
-          },
-        ],
+          },],
       },
       type: "notification_rule",
     },
@@ -5566,6 +5488,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5593,8 +5516,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a notification rule using the notification rule's `id`.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5626,10 +5547,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5651,10 +5571,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5676,10 +5595,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5688,12 +5606,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"export notification_rule_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}/notification_rules/${notification_rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5710,13 +5628,14 @@ with ApiClient(configuration) as api_client:
         project_id="project_id",
         notification_rule_id="notification_rule_id",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a notification rule returns "No Content" response
@@ -5724,13 +5643,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 api_instance.delete_project_notification_rule("project_id", "notification_rule_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a notification rule returns "No Content" response
@@ -5738,33 +5658,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.DeleteProjectNotificationRule(ctx, "project_id", "notification_rule_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.DeleteProjectNotificationRule(ctx, "project_id", "notification_rule_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteProjectNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteProjectNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a notification rule returns "No Content" response
@@ -5790,13 +5711,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a notification rule returns "No Content" response
@@ -5819,13 +5741,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5850,6 +5773,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5877,8 +5801,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Remove a project using the project's `id`.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5909,10 +5831,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5934,10 +5855,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5959,10 +5879,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5971,12 +5890,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5992,13 +5911,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_project(
         project_id="project_id",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a project returns "No Content" response
@@ -6006,13 +5926,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 api_instance.delete_project("project_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a project returns "No Content" response
@@ -6020,33 +5941,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.DeleteProject(ctx, "project_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.DeleteProject(ctx, "project_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteProject`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteProject`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a project returns "No Content" response
@@ -6071,13 +5993,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a project returns "No Content" response
@@ -6095,13 +6018,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6125,6 +6049,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -6152,8 +6077,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case description
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6191,6 +6114,7 @@ Case description update payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6341,6 +6265,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6362,10 +6287,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6387,10 +6311,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6412,10 +6335,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6437,10 +6359,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6462,10 +6383,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6474,7 +6394,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/description" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6490,8 +6410,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update case description returns "OK" response
@@ -6499,48 +6419,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseUpdateDescriptionRequest{
-		Data: datadogV2.CaseUpdateDescription{
-			Attributes: datadogV2.CaseUpdateDescriptionAttributes{
-				Description: "Seeing some weird memory increase... Updating the description",
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateCaseDescription(ctx, CaseID, body)
+    body := datadogV2.CaseUpdateDescriptionRequest{
+        Data: datadogV2.CaseUpdateDescription{
+            Attributes: datadogV2.CaseUpdateDescriptionAttributes{
+                Description: "Seeing some weird memory increase... Updating the description",
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateCaseDescription(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseDescription`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseDescription`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseDescription`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseDescription`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case description returns "OK" response
@@ -6584,13 +6505,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6623,13 +6545,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_case_description(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case description returns "OK" response
@@ -6649,13 +6572,14 @@ body = DatadogAPIClient::V2::CaseUpdateDescriptionRequest.new({
   }),
 })
 p api_instance.update_case_description(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update case description returns "OK" response
@@ -6685,13 +6609,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6727,6 +6652,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -6754,8 +6680,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case status
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6794,6 +6718,7 @@ Case status update payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6944,6 +6869,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6965,10 +6891,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6990,10 +6915,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7015,10 +6939,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7040,10 +6963,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7065,10 +6987,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7077,7 +6998,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/status" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7093,8 +7014,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update case status returns "OK" response
@@ -7102,48 +7023,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseUpdateStatusRequest{
-		Data: datadogV2.CaseUpdateStatus{
-			Attributes: datadogV2.CaseUpdateStatusAttributes{
-				Status: datadogV2.CASESTATUS_IN_PROGRESS.Ptr(),
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateStatus(ctx, CaseID, body)
+    body := datadogV2.CaseUpdateStatusRequest{
+        Data: datadogV2.CaseUpdateStatus{
+            Attributes: datadogV2.CaseUpdateStatusAttributes{
+                Status: datadogV2.CASESTATUS_IN_PROGRESS.Ptr(),
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateStatus(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateStatus`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateStatus`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateStatus`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case status returns "OK" response
@@ -7185,13 +7107,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7225,13 +7148,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_status(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case status returns "OK" response
@@ -7251,13 +7175,14 @@ body = DatadogAPIClient::V2::CaseUpdateStatusRequest.new({
   }),
 })
 p api_instance.update_status(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update case status returns "OK" response
@@ -7286,13 +7211,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7327,6 +7253,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7354,8 +7281,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case title
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7393,6 +7318,7 @@ Case title update payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -7543,6 +7469,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -7564,10 +7491,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7589,10 +7515,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7614,10 +7539,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7639,10 +7563,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7664,10 +7587,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7676,7 +7598,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/title" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7692,8 +7614,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update case title returns "OK" response
@@ -7701,48 +7623,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseUpdateTitleRequest{
-		Data: datadogV2.CaseUpdateTitle{
-			Attributes: datadogV2.CaseUpdateTitleAttributes{
-				Title: "[UPDATED] Memory leak investigation on API",
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateCaseTitle(ctx, CaseID, body)
+    body := datadogV2.CaseUpdateTitleRequest{
+        Data: datadogV2.CaseUpdateTitle{
+            Attributes: datadogV2.CaseUpdateTitleAttributes{
+                Title: "[UPDATED] Memory leak investigation on API",
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateCaseTitle(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseTitle`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseTitle`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseTitle`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseTitle`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case title returns "OK" response
@@ -7785,13 +7708,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7824,13 +7748,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_case_title(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case title returns "OK" response
@@ -7850,13 +7775,14 @@ body = DatadogAPIClient::V2::CaseUpdateTitleRequest.new({
   }),
 })
 p api_instance.update_case_title(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update case title returns "OK" response
@@ -7884,13 +7810,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7925,6 +7852,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7952,8 +7880,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update a project.
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8023,7 +7949,7 @@ Project payload
 | value                          | Option 1                                        | string              |
 | value                          | Option 2                                        | double              |
 | value                          | Option 3                                        | object              |
-| value                          | Option 4                                        | [ <oneOf>]     |
+| value                          | Option 4                                        | [<oneOf>]     |
 | Option 4                       | Option 1                                        | string              |
 | Option 4                       | Option 2                                        | double              |
 | Option 4                       | Option 3                                        | object              |
@@ -8113,6 +8039,7 @@ Project payload
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -8178,7 +8105,7 @@ Project response
 | value                          | Option 1                                        | string              |
 | value                          | Option 2                                        | double              |
 | value                          | Option 3                                        | object              |
-| value                          | Option 4                                        | [ <oneOf>]     |
+| value                          | Option 4                                        | [<oneOf>]     |
 | Option 4                       | Option 1                                        | string              |
 | Option 4                       | Option 2                                        | double              |
 | Option 4                       | Option 3                                        | object              |
@@ -8275,16 +8202,14 @@ Project response
   "data": {
     "attributes": {
       "columns_config": {
-        "columns": [
-          {
+        "columns": [{
             "sort": {
               "ascending": false,
               "priority": "integer"
             },
             "sort_field": "string",
             "type": "string"
-          }
-        ]
+          }]
       },
       "enabled_custom_case_types": [],
       "key": "CASEM",
@@ -8302,12 +8227,10 @@ Project response
           "auto_escalation_query": "string",
           "default_incident_commander": "string",
           "enabled": false,
-          "field_mappings": [
-            {
+          "field_mappings": [{
               "case_field": "string",
               "incident_user_defined_field_id": "string"
-            }
-          ],
+            }],
           "incident_type": "string",
           "severity_config": {
             "priority_mapping": {
@@ -8382,8 +8305,7 @@ Project response
         "integration_on_call": {
           "auto_assign_on_call": false,
           "enabled": false,
-          "escalation_queries": [
-            {
+          "escalation_queries": [{
               "enabled": false,
               "id": "string",
               "query": "string",
@@ -8392,8 +8314,7 @@ Project response
                 "team_id": "string",
                 "user_id": "string"
               }
-            }
-          ]
+            }]
         },
         "integration_service_now": {
           "assignment_group": "string",
@@ -8445,28 +8366,25 @@ Project response
     "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
     "relationships": {
       "member_team": {
-        "data": [
-          {
+        "data": [{
             "id": "f9bb8444-af7f-11ec-ac2c-da7ad0900001",
             "type": "team_links"
-          }
-        ],
+          }],
         "links": {
           "related": "/api/v2/team/c75a4a8e-20c7-11ee-a3a5-da7ad0900002/links"
         }
       },
       "member_user": {
-        "data": [
-          {
+        "data": [{
             "id": "00000000-0000-0000-0000-000000000000",
             "type": "user"
-          }
-        ]
+          }]
       }
     },
     "type": "project"
   }
 }
+
 ```
 
 {% /tab %}
@@ -8488,10 +8406,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8513,10 +8430,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8538,10 +8454,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8563,10 +8478,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8588,10 +8502,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8600,7 +8513,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport project_id="e555e290-ed65-49bd-ae18-8acbfcf18db7"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/projects/${project_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -8616,8 +8529,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a project returns "OK" response
@@ -8625,45 +8538,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ProjectUpdateRequest{
-		Data: datadogV2.ProjectUpdate{
-			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
-			Attributes: &datadogV2.ProjectUpdateAttributes{
-				Name: datadog.PtrString("Updated Project Name Example-Case-Management"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateProject(ctx, "d4bbe1af-f36e-42f1-87c1-493ca35c320e", body)
+    body := datadogV2.ProjectUpdateRequest{
+        Data: datadogV2.ProjectUpdate{
+            Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+            Attributes: &datadogV2.ProjectUpdateAttributes{
+                Name: datadog.PtrString("Updated Project Name Example-Case-Management"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateProject(ctx, "d4bbe1af-f36e-42f1-87c1-493ca35c320e", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProject`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateProject`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateProject`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateProject`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a project returns "OK" response
@@ -8704,13 +8618,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -8739,13 +8654,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_project(project_id="d4bbe1af-f36e-42f1-87c1-493ca35c320e", body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a project returns "OK" response
@@ -8762,13 +8678,14 @@ body = DatadogAPIClient::V2::ProjectUpdateRequest.new({
   }),
 })
 p api_instance.update_project("d4bbe1af-f36e-42f1-87c1-493ca35c320e", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a project returns "OK" response
@@ -8798,13 +8715,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8836,6 +8754,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8863,8 +8782,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case priority
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8902,6 +8819,7 @@ Case priority update payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9052,6 +8970,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9073,10 +8992,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9098,10 +9016,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9123,10 +9040,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9148,10 +9064,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9173,10 +9088,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9185,7 +9099,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/priority" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9201,8 +9115,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update case priority returns "OK" response
@@ -9210,48 +9124,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseUpdatePriorityRequest{
-		Data: datadogV2.CaseUpdatePriority{
-			Attributes: datadogV2.CaseUpdatePriorityAttributes{
-				Priority: datadogV2.CASEPRIORITY_P3,
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdatePriority(ctx, CaseID, body)
+    body := datadogV2.CaseUpdatePriorityRequest{
+        Data: datadogV2.CaseUpdatePriority{
+            Attributes: datadogV2.CaseUpdatePriorityAttributes{
+                Priority: datadogV2.CASEPRIORITY_P3,
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdatePriority(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdatePriority`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdatePriority`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdatePriority`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdatePriority`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case priority returns "OK" response
@@ -9293,13 +9208,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9333,13 +9249,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_priority(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case priority returns "OK" response
@@ -9359,13 +9276,14 @@ body = DatadogAPIClient::V2::CaseUpdatePriorityRequest.new({
   }),
 })
 p api_instance.update_priority(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update case priority returns "OK" response
@@ -9394,13 +9312,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9435,6 +9354,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9462,8 +9382,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Assign case to a user
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9501,6 +9419,7 @@ Assign case payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9651,6 +9570,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9672,10 +9592,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9697,10 +9616,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9722,10 +9640,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9747,10 +9664,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9772,10 +9688,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9784,7 +9699,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/assign" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9800,8 +9715,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Assign case returns "OK" response
@@ -9809,51 +9724,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.CaseAssignRequest{
-		Data: datadogV2.CaseAssign{
-			Attributes: datadogV2.CaseAssignAttributes{
-				AssigneeId: UserDataID,
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.AssignCase(ctx, CaseID, body)
+    body := datadogV2.CaseAssignRequest{
+        Data: datadogV2.CaseAssign{
+            Attributes: datadogV2.CaseAssignAttributes{
+                AssigneeId: UserDataID,
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.AssignCase(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.AssignCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.AssignCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.AssignCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.AssignCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Assign case returns "OK" response
@@ -9897,13 +9813,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9939,13 +9856,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.assign_case(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Assign case returns "OK" response
@@ -9968,13 +9886,14 @@ body = DatadogAPIClient::V2::CaseAssignRequest.new({
   }),
 })
 p api_instance.assign_case(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Assign case returns "OK" response
@@ -10005,13 +9924,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10049,6 +9969,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -10076,8 +9997,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Unassign case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10110,6 +10029,7 @@ Unassign case payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10260,6 +10180,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10281,10 +10202,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10306,10 +10226,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10331,10 +10250,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10356,10 +10274,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10381,10 +10298,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10393,7 +10309,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/unassign" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10406,8 +10322,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Unassign case returns "OK" response
@@ -10415,45 +10331,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseEmptyRequest{
-		Data: datadogV2.CaseEmpty{
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UnassignCase(ctx, CaseID, body)
+    body := datadogV2.CaseEmptyRequest{
+        Data: datadogV2.CaseEmpty{
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UnassignCase(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnassignCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnassignCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UnassignCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UnassignCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Unassign case returns "OK" response
@@ -10489,13 +10406,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10524,13 +10442,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.unassign_case(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Unassign case returns "OK" response
@@ -10547,13 +10466,14 @@ body = DatadogAPIClient::V2::CaseEmptyRequest.new({
   }),
 })
 p api_instance.unassign_case(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Unassign case returns "OK" response
@@ -10577,13 +10497,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10615,6 +10536,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -10642,8 +10564,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Archive case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10676,6 +10596,7 @@ Archive case payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10826,6 +10747,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10847,10 +10769,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10872,10 +10793,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10897,10 +10817,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10922,10 +10841,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10947,10 +10865,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10959,7 +10876,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/archive" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10972,8 +10889,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Archive case returns "OK" response
@@ -10981,45 +10898,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseEmptyRequest{
-		Data: datadogV2.CaseEmpty{
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.ArchiveCase(ctx, CaseID, body)
+    body := datadogV2.CaseEmptyRequest{
+        Data: datadogV2.CaseEmpty{
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.ArchiveCase(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.ArchiveCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.ArchiveCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.ArchiveCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.ArchiveCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Archive case returns "OK" response
@@ -11055,13 +10973,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11090,13 +11009,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.archive_case(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Archive case returns "OK" response
@@ -11113,13 +11033,14 @@ body = DatadogAPIClient::V2::CaseEmptyRequest.new({
   }),
 })
 p api_instance.archive_case(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Archive case returns "OK" response
@@ -11143,13 +11064,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11181,6 +11103,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -11208,8 +11131,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Unarchive case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11242,6 +11163,7 @@ Unarchive case payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -11392,6 +11314,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -11413,10 +11336,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11438,10 +11360,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11463,10 +11384,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11488,10 +11408,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11513,10 +11432,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11525,7 +11443,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/unarchive" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -11538,8 +11456,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Unarchive case returns "OK" response
@@ -11547,45 +11465,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseEmptyRequest{
-		Data: datadogV2.CaseEmpty{
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UnarchiveCase(ctx, CaseID, body)
+    body := datadogV2.CaseEmptyRequest{
+        Data: datadogV2.CaseEmpty{
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UnarchiveCase(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnarchiveCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnarchiveCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UnarchiveCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UnarchiveCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Unarchive case returns "OK" response
@@ -11621,13 +11540,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11656,13 +11576,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.unarchive_case(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Unarchive case returns "OK" response
@@ -11679,13 +11600,14 @@ body = DatadogAPIClient::V2::CaseEmptyRequest.new({
   }),
 })
 p api_instance.unarchive_case(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Unarchive case returns "OK" response
@@ -11709,13 +11631,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11747,6 +11670,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -11774,8 +11698,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case attributes
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11810,21 +11732,16 @@ Case attributes update payload
   "data": {
     "attributes": {
       "attributes": {
-        "env": [
-          "test"
-        ],
-        "service": [
-          "web-store",
-          "web-api"
-        ],
-        "team": [
-          "engineer"
-        ]
+        "env": ["test"],
+        "service": ["web-store",
+          "web-api"],
+        "team": ["engineer"]
       }
     },
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -11975,6 +11892,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -11996,10 +11914,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12021,10 +11938,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12046,10 +11962,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12071,10 +11986,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12096,10 +12010,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12108,7 +12021,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/attributes" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12119,24 +12032,18 @@ API error response.
   "data": {
     "attributes": {
       "attributes": {
-        "env": [
-          "test"
-        ],
-        "service": [
-          "web-store",
-          "web-api"
-        ],
-        "team": [
-          "engineer"
-        ]
+        "env": ["test"],
+        "service": ["web-store",
+          "web-api"],
+        "team": ["engineer"]
       }
     },
     "type": "case"
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update case attributes returns "OK" response
@@ -12144,59 +12051,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseUpdateAttributesRequest{
-		Data: datadogV2.CaseUpdateAttributes{
-			Attributes: datadogV2.CaseUpdateAttributesAttributes{
-				Attributes: map[string][]string{
-					"env": []string{
-						"test",
-					},
-					"service": []string{
-						"web-store",
-						"web-api",
-					},
-					"team": []string{
-						"engineer",
-					},
-				},
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateAttributes(ctx, CaseID, body)
+    body := datadogV2.CaseUpdateAttributesRequest{
+        Data: datadogV2.CaseUpdateAttributes{
+            Attributes: datadogV2.CaseUpdateAttributesAttributes{
+                Attributes: map[string][]string{
+                    "env": []string{
+                        "test",
+                    },
+                    "service": []string{
+                        "web-store",
+                        "web-api",
+                    },
+                    "team": []string{
+                        "engineer",
+                    },
+                },
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateAttributes(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateAttributes`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateAttributes`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateAttributes`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateAttributes`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case attributes returns "OK" response
@@ -12246,13 +12154,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -12275,16 +12184,10 @@ body = CaseUpdateAttributesRequest(
     data=CaseUpdateAttributes(
         attributes=CaseUpdateAttributesAttributes(
             attributes=CaseObjectAttributes(
-                env=[
-                    "test",
-                ],
-                service=[
-                    "web-store",
-                    "web-api",
-                ],
-                team=[
-                    "engineer",
-                ],
+                env=["test",],
+                service=["web-store",
+                    "web-api",],
+                team=["engineer",],
             ),
         ),
         type=CaseResourceType.CASE,
@@ -12297,13 +12200,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_attributes(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case attributes returns "OK" response
@@ -12318,27 +12222,22 @@ body = DatadogAPIClient::V2::CaseUpdateAttributesRequest.new({
   data: DatadogAPIClient::V2::CaseUpdateAttributes.new({
     attributes: DatadogAPIClient::V2::CaseUpdateAttributesAttributes.new({
       attributes: {
-        env: [
-          "test",
-        ], service: [
-          "web-store",
-          "web-api",
-        ], team: [
-          "engineer",
-        ],
+        env: ["test",], service: ["web-store",
+          "web-api",], team: ["engineer",],
       },
     }),
     type: DatadogAPIClient::V2::CaseResourceType::CASE,
   }),
 })
 p api_instance.update_attributes(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update case attributes returns "OK" response
@@ -12355,14 +12254,12 @@ async fn main() {
     // there is a valid "case" in the system
     let case_id = std::env::var("CASE_ID").unwrap();
     let body = CaseUpdateAttributesRequest::new(CaseUpdateAttributes::new(
-        CaseUpdateAttributesAttributes::new(BTreeMap::from([
-            ("env".to_string(), vec!["test".to_string()]),
+        CaseUpdateAttributesAttributes::new(BTreeMap::from([("env".to_string(), vec!["test".to_string()]),
             (
                 "service".to_string(),
                 vec!["web-store".to_string(), "web-api".to_string()],
             ),
-            ("team".to_string(), vec!["engineer".to_string()]),
-        ])),
+            ("team".to_string(), vec!["engineer".to_string()]),])),
         CaseResourceType::CASE,
     ));
     let configuration = datadog::Configuration::new();
@@ -12374,13 +12271,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12419,6 +12317,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -12481,6 +12380,7 @@ Case comment payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -12520,8 +12420,7 @@ Timeline response
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "author": {
           "content": {
@@ -12542,9 +12441,9 @@ Timeline response
       },
       "id": "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
       "type": "timeline_cell"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -12566,10 +12465,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12591,10 +12489,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12616,10 +12513,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12641,10 +12537,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12666,10 +12561,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12678,7 +12572,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/comment" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12694,8 +12588,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Comment case returns "OK" response
@@ -12703,48 +12597,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	body := datadogV2.CaseCommentRequest{
-		Data: datadogV2.CaseComment{
-			Attributes: datadogV2.CaseCommentAttributes{
-				Comment: "Hello World !",
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.CommentCase(ctx, CaseID, body)
+    body := datadogV2.CaseCommentRequest{
+        Data: datadogV2.CaseComment{
+            Attributes: datadogV2.CaseCommentAttributes{
+                Comment: "Hello World !",
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.CommentCase(ctx, CaseID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CommentCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CommentCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CommentCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.CommentCase`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Comment case returns "OK" response
@@ -12785,13 +12680,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -12824,13 +12720,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.comment_case(case_id=CASE_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Comment case returns "OK" response
@@ -12850,13 +12747,14 @@ body = DatadogAPIClient::V2::CaseCommentRequest.new({
   }),
 })
 p api_instance.comment_case(CASE_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Comment case returns "OK" response
@@ -12884,13 +12782,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12925,6 +12824,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -12981,10 +12881,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13006,10 +12905,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13031,10 +12929,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13056,10 +12953,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13081,10 +12977,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13093,12 +12988,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"export cell_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/comment/${cell_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13122,13 +13017,14 @@ with ApiClient(configuration) as api_client:
         case_id=CASE_ID,
         cell_id=COMMENT_ID,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete case comment returns "No Content" response
@@ -13142,13 +13038,14 @@ CASE_ID = ENV["CASE_ID"]
 # there is a valid "comment" in the system
 COMMENT_ID = ENV["COMMENT_ID"]
 api_instance.delete_case_comment(CASE_ID, COMMENT_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete case comment returns "No Content" response
@@ -13156,39 +13053,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" in the system
-	CaseID := os.Getenv("CASE_ID")
+    // there is a valid "case" in the system
+    CaseID := os.Getenv("CASE_ID")
 
-	// there is a valid "comment" in the system
-	CommentID := os.Getenv("COMMENT_ID")
+    // there is a valid "comment" in the system
+    CommentID := os.Getenv("COMMENT_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.DeleteCaseComment(ctx, CaseID, CommentID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.DeleteCaseComment(ctx, CaseID, CommentID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteCaseComment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteCaseComment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete case comment returns "No Content" response
@@ -13219,13 +13117,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete case comment returns "No Content" response
@@ -13250,13 +13149,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13287,6 +13187,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -13314,8 +13215,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update case custom attribute
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13365,6 +13264,7 @@ Update case custom attribute payload
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -13515,6 +13415,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -13536,10 +13437,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13561,10 +13461,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13586,10 +13485,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13611,10 +13509,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13636,10 +13533,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13648,7 +13544,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"export custom_attribute_key="aws_region"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/custom_attributes/${custom_attribute_key}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -13666,8 +13562,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13708,13 +13604,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case custom attribute returns "OK" response
@@ -13733,22 +13630,21 @@ body = DatadogAPIClient::V2::CaseUpdateCustomAttributeRequest.new({
     attributes: DatadogAPIClient::V2::CustomAttributeValue.new({
       type: DatadogAPIClient::V2::CustomAttributeType::TEXT,
       is_multi: true,
-      value: [
-        "Abba",
-        "The Cure",
-      ],
+      value: ["Abba",
+        "The Cure",],
     }),
     type: DatadogAPIClient::V2::CaseResourceType::CASE,
   }),
 })
 p api_instance.update_case_custom_attribute(CASE_WITH_TYPE_ID, CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update case custom attribute returns "OK" response
@@ -13756,57 +13652,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" with a custom "case_type" in the system
-	CaseWithTypeID := os.Getenv("CASE_WITH_TYPE_ID")
+    // there is a valid "case" with a custom "case_type" in the system
+    CaseWithTypeID := os.Getenv("CASE_WITH_TYPE_ID")
 
-	// there is a valid "custom_attribute" in the system
-	CustomAttributeAttributesKey := os.Getenv("CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY")
+    // there is a valid "custom_attribute" in the system
+    CustomAttributeAttributesKey := os.Getenv("CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY")
 
-	body := datadogV2.CaseUpdateCustomAttributeRequest{
-		Data: datadogV2.CaseUpdateCustomAttribute{
-			Attributes: datadogV2.CustomAttributeValue{
-				Type:    datadogV2.CUSTOMATTRIBUTETYPE_TEXT,
-				IsMulti: true,
-				Value: datadogV2.CustomAttributeValuesUnion{
-					CustomAttributeMultiStringValue: &[]string{
-						"Abba",
-						"The Cure",
-					}},
-			},
-			Type: datadogV2.CASERESOURCETYPE_CASE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.UpdateCaseCustomAttribute(ctx, CaseWithTypeID, CustomAttributeAttributesKey, body)
+    body := datadogV2.CaseUpdateCustomAttributeRequest{
+        Data: datadogV2.CaseUpdateCustomAttribute{
+            Attributes: datadogV2.CustomAttributeValue{
+                Type:    datadogV2.CUSTOMATTRIBUTETYPE_TEXT,
+                IsMulti: true,
+                Value: datadogV2.CustomAttributeValuesUnion{
+                    CustomAttributeMultiStringValue: &[]string{
+                        "Abba",
+                        "The Cure",
+                    }},
+            },
+            Type: datadogV2.CASERESOURCETYPE_CASE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.UpdateCaseCustomAttribute(ctx, CaseWithTypeID, CustomAttributeAttributesKey, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseCustomAttribute`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UpdateCaseCustomAttribute`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseCustomAttribute`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.UpdateCaseCustomAttribute`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case custom attribute returns "OK" response
@@ -13861,13 +13758,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update case custom attribute returns "OK" response
@@ -13891,10 +13789,8 @@ async fn main() {
         CustomAttributeValue::new(
             true,
             CustomAttributeType::TEXT,
-            CustomAttributeValuesUnion::CustomAttributeMultiStringValue(vec![
-                "Abba".to_string(),
-                "The Cure".to_string(),
-            ]),
+            CustomAttributeValuesUnion::CustomAttributeMultiStringValue(vec!["Abba".to_string(),
+                "The Cure".to_string(),]),
         ),
         CaseResourceType::CASE,
     ));
@@ -13913,13 +13809,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13961,6 +13858,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -13988,8 +13886,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete custom attribute from case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14146,6 +14042,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -14167,10 +14064,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14192,10 +14088,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14217,10 +14112,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14242,10 +14136,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14254,13 +14147,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"export custom_attribute_key="aws_region"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/custom_attributes/${custom_attribute_key}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14286,13 +14179,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete custom attribute from case returns "OK" response
@@ -14306,13 +14200,14 @@ CASE_WITH_TYPE_ID = ENV["CASE_WITH_TYPE_ID"]
 # there is a valid "custom_attribute" in the system
 CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY = ENV["CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY"]
 p api_instance.delete_case_custom_attribute(CASE_WITH_TYPE_ID, CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete custom attribute from case returns "OK" response
@@ -14320,43 +14215,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "case" with a custom "case_type" in the system
-	CaseWithTypeID := os.Getenv("CASE_WITH_TYPE_ID")
+    // there is a valid "case" with a custom "case_type" in the system
+    CaseWithTypeID := os.Getenv("CASE_WITH_TYPE_ID")
 
-	// there is a valid "custom_attribute" in the system
-	CustomAttributeAttributesKey := os.Getenv("CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY")
+    // there is a valid "custom_attribute" in the system
+    CustomAttributeAttributesKey := os.Getenv("CUSTOM_ATTRIBUTE_ATTRIBUTES_KEY")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.DeleteCaseCustomAttribute(ctx, CaseWithTypeID, CustomAttributeAttributesKey)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.DeleteCaseCustomAttribute(ctx, CaseWithTypeID, CustomAttributeAttributesKey)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteCaseCustomAttribute`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.DeleteCaseCustomAttribute`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.DeleteCaseCustomAttribute`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.DeleteCaseCustomAttribute`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete custom attribute from case returns "OK" response
@@ -14390,13 +14286,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete custom attribute from case returns "OK" response
@@ -14424,13 +14321,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14462,6 +14360,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -14489,8 +14388,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update the project associated with a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14525,6 +14422,7 @@ Project update request
     "type": "project"
   }
 }
+
 ```
 
 {% /tab %}
@@ -14675,6 +14573,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -14704,8 +14603,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -14715,9 +14613,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -14747,8 +14645,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -14758,9 +14655,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -14790,8 +14687,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -14801,9 +14697,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -14833,8 +14729,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -14844,9 +14739,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -14868,10 +14763,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14880,7 +14774,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/project" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14894,8 +14788,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14922,13 +14816,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.move_case_to_project(case_id="case_id", body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update case project returns "OK" response
@@ -14946,13 +14841,14 @@ body = DatadogAPIClient::V2::ProjectRelationship.new({
   }),
 })
 p api_instance.move_case_to_project("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update case project returns "OK" response
@@ -14960,44 +14856,45 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ProjectRelationship{
-		Data: datadogV2.ProjectRelationshipData{
-			Id:   "e555e290-ed65-49bd-ae18-8acbfcf18db7",
-			Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.MoveCaseToProject", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.MoveCaseToProject(ctx, "case_id", body)
+    body := datadogV2.ProjectRelationship{
+        Data: datadogV2.ProjectRelationshipData{
+            Id:   "e555e290-ed65-49bd-ae18-8acbfcf18db7",
+            Type: datadogV2.PROJECTRESOURCETYPE_PROJECT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.MoveCaseToProject", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.MoveCaseToProject(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.MoveCaseToProject`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.MoveCaseToProject`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.MoveCaseToProject`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.MoveCaseToProject`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update case project returns "OK" response
@@ -15036,13 +14933,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update case project returns "OK" response
@@ -15068,13 +14966,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15105,6 +15004,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -15132,8 +15032,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Link an incident to a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -15168,6 +15066,7 @@ Incident link request
     "type": "incidents"
   }
 }
+
 ```
 
 {% /tab %}
@@ -15318,6 +15217,7 @@ Case response
     "type": "case"
   }
 }
+
 ```
 
 {% /tab %}
@@ -15347,8 +15247,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15358,9 +15257,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15390,8 +15289,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15401,9 +15299,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15433,8 +15331,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15444,9 +15341,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15476,8 +15373,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15487,9 +15383,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15511,10 +15407,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -15523,7 +15418,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/incidents" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -15537,8 +15432,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15565,13 +15460,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.link_incident(case_id="case_id", body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Link incident to case returns "Created" response
@@ -15589,13 +15485,14 @@ body = DatadogAPIClient::V2::RelationshipToIncidentRequest.new({
   }),
 })
 p api_instance.link_incident("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Link incident to case returns "Created" response
@@ -15603,44 +15500,45 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RelationshipToIncidentRequest{
-		Data: datadogV2.IncidentRelationshipData{
-			Id:   "00000000-0000-0000-0000-000000000000",
-			Type: datadogV2.INCIDENTRESOURCETYPE_INCIDENTS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.LinkIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	resp, r, err := api.LinkIncident(ctx, "case_id", body)
+    body := datadogV2.RelationshipToIncidentRequest{
+        Data: datadogV2.IncidentRelationshipData{
+            Id:   "00000000-0000-0000-0000-000000000000",
+            Type: datadogV2.INCIDENTRESOURCETYPE_INCIDENTS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.LinkIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    resp, r, err := api.LinkIncident(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.LinkIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CaseManagementApi.LinkIncident`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Link incident to case returns "Created" response
@@ -15678,13 +15576,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Link incident to case returns "Created" response
@@ -15710,13 +15609,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15747,6 +15647,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -15774,8 +15675,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new Jira issue and link it to a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -15819,6 +15718,7 @@ Jira issue creation request
     "type": "issues"
   }
 }
+
 ```
 
 {% /tab %}
@@ -15852,8 +15752,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15863,9 +15762,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15895,8 +15794,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15906,9 +15804,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15938,8 +15836,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15949,9 +15846,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15981,8 +15878,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -15992,9 +15888,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16016,10 +15912,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -16028,7 +15923,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -16046,8 +15941,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -16078,13 +15973,14 @@ configuration.unstable_operations["create_case_jira_issue"] = True
 with ApiClient(configuration) as api_client:
     api_instance = CaseManagementApi(api_client)
     api_instance.create_case_jira_issue(case_id="case_id", body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Jira issue for case returns "Accepted" response
@@ -16107,13 +16003,14 @@ body = DatadogAPIClient::V2::JiraIssueCreateRequest.new({
   }),
 })
 p api_instance.create_case_jira_issue("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create Jira issue for case returns "Accepted" response
@@ -16121,45 +16018,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.JiraIssueCreateRequest{
-		Data: datadogV2.JiraIssueCreateData{
-			Attributes: datadogV2.JiraIssueCreateAttributes{
-				Fields:        map[string]interface{}{},
-				IssueTypeId:   "10001",
-				JiraAccountId: "1234",
-				ProjectId:     "5678",
-			},
-			Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateCaseJiraIssue", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.CreateCaseJiraIssue(ctx, "case_id", body)
+    body := datadogV2.JiraIssueCreateRequest{
+        Data: datadogV2.JiraIssueCreateData{
+            Attributes: datadogV2.JiraIssueCreateAttributes{
+                Fields:        map[string]interface{}{},
+                IssueTypeId:   "10001",
+                JiraAccountId: "1234",
+                ProjectId:     "5678",
+            },
+            Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateCaseJiraIssue", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.CreateCaseJiraIssue(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseJiraIssue`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseJiraIssue`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Jira issue for case returns "Accepted" response
@@ -16202,13 +16100,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create Jira issue for case returns "Accepted" response
@@ -16239,13 +16138,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16281,6 +16181,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -16308,8 +16209,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Link an existing Jira issue to a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -16347,6 +16246,7 @@ Jira issue link request
     "type": "issues"
   }
 }
+
 ```
 
 {% /tab %}
@@ -16380,8 +16280,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16391,9 +16290,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16423,8 +16322,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16434,9 +16332,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16466,8 +16364,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16477,9 +16374,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16509,8 +16406,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16520,9 +16416,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16552,8 +16448,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16563,9 +16458,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16587,10 +16482,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -16599,7 +16493,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -16614,8 +16508,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -16643,13 +16537,14 @@ configuration.unstable_operations["link_jira_issue_to_case"] = True
 with ApiClient(configuration) as api_client:
     api_instance = CaseManagementApi(api_client)
     api_instance.link_jira_issue_to_case(case_id="case_id", body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Link existing Jira issue to case returns "No Content" response
@@ -16669,13 +16564,14 @@ body = DatadogAPIClient::V2::JiraIssueLinkRequest.new({
   }),
 })
 api_instance.link_jira_issue_to_case("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Link existing Jira issue to case returns "No Content" response
@@ -16683,42 +16579,43 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.JiraIssueLinkRequest{
-		Data: datadogV2.JiraIssueLinkData{
-			Attributes: datadogV2.JiraIssueLinkAttributes{
-				JiraIssueUrl: "https://jira.example.com/browse/PROJ-123",
-			},
-			Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.LinkJiraIssueToCase", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.LinkJiraIssueToCase(ctx, "case_id", body)
+    body := datadogV2.JiraIssueLinkRequest{
+        Data: datadogV2.JiraIssueLinkData{
+            Attributes: datadogV2.JiraIssueLinkAttributes{
+                JiraIssueUrl: "https://jira.example.com/browse/PROJ-123",
+            },
+            Type: datadogV2.JIRAISSUERESOURCETYPE_ISSUES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.LinkJiraIssueToCase", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.LinkJiraIssueToCase(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkJiraIssueToCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.LinkJiraIssueToCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Link existing Jira issue to case returns "No Content" response
@@ -16757,13 +16654,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Link existing Jira issue to case returns "No Content" response
@@ -16792,13 +16690,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16831,6 +16730,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -16858,8 +16758,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Remove the link between a Jira issue and a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -16898,8 +16796,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16909,9 +16806,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16941,8 +16838,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16952,9 +16848,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -16984,8 +16880,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -16995,9 +16890,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17027,8 +16922,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17038,9 +16932,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17062,10 +16956,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -17074,12 +16967,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/jira_issues" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17096,13 +16989,14 @@ with ApiClient(configuration) as api_client:
     api_instance.unlink_jira_issue(
         case_id="case_id",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove Jira issue link from case returns "No Content" response
@@ -17113,13 +17007,14 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::CaseManagementAPI.new
 api_instance.unlink_jira_issue("case_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove Jira issue link from case returns "No Content" response
@@ -17127,34 +17022,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UnlinkJiraIssue", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.UnlinkJiraIssue(ctx, "case_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UnlinkJiraIssue", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.UnlinkJiraIssue(ctx, "case_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnlinkJiraIssue`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.UnlinkJiraIssue`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove Jira issue link from case returns "No Content" response
@@ -17180,13 +17076,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove Jira issue link from case returns "No Content" response
@@ -17205,13 +17102,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17236,6 +17134,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -17263,8 +17162,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new ServiceNow incident ticket and link it to a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -17304,6 +17201,7 @@ ServiceNow ticket creation request
     "type": "tickets"
   }
 }
+
 ```
 
 {% /tab %}
@@ -17337,8 +17235,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17348,9 +17245,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17380,8 +17277,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17391,9 +17287,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17423,8 +17319,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17434,9 +17329,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17466,8 +17361,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17477,9 +17371,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17501,10 +17395,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -17513,7 +17406,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/servicenow_tickets" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -17529,8 +17422,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17559,13 +17452,14 @@ configuration.unstable_operations["create_case_service_now_ticket"] = True
 with ApiClient(configuration) as api_client:
     api_instance = CaseManagementApi(api_client)
     api_instance.create_case_service_now_ticket(case_id="case_id", body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create ServiceNow ticket for case returns "Accepted" response
@@ -17586,13 +17480,14 @@ body = DatadogAPIClient::V2::ServiceNowTicketCreateRequest.new({
   }),
 })
 p api_instance.create_case_service_now_ticket("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create ServiceNow ticket for case returns "Accepted" response
@@ -17600,43 +17495,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ServiceNowTicketCreateRequest{
-		Data: datadogV2.ServiceNowTicketCreateData{
-			Attributes: datadogV2.ServiceNowTicketCreateAttributes{
-				AssignmentGroup: datadog.PtrString("IT Support"),
-				InstanceName:    "my-instance",
-			},
-			Type: datadogV2.SERVICENOWTICKETRESOURCETYPE_TICKETS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateCaseServiceNowTicket", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.CreateCaseServiceNowTicket(ctx, "case_id", body)
+    body := datadogV2.ServiceNowTicketCreateRequest{
+        Data: datadogV2.ServiceNowTicketCreateData{
+            Attributes: datadogV2.ServiceNowTicketCreateAttributes{
+                AssignmentGroup: datadog.PtrString("IT Support"),
+                InstanceName:    "my-instance",
+            },
+            Type: datadogV2.SERVICENOWTICKETRESOURCETYPE_TICKETS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateCaseServiceNowTicket", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.CreateCaseServiceNowTicket(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseServiceNowTicket`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseServiceNowTicket`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create ServiceNow ticket for case returns "Accepted" response
@@ -17676,13 +17572,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create ServiceNow ticket for case returns "Accepted" response
@@ -17712,13 +17609,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17752,6 +17650,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -17779,8 +17678,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new investigation notebook and link it to a case
 
 OAuth apps require the `cases_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#case-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -17813,6 +17710,7 @@ Notebook creation request
     "type": "notebook"
   }
 }
+
 ```
 
 {% /tab %}
@@ -17846,8 +17744,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17857,9 +17754,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17889,8 +17786,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17900,9 +17796,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17932,8 +17828,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17943,9 +17838,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -17975,8 +17870,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -17986,9 +17880,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -18010,10 +17904,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -18022,7 +17915,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport case_id="f98a5a5b-e0ff-45d4-b2f5-afe6e74de504"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cases/${case_id}/relationships/notebook" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -18034,8 +17927,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -18059,13 +17952,14 @@ configuration.unstable_operations["create_case_notebook"] = True
 with ApiClient(configuration) as api_client:
     api_instance = CaseManagementApi(api_client)
     api_instance.create_case_notebook(case_id="case_id", body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create investigation notebook for case returns "No Content" response
@@ -18082,13 +17976,14 @@ body = DatadogAPIClient::V2::NotebookCreateRequest.new({
   }),
 })
 api_instance.create_case_notebook("case_id", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create investigation notebook for case returns "No Content" response
@@ -18096,39 +17991,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.NotebookCreateRequest{
-		Data: datadogV2.NotebookCreateData{
-			Type: datadogV2.NOTEBOOKRESOURCETYPE_NOTEBOOK,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateCaseNotebook", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCaseManagementApi(apiClient)
-	r, err := api.CreateCaseNotebook(ctx, "case_id", body)
+    body := datadogV2.NotebookCreateRequest{
+        Data: datadogV2.NotebookCreateData{
+            Type: datadogV2.NOTEBOOKRESOURCETYPE_NOTEBOOK,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateCaseNotebook", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCaseManagementApi(apiClient)
+    r, err := api.CreateCaseNotebook(ctx, "case_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseNotebook`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CaseManagementApi.CreateCaseNotebook`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create investigation notebook for case returns "No Content" response
@@ -18161,13 +18057,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create investigation notebook for case returns "No Content" response
@@ -18190,13 +18087,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -18226,6 +18124,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

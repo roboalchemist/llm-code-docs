@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User activity from Tor
 ---
 
 # User activity from Tor
- 
+
 ### Goal{% #goal %}
 
 Detect user activity from suspicious IPs, specifically the [Tor anonymisation network](https://en.wikipedia.org/wiki/Tor_%28network%29).

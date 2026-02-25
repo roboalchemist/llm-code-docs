@@ -69,6 +69,5 @@ function(
 ROOT = Path("/tmp")
 my_path = ROOT / "mydir" / "subdir"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1567-exfiltration-over-web-service](https://attack.mitre.org/techniques/T1567) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1567-exfiltration-over-web-service](https://attack.mitre.org/techniques/T1567)
 ## Goal{% #goal %}
 
 Detects when a GitLab user downloads multiple projects or repositories within a short time period. Such activity may indicate a data exfiltration attempt.

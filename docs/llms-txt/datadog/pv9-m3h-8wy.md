@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Profiling for API server should be disabled, if not needed
-Classification:complianceFramework:cis-kubernetesControl:1.2.21 
+Classification:complianceFramework:cis-kubernetesControl:1.2.21
 ## Description{% #description %}
 
 Disable profiling, if not needed.

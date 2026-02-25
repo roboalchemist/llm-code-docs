@@ -86,6 +86,5 @@ export let a,
 // let a, b;a = b = 1
 class C { [foo = 0] = 0 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

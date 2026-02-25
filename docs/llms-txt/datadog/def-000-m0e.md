@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # All Interactive Users Home Directories Must Exist
- 
+
 ## Description{% #description %}
 
 Create home directories to all local interactive users that currently do not have a home directory assigned. Use the following commands to create the user home directory assigned in `/etc/passwd`:
 
 ```
 $ sudo mkdir /home/USER
-        
+
 ```
 
 ## Rationale{% #rationale %}

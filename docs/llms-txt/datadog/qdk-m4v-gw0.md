@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A new Microsoft Teams app or bot was observed
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1137-office-application-startup](https://attack.mitre.org/techniques/T1137) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1137-office-application-startup](https://attack.mitre.org/techniques/T1137)
 ## Goal{% #goal %}
 
 Detect when a new Microsoft 365 teams app or bot is installed as a means of establishing persistence.

@@ -51,16 +51,15 @@ Always stay updated with the latest best practices and security recommendations 
 package main
 
 import (
-	"crypto/rc4"
+    "crypto/rc4"
 )
 
 func main() {
-	_, err := rc4.NewCipher([]byte("mySample"))
-	if err != nil {
-		panic(err)
-	}
+    _, err := rc4.NewCipher([]byte("mySample"))
+    if err != nil {
+        panic(err)
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

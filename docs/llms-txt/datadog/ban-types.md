@@ -74,6 +74,5 @@ const capitalObj: { a: string } = { a: 'string' };
 const curly1: number = 1;
 const curly2: Record<'a', string> = { a: 'string' };
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

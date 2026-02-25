@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS logs should be collected and retained for no less than 90 days
- 
+
 ## Description{% #description %}
 
 RDS instances should have CloudWatch Logs exports enabled with log retention configured for no less than 90 days to ensure adequate log retention for security monitoring and compliance requirements.

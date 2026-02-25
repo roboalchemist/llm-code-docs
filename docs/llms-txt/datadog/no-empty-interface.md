@@ -63,6 +63,5 @@ interface Foo { name: string; }
 interface Foo { props: string; }
 class Bar {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Multiple GitLab OTP attempts
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621)
 ## Goal{% #goal %}
 
 Detects multiple failed GitLab OTP authentication attempts that may indicate brute force attacks against user accounts. Alerts when users experience repeated OTP failures, account lockouts, or suspicious authentication patterns.

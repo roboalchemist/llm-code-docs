@@ -6,8 +6,6 @@ description: Instrument your code to improve performance
 breadcrumbs: Docs > APM
 ---
 
-# APM
-
 {% callout %}
 ##### Join an enablement webinar session
 

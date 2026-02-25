@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure pam_faillock module i
 ---
 
 # Ensure pam_faillock module is enabled
- 
+
 ## Description{% #description %}
 
 The `pam_faillock.so` module maintains a list of failed authentication attempts per user during a specified interval and locks the account in case there were more than the configured number of consecutive failed authentications (this is defined by the `deny` parameter in the faillock configuration). It stores the failure records into per-user files in the tally directory.
@@ -41,7 +41,7 @@ authselect enable-feature with-faillock
 
 authselect apply-changes -b
 else
-    
+
 conf_name=cac_faillock
 
 if [ ! -f /usr/share/pam-configs/"$conf_name" ]; then

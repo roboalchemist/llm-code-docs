@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Limit Password Reuse
 ---
 
 # Limit Password Reuse
- 
+
 ## Description{% #description %}
 
 Do not allow users to reuse recent passwords. This can be accomplished by using the `remember` option for the `pam_pwhistory` PAM modules.
@@ -50,7 +50,7 @@ if [ -f /usr/bin/authselect ]; then
 
         authselect apply-changes -b
     else
-        
+
         if ! authselect check; then
         echo "
         authselect integrity check failed. Remediation aborted!
@@ -71,20 +71,20 @@ if [ -f /usr/bin/authselect ]; then
             fi
             authselect create-profile hardening -b $CURRENT_PROFILE
             CURRENT_PROFILE="custom/hardening"
-            
+
             authselect apply-changes -b --backup=before-hardening-custom-profile
             authselect select $CURRENT_PROFILE
             for feature in $ENABLED_FEATURES; do
                 authselect enable-feature $feature;
             done
-            
+
             authselect apply-changes -b --backup=after-hardening-custom-profile
         fi
         PAM_FILE_NAME=$(basename "cac_pwhistory")
         PAM_FILE_PATH="/etc/authselect/$CURRENT_PROFILE/$PAM_FILE_NAME"
 
         authselect apply-changes -b
-        
+
         if ! grep -qP "^\s*password\s+requisite\s+pam_pwhistory.so\s*.*" "$PAM_FILE_PATH"; then
             # Line matching group + control + module was not found. Check group + module.
             if [ "$(grep -cP '^\s*password\s+.*\s+pam_pwhistory.so\s*' "$PAM_FILE_PATH")" -eq 1 ]; then

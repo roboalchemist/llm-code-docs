@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM policies should not use 'Effect: Allow' with 'NotAction'
- 
+
 ## Description{% #description %}
 
 IAM policies using 'Effect: Allow' with 'NotAction' permits all actions except those explicitly denied, which can lead to unintended privilege escalation and broader access than intended. Instead, explicit permissions should be defined to enforce the principle of least privilege, ensuring users have only the access necessary for their roles.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Configure systemd-journal-up
 ---
 
 # Configure systemd-journal-upload URL
- 
+
 ## Description{% #description %}
 
 Ubuntu 24.04 must offload rsyslog messages for networked systems in real time and offload standalone systems at least weekly

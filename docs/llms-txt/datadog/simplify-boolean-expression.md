@@ -43,30 +43,30 @@ Therefore, it is recommended to simply use `return condition` instead of `if con
 
 ```go
 func main() {
-	if foo == 1 {
-		return true
-	}
-	return false
+    if foo == 1 {
+        return true
+    }
+    return false
 }
 ```
 
 ```go
 func main() {
-	if foo == 1 {
-		return true
-	} else {
-		return false
-	}
+    if foo == 1 {
+        return true
+    } else {
+        return false
+    }
 
-	if foo != 4 {
-		// Comment 1
-		return true
-		// Comment 2
-	} else {
-		// Comment 3
-		return false
-		// Comment 4
-	}
+    if foo != 4 {
+        // Comment 1
+        return true
+        // Comment 2
+    } else {
+        // Comment 3
+        return false
+        // Comment 4
+    }
 }
 ```
 
@@ -74,52 +74,51 @@ func main() {
 
 ```go
 func main() {
-	if len(spec) == 0 {
-		return true
-	} else if slides.Contains(sped, candidate) {
-		foobar()
-		return true
-	}
-	return false
+    if len(spec) == 0 {
+        return true
+    } else if slides.Contains(sped, candidate) {
+        foobar()
+        return true
+    }
+    return false
 }
 ```
 
 ```go
 func main() {
-	exists, err := h.deduper.KeyExists(ctx, dedupeKey)
-	if err != nil {
-		return false, commonhandler.RetryErrHandleResp(err)
-	} else if exists {
-		return true, commonhandler.SuccessHandleResp
-	}
+    exists, err := h.deduper.KeyExists(ctx, dedupeKey)
+    if err != nil {
+        return false, commonhandler.RetryErrHandleResp(err)
+    } else if exists {
+        return true, commonhandler.SuccessHandleResp
+    }
 
-	return false, commonhandler.SuccessHandleResp
+    return false, commonhandler.SuccessHandleResp
 }
 ```
 
 ```go
 func main() {
-	if foo == 1 {
-		println("foo")
-		return true
-	} else {
-		return false
-	}
+    if foo == 1 {
+        println("foo")
+        return true
+    } else {
+        return false
+    }
 
-	if foo == 1 {
-		// Some comment
-		return true
-	} else {
-		// Another comment
-		return true
-	}
+    if foo == 1 {
+        // Some comment
+        return true
+    } else {
+        // Another comment
+        return true
+    }
 
-	if strings.TrimSpace(rawMessage.Custom.Git.RepositoryURL) == "" {
-		return false, ""
-	}
-	return true, ""
+    if strings.TrimSpace(rawMessage.Custom.Git.RepositoryURL) == "" {
+        return false, ""
+    }
+    return true, ""
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

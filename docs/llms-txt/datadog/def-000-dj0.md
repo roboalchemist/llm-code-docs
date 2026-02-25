@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Customer-Managed Encryption Keys (CMEK) should be used for boot disks
- 
+
 ## Description{% #description %}
 
 Use Customer-Managed Encryption Keys (CMEK) to encrypt node boot disks using keys managed within Cloud Key Management Service (Cloud KMS). GCE persistent disks are encrypted at rest by default using envelope encryption with keys managed by Google. For additional protection, users can manage the Key Encryption Keys using Cloud KMS.

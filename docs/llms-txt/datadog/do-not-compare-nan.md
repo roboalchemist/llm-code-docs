@@ -39,23 +39,22 @@ You do not need to convert the string into a slice of bytes to use `Write`, you 
 package main
 
 import (
-	"fmt"
-	"math"
+    "fmt"
+    "math"
 )
 
 func main() {
-	n := 5.0
-	aNaN := math.NaN()
-	// This case cannot be caught with current capabilities
-	if n == aNaN {
-		fmt.Println("hello")
-	} else if n > math.NaN() {
-		fmt.Println("hi")
-	}
+    n := 5.0
+    aNaN := math.NaN()
+    // This case cannot be caught with current capabilities
+    if n == aNaN {
+        fmt.Println("hello")
+    } else if n > math.NaN() {
+        fmt.Println("hi")
+    }
 
-	fmt.Println("goodbye")
+    fmt.Println("goodbye")
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

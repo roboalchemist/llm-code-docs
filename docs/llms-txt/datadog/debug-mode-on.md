@@ -60,6 +60,5 @@ Configure::config('debug', false);
 // WordPress
 define('WP_DEBUG', false);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

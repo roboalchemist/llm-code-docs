@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EKS Cluster should have public access limited and managed nodegroups should use private subnets
- 
+
 ## Description{% #description %}
 
 This rule ensures EKS clusters and nodegroups follow security best practices for network access control. Only clusters in the `ACTIVE` status are assessed. The rule performs two main checks and will **FAIL** if any of these conditions are true:

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler pod specification file should have permissions of 644 or stricter
-Classification:complianceFramework:cis-kubernetesControl:1.1.5 
+Classification:complianceFramework:cis-kubernetesControl:1.1.5
 ## Description{% #description %}
 
 Ensure that the scheduler pod specification file has permissions of 644 or more restrictive.

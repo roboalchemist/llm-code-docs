@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Service accounts should only be bound to non-administrative roles
- 
+
 ## Description{% #description %}
 
 A service account is a special Google account that belongs to an application or a VM, instead of to an individual end-user. The application uses the service account to call the service's Google API so that users aren't directly involved. It's recommended not to use admin roles for ServiceAccount.

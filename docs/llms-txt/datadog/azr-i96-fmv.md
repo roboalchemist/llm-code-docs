@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudTrail log file validation should be enabled
- 
+
 ## Description{% #description %}
 
 CloudTrail log file validation generates a digitally signed digest file containing a hash of each log that CloudTrail writes to S3. This feature helps verify whether a log file was changed, deleted, or remains unchanged after delivery, thereby enhancing the integrity of CloudTrail logs. Enabling log file validation on all trails is recommended.

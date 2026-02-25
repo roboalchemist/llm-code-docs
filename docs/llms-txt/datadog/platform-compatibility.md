@@ -66,6 +66,5 @@ public void Caller()
                                                // is only supported on: 'windows', 'ios' 14.0 and later, 'MacCatalyst' 14.0 and later.
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

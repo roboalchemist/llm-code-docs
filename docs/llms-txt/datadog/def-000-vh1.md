@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Set Password Hashing Algorithm in /etc/login.defs
- 
+
 ## Description{% #description %}
 
 In `/etc/login.defs`, add or update the following line to ensure the system will use SHA512 as the hashing algorithm:
 
 ```
 ENCRYPT_METHOD SHA512
-         
+
 ```
 
 ## Rationale{% #rationale %}

@@ -139,7 +139,7 @@ Use this cURL command to make a revocation request:
 curl -X POST \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -d 'client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&token=$TOKEN_TO_REVOKE' \
-    "https://api.datadoghq.com/oauth2/v1/revoke" \ 
+    "https://api.datadoghq.com/oauth2/v1/revoke" \
 ```
 
 #### Success Response{% #success-response-1 %}

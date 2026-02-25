@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DocumentDB clusters should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This evaluation determines if an Amazon DocumentDB cluster has encryption enabled at rest. The evaluation will fail if the cluster is not encrypted at rest.

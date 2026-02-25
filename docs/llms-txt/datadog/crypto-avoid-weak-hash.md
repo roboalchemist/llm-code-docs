@@ -48,6 +48,5 @@ var hash = CryptoJS.MD5("Message", "Secret Passphrase");
 var hash = CryptoJS.SHA1("Message", "Secret Passphrase");
 var hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

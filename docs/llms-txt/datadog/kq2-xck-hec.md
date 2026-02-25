@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # New Private Repository Container Image detected in AWS ECR
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1525-implant-internal-image](https://attack.mitre.org/techniques/T1525) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1525-implant-internal-image](https://attack.mitre.org/techniques/T1525)
 ## Goal{% #goal %}
 
 Detect potential persistence mechanisms being deployed in the AWS Elastic Container Registry (ECR).

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > SES should use Email Address
 ---
 
 # SES should use Email Address Identities
- 
+
 ## Description{% #description %}
 
 Amazon SES must use Email Address Identities for verification of identities allowed to send email, to prevent unauthorized email sending and maintain sender reputation.

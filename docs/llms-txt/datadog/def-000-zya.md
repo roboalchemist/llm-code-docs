@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/lastlog File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/lastlog`, run the command:
 
 ```gdscript3
-$ sudo chown root /var/log/lastlog 
+$ sudo chown root /var/log/lastlog
 ```
 
 ## Rationale{% #rationale %}

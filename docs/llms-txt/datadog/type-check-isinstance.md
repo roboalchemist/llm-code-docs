@@ -53,6 +53,5 @@ raise ValueError("target %s config %s has type of %s" % (target, config_content,
 if isinstance(Bar(), Foo):
     print("foo")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

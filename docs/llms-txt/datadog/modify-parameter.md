@@ -89,23 +89,22 @@ func fun3(param int) {
 
 ```go
 func fun(_ int) {
-	for true {
-		// We don't check _ for shadowing
-		_, err := doSomething()
-	}
+    for true {
+        // We don't check _ for shadowing
+        _, err := doSomething()
+    }
 }
 ```
 
 ```go
 func (r *Type) fun1(ctx context.Context) {
-	// As a special case, we allow shadowing context parameters
-	ctx := context.WithCancel(ctx)
+    // As a special case, we allow shadowing context parameters
+    ctx := context.WithCancel(ctx)
 }
 
 func fun2(ctx context.Context) {
-	ctx := context.WithCancel(ctx)
+    ctx := context.WithCancel(ctx)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

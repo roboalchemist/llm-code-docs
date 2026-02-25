@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Test Optimization
 ---
 
-# Test Optimization
-
 Search and manage flaky tests through Test Optimization. See the [Test Optimization page](https://docs.datadoghq.com/tests/) for more information.
 
 ## Search flaky tests{% #search-flaky-tests %}
@@ -26,8 +24,6 @@ Search and manage flaky tests through Test Optimization. See the [Test Optimizat
 
 ### Overview
 
-
-
 List endpoint returning flaky tests from Flaky Test Management. Results are paginated.
 
 The response includes comprehensive test information including:
@@ -45,13 +41,9 @@ Results support filtering by various facets including service, environment, repo
 This endpoint requires the `test_optimization_read` permission.
 OAuth apps require the `test_optimization_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#test-optimization) to access this endpoint.
 
-
-
 ### Request
 
-#### Body Data 
-
-
+#### Body Data
 
 {% tab title="Model" %}
 
@@ -287,7 +279,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/test/flaky-test-management/tests" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -296,8 +288,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -344,7 +336,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search flaky tests returns "OK" response
@@ -381,7 +373,7 @@ p api_instance.search_flaky_tests(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search flaky tests returns "OK" response
@@ -389,46 +381,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.FlakyTestsSearchRequest{
-		Data: &datadogV2.FlakyTestsSearchRequestData{
-			Attributes: &datadogV2.FlakyTestsSearchRequestAttributes{
-				Filter: &datadogV2.FlakyTestsSearchFilter{
-					Query: datadog.PtrString(`flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"`),
-				},
-				IncludeHistory: datadog.PtrBool(true),
-				Page: &datadogV2.FlakyTestsSearchPageOptions{
-					Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
-					Limit:  datadog.PtrInt64(25),
-				},
-				Sort: datadogV2.FLAKYTESTSSEARCHSORT_FAILURE_RATE_ASCENDING.Ptr(),
-			},
-			Type: datadogV2.FLAKYTESTSSEARCHREQUESTDATATYPE_SEARCH_FLAKY_TESTS_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.SearchFlakyTests", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTestOptimizationApi(apiClient)
-	resp, r, err := api.SearchFlakyTests(ctx, *datadogV2.NewSearchFlakyTestsOptionalParameters().WithBody(body))
+    body := datadogV2.FlakyTestsSearchRequest{
+        Data: &datadogV2.FlakyTestsSearchRequestData{
+            Attributes: &datadogV2.FlakyTestsSearchRequestAttributes{
+                Filter: &datadogV2.FlakyTestsSearchFilter{
+                    Query: datadog.PtrString(`flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"`),
+                },
+                IncludeHistory: datadog.PtrBool(true),
+                Page: &datadogV2.FlakyTestsSearchPageOptions{
+                    Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
+                    Limit:  datadog.PtrInt64(25),
+                },
+                Sort: datadogV2.FLAKYTESTSSEARCHSORT_FAILURE_RATE_ASCENDING.Ptr(),
+            },
+            Type: datadogV2.FLAKYTESTSSEARCHREQUESTDATATYPE_SEARCH_FLAKY_TESTS_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.SearchFlakyTests", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTestOptimizationApi(apiClient)
+    resp, r, err := api.SearchFlakyTests(ctx, *datadogV2.NewSearchFlakyTestsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.SearchFlakyTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.SearchFlakyTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.SearchFlakyTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.SearchFlakyTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -436,7 +428,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search flaky tests returns "OK" response
@@ -500,7 +492,7 @@ flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search flaky tests returns "OK" response
@@ -559,7 +551,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -628,13 +620,9 @@ Update the state of multiple flaky tests in Flaky Test Management. This endpoint
 
 OAuth apps require the `test_optimization_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#test-optimization) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -792,7 +780,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/test/flaky-test-management/tests" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -813,8 +801,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -857,7 +845,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update flaky test states returns "OK" response
@@ -888,7 +876,7 @@ p api_instance.update_flaky_tests(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update flaky test states returns "OK" response
@@ -896,43 +884,43 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateFlakyTestsRequest{
-		Data: datadogV2.UpdateFlakyTestsRequestData{
-			Attributes: datadogV2.UpdateFlakyTestsRequestAttributes{
-				Tests: []datadogV2.UpdateFlakyTestsRequestTest{
-					{
-						Id:       "4eb1887a8adb1847",
-						NewState: datadogV2.UPDATEFLAKYTESTSREQUESTTESTNEWSTATE_ACTIVE,
-					},
-				},
-			},
-			Type: datadogV2.UPDATEFLAKYTESTSREQUESTDATATYPE_UPDATE_FLAKY_TEST_STATE_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateFlakyTests", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTestOptimizationApi(apiClient)
-	resp, r, err := api.UpdateFlakyTests(ctx, body)
+    body := datadogV2.UpdateFlakyTestsRequest{
+        Data: datadogV2.UpdateFlakyTestsRequestData{
+            Attributes: datadogV2.UpdateFlakyTestsRequestAttributes{
+                Tests: []datadogV2.UpdateFlakyTestsRequestTest{
+                    {
+                        Id:       "4eb1887a8adb1847",
+                        NewState: datadogV2.UPDATEFLAKYTESTSREQUESTTESTNEWSTATE_ACTIVE,
+                    },
+                },
+            },
+            Type: datadogV2.UPDATEFLAKYTESTSREQUESTDATATYPE_UPDATE_FLAKY_TEST_STATE_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateFlakyTests", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTestOptimizationApi(apiClient)
+    resp, r, err := api.UpdateFlakyTests(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.UpdateFlakyTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.UpdateFlakyTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.UpdateFlakyTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.UpdateFlakyTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -940,7 +928,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update flaky test states returns "OK" response
@@ -994,7 +982,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update flaky test states returns "OK" response
@@ -1032,7 +1020,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

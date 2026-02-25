@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Potential Illicit Consent Grant attack via Azure registered application
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566)
 ## Goal{% #goal %}
 
 Detects when a user grants an application consent to access their data. An adversary may create an Azure-registered application to access data such as contact information, emails, or documents.

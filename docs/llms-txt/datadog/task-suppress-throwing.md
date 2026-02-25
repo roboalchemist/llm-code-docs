@@ -48,6 +48,5 @@ Task<int> t = new Task<int>(() => 1);
 Task<int> t = new Task<int>(() => 1);
 ((Task)t).ConfigureAwait(ConfigureAwaitOptions.SuppressThrowing);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

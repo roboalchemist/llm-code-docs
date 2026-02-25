@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta phishing detection with FastPass origin check
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566)
 ## Goal{% #goal %}
 
 Detect when Okta raises a phishing [detection](https://sec.okta.com/fastpassphishingdetection) with FastPass origin check.

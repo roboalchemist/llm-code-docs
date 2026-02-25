@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Creation of new AWS Bedrock long term access key with no expiration date
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552)
 ## Goal{% #goal %}
 
 Detects when a [long term API key for AWS Bedrock](https://www.wiz.io/blog/a-new-type-of-long-lived-key-on-aws-bedrock-api-keys) is created without an expiration date

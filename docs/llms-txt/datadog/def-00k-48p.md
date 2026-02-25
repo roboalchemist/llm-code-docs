@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet should require HTTPS connections
- 
+
 ## Description{% #description %}
 
 Setup TLS connection on the Kubelets.

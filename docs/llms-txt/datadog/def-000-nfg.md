@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # BigQuery Dataset should not be anonymously or publicly accessible
- 
+
 ## Description{% #description %}
 
 It is recommended that the IAM policy on BigQuery datasets does not allow anonymous or public access.

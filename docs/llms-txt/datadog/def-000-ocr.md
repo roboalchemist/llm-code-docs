@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route 53 DNS record pointing to external or nonexistent S3 bucket
- 
+
 ## Description{% #description %}
 
 This control identifies misconfigured Amazon Route 53 DNS records that point to external or nonexistent S3 buckets. Such misconfigurations can introduce significant security risks, including unauthorized access or domain hijacking. If a DNS record points to an S3 bucket domain that no longer exists, an attacker can register the bucket name and intercept or manipulate traffic intended for the original destination. This could lead to data breaches, phishing attacks, or distribution of unauthorized content, impacting both security and compliance.

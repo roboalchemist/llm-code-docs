@@ -369,12 +369,12 @@ To use custom grouping, you need the Datadog RUM SDK `2.4.2` or higher.
 
 ```dart
 DdRum.addError(
-  'message',       
-  'my-source',       
-  'my-stack-trace',  
+  'message',
+  'my-source',
+  'my-stack-trace',
   { my: 'context' },
-  Date.now(), 
-  'my-custom-fingerprint'        
+  Date.now(),
+  'my-custom-fingerprint'
 );
 ```
 

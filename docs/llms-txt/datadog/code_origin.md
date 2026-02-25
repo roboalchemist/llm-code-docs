@@ -24,8 +24,6 @@ In Trace Explorer, select a span from an enabled service to see Code Origin deta
    source="https://datadog-docs.imgix.net/images/tracing/code_origin/code_origin_details_spotlight.10171a5059e9927169d8b0aab5a69ea0.png?auto=format"
    alt="Code Origin Details" /%}
 
-
-
 ## Getting started{% #getting-started %}
 
 ### Prerequisites{% #prerequisites %}
@@ -77,6 +75,7 @@ Run your service with the following environment variable:
 
 ```shell
 export DD_CODE_ORIGIN_FOR_SPANS_ENABLED=true
+
 ```
 
 {% alert level="info" %}
@@ -105,13 +104,13 @@ For transpiled Node.js applications (for example, TypeScript), make sure to gene
 
 1. From the Code Origin section:
 
-   - Kick off a [Live Debugger](https://docs.datadoghq.com/tracing/live_debugger/) session on the running service by clicking "Start Debug Session" to capture logs at the Code Origin method location. Or, select a breakpoint in the gutter of the code preview to capture logs at the selected line of code.
+  - Kick off a [Live Debugger](https://docs.datadoghq.com/tracing/live_debugger/) session on the running service by clicking "Start Debug Session" to capture logs at the Code Origin method location. Or, select a breakpoint in the gutter of the code preview to capture logs at the selected line of code.
 
      {% image
         source="https://datadog-docs.imgix.net/images/tracing/code_origin/code_origin_start_debug_session.21c5483902fe2e45f85fa158dbbf42f8.png?auto=format"
         alt="Code Origin - Start Live Debugger Session" /%}
 
-   - Click on source code variables to add them as attributes to future spans with [Dynamic Instrumentation](https://docs.datadoghq.com/dynamic_instrumentation/).
+  - Click on source code variables to add them as attributes to future spans with [Dynamic Instrumentation](https://docs.datadoghq.com/dynamic_instrumentation/).
 
      {% image
         source="https://datadog-docs.imgix.net/images/tracing/code_origin/code_origin_add_span_tag_spotlight.e8ea782271c0a1337083c5791c735aaf.png?auto=format"
@@ -121,8 +120,8 @@ For transpiled Node.js applications (for example, TypeScript), make sure to gene
 
 1. Set up your [Datadog IDE Integration](https://docs.datadoghq.com/developers/ide_plugins/).
 
-   - Supported IDEs: IntelliJ, VS Code
-   - Supported Languages: Java, Python
+  - Supported IDEs: IntelliJ, VS Code
+  - Supported Languages: Java, Python
 
 1. View RED metrics (Requests, Errors, and Duration) as inline annotations above your endpoint methods.
 

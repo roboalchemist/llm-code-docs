@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/waagent.log File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/waagent.log`, run the command:
 
 ```gdscript3
-$ sudo chown syslog /var/log/waagent.log 
+$ sudo chown syslog /var/log/waagent.log
 ```
 
 or
 
 ```gdscript3
-$ sudo chown root /var/log/waagent.log 
+$ sudo chown root /var/log/waagent.log
 ```
 
 ## Rationale{% #rationale %}

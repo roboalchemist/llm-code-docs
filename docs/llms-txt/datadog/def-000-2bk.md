@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Authentication Required for Single User Mode
- 
+
 ## Description{% #description %}
 
 Single user mode is used for recovery when the system detects an issue during boot or by manual selection from the bootloader.

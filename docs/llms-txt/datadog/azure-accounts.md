@@ -30,39 +30,39 @@ curl --location 'https://api.cloudcraft.co/azure/account'
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// List all Azure accounts in the Cloudcraft account.
-	accounts, _, err := client.Azure.List(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
+    // List all Azure accounts in the Cloudcraft account.
+    accounts, _, err := client.Azure.List(context.Background())
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the name of each account.
-	for _, account := range accounts {
-		log.Println(account.Name)
-	}
+    // Print the name of each account.
+    for _, account := range accounts {
+        log.Println(account.Name)
+    }
 }
 ```
 
@@ -208,51 +208,51 @@ curl --location 'https://api.cloudcraft.co/azure/account' \
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 6 {
-		log.Fatalf("usage: %s <account-name> <app-id> <dir-id> <sub-id> <secret>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 6 {
+        log.Fatalf("usage: %s <account-name> <app-id> <dir-id> <sub-id> <secret>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a new Azure Account with the details coming from command line
-	// arguments.
-	account, _, err := client.Azure.Create(
-		context.Background(),
-		&cloudcraft.AzureAccount{
-			Name:           os.Args[1],
-			ApplicationID:  os.Args[2],
-			DirectoryID:    os.Args[3],
-			SubscriptionID: os.Args[4],
-			ClientSecret:   os.Args[5],
-		})
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Azure Account with the details coming from command line
+    // arguments.
+    account, _, err := client.Azure.Create(
+        context.Background(),
+        &cloudcraft.AzureAccount{
+            Name:           os.Args[1],
+            ApplicationID:  os.Args[2],
+            DirectoryID:    os.Args[3],
+            SubscriptionID: os.Args[4],
+            ClientSecret:   os.Args[5],
+        })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the account ID.
-	log.Println(account.ID)
+    // Print the account ID.
+    log.Println(account.ID)
 }
 ```
 
@@ -372,42 +372,42 @@ curl --location --request DELETE 'https://api.cloudcraft.co/azure/account/{accou
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Show usage if the number of command line arguments is not correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <account-id>", os.Args[0])
-	}
+    // Show usage if the number of command line arguments is not correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <account-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Delete the Azure account with the ID taken from a command line argument.
-	_, err = client.Azure.Delete(
-		context.Background(),
-		os.Args[1],
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Delete the Azure account with the ID taken from a command line argument.
+    _, err = client.Azure.Delete(
+        context.Background(),
+        os.Args[1],
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -504,47 +504,47 @@ curl --location --request PUT 'https://api.cloudcraft.co/azure/account/{account_
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 5 {
-		log.Fatalf("usage: %s <account-name> <app-id> <dir-id> <sub-id>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 5 {
+        log.Fatalf("usage: %s <account-name> <app-id> <dir-id> <sub-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a new Azure Account with the details coming from command line
-	// arguments.
-	_, err = client.Azure.Update(
-		context.Background(),
-		&cloudcraft.AzureAccount{
-			Name:           os.Args[1],
-			ApplicationID:  os.Args[2],
-			DirectoryID:    os.Args[3],
-			SubscriptionID: os.Args[4],
-		})
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Azure Account with the details coming from command line
+    // arguments.
+    _, err = client.Azure.Update(
+        context.Background(),
+        &cloudcraft.AzureAccount{
+            Name:           os.Args[1],
+            ApplicationID:  os.Args[2],
+            DirectoryID:    os.Args[3],
+            SubscriptionID: os.Args[4],
+        })
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -641,15 +641,15 @@ Wait time exceededModelExample
 Expand AllFieldTypeDescriptioncode
 string
 
- 
+
 message
 string
 
- 
+
 retry
 boolean
 
- 
+
 {% /tab %}
 
 {% tab title="Example" %}
@@ -686,54 +686,54 @@ curl --location 'https://api.cloudcraft.co/azure/account/{account_id}/{region}/{
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <account-id>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <account-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a new snapshot of the centralus region with the given account-id
-	// coming from a command line argument.
-	snapshot, _, err := client.Azure.Snapshot(
-		context.Background(),
-		os.Args[1],
-		"centralus",
-		"png",
-		&cloudcraft.SnapshotParams{
-			Width:  1920,
-			Height: 1080,
-		},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new snapshot of the centralus region with the given account-id
+    // coming from a command line argument.
+    snapshot, _, err := client.Azure.Snapshot(
+        context.Background(),
+        os.Args[1],
+        "centralus",
+        "png",
+        &cloudcraft.SnapshotParams{
+            Width:  1920,
+            Height: 1080,
+        },
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Save the snapshot to a file.
-	if err := os.WriteFile("snapshot.png", snapshot, 0o600); err != nil {
-		log.Fatal(err)
-	}
+    // Save the snapshot to a file.
+    if err := os.WriteFile("snapshot.png", snapshot, 0o600); err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 

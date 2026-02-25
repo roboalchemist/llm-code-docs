@@ -13,13 +13,13 @@ This dataset represents APM span data collected by Datadog Application Performan
 ```
 dd.spans
 ```
-APM Public Documentation 
+APM Public Documentation
 {% icon name="icon-external-link" /%}
- Trace Explorer Documentation 
+ Trace Explorer Documentation
 {% icon name="icon-external-link" /%}
- Span Tags and Attributes Documentation 
+ Span Tags and Attributes Documentation
 {% icon name="icon-external-link" /%}
- 
+
 ## Query Parameters
 
 This dataset uses a **polymorphic table function**. You must specify parameters when querying.
@@ -48,7 +48,7 @@ SELECT * FROM dd.spans(
   ],
   filter => 'service:web-api AND status:error',
   from_timestamp => now() - interval '1 hour',
-  to_timestamp => now()          
+  to_timestamp => now()
 ) AS (
   ts            TIMESTAMP,
   trace_id      VARCHAR,

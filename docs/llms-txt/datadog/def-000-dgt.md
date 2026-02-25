@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instances should be deployed inside of a VPC
- 
+
 ## Description{% #description %}
 
 This validation verifies if an Amazon RDS instance is set up in an EC2-VPC.

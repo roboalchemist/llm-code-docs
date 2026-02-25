@@ -451,7 +451,7 @@ Reference specific keys like this:
 
 ```yaml
 # datadog.yaml
-api_key: ENC[datadog-keys;api_key;1] # specify the first version of the api key 
+api_key: ENC[datadog-keys;api_key;1] # specify the first version of the api key
 app_key: ENC[datadog-keys;app_key] # latest
 
 secret_backend_type: gcp.secretmanager

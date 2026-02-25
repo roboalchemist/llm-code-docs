@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unfamiliar kernel module loaded from memory
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547)
 ## What happened{% #what-happened %}
 
 The kernel module `{{ @module.name }}` was loaded from memory, which may be installation of a rootkit.

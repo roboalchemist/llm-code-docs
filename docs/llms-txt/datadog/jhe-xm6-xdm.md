@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Base64 was detected in an http.user_agent or http.referrer
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027)
 ## Goal{% #goal %}
 
 This rule detects if your Apache or NGINX web servers are being exploited using the log4j vulnerability. The initial vulnerability was identified as [CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228).

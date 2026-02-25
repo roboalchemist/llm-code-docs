@@ -33,24 +33,24 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azurebastion",
-	"id": "efe6a642-dc6d-4ea3-ab3c-465358f10e15",
-	"resourceId": "/subscriptions/14cc8259-0159-45d7-801b-2b209bac6e98/resourceGroups/CLOUDCRAFT/providers/Microsoft.Network/bastionHosts/BastionDoc",
-	"region": "eastus",
-	"mapPos": [2,10],
-	"tier": "Basic",
-	"scaleUnits": 1,
-	"outboundDataTransfer": 0,
-	"color": {
-		"isometric": "#CEE0F5",
-		"2d": "null"
-	},
-	"accentColor": {
-		"isometric": "#0078D4",
-		"2d": "null"
-	},
-	"link": "https://azure.microsoft.com/products/azure-bastion/",
-	"locked": true
+    "type": "azurebastion",
+    "id": "efe6a642-dc6d-4ea3-ab3c-465358f10e15",
+    "resourceId": "/subscriptions/14cc8259-0159-45d7-801b-2b209bac6e98/resourceGroups/CLOUDCRAFT/providers/Microsoft.Network/bastionHosts/BastionDoc",
+    "region": "eastus",
+    "mapPos": [2,10],
+    "tier": "Basic",
+    "scaleUnits": 1,
+    "outboundDataTransfer": 0,
+    "color": {
+        "isometric": "#CEE0F5",
+        "2d": "null"
+    },
+    "accentColor": {
+        "isometric": "#0078D4",
+        "2d": "null"
+    },
+    "link": "https://azure.microsoft.com/products/azure-bastion/",
+    "locked": true
 }
 ```
 

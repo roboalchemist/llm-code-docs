@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns Backup passwd File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/passwd-`, run the command:

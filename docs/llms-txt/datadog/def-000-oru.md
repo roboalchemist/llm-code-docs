@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DMS replication instances should not be public
- 
+
 ## Description{% #description %}
 
 This control evaluates the `PubliclyAccessible` field to confirm that AWS DMS replication instances are not publicly accessible.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall setroubleshoot Pac
 ---
 
 # Uninstall setroubleshoot Package
- 
+
 ## Description{% #description %}
 
 The SETroubleshoot service notifies desktop users of SELinux denials. The service provides information around configuration errors, unauthorized intrusions, and other potential errors. The `setroubleshoot` package can be removed with the following command:
@@ -34,10 +34,10 @@ The following script can be run on the host to remediate the issue.
 if [ ! -f /.dockerenv ] && [ ! -f /run/.containerenv ]; then
 
 # CAUTION: This remediation script will remove setroubleshoot
-#	   from the system, and may remove any packages
-#	   that depend on setroubleshoot. Execute this
-#	   remediation AFTER testing on a non-production
-#	   system!
+#      from the system, and may remove any packages
+#      that depend on setroubleshoot. Execute this
+#      remediation AFTER testing on a non-production
+#      system!
 
 if rpm -q --quiet "setroubleshoot" ; then
 

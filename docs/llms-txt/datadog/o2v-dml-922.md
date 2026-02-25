@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Potential cryptomining detected through IP callback
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when a host is potentially infected with a cryptominer.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable LDAP Server (slapd)
 ---
 
 # Disable LDAP Server (slapd)
- 
+
 ## Description{% #description %}
 
 The Lightweight Directory Access Protocol (LDAP) is a service that provides a method for looking up information from a central database.

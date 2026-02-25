@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Private endpoint lacks assig
 ---
 
 # Private endpoint lacks assigned owner
- 
+
 ## Description{% #description %}
 
 This endpoint has no assigned team. This can lead to maintenance issues and increase the likelihood of undetected vulnerabilities. The lack of ownership and monitoring could significantly impede incident response effectiveness when an attack occurs.

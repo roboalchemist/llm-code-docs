@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure rsyncd service is dis
 ---
 
 # Ensure rsyncd service is disabled
- 
+
 ## Description{% #description %}
 
 The `rsyncd` service can be disabled with the following command:

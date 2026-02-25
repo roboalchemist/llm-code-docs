@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EBS volume snapshot should not be publicly shared
- 
+
 ## Description{% #description %}
 
 Secure Amazon Elastic Block Store (EBS) snapshots.
@@ -40,7 +40,7 @@ Follow the [AWS Share a snapshot documentation](https://docs.aws.amazon.com/AWSE
 
    ```
     aws ec2 modify-snapshot-attribute \
-        --snapshot-id 1234567890abcdef0 \ 
+        --snapshot-id 1234567890abcdef0 \
         --attribute createVolumePermission \
         --operation-type add \
         --user-ids 123456789012

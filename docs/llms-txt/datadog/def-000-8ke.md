@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # User Initialization Files Must Not Run World-Writable Programs
- 
+
 ## Description{% #description %}
 
 Set the mode on files being executed by the user initialization files with the following command:
 
 ```
 $ sudo chmod o-w FILE
-        
+
 ```
 
 ## Rationale{% #rationale %}

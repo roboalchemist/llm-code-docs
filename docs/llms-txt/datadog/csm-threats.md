@@ -237,13 +237,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -265,7 +265,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all Workload Protection agent rules returns "OK" response
@@ -279,7 +279,7 @@ p api_instance.list_csm_threats_agent_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all Workload Protection agent rules returns "OK" response
@@ -287,29 +287,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.ListCSMThreatsAgentRules(ctx, *datadogV2.NewListCSMThreatsAgentRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.ListCSMThreatsAgentRules(ctx, *datadogV2.NewListCSMThreatsAgentRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCSMThreatsAgentRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCSMThreatsAgentRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCSMThreatsAgentRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCSMThreatsAgentRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -317,7 +317,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all Workload Protection agent rules returns "OK" response
@@ -350,7 +350,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all Workload Protection agent rules returns "OK" response
@@ -377,7 +377,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -659,13 +659,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules/${agent_rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -697,7 +697,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Workload Protection agent rule returns "OK" response
@@ -720,7 +720,7 @@ p api_instance.get_csm_threats_agent_rule(AGENT_RULE_DATA_ID, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Workload Protection agent rule returns "OK" response
@@ -728,35 +728,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule_rc" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule_rc" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.GetCSMThreatsAgentRule(ctx, AgentRuleDataID, *datadogV2.NewGetCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.GetCSMThreatsAgentRule(ctx, AgentRuleDataID, *datadogV2.NewGetCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCSMThreatsAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCSMThreatsAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -764,7 +764,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Workload Protection agent rule returns "OK" response
@@ -807,7 +807,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Workload Protection agent rule returns "OK" response
@@ -842,7 +842,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -958,7 +958,7 @@ The definition of the new agent rule
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -978,7 +978,7 @@ The definition of the new agent rule
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1012,7 +1012,7 @@ The definition of the new agent rule
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1284,7 +1284,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1307,8 +1307,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1345,8 +1345,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1378,8 +1378,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Workload Protection agent rule returns "OK" response
@@ -1387,51 +1387,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
-				Description:  datadog.PtrString("My Agent rule"),
-				Enabled:      datadog.PtrBool(true),
-				Expression:   `exec.file.name == "sh"`,
-				AgentVersion: datadog.PtrString("> 7.60"),
-				Filters:      []string{},
-				Name:         "examplecsmthreat",
-				PolicyId:     datadog.PtrString(PolicyDataID),
-				ProductTags:  []string{},
-			},
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
+    body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
+                Description:  datadog.PtrString("My Agent rule"),
+                Enabled:      datadog.PtrBool(true),
+                Expression:   `exec.file.name == "sh"`,
+                AgentVersion: datadog.PtrString("> 7.60"),
+                Filters:      []string{},
+                Name:         "examplecsmthreat",
+                PolicyId:     datadog.PtrString(PolicyDataID),
+                ProductTags:  []string{},
+            },
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a Workload Protection agent rule with set action returns "OK" response
@@ -1439,66 +1439,66 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
-				Description: datadog.PtrString("My Agent rule with set action"),
-				Enabled:     datadog.PtrBool(true),
-				Expression:  `exec.file.name == "sh"`,
-				Filters:     []string{},
-				Name:        "examplecsmthreat",
-				PolicyId:    datadog.PtrString(PolicyDataID),
-				ProductTags: []string{},
-				Actions: []datadogV2.CloudWorkloadSecurityAgentRuleAction{
-					{
-						Set: &datadogV2.CloudWorkloadSecurityAgentRuleActionSet{
-							Name: datadog.PtrString("test_set"),
-							Value: &datadogV2.CloudWorkloadSecurityAgentRuleActionSetValue{
-								String: datadog.PtrString("test_value")},
-							Scope:     datadog.PtrString("process"),
-							Inherited: datadog.PtrBool(true),
-						},
-					},
-					{
-						Hash: &datadogV2.CloudWorkloadSecurityAgentRuleActionHash{
-							Field: datadog.PtrString("exec.file"),
-						},
-					},
-				},
-			},
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
+    body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
+                Description: datadog.PtrString("My Agent rule with set action"),
+                Enabled:     datadog.PtrBool(true),
+                Expression:  `exec.file.name == "sh"`,
+                Filters:     []string{},
+                Name:        "examplecsmthreat",
+                PolicyId:    datadog.PtrString(PolicyDataID),
+                ProductTags: []string{},
+                Actions: []datadogV2.CloudWorkloadSecurityAgentRuleAction{
+                    {
+                        Set: &datadogV2.CloudWorkloadSecurityAgentRuleActionSet{
+                            Name: datadog.PtrString("test_set"),
+                            Value: &datadogV2.CloudWorkloadSecurityAgentRuleActionSetValue{
+                                String: datadog.PtrString("test_value")},
+                            Scope:     datadog.PtrString("process"),
+                            Inherited: datadog.PtrBool(true),
+                        },
+                    },
+                    {
+                        Hash: &datadogV2.CloudWorkloadSecurityAgentRuleActionHash{
+                            Field: datadog.PtrString("exec.file"),
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a Workload Protection agent rule with set action with expression returns "OK" response
@@ -1506,56 +1506,56 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
-				Description: datadog.PtrString("My Agent rule with set action with expression"),
-				Enabled:     datadog.PtrBool(true),
-				Expression:  `exec.file.name == "sh"`,
-				Filters:     []string{},
-				Name:        "examplecsmthreat",
-				PolicyId:    datadog.PtrString(PolicyDataID),
-				ProductTags: []string{},
-				Actions: []datadogV2.CloudWorkloadSecurityAgentRuleAction{
-					{
-						Set: &datadogV2.CloudWorkloadSecurityAgentRuleActionSet{
-							Name:         datadog.PtrString("test_set"),
-							Expression:   datadog.PtrString("exec.file.path"),
-							DefaultValue: datadog.PtrString("/dev/null"),
-							Scope:        datadog.PtrString("process"),
-						},
-					},
-				},
-			},
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
+    body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
+                Description: datadog.PtrString("My Agent rule with set action with expression"),
+                Enabled:     datadog.PtrBool(true),
+                Expression:  `exec.file.name == "sh"`,
+                Filters:     []string{},
+                Name:        "examplecsmthreat",
+                PolicyId:    datadog.PtrString(PolicyDataID),
+                ProductTags: []string{},
+                Actions: []datadogV2.CloudWorkloadSecurityAgentRuleAction{
+                    {
+                        Set: &datadogV2.CloudWorkloadSecurityAgentRuleActionSet{
+                            Name:         datadog.PtrString("test_set"),
+                            Expression:   datadog.PtrString("exec.file.path"),
+                            DefaultValue: datadog.PtrString("/dev/null"),
+                            Scope:        datadog.PtrString("process"),
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.CreateCSMThreatsAgentRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -1563,7 +1563,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Workload Protection agent rule returns "OK" response
@@ -1615,7 +1615,7 @@ exec.file.name == "sh"
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a Workload Protection agent rule with set action returns "OK" response
@@ -1686,7 +1686,7 @@ exec.file.name == "sh"
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a Workload Protection agent rule with set action with expression returns "OK" response
@@ -1753,7 +1753,7 @@ exec.file.name == "sh"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1801,7 +1801,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1870,7 +1870,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1935,7 +1935,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Workload Protection agent rule returns "OK" response
@@ -1964,7 +1964,7 @@ body = DatadogAPIClient::V2::CloudWorkloadSecurityAgentRuleCreateRequest.new({
 p api_instance.create_csm_threats_agent_rule(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a Workload Protection agent rule with set action returns "OK" response
@@ -2007,7 +2007,7 @@ body = DatadogAPIClient::V2::CloudWorkloadSecurityAgentRuleCreateRequest.new({
 p api_instance.create_csm_threats_agent_rule(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a Workload Protection agent rule with set action with expression returns "OK" response
@@ -2049,7 +2049,7 @@ p api_instance.create_csm_threats_agent_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Workload Protection agent rule returns "OK" response
@@ -2090,7 +2090,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a Workload Protection agent rule with set action returns "OK" response
@@ -2148,7 +2148,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a Workload Protection agent rule with set action with expression returns
@@ -2202,7 +2202,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2245,7 +2245,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2302,7 +2302,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2733,7 +2733,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules/${agent_rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2747,8 +2747,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2803,7 +2803,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a Workload Protection agent rule returns "OK" response
@@ -2840,7 +2840,7 @@ p api_instance.update_csm_threats_agent_rule(AGENT_RULE_DATA_ID, body, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update a Workload Protection agent rule returns "OK" response
@@ -2848,48 +2848,48 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule_rc" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule_rc" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentRuleUpdateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleUpdateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleUpdateAttributes{
-				Description: datadog.PtrString("My Agent rule"),
-				Enabled:     datadog.PtrBool(true),
-				Expression:  datadog.PtrString(`exec.file.name == "sh"`),
-				PolicyId:    datadog.PtrString(PolicyDataID),
-				ProductTags: []string{},
-			},
-			Id:   datadog.PtrString(AgentRuleDataID),
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.UpdateCSMThreatsAgentRule(ctx, AgentRuleDataID, body, *datadogV2.NewUpdateCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
+    body := datadogV2.CloudWorkloadSecurityAgentRuleUpdateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleUpdateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleUpdateAttributes{
+                Description: datadog.PtrString("My Agent rule"),
+                Enabled:     datadog.PtrBool(true),
+                Expression:  datadog.PtrString(`exec.file.name == "sh"`),
+                PolicyId:    datadog.PtrString(PolicyDataID),
+                ProductTags: []string{},
+            },
+            Id:   datadog.PtrString(AgentRuleDataID),
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.UpdateCSMThreatsAgentRule(ctx, AgentRuleDataID, body, *datadogV2.NewUpdateCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCSMThreatsAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCSMThreatsAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2897,7 +2897,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a Workload Protection agent rule returns "OK" response
@@ -2960,7 +2960,7 @@ exec.file.name == "sh"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update a Workload Protection agent rule returns "OK" response
@@ -3012,7 +3012,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3185,12 +3185,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/agent_rules/${agent_rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3220,7 +3220,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a Workload Protection agent rule returns "OK" response
@@ -3243,7 +3243,7 @@ api_instance.delete_csm_threats_agent_rule(AGENT_RULE_DATA_ID, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a Workload Protection agent rule returns "OK" response
@@ -3251,31 +3251,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule_rc" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule_rc" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	r, err := api.DeleteCSMThreatsAgentRule(ctx, AgentRuleDataID, *datadogV2.NewDeleteCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    r, err := api.DeleteCSMThreatsAgentRule(ctx, AgentRuleDataID, *datadogV2.NewDeleteCSMThreatsAgentRuleOptionalParameters().WithPolicyId(PolicyDataID))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCSMThreatsAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCSMThreatsAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3283,7 +3283,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a Workload Protection agent rule returns "OK" response
@@ -3323,7 +3323,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a Workload Protection agent rule returns "OK" response
@@ -3358,7 +3358,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3556,13 +3556,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3584,7 +3584,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all Workload Protection policies returns "OK" response
@@ -3598,7 +3598,7 @@ p api_instance.list_csm_threats_agent_policies()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all Workload Protection policies returns "OK" response
@@ -3606,29 +3606,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.ListCSMThreatsAgentPolicies(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.ListCSMThreatsAgentPolicies(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCSMThreatsAgentPolicies`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCSMThreatsAgentPolicies`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCSMThreatsAgentPolicies`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCSMThreatsAgentPolicies`:\n%s\n", responseContent)
 }
 ```
 
@@ -3636,7 +3636,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all Workload Protection policies returns "OK" response
@@ -3670,7 +3670,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all Workload Protection policies returns "OK" response
@@ -3694,7 +3694,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3912,13 +3912,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="6517fcc1-cec7-4394-a655-8d6e9d085255"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy/${policy_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3946,7 +3946,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Workload Protection policy returns "OK" response
@@ -3963,7 +3963,7 @@ p api_instance.get_csm_threats_agent_policy(POLICY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Workload Protection policy returns "OK" response
@@ -3971,32 +3971,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.GetCSMThreatsAgentPolicy(ctx, PolicyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.GetCSMThreatsAgentPolicy(ctx, PolicyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCSMThreatsAgentPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCSMThreatsAgentPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCSMThreatsAgentPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCSMThreatsAgentPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -4004,7 +4004,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Workload Protection policy returns "OK" response
@@ -4041,7 +4041,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Workload Protection policy returns "OK" response
@@ -4069,7 +4069,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4354,7 +4354,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4377,8 +4377,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Workload Protection policy returns "OK" response
@@ -4386,44 +4386,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CloudWorkloadSecurityAgentPolicyCreateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentPolicyCreateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentPolicyCreateAttributes{
-				Description: datadog.PtrString("My agent policy"),
-				Enabled:     datadog.PtrBool(true),
-				HostTagsLists: [][]string{
-					{
-						"env:test",
-					},
-				},
-				Name: "my_agent_policy_2",
-			},
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTPOLICYTYPE_POLICY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.CreateCSMThreatsAgentPolicy(ctx, body)
+    body := datadogV2.CloudWorkloadSecurityAgentPolicyCreateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentPolicyCreateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentPolicyCreateAttributes{
+                Description: datadog.PtrString("My agent policy"),
+                Enabled:     datadog.PtrBool(true),
+                HostTagsLists: [][]string{
+                    {
+                        "env:test",
+                    },
+                },
+                Name: "my_agent_policy_2",
+            },
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTPOLICYTYPE_POLICY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.CreateCSMThreatsAgentPolicy(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCSMThreatsAgentPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCSMThreatsAgentPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -4431,7 +4431,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Workload Protection policy returns "OK" response
@@ -4483,7 +4483,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4531,7 +4531,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Workload Protection policy returns "OK" response
@@ -4561,7 +4561,7 @@ p api_instance.create_csm_threats_agent_policy(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Workload Protection policy returns "OK" response
@@ -4598,7 +4598,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4925,7 +4925,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport policy_id="6517fcc1-cec7-4394-a655-8d6e9d085255"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy/${policy_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4949,8 +4949,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a Workload Protection policy returns "OK" response
@@ -4958,48 +4958,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentPolicyUpdateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentPolicyUpdateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentPolicyUpdateAttributes{
-				Description: datadog.PtrString("Updated agent policy"),
-				Enabled:     datadog.PtrBool(true),
-				HostTagsLists: [][]string{
-					{
-						"env:test",
-					},
-				},
-				Name: datadog.PtrString("updated_agent_policy"),
-			},
-			Id:   datadog.PtrString(PolicyDataID),
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTPOLICYTYPE_POLICY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.UpdateCSMThreatsAgentPolicy(ctx, PolicyDataID, body)
+    body := datadogV2.CloudWorkloadSecurityAgentPolicyUpdateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentPolicyUpdateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentPolicyUpdateAttributes{
+                Description: datadog.PtrString("Updated agent policy"),
+                Enabled:     datadog.PtrBool(true),
+                HostTagsLists: [][]string{
+                    {
+                        "env:test",
+                    },
+                },
+                Name: datadog.PtrString("updated_agent_policy"),
+            },
+            Id:   datadog.PtrString(PolicyDataID),
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTPOLICYTYPE_POLICY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.UpdateCSMThreatsAgentPolicy(ctx, PolicyDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCSMThreatsAgentPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCSMThreatsAgentPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCSMThreatsAgentPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCSMThreatsAgentPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -5007,7 +5007,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a Workload Protection policy returns "OK" response
@@ -5063,7 +5063,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5116,7 +5116,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a Workload Protection policy returns "OK" response
@@ -5150,7 +5150,7 @@ p api_instance.update_csm_threats_agent_policy(POLICY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a Workload Protection policy returns "OK" response
@@ -5193,7 +5193,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5359,12 +5359,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="6517fcc1-cec7-4394-a655-8d6e9d085255"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy/${policy_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5390,7 +5390,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a Workload Protection policy returns "OK" response
@@ -5407,7 +5407,7 @@ api_instance.delete_csm_threats_agent_policy(POLICY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a Workload Protection policy returns "OK" response
@@ -5415,28 +5415,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "policy_rc" in the system
-	PolicyDataID := os.Getenv("POLICY_DATA_ID")
+    // there is a valid "policy_rc" in the system
+    PolicyDataID := os.Getenv("POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	r, err := api.DeleteCSMThreatsAgentPolicy(ctx, PolicyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    r, err := api.DeleteCSMThreatsAgentPolicy(ctx, PolicyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCSMThreatsAgentPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCSMThreatsAgentPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5444,7 +5444,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a Workload Protection policy returns "OK" response
@@ -5478,7 +5478,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a Workload Protection policy returns "OK" response
@@ -5506,7 +5506,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5638,13 +5638,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/cws/policy/download" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5666,7 +5666,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Download the Workload Protection policy returns "OK" response
@@ -5680,7 +5680,7 @@ p api_instance.download_csm_threats_policy()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Download the Workload Protection policy returns "OK" response
@@ -5688,29 +5688,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"io/ioutil"
-	"os"
+    "context"
+    "fmt"
+    "io/ioutil"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.DownloadCSMThreatsPolicy(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.DownloadCSMThreatsPolicy(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DownloadCSMThreatsPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DownloadCSMThreatsPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := ioutil.ReadAll(resp)
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.DownloadCSMThreatsPolicy`:\n%s\n", responseContent)
+    responseContent, _ := ioutil.ReadAll(resp)
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.DownloadCSMThreatsPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -5718,7 +5718,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Download the Workload Protection policy returns "OK" response
@@ -5751,7 +5751,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Download the Workload Protection policy returns "OK" response
@@ -5775,7 +5775,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6020,13 +6020,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/cloud_workload_security/agent_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6048,7 +6048,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all Workload Protection agent rules (US1-FED) returns "OK" response
@@ -6062,7 +6062,7 @@ p api_instance.list_cloud_workload_security_agent_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all Workload Protection agent rules (US1-FED) returns "OK" response
@@ -6070,29 +6070,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.ListCloudWorkloadSecurityAgentRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.ListCloudWorkloadSecurityAgentRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCloudWorkloadSecurityAgentRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.ListCloudWorkloadSecurityAgentRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCloudWorkloadSecurityAgentRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.ListCloudWorkloadSecurityAgentRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -6100,7 +6100,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all Workload Protection agent rules (US1-FED) returns "OK" response
@@ -6135,7 +6135,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all Workload Protection agent rules (US1-FED) returns "OK" response
@@ -6159,7 +6159,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6435,13 +6435,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/cloud_workload_security/agent_rules/${agent_rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6469,7 +6469,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -6486,7 +6486,7 @@ p api_instance.get_cloud_workload_security_agent_rule(AGENT_RULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -6494,32 +6494,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.GetCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.GetCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCloudWorkloadSecurityAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.GetCloudWorkloadSecurityAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.GetCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -6527,7 +6527,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -6564,7 +6564,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -6592,7 +6592,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6963,7 +6963,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/cloud_workload_security/agent_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6983,8 +6983,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -6992,41 +6992,41 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
-				Description: datadog.PtrString("My Agent rule"),
-				Enabled:     datadog.PtrBool(true),
-				Expression:  `exec.file.name == "sh"`,
-				Filters:     []string{},
-				Name:        "examplecsmthreat",
-			},
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.CreateCloudWorkloadSecurityAgentRule(ctx, body)
+    body := datadogV2.CloudWorkloadSecurityAgentRuleCreateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleCreateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleCreateAttributes{
+                Description: datadog.PtrString("My Agent rule"),
+                Enabled:     datadog.PtrBool(true),
+                Expression:  `exec.file.name == "sh"`,
+                Filters:     []string{},
+                Name:        "examplecsmthreat",
+            },
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.CreateCloudWorkloadSecurityAgentRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCloudWorkloadSecurityAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.CreateCloudWorkloadSecurityAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.CreateCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -7034,7 +7034,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7087,7 +7087,7 @@ exec.file.name == "sh"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7132,7 +7132,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7159,7 +7159,7 @@ p api_instance.create_cloud_workload_security_agent_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7199,7 +7199,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7608,7 +7608,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/cloud_workload_security/agent_rules/${agent_rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7626,8 +7626,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7635,42 +7635,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	body := datadogV2.CloudWorkloadSecurityAgentRuleUpdateRequest{
-		Data: datadogV2.CloudWorkloadSecurityAgentRuleUpdateData{
-			Attributes: datadogV2.CloudWorkloadSecurityAgentRuleUpdateAttributes{
-				Description: datadog.PtrString("Updated Agent rule"),
-				Expression:  datadog.PtrString(`exec.file.name == "sh"`),
-			},
-			Id:   datadog.PtrString(AgentRuleDataID),
-			Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.UpdateCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID, body)
+    body := datadogV2.CloudWorkloadSecurityAgentRuleUpdateRequest{
+        Data: datadogV2.CloudWorkloadSecurityAgentRuleUpdateData{
+            Attributes: datadogV2.CloudWorkloadSecurityAgentRuleUpdateAttributes{
+                Description: datadog.PtrString("Updated Agent rule"),
+                Expression:  datadog.PtrString(`exec.file.name == "sh"`),
+            },
+            Id:   datadog.PtrString(AgentRuleDataID),
+            Type: datadogV2.CLOUDWORKLOADSECURITYAGENTRULETYPE_AGENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.UpdateCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCloudWorkloadSecurityAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.UpdateCloudWorkloadSecurityAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.UpdateCloudWorkloadSecurityAgentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -7678,7 +7678,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7733,7 +7733,7 @@ exec.file.name == "sh"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7780,7 +7780,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7808,7 +7808,7 @@ p api_instance.update_cloud_workload_security_agent_rule(AGENT_RULE_DATA_ID, bod
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -7849,7 +7849,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8009,12 +8009,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport agent_rule_id="3b5-v82-ns6"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/cloud_workload_security/agent_rules/${agent_rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8040,7 +8040,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -8057,7 +8057,7 @@ api_instance.delete_cloud_workload_security_agent_rule(AGENT_RULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -8065,28 +8065,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "agent_rule" in the system
-	AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
+    // there is a valid "agent_rule" in the system
+    AgentRuleDataID := os.Getenv("AGENT_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	r, err := api.DeleteCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    r, err := api.DeleteCloudWorkloadSecurityAgentRule(ctx, AgentRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCloudWorkloadSecurityAgentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DeleteCloudWorkloadSecurityAgentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8094,7 +8094,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -8129,7 +8129,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a Workload Protection agent rule (US1-FED) returns "OK" response
@@ -8157,7 +8157,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8289,13 +8289,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/cloud_workload/policy/download" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8317,7 +8317,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Download the Workload Protection policy (US1-FED) returns "OK" response
@@ -8331,7 +8331,7 @@ p api_instance.download_cloud_workload_policy_file()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Download the Workload Protection policy (US1-FED) returns "OK" response
@@ -8339,29 +8339,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"io/ioutil"
-	"os"
+    "context"
+    "fmt"
+    "io/ioutil"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCSMThreatsApi(apiClient)
-	resp, r, err := api.DownloadCloudWorkloadPolicyFile(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCSMThreatsApi(apiClient)
+    resp, r, err := api.DownloadCloudWorkloadPolicyFile(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DownloadCloudWorkloadPolicyFile`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CSMThreatsApi.DownloadCloudWorkloadPolicyFile`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := ioutil.ReadAll(resp)
-	fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.DownloadCloudWorkloadPolicyFile`:\n%s\n", responseContent)
+    responseContent, _ := ioutil.ReadAll(resp)
+    fmt.Fprintf(os.Stdout, "Response from `CSMThreatsApi.DownloadCloudWorkloadPolicyFile`:\n%s\n", responseContent)
 }
 ```
 
@@ -8369,7 +8369,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Download the Workload Protection policy (US1-FED) returns "OK" response
@@ -8402,7 +8402,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Download the Workload Protection policy (US1-FED) returns "OK" response
@@ -8426,7 +8426,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

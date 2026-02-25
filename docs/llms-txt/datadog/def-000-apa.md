@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # MySQL instances should have the 'local_infile' database flag set to 'off'
- 
+
 ## Description{% #description %}
 
 Datadog recommends setting the `local_infile` database flag for a Cloud SQL MySQL instance to off.

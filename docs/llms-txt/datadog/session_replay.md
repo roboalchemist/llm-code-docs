@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: Docs > Session Replay
 ---
 
-# Session Replay
-
 ## Overview{% #overview %}
 
 Session Replay expands your user experience monitoring by allowing you to capture and visually replay the web browsing or mobile app experience of your users. Session Replay is available in both [RUM](https://docs.datadoghq.com/real_user_monitoring/) and [Product Analytics](https://docs.datadoghq.com/product_analytics/), helping you identify and reproduce errors, understand user journeys, and gain insights into your application's usage patterns and design pitfalls.

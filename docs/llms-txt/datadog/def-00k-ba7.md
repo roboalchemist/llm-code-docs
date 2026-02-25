@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes admission controller 'AlwaysAdmit' should be disabled
- 
+
 ## Description{% #description %}
 
 The cluster should not allow all requests. The `AlwaysAdmit` admission controller plugin allows all requests and does not filter any requests; it should not be enabled.

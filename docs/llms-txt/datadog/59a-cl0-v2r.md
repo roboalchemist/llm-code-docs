@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta User Attempted to Access Unauthorized App
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526)
 ## Goal{% #goal %}
 
 Detect when a user is denied access to an app.

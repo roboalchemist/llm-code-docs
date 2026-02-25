@@ -57,6 +57,5 @@ React.createElement("Hello", { dangerouslySetInnerHTML: { __html: "HTML" } });
 React.createElement("div", {}, "Children");
 React.createElement("Hello", {}, "Children");
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

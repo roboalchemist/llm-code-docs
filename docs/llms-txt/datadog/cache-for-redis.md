@@ -32,22 +32,22 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azureredis",
-	"id": "e73c3831-83bf-4bbc-98e9-f5731cb0e437",
-	"region": "northcentralus",
-	"mapPos": [5,0],
-	"tier": "Basic",
-	"instance": "C0"
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/cache",
-	"locked": true
+    "type": "azureredis",
+    "id": "e73c3831-83bf-4bbc-98e9-f5731cb0e437",
+    "region": "northcentralus",
+    "mapPos": [5,0],
+    "tier": "Basic",
+    "instance": "C0"
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/cache",
+    "locked": true
 }
 ```
 

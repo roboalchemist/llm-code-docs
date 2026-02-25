@@ -66,14 +66,13 @@ var y = new x();
 // new Object();
 
 const init = (canvas, context, t) =>
-	drawDoughnutChart(
-		canvas,
-		t('Chats'),
-		context,
-		labels.map((l) => t(l)),
-		Object.values(initialData),
-	);
+    drawDoughnutChart(
+        canvas,
+        t('Chats'),
+        context,
+        labels.map((l) => t(l)),
+        Object.values(initialData),
+    );
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

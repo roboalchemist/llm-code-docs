@@ -83,7 +83,7 @@ OK
     "next_cursor": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -108,7 +108,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -133,7 +133,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -158,7 +158,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -166,12 +166,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport product_code="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/seats/users?product_code=${product_code}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Assign seats to users{% #assign-seats-to-users %}
@@ -228,7 +228,7 @@ Assign seats to users for a product code. This endpoint requires any of the foll
     "type": "seat-assignments"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -262,7 +262,7 @@ Created
     "type": "seat-assignments"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -287,7 +287,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -312,7 +312,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -337,7 +337,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -345,7 +345,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/seats/users" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -364,7 +364,7 @@ API error response.
   }
 }
 EOF
-                
+
 {% /tab %}
 
 ## Unassign seats from users{% #unassign-seats-from-users %}
@@ -421,7 +421,7 @@ Unassign seats from users for a product code. This endpoint requires any of the 
     "type": "seat-assignments"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -450,7 +450,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -475,7 +475,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -500,7 +500,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -508,7 +508,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/seats/users" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -526,5 +526,5 @@ API error response.
   }
 }
 EOF
-                
+
 {% /tab %}

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Chrony Configure Pool and Se
 ---
 
 # Chrony Configure Pool and Server
- 
+
 ## Description{% #description %}
 
 `Chrony` is a daemon which implements the Network Time Protocol (NTP). It is designed to synchronize system clocks across a variety of systems and use a source that is highly accurate. More information on `chrony` can be found at [https://chrony-project.org/](https://chrony-project.org/). `Chrony` can be configured to be a client and/or a server. Add or edit server or pool lines to `/etc/chrony/chrony.conf` as appropriate:

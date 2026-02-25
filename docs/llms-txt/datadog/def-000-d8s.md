@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cloud DNS logging should be enabled for VPC networks
- 
+
 ## Description{% #description %}
 
 Cloud DNS logging records the queries from the name servers within your VPC to Stackdriver. Logged queries can come from Compute Engine VMs, GKE containers, or other GCP resources provisioned within the VPC.

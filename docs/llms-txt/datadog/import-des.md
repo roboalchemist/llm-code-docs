@@ -51,18 +51,17 @@ It's important to regularly review and update cryptographic choices, considering
 package main
 
 import (
-	"crypto/des"
+    "crypto/des"
 )
 
 func main() {
-	key := []byte("mySample")
+    key := []byte("mySample")
 
-	_, err := des.NewCipher(key)
-	if err != nil {
-		panic(err)
-	}
+    _, err := des.NewCipher(key)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

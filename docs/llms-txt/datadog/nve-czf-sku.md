@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Controller Manager profiling should be disabled
-Classification:complianceFramework:cis-kubernetesControl:1.3.2 
+Classification:complianceFramework:cis-kubernetesControl:1.3.2
 ## Description{% #description %}
 
 Disable profiling, if not needed.

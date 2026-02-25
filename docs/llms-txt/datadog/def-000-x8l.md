@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Retention policies should be configured using bucket lock on log buckets
- 
+
 ## Description{% #description %}
 
 Enabling retention policies on log buckets protects logs stored in cloud storage buckets from being overwritten or accidentally deleted. It is recommended to set up retention policies and configure `Bucket Lock` on all storage buckets that are used as log sinks.

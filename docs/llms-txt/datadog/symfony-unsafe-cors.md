@@ -59,6 +59,5 @@ $response = new Response('content', Response::HTTP_OK, Array('Access-Control-All
 
 $response->headers->set('access-control-allow-origin', 'domain.tld');
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

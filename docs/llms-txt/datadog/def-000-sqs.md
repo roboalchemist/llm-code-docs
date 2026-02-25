@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Atlassian Confluence space e
 ---
 
 # Atlassian Confluence space export
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530)
 ## Goal{% #goal %}
 
 Detect when a Confluence [space export](https://support.atlassian.com/confluence-cloud/docs/export-content-to-word-pdf-html-and-xml/) occurs.

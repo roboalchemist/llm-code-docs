@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unused credentials should be deactivated or removed
- 
+
 ## Description{% #description %}
 
 AWS IAM users can access AWS resources using various types of credentials, such as passwords and access keys. Datadog recommends that you deactivate or remove all credentials that are unused for 45 or more days to enhance security.

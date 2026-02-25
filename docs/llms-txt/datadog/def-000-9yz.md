@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Copilot Studio agent authentication modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when an M365 Copilot Studio agent policy is altered to not require authentication from a user before interaction. Unauthenticated agents allow interaction from any user. This can lead to misuse of the agent's AI functions, and attempts to exploit the agent to reveal sensitive information or perform tasks it has access to on behalf of an attacker.

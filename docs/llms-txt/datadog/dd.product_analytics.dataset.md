@@ -13,11 +13,11 @@ This dataset represents Product Analytics data collected by Datadog, built on to
 ```
 dd.product_analytics
 ```
-Product Analytics Public Documentation 
+Product Analytics Public Documentation
 {% icon name="icon-external-link" /%}
- Product Analytics Explorer Documentation 
+ Product Analytics Explorer Documentation
 {% icon name="icon-external-link" /%}
- 
+
 ## Query Parameters
 
 This dataset uses a **polymorphic table function**. You must specify parameters when querying.

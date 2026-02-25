@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Shell process created by Java application
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## What happened{% #what-happened %}
 
 {{#is_exact_match "case_name" "confluence_server_spawned_shell_potential_rce"}}A Confluence server executed the command `{{ @process.comm }}`. The server may be vulnerable to one of several well-known remote-code execution (RCE) exploits.{{/is_exact_match}} {{#is_exact_match "case_name" "java_shell_execution_known_bad"}}A Java application executed the command `{{ @process.comm }}` with arguments associated with malicious behavior. This activity should never be executed legitimately.{{/is_exact_match}} {{#is_exact_match "case_name" "java_shell_execution_unusual"}}A Java application executed the command `{{ @process.comm }}` which is unusual. Review the process tree and associated process arguments.{{/is_exact_match}} {{#is_exact_match "case_name" "java_shell_execution_suspicious"}}A Java application executed the command `{{ @process.comm }}` which is suspicious. Review the process tree and associated process arguments.{{/is_exact_match}} {{#is_exact_match "case_name" "java_shell_execution"}}A Java process executed the command `{{ @process.comm }}` which may indicate the service is vulnerable to remote code execution (RCE).{{/is_exact_match}}

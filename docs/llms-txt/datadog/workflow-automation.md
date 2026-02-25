@@ -15,8 +15,6 @@ This product is not supported for your selected [Datadog site](https://docs.data
 
 {% /callout %}
 
-# Workflow Automation
-
 Datadog Workflow Automation allows you to automate your end-to-end processes by connecting Datadog with the rest of your tech stack. Build workflows to auto-remediate your alerts, streamline your incident and security processes, and reduce manual toil. Workflow Automation supports over 1,000+ OOTB actions, including AWS, JIRA, ServiceNow, GitHub, and OpenAI. Learn more in our Workflow Automation docs [here](https://docs.datadoghq.com/service_management/workflows/).
 
 ## Get an existing Workflow{% #get-an-existing-workflow %}
@@ -571,13 +569,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport workflow_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -605,7 +603,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an existing Workflow returns "Successfully got a workflow." response
@@ -622,7 +620,7 @@ p api_instance.get_workflow(WORKFLOW_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an existing Workflow returns "Successfully got a workflow." response
@@ -630,32 +628,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "workflow" in the system
-	WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
+    // there is a valid "workflow" in the system
+    WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.GetWorkflow(ctx, WorkflowDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.GetWorkflow(ctx, WorkflowDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.GetWorkflow`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.GetWorkflow`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.GetWorkflow`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.GetWorkflow`:\n%s\n", responseContent)
 }
 ```
 
@@ -663,7 +661,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an existing Workflow returns "Successfully got a workflow." response
@@ -699,7 +697,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an existing Workflow returns "Successfully got a workflow." response
@@ -725,7 +723,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -781,8 +779,6 @@ Create a new workflow, returning the workflow ID. This API requires a [registere
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1540,7 +1536,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1636,8 +1632,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Workflow returns "Successfully created a workflow." response
@@ -1645,119 +1641,119 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateWorkflowRequest{
-		Data: datadogV2.WorkflowData{
-			Attributes: datadogV2.WorkflowDataAttributes{
-				Description: datadog.PtrString("A sample workflow."),
-				Name:        "Example Workflow",
-				Published:   datadog.PtrBool(true),
-				Spec: datadogV2.Spec{
-					ConnectionEnvs: []datadogV2.ConnectionEnv{
-						{
-							Connections: []datadogV2.Connection{
-								{
-									ConnectionId: "11111111-1111-1111-1111-111111111111",
-									Label:        "INTEGRATION_DATADOG",
-								},
-							},
-							Env: datadogV2.CONNECTIONENVENV_DEFAULT,
-						},
-					},
-					InputSchema: &datadogV2.InputSchema{
-						Parameters: []datadogV2.InputSchemaParameters{
-							{
-								DefaultValue: "default",
-								Name:         "input",
-								Type:         datadogV2.INPUTSCHEMAPARAMETERSTYPE_STRING,
-							},
-						},
-					},
-					OutputSchema: &datadogV2.OutputSchema{
-						Parameters: []datadogV2.OutputSchemaParameters{
-							{
-								Name:  "output",
-								Type:  datadogV2.OUTPUTSCHEMAPARAMETERSTYPE_ARRAY_OBJECT,
-								Value: "outputValue",
-							},
-						},
-					},
-					Steps: []datadogV2.Step{
-						{
-							ActionId:        "com.datadoghq.dd.monitor.listMonitors",
-							ConnectionLabel: datadog.PtrString("INTEGRATION_DATADOG"),
-							Name:            "Step1",
-							OutboundEdges: []datadogV2.OutboundEdge{
-								{
-									BranchName:   "main",
-									NextStepName: "Step2",
-								},
-							},
-							Parameters: []datadogV2.Parameter{
-								{
-									Name:  "tags",
-									Value: "service:monitoring",
-								},
-							},
-						},
-						{
-							ActionId: "com.datadoghq.core.noop",
-							Name:     "Step2",
-						},
-					},
-					Triggers: []datadogV2.Trigger{
-						datadogV2.Trigger{
-							MonitorTriggerWrapper: &datadogV2.MonitorTriggerWrapper{
-								MonitorTrigger: datadogV2.MonitorTrigger{
-									RateLimit: &datadogV2.TriggerRateLimit{
-										Count:    datadog.PtrInt64(1),
-										Interval: datadog.PtrString("3600s"),
-									},
-								},
-								StartStepNames: []string{
-									"Step1",
-								},
-							}},
-						datadogV2.Trigger{
-							GithubWebhookTriggerWrapper: &datadogV2.GithubWebhookTriggerWrapper{
-								StartStepNames: []string{
-									"Step1",
-								},
-								GithubWebhookTrigger: datadogV2.GithubWebhookTrigger{},
-							}},
-					},
-				},
-				Tags: []string{
-					"team:infra",
-					"service:monitoring",
-					"foo:bar",
-				},
-			},
-			Type: datadogV2.WORKFLOWDATATYPE_WORKFLOWS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.CreateWorkflow(ctx, body)
+    body := datadogV2.CreateWorkflowRequest{
+        Data: datadogV2.WorkflowData{
+            Attributes: datadogV2.WorkflowDataAttributes{
+                Description: datadog.PtrString("A sample workflow."),
+                Name:        "Example Workflow",
+                Published:   datadog.PtrBool(true),
+                Spec: datadogV2.Spec{
+                    ConnectionEnvs: []datadogV2.ConnectionEnv{
+                        {
+                            Connections: []datadogV2.Connection{
+                                {
+                                    ConnectionId: "11111111-1111-1111-1111-111111111111",
+                                    Label:        "INTEGRATION_DATADOG",
+                                },
+                            },
+                            Env: datadogV2.CONNECTIONENVENV_DEFAULT,
+                        },
+                    },
+                    InputSchema: &datadogV2.InputSchema{
+                        Parameters: []datadogV2.InputSchemaParameters{
+                            {
+                                DefaultValue: "default",
+                                Name:         "input",
+                                Type:         datadogV2.INPUTSCHEMAPARAMETERSTYPE_STRING,
+                            },
+                        },
+                    },
+                    OutputSchema: &datadogV2.OutputSchema{
+                        Parameters: []datadogV2.OutputSchemaParameters{
+                            {
+                                Name:  "output",
+                                Type:  datadogV2.OUTPUTSCHEMAPARAMETERSTYPE_ARRAY_OBJECT,
+                                Value: "outputValue",
+                            },
+                        },
+                    },
+                    Steps: []datadogV2.Step{
+                        {
+                            ActionId:        "com.datadoghq.dd.monitor.listMonitors",
+                            ConnectionLabel: datadog.PtrString("INTEGRATION_DATADOG"),
+                            Name:            "Step1",
+                            OutboundEdges: []datadogV2.OutboundEdge{
+                                {
+                                    BranchName:   "main",
+                                    NextStepName: "Step2",
+                                },
+                            },
+                            Parameters: []datadogV2.Parameter{
+                                {
+                                    Name:  "tags",
+                                    Value: "service:monitoring",
+                                },
+                            },
+                        },
+                        {
+                            ActionId: "com.datadoghq.core.noop",
+                            Name:     "Step2",
+                        },
+                    },
+                    Triggers: []datadogV2.Trigger{
+                        datadogV2.Trigger{
+                            MonitorTriggerWrapper: &datadogV2.MonitorTriggerWrapper{
+                                MonitorTrigger: datadogV2.MonitorTrigger{
+                                    RateLimit: &datadogV2.TriggerRateLimit{
+                                        Count:    datadog.PtrInt64(1),
+                                        Interval: datadog.PtrString("3600s"),
+                                    },
+                                },
+                                StartStepNames: []string{
+                                    "Step1",
+                                },
+                            }},
+                        datadogV2.Trigger{
+                            GithubWebhookTriggerWrapper: &datadogV2.GithubWebhookTriggerWrapper{
+                                StartStepNames: []string{
+                                    "Step1",
+                                },
+                                GithubWebhookTrigger: datadogV2.GithubWebhookTrigger{},
+                            }},
+                    },
+                },
+                Tags: []string{
+                    "team:infra",
+                    "service:monitoring",
+                    "foo:bar",
+                },
+            },
+            Type: datadogV2.WORKFLOWDATATYPE_WORKFLOWS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.CreateWorkflow(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CreateWorkflow`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CreateWorkflow`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CreateWorkflow`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CreateWorkflow`:\n%s\n", responseContent)
 }
 ```
 
@@ -1765,7 +1761,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Workflow returns "Successfully created a workflow." response
@@ -1901,7 +1897,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2034,7 +2030,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Workflow returns "Successfully created a workflow." response
@@ -2137,7 +2133,7 @@ p api_instance.create_workflow(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Workflow returns "Successfully created a workflow." response
@@ -2248,7 +2244,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2388,8 +2384,6 @@ Update a workflow by ID. This API requires a [registered application key](https:
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -3191,7 +3185,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport workflow_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3288,8 +3282,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an existing Workflow returns "Successfully updated a workflow." response
@@ -3297,123 +3291,123 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "workflow" in the system
-	WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
+    // there is a valid "workflow" in the system
+    WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
 
-	body := datadogV2.UpdateWorkflowRequest{
-		Data: datadogV2.WorkflowDataUpdate{
-			Attributes: datadogV2.WorkflowDataUpdateAttributes{
-				Description: datadog.PtrString("A sample workflow."),
-				Name:        datadog.PtrString("Example Workflow"),
-				Published:   datadog.PtrBool(true),
-				Spec: &datadogV2.Spec{
-					ConnectionEnvs: []datadogV2.ConnectionEnv{
-						{
-							Connections: []datadogV2.Connection{
-								{
-									ConnectionId: "11111111-1111-1111-1111-111111111111",
-									Label:        "INTEGRATION_DATADOG",
-								},
-							},
-							Env: datadogV2.CONNECTIONENVENV_DEFAULT,
-						},
-					},
-					InputSchema: &datadogV2.InputSchema{
-						Parameters: []datadogV2.InputSchemaParameters{
-							{
-								DefaultValue: "default",
-								Name:         "input",
-								Type:         datadogV2.INPUTSCHEMAPARAMETERSTYPE_STRING,
-							},
-						},
-					},
-					OutputSchema: &datadogV2.OutputSchema{
-						Parameters: []datadogV2.OutputSchemaParameters{
-							{
-								Name:  "output",
-								Type:  datadogV2.OUTPUTSCHEMAPARAMETERSTYPE_ARRAY_OBJECT,
-								Value: "outputValue",
-							},
-						},
-					},
-					Steps: []datadogV2.Step{
-						{
-							ActionId:        "com.datadoghq.dd.monitor.listMonitors",
-							ConnectionLabel: datadog.PtrString("INTEGRATION_DATADOG"),
-							Name:            "Step1",
-							OutboundEdges: []datadogV2.OutboundEdge{
-								{
-									BranchName:   "main",
-									NextStepName: "Step2",
-								},
-							},
-							Parameters: []datadogV2.Parameter{
-								{
-									Name:  "tags",
-									Value: "service:monitoring",
-								},
-							},
-						},
-						{
-							ActionId: "com.datadoghq.core.noop",
-							Name:     "Step2",
-						},
-					},
-					Triggers: []datadogV2.Trigger{
-						datadogV2.Trigger{
-							MonitorTriggerWrapper: &datadogV2.MonitorTriggerWrapper{
-								MonitorTrigger: datadogV2.MonitorTrigger{
-									RateLimit: &datadogV2.TriggerRateLimit{
-										Count:    datadog.PtrInt64(1),
-										Interval: datadog.PtrString("3600s"),
-									},
-								},
-								StartStepNames: []string{
-									"Step1",
-								},
-							}},
-						datadogV2.Trigger{
-							GithubWebhookTriggerWrapper: &datadogV2.GithubWebhookTriggerWrapper{
-								StartStepNames: []string{
-									"Step1",
-								},
-								GithubWebhookTrigger: datadogV2.GithubWebhookTrigger{},
-							}},
-					},
-				},
-				Tags: []string{
-					"team:infra",
-					"service:monitoring",
-					"foo:bar",
-				},
-			},
-			Id:   datadog.PtrString("22222222-2222-2222-2222-222222222222"),
-			Type: datadogV2.WORKFLOWDATATYPE_WORKFLOWS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.UpdateWorkflow(ctx, WorkflowDataID, body)
+    body := datadogV2.UpdateWorkflowRequest{
+        Data: datadogV2.WorkflowDataUpdate{
+            Attributes: datadogV2.WorkflowDataUpdateAttributes{
+                Description: datadog.PtrString("A sample workflow."),
+                Name:        datadog.PtrString("Example Workflow"),
+                Published:   datadog.PtrBool(true),
+                Spec: &datadogV2.Spec{
+                    ConnectionEnvs: []datadogV2.ConnectionEnv{
+                        {
+                            Connections: []datadogV2.Connection{
+                                {
+                                    ConnectionId: "11111111-1111-1111-1111-111111111111",
+                                    Label:        "INTEGRATION_DATADOG",
+                                },
+                            },
+                            Env: datadogV2.CONNECTIONENVENV_DEFAULT,
+                        },
+                    },
+                    InputSchema: &datadogV2.InputSchema{
+                        Parameters: []datadogV2.InputSchemaParameters{
+                            {
+                                DefaultValue: "default",
+                                Name:         "input",
+                                Type:         datadogV2.INPUTSCHEMAPARAMETERSTYPE_STRING,
+                            },
+                        },
+                    },
+                    OutputSchema: &datadogV2.OutputSchema{
+                        Parameters: []datadogV2.OutputSchemaParameters{
+                            {
+                                Name:  "output",
+                                Type:  datadogV2.OUTPUTSCHEMAPARAMETERSTYPE_ARRAY_OBJECT,
+                                Value: "outputValue",
+                            },
+                        },
+                    },
+                    Steps: []datadogV2.Step{
+                        {
+                            ActionId:        "com.datadoghq.dd.monitor.listMonitors",
+                            ConnectionLabel: datadog.PtrString("INTEGRATION_DATADOG"),
+                            Name:            "Step1",
+                            OutboundEdges: []datadogV2.OutboundEdge{
+                                {
+                                    BranchName:   "main",
+                                    NextStepName: "Step2",
+                                },
+                            },
+                            Parameters: []datadogV2.Parameter{
+                                {
+                                    Name:  "tags",
+                                    Value: "service:monitoring",
+                                },
+                            },
+                        },
+                        {
+                            ActionId: "com.datadoghq.core.noop",
+                            Name:     "Step2",
+                        },
+                    },
+                    Triggers: []datadogV2.Trigger{
+                        datadogV2.Trigger{
+                            MonitorTriggerWrapper: &datadogV2.MonitorTriggerWrapper{
+                                MonitorTrigger: datadogV2.MonitorTrigger{
+                                    RateLimit: &datadogV2.TriggerRateLimit{
+                                        Count:    datadog.PtrInt64(1),
+                                        Interval: datadog.PtrString("3600s"),
+                                    },
+                                },
+                                StartStepNames: []string{
+                                    "Step1",
+                                },
+                            }},
+                        datadogV2.Trigger{
+                            GithubWebhookTriggerWrapper: &datadogV2.GithubWebhookTriggerWrapper{
+                                StartStepNames: []string{
+                                    "Step1",
+                                },
+                                GithubWebhookTrigger: datadogV2.GithubWebhookTrigger{},
+                            }},
+                    },
+                },
+                Tags: []string{
+                    "team:infra",
+                    "service:monitoring",
+                    "foo:bar",
+                },
+            },
+            Id:   datadog.PtrString("22222222-2222-2222-2222-222222222222"),
+            Type: datadogV2.WORKFLOWDATATYPE_WORKFLOWS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.UpdateWorkflow(ctx, WorkflowDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.UpdateWorkflow`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.UpdateWorkflow`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.UpdateWorkflow`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.UpdateWorkflow`:\n%s\n", responseContent)
 }
 ```
 
@@ -3421,7 +3415,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an existing Workflow returns "Successfully updated a workflow." response
@@ -3561,7 +3555,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3699,7 +3693,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an existing Workflow returns "Successfully updated a workflow." response
@@ -3806,7 +3800,7 @@ p api_instance.update_workflow(WORKFLOW_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an existing Workflow returns "Successfully updated a workflow." response
@@ -3923,7 +3917,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4202,12 +4196,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport workflow_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4233,7 +4227,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an existing Workflow returns "Successfully deleted a workflow." response
@@ -4250,7 +4244,7 @@ api_instance.delete_workflow(WORKFLOW_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an existing Workflow returns "Successfully deleted a workflow." response
@@ -4258,28 +4252,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "workflow" in the system
-	WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
+    // there is a valid "workflow" in the system
+    WorkflowDataID := os.Getenv("WORKFLOW_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	r, err := api.DeleteWorkflow(ctx, WorkflowDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    r, err := api.DeleteWorkflow(ctx, WorkflowDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.DeleteWorkflow`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.DeleteWorkflow`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -4287,7 +4281,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an existing Workflow returns "Successfully deleted a workflow." response
@@ -4321,7 +4315,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an existing Workflow returns "Successfully deleted a workflow." response
@@ -4347,7 +4341,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4401,8 +4395,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List all instances of a given workflow. This API requires a [registered application key](https://docs.datadoghq.com/api/latest/action-connection/#register-a-new-app-key). Alternatively, you can configure these permissions [in the UI](https://docs.datadoghq.com/account_management/api-app-keys/#actions-api-access). This endpoint requires the `workflows_read` permission.
 
 OAuth apps require the `workflows_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#workflow-automation) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4530,13 +4522,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport workflow_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}/instances" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4560,7 +4552,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List workflow instances returns "OK" response
@@ -4574,7 +4566,7 @@ p api_instance.list_workflow_instances("ccf73164-1998-4785-a7a3-8d06c7e5f558")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List workflow instances returns "OK" response
@@ -4582,29 +4574,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.ListWorkflowInstances(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", *datadogV2.NewListWorkflowInstancesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.ListWorkflowInstances(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", *datadogV2.NewListWorkflowInstancesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.ListWorkflowInstances`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.ListWorkflowInstances`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.ListWorkflowInstances`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.ListWorkflowInstances`:\n%s\n", responseContent)
 }
 ```
 
@@ -4612,7 +4604,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List workflow instances returns "OK" response
@@ -4646,7 +4638,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List workflow instances returns "OK" response
@@ -4676,7 +4668,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4728,8 +4720,6 @@ Execute the given workflow. This API requires a [registered application key](htt
 
 OAuth apps require the `workflows_run` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#workflow-automation) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -4741,8 +4731,6 @@ OAuth apps require the `workflows_run` authorization [scope](https://docs.datado
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4871,7 +4859,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport workflow_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}/instances" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4886,8 +4874,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Execute a workflow returns "Created" response
@@ -4895,36 +4883,36 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.WorkflowInstanceCreateRequest{
-		Meta: &datadogV2.WorkflowInstanceCreateMeta{
-			Payload: map[string]interface{}{
-				"input": "value",
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.CreateWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", body)
+    body := datadogV2.WorkflowInstanceCreateRequest{
+        Meta: &datadogV2.WorkflowInstanceCreateMeta{
+            Payload: map[string]interface{}{
+                "input": "value",
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.CreateWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CreateWorkflowInstance`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CreateWorkflowInstance`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CreateWorkflowInstance`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CreateWorkflowInstance`:\n%s\n", responseContent)
 }
 ```
 
@@ -4932,7 +4920,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Execute a workflow returns "Created" response
@@ -4975,7 +4963,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5005,7 +4993,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Execute a workflow returns "Created" response
@@ -5027,7 +5015,7 @@ p api_instance.create_workflow_instance("ccf73164-1998-4785-a7a3-8d06c7e5f558", 
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Execute a workflow returns "Created" response
@@ -5061,7 +5049,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5119,8 +5107,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific execution of a given workflow. This API requires a [registered application key](https://docs.datadoghq.com/api/latest/action-connection/#register-a-new-app-key). Alternatively, you can configure these permissions [in the UI](https://docs.datadoghq.com/account_management/api-app-keys/#actions-api-access). This endpoint requires the `workflows_read` permission.
 
 OAuth apps require the `workflows_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#workflow-automation) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5262,13 +5248,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport workflow_id="CHANGE_ME"export instance_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}/instances/${instance_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5293,7 +5279,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a workflow instance returns "OK" response
@@ -5307,7 +5293,7 @@ p api_instance.get_workflow_instance("ccf73164-1998-4785-a7a3-8d06c7e5f558", "30
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a workflow instance returns "OK" response
@@ -5315,29 +5301,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.GetWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", "305a472b-71ab-4ce8-8f8d-75db635627b5")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.GetWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", "305a472b-71ab-4ce8-8f8d-75db635627b5")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.GetWorkflowInstance`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.GetWorkflowInstance`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.GetWorkflowInstance`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.GetWorkflowInstance`:\n%s\n", responseContent)
 }
 ```
 
@@ -5345,7 +5331,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a workflow instance returns "OK" response
@@ -5380,7 +5366,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a workflow instance returns "OK" response
@@ -5409,7 +5395,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5599,13 +5585,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport workflow_id="CHANGE_ME"export instance_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/workflows/${workflow_id}/instances/${instance_id}/cancel" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5630,7 +5616,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Cancel a workflow instance returns "OK" response
@@ -5644,7 +5630,7 @@ p api_instance.cancel_workflow_instance("ccf73164-1998-4785-a7a3-8d06c7e5f558", 
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Cancel a workflow instance returns "OK" response
@@ -5652,29 +5638,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewWorkflowAutomationApi(apiClient)
-	resp, r, err := api.CancelWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", "305a472b-71ab-4ce8-8f8d-75db635627b5")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewWorkflowAutomationApi(apiClient)
+    resp, r, err := api.CancelWorkflowInstance(ctx, "ccf73164-1998-4785-a7a3-8d06c7e5f558", "305a472b-71ab-4ce8-8f8d-75db635627b5")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CancelWorkflowInstance`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowAutomationApi.CancelWorkflowInstance`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CancelWorkflowInstance`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowAutomationApi.CancelWorkflowInstance`:\n%s\n", responseContent)
 }
 ```
 
@@ -5682,7 +5668,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Cancel a workflow instance returns "OK" response
@@ -5717,7 +5703,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Cancel a workflow instance returns "OK" response
@@ -5746,7 +5732,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

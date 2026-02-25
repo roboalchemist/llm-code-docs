@@ -138,12 +138,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport embed_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/graph/embed/${embed_id}/revoke" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Enable embed{% #enable-embed %}
@@ -274,12 +274,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport embed_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/graph/embed/${embed_id}/enable" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Get specific embed{% #get-specific-embed %}
@@ -422,12 +422,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport embed_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/graph/embed/${embed_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Create embed{% #create-embed %}
@@ -602,7 +602,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/graph/embed" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -613,7 +613,7 @@ Error response object.
   "graph_json": ""
 }
 EOF
-                
+
 {% /tab %}
 
 ## Get all embeds{% #get-all-embeds %}
@@ -728,10 +728,10 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/graph/embed" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}

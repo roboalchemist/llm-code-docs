@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CodeBuild source credentials should be stored and transmitted securely
- 
+
 ## Description{% #description %}
 
 This control verifies if AWS CodeBuild source credentials include personal access tokens or basic authentication credentials (username and password). It is applicable only to credentials for GitHub or Bitbucket sources, as only these sources support insecure repository access methods.

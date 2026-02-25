@@ -30,8 +30,6 @@ Create an incident. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
@@ -491,7 +489,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -522,8 +520,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an incident returns "CREATED" response
@@ -531,57 +529,57 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.IncidentCreateRequest{
-		Data: datadogV2.IncidentCreateData{
-			Type: datadogV2.INCIDENTTYPE_INCIDENTS,
-			Attributes: datadogV2.IncidentCreateAttributes{
-				Title:            "Example-Incident",
-				CustomerImpacted: false,
-				Fields: map[string]datadogV2.IncidentFieldAttributes{
-					"state": datadogV2.IncidentFieldAttributes{
-						IncidentFieldAttributesSingleValue: &datadogV2.IncidentFieldAttributesSingleValue{
-							Type:  datadogV2.INCIDENTFIELDATTRIBUTESSINGLEVALUETYPE_DROPDOWN.Ptr(),
-							Value: *datadog.NewNullableString(datadog.PtrString("resolved")),
-						}},
-				},
-			},
-			Relationships: &datadogV2.IncidentCreateRelationships{
-				CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
-					Data: *datadogV2.NewNullableNullableRelationshipToUserData(&datadogV2.NullableRelationshipToUserData{
-						Type: datadogV2.USERSTYPE_USERS,
-						Id:   UserDataID,
-					}),
-				}),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncident(ctx, body)
+    body := datadogV2.IncidentCreateRequest{
+        Data: datadogV2.IncidentCreateData{
+            Type: datadogV2.INCIDENTTYPE_INCIDENTS,
+            Attributes: datadogV2.IncidentCreateAttributes{
+                Title:            "Example-Incident",
+                CustomerImpacted: false,
+                Fields: map[string]datadogV2.IncidentFieldAttributes{
+                    "state": datadogV2.IncidentFieldAttributes{
+                        IncidentFieldAttributesSingleValue: &datadogV2.IncidentFieldAttributesSingleValue{
+                            Type:  datadogV2.INCIDENTFIELDATTRIBUTESSINGLEVALUETYPE_DROPDOWN.Ptr(),
+                            Value: *datadog.NewNullableString(datadog.PtrString("resolved")),
+                        }},
+                },
+            },
+            Relationships: &datadogV2.IncidentCreateRelationships{
+                CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
+                    Data: *datadogV2.NewNullableNullableRelationshipToUserData(&datadogV2.NullableRelationshipToUserData{
+                        Type: datadogV2.USERSTYPE_USERS,
+                        Id:   UserDataID,
+                    }),
+                }),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncident(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncident`:\n%s\n", responseContent)
 }
 ```
 
@@ -589,7 +587,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an incident returns "CREATED" response
@@ -665,7 +663,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -728,7 +726,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an incident returns "CREATED" response
@@ -772,7 +770,7 @@ p api_instance.create_incident(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an incident returns "CREATED" response
@@ -832,7 +830,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -910,8 +908,6 @@ Get the details of an incident by `incident_id`. This endpoint requires the `inc
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -1312,13 +1308,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1347,7 +1343,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the details of an incident returns "OK" response
@@ -1367,7 +1363,7 @@ p api_instance.get_incident(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the details of an incident returns "OK" response
@@ -1375,33 +1371,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncident(ctx, IncidentDataID, *datadogV2.NewGetIncidentOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncident(ctx, IncidentDataID, *datadogV2.NewGetIncidentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncident`:\n%s\n", responseContent)
 }
 ```
 
@@ -1409,7 +1405,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the details of an incident returns "OK" response
@@ -1446,7 +1442,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the details of an incident returns "OK" response
@@ -1479,7 +1475,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1534,8 +1530,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Updates an incident. Provide only the attributes that should be updated as this request is a partial update. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1599,7 +1593,7 @@ Incident Payload.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -1618,7 +1612,7 @@ Incident Payload.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1634,7 +1628,7 @@ Incident Payload.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2042,7 +2036,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2064,8 +2058,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2084,8 +2078,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2108,8 +2102,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Add commander to an incident returns "OK" response
@@ -2117,54 +2111,54 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.IncidentUpdateRequest{
-		Data: datadogV2.IncidentUpdateData{
-			Id:   IncidentDataID,
-			Type: datadogV2.INCIDENTTYPE_INCIDENTS,
-			Relationships: &datadogV2.IncidentUpdateRelationships{
-				CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
-					Data: *datadogV2.NewNullableNullableRelationshipToUserData(&datadogV2.NullableRelationshipToUserData{
-						Id:   UserDataID,
-						Type: datadogV2.USERSTYPE_USERS,
-					}),
-				}),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
+    body := datadogV2.IncidentUpdateRequest{
+        Data: datadogV2.IncidentUpdateData{
+            Id:   IncidentDataID,
+            Type: datadogV2.INCIDENTTYPE_INCIDENTS,
+            Relationships: &datadogV2.IncidentUpdateRelationships{
+                CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
+                    Data: *datadogV2.NewNullableNullableRelationshipToUserData(&datadogV2.NullableRelationshipToUserData{
+                        Id:   UserDataID,
+                        Type: datadogV2.USERSTYPE_USERS,
+                    }),
+                }),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Remove commander from an incident returns "OK" response
@@ -2172,48 +2166,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.IncidentUpdateRequest{
-		Data: datadogV2.IncidentUpdateData{
-			Id:   IncidentDataID,
-			Type: datadogV2.INCIDENTTYPE_INCIDENTS,
-			Relationships: &datadogV2.IncidentUpdateRelationships{
-				CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
-					Data: *datadogV2.NewNullableNullableRelationshipToUserData(nil),
-				}),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
+    body := datadogV2.IncidentUpdateRequest{
+        Data: datadogV2.IncidentUpdateData{
+            Id:   IncidentDataID,
+            Type: datadogV2.INCIDENTTYPE_INCIDENTS,
+            Relationships: &datadogV2.IncidentUpdateRelationships{
+                CommanderUser: *datadogV2.NewNullableNullableRelationshipToUser(&datadogV2.NullableRelationshipToUser{
+                    Data: *datadogV2.NewNullableNullableRelationshipToUserData(nil),
+                }),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update an existing incident returns "OK" response
@@ -2221,49 +2215,49 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.IncidentUpdateRequest{
-		Data: datadogV2.IncidentUpdateData{
-			Id:   IncidentDataID,
-			Type: datadogV2.INCIDENTTYPE_INCIDENTS,
-			Attributes: &datadogV2.IncidentUpdateAttributes{
-				Fields: map[string]datadogV2.IncidentFieldAttributes{
-					"state": datadogV2.IncidentFieldAttributes{
-						IncidentFieldAttributesSingleValue: &datadogV2.IncidentFieldAttributesSingleValue{
-							Type:  datadogV2.INCIDENTFIELDATTRIBUTESSINGLEVALUETYPE_DROPDOWN.Ptr(),
-							Value: *datadog.NewNullableString(datadog.PtrString("resolved")),
-						}},
-				},
-				Title: datadog.PtrString("A test incident title-updated"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
+    body := datadogV2.IncidentUpdateRequest{
+        Data: datadogV2.IncidentUpdateData{
+            Id:   IncidentDataID,
+            Type: datadogV2.INCIDENTTYPE_INCIDENTS,
+            Attributes: &datadogV2.IncidentUpdateAttributes{
+                Fields: map[string]datadogV2.IncidentFieldAttributes{
+                    "state": datadogV2.IncidentFieldAttributes{
+                        IncidentFieldAttributesSingleValue: &datadogV2.IncidentFieldAttributesSingleValue{
+                            Type:  datadogV2.INCIDENTFIELDATTRIBUTESSINGLEVALUETYPE_DROPDOWN.Ptr(),
+                            Value: *datadog.NewNullableString(datadog.PtrString("resolved")),
+                        }},
+                },
+                Title: datadog.PtrString("A test incident title-updated"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncident(ctx, IncidentDataID, body, *datadogV2.NewUpdateIncidentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncident`:\n%s\n", responseContent)
 }
 ```
 
@@ -2271,7 +2265,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add commander to an incident returns "OK" response
@@ -2329,7 +2323,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Remove commander from an incident returns "OK" response
@@ -2377,7 +2371,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update an existing incident returns "OK" response
@@ -2442,7 +2436,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2490,7 +2484,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2530,7 +2524,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2582,7 +2576,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add commander to an incident returns "OK" response
@@ -2616,7 +2610,7 @@ body = DatadogAPIClient::V2::IncidentUpdateRequest.new({
 p api_instance.update_incident(INCIDENT_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Remove commander from an incident returns "OK" response
@@ -2644,7 +2638,7 @@ body = DatadogAPIClient::V2::IncidentUpdateRequest.new({
 p api_instance.update_incident(INCIDENT_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update an existing incident returns "OK" response
@@ -2681,7 +2675,7 @@ p api_instance.update_incident(INCIDENT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Add commander to an incident returns "OK" response
@@ -2731,7 +2725,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Remove commander from an incident returns "OK" response
@@ -2772,7 +2766,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update an existing incident returns "OK" response
@@ -2828,7 +2822,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2875,7 +2869,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2916,7 +2910,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2986,8 +2980,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Deletes an existing incident from the users organization. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3130,12 +3122,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3162,7 +3154,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an existing incident returns "OK" response
@@ -3182,7 +3174,7 @@ api_instance.delete_incident(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an existing incident returns "OK" response
@@ -3190,29 +3182,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncident", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncident(ctx, IncidentDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncident", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncident(ctx, IncidentDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3220,7 +3212,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an existing incident returns "OK" response
@@ -3255,7 +3247,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an existing incident returns "OK" response
@@ -3282,7 +3274,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3334,13 +3326,9 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Create a postmortem attachment for an incident.
 
 The endpoint accepts markdown for notebooks created in Confluence or Google Docs. Postmortems created from notebooks need to be formatted using frontend notebook cells, in addition to markdown format.
-
-
 
 ### Arguments
 
@@ -3353,8 +3341,6 @@ The endpoint accepts markdown for notebooks created in Confluence or Google Docs
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -3563,7 +3549,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/attachments/postmortems" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3577,8 +3563,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3633,7 +3619,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create postmortem attachment returns "Created" response
@@ -3672,7 +3658,7 @@ p api_instance.create_incident_postmortem_attachment("00000000-0000-0000-0000-00
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create postmortem attachment returns "Created" response
@@ -3680,53 +3666,53 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.PostmortemAttachmentRequest{
-		Data: datadogV2.PostmortemAttachmentRequestData{
-			Attributes: datadogV2.PostmortemAttachmentRequestAttributes{
-				Cells: []datadogV2.PostmortemCell{
-					{
-						Attributes: &datadogV2.PostmortemCellAttributes{
-							Definition: &datadogV2.PostmortemCellDefinition{
-								Content: datadog.PtrString(`## Incident Summary
+    body := datadogV2.PostmortemAttachmentRequest{
+        Data: datadogV2.PostmortemAttachmentRequestData{
+            Attributes: datadogV2.PostmortemAttachmentRequestAttributes{
+                Cells: []datadogV2.PostmortemCell{
+                    {
+                        Attributes: &datadogV2.PostmortemCellAttributes{
+                            Definition: &datadogV2.PostmortemCellDefinition{
+                                Content: datadog.PtrString(`## Incident Summary
 This incident was caused by...`),
-							},
-						},
-						Id:   datadog.PtrString("cell-1"),
-						Type: datadogV2.POSTMORTEMCELLTYPE_MARKDOWN.Ptr(),
-					},
-				},
-				Content: datadog.PtrString(`# Incident Report - IR-123
+                            },
+                        },
+                        Id:   datadog.PtrString("cell-1"),
+                        Type: datadogV2.POSTMORTEMCELLTYPE_MARKDOWN.Ptr(),
+                    },
+                },
+                Content: datadog.PtrString(`# Incident Report - IR-123
 [...]`),
-				PostmortemTemplateId: datadog.PtrString("93645509-874e-45c4-adfa-623bfeaead89-123"),
-				Title:                datadog.PtrString("Postmortem-IR-123"),
-			},
-			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemAttachment", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentPostmortemAttachment(ctx, "00000000-0000-0000-0000-000000000000", body)
+                PostmortemTemplateId: datadog.PtrString("93645509-874e-45c4-adfa-623bfeaead89-123"),
+                Title:                datadog.PtrString("Postmortem-IR-123"),
+            },
+            Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemAttachment", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentPostmortemAttachment(ctx, "00000000-0000-0000-0000-000000000000", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemAttachment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemAttachment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemAttachment`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemAttachment`:\n%s\n", responseContent)
 }
 ```
 
@@ -3734,7 +3720,7 @@ This incident was caused by...`),
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create postmortem attachment returns "Created" response
@@ -3807,7 +3793,7 @@ This incident was caused by...
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create postmortem attachment returns "Created" response
@@ -3868,7 +3854,7 @@ This incident was caused by..."#
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3942,8 +3928,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all incidents for the user's organization. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4355,13 +4339,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4384,7 +4368,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of incidents returns "OK" response
@@ -4401,7 +4385,7 @@ p api_instance.list_incidents()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of incidents returns "OK" response
@@ -4409,30 +4393,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidents", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidents(ctx, *datadogV2.NewListIncidentsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidents", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidents(ctx, *datadogV2.NewListIncidentsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidents`:\n%s\n", responseContent)
 }
 ```
 
@@ -4440,7 +4424,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of incidents returns "OK" response
@@ -4474,7 +4458,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of incidents returns "OK" response
@@ -4502,7 +4486,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4550,8 +4534,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Search for incidents matching a certain query. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5128,13 +5110,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport query="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/search?query=${query}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5159,7 +5141,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search for incidents returns "OK" response
@@ -5176,7 +5158,7 @@ p api_instance.search_incidents("state:(active OR stable OR resolved)")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search for incidents returns "OK" response
@@ -5184,30 +5166,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.SearchIncidents", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.SearchIncidents(ctx, "state:(active OR stable OR resolved)", *datadogV2.NewSearchIncidentsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.SearchIncidents", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.SearchIncidents(ctx, "state:(active OR stable OR resolved)", *datadogV2.NewSearchIncidentsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.SearchIncidents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.SearchIncidents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.SearchIncidents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.SearchIncidents`:\n%s\n", responseContent)
 }
 ```
 
@@ -5215,7 +5197,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search for incidents returns "OK" response
@@ -5250,7 +5232,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search for incidents returns "OK" response
@@ -5281,7 +5263,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5333,8 +5315,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all impacts for an incident. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5587,13 +5567,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/impacts" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5622,7 +5602,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List an incident's impacts returns "OK" response
@@ -5642,7 +5622,7 @@ p api_instance.list_incident_impacts(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List an incident's impacts returns "OK" response
@@ -5650,33 +5630,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentImpacts", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentImpacts(ctx, IncidentDataID, *datadogV2.NewListIncidentImpactsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentImpacts", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentImpacts(ctx, IncidentDataID, *datadogV2.NewListIncidentImpactsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentImpacts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentImpacts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentImpacts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentImpacts`:\n%s\n", responseContent)
 }
 ```
 
@@ -5684,7 +5664,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List an incident's impacts returns "OK" response
@@ -5721,7 +5701,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List an incident's impacts returns "OK" response
@@ -5754,7 +5734,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5809,8 +5789,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create an impact for an incident. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6105,7 +6083,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/impacts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6122,8 +6100,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6167,7 +6145,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an incident impact returns "CREATED" response
@@ -6198,7 +6176,7 @@ p api_instance.create_incident_impact(INCIDENT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create an incident impact returns "CREATED" response
@@ -6206,44 +6184,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.IncidentImpactCreateRequest{
-		Data: datadogV2.IncidentImpactCreateData{
-			Type: datadogV2.INCIDENTIMPACTTYPE_INCIDENT_IMPACTS,
-			Attributes: datadogV2.IncidentImpactCreateAttributes{
-				StartAt:     time.Date(2025, 9, 12, 13, 50, 0, 0, time.UTC),
-				EndAt:       *datadog.NewNullableTime(datadog.PtrTime(time.Date(2025, 9, 12, 14, 50, 0, 0, time.UTC))),
-				Description: "Outage in the us-east-1 region",
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentImpact", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentImpact(ctx, IncidentDataID, body, *datadogV2.NewCreateIncidentImpactOptionalParameters())
+    body := datadogV2.IncidentImpactCreateRequest{
+        Data: datadogV2.IncidentImpactCreateData{
+            Type: datadogV2.INCIDENTIMPACTTYPE_INCIDENT_IMPACTS,
+            Attributes: datadogV2.IncidentImpactCreateAttributes{
+                StartAt:     time.Date(2025, 9, 12, 13, 50, 0, 0, time.UTC),
+                EndAt:       *datadog.NewNullableTime(datadog.PtrTime(time.Date(2025, 9, 12, 14, 50, 0, 0, time.UTC))),
+                Description: "Outage in the us-east-1 region",
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentImpact", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentImpact(ctx, IncidentDataID, body, *datadogV2.NewCreateIncidentImpactOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentImpact`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentImpact`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentImpact`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentImpact`:\n%s\n", responseContent)
 }
 ```
 
@@ -6251,7 +6229,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an incident impact returns "CREATED" response
@@ -6304,7 +6282,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create an incident impact returns "CREATED" response
@@ -6357,7 +6335,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6422,8 +6400,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete an incident impact. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6542,12 +6518,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export impact_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/impacts/${impact_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6576,7 +6552,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an incident impact returns "No Content" response
@@ -6597,7 +6573,7 @@ api_instance.delete_incident_impact(INCIDENT_IMPACT_DATA_RELATIONSHIPS_INCIDENT_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an incident impact returns "No Content" response
@@ -6605,30 +6581,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// the "incident" has an "incident_impact"
-	IncidentImpactDataID := os.Getenv("INCIDENT_IMPACT_DATA_ID")
-	IncidentImpactDataRelationshipsIncidentDataID := os.Getenv("INCIDENT_IMPACT_DATA_RELATIONSHIPS_INCIDENT_DATA_ID")
+    // the "incident" has an "incident_impact"
+    IncidentImpactDataID := os.Getenv("INCIDENT_IMPACT_DATA_ID")
+    IncidentImpactDataRelationshipsIncidentDataID := os.Getenv("INCIDENT_IMPACT_DATA_RELATIONSHIPS_INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentImpact", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentImpact(ctx, IncidentImpactDataRelationshipsIncidentDataID, IncidentImpactDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentImpact", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentImpact(ctx, IncidentImpactDataRelationshipsIncidentDataID, IncidentImpactDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentImpact`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentImpact`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -6636,7 +6612,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an incident impact returns "No Content" response
@@ -6674,7 +6650,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an incident impact returns "No Content" response
@@ -6708,7 +6684,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6766,8 +6742,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all integration metadata for an incident. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7102,13 +7076,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/integrations" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7137,7 +7111,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of an incident's integration metadata returns "OK" response
@@ -7157,7 +7131,7 @@ p api_instance.list_incident_integrations(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of an incident's integration metadata returns "OK" response
@@ -7165,33 +7139,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentIntegrations", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentIntegrations(ctx, IncidentDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentIntegrations", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentIntegrations(ctx, IncidentDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentIntegrations`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentIntegrations`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentIntegrations`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentIntegrations`:\n%s\n", responseContent)
 }
 ```
 
@@ -7199,7 +7173,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of an incident's integration metadata returns "OK" response
@@ -7237,7 +7211,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of an incident's integration metadata returns "OK" response
@@ -7266,7 +7240,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7321,8 +7295,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create an incident integration metadata. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7710,7 +7682,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/integrations" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7737,8 +7709,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an incident integration metadata returns "CREATED" response
@@ -7746,53 +7718,53 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.IncidentIntegrationMetadataCreateRequest{
-		Data: datadogV2.IncidentIntegrationMetadataCreateData{
-			Attributes: datadogV2.IncidentIntegrationMetadataAttributes{
-				IncidentId:      datadog.PtrString(IncidentDataID),
-				IntegrationType: 1,
-				Metadata: datadogV2.IncidentIntegrationMetadataMetadata{
-					SlackIntegrationMetadata: &datadogV2.SlackIntegrationMetadata{
-						Channels: []datadogV2.SlackIntegrationMetadataChannelItem{
-							{
-								ChannelId:   "C0123456789",
-								ChannelName: "#new-channel",
-								TeamId:      datadog.PtrString("T01234567"),
-								RedirectUrl: "https://slack.com/app_redirect?channel=C0123456789&team=T01234567",
-							},
-						},
-					}},
-			},
-			Type: datadogV2.INCIDENTINTEGRATIONMETADATATYPE_INCIDENT_INTEGRATIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentIntegration", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentIntegration(ctx, IncidentDataID, body)
+    body := datadogV2.IncidentIntegrationMetadataCreateRequest{
+        Data: datadogV2.IncidentIntegrationMetadataCreateData{
+            Attributes: datadogV2.IncidentIntegrationMetadataAttributes{
+                IncidentId:      datadog.PtrString(IncidentDataID),
+                IntegrationType: 1,
+                Metadata: datadogV2.IncidentIntegrationMetadataMetadata{
+                    SlackIntegrationMetadata: &datadogV2.SlackIntegrationMetadata{
+                        Channels: []datadogV2.SlackIntegrationMetadataChannelItem{
+                            {
+                                ChannelId:   "C0123456789",
+                                ChannelName: "#new-channel",
+                                TeamId:      datadog.PtrString("T01234567"),
+                                RedirectUrl: "https://slack.com/app_redirect?channel=C0123456789&team=T01234567",
+                            },
+                        },
+                    }},
+            },
+            Type: datadogV2.INCIDENTINTEGRATIONMETADATATYPE_INCIDENT_INTEGRATIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentIntegration", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentIntegration(ctx, IncidentDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -7800,7 +7772,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an incident integration metadata returns "CREATED" response
@@ -7867,7 +7839,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7922,7 +7894,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an incident integration metadata returns "CREATED" response
@@ -7962,7 +7934,7 @@ p api_instance.create_incident_integration(INCIDENT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an incident integration metadata returns "CREATED" response
@@ -8015,7 +7987,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8090,8 +8062,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get incident integration metadata details.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8413,13 +8383,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export integration_metadata_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/integrations/${integration_metadata_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8452,7 +8422,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get incident integration metadata details returns "OK" response
@@ -8475,7 +8445,7 @@ p api_instance.get_incident_integration(INCIDENT_DATA_ID, INCIDENT_INTEGRATION_M
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get incident integration metadata details returns "OK" response
@@ -8483,36 +8453,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_integration_metadata"
-	IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
+    // the "incident" has an "incident_integration_metadata"
+    IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentIntegration", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentIntegration", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -8520,7 +8490,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get incident integration metadata details returns "OK" response
@@ -8563,7 +8533,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get incident integration metadata details returns "OK" response
@@ -8599,7 +8569,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8659,8 +8629,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update an existing incident integration metadata.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9049,7 +9017,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"export integration_metadata_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/integrations/${integration_metadata_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9076,8 +9044,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an existing incident integration metadata returns "OK" response
@@ -9085,56 +9053,56 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_integration_metadata"
-	IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
+    // the "incident" has an "incident_integration_metadata"
+    IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
 
-	body := datadogV2.IncidentIntegrationMetadataPatchRequest{
-		Data: datadogV2.IncidentIntegrationMetadataPatchData{
-			Attributes: datadogV2.IncidentIntegrationMetadataAttributes{
-				IncidentId:      datadog.PtrString(IncidentDataID),
-				IntegrationType: 1,
-				Metadata: datadogV2.IncidentIntegrationMetadataMetadata{
-					SlackIntegrationMetadata: &datadogV2.SlackIntegrationMetadata{
-						Channels: []datadogV2.SlackIntegrationMetadataChannelItem{
-							{
-								ChannelId:   "C0123456789",
-								ChannelName: "#updated-channel-name",
-								TeamId:      datadog.PtrString("T01234567"),
-								RedirectUrl: "https://slack.com/app_redirect?channel=C0123456789&team=T01234567",
-							},
-						},
-					}},
-			},
-			Type: datadogV2.INCIDENTINTEGRATIONMETADATATYPE_INCIDENT_INTEGRATIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentIntegration", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID, body)
+    body := datadogV2.IncidentIntegrationMetadataPatchRequest{
+        Data: datadogV2.IncidentIntegrationMetadataPatchData{
+            Attributes: datadogV2.IncidentIntegrationMetadataAttributes{
+                IncidentId:      datadog.PtrString(IncidentDataID),
+                IntegrationType: 1,
+                Metadata: datadogV2.IncidentIntegrationMetadataMetadata{
+                    SlackIntegrationMetadata: &datadogV2.SlackIntegrationMetadata{
+                        Channels: []datadogV2.SlackIntegrationMetadataChannelItem{
+                            {
+                                ChannelId:   "C0123456789",
+                                ChannelName: "#updated-channel-name",
+                                TeamId:      datadog.PtrString("T01234567"),
+                                RedirectUrl: "https://slack.com/app_redirect?channel=C0123456789&team=T01234567",
+                            },
+                        },
+                    }},
+            },
+            Type: datadogV2.INCIDENTINTEGRATIONMETADATATYPE_INCIDENT_INTEGRATIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentIntegration", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -9142,7 +9110,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an existing incident integration metadata returns "OK" response
@@ -9214,7 +9182,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9274,7 +9242,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an existing incident integration metadata returns "OK" response
@@ -9317,7 +9285,7 @@ p api_instance.update_incident_integration(INCIDENT_DATA_ID, INCIDENT_INTEGRATIO
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an existing incident integration metadata returns "OK" response
@@ -9378,7 +9346,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9458,8 +9426,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete an incident integration metadata.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9603,12 +9569,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export integration_metadata_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/integrations/${integration_metadata_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9639,7 +9605,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an incident integration metadata returns "OK" response
@@ -9662,7 +9628,7 @@ api_instance.delete_incident_integration(INCIDENT_DATA_ID, INCIDENT_INTEGRATION_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an incident integration metadata returns "OK" response
@@ -9670,32 +9636,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_integration_metadata"
-	IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
+    // the "incident" has an "incident_integration_metadata"
+    IncidentIntegrationMetadataDataID := os.Getenv("INCIDENT_INTEGRATION_METADATA_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentIntegration", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentIntegration", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentIntegration(ctx, IncidentDataID, IncidentIntegrationMetadataDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -9703,7 +9669,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an incident integration metadata returns "OK" response
@@ -9743,7 +9709,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an incident integration metadata returns "OK" response
@@ -9779,7 +9745,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9839,8 +9805,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all todos for an incident. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10161,13 +10125,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/todos" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10196,7 +10160,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of an incident's todos returns "OK" response
@@ -10216,7 +10180,7 @@ p api_instance.list_incident_todos(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of an incident's todos returns "OK" response
@@ -10224,33 +10188,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentTodos", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentTodos(ctx, IncidentDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentTodos", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentTodos(ctx, IncidentDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentTodos`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentTodos`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentTodos`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentTodos`:\n%s\n", responseContent)
 }
 ```
 
@@ -10258,7 +10222,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of an incident's todos returns "OK" response
@@ -10295,7 +10259,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of an incident's todos returns "OK" response
@@ -10322,7 +10286,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10377,8 +10341,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create an incident todo. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10732,7 +10694,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/todos" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10751,8 +10713,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an incident todo returns "CREATED" response
@@ -10760,45 +10722,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.IncidentTodoCreateRequest{
-		Data: datadogV2.IncidentTodoCreateData{
-			Attributes: datadogV2.IncidentTodoAttributes{
-				Assignees: []datadogV2.IncidentTodoAssignee{
-					datadogV2.IncidentTodoAssignee{
-						IncidentTodoAssigneeHandle: datadog.PtrString("@test.user@test.com")},
-				},
-				Content: "Restore lost data.",
-			},
-			Type: datadogV2.INCIDENTTODOTYPE_INCIDENT_TODOS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentTodo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentTodo(ctx, IncidentDataID, body)
+    body := datadogV2.IncidentTodoCreateRequest{
+        Data: datadogV2.IncidentTodoCreateData{
+            Attributes: datadogV2.IncidentTodoAttributes{
+                Assignees: []datadogV2.IncidentTodoAssignee{
+                    datadogV2.IncidentTodoAssignee{
+                        IncidentTodoAssigneeHandle: datadog.PtrString("@test.user@test.com")},
+                },
+                Content: "Restore lost data.",
+            },
+            Type: datadogV2.INCIDENTTODOTYPE_INCIDENT_TODOS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentTodo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentTodo(ctx, IncidentDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentTodo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentTodo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentTodo`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentTodo`:\n%s\n", responseContent)
 }
 ```
 
@@ -10806,7 +10768,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an incident todo returns "CREATED" response
@@ -10861,7 +10823,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10907,7 +10869,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an incident todo returns "CREATED" response
@@ -10939,7 +10901,7 @@ p api_instance.create_incident_todo(INCIDENT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an incident todo returns "CREATED" response
@@ -10982,7 +10944,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11046,8 +11008,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get incident todo details. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11355,13 +11315,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export todo_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/todos/${todo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11394,7 +11354,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get incident todo details returns "OK" response
@@ -11417,7 +11377,7 @@ p api_instance.get_incident_todo(INCIDENT_DATA_ID, INCIDENT_TODO_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get incident todo details returns "OK" response
@@ -11425,36 +11385,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_todo"
-	IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
+    // the "incident" has an "incident_todo"
+    IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentTodo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentTodo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentTodo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentTodo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentTodo`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentTodo`:\n%s\n", responseContent)
 }
 ```
 
@@ -11462,7 +11422,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get incident todo details returns "OK" response
@@ -11503,7 +11463,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get incident todo details returns "OK" response
@@ -11535,7 +11495,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11594,8 +11554,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update an incident todo. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11952,7 +11910,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"export todo_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/todos/${todo_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -11973,8 +11931,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an incident todo returns "OK" response
@@ -11982,50 +11940,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_todo"
-	IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
+    // the "incident" has an "incident_todo"
+    IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
 
-	body := datadogV2.IncidentTodoPatchRequest{
-		Data: datadogV2.IncidentTodoPatchData{
-			Attributes: datadogV2.IncidentTodoAttributes{
-				Assignees: []datadogV2.IncidentTodoAssignee{
-					datadogV2.IncidentTodoAssignee{
-						IncidentTodoAssigneeHandle: datadog.PtrString("@test.user@test.com")},
-				},
-				Content:   "Restore lost data.",
-				Completed: *datadog.NewNullableString(datadog.PtrString("2023-03-06T22:00:00.000000+00:00")),
-				DueDate:   *datadog.NewNullableString(datadog.PtrString("2023-07-10T05:00:00.000000+00:00")),
-			},
-			Type: datadogV2.INCIDENTTODOTYPE_INCIDENT_TODOS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentTodo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID, body)
+    body := datadogV2.IncidentTodoPatchRequest{
+        Data: datadogV2.IncidentTodoPatchData{
+            Attributes: datadogV2.IncidentTodoAttributes{
+                Assignees: []datadogV2.IncidentTodoAssignee{
+                    datadogV2.IncidentTodoAssignee{
+                        IncidentTodoAssigneeHandle: datadog.PtrString("@test.user@test.com")},
+                },
+                Content:   "Restore lost data.",
+                Completed: *datadog.NewNullableString(datadog.PtrString("2023-03-06T22:00:00.000000+00:00")),
+                DueDate:   *datadog.NewNullableString(datadog.PtrString("2023-07-10T05:00:00.000000+00:00")),
+            },
+            Type: datadogV2.INCIDENTTODOTYPE_INCIDENT_TODOS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentTodo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentTodo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentTodo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentTodo`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentTodo`:\n%s\n", responseContent)
 }
 ```
 
@@ -12033,7 +11991,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an incident todo returns "OK" response
@@ -12094,7 +12052,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -12145,7 +12103,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an incident todo returns "OK" response
@@ -12182,7 +12140,7 @@ p api_instance.update_incident_todo(INCIDENT_DATA_ID, INCIDENT_TODO_DATA_ID, bod
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an incident todo returns "OK" response
@@ -12234,7 +12192,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12304,8 +12262,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete an incident todo. This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -12449,12 +12405,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export todo_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/relationships/todos/${todo_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12485,7 +12441,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an incident todo returns "OK" response
@@ -12508,7 +12464,7 @@ api_instance.delete_incident_todo(INCIDENT_DATA_ID, INCIDENT_TODO_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an incident todo returns "OK" response
@@ -12516,32 +12472,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// the "incident" has an "incident_todo"
-	IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
+    // the "incident" has an "incident_todo"
+    IncidentTodoDataID := os.Getenv("INCIDENT_TODO_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentTodo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentTodo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentTodo(ctx, IncidentDataID, IncidentTodoDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentTodo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentTodo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -12549,7 +12505,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an incident todo returns "OK" response
@@ -12587,7 +12543,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an incident todo returns "OK" response
@@ -12619,7 +12575,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12678,8 +12634,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create an incident type. This endpoint requires the `incident_settings_write` permission.
 
 OAuth apps require the `incident_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Request
 
@@ -12951,7 +12905,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/types" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12969,8 +12923,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an incident type returns "CREATED" response
@@ -12978,40 +12932,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.IncidentTypeCreateRequest{
-		Data: datadogV2.IncidentTypeCreateData{
-			Attributes: datadogV2.IncidentTypeAttributes{
-				Description: datadog.PtrString("Any incidents that harm (or have the potential to) the confidentiality, integrity, or availability of our data."),
-				IsDefault:   datadog.PtrBool(false),
-				Name:        "Security Incident",
-			},
-			Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentType", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentType(ctx, body)
+    body := datadogV2.IncidentTypeCreateRequest{
+        Data: datadogV2.IncidentTypeCreateData{
+            Attributes: datadogV2.IncidentTypeAttributes{
+                Description: datadog.PtrString("Any incidents that harm (or have the potential to) the confidentiality, integrity, or availability of our data."),
+                IsDefault:   datadog.PtrBool(false),
+                Name:        "Security Incident",
+            },
+            Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentType", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentType(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentType`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentType`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentType`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentType`:\n%s\n", responseContent)
 }
 ```
 
@@ -13019,7 +12973,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an incident type returns "CREATED" response
@@ -13070,7 +13024,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -13108,7 +13062,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an incident type returns "CREATED" response
@@ -13136,7 +13090,7 @@ p api_instance.create_incident_type(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an incident type returns "CREATED" response
@@ -13176,7 +13130,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13238,10 +13192,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all incident types. This endpoint requires any of the following permissions:
 `incident_settings_read``incident_read`
 
-
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13457,13 +13408,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/types" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13486,7 +13437,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of incident types returns "OK" response
@@ -13503,7 +13454,7 @@ p api_instance.list_incident_types()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of incident types returns "OK" response
@@ -13511,30 +13462,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentTypes", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentTypes(ctx, *datadogV2.NewListIncidentTypesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentTypes", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentTypes(ctx, *datadogV2.NewListIncidentTypesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentTypes`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentTypes`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentTypes`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentTypes`:\n%s\n", responseContent)
 }
 ```
 
@@ -13542,7 +13493,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of incident types returns "OK" response
@@ -13576,7 +13527,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of incident types returns "OK" response
@@ -13604,7 +13555,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13652,8 +13603,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get incident type details. This endpoint requires the `incident_read` permission.
 
 OAuth apps require the `incident_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13892,13 +13841,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_type_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/types/${incident_type_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13923,7 +13872,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get incident type details returns "OK" response
@@ -13940,7 +13889,7 @@ p api_instance.get_incident_type("incident_type_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get incident type details returns "OK" response
@@ -13948,30 +13897,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentType", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentType(ctx, "incident_type_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentType", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentType(ctx, "incident_type_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentType`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentType`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentType`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentType`:\n%s\n", responseContent)
 }
 ```
 
@@ -13979,7 +13928,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get incident type details returns "OK" response
@@ -14013,7 +13962,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get incident type details returns "OK" response
@@ -14038,7 +13987,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14090,8 +14039,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update an incident type. This endpoint requires the `incident_settings_write` permission.
 
 OAuth apps require the `incident_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14371,7 +14318,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_type_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/types/${incident_type_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14388,8 +14335,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an incident type returns "OK" response
@@ -14397,42 +14344,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident_type" in the system
-	IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
+    // there is a valid "incident_type" in the system
+    IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
 
-	body := datadogV2.IncidentTypePatchRequest{
-		Data: datadogV2.IncidentTypePatchData{
-			Id: IncidentTypeDataID,
-			Attributes: datadogV2.IncidentTypeUpdateAttributes{
-				Name: datadog.PtrString("Security Incident-updated"),
-			},
-			Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentType", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentType(ctx, IncidentTypeDataID, body)
+    body := datadogV2.IncidentTypePatchRequest{
+        Data: datadogV2.IncidentTypePatchData{
+            Id: IncidentTypeDataID,
+            Attributes: datadogV2.IncidentTypeUpdateAttributes{
+                Name: datadog.PtrString("Security Incident-updated"),
+            },
+            Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentType", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentType(ctx, IncidentTypeDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentType`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentType`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentType`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentType`:\n%s\n", responseContent)
 }
 ```
 
@@ -14440,7 +14387,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an incident type returns "OK" response
@@ -14491,7 +14438,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -14533,7 +14480,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an incident type returns "OK" response
@@ -14564,7 +14511,7 @@ p api_instance.update_incident_type(INCIDENT_TYPE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an incident type returns "OK" response
@@ -14602,7 +14549,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14666,8 +14613,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete an incident type. This endpoint requires the `incident_settings_write` permission.
 
 OAuth apps require the `incident_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14810,12 +14755,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_type_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/types/${incident_type_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14842,7 +14787,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an incident type returns "OK" response
@@ -14862,7 +14807,7 @@ api_instance.delete_incident_type(INCIDENT_TYPE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an incident type returns "OK" response
@@ -14870,29 +14815,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident_type" in the system
-	IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
+    // there is a valid "incident_type" in the system
+    IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentType", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentType(ctx, IncidentTypeDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentType", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentType(ctx, IncidentTypeDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentType`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentType`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -14900,7 +14845,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an incident type returns "OK" response
@@ -14935,7 +14880,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an incident type returns "OK" response
@@ -14964,7 +14909,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15365,13 +15310,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-templates" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15394,7 +15339,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List incident notification templates returns "OK" response
@@ -15411,7 +15356,7 @@ p api_instance.list_incident_notification_templates()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List incident notification templates returns "OK" response
@@ -15419,30 +15364,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentNotificationTemplates", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentNotificationTemplates(ctx, *datadogV2.NewListIncidentNotificationTemplatesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentNotificationTemplates", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentNotificationTemplates(ctx, *datadogV2.NewListIncidentNotificationTemplatesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentNotificationTemplates`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentNotificationTemplates`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentNotificationTemplates`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentNotificationTemplates`:\n%s\n", responseContent)
 }
 ```
 
@@ -15450,7 +15395,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List incident notification templates returns "OK" response
@@ -15484,7 +15429,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List incident notification templates returns "OK" response
@@ -15514,7 +15459,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15563,13 +15508,9 @@ Creates a new notification template. This endpoint requires the `incident_notifi
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -15942,7 +15883,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-templates" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -15969,8 +15910,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create incident notification template returns "Created" response
@@ -15978,24 +15919,24 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident_type" in the system
-	IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
+    // there is a valid "incident_type" in the system
+    IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
 
-	body := datadogV2.CreateIncidentNotificationTemplateRequest{
-		Data: datadogV2.IncidentNotificationTemplateCreateData{
-			Attributes: datadogV2.IncidentNotificationTemplateCreateAttributes{
-				Category: "alert",
-				Content: `An incident has been declared.
+    body := datadogV2.CreateIncidentNotificationTemplateRequest{
+        Data: datadogV2.IncidentNotificationTemplateCreateData{
+            Attributes: datadogV2.IncidentNotificationTemplateCreateAttributes{
+                Category: "alert",
+                Content: `An incident has been declared.
 
 Title: Sample Incident Title
 Severity: SEV-2
@@ -16003,34 +15944,34 @@ Affected Services: web-service, database-service
 Status: active
 
 Please join the incident channel for updates.`,
-				Name:    "Example-Incident",
-				Subject: "SEV-2 Incident: Sample Incident Title",
-			},
-			Relationships: &datadogV2.IncidentNotificationTemplateCreateDataRelationships{
-				IncidentType: &datadogV2.RelationshipToIncidentType{
-					Data: datadogV2.RelationshipToIncidentTypeData{
-						Id:   IncidentTypeDataID,
-						Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
-					},
-				},
-			},
-			Type: datadogV2.INCIDENTNOTIFICATIONTEMPLATETYPE_NOTIFICATION_TEMPLATES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentNotificationTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentNotificationTemplate(ctx, body)
+                Name:    "Example-Incident",
+                Subject: "SEV-2 Incident: Sample Incident Title",
+            },
+            Relationships: &datadogV2.IncidentNotificationTemplateCreateDataRelationships{
+                IncidentType: &datadogV2.RelationshipToIncidentType{
+                    Data: datadogV2.RelationshipToIncidentTypeData{
+                        Id:   IncidentTypeDataID,
+                        Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
+                    },
+                },
+            },
+            Type: datadogV2.INCIDENTNOTIFICATIONTEMPLATETYPE_NOTIFICATION_TEMPLATES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentNotificationTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentNotificationTemplate(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentNotificationTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentNotificationTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentNotificationTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentNotificationTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -16038,7 +15979,7 @@ Please join the incident channel for updates.`,
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create incident notification template returns "Created" response
@@ -16113,7 +16054,7 @@ Please join the incident channel for updates.
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -16176,7 +16117,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create incident notification template returns "Created" response
@@ -16216,7 +16157,7 @@ p api_instance.create_incident_notification_template(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create incident notification template returns "Created" response
@@ -16278,7 +16219,7 @@ Please join the incident channel for updates."#
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16353,10 +16294,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Retrieves a specific notification template by its ID. This endpoint requires any of the following permissions:
 `incident_settings_read``incident_write``incident_read`
 
-
 OAuth apps require the `incident_read, incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -16698,13 +16636,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-templates/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -16733,7 +16671,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get incident notification template returns "OK" response
@@ -16753,7 +16691,7 @@ p api_instance.get_incident_notification_template(NOTIFICATION_TEMPLATE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get incident notification template returns "OK" response
@@ -16761,34 +16699,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "notification_template" in the system
-	NotificationTemplateDataID := uuid.MustParse(os.Getenv("NOTIFICATION_TEMPLATE_DATA_ID"))
+    // there is a valid "notification_template" in the system
+    NotificationTemplateDataID := uuid.MustParse(os.Getenv("NOTIFICATION_TEMPLATE_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentNotificationTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentNotificationTemplate(ctx, NotificationTemplateDataID, *datadogV2.NewGetIncidentNotificationTemplateOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentNotificationTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentNotificationTemplate(ctx, NotificationTemplateDataID, *datadogV2.NewGetIncidentNotificationTemplateOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentNotificationTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentNotificationTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentNotificationTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentNotificationTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -16796,7 +16734,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get incident notification template returns "OK" response
@@ -16841,7 +16779,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get incident notification template returns "OK" response
@@ -16876,7 +16814,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16933,8 +16871,6 @@ Updates an existing notification template's attributes. This endpoint requires t
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -16952,8 +16888,6 @@ OAuth apps require the `incident_notification_settings_write` authorization [sco
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -17315,7 +17249,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-templates/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -17335,8 +17269,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update incident notification template returns "OK" response
@@ -17344,25 +17278,25 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "notification_template" in the system
-	NotificationTemplateDataID := uuid.MustParse(os.Getenv("NOTIFICATION_TEMPLATE_DATA_ID"))
+    // there is a valid "notification_template" in the system
+    NotificationTemplateDataID := uuid.MustParse(os.Getenv("NOTIFICATION_TEMPLATE_DATA_ID"))
 
-	body := datadogV2.PatchIncidentNotificationTemplateRequest{
-		Data: datadogV2.IncidentNotificationTemplateUpdateData{
-			Attributes: &datadogV2.IncidentNotificationTemplateUpdateAttributes{
-				Category: datadog.PtrString("update"),
-				Content: datadog.PtrString(`Incident Status Update:
+    body := datadogV2.PatchIncidentNotificationTemplateRequest{
+        Data: datadogV2.IncidentNotificationTemplateUpdateData{
+            Attributes: &datadogV2.IncidentNotificationTemplateUpdateAttributes{
+                Category: datadog.PtrString("update"),
+                Content: datadog.PtrString(`Incident Status Update:
 
 Title: Sample Incident Title
 New Status: resolved
@@ -17371,27 +17305,27 @@ Services: web-service, database-service
 Commander: John Doe
 
 For more details, visit the incident page.`),
-				Name:    datadog.PtrString("Example-Incident"),
-				Subject: datadog.PtrString("Incident Update: Sample Incident Title - resolved"),
-			},
-			Id:   NotificationTemplateDataID,
-			Type: datadogV2.INCIDENTNOTIFICATIONTEMPLATETYPE_NOTIFICATION_TEMPLATES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentNotificationTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentNotificationTemplate(ctx, NotificationTemplateDataID, body, *datadogV2.NewUpdateIncidentNotificationTemplateOptionalParameters())
+                Name:    datadog.PtrString("Example-Incident"),
+                Subject: datadog.PtrString("Incident Update: Sample Incident Title - resolved"),
+            },
+            Id:   NotificationTemplateDataID,
+            Type: datadogV2.INCIDENTNOTIFICATIONTEMPLATETYPE_NOTIFICATION_TEMPLATES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentNotificationTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentNotificationTemplate(ctx, NotificationTemplateDataID, body, *datadogV2.NewUpdateIncidentNotificationTemplateOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentNotificationTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentNotificationTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentNotificationTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentNotificationTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -17399,7 +17333,7 @@ For more details, visit the incident page.`),
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update incident notification template returns "OK" response
@@ -17472,7 +17406,7 @@ For more details, visit the incident page.
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -17522,7 +17456,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update incident notification template returns "OK" response
@@ -17555,7 +17489,7 @@ p api_instance.update_incident_notification_template(NOTIFICATION_TEMPLATE_DATA_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update incident notification template returns "OK" response
@@ -17619,7 +17553,7 @@ For more details, visit the incident page."#
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17689,8 +17623,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Deletes a notification template by its ID. This endpoint requires the `incident_notification_settings_write` permission.
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -17839,12 +17771,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-templates/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17868,7 +17800,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a notification template returns "No Content" response
@@ -17885,7 +17817,7 @@ api_instance.delete_incident_notification_template("00000000-0000-0000-0000-0000
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a notification template returns "No Content" response
@@ -17893,27 +17825,27 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentNotificationTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentNotificationTemplate(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewDeleteIncidentNotificationTemplateOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentNotificationTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentNotificationTemplate(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewDeleteIncidentNotificationTemplateOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentNotificationTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentNotificationTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -17921,7 +17853,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a notification template returns "No Content" response
@@ -17955,7 +17887,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a notification template returns "No Content" response
@@ -17987,7 +17919,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -18440,13 +18372,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -18469,7 +18401,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List incident notification rules returns "OK" response
@@ -18486,7 +18418,7 @@ p api_instance.list_incident_notification_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List incident notification rules returns "OK" response
@@ -18494,30 +18426,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentNotificationRules", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentNotificationRules(ctx, *datadogV2.NewListIncidentNotificationRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentNotificationRules", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentNotificationRules(ctx, *datadogV2.NewListIncidentNotificationRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentNotificationRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -18525,7 +18457,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List incident notification rules returns "OK" response
@@ -18559,7 +18491,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List incident notification rules returns "OK" response
@@ -18587,7 +18519,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -18636,13 +18568,9 @@ Creates a new notification rule. This endpoint requires the `incident_notificati
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -19087,7 +19015,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -19125,8 +19053,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create incident notification rule returns "Created" response
@@ -19134,63 +19062,63 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident_type" in the system
-	IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
+    // there is a valid "incident_type" in the system
+    IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
 
-	body := datadogV2.CreateIncidentNotificationRuleRequest{
-		Data: datadogV2.IncidentNotificationRuleCreateData{
-			Attributes: datadogV2.IncidentNotificationRuleCreateAttributes{
-				Conditions: []datadogV2.IncidentNotificationRuleConditionsItems{
-					{
-						Field: "severity",
-						Values: []string{
-							"SEV-1",
-							"SEV-2",
-						},
-					},
-				},
-				Handles: []string{
-					"@test-email@company.com",
-				},
-				Visibility: datadogV2.INCIDENTNOTIFICATIONRULECREATEATTRIBUTESVISIBILITY_ORGANIZATION.Ptr(),
-				Trigger:    "incident_created_trigger",
-				Enabled:    datadog.PtrBool(true),
-			},
-			Relationships: &datadogV2.IncidentNotificationRuleCreateDataRelationships{
-				IncidentType: &datadogV2.RelationshipToIncidentType{
-					Data: datadogV2.RelationshipToIncidentTypeData{
-						Id:   IncidentTypeDataID,
-						Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
-					},
-				},
-			},
-			Type: datadogV2.INCIDENTNOTIFICATIONRULETYPE_INCIDENT_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentNotificationRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentNotificationRule(ctx, body)
+    body := datadogV2.CreateIncidentNotificationRuleRequest{
+        Data: datadogV2.IncidentNotificationRuleCreateData{
+            Attributes: datadogV2.IncidentNotificationRuleCreateAttributes{
+                Conditions: []datadogV2.IncidentNotificationRuleConditionsItems{
+                    {
+                        Field: "severity",
+                        Values: []string{
+                            "SEV-1",
+                            "SEV-2",
+                        },
+                    },
+                },
+                Handles: []string{
+                    "@test-email@company.com",
+                },
+                Visibility: datadogV2.INCIDENTNOTIFICATIONRULECREATEATTRIBUTESVISIBILITY_ORGANIZATION.Ptr(),
+                Trigger:    "incident_created_trigger",
+                Enabled:    datadog.PtrBool(true),
+            },
+            Relationships: &datadogV2.IncidentNotificationRuleCreateDataRelationships{
+                IncidentType: &datadogV2.RelationshipToIncidentType{
+                    Data: datadogV2.RelationshipToIncidentTypeData{
+                        Id:   IncidentTypeDataID,
+                        Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
+                    },
+                },
+            },
+            Type: datadogV2.INCIDENTNOTIFICATIONRULETYPE_INCIDENT_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentNotificationRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -19198,7 +19126,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create incident notification rule returns "Created" response
@@ -19273,7 +19201,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -19349,7 +19277,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create incident notification rule returns "Created" response
@@ -19400,7 +19328,7 @@ p api_instance.create_incident_notification_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create incident notification rule returns "Created" response
@@ -19460,7 +19388,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -19539,8 +19467,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Retrieves a specific notification rule by its ID. This endpoint requires the `incident_notification_settings_read` permission.
 
 OAuth apps require the `incident_notification_settings_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -19935,13 +19861,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-rules/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -19967,7 +19893,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an incident notification rule returns "OK" response
@@ -19984,7 +19910,7 @@ p api_instance.get_incident_notification_rule("00000000-0000-0000-0000-000000000
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an incident notification rule returns "OK" response
@@ -19992,31 +19918,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentNotificationRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentNotificationRule(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewGetIncidentNotificationRuleOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentNotificationRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentNotificationRule(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewGetIncidentNotificationRuleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -20024,7 +19950,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an incident notification rule returns "OK" response
@@ -20061,7 +19987,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an incident notification rule returns "OK" response
@@ -20093,7 +20019,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -20146,8 +20072,6 @@ Updates an existing notification rule with a complete replacement. This endpoint
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -20165,8 +20089,6 @@ OAuth apps require the `incident_notification_settings_write` authorization [sco
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -20612,7 +20534,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-rules/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -20650,8 +20572,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update incident notification rule returns "OK" response
@@ -20659,67 +20581,67 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "notification_rule" in the system
-	NotificationRuleDataID := uuid.MustParse(os.Getenv("NOTIFICATION_RULE_DATA_ID"))
+    // there is a valid "notification_rule" in the system
+    NotificationRuleDataID := uuid.MustParse(os.Getenv("NOTIFICATION_RULE_DATA_ID"))
 
-	// there is a valid "incident_type" in the system
-	IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
+    // there is a valid "incident_type" in the system
+    IncidentTypeDataID := os.Getenv("INCIDENT_TYPE_DATA_ID")
 
-	body := datadogV2.PutIncidentNotificationRuleRequest{
-		Data: datadogV2.IncidentNotificationRuleUpdateData{
-			Attributes: datadogV2.IncidentNotificationRuleCreateAttributes{
-				Enabled: datadog.PtrBool(false),
-				Conditions: []datadogV2.IncidentNotificationRuleConditionsItems{
-					{
-						Field: "severity",
-						Values: []string{
-							"SEV-1",
-						},
-					},
-				},
-				Handles: []string{
-					"@updated-team-email@company.com",
-				},
-				Visibility: datadogV2.INCIDENTNOTIFICATIONRULECREATEATTRIBUTESVISIBILITY_PRIVATE.Ptr(),
-				Trigger:    "incident_modified_trigger",
-			},
-			Relationships: &datadogV2.IncidentNotificationRuleCreateDataRelationships{
-				IncidentType: &datadogV2.RelationshipToIncidentType{
-					Data: datadogV2.RelationshipToIncidentTypeData{
-						Id:   IncidentTypeDataID,
-						Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
-					},
-				},
-			},
-			Id:   NotificationRuleDataID,
-			Type: datadogV2.INCIDENTNOTIFICATIONRULETYPE_INCIDENT_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentNotificationRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentNotificationRule(ctx, NotificationRuleDataID, body, *datadogV2.NewUpdateIncidentNotificationRuleOptionalParameters())
+    body := datadogV2.PutIncidentNotificationRuleRequest{
+        Data: datadogV2.IncidentNotificationRuleUpdateData{
+            Attributes: datadogV2.IncidentNotificationRuleCreateAttributes{
+                Enabled: datadog.PtrBool(false),
+                Conditions: []datadogV2.IncidentNotificationRuleConditionsItems{
+                    {
+                        Field: "severity",
+                        Values: []string{
+                            "SEV-1",
+                        },
+                    },
+                },
+                Handles: []string{
+                    "@updated-team-email@company.com",
+                },
+                Visibility: datadogV2.INCIDENTNOTIFICATIONRULECREATEATTRIBUTESVISIBILITY_PRIVATE.Ptr(),
+                Trigger:    "incident_modified_trigger",
+            },
+            Relationships: &datadogV2.IncidentNotificationRuleCreateDataRelationships{
+                IncidentType: &datadogV2.RelationshipToIncidentType{
+                    Data: datadogV2.RelationshipToIncidentTypeData{
+                        Id:   IncidentTypeDataID,
+                        Type: datadogV2.INCIDENTTYPETYPE_INCIDENT_TYPES,
+                    },
+                },
+            },
+            Id:   NotificationRuleDataID,
+            Type: datadogV2.INCIDENTNOTIFICATIONRULETYPE_INCIDENT_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentNotificationRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentNotificationRule(ctx, NotificationRuleDataID, body, *datadogV2.NewUpdateIncidentNotificationRuleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -20727,7 +20649,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update incident notification rule returns "OK" response
@@ -20811,7 +20733,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -20890,7 +20812,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update incident notification rule returns "OK" response
@@ -20944,7 +20866,7 @@ p api_instance.update_incident_notification_rule(NOTIFICATION_RULE_DATA_ID, body
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update incident notification rule returns "OK" response
@@ -21017,7 +20939,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21102,8 +21024,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Deletes a notification rule by its ID. This endpoint requires the `incident_notification_settings_write` permission.
 
 OAuth apps require the `incident_notification_settings_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -21252,12 +21172,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/notification-rules/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -21281,7 +21201,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an incident notification rule returns "No Content" response
@@ -21298,7 +21218,7 @@ api_instance.delete_incident_notification_rule("00000000-0000-0000-0000-00000000
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an incident notification rule returns "No Content" response
@@ -21306,27 +21226,27 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentNotificationRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentNotificationRule(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewDeleteIncidentNotificationRuleOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentNotificationRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentNotificationRule(ctx, uuid.MustParse("00000000-0000-0000-0000-000000000001"), *datadogV2.NewDeleteIncidentNotificationRuleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -21334,7 +21254,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an incident notification rule returns "No Content" response
@@ -21368,7 +21288,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an incident notification rule returns "No Content" response
@@ -21400,7 +21320,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21610,13 +21530,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/attachments" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -21645,7 +21565,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List incident attachments returns "OK" response
@@ -21665,7 +21585,7 @@ p api_instance.list_incident_attachments(INCIDENT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List incident attachments returns "OK" response
@@ -21673,33 +21593,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentAttachments", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentAttachments(ctx, IncidentDataID, *datadogV2.NewListIncidentAttachmentsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentAttachments", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentAttachments(ctx, IncidentDataID, *datadogV2.NewListIncidentAttachmentsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentAttachments`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentAttachments`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentAttachments`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentAttachments`:\n%s\n", responseContent)
 }
 ```
 
@@ -21707,7 +21627,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List incident attachments returns "OK" response
@@ -21744,7 +21664,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List incident attachments returns "OK" response
@@ -21777,7 +21697,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21833,8 +21753,6 @@ Create an incident attachment. This endpoint requires the `incident_write` permi
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -21852,8 +21770,6 @@ OAuth apps require the `incident_write` authorization [scope](https://docs.datad
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -22056,7 +21972,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/attachments" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -22076,8 +21992,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create incident attachment returns "Created" response
@@ -22085,45 +22001,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	body := datadogV2.CreateAttachmentRequest{
-		Data: &datadogV2.CreateAttachmentRequestData{
-			Attributes: &datadogV2.CreateAttachmentRequestDataAttributes{
-				Attachment: &datadogV2.CreateAttachmentRequestDataAttributesAttachment{
-					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident"),
-					Title:       datadog.PtrString("Example-Incident"),
-				},
-				AttachmentType: datadogV2.ATTACHMENTDATAATTRIBUTESATTACHMENTTYPE_POSTMORTEM.Ptr(),
-			},
-			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentAttachment", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentAttachment(ctx, IncidentDataID, body, *datadogV2.NewCreateIncidentAttachmentOptionalParameters())
+    body := datadogV2.CreateAttachmentRequest{
+        Data: &datadogV2.CreateAttachmentRequestData{
+            Attributes: &datadogV2.CreateAttachmentRequestDataAttributes{
+                Attachment: &datadogV2.CreateAttachmentRequestDataAttributesAttachment{
+                    DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/ExampleIncident/Example-Incident"),
+                    Title:       datadog.PtrString("Example-Incident"),
+                },
+                AttachmentType: datadogV2.ATTACHMENTDATAATTRIBUTESATTACHMENTTYPE_POSTMORTEM.Ptr(),
+            },
+            Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentAttachment", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentAttachment(ctx, IncidentDataID, body, *datadogV2.NewCreateIncidentAttachmentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentAttachment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentAttachment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentAttachment`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentAttachment`:\n%s\n", responseContent)
 }
 ```
 
@@ -22131,7 +22047,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create incident attachment returns "Created" response
@@ -22188,7 +22104,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -22238,7 +22154,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create incident attachment returns "Created" response
@@ -22271,7 +22187,7 @@ p api_instance.create_incident_attachment(INCIDENT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create incident attachment returns "Created" response
@@ -22325,7 +22241,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -22393,8 +22309,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -22513,12 +22427,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport incident_id="CHANGE_ME"export attachment_id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/attachments/${attachment_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -22549,7 +22463,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete incident attachment returns "No Content" response
@@ -22572,7 +22486,7 @@ api_instance.delete_incident_attachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_DA
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete incident attachment returns "No Content" response
@@ -22580,32 +22494,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// there is a valid "incident_attachment" in the system
-	IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
+    // there is a valid "incident_attachment" in the system
+    IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentAttachment", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentAttachment", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentAttachment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentAttachment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -22613,7 +22527,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete incident attachment returns "No Content" response
@@ -22651,7 +22565,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete incident attachment returns "No Content" response
@@ -22686,7 +22600,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -22747,8 +22661,6 @@ This endpoint requires the `incident_write` permission.
 
 OAuth apps require the `incident_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#incidents) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -22767,8 +22679,6 @@ OAuth apps require the `incident_write` authorization [scope](https://docs.datad
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -22995,7 +22905,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport incident_id="CHANGE_ME"export attachment_id="00000000-0000-0000-0000-000000000001"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/${incident_id}/attachments/${attachment_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -23015,8 +22925,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update incident attachment returns "OK" response
@@ -23024,48 +22934,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "incident" in the system
-	IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
+    // there is a valid "incident" in the system
+    IncidentDataID := os.Getenv("INCIDENT_DATA_ID")
 
-	// there is a valid "incident_attachment" in the system
-	IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
+    // there is a valid "incident_attachment" in the system
+    IncidentAttachmentDataID := os.Getenv("INCIDENT_ATTACHMENT_DATA_ID")
 
-	body := datadogV2.PatchAttachmentRequest{
-		Data: &datadogV2.PatchAttachmentRequestData{
-			Attributes: &datadogV2.PatchAttachmentRequestDataAttributes{
-				Attachment: &datadogV2.PatchAttachmentRequestDataAttributesAttachment{
-					DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/124/Example-Incident"),
-					Title:       datadog.PtrString("Example-Incident"),
-				},
-			},
-			Id:   datadog.PtrString(IncidentAttachmentDataID),
-			Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentAttachment", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID, body, *datadogV2.NewUpdateIncidentAttachmentOptionalParameters())
+    body := datadogV2.PatchAttachmentRequest{
+        Data: &datadogV2.PatchAttachmentRequestData{
+            Attributes: &datadogV2.PatchAttachmentRequestDataAttributes{
+                Attachment: &datadogV2.PatchAttachmentRequestDataAttributesAttachment{
+                    DocumentUrl: datadog.PtrString("https://app.datadoghq.com/notebook/124/Example-Incident"),
+                    Title:       datadog.PtrString("Example-Incident"),
+                },
+            },
+            Id:   datadog.PtrString(IncidentAttachmentDataID),
+            Type: datadogV2.INCIDENTATTACHMENTTYPE_INCIDENT_ATTACHMENTS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentAttachment", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentAttachment(ctx, IncidentDataID, IncidentAttachmentDataID, body, *datadogV2.NewUpdateIncidentAttachmentOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentAttachment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentAttachment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentAttachment`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentAttachment`:\n%s\n", responseContent)
 }
 ```
 
@@ -23073,7 +22983,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update incident attachment returns "OK" response
@@ -23133,7 +23043,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -23185,7 +23095,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update incident attachment returns "OK" response
@@ -23221,7 +23131,7 @@ p api_instance.update_incident_attachment(INCIDENT_DATA_ID, INCIDENT_ATTACHMENT_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update incident attachment returns "OK" response
@@ -23277,7 +23187,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -23457,13 +23367,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/settings" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -23486,7 +23396,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get global incident settings returns "OK" response
@@ -23503,7 +23413,7 @@ p api_instance.get_global_incident_settings()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get global incident settings returns "OK" response
@@ -23511,30 +23421,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetGlobalIncidentSettings", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetGlobalIncidentSettings(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetGlobalIncidentSettings", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetGlobalIncidentSettings(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetGlobalIncidentSettings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetGlobalIncidentSettings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetGlobalIncidentSettings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetGlobalIncidentSettings`:\n%s\n", responseContent)
 }
 ```
 
@@ -23542,7 +23452,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get global incident settings returns "OK" response
@@ -23576,7 +23486,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get global incident settings returns "OK" response
@@ -23601,7 +23511,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -23651,8 +23561,6 @@ Update global incident settings for the organization.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -23788,7 +23696,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/settings" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -23801,8 +23709,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -23840,7 +23748,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update global incident settings returns "OK" response
@@ -23866,7 +23774,7 @@ p api_instance.update_global_incident_settings(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update global incident settings returns "OK" response
@@ -23874,38 +23782,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GlobalIncidentSettingsRequest{
-		Data: datadogV2.GlobalIncidentSettingsDataRequest{
-			Attributes: &datadogV2.GlobalIncidentSettingsAttributesRequest{
-				AnalyticsDashboardId: datadog.PtrString("abc-123-def"),
-			},
-			Type: datadogV2.GLOBALINCIDENTSETTINGSTYPE_INCIDENTS_GLOBAL_SETTINGS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentSettings", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateGlobalIncidentSettings(ctx, body)
+    body := datadogV2.GlobalIncidentSettingsRequest{
+        Data: datadogV2.GlobalIncidentSettingsDataRequest{
+            Attributes: &datadogV2.GlobalIncidentSettingsAttributesRequest{
+                AnalyticsDashboardId: datadog.PtrString("abc-123-def"),
+            },
+            Type: datadogV2.GLOBALINCIDENTSETTINGSTYPE_INCIDENTS_GLOBAL_SETTINGS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentSettings", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateGlobalIncidentSettings(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentSettings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentSettings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentSettings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentSettings`:\n%s\n", responseContent)
 }
 ```
 
@@ -23913,7 +23821,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update global incident settings returns "OK" response
@@ -23960,7 +23868,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update global incident settings returns "OK" response
@@ -23998,7 +23906,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24280,13 +24188,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/incident-handles" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -24309,7 +24217,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List global incident handles returns "OK" response
@@ -24326,7 +24234,7 @@ p api_instance.list_global_incident_handles()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List global incident handles returns "OK" response
@@ -24334,30 +24242,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListGlobalIncidentHandles", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListGlobalIncidentHandles(ctx, *datadogV2.NewListGlobalIncidentHandlesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListGlobalIncidentHandles", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListGlobalIncidentHandles(ctx, *datadogV2.NewListGlobalIncidentHandlesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListGlobalIncidentHandles`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListGlobalIncidentHandles`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListGlobalIncidentHandles`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListGlobalIncidentHandles`:\n%s\n", responseContent)
 }
 ```
 
@@ -24365,7 +24273,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List global incident handles returns "OK" response
@@ -24399,7 +24307,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List global incident handles returns "OK" response
@@ -24427,7 +24335,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24485,8 +24393,6 @@ Create a new global incident handle.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -24760,7 +24666,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/incident-handles" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -24790,8 +24696,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -24851,7 +24757,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create global incident handle returns "Created" response
@@ -24897,7 +24803,7 @@ p api_instance.create_global_incident_handle(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create global incident handle returns "Created" response
@@ -24905,58 +24811,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.IncidentHandleRequest{
-		Data: datadogV2.IncidentHandleDataRequest{
-			Attributes: datadogV2.IncidentHandleAttributesRequest{
-				Fields: &datadogV2.IncidentHandleAttributesFields{
-					Severity: []string{
-						"SEV-1",
-					},
-				},
-				Name: "@incident-sev-1",
-			},
-			Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
-			Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
-				CommanderUser: &datadogV2.IncidentHandleRelationship{
-					Data: datadogV2.IncidentHandleRelationshipData{
-						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
-						Type: "incident_types",
-					},
-				},
-				IncidentType: datadogV2.IncidentHandleRelationship{
-					Data: datadogV2.IncidentHandleRelationshipData{
-						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
-						Type: "incident_types",
-					},
-				},
-			}),
-			Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateGlobalIncidentHandle", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateGlobalIncidentHandle(ctx, body, *datadogV2.NewCreateGlobalIncidentHandleOptionalParameters())
+    body := datadogV2.IncidentHandleRequest{
+        Data: datadogV2.IncidentHandleDataRequest{
+            Attributes: datadogV2.IncidentHandleAttributesRequest{
+                Fields: &datadogV2.IncidentHandleAttributesFields{
+                    Severity: []string{
+                        "SEV-1",
+                    },
+                },
+                Name: "@incident-sev-1",
+            },
+            Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
+            Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
+                CommanderUser: &datadogV2.IncidentHandleRelationship{
+                    Data: datadogV2.IncidentHandleRelationshipData{
+                        Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                        Type: "incident_types",
+                    },
+                },
+                IncidentType: datadogV2.IncidentHandleRelationship{
+                    Data: datadogV2.IncidentHandleRelationshipData{
+                        Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                        Type: "incident_types",
+                    },
+                },
+            }),
+            Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateGlobalIncidentHandle", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateGlobalIncidentHandle(ctx, body, *datadogV2.NewCreateGlobalIncidentHandleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateGlobalIncidentHandle`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateGlobalIncidentHandle`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateGlobalIncidentHandle`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateGlobalIncidentHandle`:\n%s\n", responseContent)
 }
 ```
 
@@ -24964,7 +24870,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create global incident handle returns "Created" response
@@ -25034,7 +24940,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create global incident handle returns "Created" response
@@ -25092,7 +24998,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25179,8 +25085,6 @@ Update an existing global incident handle.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -25454,7 +25358,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/incident-handles" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -25484,8 +25388,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -25545,7 +25449,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update global incident handle returns "OK" response
@@ -25591,7 +25495,7 @@ p api_instance.update_global_incident_handle(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update global incident handle returns "OK" response
@@ -25599,58 +25503,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.IncidentHandleRequest{
-		Data: datadogV2.IncidentHandleDataRequest{
-			Attributes: datadogV2.IncidentHandleAttributesRequest{
-				Fields: &datadogV2.IncidentHandleAttributesFields{
-					Severity: []string{
-						"SEV-1",
-					},
-				},
-				Name: "@incident-sev-1",
-			},
-			Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
-			Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
-				CommanderUser: &datadogV2.IncidentHandleRelationship{
-					Data: datadogV2.IncidentHandleRelationshipData{
-						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
-						Type: "incident_types",
-					},
-				},
-				IncidentType: datadogV2.IncidentHandleRelationship{
-					Data: datadogV2.IncidentHandleRelationshipData{
-						Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
-						Type: "incident_types",
-					},
-				},
-			}),
-			Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentHandle", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateGlobalIncidentHandle(ctx, body, *datadogV2.NewUpdateGlobalIncidentHandleOptionalParameters())
+    body := datadogV2.IncidentHandleRequest{
+        Data: datadogV2.IncidentHandleDataRequest{
+            Attributes: datadogV2.IncidentHandleAttributesRequest{
+                Fields: &datadogV2.IncidentHandleAttributesFields{
+                    Severity: []string{
+                        "SEV-1",
+                    },
+                },
+                Name: "@incident-sev-1",
+            },
+            Id: datadog.PtrString("b2494081-cdf0-4205-b366-4e1dd4fdf0bf"),
+            Relationships: *datadogV2.NewNullableIncidentHandleRelationshipsRequest(&datadogV2.IncidentHandleRelationshipsRequest{
+                CommanderUser: &datadogV2.IncidentHandleRelationship{
+                    Data: datadogV2.IncidentHandleRelationshipData{
+                        Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                        Type: "incident_types",
+                    },
+                },
+                IncidentType: datadogV2.IncidentHandleRelationship{
+                    Data: datadogV2.IncidentHandleRelationshipData{
+                        Id:   "f7b538b1-ed7c-4e84-82de-fdf84a539d40",
+                        Type: "incident_types",
+                    },
+                },
+            }),
+            Type: datadogV2.INCIDENTHANDLETYPE_INCIDENTS_HANDLES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateGlobalIncidentHandle", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateGlobalIncidentHandle(ctx, body, *datadogV2.NewUpdateGlobalIncidentHandleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentHandle`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateGlobalIncidentHandle`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentHandle`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateGlobalIncidentHandle`:\n%s\n", responseContent)
 }
 ```
 
@@ -25658,7 +25562,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update global incident handle returns "OK" response
@@ -25728,7 +25632,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update global incident handle returns "OK" response
@@ -25786,7 +25690,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25938,12 +25842,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/global/incident-handles" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -25964,7 +25868,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete global incident handle returns "No Content" response
@@ -25981,7 +25885,7 @@ api_instance.delete_global_incident_handle()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete global incident handle returns "No Content" response
@@ -25989,26 +25893,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteGlobalIncidentHandle", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteGlobalIncidentHandle(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteGlobalIncidentHandle", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteGlobalIncidentHandle(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteGlobalIncidentHandle`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteGlobalIncidentHandle`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -26016,7 +25920,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete global incident handle returns "No Content" response
@@ -26048,7 +25952,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete global incident handle returns "No Content" response
@@ -26073,7 +25977,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26230,13 +26134,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26259,7 +26163,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List postmortem templates returns "OK" response
@@ -26276,7 +26180,7 @@ p api_instance.list_incident_postmortem_templates()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List postmortem templates returns "OK" response
@@ -26284,30 +26188,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListIncidentPostmortemTemplates", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.ListIncidentPostmortemTemplates(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListIncidentPostmortemTemplates", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.ListIncidentPostmortemTemplates(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentPostmortemTemplates`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.ListIncidentPostmortemTemplates`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentPostmortemTemplates`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.ListIncidentPostmortemTemplates`:\n%s\n", responseContent)
 }
 ```
 
@@ -26315,7 +26219,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List postmortem templates returns "OK" response
@@ -26349,7 +26253,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List postmortem templates returns "OK" response
@@ -26374,7 +26278,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26424,8 +26328,6 @@ Create a new postmortem template for incidents.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -26604,7 +26506,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -26620,8 +26522,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26657,7 +26559,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create postmortem template returns "Created" response
@@ -26683,7 +26585,7 @@ p api_instance.create_incident_postmortem_template(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create postmortem template returns "Created" response
@@ -26691,38 +26593,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.PostmortemTemplateRequest{
-		Data: datadogV2.PostmortemTemplateDataRequest{
-			Attributes: datadogV2.PostmortemTemplateAttributesRequest{
-				Name: "Standard Postmortem Template",
-			},
-			Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.CreateIncidentPostmortemTemplate(ctx, body)
+    body := datadogV2.PostmortemTemplateRequest{
+        Data: datadogV2.PostmortemTemplateDataRequest{
+            Attributes: datadogV2.PostmortemTemplateAttributesRequest{
+                Name: "Standard Postmortem Template",
+            },
+            Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateIncidentPostmortemTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.CreateIncidentPostmortemTemplate(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.CreateIncidentPostmortemTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.CreateIncidentPostmortemTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -26730,7 +26632,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create postmortem template returns "Created" response
@@ -26777,7 +26679,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create postmortem template returns "Created" response
@@ -26810,7 +26712,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27027,13 +26929,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport template_id="template-456"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27058,7 +26960,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get postmortem template returns "OK" response
@@ -27075,7 +26977,7 @@ p api_instance.get_incident_postmortem_template("template-456")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get postmortem template returns "OK" response
@@ -27083,30 +26985,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetIncidentPostmortemTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.GetIncidentPostmortemTemplate(ctx, "template-456")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetIncidentPostmortemTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.GetIncidentPostmortemTemplate(ctx, "template-456")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentPostmortemTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.GetIncidentPostmortemTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentPostmortemTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.GetIncidentPostmortemTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -27114,7 +27016,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get postmortem template returns "OK" response
@@ -27148,7 +27050,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get postmortem template returns "OK" response
@@ -27175,7 +27077,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27237,8 +27139,6 @@ Update an existing postmortem template.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -27417,7 +27317,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport template_id="template-456"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -27433,8 +27333,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27470,7 +27370,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update postmortem template returns "OK" response
@@ -27496,7 +27396,7 @@ p api_instance.update_incident_postmortem_template("template-456", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update postmortem template returns "OK" response
@@ -27504,38 +27404,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.PostmortemTemplateRequest{
-		Data: datadogV2.PostmortemTemplateDataRequest{
-			Attributes: datadogV2.PostmortemTemplateAttributesRequest{
-				Name: "Standard Postmortem Template",
-			},
-			Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateIncidentPostmortemTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	resp, r, err := api.UpdateIncidentPostmortemTemplate(ctx, "template-456", body)
+    body := datadogV2.PostmortemTemplateRequest{
+        Data: datadogV2.PostmortemTemplateDataRequest{
+            Attributes: datadogV2.PostmortemTemplateAttributesRequest{
+                Name: "Standard Postmortem Template",
+            },
+            Type: datadogV2.POSTMORTEMTEMPLATETYPE_POSTMORTEM_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateIncidentPostmortemTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    resp, r, err := api.UpdateIncidentPostmortemTemplate(ctx, "template-456", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentPostmortemTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.UpdateIncidentPostmortemTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentPostmortemTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `IncidentsApi.UpdateIncidentPostmortemTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -27543,7 +27443,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update postmortem template returns "OK" response
@@ -27591,7 +27491,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update postmortem template returns "OK" response
@@ -27626,7 +27526,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27812,12 +27712,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport template_id="template-456"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/incidents/config/postmortem-templates/${template_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27840,7 +27740,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete postmortem template returns "No Content" response
@@ -27857,7 +27757,7 @@ api_instance.delete_incident_postmortem_template("template-456")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete postmortem template returns "No Content" response
@@ -27865,26 +27765,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteIncidentPostmortemTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewIncidentsApi(apiClient)
-	r, err := api.DeleteIncidentPostmortemTemplate(ctx, "template-456")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteIncidentPostmortemTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewIncidentsApi(apiClient)
+    r, err := api.DeleteIncidentPostmortemTemplate(ctx, "template-456")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentPostmortemTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IncidentsApi.DeleteIncidentPostmortemTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -27892,7 +27792,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete postmortem template returns "No Content" response
@@ -27924,7 +27824,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete postmortem template returns "No Content" response
@@ -27951,7 +27851,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

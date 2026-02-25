@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub user blocked from accessing organization repositories
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when a GitHub user has been [blocked from accessing organization repositories](https://docs.github.com/en/communities/maintaining-your-safety-on-github/blocking-a-user-from-your-organization).

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server should only allow explicitly authorized requests
- 
+
 ## Description{% #description %}
 
 The API server should not be configured to allow all requests. This mode should not be used on any production cluster.

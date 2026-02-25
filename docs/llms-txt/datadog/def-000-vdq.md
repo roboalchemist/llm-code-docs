@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS cluster logging should be enabled and encrypted
- 
+
 ## Description{% #description %}
 
 ECS clusters should have encrypted logging enabled for execute command sessions to protect sensitive data in transit and at rest.

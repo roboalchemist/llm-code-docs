@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub personal access token used to add collaborator
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detects when GitHub personal access tokens are used to add collaborators to repositories or organizations.

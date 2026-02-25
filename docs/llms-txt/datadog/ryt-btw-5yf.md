@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/kubernetes/manifests/etcd.yaml file should have permissions of 644 or stricter
-Classification:complianceFramework:cis-kubernetesControl:1.1.7 
+Classification:complianceFramework:cis-kubernetesControl:1.1.7
 ## Description{% #description %}
 
 Ensure that the `/etc/kubernetes/manifests/etcd.yaml` file has permissions of 644 or more restrictive.

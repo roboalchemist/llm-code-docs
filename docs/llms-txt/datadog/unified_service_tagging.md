@@ -85,14 +85,14 @@ metadata:
   labels:
     tags.datadoghq.com/env: "<ENV>"
     tags.datadoghq.com/service: "<SERVICE>"
-    tags.datadoghq.com/version: "<VERSION>" 
+    tags.datadoghq.com/version: "<VERSION>"
 ...
 template:
   metadata:
     labels:
       tags.datadoghq.com/env: "<ENV>"
       tags.datadoghq.com/service: "<SERVICE>"
-      tags.datadoghq.com/version: "<VERSION>" 
+      tags.datadoghq.com/version: "<VERSION>"
   containers:
   -  ...
      env:
@@ -104,9 +104,9 @@ template:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.labels['tags.datadoghq.com/service']
-          - name: DD_VERSION 
-            valueFrom: 
-              fieldRef: 
+          - name: DD_VERSION
+            valueFrom:
+              fieldRef:
                 fieldPath: metadata.labels['tags.datadoghq.com/version']
 ```
 
@@ -138,7 +138,7 @@ template:
     labels:
       tags.datadoghq.com/env: "<ENV>"
       tags.datadoghq.com/service: "<SERVICE>"
-      tags.datadoghq.com/version: "<VERSION>" 
+      tags.datadoghq.com/version: "<VERSION>"
 ```
 
 These labels cover pod-level Kubernetes CPU, memory, network, and disk metrics, and can be used for injecting `DD_ENV`, `DD_SERVICE`, and `DD_VERSION` into your service's container through [Kubernetes's downward API](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/#capabilities-of-the-downward-api).
@@ -148,7 +148,7 @@ If you have multiple containers per pod, you can specify standard labels by cont
 ```yaml
 tags.datadoghq.com/<container-name>.env
 tags.datadoghq.com/<container-name>.service
-tags.datadoghq.com/<container-name>.version 
+tags.datadoghq.com/<container-name>.version
 ```
 
 ###### State metrics{% #state-metrics %}
@@ -166,14 +166,14 @@ metadata:
   labels:
     tags.datadoghq.com/env: "<ENV>"
     tags.datadoghq.com/service: "<SERVICE>"
-    tags.datadoghq.com/version: "<VERSION>" 
+    tags.datadoghq.com/version: "<VERSION>"
 spec:
   template:
     metadata:
       labels:
         tags.datadoghq.com/env: "<ENV>"
         tags.datadoghq.com/service: "<SERVICE>"
-        tags.datadoghq.com/version: "<VERSION>" 
+        tags.datadoghq.com/version: "<VERSION>"
 ```
 
 ###### APM tracer and StatsD client{% #apm-tracer-and-statsd-client %}
@@ -192,10 +192,10 @@ containers:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['tags.datadoghq.com/service']
-        - name: DD_VERSION 
-          valueFrom: 
-            fieldRef: 
-              fieldPath: metadata.labels['tags.datadoghq.com/version'] 
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']
 ```
 
 ##### Automatic version tagging for APM data in containerized environments{% #automatic-version-tagging-for-apm-data-in-containerized-environments %}
@@ -231,10 +231,10 @@ The values for `service` and `version` can be provided in the Dockerfile:
 
 ```yaml
 ENV DD_SERVICE <SERVICE>
-ENV DD_VERSION <VERSION> 
+ENV DD_VERSION <VERSION>
 
 LABEL com.datadoghq.tags.service="<SERVICE>"
-LABEL com.datadoghq.tags.version="<VERSION>" 
+LABEL com.datadoghq.tags.version="<VERSION>"
 ```
 
 Since `env` is likely determined at deploy time, you can inject the environment variable and label later:
@@ -248,10 +248,10 @@ You may also prefer to set everything at deploy time:
 ```shell
 docker run -e DD_ENV="<ENV>" \
            -e DD_SERVICE="<SERVICE>" \
-           -e DD_VERSION="<VERSION>" \ 
+           -e DD_VERSION="<VERSION>" \
            -l com.datadoghq.tags.env="<ENV>" \
            -l com.datadoghq.tags.service="<SERVICE>" \
-           -l com.datadoghq.tags.version="<VERSION>" \ 
+           -l com.datadoghq.tags.version="<VERSION>" \
            ...
 ```
 
@@ -262,7 +262,7 @@ If your service has no need for the Datadog environment variables (for example, 
 ```yaml
 com.datadoghq.tags.env
 com.datadoghq.tags.service
-com.datadoghq.tags.version 
+com.datadoghq.tags.version
 ```
 
 As explained in the full configuration, these labels can be set in a Dockerfile or as arguments for launching the container.
@@ -315,7 +315,7 @@ Set the `DD_ENV`, `DD_SERVICE`, and `DD_VERSION` (optional with automatic versio
     "name": "DD_VERSION",
     "value": "<VERSION>"
   }
-   
+
 ],
 "dockerLabels": {
   "com.datadoghq.tags.env": "<ENV>",
@@ -419,7 +419,7 @@ If your service has access to `DD_ENV`, `DD_SERVICE`, and `DD_VERSION`, then the
 You can add `env` and `service` tags to your infrastructure metrics. In non-containerized contexts, tagging for service metrics is configured at the Agent level.
 
 Because this configuration does not change for each invocation of a service's process, adding `version` is not recommended.
-Single service per host: 
+Single service per host:
 Set the following configuration in the Agent's [main configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files):
 
    ```yaml
@@ -429,7 +429,7 @@ Set the following configuration in the Agent's [main configuration file](https:/
    ```
 
 This setup guarantees consistent tagging of `env` and `service` for all data emitted by the Agent.
-Multiple services per host: 
+Multiple services per host:
 Set the following configuration in the Agent's [main configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files):
 
    ```yaml

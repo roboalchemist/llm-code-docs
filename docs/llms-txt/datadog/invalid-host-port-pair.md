@@ -50,8 +50,8 @@ func main(){
     http.ListenAndServe("", nil) // Defaults to ":http"
 
     // Bad
-    http.ListenAndServe("localhost:8080/", nil) 
-    http.ListenAndServe("localhost", nil)       
+    http.ListenAndServe("localhost:8080/", nil)
+    http.ListenAndServe("localhost", nil)
 
     // Good
     http.ListenAndServeTLS("localhost:8443", "cert.pem", "key.pem", nil)
@@ -65,6 +65,5 @@ func main(){
     http.ListenAndServeTLS("localhost", "cert.pem", "key.pem", nil)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

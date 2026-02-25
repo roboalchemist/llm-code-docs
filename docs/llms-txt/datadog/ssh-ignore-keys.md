@@ -45,11 +45,11 @@ SSH host validation should never be ignored and always be enforced to avoid man-
 package main
 
 import (
-	"golang.org/x/crypto/ssh"
+    "golang.org/x/crypto/ssh"
 )
 
 func main() {
-	_ =  ssh.InsecureIgnoreHostKey()
+    _ =  ssh.InsecureIgnoreHostKey()
 }
 ```
 
@@ -59,12 +59,12 @@ func main() {
 package main
 
 import (
-	"golang.org/x/crypto/ssh"
+    "golang.org/x/crypto/ssh"
 )
 
 func main() {
-	// Use a more secure approach instead of InsecureIgnoreHostKey
-	hostKeyCallback, _ := ssh.NewKnownHostsCallback("/path/to/known_hosts")
+    // Use a more secure approach instead of InsecureIgnoreHostKey
+    hostKeyCallback, _ := ssh.NewKnownHostsCallback("/path/to/known_hosts")
 }
 ```
 
@@ -72,14 +72,13 @@ func main() {
 package main
 
 import (
-	"golang.org/x/crypto/ssh"
+    "golang.org/x/crypto/ssh"
 )
 
 func main() {
-	// not valid in tests
-	_ =  ssh.InsecureIgnoreHostKey()
+    // not valid in tests
+    _ =  ssh.InsecureIgnoreHostKey()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

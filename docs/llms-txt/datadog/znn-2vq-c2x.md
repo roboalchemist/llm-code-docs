@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Private registry should use TLS encryption for a secure Docker environment
-Classification:complianceFramework:cis-dockerControl:2.4 
+Classification:complianceFramework:cis-dockerControl:2.4
 ## Description{% #description %}
 
 Docker considers a private registry either secure or insecure. By default, registries are considered secure.

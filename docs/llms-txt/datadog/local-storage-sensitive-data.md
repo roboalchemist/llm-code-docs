@@ -56,6 +56,5 @@ localStorage.setItem('user', uuid)
 
 localStorage.setItem('user', user.id)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # All Interactive User Home Directories Must Be Owned By The Primary User
- 
+
 ## Description{% #description %}
 
 Change the owner of interactive users home directories to that correct owner. To change the owner of a interactive users home directory, use the following command:
 
 ```
 $ sudo chown USER /home/USER
-        
+
 ```
 
 This rule ensures every home directory related to an interactive user is owned by an interactive user. It also ensures that interactive users are owners of one and only one home directory.

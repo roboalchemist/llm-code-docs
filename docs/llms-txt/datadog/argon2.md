@@ -54,6 +54,5 @@ await argon2.hash('password', {type: argon2.argon2i})
 await argon2.hash('password', {type: argon2.argon2id})
 await argon2.hash('password', {})
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

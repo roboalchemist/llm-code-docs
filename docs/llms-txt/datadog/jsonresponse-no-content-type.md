@@ -58,6 +58,5 @@ response_data['result'] = 'error'
 response_data['message'] = 'Some error message'
 return JsonResponse(response_data)  # content-type is not necessary for JsonResponse
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

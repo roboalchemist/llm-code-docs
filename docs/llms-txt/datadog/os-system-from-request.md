@@ -63,6 +63,5 @@ def execute_command(request):
     print("foobar")
     os.system(shlex.escape(cmd))
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

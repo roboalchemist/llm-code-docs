@@ -46,6 +46,5 @@ if foo == True:  # just used if foo
 if foo:
   print("bar")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

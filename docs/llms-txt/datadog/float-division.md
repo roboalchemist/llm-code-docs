@@ -50,6 +50,5 @@ foo.to_f / bar
 foo / bar.to_f
 foo.fdiv(bar)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

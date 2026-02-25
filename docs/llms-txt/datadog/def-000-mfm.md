@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous number of secrets retrieved from AWS Secrets Manager
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555)
 ## Goal{% #goal %}
 
 Detect when an anomalous number of secrets are retrieved from AWS Secrets Manager.

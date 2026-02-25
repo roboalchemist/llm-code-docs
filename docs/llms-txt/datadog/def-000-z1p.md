@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Container-Optimized OS (cos_containerd) should be used for GKE node images
- 
+
 ## Description{% #description %}
 
 Container-Optimized OS images should be used in your cluster. These image types are hardened and increase the security of the GKE cluster(s) in your environment.

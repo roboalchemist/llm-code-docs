@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker socket file should be owned by root and Docker group
-Classification:complianceFramework:cis-dockerControl:3.15 
+Classification:complianceFramework:cis-dockerControl:3.15
 ## Description{% #description %}
 
 You should verify that the Docker socket file is owned by root and group owned by docker.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Logs for API server audits should be retained for 30 days
-Classification:complianceFramework:cis-kubernetesControl:1.2.23 
+Classification:complianceFramework:cis-kubernetesControl:1.2.23
 ## Description{% #description %}
 
 Retain the logs for at least 30 days or as appropriate.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB cluster snapshots should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control verifies whether a Neptune DB cluster snapshot is encrypted while stored.

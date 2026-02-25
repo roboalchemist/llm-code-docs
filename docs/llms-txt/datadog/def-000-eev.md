@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns Backup shadow File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/shadow-`, run the command:
 
 ```
-$ sudo chown root /etc/shadow- 
+$ sudo chown root /etc/shadow-
 ```
 
 ## Rationale{% #rationale %}

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/waagent.log(.*) Files
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/waagent.log`, run the command:

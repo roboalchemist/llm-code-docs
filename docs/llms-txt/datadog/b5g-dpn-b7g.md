@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should validate the service account token in etcd
-Classification:complianceFramework:cis-kubernetesControl:1.2.27 
+Classification:complianceFramework:cis-kubernetesControl:1.2.27
 ## Description{% #description %}
 
 Validate service account before validating token.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM role can assume a role with administrative privileges cross-account
- 
+
 ## Description{% #description %}
 
 In AWS environments, some IAM permissions can lead to privilege escalation, where an identity can gain access to another more privileged identity. This rule identifies when a given role can use `sts:AssumeRole` to assume a role with administrative privileges in a different account inside your AWS Organization. By assuming this more privileged role, an adversary can leverage their permissions for further access.

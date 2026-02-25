@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The container's health should be constantly monitored
-Classification:complianceFramework:cis-dockerControl:5.26 
+Classification:complianceFramework:cis-dockerControl:5.26
 ## Description{% #description %}
 
 If the container image does not have an HEALTHCHECK instruction defined, you should use the `--health-cmd` parameter at container runtime to check container health.

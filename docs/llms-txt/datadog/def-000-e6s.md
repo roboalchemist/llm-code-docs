@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Enable Kernel Parameter to Ignore Bogus ICMP Error Responses on IPv4 Interfaces
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv4.icmp_ignore_bogus_error_responses` kernel parameter, run the following command:
@@ -78,7 +78,7 @@ fi
 
 #
 # If net.ipv4.icmp_ignore_bogus_error_responses present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv4.icmp_ignore_bogus_error_responses = value" to /etc/sysctl.conf
+#   else, add "net.ipv4.icmp_ignore_bogus_error_responses = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

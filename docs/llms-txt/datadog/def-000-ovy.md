@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # System Audit Logs Must Be Group Owned By Root
- 
+
 ## Description{% #description %}
 
 All audit logs must be group owned by root user. The path for audit log can be configured via `log_file` parameter in

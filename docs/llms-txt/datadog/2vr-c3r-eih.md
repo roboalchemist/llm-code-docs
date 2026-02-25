@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Network scanning utility exe
 ---
 
 # Network scanning utility executed
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1046-network-service-discovery](https://attack.mitre.org/techniques/T1046) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1046-network-service-discovery](https://attack.mitre.org/techniques/T1046)
 ## What happened{% #what-happened %}
 
 The network scanning utility `{{ @process.comm }}` was executed, potentially for lateral movement.

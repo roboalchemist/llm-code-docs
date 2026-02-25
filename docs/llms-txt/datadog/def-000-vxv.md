@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # MFA should be enabled for Cognito user pools
- 
+
 ## Description{% #description %}
 
 Multi-factor authentication (MFA) should be enabled for Amazon Cognito user pools. MFA provides an additional layer of security by requiring users to provide a second form of verification during sign-in, reducing the risk of unauthorized access.

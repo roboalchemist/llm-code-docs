@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on cron.daily
 ---
 
 # Verify Owner on cron.daily
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/cron.daily`, run the command:
 
 ```
-$ sudo chown root /etc/cron.daily 
+$ sudo chown root /etc/cron.daily
 ```
 
 ## Rationale{% #rationale %}

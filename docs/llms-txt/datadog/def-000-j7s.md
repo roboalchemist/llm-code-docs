@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should enforce encryption in transit
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon Redshift cluster connections require encryption during transit. The parameter `require_ssl` must be set to `True`.

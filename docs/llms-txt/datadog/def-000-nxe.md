@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS clusters should have encryption at rest enabled
- 
+
 ## Description{% #description %}
 
 This check verifies RDS database clusters encrypt data at rest. Data at rest encompasses any information stored in persistent, non-volatile storage. Encryption is crucial for safeguarding the confidentiality of this data, mitigating the risk of unauthorized access. Ensuring your RDS database clusters are encrypted protects both your data and metadata from unauthorized access, as well as assists with adherence to compliance standards for encrypting data at rest in production file systems.

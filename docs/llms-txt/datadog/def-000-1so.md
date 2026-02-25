@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Tor client IP address identified within Google Cloud environment
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090)
 ## Goal{% #goal %}
 
 Detect when Tor client activity is seen in Google Cloud Audit Logs.

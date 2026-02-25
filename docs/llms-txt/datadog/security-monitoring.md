@@ -70,7 +70,7 @@ The definition of the new critical asset.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -138,7 +138,7 @@ Response object containing a single critical asset.
     "type": "critical_assets"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -163,7 +163,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -188,7 +188,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -213,7 +213,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -238,7 +238,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -246,7 +246,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -268,8 +268,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a critical asset returns "OK" response
@@ -277,51 +277,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringCriticalAssetCreateRequest{
-		Data: datadogV2.SecurityMonitoringCriticalAssetCreateData{
-			Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
-			Attributes: datadogV2.SecurityMonitoringCriticalAssetCreateAttributes{
-				Query:     "host:examplesecuritymonitoring",
-				RuleQuery: "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
-				Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE,
-				Tags: []string{
-					"team:security",
-					"env:test",
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringCriticalAsset(ctx, body)
+    body := datadogV2.SecurityMonitoringCriticalAssetCreateRequest{
+        Data: datadogV2.SecurityMonitoringCriticalAssetCreateData{
+            Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
+            Attributes: datadogV2.SecurityMonitoringCriticalAssetCreateAttributes{
+                Query:     "host:examplesecuritymonitoring",
+                RuleQuery: "type:(log_detection OR signal_correlation OR workload_security OR application_security) source:cloudtrail",
+                Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE,
+                Tags: []string{
+                    "team:security",
+                    "env:test",
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringCriticalAsset(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a critical asset returns "OK" response
@@ -370,13 +370,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -420,13 +420,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_critical_asset(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a critical asset returns "OK" response
@@ -449,13 +449,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringCriticalAssetCreateRequest.new({
   }),
 })
 p api_instance.create_security_monitoring_critical_asset(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a critical asset returns "OK" response
@@ -489,13 +489,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -531,7 +531,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -587,7 +587,7 @@ The definition of the new suppression rule.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -608,9 +608,9 @@ The definition of the new suppression rule.
     "type": "suppressions"
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -627,7 +627,7 @@ The definition of the new suppression rule.
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -701,7 +701,7 @@ Response object containing a single suppression rule.
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -726,7 +726,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -751,7 +751,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -776,7 +776,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -801,7 +801,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -809,7 +809,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -835,8 +835,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -858,8 +858,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a suppression rule returns "OK" response
@@ -867,51 +867,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
-		Data: datadogV2.SecurityMonitoringSuppressionCreateData{
-			Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
-				Description:      datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
-				Enabled:          true,
-				StartDate:        datadog.PtrInt64(1637493071000),
-				ExpirationDate:   datadog.PtrInt64(1638443471000),
-				Name:             "Example-Security-Monitoring",
-				RuleQuery:        "type:log_detection source:cloudtrail",
-				SuppressionQuery: datadog.PtrString("env:staging status:low"),
-				Tags: []string{
-					"technique:T1110-brute-force",
-					"source:cloudtrail",
-				},
-			},
-			Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringSuppression(ctx, body)
+    body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
+        Data: datadogV2.SecurityMonitoringSuppressionCreateData{
+            Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
+                Description:      datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
+                Enabled:          true,
+                StartDate:        datadog.PtrInt64(1637493071000),
+                ExpirationDate:   datadog.PtrInt64(1638443471000),
+                Name:             "Example-Security-Monitoring",
+                RuleQuery:        "type:log_detection source:cloudtrail",
+                SuppressionQuery: datadog.PtrString("env:staging status:low"),
+                Tags: []string{
+                    "technique:T1110-brute-force",
+                    "source:cloudtrail",
+                },
+            },
+            Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringSuppression(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create a suppression rule with an exclusion query returns "OK" response
@@ -919,51 +919,51 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
-		Data: datadogV2.SecurityMonitoringSuppressionCreateData{
-			Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
-				Description:        datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
-				Enabled:            true,
-				StartDate:          datadog.PtrInt64(1637493071000),
-				ExpirationDate:     datadog.PtrInt64(1638443471000),
-				Name:               "Example-Security-Monitoring",
-				RuleQuery:          "type:log_detection source:cloudtrail",
-				DataExclusionQuery: datadog.PtrString("account_id:12345"),
-			},
-			Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringSuppression(ctx, body)
+    body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
+        Data: datadogV2.SecurityMonitoringSuppressionCreateData{
+            Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
+                Description:        datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
+                Enabled:            true,
+                StartDate:          datadog.PtrInt64(1637493071000),
+                ExpirationDate:     datadog.PtrInt64(1638443471000),
+                Name:               "Example-Security-Monitoring",
+                RuleQuery:          "type:log_detection source:cloudtrail",
+                DataExclusionQuery: datadog.PtrString("account_id:12345"),
+            },
+            Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringSuppression(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringSuppression`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a suppression rule returns "OK" response
@@ -1016,9 +1016,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create a suppression rule with an exclusion query returns "OK" response
@@ -1068,13 +1068,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1119,9 +1119,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_suppression(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -1162,13 +1162,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_suppression(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a suppression rule returns "OK" response
@@ -1195,9 +1195,9 @@ body = DatadogAPIClient::V2::SecurityMonitoringSuppressionCreateRequest.new({
   }),
 })
 p api_instance.create_security_monitoring_suppression(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create a suppression rule with an exclusion query returns "OK" response
@@ -1220,13 +1220,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSuppressionCreateRequest.new({
   }),
 })
 p api_instance.create_security_monitoring_suppression(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a suppression rule returns "OK" response
@@ -1268,9 +1268,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create a suppression rule with an exclusion query returns "OK" response
@@ -1308,13 +1308,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1354,9 +1354,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1395,7 +1395,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1458,7 +1458,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1483,7 +1483,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1508,7 +1508,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1516,12 +1516,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport critical_asset_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets/${critical_asset_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1541,13 +1541,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_security_monitoring_critical_asset(
         critical_asset_id=CRITICAL_ASSET_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a critical asset returns "OK" response
@@ -1558,13 +1558,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "critical_asset" in the system
 CRITICAL_ASSET_DATA_ID = ENV["CRITICAL_ASSET_DATA_ID"]
 api_instance.delete_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a critical asset returns "OK" response
@@ -1572,36 +1572,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "critical_asset" in the system
-	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+    // there is a valid "critical_asset" in the system
+    CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringCriticalAsset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringCriticalAsset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a critical asset returns "OK" response
@@ -1630,13 +1630,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a critical asset returns "OK" response
@@ -1658,13 +1658,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1692,7 +1692,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1755,7 +1755,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1780,7 +1780,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1805,7 +1805,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1813,12 +1813,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport suppression_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/${suppression_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1838,13 +1838,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_security_monitoring_suppression(
         suppression_id=SUPPRESSION_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a suppression rule returns "OK" response
@@ -1855,13 +1855,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "suppression" in the system
 SUPPRESSION_DATA_ID = ENV["SUPPRESSION_DATA_ID"]
 api_instance.delete_security_monitoring_suppression(SUPPRESSION_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a suppression rule returns "OK" response
@@ -1869,36 +1869,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "suppression" in the system
-	SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
+    // there is a valid "suppression" in the system
+    SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteSecurityMonitoringSuppression(ctx, SuppressionDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteSecurityMonitoringSuppression(ctx, SuppressionDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a suppression rule returns "OK" response
@@ -1927,13 +1927,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a suppression rule returns "OK" response
@@ -1955,13 +1955,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1989,7 +1989,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2091,7 +2091,7 @@ Response object containing a single critical asset.
     "type": "critical_assets"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2116,7 +2116,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2141,7 +2141,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2166,7 +2166,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2174,13 +2174,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport critical_asset_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets/${critical_asset_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2202,13 +2202,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a critical asset returns "OK" response
@@ -2219,13 +2219,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "critical_asset" in the system
 CRITICAL_ASSET_DATA_ID = ENV["CRITICAL_ASSET_DATA_ID"]
 p api_instance.get_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a critical asset returns "OK" response
@@ -2233,40 +2233,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "critical_asset" in the system
-	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+    // there is a valid "critical_asset" in the system
+    CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a critical asset returns "OK" response
@@ -2298,13 +2298,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a critical asset returns "OK" response
@@ -2326,13 +2326,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2360,7 +2360,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2468,7 +2468,7 @@ Response object containing a single suppression rule.
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2493,7 +2493,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2518,7 +2518,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2543,7 +2543,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2551,13 +2551,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport suppression_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/${suppression_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2579,13 +2579,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a suppression rule returns "OK" response
@@ -2596,13 +2596,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "suppression" in the system
 SUPPRESSION_DATA_ID = ENV["SUPPRESSION_DATA_ID"]
 p api_instance.get_security_monitoring_suppression(SUPPRESSION_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a suppression rule returns "OK" response
@@ -2610,40 +2610,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "suppression" in the system
-	SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
+    // there is a valid "suppression" in the system
+    SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringSuppression(ctx, SuppressionDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringSuppression(ctx, SuppressionDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringSuppression`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringSuppression`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a suppression rule returns "OK" response
@@ -2675,13 +2675,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a suppression rule returns "OK" response
@@ -2703,13 +2703,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2737,7 +2737,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2874,7 +2874,7 @@ Response for getting the suppression version history.
     "type": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2899,7 +2899,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2924,7 +2924,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2949,7 +2949,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2957,13 +2957,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport suppression_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/${suppression_id}/version_history" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2985,13 +2985,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a suppression's version history returns "OK" response
@@ -3002,13 +3002,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "suppression" in the system
 SUPPRESSION_DATA_ID = ENV["SUPPRESSION_DATA_ID"]
 p api_instance.get_suppression_version_history(SUPPRESSION_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a suppression's version history returns "OK" response
@@ -3016,40 +3016,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "suppression" in the system
-	SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
+    // there is a valid "suppression" in the system
+    SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSuppressionVersionHistory(ctx, SuppressionDataID, *datadogV2.NewGetSuppressionVersionHistoryOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSuppressionVersionHistory(ctx, SuppressionDataID, *datadogV2.NewGetSuppressionVersionHistoryOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionVersionHistory`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionVersionHistory`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionVersionHistory`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionVersionHistory`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a suppression's version history returns "OK" response
@@ -3081,13 +3081,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a suppression's version history returns "OK" response
@@ -3113,13 +3113,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3146,7 +3146,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3250,7 +3250,7 @@ Response object containing the available critical assets.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3275,7 +3275,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3300,7 +3300,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3308,13 +3308,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3330,13 +3330,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_monitoring_critical_assets()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all critical assets returns "OK" response
@@ -3344,13 +3344,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_monitoring_critical_assets()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all critical assets returns "OK" response
@@ -3358,37 +3358,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityMonitoringCriticalAssets(ctx, *datadogV2.NewListSecurityMonitoringCriticalAssetsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityMonitoringCriticalAssets(ctx, *datadogV2.NewListSecurityMonitoringCriticalAssetsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringCriticalAssets`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all critical assets returns "OK" response
@@ -3417,13 +3417,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all critical assets returns "OK" response
@@ -3446,13 +3446,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3472,7 +3472,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3597,7 +3597,7 @@ Response object containing the available suppression rules with pagination metad
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -3622,7 +3622,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3647,7 +3647,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3655,13 +3655,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3677,13 +3677,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_monitoring_suppressions()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all suppression rules returns "OK" response
@@ -3691,13 +3691,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_monitoring_suppressions()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all suppression rules returns "OK" response
@@ -3705,37 +3705,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityMonitoringSuppressions(ctx, *datadogV2.NewListSecurityMonitoringSuppressionsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityMonitoringSuppressions(ctx, *datadogV2.NewListSecurityMonitoringSuppressionsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringSuppressions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringSuppressions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringSuppressions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringSuppressions`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all suppression rules returns "OK" response
@@ -3764,13 +3764,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all suppression rules returns "OK" response
@@ -3793,13 +3793,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3819,7 +3819,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3923,7 +3923,7 @@ Response object containing the available critical assets.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3948,7 +3948,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3973,7 +3973,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3998,7 +3998,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4006,13 +4006,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4034,13 +4034,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get critical assets affecting a specific rule returns "OK" response
@@ -4051,13 +4051,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_rule" in the system
 SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
 p api_instance.get_critical_assets_affecting_rule(SECURITY_RULE_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get critical assets affecting a specific rule returns "OK" response
@@ -4065,40 +4065,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetCriticalAssetsAffectingRule(ctx, SecurityRuleID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetCriticalAssetsAffectingRule(ctx, SecurityRuleID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetCriticalAssetsAffectingRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get critical assets affecting a specific rule returns "OK" response
@@ -4130,13 +4130,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get critical assets affecting a specific rule returns "OK" response
@@ -4158,13 +4158,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4191,7 +4191,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -4301,7 +4301,7 @@ Response object containing the available suppression rules.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4326,7 +4326,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4351,7 +4351,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4376,7 +4376,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4384,13 +4384,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4412,13 +4412,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get suppressions affecting a specific rule returns "OK" response
@@ -4429,13 +4429,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_rule" in the system
 SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
 p api_instance.get_suppressions_affecting_rule(SECURITY_RULE_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get suppressions affecting a specific rule returns "OK" response
@@ -4443,40 +4443,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSuppressionsAffectingRule(ctx, SecurityRuleID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSuppressionsAffectingRule(ctx, SecurityRuleID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionsAffectingRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionsAffectingRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionsAffectingRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionsAffectingRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get suppressions affecting a specific rule returns "OK" response
@@ -4508,13 +4508,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get suppressions affecting a specific rule returns "OK" response
@@ -4536,13 +4536,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4569,7 +4569,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -4836,7 +4836,7 @@ OAuth apps require the `security_monitoring_suppressions_read` authorization [sc
   "isEnabled": true,
   "type": "log_detection"
 }
-```
+```text
 
 {% /tab %}
 
@@ -4912,7 +4912,7 @@ Response object containing the available suppression rules.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4937,7 +4937,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4962,7 +4962,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4987,7 +4987,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4995,7 +4995,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5033,8 +5033,8 @@ API error response.
   "type": "log_detection"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Get suppressions affecting future rule returns "OK" response
@@ -5042,68 +5042,68 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleCreatePayload{
-		SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
-			Name: "Example-Security-Monitoring",
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query:          datadog.PtrString("@test:true"),
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					GroupByFields:  []string{},
-					DistinctFields: []string{},
-					Metrics:        []string{},
-				},
-			},
-			Filters: []datadogV2.SecurityMonitoringFilter{},
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Condition:     datadog.PtrString("a > 0"),
-					Notifications: []string{},
-				},
-			},
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-			},
-			Message:   "Test rule",
-			Tags:      []string{},
-			IsEnabled: true,
-			Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSuppressionsAffectingFutureRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleCreatePayload{
+        SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
+            Name: "Example-Security-Monitoring",
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query:          datadog.PtrString("@test:true"),
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    GroupByFields:  []string{},
+                    DistinctFields: []string{},
+                    Metrics:        []string{},
+                },
+            },
+            Filters: []datadogV2.SecurityMonitoringFilter{},
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Condition:     datadog.PtrString("a > 0"),
+                    Notifications: []string{},
+                },
+            },
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+            },
+            Message:   "Test rule",
+            Tags:      []string{},
+            IsEnabled: true,
+            Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSuppressionsAffectingFutureRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionsAffectingFutureRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSuppressionsAffectingFutureRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionsAffectingFutureRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSuppressionsAffectingFutureRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get suppressions affecting future rule returns "OK" response
@@ -5168,13 +5168,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5239,13 +5239,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_suppressions_affecting_future_rule(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get suppressions affecting future rule returns "OK" response
@@ -5284,13 +5284,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRuleCreatePayload.new({
   type: DatadogAPIClient::V2::SecurityMonitoringRuleTypeCreate::LOG_DETECTION,
 })
 p api_instance.get_suppressions_affecting_future_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Get suppressions affecting future rule returns "OK" response
@@ -5346,13 +5346,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5406,7 +5406,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -5484,7 +5484,7 @@ New definition of the critical asset. Supports partial updates.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -5552,7 +5552,7 @@ Response object containing a single critical asset.
     "type": "critical_assets"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -5577,7 +5577,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5602,7 +5602,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5627,7 +5627,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5652,7 +5652,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5677,7 +5677,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5685,7 +5685,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport critical_asset_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/critical_assets/${critical_asset_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5708,8 +5708,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a critical asset returns "OK" response
@@ -5717,55 +5717,55 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "critical_asset" in the system
-	CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
+    // there is a valid "critical_asset" in the system
+    CriticalAssetDataID := os.Getenv("CRITICAL_ASSET_DATA_ID")
 
-	body := datadogV2.SecurityMonitoringCriticalAssetUpdateRequest{
-		Data: datadogV2.SecurityMonitoringCriticalAssetUpdateData{
-			Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
-			Attributes: datadogV2.SecurityMonitoringCriticalAssetUpdateAttributes{
-				Enabled:   datadog.PtrBool(false),
-				Query:     datadog.PtrString("no:alert"),
-				RuleQuery: datadog.PtrString("type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq"),
-				Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE.Ptr(),
-				Tags: []string{
-					"env:production",
-				},
-				Version: datadog.PtrInt32(1),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID, body)
+    body := datadogV2.SecurityMonitoringCriticalAssetUpdateRequest{
+        Data: datadogV2.SecurityMonitoringCriticalAssetUpdateData{
+            Type: datadogV2.SECURITYMONITORINGCRITICALASSETTYPE_CRITICAL_ASSETS,
+            Attributes: datadogV2.SecurityMonitoringCriticalAssetUpdateAttributes{
+                Enabled:   datadog.PtrBool(false),
+                Query:     datadog.PtrString("no:alert"),
+                RuleQuery: datadog.PtrString("type:(log_detection OR signal_correlation OR workload_security OR application_security) ruleId:djg-ktx-ipq"),
+                Severity:  datadogV2.SECURITYMONITORINGCRITICALASSETSEVERITY_DECREASE.Ptr(),
+                Tags: []string{
+                    "env:production",
+                },
+                Version: datadog.PtrInt32(1),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateSecurityMonitoringCriticalAsset(ctx, CriticalAssetDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringCriticalAsset`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a critical asset returns "OK" response
@@ -5819,13 +5819,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5876,13 +5876,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a critical asset returns "OK" response
@@ -5909,13 +5909,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringCriticalAssetUpdateRequest.new({
   }),
 })
 p api_instance.update_security_monitoring_critical_asset(CRITICAL_ASSET_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a critical asset returns "OK" response
@@ -5957,13 +5957,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6005,7 +6005,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -6080,7 +6080,7 @@ New definition of the suppression rule. Supports partial updates.
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -6154,7 +6154,7 @@ Response object containing a single suppression rule.
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -6179,7 +6179,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6204,7 +6204,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6229,7 +6229,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6254,7 +6254,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6279,7 +6279,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6287,7 +6287,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport suppression_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/${suppression_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6303,8 +6303,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a suppression rule returns "OK" response
@@ -6312,48 +6312,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "suppression" in the system
-	SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
+    // there is a valid "suppression" in the system
+    SuppressionDataID := os.Getenv("SUPPRESSION_DATA_ID")
 
-	body := datadogV2.SecurityMonitoringSuppressionUpdateRequest{
-		Data: datadogV2.SecurityMonitoringSuppressionUpdateData{
-			Attributes: datadogV2.SecurityMonitoringSuppressionUpdateAttributes{
-				SuppressionQuery: datadog.PtrString("env:staging status:low"),
-			},
-			Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateSecurityMonitoringSuppression(ctx, SuppressionDataID, body)
+    body := datadogV2.SecurityMonitoringSuppressionUpdateRequest{
+        Data: datadogV2.SecurityMonitoringSuppressionUpdateData{
+            Attributes: datadogV2.SecurityMonitoringSuppressionUpdateAttributes{
+                SuppressionQuery: datadog.PtrString("env:staging status:low"),
+            },
+            Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateSecurityMonitoringSuppression(ctx, SuppressionDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringSuppression`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringSuppression`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a suppression rule returns "OK" response
@@ -6398,13 +6398,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6443,13 +6443,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_security_monitoring_suppression(suppression_id=SUPPRESSION_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a suppression rule returns "OK" response
@@ -6469,13 +6469,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSuppressionUpdateRequest.new({
   }),
 })
 p api_instance.update_security_monitoring_suppression(SUPPRESSION_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a suppression rule returns "OK" response
@@ -6508,13 +6508,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6550,7 +6550,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -6620,7 +6620,7 @@ OAuth apps require the `security_monitoring_suppressions_write` authorization [s
     "type": "suppressions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -6649,7 +6649,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6674,7 +6674,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6699,7 +6699,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6707,7 +6707,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/suppressions/validation" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -6726,8 +6726,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate a suppression rule returns "OK" response
@@ -6735,45 +6735,45 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
-		Data: datadogV2.SecurityMonitoringSuppressionCreateData{
-			Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
-				DataExclusionQuery: datadog.PtrString("source:cloudtrail account_id:12345"),
-				Description:        datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
-				Enabled:            true,
-				Name:               "Custom suppression",
-				RuleQuery:          "type:log_detection source:cloudtrail",
-			},
-			Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ValidateSecurityMonitoringSuppression(ctx, body)
+    body := datadogV2.SecurityMonitoringSuppressionCreateRequest{
+        Data: datadogV2.SecurityMonitoringSuppressionCreateData{
+            Attributes: datadogV2.SecurityMonitoringSuppressionCreateAttributes{
+                DataExclusionQuery: datadog.PtrString("source:cloudtrail account_id:12345"),
+                Description:        datadog.PtrString("This rule suppresses low-severity signals in staging environments."),
+                Enabled:            true,
+                Name:               "Custom suppression",
+                RuleQuery:          "type:log_detection source:cloudtrail",
+            },
+            Type: datadogV2.SECURITYMONITORINGSUPPRESSIONTYPE_SUPPRESSIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ValidateSecurityMonitoringSuppression(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringSuppression`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringSuppression`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate a suppression rule returns "OK" response
@@ -6818,13 +6818,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6861,13 +6861,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.validate_security_monitoring_suppression(body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate a suppression rule returns "OK" response
@@ -6888,13 +6888,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSuppressionCreateRequest.new({
   }),
 })
 api_instance.validate_security_monitoring_suppression(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate a suppression rule returns "OK" response
@@ -6930,13 +6930,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6973,7 +6973,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -7050,7 +7050,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7093,7 +7093,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7118,7 +7118,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7126,13 +7126,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport content_pack_id="aws-cloudtrail"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/${content_pack_id}/deactivate" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7149,13 +7149,13 @@ with ApiClient(configuration) as api_client:
     api_instance.deactivate_content_pack(
         content_pack_id="aws-cloudtrail",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Deactivate content pack returns "Accepted" response
@@ -7166,13 +7166,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.deactivate_content_pack("aws-cloudtrail")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Deactivate content pack returns "Accepted" response
@@ -7180,34 +7180,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeactivateContentPack", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeactivateContentPack(ctx, "aws-cloudtrail")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeactivateContentPack", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeactivateContentPack(ctx, "aws-cloudtrail")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeactivateContentPack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeactivateContentPack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Deactivate content pack returns "Accepted" response
@@ -7233,13 +7233,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Deactivate content pack returns "Accepted" response
@@ -7260,13 +7260,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7291,7 +7291,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -7477,7 +7477,7 @@ The expected response schema when listing findings.
     "snapshot_timestamp": 1678721573794
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -7520,7 +7520,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7563,7 +7563,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7606,7 +7606,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7649,7 +7649,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7657,13 +7657,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/posture_management/findings" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7680,13 +7680,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_findings()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List findings returns "OK" response
@@ -7697,13 +7697,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_findings()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List findings returns "OK" response
@@ -7711,38 +7711,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListFindings", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListFindings(ctx, *datadogV2.NewListFindingsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListFindings", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListFindings(ctx, *datadogV2.NewListFindingsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListFindings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListFindings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListFindings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListFindings`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List findings returns "OK" response
@@ -7770,13 +7770,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List findings returns "OK" response
@@ -7798,13 +7798,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7825,7 +7825,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -7934,7 +7934,7 @@ The expected response schema when listing security findings.
     "status": "done"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -7959,7 +7959,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -7984,7 +7984,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8009,7 +8009,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8017,13 +8017,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8039,13 +8039,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_findings()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List security findings returns "OK" response
@@ -8053,13 +8053,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_findings()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List security findings returns "OK" response
@@ -8067,37 +8067,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityFindings(ctx, *datadogV2.NewListSecurityFindingsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityFindings(ctx, *datadogV2.NewListSecurityFindingsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityFindings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityFindings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityFindings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityFindings`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List security findings returns "OK" response
@@ -8124,13 +8124,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List security findings returns "OK" response
@@ -8151,13 +8151,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8177,7 +8177,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -8254,7 +8254,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8297,7 +8297,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8322,7 +8322,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8330,13 +8330,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport content_pack_id="aws-cloudtrail"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/${content_pack_id}/activate" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8353,13 +8353,13 @@ with ApiClient(configuration) as api_client:
     api_instance.activate_content_pack(
         content_pack_id="aws-cloudtrail",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Activate content pack returns "Accepted" response
@@ -8370,13 +8370,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.activate_content_pack("aws-cloudtrail")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Activate content pack returns "Accepted" response
@@ -8384,34 +8384,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ActivateContentPack", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ActivateContentPack(ctx, "aws-cloudtrail")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ActivateContentPack", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ActivateContentPack(ctx, "aws-cloudtrail")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ActivateContentPack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ActivateContentPack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Activate content pack returns "Accepted" response
@@ -8437,13 +8437,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Activate content pack returns "Accepted" response
@@ -8464,13 +8464,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8495,7 +8495,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -8609,7 +8609,7 @@ The expected response schema when getting a finding.
     "type": "detailed_finding"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -8652,7 +8652,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8695,7 +8695,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8738,7 +8738,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8781,7 +8781,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -8789,13 +8789,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport finding_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/posture_management/findings/${finding_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8814,13 +8814,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a finding returns "OK" response
@@ -8831,13 +8831,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_finding("AgAAAYd59gjghzF52gAAAAAAAAAYAAAAAEFZZDU5Z2pnQUFCRTRvV1lFeEo4SlFBQQAAACQAAAAAMDE4NzdhMDEtMDRiYS00NTZlLWFmMzMtNTIxNmNkNjVlNDMz")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a finding returns "OK" response
@@ -8845,38 +8845,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetFinding", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetFinding(ctx, "AgAAAYd59gjghzF52gAAAAAAAAAYAAAAAEFZZDU5Z2pnQUFCRTRvV1lFeEo4SlFBQQAAACQAAAAAMDE4NzdhMDEtMDRiYS00NTZlLWFmMzMtNTIxNmNkNjVlNDMz", *datadogV2.NewGetFindingOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetFinding", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetFinding(ctx, "AgAAAYd59gjghzF52gAAAAAAAAAYAAAAAEFZZDU5Z2pnQUFCRTRvV1lFeEo4SlFBQQAAACQAAAAAMDE4NzdhMDEtMDRiYS00NTZlLWFmMzMtNTIxNmNkNjVlNDMz", *datadogV2.NewGetFindingOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetFinding`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetFinding`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetFinding`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetFinding`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a finding returns "OK" response
@@ -8906,13 +8906,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a finding returns "OK" response
@@ -8938,13 +8938,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8970,7 +8970,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -9059,7 +9059,7 @@ The request body must include a list of the finding IDs to be updated.
     "type": "finding"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -9087,7 +9087,7 @@ The expected response schema.
     "type": "finding"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -9130,7 +9130,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9173,7 +9173,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9216,7 +9216,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9259,7 +9259,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9302,7 +9302,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9310,7 +9310,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/posture_management/findings" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9338,8 +9338,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Mute or unmute a batch of findings returns "OK" response
@@ -9347,58 +9347,58 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BulkMuteFindingsRequest{
-		Data: datadogV2.BulkMuteFindingsRequestData{
-			Attributes: datadogV2.BulkMuteFindingsRequestAttributes{
-				Mute: datadogV2.BulkMuteFindingsRequestProperties{
-					ExpirationDate: datadog.PtrInt64(1778721573794),
-					Muted:          true,
-					Reason:         datadogV2.FINDINGMUTEREASON_ACCEPTED_RISK,
-				},
-			},
-			Id: "dbe5f567-192b-4404-b908-29b70e1c9f76",
-			Meta: datadogV2.BulkMuteFindingsRequestMeta{
-				Findings: []datadogV2.BulkMuteFindingsRequestMetaFindings{
-					{
-						FindingId: datadog.PtrString("ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw=="),
-					},
-				},
-			},
-			Type: datadogV2.FINDINGTYPE_FINDING,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.MuteFindings", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.MuteFindings(ctx, body)
+    body := datadogV2.BulkMuteFindingsRequest{
+        Data: datadogV2.BulkMuteFindingsRequestData{
+            Attributes: datadogV2.BulkMuteFindingsRequestAttributes{
+                Mute: datadogV2.BulkMuteFindingsRequestProperties{
+                    ExpirationDate: datadog.PtrInt64(1778721573794),
+                    Muted:          true,
+                    Reason:         datadogV2.FINDINGMUTEREASON_ACCEPTED_RISK,
+                },
+            },
+            Id: "dbe5f567-192b-4404-b908-29b70e1c9f76",
+            Meta: datadogV2.BulkMuteFindingsRequestMeta{
+                Findings: []datadogV2.BulkMuteFindingsRequestMetaFindings{
+                    {
+                        FindingId: datadog.PtrString("ZGVmLTAwcC1pZXJ-aS0wZjhjNjMyZDNmMzRlZTgzNw=="),
+                    },
+                },
+            },
+            Type: datadogV2.FINDINGTYPE_FINDING,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.MuteFindings", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.MuteFindings(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.MuteFindings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.MuteFindings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.MuteFindings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.MuteFindings`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Mute or unmute a batch of findings returns "OK" response
@@ -9456,13 +9456,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9508,13 +9508,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.mute_findings(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Mute or unmute a batch of findings returns "OK" response
@@ -9546,13 +9546,13 @@ body = DatadogAPIClient::V2::BulkMuteFindingsRequest.new({
   }),
 })
 p api_instance.mute_findings(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Mute or unmute a batch of findings returns "OK" response
@@ -9591,13 +9591,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9641,7 +9641,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -9700,7 +9700,7 @@ OAuth apps require the `security_monitoring_findings_read` authorization [scope]
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -9710,9 +9710,9 @@ OAuth apps require the `security_monitoring_findings_read` authorization [scope]
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -9725,7 +9725,7 @@ OAuth apps require the `security_monitoring_findings_read` authorization [scope]
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -9789,7 +9789,7 @@ The expected response schema when listing security findings.
     "status": "done"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -9814,7 +9814,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9839,7 +9839,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9864,7 +9864,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -9872,7 +9872,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9887,8 +9887,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9906,8 +9906,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search security findings returns "OK" response
@@ -9915,40 +9915,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityFindingsSearchRequest{
-		Data: &datadogV2.SecurityFindingsSearchRequestData{
-			Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
-				Filter: datadog.PtrString("@severity:(critical OR high)"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.SearchSecurityFindings(ctx, body)
+    body := datadogV2.SecurityFindingsSearchRequest{
+        Data: &datadogV2.SecurityFindingsSearchRequestData{
+            Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
+                Filter: datadog.PtrString("@severity:(critical OR high)"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.SearchSecurityFindings(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Search security findings returns "OK" response with pagination
@@ -9956,47 +9956,47 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityFindingsSearchRequest{
-		Data: &datadogV2.SecurityFindingsSearchRequestData{
-			Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
-				Filter: datadog.PtrString("@severity:(critical OR high)"),
-				Page: &datadogV2.SecurityFindingsSearchRequestPage{
-					Limit: datadog.PtrInt64(1),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.SearchSecurityFindings(ctx, body)
+    body := datadogV2.SecurityFindingsSearchRequest{
+        Data: &datadogV2.SecurityFindingsSearchRequestData{
+            Attributes: &datadogV2.SecurityFindingsSearchRequestDataAttributes{
+                Filter: datadog.PtrString("@severity:(critical OR high)"),
+                Page: &datadogV2.SecurityFindingsSearchRequestPage{
+                    Limit: datadog.PtrInt64(1),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.SearchSecurityFindings(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityFindings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityFindings`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search security findings returns "OK" response
@@ -10034,9 +10034,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Search security findings returns "OK" response with pagination
@@ -10076,13 +10076,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10111,9 +10111,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.search_security_findings(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -10146,13 +10146,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.search_security_findings(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search security findings returns "OK" response
@@ -10168,9 +10168,9 @@ body = DatadogAPIClient::V2::SecurityFindingsSearchRequest.new({
   }),
 })
 p api_instance.search_security_findings(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Search security findings returns "OK" response with pagination
@@ -10189,13 +10189,13 @@ body = DatadogAPIClient::V2::SecurityFindingsSearchRequest.new({
   }),
 })
 p api_instance.search_security_findings(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search security findings returns "OK" response
@@ -10222,9 +10222,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Search security findings returns "OK" response with pagination
@@ -10253,13 +10253,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10289,9 +10289,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -10324,7 +10324,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -10400,7 +10400,7 @@ Response containing content pack states.
     "sku": "add_on_2024"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -10443,7 +10443,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10486,7 +10486,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10511,7 +10511,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10519,13 +10519,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/content_packs/states" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10542,13 +10542,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_content_packs_states()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get content pack states returns "OK" response
@@ -10559,13 +10559,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_content_packs_states()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get content pack states returns "OK" response
@@ -10573,38 +10573,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetContentPacksStates", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetContentPacksStates(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetContentPacksStates", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetContentPacksStates(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetContentPacksStates`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetContentPacksStates`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetContentPacksStates`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetContentPacksStates`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get content pack states returns "OK" response
@@ -10632,13 +10632,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get content pack states returns "OK" response
@@ -10657,13 +10657,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10684,7 +10684,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -10740,7 +10740,7 @@ Attributes describing the signal update.
 {
   "incident_id": 2609
 }
-```
+```text
 
 {% /tab %}
 
@@ -10763,7 +10763,7 @@ Updated signal data following a successfully performed update.
 {
   "status": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -10788,7 +10788,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10813,7 +10813,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10838,7 +10838,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10863,7 +10863,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -10871,7 +10871,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/security_analytics/signals/${signal_id}/add_to_incident" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10882,8 +10882,8 @@ Error response object.
   "incident_id": 2609
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Add a security signal to an incident returns "OK" response
@@ -10891,40 +10891,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AddSignalToIncidentRequest{
-		IncidentId: 2609,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.AddSecurityMonitoringSignalToIncident(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
+    body := datadogV1.AddSignalToIncidentRequest{
+        IncidentId: 2609,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.AddSecurityMonitoringSignalToIncident(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AddSecurityMonitoringSignalToIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AddSecurityMonitoringSignalToIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AddSecurityMonitoringSignalToIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AddSecurityMonitoringSignalToIncident`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add a security signal to an incident returns "OK" response
@@ -10957,13 +10957,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10986,13 +10986,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add a security signal to an incident returns "OK" response
@@ -11004,13 +11004,13 @@ body = DatadogAPIClient::V1::AddSignalToIncidentRequest.new({
   incident_id: 2609,
 })
 p api_instance.add_security_monitoring_signal_to_incident("AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Add a security signal to an incident returns "OK" response
@@ -11035,13 +11035,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11069,7 +11069,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -11127,7 +11127,7 @@ Attributes describing the signal update.
   "archiveReason": "none",
   "state": "open"
 }
-```
+```text
 
 {% /tab %}
 
@@ -11150,7 +11150,7 @@ Updated signal data following a successfully performed update.
 {
   "status": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -11175,7 +11175,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11200,7 +11200,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11225,7 +11225,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11250,7 +11250,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11258,7 +11258,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/security_analytics/signals/${signal_id}/state" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -11270,8 +11270,8 @@ Error response object.
   "state": "open"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Change the triage state of a security signal returns "OK" response
@@ -11279,41 +11279,41 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SignalStateUpdateRequest{
-		ArchiveReason: datadogV1.SIGNALARCHIVEREASON_NONE.Ptr(),
-		State:         datadogV1.SIGNALTRIAGESTATE_OPEN,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.EditSecurityMonitoringSignalState(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
+    body := datadogV1.SignalStateUpdateRequest{
+        ArchiveReason: datadogV1.SIGNALARCHIVEREASON_NONE.Ptr(),
+        State:         datadogV1.SIGNALTRIAGESTATE_OPEN,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.EditSecurityMonitoringSignalState(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalState`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalState`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalState`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalState`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Change the triage state of a security signal returns "OK" response
@@ -11351,13 +11351,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11383,13 +11383,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Change the triage state of a security signal returns "OK" response
@@ -11402,13 +11402,13 @@ body = DatadogAPIClient::V1::SignalStateUpdateRequest.new({
   state: DatadogAPIClient::V1::SignalTriageState::OPEN,
 })
 p api_instance.edit_security_monitoring_signal_state("AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Change the triage state of a security signal returns "OK" response
@@ -11436,13 +11436,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11471,7 +11471,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -11535,7 +11535,7 @@ Attributes describing the signal update.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -11619,7 +11619,7 @@ The response returned after all triage operations, containing the updated signal
     "type": "signal_metadata"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -11644,7 +11644,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11669,7 +11669,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11694,7 +11694,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11719,7 +11719,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -11727,7 +11727,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals/${signal_id}/state" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -11743,8 +11743,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Change the triage state of a security signal returns "OK" response
@@ -11752,45 +11752,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSignalStateUpdateRequest{
-		Data: datadogV2.SecurityMonitoringSignalStateUpdateData{
-			Attributes: datadogV2.SecurityMonitoringSignalStateUpdateAttributes{
-				ArchiveReason: datadogV2.SECURITYMONITORINGSIGNALARCHIVEREASON_NONE.Ptr(),
-				State:         datadogV2.SECURITYMONITORINGSIGNALSTATE_OPEN,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.EditSecurityMonitoringSignalState(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
+    body := datadogV2.SecurityMonitoringSignalStateUpdateRequest{
+        Data: datadogV2.SecurityMonitoringSignalStateUpdateData{
+            Attributes: datadogV2.SecurityMonitoringSignalStateUpdateAttributes{
+                ArchiveReason: datadogV2.SECURITYMONITORINGSIGNALARCHIVEREASON_NONE.Ptr(),
+                State:         datadogV2.SECURITYMONITORINGSIGNALSTATE_OPEN,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.EditSecurityMonitoringSignalState(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalState`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalState`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalState`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalState`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Change the triage state of a security signal returns "OK" response
@@ -11834,13 +11834,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11878,13 +11878,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Change the triage state of a security signal returns "OK" response
@@ -11901,13 +11901,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSignalStateUpdateRequest.new({
   }),
 })
 p api_instance.edit_security_monitoring_signal_state("AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Change the triage state of a security signal returns "OK" response
@@ -11941,13 +11941,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11980,7 +11980,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -12065,7 +12065,7 @@ OAuth apps require the `security_monitoring_rules_read, security_monitoring_rule
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -12100,7 +12100,7 @@ Response object to create a custom framework.
     "type": "custom_framework"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -12125,7 +12125,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -12150,7 +12150,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -12175,7 +12175,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -12200,7 +12200,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -12208,7 +12208,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/custom_frameworks" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12240,8 +12240,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a custom framework returns "OK" response
@@ -12249,61 +12249,61 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateCustomFrameworkRequest{
-		Data: datadogV2.CustomFrameworkData{
-			Type: datadogV2.CUSTOMFRAMEWORKTYPE_CUSTOM_FRAMEWORK,
-			Attributes: datadogV2.CustomFrameworkDataAttributes{
-				Name:    "name",
-				Handle:  "create-framework-new",
-				Version: "10",
-				IconUrl: datadog.PtrString("test-url"),
-				Requirements: []datadogV2.CustomFrameworkRequirement{
-					{
-						Name: "requirement",
-						Controls: []datadogV2.CustomFrameworkControl{
-							{
-								Name: "control",
-								RulesId: []string{
-									"def-000-be9",
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateCustomFramework(ctx, body)
+    body := datadogV2.CreateCustomFrameworkRequest{
+        Data: datadogV2.CustomFrameworkData{
+            Type: datadogV2.CUSTOMFRAMEWORKTYPE_CUSTOM_FRAMEWORK,
+            Attributes: datadogV2.CustomFrameworkDataAttributes{
+                Name:    "name",
+                Handle:  "create-framework-new",
+                Version: "10",
+                IconUrl: datadog.PtrString("test-url"),
+                Requirements: []datadogV2.CustomFrameworkRequirement{
+                    {
+                        Name: "requirement",
+                        Controls: []datadogV2.CustomFrameworkControl{
+                            {
+                                Name: "control",
+                                RulesId: []string{
+                                    "def-000-be9",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateCustomFramework(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCustomFramework`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCustomFramework`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCustomFramework`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCustomFramework`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a custom framework returns "OK" response
@@ -12360,13 +12360,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -12413,13 +12413,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_custom_framework(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a custom framework returns "OK" response
@@ -12452,13 +12452,13 @@ body = DatadogAPIClient::V2::CreateCustomFrameworkRequest.new({
   }),
 })
 p api_instance.create_custom_framework(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a custom framework returns "OK" response
@@ -12498,13 +12498,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12549,7 +12549,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -12784,7 +12784,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -12832,9 +12832,9 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -12876,9 +12876,9 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -12923,7 +12923,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   "tags": [],
   "filters": []
 }
-```
+```text
 
 {% /tab %}
 
@@ -13306,7 +13306,7 @@ Create a new rule.
   "updatedAt": "integer",
   "version": "integer"
 }
-```
+```text
 
 {% /tab %}
 
@@ -13331,7 +13331,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -13356,7 +13356,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -13381,7 +13381,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -13389,7 +13389,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -13442,8 +13442,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -13490,8 +13490,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -13541,8 +13541,8 @@ EOF
   "filters": []
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a cloud_configuration rule returns "OK" response
@@ -13550,35 +13550,35 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleCreatePayload{
-		CloudConfigurationRuleCreatePayload: &datadogV2.CloudConfigurationRuleCreatePayload{
-			Type:      datadogV2.CLOUDCONFIGURATIONRULETYPE_CLOUD_CONFIGURATION.Ptr(),
-			Name:      "Example-Security-Monitoring_cloud",
-			IsEnabled: false,
-			Cases: []datadogV2.CloudConfigurationRuleCaseCreate{
-				{
-					Status: datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Notifications: []string{
-						"channel",
-					},
-				},
-			},
-			Options: datadogV2.CloudConfigurationRuleOptions{
-				ComplianceRuleOptions: datadogV2.CloudConfigurationComplianceRuleOptions{
-					ResourceType: datadog.PtrString("gcp_compute_disk"),
-					ComplexRule:  datadog.PtrBool(false),
-					RegoRule: &datadogV2.CloudConfigurationRegoRule{
-						Policy: `package datadog
+    body := datadogV2.SecurityMonitoringRuleCreatePayload{
+        CloudConfigurationRuleCreatePayload: &datadogV2.CloudConfigurationRuleCreatePayload{
+            Type:      datadogV2.CLOUDCONFIGURATIONRULETYPE_CLOUD_CONFIGURATION.Ptr(),
+            Name:      "Example-Security-Monitoring_cloud",
+            IsEnabled: false,
+            Cases: []datadogV2.CloudConfigurationRuleCaseCreate{
+                {
+                    Status: datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Notifications: []string{
+                        "channel",
+                    },
+                },
+            },
+            Options: datadogV2.CloudConfigurationRuleOptions{
+                ComplianceRuleOptions: datadogV2.CloudConfigurationComplianceRuleOptions{
+                    ResourceType: datadog.PtrString("gcp_compute_disk"),
+                    ComplexRule:  datadog.PtrBool(false),
+                    RegoRule: &datadogV2.CloudConfigurationRegoRule{
+                        Policy: `package datadog
 
 import data.datadog.output as dd_output
 
@@ -13589,61 +13589,61 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 `,
-						ResourceTypes: []string{
-							"gcp_compute_disk",
-						},
-					},
-				},
-			},
-			Message: "ddd",
-			Tags: []string{
-				"my:tag",
-			},
-			ComplianceSignalOptions: datadogV2.CloudConfigurationRuleComplianceSignalOptions{
-				UserActivationStatus: *datadog.NewNullableBool(datadog.PtrBool(true)),
-				UserGroupByFields: *datadog.NewNullableList(&[]string{
-					"@account_id",
-				}),
-			},
-			Filters: []datadogV2.SecurityMonitoringFilter{
-				{
-					Action: datadogV2.SECURITYMONITORINGFILTERACTION_REQUIRE.Ptr(),
-					Query:  datadog.PtrString("resource_id:helo*"),
-				},
-				{
-					Action: datadogV2.SECURITYMONITORINGFILTERACTION_SUPPRESS.Ptr(),
-					Query:  datadog.PtrString("control:helo*"),
-				},
-			},
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
+                        ResourceTypes: []string{
+                            "gcp_compute_disk",
+                        },
+                    },
+                },
+            },
+            Message: "ddd",
+            Tags: []string{
+                "my:tag",
+            },
+            ComplianceSignalOptions: datadogV2.CloudConfigurationRuleComplianceSignalOptions{
+                UserActivationStatus: *datadog.NewNullableBool(datadog.PtrBool(true)),
+                UserGroupByFields: *datadog.NewNullableList(&[]string{
+                    "@account_id",
+                }),
+            },
+            Filters: []datadogV2.SecurityMonitoringFilter{
+                {
+                    Action: datadogV2.SECURITYMONITORINGFILTERACTION_REQUIRE.Ptr(),
+                    Query:  datadog.PtrString("resource_id:helo*"),
+                },
+                {
+                    Action: datadogV2.SECURITYMONITORINGFILTERACTION_SUPPRESS.Ptr(),
+                    Query:  datadog.PtrString("control:helo*"),
+                },
+            },
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create a detection rule returns "OK" response
@@ -13651,73 +13651,73 @@ results contains result if {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleCreatePayload{
-		SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
-			Name: "Example-Security-Monitoring",
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query:          datadog.PtrString("@test:true"),
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					GroupByFields:  []string{},
-					DistinctFields: []string{},
-					Metric:         datadog.PtrString(""),
-				},
-			},
-			Filters: []datadogV2.SecurityMonitoringFilter{},
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Condition:     datadog.PtrString("a > 0"),
-					Notifications: []string{},
-				},
-			},
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-			},
-			Message:   "Test rule",
-			Tags:      []string{},
-			IsEnabled: true,
-			Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-			ReferenceTables: []datadogV2.SecurityMonitoringReferenceTable{
-				{
-					TableName:     datadog.PtrString("synthetics_test_reference_table_dont_delete"),
-					ColumnName:    datadog.PtrString("value"),
-					LogFieldPath:  datadog.PtrString("testtag"),
-					CheckPresence: datadog.PtrBool(true),
-					RuleQueryName: datadog.PtrString("a"),
-				},
-			},
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleCreatePayload{
+        SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
+            Name: "Example-Security-Monitoring",
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query:          datadog.PtrString("@test:true"),
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    GroupByFields:  []string{},
+                    DistinctFields: []string{},
+                    Metric:         datadog.PtrString(""),
+                },
+            },
+            Filters: []datadogV2.SecurityMonitoringFilter{},
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Condition:     datadog.PtrString("a > 0"),
+                    Notifications: []string{},
+                },
+            },
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+            },
+            Message:   "Test rule",
+            Tags:      []string{},
+            IsEnabled: true,
+            Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+            ReferenceTables: []datadogV2.SecurityMonitoringReferenceTable{
+                {
+                    TableName:     datadog.PtrString("synthetics_test_reference_table_dont_delete"),
+                    ColumnName:    datadog.PtrString("value"),
+                    LogFieldPath:  datadog.PtrString("testtag"),
+                    CheckPresence: datadog.PtrBool(true),
+                    RuleQueryName: datadog.PtrString("a"),
+                },
+            },
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create a detection rule with detection method 'anomaly_detection' returns "OK" response
@@ -13725,80 +13725,80 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleCreatePayload{
-		SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
-			Name:      "Example-Security-Monitoring",
-			Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-			IsEnabled: true,
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					DataSource:     datadogV2.SECURITYMONITORINGSTANDARDDATASOURCE_LOGS.Ptr(),
-					DistinctFields: []string{},
-					GroupByFields: []string{
-						"@usr.email",
-						"@network.client.ip",
-					},
-					HasOptionalGroupByFields: datadog.PtrBool(false),
-					Name:                     datadog.PtrString(""),
-					Query:                    datadog.PtrString("service:app status:error"),
-				},
-			},
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Notifications: []string{},
-					Condition:     datadog.PtrString("a > 0.995"),
-				},
-			},
-			Message: "An anomaly detection rule",
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_ANOMALY_DETECTION.Ptr(),
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-				AnomalyDetectionOptions: &datadogV2.SecurityMonitoringRuleAnomalyDetectionOptions{
-					BucketDuration:         datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSBUCKETDURATION_FIVE_MINUTES.Ptr(),
-					LearningDuration:       datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSLEARNINGDURATION_ONE_DAY.Ptr(),
-					DetectionTolerance:     datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSDETECTIONTOLERANCE_THREE.Ptr(),
-					LearningPeriodBaseline: datadog.PtrInt64(10),
-				},
-			},
-			Tags:    []string{},
-			Filters: []datadogV2.SecurityMonitoringFilter{},
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleCreatePayload{
+        SecurityMonitoringStandardRuleCreatePayload: &datadogV2.SecurityMonitoringStandardRuleCreatePayload{
+            Name:      "Example-Security-Monitoring",
+            Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+            IsEnabled: true,
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    DataSource:     datadogV2.SECURITYMONITORINGSTANDARDDATASOURCE_LOGS.Ptr(),
+                    DistinctFields: []string{},
+                    GroupByFields: []string{
+                        "@usr.email",
+                        "@network.client.ip",
+                    },
+                    HasOptionalGroupByFields: datadog.PtrBool(false),
+                    Name:                     datadog.PtrString(""),
+                    Query:                    datadog.PtrString("service:app status:error"),
+                },
+            },
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Notifications: []string{},
+                    Condition:     datadog.PtrString("a > 0.995"),
+                },
+            },
+            Message: "An anomaly detection rule",
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_ANOMALY_DETECTION.Ptr(),
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+                AnomalyDetectionOptions: &datadogV2.SecurityMonitoringRuleAnomalyDetectionOptions{
+                    BucketDuration:         datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSBUCKETDURATION_FIVE_MINUTES.Ptr(),
+                    LearningDuration:       datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSLEARNINGDURATION_ONE_DAY.Ptr(),
+                    DetectionTolerance:     datadogV2.SECURITYMONITORINGRULEANOMALYDETECTIONOPTIONSDETECTIONTOLERANCE_THREE.Ptr(),
+                    LearningPeriodBaseline: datadog.PtrInt64(10),
+                },
+            },
+            Tags:    []string{},
+            Filters: []datadogV2.SecurityMonitoringFilter{},
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a cloud_configuration rule returns "OK" response
@@ -13858,15 +13858,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 
 """)
@@ -13900,9 +13900,9 @@ results contains result if {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create a detection rule returns "OK" response
@@ -13976,9 +13976,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create a detection rule with detection method 'anomaly_detection' returns "OK" response
@@ -14066,13 +14066,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -14148,9 +14148,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_rule(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -14225,9 +14225,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_rule(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -14318,13 +14318,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_monitoring_rule(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a cloud_configuration rule returns "OK" response
@@ -14378,9 +14378,9 @@ body = DatadogAPIClient::V2::CloudConfigurationRuleCreatePayload.new({
   ],
 })
 p api_instance.create_security_monitoring_rule(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create a detection rule returns "OK" response
@@ -14428,9 +14428,9 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRuleCreatePayload.new({
   ],
 })
 p api_instance.create_security_monitoring_rule(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create a detection rule with detection method 'anomaly_detection' returns "OK" response
@@ -14481,13 +14481,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRuleCreatePayload.new({
   filters: [],
 })
 p api_instance.create_security_monitoring_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a cloud_configuration rule returns "OK" response
@@ -14538,15 +14538,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 "#.to_string(),
                                     vec!["gcp_compute_disk".to_string()],
@@ -14578,9 +14578,9 @@ results contains result if {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create a detection rule returns "OK" response
@@ -14643,9 +14643,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create a detection rule with detection method 'anomaly_detection' returns "OK"
@@ -14728,13 +14728,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14773,15 +14773,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 `,
           resourceTypes: ["gcp_compute_disk"],
@@ -14815,9 +14815,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -14879,9 +14879,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -14943,7 +14943,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -15021,7 +15021,7 @@ Response object to delete a custom framework.
     "type": "custom_framework"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -15046,7 +15046,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15071,7 +15071,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15096,7 +15096,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15104,13 +15104,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport handle="CHANGE_ME"export version="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/custom_frameworks/${handle}/${version}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15129,13 +15129,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a custom framework returns "OK" response
@@ -15143,13 +15143,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.delete_custom_framework("create-framework-new", "10")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a custom framework returns "OK" response
@@ -15157,37 +15157,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.DeleteCustomFramework(ctx, "create-framework-new", "10")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.DeleteCustomFramework(ctx, "create-framework-new", "10")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteCustomFramework`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteCustomFramework`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.DeleteCustomFramework`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.DeleteCustomFramework`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a custom framework returns "OK" response
@@ -15215,13 +15215,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a custom framework returns "OK" response
@@ -15241,13 +15241,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15272,7 +15272,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -15364,7 +15364,7 @@ Response object to get a custom framework.
     "type": "custom_framework"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -15389,7 +15389,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15414,7 +15414,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15439,7 +15439,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -15447,13 +15447,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport handle="CHANGE_ME"export version="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/custom_frameworks/${handle}/${version}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15472,13 +15472,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a custom framework returns "OK" response
@@ -15486,13 +15486,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_custom_framework("create-framework-new", "10")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a custom framework returns "OK" response
@@ -15500,37 +15500,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetCustomFramework(ctx, "create-framework-new", "10")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetCustomFramework(ctx, "create-framework-new", "10")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetCustomFramework`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetCustomFramework`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetCustomFramework`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetCustomFramework`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a custom framework returns "OK" response
@@ -15558,13 +15558,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a custom framework returns "OK" response
@@ -15584,13 +15584,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15615,7 +15615,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -16050,7 +16050,7 @@ List of rules.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -16075,7 +16075,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -16100,7 +16100,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -16108,13 +16108,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -16130,13 +16130,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_monitoring_rules()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List rules returns "OK" response
@@ -16144,13 +16144,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_monitoring_rules()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List rules returns "OK" response
@@ -16158,37 +16158,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityMonitoringRules(ctx, *datadogV2.NewListSecurityMonitoringRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityMonitoringRules(ctx, *datadogV2.NewListSecurityMonitoringRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringRules`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List rules returns "OK" response
@@ -16216,13 +16216,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List rules returns "OK" response
@@ -16243,13 +16243,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16269,7 +16269,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -16363,7 +16363,7 @@ OAuth apps require the `security_monitoring_rules_read, security_monitoring_rule
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -16398,7 +16398,7 @@ Response object to update a custom framework.
     "type": "custom_framework"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -16423,7 +16423,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -16448,7 +16448,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -16473,7 +16473,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -16481,7 +16481,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport handle="CHANGE_ME"export version="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/custom_frameworks/${handle}/${version}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -16513,8 +16513,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a custom framework returns "OK" response
@@ -16522,61 +16522,61 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateCustomFrameworkRequest{
-		Data: datadogV2.CustomFrameworkData{
-			Type: datadogV2.CUSTOMFRAMEWORKTYPE_CUSTOM_FRAMEWORK,
-			Attributes: datadogV2.CustomFrameworkDataAttributes{
-				Name:    "name",
-				Handle:  "create-framework-new",
-				Version: "10",
-				IconUrl: datadog.PtrString("test-url"),
-				Requirements: []datadogV2.CustomFrameworkRequirement{
-					{
-						Name: "requirement",
-						Controls: []datadogV2.CustomFrameworkControl{
-							{
-								Name: "control",
-								RulesId: []string{
-									"def-000-be9",
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateCustomFramework(ctx, "create-framework-new", "10", body)
+    body := datadogV2.UpdateCustomFrameworkRequest{
+        Data: datadogV2.CustomFrameworkData{
+            Type: datadogV2.CUSTOMFRAMEWORKTYPE_CUSTOM_FRAMEWORK,
+            Attributes: datadogV2.CustomFrameworkDataAttributes{
+                Name:    "name",
+                Handle:  "create-framework-new",
+                Version: "10",
+                IconUrl: datadog.PtrString("test-url"),
+                Requirements: []datadogV2.CustomFrameworkRequirement{
+                    {
+                        Name: "requirement",
+                        Controls: []datadogV2.CustomFrameworkControl{
+                            {
+                                Name: "control",
+                                RulesId: []string{
+                                    "def-000-be9",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateCustomFramework(ctx, "create-framework-new", "10", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateCustomFramework`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateCustomFramework`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateCustomFramework`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateCustomFramework`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a custom framework returns "OK" response
@@ -16634,13 +16634,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -16687,13 +16687,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_custom_framework(handle="create-framework-new", version="10", body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a custom framework returns "OK" response
@@ -16726,13 +16726,13 @@ body = DatadogAPIClient::V2::UpdateCustomFrameworkRequest.new({
   }),
 })
 p api_instance.update_custom_framework("create-framework-new", "10", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a custom framework returns "OK" response
@@ -16774,13 +16774,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16827,7 +16827,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -17244,7 +17244,7 @@ Create a new rule.
   "updatedAt": "integer",
   "version": "integer"
 }
-```
+```text
 
 {% /tab %}
 
@@ -17269,7 +17269,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17294,7 +17294,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17302,13 +17302,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17330,13 +17330,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a rule's details returns "OK" response
@@ -17347,13 +17347,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_rule" in the system
 SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
 p api_instance.get_security_monitoring_rule(SECURITY_RULE_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a rule's details returns "OK" response
@@ -17361,40 +17361,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringRule(ctx, SecurityRuleID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringRule(ctx, SecurityRuleID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a rule's details returns "OK" response
@@ -17425,13 +17425,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a rule's details returns "OK" response
@@ -17453,13 +17453,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17486,7 +17486,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -17541,7 +17541,7 @@ Attributes describing the signal update.
 {
   "assignee": "773b045d-ccf8-4808-bd3b-955ef6a8c940"
 }
-```
+```text
 
 {% /tab %}
 
@@ -17564,7 +17564,7 @@ Updated signal data following a successfully performed update.
 {
   "status": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -17589,7 +17589,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17614,7 +17614,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17639,7 +17639,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17664,7 +17664,7 @@ Error response object.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -17672,7 +17672,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/security_analytics/signals/${signal_id}/assignee" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -17683,8 +17683,8 @@ Error response object.
   "assignee": "773b045d-ccf8-4808-bd3b-955ef6a8c940"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Modify the triage assignee of a security signal returns "OK" response
@@ -17692,40 +17692,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SignalAssigneeUpdateRequest{
-		Assignee: "773b045d-ccf8-4808-bd3b-955ef6a8c940",
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.EditSecurityMonitoringSignalAssignee(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
+    body := datadogV1.SignalAssigneeUpdateRequest{
+        Assignee: "773b045d-ccf8-4808-bd3b-955ef6a8c940",
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.EditSecurityMonitoringSignalAssignee(ctx, "AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Modify the triage assignee of a security signal returns "OK" response
@@ -17759,13 +17759,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -17788,13 +17788,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Modify the triage assignee of a security signal returns "OK" response
@@ -17806,13 +17806,13 @@ body = DatadogAPIClient::V1::SignalAssigneeUpdateRequest.new({
   assignee: "773b045d-ccf8-4808-bd3b-955ef6a8c940",
 })
 p api_instance.edit_security_monitoring_signal_assignee("AQAAAYDiB_Ol8PbzFAAAAABBWURpQl9PbEFBQU0yeXhGTG9ZV2JnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Modify the triage assignee of a security signal returns "OK" response
@@ -17837,13 +17837,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17871,7 +17871,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -17937,7 +17937,7 @@ Attributes describing the signal update.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -18021,7 +18021,7 @@ The response returned after all triage operations, containing the updated signal
     "type": "signal_metadata"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -18046,7 +18046,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -18071,7 +18071,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -18096,7 +18096,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -18121,7 +18121,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -18129,7 +18129,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals/${signal_id}/assignee" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -18146,8 +18146,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Modify the triage assignee of a security signal returns "OK" response
@@ -18155,46 +18155,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSignalAssigneeUpdateRequest{
-		Data: datadogV2.SecurityMonitoringSignalAssigneeUpdateData{
-			Attributes: datadogV2.SecurityMonitoringSignalAssigneeUpdateAttributes{
-				Assignee: datadogV2.SecurityMonitoringTriageUser{
-					Uuid: "",
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.EditSecurityMonitoringSignalAssignee(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
+    body := datadogV2.SecurityMonitoringSignalAssigneeUpdateRequest{
+        Data: datadogV2.SecurityMonitoringSignalAssigneeUpdateData{
+            Attributes: datadogV2.SecurityMonitoringSignalAssigneeUpdateAttributes{
+                Assignee: datadogV2.SecurityMonitoringTriageUser{
+                    Uuid: "",
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.EditSecurityMonitoringSignalAssignee(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalAssignee`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Modify the triage assignee of a security signal returns "OK" response
@@ -18236,13 +18236,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -18280,13 +18280,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Modify the triage assignee of a security signal returns "OK" response
@@ -18304,13 +18304,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSignalAssigneeUpdateRequest.new({
   }),
 })
 p api_instance.edit_security_monitoring_signal_assignee("AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Modify the triage assignee of a security signal returns "OK" response
@@ -18344,13 +18344,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -18384,7 +18384,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -18548,7 +18548,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -18578,9 +18578,9 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     "userGroupByFields": []
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -18612,7 +18612,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   "tags": [],
   "isEnabled": true
 }
-```
+```text
 
 {% /tab %}
 
@@ -18995,7 +18995,7 @@ Create a new rule.
   "updatedAt": "integer",
   "version": "integer"
 }
-```
+```text
 
 {% /tab %}
 
@@ -19020,7 +19020,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -19045,7 +19045,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -19070,7 +19070,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -19095,7 +19095,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -19120,7 +19120,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -19128,7 +19128,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -19163,8 +19163,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -19201,8 +19201,8 @@ EOF
   "isEnabled": true
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a cloud configuration rule's details returns "OK" response
@@ -19210,33 +19210,33 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "cloud_configuration_rule" in the system
-	CloudConfigurationRuleID := os.Getenv("CLOUD_CONFIGURATION_RULE_ID")
+    // there is a valid "cloud_configuration_rule" in the system
+    CloudConfigurationRuleID := os.Getenv("CLOUD_CONFIGURATION_RULE_ID")
 
-	body := datadogV2.SecurityMonitoringRuleUpdatePayload{
-		Name:      datadog.PtrString("Example-Security-Monitoring_cloud_updated"),
-		IsEnabled: datadog.PtrBool(false),
-		Cases: []datadogV2.SecurityMonitoringRuleCase{
-			{
-				Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO.Ptr(),
-				Notifications: []string{},
-			},
-		},
-		Options: &datadogV2.SecurityMonitoringRuleOptions{
-			ComplianceRuleOptions: &datadogV2.CloudConfigurationComplianceRuleOptions{
-				ResourceType: datadog.PtrString("gcp_compute_disk"),
-				RegoRule: &datadogV2.CloudConfigurationRegoRule{
-					Policy: `package datadog
+    body := datadogV2.SecurityMonitoringRuleUpdatePayload{
+        Name:      datadog.PtrString("Example-Security-Monitoring_cloud_updated"),
+        IsEnabled: datadog.PtrBool(false),
+        Cases: []datadogV2.SecurityMonitoringRuleCase{
+            {
+                Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO.Ptr(),
+                Notifications: []string{},
+            },
+        },
+        Options: &datadogV2.SecurityMonitoringRuleOptions{
+            ComplianceRuleOptions: &datadogV2.CloudConfigurationComplianceRuleOptions{
+                ResourceType: datadog.PtrString("gcp_compute_disk"),
+                RegoRule: &datadogV2.CloudConfigurationRegoRule{
+                    Policy: `package datadog
 
 import data.datadog.output as dd_output
 
@@ -19247,47 +19247,47 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 `,
-					ResourceTypes: []string{
-						"gcp_compute_disk",
-					},
-				},
-			},
-		},
-		Message: datadog.PtrString("ddd"),
-		Tags:    []string{},
-		ComplianceSignalOptions: &datadogV2.CloudConfigurationRuleComplianceSignalOptions{
-			UserActivationStatus: *datadog.NewNullableBool(datadog.PtrBool(false)),
-			UserGroupByFields:    *datadog.NewNullableList(&[]string{}),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateSecurityMonitoringRule(ctx, CloudConfigurationRuleID, body)
+                    ResourceTypes: []string{
+                        "gcp_compute_disk",
+                    },
+                },
+            },
+        },
+        Message: datadog.PtrString("ddd"),
+        Tags:    []string{},
+        ComplianceSignalOptions: &datadogV2.CloudConfigurationRuleComplianceSignalOptions{
+            UserActivationStatus: *datadog.NewNullableBool(datadog.PtrBool(false)),
+            UserGroupByFields:    *datadog.NewNullableList(&[]string{}),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateSecurityMonitoringRule(ctx, CloudConfigurationRuleID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Update an existing rule returns "OK" response
@@ -19295,70 +19295,70 @@ results contains result if {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	body := datadogV2.SecurityMonitoringRuleUpdatePayload{
-		Name: datadog.PtrString("Example-Security-Monitoring-Updated"),
-		Queries: []datadogV2.SecurityMonitoringRuleQuery{
-			datadogV2.SecurityMonitoringRuleQuery{
-				SecurityMonitoringStandardRuleQuery: &datadogV2.SecurityMonitoringStandardRuleQuery{
-					Query:          datadog.PtrString("@test:true"),
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					GroupByFields:  []string{},
-					DistinctFields: []string{},
-					Metrics:        []string{},
-				}},
-		},
-		Filters: []datadogV2.SecurityMonitoringFilter{},
-		Cases: []datadogV2.SecurityMonitoringRuleCase{
-			{
-				Name:          datadog.PtrString(""),
-				Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO.Ptr(),
-				Condition:     datadog.PtrString("a > 0"),
-				Notifications: []string{},
-			},
-		},
-		Options: &datadogV2.SecurityMonitoringRuleOptions{
-			EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-			KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-			MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-		},
-		Message:   datadog.PtrString("Test rule"),
-		Tags:      []string{},
-		IsEnabled: datadog.PtrBool(true),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateSecurityMonitoringRule(ctx, SecurityRuleID, body)
+    body := datadogV2.SecurityMonitoringRuleUpdatePayload{
+        Name: datadog.PtrString("Example-Security-Monitoring-Updated"),
+        Queries: []datadogV2.SecurityMonitoringRuleQuery{
+            datadogV2.SecurityMonitoringRuleQuery{
+                SecurityMonitoringStandardRuleQuery: &datadogV2.SecurityMonitoringStandardRuleQuery{
+                    Query:          datadog.PtrString("@test:true"),
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    GroupByFields:  []string{},
+                    DistinctFields: []string{},
+                    Metrics:        []string{},
+                }},
+        },
+        Filters: []datadogV2.SecurityMonitoringFilter{},
+        Cases: []datadogV2.SecurityMonitoringRuleCase{
+            {
+                Name:          datadog.PtrString(""),
+                Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO.Ptr(),
+                Condition:     datadog.PtrString("a > 0"),
+                Notifications: []string{},
+            },
+        },
+        Options: &datadogV2.SecurityMonitoringRuleOptions{
+            EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+            KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+            MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+        },
+        Message:   datadog.PtrString("Test rule"),
+        Tags:      []string{},
+        IsEnabled: datadog.PtrBool(true),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateSecurityMonitoringRule(ctx, SecurityRuleID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a cloud configuration rule's details returns "OK" response
@@ -19411,15 +19411,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 
 """)
@@ -19442,9 +19442,9 @@ results contains result if {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Update an existing rule returns "OK" response
@@ -19510,13 +19510,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -19575,9 +19575,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_security_monitoring_rule(rule_id=CLOUD_CONFIGURATION_RULE_ID, body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -19642,13 +19642,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_security_monitoring_rule(rule_id=SECURITY_RULE_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a cloud configuration rule's details returns "OK" response
@@ -19687,9 +19687,9 @@ body = DatadogAPIClient::V2::SecurityMonitoringRuleUpdatePayload.new({
   }),
 })
 p api_instance.update_security_monitoring_rule(CLOUD_CONFIGURATION_RULE_ID, body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Update an existing rule returns "OK" response
@@ -19730,13 +19730,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringRuleUpdatePayload.new({
   is_enabled: true,
 })
 p api_instance.update_security_monitoring_rule(SECURITY_RULE_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a cloud configuration rule's details returns "OK" response
@@ -19788,15 +19788,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 "#.to_string(),
                                 vec!["gcp_compute_disk".to_string()],
@@ -19817,9 +19817,9 @@ results contains result if {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Update an existing rule returns "OK" response
@@ -19878,13 +19878,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -19925,15 +19925,15 @@ import future.keywords.in
 milliseconds_in_a_day := ((1000 * 60) * 60) * 24
 
 eval(iam_service_account_key) = "skip" if {
-	iam_service_account_key.disabled
+    iam_service_account_key.disabled
 } else = "pass" if {
-	(iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
+    (iam_service_account_key.resource_seen_at / milliseconds_in_a_day) - (iam_service_account_key.valid_after_time / milliseconds_in_a_day) <= 90
 } else = "fail"
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 `,
           resourceTypes: ["gcp_compute_disk"],
@@ -19958,9 +19958,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -20016,7 +20016,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -20079,7 +20079,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20104,7 +20104,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20129,7 +20129,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20137,12 +20137,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -20162,13 +20162,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_security_monitoring_rule(
         rule_id=SECURITY_RULE_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an existing rule returns "OK" response
@@ -20179,13 +20179,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_rule" in the system
 SECURITY_RULE_ID = ENV["SECURITY_RULE_ID"]
 api_instance.delete_security_monitoring_rule(SECURITY_RULE_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an existing rule returns "OK" response
@@ -20193,36 +20193,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteSecurityMonitoringRule(ctx, SecurityRuleID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteSecurityMonitoringRule(ctx, SecurityRuleID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an existing rule returns "OK" response
@@ -20251,13 +20251,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an existing rule returns "OK" response
@@ -20279,13 +20279,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -20312,7 +20312,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -20632,7 +20632,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20655,7 +20655,7 @@ Result of the test of the rule queries.
 {
   "results": []
 }
-```
+```text
 
 {% /tab %}
 
@@ -20680,7 +20680,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20705,7 +20705,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20730,7 +20730,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20755,7 +20755,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20780,7 +20780,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -20788,7 +20788,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}/test" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -20827,8 +20827,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -20865,13 +20865,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.test_existing_security_monitoring_rule(rule_id="rule_id", body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Test an existing rule returns "OK" response
@@ -20895,13 +20895,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringRuleTestRequest.new({
   ],
 })
 p api_instance.test_existing_security_monitoring_rule("rule_id", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Test an existing rule returns "OK" response
@@ -20909,52 +20909,52 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleTestRequest{
-		RuleQueryPayloads: []datadogV2.SecurityMonitoringRuleQueryPayload{
-			{
-				ExpectedResult: datadog.PtrBool(true),
-				Index:          datadog.PtrInt64(0),
-				Payload: &datadogV2.SecurityMonitoringRuleQueryPayloadData{
-					Ddsource: datadog.PtrString("nginx"),
-					Ddtags:   datadog.PtrString("env:staging,version:5.1"),
-					Hostname: datadog.PtrString("i-012345678"),
-					Message:  datadog.PtrString("2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World"),
-					Service:  datadog.PtrString("payment"),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.TestExistingSecurityMonitoringRule(ctx, "rule_id", body)
+    body := datadogV2.SecurityMonitoringRuleTestRequest{
+        RuleQueryPayloads: []datadogV2.SecurityMonitoringRuleQueryPayload{
+            {
+                ExpectedResult: datadog.PtrBool(true),
+                Index:          datadog.PtrInt64(0),
+                Payload: &datadogV2.SecurityMonitoringRuleQueryPayloadData{
+                    Ddsource: datadog.PtrString("nginx"),
+                    Ddtags:   datadog.PtrString("env:staging,version:5.1"),
+                    Hostname: datadog.PtrString("i-012345678"),
+                    Message:  datadog.PtrString("2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World"),
+                    Service:  datadog.PtrString("payment"),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.TestExistingSecurityMonitoringRule(ctx, "rule_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.TestExistingSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.TestExistingSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.TestExistingSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.TestExistingSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Test an existing rule returns "OK" response
@@ -21004,13 +21004,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Test an existing rule returns "OK" response
@@ -21049,13 +21049,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21096,7 +21096,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -21303,7 +21303,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21326,7 +21326,7 @@ Result of the test of the rule queries.
 {
   "results": []
 }
-```
+```text
 
 {% /tab %}
 
@@ -21351,7 +21351,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21376,7 +21376,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21401,7 +21401,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21426,7 +21426,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21451,7 +21451,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -21459,7 +21459,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/test" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -21522,8 +21522,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Test a rule returns "OK" response
@@ -21531,90 +21531,90 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleTestRequest{
-		Rule: &datadogV2.SecurityMonitoringRuleTestPayload{
-			SecurityMonitoringStandardRuleTestPayload: &datadogV2.SecurityMonitoringStandardRuleTestPayload{
-				Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-					{
-						Name:          datadog.PtrString(""),
-						Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-						Notifications: []string{},
-						Condition:     datadog.PtrString("a > 0"),
-					},
-				},
-				HasExtendedTitle: datadog.PtrBool(true),
-				IsEnabled:        true,
-				Message:          "My security monitoring rule message.",
-				Name:             "My security monitoring rule.",
-				Options: datadogV2.SecurityMonitoringRuleOptions{
-					DecreaseCriticalityBasedOnEnv: datadog.PtrBool(false),
-					DetectionMethod:               datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_THRESHOLD.Ptr(),
-					EvaluationWindow:              datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
-					KeepAlive:                     datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ZERO_MINUTES.Ptr(),
-					MaxSignalDuration:             datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ZERO_MINUTES.Ptr(),
-				},
-				Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-					{
-						Query: datadog.PtrString("source:source_here"),
-						GroupByFields: []string{
-							"@userIdentity.assumed_role",
-						},
-						DistinctFields: []string{},
-						Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-						Name:           datadog.PtrString(""),
-					},
-				},
-				Tags: []string{
-					"env:prod",
-					"team:security",
-				},
-				Type: datadogV2.SECURITYMONITORINGRULETYPETEST_LOG_DETECTION.Ptr(),
-			}},
-		RuleQueryPayloads: []datadogV2.SecurityMonitoringRuleQueryPayload{
-			{
-				ExpectedResult: datadog.PtrBool(true),
-				Index:          datadog.PtrInt64(0),
-				Payload: &datadogV2.SecurityMonitoringRuleQueryPayloadData{
-					Ddsource: datadog.PtrString("source_here"),
-					Ddtags:   datadog.PtrString("env:staging,version:5.1"),
-					Hostname: datadog.PtrString("i-012345678"),
-					Message:  datadog.PtrString("2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World"),
-					Service:  datadog.PtrString("payment"),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.TestSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleTestRequest{
+        Rule: &datadogV2.SecurityMonitoringRuleTestPayload{
+            SecurityMonitoringStandardRuleTestPayload: &datadogV2.SecurityMonitoringStandardRuleTestPayload{
+                Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                    {
+                        Name:          datadog.PtrString(""),
+                        Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                        Notifications: []string{},
+                        Condition:     datadog.PtrString("a > 0"),
+                    },
+                },
+                HasExtendedTitle: datadog.PtrBool(true),
+                IsEnabled:        true,
+                Message:          "My security monitoring rule message.",
+                Name:             "My security monitoring rule.",
+                Options: datadogV2.SecurityMonitoringRuleOptions{
+                    DecreaseCriticalityBasedOnEnv: datadog.PtrBool(false),
+                    DetectionMethod:               datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_THRESHOLD.Ptr(),
+                    EvaluationWindow:              datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
+                    KeepAlive:                     datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ZERO_MINUTES.Ptr(),
+                    MaxSignalDuration:             datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ZERO_MINUTES.Ptr(),
+                },
+                Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                    {
+                        Query: datadog.PtrString("source:source_here"),
+                        GroupByFields: []string{
+                            "@userIdentity.assumed_role",
+                        },
+                        DistinctFields: []string{},
+                        Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                        Name:           datadog.PtrString(""),
+                    },
+                },
+                Tags: []string{
+                    "env:prod",
+                    "team:security",
+                },
+                Type: datadogV2.SECURITYMONITORINGRULETYPETEST_LOG_DETECTION.Ptr(),
+            }},
+        RuleQueryPayloads: []datadogV2.SecurityMonitoringRuleQueryPayload{
+            {
+                ExpectedResult: datadog.PtrBool(true),
+                Index:          datadog.PtrInt64(0),
+                Payload: &datadogV2.SecurityMonitoringRuleQueryPayloadData{
+                    Ddsource: datadog.PtrString("source_here"),
+                    Ddtags:   datadog.PtrString("env:staging,version:5.1"),
+                    Hostname: datadog.PtrString("i-012345678"),
+                    Message:  datadog.PtrString("2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World"),
+                    Service:  datadog.PtrString("payment"),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.TestSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.TestSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.TestSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.TestSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.TestSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Test a rule returns "OK" response
@@ -21707,13 +21707,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -21807,13 +21807,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.test_security_monitoring_rule(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Test a rule returns "OK" response
@@ -21874,13 +21874,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringRuleTestRequest.new({
   ],
 })
 p api_instance.test_security_monitoring_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Test a rule returns "OK" response
@@ -21958,13 +21958,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -22035,7 +22035,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -22276,7 +22276,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -22315,9 +22315,9 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   ],
   "type": "log_detection"
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -22367,9 +22367,9 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   ],
   "type": "log_detection"
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -22436,7 +22436,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   ],
   "type": "log_detection"
 }
-```
+```text
 
 {% /tab %}
 
@@ -22465,7 +22465,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -22490,7 +22490,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -22515,7 +22515,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -22523,7 +22523,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/validation" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -22566,8 +22566,8 @@ API error response.
   "type": "log_detection"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/validation" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -22621,8 +22621,8 @@ EOF
   "type": "log_detection"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/validation" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -22693,8 +22693,8 @@ EOF
   "type": "log_detection"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate a detection rule returns "OK" response
@@ -22702,66 +22702,66 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleValidatePayload{
-		SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Notifications: []string{},
-					Condition:     datadog.PtrString("a > 0"),
-				},
-			},
-			HasExtendedTitle: datadog.PtrBool(true),
-			IsEnabled:        true,
-			Message:          "My security monitoring rule",
-			Name:             "My security monitoring rule",
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_THIRTY_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_THIRTY_MINUTES.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_THIRTY_MINUTES.Ptr(),
-				DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_THRESHOLD.Ptr(),
-			},
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query: datadog.PtrString("source:source_here"),
-					GroupByFields: []string{
-						"@userIdentity.assumed_role",
-					},
-					DistinctFields: []string{},
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					Name:           datadog.PtrString(""),
-				},
-			},
-			Tags: []string{
-				"env:prod",
-				"team:security",
-			},
-			Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ValidateSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleValidatePayload{
+        SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Notifications: []string{},
+                    Condition:     datadog.PtrString("a > 0"),
+                },
+            },
+            HasExtendedTitle: datadog.PtrBool(true),
+            IsEnabled:        true,
+            Message:          "My security monitoring rule",
+            Name:             "My security monitoring rule",
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_THIRTY_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_THIRTY_MINUTES.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_THIRTY_MINUTES.Ptr(),
+                DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_THRESHOLD.Ptr(),
+            },
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query: datadog.PtrString("source:source_here"),
+                    GroupByFields: []string{
+                        "@userIdentity.assumed_role",
+                    },
+                    DistinctFields: []string{},
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    Name:           datadog.PtrString(""),
+                },
+            },
+            Tags: []string{
+                "env:prod",
+                "team:security",
+            },
+            Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ValidateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Validate a detection rule with detection method 'new_value' with enabled feature 'instantaneousBaseline' returns "OK"
@@ -22770,77 +22770,77 @@ func main() {
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleValidatePayload{
-		SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Notifications: []string{},
-				},
-			},
-			HasExtendedTitle: datadog.PtrBool(true),
-			IsEnabled:        true,
-			Message:          "My security monitoring rule",
-			Name:             "My security monitoring rule",
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_FIVE_MINUTES.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_TEN_MINUTES.Ptr(),
-				DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_NEW_VALUE.Ptr(),
-				NewValueOptions: &datadogV2.SecurityMonitoringRuleNewValueOptions{
-					ForgetAfter:           datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSFORGETAFTER_ONE_WEEK.Ptr(),
-					InstantaneousBaseline: datadog.PtrBool(true),
-					LearningDuration:      datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGDURATION_ONE_DAY.Ptr(),
-					LearningThreshold:     datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGTHRESHOLD_ZERO_OCCURRENCES.Ptr(),
-					LearningMethod:        datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGMETHOD_DURATION.Ptr(),
-				},
-			},
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query: datadog.PtrString("source:source_here"),
-					GroupByFields: []string{
-						"@userIdentity.assumed_role",
-					},
-					DistinctFields: []string{},
-					Metric:         datadog.PtrString("name"),
-					Metrics: []string{
-						"name",
-					},
-					Aggregation: datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_NEW_VALUE.Ptr(),
-					Name:        datadog.PtrString(""),
-					DataSource:  datadogV2.SECURITYMONITORINGSTANDARDDATASOURCE_LOGS.Ptr(),
-				},
-			},
-			Tags: []string{
-				"env:prod",
-				"team:security",
-			},
-			Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ValidateSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleValidatePayload{
+        SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Notifications: []string{},
+                },
+            },
+            HasExtendedTitle: datadog.PtrBool(true),
+            IsEnabled:        true,
+            Message:          "My security monitoring rule",
+            Name:             "My security monitoring rule",
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_FIVE_MINUTES.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_TEN_MINUTES.Ptr(),
+                DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_NEW_VALUE.Ptr(),
+                NewValueOptions: &datadogV2.SecurityMonitoringRuleNewValueOptions{
+                    ForgetAfter:           datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSFORGETAFTER_ONE_WEEK.Ptr(),
+                    InstantaneousBaseline: datadog.PtrBool(true),
+                    LearningDuration:      datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGDURATION_ONE_DAY.Ptr(),
+                    LearningThreshold:     datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGTHRESHOLD_ZERO_OCCURRENCES.Ptr(),
+                    LearningMethod:        datadogV2.SECURITYMONITORINGRULENEWVALUEOPTIONSLEARNINGMETHOD_DURATION.Ptr(),
+                },
+            },
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query: datadog.PtrString("source:source_here"),
+                    GroupByFields: []string{
+                        "@userIdentity.assumed_role",
+                    },
+                    DistinctFields: []string{},
+                    Metric:         datadog.PtrString("name"),
+                    Metrics: []string{
+                        "name",
+                    },
+                    Aggregation: datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_NEW_VALUE.Ptr(),
+                    Name:        datadog.PtrString(""),
+                    DataSource:  datadogV2.SECURITYMONITORINGSTANDARDDATASOURCE_LOGS.Ptr(),
+                },
+            },
+            Tags: []string{
+                "env:prod",
+                "team:security",
+            },
+            Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ValidateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Validate a detection rule with detection method 'sequence_detection' returns "OK" response
@@ -22848,98 +22848,98 @@ func main() {
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleValidatePayload{
-		SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Notifications: []string{},
-					Condition:     datadog.PtrString("step_b > 0"),
-				},
-			},
-			HasExtendedTitle: datadog.PtrBool(true),
-			IsEnabled:        true,
-			Message:          "My security monitoring rule",
-			Name:             "My security monitoring rule",
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_FIVE_MINUTES.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_TEN_MINUTES.Ptr(),
-				DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_SEQUENCE_DETECTION.Ptr(),
-				SequenceDetectionOptions: &datadogV2.SecurityMonitoringRuleSequenceDetectionOptions{
-					StepTransitions: []datadogV2.SecurityMonitoringRuleSequenceDetectionStepTransition{
-						{
-							Child:            datadog.PtrString("step_b"),
-							EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-							Parent:           datadog.PtrString("step_a"),
-						},
-					},
-					Steps: []datadogV2.SecurityMonitoringRuleSequenceDetectionStep{
-						{
-							Condition:        datadog.PtrString("a > 0"),
-							EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ONE_MINUTE.Ptr(),
-							Name:             datadog.PtrString("step_a"),
-						},
-						{
-							Condition:        datadog.PtrString("b > 0"),
-							EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ONE_MINUTE.Ptr(),
-							Name:             datadog.PtrString("step_b"),
-						},
-					},
-				},
-			},
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query: datadog.PtrString("source:source_here"),
-					GroupByFields: []string{
-						"@userIdentity.assumed_role",
-					},
-					DistinctFields: []string{},
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					Name:           datadog.PtrString(""),
-				},
-				{
-					Query:          datadog.PtrString("source:source_here2"),
-					GroupByFields:  []string{},
-					DistinctFields: []string{},
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					Name:           datadog.PtrString(""),
-				},
-			},
-			Tags: []string{
-				"env:prod",
-				"team:security",
-			},
-			Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ValidateSecurityMonitoringRule(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleValidatePayload{
+        SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Notifications: []string{},
+                    Condition:     datadog.PtrString("step_b > 0"),
+                },
+            },
+            HasExtendedTitle: datadog.PtrBool(true),
+            IsEnabled:        true,
+            Message:          "My security monitoring rule",
+            Name:             "My security monitoring rule",
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ZERO_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_FIVE_MINUTES.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_TEN_MINUTES.Ptr(),
+                DetectionMethod:   datadogV2.SECURITYMONITORINGRULEDETECTIONMETHOD_SEQUENCE_DETECTION.Ptr(),
+                SequenceDetectionOptions: &datadogV2.SecurityMonitoringRuleSequenceDetectionOptions{
+                    StepTransitions: []datadogV2.SecurityMonitoringRuleSequenceDetectionStepTransition{
+                        {
+                            Child:            datadog.PtrString("step_b"),
+                            EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                            Parent:           datadog.PtrString("step_a"),
+                        },
+                    },
+                    Steps: []datadogV2.SecurityMonitoringRuleSequenceDetectionStep{
+                        {
+                            Condition:        datadog.PtrString("a > 0"),
+                            EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ONE_MINUTE.Ptr(),
+                            Name:             datadog.PtrString("step_a"),
+                        },
+                        {
+                            Condition:        datadog.PtrString("b > 0"),
+                            EvaluationWindow: datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_ONE_MINUTE.Ptr(),
+                            Name:             datadog.PtrString("step_b"),
+                        },
+                    },
+                },
+            },
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query: datadog.PtrString("source:source_here"),
+                    GroupByFields: []string{
+                        "@userIdentity.assumed_role",
+                    },
+                    DistinctFields: []string{},
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    Name:           datadog.PtrString(""),
+                },
+                {
+                    Query:          datadog.PtrString("source:source_here2"),
+                    GroupByFields:  []string{},
+                    DistinctFields: []string{},
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    Name:           datadog.PtrString(""),
+                },
+            },
+            Tags: []string{
+                "env:prod",
+                "team:security",
+            },
+            Type: datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ValidateSecurityMonitoringRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ValidateSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate a detection rule returns "OK" response
@@ -23008,9 +23008,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Validate a detection rule with detection method 'new_value' with enabled feature
@@ -23101,9 +23101,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Validate a detection rule with detection method 'sequence_detection' returns "OK" response
@@ -23201,13 +23201,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -23275,9 +23275,9 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.validate_security_monitoring_rule(body=body)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -23371,9 +23371,9 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.validate_security_monitoring_rule(body=body)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -23478,13 +23478,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.validate_security_monitoring_rule(body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate a detection rule returns "OK" response
@@ -23529,9 +23529,9 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRulePayload.new({
   type: DatadogAPIClient::V2::SecurityMonitoringRuleTypeCreate::LOG_DETECTION,
 })
 api_instance.validate_security_monitoring_rule(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Validate a detection rule with detection method 'new_value' with enabled feature 'instantaneousBaseline' returns "OK"
@@ -23588,9 +23588,9 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRulePayload.new({
   type: DatadogAPIClient::V2::SecurityMonitoringRuleTypeCreate::LOG_DETECTION,
 })
 api_instance.validate_security_monitoring_rule(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Validate a detection rule with detection method 'sequence_detection' returns "OK" response
@@ -23663,13 +23663,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRulePayload.new({
   type: DatadogAPIClient::V2::SecurityMonitoringRuleTypeCreate::LOG_DETECTION,
 })
 api_instance.validate_security_monitoring_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate a detection rule returns "OK" response
@@ -23727,9 +23727,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Validate a detection rule with detection method 'new_value' with enabled
@@ -23810,9 +23810,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Validate a detection rule with detection method 'sequence_detection' returns
@@ -23907,13 +23907,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -23967,9 +23967,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -24033,9 +24033,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -24117,7 +24117,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -24180,7 +24180,7 @@ Attributes describing the signal update.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -24264,7 +24264,7 @@ The response returned after all triage operations, containing the updated signal
     "type": "signal_metadata"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -24289,7 +24289,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24314,7 +24314,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24339,7 +24339,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24364,7 +24364,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24372,7 +24372,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals/${signal_id}/incidents" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -24389,8 +24389,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Change the related incidents of a security signal returns "OK" response
@@ -24398,46 +24398,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSignalIncidentsUpdateRequest{
-		Data: datadogV2.SecurityMonitoringSignalIncidentsUpdateData{
-			Attributes: datadogV2.SecurityMonitoringSignalIncidentsUpdateAttributes{
-				IncidentIds: []int64{
-					2066,
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.EditSecurityMonitoringSignalIncidents(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
+    body := datadogV2.SecurityMonitoringSignalIncidentsUpdateRequest{
+        Data: datadogV2.SecurityMonitoringSignalIncidentsUpdateData{
+            Attributes: datadogV2.SecurityMonitoringSignalIncidentsUpdateAttributes{
+                IncidentIds: []int64{
+                    2066,
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.EditSecurityMonitoringSignalIncidents(ctx, "AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalIncidents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.EditSecurityMonitoringSignalIncidents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalIncidents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.EditSecurityMonitoringSignalIncidents`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Change the related incidents of a security signal returns "OK" response
@@ -24479,13 +24479,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -24525,13 +24525,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Change the related incidents of a security signal returns "OK" response
@@ -24549,13 +24549,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringSignalIncidentsUpdateRequest.new(
   }),
 })
 p api_instance.edit_security_monitoring_signal_incidents("AQAAAYG1bl5K4HuUewAAAABBWUcxYmw1S0FBQmt2RmhRN0V4ZUVnQUE", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Change the related incidents of a security signal returns "OK" response
@@ -24586,13 +24586,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24624,7 +24624,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -24691,7 +24691,7 @@ Result of the convert rule request containing Terraform content.
   "ruleId": "string",
   "terraformContent": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -24716,7 +24716,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24741,7 +24741,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24766,7 +24766,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24791,7 +24791,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -24799,13 +24799,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}/convert" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -24827,13 +24827,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Convert an existing rule from JSON to Terraform returns "OK" response
@@ -24844,13 +24844,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_rule_hash" in the system
 SECURITY_RULE_HASH_ID = ENV["SECURITY_RULE_HASH_ID"]
 p api_instance.convert_existing_security_monitoring_rule(SECURITY_RULE_HASH_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Convert an existing rule from JSON to Terraform returns "OK" response
@@ -24858,40 +24858,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule_hash" in the system
-	SecurityRuleHashID := os.Getenv("SECURITY_RULE_HASH_ID")
+    // there is a valid "security_rule_hash" in the system
+    SecurityRuleHashID := os.Getenv("SECURITY_RULE_HASH_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ConvertExistingSecurityMonitoringRule(ctx, SecurityRuleHashID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ConvertExistingSecurityMonitoringRule(ctx, SecurityRuleHashID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertExistingSecurityMonitoringRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertExistingSecurityMonitoringRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ConvertExistingSecurityMonitoringRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ConvertExistingSecurityMonitoringRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Convert an existing rule from JSON to Terraform returns "OK" response
@@ -24923,13 +24923,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Convert an existing rule from JSON to Terraform returns "OK" response
@@ -24951,13 +24951,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24985,7 +24985,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -25240,7 +25240,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
   "isEnabled": true,
   "type": "log_detection"
 }
-```
+```text
 
 {% /tab %}
 
@@ -25265,7 +25265,7 @@ Result of the convert rule request containing Terraform content.
   "ruleId": "string",
   "terraformContent": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -25290,7 +25290,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25315,7 +25315,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25340,7 +25340,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25365,7 +25365,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25390,7 +25390,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25398,7 +25398,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/convert" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -25436,8 +25436,8 @@ API error response.
   "type": "log_detection"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Convert a rule from JSON to Terraform returns "OK" response
@@ -25445,68 +25445,68 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringRuleConvertPayload{
-		SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
-			Name: "_49768568946de993",
-			Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
-				{
-					Query:          datadog.PtrString("@test:true"),
-					Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-					GroupByFields:  []string{},
-					DistinctFields: []string{},
-					Metric:         datadog.PtrString(""),
-				},
-			},
-			Filters: []datadogV2.SecurityMonitoringFilter{},
-			Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-				{
-					Name:          datadog.PtrString(""),
-					Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-					Condition:     datadog.PtrString("a > 0"),
-					Notifications: []string{},
-				},
-			},
-			Options: datadogV2.SecurityMonitoringRuleOptions{
-				EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-				KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-				MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-			},
-			Message:   "Test rule",
-			Tags:      []string{},
-			IsEnabled: true,
-			Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ConvertSecurityMonitoringRuleFromJSONToTerraform(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleConvertPayload{
+        SecurityMonitoringStandardRulePayload: &datadogV2.SecurityMonitoringStandardRulePayload{
+            Name: "_49768568946de993",
+            Queries: []datadogV2.SecurityMonitoringStandardRuleQuery{
+                {
+                    Query:          datadog.PtrString("@test:true"),
+                    Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                    GroupByFields:  []string{},
+                    DistinctFields: []string{},
+                    Metric:         datadog.PtrString(""),
+                },
+            },
+            Filters: []datadogV2.SecurityMonitoringFilter{},
+            Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                {
+                    Name:          datadog.PtrString(""),
+                    Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                    Condition:     datadog.PtrString("a > 0"),
+                    Notifications: []string{},
+                },
+            },
+            Options: datadogV2.SecurityMonitoringRuleOptions{
+                EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+                MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+            },
+            Message:   "Test rule",
+            Tags:      []string{},
+            IsEnabled: true,
+            Type:      datadogV2.SECURITYMONITORINGRULETYPECREATE_LOG_DETECTION.Ptr(),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ConvertSecurityMonitoringRuleFromJSONToTerraform(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertSecurityMonitoringRuleFromJSONToTerraform`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertSecurityMonitoringRuleFromJSONToTerraform`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ConvertSecurityMonitoringRuleFromJSONToTerraform`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ConvertSecurityMonitoringRuleFromJSONToTerraform`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Convert a rule from JSON to Terraform returns "OK" response
@@ -25573,13 +25573,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -25642,13 +25642,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.convert_security_monitoring_rule_from_json_to_terraform(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Convert a rule from JSON to Terraform returns "OK" response
@@ -25687,13 +25687,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringStandardRulePayload.new({
   type: DatadogAPIClient::V2::SecurityMonitoringRuleTypeCreate::LOG_DETECTION,
 })
 p api_instance.convert_security_monitoring_rule_from_json_to_terraform(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Convert a rule from JSON to Terraform returns "OK" response
@@ -25751,13 +25751,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25811,7 +25811,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -25872,7 +25872,7 @@ OAuth apps require the `security_monitoring_rules_read` authorization [scope](ht
     "type": "security_monitoring_rules_bulk_export"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -25891,7 +25891,7 @@ OK
 
 ```json
 {}
-```
+```text
 
 {% /tab %}
 
@@ -25916,7 +25916,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25941,7 +25941,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25966,7 +25966,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25991,7 +25991,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -25999,7 +25999,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/bulk_export" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -26017,8 +26017,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Bulk export security monitoring rules returns "OK" response
@@ -26026,50 +26026,50 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"io/ioutil"
-	"os"
+    "context"
+    "fmt"
+    "io/ioutil"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_rule" in the system
-	SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
+    // there is a valid "security_rule" in the system
+    SecurityRuleID := os.Getenv("SECURITY_RULE_ID")
 
-	body := datadogV2.SecurityMonitoringRuleBulkExportPayload{
-		Data: datadogV2.SecurityMonitoringRuleBulkExportData{
-			Attributes: datadogV2.SecurityMonitoringRuleBulkExportAttributes{
-				RuleIds: []string{
-					SecurityRuleID,
-				},
-			},
-			Type: datadogV2.SECURITYMONITORINGRULEBULKEXPORTDATATYPE_SECURITY_MONITORING_RULES_BULK_EXPORT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.BulkExportSecurityMonitoringRules(ctx, body)
+    body := datadogV2.SecurityMonitoringRuleBulkExportPayload{
+        Data: datadogV2.SecurityMonitoringRuleBulkExportData{
+            Attributes: datadogV2.SecurityMonitoringRuleBulkExportAttributes{
+                RuleIds: []string{
+                    SecurityRuleID,
+                },
+            },
+            Type: datadogV2.SECURITYMONITORINGRULEBULKEXPORTDATATYPE_SECURITY_MONITORING_RULES_BULK_EXPORT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.BulkExportSecurityMonitoringRules(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := ioutil.ReadAll(resp)
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`:\n%s\n", responseContent)
+    responseContent, _ := ioutil.ReadAll(resp)
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.BulkExportSecurityMonitoringRules`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Bulk export security monitoring rules returns "OK" response
@@ -26116,13 +26116,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -26163,13 +26163,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.bulk_export_security_monitoring_rules(body=body)
 
     print(response.read())
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Bulk export security monitoring rules returns "OK" response
@@ -26191,13 +26191,13 @@ body = DatadogAPIClient::V2::SecurityMonitoringRuleBulkExportPayload.new({
   }),
 })
 p api_instance.bulk_export_security_monitoring_rules(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Bulk export security monitoring rules returns "OK" response
@@ -26226,13 +26226,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26267,7 +26267,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -26299,7 +26299,7 @@ OAuth apps require the `security_monitoring_signals_read` authorization [scope](
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -26332,7 +26332,7 @@ OAuth apps require the `security_monitoring_signals_read` authorization [scope](
   },
   "sort": "timestamp"
 }
-```
+```text
 
 {% /tab %}
 
@@ -26399,7 +26399,7 @@ The response object with all security signals matching the request and paginatio
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -26424,7 +26424,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -26449,7 +26449,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -26474,7 +26474,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -26482,7 +26482,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -26501,8 +26501,8 @@ API error response.
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Get a list of security signals returns "OK" response with pagination
@@ -26510,49 +26510,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSignalListRequest{
-		Filter: &datadogV2.SecurityMonitoringSignalListRequestFilter{
-			From:  datadog.PtrTime(time.Now().Add(time.Minute * -15)),
-			Query: datadog.PtrString("security:attack status:high"),
-			To:    datadog.PtrTime(time.Now()),
-		},
-		Page: &datadogV2.SecurityMonitoringSignalListRequestPage{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.SECURITYMONITORINGSIGNALSSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, _ := api.SearchSecurityMonitoringSignalsWithPagination(ctx, *datadogV2.NewSearchSecurityMonitoringSignalsOptionalParameters().WithBody(body))
+    body := datadogV2.SecurityMonitoringSignalListRequest{
+        Filter: &datadogV2.SecurityMonitoringSignalListRequestFilter{
+            From:  datadog.PtrTime(time.Now().Add(time.Minute * -15)),
+            Query: datadog.PtrString("security:attack status:high"),
+            To:    datadog.PtrTime(time.Now()),
+        },
+        Page: &datadogV2.SecurityMonitoringSignalListRequestPage{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.SECURITYMONITORINGSIGNALSSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, _ := api.SearchSecurityMonitoringSignalsWithPagination(ctx, *datadogV2.NewSearchSecurityMonitoringSignalsOptionalParameters().WithBody(body))
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityMonitoringSignals`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityMonitoringSignals`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of security signals returns "OK" response with pagination
@@ -26599,13 +26599,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -26643,13 +26643,13 @@ with ApiClient(configuration) as api_client:
     items = api_instance.search_security_monitoring_signals_with_pagination(body=body)
     for item in items:
         print(item)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of security signals returns "OK" response with pagination
@@ -26672,13 +26672,13 @@ opts = {
   body: body,
 }
 api_instance.search_security_monitoring_signals_with_pagination(opts) { |item| puts item }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Get a list of security signals returns "OK" response with pagination
@@ -26724,13 +26724,13 @@ async fn main() {
         }
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26767,7 +26767,7 @@ const params: v2.SecurityMonitoringApiSearchSecurityMonitoringSignalsRequest = {
     console.error(error);
   }
 })();
-```
+```text
 
 #### Instructions
 
@@ -26853,7 +26853,7 @@ Security Signal response data object.
     "type": "signal"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -26878,7 +26878,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -26903,7 +26903,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -26911,13 +26911,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport signal_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals/${signal_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26935,13 +26935,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a signal's details returns "OK" response
@@ -26949,13 +26949,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_security_monitoring_signal("AQAAAYNqUBVU4-rffwAAAABBWU5xVUJWVUFBQjJBd3ptMDdQUnF3QUE")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a signal's details returns "OK" response
@@ -26963,37 +26963,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringSignal(ctx, "AQAAAYNqUBVU4-rffwAAAABBWU5xVUJWVUFBQjJBd3ptMDdQUnF3QUE")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringSignal(ctx, "AQAAAYNqUBVU4-rffwAAAABBWU5xVUJWVUFBQjJBd3ptMDdQUnF3QUE")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringSignal`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringSignal`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringSignal`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringSignal`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a signal's details returns "OK" response
@@ -27023,13 +27023,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a signal's details returns "OK" response
@@ -27051,13 +27051,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27081,7 +27081,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -27144,7 +27144,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27169,7 +27169,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27194,7 +27194,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27202,12 +27202,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport security_filter_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/security_filters/${security_filter_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27223,13 +27223,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_security_filter(
         security_filter_id="security_filter_id",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a security filter returns "OK" response
@@ -27237,13 +27237,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 api_instance.delete_security_filter("security_filter_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a security filter returns "OK" response
@@ -27251,33 +27251,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteSecurityFilter(ctx, "security_filter_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteSecurityFilter(ctx, "security_filter_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSecurityFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a security filter returns "OK" response
@@ -27302,13 +27302,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a security filter returns "OK" response
@@ -27328,13 +27328,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27358,7 +27358,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -27464,7 +27464,7 @@ The response object with all security signals matching the request and paginatio
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -27489,7 +27489,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27514,7 +27514,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27539,7 +27539,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27547,13 +27547,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/signals" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27569,13 +27569,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_monitoring_signals()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a quick list of security signals returns "OK" response
@@ -27583,13 +27583,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_monitoring_signals()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a quick list of security signals returns "OK" response
@@ -27597,37 +27597,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityMonitoringSignals(ctx, *datadogV2.NewListSecurityMonitoringSignalsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityMonitoringSignals(ctx, *datadogV2.NewListSecurityMonitoringSignalsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringSignals`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringSignals`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringSignals`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringSignals`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a quick list of security signals returns "OK" response
@@ -27655,13 +27655,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a quick list of security signals returns "OK" response
@@ -27682,13 +27682,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -27708,7 +27708,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -27808,7 +27808,7 @@ The list of notification rules.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27833,7 +27833,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27858,7 +27858,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -27866,13 +27866,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/signals/notification_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -27888,13 +27888,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_signal_notification_rules()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the list of signal-based notification rules returns "The list of notification rules." response
@@ -27902,13 +27902,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_signal_notification_rules()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the list of signal-based notification rules returns "The list of notification rules." response
@@ -27916,37 +27916,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSignalNotificationRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSignalNotificationRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSignalNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSignalNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSignalNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSignalNotificationRules`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the list of signal-based notification rules returns "The list of notification rules."
@@ -27972,13 +27972,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the list of signal-based notification rules returns "The list of
@@ -27997,13 +27997,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -28023,7 +28023,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -28123,7 +28123,7 @@ The list of notification rules.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28148,7 +28148,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28173,7 +28173,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28181,13 +28181,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities/notification_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -28203,13 +28203,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_vulnerability_notification_rules()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the list of vulnerability notification rules returns "The list of notification rules." response
@@ -28217,13 +28217,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_vulnerability_notification_rules()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the list of vulnerability notification rules returns "The list of notification rules." response
@@ -28231,37 +28231,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetVulnerabilityNotificationRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetVulnerabilityNotificationRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetVulnerabilityNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetVulnerabilityNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetVulnerabilityNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetVulnerabilityNotificationRules`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the list of vulnerability notification rules returns "The list of notification rules."
@@ -28288,13 +28288,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the list of vulnerability notification rules returns "The list of
@@ -28313,13 +28313,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -28339,7 +28339,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -28417,7 +28417,7 @@ New definition of the security filter.
     "type": "security_filters"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -28474,7 +28474,7 @@ Response object which includes a single security filter.
     "warning": "All the security filters are disabled. As a result, no logs are being analyzed."
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -28499,7 +28499,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28524,7 +28524,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28549,7 +28549,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28574,7 +28574,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28599,7 +28599,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -28607,7 +28607,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport security_filter_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/security_filters/${security_filter_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -28628,8 +28628,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a security filter returns "OK" response
@@ -28637,53 +28637,53 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_filter" in the system
-	SecurityFilterDataID := os.Getenv("SECURITY_FILTER_DATA_ID")
+    // there is a valid "security_filter" in the system
+    SecurityFilterDataID := os.Getenv("SECURITY_FILTER_DATA_ID")
 
-	body := datadogV2.SecurityFilterUpdateRequest{
-		Data: datadogV2.SecurityFilterUpdateData{
-			Attributes: datadogV2.SecurityFilterUpdateAttributes{
-				ExclusionFilters: []datadogV2.SecurityFilterExclusionFilter{},
-				FilteredDataType: datadogV2.SECURITYFILTERFILTEREDDATATYPE_LOGS.Ptr(),
-				IsEnabled:        datadog.PtrBool(true),
-				Name:             datadog.PtrString("Example-Security-Monitoring"),
-				Query:            datadog.PtrString("service:ExampleSecurityMonitoring"),
-				Version:          datadog.PtrInt32(1),
-			},
-			Type: datadogV2.SECURITYFILTERTYPE_SECURITY_FILTERS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateSecurityFilter(ctx, SecurityFilterDataID, body)
+    body := datadogV2.SecurityFilterUpdateRequest{
+        Data: datadogV2.SecurityFilterUpdateData{
+            Attributes: datadogV2.SecurityFilterUpdateAttributes{
+                ExclusionFilters: []datadogV2.SecurityFilterExclusionFilter{},
+                FilteredDataType: datadogV2.SECURITYFILTERFILTEREDDATATYPE_LOGS.Ptr(),
+                IsEnabled:        datadog.PtrBool(true),
+                Name:             datadog.PtrString("Example-Security-Monitoring"),
+                Query:            datadog.PtrString("service:ExampleSecurityMonitoring"),
+                Version:          datadog.PtrInt32(1),
+            },
+            Type: datadogV2.SECURITYFILTERTYPE_SECURITY_FILTERS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateSecurityFilter(ctx, SecurityFilterDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateSecurityFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateSecurityFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a security filter returns "OK" response
@@ -28732,13 +28732,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -28777,13 +28777,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_security_filter(security_filter_id=SECURITY_FILTER_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a security filter returns "OK" response
@@ -28808,13 +28808,13 @@ body = DatadogAPIClient::V2::SecurityFilterUpdateRequest.new({
   }),
 })
 p api_instance.update_security_filter(SECURITY_FILTER_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a security filter returns "OK" response
@@ -28851,13 +28851,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -28897,7 +28897,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -28975,7 +28975,7 @@ The body of the create notification rule request is composed of the rule type an
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -29052,7 +29052,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -29077,7 +29077,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29102,7 +29102,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29127,7 +29127,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29135,7 +29135,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/signals/notification_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -29167,8 +29167,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new signal-based notification rule returns "Successfully created the notification rule." response
@@ -29176,61 +29176,61 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateNotificationRuleParameters{
-		Data: &datadogV2.CreateNotificationRuleParametersData{
-			Attributes: datadogV2.CreateNotificationRuleParametersDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Name:    "Rule 1",
-				Selectors: datadogV2.Selectors{
-					Query: datadog.PtrString("(source:production_service OR env:prod)"),
-					RuleTypes: []datadogV2.RuleTypesItems{
-						datadogV2.RULETYPESITEMS_MISCONFIGURATION,
-						datadogV2.RULETYPESITEMS_ATTACK_PATH,
-					},
-					Severities: []datadogV2.RuleSeverity{
-						datadogV2.RULESEVERITY_CRITICAL,
-					},
-					TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
-				},
-				Targets: []string{
-					"@john.doe@email.com",
-				},
-				TimeAggregation: datadog.PtrInt64(86400),
-			},
-			Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSignalNotificationRule(ctx, body)
+    body := datadogV2.CreateNotificationRuleParameters{
+        Data: &datadogV2.CreateNotificationRuleParametersData{
+            Attributes: datadogV2.CreateNotificationRuleParametersDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Name:    "Rule 1",
+                Selectors: datadogV2.Selectors{
+                    Query: datadog.PtrString("(source:production_service OR env:prod)"),
+                    RuleTypes: []datadogV2.RuleTypesItems{
+                        datadogV2.RULETYPESITEMS_MISCONFIGURATION,
+                        datadogV2.RULETYPESITEMS_ATTACK_PATH,
+                    },
+                    Severities: []datadogV2.RuleSeverity{
+                        datadogV2.RULESEVERITY_CRITICAL,
+                    },
+                    TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
+                },
+                Targets: []string{
+                    "@john.doe@email.com",
+                },
+                TimeAggregation: datadog.PtrInt64(86400),
+            },
+            Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSignalNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSignalNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSignalNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSignalNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSignalNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new signal-based notification rule returns "Successfully created the notification rule."
@@ -29290,13 +29290,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -29347,13 +29347,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_signal_notification_rule(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new signal-based notification rule returns "Successfully created the notification rule." response
@@ -29386,13 +29386,13 @@ body = DatadogAPIClient::V2::CreateNotificationRuleParameters.new({
   }),
 })
 p api_instance.create_signal_notification_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new signal-based notification rule returns "Successfully created the
@@ -29436,13 +29436,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -29482,7 +29482,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -29560,7 +29560,7 @@ The body of the create notification rule request is composed of the rule type an
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -29637,7 +29637,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -29662,7 +29662,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29687,7 +29687,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29712,7 +29712,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -29720,7 +29720,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities/notification_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -29752,8 +29752,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new vulnerability-based notification rule returns "Successfully created the notification rule." response
@@ -29761,61 +29761,61 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateNotificationRuleParameters{
-		Data: &datadogV2.CreateNotificationRuleParametersData{
-			Attributes: datadogV2.CreateNotificationRuleParametersDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Name:    "Rule 1",
-				Selectors: datadogV2.Selectors{
-					Query: datadog.PtrString("(source:production_service OR env:prod)"),
-					RuleTypes: []datadogV2.RuleTypesItems{
-						datadogV2.RULETYPESITEMS_MISCONFIGURATION,
-						datadogV2.RULETYPESITEMS_ATTACK_PATH,
-					},
-					Severities: []datadogV2.RuleSeverity{
-						datadogV2.RULESEVERITY_CRITICAL,
-					},
-					TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
-				},
-				Targets: []string{
-					"@john.doe@email.com",
-				},
-				TimeAggregation: datadog.PtrInt64(86400),
-			},
-			Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateVulnerabilityNotificationRule(ctx, body)
+    body := datadogV2.CreateNotificationRuleParameters{
+        Data: &datadogV2.CreateNotificationRuleParametersData{
+            Attributes: datadogV2.CreateNotificationRuleParametersDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Name:    "Rule 1",
+                Selectors: datadogV2.Selectors{
+                    Query: datadog.PtrString("(source:production_service OR env:prod)"),
+                    RuleTypes: []datadogV2.RuleTypesItems{
+                        datadogV2.RULETYPESITEMS_MISCONFIGURATION,
+                        datadogV2.RULETYPESITEMS_ATTACK_PATH,
+                    },
+                    Severities: []datadogV2.RuleSeverity{
+                        datadogV2.RULESEVERITY_CRITICAL,
+                    },
+                    TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
+                },
+                Targets: []string{
+                    "@john.doe@email.com",
+                },
+                TimeAggregation: datadog.PtrInt64(86400),
+            },
+            Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateVulnerabilityNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateVulnerabilityNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateVulnerabilityNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateVulnerabilityNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateVulnerabilityNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new vulnerability-based notification rule returns "Successfully created the notification
@@ -29875,13 +29875,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -29932,13 +29932,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_vulnerability_notification_rule(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new vulnerability-based notification rule returns "Successfully created the notification rule." response
@@ -29971,13 +29971,13 @@ body = DatadogAPIClient::V2::CreateNotificationRuleParameters.new({
   }),
 })
 p api_instance.create_vulnerability_notification_rule(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new vulnerability-based notification rule returns "Successfully
@@ -30021,13 +30021,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30068,7 +30068,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -30163,7 +30163,7 @@ Response object which includes a single security filter.
     "warning": "All the security filters are disabled. As a result, no logs are being analyzed."
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -30188,7 +30188,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30213,7 +30213,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30238,7 +30238,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30246,13 +30246,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport security_filter_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/security_filters/${security_filter_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -30274,13 +30274,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a security filter returns "OK" response
@@ -30291,13 +30291,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "security_filter" in the system
 SECURITY_FILTER_DATA_ID = ENV["SECURITY_FILTER_DATA_ID"]
 p api_instance.get_security_filter(SECURITY_FILTER_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a security filter returns "OK" response
@@ -30305,40 +30305,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "security_filter" in the system
-	SecurityFilterDataID := os.Getenv("SECURITY_FILTER_DATA_ID")
+    // there is a valid "security_filter" in the system
+    SecurityFilterDataID := os.Getenv("SECURITY_FILTER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityFilter(ctx, SecurityFilterDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityFilter(ctx, SecurityFilterDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a security filter returns "OK" response
@@ -30368,13 +30368,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a security filter returns "OK" response
@@ -30396,13 +30396,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30429,7 +30429,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -30506,7 +30506,7 @@ The definition of the new security filter.
     "type": "security_filters"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -30563,7 +30563,7 @@ Response object which includes a single security filter.
     "warning": "All the security filters are disabled. As a result, no logs are being analyzed."
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -30588,7 +30588,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30613,7 +30613,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30638,7 +30638,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30663,7 +30663,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -30671,7 +30671,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/security_filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -30696,8 +30696,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a security filter returns "OK" response
@@ -30705,54 +30705,54 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityFilterCreateRequest{
-		Data: datadogV2.SecurityFilterCreateData{
-			Attributes: datadogV2.SecurityFilterCreateAttributes{
-				ExclusionFilters: []datadogV2.SecurityFilterExclusionFilter{
-					{
-						Name:  "Exclude staging",
-						Query: "source:staging",
-					},
-				},
-				FilteredDataType: datadogV2.SECURITYFILTERFILTEREDDATATYPE_LOGS,
-				IsEnabled:        true,
-				Name:             "Example-Security-Monitoring",
-				Query:            "service:ExampleSecurityMonitoring",
-			},
-			Type: datadogV2.SECURITYFILTERTYPE_SECURITY_FILTERS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateSecurityFilter(ctx, body)
+    body := datadogV2.SecurityFilterCreateRequest{
+        Data: datadogV2.SecurityFilterCreateData{
+            Attributes: datadogV2.SecurityFilterCreateAttributes{
+                ExclusionFilters: []datadogV2.SecurityFilterExclusionFilter{
+                    {
+                        Name:  "Exclude staging",
+                        Query: "source:staging",
+                    },
+                },
+                FilteredDataType: datadogV2.SECURITYFILTERFILTEREDDATATYPE_LOGS,
+                IsEnabled:        true,
+                Name:             "Example-Security-Monitoring",
+                Query:            "service:ExampleSecurityMonitoring",
+            },
+            Type: datadogV2.SECURITYFILTERTYPE_SECURITY_FILTERS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateSecurityFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateSecurityFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateSecurityFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a security filter returns "OK" response
@@ -30803,13 +30803,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -30849,13 +30849,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_security_filter(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a security filter returns "OK" response
@@ -30881,13 +30881,13 @@ body = DatadogAPIClient::V2::SecurityFilterCreateRequest.new({
   }),
 })
 p api_instance.create_security_filter(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a security filter returns "OK" response
@@ -30924,13 +30924,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30970,7 +30970,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -31055,7 +31055,7 @@ All the available security filters objects.
     "warning": "All the security filters are disabled. As a result, no logs are being analyzed."
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -31080,7 +31080,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31105,7 +31105,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31113,13 +31113,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/configuration/security_filters" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31135,13 +31135,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_filters()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all security filters returns "OK" response
@@ -31149,13 +31149,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_filters()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all security filters returns "OK" response
@@ -31163,37 +31163,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityFilters(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityFilters(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityFilters`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all security filters returns "OK" response
@@ -31220,13 +31220,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all security filters returns "OK" response
@@ -31244,13 +31244,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -31270,7 +31270,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -31377,7 +31377,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -31402,7 +31402,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31427,7 +31427,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31452,7 +31452,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31477,7 +31477,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31485,13 +31485,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/signals/notification_rules/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31513,13 +31513,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get details of a signal-based notification rule returns "Notification rule details." response
@@ -31530,13 +31530,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "valid_signal_notification_rule" in the system
 VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID = ENV["VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID"]
 p api_instance.get_signal_notification_rule(VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get details of a signal-based notification rule returns "Notification rule details." response
@@ -31544,40 +31544,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_signal_notification_rule" in the system
-	ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_signal_notification_rule" in the system
+    ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSignalNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSignalNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSignalNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSignalNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get details of a signal-based notification rule returns "Notification rule details." response
@@ -31609,13 +31609,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get details of a signal-based notification rule returns "Notification rule
@@ -31639,13 +31639,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -31673,7 +31673,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -31780,7 +31780,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -31805,7 +31805,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31830,7 +31830,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31855,7 +31855,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31880,7 +31880,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -31888,13 +31888,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities/notification_rules/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31916,13 +31916,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get details of a vulnerability notification rule returns "Notification rule details." response
@@ -31933,13 +31933,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "valid_vulnerability_notification_rule" in the system
 VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID = ENV["VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID"]
 p api_instance.get_vulnerability_notification_rule(VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get details of a vulnerability notification rule returns "Notification rule details." response
@@ -31947,40 +31947,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_vulnerability_notification_rule" in the system
-	ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_vulnerability_notification_rule" in the system
+    ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetVulnerabilityNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetVulnerabilityNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetVulnerabilityNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetVulnerabilityNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get details of a vulnerability notification rule returns "Notification rule details." response
@@ -32014,13 +32014,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get details of a vulnerability notification rule returns "Notification rule
@@ -32044,13 +32044,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -32079,7 +32079,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -32250,7 +32250,7 @@ OAuth apps require the `security_monitoring_rules_write` authorization [scope](h
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -32278,7 +32278,7 @@ Run a threat hunting job response.
     "type": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -32303,7 +32303,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -32328,7 +32328,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -32353,7 +32353,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -32378,7 +32378,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -32403,7 +32403,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -32411,7 +32411,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -32456,8 +32456,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Run a threat hunting job returns "Status created" response
@@ -32465,75 +32465,75 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RunThreatHuntingJobRequest{
-		Data: &datadogV2.RunThreatHuntingJobRequestData{
-			Type: datadogV2.RUNTHREATHUNTINGJOBREQUESTDATATYPE_HISTORICALDETECTIONSJOBCREATE.Ptr(),
-			Attributes: &datadogV2.RunThreatHuntingJobRequestAttributes{
-				JobDefinition: &datadogV2.JobDefinition{
-					Type: datadog.PtrString("log_detection"),
-					Name: "Excessive number of failed attempts.",
-					Queries: []datadogV2.ThreatHuntingJobQuery{
-						{
-							Query:          datadog.PtrString("source:non_existing_src_weekend"),
-							Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
-							GroupByFields:  []string{},
-							DistinctFields: []string{},
-						},
-					},
-					Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
-						{
-							Name:          datadog.PtrString("Condition 1"),
-							Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
-							Notifications: []string{},
-							Condition:     datadog.PtrString("a > 1"),
-						},
-					},
-					Options: &datadogV2.ThreatHuntingJobOptions{
-						KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
-						MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
-						EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
-					},
-					Message: "A large number of failed login attempts.",
-					Tags:    []string{},
-					From:    1730387522611,
-					To:      1730387532611,
-					Index:   "main",
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.RunThreatHuntingJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.RunThreatHuntingJob(ctx, body)
+    body := datadogV2.RunThreatHuntingJobRequest{
+        Data: &datadogV2.RunThreatHuntingJobRequestData{
+            Type: datadogV2.RUNTHREATHUNTINGJOBREQUESTDATATYPE_HISTORICALDETECTIONSJOBCREATE.Ptr(),
+            Attributes: &datadogV2.RunThreatHuntingJobRequestAttributes{
+                JobDefinition: &datadogV2.JobDefinition{
+                    Type: datadog.PtrString("log_detection"),
+                    Name: "Excessive number of failed attempts.",
+                    Queries: []datadogV2.ThreatHuntingJobQuery{
+                        {
+                            Query:          datadog.PtrString("source:non_existing_src_weekend"),
+                            Aggregation:    datadogV2.SECURITYMONITORINGRULEQUERYAGGREGATION_COUNT.Ptr(),
+                            GroupByFields:  []string{},
+                            DistinctFields: []string{},
+                        },
+                    },
+                    Cases: []datadogV2.SecurityMonitoringRuleCaseCreate{
+                        {
+                            Name:          datadog.PtrString("Condition 1"),
+                            Status:        datadogV2.SECURITYMONITORINGRULESEVERITY_INFO,
+                            Notifications: []string{},
+                            Condition:     datadog.PtrString("a > 1"),
+                        },
+                    },
+                    Options: &datadogV2.ThreatHuntingJobOptions{
+                        KeepAlive:         datadogV2.SECURITYMONITORINGRULEKEEPALIVE_ONE_HOUR.Ptr(),
+                        MaxSignalDuration: datadogV2.SECURITYMONITORINGRULEMAXSIGNALDURATION_ONE_DAY.Ptr(),
+                        EvaluationWindow:  datadogV2.SECURITYMONITORINGRULEEVALUATIONWINDOW_FIFTEEN_MINUTES.Ptr(),
+                    },
+                    Message: "A large number of failed login attempts.",
+                    Tags:    []string{},
+                    From:    1730387522611,
+                    To:      1730387532611,
+                    Index:   "main",
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.RunThreatHuntingJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.RunThreatHuntingJob(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.RunThreatHuntingJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.RunThreatHuntingJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.RunThreatHuntingJob`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.RunThreatHuntingJob`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Run a threat hunting job returns "Status created" response
@@ -32611,13 +32611,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -32691,13 +32691,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.run_threat_hunting_job(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Run a threat hunting job returns "Status created" response
@@ -32746,13 +32746,13 @@ body = DatadogAPIClient::V2::RunThreatHuntingJobRequest.new({
   }),
 })
 p api_instance.run_threat_hunting_job(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Run a threat hunting job returns "Status created" response
@@ -32820,13 +32820,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -32887,7 +32887,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -33167,7 +33167,7 @@ List of threat hunting jobs.
     "totalCount": "integer"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -33192,7 +33192,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33217,7 +33217,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33242,7 +33242,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33250,13 +33250,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -33273,13 +33273,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_threat_hunting_jobs()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List threat hunting jobs returns "OK" response
@@ -33290,13 +33290,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_threat_hunting_jobs()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List threat hunting jobs returns "OK" response
@@ -33304,38 +33304,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListThreatHuntingJobs", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListThreatHuntingJobs(ctx, *datadogV2.NewListThreatHuntingJobsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListThreatHuntingJobs", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListThreatHuntingJobs(ctx, *datadogV2.NewListThreatHuntingJobsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListThreatHuntingJobs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListThreatHuntingJobs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListThreatHuntingJobs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListThreatHuntingJobs`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List threat hunting jobs returns "OK" response
@@ -33363,13 +33363,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List threat hunting jobs returns "OK" response
@@ -33391,13 +33391,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -33418,7 +33418,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -33508,7 +33508,7 @@ Partially update the notification rule. All fields are optional; if a field is n
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -33585,7 +33585,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -33610,7 +33610,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33635,7 +33635,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33660,7 +33660,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33703,7 +33703,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33728,7 +33728,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -33736,7 +33736,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/signals/notification_rules/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -33770,8 +33770,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Patch a signal-based notification rule returns "Notification rule successfully patched." response
@@ -33779,66 +33779,66 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_signal_notification_rule" in the system
-	ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_signal_notification_rule" in the system
+    ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.PatchNotificationRuleParameters{
-		Data: &datadogV2.PatchNotificationRuleParametersData{
-			Attributes: datadogV2.PatchNotificationRuleParametersDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Name:    datadog.PtrString("Rule 1"),
-				Selectors: &datadogV2.Selectors{
-					Query: datadog.PtrString("(source:production_service OR env:prod)"),
-					RuleTypes: []datadogV2.RuleTypesItems{
-						datadogV2.RULETYPESITEMS_MISCONFIGURATION,
-						datadogV2.RULETYPESITEMS_ATTACK_PATH,
-					},
-					Severities: []datadogV2.RuleSeverity{
-						datadogV2.RULESEVERITY_CRITICAL,
-					},
-					TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
-				},
-				Targets: []string{
-					"@john.doe@email.com",
-				},
-				TimeAggregation: datadog.PtrInt64(86400),
-				Version:         datadog.PtrInt64(1),
-			},
-			Id:   ValidSignalNotificationRuleDataID,
-			Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.PatchSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID, body)
+    body := datadogV2.PatchNotificationRuleParameters{
+        Data: &datadogV2.PatchNotificationRuleParametersData{
+            Attributes: datadogV2.PatchNotificationRuleParametersDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Name:    datadog.PtrString("Rule 1"),
+                Selectors: &datadogV2.Selectors{
+                    Query: datadog.PtrString("(source:production_service OR env:prod)"),
+                    RuleTypes: []datadogV2.RuleTypesItems{
+                        datadogV2.RULETYPESITEMS_MISCONFIGURATION,
+                        datadogV2.RULETYPESITEMS_ATTACK_PATH,
+                    },
+                    Severities: []datadogV2.RuleSeverity{
+                        datadogV2.RULESEVERITY_CRITICAL,
+                    },
+                    TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
+                },
+                Targets: []string{
+                    "@john.doe@email.com",
+                },
+                TimeAggregation: datadog.PtrInt64(86400),
+                Version:         datadog.PtrInt64(1),
+            },
+            Id:   ValidSignalNotificationRuleDataID,
+            Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.PatchSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.PatchSignalNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.PatchSignalNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.PatchSignalNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.PatchSignalNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Patch a signal-based notification rule returns "Notification rule successfully patched." response
@@ -33904,13 +33904,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -33967,13 +33967,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.patch_signal_notification_rule(id=VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Patch a signal-based notification rule returns "Notification rule successfully patched." response
@@ -34011,13 +34011,13 @@ body = DatadogAPIClient::V2::PatchNotificationRuleParameters.new({
   }),
 })
 p api_instance.patch_signal_notification_rule(VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Patch a signal-based notification rule returns "Notification rule successfully
@@ -34069,13 +34069,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -34122,7 +34122,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -34212,7 +34212,7 @@ Partially update the notification rule. All fields are optional; if a field is n
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -34289,7 +34289,7 @@ Response object which includes a notification rule.
     "type": "notification_rules"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -34314,7 +34314,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34339,7 +34339,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34364,7 +34364,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34407,7 +34407,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34432,7 +34432,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34440,7 +34440,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities/notification_rules/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -34474,8 +34474,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Patch a vulnerability-based notification rule returns "Notification rule successfully patched." response
@@ -34483,66 +34483,66 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_vulnerability_notification_rule" in the system
-	ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_vulnerability_notification_rule" in the system
+    ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.PatchNotificationRuleParameters{
-		Data: &datadogV2.PatchNotificationRuleParametersData{
-			Attributes: datadogV2.PatchNotificationRuleParametersDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Name:    datadog.PtrString("Rule 1"),
-				Selectors: &datadogV2.Selectors{
-					Query: datadog.PtrString("(source:production_service OR env:prod)"),
-					RuleTypes: []datadogV2.RuleTypesItems{
-						datadogV2.RULETYPESITEMS_MISCONFIGURATION,
-						datadogV2.RULETYPESITEMS_ATTACK_PATH,
-					},
-					Severities: []datadogV2.RuleSeverity{
-						datadogV2.RULESEVERITY_CRITICAL,
-					},
-					TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
-				},
-				Targets: []string{
-					"@john.doe@email.com",
-				},
-				TimeAggregation: datadog.PtrInt64(86400),
-				Version:         datadog.PtrInt64(1),
-			},
-			Id:   ValidVulnerabilityNotificationRuleDataID,
-			Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.PatchVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID, body)
+    body := datadogV2.PatchNotificationRuleParameters{
+        Data: &datadogV2.PatchNotificationRuleParametersData{
+            Attributes: datadogV2.PatchNotificationRuleParametersDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Name:    datadog.PtrString("Rule 1"),
+                Selectors: &datadogV2.Selectors{
+                    Query: datadog.PtrString("(source:production_service OR env:prod)"),
+                    RuleTypes: []datadogV2.RuleTypesItems{
+                        datadogV2.RULETYPESITEMS_MISCONFIGURATION,
+                        datadogV2.RULETYPESITEMS_ATTACK_PATH,
+                    },
+                    Severities: []datadogV2.RuleSeverity{
+                        datadogV2.RULESEVERITY_CRITICAL,
+                    },
+                    TriggerSource: datadogV2.TRIGGERSOURCE_SECURITY_FINDINGS,
+                },
+                Targets: []string{
+                    "@john.doe@email.com",
+                },
+                TimeAggregation: datadog.PtrInt64(86400),
+                Version:         datadog.PtrInt64(1),
+            },
+            Id:   ValidVulnerabilityNotificationRuleDataID,
+            Type: datadogV2.NOTIFICATIONRULESTYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.PatchVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.PatchVulnerabilityNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.PatchVulnerabilityNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.PatchVulnerabilityNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.PatchVulnerabilityNotificationRule`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Patch a vulnerability-based notification rule returns "Notification rule successfully patched."
@@ -34610,13 +34610,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -34675,13 +34675,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Patch a vulnerability-based notification rule returns "Notification rule successfully patched." response
@@ -34719,13 +34719,13 @@ body = DatadogAPIClient::V2::PatchNotificationRuleParameters.new({
   }),
 })
 p api_instance.patch_vulnerability_notification_rule(VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Patch a vulnerability-based notification rule returns "Notification rule
@@ -34780,13 +34780,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -34834,7 +34834,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -34893,7 +34893,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34918,7 +34918,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34943,7 +34943,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -34951,12 +34951,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/signals/notification_rules/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -34976,13 +34976,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_signal_notification_rule(
         id=VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a signal-based notification rule returns "Rule successfully deleted." response
@@ -34993,13 +34993,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "valid_signal_notification_rule" in the system
 VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID = ENV["VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID"]
 api_instance.delete_signal_notification_rule(VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a signal-based notification rule returns "Rule successfully deleted." response
@@ -35007,36 +35007,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_signal_notification_rule" in the system
-	ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_signal_notification_rule" in the system
+    ValidSignalNotificationRuleDataID := os.Getenv("VALID_SIGNAL_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteSignalNotificationRule(ctx, ValidSignalNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSignalNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteSignalNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a signal-based notification rule returns "Rule successfully deleted." response
@@ -35066,13 +35066,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a signal-based notification rule returns "Rule successfully deleted."
@@ -35096,13 +35096,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -35130,7 +35130,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -35189,7 +35189,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35214,7 +35214,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35239,7 +35239,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35247,12 +35247,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities/notification_rules/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -35272,13 +35272,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_vulnerability_notification_rule(
         id=VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a vulnerability-based notification rule returns "Rule successfully deleted." response
@@ -35289,13 +35289,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "valid_vulnerability_notification_rule" in the system
 VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID = ENV["VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID"]
 api_instance.delete_vulnerability_notification_rule(VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a vulnerability-based notification rule returns "Rule successfully deleted." response
@@ -35303,36 +35303,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "valid_vulnerability_notification_rule" in the system
-	ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "valid_vulnerability_notification_rule" in the system
+    ValidVulnerabilityNotificationRuleDataID := os.Getenv("VALID_VULNERABILITY_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteVulnerabilityNotificationRule(ctx, ValidVulnerabilityNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteVulnerabilityNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteVulnerabilityNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a vulnerability-based notification rule returns "Rule successfully deleted." response
@@ -35363,13 +35363,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a vulnerability-based notification rule returns "Rule successfully
@@ -35395,13 +35395,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -35430,7 +35430,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -35704,7 +35704,7 @@ Threat hunting job response.
     "type": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -35729,7 +35729,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35754,7 +35754,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35779,7 +35779,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35804,7 +35804,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -35812,13 +35812,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport job_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs/${job_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -35842,13 +35842,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a job's details returns "OK" response
@@ -35863,13 +35863,13 @@ api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 # there is a valid "threat_hunting_job" in the system
 THREAT_HUNTING_JOB_DATA_ID = ENV["THREAT_HUNTING_JOB_DATA_ID"]
 p api_instance.get_threat_hunting_job(THREAT_HUNTING_JOB_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a job's details returns "OK" response
@@ -35877,42 +35877,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "threat_hunting_job" in the system
-	ThreatHuntingJobDataID := os.Getenv("THREAT_HUNTING_JOB_DATA_ID")
+    // there is a valid "threat_hunting_job" in the system
+    ThreatHuntingJobDataID := os.Getenv("THREAT_HUNTING_JOB_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetThreatHuntingJob", true)
-	configuration.SetUnstableOperationEnabled("v2.RunThreatHuntingJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetThreatHuntingJob(ctx, ThreatHuntingJobDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetThreatHuntingJob", true)
+    configuration.SetUnstableOperationEnabled("v2.RunThreatHuntingJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetThreatHuntingJob(ctx, ThreatHuntingJobDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetThreatHuntingJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetThreatHuntingJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetThreatHuntingJob`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetThreatHuntingJob`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a job's details returns "OK" response
@@ -35944,13 +35944,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a job's details returns "OK" response
@@ -35974,13 +35974,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -36010,7 +36010,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -36073,7 +36073,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36098,7 +36098,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36123,7 +36123,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36148,7 +36148,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36173,7 +36173,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36198,7 +36198,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36206,12 +36206,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport job_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs/${job_id}/cancel" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -36228,13 +36228,13 @@ with ApiClient(configuration) as api_client:
     api_instance.cancel_threat_hunting_job(
         job_id="job_id",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Cancel a threat hunting job returns "OK" response
@@ -36245,13 +36245,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 api_instance.cancel_threat_hunting_job("job_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Cancel a threat hunting job returns "OK" response
@@ -36259,34 +36259,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CancelThreatHuntingJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.CancelThreatHuntingJob(ctx, "job_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CancelThreatHuntingJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.CancelThreatHuntingJob(ctx, "job_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CancelThreatHuntingJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CancelThreatHuntingJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Cancel a threat hunting job returns "OK" response
@@ -36312,13 +36312,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Cancel a threat hunting job returns "OK" response
@@ -36337,13 +36337,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -36368,7 +36368,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -36427,7 +36427,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36452,7 +36452,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36477,7 +36477,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36502,7 +36502,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36527,7 +36527,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36552,7 +36552,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36560,12 +36560,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport job_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs/${job_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -36582,13 +36582,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_threat_hunting_job(
         job_id="job_id",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an existing job returns "OK" response
@@ -36599,13 +36599,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 api_instance.delete_threat_hunting_job("job_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an existing job returns "OK" response
@@ -36613,34 +36613,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteThreatHuntingJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DeleteThreatHuntingJob(ctx, "job_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteThreatHuntingJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DeleteThreatHuntingJob(ctx, "job_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteThreatHuntingJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DeleteThreatHuntingJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an existing job returns "OK" response
@@ -36666,13 +36666,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an existing job returns "OK" response
@@ -36691,13 +36691,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -36722,7 +36722,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -36788,7 +36788,7 @@ Convert a job result to a signal. This endpoint requires the `security_monitorin
     "type": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -36817,7 +36817,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36842,7 +36842,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36867,7 +36867,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36892,7 +36892,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36917,7 +36917,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -36925,7 +36925,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs/signal_convert" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -36946,8 +36946,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -36983,13 +36983,13 @@ configuration.unstable_operations["convert_job_result_to_signal"] = True
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.convert_job_result_to_signal(body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Convert a job result to a signal returns "OK" response
@@ -37016,13 +37016,13 @@ body = DatadogAPIClient::V2::ConvertJobResultsToSignalsRequest.new({
   }),
 })
 api_instance.convert_job_result_to_signal(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Convert a job result to a signal returns "OK" response
@@ -37030,49 +37030,49 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ConvertJobResultsToSignalsRequest{
-		Data: &datadogV2.ConvertJobResultsToSignalsData{
-			Attributes: &datadogV2.ConvertJobResultsToSignalsAttributes{
-				JobResultIds: []string{
-					"",
-				},
-				Notifications: []string{
-					"",
-				},
-				SignalMessage:  "A large number of failed login attempts.",
-				SignalSeverity: datadogV2.SECURITYMONITORINGRULESEVERITY_CRITICAL,
-			},
-			Type: datadogV2.CONVERTJOBRESULTSTOSIGNALSDATATYPE_HISTORICALDETECTIONSJOBRESULTSIGNALCONVERSION.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ConvertJobResultToSignal", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.ConvertJobResultToSignal(ctx, body)
+    body := datadogV2.ConvertJobResultsToSignalsRequest{
+        Data: &datadogV2.ConvertJobResultsToSignalsData{
+            Attributes: &datadogV2.ConvertJobResultsToSignalsAttributes{
+                JobResultIds: []string{
+                    "",
+                },
+                Notifications: []string{
+                    "",
+                },
+                SignalMessage:  "A large number of failed login attempts.",
+                SignalSeverity: datadogV2.SECURITYMONITORINGRULESEVERITY_CRITICAL,
+            },
+            Type: datadogV2.CONVERTJOBRESULTSTOSIGNALSDATATYPE_HISTORICALDETECTIONSJOBRESULTSIGNALCONVERSION.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ConvertJobResultToSignal", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.ConvertJobResultToSignal(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertJobResultToSignal`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ConvertJobResultToSignal`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Convert a job result to a signal returns "OK" response
@@ -37118,13 +37118,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Convert a job result to a signal returns "OK" response
@@ -37160,13 +37160,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -37201,7 +37201,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -37653,7 +37653,7 @@ Response for getting the rule version history.
     "type": "string"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -37678,7 +37678,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -37703,7 +37703,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -37728,7 +37728,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -37753,7 +37753,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -37761,13 +37761,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security_monitoring/rules/${rule_id}/version_history" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -37786,13 +37786,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a rule's version history returns "OK" response
@@ -37803,13 +37803,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_rule_version_history("rule_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a rule's version history returns "OK" response
@@ -37817,38 +37817,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetRuleVersionHistory", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetRuleVersionHistory(ctx, "rule_id", *datadogV2.NewGetRuleVersionHistoryOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetRuleVersionHistory", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetRuleVersionHistory(ctx, "rule_id", *datadogV2.NewGetRuleVersionHistoryOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetRuleVersionHistory`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetRuleVersionHistory`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetRuleVersionHistory`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetRuleVersionHistory`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a rule's version history returns "OK" response
@@ -37876,13 +37876,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a rule's version history returns "OK" response
@@ -37907,13 +37907,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -37938,7 +37938,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -37983,7 +37983,7 @@ This endpoint will return paginated responses. The pages are stored in the links
     "next": "https://.../api/v2/security/vulnerabilities?page[number]=2&page[token]=abc"
   }
 }
-```
+```text
 
 - `links.previous` is empty if the first page is requested.
 - `links.next` is empty if the last page is requested.
@@ -38046,7 +38046,7 @@ This endpoint includes the meta member in the response. For more details on each
   },
   "links": {...}
 }
-```
+```text
 
 ### Extensions{% #extensions %}
 
@@ -38377,7 +38377,7 @@ The expected response schema when listing vulnerabilities.
     "total": 152431
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -38420,7 +38420,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38463,7 +38463,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38506,7 +38506,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38531,7 +38531,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38539,13 +38539,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerabilities" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -38569,13 +38569,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List vulnerabilities returns "OK" response
@@ -38591,13 +38591,13 @@ opts = {
   filter_tool: VulnerabilityTool::INFRA,
 }
 p api_instance.list_vulnerabilities(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List vulnerabilities returns "OK" response
@@ -38605,38 +38605,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListVulnerabilities", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListVulnerabilities(ctx, *datadogV2.NewListVulnerabilitiesOptionalParameters().WithFilterCvssBaseSeverity(datadogV2.VULNERABILITYSEVERITY_HIGH).WithFilterAssetType(datadogV2.ASSETTYPE_SERVICE).WithFilterTool(datadogV2.VULNERABILITYTOOL_INFRA))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListVulnerabilities", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListVulnerabilities(ctx, *datadogV2.NewListVulnerabilitiesOptionalParameters().WithFilterCvssBaseSeverity(datadogV2.VULNERABILITYSEVERITY_HIGH).WithFilterAssetType(datadogV2.ASSETTYPE_SERVICE).WithFilterTool(datadogV2.VULNERABILITYTOOL_INFRA))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListVulnerabilities`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListVulnerabilities`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListVulnerabilities`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListVulnerabilities`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List vulnerabilities returns "OK" response
@@ -38673,13 +38673,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List vulnerabilities returns "OK" response
@@ -38709,13 +38709,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -38742,7 +38742,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -38821,7 +38821,7 @@ The definition of `GetResourceEvaluationFiltersResponse` object.
     "type": "csm_resource_filter"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -38846,7 +38846,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38871,7 +38871,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38896,7 +38896,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -38904,13 +38904,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/resource_filters" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -38929,13 +38929,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List resource filters returns "OK" response
@@ -38947,13 +38947,13 @@ opts = {
   account_id: "123456789",
 }
 p api_instance.get_resource_evaluation_filters(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List resource filters returns "OK" response
@@ -38961,37 +38961,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetResourceEvaluationFilters(ctx, *datadogV2.NewGetResourceEvaluationFiltersOptionalParameters().WithCloudProvider("aws").WithAccountId("123456789"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetResourceEvaluationFilters(ctx, *datadogV2.NewGetResourceEvaluationFiltersOptionalParameters().WithCloudProvider("aws").WithAccountId("123456789"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetResourceEvaluationFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetResourceEvaluationFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetResourceEvaluationFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetResourceEvaluationFilters`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List resource filters returns "OK" response
@@ -39024,13 +39024,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List resource filters returns "OK" response
@@ -39055,13 +39055,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -39086,7 +39086,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -39244,7 +39244,7 @@ The expected response schema when listing vulnerable assets.
     "total": 152431
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -39287,7 +39287,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39330,7 +39330,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39373,7 +39373,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39398,7 +39398,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39406,13 +39406,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/vulnerable-assets" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -39434,13 +39434,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List vulnerable assets returns "OK" response
@@ -39456,13 +39456,13 @@ opts = {
   filter_risks_in_production: true,
 }
 p api_instance.list_vulnerable_assets(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List vulnerable assets returns "OK" response
@@ -39470,38 +39470,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListVulnerableAssets", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListVulnerableAssets(ctx, *datadogV2.NewListVulnerableAssetsOptionalParameters().WithFilterType(datadogV2.ASSETTYPE_HOST).WithFilterRepositoryUrl("github.com/datadog/dd-go").WithFilterRisksInProduction(true))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListVulnerableAssets", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListVulnerableAssets(ctx, *datadogV2.NewListVulnerableAssetsOptionalParameters().WithFilterType(datadogV2.ASSETTYPE_HOST).WithFilterRepositoryUrl("github.com/datadog/dd-go").WithFilterRisksInProduction(true))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListVulnerableAssets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListVulnerableAssets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListVulnerableAssets`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListVulnerableAssets`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List vulnerable assets returns "OK" response
@@ -39536,13 +39536,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List vulnerable assets returns "OK" response
@@ -39570,13 +39570,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -39603,7 +39603,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -39749,7 +39749,7 @@ The expected response schema when getting an SBOM.
     "type": "sboms"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -39792,7 +39792,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39835,7 +39835,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39878,7 +39878,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39903,7 +39903,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -39911,13 +39911,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport asset_type="Repository"\# Required query argumentsexport filter[asset_name]="github.com/datadog/datadog-agent"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/sboms/${asset_type}?filter[asset_name]=${filter[asset_name]}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -39937,13 +39937,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SBOM returns "OK" response
@@ -39951,13 +39951,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_sbom(AssetType::REPOSITORY, "github.com/datadog/datadog-agent")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SBOM returns "OK" response
@@ -39965,37 +39965,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSBOM(ctx, datadogV2.ASSETTYPE_REPOSITORY, "github.com/datadog/datadog-agent", *datadogV2.NewGetSBOMOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSBOM(ctx, datadogV2.ASSETTYPE_REPOSITORY, "github.com/datadog/datadog-agent", *datadogV2.NewGetSBOMOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSBOM`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSBOM`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSBOM`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSBOM`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SBOM returns "OK" response
@@ -40024,13 +40024,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SBOM returns "OK" response
@@ -40056,13 +40056,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -40087,7 +40087,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -40156,7 +40156,7 @@ OAuth apps require the `security_monitoring_filters_write` authorization [scope]
     "type": "csm_resource_filter"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -40199,7 +40199,7 @@ The definition of `UpdateResourceEvaluationFiltersResponse` object.
     "type": "csm_resource_filter"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -40224,7 +40224,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40249,7 +40249,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40274,7 +40274,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40282,7 +40282,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_security_management/resource_filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -40305,8 +40305,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update resource filters returns "OK" response
@@ -40314,52 +40314,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateResourceEvaluationFiltersRequest{
-		Data: datadogV2.UpdateResourceEvaluationFiltersRequestData{
-			Attributes: datadogV2.ResourceFilterAttributes{
-				CloudProvider: map[string]map[string][]string{
-					"aws": map[string][]string{
-						"aws_account_id": []string{
-							"tag1:v1",
-						},
-					},
-				},
-			},
-			Id:   datadog.PtrString("csm_resource_filter"),
-			Type: datadogV2.RESOURCEFILTERREQUESTTYPE_CSM_RESOURCE_FILTER,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.UpdateResourceEvaluationFilters(ctx, body)
+    body := datadogV2.UpdateResourceEvaluationFiltersRequest{
+        Data: datadogV2.UpdateResourceEvaluationFiltersRequestData{
+            Attributes: datadogV2.ResourceFilterAttributes{
+                CloudProvider: map[string]map[string][]string{
+                    "aws": map[string][]string{
+                        "aws_account_id": []string{
+                            "tag1:v1",
+                        },
+                    },
+                },
+            },
+            Id:   datadog.PtrString("csm_resource_filter"),
+            Type: datadogV2.RESOURCEFILTERREQUESTTYPE_CSM_RESOURCE_FILTER,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.UpdateResourceEvaluationFilters(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateResourceEvaluationFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.UpdateResourceEvaluationFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateResourceEvaluationFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.UpdateResourceEvaluationFilters`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update resource filters returns "OK" response
@@ -40411,13 +40411,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -40457,13 +40457,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_resource_evaluation_filters(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update resource filters returns "OK" response
@@ -40487,13 +40487,13 @@ body = DatadogAPIClient::V2::UpdateResourceEvaluationFiltersRequest.new({
   }),
 })
 p api_instance.update_resource_evaluation_filters(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update resource filters returns "OK" response
@@ -40526,13 +40526,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -40568,7 +40568,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -40753,7 +40753,7 @@ The expected response schema when listing assets SBOMs.
     "total": 152431
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -40796,7 +40796,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40839,7 +40839,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40882,7 +40882,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40907,7 +40907,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -40915,13 +40915,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/sboms" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -40941,13 +40941,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List assets SBOMs returns "OK" response
@@ -40959,13 +40959,13 @@ opts = {
   filter_asset_type: AssetType::SERVICE,
 }
 p api_instance.list_assets_sbo_ms(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List assets SBOMs returns "OK" response
@@ -40973,37 +40973,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListAssetsSBOMs(ctx, *datadogV2.NewListAssetsSBOMsOptionalParameters().WithFilterPackageName("pandas").WithFilterAssetType(datadogV2.ASSETTYPE_SERVICE))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListAssetsSBOMs(ctx, *datadogV2.NewListAssetsSBOMsOptionalParameters().WithFilterPackageName("pandas").WithFilterAssetType(datadogV2.ASSETTYPE_SERVICE))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListAssetsSBOMs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListAssetsSBOMs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListAssetsSBOMs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListAssetsSBOMs`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List assets SBOMs returns "OK" response
@@ -41036,13 +41036,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List assets SBOMs returns "OK" response
@@ -41068,13 +41068,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -41099,7 +41099,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -41254,7 +41254,7 @@ The expected response schema when listing scanned assets metadata.
     "total": 152431
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -41297,7 +41297,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41340,7 +41340,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41383,7 +41383,7 @@ API error response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41408,7 +41408,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41416,13 +41416,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/scanned-assets-metadata" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -41439,13 +41439,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_scanned_assets_metadata()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List scanned assets metadata returns "OK" response
@@ -41456,13 +41456,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_scanned_assets_metadata()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List scanned assets metadata returns "OK" response
@@ -41470,38 +41470,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListScannedAssetsMetadata", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListScannedAssetsMetadata(ctx, *datadogV2.NewListScannedAssetsMetadataOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListScannedAssetsMetadata", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListScannedAssetsMetadata(ctx, *datadogV2.NewListScannedAssetsMetadataOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListScannedAssetsMetadata`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListScannedAssetsMetadata`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListScannedAssetsMetadata`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListScannedAssetsMetadata`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List scanned assets metadata returns "OK" response
@@ -41529,13 +41529,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List scanned assets metadata returns "OK" response
@@ -41557,13 +41557,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -41584,7 +41584,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -41694,7 +41694,7 @@ OK
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41719,7 +41719,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -41727,13 +41727,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/secrets/rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -41750,13 +41750,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_secrets_rules()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Returns a list of Secrets rules returns "OK" response
@@ -41767,13 +41767,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_secrets_rules()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Returns a list of Secrets rules returns "OK" response
@@ -41781,38 +41781,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSecretsRules", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecretsRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSecretsRules", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecretsRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecretsRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecretsRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecretsRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecretsRules`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Returns a list of Secrets rules returns "OK" response
@@ -41840,13 +41840,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Returns a list of Secrets rules returns "OK" response
@@ -41865,13 +41865,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -41892,7 +41892,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -41956,7 +41956,7 @@ OAuth apps require the `code_analysis_read` authorization [scope](https://docs.d
     "type": "get_multiple_rulesets_request"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -42080,7 +42080,7 @@ OK
     "type": "get_multiple_rulesets_response"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -42105,7 +42105,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -42113,7 +42113,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/rulesets" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -42126,8 +42126,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -42159,13 +42159,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_multiple_rulesets(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Ruleset get multiple returns "OK" response
@@ -42185,13 +42185,13 @@ body = DatadogAPIClient::V2::GetMultipleRulesetsRequest.new({
   }),
 })
 p api_instance.list_multiple_rulesets(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Ruleset get multiple returns "OK" response
@@ -42199,46 +42199,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GetMultipleRulesetsRequest{
-		Data: &datadogV2.GetMultipleRulesetsRequestData{
-			Attributes: &datadogV2.GetMultipleRulesetsRequestDataAttributes{
-				Rulesets: []string{},
-			},
-			Type: datadogV2.GETMULTIPLERULESETSREQUESTDATATYPE_GET_MULTIPLE_RULESETS_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListMultipleRulesets", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListMultipleRulesets(ctx, body)
+    body := datadogV2.GetMultipleRulesetsRequest{
+        Data: &datadogV2.GetMultipleRulesetsRequestData{
+            Attributes: &datadogV2.GetMultipleRulesetsRequestDataAttributes{
+                Rulesets: []string{},
+            },
+            Type: datadogV2.GETMULTIPLERULESETSREQUESTDATATYPE_GET_MULTIPLE_RULESETS_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListMultipleRulesets", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListMultipleRulesets(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListMultipleRulesets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListMultipleRulesets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListMultipleRulesets`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListMultipleRulesets`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Ruleset get multiple returns "OK" response
@@ -42277,13 +42277,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Ruleset get multiple returns "OK" response
@@ -42312,13 +42312,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -42350,7 +42350,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -42382,7 +42382,7 @@ OAuth apps require the `security_monitoring_signals_read` authorization [scope](
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -42416,7 +42416,7 @@ OAuth apps require the `security_monitoring_signals_read` authorization [scope](
   },
   "sort": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -42483,7 +42483,7 @@ The response object with all security signals matching the request and paginatio
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -42508,7 +42508,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -42533,7 +42533,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -42558,7 +42558,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -42583,7 +42583,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -42591,7 +42591,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/histsignals/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -42600,8 +42600,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -42641,13 +42641,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.search_security_monitoring_histsignals(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search hist signals returns "OK" response
@@ -42674,13 +42674,13 @@ opts = {
   body: body,
 }
 p api_instance.search_security_monitoring_histsignals(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search hist signals returns "OK" response
@@ -42688,51 +42688,51 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SecurityMonitoringSignalListRequest{
-		Filter: &datadogV2.SecurityMonitoringSignalListRequestFilter{
-			From:  datadog.PtrTime(time.Date(2019, 1, 2, 9, 42, 36, 320000, time.UTC)),
-			Query: datadog.PtrString("security:attack status:high"),
-			To:    datadog.PtrTime(time.Date(2019, 1, 3, 9, 42, 36, 320000, time.UTC)),
-		},
-		Page: &datadogV2.SecurityMonitoringSignalListRequestPage{
-			Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
-			Limit:  datadog.PtrInt32(25),
-		},
-		Sort: datadogV2.SECURITYMONITORINGSIGNALSSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.SearchSecurityMonitoringHistsignals", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.SearchSecurityMonitoringHistsignals(ctx, *datadogV2.NewSearchSecurityMonitoringHistsignalsOptionalParameters().WithBody(body))
+    body := datadogV2.SecurityMonitoringSignalListRequest{
+        Filter: &datadogV2.SecurityMonitoringSignalListRequestFilter{
+            From:  datadog.PtrTime(time.Date(2019, 1, 2, 9, 42, 36, 320000, time.UTC)),
+            Query: datadog.PtrString("security:attack status:high"),
+            To:    datadog.PtrTime(time.Date(2019, 1, 3, 9, 42, 36, 320000, time.UTC)),
+        },
+        Page: &datadogV2.SecurityMonitoringSignalListRequestPage{
+            Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
+            Limit:  datadog.PtrInt32(25),
+        },
+        Sort: datadogV2.SECURITYMONITORINGSIGNALSSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.SearchSecurityMonitoringHistsignals", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.SearchSecurityMonitoringHistsignals(ctx, *datadogV2.NewSearchSecurityMonitoringHistsignalsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityMonitoringHistsignals`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.SearchSecurityMonitoringHistsignals`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityMonitoringHistsignals`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.SearchSecurityMonitoringHistsignals`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search hist signals returns "OK" response
@@ -42783,13 +42783,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search hist signals returns "OK" response
@@ -42842,13 +42842,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -42887,7 +42887,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -42973,7 +42973,7 @@ Security Signal response data object.
     "type": "signal"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -42998,7 +42998,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43023,7 +43023,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43048,7 +43048,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43073,7 +43073,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43081,13 +43081,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport histsignal_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/histsignals/${histsignal_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -43106,13 +43106,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a hist signal's details returns "OK" response
@@ -43123,13 +43123,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_security_monitoring_histsignal("histsignal_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a hist signal's details returns "OK" response
@@ -43137,38 +43137,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSecurityMonitoringHistsignal", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringHistsignal(ctx, "histsignal_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSecurityMonitoringHistsignal", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringHistsignal(ctx, "histsignal_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringHistsignal`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringHistsignal`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringHistsignal`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringHistsignal`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a hist signal's details returns "OK" response
@@ -43198,13 +43198,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a hist signal's details returns "OK" response
@@ -43225,13 +43225,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -43256,7 +43256,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -43362,7 +43362,7 @@ The response object with all security signals matching the request and paginatio
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -43387,7 +43387,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43412,7 +43412,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43437,7 +43437,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43462,7 +43462,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43470,13 +43470,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/histsignals" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -43493,13 +43493,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_security_monitoring_histsignals()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List hist signals returns "OK" response
@@ -43510,13 +43510,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.list_security_monitoring_histsignals()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List hist signals returns "OK" response
@@ -43524,38 +43524,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListSecurityMonitoringHistsignals", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.ListSecurityMonitoringHistsignals(ctx, *datadogV2.NewListSecurityMonitoringHistsignalsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListSecurityMonitoringHistsignals", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.ListSecurityMonitoringHistsignals(ctx, *datadogV2.NewListSecurityMonitoringHistsignalsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringHistsignals`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.ListSecurityMonitoringHistsignals`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringHistsignals`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.ListSecurityMonitoringHistsignals`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List hist signals returns "OK" response
@@ -43585,13 +43585,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List hist signals returns "OK" response
@@ -43615,13 +43615,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -43642,7 +43642,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -43754,7 +43754,7 @@ The response object with all security signals matching the request and paginatio
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -43779,7 +43779,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43804,7 +43804,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43829,7 +43829,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43854,7 +43854,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -43862,13 +43862,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport job_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/siem-threat-hunting/jobs/${job_id}/histsignals" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -43887,13 +43887,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a job's hist signals returns "OK" response
@@ -43904,13 +43904,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::SecurityMonitoringAPI.new
 p api_instance.get_security_monitoring_histsignals_by_job_id("job_id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a job's hist signals returns "OK" response
@@ -43918,38 +43918,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSecurityMonitoringHistsignalsByJobId", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.GetSecurityMonitoringHistsignalsByJobId(ctx, "job_id", *datadogV2.NewGetSecurityMonitoringHistsignalsByJobIdOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSecurityMonitoringHistsignalsByJobId", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.GetSecurityMonitoringHistsignalsByJobId(ctx, "job_id", *datadogV2.NewGetSecurityMonitoringHistsignalsByJobIdOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringHistsignalsByJobId`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.GetSecurityMonitoringHistsignalsByJobId`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringHistsignalsByJobId`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.GetSecurityMonitoringHistsignalsByJobId`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a job's hist signals returns "OK" response
@@ -43979,13 +43979,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a job's hist signals returns "OK" response
@@ -44011,13 +44011,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -44044,7 +44044,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -44102,7 +44102,7 @@ Create cases for security findings. You can create up to 50 cases per request an
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -44132,9 +44132,9 @@ Create cases for security findings. You can create up to 50 cases per request an
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -44168,9 +44168,9 @@ Create cases for security findings. You can create up to 50 cases per request an
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -44223,7 +44223,7 @@ Create cases for security findings. You can create up to 50 cases per request an
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -44361,7 +44361,7 @@ List of case responses.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -44386,7 +44386,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -44411,7 +44411,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -44436,7 +44436,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -44444,7 +44444,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -44479,8 +44479,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -44519,8 +44519,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -44578,8 +44578,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create case for security finding returns "Created" response
@@ -44587,60 +44587,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateCaseRequestArray{
-		Data: []datadogV2.CreateCaseRequestData{
-			{
-				Attributes: &datadogV2.CreateCaseRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateCaseRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "YjdhNDM3N2QyNTFjYmUwYTY3NDdhMTg0YTk2Yjg5MDl-ZjNmMzAwOTFkZDNhNGQzYzI0MzgxNTk4MjRjZmE2NzE=",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.CASEDATATYPE_CASES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateCases(ctx, body)
+    body := datadogV2.CreateCaseRequestArray{
+        Data: []datadogV2.CreateCaseRequestData{
+            {
+                Attributes: &datadogV2.CreateCaseRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateCaseRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "YjdhNDM3N2QyNTFjYmUwYTY3NDdhMTg0YTk2Yjg5MDl-ZjNmMzAwOTFkZDNhNGQzYzI0MzgxNTk4MjRjZmE2NzE=",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.CASEDATATYPE_CASES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateCases(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create case for security findings returns "Created" response
@@ -44648,64 +44648,64 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateCaseRequestArray{
-		Data: []datadogV2.CreateCaseRequestData{
-			{
-				Attributes: &datadogV2.CreateCaseRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateCaseRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "ZTd5LWNuYi1seWV-aS0wMjI2NGZjZjRmZWQ5ODMyMg==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-							{
-								Id:   "c2FuLXhyaS1kZnN-aS0wODM3MjVhMTM2MDExNzNkOQ==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.CASEDATATYPE_CASES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateCases(ctx, body)
+    body := datadogV2.CreateCaseRequestArray{
+        Data: []datadogV2.CreateCaseRequestData{
+            {
+                Attributes: &datadogV2.CreateCaseRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateCaseRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "ZTd5LWNuYi1seWV-aS0wMjI2NGZjZjRmZWQ5ODMyMg==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                            {
+                                Id:   "c2FuLXhyaS1kZnN-aS0wODM3MjVhMTM2MDExNzNkOQ==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.CASEDATATYPE_CASES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateCases(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create cases for security findings returns "Created" response
@@ -44713,87 +44713,87 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateCaseRequestArray{
-		Data: []datadogV2.CreateCaseRequestData{
-			{
-				Attributes: &datadogV2.CreateCaseRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateCaseRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "YjdhNDM3N2QyNTFjYmUwYTY3NDdhMTg0YTk2Yjg5MDl-ZjNmMzAwOTFkZDNhNGQzYzI0MzgxNTk4MjRjZmE2NzE=",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.CASEDATATYPE_CASES,
-			},
-			{
-				Attributes: &datadogV2.CreateCaseRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateCaseRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "OGRlMDIwYzk4MjFmZTZiNTQwMzk2ZjUxNzg0MDc0NjR-MTk3Yjk4MDI4ZDQ4YzI2ZGZiMWJmMTNhNDEwZGZkYWI=",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.CASEDATATYPE_CASES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateCases(ctx, body)
+    body := datadogV2.CreateCaseRequestArray{
+        Data: []datadogV2.CreateCaseRequestData{
+            {
+                Attributes: &datadogV2.CreateCaseRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateCaseRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "YjdhNDM3N2QyNTFjYmUwYTY3NDdhMTg0YTk2Yjg5MDl-ZjNmMzAwOTFkZDNhNGQzYzI0MzgxNTk4MjRjZmE2NzE=",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.CASEDATATYPE_CASES,
+            },
+            {
+                Attributes: &datadogV2.CreateCaseRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateCaseRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "OGRlMDIwYzk4MjFmZTZiNTQwMzk2ZjUxNzg0MDc0NjR-MTk3Yjk4MDI4ZDQ4YzI2ZGZiMWJmMTNhNDEwZGZkYWI=",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.CASEDATATYPE_CASES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateCases(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateCases`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateCases`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create case for security finding returns "Created" response
@@ -44859,9 +44859,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create case for security findings returns "Created" response
@@ -44932,9 +44932,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create cases for security findings returns "Created" response
@@ -45023,13 +45023,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -45084,9 +45084,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cases(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -45145,9 +45145,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cases(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -45225,13 +45225,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cases(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create case for security finding returns "Created" response
@@ -45267,9 +45267,9 @@ body = DatadogAPIClient::V2::CreateCaseRequestArray.new({
   ],
 })
 p api_instance.create_cases(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create case for security findings returns "Created" response
@@ -45309,9 +45309,9 @@ body = DatadogAPIClient::V2::CreateCaseRequestArray.new({
   ],
 })
 p api_instance.create_cases(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create cases for security findings returns "Created" response
@@ -45370,13 +45370,13 @@ body = DatadogAPIClient::V2::CreateCaseRequestArray.new({
   ],
 })
 p api_instance.create_cases(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create case for security finding returns "Created" response
@@ -45435,9 +45435,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create case for security findings returns "Created" response
@@ -45488,9 +45488,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create cases for security findings returns "Created" response
@@ -45574,13 +45574,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -45630,9 +45630,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -45686,9 +45686,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -45761,7 +45761,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -45819,7 +45819,7 @@ Attach security findings to a case. You can attach up to 50 security findings pe
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -45838,9 +45838,9 @@ Attach security findings to a case. You can attach up to 50 security findings pe
     "type": "cases"
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -45863,7 +45863,7 @@ Attach security findings to a case. You can attach up to 50 security findings pe
     "type": "cases"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -45999,7 +45999,7 @@ Case response.
     "type": "cases"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -46024,7 +46024,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46049,7 +46049,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46074,7 +46074,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46082,7 +46082,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport case_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases/${case_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -46106,8 +46106,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport case_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases/${case_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -46135,8 +46135,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Attach security finding to a case returns "OK" response
@@ -46144,49 +46144,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AttachCaseRequest{
-		Data: &datadogV2.AttachCaseRequestData{
-			Id: "7d16945b-baf8-411e-ab2a-20fe43af1ea3",
-			Relationships: &datadogV2.AttachCaseRequestDataRelationships{
-				Findings: datadogV2.Findings{
-					Data: []datadogV2.FindingData{
-						{
-							Id:   "ZGZhMDI3ZjdjMDM3YjJmNzcxNTlhZGMwMjdmZWNiNTZ-MTVlYTNmYWU3NjNlOTNlYTE2YjM4N2JmZmI4Yjk5N2Y=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.CASEDATATYPE_CASES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.AttachCase(ctx, "7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
+    body := datadogV2.AttachCaseRequest{
+        Data: &datadogV2.AttachCaseRequestData{
+            Id: "7d16945b-baf8-411e-ab2a-20fe43af1ea3",
+            Relationships: &datadogV2.AttachCaseRequestDataRelationships{
+                Findings: datadogV2.Findings{
+                    Data: []datadogV2.FindingData{
+                        {
+                            Id:   "ZGZhMDI3ZjdjMDM3YjJmNzcxNTlhZGMwMjdmZWNiNTZ-MTVlYTNmYWU3NjNlOTNlYTE2YjM4N2JmZmI4Yjk5N2Y=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.CASEDATATYPE_CASES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.AttachCase(ctx, "7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachCase`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Attach security findings to a case returns "OK" response
@@ -46194,57 +46194,57 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AttachCaseRequest{
-		Data: &datadogV2.AttachCaseRequestData{
-			Id: "7d16945b-baf8-411e-ab2a-20fe43af1ea3",
-			Relationships: &datadogV2.AttachCaseRequestDataRelationships{
-				Findings: datadogV2.Findings{
-					Data: []datadogV2.FindingData{
-						{
-							Id:   "ZGZhMDI3ZjdjMDM3YjJmNzcxNTlhZGMwMjdmZWNiNTZ-MTVlYTNmYWU3NjNlOTNlYTE2YjM4N2JmZmI4Yjk5N2Y=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-						{
-							Id:   "MmUzMzZkODQ2YTI3NDU0OTk4NDk3NzhkOTY5YjU2Zjh-YWJjZGI1ODI4OTYzNWM3ZmUwZTBlOWRkYTRiMGUyOGQ=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.CASEDATATYPE_CASES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.AttachCase(ctx, "7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
+    body := datadogV2.AttachCaseRequest{
+        Data: &datadogV2.AttachCaseRequestData{
+            Id: "7d16945b-baf8-411e-ab2a-20fe43af1ea3",
+            Relationships: &datadogV2.AttachCaseRequestDataRelationships{
+                Findings: datadogV2.Findings{
+                    Data: []datadogV2.FindingData{
+                        {
+                            Id:   "ZGZhMDI3ZjdjMDM3YjJmNzcxNTlhZGMwMjdmZWNiNTZ-MTVlYTNmYWU3NjNlOTNlYTE2YjM4N2JmZmI4Yjk5N2Y=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                        {
+                            Id:   "MmUzMzZkODQ2YTI3NDU0OTk4NDk3NzhkOTY5YjU2Zjh-YWJjZGI1ODI4OTYzNWM3ZmUwZTBlOWRkYTRiMGUyOGQ=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.CASEDATATYPE_CASES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.AttachCase(ctx, "7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachCase`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachCase`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Attach security finding to a case returns "OK" response
@@ -46297,9 +46297,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Attach security findings to a case returns "OK" response
@@ -46356,13 +46356,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -46402,9 +46402,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.attach_case(case_id="7d16945b-baf8-411e-ab2a-20fe43af1ea3", body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -46448,13 +46448,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.attach_case(case_id="7d16945b-baf8-411e-ab2a-20fe43af1ea3", body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Attach security finding to a case returns "OK" response
@@ -46479,9 +46479,9 @@ body = DatadogAPIClient::V2::AttachCaseRequest.new({
   }),
 })
 p api_instance.attach_case("7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Attach security findings to a case returns "OK" response
@@ -46510,13 +46510,13 @@ body = DatadogAPIClient::V2::AttachCaseRequest.new({
   }),
 })
 p api_instance.attach_case("7d16945b-baf8-411e-ab2a-20fe43af1ea3", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Attach security finding to a case returns "OK" response
@@ -46563,9 +46563,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Attach security findings to a case returns "OK" response
@@ -46616,13 +46616,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -46662,9 +46662,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -46708,7 +46708,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -46774,7 +46774,7 @@ Detach security findings from their case. This operation dissociates security fi
     "type": "cases"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -46803,7 +46803,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46828,7 +46828,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46853,7 +46853,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -46861,7 +46861,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/cases" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -46883,8 +46883,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Detach security findings from their case returns "No Content" response
@@ -46892,48 +46892,48 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DetachCaseRequest{
-		Data: &datadogV2.DetachCaseRequestData{
-			Relationships: &datadogV2.DetachCaseRequestDataRelationships{
-				Findings: datadogV2.Findings{
-					Data: []datadogV2.FindingData{
-						{
-							Id:   "YzM2MTFjYzcyNmY0Zjg4MTAxZmRlNjQ1MWU1ZGQwYzR-YzI5NzE5Y2Y4MzU4ZjliNzhkNjYxNTY0ODIzZDQ2YTM=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.CASEDATATYPE_CASES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	r, err := api.DetachCase(ctx, body)
+    body := datadogV2.DetachCaseRequest{
+        Data: &datadogV2.DetachCaseRequestData{
+            Relationships: &datadogV2.DetachCaseRequestDataRelationships{
+                Findings: datadogV2.Findings{
+                    Data: []datadogV2.FindingData{
+                        {
+                            Id:   "YzM2MTFjYzcyNmY0Zjg4MTAxZmRlNjQ1MWU1ZGQwYzR-YzI5NzE5Y2Y4MzU4ZjliNzhkNjYxNTY0ODIzZDQ2YTM=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.CASEDATATYPE_CASES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    r, err := api.DetachCase(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DetachCase`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.DetachCase`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Detach security findings from their case returns "No Content" response
@@ -46982,13 +46982,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -47025,13 +47025,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = SecurityMonitoringApi(api_client)
     api_instance.detach_case(body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Detach security findings from their case returns "No Content" response
@@ -47055,13 +47055,13 @@ body = DatadogAPIClient::V2::DetachCaseRequest.new({
   }),
 })
 api_instance.detach_case(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Detach security findings from their case returns "No Content" response
@@ -47105,13 +47105,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -47149,7 +47149,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -47208,7 +47208,7 @@ Create Jira issues for security findings. This operation creates a case in Datad
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -47238,9 +47238,9 @@ Create Jira issues for security findings. This operation creates a case in Datad
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -47274,9 +47274,9 @@ Create Jira issues for security findings. This operation creates a case in Datad
     }
   ]
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -47329,7 +47329,7 @@ Create Jira issues for security findings. This operation creates a case in Datad
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -47467,7 +47467,7 @@ List of case responses.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -47492,7 +47492,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -47517,7 +47517,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -47542,7 +47542,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -47550,7 +47550,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -47585,8 +47585,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -47625,8 +47625,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -47684,8 +47684,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Jira issue for security finding returns "Created" response
@@ -47693,60 +47693,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateJiraIssueRequestArray{
-		Data: []datadogV2.CreateJiraIssueRequestData{
-			{
-				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateJiraIssues(ctx, body)
+    body := datadogV2.CreateJiraIssueRequestArray{
+        Data: []datadogV2.CreateJiraIssueRequestData{
+            {
+                Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "YmNlZmJhYTcyMDU5ZDk0ZDhiNjRmNGI0NDk4MDdiNzN-MDJlMjg0NzNmYzJiODY2MzJkNjU0OTI4NmVhZTUyY2U=",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateJiraIssues(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create Jira issue for security findings returns "Created" response
@@ -47754,64 +47754,64 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateJiraIssueRequestArray{
-		Data: []datadogV2.CreateJiraIssueRequestData{
-			{
-				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-							{
-								Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateJiraIssues(ctx, body)
+    body := datadogV2.CreateJiraIssueRequestArray{
+        Data: []datadogV2.CreateJiraIssueRequestData{
+            {
+                Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                            {
+                                Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateJiraIssues(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create Jira issues for security findings returns "Created" response
@@ -47819,87 +47819,87 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateJiraIssueRequestArray{
-		Data: []datadogV2.CreateJiraIssueRequestData{
-			{
-				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-			},
-			{
-				Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
-					Title:       datadog.PtrString("A title"),
-					Description: datadog.PtrString("A description"),
-				},
-				Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
-					Findings: datadogV2.Findings{
-						Data: []datadogV2.FindingData{
-							{
-								Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
-								Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-							},
-						},
-					},
-					Project: datadogV2.CaseManagementProject{
-						Data: datadogV2.CaseManagementProjectData{
-							Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-							Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-						},
-					},
-				},
-				Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.CreateJiraIssues(ctx, body)
+    body := datadogV2.CreateJiraIssueRequestArray{
+        Data: []datadogV2.CreateJiraIssueRequestData{
+            {
+                Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "eWswLWJsdC1hZm5-aS0wMjRlYTgwMzVkZTU1MGIwYQ==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+            },
+            {
+                Attributes: &datadogV2.CreateJiraIssueRequestDataAttributes{
+                    Title:       datadog.PtrString("A title"),
+                    Description: datadog.PtrString("A description"),
+                },
+                Relationships: &datadogV2.CreateJiraIssueRequestDataRelationships{
+                    Findings: datadogV2.Findings{
+                        Data: []datadogV2.FindingData{
+                            {
+                                Id:   "a3ZoLXNjbS14eXV-aS0wNWY5MGYwMGE4NDg2ODdlOA==",
+                                Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                            },
+                        },
+                    },
+                    Project: datadogV2.CaseManagementProject{
+                        Data: datadogV2.CaseManagementProjectData{
+                            Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                            Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                        },
+                    },
+                },
+                Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.CreateJiraIssues(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.CreateJiraIssues`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.CreateJiraIssues`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Jira issue for security finding returns "Created" response
@@ -47965,9 +47965,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create Jira issue for security findings returns "Created" response
@@ -48038,9 +48038,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create Jira issues for security findings returns "Created" response
@@ -48129,13 +48129,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -48192,9 +48192,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_jira_issues(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -48255,9 +48255,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_jira_issues(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -48337,13 +48337,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_jira_issues(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Jira issue for security finding returns "Created" response
@@ -48379,9 +48379,9 @@ body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
   ],
 })
 p api_instance.create_jira_issues(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create Jira issue for security findings returns "Created" response
@@ -48421,9 +48421,9 @@ body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
   ],
 })
 p api_instance.create_jira_issues(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create Jira issues for security findings returns "Created" response
@@ -48482,13 +48482,13 @@ body = DatadogAPIClient::V2::CreateJiraIssueRequestArray.new({
   ],
 })
 p api_instance.create_jira_issues(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Jira issue for security finding returns "Created" response
@@ -48547,9 +48547,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create Jira issue for security findings returns "Created" response
@@ -48602,9 +48602,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create Jira issues for security findings returns "Created" response
@@ -48667,13 +48667,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -48723,9 +48723,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -48779,9 +48779,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -48854,7 +48854,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -48909,7 +48909,7 @@ Attach security findings to a Jira issue by providing the Jira issue URL. You ca
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -48936,9 +48936,9 @@ Attach security findings to a Jira issue by providing the Jira issue URL. You ca
     "type": "jira_issues"
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -48969,7 +48969,7 @@ Attach security findings to a Jira issue by providing the Jira issue URL. You ca
     "type": "jira_issues"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -49105,7 +49105,7 @@ Case response.
     "type": "cases"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -49130,7 +49130,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -49155,7 +49155,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -49180,7 +49180,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -49188,7 +49188,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -49220,8 +49220,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/security/findings/jira_issues" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -49257,8 +49257,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Attach security finding to a Jira issue returns "OK" response
@@ -49266,57 +49266,57 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AttachJiraIssueRequest{
-		Data: &datadogV2.AttachJiraIssueRequestData{
-			Attributes: &datadogV2.AttachJiraIssueRequestDataAttributes{
-				JiraIssueUrl: "https://datadoghq-sandbox-538.atlassian.net/browse/CSMSEC-105476",
-			},
-			Relationships: &datadogV2.AttachJiraIssueRequestDataRelationships{
-				Findings: datadogV2.Findings{
-					Data: []datadogV2.FindingData{
-						{
-							Id:   "OTQ3NjJkMmYwMTIzMzMxNTc1Y2Q4MTA5NWU0NTBmMDl-ZjE3NjMxZWVkYzBjZGI1NDY2NWY2OGQxZDk4MDY4MmI=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-					},
-				},
-				Project: datadogV2.CaseManagementProject{
-					Data: datadogV2.CaseManagementProjectData{
-						Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-						Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-					},
-				},
-			},
-			Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.AttachJiraIssue(ctx, body)
+    body := datadogV2.AttachJiraIssueRequest{
+        Data: &datadogV2.AttachJiraIssueRequestData{
+            Attributes: &datadogV2.AttachJiraIssueRequestDataAttributes{
+                JiraIssueUrl: "https://datadoghq-sandbox-538.atlassian.net/browse/CSMSEC-105476",
+            },
+            Relationships: &datadogV2.AttachJiraIssueRequestDataRelationships{
+                Findings: datadogV2.Findings{
+                    Data: []datadogV2.FindingData{
+                        {
+                            Id:   "OTQ3NjJkMmYwMTIzMzMxNTc1Y2Q4MTA5NWU0NTBmMDl-ZjE3NjMxZWVkYzBjZGI1NDY2NWY2OGQxZDk4MDY4MmI=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                    },
+                },
+                Project: datadogV2.CaseManagementProject{
+                    Data: datadogV2.CaseManagementProjectData{
+                        Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                        Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                    },
+                },
+            },
+            Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.AttachJiraIssue(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachJiraIssue`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachJiraIssue`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachJiraIssue`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachJiraIssue`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Attach security findings to a Jira issue returns "OK" response
@@ -49324,65 +49324,65 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AttachJiraIssueRequest{
-		Data: &datadogV2.AttachJiraIssueRequestData{
-			Attributes: &datadogV2.AttachJiraIssueRequestDataAttributes{
-				JiraIssueUrl: "https://datadoghq-sandbox-538.atlassian.net/browse/CSMSEC-105476",
-			},
-			Relationships: &datadogV2.AttachJiraIssueRequestDataRelationships{
-				Findings: datadogV2.Findings{
-					Data: []datadogV2.FindingData{
-						{
-							Id:   "OTQ3NjJkMmYwMTIzMzMxNTc1Y2Q4MTA5NWU0NTBmMDl-ZjE3NjMxZWVkYzBjZGI1NDY2NWY2OGQxZDk4MDY4MmI=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-						{
-							Id:   "MTNjN2ZmYWMzMDIxYmU1ZDFiZDRjNWUwN2I1NzVmY2F-YTA3MzllMTUzNWM3NmEyZjdiNzEzOWM5YmViZTMzOGM=",
-							Type: datadogV2.FINDINGDATATYPE_FINDINGS,
-						},
-					},
-				},
-				Project: datadogV2.CaseManagementProject{
-					Data: datadogV2.CaseManagementProjectData{
-						Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
-						Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
-					},
-				},
-			},
-			Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSecurityMonitoringApi(apiClient)
-	resp, r, err := api.AttachJiraIssue(ctx, body)
+    body := datadogV2.AttachJiraIssueRequest{
+        Data: &datadogV2.AttachJiraIssueRequestData{
+            Attributes: &datadogV2.AttachJiraIssueRequestDataAttributes{
+                JiraIssueUrl: "https://datadoghq-sandbox-538.atlassian.net/browse/CSMSEC-105476",
+            },
+            Relationships: &datadogV2.AttachJiraIssueRequestDataRelationships{
+                Findings: datadogV2.Findings{
+                    Data: []datadogV2.FindingData{
+                        {
+                            Id:   "OTQ3NjJkMmYwMTIzMzMxNTc1Y2Q4MTA5NWU0NTBmMDl-ZjE3NjMxZWVkYzBjZGI1NDY2NWY2OGQxZDk4MDY4MmI=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                        {
+                            Id:   "MTNjN2ZmYWMzMDIxYmU1ZDFiZDRjNWUwN2I1NzVmY2F-YTA3MzllMTUzNWM3NmEyZjdiNzEzOWM5YmViZTMzOGM=",
+                            Type: datadogV2.FINDINGDATATYPE_FINDINGS,
+                        },
+                    },
+                },
+                Project: datadogV2.CaseManagementProject{
+                    Data: datadogV2.CaseManagementProjectData{
+                        Id:   "959a6f71-bac8-4027-b1d3-2264f569296f",
+                        Type: datadogV2.CASEMANAGEMENTPROJECTDATATYPE_PROJECTS,
+                    },
+                },
+            },
+            Type: datadogV2.JIRAISSUESDATATYPE_JIRA_ISSUES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSecurityMonitoringApi(apiClient)
+    resp, r, err := api.AttachJiraIssue(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachJiraIssue`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SecurityMonitoringApi.AttachJiraIssue`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachJiraIssue`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SecurityMonitoringApi.AttachJiraIssue`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Attach security finding to a Jira issue returns "OK" response
@@ -49447,9 +49447,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Attach security findings to a Jira issue returns "OK" response
@@ -49518,13 +49518,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -49578,9 +49578,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.attach_jira_issue(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -49638,13 +49638,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.attach_jira_issue(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Attach security finding to a Jira issue returns "OK" response
@@ -49677,9 +49677,9 @@ body = DatadogAPIClient::V2::AttachJiraIssueRequest.new({
   }),
 })
 p api_instance.attach_jira_issue(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Attach security findings to a Jira issue returns "OK" response
@@ -49716,13 +49716,13 @@ body = DatadogAPIClient::V2::AttachJiraIssueRequest.new({
   }),
 })
 p api_instance.attach_jira_issue(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Attach security finding to a Jira issue returns "OK" response
@@ -49780,9 +49780,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Attach security findings to a Jira issue returns "OK" response
@@ -49844,13 +49844,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -49898,9 +49898,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -49952,7 +49952,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

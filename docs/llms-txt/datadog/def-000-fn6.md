@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Tor client IP address identified within AWS environment
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when Tor client activity is seen in AWS CloudTrail management plane logs.

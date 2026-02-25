@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable storing core dump
 ---
 
 # Disable storing core dump
- 
+
 ## Description{% #description %}
 
 The `Storage` option in `[Coredump]` sectionof `/etc/systemd/coredump.conf` can be set to `none` to disable storing core dumps permanently.
@@ -29,7 +29,7 @@ The following script can be run on the host to remediate the issue.
 if rpm --quiet -q systemd; then
 
 if [ -e "/etc/systemd/coredump.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*Storage\s*=\s*/Id" "/etc/systemd/coredump.conf"
 else
     touch "/etc/systemd/coredump.conf"

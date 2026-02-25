@@ -11,9 +11,9 @@ breadcrumbs: Docs > DDSQL Reference
 # DDSQL Reference
 Available for:
 {% icon name="icon-ddsql" /%}
- DDSQL Editor | 
+ DDSQL Editor |
 {% icon name="icon-notebook" /%}
- Notebooks 
+ Notebooks
 ## Overview{% #overview %}
 
 DDSQL is SQL for Datadog data. It implements several standard SQL operations, such as `SELECT`, and allows queries against unstructured data. You can perform actions like getting exactly the data you want by writing your own `SELECT` statement, or querying tags as if they are standard table columns.
@@ -46,9 +46,11 @@ The following SQL syntax is supported:
 
 {% dd %}
 Retrieves rows from a database, with `DISTINCT` filtering out duplicate records.
+
 ```sql
 SELECT DISTINCT customer_id
-FROM orders 
+FROM orders
+
 ```
 
 {% /dd %}
@@ -59,11 +61,13 @@ FROM orders
 
 {% dd %}
 Combines rows from two or more tables based on a related column between them. Supports FULL JOIN, INNER JOIN, LEFT JOIN, RIGHT JOIN.
+
 ```sql
 SELECT orders.order_id, customers.customer_name
 FROM orders
 JOIN customers
-ON orders.customer_id = customers.customer_id 
+ON orders.customer_id = customers.customer_id
+
 ```
 
 {% /dd %}
@@ -74,10 +78,12 @@ ON orders.customer_id = customers.customer_id
 
 {% dd %}
 Groups rows that have the same values in specified columns into summary rows.
+
 ```sql
 SELECT product_id, SUM(quantity)
 FROM sales
-GROUP BY product_id 
+GROUP BY product_id
+
 ```
 
 {% /dd %}
@@ -88,9 +94,11 @@ GROUP BY product_id
 
 {% dd %}
 Concatenates two or more strings together.
+
 ```sql
 SELECT first_name || ' ' || last_name AS full_name
-FROM employees 
+FROM employees
+
 ```
 
 {% /dd %}
@@ -101,10 +109,12 @@ FROM employees
 
 {% dd %}
 Filters records that meet a specified condition.
+
 ```sql
 SELECT *
 FROM employees
-WHERE department = 'Sales' AND name LIKE 'J%' 
+WHERE department = 'Sales' AND name LIKE 'J%'
+
 ```
 
 {% /dd %}
@@ -115,13 +125,15 @@ WHERE department = 'Sales' AND name LIKE 'J%'
 
 {% dd %}
 Provides conditional logic to return different values based on specified conditions.
+
 ```sql
 SELECT order_id,
   CASE
     WHEN quantity > 10 THEN 'Bulk Order'
     ELSE 'Standard Order'
   END AS order_type
-FROM orders 
+FROM orders
+
 ```
 
 {% /dd %}
@@ -132,6 +144,7 @@ FROM orders
 
 {% dd %}
 Performs a calculation across a set of table rows that are related to the current row.
+
 ```sql
 SELECT
   timestamp,
@@ -139,7 +152,8 @@ SELECT
   cpu_usage_percent,
   AVG(cpu_usage_percent) OVER (PARTITION BY service_name ORDER BY timestamp ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg_cpu
 FROM
-  cpu_usage_data 
+  cpu_usage_data
+
 ```
 
 {% /dd %}
@@ -150,10 +164,12 @@ FROM
 
 {% dd %}
 Checks if a value is null or not null.
+
 ```sql
 SELECT *
 FROM orders
-WHERE delivery_date IS NULL 
+WHERE delivery_date IS NULL
+
 ```
 
 {% /dd %}
@@ -164,10 +180,12 @@ WHERE delivery_date IS NULL
 
 {% dd %}
 Specifies the maximum number of records to return.
+
 ```sql
 SELECT *
 FROM customers
-LIMIT 10 
+LIMIT 10
+
 ```
 
 {% /dd %}
@@ -178,10 +196,12 @@ LIMIT 10
 
 {% dd %}
 Skips a specified number of records before starting to return records from the query.
+
 ```sql
 SELECT *
 FROM employees
-OFFSET 20 
+OFFSET 20
+
 ```
 
 {% /dd %}
@@ -192,10 +212,12 @@ OFFSET 20
 
 {% dd %}
 Sorts the result set of a query by one or more columns. Includes ASC, DESC for sorting order.
+
 ```sql
 SELECT *
 FROM sales
-ORDER BY sale_date DESC 
+ORDER BY sale_date DESC
+
 ```
 
 {% /dd %}
@@ -206,11 +228,13 @@ ORDER BY sale_date DESC
 
 {% dd %}
 Filters records that meet a specified condition after grouping.
+
 ```sql
 SELECT product_id, SUM(quantity)
 FROM sales
 GROUP BY product_id
-HAVING SUM(quantity) > 10 
+HAVING SUM(quantity) > 10
+
 ```
 
 {% /dd %}
@@ -221,10 +245,12 @@ HAVING SUM(quantity) > 10
 
 {% dd %}
 Used for specified conditions in queries. Available in `WHERE`, `JOIN` clauses.
+
 ```sql
 SELECT *
 FROM orders
-WHERE order_status IN ('Shipped', 'Pending') 
+WHERE order_status IN ('Shipped', 'Pending')
+
 ```
 
 {% /dd %}
@@ -235,11 +261,13 @@ WHERE order_status IN ('Shipped', 'Pending')
 
 {% dd %}
 This clause is a shorthand for joins where the join columns have the same name in both tables. It takes a comma-separated list of those columns and creates a separate equality condition for each matching pair. For example, joining `T1` and `T2` with `USING (a, b)` is equivalent to `ON T1.a = T2.a AND T1.b = T2.b`.
+
 ```sql
 SELECT orders.order_id, customers.customer_name
 FROM orders
 JOIN customers
-USING (customer_id) 
+USING (customer_id)
+
 ```
 
 {% /dd %}
@@ -250,9 +278,11 @@ USING (customer_id)
 
 {% dd %}
 Renames a column or table with an alias.
+
 ```sql
 SELECT first_name AS name
-FROM employees 
+FROM employees
+
 ```
 
 {% /dd %}
@@ -263,9 +293,11 @@ Arithmetic Operations
 
 {% dd %}
 Performs basic calculations using operators like `+`, `-`, `*`, `/`.
+
 ```sql
 SELECT price, tax, (price * tax) AS total_cost
-FROM products 
+FROM products
+
 ```
 
 {% /dd %}
@@ -406,7 +438,7 @@ WHERE status_code = 200
 ```sql
 SELECT COUNT(request_id) AS total_requests
 FROM logs
-WHERE status_code = 200 
+WHERE status_code = 200
 ```
 
 ### `SUM`{% #sum %}
@@ -635,7 +667,7 @@ FROM
 
 `TO_TIMESTAMP` has two forms:
 
-**Form 1: Convert string to timestamp with format**
+#### Form 1: Convert string to timestamp with format
 
 Supported patterns for date/time formatting:
 
@@ -661,7 +693,7 @@ SELECT
   TO_TIMESTAMP('25/12/2025 04:23 pm', 'DD/MM/YYYY HH:MI am') AS ts
 ```
 
-**Form 2: Convert UNIX epoch timestamp to timestamp**
+#### Form 2: Convert UNIX epoch timestamp to timestamp
 
 ```sql
 SELECT
@@ -861,7 +893,7 @@ All regular expression (regex) functions use the International Components for Un
 | `REGEXP_REPLACE (string input, string pattern, string replacement, integer start, integer N [, string flags ] )` | string           | Replaces the substring that is the Nth match to the pattern, or all such matches if `N` is zero, starting from `start`.                                                                                                                                      |
 
 {% collapsible-section %}
-### Examples
+### REGEXP Examples
 
 ### `REGEXP_LIKE`{% #regexp_like %}
 
@@ -935,7 +967,7 @@ Global; replace *all* matching substrings rather than only the first one
 {% /dl %}
 
 {% collapsible-section %}
-### Examples
+### Example Usage
 
 ### `i` flag{% #i-flag %}
 
@@ -1019,6 +1051,7 @@ Table functions are used to query logs, metrics, and other unstructured data sou
       service   VARCHAR,
       message   VARCHAR
   )
+
 ``` |
 | dd.metrics_scalar(
     query varchar,
@@ -1032,6 +1065,7 @@ Table functions are used to query logs, metrics, and other unstructured data sou
       TIMESTAMP '2025-07-17 00:00:00.000-04:00'
   )
   ORDER BY value DESC;
+
 ```                                                   |
 | dd.metrics_timeseries(
     query varchar [, from_timestamp timestamp, to_timestamp timestamp]
@@ -1043,6 +1077,7 @@ Table functions are used to query logs, metrics, and other unstructured data sou
       TIMESTAMP '2025-07-17 00:00:00.000-04:00'
   )
   ORDER BY timestamp, service;
+
 ```                                                    |
 
 ## Tags{% #tags %}

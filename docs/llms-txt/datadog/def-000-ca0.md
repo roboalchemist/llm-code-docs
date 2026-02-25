@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable the CUPS Service
 ---
 
 # Disable the CUPS Service
- 
+
 ## Description{% #description %}
 
 The `cups` service can be disabled with the following command:

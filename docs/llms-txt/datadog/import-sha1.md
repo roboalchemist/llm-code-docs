@@ -53,15 +53,14 @@ Stay up-to-date with the latest security recommendations and best practices to e
 package main
 
 import (
-	"crypto/sha1"
-	"fmt"
+    "crypto/sha1"
+    "fmt"
 )
 
 func main() {
-	h := sha1.New()
-	fmt.Printf("% x", h.Sum(nil))
+    h := sha1.New()
+    fmt.Printf("% x", h.Sum(nil))
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should not use basic authentication
-Classification:complianceFramework:cis-kubernetesControl:1.2.2 
+Classification:complianceFramework:cis-kubernetesControl:1.2.2
 ## Description{% #description %}
 
 Do not use basic authentication.

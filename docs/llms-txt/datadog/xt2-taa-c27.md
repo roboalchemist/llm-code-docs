@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not be run with allowPrivilegeEscalation flag set to true
-Classification:complianceFramework:cis-kubernetesControl:5.2.5 
+Classification:complianceFramework:cis-kubernetesControl:5.2.5
 ## Description{% #description %}
 
 Do not generally permit containers to be run with the allowPrivilegeEscalation flag set to true.

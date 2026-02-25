@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker server certificate key file needs to have permissions of 400
-Classification:complianceFramework:cis-dockerControl:3.14 
+Classification:complianceFramework:cis-dockerControl:3.14
 ## Description{% #description %}
 
 You should verify that the Docker server certificate key file, the file that is passed along with the `--tlskey` parameter, has permissions of 400.

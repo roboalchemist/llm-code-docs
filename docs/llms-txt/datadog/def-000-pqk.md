@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall ypserv Package
 ---
 
 # Uninstall ypserv Package
- 
+
 ## Description{% #description %}
 
 The `ypserv` package can be removed with the following command:

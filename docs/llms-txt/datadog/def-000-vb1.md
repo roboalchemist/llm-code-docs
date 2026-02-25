@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Delete Security Solution' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance the detection of suspicious activity and gain insights into changes made to active security solutions, it is recommended to create an activity log alert specifically for the "Delete Security Solution" event. By monitoring these events, you can quickly detect any unauthorized deletions of security solutions, reducing the time it takes to identify and respond to potential security threats.

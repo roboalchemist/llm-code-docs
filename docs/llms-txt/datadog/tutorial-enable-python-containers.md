@@ -160,7 +160,7 @@ Now that you have a working Python application, configure it to enable tracing.
 1. Within the notes application Dockerfile, `docker/containers/exercise/Dockerfile.notes`, change the CMD line that starts the application to use the `ddtrace` package:
 
    ```
-   # Run the application with Datadog 
+   # Run the application with Datadog
    CMD ["ddtrace-run", "python", "-m", "notes_app.app"]
    ```
 
@@ -198,8 +198,8 @@ Add the Datadog Agent in the services section of the `docker/containers/exercise
           - DD_API_KEY=<DD_API_KEY>
           - DD_SITE=datadoghq.com  # Default. Change to eu.datadoghq.com, us3.datadoghq.com, us5.datadoghq.com as appropriate for your org
           - DD_APM_ENABLED=true    # Enable APM
-       volumes: 
-          - /var/run/docker.sock:/var/run/docker.sock:ro 
+       volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
           - /proc/:/host/proc/:ro
           - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
    ```
@@ -312,7 +312,7 @@ The following steps walk you through adding annotations to the code to trace som
 
    ```python
    class NotesHelper:
-   
+
        @tracer.wrap(service="notes_helper")
        def long_running_process(self):
            time.sleep(.3)
@@ -354,7 +354,7 @@ The sample project includes a second application called `calendar_app` that retu
 1. Configure the calendar app for tracing by adding `dd_trace` to the startup command in the Dockerfile, like you previously did for the notes app. Open `docker/containers/exercise/Dockerfile.calendar` and update the CMD line like this:
 
    ```
-   CMD ["ddtrace-run", "python", "-m", "calendar_app.app"] 
+   CMD ["ddtrace-run", "python", "-m", "calendar_app.app"]
    ```
 
 1. Apply Universal Service Tags, just like we did for the notes app. Add the following environment variables in the `Dockerfile.calendar` file:

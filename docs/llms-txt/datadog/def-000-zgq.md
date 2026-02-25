@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 setting 'EBS encryption by default' should be enabled
- 
+
 ## Description{% #description %}
 
 Enabling the EC2 setting 'EBS encryption by default' ensures that all new block storage volumes and snapshots are automatically encrypted, providing data protection at rest. This setting helps to prevent inadvertent data exposure by eliminating the need for manual encryption configuration for each new volume. This aids in maintaining a consistent security posture and simplifies compliance with regulatory requirements for data protection. **Note**: This setting is configured at a per-account, per-region level.

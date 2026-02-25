@@ -99,6 +99,5 @@ var a = (new Foo()).bar;
 // var a = new Person('Name', 12)
 // var a = new ((Person))('Name');
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

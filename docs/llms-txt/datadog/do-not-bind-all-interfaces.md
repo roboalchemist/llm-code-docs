@@ -50,12 +50,11 @@ import ("net")
 
 func main(){
     // Bad
-    http.ListenAndServe("0.0.0.0", nil) 
+    http.ListenAndServe("0.0.0.0", nil)
 
     // Bad
     http.ListenAndServeTLS("0.0.0.0", "cert.pem", "key.pem", nil)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

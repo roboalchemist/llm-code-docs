@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Disable Accepting ICMP Redirects for All IPv6 Interfaces
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv6.conf.all.accept_redirects` kernel parameter, run the following command:
@@ -76,7 +76,7 @@ fi
 
 #
 # If net.ipv6.conf.all.accept_redirects present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv6.conf.all.accept_redirects = value" to /etc/sysctl.conf
+#   else, add "net.ipv6.conf.all.accept_redirects = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB clusters should be deployed across multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 This control verifies whether an Amazon Neptune DB cluster has read replica instances spread across multiple Availability Zones (AZs). The control fails if the cluster is only deployed in a single AZ.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cognito identity pools should only allow authenticated identities
- 
+
 ## Description{% #description %}
 
 Cognito identity pools should not allow unauthenticated identities to assume IAM roles. When this parameter is enabled, it allows anonymous users to access AWS resources through the identity pool, which can introduce security risks by providing unauthorized access to your AWS environment.

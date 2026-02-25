@@ -37,7 +37,7 @@ If you haven't installed a Datadog Agent on your machine, install one now.
 
    ```shell
    DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=<YOUR_API_KEY> DD_SITE="datadoghq.com" bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script.sh)"
-      
+
 ```
 
 To send data to a Datadog site other than `datadoghq.com`, replace the `DD_SITE` environment variable with [your Datadog site](https://docs.datadoghq.com/getting_started/site/).
@@ -360,7 +360,7 @@ And also the lines that set tags on errors:
             span.setTag(Tags.ERROR, true);
             span.setTag(DDTags.ERROR_MSG, e.getMessage());
             span.setTag(DDTags.ERROR_TYPE, e.getClass().getName());
-   
+
             final StringWriter errorString = new StringWriter();
             e.printStackTrace(new PrintWriter(errorString));
             span.setTag(DDTags.ERROR_STACK, errorString.toString());

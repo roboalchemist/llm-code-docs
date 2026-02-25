@@ -440,7 +440,7 @@ If you use Amazon ECS (such as on EC2), in your Datadog Agent container definiti
 
 ```json
     "environment": [
-	// other environment variables for the Datadog Agent
+    // other environment variables for the Datadog Agent
         {
           "name": "DD_APM_IGNORE_RESOURCES",
           "value": "Api::HealthchecksController#index$"

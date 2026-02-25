@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Sudo Logfile Exists - sudo logfile
- 
+
 ## Description{% #description %}
 
 A custom log sudo file can be configured with the 'logfile' tag. This rule configures a sudo custom logfile at the default location suggested by CIS, which uses /var/log/sudo.log.
@@ -41,12 +41,12 @@ if /usr/sbin/visudo -qcf /etc/sudoers; then
     else
         # sudoers file defines Option logfile, remediate if appropriate value is not set
         if ! grep -P "^[\s]*Defaults.*\blogfile=${var_sudo_logfile}\b.*$" /etc/sudoers; then
-            
+
             escaped_variable=${var_sudo_logfile//$'/'/$'\/'}
             sed -Ei "s/(^[\s]*Defaults.*\blogfile=)[-]?.+(\b.*$)/\1$escaped_variable\2/" /etc/sudoers
         fi
     fi
-    
+
     # Check validity of sudoers and cleanup bak
     if /usr/sbin/visudo -qcf /etc/sudoers; then
         rm -f /etc/sudoers.bak

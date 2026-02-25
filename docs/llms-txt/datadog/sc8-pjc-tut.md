@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Local account password modif
 ---
 
 # Local account password modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## What happened{% #what-happened %}
 
 `{{ @process.comm }}` changed a local account password.

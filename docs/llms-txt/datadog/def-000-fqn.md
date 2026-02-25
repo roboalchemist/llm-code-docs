@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows malware protection e
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1211-exploitation-for-defense-evasion](https://attack.mitre.org/techniques/T1211) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1211-exploitation-for-defense-evasion](https://attack.mitre.org/techniques/T1211)
 ## Goal{% #goal %}
 
 Detects when the Windows Malware Protection Engine (MsMpEng) crashes.

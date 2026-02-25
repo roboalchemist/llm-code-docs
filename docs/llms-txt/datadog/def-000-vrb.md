@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Server parameter 'log_disconnections' should be enabled for PostgreSQL Database Server
- 
+
 ## Description{% #description %}
 
 Enabling `log_disconnections` helps PostgreSQL Database to log the end of a session, including duration, which in turn generates query and error logs. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.

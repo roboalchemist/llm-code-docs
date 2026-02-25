@@ -51,6 +51,5 @@ class MyModel(models.Model):
 class MyModel(models.Model):
   my_field = models.DateField(help_text = "Use format YYYY/MM/DD")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

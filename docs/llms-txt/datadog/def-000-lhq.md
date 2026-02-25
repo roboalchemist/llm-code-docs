@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Cloudflare L7 DDOS detected
 ---
 
 # Cloudflare L7 DDOS detected
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1498-network-denial-of-service](https://attack.mitre.org/techniques/T1498) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1498-network-denial-of-service](https://attack.mitre.org/techniques/T1498)
 ## Goal{% #goal %}
 
 Detect when a Layer 7 Distributed Denial of Service (DDoS) occurs.

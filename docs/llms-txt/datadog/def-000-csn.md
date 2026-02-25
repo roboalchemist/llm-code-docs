@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall DHCP Server Packag
 ---
 
 # Uninstall DHCP Server Package
- 
+
 ## Description{% #description %}
 
 If the system does not need to act as a DHCP server, the dhcp package can be uninstalled. The `isc-dhcp-server` package can be removed with the following command:

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install systemd-journal-remo
 ---
 
 # Install systemd-journal-remote Package
- 
+
 ## Description{% #description %}
 
 Journald (via systemd-journal-remote ) supports the ability to send log events it gathers to a remote log host or to receive messages from remote hosts, thus enabling centralised log management.

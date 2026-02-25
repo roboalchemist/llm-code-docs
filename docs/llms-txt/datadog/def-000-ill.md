@@ -12,7 +12,7 @@ breadcrumbs: >-
 ---
 
 # Bedrock Agent Guardrails should have the Sensitive Information filter enabled and BLOCK highly sensitive PII entities
- 
+
 ## Description{% #description %}
 
 This control verifies that all Amazon Bedrock Agent aliases point to Agent versions with an Amazon Guardrail policy attached, specifically ensuring that the Sensitive Information filter is enabled and configured to **BLOCK** all highly sensitive PII entities.

@@ -39,27 +39,27 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azuresbqueue",
-	"id": "6bf0b7c5-20c4-46ac-8afb-48ea207c3961",
-	"region": "northcentralus",
-	"mapPos": [4,2],
-	"tier": "Standard",
-	"operationsPerMonth": 0,
-	"brokeredConnections": 0,
-	"hybridConnections": 0,
-	"dataTransferGb": 0,
-	"relayHours": 0,
-	"relayMessages": 0,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/service-bus",
-	"locked": true
+    "type": "azuresbqueue",
+    "id": "6bf0b7c5-20c4-46ac-8afb-48ea207c3961",
+    "region": "northcentralus",
+    "mapPos": [4,2],
+    "tier": "Standard",
+    "operationsPerMonth": 0,
+    "brokeredConnections": 0,
+    "hybridConnections": 0,
+    "dataTransferGb": 0,
+    "relayHours": 0,
+    "relayMessages": 0,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/service-bus",
+    "locked": true
 }
 ```
 

@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Sensitive Data Scanner
 ---
 
-# Sensitive Data Scanner
-
 Create, update, delete, and retrieve sensitive data scanner groups and rules. See the [Sensitive Data Scanner page](https://docs.datadoghq.com/sensitive_data_scanner/) for more information.
 
 ## List Scanning Groups{% #list-scanning-groups %}
@@ -287,13 +285,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -315,7 +313,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Scanning Groups returns "OK" response
@@ -329,7 +327,7 @@ p api_instance.list_scanning_groups()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Scanning Groups returns "OK" response
@@ -337,29 +335,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.ListScanningGroups(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.ListScanningGroups(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ListScanningGroups`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ListScanningGroups`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ListScanningGroups`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ListScanningGroups`:\n%s\n", responseContent)
 }
 ```
 
@@ -367,7 +365,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Scanning Groups returns "OK" response
@@ -400,7 +398,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Scanning Groups returns "OK" response
@@ -424,7 +422,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -473,8 +471,6 @@ Reorder the list of groups. This endpoint requires the `data_scanner_write` perm
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -632,7 +628,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -657,8 +653,8 @@ API error response.
   "meta": {}
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Reorder Groups returns "OK" response
@@ -666,52 +662,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "scanning_group" in the system
-	GroupDataID := os.Getenv("GROUP_DATA_ID")
+    // there is a valid "scanning_group" in the system
+    GroupDataID := os.Getenv("GROUP_DATA_ID")
 
-	// a valid "configuration" in the system
-	ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
+    // a valid "configuration" in the system
+    ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerConfigRequest{
-		Data: datadogV2.SensitiveDataScannerReorderConfig{
-			Relationships: &datadogV2.SensitiveDataScannerConfigurationRelationships{
-				Groups: &datadogV2.SensitiveDataScannerGroupList{
-					Data: []datadogV2.SensitiveDataScannerGroupItem{
-						{
-							Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
-							Id:   datadog.PtrString(GroupDataID),
-						},
-					},
-				},
-			},
-			Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
-			Id:   datadog.PtrString(ConfigurationDataID),
-		},
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.ReorderScanningGroups(ctx, body)
+    body := datadogV2.SensitiveDataScannerConfigRequest{
+        Data: datadogV2.SensitiveDataScannerReorderConfig{
+            Relationships: &datadogV2.SensitiveDataScannerConfigurationRelationships{
+                Groups: &datadogV2.SensitiveDataScannerGroupList{
+                    Data: []datadogV2.SensitiveDataScannerGroupItem{
+                        {
+                            Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
+                            Id:   datadog.PtrString(GroupDataID),
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
+            Id:   datadog.PtrString(ConfigurationDataID),
+        },
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.ReorderScanningGroups(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ReorderScanningGroups`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ReorderScanningGroups`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ReorderScanningGroups`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ReorderScanningGroups`:\n%s\n", responseContent)
 }
 ```
 
@@ -719,7 +715,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Reorder Groups returns "OK" response
@@ -787,7 +783,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -844,7 +840,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Reorder Groups returns "OK" response
@@ -882,7 +878,7 @@ p api_instance.reorder_scanning_groups(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Reorder Groups returns "OK" response
@@ -934,7 +930,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1130,13 +1126,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/standard-patterns" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1158,7 +1154,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List standard patterns returns "OK" response
@@ -1172,7 +1168,7 @@ p api_instance.list_standard_patterns()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List standard patterns returns "OK" response
@@ -1180,29 +1176,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.ListStandardPatterns(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.ListStandardPatterns(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ListStandardPatterns`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.ListStandardPatterns`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ListStandardPatterns`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.ListStandardPatterns`:\n%s\n", responseContent)
 }
 ```
 
@@ -1210,7 +1206,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List standard patterns returns "OK" response
@@ -1243,7 +1239,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List standard patterns returns "OK" response
@@ -1267,7 +1263,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1316,8 +1312,6 @@ Create a scanning group. The request MAY include a configuration relationship. A
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1545,7 +1539,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/groups" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1580,8 +1574,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Scanning Group returns "OK" response
@@ -1589,59 +1583,59 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// a valid "configuration" in the system
-	ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
+    // a valid "configuration" in the system
+    ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerGroupCreateRequest{
-		Meta: &datadogV2.SensitiveDataScannerMetaVersionOnly{},
-		Data: &datadogV2.SensitiveDataScannerGroupCreate{
-			Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP,
-			Attributes: datadogV2.SensitiveDataScannerGroupAttributes{
-				Name:      datadog.PtrString("Example-Sensitive-Data-Scanner"),
-				IsEnabled: datadog.PtrBool(false),
-				ProductList: []datadogV2.SensitiveDataScannerProduct{
-					datadogV2.SENSITIVEDATASCANNERPRODUCT_LOGS,
-				},
-				Filter: &datadogV2.SensitiveDataScannerFilter{
-					Query: datadog.PtrString("*"),
-				},
-			},
-			Relationships: &datadogV2.SensitiveDataScannerGroupRelationships{
-				Configuration: &datadogV2.SensitiveDataScannerConfigurationData{
-					Data: &datadogV2.SensitiveDataScannerConfiguration{
-						Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
-						Id:   datadog.PtrString(ConfigurationDataID),
-					},
-				},
-				Rules: &datadogV2.SensitiveDataScannerRuleData{
-					Data: []datadogV2.SensitiveDataScannerRule{},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.CreateScanningGroup(ctx, body)
+    body := datadogV2.SensitiveDataScannerGroupCreateRequest{
+        Meta: &datadogV2.SensitiveDataScannerMetaVersionOnly{},
+        Data: &datadogV2.SensitiveDataScannerGroupCreate{
+            Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP,
+            Attributes: datadogV2.SensitiveDataScannerGroupAttributes{
+                Name:      datadog.PtrString("Example-Sensitive-Data-Scanner"),
+                IsEnabled: datadog.PtrBool(false),
+                ProductList: []datadogV2.SensitiveDataScannerProduct{
+                    datadogV2.SENSITIVEDATASCANNERPRODUCT_LOGS,
+                },
+                Filter: &datadogV2.SensitiveDataScannerFilter{
+                    Query: datadog.PtrString("*"),
+                },
+            },
+            Relationships: &datadogV2.SensitiveDataScannerGroupRelationships{
+                Configuration: &datadogV2.SensitiveDataScannerConfigurationData{
+                    Data: &datadogV2.SensitiveDataScannerConfiguration{
+                        Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
+                        Id:   datadog.PtrString(ConfigurationDataID),
+                    },
+                },
+                Rules: &datadogV2.SensitiveDataScannerRuleData{
+                    Data: []datadogV2.SensitiveDataScannerRule{},
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.CreateScanningGroup(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningGroup`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningGroup`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningGroup`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningGroup`:\n%s\n", responseContent)
 }
 ```
 
@@ -1649,7 +1643,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Scanning Group returns "OK" response
@@ -1723,7 +1717,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1793,7 +1787,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Scanning Group returns "OK" response
@@ -1838,7 +1832,7 @@ p api_instance.create_scanning_group(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Scanning Group returns "OK" response
@@ -1902,7 +1896,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1990,8 +1984,6 @@ Update a group, including the order of the rules. Rules within the group are reo
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2189,7 +2181,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/groups/${group_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2225,8 +2217,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Scanning Group returns "OK" response
@@ -2234,63 +2226,63 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "scanning_group" in the system
-	GroupDataID := os.Getenv("GROUP_DATA_ID")
+    // there is a valid "scanning_group" in the system
+    GroupDataID := os.Getenv("GROUP_DATA_ID")
 
-	// a valid "configuration" in the system
-	ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
+    // a valid "configuration" in the system
+    ConfigurationDataID := os.Getenv("CONFIGURATION_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerGroupUpdateRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-		Data: datadogV2.SensitiveDataScannerGroupUpdate{
-			Id:   datadog.PtrString(GroupDataID),
-			Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
-			Attributes: &datadogV2.SensitiveDataScannerGroupAttributes{
-				Name:      datadog.PtrString("Example-Sensitive-Data-Scanner"),
-				IsEnabled: datadog.PtrBool(false),
-				ProductList: []datadogV2.SensitiveDataScannerProduct{
-					datadogV2.SENSITIVEDATASCANNERPRODUCT_LOGS,
-				},
-				Filter: &datadogV2.SensitiveDataScannerFilter{
-					Query: datadog.PtrString("*"),
-				},
-			},
-			Relationships: &datadogV2.SensitiveDataScannerGroupRelationships{
-				Configuration: &datadogV2.SensitiveDataScannerConfigurationData{
-					Data: &datadogV2.SensitiveDataScannerConfiguration{
-						Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
-						Id:   datadog.PtrString(ConfigurationDataID),
-					},
-				},
-				Rules: &datadogV2.SensitiveDataScannerRuleData{
-					Data: []datadogV2.SensitiveDataScannerRule{},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.UpdateScanningGroup(ctx, GroupDataID, body)
+    body := datadogV2.SensitiveDataScannerGroupUpdateRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+        Data: datadogV2.SensitiveDataScannerGroupUpdate{
+            Id:   datadog.PtrString(GroupDataID),
+            Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
+            Attributes: &datadogV2.SensitiveDataScannerGroupAttributes{
+                Name:      datadog.PtrString("Example-Sensitive-Data-Scanner"),
+                IsEnabled: datadog.PtrBool(false),
+                ProductList: []datadogV2.SensitiveDataScannerProduct{
+                    datadogV2.SENSITIVEDATASCANNERPRODUCT_LOGS,
+                },
+                Filter: &datadogV2.SensitiveDataScannerFilter{
+                    Query: datadog.PtrString("*"),
+                },
+            },
+            Relationships: &datadogV2.SensitiveDataScannerGroupRelationships{
+                Configuration: &datadogV2.SensitiveDataScannerConfigurationData{
+                    Data: &datadogV2.SensitiveDataScannerConfiguration{
+                        Type: datadogV2.SENSITIVEDATASCANNERCONFIGURATIONTYPE_SENSITIVE_DATA_SCANNER_CONFIGURATIONS.Ptr(),
+                        Id:   datadog.PtrString(ConfigurationDataID),
+                    },
+                },
+                Rules: &datadogV2.SensitiveDataScannerRuleData{
+                    Data: []datadogV2.SensitiveDataScannerRule{},
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.UpdateScanningGroup(ctx, GroupDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.UpdateScanningGroup`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.UpdateScanningGroup`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.UpdateScanningGroup`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.UpdateScanningGroup`:\n%s\n", responseContent)
 }
 ```
 
@@ -2298,7 +2290,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Scanning Group returns "OK" response
@@ -2377,7 +2369,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2451,7 +2443,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Scanning Group returns "OK" response
@@ -2500,7 +2492,7 @@ p api_instance.update_scanning_group(GROUP_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Scanning Group returns "OK" response
@@ -2569,7 +2561,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2662,8 +2654,6 @@ Delete a given group. This endpoint requires the `data_scanner_write` permission
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2814,7 +2804,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/groups/${group_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2825,8 +2815,8 @@ API error response.
   "meta": {}
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete Scanning Group returns "OK" response
@@ -2834,35 +2824,35 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "scanning_group" in the system
-	GroupDataID := os.Getenv("GROUP_DATA_ID")
+    // there is a valid "scanning_group" in the system
+    GroupDataID := os.Getenv("GROUP_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerGroupDeleteRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.DeleteScanningGroup(ctx, GroupDataID, body)
+    body := datadogV2.SensitiveDataScannerGroupDeleteRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.DeleteScanningGroup(ctx, GroupDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.DeleteScanningGroup`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.DeleteScanningGroup`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.DeleteScanningGroup`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.DeleteScanningGroup`:\n%s\n", responseContent)
 }
 ```
 
@@ -2870,7 +2860,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Scanning Group returns "OK" response
@@ -2913,7 +2903,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2947,7 +2937,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Scanning Group returns "OK" response
@@ -2968,7 +2958,7 @@ p api_instance.delete_scanning_group(GROUP_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete Scanning Group returns "OK" response
@@ -2998,7 +2988,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3058,8 +3048,6 @@ Create a scanning rule in a sensitive data scanner group, ordered last. The post
 
 #### Body Data (required)
 
-
-
 {% tab title="Model" %}
 
 | Parent field                   | Field                             | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -3103,7 +3091,7 @@ Create a scanning rule in a sensitive data scanner group, ordered last. The post
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -3146,7 +3134,7 @@ Create a scanning rule in a sensitive data scanner group, ordered last. The post
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -3381,7 +3369,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3427,8 +3415,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3464,8 +3452,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Scanning Rule returns "OK" response
@@ -3473,74 +3461,74 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "scanning_group" in the system
-	GroupDataID := os.Getenv("GROUP_DATA_ID")
+    // there is a valid "scanning_group" in the system
+    GroupDataID := os.Getenv("GROUP_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerRuleCreateRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-		Data: datadogV2.SensitiveDataScannerRuleCreate{
-			Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE,
-			Attributes: datadogV2.SensitiveDataScannerRuleAttributes{
-				Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
-				Pattern: datadog.PtrString("pattern"),
-				Namespaces: []string{
-					"admin",
-				},
-				ExcludedNamespaces: []string{
-					"admin.name",
-				},
-				TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
-					Type: datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_NONE.Ptr(),
-				},
-				Tags: []string{
-					"sensitive_data:true",
-				},
-				IsEnabled: datadog.PtrBool(true),
-				Priority:  datadog.PtrInt64(1),
-				IncludedKeywordConfiguration: &datadogV2.SensitiveDataScannerIncludedKeywordConfiguration{
-					Keywords: []string{
-						"credit card",
-					},
-					CharacterCount: 35,
-				},
-			},
-			Relationships: datadogV2.SensitiveDataScannerRuleRelationships{
-				Group: &datadogV2.SensitiveDataScannerGroupData{
-					Data: &datadogV2.SensitiveDataScannerGroup{
-						Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
-						Id:   datadog.PtrString(GroupDataID),
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.CreateScanningRule(ctx, body)
+    body := datadogV2.SensitiveDataScannerRuleCreateRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+        Data: datadogV2.SensitiveDataScannerRuleCreate{
+            Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE,
+            Attributes: datadogV2.SensitiveDataScannerRuleAttributes{
+                Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
+                Pattern: datadog.PtrString("pattern"),
+                Namespaces: []string{
+                    "admin",
+                },
+                ExcludedNamespaces: []string{
+                    "admin.name",
+                },
+                TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
+                    Type: datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_NONE.Ptr(),
+                },
+                Tags: []string{
+                    "sensitive_data:true",
+                },
+                IsEnabled: datadog.PtrBool(true),
+                Priority:  datadog.PtrInt64(1),
+                IncludedKeywordConfiguration: &datadogV2.SensitiveDataScannerIncludedKeywordConfiguration{
+                    Keywords: []string{
+                        "credit card",
+                    },
+                    CharacterCount: 35,
+                },
+            },
+            Relationships: datadogV2.SensitiveDataScannerRuleRelationships{
+                Group: &datadogV2.SensitiveDataScannerGroupData{
+                    Data: &datadogV2.SensitiveDataScannerGroup{
+                        Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
+                        Id:   datadog.PtrString(GroupDataID),
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.CreateScanningRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create Scanning Rule with should_save_match returns "OK" response
@@ -3548,60 +3536,60 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "scanning_group" in the system
-	GroupDataID := os.Getenv("GROUP_DATA_ID")
+    // there is a valid "scanning_group" in the system
+    GroupDataID := os.Getenv("GROUP_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerRuleCreateRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-		Data: datadogV2.SensitiveDataScannerRuleCreate{
-			Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE,
-			Attributes: datadogV2.SensitiveDataScannerRuleAttributes{
-				Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
-				Pattern: datadog.PtrString("pattern"),
-				TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
-					Type:              datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_REPLACEMENT_STRING.Ptr(),
-					ReplacementString: datadog.PtrString("REDACTED"),
-					ShouldSaveMatch:   datadog.PtrBool(true),
-				},
-				Tags: []string{
-					"sensitive_data:true",
-				},
-				IsEnabled: datadog.PtrBool(true),
-				Priority:  datadog.PtrInt64(1),
-			},
-			Relationships: datadogV2.SensitiveDataScannerRuleRelationships{
-				Group: &datadogV2.SensitiveDataScannerGroupData{
-					Data: &datadogV2.SensitiveDataScannerGroup{
-						Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
-						Id:   datadog.PtrString(GroupDataID),
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.CreateScanningRule(ctx, body)
+    body := datadogV2.SensitiveDataScannerRuleCreateRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+        Data: datadogV2.SensitiveDataScannerRuleCreate{
+            Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE,
+            Attributes: datadogV2.SensitiveDataScannerRuleAttributes{
+                Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
+                Pattern: datadog.PtrString("pattern"),
+                TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
+                    Type:              datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_REPLACEMENT_STRING.Ptr(),
+                    ReplacementString: datadog.PtrString("REDACTED"),
+                    ShouldSaveMatch:   datadog.PtrBool(true),
+                },
+                Tags: []string{
+                    "sensitive_data:true",
+                },
+                IsEnabled: datadog.PtrBool(true),
+                Priority:  datadog.PtrInt64(1),
+            },
+            Relationships: datadogV2.SensitiveDataScannerRuleRelationships{
+                Group: &datadogV2.SensitiveDataScannerGroupData{
+                    Data: &datadogV2.SensitiveDataScannerGroup{
+                        Type: datadogV2.SENSITIVEDATASCANNERGROUPTYPE_SENSITIVE_DATA_SCANNER_GROUP.Ptr(),
+                        Id:   datadog.PtrString(GroupDataID),
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.CreateScanningRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.CreateScanningRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.CreateScanningRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -3609,7 +3597,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Scanning Rule returns "OK" response
@@ -3687,7 +3675,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create Scanning Rule with should_save_match returns "OK" response
@@ -3765,7 +3753,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3842,7 +3830,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3910,7 +3898,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Scanning Rule returns "OK" response
@@ -3962,7 +3950,7 @@ body = DatadogAPIClient::V2::SensitiveDataScannerRuleCreateRequest.new({
 p api_instance.create_scanning_rule(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create Scanning Rule with should_save_match returns "OK" response
@@ -4008,7 +3996,7 @@ p api_instance.create_scanning_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Scanning Rule returns "OK" response
@@ -4073,7 +4061,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create Scanning Rule with should_save_match returns "OK" response
@@ -4135,7 +4123,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4193,7 +4181,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4282,8 +4270,6 @@ Update a scanning rule. The request body MUST NOT include a standard_pattern rel
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4491,7 +4477,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4525,8 +4511,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Scanning Rule returns "OK" response
@@ -4534,58 +4520,58 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// the "scanning_group" has a "scanning_rule"
-	RuleDataID := os.Getenv("RULE_DATA_ID")
+    // the "scanning_group" has a "scanning_rule"
+    RuleDataID := os.Getenv("RULE_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerRuleUpdateRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-		Data: datadogV2.SensitiveDataScannerRuleUpdate{
-			Id:   datadog.PtrString(RuleDataID),
-			Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE.Ptr(),
-			Attributes: &datadogV2.SensitiveDataScannerRuleAttributes{
-				Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
-				Pattern: datadog.PtrString("pattern"),
-				TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
-					Type: datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_NONE.Ptr(),
-				},
-				Tags: []string{
-					"sensitive_data:true",
-				},
-				IsEnabled: datadog.PtrBool(true),
-				Priority:  datadog.PtrInt64(5),
-				IncludedKeywordConfiguration: &datadogV2.SensitiveDataScannerIncludedKeywordConfiguration{
-					Keywords: []string{
-						"credit card",
-						"cc",
-					},
-					CharacterCount: 35,
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.UpdateScanningRule(ctx, RuleDataID, body)
+    body := datadogV2.SensitiveDataScannerRuleUpdateRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+        Data: datadogV2.SensitiveDataScannerRuleUpdate{
+            Id:   datadog.PtrString(RuleDataID),
+            Type: datadogV2.SENSITIVEDATASCANNERRULETYPE_SENSITIVE_DATA_SCANNER_RULE.Ptr(),
+            Attributes: &datadogV2.SensitiveDataScannerRuleAttributes{
+                Name:    datadog.PtrString("Example-Sensitive-Data-Scanner"),
+                Pattern: datadog.PtrString("pattern"),
+                TextReplacement: &datadogV2.SensitiveDataScannerTextReplacement{
+                    Type: datadogV2.SENSITIVEDATASCANNERTEXTREPLACEMENTTYPE_NONE.Ptr(),
+                },
+                Tags: []string{
+                    "sensitive_data:true",
+                },
+                IsEnabled: datadog.PtrBool(true),
+                Priority:  datadog.PtrInt64(5),
+                IncludedKeywordConfiguration: &datadogV2.SensitiveDataScannerIncludedKeywordConfiguration{
+                    Keywords: []string{
+                        "credit card",
+                        "cc",
+                    },
+                    CharacterCount: 35,
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.UpdateScanningRule(ctx, RuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.UpdateScanningRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.UpdateScanningRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.UpdateScanningRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.UpdateScanningRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -4593,7 +4579,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Scanning Rule returns "OK" response
@@ -4662,7 +4648,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4727,7 +4713,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Scanning Rule returns "OK" response
@@ -4771,7 +4757,7 @@ p api_instance.update_scanning_rule(RULE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Scanning Rule returns "OK" response
@@ -4829,7 +4815,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4914,8 +4900,6 @@ Delete a given rule. This endpoint requires the `data_scanner_write` permission.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -5066,7 +5050,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/sensitive-data-scanner/config/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5077,8 +5061,8 @@ API error response.
   "meta": {}
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete Scanning Rule returns "OK" response
@@ -5086,35 +5070,35 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// the "scanning_group" has a "scanning_rule"
-	RuleDataID := os.Getenv("RULE_DATA_ID")
+    // the "scanning_group" has a "scanning_rule"
+    RuleDataID := os.Getenv("RULE_DATA_ID")
 
-	body := datadogV2.SensitiveDataScannerRuleDeleteRequest{
-		Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSensitiveDataScannerApi(apiClient)
-	resp, r, err := api.DeleteScanningRule(ctx, RuleDataID, body)
+    body := datadogV2.SensitiveDataScannerRuleDeleteRequest{
+        Meta: datadogV2.SensitiveDataScannerMetaVersionOnly{},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSensitiveDataScannerApi(apiClient)
+    resp, r, err := api.DeleteScanningRule(ctx, RuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.DeleteScanningRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SensitiveDataScannerApi.DeleteScanningRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.DeleteScanningRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SensitiveDataScannerApi.DeleteScanningRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -5122,7 +5106,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Scanning Rule returns "OK" response
@@ -5164,7 +5148,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5196,7 +5180,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Scanning Rule returns "OK" response
@@ -5217,7 +5201,7 @@ p api_instance.delete_scanning_rule(RULE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete Scanning Rule returns "OK" response
@@ -5247,7 +5231,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

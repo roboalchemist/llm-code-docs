@@ -51,6 +51,5 @@ Time.now
 Date.iso8601('2018-02-04')
 DateTime.iso8601('1867-07-01', Date::CANADA)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

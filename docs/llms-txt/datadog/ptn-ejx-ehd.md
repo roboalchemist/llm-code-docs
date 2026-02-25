@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should set up TLS connection for client authentication
-Classification:complianceFramework:cis-kubernetesControl:1.2.31 
+Classification:complianceFramework:cis-kubernetesControl:1.2.31
 ## Description{% #description %}
 
 Setup TLS connection on the API server.

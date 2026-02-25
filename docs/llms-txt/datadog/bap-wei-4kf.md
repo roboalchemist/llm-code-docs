@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker server certificate file should be owned by root
-Classification:complianceFramework:cis-dockerControl:3.11 
+Classification:complianceFramework:cis-dockerControl:3.11
 ## Description{% #description %}
 
 You should verify that the Docker server certificate file, the file that is passed along with the `--tlscert` parameter, is individual owned and group owned by root.

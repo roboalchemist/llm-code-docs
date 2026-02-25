@@ -46,26 +46,26 @@ Reading continuously from a compressed file without any limit of bytes may read 
 package main
 
 import (
-	"bytes"
-	"compress/bzip2"
-	"io"
-	"os"
+    "bytes"
+    "compress/bzip2"
+    "io"
+    "os"
 )
 
 func main() {
-	buff := []byte{42, 51}
-	b := bytes.NewReader(buff)
+    buff := []byte{42, 51}
+    b := bytes.NewReader(buff)
 
-	r, err := zlib.NewReader(b)
-	if err != nil {
-		panic(err)
-	}
-	_, err = io.CopyBuffer(os.Stdout, r)
-	if err != nil {
-		panic(err)
-	}
+    r, err := zlib.NewReader(b)
+    if err != nil {
+        panic(err)
+    }
+    _, err = io.CopyBuffer(os.Stdout, r)
+    if err != nil {
+        panic(err)
+    }
 
-	r.Close()
+    r.Close()
 }
 ```
 
@@ -73,26 +73,26 @@ func main() {
 package main
 
 import (
-	"bytes"
-	"compress/zlib"
-	"io"
-	"os"
+    "bytes"
+    "compress/zlib"
+    "io"
+    "os"
 )
 
 func main() {
-	buff := []byte{42, 51}
-	b := bytes.NewReader(buff)
+    buff := []byte{42, 51}
+    b := bytes.NewReader(buff)
 
-	r, err := zlib.NewReader(b)
-	if err != nil {
-		panic(err)
-	}
-	_, err = io.Copy(os.Stdout, r)
-	if err != nil {
-		panic(err)
-	}
+    r, err := zlib.NewReader(b)
+    if err != nil {
+        panic(err)
+    }
+    _, err = io.Copy(os.Stdout, r)
+    if err != nil {
+        panic(err)
+    }
 
-	r.Close()
+    r.Close()
 }
 ```
 
@@ -102,28 +102,27 @@ func main() {
 package main
 
 import (
-	"bytes"
-	"compress/bzip2"
-	"io"
-	"os"
+    "bytes"
+    "compress/bzip2"
+    "io"
+    "os"
 )
 
 func main() {
-	buff := []byte{42, 51}
-	b := bytes.NewReader(buff)
+    buff := []byte{42, 51}
+    b := bytes.NewReader(buff)
 
-	r, err := zlib.NewReader(b)
-	if err != nil {
-		panic(err)
-	}
-	_, err = io.CopyN(os.Stdout, r, 64)
-	if err != nil {
-		panic(err)
-	}
+    r, err := zlib.NewReader(b)
+    if err != nil {
+        panic(err)
+    }
+    _, err = io.CopyN(os.Stdout, r, 64)
+    if err != nil {
+        panic(err)
+    }
 
-	r.Close()
+    r.Close()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

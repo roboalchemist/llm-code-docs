@@ -11,9 +11,9 @@ breadcrumbs: >-
 # Mute Issues in Cloud Security
 Available for:
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security Misconfigurations | 
+ Cloud Security Misconfigurations |
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security Identity Risks 
+ Cloud Security Identity Risks
 There may be times when a misconfiguration, issue, or identity risk doesn't match the use case for your business, or you choose to accept it as a known risk. To ignore them, you can mute the underlying misconfiguration, issue, or identity risk for the impacted resources.
 
 For example, the Cloud Security Misconfigurations rule [S3 buckets should have 'Block Public Access' enabled](https://docs.datadoghq.com/security/default_rules/hkp-p6b-f7w/) evaluates whether an S3 bucket is publicly accessible. If you have an S3 bucket with static assets that are meant to be publicly shared, you can mute the misconfiguration for the S3 bucket.

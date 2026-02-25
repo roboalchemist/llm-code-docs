@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Elasticsearch domains should have error logging to CloudWatch Logs enabled
- 
+
 ## Description{% #description %}
 
 This control confirms whether Elasticsearch domains are configured to forward error logs to CloudWatch Logs.

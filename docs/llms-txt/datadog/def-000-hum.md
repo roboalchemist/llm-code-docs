@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569)
 ## Goal{% #goal %}
 
 Detects PowerShell scripts being installed as Windows services, which can be used for persistence and privilege escalation.

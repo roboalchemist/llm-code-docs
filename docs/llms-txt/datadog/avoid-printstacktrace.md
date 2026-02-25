@@ -44,7 +44,7 @@ class Foo {
             myException.printStackTrace();
         } catch (Exception e) {
             if ("foo" != "bar") {
-                e.printStackTrace();               
+                e.printStackTrace();
             }
         }
     }
@@ -62,7 +62,7 @@ class Foo {
             myException.printStackTrace();
         } catch (Exception e) {
             if ("foo" != "bar") {
-                e.printStackTrace();               
+                e.printStackTrace();
             }
         }
     }
@@ -93,6 +93,5 @@ class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

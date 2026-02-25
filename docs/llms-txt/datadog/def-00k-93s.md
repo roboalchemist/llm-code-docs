@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet.conf file should be owned by root
- 
+
 ## Description{% #description %}
 
 The `kubelet.conf` file ownership should be set to `root:root`. The `kubelet.conf` file is the kubeconfig file for the node, and controls various parameters that set the behavior and identity of the worker node. You should set its file ownership to maintain the integrity of the file.

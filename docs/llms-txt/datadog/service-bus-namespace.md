@@ -35,30 +35,30 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azuresbnamespace",
-	"id": "5a5b710a-2a36-421b-9ac9-f94f545f8c46",
-	"region": "northcentralus",
-	"mapPos": [3,-1],
-	"mapSize": [5,5],
-	"nodes": [
-		"3c9f4d24-3653-4da5-a6a5-e375448aff4e",
-		"7f836b25-2a69-4be4-8b35-c0f67480eafd",
-		"6bf0b7c5-20c4-46ac-8afb-48ea207c3961",
-		"afb6e41c-32c6-4e6f-b11d-6606957e4588"
-	],
-	"name": "Namespace",
-	"tier": "Basic",
-	"messagingUnits": 1,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/service-bus",
-	"locked": true
+    "type": "azuresbnamespace",
+    "id": "5a5b710a-2a36-421b-9ac9-f94f545f8c46",
+    "region": "northcentralus",
+    "mapPos": [3,-1],
+    "mapSize": [5,5],
+    "nodes": [
+        "3c9f4d24-3653-4da5-a6a5-e375448aff4e",
+        "7f836b25-2a69-4be4-8b35-c0f67480eafd",
+        "6bf0b7c5-20c4-46ac-8afb-48ea207c3961",
+        "afb6e41c-32c6-4e6f-b11d-6606957e4588"
+    ],
+    "name": "Namespace",
+    "tier": "Basic",
+    "messagingUnits": 1,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/service-bus",
+    "locked": true
 }
 ```
 

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the 'external scripts enabled' database flag set to 'off'
- 
+
 ## Description{% #description %}
 
 It is recommended to set `external scripts enabled` database flag for SQL Server instance to `off`.

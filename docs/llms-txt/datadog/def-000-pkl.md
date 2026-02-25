@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitLab personal access token
 ---
 
 # GitLab personal access token generated
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detects when a user creates a personal access token in GitLab. Personal access tokens provide programmatic access to perform actions on behalf of the user.

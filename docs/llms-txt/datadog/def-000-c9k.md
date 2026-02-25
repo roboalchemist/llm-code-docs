@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/efi/EFI/redhat/user.cfg User Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/efi/EFI/redhat/user.cfg` should be owned by the `root` user to prevent reading or modification of the file. To properly set the owner of `/boot/efi/EFI/redhat/user.cfg`, run the command:
 
 ```
-$ sudo chown root /boot/efi/EFI/redhat/user.cfg 
+$ sudo chown root /boot/efi/EFI/redhat/user.cfg
 ```
 
 ## Rationale{% #rationale %}

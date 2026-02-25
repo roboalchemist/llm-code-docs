@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS task definitions should maintain unique execution/task roles
- 
+
 ## Description{% #description %}
 
 Amazon ECS task definitions should use different IAM roles for task execution and task operations to ensure proper security isolation and least-privilege access. When a task definition uses the same IAM role for both `taskRoleArn` and `executionRoleArn`, it violates the principle of least privilege by granting the application unnecessary permissions to AWS resources required only for container management.

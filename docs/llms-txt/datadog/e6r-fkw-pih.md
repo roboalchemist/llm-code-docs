@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SNS Topic should have access restrictions set for subscription
- 
+
 ## Description{% #description %}
 
 Update your Amazon Simple Notification Service (SNS) topic [resource-based policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html) to prevent unintended access to the resource.

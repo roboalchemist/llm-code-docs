@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SNS topic should not be accessible over the public internet
- 
+
 ## Description{% #description %}
 
 Update your Amazon Simple Notification Service (SNS) topic permissions.
@@ -37,7 +37,7 @@ If you do not have an access control policy, [create one](https://awspolicygen.s
        Principal: `arn:aws:iam::123456789012:root`
        Action: `Add permission`
        Amazon Resource Name: `arn:aws:iam::123456789012:root`
-       
+
 ```
 
 If you do have an access control policy, follow the [add-permissions](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sqs/add-permission.html) docs to add a permission to your existing policy.

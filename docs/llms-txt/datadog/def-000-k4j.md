@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on SSH Server Public *.pub Key Files
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/ssh/*.pub`, run the command:

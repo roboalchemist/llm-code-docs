@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Service Level Objectives
 ---
 
-# Service Level Objectives
-
 [Service Level Objectives](https://docs.datadoghq.com/monitors/service_level_objectives/#configuration) (or SLOs) are a key part of the site reliability engineering toolkit. SLOs provide a framework for defining clear targets around application performance, which ultimately help teams provide a consistent customer experience, balance feature development with platform stability, and improve communication with internal and external users.
 
 ## Create an SLO object{% #create-an-slo-object %}
@@ -29,8 +27,6 @@ breadcrumbs: Docs > API Reference > Service Level Objectives
 Create a service level objective object. This endpoint requires the `slos_write` permission.
 
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Request
 
@@ -95,7 +91,7 @@ Service level objective request object.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -143,7 +139,7 @@ Service level objective request object.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -188,7 +184,7 @@ Service level objective request object.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -453,7 +449,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -504,8 +500,8 @@ Error response object.
   "warning_threshold": 99.5
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -553,8 +549,8 @@ EOF
   "warning_threshold": 98
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -592,8 +588,8 @@ EOF
   "warning_threshold": 98
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new metric SLO object using sli_specification returns "OK" response
@@ -601,79 +597,79 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type:        datadogV1.SLOTYPE_METRIC,
-		Description: *datadog.NewNullableString(datadog.PtrString("Metric SLO using sli_specification")),
-		Name:        "Example-Service-Level-Objective",
-		SliSpecification: &datadogV1.SLOSliSpec{
-			SLOCountSpec: &datadogV1.SLOCountSpec{
-				Count: datadogV1.SLOCountDefinition{
-					GoodEventsFormula: datadogV1.SLOFormula{
-						Formula: "query1 - query2",
-					},
-					TotalEventsFormula: datadogV1.SLOFormula{
-						Formula: "query1",
-					},
-					Queries: []datadogV1.SLODataSourceQueryDefinition{
-						datadogV1.SLODataSourceQueryDefinition{
-							FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
-								DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
-								Name:       "query1",
-								Query:      "sum:httpservice.hits{*}.as_count()",
-							}},
-						datadogV1.SLODataSourceQueryDefinition{
-							FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
-								DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
-								Name:       "query2",
-								Query:      "sum:httpservice.errors{*}.as_count()",
-							}},
-					},
-				},
-			}},
-		Tags: []string{
-			"env:prod",
-			"type:count",
-		},
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:         99.0,
-				TargetDisplay:  datadog.PtrString("99.0"),
-				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:        datadog.PtrFloat64(99.5),
-				WarningDisplay: datadog.PtrString("99.5"),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(99.0),
-		WarningThreshold: datadog.PtrFloat64(99.5),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLO(ctx, body)
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_METRIC,
+        Description: *datadog.NewNullableString(datadog.PtrString("Metric SLO using sli_specification")),
+        Name:        "Example-Service-Level-Objective",
+        SliSpecification: &datadogV1.SLOSliSpec{
+            SLOCountSpec: &datadogV1.SLOCountSpec{
+                Count: datadogV1.SLOCountDefinition{
+                    GoodEventsFormula: datadogV1.SLOFormula{
+                        Formula: "query1 - query2",
+                    },
+                    TotalEventsFormula: datadogV1.SLOFormula{
+                        Formula: "query1",
+                    },
+                    Queries: []datadogV1.SLODataSourceQueryDefinition{
+                        datadogV1.SLODataSourceQueryDefinition{
+                            FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                Name:       "query1",
+                                Query:      "sum:httpservice.hits{*}.as_count()",
+                            }},
+                        datadogV1.SLODataSourceQueryDefinition{
+                            FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                Name:       "query2",
+                                Query:      "sum:httpservice.errors{*}.as_count()",
+                            }},
+                    },
+                },
+            }},
+        Tags: []string{
+            "env:prod",
+            "type:count",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         99.0,
+                TargetDisplay:  datadog.PtrString("99.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(99.5),
+                WarningDisplay: datadog.PtrString("99.5"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(99.0),
+        WarningThreshold: datadog.PtrFloat64(99.5),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a time-slice SLO object returns "OK" response
@@ -681,75 +677,75 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type:        datadogV1.SLOTYPE_TIME_SLICE,
-		Description: *datadog.NewNullableString(datadog.PtrString("string")),
-		Name:        "Example-Service-Level-Objective",
-		SliSpecification: &datadogV1.SLOSliSpec{
-			SLOTimeSliceSpec: &datadogV1.SLOTimeSliceSpec{
-				TimeSlice: datadogV1.SLOTimeSliceCondition{
-					Query: datadogV1.SLOTimeSliceQuery{
-						Formulas: []datadogV1.SLOFormula{
-							{
-								Formula: "query1",
-							},
-						},
-						Queries: []datadogV1.SLODataSourceQueryDefinition{
-							datadogV1.SLODataSourceQueryDefinition{
-								FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
-									DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
-									Name:       "query1",
-									Query:      "trace.servlet.request{env:prod}",
-								}},
-						},
-					},
-					Comparator: datadogV1.SLOTIMESLICECOMPARATOR_GREATER,
-					Threshold:  5,
-				},
-			}},
-		Tags: []string{
-			"env:prod",
-		},
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:         97.0,
-				TargetDisplay:  datadog.PtrString("97.0"),
-				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:        datadog.PtrFloat64(98),
-				WarningDisplay: datadog.PtrString("98.0"),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLO(ctx, body)
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_TIME_SLICE,
+        Description: *datadog.NewNullableString(datadog.PtrString("string")),
+        Name:        "Example-Service-Level-Objective",
+        SliSpecification: &datadogV1.SLOSliSpec{
+            SLOTimeSliceSpec: &datadogV1.SLOTimeSliceSpec{
+                TimeSlice: datadogV1.SLOTimeSliceCondition{
+                    Query: datadogV1.SLOTimeSliceQuery{
+                        Formulas: []datadogV1.SLOFormula{
+                            {
+                                Formula: "query1",
+                            },
+                        },
+                        Queries: []datadogV1.SLODataSourceQueryDefinition{
+                            datadogV1.SLODataSourceQueryDefinition{
+                                FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                    DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                    Name:       "query1",
+                                    Query:      "trace.servlet.request{env:prod}",
+                                }},
+                        },
+                    },
+                    Comparator: datadogV1.SLOTIMESLICECOMPARATOR_GREATER,
+                    Threshold:  5,
+                },
+            }},
+        Tags: []string{
+            "env:prod",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         97.0,
+                TargetDisplay:  datadog.PtrString("97.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(98),
+                WarningDisplay: datadog.PtrString("98.0"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create an SLO object returns "OK" response
@@ -757,59 +753,59 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type:        datadogV1.SLOTYPE_METRIC,
-		Description: *datadog.NewNullableString(datadog.PtrString("string")),
-		Groups: []string{
-			"env:test",
-			"role:mysql",
-		},
-		MonitorIds: []int64{},
-		Name:       "Example-Service-Level-Objective",
-		Query: &datadogV1.ServiceLevelObjectiveQuery{
-			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
-		},
-		Tags: []string{
-			"env:prod",
-			"app:core",
-		},
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:         97.0,
-				TargetDisplay:  datadog.PtrString("97.0"),
-				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:        datadog.PtrFloat64(98),
-				WarningDisplay: datadog.PtrString("98.0"),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLO(ctx, body)
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_METRIC,
+        Description: *datadog.NewNullableString(datadog.PtrString("string")),
+        Groups: []string{
+            "env:test",
+            "role:mysql",
+        },
+        MonitorIds: []int64{},
+        Name:       "Example-Service-Level-Objective",
+        Query: &datadogV1.ServiceLevelObjectiveQuery{
+            Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+            Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
+        },
+        Tags: []string{
+            "env:prod",
+            "app:core",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         97.0,
+                TargetDisplay:  datadog.PtrString("97.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(98),
+                WarningDisplay: datadog.PtrString("98.0"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -817,7 +813,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new metric SLO object using sli_specification returns "OK" response
@@ -898,7 +894,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a time-slice SLO object returns "OK" response
@@ -981,7 +977,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create an SLO object returns "OK" response
@@ -1044,7 +1040,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -1079,7 +1075,7 @@ api.ServiceLevelObjective.create(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -1152,7 +1148,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1224,7 +1220,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1282,7 +1278,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -1313,7 +1309,7 @@ dog.create_service_level_objective(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Create a new metric SLO object using sli_specification returns "OK" response
@@ -1367,7 +1363,7 @@ body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
 p api_instance.create_slo(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a time-slice SLO object returns "OK" response
@@ -1418,7 +1414,7 @@ body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
 p api_instance.create_slo(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an SLO object returns "OK" response
@@ -1463,7 +1459,7 @@ p api_instance.create_slo(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new metric SLO object using sli_specification returns "OK" response
@@ -1529,7 +1525,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a time-slice SLO object returns "OK" response
@@ -1593,7 +1589,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create an SLO object returns "OK" response
@@ -1641,7 +1637,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1706,7 +1702,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1769,7 +1765,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1843,8 +1839,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a list of service level objective objects for your organization. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -2204,13 +2198,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2240,7 +2234,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search for SLOs returns "OK" response
@@ -2262,7 +2256,7 @@ p api_instance.search_slo(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search for SLOs returns "OK" response
@@ -2270,32 +2264,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0Name := os.Getenv("SLO_DATA_0_NAME")
+    // there is a valid "slo" in the system
+    SloData0Name := os.Getenv("SLO_DATA_0_NAME")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.SearchSLO(ctx, *datadogV1.NewSearchSLOOptionalParameters().WithQuery(SloData0Name).WithPageSize(20).WithPageNumber(0))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.SearchSLO(ctx, *datadogV1.NewSearchSLOOptionalParameters().WithQuery(SloData0Name).WithPageSize(20).WithPageNumber(0))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.SearchSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.SearchSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.SearchSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.SearchSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -2303,7 +2297,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search for SLOs returns "OK" response
@@ -2345,7 +2339,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search for SLOs returns "OK" response
@@ -2379,7 +2373,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2435,8 +2429,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a list of service level objective objects for your organization. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -2704,13 +2696,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2738,7 +2730,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all SLOs returns "OK" response
@@ -2758,7 +2750,7 @@ p api_instance.list_slos(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -2781,7 +2773,7 @@ dog.search_service_level_objective(query: query, offset: 0)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all SLOs returns "OK" response
@@ -2789,32 +2781,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.ListSLOs(ctx, *datadogV1.NewListSLOsOptionalParameters().WithIds(SloData0ID))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.ListSLOs(ctx, *datadogV1.NewListSLOsOptionalParameters().WithIds(SloData0ID))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.ListSLOs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.ListSLOs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.ListSLOs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.ListSLOs`:\n%s\n", responseContent)
 }
 ```
 
@@ -2822,7 +2814,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all SLOs returns "OK" response
@@ -2860,7 +2852,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -2887,7 +2879,7 @@ api.ServiceLevelObjective.get_all(query=query, offset=0)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get all SLOs returns "OK" response
@@ -2916,7 +2908,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2970,8 +2962,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update the specified service level objective object. This endpoint requires the `slos_write` permission.
 
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3329,7 +3319,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3355,8 +3345,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an SLO returns "OK" response
@@ -3364,51 +3354,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
-	SloData0Name := os.Getenv("SLO_DATA_0_NAME")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    SloData0Name := os.Getenv("SLO_DATA_0_NAME")
 
-	body := datadogV1.ServiceLevelObjective{
-		Type: datadogV1.SLOTYPE_METRIC,
-		Name: SloData0Name,
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:    97.0,
-				Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:   datadog.PtrFloat64(98.0),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-		Query: &datadogV1.ServiceLevelObjectiveQuery{
-			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
-			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.UpdateSLO(ctx, SloData0ID, body)
+    body := datadogV1.ServiceLevelObjective{
+        Type: datadogV1.SLOTYPE_METRIC,
+        Name: SloData0Name,
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:    97.0,
+                Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:   datadog.PtrFloat64(98.0),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+        Query: &datadogV1.ServiceLevelObjectiveQuery{
+            Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
+            Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.UpdateSLO(ctx, SloData0ID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.UpdateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.UpdateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.UpdateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.UpdateSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -3416,7 +3406,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an SLO returns "OK" response
@@ -3477,7 +3467,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3528,7 +3518,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an SLO returns "OK" response
@@ -3565,7 +3555,7 @@ p api_instance.update_slo(SLO_DATA_0_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an SLO returns "OK" response
@@ -3609,7 +3599,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3682,8 +3672,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a service level objective object. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3921,13 +3909,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3955,7 +3943,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an SLO's details returns "OK" response
@@ -3972,7 +3960,7 @@ p api_instance.get_slo(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # This is not currently available for the Ruby API.
@@ -3982,7 +3970,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an SLO's details returns "OK" response
@@ -3990,32 +3978,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLO(ctx, SloData0ID, *datadogV1.NewGetSLOOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLO(ctx, SloData0ID, *datadogV1.NewGetSLOOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -4023,7 +4011,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an SLO's details returns "OK" response
@@ -4059,7 +4047,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -4080,7 +4068,7 @@ api.ServiceLevelObjective.get(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an SLO's details returns "OK" response
@@ -4109,7 +4097,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4160,15 +4148,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Permanently delete the specified service level objective object.
 
 If an SLO is used in a dashboard, the `DELETE /v1/slo/` endpoint returns a 409 conflict error because the SLO is referenced in a dashboard.
 This endpoint requires the `slos_write` permission.
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4319,13 +4303,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4353,7 +4337,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an SLO returns "OK" response
@@ -4370,7 +4354,7 @@ p api_instance.delete_slo(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -4388,7 +4372,7 @@ dog.delete_service_level_objective(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an SLO returns "OK" response
@@ -4396,32 +4380,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.DeleteSLO(ctx, SloData0ID, *datadogV1.NewDeleteSLOOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.DeleteSLO(ctx, SloData0ID, *datadogV1.NewDeleteSLOOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -4429,7 +4413,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an SLO returns "OK" response
@@ -4465,7 +4449,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -4486,7 +4470,7 @@ api.ServiceLevelObjective.delete(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Delete an SLO returns "OK" response
@@ -4515,7 +4499,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4566,8 +4550,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Get a specific SLO's history, regardless of its SLO type.
 
 The detailed history data is structured according to the source data type. For example, metric data is included for event SLOs that use the metric source, and monitor SLO types include the monitor transition history.
@@ -4575,8 +4557,6 @@ The detailed history data is structured according to the source data type. For e
 **Note:** There are different response formats for event based and time based SLOs. Examples of both are shown.
 This endpoint requires the `slos_read` permission.
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4988,13 +4968,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Required query argumentsexport from_ts="CHANGE_ME"export to_ts="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/history?from_ts=${from_ts}&to_ts=${to_ts}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5026,7 +5006,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an SLO's history returns "OK" response
@@ -5043,7 +5023,7 @@ p api_instance.get_slo_history(SLO_DATA_0_ID, (Time.now + -1 * 86400).to_i, Time
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -5064,7 +5044,7 @@ dog.get_service_level_objective_history(slo_id, from_ts, to_ts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an SLO's history returns "OK" response
@@ -5072,33 +5052,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOHistory(ctx, SloData0ID, time.Now().AddDate(0, 0, -1).Unix(), time.Now().Unix(), *datadogV1.NewGetSLOHistoryOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOHistory(ctx, SloData0ID, time.Now().AddDate(0, 0, -1).Unix(), time.Now().Unix(), *datadogV1.NewGetSLOHistoryOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOHistory`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOHistory`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOHistory`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOHistory`:\n%s\n", responseContent)
 }
 ```
 
@@ -5106,7 +5086,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an SLO's history returns "OK" response
@@ -5146,7 +5126,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -5171,7 +5151,7 @@ api.ServiceLevelObjective.history(slo_id, from_ts=from_ts, to_ts=to_ts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an SLO's history returns "OK" response
@@ -5205,7 +5185,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5263,8 +5243,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get corrections applied to an SLO This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5459,13 +5437,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/corrections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5493,7 +5471,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get Corrections For an SLO returns "OK" response
@@ -5510,7 +5488,7 @@ p api_instance.get_slo_corrections(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get Corrections For an SLO returns "OK" response
@@ -5518,32 +5496,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOCorrections(ctx, SloData0ID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOCorrections(ctx, SloData0ID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOCorrections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOCorrections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOCorrections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOCorrections`:\n%s\n", responseContent)
 }
 ```
 
@@ -5551,7 +5529,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get Corrections For an SLO returns "OK" response
@@ -5587,7 +5565,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get Corrections For an SLO returns "OK" response
@@ -5613,7 +5591,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5667,8 +5645,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Check if an SLO can be safely deleted. For example, assure an SLO can be deleted without disrupting a dashboard. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5819,13 +5795,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport ids="id1, id2, id3"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/can_delete?ids=${ids}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5849,7 +5825,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Check if SLOs can be safely deleted returns "OK" response
@@ -5863,7 +5839,7 @@ p api_instance.check_can_delete_slo("ids")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -5881,7 +5857,7 @@ dog.can_delete_service_level_objective(slo_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5889,29 +5865,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CheckCanDeleteSLO(ctx, "ids")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CheckCanDeleteSLO(ctx, "ids")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CheckCanDeleteSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CheckCanDeleteSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CheckCanDeleteSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CheckCanDeleteSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -5919,7 +5895,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5952,7 +5928,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -5973,7 +5949,7 @@ api.ServiceLevelObjective.can_delete(slo_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5997,7 +5973,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6045,15 +6021,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Delete (or partially delete) multiple service level objective objects.
 
 This endpoint facilitates deletion of one or more thresholds for one or more service level objective objects. If all thresholds are deleted, the service level objective object is deleted as well.
 This endpoint requires the `slos_write` permission.
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Request
 
@@ -6092,12 +6064,9 @@ Delete multiple service level objective objects request body.
 OK
 {% tab title="Model" %}
 
-
 The bulk partial delete service level objective object endpoint response.
 
 This endpoint operates on multiple service level objective objects, so it may be partially successful. In such cases, the "data" and "error" fields in this response indicate which deletions succeeded and failed.
-
-
 
 | Parent field | Field                       | Type     | Description                                                                                                                                                                                  |
 | ------------ | --------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6210,7 +6179,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/bulk_delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6228,8 +6197,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6264,7 +6233,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Bulk Delete SLO Timeframes returns "OK" response
@@ -6288,7 +6257,7 @@ p api_instance.delete_slo_timeframe_in_bulk(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -6313,7 +6282,7 @@ dog.delete_timeframes_service_level_objective(thresholds)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -6321,39 +6290,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := map[string][]datadogV1.SLOTimeframe{
-		"id1": []datadogV1.SLOTimeframe{
-			datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-			datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
-		},
-		"id2": []datadogV1.SLOTimeframe{
-			datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-			datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.DeleteSLOTimeframeInBulk(ctx, body)
+    body := map[string][]datadogV1.SLOTimeframe{
+        "id1": []datadogV1.SLOTimeframe{
+            datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+            datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
+        },
+        "id2": []datadogV1.SLOTimeframe{
+            datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+            datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.DeleteSLOTimeframeInBulk(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`:\n%s\n", responseContent)
 }
 ```
 
@@ -6361,7 +6330,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -6404,7 +6373,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -6431,7 +6400,7 @@ api.ServiceLevelObjective.bulk_delete(delete_timeframes)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -6467,7 +6436,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6518,15 +6487,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Create a job to generate an SLO report. The report job is processed asynchronously and eventually results in a CSV report being available for download.
 
 Check the status of the job and download the CSV report using the returned `report_id`.
 This endpoint requires the `slos_read` permission.
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Request
 
@@ -6673,7 +6638,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6692,8 +6657,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new SLO report returns "OK" response
@@ -6701,42 +6666,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SloReportCreateRequest{
-		Data: datadogV2.SloReportCreateRequestData{
-			Attributes: datadogV2.SloReportCreateRequestAttributes{
-				FromTs:   time.Now().AddDate(0, 0, -40).Unix(),
-				ToTs:     time.Now().Unix(),
-				Query:    `slo_type:metric "SLO Reporting Test"`,
-				Interval: datadogV2.SLOREPORTINTERVAL_MONTHLY.Ptr(),
-				Timezone: datadog.PtrString("America/New_York"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateSLOReportJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLOReportJob(ctx, body)
+    body := datadogV2.SloReportCreateRequest{
+        Data: datadogV2.SloReportCreateRequestData{
+            Attributes: datadogV2.SloReportCreateRequestAttributes{
+                FromTs:   time.Now().AddDate(0, 0, -40).Unix(),
+                ToTs:     time.Now().Unix(),
+                Query:    `slo_type:metric "SLO Reporting Test"`,
+                Interval: datadogV2.SLOREPORTINTERVAL_MONTHLY.Ptr(),
+                Timezone: datadog.PtrString("America/New_York"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateSLOReportJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLOReportJob(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLOReportJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLOReportJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLOReportJob`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLOReportJob`:\n%s\n", responseContent)
 }
 ```
 
@@ -6744,7 +6709,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new SLO report returns "OK" response
@@ -6796,7 +6761,7 @@ slo_type:metric "SLO Reporting Test"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6837,7 +6802,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new SLO report returns "OK" response
@@ -6866,7 +6831,7 @@ p api_instance.create_slo_report_job(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new SLO report returns "OK" response
@@ -6904,7 +6869,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6968,8 +6933,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the status of the SLO report job.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7116,13 +7079,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport report_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/status" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7151,7 +7114,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SLO report status returns "OK" response
@@ -7171,7 +7134,7 @@ p api_instance.get_slo_report_job_status(REPORT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SLO report status returns "OK" response
@@ -7179,33 +7142,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "report" in the system
-	ReportDataID := os.Getenv("REPORT_DATA_ID")
+    // there is a valid "report" in the system
+    ReportDataID := os.Getenv("REPORT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSLOReportJobStatus", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOReportJobStatus(ctx, ReportDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSLOReportJobStatus", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOReportJobStatus(ctx, ReportDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReportJobStatus`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReportJobStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReportJobStatus`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReportJobStatus`:\n%s\n", responseContent)
 }
 ```
 
@@ -7213,7 +7176,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SLO report status returns "OK" response
@@ -7250,7 +7213,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SLO report status returns "OK" response
@@ -7277,7 +7240,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7329,15 +7292,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Download an SLO report. This can only be performed after the report job has completed.
 
 Reports are not guaranteed to exist indefinitely. Datadog recommends that you download the report as soon as it is available.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7470,13 +7429,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport report_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/download" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7499,7 +7458,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SLO report returns "OK" response
@@ -7516,7 +7475,7 @@ p api_instance.get_slo_report("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SLO report returns "OK" response
@@ -7524,28 +7483,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSLOReport", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOReport(ctx, "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSLOReport", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOReport(ctx, "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReport`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReport`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReport`:\n%s\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReport`:\n%s\n", resp)
 }
 ```
 
@@ -7553,7 +7512,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SLO report returns "OK" response
@@ -7586,7 +7545,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SLO report returns "OK" response
@@ -7613,7 +7572,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7662,15 +7621,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Get the status of a Service Level Objective (SLO) for a given time period.
 
 This endpoint returns the current SLI value, error budget remaining, and other status information for the specified SLO.
 This endpoint requires the `slos_read` permission.
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7892,13 +7847,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="00000000-0000-0000-0000-000000000000"\# Required query argumentsexport from_ts="1.69090187e+09"export to_ts="1.70680307e+09"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/${slo_id}/status?from_ts=${from_ts}&to_ts=${to_ts}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7925,7 +7880,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SLO status returns "OK" response
@@ -7942,7 +7897,7 @@ p api_instance.get_slo_status("00000000-0000-0000-0000-000000000000", 1690901870
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SLO status returns "OK" response
@@ -7950,30 +7905,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSloStatus", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSloStatus(ctx, "00000000-0000-0000-0000-000000000000", 1690901870, 1706803070, *datadogV2.NewGetSloStatusOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSloStatus", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSloStatus(ctx, "00000000-0000-0000-0000-000000000000", 1690901870, 1706803070, *datadogV2.NewGetSloStatusOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSloStatus`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSloStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSloStatus`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSloStatus`:\n%s\n", responseContent)
 }
 ```
 
@@ -7981,7 +7936,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SLO status returns "OK" response
@@ -8017,7 +7972,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SLO status returns "OK" response
@@ -8050,7 +8005,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

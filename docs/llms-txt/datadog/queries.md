@@ -169,16 +169,16 @@ This app provides a button to trigger a workflow. The workflow sends a poll to a
    ```javascript
    const catFact = $.Steps.Get_cat_fact?.body?.fact;
    const dogFactRaw = $.Steps.Get_dog_fact?.body;
-   
+
    let dogFact;
-   
+
    try {
        const parsedDogFact = JSON.parse(dogFactRaw);
        dogFact = parsedDogFact.data?.[0]?.attributes?.body;
    } catch {
        // Do nothing
    }
-   
+
    return catFact != null ? catFact : dogFact;
    ```
 1. In the workflow overview, under **Output Parameters**, add a parameter named `output` with the value `{{ Steps.Function.data }}` and the Data Type `string`.
@@ -243,14 +243,14 @@ This app provides buttons to fetch facts about two numbers from an API. It then 
    // get both random facts
    const fact1 = mathFact1.outputs.body;
    const fact2 = mathFact2.outputs.body;
-   
+
    // parse the facts to get the first number that appears in them
    const num1 = fact1.match(/\d+/)[0];
    const num2 = fact2.match(/\d+/)[0];
-   
+
    // complete arithmetic on the numbers to find the sum
    const numSum = Number(num1) + Number(num2)
-   
+
    return numSum
    ```
 

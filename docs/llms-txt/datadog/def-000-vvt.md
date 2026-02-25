@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Limit the maximum number of sequential characters in passwords
- 
+
 ## Description{% #description %}
 
 The `pwquality maxsequence` setting defines the maximum allowable length for consecutive character sequences in a new password. Such sequences can be, e.g., 123 or abc. If the value is set to 0, this check will be turned off.

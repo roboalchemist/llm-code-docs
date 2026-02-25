@@ -61,11 +61,10 @@ public class SecureTempFileWithPermissionsExample {
     public static void main(String[] args) throws IOException {
         File tempFile = File.createTempFile("secure_tempfile_", ".tmp");
         tempFile.deleteOnExit();
-        System.out.println("Temporary file created with secure permissions at: " 
+        System.out.println("Temporary file created with secure permissions at: "
             + tempFile.getAbsolutePath());
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify /boot/grub/grub.cfg P
 ---
 
 # Verify /boot/grub/grub.cfg Permissions
- 
+
 ## Description{% #description %}
 
 File permissions for `/boot/grub/grub.cfg` should be set to 600. To properly set the permissions of `/boot/grub/grub.cfg`, run the command:

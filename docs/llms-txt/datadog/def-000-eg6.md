@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Potential rootkit compiled and then loaded
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was used to load a recently compiled kernel module or shared object that could be a rootkit.

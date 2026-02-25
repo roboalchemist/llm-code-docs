@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Cloud BigQuery - query results saved to cloud storage
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537)
 ## Goal{% #goal %}
 
 Detect when an attempt to export Google Cloud BigQuery results to cloud storage occurs.

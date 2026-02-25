@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > An AWS S3 bucket mfaDelete i
 ---
 
 # An AWS S3 bucket mfaDelete is disabled
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect if versioning or MFA delete was disabled within an AWS S3 bucket's Lifecycle configuration.

@@ -33,23 +33,23 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azureblob",
-	"id": "c198aeb5-b774-496d-9802-75e6d2407ab1",
-	"region": "eastus",
-	"mapPos": [0,7],
-	"tier": "Standard",
-	"redundancy": "LRS",
-	"storageGb": 1,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/storage/blobs/",
-	"locked": true
+    "type": "azureblob",
+    "id": "c198aeb5-b774-496d-9802-75e6d2407ab1",
+    "region": "eastus",
+    "mapPos": [0,7],
+    "tier": "Standard",
+    "redundancy": "LRS",
+    "storageGb": 1,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/storage/blobs/",
+    "locked": true
 }
 ```
 

@@ -66,7 +66,7 @@ Resources:
   BasicReplicationGroup:
     Type: 'AWS::ElastiCache::ReplicationGroup'
     Properties:
-      AutomaticFailoverEnabled: true    
+      AutomaticFailoverEnabled: true
       CacheNodeType: cache.r3.large
       CacheSubnetGroupName: !Ref CacheSubnetGroup
       Engine: redis
@@ -79,7 +79,7 @@ Resources:
       SecurityGroupIds:
         - !Ref ReplicationGroupSG
       SnapshotRetentionLimit: 5
-      SnapshotWindow: '10:00-12:00' 
+      SnapshotWindow: '10:00-12:00'
 ```
 
 ```json
@@ -88,7 +88,7 @@ Resources:
     "BasicReplicationGroup": {
       "Type": "AWS::ElastiCache::ReplicationGroup",
       "Properties": {
-          "AutomaticFailoverEnabled": true,            
+          "AutomaticFailoverEnabled": true,
           "CacheNodeType": "cache.r3.large",
           "CacheSubnetGroupName": {
               "Ref": "CacheSubnetGroup"
@@ -118,7 +118,7 @@ Resources:
   BasicReplicationGroup:
     Type: 'AWS::ElastiCache::ReplicationGroup'
     Properties:
-      AutomaticFailoverEnabled: true    
+      AutomaticFailoverEnabled: true
       CacheNodeType: cache.r3.large
       CacheSubnetGroupName: !Ref CacheSubnetGroup
       Engine: memcached
@@ -131,7 +131,7 @@ Resources:
       SecurityGroupIds:
         - !Ref ReplicationGroupSG
       SnapshotRetentionLimit: 5
-      SnapshotWindow: '10:00-12:00' 
+      SnapshotWindow: '10:00-12:00'
 ```
 
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
@@ -141,7 +141,7 @@ Resources:
   BasicReplicationGroup:
     Type: 'AWS::ElastiCache::ReplicationGroup'
     Properties:
-      AutomaticFailoverEnabled: true    
+      AutomaticFailoverEnabled: true
       CacheNodeType: cache.r3.large
       CacheSubnetGroupName: !Ref CacheSubnetGroup
       Engine: memcached
@@ -154,7 +154,7 @@ Resources:
       SecurityGroupIds:
         - !Ref ReplicationGroupSG
       SnapshotRetentionLimit: 5
-      SnapshotWindow: '10:00-12:00' 
+      SnapshotWindow: '10:00-12:00'
 ```
 
 ```json
@@ -163,7 +163,7 @@ Resources:
     "BasicReplicationGroup": {
       "Type": "AWS::ElastiCache::ReplicationGroup",
       "Properties": {
-          "AutomaticFailoverEnabled": true,            
+          "AutomaticFailoverEnabled": true,
           "CacheNodeType": "cache.r3.large",
           "CacheSubnetGroupName": {
               "Ref": "CacheSubnetGroup"
@@ -194,7 +194,7 @@ Resources:
     "BasicReplicationGroup": {
       "Type": "AWS::ElastiCache::ReplicationGroup",
       "Properties": {
-          "AutomaticFailoverEnabled": true,            
+          "AutomaticFailoverEnabled": true,
           "CacheNodeType": "cache.r3.large",
           "CacheSubnetGroupName": {
               "Ref": "CacheSubnetGroup"

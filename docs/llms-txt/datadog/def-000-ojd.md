@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Security Command Center finding muted
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578)
 ## Goal{% #goal %}
 
 Detect when a [Google Security Command Center](https://cloud.google.com/security-command-center/docs) muteconfigs rule was created.

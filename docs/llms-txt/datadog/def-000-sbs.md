@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable systemd-journald Serv
 ---
 
 # Enable systemd-journald Service
- 
+
 ## Description{% #description %}
 
 The `systemd-journald` service is an essential component of systemd. The `systemd-journald` service can be enabled with the following command:

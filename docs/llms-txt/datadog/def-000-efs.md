@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS task definitions should enable in transit encryption for EFS
- 
+
 ## Description{% #description %}
 
 Amazon ECS task definitions that mount Amazon Elastic File System (EFS) volumes must enable in transit encryption to ensure data is encrypted between the ECS host and the EFS server. In transit encryption provides an additional layer of security by preventing unauthorized access to data as it moves across the network.

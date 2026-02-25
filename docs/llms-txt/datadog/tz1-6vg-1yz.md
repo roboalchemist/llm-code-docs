@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > System authentication files 
 ---
 
 # System authentication files modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## What happened{% #what-happened %}
 
 The PAM configuration file `{{ @file.path }}` was modified by the process `{{ @process.comm }}`, potentially to manipulate authentication procedures.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # BigQuery data sets should specify a default customer-managed encryption key
- 
+
 ## Description{% #description %}
 
 By default, BigQuery uses envelope encryption with Google-managed cryptographic keys to encrypt the data at rest. The data is encrypted using *data encryption keys*, and the data encryption keys themselves are further encrypted using *key encryption keys*. This is seamless and does not require any additional input from the user. For greater control, *customer-managed encryption keys* (CMEKs) can be used as an encryption key management solution for BigQuery datasets.

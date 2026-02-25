@@ -11,13 +11,13 @@ breadcrumbs: Docs > Datadog Security > Notifications
 # Notifications
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security | 
+ Cloud Security |
 {% icon name="icon-app-sec" /%}
- App and API Protection | 
+ App and API Protection |
 {% icon name="icon-security-code-security" /%}
- Code Security 
+ Code Security
 ## Overview{% #overview %}
 
 Notifications help you keep your team informed when a finding or security signal is detected. Findings and security signals are generated when at least one case defined in a [detection rule](https://docs.datadoghq.com/security/detection_rules/#creating-and-managing-detection-rules) is matched over a given period of time. By promptly alerting your team, notifications ensure that immediate action can be taken to address any potential security issues, enhancing your organization's overall security posture.

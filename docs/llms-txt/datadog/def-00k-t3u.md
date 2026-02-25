@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The API server audit log files should be rotated once the file reaches 100 MB or more
- 
+
 ## Description{% #description %}
 
 On the API server, the log file should be at least 100 MB in size prior to log rotation. Retaining old log files ensures that you have sufficient log data available for carrying out any investigation or correlation.

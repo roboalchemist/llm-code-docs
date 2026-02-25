@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Cloud Audit Logging should be configured to track admin activity and data access
- 
+
 ## Description{% #description %}
 
 It is recommended that Cloud Audit Logging is configured to track all admin activities and read or write access to user data.

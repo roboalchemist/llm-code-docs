@@ -202,13 +202,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/tests/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -237,7 +237,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of tests events returns "OK" response
@@ -257,7 +257,7 @@ p api_instance.list_ci_app_test_events(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of tests events returns "OK" response
@@ -265,30 +265,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityTestsApi(apiClient)
-	resp, r, err := api.ListCIAppTestEvents(ctx, *datadogV2.NewListCIAppTestEventsOptionalParameters().WithFilterQuery("@test.service:web-ui-tests").WithFilterFrom(time.Now().Add(time.Second * -30)).WithFilterTo(time.Now()).WithPageLimit(5))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityTestsApi(apiClient)
+    resp, r, err := api.ListCIAppTestEvents(ctx, *datadogV2.NewListCIAppTestEventsOptionalParameters().WithFilterQuery("@test.service:web-ui-tests").WithFilterFrom(time.Now().Add(time.Second * -30)).WithFilterTo(time.Now()).WithPageLimit(5))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.ListCIAppTestEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.ListCIAppTestEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.ListCIAppTestEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.ListCIAppTestEvents`:\n%s\n", responseContent)
 }
 ```
 
@@ -296,7 +296,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of tests events returns "OK" response
@@ -336,7 +336,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of tests events returns "OK" response
@@ -378,7 +378,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -441,7 +441,7 @@ OAuth apps require the `test_optimization_read` authorization [scope](https://do
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -464,7 +464,7 @@ OAuth apps require the `test_optimization_read` authorization [scope](https://do
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -483,7 +483,7 @@ OAuth apps require the `test_optimization_read` authorization [scope](https://do
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -654,7 +654,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/tests/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -676,8 +676,8 @@ API error response.
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/tests/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -696,8 +696,8 @@ EOF
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search tests events returns "OK" response
@@ -705,47 +705,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppTestEventsRequest{
-		Filter: &datadogV2.CIAppTestsQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@test.service:web-ui-tests AND @test.status:skip"),
-			To:    datadog.PtrString("now"),
-		},
-		Options: &datadogV2.CIAppQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.CIAppQueryPageOptions{
-			Limit: datadog.PtrInt32(25),
-		},
-		Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityTestsApi(apiClient)
-	resp, r, err := api.SearchCIAppTestEvents(ctx, *datadogV2.NewSearchCIAppTestEventsOptionalParameters().WithBody(body))
+    body := datadogV2.CIAppTestEventsRequest{
+        Filter: &datadogV2.CIAppTestsQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@test.service:web-ui-tests AND @test.status:skip"),
+            To:    datadog.PtrString("now"),
+        },
+        Options: &datadogV2.CIAppQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.CIAppQueryPageOptions{
+            Limit: datadog.PtrInt32(25),
+        },
+        Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityTestsApi(apiClient)
+    resp, r, err := api.SearchCIAppTestEvents(ctx, *datadogV2.NewSearchCIAppTestEventsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.SearchCIAppTestEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.SearchCIAppTestEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.SearchCIAppTestEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.SearchCIAppTestEvents`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Search tests events returns "OK" response with pagination
@@ -753,40 +753,40 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppTestEventsRequest{
-		Filter: &datadogV2.CIAppTestsQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@test.status:pass AND -@language:python"),
-			To:    datadog.PtrString("now"),
-		},
-		Page: &datadogV2.CIAppQueryPageOptions{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityTestsApi(apiClient)
-	resp, _ := api.SearchCIAppTestEventsWithPagination(ctx, *datadogV2.NewSearchCIAppTestEventsOptionalParameters().WithBody(body))
+    body := datadogV2.CIAppTestEventsRequest{
+        Filter: &datadogV2.CIAppTestsQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@test.status:pass AND -@language:python"),
+            To:    datadog.PtrString("now"),
+        },
+        Page: &datadogV2.CIAppQueryPageOptions{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityTestsApi(apiClient)
+    resp, _ := api.SearchCIAppTestEventsWithPagination(ctx, *datadogV2.NewSearchCIAppTestEventsOptionalParameters().WithBody(body))
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.SearchCIAppTestEvents`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.SearchCIAppTestEvents`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
 ```
 
@@ -794,7 +794,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search tests events returns "OK" response
@@ -842,7 +842,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Search tests events returns "OK" response with pagination
@@ -894,7 +894,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -932,7 +932,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -970,7 +970,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search tests events returns "OK" response
@@ -998,7 +998,7 @@ opts = {
 p api_instance.search_ci_app_test_events(opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Search tests events returns "OK" response with pagination
@@ -1027,7 +1027,7 @@ api_instance.search_ci_app_test_events_with_pagination(opts) { |item| puts item 
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search tests events returns "OK" response
@@ -1065,7 +1065,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Search tests events returns "OK" response with pagination
@@ -1110,7 +1110,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1149,7 +1149,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1452,7 +1452,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/tests/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1487,8 +1487,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Aggregate tests events returns "OK" response
@@ -1496,57 +1496,57 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppTestsAggregateRequest{
-		Compute: []datadogV2.CIAppCompute{
-			{
-				Aggregation: datadogV2.CIAPPAGGREGATIONFUNCTION_COUNT,
-				Metric:      datadog.PtrString("@test.is_flaky"),
-				Type:        datadogV2.CIAPPCOMPUTETYPE_TOTAL.Ptr(),
-			},
-		},
-		Filter: &datadogV2.CIAppTestsQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@language:(python OR go)"),
-			To:    datadog.PtrString("now"),
-		},
-		GroupBy: []datadogV2.CIAppTestsGroupBy{
-			{
-				Facet: "@git.branch",
-				Limit: datadog.PtrInt64(10),
-				Sort: &datadogV2.CIAppAggregateSort{
-					Order: datadogV2.CIAPPSORTORDER_ASCENDING.Ptr(),
-				},
-				Total: &datadogV2.CIAppGroupByTotal{
-					CIAppGroupByTotalBoolean: datadog.PtrBool(false)},
-			},
-		},
-		Options: &datadogV2.CIAppQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityTestsApi(apiClient)
-	resp, r, err := api.AggregateCIAppTestEvents(ctx, body)
+    body := datadogV2.CIAppTestsAggregateRequest{
+        Compute: []datadogV2.CIAppCompute{
+            {
+                Aggregation: datadogV2.CIAPPAGGREGATIONFUNCTION_COUNT,
+                Metric:      datadog.PtrString("@test.is_flaky"),
+                Type:        datadogV2.CIAPPCOMPUTETYPE_TOTAL.Ptr(),
+            },
+        },
+        Filter: &datadogV2.CIAppTestsQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@language:(python OR go)"),
+            To:    datadog.PtrString("now"),
+        },
+        GroupBy: []datadogV2.CIAppTestsGroupBy{
+            {
+                Facet: "@git.branch",
+                Limit: datadog.PtrInt64(10),
+                Sort: &datadogV2.CIAppAggregateSort{
+                    Order: datadogV2.CIAPPSORTORDER_ASCENDING.Ptr(),
+                },
+                Total: &datadogV2.CIAppGroupByTotal{
+                    CIAppGroupByTotalBoolean: datadog.PtrBool(false)},
+            },
+        },
+        Options: &datadogV2.CIAppQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityTestsApi(apiClient)
+    resp, r, err := api.AggregateCIAppTestEvents(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.AggregateCIAppTestEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityTestsApi.AggregateCIAppTestEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.AggregateCIAppTestEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityTestsApi.AggregateCIAppTestEvents`:\n%s\n", responseContent)
 }
 ```
 
@@ -1554,7 +1554,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Aggregate tests events returns "OK" response
@@ -1620,7 +1620,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1679,7 +1679,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Aggregate tests events returns "OK" response
@@ -1721,7 +1721,7 @@ p api_instance.aggregate_ci_app_test_events(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Aggregate tests events returns "OK" response
@@ -1770,7 +1770,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

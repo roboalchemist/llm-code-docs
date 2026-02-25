@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Admin endpoint without authe
 ---
 
 # Admin endpoint without authentication
- 
+
 ## Description{% #description %}
 
 An administrative endpoint is exposed without authentication, allowing unauthorized users to access sensitive functionality.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure New Owner added to Azure Active Directory application
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when a user is added as a new owner for an Active Directory application which could be used as a persistence mechanism.

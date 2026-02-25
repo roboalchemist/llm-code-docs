@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cisco Meraki organization appliance security IDS events
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when intrustion detection system (IDS) alerts are created by the Meraki MX Security Appliance.

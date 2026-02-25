@@ -47,6 +47,5 @@ Use of insecure encryption or hashing protocols expose your application to vulne
 var hash = CryptoJS.HmacSHA1("Message", "Secret Passphrase");
 var hash = CryptoJS.HmacSHA1("Message", "Secret Passphrase", anotherargument);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

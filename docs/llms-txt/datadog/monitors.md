@@ -400,7 +400,7 @@ Create a monitor request body.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -431,7 +431,7 @@ Create a monitor request body.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -463,7 +463,7 @@ Create a monitor request body.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -887,9 +887,9 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -911,10 +911,10 @@ Error response object.
   "type": "query alert"
 }
 EOF
-                        
-##### 
+
+#####
                           \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -936,10 +936,10 @@ EOF
   "type": "query alert"
 }
 EOF
-                        
-##### 
+
+#####
                           \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -961,8 +961,8 @@ EOF
   "type": "query alert"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Cost Monitor returns "OK" response
@@ -970,60 +970,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example Monitor"),
-		Type:    datadogV1.MONITORTYPE_COST_ALERT,
-		Query:   `formula("exclude_null(query1)").last("7d").anomaly(direction="above", threshold=10) >= 5`,
-		Message: datadog.PtrString("some message Notify: @hipchat-channel"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(5),
-				Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(3)),
-			},
-			Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-				datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-					MonitorFormulaAndFunctionCostQueryDefinition: &datadogV1.MonitorFormulaAndFunctionCostQueryDefinition{
-						DataSource: datadogV1.MONITORFORMULAANDFUNCTIONCOSTDATASOURCE_CLOUD_COST,
-						Query:      "sum:aws.cost.net.amortized.shared.resources.allocated{aws_product IN (amplify ,athena, backup, bedrock ) } by {aws_product}.rollup(sum, 86400)",
-						Name:       "query1",
-						Aggregator: datadogV1.MONITORFORMULAANDFUNCTIONCOSTAGGREGATOR_SUM.Ptr(),
-					}},
-			},
-			IncludeTags: datadog.PtrBool(true),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitor(ctx, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example Monitor"),
+        Type:    datadogV1.MONITORTYPE_COST_ALERT,
+        Query:   `formula("exclude_null(query1)").last("7d").anomaly(direction="above", threshold=10) >= 5`,
+        Message: datadog.PtrString("some message Notify: @hipchat-channel"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(5),
+                Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(3)),
+            },
+            Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                    MonitorFormulaAndFunctionCostQueryDefinition: &datadogV1.MonitorFormulaAndFunctionCostQueryDefinition{
+                        DataSource: datadogV1.MONITORFORMULAANDFUNCTIONCOSTDATASOURCE_CLOUD_COST,
+                        Query:      "sum:aws.cost.net.amortized.shared.resources.allocated{aws_product IN (amplify ,athena, backup, bedrock ) } by {aws_product}.rollup(sum, 86400)",
+                        Name:       "query1",
+                        Aggregator: datadogV1.MONITORFORMULAANDFUNCTIONCOSTAGGREGATOR_SUM.Ptr(),
+                    }},
+            },
+            IncludeTags: datadog.PtrBool(true),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitor(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a Data Quality monitor returns "OK" response
@@ -1031,61 +1031,61 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example-Monitor"),
-		Type:    datadogV1.MONITORTYPE_DATA_QUALITY_ALERT,
-		Query:   `formula("query1").last("5m") > 100`,
-		Message: datadog.PtrString("Data quality alert triggered"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(100),
-			},
-			Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-				datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-					MonitorFormulaAndFunctionDataQualityQueryDefinition: &datadogV1.MonitorFormulaAndFunctionDataQualityQueryDefinition{
-						Name:       "query1",
-						DataSource: datadogV1.MONITORFORMULAANDFUNCTIONDATAQUALITYDATASOURCE_DATA_QUALITY_METRICS,
-						Measure:    "row_count",
-						Filter:     `search for column where ` + "`" + `database:production AND table:users` + "`",
-						GroupBy: []string{
-							"entity_id",
-						},
-					}},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitor(ctx, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example-Monitor"),
+        Type:    datadogV1.MONITORTYPE_DATA_QUALITY_ALERT,
+        Query:   `formula("query1").last("5m") > 100`,
+        Message: datadog.PtrString("Data quality alert triggered"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(100),
+            },
+            Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                    MonitorFormulaAndFunctionDataQualityQueryDefinition: &datadogV1.MonitorFormulaAndFunctionDataQualityQueryDefinition{
+                        Name:       "query1",
+                        DataSource: datadogV1.MONITORFORMULAANDFUNCTIONDATAQUALITYDATASOURCE_DATA_QUALITY_METRICS,
+                        Measure:    "row_count",
+                        Filter:     `search for column where ` + "`" + `database:production AND table:users` + "`",
+                        GroupBy: []string{
+                            "entity_id",
+                        },
+                    }},
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitor(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a RUM formula and functions monitor returns "OK" response
@@ -1093,77 +1093,77 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example-Monitor"),
-		Type:    datadogV1.MONITORTYPE_RUM_ALERT,
-		Query:   `formula("query2 / query1 * 100").last("15m") >= 0.8`,
-		Message: datadog.PtrString("some message Notify: @hipchat-channel"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(0.8),
-			},
-			Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-				datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-					MonitorFormulaAndFunctionEventQueryDefinition: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinition{
-						DataSource: datadogV1.MONITORFORMULAANDFUNCTIONEVENTSDATASOURCE_RUM,
-						Name:       "query2",
-						Search: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionSearch{
-							Query: "",
-						},
-						Indexes: []string{
-							"*",
-						},
-						Compute: datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionCompute{
-							Aggregation: datadogV1.MONITORFORMULAANDFUNCTIONEVENTAGGREGATION_COUNT,
-						},
-						GroupBy: []datadogV1.MonitorFormulaAndFunctionEventQueryGroupBy{},
-					}},
-				datadogV1.MonitorFormulaAndFunctionQueryDefinition{
-					MonitorFormulaAndFunctionEventQueryDefinition: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinition{
-						DataSource: datadogV1.MONITORFORMULAANDFUNCTIONEVENTSDATASOURCE_RUM,
-						Name:       "query1",
-						Search: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionSearch{
-							Query: "status:error",
-						},
-						Indexes: []string{
-							"*",
-						},
-						Compute: datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionCompute{
-							Aggregation: datadogV1.MONITORFORMULAANDFUNCTIONEVENTAGGREGATION_COUNT,
-						},
-						GroupBy: []datadogV1.MonitorFormulaAndFunctionEventQueryGroupBy{},
-					}},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitor(ctx, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example-Monitor"),
+        Type:    datadogV1.MONITORTYPE_RUM_ALERT,
+        Query:   `formula("query2 / query1 * 100").last("15m") >= 0.8`,
+        Message: datadog.PtrString("some message Notify: @hipchat-channel"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(0.8),
+            },
+            Variables: []datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                    MonitorFormulaAndFunctionEventQueryDefinition: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinition{
+                        DataSource: datadogV1.MONITORFORMULAANDFUNCTIONEVENTSDATASOURCE_RUM,
+                        Name:       "query2",
+                        Search: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionSearch{
+                            Query: "",
+                        },
+                        Indexes: []string{
+                            "*",
+                        },
+                        Compute: datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionCompute{
+                            Aggregation: datadogV1.MONITORFORMULAANDFUNCTIONEVENTAGGREGATION_COUNT,
+                        },
+                        GroupBy: []datadogV1.MonitorFormulaAndFunctionEventQueryGroupBy{},
+                    }},
+                datadogV1.MonitorFormulaAndFunctionQueryDefinition{
+                    MonitorFormulaAndFunctionEventQueryDefinition: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinition{
+                        DataSource: datadogV1.MONITORFORMULAANDFUNCTIONEVENTSDATASOURCE_RUM,
+                        Name:       "query1",
+                        Search: &datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionSearch{
+                            Query: "status:error",
+                        },
+                        Indexes: []string{
+                            "*",
+                        },
+                        Compute: datadogV1.MonitorFormulaAndFunctionEventQueryDefinitionCompute{
+                            Aggregation: datadogV1.MONITORFORMULAANDFUNCTIONEVENTAGGREGATION_COUNT,
+                        },
+                        GroupBy: []datadogV1.MonitorFormulaAndFunctionEventQueryGroupBy{},
+                    }},
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitor(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -1171,7 +1171,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Cost Monitor returns "OK" response
@@ -1236,7 +1236,7 @@ formula("exclude_null(query1)").last("7d").anomaly(direction="above", threshold=
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a Data Quality monitor returns "OK" response
@@ -1300,7 +1300,7 @@ formula("query1").last("5m") > 100
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a RUM formula and functions monitor returns "OK" response
@@ -1385,7 +1385,7 @@ formula("query2 / query1 * 100").last("15m") >= 0.8
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -1417,7 +1417,7 @@ api.Monitor.create(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -1475,7 +1475,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1531,7 +1531,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1619,7 +1619,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -1649,7 +1649,7 @@ dog.monitor(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Create a Cost Monitor returns "OK" response
@@ -1686,7 +1686,7 @@ body = DatadogAPIClient::V1::Monitor.new({
 p api_instance.create_monitor(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a Data Quality monitor returns "OK" response
@@ -1724,7 +1724,7 @@ body = DatadogAPIClient::V1::Monitor.new({
 p api_instance.create_monitor(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a RUM formula and functions monitor returns "OK" response
@@ -1785,7 +1785,7 @@ p api_instance.create_monitor(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Cost Monitor returns "OK" response
@@ -1840,7 +1840,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a Data Quality monitor returns "OK" response
@@ -1892,7 +1892,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a RUM formula and functions monitor returns "OK" response
@@ -1974,7 +1974,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2023,7 +2023,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2074,7 +2074,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2390,13 +2390,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2418,7 +2418,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Monitors search returns "OK" response
@@ -2432,7 +2432,7 @@ p api_instance.search_monitors()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -2454,7 +2454,7 @@ dog.search_monitors
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Monitors search returns "OK" response
@@ -2462,29 +2462,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.SearchMonitors(ctx, *datadogV1.NewSearchMonitorsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.SearchMonitors(ctx, *datadogV1.NewSearchMonitorsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.SearchMonitors`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.SearchMonitors`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.SearchMonitors`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.SearchMonitors`:\n%s\n", responseContent)
 }
 ```
 
@@ -2492,7 +2492,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Monitors search returns "OK" response
@@ -2525,14 +2525,14 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
 
 options = {
-	'api_key': '<DATADOG_API_KEY>',
-	'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 initialize(**options)
@@ -2549,7 +2549,7 @@ api.Monitor.search()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Monitors search returns "OK" response
@@ -2576,7 +2576,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3037,13 +3037,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport monitor_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}/unmute" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```ruby
 require 'dogapi'
@@ -3061,7 +3061,7 @@ dog.unmute_monitor(62_628)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -3491,13 +3491,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3519,7 +3519,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all monitors returns "OK" response
@@ -3533,7 +3533,7 @@ p api_instance.list_monitors()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -3551,7 +3551,7 @@ dog.get_all_monitors
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all monitors returns "OK" response
@@ -3559,29 +3559,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.ListMonitors(ctx, *datadogV1.NewListMonitorsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.ListMonitors(ctx, *datadogV1.NewListMonitorsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitors`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitors`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitors`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitors`:\n%s\n", responseContent)
 }
 ```
 
@@ -3589,7 +3589,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all monitors returns "OK" response
@@ -3623,7 +3623,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -3643,7 +3643,7 @@ print(api.Monitor.get_all())
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get all monitors returns "OK" response
@@ -3670,7 +3670,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3895,13 +3895,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/groups/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3923,7 +3923,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Monitors group search returns "OK" response
@@ -3937,7 +3937,7 @@ p api_instance.search_monitor_groups()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -3955,7 +3955,7 @@ dog.search_monitor_groups
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Monitors group search returns "OK" response
@@ -3963,29 +3963,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.SearchMonitorGroups(ctx, *datadogV1.NewSearchMonitorGroupsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.SearchMonitorGroups(ctx, *datadogV1.NewSearchMonitorGroupsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.SearchMonitorGroups`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.SearchMonitorGroups`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.SearchMonitorGroups`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.SearchMonitorGroups`:\n%s\n", responseContent)
 }
 ```
 
@@ -3993,7 +3993,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Monitors group search returns "OK" response
@@ -4026,14 +4026,14 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
 
 options = {
-	'api_key': '<DATADOG_API_KEY>',
-	'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 initialize(**options)
@@ -4046,7 +4046,7 @@ api.Monitor.search_groups()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Monitors group search returns "OK" response
@@ -4073,7 +4073,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4534,13 +4534,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport monitor_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}/mute" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```ruby
 require 'dogapi'
@@ -4558,7 +4558,7 @@ dog.mute_monitor(62_628)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```python
 
@@ -5190,7 +5190,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport monitor_id="6.66486743e+08"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5213,8 +5213,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Edit a monitor returns "OK" response
@@ -5222,48 +5222,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "monitor" in the system
-	MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
+    // there is a valid "monitor" in the system
+    MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
 
-	body := datadogV1.MonitorUpdateRequest{
-		Name:     datadog.PtrString("My monitor-updated"),
-		Priority: *datadog.NewNullableInt64(nil),
-		Options: &datadogV1.MonitorOptions{
-			EvaluationDelay:  *datadog.NewNullableInt64(nil),
-			NewGroupDelay:    *datadog.NewNullableInt64(datadog.PtrInt64(600)),
-			NewHostDelay:     *datadog.NewNullableInt64(nil),
-			RenotifyInterval: *datadog.NewNullableInt64(nil),
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(2),
-				Warning:  *datadog.NewNullableFloat64(nil),
-			},
-			TimeoutH: *datadog.NewNullableInt64(nil),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitor(ctx, MonitorID, body)
+    body := datadogV1.MonitorUpdateRequest{
+        Name:     datadog.PtrString("My monitor-updated"),
+        Priority: *datadog.NewNullableInt64(nil),
+        Options: &datadogV1.MonitorOptions{
+            EvaluationDelay:  *datadog.NewNullableInt64(nil),
+            NewGroupDelay:    *datadog.NewNullableInt64(datadog.PtrInt64(600)),
+            NewHostDelay:     *datadog.NewNullableInt64(nil),
+            RenotifyInterval: *datadog.NewNullableInt64(nil),
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(2),
+                Warning:  *datadog.NewNullableFloat64(nil),
+            },
+            TimeoutH: *datadog.NewNullableInt64(nil),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitor(ctx, MonitorID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -5271,7 +5271,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit a monitor returns "OK" response
@@ -5324,7 +5324,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5370,7 +5370,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit a monitor returns "OK" response
@@ -5404,7 +5404,7 @@ p api_instance.update_monitor(MONITOR_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Edit a monitor returns "OK" response
@@ -5445,7 +5445,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5573,12 +5573,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/v1/monitor/unmute_all" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 ## Get a monitor's details{% #get-a-monitors-details %}
 
 {% tab title="v1" %}
@@ -6013,13 +6013,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport monitor_id="6.66486743e+08"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6048,7 +6048,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a monitor's details returns "OK" response
@@ -6068,7 +6068,7 @@ p api_instance.get_monitor(MONITOR_ID.to_i, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -6086,7 +6086,7 @@ dog.get_monitor(91_879, group_states: 'all')
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a monitor's details returns "OK" response
@@ -6094,33 +6094,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "monitor" in the system
-	MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
+    // there is a valid "monitor" in the system
+    MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.GetMonitor(ctx, MonitorID, *datadogV1.NewGetMonitorOptionalParameters().WithWithDowntimes(true))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.GetMonitor(ctx, MonitorID, *datadogV1.NewGetMonitorOptionalParameters().WithWithDowntimes(true))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -6128,7 +6128,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a monitor's details returns "OK" response
@@ -6167,7 +6167,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -6187,7 +6187,7 @@ api.Monitor.get(2081, group_states='all')
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get a monitor's details returns "OK" response
@@ -6219,7 +6219,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6642,12 +6642,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/v1/monitor/mute_all" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 ## Delete a monitor{% #delete-a-monitor %}
 
 {% tab title="v1" %}
@@ -6836,13 +6836,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport monitor_id="6.66486743e+08"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6870,7 +6870,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a monitor returns "OK" response
@@ -6887,7 +6887,7 @@ p api_instance.delete_monitor(MONITOR_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -6905,7 +6905,7 @@ dog.delete_monitor(62_625)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a monitor returns "OK" response
@@ -6913,33 +6913,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "monitor" in the system
-	MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
+    // there is a valid "monitor" in the system
+    MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.DeleteMonitor(ctx, MonitorID, *datadogV1.NewDeleteMonitorOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.DeleteMonitor(ctx, MonitorID, *datadogV1.NewDeleteMonitorOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.DeleteMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.DeleteMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -6947,7 +6947,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a monitor returns "OK" response
@@ -6983,7 +6983,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -7006,7 +7006,7 @@ api.Monitor.delete(2081, force=True)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Delete a monitor returns "OK" response
@@ -7035,7 +7035,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7241,13 +7241,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport monitor_ids="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/can_delete?monitor_ids=${monitor_ids}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7277,7 +7277,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Check if a monitor can be deleted returns "OK" response
@@ -7296,7 +7296,7 @@ p api_instance.check_can_delete_monitor([
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -7315,7 +7315,7 @@ dog.can_delete_monitors([56838, 771060, 1000376])
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Check if a monitor can be deleted returns "OK" response
@@ -7323,35 +7323,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "monitor" in the system
-	MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
+    // there is a valid "monitor" in the system
+    MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.CheckCanDeleteMonitor(ctx, []int64{
-		MonitorID,
-	})
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.CheckCanDeleteMonitor(ctx, []int64{
+        MonitorID,
+    })
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CheckCanDeleteMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CheckCanDeleteMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CheckCanDeleteMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CheckCanDeleteMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -7359,7 +7359,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Check if a monitor can be deleted returns "OK" response
@@ -7397,7 +7397,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -7417,7 +7417,7 @@ api.Monitor.can_delete(monitor_ids=[56838, 771060, 1000376])
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Check if a monitor can be deleted returns "OK" response
@@ -7443,7 +7443,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7646,7 +7646,7 @@ Monitor request object
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -7682,7 +7682,7 @@ Monitor request object
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -7821,7 +7821,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/validate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7860,8 +7860,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/validate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7903,8 +7903,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate a monitor returns "OK" response
@@ -7912,64 +7912,64 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example-Monitor"),
-		Type:    datadogV1.MONITORTYPE_LOG_ALERT,
-		Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source").last("5m") > 2`,
-		Message: datadog.PtrString("some message Notify: @hipchat-channel"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			EnableLogsSample:       datadog.PtrBool(true),
-			EscalationMessage:      datadog.PtrString("the situation has escalated"),
-			EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
-			IncludeTags:            datadog.PtrBool(true),
-			Locked:                 datadog.PtrBool(false),
-			NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
-			NoDataTimeframe:        *datadog.NewNullableInt64(nil),
-			NotifyAudit:            datadog.PtrBool(false),
-			NotifyNoData:           datadog.PtrBool(false),
-			OnMissingData:          datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
-			NotificationPresetName: datadogV1.MONITOROPTIONSNOTIFICATIONPRESETS_HIDE_HANDLES.Ptr(),
-			RenotifyInterval:       *datadog.NewNullableInt64(datadog.PtrInt64(60)),
-			RequireFullWindow:      datadog.PtrBool(true),
-			TimeoutH:               *datadog.NewNullableInt64(datadog.PtrInt64(24)),
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(2),
-				Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.ValidateMonitor(ctx, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example-Monitor"),
+        Type:    datadogV1.MONITORTYPE_LOG_ALERT,
+        Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source").last("5m") > 2`,
+        Message: datadog.PtrString("some message Notify: @hipchat-channel"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            EnableLogsSample:       datadog.PtrBool(true),
+            EscalationMessage:      datadog.PtrString("the situation has escalated"),
+            EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
+            IncludeTags:            datadog.PtrBool(true),
+            Locked:                 datadog.PtrBool(false),
+            NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
+            NoDataTimeframe:        *datadog.NewNullableInt64(nil),
+            NotifyAudit:            datadog.PtrBool(false),
+            NotifyNoData:           datadog.PtrBool(false),
+            OnMissingData:          datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
+            NotificationPresetName: datadogV1.MONITOROPTIONSNOTIFICATIONPRESETS_HIDE_HANDLES.Ptr(),
+            RenotifyInterval:       *datadog.NewNullableInt64(datadog.PtrInt64(60)),
+            RequireFullWindow:      datadog.PtrBool(true),
+            TimeoutH:               *datadog.NewNullableInt64(datadog.PtrInt64(24)),
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(2),
+                Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.ValidateMonitor(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateMonitor`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Validate a multi-alert monitor returns "OK" response
@@ -7977,63 +7977,63 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example-Monitor"),
-		Type:    datadogV1.MONITORTYPE_LOG_ALERT,
-		Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source,status").last("5m") > 2`,
-		Message: datadog.PtrString("some message Notify: @hipchat-channel"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			EnableLogsSample:       datadog.PtrBool(true),
-			EscalationMessage:      datadog.PtrString("the situation has escalated"),
-			EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
-			GroupRetentionDuration: datadog.PtrString("2d"),
-			IncludeTags:            datadog.PtrBool(true),
-			Locked:                 datadog.PtrBool(false),
-			NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
-			NoDataTimeframe:        *datadog.NewNullableInt64(nil),
-			NotifyAudit:            datadog.PtrBool(false),
-			NotifyBy: []string{
-				"status",
-			},
-			NotifyNoData:      datadog.PtrBool(false),
-			OnMissingData:     datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
-			RenotifyInterval:  *datadog.NewNullableInt64(datadog.PtrInt64(60)),
-			RequireFullWindow: datadog.PtrBool(true),
-			TimeoutH:          *datadog.NewNullableInt64(datadog.PtrInt64(24)),
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(2),
-				Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.ValidateMonitor(ctx, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example-Monitor"),
+        Type:    datadogV1.MONITORTYPE_LOG_ALERT,
+        Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source,status").last("5m") > 2`,
+        Message: datadog.PtrString("some message Notify: @hipchat-channel"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            EnableLogsSample:       datadog.PtrBool(true),
+            EscalationMessage:      datadog.PtrString("the situation has escalated"),
+            EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
+            GroupRetentionDuration: datadog.PtrString("2d"),
+            IncludeTags:            datadog.PtrBool(true),
+            Locked:                 datadog.PtrBool(false),
+            NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
+            NoDataTimeframe:        *datadog.NewNullableInt64(nil),
+            NotifyAudit:            datadog.PtrBool(false),
+            NotifyBy: []string{
+                "status",
+            },
+            NotifyNoData:      datadog.PtrBool(false),
+            OnMissingData:     datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
+            RenotifyInterval:  *datadog.NewNullableInt64(datadog.PtrInt64(60)),
+            RequireFullWindow: datadog.PtrBool(true),
+            TimeoutH:          *datadog.NewNullableInt64(datadog.PtrInt64(24)),
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(2),
+                Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.ValidateMonitor(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -8041,7 +8041,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate a monitor returns "OK" response
@@ -8104,7 +8104,7 @@ logs("service:foo AND type:error").index("main").rollup("count").by("source").la
 }
 ```
 
-##### 
+#####
 
 ```java
 // Validate a multi-alert monitor returns "OK" response
@@ -8172,7 +8172,7 @@ logs("service:foo AND type:error").index("main").rollup("count").by("source,stat
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -8200,7 +8200,7 @@ api.Monitor.validate(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -8256,7 +8256,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -8318,7 +8318,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -8349,7 +8349,7 @@ dog.validate_monitor(type, query, parameters)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Validate a monitor returns "OK" response
@@ -8391,7 +8391,7 @@ body = DatadogAPIClient::V1::Monitor.new({
 p api_instance.validate_monitor(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Validate a multi-alert monitor returns "OK" response
@@ -8440,7 +8440,7 @@ p api_instance.validate_monitor(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate a monitor returns "OK" response
@@ -8493,7 +8493,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Validate a multi-alert monitor returns "OK" response
@@ -8550,7 +8550,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8603,7 +8603,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -8970,7 +8970,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport monitor_id="6.66486743e+08"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/monitor/${monitor_id}/validate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9009,8 +9009,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate an existing monitor returns "OK" response
@@ -9018,64 +9018,64 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "monitor" in the system
-	MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
+    // there is a valid "monitor" in the system
+    MonitorID, _ := strconv.ParseInt(os.Getenv("MONITOR_ID"), 10, 64)
 
-	body := datadogV1.Monitor{
-		Name:    datadog.PtrString("Example-Monitor"),
-		Type:    datadogV1.MONITORTYPE_LOG_ALERT,
-		Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source").last("5m") > 2`,
-		Message: datadog.PtrString("some message Notify: @hipchat-channel"),
-		Tags: []string{
-			"test:examplemonitor",
-			"env:ci",
-		},
-		Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
-		Options: &datadogV1.MonitorOptions{
-			EnableLogsSample:       datadog.PtrBool(true),
-			EscalationMessage:      datadog.PtrString("the situation has escalated"),
-			EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
-			IncludeTags:            datadog.PtrBool(true),
-			Locked:                 datadog.PtrBool(false),
-			NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
-			NoDataTimeframe:        *datadog.NewNullableInt64(nil),
-			NotifyAudit:            datadog.PtrBool(false),
-			NotifyNoData:           datadog.PtrBool(false),
-			OnMissingData:          datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
-			NotificationPresetName: datadogV1.MONITOROPTIONSNOTIFICATIONPRESETS_HIDE_HANDLES.Ptr(),
-			RenotifyInterval:       *datadog.NewNullableInt64(datadog.PtrInt64(60)),
-			RequireFullWindow:      datadog.PtrBool(true),
-			TimeoutH:               *datadog.NewNullableInt64(datadog.PtrInt64(24)),
-			Thresholds: &datadogV1.MonitorThresholds{
-				Critical: datadog.PtrFloat64(2),
-				Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewMonitorsApi(apiClient)
-	resp, r, err := api.ValidateExistingMonitor(ctx, MonitorID, body)
+    body := datadogV1.Monitor{
+        Name:    datadog.PtrString("Example-Monitor"),
+        Type:    datadogV1.MONITORTYPE_LOG_ALERT,
+        Query:   `logs("service:foo AND type:error").index("main").rollup("count").by("source").last("5m") > 2`,
+        Message: datadog.PtrString("some message Notify: @hipchat-channel"),
+        Tags: []string{
+            "test:examplemonitor",
+            "env:ci",
+        },
+        Priority: *datadog.NewNullableInt64(datadog.PtrInt64(3)),
+        Options: &datadogV1.MonitorOptions{
+            EnableLogsSample:       datadog.PtrBool(true),
+            EscalationMessage:      datadog.PtrString("the situation has escalated"),
+            EvaluationDelay:        *datadog.NewNullableInt64(datadog.PtrInt64(700)),
+            IncludeTags:            datadog.PtrBool(true),
+            Locked:                 datadog.PtrBool(false),
+            NewHostDelay:           *datadog.NewNullableInt64(datadog.PtrInt64(600)),
+            NoDataTimeframe:        *datadog.NewNullableInt64(nil),
+            NotifyAudit:            datadog.PtrBool(false),
+            NotifyNoData:           datadog.PtrBool(false),
+            OnMissingData:          datadogV1.ONMISSINGDATAOPTION_SHOW_AND_NOTIFY_NO_DATA.Ptr(),
+            NotificationPresetName: datadogV1.MONITOROPTIONSNOTIFICATIONPRESETS_HIDE_HANDLES.Ptr(),
+            RenotifyInterval:       *datadog.NewNullableInt64(datadog.PtrInt64(60)),
+            RequireFullWindow:      datadog.PtrBool(true),
+            TimeoutH:               *datadog.NewNullableInt64(datadog.PtrInt64(24)),
+            Thresholds: &datadogV1.MonitorThresholds{
+                Critical: datadog.PtrFloat64(2),
+                Warning:  *datadog.NewNullableFloat64(datadog.PtrFloat64(1)),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewMonitorsApi(apiClient)
+    resp, r, err := api.ValidateExistingMonitor(ctx, MonitorID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateExistingMonitor`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateExistingMonitor`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateExistingMonitor`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ValidateExistingMonitor`:\n%s\n", responseContent)
 }
 ```
 
@@ -9083,7 +9083,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate an existing monitor returns "OK" response
@@ -9153,7 +9153,7 @@ logs("service:foo AND type:error").index("main").rollup("count").by("source").la
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9217,7 +9217,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate an existing monitor returns "OK" response
@@ -9266,7 +9266,7 @@ p api_instance.validate_existing_monitor(MONITOR_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate an existing monitor returns "OK" response
@@ -9327,7 +9327,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9545,13 +9545,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/policy/${policy_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9579,7 +9579,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a monitor configuration policy returns "OK" response
@@ -9596,7 +9596,7 @@ p api_instance.get_monitor_config_policy(MONITOR_CONFIGURATION_POLICY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a monitor configuration policy returns "OK" response
@@ -9604,32 +9604,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_configuration_policy" in the system
-	MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
+    // there is a valid "monitor_configuration_policy" in the system
+    MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.GetMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.GetMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorConfigPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorConfigPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorConfigPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorConfigPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -9637,7 +9637,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a monitor configuration policy returns "OK" response
@@ -9675,7 +9675,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a monitor configuration policy returns "OK" response
@@ -9704,7 +9704,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9864,13 +9864,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/policy" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9892,7 +9892,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all monitor configuration policies returns "OK" response
@@ -9906,7 +9906,7 @@ p api_instance.list_monitor_config_policies()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all monitor configuration policies returns "OK" response
@@ -9914,29 +9914,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.ListMonitorConfigPolicies(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.ListMonitorConfigPolicies(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitorConfigPolicies`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitorConfigPolicies`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitorConfigPolicies`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitorConfigPolicies`:\n%s\n", responseContent)
 }
 ```
 
@@ -9944,7 +9944,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all monitor configuration policies returns "OK" response
@@ -9977,7 +9977,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all monitor configuration policies returns "OK" response
@@ -10001,7 +10001,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10217,7 +10217,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/policy" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10241,8 +10241,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a monitor configuration policy returns "OK" response
@@ -10250,46 +10250,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorConfigPolicyCreateRequest{
-		Data: datadogV2.MonitorConfigPolicyCreateData{
-			Attributes: datadogV2.MonitorConfigPolicyAttributeCreateRequest{
-				PolicyType: datadogV2.MONITORCONFIGPOLICYTYPE_TAG,
-				Policy: datadogV2.MonitorConfigPolicyPolicyCreateRequest{
-					MonitorConfigPolicyTagPolicyCreateRequest: &datadogV2.MonitorConfigPolicyTagPolicyCreateRequest{
-						TagKey:         "examplemonitor",
-						TagKeyRequired: false,
-						ValidTagValues: []string{
-							"prod",
-							"staging",
-						},
-					}},
-			},
-			Type: datadogV2.MONITORCONFIGPOLICYRESOURCETYPE_MONITOR_CONFIG_POLICY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitorConfigPolicy(ctx, body)
+    body := datadogV2.MonitorConfigPolicyCreateRequest{
+        Data: datadogV2.MonitorConfigPolicyCreateData{
+            Attributes: datadogV2.MonitorConfigPolicyAttributeCreateRequest{
+                PolicyType: datadogV2.MONITORCONFIGPOLICYTYPE_TAG,
+                Policy: datadogV2.MonitorConfigPolicyPolicyCreateRequest{
+                    MonitorConfigPolicyTagPolicyCreateRequest: &datadogV2.MonitorConfigPolicyTagPolicyCreateRequest{
+                        TagKey:         "examplemonitor",
+                        TagKeyRequired: false,
+                        ValidTagValues: []string{
+                            "prod",
+                            "staging",
+                        },
+                    }},
+            },
+            Type: datadogV2.MONITORCONFIGPOLICYRESOURCETYPE_MONITOR_CONFIG_POLICY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitorConfigPolicy(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorConfigPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorConfigPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorConfigPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorConfigPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -10297,7 +10297,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a monitor configuration policy returns "OK" response
@@ -10353,7 +10353,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10402,7 +10402,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a monitor configuration policy returns "OK" response
@@ -10433,7 +10433,7 @@ p api_instance.create_monitor_config_policy(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a monitor configuration policy returns "OK" response
@@ -10477,7 +10477,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10744,7 +10744,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport policy_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/policy/${policy_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10769,8 +10769,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Edit a monitor configuration policy returns "OK" response
@@ -10778,50 +10778,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_configuration_policy" in the system
-	MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
+    // there is a valid "monitor_configuration_policy" in the system
+    MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
 
-	body := datadogV2.MonitorConfigPolicyEditRequest{
-		Data: datadogV2.MonitorConfigPolicyEditData{
-			Attributes: datadogV2.MonitorConfigPolicyAttributeEditRequest{
-				Policy: datadogV2.MonitorConfigPolicyPolicy{
-					MonitorConfigPolicyTagPolicy: &datadogV2.MonitorConfigPolicyTagPolicy{
-						TagKey:         datadog.PtrString("examplemonitor"),
-						TagKeyRequired: datadog.PtrBool(false),
-						ValidTagValues: []string{
-							"prod",
-							"staging",
-						},
-					}},
-				PolicyType: datadogV2.MONITORCONFIGPOLICYTYPE_TAG,
-			},
-			Id:   MonitorConfigurationPolicyDataID,
-			Type: datadogV2.MONITORCONFIGPOLICYRESOURCETYPE_MONITOR_CONFIG_POLICY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID, body)
+    body := datadogV2.MonitorConfigPolicyEditRequest{
+        Data: datadogV2.MonitorConfigPolicyEditData{
+            Attributes: datadogV2.MonitorConfigPolicyAttributeEditRequest{
+                Policy: datadogV2.MonitorConfigPolicyPolicy{
+                    MonitorConfigPolicyTagPolicy: &datadogV2.MonitorConfigPolicyTagPolicy{
+                        TagKey:         datadog.PtrString("examplemonitor"),
+                        TagKeyRequired: datadog.PtrBool(false),
+                        ValidTagValues: []string{
+                            "prod",
+                            "staging",
+                        },
+                    }},
+                PolicyType: datadogV2.MONITORCONFIGPOLICYTYPE_TAG,
+            },
+            Id:   MonitorConfigurationPolicyDataID,
+            Type: datadogV2.MONITORCONFIGPOLICYRESOURCETYPE_MONITOR_CONFIG_POLICY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorConfigPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorConfigPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorConfigPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorConfigPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -10829,7 +10829,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit a monitor configuration policy returns "OK" response
@@ -10891,7 +10891,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10943,7 +10943,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit a monitor configuration policy returns "OK" response
@@ -10978,7 +10978,7 @@ p api_instance.update_monitor_config_policy(MONITOR_CONFIGURATION_POLICY_DATA_ID
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Edit a monitor configuration policy returns "OK" response
@@ -11027,7 +11027,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11211,12 +11211,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/policy/${policy_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11242,7 +11242,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a monitor configuration policy returns "OK" response
@@ -11259,7 +11259,7 @@ api_instance.delete_monitor_config_policy(MONITOR_CONFIGURATION_POLICY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a monitor configuration policy returns "OK" response
@@ -11267,28 +11267,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_configuration_policy" in the system
-	MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
+    // there is a valid "monitor_configuration_policy" in the system
+    MonitorConfigurationPolicyDataID := os.Getenv("MONITOR_CONFIGURATION_POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	r, err := api.DeleteMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    r, err := api.DeleteMonitorConfigPolicy(ctx, MonitorConfigurationPolicyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorConfigPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorConfigPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -11296,7 +11296,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a monitor configuration policy returns "OK" response
@@ -11331,7 +11331,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a monitor configuration policy returns "OK" response
@@ -11360,7 +11360,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11685,13 +11685,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11719,7 +11719,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a monitor notification rule returns "OK" response
@@ -11736,7 +11736,7 @@ p api_instance.get_monitor_notification_rule(MONITOR_NOTIFICATION_RULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a monitor notification rule returns "OK" response
@@ -11744,32 +11744,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_notification_rule" in the system
-	MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "monitor_notification_rule" in the system
+    MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.GetMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, *datadogV2.NewGetMonitorNotificationRuleOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.GetMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, *datadogV2.NewGetMonitorNotificationRuleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -11777,7 +11777,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a monitor notification rule returns "OK" response
@@ -11814,7 +11814,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a monitor notification rule returns "OK" response
@@ -11847,7 +11847,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12147,13 +12147,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12175,7 +12175,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all monitor notification rules returns "OK" response
@@ -12189,7 +12189,7 @@ p api_instance.get_monitor_notification_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all monitor notification rules returns "OK" response
@@ -12197,29 +12197,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.GetMonitorNotificationRules(ctx, *datadogV2.NewGetMonitorNotificationRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.GetMonitorNotificationRules(ctx, *datadogV2.NewGetMonitorNotificationRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorNotificationRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -12227,7 +12227,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all monitor notification rules returns "OK" response
@@ -12260,7 +12260,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all monitor notification rules returns "OK" response
@@ -12287,7 +12287,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12362,7 +12362,7 @@ Request body to create a monitor notification rule.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -12384,7 +12384,7 @@ Request body to create a monitor notification rule.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -12413,7 +12413,7 @@ Request body to create a monitor notification rule.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -12688,7 +12688,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12713,8 +12713,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12746,8 +12746,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12770,8 +12770,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a monitor notification rule returns "OK" response
@@ -12779,51 +12779,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorNotificationRuleCreateRequest{
-		Data: datadogV2.MonitorNotificationRuleCreateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
-						Tags: []string{
-							"test:example-monitor",
-						},
-					}},
-				Name: "test rule",
-				Recipients: []string{
-					"slack-test-channel",
-					"jira-test",
-				},
-			},
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
+    body := datadogV2.MonitorNotificationRuleCreateRequest{
+        Data: datadogV2.MonitorNotificationRuleCreateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
+                        Tags: []string{
+                            "test:example-monitor",
+                        },
+                    }},
+                Name: "test rule",
+                Recipients: []string{
+                    "slack-test-channel",
+                    "jira-test",
+                },
+            },
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a monitor notification rule with conditional recipients returns "OK" response
@@ -12831,58 +12831,58 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorNotificationRuleCreateRequest{
-		Data: datadogV2.MonitorNotificationRuleCreateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
-						Tags: []string{
-							"test:example-monitor",
-						},
-					}},
-				Name: "test rule",
-				ConditionalRecipients: &datadogV2.MonitorNotificationRuleConditionalRecipients{
-					Conditions: []datadogV2.MonitorNotificationRuleCondition{
-						{
-							Scope: "transition_type:is_alert",
-							Recipients: []string{
-								"slack-test-channel",
-								"jira-test",
-							},
-						},
-					},
-				},
-			},
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
+    body := datadogV2.MonitorNotificationRuleCreateRequest{
+        Data: datadogV2.MonitorNotificationRuleCreateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
+                        Tags: []string{
+                            "test:example-monitor",
+                        },
+                    }},
+                Name: "test rule",
+                ConditionalRecipients: &datadogV2.MonitorNotificationRuleConditionalRecipients{
+                    Conditions: []datadogV2.MonitorNotificationRuleCondition{
+                        {
+                            Scope: "transition_type:is_alert",
+                            Recipients: []string{
+                                "slack-test-channel",
+                                "jira-test",
+                            },
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a monitor notification rule with scope returns "OK" response
@@ -12890,45 +12890,45 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorNotificationRuleCreateRequest{
-		Data: datadogV2.MonitorNotificationRuleCreateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterScope: &datadogV2.MonitorNotificationRuleFilterScope{
-						Scope: "test:example-monitor",
-					}},
-				Name: "test rule",
-				Recipients: []string{
-					"slack-test-channel",
-					"jira-test",
-				},
-			},
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
+    body := datadogV2.MonitorNotificationRuleCreateRequest{
+        Data: datadogV2.MonitorNotificationRuleCreateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterScope: &datadogV2.MonitorNotificationRuleFilterScope{
+                        Scope: "test:example-monitor",
+                    }},
+                Name: "test rule",
+                Recipients: []string{
+                    "slack-test-channel",
+                    "jira-test",
+                },
+            },
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitorNotificationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -12936,7 +12936,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a monitor notification rule returns "OK" response
@@ -12987,7 +12987,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a monitor notification rule with conditional recipients returns "OK" response
@@ -13048,7 +13048,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a monitor notification rule with scope returns "OK" response
@@ -13102,7 +13102,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -13145,7 +13145,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -13199,7 +13199,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -13244,7 +13244,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a monitor notification rule returns "OK" response
@@ -13272,7 +13272,7 @@ body = DatadogAPIClient::V2::MonitorNotificationRuleCreateRequest.new({
 p api_instance.create_monitor_notification_rule(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a monitor notification rule with conditional recipients returns "OK" response
@@ -13307,7 +13307,7 @@ body = DatadogAPIClient::V2::MonitorNotificationRuleCreateRequest.new({
 p api_instance.create_monitor_notification_rule(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a monitor notification rule with scope returns "OK" response
@@ -13337,7 +13337,7 @@ p api_instance.create_monitor_notification_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a monitor notification rule returns "OK" response
@@ -13380,7 +13380,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a monitor notification rule with conditional recipients returns "OK"
@@ -13428,7 +13428,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a monitor notification rule with scope returns "OK" response
@@ -13473,7 +13473,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13510,7 +13510,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -13554,7 +13554,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -13653,7 +13653,7 @@ Request body to update the monitor notification rule.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -13676,7 +13676,7 @@ Request body to update the monitor notification rule.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -13707,7 +13707,7 @@ Request body to update the monitor notification rule.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -14007,7 +14007,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14033,8 +14033,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14068,8 +14068,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14092,8 +14092,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a monitor notification rule returns "OK" response
@@ -14101,55 +14101,55 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_notification_rule" in the system
-	MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "monitor_notification_rule" in the system
+    MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.MonitorNotificationRuleUpdateRequest{
-		Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
-						Tags: []string{
-							"test:example-monitor",
-							"host:abc",
-						},
-					}},
-				Name: "updated rule",
-				Recipients: []string{
-					"slack-test-channel",
-				},
-			},
-			Id:   MonitorNotificationRuleDataID,
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
+    body := datadogV2.MonitorNotificationRuleUpdateRequest{
+        Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
+                        Tags: []string{
+                            "test:example-monitor",
+                            "host:abc",
+                        },
+                    }},
+                Name: "updated rule",
+                Recipients: []string{
+                    "slack-test-channel",
+                },
+            },
+            Id:   MonitorNotificationRuleDataID,
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update a monitor notification rule with conditional_recipients returns "OK" response
@@ -14157,63 +14157,63 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_notification_rule" in the system
-	MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "monitor_notification_rule" in the system
+    MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.MonitorNotificationRuleUpdateRequest{
-		Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
-						Tags: []string{
-							"test:example-monitor",
-							"host:abc",
-						},
-					}},
-				Name: "updated rule",
-				ConditionalRecipients: &datadogV2.MonitorNotificationRuleConditionalRecipients{
-					Conditions: []datadogV2.MonitorNotificationRuleCondition{
-						{
-							Scope: "transition_type:is_alert",
-							Recipients: []string{
-								"slack-test-channel",
-								"jira-test",
-							},
-						},
-					},
-				},
-			},
-			Id:   MonitorNotificationRuleDataID,
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
+    body := datadogV2.MonitorNotificationRuleUpdateRequest{
+        Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterTags: &datadogV2.MonitorNotificationRuleFilterTags{
+                        Tags: []string{
+                            "test:example-monitor",
+                            "host:abc",
+                        },
+                    }},
+                Name: "updated rule",
+                ConditionalRecipients: &datadogV2.MonitorNotificationRuleConditionalRecipients{
+                    Conditions: []datadogV2.MonitorNotificationRuleCondition{
+                        {
+                            Scope: "transition_type:is_alert",
+                            Recipients: []string{
+                                "slack-test-channel",
+                                "jira-test",
+                            },
+                        },
+                    },
+                },
+            },
+            Id:   MonitorNotificationRuleDataID,
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update a monitor notification rule with scope returns "OK" response
@@ -14221,48 +14221,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_notification_rule" in the system
-	MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "monitor_notification_rule" in the system
+    MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.MonitorNotificationRuleUpdateRequest{
-		Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
-			Attributes: datadogV2.MonitorNotificationRuleAttributes{
-				Filter: &datadogV2.MonitorNotificationRuleFilter{
-					MonitorNotificationRuleFilterScope: &datadogV2.MonitorNotificationRuleFilterScope{
-						Scope: "test:example-monitor",
-					}},
-				Name: "updated rule",
-				Recipients: []string{
-					"slack-test-channel",
-				},
-			},
-			Id:   MonitorNotificationRuleDataID,
-			Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
+    body := datadogV2.MonitorNotificationRuleUpdateRequest{
+        Data: datadogV2.MonitorNotificationRuleUpdateRequestData{
+            Attributes: datadogV2.MonitorNotificationRuleAttributes{
+                Filter: &datadogV2.MonitorNotificationRuleFilter{
+                    MonitorNotificationRuleFilterScope: &datadogV2.MonitorNotificationRuleFilterScope{
+                        Scope: "test:example-monitor",
+                    }},
+                Name: "updated rule",
+                Recipients: []string{
+                    "slack-test-channel",
+                },
+            },
+            Id:   MonitorNotificationRuleDataID,
+            Type: datadogV2.MONITORNOTIFICATIONRULERESOURCETYPE_MONITOR_NOTIFICATION_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitorNotificationRule(ctx, MonitorNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -14270,7 +14270,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a monitor notification rule returns "OK" response
@@ -14326,7 +14326,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update a monitor notification rule with conditional_recipients returns "OK" response
@@ -14392,7 +14392,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update a monitor notification rule with scope returns "OK" response
@@ -14451,7 +14451,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -14499,7 +14499,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -14559,7 +14559,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -14608,7 +14608,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a monitor notification rule returns "OK" response
@@ -14640,7 +14640,7 @@ body = DatadogAPIClient::V2::MonitorNotificationRuleUpdateRequest.new({
 p api_instance.update_monitor_notification_rule(MONITOR_NOTIFICATION_RULE_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update a monitor notification rule with conditional_recipients returns "OK" response
@@ -14680,7 +14680,7 @@ body = DatadogAPIClient::V2::MonitorNotificationRuleUpdateRequest.new({
 p api_instance.update_monitor_notification_rule(MONITOR_NOTIFICATION_RULE_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update a monitor notification rule with scope returns "OK" response
@@ -14713,7 +14713,7 @@ p api_instance.update_monitor_notification_rule(MONITOR_NOTIFICATION_RULE_DATA_I
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a monitor notification rule returns "OK" response
@@ -14760,7 +14760,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update a monitor notification rule with conditional_recipients returns "OK"
@@ -14815,7 +14815,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update a monitor notification rule with scope returns "OK" response
@@ -14863,7 +14863,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14906,7 +14906,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -14956,7 +14956,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -15114,12 +15114,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/notification_rule/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15145,7 +15145,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a monitor notification rule returns "OK" response
@@ -15162,7 +15162,7 @@ api_instance.delete_monitor_notification_rule(MONITOR_NOTIFICATION_RULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a monitor notification rule returns "OK" response
@@ -15170,28 +15170,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_notification_rule" in the system
-	MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "monitor_notification_rule" in the system
+    MonitorNotificationRuleDataID := os.Getenv("MONITOR_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	r, err := api.DeleteMonitorNotificationRule(ctx, MonitorNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    r, err := api.DeleteMonitorNotificationRule(ctx, MonitorNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -15199,7 +15199,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a monitor notification rule returns "OK" response
@@ -15233,7 +15233,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a monitor notification rule returns "OK" response
@@ -15262,7 +15262,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15504,13 +15504,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport template_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template/${template_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15539,7 +15539,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a monitor user template returns "OK" response
@@ -15559,7 +15559,7 @@ p api_instance.get_monitor_user_template(MONITOR_USER_TEMPLATE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a monitor user template returns "OK" response
@@ -15567,33 +15567,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_user_template" in the system
-	MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
+    // there is a valid "monitor_user_template" in the system
+    MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.GetMonitorUserTemplate(ctx, MonitorUserTemplateDataID, *datadogV2.NewGetMonitorUserTemplateOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.GetMonitorUserTemplate(ctx, MonitorUserTemplateDataID, *datadogV2.NewGetMonitorUserTemplateOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.GetMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorUserTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.GetMonitorUserTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -15601,7 +15601,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a monitor user template returns "OK" response
@@ -15639,7 +15639,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a monitor user template returns "OK" response
@@ -15672,7 +15672,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15833,13 +15833,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15862,7 +15862,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all monitor user templates returns "OK" response
@@ -15879,7 +15879,7 @@ p api_instance.list_monitor_user_templates()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all monitor user templates returns "OK" response
@@ -15887,30 +15887,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListMonitorUserTemplates", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.ListMonitorUserTemplates(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListMonitorUserTemplates", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.ListMonitorUserTemplates(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitorUserTemplates`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ListMonitorUserTemplates`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitorUserTemplates`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.ListMonitorUserTemplates`:\n%s\n", responseContent)
 }
 ```
 
@@ -15918,7 +15918,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all monitor user templates returns "OK" response
@@ -15952,7 +15952,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all monitor user templates returns "OK" response
@@ -15977,7 +15977,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16212,7 +16212,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -16251,8 +16251,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a monitor user template returns "OK" response
@@ -16260,61 +16260,61 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorUserTemplateCreateRequest{
-		Data: datadogV2.MonitorUserTemplateCreateData{
-			Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
-				Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
-				MonitorDefinition: map[string]interface{}{
-					"message": "A msg.",
-					"name":    "A name example-monitor",
-					"query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
-					"type":    "query alert",
-				},
-				Tags: []string{
-					"integration:Azure",
-				},
-				TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
-					{
-						AvailableValues: []string{
-							"value1",
-							"value2",
-						},
-						Defaults: []string{
-							"defaultValue",
-						},
-						Name:   "regionName",
-						TagKey: datadog.PtrString("datacenter"),
-					},
-				},
-				Title: "Postgres DB example-monitor",
-			},
-			Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.CreateMonitorUserTemplate(ctx, body)
+    body := datadogV2.MonitorUserTemplateCreateRequest{
+        Data: datadogV2.MonitorUserTemplateCreateData{
+            Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
+                Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
+                MonitorDefinition: map[string]interface{}{
+                    "message": "A msg.",
+                    "name":    "A name example-monitor",
+                    "query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
+                    "type":    "query alert",
+                },
+                Tags: []string{
+                    "integration:Azure",
+                },
+                TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
+                    {
+                        AvailableValues: []string{
+                            "value1",
+                            "value2",
+                        },
+                        Defaults: []string{
+                            "defaultValue",
+                        },
+                        Name:   "regionName",
+                        TagKey: datadog.PtrString("datacenter"),
+                    },
+                },
+                Title: "Postgres DB example-monitor",
+            },
+            Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.CreateMonitorUserTemplate(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.CreateMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorUserTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.CreateMonitorUserTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -16322,7 +16322,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a monitor user template returns "OK" response
@@ -16390,7 +16390,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -16454,7 +16454,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a monitor user template returns "OK" response
@@ -16500,7 +16500,7 @@ p api_instance.create_monitor_user_template(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a monitor user template returns "OK" response
@@ -16555,7 +16555,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16897,7 +16897,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport template_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template/${template_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -16937,8 +16937,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a monitor user template to a new version returns "OK" response
@@ -16946,65 +16946,65 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_user_template" in the system
-	MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
+    // there is a valid "monitor_user_template" in the system
+    MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
 
-	body := datadogV2.MonitorUserTemplateUpdateRequest{
-		Data: datadogV2.MonitorUserTemplateUpdateData{
-			Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
-				Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
-				MonitorDefinition: map[string]interface{}{
-					"message": "A msg.",
-					"name":    "A name example-monitor",
-					"query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
-					"type":    "query alert",
-				},
-				Tags: []string{
-					"integration:Azure",
-				},
-				TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
-					{
-						AvailableValues: []string{
-							"value1",
-							"value2",
-						},
-						Defaults: []string{
-							"defaultValue",
-						},
-						Name:   "regionName",
-						TagKey: datadog.PtrString("datacenter"),
-					},
-				},
-				Title: "Postgres DB example-monitor",
-			},
-			Id:   MonitorUserTemplateDataID,
-			Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	resp, r, err := api.UpdateMonitorUserTemplate(ctx, MonitorUserTemplateDataID, body)
+    body := datadogV2.MonitorUserTemplateUpdateRequest{
+        Data: datadogV2.MonitorUserTemplateUpdateData{
+            Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
+                Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
+                MonitorDefinition: map[string]interface{}{
+                    "message": "A msg.",
+                    "name":    "A name example-monitor",
+                    "query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
+                    "type":    "query alert",
+                },
+                Tags: []string{
+                    "integration:Azure",
+                },
+                TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
+                    {
+                        AvailableValues: []string{
+                            "value1",
+                            "value2",
+                        },
+                        Defaults: []string{
+                            "defaultValue",
+                        },
+                        Name:   "regionName",
+                        TagKey: datadog.PtrString("datacenter"),
+                    },
+                },
+                Title: "Postgres DB example-monitor",
+            },
+            Id:   MonitorUserTemplateDataID,
+            Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    resp, r, err := api.UpdateMonitorUserTemplate(ctx, MonitorUserTemplateDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.UpdateMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorUserTemplate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `MonitorsApi.UpdateMonitorUserTemplate`:\n%s\n", responseContent)
 }
 ```
 
@@ -17012,7 +17012,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a monitor user template to a new version returns "OK" response
@@ -17085,7 +17085,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -17154,7 +17154,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a monitor user template to a new version returns "OK" response
@@ -17204,7 +17204,7 @@ p api_instance.update_monitor_user_template(MONITOR_USER_TEMPLATE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a monitor user template to a new version returns "OK" response
@@ -17264,7 +17264,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17410,12 +17410,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport template_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template/${template_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17438,7 +17438,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a monitor user template returns "OK" response
@@ -17455,7 +17455,7 @@ api_instance.delete_monitor_user_template("template_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a monitor user template returns "OK" response
@@ -17463,26 +17463,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	r, err := api.DeleteMonitorUserTemplate(ctx, "template_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    r, err := api.DeleteMonitorUserTemplate(ctx, "template_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.DeleteMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -17490,7 +17490,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a monitor user template returns "OK" response
@@ -17522,7 +17522,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a monitor user template returns "OK" response
@@ -17549,7 +17549,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17721,7 +17721,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template/validate" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -17759,8 +17759,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate a monitor user template returns "OK" response
@@ -17768,57 +17768,57 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.MonitorUserTemplateCreateRequest{
-		Data: datadogV2.MonitorUserTemplateCreateData{
-			Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
-				Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
-				MonitorDefinition: map[string]interface{}{
-					"message": "A msg.",
-					"name":    "A name example-monitor",
-					"query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
-					"type":    "query alert",
-				},
-				Tags: []string{
-					"integration:Azure",
-				},
-				TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
-					{
-						AvailableValues: []string{
-							"value1",
-							"value2",
-						},
-						Defaults: []string{
-							"defaultValue",
-						},
-						Name:   "regionName",
-						TagKey: datadog.PtrString("datacenter"),
-					},
-				},
-				Title: "Postgres DB example-monitor",
-			},
-			Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ValidateMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	r, err := api.ValidateMonitorUserTemplate(ctx, body)
+    body := datadogV2.MonitorUserTemplateCreateRequest{
+        Data: datadogV2.MonitorUserTemplateCreateData{
+            Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
+                Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
+                MonitorDefinition: map[string]interface{}{
+                    "message": "A msg.",
+                    "name":    "A name example-monitor",
+                    "query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
+                    "type":    "query alert",
+                },
+                Tags: []string{
+                    "integration:Azure",
+                },
+                TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
+                    {
+                        AvailableValues: []string{
+                            "value1",
+                            "value2",
+                        },
+                        Defaults: []string{
+                            "defaultValue",
+                        },
+                        Name:   "regionName",
+                        TagKey: datadog.PtrString("datacenter"),
+                    },
+                },
+                Title: "Postgres DB example-monitor",
+            },
+            Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ValidateMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    r, err := api.ValidateMonitorUserTemplate(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -17826,7 +17826,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate a monitor user template returns "OK" response
@@ -17892,7 +17892,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -17954,7 +17954,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate a monitor user template returns "OK" response
@@ -18000,7 +18000,7 @@ api_instance.validate_monitor_user_template(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate a monitor user template returns "OK" response
@@ -18055,7 +18055,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -18285,7 +18285,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport template_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/monitor/template/${template_id}/validate" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -18324,8 +18324,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate an existing monitor user template returns "OK" response
@@ -18333,61 +18333,61 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "monitor_user_template" in the system
-	MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
+    // there is a valid "monitor_user_template" in the system
+    MonitorUserTemplateDataID := os.Getenv("MONITOR_USER_TEMPLATE_DATA_ID")
 
-	body := datadogV2.MonitorUserTemplateUpdateRequest{
-		Data: datadogV2.MonitorUserTemplateUpdateData{
-			Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
-				Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
-				MonitorDefinition: map[string]interface{}{
-					"message": "A msg.",
-					"name":    "A name example-monitor",
-					"query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
-					"type":    "query alert",
-				},
-				Tags: []string{
-					"integration:Azure",
-				},
-				TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
-					{
-						AvailableValues: []string{
-							"value1",
-							"value2",
-						},
-						Defaults: []string{
-							"defaultValue",
-						},
-						Name:   "regionName",
-						TagKey: datadog.PtrString("datacenter"),
-					},
-				},
-				Title: "Postgres DB example-monitor",
-			},
-			Id:   MonitorUserTemplateDataID,
-			Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ValidateExistingMonitorUserTemplate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewMonitorsApi(apiClient)
-	r, err := api.ValidateExistingMonitorUserTemplate(ctx, MonitorUserTemplateDataID, body)
+    body := datadogV2.MonitorUserTemplateUpdateRequest{
+        Data: datadogV2.MonitorUserTemplateUpdateData{
+            Attributes: datadogV2.MonitorUserTemplateRequestAttributes{
+                Description: *datadog.NewNullableString(datadog.PtrString("A description.")),
+                MonitorDefinition: map[string]interface{}{
+                    "message": "A msg.",
+                    "name":    "A name example-monitor",
+                    "query":   "avg(last_5m):sum:system.net.bytes_rcvd{host:host0} > 100",
+                    "type":    "query alert",
+                },
+                Tags: []string{
+                    "integration:Azure",
+                },
+                TemplateVariables: []datadogV2.MonitorUserTemplateTemplateVariablesItems{
+                    {
+                        AvailableValues: []string{
+                            "value1",
+                            "value2",
+                        },
+                        Defaults: []string{
+                            "defaultValue",
+                        },
+                        Name:   "regionName",
+                        TagKey: datadog.PtrString("datacenter"),
+                    },
+                },
+                Title: "Postgres DB example-monitor",
+            },
+            Id:   MonitorUserTemplateDataID,
+            Type: datadogV2.MONITORUSERTEMPLATERESOURCETYPE_MONITOR_USER_TEMPLATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ValidateExistingMonitorUserTemplate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewMonitorsApi(apiClient)
+    r, err := api.ValidateExistingMonitorUserTemplate(ctx, MonitorUserTemplateDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateExistingMonitorUserTemplate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MonitorsApi.ValidateExistingMonitorUserTemplate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -18395,7 +18395,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate an existing monitor user template returns "OK" response
@@ -18465,7 +18465,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -18532,7 +18532,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate an existing monitor user template returns "OK" response
@@ -18582,7 +18582,7 @@ api_instance.validate_existing_monitor_user_template(MONITOR_USER_TEMPLATE_DATA_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate an existing monitor user template returns "OK" response
@@ -18642,7 +18642,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

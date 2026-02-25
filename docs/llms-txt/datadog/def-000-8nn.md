@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS cluster snapshots should not be publicly shared
- 
+
 ## Description{% #description %}
 
 Ensures that your Amazon RDS cluster snapshots are **not publicly accessible** to protect sensitive data from unauthorized access.

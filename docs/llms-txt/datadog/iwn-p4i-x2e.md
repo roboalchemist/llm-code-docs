@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The etcd data directory should be owned by etcd:etcd
-Classification:complianceFramework:cis-kubernetesControl:1.1.12 
+Classification:complianceFramework:cis-kubernetesControl:1.1.12
 ## Description{% #description %}
 
 Ensure that the etcd data directory ownership is set to `etcd:etcd`.

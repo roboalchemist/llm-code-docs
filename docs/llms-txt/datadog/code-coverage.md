@@ -30,13 +30,9 @@ Retrieve aggregated code coverage statistics for a specific branch in a reposito
 
 OAuth apps require the `code_coverage_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#code-coverage) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -62,6 +58,7 @@ OAuth apps require the `code_coverage_read` authorization [scope](https://docs.d
     "type": "ci_app_coverage_branch_summary_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -129,6 +126,7 @@ Response object containing code coverage summary.
     "type": "ci_app_coverage_summary"
   }
 }
+
 ```
 
 {% /tab %}
@@ -150,10 +148,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -175,10 +172,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -200,10 +196,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -225,10 +220,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -250,10 +244,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -262,7 +255,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/code-coverage/branch/summary" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -279,8 +272,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -313,13 +306,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_code_coverage_branch_summary(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get code coverage summary for a branch returns "OK" response
@@ -340,13 +334,14 @@ body = DatadogAPIClient::V2::BranchCoverageSummaryRequest.new({
   }),
 })
 p api_instance.get_code_coverage_branch_summary(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get code coverage summary for a branch returns "OK" response
@@ -354,47 +349,48 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BranchCoverageSummaryRequest{
-		Data: datadogV2.BranchCoverageSummaryRequestData{
-			Attributes: datadogV2.BranchCoverageSummaryRequestAttributes{
-				Branch:       "prod",
-				RepositoryId: "github.com/datadog/shopist",
-			},
-			Type: datadogV2.BRANCHCOVERAGESUMMARYREQUESTTYPE_CI_APP_COVERAGE_BRANCH_SUMMARY_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetCodeCoverageBranchSummary", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCodeCoverageApi(apiClient)
-	resp, r, err := api.GetCodeCoverageBranchSummary(ctx, body)
+    body := datadogV2.BranchCoverageSummaryRequest{
+        Data: datadogV2.BranchCoverageSummaryRequestData{
+            Attributes: datadogV2.BranchCoverageSummaryRequestAttributes{
+                Branch:       "prod",
+                RepositoryId: "github.com/datadog/shopist",
+            },
+            Type: datadogV2.BRANCHCOVERAGESUMMARYREQUESTTYPE_CI_APP_COVERAGE_BRANCH_SUMMARY_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetCodeCoverageBranchSummary", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCodeCoverageApi(apiClient)
+    resp, r, err := api.GetCodeCoverageBranchSummary(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CodeCoverageApi.GetCodeCoverageBranchSummary`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CodeCoverageApi.GetCodeCoverageBranchSummary`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CodeCoverageApi.GetCodeCoverageBranchSummary`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CodeCoverageApi.GetCodeCoverageBranchSummary`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get code coverage summary for a branch returns "OK" response
@@ -436,13 +432,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get code coverage summary for a branch returns "OK" response
@@ -472,13 +469,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -511,6 +509,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -535,21 +534,15 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Retrieve aggregated code coverage statistics for a specific commit in a repository. This endpoint provides overall coverage metrics as well as breakdowns by service and code owner.
 
 The commit SHA must be a 40-character hexadecimal string (SHA-1 hash).
 This endpoint requires the `code_coverage_read` permission.
 OAuth apps require the `code_coverage_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#code-coverage) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -575,6 +568,7 @@ OAuth apps require the `code_coverage_read` authorization [scope](https://docs.d
     "type": "ci_app_coverage_commit_summary_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -642,6 +636,7 @@ Response object containing code coverage summary.
     "type": "ci_app_coverage_summary"
   }
 }
+
 ```
 
 {% /tab %}
@@ -663,10 +658,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -688,10 +682,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -713,10 +706,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -738,10 +730,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -763,10 +754,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -775,7 +765,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/code-coverage/commit/summary" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -792,8 +782,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -826,13 +816,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_code_coverage_commit_summary(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get code coverage summary for a commit returns "OK" response
@@ -853,13 +844,14 @@ body = DatadogAPIClient::V2::CommitCoverageSummaryRequest.new({
   }),
 })
 p api_instance.get_code_coverage_commit_summary(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get code coverage summary for a commit returns "OK" response
@@ -867,47 +859,48 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CommitCoverageSummaryRequest{
-		Data: datadogV2.CommitCoverageSummaryRequestData{
-			Attributes: datadogV2.CommitCoverageSummaryRequestAttributes{
-				CommitSha:    "66adc9350f2cc9b250b69abddab733dd55e1a588",
-				RepositoryId: "github.com/datadog/shopist",
-			},
-			Type: datadogV2.COMMITCOVERAGESUMMARYREQUESTTYPE_CI_APP_COVERAGE_COMMIT_SUMMARY_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetCodeCoverageCommitSummary", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCodeCoverageApi(apiClient)
-	resp, r, err := api.GetCodeCoverageCommitSummary(ctx, body)
+    body := datadogV2.CommitCoverageSummaryRequest{
+        Data: datadogV2.CommitCoverageSummaryRequestData{
+            Attributes: datadogV2.CommitCoverageSummaryRequestAttributes{
+                CommitSha:    "66adc9350f2cc9b250b69abddab733dd55e1a588",
+                RepositoryId: "github.com/datadog/shopist",
+            },
+            Type: datadogV2.COMMITCOVERAGESUMMARYREQUESTTYPE_CI_APP_COVERAGE_COMMIT_SUMMARY_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetCodeCoverageCommitSummary", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCodeCoverageApi(apiClient)
+    resp, r, err := api.GetCodeCoverageCommitSummary(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CodeCoverageApi.GetCodeCoverageCommitSummary`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CodeCoverageApi.GetCodeCoverageCommitSummary`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CodeCoverageApi.GetCodeCoverageCommitSummary`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CodeCoverageApi.GetCodeCoverageCommitSummary`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get code coverage summary for a commit returns "OK" response
@@ -949,13 +942,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get code coverage summary for a commit returns "OK" response
@@ -985,13 +979,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1024,6 +1019,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

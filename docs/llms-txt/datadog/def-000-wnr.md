@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Mail Transfer Agent is not Listening on any non-loopback Address
- 
+
 ## Description{% #description %}
 
 Mail Transfer Agents (MTA), such as sendmail and Postfix, are used to listen for incoming mail and transfer the messages to the appropriate user or mail server. If the system is not intended to be a mail server, it is recommended that the MTA be configured to only process local mail.

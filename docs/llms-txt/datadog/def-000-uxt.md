@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Crypto miner environment variables observed
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was identified as a crypto miner based on its environment variables.

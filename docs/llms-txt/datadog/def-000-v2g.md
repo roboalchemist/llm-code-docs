@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns Cronta
 ---
 
 # Verify Group Who Owns Crontab
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/crontab`, run the command:

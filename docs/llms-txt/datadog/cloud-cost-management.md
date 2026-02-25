@@ -30,8 +30,6 @@ List the AWS CUR configs. This endpoint requires the `cloud_cost_management_read
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Response
 
 {% tab title="200" %}
@@ -67,19 +65,14 @@ List of AWS CUR configs.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "account_filters": {
-          "excluded_accounts": [
-            "123456789123",
-            "123456789143"
-          ],
+          "excluded_accounts": ["123456789123",
+            "123456789143"],
           "include_new_accounts": true,
-          "included_accounts": [
-            "123456789123",
-            "123456789143"
-          ]
+          "included_accounts": ["123456789123",
+            "123456789143"]
         },
         "account_id": "123456789123",
         "bucket_name": "dd-cost-bucket",
@@ -95,9 +88,9 @@ List of AWS CUR configs.
       },
       "id": "string",
       "type": "aws_cur_config"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -119,10 +112,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -144,10 +136,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -156,13 +147,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/aws_cur_config" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -178,13 +169,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_cost_awscur_configs()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Cloud Cost Management AWS CUR configs returns "OK" response
@@ -192,13 +184,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_cost_awscur_configs()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Cloud Cost Management AWS CUR configs returns "OK" response
@@ -206,37 +199,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListCostAWSCURConfigs(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListCostAWSCURConfigs(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostAWSCURConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostAWSCURConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostAWSCURConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostAWSCURConfigs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Cloud Cost Management AWS CUR configs returns "OK" response
@@ -263,13 +257,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Cloud Cost Management AWS CUR configs returns "OK" response
@@ -287,13 +282,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -313,6 +309,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -341,13 +338,9 @@ Create a Cloud Cost Management account for an AWS CUR config. This endpoint requ
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -384,6 +377,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "aws_cur_config_post_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -426,10 +420,8 @@ The definition of `AwsCurConfigResponse` object.
   "data": {
     "attributes": {
       "account_filters": {
-        "excluded_accounts": [
-          "123456789124",
-          "123456789125"
-        ],
+        "excluded_accounts": ["123456789124",
+          "123456789125"],
         "include_new_accounts": true
       },
       "account_id": "123456789123",
@@ -448,6 +440,7 @@ The definition of `AwsCurConfigResponse` object.
     "type": "aws_cur_config"
   }
 }
+
 ```
 
 {% /tab %}
@@ -469,10 +462,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -494,10 +486,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -519,10 +510,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -531,7 +521,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/aws_cur_config" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -551,8 +541,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Cloud Cost Management AWS CUR config returns "OK" response
@@ -560,49 +550,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AwsCURConfigPostRequest{
-		Data: datadogV2.AwsCURConfigPostData{
-			Attributes: &datadogV2.AwsCURConfigPostRequestAttributes{
-				AccountId:    "123456789123",
-				BucketName:   "dd-cost-bucket",
-				BucketRegion: datadog.PtrString("us-east-1"),
-				ReportName:   "dd-report-name",
-				ReportPrefix: "dd-report-prefix",
-			},
-			Type: datadogV2.AWSCURCONFIGPOSTREQUESTTYPE_AWS_CUR_CONFIG_POST_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateCostAWSCURConfig(ctx, body)
+    body := datadogV2.AwsCURConfigPostRequest{
+        Data: datadogV2.AwsCURConfigPostData{
+            Attributes: &datadogV2.AwsCURConfigPostRequestAttributes{
+                AccountId:    "123456789123",
+                BucketName:   "dd-cost-bucket",
+                BucketRegion: datadog.PtrString("us-east-1"),
+                ReportName:   "dd-report-name",
+                ReportPrefix: "dd-report-prefix",
+            },
+            Type: datadogV2.AWSCURCONFIGPOSTREQUESTTYPE_AWS_CUR_CONFIG_POST_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateCostAWSCURConfig(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostAWSCURConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostAWSCURConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostAWSCURConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostAWSCURConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Cloud Cost Management AWS CUR config returns "OK" response
@@ -646,13 +637,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -685,13 +677,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cost_awscur_config(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Cloud Cost Management AWS CUR config returns "OK" response
@@ -712,13 +705,14 @@ body = DatadogAPIClient::V2::AwsCURConfigPostRequest.new({
   }),
 })
 p api_instance.create_cost_awscur_config(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Cloud Cost Management AWS CUR config returns "OK" response
@@ -752,13 +746,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -793,6 +788,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -821,8 +817,6 @@ Update the status (active/archived) and/or account filtering configuration of an
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -834,8 +828,6 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -863,6 +855,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "aws_cur_config_patch_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -902,19 +895,14 @@ List of AWS CUR configs.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "account_filters": {
-          "excluded_accounts": [
-            "123456789123",
-            "123456789143"
-          ],
+          "excluded_accounts": ["123456789123",
+            "123456789143"],
           "include_new_accounts": true,
-          "included_accounts": [
-            "123456789123",
-            "123456789143"
-          ]
+          "included_accounts": ["123456789123",
+            "123456789143"]
         },
         "account_id": "123456789123",
         "bucket_name": "dd-cost-bucket",
@@ -930,9 +918,9 @@ List of AWS CUR configs.
       },
       "id": "string",
       "type": "aws_cur_config"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -954,10 +942,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -979,10 +966,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1004,10 +990,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1016,7 +1001,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/aws_cur_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1032,8 +1017,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Cloud Cost Management AWS CUR config returns "OK" response
@@ -1041,45 +1026,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AwsCURConfigPatchRequest{
-		Data: datadogV2.AwsCURConfigPatchData{
-			Attributes: datadogV2.AwsCURConfigPatchRequestAttributes{
-				IsEnabled: datadog.PtrBool(true),
-			},
-			Type: datadogV2.AWSCURCONFIGPATCHREQUESTTYPE_AWS_CUR_CONFIG_PATCH_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateCostAWSCURConfig(ctx, 100, body)
+    body := datadogV2.AwsCURConfigPatchRequest{
+        Data: datadogV2.AwsCURConfigPatchData{
+            Attributes: datadogV2.AwsCURConfigPatchRequestAttributes{
+                IsEnabled: datadog.PtrBool(true),
+            },
+            Type: datadogV2.AWSCURCONFIGPATCHREQUESTTYPE_AWS_CUR_CONFIG_PATCH_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateCostAWSCURConfig(ctx, 100, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostAWSCURConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostAWSCURConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostAWSCURConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostAWSCURConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Cloud Cost Management AWS CUR config returns "OK" response
@@ -1117,13 +1103,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1152,13 +1139,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_cost_awscur_config(cloud_account_id=100, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Cloud Cost Management AWS CUR config returns "OK" response
@@ -1175,13 +1163,14 @@ body = DatadogAPIClient::V2::AwsCURConfigPatchRequest.new({
   }),
 })
 p api_instance.update_cost_awscur_config(100, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Cloud Cost Management AWS CUR config returns "OK" response
@@ -1207,13 +1196,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1245,6 +1235,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1272,8 +1263,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Archive a Cloud Cost Management Account. This endpoint requires the `cloud_cost_management_write` permission.
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1304,10 +1293,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1329,10 +1317,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1354,10 +1341,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1366,12 +1352,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/aws_cur_config/${cloud_account_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1387,13 +1373,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_cost_awscur_config(
         cloud_account_id=100,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Cloud Cost Management AWS CUR config returns "No Content" response
@@ -1401,13 +1388,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_cost_awscur_config(100)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Cloud Cost Management AWS CUR config returns "No Content" response
@@ -1415,33 +1403,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteCostAWSCURConfig(ctx, 100)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteCostAWSCURConfig(ctx, 100)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostAWSCURConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostAWSCURConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Cloud Cost Management AWS CUR config returns "No Content" response
@@ -1466,13 +1455,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Cloud Cost Management AWS CUR config returns "No Content" response
@@ -1490,13 +1480,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1520,6 +1511,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1547,8 +1539,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific AWS CUR config.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1596,10 +1586,8 @@ The definition of `AwsCurConfigResponse` object.
   "data": {
     "attributes": {
       "account_filters": {
-        "excluded_accounts": [
-          "123456789124",
-          "123456789125"
-        ],
+        "excluded_accounts": ["123456789124",
+          "123456789125"],
         "include_new_accounts": true
       },
       "account_id": "123456789123",
@@ -1618,6 +1606,7 @@ The definition of `AwsCurConfigResponse` object.
     "type": "aws_cur_config"
   }
 }
+
 ```
 
 {% /tab %}
@@ -1639,10 +1628,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1651,13 +1639,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/aws_cur_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1675,13 +1663,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get cost AWS CUR config returns "OK" response
@@ -1689,13 +1678,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_cost_awscur_config(123456)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get cost AWS CUR config returns "OK" response
@@ -1703,37 +1693,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetCostAWSCURConfig(ctx, 123456)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetCostAWSCURConfig(ctx, 123456)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostAWSCURConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostAWSCURConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostAWSCURConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostAWSCURConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get cost AWS CUR config returns "OK" response
@@ -1760,13 +1751,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get cost AWS CUR config returns "OK" response
@@ -1784,13 +1776,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1814,6 +1807,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1841,8 +1835,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List the Azure configs. This endpoint requires the `cloud_cost_management_read` permission.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Response
 
@@ -1881,11 +1873,9 @@ List of Azure accounts with configs.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
-        "configs": [
-          {
+        "configs": [{
             "account_id": "1234abcd-1234-abcd-1234-1234abcd1234",
             "client_id": "1234abcd-1234-abcd-1234-1234abcd1234",
             "created_at": "string",
@@ -1901,15 +1891,14 @@ List of Azure accounts with configs.
             "storage_account": "dd-storage-account",
             "storage_container": "dd-storage-container",
             "updated_at": "string"
-          }
-        ],
+          }],
         "id": "string"
       },
       "id": "string",
       "type": "azure_uc_configs"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1931,10 +1920,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1956,10 +1944,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1968,13 +1955,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/azure_uc_config" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1990,13 +1977,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_cost_azure_uc_configs()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Cloud Cost Management Azure configs returns "OK" response
@@ -2004,13 +1992,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_cost_azure_uc_configs()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Cloud Cost Management Azure configs returns "OK" response
@@ -2018,37 +2007,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListCostAzureUCConfigs(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListCostAzureUCConfigs(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostAzureUCConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostAzureUCConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostAzureUCConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostAzureUCConfigs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Cloud Cost Management Azure configs returns "OK" response
@@ -2075,13 +2065,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Cloud Cost Management Azure configs returns "OK" response
@@ -2099,13 +2090,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2125,6 +2117,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2153,13 +2146,9 @@ Create a Cloud Cost Management account for an Azure config. This endpoint requir
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2209,6 +2198,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "azure_uc_config_post_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2252,8 +2242,7 @@ Response of Azure config pair.
 {
   "data": {
     "attributes": {
-      "configs": [
-        {
+      "configs": [{
           "account_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "client_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "created_at": "string",
@@ -2269,14 +2258,14 @@ Response of Azure config pair.
           "storage_account": "dd-storage-account",
           "storage_container": "dd-storage-container",
           "updated_at": "string"
-        }
-      ],
+        }],
       "id": "string"
     },
     "id": "string",
     "type": "azure_uc_configs"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2298,10 +2287,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2323,10 +2311,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2348,10 +2335,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2360,7 +2346,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/azure_uc_config" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2390,8 +2376,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Cloud Cost Management Azure configs returns "OK" response
@@ -2399,59 +2385,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AzureUCConfigPostRequest{
-		Data: datadogV2.AzureUCConfigPostData{
-			Attributes: &datadogV2.AzureUCConfigPostRequestAttributes{
-				AccountId: "1234abcd-1234-abcd-1234-1234abcd1234",
-				ActualBillConfig: datadogV2.BillConfig{
-					ExportName:       "dd-actual-export",
-					ExportPath:       "dd-export-path",
-					StorageAccount:   "dd-storage-account",
-					StorageContainer: "dd-storage-container",
-				},
-				AmortizedBillConfig: datadogV2.BillConfig{
-					ExportName:       "dd-actual-export",
-					ExportPath:       "dd-export-path",
-					StorageAccount:   "dd-storage-account",
-					StorageContainer: "dd-storage-container",
-				},
-				ClientId: "1234abcd-1234-abcd-1234-1234abcd1234",
-				Scope:    "subscriptions/1234abcd-1234-abcd-1234-1234abcd1234",
-			},
-			Type: datadogV2.AZUREUCCONFIGPOSTREQUESTTYPE_AZURE_UC_CONFIG_POST_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateCostAzureUCConfigs(ctx, body)
+    body := datadogV2.AzureUCConfigPostRequest{
+        Data: datadogV2.AzureUCConfigPostData{
+            Attributes: &datadogV2.AzureUCConfigPostRequestAttributes{
+                AccountId: "1234abcd-1234-abcd-1234-1234abcd1234",
+                ActualBillConfig: datadogV2.BillConfig{
+                    ExportName:       "dd-actual-export",
+                    ExportPath:       "dd-export-path",
+                    StorageAccount:   "dd-storage-account",
+                    StorageContainer: "dd-storage-container",
+                },
+                AmortizedBillConfig: datadogV2.BillConfig{
+                    ExportName:       "dd-actual-export",
+                    ExportPath:       "dd-export-path",
+                    StorageAccount:   "dd-storage-account",
+                    StorageContainer: "dd-storage-container",
+                },
+                ClientId: "1234abcd-1234-abcd-1234-1234abcd1234",
+                Scope:    "subscriptions/1234abcd-1234-abcd-1234-1234abcd1234",
+            },
+            Type: datadogV2.AZUREUCCONFIGPOSTREQUESTTYPE_AZURE_UC_CONFIG_POST_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateCostAzureUCConfigs(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostAzureUCConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostAzureUCConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostAzureUCConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostAzureUCConfigs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Cloud Cost Management Azure configs returns "OK" response
@@ -2506,13 +2493,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2556,13 +2544,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cost_azure_uc_configs(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Cloud Cost Management Azure configs returns "OK" response
@@ -2593,13 +2582,14 @@ body = DatadogAPIClient::V2::AzureUCConfigPostRequest.new({
   }),
 })
 p api_instance.create_cost_azure_uc_configs(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Cloud Cost Management Azure configs returns "OK" response
@@ -2642,13 +2632,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2693,6 +2684,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2721,8 +2713,6 @@ Update the status of an Azure config (active/archived). This endpoint requires t
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -2734,8 +2724,6 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2759,6 +2747,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "azure_uc_config_patch_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2802,8 +2791,7 @@ Response of Azure config pair.
 {
   "data": {
     "attributes": {
-      "configs": [
-        {
+      "configs": [{
           "account_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "client_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "created_at": "string",
@@ -2819,14 +2807,14 @@ Response of Azure config pair.
           "storage_account": "dd-storage-account",
           "storage_container": "dd-storage-container",
           "updated_at": "string"
-        }
-      ],
+        }],
       "id": "string"
     },
     "id": "string",
     "type": "azure_uc_configs"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2848,10 +2836,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2873,10 +2860,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2898,10 +2884,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2923,10 +2908,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2935,7 +2919,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/azure_uc_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2951,8 +2935,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Cloud Cost Management Azure config returns "OK" response
@@ -2960,45 +2944,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AzureUCConfigPatchRequest{
-		Data: datadogV2.AzureUCConfigPatchData{
-			Attributes: &datadogV2.AzureUCConfigPatchRequestAttributes{
-				IsEnabled: true,
-			},
-			Type: datadogV2.AZUREUCCONFIGPATCHREQUESTTYPE_AZURE_UC_CONFIG_PATCH_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateCostAzureUCConfigs(ctx, 100, body)
+    body := datadogV2.AzureUCConfigPatchRequest{
+        Data: datadogV2.AzureUCConfigPatchData{
+            Attributes: &datadogV2.AzureUCConfigPatchRequestAttributes{
+                IsEnabled: true,
+            },
+            Type: datadogV2.AZUREUCCONFIGPATCHREQUESTTYPE_AZURE_UC_CONFIG_PATCH_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateCostAzureUCConfigs(ctx, 100, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostAzureUCConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostAzureUCConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostAzureUCConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostAzureUCConfigs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Cloud Cost Management Azure config returns "OK" response
@@ -3036,13 +3021,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3071,13 +3057,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_cost_azure_uc_configs(cloud_account_id=100, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Cloud Cost Management Azure config returns "OK" response
@@ -3094,13 +3081,14 @@ body = DatadogAPIClient::V2::AzureUCConfigPatchRequest.new({
   }),
 })
 p api_instance.update_cost_azure_uc_configs(100, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Cloud Cost Management Azure config returns "OK" response
@@ -3126,13 +3114,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3164,6 +3153,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3191,8 +3181,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Archive a Cloud Cost Management Account. This endpoint requires the `cloud_cost_management_write` permission.
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3223,10 +3211,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3248,10 +3235,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3273,10 +3259,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3285,12 +3270,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/azure_uc_config/${cloud_account_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3306,13 +3291,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_cost_azure_uc_config(
         cloud_account_id=100,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Cloud Cost Management Azure config returns "No Content" response
@@ -3320,13 +3306,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_cost_azure_uc_config(100)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Cloud Cost Management Azure config returns "No Content" response
@@ -3334,33 +3321,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteCostAzureUCConfig(ctx, 100)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteCostAzureUCConfig(ctx, 100)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostAzureUCConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostAzureUCConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Cloud Cost Management Azure config returns "No Content" response
@@ -3385,13 +3373,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Cloud Cost Management Azure config returns "No Content" response
@@ -3409,13 +3398,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3439,6 +3429,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3466,8 +3457,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific Azure config.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3515,8 +3504,7 @@ The definition of `UCConfigPair` object.
 {
   "data": {
     "attributes": {
-      "configs": [
-        {
+      "configs": [{
           "account_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "client_id": "1234abcd-1234-abcd-1234-1234abcd1234",
           "created_at": "2023-01-01T12:00:00.000Z",
@@ -3532,13 +3520,13 @@ The definition of `UCConfigPair` object.
           "storage_account": "dd-storage-account",
           "storage_container": "dd-storage-container",
           "updated_at": "2023-01-01T12:00:00.000Z"
-        }
-      ]
+        }]
     },
     "id": "123456789123",
     "type": "azure_uc_configs"
   }
 }
+
 ```
 
 {% /tab %}
@@ -3560,10 +3548,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3572,13 +3559,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/azure_uc_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3596,13 +3583,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get cost Azure UC config returns "OK" response
@@ -3610,13 +3598,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_cost_azure_uc_config(123456)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get cost Azure UC config returns "OK" response
@@ -3624,37 +3613,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetCostAzureUCConfig(ctx, 123456)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetCostAzureUCConfig(ctx, 123456)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostAzureUCConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostAzureUCConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostAzureUCConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostAzureUCConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get cost Azure UC config returns "OK" response
@@ -3681,13 +3671,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get cost Azure UC config returns "OK" response
@@ -3705,13 +3696,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3735,6 +3727,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3762,8 +3755,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List the Google Cloud Usage Cost configs. This endpoint requires the `cloud_cost_management_read` permission.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Response
 
@@ -3798,8 +3789,7 @@ List of Google Cloud Usage Cost configs.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "account_id": "123456_A123BC_12AB34",
         "bucket_name": "dd-cost-bucket",
@@ -3817,9 +3807,9 @@ List of Google Cloud Usage Cost configs.
       },
       "id": "string",
       "type": "gcp_uc_config"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3841,10 +3831,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3866,10 +3855,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3878,13 +3866,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/gcp_uc_config" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3900,13 +3888,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_cost_gcp_usage_cost_configs()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Google Cloud Usage Cost configs returns "OK" response
@@ -3914,13 +3903,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_cost_gcp_usage_cost_configs()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Google Cloud Usage Cost configs returns "OK" response
@@ -3928,37 +3918,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListCostGCPUsageCostConfigs(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListCostGCPUsageCostConfigs(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostGCPUsageCostConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCostGCPUsageCostConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostGCPUsageCostConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCostGCPUsageCostConfigs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Google Cloud Usage Cost configs returns "OK" response
@@ -3986,13 +3977,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Google Cloud Usage Cost configs returns "OK" response
@@ -4010,13 +4002,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4036,6 +4029,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4064,13 +4058,9 @@ Create a Cloud Cost Management account for an Google Cloud Usage Cost config. Th
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4104,6 +4094,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "gcp_uc_config_post_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4161,6 +4152,7 @@ Response of Google Cloud Usage Cost config.
     "type": "gcp_uc_config"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4182,10 +4174,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4207,10 +4198,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4232,10 +4222,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4244,7 +4233,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/gcp_uc_config" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4265,8 +4254,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Google Cloud Usage Cost config returns "OK" response
@@ -4274,50 +4263,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GCPUsageCostConfigPostRequest{
-		Data: datadogV2.GCPUsageCostConfigPostData{
-			Attributes: &datadogV2.GCPUsageCostConfigPostRequestAttributes{
-				BillingAccountId:  "123456_A123BC_12AB34",
-				BucketName:        "dd-cost-bucket",
-				ExportDatasetName: "billing",
-				ExportPrefix:      datadog.PtrString("datadog_cloud_cost_usage_export"),
-				ExportProjectName: "dd-cloud-cost-report",
-				ServiceAccount:    "dd-ccm-gcp-integration@my-environment.iam.gserviceaccount.com",
-			},
-			Type: datadogV2.GCPUSAGECOSTCONFIGPOSTREQUESTTYPE_GCP_USAGE_COST_CONFIG_POST_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateCostGCPUsageCostConfig(ctx, body)
+    body := datadogV2.GCPUsageCostConfigPostRequest{
+        Data: datadogV2.GCPUsageCostConfigPostData{
+            Attributes: &datadogV2.GCPUsageCostConfigPostRequestAttributes{
+                BillingAccountId:  "123456_A123BC_12AB34",
+                BucketName:        "dd-cost-bucket",
+                ExportDatasetName: "billing",
+                ExportPrefix:      datadog.PtrString("datadog_cloud_cost_usage_export"),
+                ExportProjectName: "dd-cloud-cost-report",
+                ServiceAccount:    "dd-ccm-gcp-integration@my-environment.iam.gserviceaccount.com",
+            },
+            Type: datadogV2.GCPUSAGECOSTCONFIGPOSTREQUESTTYPE_GCP_USAGE_COST_CONFIG_POST_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateCostGCPUsageCostConfig(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostGCPUsageCostConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCostGCPUsageCostConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostGCPUsageCostConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCostGCPUsageCostConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Google Cloud Usage Cost config returns "OK" response
@@ -4364,13 +4354,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4406,13 +4397,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_cost_gcp_usage_cost_config(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Google Cloud Usage Cost config returns "OK" response
@@ -4434,13 +4426,14 @@ body = DatadogAPIClient::V2::GCPUsageCostConfigPostRequest.new({
   }),
 })
 p api_instance.create_cost_gcp_usage_cost_config(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Google Cloud Usage Cost config returns "OK" response
@@ -4477,13 +4470,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4520,6 +4514,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4548,8 +4543,6 @@ Update the status of an Google Cloud Usage Cost config (active/archived). This e
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -4561,8 +4554,6 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4586,6 +4577,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "gcp_uc_config_patch_request"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4643,6 +4635,7 @@ Response of Google Cloud Usage Cost config.
     "type": "gcp_uc_config"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4664,10 +4657,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4689,10 +4681,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4714,10 +4705,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4739,10 +4729,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4751,7 +4740,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/gcp_uc_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4767,8 +4756,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Google Cloud Usage Cost config returns "OK" response
@@ -4776,45 +4765,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GCPUsageCostConfigPatchRequest{
-		Data: datadogV2.GCPUsageCostConfigPatchData{
-			Attributes: datadogV2.GCPUsageCostConfigPatchRequestAttributes{
-				IsEnabled: true,
-			},
-			Type: datadogV2.GCPUSAGECOSTCONFIGPATCHREQUESTTYPE_GCP_USAGE_COST_CONFIG_PATCH_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateCostGCPUsageCostConfig(ctx, 100, body)
+    body := datadogV2.GCPUsageCostConfigPatchRequest{
+        Data: datadogV2.GCPUsageCostConfigPatchData{
+            Attributes: datadogV2.GCPUsageCostConfigPatchRequestAttributes{
+                IsEnabled: true,
+            },
+            Type: datadogV2.GCPUSAGECOSTCONFIGPATCHREQUESTTYPE_GCP_USAGE_COST_CONFIG_PATCH_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateCostGCPUsageCostConfig(ctx, 100, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostGCPUsageCostConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCostGCPUsageCostConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostGCPUsageCostConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCostGCPUsageCostConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Google Cloud Usage Cost config returns "OK" response
@@ -4853,13 +4843,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4890,13 +4881,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_cost_gcp_usage_cost_config(cloud_account_id=100, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Google Cloud Usage Cost config returns "OK" response
@@ -4913,13 +4905,14 @@ body = DatadogAPIClient::V2::GCPUsageCostConfigPatchRequest.new({
   }),
 })
 p api_instance.update_cost_gcp_usage_cost_config(100, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Google Cloud Usage Cost config returns "OK" response
@@ -4945,13 +4938,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4983,6 +4977,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5010,8 +5005,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Archive a Cloud Cost Management account. This endpoint requires the `cloud_cost_management_write` permission.
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5042,10 +5035,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5067,10 +5059,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5092,10 +5083,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5104,12 +5094,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/gcp_uc_config/${cloud_account_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5125,13 +5115,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_cost_gcp_usage_cost_config(
         cloud_account_id=100,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Google Cloud Usage Cost config returns "No Content" response
@@ -5139,13 +5130,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_cost_gcp_usage_cost_config(100)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Google Cloud Usage Cost config returns "No Content" response
@@ -5153,33 +5145,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteCostGCPUsageCostConfig(ctx, 100)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteCostGCPUsageCostConfig(ctx, 100)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostGCPUsageCostConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCostGCPUsageCostConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Google Cloud Usage Cost config returns "No Content" response
@@ -5205,13 +5198,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Google Cloud Usage Cost config returns "No Content" response
@@ -5229,13 +5223,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5259,6 +5254,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5286,8 +5282,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific Google Cloud Usage Cost config.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5350,6 +5344,7 @@ The definition of `GcpUcConfigResponse` object.
     "type": "gcp_uc_config"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5371,10 +5366,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5383,13 +5377,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport cloud_account_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/gcp_uc_config/${cloud_account_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5407,13 +5401,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get Google Cloud Usage Cost config returns "OK" response
@@ -5421,13 +5416,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_cost_gcp_usage_cost_config(123456)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get Google Cloud Usage Cost config returns "OK" response
@@ -5435,37 +5431,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetCostGCPUsageCostConfig(ctx, 123456)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetCostGCPUsageCostConfig(ctx, 123456)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostGCPUsageCostConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCostGCPUsageCostConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostGCPUsageCostConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCostGCPUsageCostConfig`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get Google Cloud Usage Cost config returns "OK" response
@@ -5492,13 +5489,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get Google Cloud Usage Cost config returns "OK" response
@@ -5516,13 +5514,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5546,6 +5545,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5573,8 +5573,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List all tag pipeline rulesets - Retrieve a list of all tag pipeline rulesets for the organization
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Response
 
@@ -5635,8 +5633,7 @@ The definition of `RulesetRespArray` object.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "created": null,
         "enabled": true,
@@ -5644,8 +5641,7 @@ The definition of `RulesetRespArray` object.
         "modified": null,
         "name": "Production Cost Allocation Rules",
         "position": 0,
-        "rules": [
-          {
+        "rules": [{
             "enabled": true,
             "mapping": null,
             "metadata": null,
@@ -5666,10 +5662,8 @@ The definition of `RulesetRespArray` object.
             "mapping": {
               "destination_key": "team_owner",
               "if_tag_exists": "do_not_apply",
-              "source_keys": [
-                "account_name",
-                "service"
-              ]
+              "source_keys": ["account_name",
+                "service"]
             },
             "metadata": null,
             "name": "Team Mapping Rule",
@@ -5684,25 +5678,20 @@ The definition of `RulesetRespArray` object.
             "query": null,
             "reference_table": {
               "case_insensitivity": true,
-              "field_pairs": [
-                {
+              "field_pairs": [{
                   "input_column": "status_type",
                   "output_key": "status"
                 },
                 {
                   "input_column": "status_description",
                   "output_key": "dess"
-                }
-              ],
+                }],
               "if_tag_exists": "append",
-              "source_keys": [
-                "http_status",
-                "status_description"
-              ],
+              "source_keys": ["http_status",
+                "status_description"],
               "table_name": "http_status_codes"
             }
-          }
-        ],
+          }],
         "version": 2
       },
       "id": "55ef2385-9ae1-4410-90c4-5ac1b60fec10",
@@ -5716,8 +5705,7 @@ The definition of `RulesetRespArray` object.
         "modified": null,
         "name": "Development Environment Rules",
         "position": 0,
-        "rules": [
-          {
+        "rules": [{
             "enabled": true,
             "mapping": null,
             "metadata": null,
@@ -5732,15 +5720,14 @@ The definition of `RulesetRespArray` object.
               "query": "account_name:\"dev-*\""
             },
             "reference_table": null
-          }
-        ],
+          }],
         "version": 1
       },
       "id": "a7b8c9d0-1234-5678-9abc-def012345678",
       "type": "ruleset"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5762,10 +5749,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5774,13 +5760,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5796,13 +5782,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_tag_pipelines_rulesets()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List tag pipeline rulesets returns "OK" response
@@ -5810,13 +5797,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_tag_pipelines_rulesets()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List tag pipeline rulesets returns "OK" response
@@ -5824,37 +5812,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListTagPipelinesRulesets(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListTagPipelinesRulesets(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListTagPipelinesRulesets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListTagPipelinesRulesets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListTagPipelinesRulesets`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListTagPipelinesRulesets`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List tag pipeline rulesets returns "OK" response
@@ -5881,13 +5870,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List tag pipeline rulesets returns "OK" response
@@ -5905,13 +5895,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5931,6 +5922,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5959,13 +5951,9 @@ Create a new tag pipeline ruleset with the specified rules and configuration
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -6007,15 +5995,14 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
   "data": {
     "attributes": {
       "enabled": true,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": null,
           "name": "Add Cost Center Tag",
@@ -6029,24 +6016,23 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
             "query": "account_id:\"123456789\" AND service:\"web-api\""
           },
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "create_ruleset"
   }
 }
+
 ```
 
-##### 
+#####
 
 ```json
 {
   "data": {
     "attributes": {
       "enabled": true,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": null,
           "name": "Add Cost Center Tag",
@@ -6060,13 +6046,13 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
             "query": "account_id:\"123456789\" AND service:\"web-api\""
           },
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "create_ruleset"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6138,8 +6124,7 @@ The definition of `RulesetResp` object.
       "modified": null,
       "name": "Example Ruleset",
       "position": 0,
-      "rules": [
-        {
+      "rules": [{
           "enabled": false,
           "mapping": null,
           "metadata": null,
@@ -6160,10 +6145,8 @@ The definition of `RulesetResp` object.
           "mapping": {
             "destination_key": "h",
             "if_tag_exists": "do_not_apply",
-            "source_keys": [
-              "accountname",
-              "accountownerid"
-            ]
+            "source_keys": ["accountname",
+              "accountownerid"]
           },
           "metadata": null,
           "name": "rule with empty source key",
@@ -6178,31 +6161,27 @@ The definition of `RulesetResp` object.
           "query": null,
           "reference_table": {
             "case_insensitivity": true,
-            "field_pairs": [
-              {
+            "field_pairs": [{
                 "input_column": "status_type",
                 "output_key": "status"
               },
               {
                 "input_column": "status_description",
                 "output_key": "dess"
-              }
-            ],
+              }],
             "if_tag_exists": "append",
-            "source_keys": [
-              "http_status",
-              "status_description"
-            ],
+            "source_keys": ["http_status",
+              "status_description"],
             "table_name": "http_status_codes"
           }
-        }
-      ],
+        }],
       "version": 1
     },
     "id": "12345",
     "type": "ruleset"
   }
 }
+
 ```
 
 {% /tab %}
@@ -6224,10 +6203,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -6236,7 +6214,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6247,8 +6225,7 @@ API error response.
   "data": {
     "attributes": {
       "enabled": true,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": null,
           "name": "Add Cost Center Tag",
@@ -6262,16 +6239,15 @@ API error response.
             "query": "account_id:\"123456789\" AND service:\"web-api\""
           },
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "create_ruleset"
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6282,8 +6258,7 @@ EOF
   "data": {
     "attributes": {
       "enabled": true,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": null,
           "name": "Add Cost Center Tag",
@@ -6297,16 +6272,15 @@ EOF
             "query": "account_id:\"123456789\" AND service:\"web-api\""
           },
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "create_ruleset"
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create tag pipeline ruleset returns "OK" response
@@ -6314,59 +6288,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateRulesetRequest{
-		Data: &datadogV2.CreateRulesetRequestData{
-			Attributes: &datadogV2.CreateRulesetRequestDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
-					{
-						Enabled: true,
-						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
-						Name:    "Add Cost Center Tag",
-						Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
-							Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
-								Key:   "cost_center",
-								Value: "engineering",
-							}),
-							CaseInsensitivity: datadog.PtrBool(false),
-							IfNotExists:       datadog.PtrBool(true),
-							Query:             `account_id:"123456789" AND service:"web-api"`,
-						}),
-						ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
-					},
-				},
-			},
-			Id:   datadog.PtrString("New Ruleset"),
-			Type: datadogV2.CREATERULESETREQUESTDATATYPE_CREATE_RULESET,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateTagPipelinesRuleset(ctx, body)
+    body := datadogV2.CreateRulesetRequest{
+        Data: &datadogV2.CreateRulesetRequestData{
+            Attributes: &datadogV2.CreateRulesetRequestDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
+                    {
+                        Enabled: true,
+                        Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
+                        Name:    "Add Cost Center Tag",
+                        Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
+                            Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
+                                Key:   "cost_center",
+                                Value: "engineering",
+                            }),
+                            CaseInsensitivity: datadog.PtrBool(false),
+                            IfNotExists:       datadog.PtrBool(true),
+                            Query:             `account_id:"123456789" AND service:"web-api"`,
+                        }),
+                        ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+                    },
+                },
+            },
+            Id:   datadog.PtrString("New Ruleset"),
+            Type: datadogV2.CREATERULESETREQUESTDATATYPE_CREATE_RULESET,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateTagPipelinesRuleset(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateTagPipelinesRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateTagPipelinesRuleset`:\n%s\n", responseContent)
 }
+
 ```
 
-##### 
+#####
 
 ```go
 // Create tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -6374,63 +6349,64 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateRulesetRequest{
-		Data: &datadogV2.CreateRulesetRequestData{
-			Attributes: &datadogV2.CreateRulesetRequestDataAttributes{
-				Enabled: datadog.PtrBool(true),
-				Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
-					{
-						Enabled: true,
-						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
-						Name:    "Add Cost Center Tag",
-						Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
-							Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
-								Key:   "cost_center",
-								Value: "engineering",
-							}),
-							CaseInsensitivity: datadog.PtrBool(false),
-							IfTagExists:       datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
-							Query:             `account_id:"123456789" AND service:"web-api"`,
-						}),
-						ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
-					},
-				},
-			},
-			Id:   datadog.PtrString("New Ruleset"),
-			Type: datadogV2.CREATERULESETREQUESTDATATYPE_CREATE_RULESET,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateTagPipelinesRuleset(ctx, body)
+    body := datadogV2.CreateRulesetRequest{
+        Data: &datadogV2.CreateRulesetRequestData{
+            Attributes: &datadogV2.CreateRulesetRequestDataAttributes{
+                Enabled: datadog.PtrBool(true),
+                Rules: []datadogV2.CreateRulesetRequestDataAttributesRulesItems{
+                    {
+                        Enabled: true,
+                        Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(nil),
+                        Name:    "Add Cost Center Tag",
+                        Query: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQuery(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQuery{
+                            Addition: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsQueryAddition(&datadogV2.CreateRulesetRequestDataAttributesRulesItemsQueryAddition{
+                                Key:   "cost_center",
+                                Value: "engineering",
+                            }),
+                            CaseInsensitivity: datadog.PtrBool(false),
+                            IfTagExists:       datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
+                            Query:             `account_id:"123456789" AND service:"web-api"`,
+                        }),
+                        ReferenceTable: *datadogV2.NewNullableCreateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+                    },
+                },
+            },
+            Id:   datadog.PtrString("New Ruleset"),
+            Type: datadogV2.CREATERULESETREQUESTDATATYPE_CREATE_RULESET,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateTagPipelinesRuleset(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateTagPipelinesRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateTagPipelinesRuleset`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create tag pipeline ruleset returns "OK" response
@@ -6494,9 +6470,10 @@ account_id:"123456789" AND service:"web-api"
     }
   }
 }
+
 ```
 
-##### 
+#####
 
 ```java
 // Create tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -6562,13 +6539,14 @@ account_id:"123456789" AND service:"web-api"
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6595,8 +6573,7 @@ body = CreateRulesetRequest(
     data=CreateRulesetRequestData(
         attributes=CreateRulesetRequestDataAttributes(
             enabled=True,
-            rules=[
-                CreateRulesetRequestDataAttributesRulesItems(
+            rules=[CreateRulesetRequestDataAttributesRulesItems(
                     enabled=True,
                     mapping=None,
                     name="Add Cost Center Tag",
@@ -6610,8 +6587,7 @@ body = CreateRulesetRequest(
                         query='account_id:"123456789" AND service:"web-api"',
                     ),
                     reference_table=None,
-                ),
-            ],
+                ),],
         ),
         id="New Ruleset",
         type=CreateRulesetRequestDataType.CREATE_RULESET,
@@ -6624,9 +6600,10 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_tag_pipelines_ruleset(body=body)
 
     print(response)
+
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -6654,8 +6631,7 @@ body = CreateRulesetRequest(
     data=CreateRulesetRequestData(
         attributes=CreateRulesetRequestDataAttributes(
             enabled=True,
-            rules=[
-                CreateRulesetRequestDataAttributesRulesItems(
+            rules=[CreateRulesetRequestDataAttributesRulesItems(
                     enabled=True,
                     mapping=None,
                     name="Add Cost Center Tag",
@@ -6669,8 +6645,7 @@ body = CreateRulesetRequest(
                         query='account_id:"123456789" AND service:"web-api"',
                     ),
                     reference_table=None,
-                ),
-            ],
+                ),],
         ),
         id="New Ruleset",
         type=CreateRulesetRequestDataType.CREATE_RULESET,
@@ -6683,13 +6658,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_tag_pipelines_ruleset(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create tag pipeline ruleset returns "OK" response
@@ -6701,8 +6677,7 @@ body = DatadogAPIClient::V2::CreateRulesetRequest.new({
   data: DatadogAPIClient::V2::CreateRulesetRequestData.new({
     attributes: DatadogAPIClient::V2::CreateRulesetRequestDataAttributes.new({
       enabled: true,
-      rules: [
-        DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItems.new({
+      rules: [DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItems.new({
           enabled: true,
           mapping: nil,
           name: "Add Cost Center Tag",
@@ -6716,17 +6691,17 @@ body = DatadogAPIClient::V2::CreateRulesetRequest.new({
             query: 'account_id:"123456789" AND service:"web-api"',
           }),
           reference_table: nil,
-        }),
-      ],
+        }),],
     }),
     id: "New Ruleset",
     type: DatadogAPIClient::V2::CreateRulesetRequestDataType::CREATE_RULESET,
   }),
 })
 p api_instance.create_tag_pipelines_ruleset(body)
+
 ```
 
-##### 
+#####
 
 ```ruby
 # Create tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -6738,8 +6713,7 @@ body = DatadogAPIClient::V2::CreateRulesetRequest.new({
   data: DatadogAPIClient::V2::CreateRulesetRequestData.new({
     attributes: DatadogAPIClient::V2::CreateRulesetRequestDataAttributes.new({
       enabled: true,
-      rules: [
-        DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItems.new({
+      rules: [DatadogAPIClient::V2::CreateRulesetRequestDataAttributesRulesItems.new({
           enabled: true,
           mapping: nil,
           name: "Add Cost Center Tag",
@@ -6753,21 +6727,21 @@ body = DatadogAPIClient::V2::CreateRulesetRequest.new({
             query: 'account_id:"123456789" AND service:"web-api"',
           }),
           reference_table: nil,
-        }),
-      ],
+        }),],
     }),
     id: "New Ruleset",
     type: DatadogAPIClient::V2::CreateRulesetRequestDataType::CREATE_RULESET,
   }),
 })
 p api_instance.create_tag_pipelines_ruleset(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create tag pipeline ruleset returns "OK" response
@@ -6786,8 +6760,7 @@ async fn main() {
     let body = CreateRulesetRequest::new().data(
         CreateRulesetRequestData::new(CreateRulesetRequestDataType::CREATE_RULESET)
             .attributes(
-                CreateRulesetRequestDataAttributes::new(vec![
-                    CreateRulesetRequestDataAttributesRulesItems::new(
+                CreateRulesetRequestDataAttributes::new(vec![CreateRulesetRequestDataAttributesRulesItems::new(
                         true,
                         "Add Cost Center Tag".to_string(),
                     )
@@ -6805,8 +6778,7 @@ async fn main() {
                         .case_insensitivity(false)
                         .if_not_exists(true),
                     ))
-                    .reference_table(None),
-                ])
+                    .reference_table(None),])
                 .enabled(true),
             )
             .id("New Ruleset".to_string()),
@@ -6820,9 +6792,10 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
-##### 
+#####
 
 ```rust
 // Create tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -6842,8 +6815,7 @@ async fn main() {
     let body = CreateRulesetRequest::new().data(
         CreateRulesetRequestData::new(CreateRulesetRequestDataType::CREATE_RULESET)
             .attributes(
-                CreateRulesetRequestDataAttributes::new(vec![
-                    CreateRulesetRequestDataAttributesRulesItems::new(
+                CreateRulesetRequestDataAttributes::new(vec![CreateRulesetRequestDataAttributesRulesItems::new(
                         true,
                         "Add Cost Center Tag".to_string(),
                     )
@@ -6861,8 +6833,7 @@ async fn main() {
                         .case_insensitivity(false)
                         .if_tag_exists(DataAttributesRulesItemsIfTagExists::REPLACE),
                     ))
-                    .reference_table(None),
-                ])
+                    .reference_table(None),])
                 .enabled(true),
             )
             .id("New Ruleset".to_string()),
@@ -6876,13 +6847,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6899,8 +6871,7 @@ const params: v2.CloudCostManagementApiCreateTagPipelinesRulesetRequest = {
     data: {
       attributes: {
         enabled: true,
-        rules: [
-          {
+        rules: [{
             enabled: true,
             mapping: undefined,
             name: "Add Cost Center Tag",
@@ -6914,8 +6885,7 @@ const params: v2.CloudCostManagementApiCreateTagPipelinesRulesetRequest = {
               query: `account_id:"123456789" AND service:"web-api"`,
             },
             referenceTable: undefined,
-          },
-        ],
+          },],
       },
       id: "New Ruleset",
       type: "create_ruleset",
@@ -6931,9 +6901,10 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -6950,8 +6921,7 @@ const params: v2.CloudCostManagementApiCreateTagPipelinesRulesetRequest = {
     data: {
       attributes: {
         enabled: true,
-        rules: [
-          {
+        rules: [{
             enabled: true,
             mapping: undefined,
             name: "Add Cost Center Tag",
@@ -6965,8 +6935,7 @@ const params: v2.CloudCostManagementApiCreateTagPipelinesRulesetRequest = {
               query: `account_id:"123456789" AND service:"web-api"`,
             },
             referenceTable: undefined,
-          },
-        ],
+          },],
       },
       id: "New Ruleset",
       type: "create_ruleset",
@@ -6982,6 +6951,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7010,8 +6980,6 @@ Update a tag pipeline ruleset - Update an existing tag pipeline ruleset with new
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -7023,8 +6991,6 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -7067,7 +7033,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -7075,30 +7041,27 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "attributes": {
       "enabled": true,
       "last_version": 3611102,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": {
             "destination_key": "team_owner",
             "if_not_exists": true,
-            "source_keys": [
-              "account_name",
-              "account_id"
-            ]
+            "source_keys": ["account_name",
+              "account_id"]
           },
           "name": "Account Name Mapping",
           "query": null,
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "update_ruleset"
   }
 }
+
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -7106,27 +7069,24 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "attributes": {
       "enabled": true,
       "last_version": 3611102,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": {
             "destination_key": "team_owner",
             "if_tag_exists": "replace",
-            "source_keys": [
-              "account_name",
-              "account_id"
-            ]
+            "source_keys": ["account_name",
+              "account_id"]
           },
           "name": "Account Name Mapping",
           "query": null,
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "update_ruleset"
   }
 }
+
 ```
 
 {% /tab %}
@@ -7198,8 +7158,7 @@ The definition of `RulesetResp` object.
       "modified": null,
       "name": "Example Ruleset",
       "position": 0,
-      "rules": [
-        {
+      "rules": [{
           "enabled": false,
           "mapping": null,
           "metadata": null,
@@ -7220,10 +7179,8 @@ The definition of `RulesetResp` object.
           "mapping": {
             "destination_key": "h",
             "if_tag_exists": "do_not_apply",
-            "source_keys": [
-              "accountname",
-              "accountownerid"
-            ]
+            "source_keys": ["accountname",
+              "accountownerid"]
           },
           "metadata": null,
           "name": "rule with empty source key",
@@ -7238,31 +7195,27 @@ The definition of `RulesetResp` object.
           "query": null,
           "reference_table": {
             "case_insensitivity": true,
-            "field_pairs": [
-              {
+            "field_pairs": [{
                 "input_column": "status_type",
                 "output_key": "status"
               },
               {
                 "input_column": "status_description",
                 "output_key": "dess"
-              }
-            ],
+              }],
             "if_tag_exists": "append",
-            "source_keys": [
-              "http_status",
-              "status_description"
-            ],
+            "source_keys": ["http_status",
+              "status_description"],
             "table_name": "http_status_codes"
           }
-        }
-      ],
+        }],
       "version": 1
     },
     "id": "12345",
     "type": "ruleset"
   }
 }
+
 ```
 
 {% /tab %}
@@ -7284,10 +7237,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7296,7 +7248,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport ruleset_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/${ruleset_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7308,30 +7260,26 @@ API error response.
     "attributes": {
       "enabled": true,
       "last_version": 3611102,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": {
             "destination_key": "team_owner",
             "if_not_exists": true,
-            "source_keys": [
-              "account_name",
-              "account_id"
-            ]
+            "source_keys": ["account_name",
+              "account_id"]
           },
           "name": "Account Name Mapping",
           "query": null,
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "update_ruleset"
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport ruleset_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/${ruleset_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7343,30 +7291,26 @@ EOF
     "attributes": {
       "enabled": true,
       "last_version": 3611102,
-      "rules": [
-        {
+      "rules": [{
           "enabled": true,
           "mapping": {
             "destination_key": "team_owner",
             "if_tag_exists": "replace",
-            "source_keys": [
-              "account_name",
-              "account_id"
-            ]
+            "source_keys": ["account_name",
+              "account_id"]
           },
           "name": "Account Name Mapping",
           "query": null,
           "reference_table": null
-        }
-      ]
+        }]
     },
     "id": "New Ruleset",
     "type": "update_ruleset"
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update tag pipeline ruleset returns "OK" response
@@ -7374,59 +7318,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateRulesetRequest{
-		Data: &datadogV2.UpdateRulesetRequestData{
-			Attributes: &datadogV2.UpdateRulesetRequestDataAttributes{
-				Enabled:     true,
-				LastVersion: datadog.PtrInt64(3611102),
-				Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
-					{
-						Enabled: true,
-						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
-							DestinationKey: "team_owner",
-							IfNotExists:    datadog.PtrBool(true),
-							SourceKeys: []string{
-								"account_name",
-								"account_id",
-							},
-						}),
-						Name:           "Account Name Mapping",
-						Query:          *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsQuery(nil),
-						ReferenceTable: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
-					},
-				},
-			},
-			Id:   datadog.PtrString("New Ruleset"),
-			Type: datadogV2.UPDATERULESETREQUESTDATATYPE_UPDATE_RULESET,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+    body := datadogV2.UpdateRulesetRequest{
+        Data: &datadogV2.UpdateRulesetRequestData{
+            Attributes: &datadogV2.UpdateRulesetRequestDataAttributes{
+                Enabled:     true,
+                LastVersion: datadog.PtrInt64(3611102),
+                Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
+                    {
+                        Enabled: true,
+                        Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
+                            DestinationKey: "team_owner",
+                            IfNotExists:    datadog.PtrBool(true),
+                            SourceKeys: []string{
+                                "account_name",
+                                "account_id",
+                            },
+                        }),
+                        Name:           "Account Name Mapping",
+                        Query:          *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsQuery(nil),
+                        ReferenceTable: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+                    },
+                },
+            },
+            Id:   datadog.PtrString("New Ruleset"),
+            Type: datadogV2.UPDATERULESETREQUESTDATATYPE_UPDATE_RULESET,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateTagPipelinesRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateTagPipelinesRuleset`:\n%s\n", responseContent)
 }
+
 ```
 
-##### 
+#####
 
 ```go
 // Update tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -7434,63 +7379,64 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateRulesetRequest{
-		Data: &datadogV2.UpdateRulesetRequestData{
-			Attributes: &datadogV2.UpdateRulesetRequestDataAttributes{
-				Enabled:     true,
-				LastVersion: datadog.PtrInt64(3611102),
-				Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
-					{
-						Enabled: true,
-						Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
-							DestinationKey: "team_owner",
-							IfTagExists:    datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
-							SourceKeys: []string{
-								"account_name",
-								"account_id",
-							},
-						}),
-						Name:           "Account Name Mapping",
-						Query:          *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsQuery(nil),
-						ReferenceTable: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
-					},
-				},
-			},
-			Id:   datadog.PtrString("New Ruleset"),
-			Type: datadogV2.UPDATERULESETREQUESTDATATYPE_UPDATE_RULESET,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+    body := datadogV2.UpdateRulesetRequest{
+        Data: &datadogV2.UpdateRulesetRequestData{
+            Attributes: &datadogV2.UpdateRulesetRequestDataAttributes{
+                Enabled:     true,
+                LastVersion: datadog.PtrInt64(3611102),
+                Rules: []datadogV2.UpdateRulesetRequestDataAttributesRulesItems{
+                    {
+                        Enabled: true,
+                        Mapping: *datadogV2.NewNullableDataAttributesRulesItemsMapping(&datadogV2.DataAttributesRulesItemsMapping{
+                            DestinationKey: "team_owner",
+                            IfTagExists:    datadogV2.DATAATTRIBUTESRULESITEMSIFTAGEXISTS_REPLACE.Ptr(),
+                            SourceKeys: []string{
+                                "account_name",
+                                "account_id",
+                            },
+                        }),
+                        Name:           "Account Name Mapping",
+                        Query:          *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsQuery(nil),
+                        ReferenceTable: *datadogV2.NewNullableUpdateRulesetRequestDataAttributesRulesItemsReferenceTable(nil),
+                    },
+                },
+            },
+            Id:   datadog.PtrString("New Ruleset"),
+            Type: datadogV2.UPDATERULESETREQUESTDATATYPE_UPDATE_RULESET,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateTagPipelinesRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateTagPipelinesRuleset`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update tag pipeline ruleset returns "OK" response
@@ -7550,9 +7496,10 @@ public class Example {
     }
   }
 }
+
 ```
 
-##### 
+#####
 
 ```java
 // Update tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -7614,13 +7561,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7643,22 +7591,18 @@ body = UpdateRulesetRequest(
         attributes=UpdateRulesetRequestDataAttributes(
             enabled=True,
             last_version=3611102,
-            rules=[
-                UpdateRulesetRequestDataAttributesRulesItems(
+            rules=[UpdateRulesetRequestDataAttributesRulesItems(
                     enabled=True,
                     mapping=DataAttributesRulesItemsMapping(
                         destination_key="team_owner",
                         if_not_exists=True,
-                        source_keys=[
-                            "account_name",
-                            "account_id",
-                        ],
+                        source_keys=["account_name",
+                            "account_id",],
                     ),
                     name="Account Name Mapping",
                     query=None,
                     reference_table=None,
-                ),
-            ],
+                ),],
         ),
         id="New Ruleset",
         type=UpdateRulesetRequestDataType.UPDATE_RULESET,
@@ -7671,9 +7615,10 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_tag_pipelines_ruleset(ruleset_id="ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body=body)
 
     print(response)
+
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -7697,22 +7642,18 @@ body = UpdateRulesetRequest(
         attributes=UpdateRulesetRequestDataAttributes(
             enabled=True,
             last_version=3611102,
-            rules=[
-                UpdateRulesetRequestDataAttributesRulesItems(
+            rules=[UpdateRulesetRequestDataAttributesRulesItems(
                     enabled=True,
                     mapping=DataAttributesRulesItemsMapping(
                         destination_key="team_owner",
                         if_tag_exists=DataAttributesRulesItemsIfTagExists.REPLACE,
-                        source_keys=[
-                            "account_name",
-                            "account_id",
-                        ],
+                        source_keys=["account_name",
+                            "account_id",],
                     ),
                     name="Account Name Mapping",
                     query=None,
                     reference_table=None,
-                ),
-            ],
+                ),],
         ),
         id="New Ruleset",
         type=UpdateRulesetRequestDataType.UPDATE_RULESET,
@@ -7725,13 +7666,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_tag_pipelines_ruleset(ruleset_id="ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update tag pipeline ruleset returns "OK" response
@@ -7744,31 +7686,28 @@ body = DatadogAPIClient::V2::UpdateRulesetRequest.new({
     attributes: DatadogAPIClient::V2::UpdateRulesetRequestDataAttributes.new({
       enabled: true,
       last_version: 3611102,
-      rules: [
-        DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
+      rules: [DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
           enabled: true,
           mapping: DatadogAPIClient::V2::DataAttributesRulesItemsMapping.new({
             destination_key: "team_owner",
             if_not_exists: true,
-            source_keys: [
-              "account_name",
-              "account_id",
-            ],
+            source_keys: ["account_name",
+              "account_id",],
           }),
           name: "Account Name Mapping",
           query: nil,
           reference_table: nil,
-        }),
-      ],
+        }),],
     }),
     id: "New Ruleset",
     type: DatadogAPIClient::V2::UpdateRulesetRequestDataType::UPDATE_RULESET,
   }),
 })
 p api_instance.update_tag_pipelines_ruleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+
 ```
 
-##### 
+#####
 
 ```ruby
 # Update tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -7781,35 +7720,32 @@ body = DatadogAPIClient::V2::UpdateRulesetRequest.new({
     attributes: DatadogAPIClient::V2::UpdateRulesetRequestDataAttributes.new({
       enabled: true,
       last_version: 3611102,
-      rules: [
-        DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
+      rules: [DatadogAPIClient::V2::UpdateRulesetRequestDataAttributesRulesItems.new({
           enabled: true,
           mapping: DatadogAPIClient::V2::DataAttributesRulesItemsMapping.new({
             destination_key: "team_owner",
             if_tag_exists: DatadogAPIClient::V2::DataAttributesRulesItemsIfTagExists::REPLACE,
-            source_keys: [
-              "account_name",
-              "account_id",
-            ],
+            source_keys: ["account_name",
+              "account_id",],
           }),
           name: "Account Name Mapping",
           query: nil,
           reference_table: nil,
-        }),
-      ],
+        }),],
     }),
     id: "New Ruleset",
     type: DatadogAPIClient::V2::UpdateRulesetRequestDataType::UPDATE_RULESET,
   }),
 })
 p api_instance.update_tag_pipelines_ruleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1", body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update tag pipeline ruleset returns "OK" response
@@ -7858,9 +7794,10 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
-##### 
+#####
 
 ```rust
 // Update tag pipeline ruleset with if_tag_exists returns "OK" response
@@ -7910,13 +7847,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7934,8 +7872,7 @@ const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
       attributes: {
         enabled: true,
         lastVersion: 3611102,
-        rules: [
-          {
+        rules: [{
             enabled: true,
             mapping: {
               destinationKey: "team_owner",
@@ -7945,8 +7882,7 @@ const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
             name: "Account Name Mapping",
             query: undefined,
             referenceTable: undefined,
-          },
-        ],
+          },],
       },
       id: "New Ruleset",
       type: "update_ruleset",
@@ -7963,9 +7899,10 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -7983,8 +7920,7 @@ const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
       attributes: {
         enabled: true,
         lastVersion: 3611102,
-        rules: [
-          {
+        rules: [{
             enabled: true,
             mapping: {
               destinationKey: "team_owner",
@@ -7994,8 +7930,7 @@ const params: v2.CloudCostManagementApiUpdateTagPipelinesRulesetRequest = {
             name: "Account Name Mapping",
             query: undefined,
             referenceTable: undefined,
-          },
-        ],
+          },],
       },
       id: "New Ruleset",
       type: "update_ruleset",
@@ -8012,6 +7947,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8039,8 +7975,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a tag pipeline ruleset - Delete an existing tag pipeline ruleset by its ID
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8071,10 +8005,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8083,12 +8016,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/${ruleset_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8104,13 +8037,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_tag_pipelines_ruleset(
         ruleset_id="ee10c3ff-312f-464c-b4f6-46adaa6d00a1",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete tag pipeline ruleset returns "No Content" response
@@ -8118,13 +8052,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_tag_pipelines_ruleset("ee10c3ff-312f-464c-b4f6-46adaa6d00a1")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete tag pipeline ruleset returns "No Content" response
@@ -8132,33 +8067,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteTagPipelinesRuleset(ctx, "ee10c3ff-312f-464c-b4f6-46adaa6d00a1")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete tag pipeline ruleset returns "No Content" response
@@ -8183,13 +8119,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete tag pipeline ruleset returns "No Content" response
@@ -8209,13 +8146,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8239,6 +8177,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8266,8 +8205,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific tag pipeline ruleset - Retrieve a specific tag pipeline ruleset by its ID
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8344,8 +8281,7 @@ The definition of `RulesetResp` object.
       "modified": null,
       "name": "Example Ruleset",
       "position": 0,
-      "rules": [
-        {
+      "rules": [{
           "enabled": false,
           "mapping": null,
           "metadata": null,
@@ -8366,10 +8302,8 @@ The definition of `RulesetResp` object.
           "mapping": {
             "destination_key": "h",
             "if_tag_exists": "do_not_apply",
-            "source_keys": [
-              "accountname",
-              "accountownerid"
-            ]
+            "source_keys": ["accountname",
+              "accountownerid"]
           },
           "metadata": null,
           "name": "rule with empty source key",
@@ -8384,31 +8318,27 @@ The definition of `RulesetResp` object.
           "query": null,
           "reference_table": {
             "case_insensitivity": true,
-            "field_pairs": [
-              {
+            "field_pairs": [{
                 "input_column": "status_type",
                 "output_key": "status"
               },
               {
                 "input_column": "status_description",
                 "output_key": "dess"
-              }
-            ],
+              }],
             "if_tag_exists": "append",
-            "source_keys": [
-              "http_status",
-              "status_description"
-            ],
+            "source_keys": ["http_status",
+              "status_description"],
             "table_name": "http_status_codes"
           }
-        }
-      ],
+        }],
       "version": 1
     },
     "id": "12345",
     "type": "ruleset"
   }
 }
+
 ```
 
 {% /tab %}
@@ -8430,10 +8360,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8442,13 +8371,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/${ruleset_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8466,13 +8395,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a tag pipeline ruleset returns "OK" response
@@ -8480,13 +8410,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_tag_pipelines_ruleset("a1e9de9b-b88e-41c6-a0cd-cc0ebd7092de")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a tag pipeline ruleset returns "OK" response
@@ -8494,37 +8425,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetTagPipelinesRuleset(ctx, "a1e9de9b-b88e-41c6-a0cd-cc0ebd7092de")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetTagPipelinesRuleset(ctx, "a1e9de9b-b88e-41c6-a0cd-cc0ebd7092de")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetTagPipelinesRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetTagPipelinesRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetTagPipelinesRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetTagPipelinesRuleset`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a tag pipeline ruleset returns "OK" response
@@ -8552,13 +8484,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a tag pipeline ruleset returns "OK" response
@@ -8578,13 +8511,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8608,6 +8542,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8636,13 +8571,9 @@ Reorder tag pipeline rulesets - Change the execution order of tag pipeline rules
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -8658,13 +8589,12 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "id": "string",
       "type": "ruleset"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -8690,10 +8620,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8702,22 +8631,20 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/reorder" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-  "data": [
-    {
+  "data": [{
       "type": "ruleset"
-    }
-  ]
+    }]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8731,8 +8658,7 @@ from datadog_api_client.v2.model.reorder_ruleset_resource_data import ReorderRul
 from datadog_api_client.v2.model.reorder_ruleset_resource_data_type import ReorderRulesetResourceDataType
 
 body = ReorderRulesetResourceArray(
-    data=[
-        ReorderRulesetResourceData(
+    data=[ReorderRulesetResourceData(
             id="55ef2385-9ae1-4410-90c4-5ac1b60fec10",
             type=ReorderRulesetResourceDataType.RULESET,
         ),
@@ -8743,21 +8669,21 @@ body = ReorderRulesetResourceArray(
         ReorderRulesetResourceData(
             id="f1e2d3c4-b5a6-9780-1234-567890abcdef",
             type=ReorderRulesetResourceDataType.RULESET,
-        ),
-    ],
+        ),],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = CloudCostManagementApi(api_client)
     api_instance.reorder_tag_pipelines_rulesets(body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Reorder tag pipeline rulesets returns "Successfully reordered rulesets" response
@@ -8766,8 +8692,7 @@ require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 
 body = DatadogAPIClient::V2::ReorderRulesetResourceArray.new({
-  data: [
-    DatadogAPIClient::V2::ReorderRulesetResourceData.new({
+  data: [DatadogAPIClient::V2::ReorderRulesetResourceData.new({
       id: "55ef2385-9ae1-4410-90c4-5ac1b60fec10",
       type: DatadogAPIClient::V2::ReorderRulesetResourceDataType::RULESET,
     }),
@@ -8778,17 +8703,17 @@ body = DatadogAPIClient::V2::ReorderRulesetResourceArray.new({
     DatadogAPIClient::V2::ReorderRulesetResourceData.new({
       id: "f1e2d3c4-b5a6-9780-1234-567890abcdef",
       type: DatadogAPIClient::V2::ReorderRulesetResourceDataType::RULESET,
-    }),
-  ],
+    }),],
 })
 api_instance.reorder_tag_pipelines_rulesets(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Reorder tag pipeline rulesets returns "Successfully reordered rulesets" response
@@ -8796,49 +8721,50 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ReorderRulesetResourceArray{
-		Data: []datadogV2.ReorderRulesetResourceData{
-			{
-				Id:   datadog.PtrString("55ef2385-9ae1-4410-90c4-5ac1b60fec10"),
-				Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
-			},
-			{
-				Id:   datadog.PtrString("a7b8c9d0-1234-5678-9abc-def012345678"),
-				Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
-			},
-			{
-				Id:   datadog.PtrString("f1e2d3c4-b5a6-9780-1234-567890abcdef"),
-				Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.ReorderTagPipelinesRulesets(ctx, body)
+    body := datadogV2.ReorderRulesetResourceArray{
+        Data: []datadogV2.ReorderRulesetResourceData{
+            {
+                Id:   datadog.PtrString("55ef2385-9ae1-4410-90c4-5ac1b60fec10"),
+                Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
+            },
+            {
+                Id:   datadog.PtrString("a7b8c9d0-1234-5678-9abc-def012345678"),
+                Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
+            },
+            {
+                Id:   datadog.PtrString("f1e2d3c4-b5a6-9780-1234-567890abcdef"),
+                Type: datadogV2.REORDERRULESETRESOURCEDATATYPE_RULESET,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.ReorderTagPipelinesRulesets(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ReorderTagPipelinesRulesets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ReorderTagPipelinesRulesets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Reorder tag pipeline rulesets returns "Successfully reordered rulesets" response
@@ -8882,13 +8808,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Reorder tag pipeline rulesets returns "Successfully reordered rulesets" response
@@ -8900,14 +8827,12 @@ use datadog_api_client::datadogV2::model::ReorderRulesetResourceDataType;
 
 #[tokio::main]
 async fn main() {
-    let body = ReorderRulesetResourceArray::new(vec![
-        ReorderRulesetResourceData::new(ReorderRulesetResourceDataType::RULESET)
+    let body = ReorderRulesetResourceArray::new(vec![ReorderRulesetResourceData::new(ReorderRulesetResourceDataType::RULESET)
             .id("55ef2385-9ae1-4410-90c4-5ac1b60fec10".to_string()),
         ReorderRulesetResourceData::new(ReorderRulesetResourceDataType::RULESET)
             .id("a7b8c9d0-1234-5678-9abc-def012345678".to_string()),
         ReorderRulesetResourceData::new(ReorderRulesetResourceDataType::RULESET)
-            .id("f1e2d3c4-b5a6-9780-1234-567890abcdef".to_string()),
-    ]);
+            .id("f1e2d3c4-b5a6-9780-1234-567890abcdef".to_string()),]);
     let configuration = datadog::Configuration::new();
     let api = CloudCostManagementAPI::with_config(configuration);
     let resp = api.reorder_tag_pipelines_rulesets(body).await;
@@ -8917,13 +8842,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8937,8 +8863,7 @@ const apiInstance = new v2.CloudCostManagementApi(configuration);
 
 const params: v2.CloudCostManagementApiReorderTagPipelinesRulesetsRequest = {
   body: {
-    data: [
-      {
+    data: [{
         id: "55ef2385-9ae1-4410-90c4-5ac1b60fec10",
         type: "ruleset",
       },
@@ -8949,8 +8874,7 @@ const params: v2.CloudCostManagementApiReorderTagPipelinesRulesetsRequest = {
       {
         id: "f1e2d3c4-b5a6-9780-1234-567890abcdef",
         type: "ruleset",
-      },
-    ],
+      },],
   },
 };
 
@@ -8962,6 +8886,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8990,13 +8915,9 @@ Validate a tag pipeline query - Validate the syntax and structure of a tag pipel
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -9021,6 +8942,7 @@ OAuth apps require the `cloud_cost_management_read` authorization [scope](https:
     "type": "validate_query"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9053,6 +8975,7 @@ The definition of `RulesValidateQueryResponse` object.
     "type": "validate_response"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9074,10 +8997,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9086,7 +9008,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/tags/enrichment/validate-query" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9102,8 +9024,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Validate query returns "OK" response
@@ -9111,45 +9033,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RulesValidateQueryRequest{
-		Data: &datadogV2.RulesValidateQueryRequestData{
-			Attributes: &datadogV2.RulesValidateQueryRequestDataAttributes{
-				Query: "example:query AND test:true",
-			},
-			Type: datadogV2.RULESVALIDATEQUERYREQUESTDATATYPE_VALIDATE_QUERY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ValidateQuery(ctx, body)
+    body := datadogV2.RulesValidateQueryRequest{
+        Data: &datadogV2.RulesValidateQueryRequestData{
+            Attributes: &datadogV2.RulesValidateQueryRequestDataAttributes{
+                Query: "example:query AND test:true",
+            },
+            Type: datadogV2.RULESVALIDATEQUERYREQUESTDATATYPE_VALIDATE_QUERY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ValidateQuery(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateQuery`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate query returns "OK" response
@@ -9189,13 +9112,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9226,13 +9150,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.validate_query(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate query returns "OK" response
@@ -9249,13 +9174,14 @@ body = DatadogAPIClient::V2::RulesValidateQueryRequest.new({
   }),
 })
 p api_instance.validate_query(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Validate query returns "OK" response
@@ -9283,13 +9209,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9320,6 +9247,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9347,8 +9275,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List all custom allocation rules - Retrieve a list of all custom allocation rules for the organization
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Response
 
@@ -9414,47 +9340,36 @@ The definition of `ArbitraryRuleResponseArray` object.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
-        "costs_to_allocate": [
-          {
+        "costs_to_allocate": [{
             "condition": "like",
             "tag": "service",
             "value": "orgstore-csm*",
             "values": null
-          }
-        ],
+          }],
         "created": "2024-11-20T03:44:37Z",
         "enabled": true,
         "last_modified_user_uuid": "user-example-uuid",
         "order_id": 1,
         "processing_status": "done",
-        "provider": [
-          "gcp"
-        ],
+        "provider": ["gcp"],
         "rule_name": "gcp-orgstore-csm-team-allocation",
         "strategy": {
-          "allocated_by": [
-            {
-              "allocated_tags": [
-                {
+          "allocated_by": [{
+              "allocated_tags": [{
                   "key": "team",
                   "value": "csm-activation"
-                }
-              ],
+                }],
               "percentage": 0.34
             },
             {
-              "allocated_tags": [
-                {
+              "allocated_tags": [{
                   "key": "team",
                   "value": "csm-agentless"
-                }
-              ],
+                }],
               "percentage": 0.66
-            }
-          ],
+            }],
           "method": "percent"
         },
         "type": "shared",
@@ -9466,35 +9381,27 @@ The definition of `ArbitraryRuleResponseArray` object.
     },
     {
       "attributes": {
-        "costs_to_allocate": [
-          {
+        "costs_to_allocate": [{
             "condition": "is",
             "tag": "env",
             "value": "staging",
             "values": null
-          }
-        ],
+          }],
         "created": "2025-05-27T18:48:05Z",
         "enabled": true,
         "last_modified_user_uuid": "user-example-uuid-2",
         "order_id": 2,
         "processing_status": "done",
-        "provider": [
-          "aws"
-        ],
+        "provider": ["aws"],
         "rule_name": "test-even-2",
         "strategy": {
-          "allocated_by_tag_keys": [
-            "team"
-          ],
-          "based_on_costs": [
-            {
+          "allocated_by_tag_keys": ["team"],
+          "based_on_costs": [{
               "condition": "is",
               "tag": "aws_product",
               "value": "s3",
               "values": null
-            }
-          ],
+            }],
           "granularity": "daily",
           "method": "even"
         },
@@ -9507,22 +9414,18 @@ The definition of `ArbitraryRuleResponseArray` object.
     },
     {
       "attributes": {
-        "costs_to_allocate": [
-          {
+        "costs_to_allocate": [{
             "condition": "is",
             "tag": "servicename",
             "value": "s3",
             "values": null
-          }
-        ],
+          }],
         "created": "2025-03-21T20:42:40Z",
         "enabled": false,
         "last_modified_user_uuid": "user-example-uuid-3",
         "order_id": 3,
         "processing_status": "done",
-        "provider": [
-          "aws"
-        ],
+        "provider": ["aws"],
         "rule_name": "test-s3-timeseries",
         "strategy": {
           "granularity": "daily",
@@ -9537,8 +9440,7 @@ The definition of `ArbitraryRuleResponseArray` object.
     },
     {
       "attributes": {
-        "costs_to_allocate": [
-          {
+        "costs_to_allocate": [{
             "condition": "=",
             "tag": "aws_product",
             "value": "msk",
@@ -9549,23 +9451,17 @@ The definition of `ArbitraryRuleResponseArray` object.
             "tag": "product",
             "value": "null",
             "values": null
-          }
-        ],
+          }],
         "created": "2025-08-27T14:39:31Z",
         "enabled": true,
         "last_modified_user_uuid": "user-example-uuid-4",
         "order_id": 4,
         "processing_status": "done",
-        "provider": [
-          "aws"
-        ],
+        "provider": ["aws"],
         "rule_name": "azure-unallocated-by-product-2",
         "strategy": {
-          "allocated_by_tag_keys": [
-            "aws_product"
-          ],
-          "based_on_costs": [
-            {
+          "allocated_by_tag_keys": ["aws_product"],
+          "based_on_costs": [{
               "condition": "=",
               "tag": "aws_product",
               "value": "msk",
@@ -9576,8 +9472,7 @@ The definition of `ArbitraryRuleResponseArray` object.
               "tag": "product",
               "value": "null",
               "values": null
-            }
-          ],
+            }],
           "granularity": "daily",
           "method": "proportional"
         },
@@ -9587,9 +9482,9 @@ The definition of `ArbitraryRuleResponseArray` object.
       },
       "id": "523",
       "type": "arbitrary_rule"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -9611,10 +9506,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9623,13 +9517,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9645,13 +9539,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_custom_allocation_rules()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List custom allocation rules returns "OK" response
@@ -9659,13 +9554,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_custom_allocation_rules()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List custom allocation rules returns "OK" response
@@ -9673,37 +9569,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListCustomAllocationRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListCustomAllocationRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCustomAllocationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCustomAllocationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCustomAllocationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCustomAllocationRules`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List custom allocation rules returns "OK" response
@@ -9730,13 +9627,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List custom allocation rules returns "OK" response
@@ -9754,13 +9652,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9780,6 +9679,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9804,8 +9704,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Create a new custom allocation rule with the specified filters and allocation strategy.
 
 **Strategy Methods:**
@@ -9824,13 +9722,9 @@ Create a new custom allocation rule with the specified filters and allocation st
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -9886,8 +9780,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789"
@@ -9896,26 +9789,18 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "enabled": true,
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "example-arbitrary-cost-rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api"
@@ -9924,12 +9809,9 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -9938,6 +9820,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "upsert_arbitrary_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10006,8 +9889,7 @@ The definition of `ArbitraryRuleResponse` object.
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789",
@@ -10017,28 +9899,20 @@ The definition of `ArbitraryRuleResponse` object.
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "created": "2023-01-01T12:00:00Z",
       "enabled": true,
       "last_modified_user_uuid": "user-123-uuid",
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "Example custom allocation rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api",
@@ -10048,12 +9922,9 @@ The definition of `ArbitraryRuleResponse` object.
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -10065,6 +9936,7 @@ The definition of `ArbitraryRuleResponse` object.
     "type": "arbitrary_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10086,10 +9958,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10098,7 +9969,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10108,8 +9979,7 @@ API error response.
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789"
@@ -10118,26 +9988,18 @@ API error response.
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "enabled": true,
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "example-arbitrary-cost-rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api"
@@ -10146,12 +10008,9 @@ API error response.
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -10161,8 +10020,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create custom allocation rule returns "OK" response
@@ -10170,92 +10029,93 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ArbitraryCostUpsertRequest{
-		Data: &datadogV2.ArbitraryCostUpsertRequestData{
-			Attributes: &datadogV2.ArbitraryCostUpsertRequestDataAttributes{
-				CostsToAllocate: []datadogV2.ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems{
-					{
-						Condition: "is",
-						Tag:       "account_id",
-						Value:     datadog.PtrString("123456789"),
-					},
-					{
-						Condition: "in",
-						Tag:       "environment",
-						Value:     datadog.PtrString(""),
-						Values: *datadog.NewNullableList(&[]string{
-							"production",
-							"staging",
-						}),
-					},
-				},
-				Enabled: datadog.PtrBool(true),
-				OrderId: datadog.PtrInt64(1),
-				Provider: []string{
-					"aws",
-					"gcp",
-				},
-				RuleName: "example-arbitrary-cost-rule",
-				Strategy: datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategy{
-					AllocatedByTagKeys: []string{
-						"team",
-						"environment",
-					},
-					BasedOnCosts: []datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems{
-						{
-							Condition: "is",
-							Tag:       "service",
-							Value:     datadog.PtrString("web-api"),
-						},
-						{
-							Condition: "not in",
-							Tag:       "team",
-							Value:     datadog.PtrString(""),
-							Values: *datadog.NewNullableList(&[]string{
-								"legacy",
-								"deprecated",
-							}),
-						},
-					},
-					Granularity: datadog.PtrString("daily"),
-					Method:      "proportional",
-				},
-				Type: "shared",
-			},
-			Type: datadogV2.ARBITRARYCOSTUPSERTREQUESTDATATYPE_UPSERT_ARBITRARY_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.CreateCustomAllocationRule(ctx, body)
+    body := datadogV2.ArbitraryCostUpsertRequest{
+        Data: &datadogV2.ArbitraryCostUpsertRequestData{
+            Attributes: &datadogV2.ArbitraryCostUpsertRequestDataAttributes{
+                CostsToAllocate: []datadogV2.ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems{
+                    {
+                        Condition: "is",
+                        Tag:       "account_id",
+                        Value:     datadog.PtrString("123456789"),
+                    },
+                    {
+                        Condition: "in",
+                        Tag:       "environment",
+                        Value:     datadog.PtrString(""),
+                        Values: *datadog.NewNullableList(&[]string{
+                            "production",
+                            "staging",
+                        }),
+                    },
+                },
+                Enabled: datadog.PtrBool(true),
+                OrderId: datadog.PtrInt64(1),
+                Provider: []string{
+                    "aws",
+                    "gcp",
+                },
+                RuleName: "example-arbitrary-cost-rule",
+                Strategy: datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategy{
+                    AllocatedByTagKeys: []string{
+                        "team",
+                        "environment",
+                    },
+                    BasedOnCosts: []datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems{
+                        {
+                            Condition: "is",
+                            Tag:       "service",
+                            Value:     datadog.PtrString("web-api"),
+                        },
+                        {
+                            Condition: "not in",
+                            Tag:       "team",
+                            Value:     datadog.PtrString(""),
+                            Values: *datadog.NewNullableList(&[]string{
+                                "legacy",
+                                "deprecated",
+                            }),
+                        },
+                    },
+                    Granularity: datadog.PtrString("daily"),
+                    Method:      "proportional",
+                },
+                Type: "shared",
+            },
+            Type: datadogV2.ARBITRARYCOSTUPSERTREQUESTDATATYPE_UPSERT_ARBITRARY_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.CreateCustomAllocationRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCustomAllocationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.CreateCustomAllocationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCustomAllocationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.CreateCustomAllocationRule`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create custom allocation rule returns "OK" response
@@ -10331,13 +10191,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10365,8 +10226,7 @@ from datadog_api_client.v2.model.arbitrary_cost_upsert_request_data_type import 
 body = ArbitraryCostUpsertRequest(
     data=ArbitraryCostUpsertRequestData(
         attributes=ArbitraryCostUpsertRequestDataAttributes(
-            costs_to_allocate=[
-                ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems(
+            costs_to_allocate=[ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems(
                     condition="is",
                     tag="account_id",
                     value="123456789",
@@ -10375,26 +10235,18 @@ body = ArbitraryCostUpsertRequest(
                     condition="in",
                     tag="environment",
                     value="",
-                    values=[
-                        "production",
-                        "staging",
-                    ],
-                ),
-            ],
+                    values=["production",
+                        "staging",],
+                ),],
             enabled=True,
             order_id=1,
-            provider=[
-                "aws",
-                "gcp",
-            ],
+            provider=["aws",
+                "gcp",],
             rule_name="example-arbitrary-cost-rule",
             strategy=ArbitraryCostUpsertRequestDataAttributesStrategy(
-                allocated_by_tag_keys=[
-                    "team",
-                    "environment",
-                ],
-                based_on_costs=[
-                    ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems(
+                allocated_by_tag_keys=["team",
+                    "environment",],
+                based_on_costs=[ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems(
                         condition="is",
                         tag="service",
                         value="web-api",
@@ -10403,12 +10255,9 @@ body = ArbitraryCostUpsertRequest(
                         condition="not in",
                         tag="team",
                         value="",
-                        values=[
-                            "legacy",
-                            "deprecated",
-                        ],
-                    ),
-                ],
+                        values=["legacy",
+                            "deprecated",],
+                    ),],
                 granularity="daily",
                 method="proportional",
             ),
@@ -10424,13 +10273,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_custom_allocation_rule(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create custom allocation rule returns "OK" response
@@ -10441,8 +10291,7 @@ api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
   data: DatadogAPIClient::V2::ArbitraryCostUpsertRequestData.new({
     attributes: DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributes.new({
-      costs_to_allocate: [
-        DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems.new({
+      costs_to_allocate: [DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems.new({
           condition: "is",
           tag: "account_id",
           value: "123456789",
@@ -10451,26 +10300,18 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
           condition: "in",
           tag: "environment",
           value: "",
-          values: [
-            "production",
-            "staging",
-          ],
-        }),
-      ],
+          values: ["production",
+            "staging",],
+        }),],
       enabled: true,
       order_id: 1,
-      provider: [
-        "aws",
-        "gcp",
-      ],
+      provider: ["aws",
+        "gcp",],
       rule_name: "example-arbitrary-cost-rule",
       strategy: DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategy.new({
-        allocated_by_tag_keys: [
-          "team",
-          "environment",
-        ],
-        based_on_costs: [
-          DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems.new({
+        allocated_by_tag_keys: ["team",
+          "environment",],
+        based_on_costs: [DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems.new({
             condition: "is",
             tag: "service",
             value: "web-api",
@@ -10479,12 +10320,9 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
             condition: "not in",
             tag: "team",
             value: "",
-            values: [
-              "legacy",
-              "deprecated",
-            ],
-          }),
-        ],
+            values: ["legacy",
+              "deprecated",],
+          }),],
         granularity: "daily",
         method: "proportional",
       }),
@@ -10494,13 +10332,14 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
   }),
 })
 p api_instance.create_custom_allocation_rule(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create custom allocation rule returns "OK" response
@@ -10522,8 +10361,7 @@ async fn main() {
         )
         .attributes(
             ArbitraryCostUpsertRequestDataAttributes::new(
-                vec![
-                    ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems::new(
+                vec![ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems::new(
                         "is".to_string(),
                         "account_id".to_string(),
                     )
@@ -10533,14 +10371,12 @@ async fn main() {
                         "environment".to_string(),
                     )
                     .value("".to_string())
-                    .values(Some(vec!["production".to_string(), "staging".to_string()])),
-                ],
+                    .values(Some(vec!["production".to_string(), "staging".to_string()])),],
                 vec!["aws".to_string(), "gcp".to_string()],
                 "example-arbitrary-cost-rule".to_string(),
                 ArbitraryCostUpsertRequestDataAttributesStrategy::new("proportional".to_string())
                     .allocated_by_tag_keys(vec!["team".to_string(), "environment".to_string()])
-                    .based_on_costs(vec![
-                        ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems::new(
+                    .based_on_costs(vec![ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems::new(
                             "is".to_string(),
                             "service".to_string(),
                         )
@@ -10550,8 +10386,7 @@ async fn main() {
                             "team".to_string(),
                         )
                         .value("".to_string())
-                        .values(Some(vec!["legacy".to_string(), "deprecated".to_string()])),
-                    ])
+                        .values(Some(vec!["legacy".to_string(), "deprecated".to_string()])),])
                     .granularity("daily".to_string()),
                 "shared".to_string(),
             )
@@ -10568,13 +10403,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10590,8 +10426,7 @@ const params: v2.CloudCostManagementApiCreateCustomAllocationRuleRequest = {
   body: {
     data: {
       attributes: {
-        costsToAllocate: [
-          {
+        costsToAllocate: [{
             condition: "is",
             tag: "account_id",
             value: "123456789",
@@ -10601,16 +10436,14 @@ const params: v2.CloudCostManagementApiCreateCustomAllocationRuleRequest = {
             tag: "environment",
             value: "",
             values: ["production", "staging"],
-          },
-        ],
+          },],
         enabled: true,
         orderId: 1,
         provider: ["aws", "gcp"],
         ruleName: "example-arbitrary-cost-rule",
         strategy: {
           allocatedByTagKeys: ["team", "environment"],
-          basedOnCosts: [
-            {
+          basedOnCosts: [{
               condition: "is",
               tag: "service",
               value: "web-api",
@@ -10620,8 +10453,7 @@ const params: v2.CloudCostManagementApiCreateCustomAllocationRuleRequest = {
               tag: "team",
               value: "",
               values: ["legacy", "deprecated"],
-            },
-          ],
+            },],
           granularity: "daily",
           method: "proportional",
         },
@@ -10640,6 +10472,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -10664,8 +10497,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Update an existing custom allocation rule with new filters and allocation strategy.
 
 **Strategy Methods:**
@@ -10685,8 +10516,6 @@ Update an existing custom allocation rule with new filters and allocation strate
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -10698,8 +10527,6 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -10755,8 +10582,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789",
@@ -10766,26 +10592,18 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "enabled": true,
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "example-arbitrary-cost-rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api",
@@ -10795,12 +10613,9 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -10809,6 +10624,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "type": "upsert_arbitrary_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10877,8 +10693,7 @@ The definition of `ArbitraryRuleResponse` object.
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789",
@@ -10888,28 +10703,20 @@ The definition of `ArbitraryRuleResponse` object.
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "created": "2023-01-01T12:00:00Z",
       "enabled": true,
       "last_modified_user_uuid": "user-123-uuid",
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "Example custom allocation rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api",
@@ -10919,12 +10726,9 @@ The definition of `ArbitraryRuleResponse` object.
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -10936,6 +10740,7 @@ The definition of `ArbitraryRuleResponse` object.
     "type": "arbitrary_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10957,10 +10762,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10969,7 +10773,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10979,8 +10783,7 @@ API error response.
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789",
@@ -10990,26 +10793,18 @@ API error response.
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "enabled": true,
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "example-arbitrary-cost-rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api",
@@ -11019,12 +10814,9 @@ API error response.
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -11034,8 +10826,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update custom allocation rule returns "OK" response
@@ -11043,94 +10835,95 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ArbitraryCostUpsertRequest{
-		Data: &datadogV2.ArbitraryCostUpsertRequestData{
-			Attributes: &datadogV2.ArbitraryCostUpsertRequestDataAttributes{
-				CostsToAllocate: []datadogV2.ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems{
-					{
-						Condition: "is",
-						Tag:       "account_id",
-						Value:     datadog.PtrString("123456789"),
-						Values:    *datadog.NewNullableList(&[]string{}),
-					},
-					{
-						Condition: "in",
-						Tag:       "environment",
-						Value:     datadog.PtrString(""),
-						Values: *datadog.NewNullableList(&[]string{
-							"production",
-							"staging",
-						}),
-					},
-				},
-				Enabled: datadog.PtrBool(true),
-				OrderId: datadog.PtrInt64(1),
-				Provider: []string{
-					"aws",
-					"gcp",
-				},
-				RuleName: "example-arbitrary-cost-rule",
-				Strategy: datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategy{
-					AllocatedByTagKeys: []string{
-						"team",
-						"environment",
-					},
-					BasedOnCosts: []datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems{
-						{
-							Condition: "is",
-							Tag:       "service",
-							Value:     datadog.PtrString("web-api"),
-							Values:    *datadog.NewNullableList(&[]string{}),
-						},
-						{
-							Condition: "not in",
-							Tag:       "team",
-							Value:     datadog.PtrString(""),
-							Values: *datadog.NewNullableList(&[]string{
-								"legacy",
-								"deprecated",
-							}),
-						},
-					},
-					Granularity: datadog.PtrString("daily"),
-					Method:      "proportional",
-				},
-				Type: "shared",
-			},
-			Type: datadogV2.ARBITRARYCOSTUPSERTREQUESTDATATYPE_UPSERT_ARBITRARY_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpdateCustomAllocationRule(ctx, 683, body)
+    body := datadogV2.ArbitraryCostUpsertRequest{
+        Data: &datadogV2.ArbitraryCostUpsertRequestData{
+            Attributes: &datadogV2.ArbitraryCostUpsertRequestDataAttributes{
+                CostsToAllocate: []datadogV2.ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems{
+                    {
+                        Condition: "is",
+                        Tag:       "account_id",
+                        Value:     datadog.PtrString("123456789"),
+                        Values:    *datadog.NewNullableList(&[]string{}),
+                    },
+                    {
+                        Condition: "in",
+                        Tag:       "environment",
+                        Value:     datadog.PtrString(""),
+                        Values: *datadog.NewNullableList(&[]string{
+                            "production",
+                            "staging",
+                        }),
+                    },
+                },
+                Enabled: datadog.PtrBool(true),
+                OrderId: datadog.PtrInt64(1),
+                Provider: []string{
+                    "aws",
+                    "gcp",
+                },
+                RuleName: "example-arbitrary-cost-rule",
+                Strategy: datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategy{
+                    AllocatedByTagKeys: []string{
+                        "team",
+                        "environment",
+                    },
+                    BasedOnCosts: []datadogV2.ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems{
+                        {
+                            Condition: "is",
+                            Tag:       "service",
+                            Value:     datadog.PtrString("web-api"),
+                            Values:    *datadog.NewNullableList(&[]string{}),
+                        },
+                        {
+                            Condition: "not in",
+                            Tag:       "team",
+                            Value:     datadog.PtrString(""),
+                            Values: *datadog.NewNullableList(&[]string{
+                                "legacy",
+                                "deprecated",
+                            }),
+                        },
+                    },
+                    Granularity: datadog.PtrString("daily"),
+                    Method:      "proportional",
+                },
+                Type: "shared",
+            },
+            Type: datadogV2.ARBITRARYCOSTUPSERTREQUESTDATATYPE_UPSERT_ARBITRARY_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpdateCustomAllocationRule(ctx, 683, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCustomAllocationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpdateCustomAllocationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCustomAllocationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpdateCustomAllocationRule`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update custom allocation rule returns "OK" response
@@ -11206,13 +10999,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11240,8 +11034,7 @@ from datadog_api_client.v2.model.arbitrary_cost_upsert_request_data_type import 
 body = ArbitraryCostUpsertRequest(
     data=ArbitraryCostUpsertRequestData(
         attributes=ArbitraryCostUpsertRequestDataAttributes(
-            costs_to_allocate=[
-                ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems(
+            costs_to_allocate=[ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems(
                     condition="is",
                     tag="account_id",
                     value="123456789",
@@ -11251,26 +11044,18 @@ body = ArbitraryCostUpsertRequest(
                     condition="in",
                     tag="environment",
                     value="",
-                    values=[
-                        "production",
-                        "staging",
-                    ],
-                ),
-            ],
+                    values=["production",
+                        "staging",],
+                ),],
             enabled=True,
             order_id=1,
-            provider=[
-                "aws",
-                "gcp",
-            ],
+            provider=["aws",
+                "gcp",],
             rule_name="example-arbitrary-cost-rule",
             strategy=ArbitraryCostUpsertRequestDataAttributesStrategy(
-                allocated_by_tag_keys=[
-                    "team",
-                    "environment",
-                ],
-                based_on_costs=[
-                    ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems(
+                allocated_by_tag_keys=["team",
+                    "environment",],
+                based_on_costs=[ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems(
                         condition="is",
                         tag="service",
                         value="web-api",
@@ -11280,12 +11065,9 @@ body = ArbitraryCostUpsertRequest(
                         condition="not in",
                         tag="team",
                         value="",
-                        values=[
-                            "legacy",
-                            "deprecated",
-                        ],
-                    ),
-                ],
+                        values=["legacy",
+                            "deprecated",],
+                    ),],
                 granularity="daily",
                 method="proportional",
             ),
@@ -11301,13 +11083,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_custom_allocation_rule(rule_id=683, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update custom allocation rule returns "OK" response
@@ -11318,8 +11101,7 @@ api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
   data: DatadogAPIClient::V2::ArbitraryCostUpsertRequestData.new({
     attributes: DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributes.new({
-      costs_to_allocate: [
-        DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems.new({
+      costs_to_allocate: [DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems.new({
           condition: "is",
           tag: "account_id",
           value: "123456789",
@@ -11329,26 +11111,18 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
           condition: "in",
           tag: "environment",
           value: "",
-          values: [
-            "production",
-            "staging",
-          ],
-        }),
-      ],
+          values: ["production",
+            "staging",],
+        }),],
       enabled: true,
       order_id: 1,
-      provider: [
-        "aws",
-        "gcp",
-      ],
+      provider: ["aws",
+        "gcp",],
       rule_name: "example-arbitrary-cost-rule",
       strategy: DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategy.new({
-        allocated_by_tag_keys: [
-          "team",
-          "environment",
-        ],
-        based_on_costs: [
-          DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems.new({
+        allocated_by_tag_keys: ["team",
+          "environment",],
+        based_on_costs: [DatadogAPIClient::V2::ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems.new({
             condition: "is",
             tag: "service",
             value: "web-api",
@@ -11358,12 +11132,9 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
             condition: "not in",
             tag: "team",
             value: "",
-            values: [
-              "legacy",
-              "deprecated",
-            ],
-          }),
-        ],
+            values: ["legacy",
+              "deprecated",],
+          }),],
         granularity: "daily",
         method: "proportional",
       }),
@@ -11373,13 +11144,14 @@ body = DatadogAPIClient::V2::ArbitraryCostUpsertRequest.new({
   }),
 })
 p api_instance.update_custom_allocation_rule(683, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update custom allocation rule returns "OK" response
@@ -11401,8 +11173,7 @@ async fn main() {
         )
         .attributes(
             ArbitraryCostUpsertRequestDataAttributes::new(
-                vec![
-                    ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems::new(
+                vec![ArbitraryCostUpsertRequestDataAttributesCostsToAllocateItems::new(
                         "is".to_string(),
                         "account_id".to_string(),
                     )
@@ -11413,14 +11184,12 @@ async fn main() {
                         "environment".to_string(),
                     )
                     .value("".to_string())
-                    .values(Some(vec!["production".to_string(), "staging".to_string()])),
-                ],
+                    .values(Some(vec!["production".to_string(), "staging".to_string()])),],
                 vec!["aws".to_string(), "gcp".to_string()],
                 "example-arbitrary-cost-rule".to_string(),
                 ArbitraryCostUpsertRequestDataAttributesStrategy::new("proportional".to_string())
                     .allocated_by_tag_keys(vec!["team".to_string(), "environment".to_string()])
-                    .based_on_costs(vec![
-                        ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems::new(
+                    .based_on_costs(vec![ArbitraryCostUpsertRequestDataAttributesStrategyBasedOnCostsItems::new(
                             "is".to_string(),
                             "service".to_string(),
                         )
@@ -11431,8 +11200,7 @@ async fn main() {
                             "team".to_string(),
                         )
                         .value("".to_string())
-                        .values(Some(vec!["legacy".to_string(), "deprecated".to_string()])),
-                    ])
+                        .values(Some(vec!["legacy".to_string(), "deprecated".to_string()])),])
                     .granularity("daily".to_string()),
                 "shared".to_string(),
             )
@@ -11449,13 +11217,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11471,8 +11240,7 @@ const params: v2.CloudCostManagementApiUpdateCustomAllocationRuleRequest = {
   body: {
     data: {
       attributes: {
-        costsToAllocate: [
-          {
+        costsToAllocate: [{
             condition: "is",
             tag: "account_id",
             value: "123456789",
@@ -11483,16 +11251,14 @@ const params: v2.CloudCostManagementApiUpdateCustomAllocationRuleRequest = {
             tag: "environment",
             value: "",
             values: ["production", "staging"],
-          },
-        ],
+          },],
         enabled: true,
         orderId: 1,
         provider: ["aws", "gcp"],
         ruleName: "example-arbitrary-cost-rule",
         strategy: {
           allocatedByTagKeys: ["team", "environment"],
-          basedOnCosts: [
-            {
+          basedOnCosts: [{
               condition: "is",
               tag: "service",
               value: "web-api",
@@ -11503,8 +11269,7 @@ const params: v2.CloudCostManagementApiUpdateCustomAllocationRuleRequest = {
               tag: "team",
               value: "",
               values: ["legacy", "deprecated"],
-            },
-          ],
+            },],
           granularity: "daily",
           method: "proportional",
         },
@@ -11524,6 +11289,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -11551,8 +11317,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a custom allocation rule - Delete an existing custom allocation rule by its ID
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11583,10 +11347,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11595,12 +11358,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11616,13 +11379,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_custom_allocation_rule(
         rule_id=683,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete custom allocation rule returns "No Content" response
@@ -11630,13 +11394,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_custom_allocation_rule(683)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete custom allocation rule returns "No Content" response
@@ -11644,33 +11409,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteCustomAllocationRule(ctx, 683)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteCustomAllocationRule(ctx, 683)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCustomAllocationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCustomAllocationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete custom allocation rule returns "No Content" response
@@ -11696,13 +11462,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete custom allocation rule returns "No Content" response
@@ -11720,13 +11487,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11750,6 +11518,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -11777,8 +11546,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific custom allocation rule - Retrieve a specific custom allocation rule by its ID
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11852,8 +11619,7 @@ The definition of `ArbitraryRuleResponse` object.
 {
   "data": {
     "attributes": {
-      "costs_to_allocate": [
-        {
+      "costs_to_allocate": [{
           "condition": "is",
           "tag": "account_id",
           "value": "123456789",
@@ -11863,28 +11629,20 @@ The definition of `ArbitraryRuleResponse` object.
           "condition": "in",
           "tag": "environment",
           "value": "",
-          "values": [
-            "production",
-            "staging"
-          ]
-        }
-      ],
+          "values": ["production",
+            "staging"]
+        }],
       "created": "2023-01-01T12:00:00Z",
       "enabled": true,
       "last_modified_user_uuid": "user-123-uuid",
       "order_id": 1,
-      "provider": [
-        "aws",
-        "gcp"
-      ],
+      "provider": ["aws",
+        "gcp"],
       "rule_name": "Example custom allocation rule",
       "strategy": {
-        "allocated_by_tag_keys": [
-          "team",
-          "environment"
-        ],
-        "based_on_costs": [
-          {
+        "allocated_by_tag_keys": ["team",
+          "environment"],
+        "based_on_costs": [{
             "condition": "is",
             "tag": "service",
             "value": "web-api",
@@ -11894,12 +11652,9 @@ The definition of `ArbitraryRuleResponse` object.
             "condition": "not in",
             "tag": "team",
             "value": "",
-            "values": [
-              "legacy",
-              "deprecated"
-            ]
-          }
-        ],
+            "values": ["legacy",
+              "deprecated"]
+          }],
         "granularity": "daily",
         "method": "proportional"
       },
@@ -11911,6 +11666,7 @@ The definition of `ArbitraryRuleResponse` object.
     "type": "arbitrary_rule"
   }
 }
+
 ```
 
 {% /tab %}
@@ -11932,10 +11688,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -11944,13 +11699,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11968,13 +11723,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get custom allocation rule returns "OK" response
@@ -11982,13 +11738,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_custom_allocation_rule(683)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get custom allocation rule returns "OK" response
@@ -11996,37 +11753,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetCustomAllocationRule(ctx, 683)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetCustomAllocationRule(ctx, 683)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCustomAllocationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCustomAllocationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCustomAllocationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCustomAllocationRule`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get custom allocation rule returns "OK" response
@@ -12053,13 +11811,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get custom allocation rule returns "OK" response
@@ -12077,13 +11836,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12107,6 +11867,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -12131,8 +11892,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Reorder custom allocation rules - Change the execution order of custom allocation rules.
 
 **Important**: You must provide the **complete list** of all rule IDs in the desired execution order. The API will reorder ALL rules according to the provided sequence.
@@ -12143,13 +11902,9 @@ Rules are executed in the order specified, with lower indices (earlier in the ar
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -12165,13 +11920,12 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "id": "string",
       "type": "arbitrary_rule"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -12197,10 +11951,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12209,22 +11962,20 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/arbitrary_rule/reorder" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-  "data": [
-    {
+  "data": [{
       "type": "arbitrary_rule"
-    }
-  ]
+    }]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12238,8 +11989,7 @@ from datadog_api_client.v2.model.reorder_rule_resource_data import ReorderRuleRe
 from datadog_api_client.v2.model.reorder_rule_resource_data_type import ReorderRuleResourceDataType
 
 body = ReorderRuleResourceArray(
-    data=[
-        ReorderRuleResourceData(
+    data=[ReorderRuleResourceData(
             id="456",
             type=ReorderRuleResourceDataType.ARBITRARY_RULE,
         ),
@@ -12250,21 +12000,21 @@ body = ReorderRuleResourceArray(
         ReorderRuleResourceData(
             id="789",
             type=ReorderRuleResourceDataType.ARBITRARY_RULE,
-        ),
-    ],
+        ),],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = CloudCostManagementApi(api_client)
     api_instance.reorder_custom_allocation_rules(body=body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Reorder custom allocation rules returns "Successfully reordered rules" response
@@ -12273,8 +12023,7 @@ require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 
 body = DatadogAPIClient::V2::ReorderRuleResourceArray.new({
-  data: [
-    DatadogAPIClient::V2::ReorderRuleResourceData.new({
+  data: [DatadogAPIClient::V2::ReorderRuleResourceData.new({
       id: "456",
       type: DatadogAPIClient::V2::ReorderRuleResourceDataType::ARBITRARY_RULE,
     }),
@@ -12285,17 +12034,17 @@ body = DatadogAPIClient::V2::ReorderRuleResourceArray.new({
     DatadogAPIClient::V2::ReorderRuleResourceData.new({
       id: "789",
       type: DatadogAPIClient::V2::ReorderRuleResourceDataType::ARBITRARY_RULE,
-    }),
-  ],
+    }),],
 })
 api_instance.reorder_custom_allocation_rules(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Reorder custom allocation rules returns "Successfully reordered rules" response
@@ -12303,49 +12052,50 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ReorderRuleResourceArray{
-		Data: []datadogV2.ReorderRuleResourceData{
-			{
-				Id:   datadog.PtrString("456"),
-				Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
-			},
-			{
-				Id:   datadog.PtrString("123"),
-				Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
-			},
-			{
-				Id:   datadog.PtrString("789"),
-				Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.ReorderCustomAllocationRules(ctx, body)
+    body := datadogV2.ReorderRuleResourceArray{
+        Data: []datadogV2.ReorderRuleResourceData{
+            {
+                Id:   datadog.PtrString("456"),
+                Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
+            },
+            {
+                Id:   datadog.PtrString("123"),
+                Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
+            },
+            {
+                Id:   datadog.PtrString("789"),
+                Type: datadogV2.REORDERRULERESOURCEDATATYPE_ARBITRARY_RULE,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.ReorderCustomAllocationRules(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ReorderCustomAllocationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ReorderCustomAllocationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Reorder custom allocation rules returns "Successfully reordered rules" response
@@ -12389,13 +12139,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Reorder custom allocation rules returns "Successfully reordered rules" response
@@ -12407,14 +12158,12 @@ use datadog_api_client::datadogV2::model::ReorderRuleResourceDataType;
 
 #[tokio::main]
 async fn main() {
-    let body = ReorderRuleResourceArray::new(vec![
-        ReorderRuleResourceData::new(ReorderRuleResourceDataType::ARBITRARY_RULE)
+    let body = ReorderRuleResourceArray::new(vec![ReorderRuleResourceData::new(ReorderRuleResourceDataType::ARBITRARY_RULE)
             .id("456".to_string()),
         ReorderRuleResourceData::new(ReorderRuleResourceDataType::ARBITRARY_RULE)
             .id("123".to_string()),
         ReorderRuleResourceData::new(ReorderRuleResourceDataType::ARBITRARY_RULE)
-            .id("789".to_string()),
-    ]);
+            .id("789".to_string()),]);
     let configuration = datadog::Configuration::new();
     let api = CloudCostManagementAPI::with_config(configuration);
     let resp = api.reorder_custom_allocation_rules(body).await;
@@ -12424,13 +12173,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12444,8 +12194,7 @@ const apiInstance = new v2.CloudCostManagementApi(configuration);
 
 const params: v2.CloudCostManagementApiReorderCustomAllocationRulesRequest = {
   body: {
-    data: [
-      {
+    data: [{
         id: "456",
         type: "arbitrary_rule",
       },
@@ -12456,8 +12205,7 @@ const params: v2.CloudCostManagementApiReorderCustomAllocationRulesRequest = {
       {
         id: "789",
         type: "arbitrary_rule",
-      },
-    ],
+      },],
   },
 };
 
@@ -12469,6 +12217,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -12496,8 +12245,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List the Custom Costs files. This endpoint requires the `cloud_cost_management_read` permission.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -12546,8 +12293,7 @@ Response for List Custom Costs files.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "billed_cost": 100.5,
         "billing_currency": "USD",
@@ -12556,9 +12302,7 @@ Response for List Custom Costs files.
           "start": 1704067200000
         },
         "name": "my_file.json",
-        "provider_names": [
-          "my_provider"
-        ],
+        "provider_names": ["my_provider"],
         "status": "active",
         "uploaded_at": 1704067200000,
         "uploaded_by": {
@@ -12569,13 +12313,13 @@ Response for List Custom Costs files.
       },
       "id": "string",
       "type": "string"
-    }
-  ],
+    }],
   "meta": {
     "total_filtered_count": "integer",
     "version": "string"
   }
 }
+
 ```
 
 {% /tab %}
@@ -12597,10 +12341,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12622,10 +12365,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12647,10 +12389,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12659,13 +12400,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/custom_costs" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12681,13 +12422,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_custom_costs_files()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Custom Costs files returns "OK" response
@@ -12695,13 +12437,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_custom_costs_files()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Custom Costs files returns "OK" response
@@ -12709,37 +12452,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListCustomCostsFiles(ctx, *datadogV2.NewListCustomCostsFilesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListCustomCostsFiles(ctx, *datadogV2.NewListCustomCostsFilesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCustomCostsFiles`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListCustomCostsFiles`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCustomCostsFiles`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListCustomCostsFiles`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Custom Costs files returns "OK" response
@@ -12766,13 +12510,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Custom Costs files returns "OK" response
@@ -12793,13 +12538,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12819,6 +12565,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -12847,13 +12594,9 @@ Upload a Custom Costs file. This endpoint requires the `cloud_cost_management_wr
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -12873,8 +12616,7 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
 {% tab title="Example" %}
 
 ```json
-[
-  {
+[{
     "ProviderName": "my_provider",
     "ChargePeriodStart": "2023-05-06",
     "ChargePeriodEnd": "2023-06-06",
@@ -12884,8 +12626,8 @@ OAuth apps require the `cloud_cost_management_write` authorization [scope](https
     "Tags": {
       "key": "value"
     }
-  }
-]
+  }]
+
 ```
 
 {% /tab %}
@@ -12934,9 +12676,7 @@ Response for Uploaded Custom Costs files.
         "start": 1704067200000
       },
       "name": "my_file.json",
-      "provider_names": [
-        "my_provider"
-      ],
+      "provider_names": ["my_provider"],
       "status": "active",
       "uploaded_at": 1704067200000,
       "uploaded_by": {
@@ -12952,6 +12692,7 @@ Response for Uploaded Custom Costs files.
     "version": "string"
   }
 }
+
 ```
 
 {% /tab %}
@@ -12973,10 +12714,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -12998,10 +12738,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13023,10 +12762,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13035,15 +12773,14 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/custom_costs" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
-[
-  {
+[{
     "ProviderName": "my_provider",
     "ChargePeriodStart": "2023-05-06",
     "ChargePeriodEnd": "2023-06-06",
@@ -13053,11 +12790,10 @@ API error response.
     "Tags": {
       "key": "value"
     }
-  }
-]
+  }]
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Upload Custom Costs File returns "Accepted" response
@@ -13065,50 +12801,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := []datadogV2.CustomCostsFileLineItem{
-		{
-			ProviderName:      datadog.PtrString("my_provider"),
-			ChargePeriodStart: datadog.PtrString("2023-05-06"),
-			ChargePeriodEnd:   datadog.PtrString("2023-06-06"),
-			ChargeDescription: datadog.PtrString("my_description"),
-			BilledCost:        datadog.PtrFloat64(250),
-			BillingCurrency:   datadog.PtrString("USD"),
-			Tags: map[string]string{
-				"key": "value",
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UploadCustomCostsFile(ctx, body)
+    body := []datadogV2.CustomCostsFileLineItem{
+        {
+            ProviderName:      datadog.PtrString("my_provider"),
+            ChargePeriodStart: datadog.PtrString("2023-05-06"),
+            ChargePeriodEnd:   datadog.PtrString("2023-06-06"),
+            ChargeDescription: datadog.PtrString("my_description"),
+            BilledCost:        datadog.PtrFloat64(250),
+            BillingCurrency:   datadog.PtrString("USD"),
+            Tags: map[string]string{
+                "key": "value",
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UploadCustomCostsFile(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UploadCustomCostsFile`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UploadCustomCostsFile`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UploadCustomCostsFile`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UploadCustomCostsFile`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Upload Custom Costs File returns "Accepted" response
@@ -13150,13 +12887,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -13167,8 +12905,7 @@ from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.cloud_cost_management_api import CloudCostManagementApi
 from datadog_api_client.v2.model.custom_costs_file_line_item import CustomCostsFileLineItem
 
-body = [
-    CustomCostsFileLineItem(
+body = [CustomCostsFileLineItem(
         provider_name="my_provider",
         charge_period_start="2023-05-06",
         charge_period_end="2023-06-06",
@@ -13178,8 +12915,7 @@ body = [
         tags=dict(
             key="value",
         ),
-    ),
-]
+    ),]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
@@ -13187,13 +12923,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.upload_custom_costs_file(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Upload Custom Costs File returns "Accepted" response
@@ -13201,8 +12938,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 
-body = [
-  DatadogAPIClient::V2::CustomCostsFileLineItem.new({
+body = [DatadogAPIClient::V2::CustomCostsFileLineItem.new({
     provider_name: "my_provider",
     charge_period_start: "2023-05-06",
     charge_period_end: "2023-06-06",
@@ -13212,16 +12948,16 @@ body = [
     tags: {
       key: "value",
     },
-  }),
-]
+  }),]
 p api_instance.upload_custom_costs_file(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Upload Custom Costs File returns "Accepted" response
@@ -13249,13 +12985,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13268,8 +13005,7 @@ const configuration = client.createConfiguration();
 const apiInstance = new v2.CloudCostManagementApi(configuration);
 
 const params: v2.CloudCostManagementApiUploadCustomCostsFileRequest = {
-  body: [
-    {
+  body: [{
       providerName: "my_provider",
       chargePeriodStart: "2023-05-06",
       chargePeriodEnd: "2023-06-06",
@@ -13279,8 +13015,7 @@ const params: v2.CloudCostManagementApiUploadCustomCostsFileRequest = {
       tags: {
         key: "value",
       },
-    },
-  ],
+    },],
 };
 
 apiInstance
@@ -13291,6 +13026,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -13318,8 +13054,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete the specified Custom Costs file.
 
 OAuth apps require the `cloud_cost_management_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13350,10 +13084,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13375,10 +13108,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13400,10 +13132,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13412,12 +13143,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport file_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/custom_costs/${file_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13433,13 +13164,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_custom_costs_file(
         file_id="file_id",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Custom Costs file returns "No Content" response
@@ -13447,13 +13179,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_custom_costs_file("file_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Custom Costs file returns "No Content" response
@@ -13461,33 +13194,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteCustomCostsFile(ctx, "file_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteCustomCostsFile(ctx, "file_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCustomCostsFile`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteCustomCostsFile`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Custom Costs file returns "No Content" response
@@ -13512,13 +13246,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Custom Costs file returns "No Content" response
@@ -13536,13 +13271,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13566,6 +13302,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -13593,8 +13330,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Fetch the specified Custom Costs file.
 
 OAuth apps require the `cloud_cost_management_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#cloud-cost-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13656,8 +13391,7 @@ Response for Get Custom Costs files.
         "end": 1706745600000,
         "start": 1704067200000
       },
-      "content": [
-        {
+      "content": [{
           "BilledCost": 100.5,
           "BillingCurrency": "USD",
           "ChargeDescription": "Monthly usage charge for my service",
@@ -13667,12 +13401,9 @@ Response for Get Custom Costs files.
           "Tags": {
             "<any-key>": "string"
           }
-        }
-      ],
+        }],
       "name": "my_file.json",
-      "provider_names": [
-        "my_provider"
-      ],
+      "provider_names": ["my_provider"],
       "status": "active",
       "uploaded_at": 1704067200000,
       "uploaded_by": {
@@ -13688,6 +13419,7 @@ Response for Get Custom Costs files.
     "version": "string"
   }
 }
+
 ```
 
 {% /tab %}
@@ -13709,10 +13441,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13734,10 +13465,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13759,10 +13489,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -13771,13 +13500,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport file_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/custom_costs/${file_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13795,13 +13524,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get Custom Costs file returns "OK" response
@@ -13809,13 +13539,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_custom_costs_file("file_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get Custom Costs file returns "OK" response
@@ -13823,37 +13554,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetCustomCostsFile(ctx, "file_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetCustomCostsFile(ctx, "file_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCustomCostsFile`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetCustomCostsFile`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCustomCostsFile`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetCustomCostsFile`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get Custom Costs file returns "OK" response
@@ -13880,13 +13612,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get Custom Costs file returns "OK" response
@@ -13904,13 +13637,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13934,6 +13668,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -13996,8 +13731,7 @@ An array of budgets.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "created_at": 1741011342772,
         "created_by": "user1",
@@ -14012,9 +13746,9 @@ An array of budgets.
       },
       "id": "00000000-0a0a-0a0a-aaa0-00000000000a",
       "type": "budget"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -14036,10 +13770,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14048,13 +13781,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budgets" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14070,13 +13803,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_budgets()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List budgets returns "OK" response
@@ -14084,13 +13818,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.list_budgets()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List budgets returns "OK" response
@@ -14098,37 +13833,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ListBudgets(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ListBudgets(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListBudgets`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ListBudgets`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListBudgets`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ListBudgets`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List budgets returns "OK" response
@@ -14155,13 +13891,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List budgets returns "OK" response
@@ -14179,13 +13916,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14205,6 +13943,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -14234,8 +13973,6 @@ Create a new budget or update an existing one.
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -14273,18 +14010,14 @@ Create a new budget or update an existing one.
       "created_at": 1738258683590,
       "created_by": "00000000-0a0a-0a0a-aaa0-00000000000a",
       "end_month": 202502,
-      "entries": [
-        {
+      "entries": [{
           "amount": "number",
           "month": "integer",
-          "tag_filters": [
-            {
+          "tag_filters": [{
               "tag_key": "string",
               "tag_value": "string"
-            }
-          ]
-        }
-      ],
+            }]
+        }],
       "metrics_query": "aws.cost.amortized{service:ec2} by {service}",
       "name": "my budget",
       "org_id": 123,
@@ -14297,6 +14030,7 @@ Create a new budget or update an existing one.
     "type": ""
   }
 }
+
 ```
 
 {% /tab %}
@@ -14342,18 +14076,14 @@ The definition of the `BudgetWithEntries` object.
       "created_at": 1738258683590,
       "created_by": "00000000-0a0a-0a0a-aaa0-00000000000a",
       "end_month": 202502,
-      "entries": [
-        {
+      "entries": [{
           "amount": "number",
           "month": "integer",
-          "tag_filters": [
-            {
+          "tag_filters": [{
               "tag_key": "string",
               "tag_value": "string"
-            }
-          ]
-        }
-      ],
+            }]
+        }],
       "metrics_query": "aws.cost.amortized{service:ec2} by {service}",
       "name": "my budget",
       "org_id": 123,
@@ -14366,6 +14096,7 @@ The definition of the `BudgetWithEntries` object.
     "type": ""
   }
 }
+
 ```
 
 {% /tab %}
@@ -14387,10 +14118,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14412,10 +14142,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14437,10 +14166,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14449,7 +14177,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14458,8 +14186,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14484,13 +14212,9 @@ body = BudgetWithEntries(
             created_at=1738258683590,
             created_by="00000000-0a0a-0a0a-aaa0-00000000000a",
             end_month=202502,
-            entries=[
-                BudgetWithEntriesDataAttributesEntriesItems(
-                    tag_filters=[
-                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(),
-                    ],
-                ),
-            ],
+            entries=[BudgetWithEntriesDataAttributesEntriesItems(
+                    tag_filters=[BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(),],
+                ),],
             metrics_query="aws.cost.amortized{service:ec2} by {service}",
             name="my budget",
             org_id=123,
@@ -14510,13 +14234,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.upsert_budget(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create or update a budget returns "OK" response
@@ -14530,13 +14255,9 @@ body = DatadogAPIClient::V2::BudgetWithEntries.new({
       created_at: 1738258683590,
       created_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
       end_month: 202502,
-      entries: [
-        DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
-          tag_filters: [
-            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({}),
-          ],
-        }),
-      ],
+      entries: [DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
+          tag_filters: [DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({}),],
+        }),],
       metrics_query: "aws.cost.amortized{service:ec2} by {service}",
       name: "my budget",
       org_id: 123,
@@ -14550,13 +14271,14 @@ body = DatadogAPIClient::V2::BudgetWithEntries.new({
   }),
 })
 p api_instance.upsert_budget(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create or update a budget returns "OK" response
@@ -14564,62 +14286,63 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BudgetWithEntries{
-		Data: &datadogV2.BudgetWithEntriesData{
-			Attributes: &datadogV2.BudgetAttributes{
-				CreatedAt: datadog.PtrInt64(1738258683590),
-				CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
-				EndMonth:  datadog.PtrInt64(202502),
-				Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
-					{
-						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
-							{},
-						},
-					},
-				},
-				MetricsQuery: datadog.PtrString("aws.cost.amortized{service:ec2} by {service}"),
-				Name:         datadog.PtrString("my budget"),
-				OrgId:        datadog.PtrInt64(123),
-				StartMonth:   datadog.PtrInt64(202501),
-				TotalAmount:  datadog.PtrFloat64(1000),
-				UpdatedAt:    datadog.PtrInt64(1738258683590),
-				UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
-			},
-			Id:   datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
-			Type: datadog.PtrString(""),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.UpsertBudget(ctx, body)
+    body := datadogV2.BudgetWithEntries{
+        Data: &datadogV2.BudgetWithEntriesData{
+            Attributes: &datadogV2.BudgetAttributes{
+                CreatedAt: datadog.PtrInt64(1738258683590),
+                CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+                EndMonth:  datadog.PtrInt64(202502),
+                Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
+                    {
+                        TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+                            {},
+                        },
+                    },
+                },
+                MetricsQuery: datadog.PtrString("aws.cost.amortized{service:ec2} by {service}"),
+                Name:         datadog.PtrString("my budget"),
+                OrgId:        datadog.PtrInt64(123),
+                StartMonth:   datadog.PtrInt64(202501),
+                TotalAmount:  datadog.PtrFloat64(1000),
+                UpdatedAt:    datadog.PtrInt64(1738258683590),
+                UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+            },
+            Id:   datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+            Type: datadog.PtrString(""),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.UpsertBudget(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpsertBudget`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.UpsertBudget`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpsertBudget`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.UpsertBudget`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create or update a budget returns "OK" response
@@ -14676,13 +14399,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create or update a budget returns "OK" response
@@ -14704,9 +14428,7 @@ async fn main() {
                     .created_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string())
                     .end_month(202502)
                     .entries(vec![BudgetWithEntriesDataAttributesEntriesItems::new()
-                        .tag_filters(vec![
-                            BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new(),
-                        ])])
+                        .tag_filters(vec![BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new(),])])
                     .metrics_query("aws.cost.amortized{service:ec2} by {service}".to_string())
                     .name("my budget".to_string())
                     .org_id(123)
@@ -14727,13 +14449,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14752,11 +14475,9 @@ const params: v2.CloudCostManagementApiUpsertBudgetRequest = {
         createdAt: 1738258683590,
         createdBy: "00000000-0a0a-0a0a-aaa0-00000000000a",
         endMonth: 202502,
-        entries: [
-          {
+        entries: [{
             tagFilters: [{}],
-          },
-        ],
+          },],
         metricsQuery: "aws.cost.amortized{service:ec2} by {service}",
         name: "my budget",
         orgId: 123,
@@ -14779,6 +14500,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -14808,8 +14530,6 @@ Validate a budget configuration without creating or modifying it
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -14847,18 +14567,14 @@ Validate a budget configuration without creating or modifying it
       "created_at": "integer",
       "created_by": "string",
       "end_month": "integer",
-      "entries": [
-        {
+      "entries": [{
           "amount": "number",
           "month": "integer",
-          "tag_filters": [
-            {
+          "tag_filters": [{
               "tag_key": "string",
               "tag_value": "string"
-            }
-          ]
-        }
-      ],
+            }]
+        }],
       "metrics_query": "string",
       "name": "string",
       "org_id": "integer",
@@ -14871,6 +14587,7 @@ Validate a budget configuration without creating or modifying it
     "type": "budget"
   }
 }
+
 ```
 
 {% /tab %}
@@ -14905,6 +14622,7 @@ OK
     "type": "budget_validation"
   }
 }
+
 ```
 
 {% /tab %}
@@ -14926,10 +14644,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -14938,7 +14655,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget/validate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14951,8 +14668,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14978,28 +14695,22 @@ body = BudgetValidationRequest(
             created_at=1738258683590,
             created_by="00000000-0a0a-0a0a-aaa0-00000000000a",
             end_month=202502,
-            entries=[
-                BudgetWithEntriesDataAttributesEntriesItems(
+            entries=[BudgetWithEntriesDataAttributesEntriesItems(
                     amount=500.0,
                     month=202501,
-                    tag_filters=[
-                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
+                    tag_filters=[BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
                             tag_key="service",
                             tag_value="ec2",
-                        ),
-                    ],
+                        ),],
                 ),
                 BudgetWithEntriesDataAttributesEntriesItems(
                     amount=500.0,
                     month=202502,
-                    tag_filters=[
-                        BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
+                    tag_filters=[BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems(
                             tag_key="service",
                             tag_value="ec2",
-                        ),
-                    ],
-                ),
-            ],
+                        ),],
+                ),],
             metrics_query="aws.cost.amortized{service:ec2} by {service}",
             name="my budget",
             org_id=123,
@@ -15019,13 +14730,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.validate_budget(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate budget returns "OK" response
@@ -15039,28 +14751,22 @@ body = DatadogAPIClient::V2::BudgetValidationRequest.new({
       created_at: 1738258683590,
       created_by: "00000000-0a0a-0a0a-aaa0-00000000000a",
       end_month: 202502,
-      entries: [
-        DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
+      entries: [DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
           amount: 500,
           month: 202501,
-          tag_filters: [
-            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
+          tag_filters: [DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
               tag_key: "service",
               tag_value: "ec2",
-            }),
-          ],
+            }),],
         }),
         DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItems.new({
           amount: 500,
           month: 202502,
-          tag_filters: [
-            DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
+          tag_filters: [DatadogAPIClient::V2::BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems.new({
               tag_key: "service",
               tag_value: "ec2",
-            }),
-          ],
-        }),
-      ],
+            }),],
+        }),],
       metrics_query: "aws.cost.amortized{service:ec2} by {service}",
       name: "my budget",
       org_id: 123,
@@ -15074,13 +14780,14 @@ body = DatadogAPIClient::V2::BudgetValidationRequest.new({
   }),
 })
 p api_instance.validate_budget(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Validate budget returns "OK" response
@@ -15088,77 +14795,78 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BudgetValidationRequest{
-		Data: &datadogV2.BudgetValidationRequestData{
-			Attributes: &datadogV2.BudgetWithEntriesDataAttributes{
-				CreatedAt: datadog.PtrInt64(1738258683590),
-				CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
-				EndMonth:  datadog.PtrInt64(202502),
-				Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
-					{
-						Amount: datadog.PtrFloat64(500),
-						Month:  datadog.PtrInt64(202501),
-						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
-							{
-								TagKey:   datadog.PtrString("service"),
-								TagValue: datadog.PtrString("ec2"),
-							},
-						},
-					},
-					{
-						Amount: datadog.PtrFloat64(500),
-						Month:  datadog.PtrInt64(202502),
-						TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
-							{
-								TagKey:   datadog.PtrString("service"),
-								TagValue: datadog.PtrString("ec2"),
-							},
-						},
-					},
-				},
-				MetricsQuery: datadog.PtrString("aws.cost.amortized{service:ec2} by {service}"),
-				Name:         datadog.PtrString("my budget"),
-				OrgId:        datadog.PtrInt64(123),
-				StartMonth:   datadog.PtrInt64(202501),
-				TotalAmount:  datadog.PtrFloat64(1000),
-				UpdatedAt:    datadog.PtrInt64(1738258683590),
-				UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
-			},
-			Id:   datadog.PtrString("1"),
-			Type: datadogV2.BUDGETWITHENTRIESDATATYPE_BUDGET,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ValidateBudget(ctx, body)
+    body := datadogV2.BudgetValidationRequest{
+        Data: &datadogV2.BudgetValidationRequestData{
+            Attributes: &datadogV2.BudgetWithEntriesDataAttributes{
+                CreatedAt: datadog.PtrInt64(1738258683590),
+                CreatedBy: datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+                EndMonth:  datadog.PtrInt64(202502),
+                Entries: []datadogV2.BudgetWithEntriesDataAttributesEntriesItems{
+                    {
+                        Amount: datadog.PtrFloat64(500),
+                        Month:  datadog.PtrInt64(202501),
+                        TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+                            {
+                                TagKey:   datadog.PtrString("service"),
+                                TagValue: datadog.PtrString("ec2"),
+                            },
+                        },
+                    },
+                    {
+                        Amount: datadog.PtrFloat64(500),
+                        Month:  datadog.PtrInt64(202502),
+                        TagFilters: []datadogV2.BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems{
+                            {
+                                TagKey:   datadog.PtrString("service"),
+                                TagValue: datadog.PtrString("ec2"),
+                            },
+                        },
+                    },
+                },
+                MetricsQuery: datadog.PtrString("aws.cost.amortized{service:ec2} by {service}"),
+                Name:         datadog.PtrString("my budget"),
+                OrgId:        datadog.PtrInt64(123),
+                StartMonth:   datadog.PtrInt64(202501),
+                TotalAmount:  datadog.PtrFloat64(1000),
+                UpdatedAt:    datadog.PtrInt64(1738258683590),
+                UpdatedBy:    datadog.PtrString("00000000-0a0a-0a0a-aaa0-00000000000a"),
+            },
+            Id:   datadog.PtrString("1"),
+            Type: datadogV2.BUDGETWITHENTRIESDATATYPE_BUDGET,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ValidateBudget(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateBudget`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateBudget`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateBudget`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateBudget`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate budget returns "OK" response
@@ -15230,13 +14938,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Validate budget returns "OK" response
@@ -15258,24 +14967,18 @@ async fn main() {
                     .created_at(1738258683590)
                     .created_by("00000000-0a0a-0a0a-aaa0-00000000000a".to_string())
                     .end_month(202502)
-                    .entries(vec![
-                        BudgetWithEntriesDataAttributesEntriesItems::new()
+                    .entries(vec![BudgetWithEntriesDataAttributesEntriesItems::new()
                             .amount(500.0 as f64)
                             .month(202501)
-                            .tag_filters(vec![
-                                BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
+                            .tag_filters(vec![BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
                                     .tag_key("service".to_string())
-                                    .tag_value("ec2".to_string()),
-                            ]),
+                                    .tag_value("ec2".to_string()),]),
                         BudgetWithEntriesDataAttributesEntriesItems::new()
                             .amount(500.0 as f64)
                             .month(202502)
-                            .tag_filters(vec![
-                                BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
+                            .tag_filters(vec![BudgetWithEntriesDataAttributesEntriesItemsTagFiltersItems::new()
                                     .tag_key("service".to_string())
-                                    .tag_value("ec2".to_string()),
-                            ]),
-                    ])
+                                    .tag_value("ec2".to_string()),]),])
                     .metrics_query("aws.cost.amortized{service:ec2} by {service}".to_string())
                     .name("my budget".to_string())
                     .org_id(123)
@@ -15295,13 +14998,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15320,28 +15024,22 @@ const params: v2.CloudCostManagementApiValidateBudgetRequest = {
         createdAt: 1738258683590,
         createdBy: "00000000-0a0a-0a0a-aaa0-00000000000a",
         endMonth: 202502,
-        entries: [
-          {
+        entries: [{
             amount: 500,
             month: 202501,
-            tagFilters: [
-              {
+            tagFilters: [{
                 tagKey: "service",
                 tagValue: "ec2",
-              },
-            ],
+              },],
           },
           {
             amount: 500,
             month: 202502,
-            tagFilters: [
-              {
+            tagFilters: [{
                 tagKey: "service",
                 tagValue: "ec2",
-              },
-            ],
-          },
-        ],
+              },],
+          },],
         metricsQuery: "aws.cost.amortized{service:ec2} by {service}",
         name: "my budget",
         orgId: 123,
@@ -15364,6 +15062,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -15388,8 +15087,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 ### Response
 
 {% tab title="200" %}
@@ -15412,17 +15109,16 @@ Response containing validation errors.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "meta": {
         "field": "region",
         "id": "datadog-agent-source",
         "message": "Field 'region' is required"
       },
       "title": "Field 'region' is required"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -15444,10 +15140,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -15456,11 +15151,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget/csv/validate" \
 -H "Accept: application/json"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15476,13 +15171,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.validate_csv_budget()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Validate CSV budget returns "OK" response
@@ -15490,13 +15186,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.validate_csv_budget()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" rb "example.rb"
-##### 
+#####
 
 ```go
 // Validate CSV budget returns "OK" response
@@ -15504,37 +15201,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.ValidateCsvBudget(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.ValidateCsvBudget(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateCsvBudget`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.ValidateCsvBudget`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateCsvBudget`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.ValidateCsvBudget`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" go run "main.go"
-##### 
+#####
 
 ```java
 // Validate CSV budget returns "OK" response
@@ -15561,13 +15259,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" java "Example.java"
-##### 
+#####
 
 ```rust
 // Validate CSV budget returns "OK" response
@@ -15585,13 +15284,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15611,6 +15311,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -15686,18 +15387,14 @@ The definition of the `BudgetWithEntries` object.
       "created_at": 1738258683590,
       "created_by": "00000000-0a0a-0a0a-aaa0-00000000000a",
       "end_month": 202502,
-      "entries": [
-        {
+      "entries": [{
           "amount": "number",
           "month": "integer",
-          "tag_filters": [
-            {
+          "tag_filters": [{
               "tag_key": "string",
               "tag_value": "string"
-            }
-          ]
-        }
-      ],
+            }]
+        }],
       "metrics_query": "aws.cost.amortized{service:ec2} by {service}",
       "name": "my budget",
       "org_id": 123,
@@ -15710,6 +15407,7 @@ The definition of the `BudgetWithEntries` object.
     "type": ""
   }
 }
+
 ```
 
 {% /tab %}
@@ -15731,10 +15429,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -15743,13 +15440,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport budget_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget/${budget_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15767,13 +15464,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get budget returns "OK" response
@@ -15781,13 +15479,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 p api_instance.get_budget("budget_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get budget returns "OK" response
@@ -15795,37 +15494,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	resp, r, err := api.GetBudget(ctx, "budget_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    resp, r, err := api.GetBudget(ctx, "budget_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetBudget`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.GetBudget`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetBudget`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CloudCostManagementApi.GetBudget`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get budget returns "OK" response
@@ -15852,13 +15552,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get budget returns "OK" response
@@ -15876,13 +15577,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15906,6 +15608,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -15961,10 +15664,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -15973,12 +15675,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport budget_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cost/budget/${budget_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15994,13 +15696,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_budget(
         budget_id="budget_id",
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete budget returns "No Content" response
@@ -16008,13 +15711,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::CloudCostManagementAPI.new
 api_instance.delete_budget("budget_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete budget returns "No Content" response
@@ -16022,33 +15726,34 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCloudCostManagementApi(apiClient)
-	r, err := api.DeleteBudget(ctx, "budget_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCloudCostManagementApi(apiClient)
+    r, err := api.DeleteBudget(ctx, "budget_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteBudget`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudCostManagementApi.DeleteBudget`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete budget returns "No Content" response
@@ -16073,13 +15778,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete budget returns "No Content" response
@@ -16097,13 +15803,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16127,6 +15834,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GKE nodes should use the metadata server
- 
+
 ## Description{% #description %}
 
 Pods should not have full access to a node's metadata. Using the GKE metadata server keeps sensitive metadata on a separate server for workloads instead of locally on a node. This prevents additional impact to your organization if the workload becomes compromised.

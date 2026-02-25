@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # System Audit Logs Must Have Mode 0750 or Less Permissive
- 
+
 ## Description{% #description %}
 
 If `log_group` in `/etc/audit/auditd.conf` is set to a group other than the `root` group account, change the mode of the audit log files with the following command:

@@ -228,8 +228,8 @@ In this example, no specific execution parameter is needed.
            "quantity": 1
          },
          "cart_id": "{{ CART_ID }}"
-       } 
-       
+       }
+
 ```
 
 1. Click **Test URL**. This adds the product you extracted in Step 2 to the cart you created in Step 1 and returns a checkout URL.

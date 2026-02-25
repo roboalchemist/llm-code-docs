@@ -68,7 +68,7 @@ import (
 
 func main() {
     strings.Replace("foobarbaz", "foo", "bar", -1)
-    
+
 }
 ```
 
@@ -87,6 +87,5 @@ func main() {
     strings.ReplaceAll("foobarbaz", "foo", "bar")
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

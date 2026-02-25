@@ -48,6 +48,5 @@ values = { 'foo' => 42, 'bar' => 99, 'baz' => 123 }
 ```ruby
 values = { foo: 42, bar: 99, baz: 123 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

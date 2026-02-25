@@ -54,7 +54,7 @@ Avoid the insecure configuration that enables direct internet access:
 resource "aws_sagemaker_notebook_instance" "bad_example" {
   name                   = "example-notebook"
   role_arn               = "arn:aws:iam::123456789012:role/SageMakerRole"
-  direct_internet_access = "Enabled" 
+  direct_internet_access = "Enabled"
   instance_type          = "ml.t2.medium"
 }
 ```

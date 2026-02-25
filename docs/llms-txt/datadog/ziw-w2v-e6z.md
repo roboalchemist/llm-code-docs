@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM password policy should require uppercase characters
- 
+
 ## Description{% #description %}
 
 Password policies are, in part, used to enforce password complexity requirements. Use IAM password policies to ensure passwords are comprised of different character sets. The password policy should require at least one uppercase letter.

@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Password Warning Age
 ---
 
 # Set Password Warning Age
- 
+
 ## Description{% #description %}
 
 To specify how many days prior to password expiration that a warning will be issued to users, edit the file `/etc/login.defs` and add or correct the following line:
 
 ```
 PASS_WARN_AGE 7
-         
+
 ```
 
 The DoD requirement is 7. The profile requirement is `7`.

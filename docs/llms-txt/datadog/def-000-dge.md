@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # KMS roles assigned to users should utilize 'Separation of Duties'
- 
+
 ## Description{% #description %}
 
 It is recommended that the principle of 'Separation of Duties' is enforced while assigning KMS related roles to users.

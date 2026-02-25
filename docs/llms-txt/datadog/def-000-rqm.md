@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable apache2 Service
 ---
 
 # Disable apache2 Service
- 
+
 ## Description{% #description %}
 
 The `apache2` service can be disabled with the following command:

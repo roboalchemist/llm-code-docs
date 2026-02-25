@@ -84,7 +84,7 @@ Log to send (JSON format).
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 [
@@ -95,7 +95,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -106,7 +106,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -132,7 +132,7 @@ Log to send (JSON format).
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 [
@@ -143,7 +143,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -154,7 +154,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -240,7 +240,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 See one of the other client libraries for an example of sending deflate-compressed data.\## Simple JSON Message
@@ -254,8 +254,8 @@ See one of the other client libraries for an example of sending deflate-compress
 See one of the other client libraries for an example of sending deflate-compressed data.\## Simple Raw Message
 # Submit log string. Log attributes can be passed as query parameters in the URL. This enables the addition of tags or the source by using the `ddtags` and `ddsource` parameters: `?host=my-hostname&service=my-service&ddsource=my-source&ddtags=env:prod,user:my-user`.
 See one of the other client libraries for an example of sending deflate-compressed data.
-                        
-##### 
+
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 \# Curl commandecho $(cat << EOF
@@ -347,8 +347,8 @@ EOF
 -H "Content-Encoding: gzip" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 --data-binary @-
-                        
-##### 
+
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 \# Curl commandcurl -X POST "https://http-intake.logs.ap1.datadoghq.com"https://http-intake.logs.ap2.datadoghq.com"https://http-intake.logs.datadoghq.eu"https://http-intake.logs.ddog-gov.com"https://http-intake.logs.datadoghq.com"https://http-intake.logs.us3.datadoghq.com"https://http-intake.logs.us5.datadoghq.com/v1/input" \
@@ -412,8 +412,8 @@ EOF\## Simple Raw Message
 -d @- << EOF
 hello world
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Send deflate logs returns "Response from server (always 200 empty JSON)." response
@@ -421,39 +421,39 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := []datadogV1.HTTPLogItem{
-		{
-			Message: "Example-Log",
-			Ddtags:  datadog.PtrString("host:ExampleLog"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV1.CONTENTENCODING_DEFLATE))
+    body := []datadogV1.HTTPLogItem{
+        {
+            Message: "Example-Log",
+            Ddtags:  datadog.PtrString("host:ExampleLog"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV1.CONTENTENCODING_DEFLATE))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send gzip logs returns "Response from server (always 200 empty JSON)." response
@@ -461,39 +461,39 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := []datadogV1.HTTPLogItem{
-		{
-			Message: "Example-Log",
-			Ddtags:  datadog.PtrString("host:ExampleLog"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV1.CONTENTENCODING_GZIP))
+    body := []datadogV1.HTTPLogItem{
+        {
+            Message: "Example-Log",
+            Ddtags:  datadog.PtrString("host:ExampleLog"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV1.CONTENTENCODING_GZIP))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send logs returns "Response from server (always 200 empty JSON)." response
@@ -501,35 +501,35 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := []datadogV1.HTTPLogItem{
-		{
-			Message: "Example-Log",
-			Ddtags:  datadog.PtrString("host:ExampleLog"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters())
+    body := []datadogV1.HTTPLogItem{
+        {
+            Message: "Example-Log",
+            Ddtags:  datadog.PtrString("host:ExampleLog"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV1.NewSubmitLogOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
@@ -537,7 +537,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send deflate logs returns "Response from server (always 200 empty JSON)." response
@@ -574,7 +574,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send gzip logs returns "Response from server (always 200 empty JSON)." response
@@ -611,7 +611,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send logs returns "Response from server (always 200 empty JSON)." response
@@ -649,7 +649,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -679,7 +679,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -709,7 +709,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -742,7 +742,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send deflate logs returns "Response from server (always 200 empty JSON)." response
@@ -762,7 +762,7 @@ opts = {
 p api_instance.submit_log(body, opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send gzip logs returns "Response from server (always 200 empty JSON)." response
@@ -782,7 +782,7 @@ opts = {
 p api_instance.submit_log(body, opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send logs returns "Response from server (always 200 empty JSON)." response
@@ -803,7 +803,7 @@ p api_instance.submit_log(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Send deflate logs returns "Response from server (always 200 empty JSON)."
@@ -836,7 +836,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send gzip logs returns "Response from server (always 200 empty JSON)." response
@@ -868,7 +868,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send logs returns "Response from server (always 200 empty JSON)." response
@@ -900,7 +900,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -932,7 +932,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -964,7 +964,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1077,7 +1077,7 @@ Log to send (JSON format).
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 [
@@ -1091,7 +1091,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -1105,7 +1105,7 @@ Log to send (JSON format).
 ]
 ```
 
-##### 
+#####
 
 ```json
 [
@@ -1401,7 +1401,7 @@ Invalid query performed.
 
 ### Code Example
 
-##### 
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 See one of the other client libraries for an example of sending deflate-compressed data.\## Simple JSON Message
@@ -1415,8 +1415,8 @@ See one of the other client libraries for an example of sending deflate-compress
 See one of the other client libraries for an example of sending deflate-compressed data.\## Simple Raw Message
 # Submit log string. Log attributes can be passed as query parameters in the URL. This enables the addition of tags or the source by using the `ddtags` and `ddsource` parameters: `?host=my-hostname&service=my-service&ddsource=my-source&ddtags=env:prod,user:my-user`.
 See one of the other client libraries for an example of sending deflate-compressed data.
-                        
-##### 
+
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 \# Curl commandecho $(cat << EOF
@@ -1526,8 +1526,8 @@ EOF
 -H "Content-Encoding: gzip" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 --data-binary @-
-                        
-##### 
+
+#####
                           \## Multi JSON Messages
 # Pass multiple log objects at once.
 \# Curl commandcurl -X POST "https://http-intake.logs.ap1.datadoghq.com"https://http-intake.logs.ap2.datadoghq.com"https://http-intake.logs.datadoghq.eu"https://http-intake.logs.ddog-gov.com"https://http-intake.logs.datadoghq.com"https://http-intake.logs.us3.datadoghq.com"https://http-intake.logs.us5.datadoghq.com/api/v2/logs" \
@@ -1600,8 +1600,8 @@ EOF\## Simple Raw Message
 -d @- << EOF
 2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Send deflate logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1609,42 +1609,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := []datadogV2.HTTPLogItem{
-		{
-			Ddsource: datadog.PtrString("nginx"),
-			Ddtags:   datadog.PtrString("env:staging,version:5.1"),
-			Hostname: datadog.PtrString("i-012345678"),
-			Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
-			Service:  datadog.PtrString("payment"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV2.CONTENTENCODING_DEFLATE))
+    body := []datadogV2.HTTPLogItem{
+        {
+            Ddsource: datadog.PtrString("nginx"),
+            Ddtags:   datadog.PtrString("env:staging,version:5.1"),
+            Hostname: datadog.PtrString("i-012345678"),
+            Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
+            Service:  datadog.PtrString("payment"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV2.CONTENTENCODING_DEFLATE))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send gzip logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1652,42 +1652,42 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := []datadogV2.HTTPLogItem{
-		{
-			Ddsource: datadog.PtrString("nginx"),
-			Ddtags:   datadog.PtrString("env:staging,version:5.1"),
-			Hostname: datadog.PtrString("i-012345678"),
-			Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
-			Service:  datadog.PtrString("payment"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV2.CONTENTENCODING_GZIP))
+    body := []datadogV2.HTTPLogItem{
+        {
+            Ddsource: datadog.PtrString("nginx"),
+            Ddtags:   datadog.PtrString("env:staging,version:5.1"),
+            Hostname: datadog.PtrString("i-012345678"),
+            Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
+            Service:  datadog.PtrString("payment"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters().WithContentEncoding(datadogV2.CONTENTENCODING_GZIP))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1695,41 +1695,41 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := []datadogV2.HTTPLogItem{
-		{
-			Ddsource: datadog.PtrString("nginx"),
-			Ddtags:   datadog.PtrString("env:staging,version:5.1"),
-			Hostname: datadog.PtrString("i-012345678"),
-			Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
-			Service:  datadog.PtrString("payment"),
-			AdditionalProperties: map[string]interface{}{
-				"status": "info",
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters())
+    body := []datadogV2.HTTPLogItem{
+        {
+            Ddsource: datadog.PtrString("nginx"),
+            Ddtags:   datadog.PtrString("env:staging,version:5.1"),
+            Hostname: datadog.PtrString("i-012345678"),
+            Message:  "2019-11-19T14:37:58,995 INFO [process.name][20081] Hello World",
+            Service:  datadog.PtrString("payment"),
+            AdditionalProperties: map[string]interface{}{
+                "status": "info",
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.SubmitLog(ctx, body, *datadogV2.NewSubmitLogOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.SubmitLog`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.SubmitLog`:\n%s\n", responseContent)
 }
 ```
 
@@ -1737,7 +1737,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send deflate logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1779,7 +1779,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send gzip logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1821,7 +1821,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1865,7 +1865,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1898,7 +1898,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1931,7 +1931,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1968,7 +1968,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send deflate logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -1991,7 +1991,7 @@ opts = {
 p api_instance.submit_log(body, opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send gzip logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -2014,7 +2014,7 @@ opts = {
 p api_instance.submit_log(body, opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send logs returns "Request accepted for processing (always 202 empty JSON)." response
@@ -2039,7 +2039,7 @@ p api_instance.submit_log(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Send deflate logs returns "Request accepted for processing (always 202 empty
@@ -2077,7 +2077,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send gzip logs returns "Request accepted for processing (always 202 empty
@@ -2115,7 +2115,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send logs returns "Request accepted for processing (always 202 empty JSON)."
@@ -2157,7 +2157,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2192,7 +2192,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2227,7 +2227,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2337,7 +2337,7 @@ The API endpoint to aggregate events into buckets and compute metrics and timese
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -2359,7 +2359,7 @@ The API endpoint to aggregate events into buckets and compute metrics and timese
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2393,7 +2393,7 @@ The API endpoint to aggregate events into buckets and compute metrics and timese
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2561,7 +2561,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2586,8 +2586,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2624,8 +2624,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2643,8 +2643,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Aggregate compute events returns "OK" response
@@ -2652,50 +2652,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.LogsAggregateRequest{
-		Compute: []datadogV2.LogsCompute{
-			{
-				Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_COUNT,
-				Interval:    datadog.PtrString("5m"),
-				Type:        datadogV2.LOGSCOMPUTETYPE_TIMESERIES.Ptr(),
-			},
-		},
-		Filter: &datadogV2.LogsQueryFilter{
-			From: datadog.PtrString("now-15m"),
-			Indexes: []string{
-				"main",
-			},
-			Query: datadog.PtrString("*"),
-			To:    datadog.PtrString("now"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.AggregateLogs(ctx, body)
+    body := datadogV2.LogsAggregateRequest{
+        Compute: []datadogV2.LogsCompute{
+            {
+                Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_COUNT,
+                Interval:    datadog.PtrString("5m"),
+                Type:        datadogV2.LOGSCOMPUTETYPE_TIMESERIES.Ptr(),
+            },
+        },
+        Filter: &datadogV2.LogsQueryFilter{
+            From: datadog.PtrString("now-15m"),
+            Indexes: []string{
+                "main",
+            },
+            Query: datadog.PtrString("*"),
+            To:    datadog.PtrString("now"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.AggregateLogs(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Aggregate compute events with group by returns "OK" response
@@ -2703,63 +2703,63 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.LogsAggregateRequest{
-		Compute: []datadogV2.LogsCompute{
-			{
-				Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_COUNT,
-				Interval:    datadog.PtrString("5m"),
-				Type:        datadogV2.LOGSCOMPUTETYPE_TIMESERIES.Ptr(),
-			},
-		},
-		Filter: &datadogV2.LogsQueryFilter{
-			From: datadog.PtrString("now-15m"),
-			Indexes: []string{
-				"main",
-			},
-			Query: datadog.PtrString("*"),
-			To:    datadog.PtrString("now"),
-		},
-		GroupBy: []datadogV2.LogsGroupBy{
-			{
-				Facet: "host",
-				Missing: &datadogV2.LogsGroupByMissing{
-					LogsGroupByMissingString: datadog.PtrString("miss")},
-				Sort: &datadogV2.LogsAggregateSort{
-					Type:        datadogV2.LOGSAGGREGATESORTTYPE_MEASURE.Ptr(),
-					Order:       datadogV2.LOGSSORTORDER_ASCENDING.Ptr(),
-					Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_PERCENTILE_90.Ptr(),
-					Metric:      datadog.PtrString("@duration"),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.AggregateLogs(ctx, body)
+    body := datadogV2.LogsAggregateRequest{
+        Compute: []datadogV2.LogsCompute{
+            {
+                Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_COUNT,
+                Interval:    datadog.PtrString("5m"),
+                Type:        datadogV2.LOGSCOMPUTETYPE_TIMESERIES.Ptr(),
+            },
+        },
+        Filter: &datadogV2.LogsQueryFilter{
+            From: datadog.PtrString("now-15m"),
+            Indexes: []string{
+                "main",
+            },
+            Query: datadog.PtrString("*"),
+            To:    datadog.PtrString("now"),
+        },
+        GroupBy: []datadogV2.LogsGroupBy{
+            {
+                Facet: "host",
+                Missing: &datadogV2.LogsGroupByMissing{
+                    LogsGroupByMissingString: datadog.PtrString("miss")},
+                Sort: &datadogV2.LogsAggregateSort{
+                    Type:        datadogV2.LOGSAGGREGATESORTTYPE_MEASURE.Ptr(),
+                    Order:       datadogV2.LOGSSORTORDER_ASCENDING.Ptr(),
+                    Aggregation: datadogV2.LOGSAGGREGATIONFUNCTION_PERCENTILE_90.Ptr(),
+                    Metric:      datadog.PtrString("@duration"),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.AggregateLogs(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Aggregate events returns "OK" response
@@ -2767,39 +2767,39 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.LogsAggregateRequest{
-		Filter: &datadogV2.LogsQueryFilter{
-			From: datadog.PtrString("now-15m"),
-			Indexes: []string{
-				"main",
-			},
-			Query: datadog.PtrString("*"),
-			To:    datadog.PtrString("now"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.AggregateLogs(ctx, body)
+    body := datadogV2.LogsAggregateRequest{
+        Filter: &datadogV2.LogsQueryFilter{
+            From: datadog.PtrString("now-15m"),
+            Indexes: []string{
+                "main",
+            },
+            Query: datadog.PtrString("*"),
+            To:    datadog.PtrString("now"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.AggregateLogs(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.AggregateLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.AggregateLogs`:\n%s\n", responseContent)
 }
 ```
 
@@ -2807,7 +2807,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Aggregate compute events returns "OK" response
@@ -2857,7 +2857,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Aggregate compute events with group by returns "OK" response
@@ -2923,7 +2923,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Aggregate events returns "OK" response
@@ -2968,7 +2968,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3009,7 +3009,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3066,7 +3066,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3101,7 +3101,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Aggregate compute events returns "OK" response
@@ -3129,7 +3129,7 @@ body = DatadogAPIClient::V2::LogsAggregateRequest.new({
 p api_instance.aggregate_logs(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Aggregate compute events with group by returns "OK" response
@@ -3169,7 +3169,7 @@ body = DatadogAPIClient::V2::LogsAggregateRequest.new({
 p api_instance.aggregate_logs(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Aggregate events returns "OK" response
@@ -3194,7 +3194,7 @@ p api_instance.aggregate_logs(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Aggregate compute events returns "OK" response
@@ -3230,7 +3230,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Aggregate compute events with group by returns "OK" response
@@ -3282,7 +3282,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Aggregate events returns "OK" response
@@ -3315,7 +3315,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3355,7 +3355,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3407,7 +3407,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3645,7 +3645,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs-queries/list" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3663,8 +3663,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search test logs returns "OK" response
@@ -3672,40 +3672,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.LogsListRequest{
-		Index: datadog.PtrString("main"),
-		Query: datadog.PtrString("host:Test*"),
-		Sort:  datadogV1.LOGSSORT_TIME_ASCENDING.Ptr(),
-		Time: datadogV1.LogsListRequestTime{
-			From:     time.Now().Add(time.Hour * -1),
-			Timezone: datadog.PtrString("Europe/Paris"),
-			To:       time.Now(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewLogsApi(apiClient)
-	resp, r, err := api.ListLogs(ctx, body)
+    body := datadogV1.LogsListRequest{
+        Index: datadog.PtrString("main"),
+        Query: datadog.PtrString("host:Test*"),
+        Sort:  datadogV1.LOGSSORT_TIME_ASCENDING.Ptr(),
+        Time: datadogV1.LogsListRequestTime{
+            From:     time.Now().Add(time.Hour * -1),
+            Timezone: datadog.PtrString("Europe/Paris"),
+            To:       time.Now(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewLogsApi(apiClient)
+    resp, r, err := api.ListLogs(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogs`:\n%s\n", responseContent)
 }
 ```
 
@@ -3713,7 +3713,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search test logs returns "OK" response
@@ -3760,7 +3760,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3798,7 +3798,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search test logs returns "OK" response
@@ -3823,7 +3823,7 @@ p api_instance.list_logs(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search test logs returns "OK" response
@@ -3865,7 +3865,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3934,7 +3934,7 @@ This endpoint requires the `logs_read_data` permission.
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -3959,7 +3959,7 @@ This endpoint requires the `logs_read_data` permission.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -3978,7 +3978,7 @@ This endpoint requires the `logs_read_data` permission.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -4162,7 +4162,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4184,8 +4184,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4209,8 +4209,8 @@ EOF
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search logs returns "OK" response
@@ -4218,47 +4218,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.LogsListRequest{
-		Filter: &datadogV2.LogsQueryFilter{
-			Query: datadog.PtrString("datadog-agent"),
-			Indexes: []string{
-				"main",
-			},
-			From: datadog.PtrString("2020-09-17T11:48:36+01:00"),
-			To:   datadog.PtrString("2020-09-17T12:48:36+01:00"),
-		},
-		Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
-		Page: &datadogV2.LogsListRequestPage{
-			Limit: datadog.PtrInt32(5),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.ListLogs(ctx, *datadogV2.NewListLogsOptionalParameters().WithBody(body))
+    body := datadogV2.LogsListRequest{
+        Filter: &datadogV2.LogsQueryFilter{
+            Query: datadog.PtrString("datadog-agent"),
+            Indexes: []string{
+                "main",
+            },
+            From: datadog.PtrString("2020-09-17T11:48:36+01:00"),
+            To:   datadog.PtrString("2020-09-17T12:48:36+01:00"),
+        },
+        Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
+        Page: &datadogV2.LogsListRequestPage{
+            Limit: datadog.PtrInt32(5),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.ListLogs(ctx, *datadogV2.NewListLogsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogs`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Search logs returns "OK" response with pagination
@@ -4266,45 +4266,45 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.LogsListRequest{
-		Filter: &datadogV2.LogsQueryFilter{
-			From: datadog.PtrString("now-15m"),
-			Indexes: []string{
-				"main",
-			},
-			To: datadog.PtrString("now"),
-		},
-		Options: &datadogV2.LogsQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.LogsListRequestPage{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, _ := api.ListLogsWithPagination(ctx, *datadogV2.NewListLogsOptionalParameters().WithBody(body))
+    body := datadogV2.LogsListRequest{
+        Filter: &datadogV2.LogsQueryFilter{
+            From: datadog.PtrString("now-15m"),
+            Indexes: []string{
+                "main",
+            },
+            To: datadog.PtrString("now"),
+        },
+        Options: &datadogV2.LogsQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.LogsListRequestPage{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, _ := api.ListLogsWithPagination(ctx, *datadogV2.NewListLogsOptionalParameters().WithBody(body))
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogs`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
 ```
 
@@ -4312,7 +4312,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search logs returns "OK" response
@@ -4358,7 +4358,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Search logs returns "OK" response with pagination
@@ -4411,7 +4411,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4448,7 +4448,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -4492,7 +4492,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search logs returns "OK" response
@@ -4520,7 +4520,7 @@ opts = {
 p api_instance.list_logs(opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Search logs returns "OK" response with pagination
@@ -4554,7 +4554,7 @@ api_instance.list_logs_with_pagination(opts) { |item| puts item }
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search logs returns "OK" response
@@ -4591,7 +4591,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Search logs returns "OK" response with pagination
@@ -4636,7 +4636,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4673,7 +4673,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4921,13 +4921,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4949,7 +4949,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search logs (GET) returns "OK" response
@@ -4963,7 +4963,7 @@ p api_instance.list_logs_get()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search logs (GET) returns "OK" response
@@ -4971,29 +4971,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsApi(apiClient)
-	resp, r, err := api.ListLogsGet(ctx, *datadogV2.NewListLogsGetOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsApi(apiClient)
+    resp, r, err := api.ListLogsGet(ctx, *datadogV2.NewListLogsGetOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogsGet`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsApi.ListLogsGet`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogsGet`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsApi.ListLogsGet`:\n%s\n", responseContent)
 }
 ```
 
@@ -5001,7 +5001,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search logs (GET) returns "OK" response
@@ -5034,7 +5034,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search logs (GET) returns "OK" response
@@ -5061,7 +5061,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

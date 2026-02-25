@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Service accounts on the controller manager should have a private key file set
-Classification:complianceFramework:cis-kubernetesControl:1.3.4 
+Classification:complianceFramework:cis-kubernetesControl:1.3.4
 ## Description{% #description %}
 
 Explicitly set a service account private key file for service accounts on the controller manager.

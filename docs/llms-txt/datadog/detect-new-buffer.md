@@ -48,6 +48,5 @@ var a = new Buffer(c)
 ```javascript
 var a = new Buffer('test')
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

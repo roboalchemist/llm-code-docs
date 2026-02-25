@@ -242,7 +242,7 @@ spec:
     [...]
   override:
     nodeAgent:
-      env: 
+      env:
         - name: DD_IGNORE_AUTOCONF
           value: redisdb
       extraConfd:

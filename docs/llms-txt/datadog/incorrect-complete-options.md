@@ -48,6 +48,5 @@ var tcs = new TaskCompletionSource<int>(TaskContinuationOptions.RunContinuations
 ```csharp
 var tcs = new TaskCompletionSource<int>(TaskCreationOptions.RunContinuationsAsynchronously);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

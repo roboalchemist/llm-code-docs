@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM roles should not have a trust policy that contains a wildcard principal
- 
+
 ## Description{% #description %}
 
 Each IAM role must have a [trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#term_trust-policy) which defines the principals who are trusted to assume that role. It is possible to specify a [wildcard principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-anonymous) which permits any principal, including those outside your organization, the ability to assume the role. It is strongly discouraged to use the wildcard principal in a trust policy unless there is a [`Condition` element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) to restrict access.

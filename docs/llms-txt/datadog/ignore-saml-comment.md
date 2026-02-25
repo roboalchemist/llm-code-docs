@@ -42,7 +42,7 @@ Ignoring comments in SAML may lead to vulnerabilities.
 
 ```java
 public class MyClass {
- 
+
     @Bean
     ParserPool myParserPool() {
         BasicParserPool pool = new BasicParserPool();
@@ -56,7 +56,7 @@ public class MyClass {
 
 ```java
 public class MyClass {
- 
+
     @Bean
     ParserPool myParserPool() {
         BasicParserPool pool = new BasicParserPool();
@@ -64,6 +64,5 @@ public class MyClass {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

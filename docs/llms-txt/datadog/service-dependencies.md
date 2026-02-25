@@ -160,12 +160,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport env="prod"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/service_dependencies?env=${env}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Get one APM service's dependencies{% #get-one-apm-services-dependencies %}
@@ -315,10 +315,10 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service="service-c"\# Required query argumentsexport env="prod"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/service_dependencies/${service}?env=${env}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}

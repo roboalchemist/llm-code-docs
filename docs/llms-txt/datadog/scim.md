@@ -138,7 +138,7 @@ List users response object.
   "startIndex": 1,
   "totalResults": 2
 }
-```
+```text
 
 {% /tab %}
 
@@ -163,7 +163,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -188,7 +188,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -196,11 +196,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users" \
 -H "Accept: application/json" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}
 
 ## Create user{% #create-user %}
@@ -280,7 +280,7 @@ Create a new user. This endpoint requires all of the following permissions:
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -340,7 +340,7 @@ Definition of a user.
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -365,7 +365,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -390,7 +390,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -398,9 +398,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -425,7 +425,7 @@ API error response.
   "userName": "john.doe@datadoghq.com"
 }
 EOF
-                
+
 {% /tab %}
 
 ## Get user{% #get-user %}
@@ -512,7 +512,7 @@ Definition of a user.
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -537,7 +537,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -562,7 +562,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -570,11 +570,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_uuid="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users/${user_uuid}" \
 -H "Accept: application/json" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}
 
 ## Update user{% #update-user %}
@@ -662,7 +662,7 @@ Update the user with the given `user_uuid`. This endpoint requires all of the fo
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -722,7 +722,7 @@ Definition of a user.
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -747,7 +747,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -772,7 +772,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -797,7 +797,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -805,9 +805,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Path parametersexport user_uuid="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users/${user_uuid}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -833,7 +833,7 @@ API error response.
   "userName": "john.doe@datadoghq.com"
 }
 EOF
-                
+
 {% /tab %}
 
 ## Patch user{% #patch-user %}
@@ -897,7 +897,7 @@ Patch the user with the given `user_uuid`. This endpoint requires all of the fol
     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -957,7 +957,7 @@ Definition of a user.
   "title": "string",
   "userName": "string"
 }
-```
+```text
 
 {% /tab %}
 
@@ -982,7 +982,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1007,7 +1007,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1032,7 +1032,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1057,7 +1057,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1065,9 +1065,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Path parametersexport user_uuid="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users/${user_uuid}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1094,7 +1094,7 @@ API error response.
   ]
 }
 EOF
-                
+
 {% /tab %}
 
 ## Delete user{% #delete-user %}
@@ -1150,7 +1150,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1175,7 +1175,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1200,7 +1200,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1208,10 +1208,10 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_uuid="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Users/${user_uuid}" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}
 
 ## List groups{% #list-groups %}
@@ -1344,7 +1344,7 @@ List groups response object.
   "startIndex": 1,
   "totalResults": 2
 }
-```
+```text
 
 {% /tab %}
 
@@ -1369,7 +1369,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1394,7 +1394,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1402,11 +1402,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups" \
 -H "Accept: application/json" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}
 
 ## Create group{% #create-group %}
@@ -1481,7 +1481,7 @@ Create a new group. The group may contain members. This endpoint requires all of
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1536,7 +1536,7 @@ Definition of a group.
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1561,7 +1561,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1586,7 +1586,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1594,9 +1594,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1624,7 +1624,7 @@ API error response.
   ]
 }
 EOF
-                
+
 {% /tab %}
 
 ## Get group{% #get-group %}
@@ -1706,7 +1706,7 @@ Definition of a group.
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1731,7 +1731,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1756,7 +1756,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1781,7 +1781,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1789,11 +1789,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups/${group_id}" \
 -H "Accept: application/json" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}
 
 ## Update group{% #update-group %}
@@ -1876,7 +1876,7 @@ Update the group with the given `group_id`. This endpoint requires all of the fo
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1931,7 +1931,7 @@ Definition of a group.
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1956,7 +1956,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1981,7 +1981,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2006,7 +2006,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2031,7 +2031,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2039,9 +2039,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups/${group_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2070,7 +2070,7 @@ API error response.
   ]
 }
 EOF
-                
+
 {% /tab %}
 
 ## Patch group{% #patch-group %}
@@ -2134,7 +2134,7 @@ Patch the group with the given `group_id`. This endpoint requires all of the fol
     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2189,7 +2189,7 @@ Definition of a group.
     "urn:ietf:params:scim:schemas:core:2.0:Group"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2214,7 +2214,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2239,7 +2239,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2264,7 +2264,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2272,9 +2272,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## json-request-body
-# 
+#
 \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups/${group_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2314,7 +2314,7 @@ API error response.
   ]
 }
 EOF
-                
+
 {% /tab %}
 
 ## Delete group{% #delete-group %}
@@ -2370,7 +2370,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2395,7 +2395,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2420,7 +2420,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2428,8 +2428,8 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport group_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scim/Groups/${group_id}" \
 -H "Authorization: Bearer ${DD_BEARER_TOKEN}"
-                
+
 {% /tab %}

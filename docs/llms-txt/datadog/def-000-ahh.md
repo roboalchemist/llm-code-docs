@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Additional AWS regions enabl
 ---
 
 # Additional AWS regions enabled
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1535-unused-or-unsupported-cloud-regions](https://attack.mitre.org/techniques/T1535) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1535-unused-or-unsupported-cloud-regions](https://attack.mitre.org/techniques/T1535)
 ## Goal{% #goal %}
 
 Detect when additional AWS regions have been enabled.

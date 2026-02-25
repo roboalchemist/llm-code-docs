@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta OPA server account password changed out of band
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detects when a server account password is altered by a method other than Okta Privileged Access (OPA) scheduled rotation.

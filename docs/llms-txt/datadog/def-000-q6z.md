@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECR private repositories should have tag immutability enabled
- 
+
 ## Description{% #description %}
 
 This control verifies whether tag immutability is enabled on a private ECR repository. It passes when tag immutability is enabled and set to `IMMUTABLE`.

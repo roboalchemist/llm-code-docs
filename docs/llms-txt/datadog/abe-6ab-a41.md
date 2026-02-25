@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distribution should have a security policy requiring a secure version of TLS
- 
+
 ## Description{% #description %}
 
 Ensure that AWS CloudFront distributions are configured with a security policy that mandates the use of TLS v1.2 or newer. Utilizing TLS v1.2 as the baseline protocol enhances security by providing robust encryption methods, thereby strengthening the protection of your application's data in transit.

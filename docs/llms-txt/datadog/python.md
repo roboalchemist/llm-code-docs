@@ -66,13 +66,13 @@ To begin tracing applications written in Python, install the Datadog Tracing lib
 
 ```python
 pip install ddtrace
-```
+```text
 
 **Note:** This command requires pip version `18.0.0` or greater. For Ubuntu, Debian, or another package manager, update your pip version with the following command:
 
 ```python
 pip install --upgrade pip
-```
+```text
 
 Then to instrument your Python application use the included `ddtrace-run` command. To use it, prefix your Python entry-point command with `ddtrace-run`.
 
@@ -80,7 +80,7 @@ For example, if your application is started with `python app.py` then:
 
 ```shell
 ddtrace-run python app.py
-```
+```text
 
 Once you've finished setup and are running the tracer with your application, you can run `ddtrace-run --info` to check that configurations are working as expected. Note that the output from this command does not reflect configuration changes made during runtime in code.
 

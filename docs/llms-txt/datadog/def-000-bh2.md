@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Missing X-Frame-Options HTTP
 ---
 
 # Missing X-Frame-Options HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint does not implement the X-Frame-Options header. This header allows to control whether a browser should be allowed to render the response in a frame, iframe, embed, or object. Without this header, the API response could be vulnerable to clickjacking attacks.

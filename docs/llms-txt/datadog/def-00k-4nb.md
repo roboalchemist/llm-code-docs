@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes admission controller 'NodeRestriction' should be enabled
- 
+
 ## Description{% #description %}
 
 The Node and Pod objects that a kubelet could modify should be limited. Using the [`NodeRestriction`](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction) admission controller plugin limits the Node and Pod objects that a kubelet can modify. When limited by this admission controller, kubelets are only allowed to modify their own Node API object, and only modify Pod API objects that are bound to their node.

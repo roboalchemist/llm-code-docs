@@ -100,7 +100,7 @@ Resources:
       CacheClusterEnabled: true
       EndpointConfiguration:
         Types:
-          - EDGE 
+          - EDGE
 ```
 
 ```yaml

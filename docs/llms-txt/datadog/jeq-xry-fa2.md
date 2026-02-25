@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet should be able to manage changes to iptables
-Classification:complianceFramework:cis-kubernetesControl:4.2.7 
+Classification:complianceFramework:cis-kubernetesControl:4.2.7
 ## Description{% #description %}
 
 Allow Kubelet to manage `iptables`.

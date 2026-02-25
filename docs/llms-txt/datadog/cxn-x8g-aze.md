@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /usr/sbin/runc executable should be audited, if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.12 
+Classification:complianceFramework:cis-dockerControl:1.2.12
 ## Description{% #description %}
 
 Audit `/usr/sbin/runc`, if applicable.

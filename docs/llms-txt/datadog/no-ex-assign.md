@@ -52,6 +52,5 @@ try { } catch (e) { three = 2 + 1; }
 try { } catch ({e}) { this.something = 2; }
 function foo() { try { } catch (e) { return false; } }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

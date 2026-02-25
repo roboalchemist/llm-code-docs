@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The `controller-manager.conf` file should be owned by root
- 
+
 ## Description{% #description %}
 
 The `controller-manager.conf` file ownership should be set to `root:root`. The `controller-manager.conf` file is the kubeconfig file for the Controller Manager. You should set its file ownership to maintain the integrity of the file.

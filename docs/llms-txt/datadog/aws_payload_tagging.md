@@ -29,19 +29,19 @@ AWS Payload Extraction extracts key-value pairs from hierarchical request and re
 Input JSON:
 
 ```json
-{  
-  "Message": {  
-    "foo.bar": "baz",  
-    "Arr": ["a", "b"]  
-  }  
+{
+  "Message": {
+    "foo.bar": "baz",
+    "Arr": ["a", "b"]
+  }
 }
 ```
 
 Generated tags:
 
 ```text
-aws.request.body.Message.foo\.bar: baz  
-aws.request.body.Message.Arr.0: a  
+aws.request.body.Message.foo\.bar: baz
+aws.request.body.Message.Arr.0: a
 aws.request.body.Message.Arr.1: b
 ```
 
@@ -57,7 +57,7 @@ To enable AWS Payload Extraction, set these environment variables:
 # Parse requests
 DD_TRACE_CLOUD_REQUEST_PAYLOAD_TAGGING=all
 
-# Parse responses  
+# Parse responses
 DD_TRACE_CLOUD_RESPONSE_PAYLOAD_TAGGING=all
 ```
 

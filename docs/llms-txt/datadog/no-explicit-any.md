@@ -187,6 +187,5 @@ type obj = { message: string & Array<Array<string>>; };
 // declare function waldo3(...args: Array<any>): void;
 // declare function waldo4(...args: ReadonlyArray<any>): void;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

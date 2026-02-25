@@ -41,7 +41,7 @@ Function names should be descriptive of the function behavior and functionalitie
 
 ```kotlin
 fun a() {
-    
+
 }
 ```
 
@@ -49,13 +49,12 @@ fun a() {
 
 ```kotlin
 fun valid() {
-    
+
 }
 
 infix fun to() {
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cisco Duo administrator locked out after too many failed login attempts
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110)
 ## Goal{% #goal %}
 
 Detect when a Duo administrator is locked out of their account due to failed login attempts.

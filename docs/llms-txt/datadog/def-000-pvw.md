@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/(b|w)tmp(.*|-*) File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/(b|w)tmp(.*|-*)`, run the command:
 
 ```gdscript3
-$ sudo chown root /var/log/(b|w)tmp(.*|-*) 
+$ sudo chown root /var/log/(b|w)tmp(.*|-*)
 ```
 
 ## Rationale{% #rationale %}

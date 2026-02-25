@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns /etc/a
 ---
 
 # Verify Group Who Owns /etc/at.deny file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.deny` exists, it must be group-owned by `root`. To properly set the group owner of `/etc/at.deny`, run the command:

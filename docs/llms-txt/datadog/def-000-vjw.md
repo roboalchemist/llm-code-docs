@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions of Files in /var/log/gdm
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/gdm/*`, run the command:

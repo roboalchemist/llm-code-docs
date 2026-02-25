@@ -106,13 +106,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport productKeys="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/products?productKeys=${productKeys}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -136,7 +136,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List tenancy products returns "OK" response
@@ -150,7 +150,7 @@ p api_instance.list_tenancy_products("productKeys")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List tenancy products returns "OK" response
@@ -158,29 +158,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	resp, r, err := api.ListTenancyProducts(ctx, "productKeys")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    resp, r, err := api.ListTenancyProducts(ctx, "productKeys")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.ListTenancyProducts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.ListTenancyProducts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.ListTenancyProducts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.ListTenancyProducts`:\n%s\n", responseContent)
 }
 ```
 
@@ -188,7 +188,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List tenancy products returns "OK" response
@@ -221,7 +221,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List tenancy products returns "OK" response
@@ -245,7 +245,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -415,13 +415,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/tenancies" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -444,7 +444,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get tenancy configs returns "OK" response
@@ -461,7 +461,7 @@ p api_instance.get_tenancy_configs()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get tenancy configs returns "OK" response
@@ -469,30 +469,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetTenancyConfigs", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	resp, r, err := api.GetTenancyConfigs(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetTenancyConfigs", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    resp, r, err := api.GetTenancyConfigs(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.GetTenancyConfigs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.GetTenancyConfigs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.GetTenancyConfigs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.GetTenancyConfigs`:\n%s\n", responseContent)
 }
 ```
 
@@ -500,7 +500,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get tenancy configs returns "OK" response
@@ -534,7 +534,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get tenancy configs returns "OK" response
@@ -559,7 +559,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -804,7 +804,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/tenancies" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -825,8 +825,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -919,7 +919,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create tenancy config returns "Created" response
@@ -990,7 +990,7 @@ p api_instance.create_tenancy_config(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create tenancy config returns "Created" response
@@ -998,22 +998,22 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateTenancyConfigRequest{
-		Data: datadogV2.CreateTenancyConfigData{
-			Attributes: &datadogV2.CreateTenancyConfigDataAttributes{
-				AuthCredentials: datadogV2.CreateTenancyConfigDataAttributesAuthCredentials{
-					Fingerprint: datadog.PtrString(""),
-					PrivateKey: `----BEGIN PRIVATE KEY-----
+    body := datadogV2.CreateTenancyConfigRequest{
+        Data: datadogV2.CreateTenancyConfigData{
+            Attributes: &datadogV2.CreateTenancyConfigDataAttributes{
+                AuthCredentials: datadogV2.CreateTenancyConfigDataAttributesAuthCredentials{
+                    Fingerprint: datadog.PtrString(""),
+                    PrivateKey: `----BEGIN PRIVATE KEY-----
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdvSMmlfLyeD4M
 QsA3WlrWBqKdWa5eVV3/uODyqT3wWMEMIJHcG3/quNs8nh9xrK1/JkQT2qoKEHqR
 C5k59jN6Vp8em8ARJthMgam9K37ELt+IQ/G8ySTSuqZG8T4cHp/cs3fAclNqttOl
@@ -1032,67 +1032,67 @@ XpY/iEZA2QKBgB1w8tynt4l/jKNaUEMOijt9ndALWATIiOy0XG9pxi9rgGCiwTOS
 DBCsOXoYHjv2eayGUijNaoOv6xzcoxfvQ1WySdNIxTRq1ru20kYwgHKqGgmO9hrM
 mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 -----END PRIVATE KEY-----`,
-				},
-				ConfigVersion:         *datadog.NewNullableInt64(nil),
-				CostCollectionEnabled: datadog.PtrBool(true),
-				DdCompartmentId:       datadog.PtrString("ocid.compartment.test"),
-				DdStackId:             datadog.PtrString("ocid.stack.test"),
-				HomeRegion:            "us-ashburn-1",
-				LogsConfig: &datadogV2.CreateTenancyConfigDataAttributesLogsConfig{
-					CompartmentTagFilters: []string{
-						"datadog:true",
-						"env:prod",
-					},
-					Enabled: datadog.PtrBool(true),
-					EnabledServices: []string{
-						"service_1",
-						"service_1",
-					},
-				},
-				MetricsConfig: &datadogV2.CreateTenancyConfigDataAttributesMetricsConfig{
-					CompartmentTagFilters: []string{
-						"datadog:true",
-						"env:prod",
-					},
-					Enabled: datadog.PtrBool(true),
-					ExcludedServices: []string{
-						"service_1",
-						"service_1",
-					},
-				},
-				RegionsConfig: &datadogV2.CreateTenancyConfigDataAttributesRegionsConfig{
-					Available: []string{
-						"us-ashburn-1",
-						"us-phoenix-1",
-					},
-					Disabled: []string{
-						"us-phoenix-1",
-					},
-					Enabled: []string{
-						"us-ashburn-1",
-					},
-				},
-				ResourceCollectionEnabled: datadog.PtrBool(true),
-				UserOcid:                  "ocid.user.test",
-			},
-			Id:   "ocid.tenancy.test",
-			Type: datadogV2.UPDATETENANCYCONFIGDATATYPE_OCI_TENANCY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateTenancyConfig", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	resp, r, err := api.CreateTenancyConfig(ctx, body)
+                },
+                ConfigVersion:         *datadog.NewNullableInt64(nil),
+                CostCollectionEnabled: datadog.PtrBool(true),
+                DdCompartmentId:       datadog.PtrString("ocid.compartment.test"),
+                DdStackId:             datadog.PtrString("ocid.stack.test"),
+                HomeRegion:            "us-ashburn-1",
+                LogsConfig: &datadogV2.CreateTenancyConfigDataAttributesLogsConfig{
+                    CompartmentTagFilters: []string{
+                        "datadog:true",
+                        "env:prod",
+                    },
+                    Enabled: datadog.PtrBool(true),
+                    EnabledServices: []string{
+                        "service_1",
+                        "service_1",
+                    },
+                },
+                MetricsConfig: &datadogV2.CreateTenancyConfigDataAttributesMetricsConfig{
+                    CompartmentTagFilters: []string{
+                        "datadog:true",
+                        "env:prod",
+                    },
+                    Enabled: datadog.PtrBool(true),
+                    ExcludedServices: []string{
+                        "service_1",
+                        "service_1",
+                    },
+                },
+                RegionsConfig: &datadogV2.CreateTenancyConfigDataAttributesRegionsConfig{
+                    Available: []string{
+                        "us-ashburn-1",
+                        "us-phoenix-1",
+                    },
+                    Disabled: []string{
+                        "us-phoenix-1",
+                    },
+                    Enabled: []string{
+                        "us-ashburn-1",
+                    },
+                },
+                ResourceCollectionEnabled: datadog.PtrBool(true),
+                UserOcid:                  "ocid.user.test",
+            },
+            Id:   "ocid.tenancy.test",
+            Type: datadogV2.UPDATETENANCYCONFIGDATATYPE_OCI_TENANCY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateTenancyConfig", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    resp, r, err := api.CreateTenancyConfig(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.CreateTenancyConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.CreateTenancyConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.CreateTenancyConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.CreateTenancyConfig`:\n%s\n", responseContent)
 }
 ```
 
@@ -1100,7 +1100,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create tenancy config returns "Created" response
@@ -1202,7 +1202,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create tenancy config returns "Created" response
@@ -1299,7 +1299,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1425,12 +1425,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport tenancy_ocid="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/tenancies/${tenancy_ocid}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1452,7 +1452,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete tenancy config returns "No Content" response
@@ -1466,7 +1466,7 @@ api_instance.delete_tenancy_config("tenancy_ocid")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete tenancy config returns "No Content" response
@@ -1474,25 +1474,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	r, err := api.DeleteTenancyConfig(ctx, "tenancy_ocid")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    r, err := api.DeleteTenancyConfig(ctx, "tenancy_ocid")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.DeleteTenancyConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.DeleteTenancyConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1500,7 +1500,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete tenancy config returns "No Content" response
@@ -1531,7 +1531,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete tenancy config returns "No Content" response
@@ -1555,7 +1555,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1731,13 +1731,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport tenancy_ocid="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/tenancies/${tenancy_ocid}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1761,7 +1761,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get tenancy config returns "OK" response
@@ -1775,7 +1775,7 @@ p api_instance.get_tenancy_config("tenancy_ocid")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get tenancy config returns "OK" response
@@ -1783,29 +1783,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	resp, r, err := api.GetTenancyConfig(ctx, "tenancy_ocid")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    resp, r, err := api.GetTenancyConfig(ctx, "tenancy_ocid")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.GetTenancyConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.GetTenancyConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.GetTenancyConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.GetTenancyConfig`:\n%s\n", responseContent)
 }
 ```
 
@@ -1813,7 +1813,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get tenancy config returns "OK" response
@@ -1846,7 +1846,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get tenancy config returns "OK" response
@@ -1870,7 +1870,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2120,7 +2120,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport tenancy_ocid="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/oci/tenancies/${tenancy_ocid}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2139,8 +2139,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2229,7 +2229,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update tenancy config returns "OK" response
@@ -2294,7 +2294,7 @@ p api_instance.update_tenancy_config("tenancy_ocid", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update tenancy config returns "OK" response
@@ -2302,22 +2302,22 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateTenancyConfigRequest{
-		Data: datadogV2.UpdateTenancyConfigData{
-			Attributes: &datadogV2.UpdateTenancyConfigDataAttributes{
-				AuthCredentials: &datadogV2.UpdateTenancyConfigDataAttributesAuthCredentials{
-					Fingerprint: datadog.PtrString(""),
-					PrivateKey: `----BEGIN PRIVATE KEY-----
+    body := datadogV2.UpdateTenancyConfigRequest{
+        Data: datadogV2.UpdateTenancyConfigData{
+            Attributes: &datadogV2.UpdateTenancyConfigDataAttributes{
+                AuthCredentials: &datadogV2.UpdateTenancyConfigDataAttributesAuthCredentials{
+                    Fingerprint: datadog.PtrString(""),
+                    PrivateKey: `----BEGIN PRIVATE KEY-----
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdvSMmlfLyeD4M
 QsA3WlrWBqKdWa5eVV3/uODyqT3wWMEMIJHcG3/quNs8nh9xrK1/JkQT2qoKEHqR
 C5k59jN6Vp8em8ARJthMgam9K37ELt+IQ/G8ySTSuqZG8T4cHp/cs3fAclNqttOl
@@ -2336,63 +2336,63 @@ XpY/iEZA2QKBgB1w8tynt4l/jKNaUEMOijt9ndALWATIiOy0XG9pxi9rgGCiwTOS
 DBCsOXoYHjv2eayGUijNaoOv6xzcoxfvQ1WySdNIxTRq1ru20kYwgHKqGgmO9hrM
 mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 -----END PRIVATE KEY-----`,
-				},
-				CostCollectionEnabled: datadog.PtrBool(true),
-				HomeRegion:            datadog.PtrString("us-ashburn-1"),
-				LogsConfig: &datadogV2.UpdateTenancyConfigDataAttributesLogsConfig{
-					CompartmentTagFilters: []string{
-						"datadog:true",
-						"env:prod",
-					},
-					Enabled: datadog.PtrBool(true),
-					EnabledServices: []string{
-						"service_1",
-						"service_1",
-					},
-				},
-				MetricsConfig: &datadogV2.UpdateTenancyConfigDataAttributesMetricsConfig{
-					CompartmentTagFilters: []string{
-						"datadog:true",
-						"env:prod",
-					},
-					Enabled: datadog.PtrBool(true),
-					ExcludedServices: []string{
-						"service_1",
-						"service_1",
-					},
-				},
-				RegionsConfig: &datadogV2.UpdateTenancyConfigDataAttributesRegionsConfig{
-					Available: []string{
-						"us-ashburn-1",
-						"us-phoenix-1",
-					},
-					Disabled: []string{
-						"us-phoenix-1",
-					},
-					Enabled: []string{
-						"us-ashburn-1",
-					},
-				},
-				ResourceCollectionEnabled: datadog.PtrBool(true),
-				UserOcid:                  datadog.PtrString("ocid.user.test"),
-			},
-			Id:   "ocid.tenancy.test",
-			Type: datadogV2.UPDATETENANCYCONFIGDATATYPE_OCI_TENANCY,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOCIIntegrationApi(apiClient)
-	resp, r, err := api.UpdateTenancyConfig(ctx, "tenancy_ocid", body)
+                },
+                CostCollectionEnabled: datadog.PtrBool(true),
+                HomeRegion:            datadog.PtrString("us-ashburn-1"),
+                LogsConfig: &datadogV2.UpdateTenancyConfigDataAttributesLogsConfig{
+                    CompartmentTagFilters: []string{
+                        "datadog:true",
+                        "env:prod",
+                    },
+                    Enabled: datadog.PtrBool(true),
+                    EnabledServices: []string{
+                        "service_1",
+                        "service_1",
+                    },
+                },
+                MetricsConfig: &datadogV2.UpdateTenancyConfigDataAttributesMetricsConfig{
+                    CompartmentTagFilters: []string{
+                        "datadog:true",
+                        "env:prod",
+                    },
+                    Enabled: datadog.PtrBool(true),
+                    ExcludedServices: []string{
+                        "service_1",
+                        "service_1",
+                    },
+                },
+                RegionsConfig: &datadogV2.UpdateTenancyConfigDataAttributesRegionsConfig{
+                    Available: []string{
+                        "us-ashburn-1",
+                        "us-phoenix-1",
+                    },
+                    Disabled: []string{
+                        "us-phoenix-1",
+                    },
+                    Enabled: []string{
+                        "us-ashburn-1",
+                    },
+                },
+                ResourceCollectionEnabled: datadog.PtrBool(true),
+                UserOcid:                  datadog.PtrString("ocid.user.test"),
+            },
+            Id:   "ocid.tenancy.test",
+            Type: datadogV2.UPDATETENANCYCONFIGDATATYPE_OCI_TENANCY,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOCIIntegrationApi(apiClient)
+    resp, r, err := api.UpdateTenancyConfig(ctx, "tenancy_ocid", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.UpdateTenancyConfig`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OCIIntegrationApi.UpdateTenancyConfig`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.UpdateTenancyConfig`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OCIIntegrationApi.UpdateTenancyConfig`:\n%s\n", responseContent)
 }
 ```
 
@@ -2400,7 +2400,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update tenancy config returns "OK" response
@@ -2498,7 +2498,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update tenancy config returns "OK" response
@@ -2594,7 +2594,7 @@ mcwMY5r/WZ2qjFlPjeAqbL62aPDLidGjoaVo2iIoBPK/gjxQ/5f0MS4N/YQ0zWoYBueSQ0DGs
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

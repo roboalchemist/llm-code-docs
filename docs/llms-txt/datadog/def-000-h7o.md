@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows device installation 
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1200-hardware-additions](https://attack.mitre.org/techniques/T1200) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1200-hardware-additions](https://attack.mitre.org/techniques/T1200)
 ## Goal{% #goal %}
 
 Detects when Windows blocks hardware device installations, potentially indicating unauthorized physical access attempts.

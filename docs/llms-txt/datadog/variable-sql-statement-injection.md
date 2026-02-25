@@ -50,6 +50,5 @@ let update = ' UPDATE ' +
              "SET column1 = value1, column2 = value2" +
              "WHERE condition;";
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -43,11 +43,11 @@ Here's an example illustrating the recommended order:
 ```go
 switch value {
 case 1:
-	// Handle case 1
+    // Handle case 1
 case 2:
-	// Handle case 2
+    // Handle case 2
 default:
-	// Handle default case
+    // Handle default case
 }
 ```
 
@@ -61,24 +61,24 @@ By following the convention of placing the default case last in a switch stateme
 package main
 
 import (
-	"fmt"
-	"runtime"
+    "fmt"
+    "runtime"
 )
 
 func main() {
-	fmt.Print("Go runs on ")
-	switch os := runtime.GOOS; os {
-		case "darwin":
-			fmt.Println("OS X.")
-		default:
-			// freebsd, openbsd,
-			// plan9 ...
-			fmt.Printf("%s.\n", os)
-		case "linux":
-			fmt.Println("Linux.")
-		case "windows":
-			fmt.Printf("Windows.")
-	}
+    fmt.Print("Go runs on ")
+    switch os := runtime.GOOS; os {
+        case "darwin":
+            fmt.Println("OS X.")
+        default:
+            // freebsd, openbsd,
+            // plan9 ...
+            fmt.Printf("%s.\n", os)
+        case "linux":
+            fmt.Println("Linux.")
+        case "windows":
+            fmt.Printf("Windows.")
+    }
 }
 ```
 
@@ -88,22 +88,22 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"runtime"
+    "fmt"
+    "runtime"
 )
 
 func main() {
-	fmt.Print("Go runs on ")
-	switch os := runtime.GOOS; os {
-		case "darwin":
-			fmt.Println("OS X.")
-		case "linux":
-			fmt.Println("Linux.")
-		default:
-			// freebsd, openbsd,
-			// plan9, windows...
-			fmt.Printf("%s.\n", os)
-	}
+    fmt.Print("Go runs on ")
+    switch os := runtime.GOOS; os {
+        case "darwin":
+            fmt.Println("OS X.")
+        case "linux":
+            fmt.Println("Linux.")
+        default:
+            // freebsd, openbsd,
+            // plan9, windows...
+            fmt.Printf("%s.\n", os)
+    }
 }
 ```
 
@@ -111,24 +111,23 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"runtime"
+    "fmt"
+    "runtime"
 )
 
 func main() {
-	fmt.Print("Go runs on ")
-	switch os := runtime.GOOS; os {
-		default:
-			// freebsd, openbsd,
-			// plan9, windows...
-			fmt.Printf("%s.\n", os)
-		case "darwin":
-			fmt.Println("OS X.")
-		case "linux":
-			fmt.Println("Linux.")
-	}
+    fmt.Print("Go runs on ")
+    switch os := runtime.GOOS; os {
+        default:
+            // freebsd, openbsd,
+            // plan9, windows...
+            fmt.Printf("%s.\n", os)
+        case "darwin":
+            fmt.Println("OS X.")
+        case "linux":
+            fmt.Println("Linux.")
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall nginx Package
 ---
 
 # Uninstall nginx Package
- 
+
 ## Description{% #description %}
 
 The `nginx` package can be removed with the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Users Cannot Change GNOME3 Screensaver Settings
- 
+
 ## Description{% #description %}
 
 If not already configured, ensure that users cannot change GNOME3 screensaver lock settings by adding `/org/gnome/desktop/screensaver/lock-delay` to `/etc/dconf/db/local.d/locks/00-security-settings-lock` to prevent user modification. For example:

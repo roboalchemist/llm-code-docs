@@ -57,6 +57,5 @@ RUN apt-get install -y gcc
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install git
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install git
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Security group changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. Security Groups are a stateful packet filter controlling ingress and egress traffic within a VPC. It is recommended to set up a metric filter and alarm for detecting changes to security groups to ensure resources and services are not unintentionally exposed.

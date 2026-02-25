@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS S3 Public Access Block r
 ---
 
 # AWS S3 Public Access Block removed
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:pciControl:7.2.1 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:pciControl:7.2.1
 ## Goal{% #goal %}
 
 Detect when the S3 Public Access Block configuration has been removed

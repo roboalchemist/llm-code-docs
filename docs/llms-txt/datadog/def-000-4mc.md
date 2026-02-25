@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Projects should have OS Login enabled for SSH authentication
- 
+
 ## Description{% #description %}
 
 Enabling OS Login binds SSH certificates to IAM users and facilitates effective SSH certificate management.

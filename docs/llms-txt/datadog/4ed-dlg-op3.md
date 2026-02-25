@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for deleting Network Security Group
- 
+
 ## Warning: This rule will be deprecated 18 December 2023 as part of the update to Azure CIS version 2.0.0{% #warning-this-rule-will-be-deprecated-18-december-2023-as-part-of-the-update-to-azure-cis-version-200 %}
 
 ## Description{% #description %}

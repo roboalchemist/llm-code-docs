@@ -54,6 +54,5 @@ const foo = new RegExp(/something/);
 const foo = new RegExp("weofiwje");
 const foo = new RegExp(TAG, 'g');
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

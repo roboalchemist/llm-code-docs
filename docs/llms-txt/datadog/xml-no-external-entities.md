@@ -58,6 +58,5 @@ var fs = require('fs');
 var xml = fs.readFileSync('file.xml', 'utf8');
 libxmljs.parseXmlString(xml);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

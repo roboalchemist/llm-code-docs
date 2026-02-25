@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Endpoint accepts JWTs withou
 ---
 
 # Endpoint accepts JWTs without expiry
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint accepts JWTs that do not include an expiration time (`exp`) claim. The expiration claim is a critical security control that limits the validity period of a JWT and helps mitigate the impact of token compromise.

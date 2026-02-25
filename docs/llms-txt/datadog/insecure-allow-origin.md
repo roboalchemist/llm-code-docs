@@ -66,6 +66,5 @@ app.get('/', function (req, res) {
     res.writeHead(200, { "foo": "bar", 'Access-Control-Allow-Origin': "foo_url" })
 });
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -83,9 +83,9 @@ An integration dashboard should adhere to the following visual style guidelines:
 
   ```
    <div class="shortcode-wrapper shortcode-img expand"><figure class="text-center"><a href="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-widths.d4bd57e9f3d40740ade725aeeb32216e.png?fit=max&amp;auto=format" class="pop" data-bs-toggle="modal" data-bs-target="#popupImageModal"><picture class=""  >
-           <img 
-               class="img-fluid" 
-               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-widths.d4bd57e9f3d40740ade725aeeb32216e.png?auto=format" 
+           <img
+               class="img-fluid"
+               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-widths.d4bd57e9f3d40740ade725aeeb32216e.png?auto=format"
                width="80%" alt="An example of a dashboard at 1280 pixels"  />
          </picture></a></figure>
    </div>
@@ -97,9 +97,9 @@ An integration dashboard should adhere to the following visual style guidelines:
 
   ```
    <div class="shortcode-wrapper shortcode-img expand"><figure class="text-center"><a href="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-large-widths.77b13793ac5b6450662d315abe9f1f73.png?fit=max&amp;auto=format" class="pop" data-bs-toggle="modal" data-bs-target="#popupImageModal"><picture class=""  >
-           <img 
-               class="img-fluid" 
-               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-large-widths.77b13793ac5b6450662d315abe9f1f73.png?auto=format" 
+           <img
+               class="img-fluid"
+               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/qa-large-widths.77b13793ac5b6450662d315abe9f1f73.png?auto=format"
                width="100%" alt="An example of a dashboard at 2560 pixels"  />
          </picture></a></figure>
    </div>
@@ -112,7 +112,7 @@ An integration dashboard should adhere to the following visual style guidelines:
 - Research the metrics supported by the integration and consider grouping them in relevant categories. Important metrics that are key to the performance and the overview of the integration should be at the top.
 
   {% dl %}
-  
+
   {% dt %}
 Go from macro to micro levels within the system
   {% /dt %}
@@ -161,9 +161,9 @@ You can group indexing metrics that reveal which indexes or shards should be opt
 
   ```
    <div class="shortcode-wrapper shortcode-img expand"><figure class="text-center"><a href="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical-dashboard.12e7c32b8053203812ae14e180ea0008.png?fit=max&amp;auto=format" class="pop" data-bs-toggle="modal" data-bs-target="#popupImageModal"><picture class=""  >
-           <img 
-               class="img-fluid" 
-               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical-dashboard.12e7c32b8053203812ae14e180ea0008.png?auto=format" 
+           <img
+               class="img-fluid"
+               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical-dashboard.12e7c32b8053203812ae14e180ea0008.png?auto=format"
                width="100%" alt="An example of a symmetrical dashboard"  />
          </picture></a></figure>
    </div>
@@ -175,9 +175,9 @@ You can group indexing metrics that reveal which indexes or shards should be opt
 
   ```
    <div class="shortcode-wrapper shortcode-img expand"><figure class="text-center"><a href="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical_example_2.bb591c892c8e61103192d124e0930db8.png?fit=max&amp;auto=format" class="pop" data-bs-toggle="modal" data-bs-target="#popupImageModal"><picture class=""  >
-           <img 
-               class="img-fluid" 
-               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical_example_2.bb591c892c8e61103192d124e0930db8.png?auto=format" 
+           <img
+               class="img-fluid"
+               srcset="https://datadog-docs.imgix.net/images/developers/create-an-integration-dashboard/symmetrical_example_2.bb591c892c8e61103192d124e0930db8.png?auto=format"
                width="100%" alt="An example of a symmetrical dashboard"  />
          </picture></a></figure>
    </div>

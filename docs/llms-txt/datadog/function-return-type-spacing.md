@@ -55,6 +55,5 @@ fun foo6() :String = "some-result"
 ```kotlin
 fun foo(): String = "some-result"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

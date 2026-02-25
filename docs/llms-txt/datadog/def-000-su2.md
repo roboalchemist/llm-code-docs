@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Amazon SES enumeration attempt by previously unseen user
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526)
 ## Goal{% #goal %}
 
 Detect when the Amazon Simple Email Service (SES) is enumerated by a previously unseen user.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Bedrock Agent Guardrails should have the Prompt Attack filter enabled and BLOCK prompt attacks at HIGH sensitivity
- 
+
 ## Description{% #description %}
 
 This control verifies that all Amazon Bedrock Agent aliases point to Agent versions with an Amazon Guardrail policy that has the Prompt Attack filter enabled and configured to **block** prompt attacks at **high** sensitivity, for both text and image.

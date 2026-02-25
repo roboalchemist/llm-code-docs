@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Streaming connections should have timeouts enabled and not be disabled
-Classification:complianceFramework:cis-kubernetesControl:4.2.5 
+Classification:complianceFramework:cis-kubernetesControl:4.2.5
 ## Description{% #description %}
 
 Do not disable timeouts on streaming connections.

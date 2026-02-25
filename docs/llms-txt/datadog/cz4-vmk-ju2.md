@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Systemd service modified
 ---
 
 # Systemd service modified
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569)
 ## What happened{% #what-happened %}
 
 The systemd file `{{ @file.path }}` was modified by `{{ @process.comm }}`, potentially to establish persistence.

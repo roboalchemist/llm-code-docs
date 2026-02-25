@@ -3023,9 +3023,9 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \## json-request-body
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/notebooks" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3084,8 +3084,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ````go
 // Create a notebook returns "OK" response
@@ -3093,90 +3093,90 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.NotebookCreateRequest{
-		Data: datadogV1.NotebookCreateData{
-			Attributes: datadogV1.NotebookCreateDataAttributes{
-				Cells: []datadogV1.NotebookCellCreateRequest{
-					{
-						Attributes: datadogV1.NotebookCellCreateRequestAttributes{
-							NotebookMarkdownCellAttributes: &datadogV1.NotebookMarkdownCellAttributes{
-								Definition: datadogV1.NotebookMarkdownCellDefinition{
-									Text: `## Some test markdown
+    body := datadogV1.NotebookCreateRequest{
+        Data: datadogV1.NotebookCreateData{
+            Attributes: datadogV1.NotebookCreateDataAttributes{
+                Cells: []datadogV1.NotebookCellCreateRequest{
+                    {
+                        Attributes: datadogV1.NotebookCellCreateRequestAttributes{
+                            NotebookMarkdownCellAttributes: &datadogV1.NotebookMarkdownCellAttributes{
+                                Definition: datadogV1.NotebookMarkdownCellDefinition{
+                                    Text: `## Some test markdown
 
 ` + "```" + `
 var x, y;
 x = 5;
 y = 6;
 ` + "```",
-									Type: datadogV1.NOTEBOOKMARKDOWNCELLDEFINITIONTYPE_MARKDOWN,
-								},
-							}},
-						Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
-					},
-					{
-						Attributes: datadogV1.NotebookCellCreateRequestAttributes{
-							NotebookTimeseriesCellAttributes: &datadogV1.NotebookTimeseriesCellAttributes{
-								Definition: datadogV1.TimeseriesWidgetDefinition{
-									Requests: []datadogV1.TimeseriesWidgetRequest{
-										{
-											DisplayType: datadogV1.WIDGETDISPLAYTYPE_LINE.Ptr(),
-											Q:           datadog.PtrString("avg:system.load.1{*}"),
-											Style: &datadogV1.WidgetRequestStyle{
-												LineType:  datadogV1.WIDGETLINETYPE_SOLID.Ptr(),
-												LineWidth: datadogV1.WIDGETLINEWIDTH_NORMAL.Ptr(),
-												Palette:   datadog.PtrString("dog_classic"),
-											},
-										},
-									},
-									ShowLegend: datadog.PtrBool(true),
-									Type:       datadogV1.TIMESERIESWIDGETDEFINITIONTYPE_TIMESERIES,
-									Yaxis: &datadogV1.WidgetAxis{
-										Scale: datadog.PtrString("linear"),
-									},
-								},
-								GraphSize: datadogV1.NOTEBOOKGRAPHSIZE_MEDIUM.Ptr(),
-								SplitBy: &datadogV1.NotebookSplitBy{
-									Keys: []string{},
-									Tags: []string{},
-								},
-								Time: *datadogV1.NewNullableNotebookCellTime(nil),
-							}},
-						Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
-					},
-				},
-				Name:   "Example-Notebook",
-				Status: datadogV1.NOTEBOOKSTATUS_PUBLISHED.Ptr(),
-				Time: datadogV1.NotebookGlobalTime{
-					NotebookRelativeTime: &datadogV1.NotebookRelativeTime{
-						LiveSpan: datadogV1.WIDGETLIVESPAN_PAST_ONE_HOUR,
-					}},
-			},
-			Type: datadogV1.NOTEBOOKRESOURCETYPE_NOTEBOOKS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewNotebooksApi(apiClient)
-	resp, r, err := api.CreateNotebook(ctx, body)
+                                    Type: datadogV1.NOTEBOOKMARKDOWNCELLDEFINITIONTYPE_MARKDOWN,
+                                },
+                            }},
+                        Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
+                    },
+                    {
+                        Attributes: datadogV1.NotebookCellCreateRequestAttributes{
+                            NotebookTimeseriesCellAttributes: &datadogV1.NotebookTimeseriesCellAttributes{
+                                Definition: datadogV1.TimeseriesWidgetDefinition{
+                                    Requests: []datadogV1.TimeseriesWidgetRequest{
+                                        {
+                                            DisplayType: datadogV1.WIDGETDISPLAYTYPE_LINE.Ptr(),
+                                            Q:           datadog.PtrString("avg:system.load.1{*}"),
+                                            Style: &datadogV1.WidgetRequestStyle{
+                                                LineType:  datadogV1.WIDGETLINETYPE_SOLID.Ptr(),
+                                                LineWidth: datadogV1.WIDGETLINEWIDTH_NORMAL.Ptr(),
+                                                Palette:   datadog.PtrString("dog_classic"),
+                                            },
+                                        },
+                                    },
+                                    ShowLegend: datadog.PtrBool(true),
+                                    Type:       datadogV1.TIMESERIESWIDGETDEFINITIONTYPE_TIMESERIES,
+                                    Yaxis: &datadogV1.WidgetAxis{
+                                        Scale: datadog.PtrString("linear"),
+                                    },
+                                },
+                                GraphSize: datadogV1.NOTEBOOKGRAPHSIZE_MEDIUM.Ptr(),
+                                SplitBy: &datadogV1.NotebookSplitBy{
+                                    Keys: []string{},
+                                    Tags: []string{},
+                                },
+                                Time: *datadogV1.NewNullableNotebookCellTime(nil),
+                            }},
+                        Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
+                    },
+                },
+                Name:   "Example-Notebook",
+                Status: datadogV1.NOTEBOOKSTATUS_PUBLISHED.Ptr(),
+                Time: datadogV1.NotebookGlobalTime{
+                    NotebookRelativeTime: &datadogV1.NotebookRelativeTime{
+                        LiveSpan: datadogV1.WIDGETLIVESPAN_PAST_ONE_HOUR,
+                    }},
+            },
+            Type: datadogV1.NOTEBOOKRESOURCETYPE_NOTEBOOKS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewNotebooksApi(apiClient)
+    resp, r, err := api.CreateNotebook(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.CreateNotebook`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.CreateNotebook`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.CreateNotebook`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.CreateNotebook`:\n%s\n", responseContent)
 }
 ````
 
@@ -3184,7 +3184,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ````java
 // Create a notebook returns "OK" response
@@ -3312,7 +3312,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ````python
 """
@@ -3410,7 +3410,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ````ruby
 # Create a notebook returns "OK" response
@@ -3477,7 +3477,7 @@ p api_instance.create_notebook(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ````rust
 // Create a notebook returns "OK" response
@@ -3580,7 +3580,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ````typescript
 /**
@@ -5249,13 +5249,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/notebooks" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5277,7 +5277,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all notebooks returns "OK" response
@@ -5291,7 +5291,7 @@ p api_instance.list_notebooks()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all notebooks returns "OK" response
@@ -5299,29 +5299,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewNotebooksApi(apiClient)
-	resp, r, err := api.ListNotebooks(ctx, *datadogV1.NewListNotebooksOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewNotebooksApi(apiClient)
+    resp, r, err := api.ListNotebooks(ctx, *datadogV1.NewListNotebooksOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.ListNotebooks`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.ListNotebooks`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.ListNotebooks`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.ListNotebooks`:\n%s\n", responseContent)
 }
 ```
 
@@ -5329,7 +5329,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all notebooks returns "OK" response
@@ -5362,7 +5362,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all notebooks returns "OK" response
@@ -5389,7 +5389,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5551,12 +5551,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport notebook_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/notebooks/${notebook_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5582,7 +5582,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a notebook returns "OK" response
@@ -5599,7 +5599,7 @@ api_instance.delete_notebook(NOTEBOOK_DATA_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a notebook returns "OK" response
@@ -5607,29 +5607,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "notebook" in the system
-	NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
+    // there is a valid "notebook" in the system
+    NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewNotebooksApi(apiClient)
-	r, err := api.DeleteNotebook(ctx, NotebookDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewNotebooksApi(apiClient)
+    r, err := api.DeleteNotebook(ctx, NotebookDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.DeleteNotebook`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.DeleteNotebook`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5637,7 +5637,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a notebook returns "OK" response
@@ -5671,7 +5671,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a notebook returns "OK" response
@@ -5697,7 +5697,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9875,9 +9875,9 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \## json-request-body
-# 
+#
 \# Path parametersexport notebook_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/notebooks/${notebook_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9937,8 +9937,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ````go
 // Update a notebook returns "OK" response
@@ -9946,96 +9946,96 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "notebook" in the system
-	NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
+    // there is a valid "notebook" in the system
+    NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
 
-	body := datadogV1.NotebookUpdateRequest{
-		Data: datadogV1.NotebookUpdateData{
-			Attributes: datadogV1.NotebookUpdateDataAttributes{
-				Cells: []datadogV1.NotebookUpdateCell{
-					datadogV1.NotebookUpdateCell{
-						NotebookCellCreateRequest: &datadogV1.NotebookCellCreateRequest{
-							Attributes: datadogV1.NotebookCellCreateRequestAttributes{
-								NotebookMarkdownCellAttributes: &datadogV1.NotebookMarkdownCellAttributes{
-									Definition: datadogV1.NotebookMarkdownCellDefinition{
-										Text: `## Some test markdown
+    body := datadogV1.NotebookUpdateRequest{
+        Data: datadogV1.NotebookUpdateData{
+            Attributes: datadogV1.NotebookUpdateDataAttributes{
+                Cells: []datadogV1.NotebookUpdateCell{
+                    datadogV1.NotebookUpdateCell{
+                        NotebookCellCreateRequest: &datadogV1.NotebookCellCreateRequest{
+                            Attributes: datadogV1.NotebookCellCreateRequestAttributes{
+                                NotebookMarkdownCellAttributes: &datadogV1.NotebookMarkdownCellAttributes{
+                                    Definition: datadogV1.NotebookMarkdownCellDefinition{
+                                        Text: `## Some test markdown
 
 ` + "```" + `
 var x, y;
 x = 5;
 y = 6;
 ` + "```",
-										Type: datadogV1.NOTEBOOKMARKDOWNCELLDEFINITIONTYPE_MARKDOWN,
-									},
-								}},
-							Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
-						}},
-					datadogV1.NotebookUpdateCell{
-						NotebookCellCreateRequest: &datadogV1.NotebookCellCreateRequest{
-							Attributes: datadogV1.NotebookCellCreateRequestAttributes{
-								NotebookTimeseriesCellAttributes: &datadogV1.NotebookTimeseriesCellAttributes{
-									Definition: datadogV1.TimeseriesWidgetDefinition{
-										Requests: []datadogV1.TimeseriesWidgetRequest{
-											{
-												DisplayType: datadogV1.WIDGETDISPLAYTYPE_LINE.Ptr(),
-												Q:           datadog.PtrString("avg:system.load.1{*}"),
-												Style: &datadogV1.WidgetRequestStyle{
-													LineType:  datadogV1.WIDGETLINETYPE_SOLID.Ptr(),
-													LineWidth: datadogV1.WIDGETLINEWIDTH_NORMAL.Ptr(),
-													Palette:   datadog.PtrString("dog_classic"),
-												},
-											},
-										},
-										ShowLegend: datadog.PtrBool(true),
-										Type:       datadogV1.TIMESERIESWIDGETDEFINITIONTYPE_TIMESERIES,
-										Yaxis: &datadogV1.WidgetAxis{
-											Scale: datadog.PtrString("linear"),
-										},
-									},
-									GraphSize: datadogV1.NOTEBOOKGRAPHSIZE_MEDIUM.Ptr(),
-									SplitBy: &datadogV1.NotebookSplitBy{
-										Keys: []string{},
-										Tags: []string{},
-									},
-									Time: *datadogV1.NewNullableNotebookCellTime(nil),
-								}},
-							Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
-						}},
-				},
-				Name:   "Example-Notebook-updated",
-				Status: datadogV1.NOTEBOOKSTATUS_PUBLISHED.Ptr(),
-				Time: datadogV1.NotebookGlobalTime{
-					NotebookRelativeTime: &datadogV1.NotebookRelativeTime{
-						LiveSpan: datadogV1.WIDGETLIVESPAN_PAST_ONE_HOUR,
-					}},
-			},
-			Type: datadogV1.NOTEBOOKRESOURCETYPE_NOTEBOOKS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewNotebooksApi(apiClient)
-	resp, r, err := api.UpdateNotebook(ctx, NotebookDataID, body)
+                                        Type: datadogV1.NOTEBOOKMARKDOWNCELLDEFINITIONTYPE_MARKDOWN,
+                                    },
+                                }},
+                            Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
+                        }},
+                    datadogV1.NotebookUpdateCell{
+                        NotebookCellCreateRequest: &datadogV1.NotebookCellCreateRequest{
+                            Attributes: datadogV1.NotebookCellCreateRequestAttributes{
+                                NotebookTimeseriesCellAttributes: &datadogV1.NotebookTimeseriesCellAttributes{
+                                    Definition: datadogV1.TimeseriesWidgetDefinition{
+                                        Requests: []datadogV1.TimeseriesWidgetRequest{
+                                            {
+                                                DisplayType: datadogV1.WIDGETDISPLAYTYPE_LINE.Ptr(),
+                                                Q:           datadog.PtrString("avg:system.load.1{*}"),
+                                                Style: &datadogV1.WidgetRequestStyle{
+                                                    LineType:  datadogV1.WIDGETLINETYPE_SOLID.Ptr(),
+                                                    LineWidth: datadogV1.WIDGETLINEWIDTH_NORMAL.Ptr(),
+                                                    Palette:   datadog.PtrString("dog_classic"),
+                                                },
+                                            },
+                                        },
+                                        ShowLegend: datadog.PtrBool(true),
+                                        Type:       datadogV1.TIMESERIESWIDGETDEFINITIONTYPE_TIMESERIES,
+                                        Yaxis: &datadogV1.WidgetAxis{
+                                            Scale: datadog.PtrString("linear"),
+                                        },
+                                    },
+                                    GraphSize: datadogV1.NOTEBOOKGRAPHSIZE_MEDIUM.Ptr(),
+                                    SplitBy: &datadogV1.NotebookSplitBy{
+                                        Keys: []string{},
+                                        Tags: []string{},
+                                    },
+                                    Time: *datadogV1.NewNullableNotebookCellTime(nil),
+                                }},
+                            Type: datadogV1.NOTEBOOKCELLRESOURCETYPE_NOTEBOOK_CELLS,
+                        }},
+                },
+                Name:   "Example-Notebook-updated",
+                Status: datadogV1.NOTEBOOKSTATUS_PUBLISHED.Ptr(),
+                Time: datadogV1.NotebookGlobalTime{
+                    NotebookRelativeTime: &datadogV1.NotebookRelativeTime{
+                        LiveSpan: datadogV1.WIDGETLIVESPAN_PAST_ONE_HOUR,
+                    }},
+            },
+            Type: datadogV1.NOTEBOOKRESOURCETYPE_NOTEBOOKS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewNotebooksApi(apiClient)
+    resp, r, err := api.UpdateNotebook(ctx, NotebookDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.UpdateNotebook`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.UpdateNotebook`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.UpdateNotebook`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.UpdateNotebook`:\n%s\n", responseContent)
 }
 ````
 
@@ -10043,7 +10043,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ````java
 // Update a notebook returns "OK" response
@@ -10180,7 +10180,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ````python
 """
@@ -10282,7 +10282,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ````ruby
 # Update a notebook returns "OK" response
@@ -10352,7 +10352,7 @@ p api_instance.update_notebook(NOTEBOOK_DATA_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ````rust
 // Update a notebook returns "OK" response
@@ -10464,7 +10464,7 @@ y = 6;
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ````typescript
 /**
@@ -12161,13 +12161,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport notebook_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/notebooks/${notebook_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12195,7 +12195,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a notebook returns "OK" response
@@ -12212,7 +12212,7 @@ p api_instance.get_notebook(NOTEBOOK_DATA_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a notebook returns "OK" response
@@ -12220,33 +12220,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "notebook" in the system
-	NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
+    // there is a valid "notebook" in the system
+    NotebookDataID, _ := strconv.ParseInt(os.Getenv("NOTEBOOK_DATA_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewNotebooksApi(apiClient)
-	resp, r, err := api.GetNotebook(ctx, NotebookDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewNotebooksApi(apiClient)
+    resp, r, err := api.GetNotebook(ctx, NotebookDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.GetNotebook`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotebooksApi.GetNotebook`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.GetNotebook`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `NotebooksApi.GetNotebook`:\n%s\n", responseContent)
 }
 ```
 
@@ -12254,7 +12254,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a notebook returns "OK" response
@@ -12290,7 +12290,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a notebook returns "OK" response
@@ -12316,7 +12316,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

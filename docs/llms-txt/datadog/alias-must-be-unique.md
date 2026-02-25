@@ -52,6 +52,5 @@ RUN stuff
 FROM otherawesomeimage:version as another-alias
 RUN more_stuff
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

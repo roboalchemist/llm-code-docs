@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Deactivate Wireless Network 
 ---
 
 # Deactivate Wireless Network Interfaces
- 
+
 ## Description{% #description %}
 
 Deactivating wireless network interfaces should prevent normal usage of the wireless capability.

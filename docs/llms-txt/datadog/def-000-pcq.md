@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Offensive Kubernetes tool ex
 ---
 
 # Offensive Kubernetes tool executed
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was executed with the intent of Kubernetes enumeration or privilege escalation.

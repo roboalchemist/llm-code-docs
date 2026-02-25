@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify permissions on Message of the Day Banner
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/motd`, run the command:

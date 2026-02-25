@@ -39,15 +39,14 @@ Do not use SSLv3 as it is now broken. See [this issue](https://golang.org/issue/
 
 ```go
 func test() {
-    	client := &http.Client{
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				MinVersion:         tls.VersionSSL30,
-			},
-		},
-	}
+        client := &http.Client{
+        Transport: &http.Transport{
+            TLSClientConfig: &tls.Config{
+                MinVersion:         tls.VersionSSL30,
+            },
+        },
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPCs should have an interface VPC endpoint configured for SSM Incident Manager
- 
+
 ## Description{% #description %}
 
 Virtual private clouds (VPCs) should have interface VPC endpoints configured for SSM Incident Manager to enable private access to AWS Systems Manager Incident Manager services. AWS PrivateLink enables customers to access services hosted on AWS while keeping all network traffic within the AWS network, which prevents traffic from service users from traversing the internet.

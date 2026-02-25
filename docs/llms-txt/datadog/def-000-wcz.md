@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Set existing passwords a period of inactivity before they been locked
- 
+
 ## Description{% #description %}
 
 Configure user accounts that have been inactive for over a given period of time to be automatically disabled by running the following command:
 
 ```
 $ sudo chage --inactive 30USER
-         
+
 ```
 
 ## Rationale{% #rationale %}

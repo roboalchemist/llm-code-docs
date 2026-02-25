@@ -38,20 +38,20 @@ This guide assumes that you already have your application running on Heroku. See
 
    ```shell
    cd <HEROKU_PROJECT_ROOT_FOLDER>
-   
+
    # Enable Heroku Labs Dyno Metadata to set HEROKU_APP_NAME env variable automatically
    heroku labs:enable runtime-dyno-metadata -a $APPNAME
-   
+
    # Set hostname in Datadog as appname.dynotype.dynonumber for metrics continuity
    heroku config:add DD_DYNO_HOST=true -a $APPNAME
-   
+
    # Set the DD_SITE env variable automatically
    heroku config:add DD_SITE=$DD_SITE -a $APPNAME
-   
+
    # Add this buildpack and set your Datadog API key
    heroku buildpacks:add --index 1 https://github.com/DataDog/heroku-buildpack-datadog.git -a $APPNAME
    heroku config:add DD_API_KEY=$DD_API_KEY -a $APPNAME
-   
+
    # Deploy to Heroku forcing a rebuild
    git commit --allow-empty -m "Rebuild slug"
    git push heroku main

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove tnftp Package
 ---
 
 # Remove tnftp Package
- 
+
 ## Description{% #description %}
 
 tnftp an enhanced FTP client, is the user interface to the Internet standard File Transfer Protocol. The program allows a user to transfer files to and from a remote network site. The `ftp` package can be removed with the following command:

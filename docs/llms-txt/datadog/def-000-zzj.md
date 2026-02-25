@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Password Minimum Age
 ---
 
 # Set Password Minimum Age
- 
+
 ## Description{% #description %}
 
 To specify password minimum age for new accounts, edit the file `/etc/login.defs` and add or correct the following line:
 
 ```
 PASS_MIN_DAYS 1
-         
+
 ```
 
 A value of 1 day is considered sufficient for many environments. The DoD requirement is 1. The profile requirement is `1`.

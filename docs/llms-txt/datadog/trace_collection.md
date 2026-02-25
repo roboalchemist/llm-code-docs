@@ -6,8 +6,6 @@ description: Get Started with Datadog APM
 breadcrumbs: Docs > APM > Application Instrumentation
 ---
 
-# Application Instrumentation
-
 ## Overview{% #overview %}
 
 Application instrumentation (Instrumentation is the process of adding code to your application to capture and report observability data to Datadog, such as traces, metrics, and logs.) with Datadog APM involves:

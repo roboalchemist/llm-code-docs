@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudTrail logs should be encrypted at rest using KMS CMKs
- 
+
 ## Description{% #description %}
 
 AWS CloudTrail records AWS API calls, and configuring it to use AWS Key Management Service (KMS) for server-side encryption (SSE) enhances log security. KMS uses Hardware Security Modules (HSMs) for key protection, adding confidentiality controls. Setting up CloudTrail with SSE-KMS ensures only authorized users with S3 read and CMK decrypt permissions can access the logs.

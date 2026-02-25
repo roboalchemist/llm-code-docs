@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Disable Kernel Parameter for IP Forwarding on IPv4 Interfaces
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv4.ip_forward` kernel parameter, run the following command:
@@ -74,7 +74,7 @@ fi
 
 #
 # If net.ipv4.ip_forward present in /etc/sysctl.conf, change value to "0"
-#	else, add "net.ipv4.ip_forward = 0" to /etc/sysctl.conf
+#   else, add "net.ipv4.ip_forward = 0" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

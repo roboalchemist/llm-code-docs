@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Route processes payments wit
 ---
 
 # Route processes payments without HTTPS
- 
+
 ## Description{% #description %}
 
 This API endpoint was found processing payments over a non encrypted channel.

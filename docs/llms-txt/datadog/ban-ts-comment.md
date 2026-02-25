@@ -50,6 +50,5 @@ Correct your types instead of disabling TypeScript.
 // just a comment containing @ts-nocheck somewhere
 // just a comment containing @ts-check somewhere
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS Organizations member accounts should not have root user credentials when centralized access is enabled
- 
+
 ## Description{% #description %}
 
 To ensure the security of your AWS environment, you should centrally manage root user credentials and sessions for all accounts within your AWS Organization. The root user has unrestricted access to all services and resources. By centralizing the management of root users, you can prevent unauthorized recovery and large-scale access, strengthening the security posture of your organization. After this feature is enabled, the "Delete root user credentials" action should be performed on all member accounts to ensure that centralized access cannot be bypassed. Performing this action deletes all root user access keys, passwords, and signing certificates.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An AKS Cluster's Kubelet's read-only port should be disabled
- 
+
 ## Description{% #description %}
 
 The read-only port should be disabled to prevent unauthenticated users from potentially retrieving sensitive information about the cluster.

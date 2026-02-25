@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Private application load balancers should drop HTTP headers
- 
+
 ## Description{% #description %}
 
 This control checks that private AWS Application Load Balancers (ALBs) are set to discard invalid HTTP headers. The control fails if the setting `routing.http.drop_invalid_header_fields.enabled` is false, and skips public-facing ALBs as those are covered in a separate finding. By default, ALBs do not drop invalid HTTP header values. Discarding these invalid headers is essential to prevent HTTP desynchronization attacks.

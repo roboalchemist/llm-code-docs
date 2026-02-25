@@ -52,10 +52,9 @@ func main() {
 ```go
 func main() {
     if len(mySlice) == 0 {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Dynamic linker hijacking att
 ---
 
 # Dynamic linker hijacking attempt
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574)
 ## What happened{% #what-happened %}
 
 {{#is_exact_match "case_name" "dynamic_linker_config_unlink"}}The file which configures dynamically linked libraries was deleted. Program functions may have been overridden to hide processes or files and evade detection.{{/is_exact_match}} {{#is_exact_match "case_name" "dynamic_linker_config_write"}}The file which configures dynamically linked libraries was modified. Program functions may have been overridden to hide processes or files and evade detection.{{/is_exact_match}} {{#is_exact_match "case_name" "ld_preload_unusual_library_path"}}The `LD_PRELOAD` environment variable was configured to load libraries from an unusual location. Program functions may have been overridden to hide processes or files and evade detection.{{/is_exact_match}}

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Limit Password Reuse (STIGs - ubuntu2004)
- 
+
 ## Description{% #description %}
 
 Do not allow users to reuse recent passwords. This can be accomplished by using the `remember` option for the `pam_unix` or `pam_pwhistory` PAM modules.

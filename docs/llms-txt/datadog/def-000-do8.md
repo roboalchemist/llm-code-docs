@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on Backup
 ---
 
 # Verify Permissions on Backup group File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/group-`, run the command:

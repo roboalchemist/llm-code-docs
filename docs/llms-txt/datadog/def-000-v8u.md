@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Only Users Logged In To Real tty Can Execute Sudo - sudo use_pty
- 
+
 ## Description{% #description %}
 
 The sudo `use_pty` tag, when specified, will only execute sudo commands from users logged in to a real tty. This should be enabled by making sure that the `use_pty` tag exists in `/etc/sudoers` configuration file or any sudo configuration snippets in `/etc/sudoers.d/`.
@@ -36,7 +36,7 @@ if /usr/sbin/visudo -qcf /etc/sudoers; then
         # sudoers file doesn't define Option use_pty
         echo "Defaults use_pty" >> /etc/sudoers
     fi
-    
+
     # Check validity of sudoers and cleanup bak
     if /usr/sbin/visudo -qcf /etc/sudoers; then
         rm -f /etc/sudoers.bak

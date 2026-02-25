@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns shadow 
 ---
 
 # Verify User Who Owns shadow File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/shadow`, run the command:
 
 ```
-$ sudo chown root /etc/shadow 
+$ sudo chown root /etc/shadow
 ```
 
 ## Rationale{% #rationale %}

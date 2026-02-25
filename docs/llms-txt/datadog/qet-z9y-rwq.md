@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not be allowed to share the host network namespace
-Classification:complianceFramework:cis-kubernetesControl:5.2.4 
+Classification:complianceFramework:cis-kubernetesControl:5.2.4
 ## Description{% #description %}
 
 Do not generally permit containers to be run with the hostNetwork flag set to true.

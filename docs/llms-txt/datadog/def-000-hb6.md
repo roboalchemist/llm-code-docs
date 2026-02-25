@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure all users last password change date is in the past
- 
+
 ## Description{% #description %}
 
 All users should have a password change date in the past.

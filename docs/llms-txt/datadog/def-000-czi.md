@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Copilot Studio agent access control policy set to open
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when an M365 Copilot Studio bot's access control settings are modified to `Any`. This change would indicate any user within the tenant could access the bot application.

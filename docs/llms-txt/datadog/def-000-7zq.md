@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable DHCPD6 Service
 ---
 
 # Disable DHCPD6 Service
- 
+
 ## Description{% #description %}
 
 The `dhcp6` service should be disabled on any system that does not need to act as a DHCP server. The `isc-dhcp-server6` service can be disabled with the following command:

@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > iboss allowed malware activi
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204)
 ## Goal{% #goal %}
 
 Detects instances where malware was detected but allowed through the iboss security gateway, potentially exposing endpoints to infection.

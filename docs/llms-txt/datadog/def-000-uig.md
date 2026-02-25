@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable SSH Access via Empty
 ---
 
 # Disable SSH Access via Empty Passwords
- 
+
 ## Description{% #description %}
 
 Disallow SSH login with empty passwords. The default SSH configuration disables logins with empty passwords. The appropriate configuration is used if no value is set for `PermitEmptyPasswords`.
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf
 LC_ALL=C sed -i "/^\s*PermitEmptyPasswords\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*PermitEmptyPasswords\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*PermitEmptyPasswords\s\+/Id" "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"
 else
     touch "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"

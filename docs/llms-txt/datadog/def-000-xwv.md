@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure shadow Group is Empty
 ---
 
 # Ensure shadow Group is Empty
- 
+
 ## Description{% #description %}
 
 The shadow group allows system programs which require access the ability to read the /etc/shadow file. No users should be assigned to the shadow group.

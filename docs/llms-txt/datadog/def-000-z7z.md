@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS clusters should have Auto Minor Version Upgrade enabled
- 
+
 ## Description{% #description %}
 
 This check ensures that automatic minor version upgrades are enabled for an Amazon RDS database cluster. Enabling automatic minor version upgrades for RDS clusters ensures your DB cluster remains current, benefiting from new software features, bug fixes, security patches, and performance enhancements. Once enabled, any available minor version updates are automatically applied during the maintenance window, keeping the cluster and its instances up-to-date.

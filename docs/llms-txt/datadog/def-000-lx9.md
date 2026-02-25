@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should not use the default database name
- 
+
 ## Description{% #description %}
 
 This control verifies if the database name of an Amazon Redshift cluster has been changed from its default setting of `dev`.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network Firewall firewalls should have deletion protection enabled
- 
+
 ## Description{% #description %}
 
 This control verifies if deletion protection is activated for an AWS Network Firewall.

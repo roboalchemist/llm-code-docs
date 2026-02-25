@@ -270,7 +270,7 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -289,8 +289,8 @@ Errors occurred.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create deployment gate returns "OK" response
@@ -298,41 +298,41 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateDeploymentGateParams{
-		Data: datadogV2.CreateDeploymentGateParamsData{
-			Attributes: datadogV2.CreateDeploymentGateParamsDataAttributes{
-				DryRun:     datadog.PtrBool(false),
-				Env:        "production",
-				Identifier: datadog.PtrString("my-gate-1"),
-				Service:    "my-service",
-			},
-			Type: datadogV2.DEPLOYMENTGATEDATATYPE_DEPLOYMENT_GATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateDeploymentGate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.CreateDeploymentGate(ctx, body)
+    body := datadogV2.CreateDeploymentGateParams{
+        Data: datadogV2.CreateDeploymentGateParamsData{
+            Attributes: datadogV2.CreateDeploymentGateParamsDataAttributes{
+                DryRun:     datadog.PtrBool(false),
+                Env:        "production",
+                Identifier: datadog.PtrString("my-gate-1"),
+                Service:    "my-service",
+            },
+            Type: datadogV2.DEPLOYMENTGATEDATATYPE_DEPLOYMENT_GATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateDeploymentGate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.CreateDeploymentGate(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.CreateDeploymentGate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.CreateDeploymentGate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.CreateDeploymentGate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.CreateDeploymentGate`:\n%s\n", responseContent)
 }
 ```
 
@@ -340,7 +340,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create deployment gate returns "OK" response
@@ -390,7 +390,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -431,7 +431,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create deployment gate returns "OK" response
@@ -460,7 +460,7 @@ p api_instance.create_deployment_gate(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create deployment gate returns "OK" response
@@ -498,7 +498,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -803,13 +803,13 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -838,7 +838,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get deployment gate returns "OK" response
@@ -858,7 +858,7 @@ p api_instance.get_deployment_gate(DEPLOYMENT_GATE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get deployment gate returns "OK" response
@@ -866,33 +866,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetDeploymentGate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.GetDeploymentGate(ctx, DeploymentGateDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetDeploymentGate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.GetDeploymentGate(ctx, DeploymentGateDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentGate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentGate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentGate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentGate`:\n%s\n", responseContent)
 }
 ```
 
@@ -900,7 +900,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get deployment gate returns "OK" response
@@ -937,7 +937,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get deployment gate returns "OK" response
@@ -966,7 +966,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1298,7 +1298,7 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1315,8 +1315,8 @@ Errors occurred.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update deployment gate returns "OK" response
@@ -1324,42 +1324,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	body := datadogV2.UpdateDeploymentGateParams{
-		Data: datadogV2.UpdateDeploymentGateParamsData{
-			Attributes: datadogV2.UpdateDeploymentGateParamsDataAttributes{
-				DryRun: false,
-			},
-			Id:   "12345678-1234-1234-1234-123456789012",
-			Type: datadogV2.DEPLOYMENTGATEDATATYPE_DEPLOYMENT_GATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateDeploymentGate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.UpdateDeploymentGate(ctx, DeploymentGateDataID, body)
+    body := datadogV2.UpdateDeploymentGateParams{
+        Data: datadogV2.UpdateDeploymentGateParamsData{
+            Attributes: datadogV2.UpdateDeploymentGateParamsDataAttributes{
+                DryRun: false,
+            },
+            Id:   "12345678-1234-1234-1234-123456789012",
+            Type: datadogV2.DEPLOYMENTGATEDATATYPE_DEPLOYMENT_GATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateDeploymentGate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.UpdateDeploymentGate(ctx, DeploymentGateDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.UpdateDeploymentGate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.UpdateDeploymentGate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.UpdateDeploymentGate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.UpdateDeploymentGate`:\n%s\n", responseContent)
 }
 ```
 
@@ -1367,7 +1367,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update deployment gate returns "OK" response
@@ -1417,7 +1417,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1460,7 +1460,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update deployment gate returns "OK" response
@@ -1490,7 +1490,7 @@ p api_instance.update_deployment_gate(DEPLOYMENT_GATE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update deployment gate returns "OK" response
@@ -1528,7 +1528,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1778,12 +1778,12 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1810,7 +1810,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete deployment gate returns "No Content" response
@@ -1830,7 +1830,7 @@ api_instance.delete_deployment_gate(DEPLOYMENT_GATE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete deployment gate returns "No Content" response
@@ -1838,29 +1838,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteDeploymentGate", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	r, err := api.DeleteDeploymentGate(ctx, DeploymentGateDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteDeploymentGate", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    r, err := api.DeleteDeploymentGate(ctx, DeploymentGateDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.DeleteDeploymentGate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.DeleteDeploymentGate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1868,7 +1868,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete deployment gate returns "No Content" response
@@ -1903,7 +1903,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete deployment gate returns "No Content" response
@@ -1932,7 +1932,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2258,7 +2258,7 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport gate_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${gate_id}/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2279,8 +2279,8 @@ Errors occurred.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create deployment rule returns "OK" response
@@ -2288,47 +2288,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	body := datadogV2.CreateDeploymentRuleParams{
-		Data: &datadogV2.CreateDeploymentRuleParamsData{
-			Attributes: datadogV2.CreateDeploymentRuleParamsDataAttributes{
-				DryRun: datadog.PtrBool(false),
-				Name:   "My deployment rule",
-				Options: datadogV2.DeploymentRulesOptions{
-					DeploymentRuleOptionsFaultyDeploymentDetection: &datadogV2.DeploymentRuleOptionsFaultyDeploymentDetection{
-						ExcludedResources: []string{},
-					}},
-				Type: "faulty_deployment_detection",
-			},
-			Type: datadogV2.DEPLOYMENTRULEDATATYPE_DEPLOYMENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateDeploymentRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.CreateDeploymentRule(ctx, DeploymentGateDataID, body)
+    body := datadogV2.CreateDeploymentRuleParams{
+        Data: &datadogV2.CreateDeploymentRuleParamsData{
+            Attributes: datadogV2.CreateDeploymentRuleParamsDataAttributes{
+                DryRun: datadog.PtrBool(false),
+                Name:   "My deployment rule",
+                Options: datadogV2.DeploymentRulesOptions{
+                    DeploymentRuleOptionsFaultyDeploymentDetection: &datadogV2.DeploymentRuleOptionsFaultyDeploymentDetection{
+                        ExcludedResources: []string{},
+                    }},
+                Type: "faulty_deployment_detection",
+            },
+            Type: datadogV2.DEPLOYMENTRULEDATATYPE_DEPLOYMENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateDeploymentRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.CreateDeploymentRule(ctx, DeploymentGateDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.CreateDeploymentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.CreateDeploymentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.CreateDeploymentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.CreateDeploymentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2336,7 +2336,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create deployment rule returns "OK" response
@@ -2394,7 +2394,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2444,7 +2444,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create deployment rule returns "OK" response
@@ -2478,7 +2478,7 @@ p api_instance.create_deployment_rule(DEPLOYMENT_GATE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create deployment rule returns "OK" response
@@ -2524,7 +2524,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2850,13 +2850,13 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport gate_id="CHANGE_ME"export id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${gate_id}/rules/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2889,7 +2889,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get deployment rule returns "OK" response
@@ -2912,7 +2912,7 @@ p api_instance.get_deployment_rule(DEPLOYMENT_GATE_DATA_ID, DEPLOYMENT_RULE_DATA
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get deployment rule returns "OK" response
@@ -2920,36 +2920,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	// there is a valid "deployment_rule" in the system
-	DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
+    // there is a valid "deployment_rule" in the system
+    DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetDeploymentRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.GetDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetDeploymentRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.GetDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2957,7 +2957,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get deployment rule returns "OK" response
@@ -2998,7 +2998,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get deployment rule returns "OK" response
@@ -3033,7 +3033,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3394,7 +3394,7 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport gate_id="CHANGE_ME"export id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${gate_id}/rules/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3414,8 +3414,8 @@ Errors occurred.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update deployment rule returns "OK" response
@@ -3423,49 +3423,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	// there is a valid "deployment_rule" in the system
-	DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
+    // there is a valid "deployment_rule" in the system
+    DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
 
-	body := datadogV2.UpdateDeploymentRuleParams{
-		Data: datadogV2.UpdateDeploymentRuleParamsData{
-			Attributes: datadogV2.UpdateDeploymentRuleParamsDataAttributes{
-				DryRun: false,
-				Name:   "Updated deployment rule",
-				Options: datadogV2.DeploymentRulesOptions{
-					DeploymentRuleOptionsFaultyDeploymentDetection: &datadogV2.DeploymentRuleOptionsFaultyDeploymentDetection{
-						ExcludedResources: []string{},
-					}},
-			},
-			Type: datadogV2.DEPLOYMENTRULEDATATYPE_DEPLOYMENT_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateDeploymentRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.UpdateDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID, body)
+    body := datadogV2.UpdateDeploymentRuleParams{
+        Data: datadogV2.UpdateDeploymentRuleParamsData{
+            Attributes: datadogV2.UpdateDeploymentRuleParamsDataAttributes{
+                DryRun: false,
+                Name:   "Updated deployment rule",
+                Options: datadogV2.DeploymentRulesOptions{
+                    DeploymentRuleOptionsFaultyDeploymentDetection: &datadogV2.DeploymentRuleOptionsFaultyDeploymentDetection{
+                        ExcludedResources: []string{},
+                    }},
+            },
+            Type: datadogV2.DEPLOYMENTRULEDATATYPE_DEPLOYMENT_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateDeploymentRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.UpdateDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.UpdateDeploymentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.UpdateDeploymentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.UpdateDeploymentRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.UpdateDeploymentRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -3473,7 +3473,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update deployment rule returns "OK" response
@@ -3533,7 +3533,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3587,7 +3587,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update deployment rule returns "OK" response
@@ -3623,7 +3623,7 @@ p api_instance.update_deployment_rule(DEPLOYMENT_GATE_DATA_ID, DEPLOYMENT_RULE_D
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update deployment rule returns "OK" response
@@ -3675,7 +3675,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3933,12 +3933,12 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport gate_id="CHANGE_ME"export id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${gate_id}/rules/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3969,7 +3969,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete deployment rule returns "No Content" response
@@ -3992,7 +3992,7 @@ api_instance.delete_deployment_rule(DEPLOYMENT_GATE_DATA_ID, DEPLOYMENT_RULE_DAT
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete deployment rule returns "No Content" response
@@ -4000,32 +4000,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	// there is a valid "deployment_rule" in the system
-	DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
+    // there is a valid "deployment_rule" in the system
+    DeploymentRuleDataID := os.Getenv("DEPLOYMENT_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteDeploymentRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	r, err := api.DeleteDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteDeploymentRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    r, err := api.DeleteDeploymentRule(ctx, DeploymentGateDataID, DeploymentRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.DeleteDeploymentRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.DeleteDeploymentRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -4033,7 +4033,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete deployment rule returns "No Content" response
@@ -4071,7 +4071,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete deployment rule returns "No Content" response
@@ -4106,7 +4106,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4395,13 +4395,13 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport gate_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/deployment_gates/${gate_id}/rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4430,7 +4430,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get rules for a deployment gate returns "OK" response
@@ -4450,7 +4450,7 @@ p api_instance.get_deployment_gate_rules(DEPLOYMENT_GATE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get rules for a deployment gate returns "OK" response
@@ -4458,33 +4458,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "deployment_gate" in the system
-	DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
+    // there is a valid "deployment_gate" in the system
+    DeploymentGateDataID := os.Getenv("DEPLOYMENT_GATE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetDeploymentGateRules", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDeploymentGatesApi(apiClient)
-	resp, r, err := api.GetDeploymentGateRules(ctx, DeploymentGateDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetDeploymentGateRules", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDeploymentGatesApi(apiClient)
+    resp, r, err := api.GetDeploymentGateRules(ctx, DeploymentGateDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentGateRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentGatesApi.GetDeploymentGateRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentGateRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentGatesApi.GetDeploymentGateRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -4492,7 +4492,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get rules for a deployment gate returns "OK" response
@@ -4530,7 +4530,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get rules for a deployment gate returns "OK" response
@@ -4559,7 +4559,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

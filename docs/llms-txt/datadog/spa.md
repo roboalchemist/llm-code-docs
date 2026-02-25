@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Spa
 ---
 
-# Spa
-
 SPA (Spark Pod Autosizing) API. Provides resource recommendations and cost insights to help optimize Spark job configurations.
 
 ## Get SPA Recommendations with a shard parameter{% #get-spa-recommendations-with-a-shard-parameter %}
@@ -275,11 +273,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport shard="CHANGE_ME"export service="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spa/recommendations/${service}/${shard}" \
 -H "Accept: application/json"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -305,10 +303,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Get SPA Recommendations with a shard parameter returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
@@ -322,7 +319,7 @@ p api_instance.get_spa_recommendations_with_shard("shard", "service")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SPA Recommendations with a shard parameter returns "OK" response
@@ -330,30 +327,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSPARecommendationsWithShard", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpaApi(apiClient)
-	resp, r, err := api.GetSPARecommendationsWithShard(ctx, "shard", "service", *datadogV2.NewGetSPARecommendationsWithShardOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSPARecommendationsWithShard", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpaApi(apiClient)
+    resp, r, err := api.GetSPARecommendationsWithShard(ctx, "shard", "service", *datadogV2.NewGetSPARecommendationsWithShardOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SpaApi.GetSPARecommendationsWithShard`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpaApi.GetSPARecommendationsWithShard`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SpaApi.GetSPARecommendationsWithShard`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SpaApi.GetSPARecommendationsWithShard`:\n%s\n", responseContent)
 }
 ```
 
@@ -361,7 +358,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SPA Recommendations with a shard parameter returns "OK" response
@@ -396,7 +393,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SPA Recommendations with a shard parameter returns "OK" response
@@ -428,7 +425,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -726,11 +723,11 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spa/recommendations/${service}" \
 -H "Accept: application/json"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -755,10 +752,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Get SPA Recommendations returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
@@ -772,7 +768,7 @@ p api_instance.get_spa_recommendations("service")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SPA Recommendations returns "OK" response
@@ -780,30 +776,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSPARecommendations", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpaApi(apiClient)
-	resp, r, err := api.GetSPARecommendations(ctx, "service", *datadogV2.NewGetSPARecommendationsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSPARecommendations", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpaApi(apiClient)
+    resp, r, err := api.GetSPARecommendations(ctx, "service", *datadogV2.NewGetSPARecommendationsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SpaApi.GetSPARecommendations`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpaApi.GetSPARecommendations`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SpaApi.GetSPARecommendations`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SpaApi.GetSPARecommendations`:\n%s\n", responseContent)
 }
 ```
 
@@ -811,7 +807,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SPA Recommendations returns "OK" response
@@ -845,7 +841,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SPA Recommendations returns "OK" response
@@ -876,7 +872,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/localmessages File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/localmessages`, run the command:
 
 ```gdscript3
-$ sudo chown syslog /var/log/localmessages 
+$ sudo chown syslog /var/log/localmessages
 ```
 
 or
 
 ```gdscript3
-$ sudo chown root /var/log/localmessages 
+$ sudo chown root /var/log/localmessages
 ```
 
 ## Rationale{% #rationale %}

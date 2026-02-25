@@ -327,13 +327,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spans/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -355,7 +355,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of spans returns "OK" response
@@ -369,7 +369,7 @@ p api_instance.list_spans_get()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```java
 // Get a list of spans returns "OK" response
@@ -402,7 +402,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of spans returns "OK" response
@@ -429,7 +429,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -455,7 +455,7 @@ apiInstance
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
-##### 
+#####
 
 ```go
 // Get a list of spans returns "OK" response
@@ -463,29 +463,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpansApi(apiClient)
-	resp, r, err := api.ListSpansGet(ctx, *datadogV2.NewListSpansGetOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpansApi(apiClient)
+    resp, r, err := api.ListSpansGet(ctx, *datadogV2.NewListSpansGetOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpansGet`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpansGet`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SpansApi.ListSpansGet`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SpansApi.ListSpansGet`:\n%s\n", responseContent)
 }
 ```
 
@@ -549,7 +549,7 @@ OAuth apps require the `apm_read` authorization [scope](https://docs.datadoghq.c
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -573,7 +573,7 @@ OAuth apps require the `apm_read` authorization [scope](https://docs.datadoghq.c
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -877,7 +877,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spans/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -904,8 +904,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spans/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -932,8 +932,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search spans returns "OK" response
@@ -941,52 +941,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SpansListRequest{
-		Data: &datadogV2.SpansListRequestData{
-			Attributes: &datadogV2.SpansListRequestAttributes{
-				Filter: &datadogV2.SpansQueryFilter{
-					From:  datadog.PtrString("now-15m"),
-					Query: datadog.PtrString("*"),
-					To:    datadog.PtrString("now"),
-				},
-				Options: &datadogV2.SpansQueryOptions{
-					Timezone: datadog.PtrString("GMT"),
-				},
-				Page: &datadogV2.SpansListRequestPage{
-					Limit: datadog.PtrInt32(25),
-				},
-				Sort: datadogV2.SPANSSORT_TIMESTAMP_ASCENDING.Ptr(),
-			},
-			Type: datadogV2.SPANSLISTREQUESTTYPE_SEARCH_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpansApi(apiClient)
-	resp, r, err := api.ListSpans(ctx, body)
+    body := datadogV2.SpansListRequest{
+        Data: &datadogV2.SpansListRequestData{
+            Attributes: &datadogV2.SpansListRequestAttributes{
+                Filter: &datadogV2.SpansQueryFilter{
+                    From:  datadog.PtrString("now-15m"),
+                    Query: datadog.PtrString("*"),
+                    To:    datadog.PtrString("now"),
+                },
+                Options: &datadogV2.SpansQueryOptions{
+                    Timezone: datadog.PtrString("GMT"),
+                },
+                Page: &datadogV2.SpansListRequestPage{
+                    Limit: datadog.PtrInt32(25),
+                },
+                Sort: datadogV2.SPANSSORT_TIMESTAMP_ASCENDING.Ptr(),
+            },
+            Type: datadogV2.SPANSLISTREQUESTTYPE_SEARCH_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpansApi(apiClient)
+    resp, r, err := api.ListSpans(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpans`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpans`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SpansApi.ListSpans`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SpansApi.ListSpans`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Search spans returns "OK" response with pagination
@@ -994,48 +994,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SpansListRequest{
-		Data: &datadogV2.SpansListRequestData{
-			Attributes: &datadogV2.SpansListRequestAttributes{
-				Filter: &datadogV2.SpansQueryFilter{
-					From:  datadog.PtrString("now-15m"),
-					Query: datadog.PtrString("service:python*"),
-					To:    datadog.PtrString("now"),
-				},
-				Options: &datadogV2.SpansQueryOptions{
-					Timezone: datadog.PtrString("GMT"),
-				},
-				Page: &datadogV2.SpansListRequestPage{
-					Limit: datadog.PtrInt32(2),
-				},
-				Sort: datadogV2.SPANSSORT_TIMESTAMP_ASCENDING.Ptr(),
-			},
-			Type: datadogV2.SPANSLISTREQUESTTYPE_SEARCH_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpansApi(apiClient)
-	resp, _ := api.ListSpansWithPagination(ctx, body)
+    body := datadogV2.SpansListRequest{
+        Data: &datadogV2.SpansListRequestData{
+            Attributes: &datadogV2.SpansListRequestAttributes{
+                Filter: &datadogV2.SpansQueryFilter{
+                    From:  datadog.PtrString("now-15m"),
+                    Query: datadog.PtrString("service:python*"),
+                    To:    datadog.PtrString("now"),
+                },
+                Options: &datadogV2.SpansQueryOptions{
+                    Timezone: datadog.PtrString("GMT"),
+                },
+                Page: &datadogV2.SpansListRequestPage{
+                    Limit: datadog.PtrInt32(2),
+                },
+                Sort: datadogV2.SPANSSORT_TIMESTAMP_ASCENDING.Ptr(),
+            },
+            Type: datadogV2.SPANSLISTREQUESTTYPE_SEARCH_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpansApi(apiClient)
+    resp, _ := api.ListSpansWithPagination(ctx, body)
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpans`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.ListSpans`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
 ```
 
@@ -1043,7 +1043,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search spans returns "OK" response
@@ -1092,7 +1092,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Search spans returns "OK" response with pagination
@@ -1150,7 +1150,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1196,7 +1196,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1246,7 +1246,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search spans returns "OK" response
@@ -1276,7 +1276,7 @@ body = DatadogAPIClient::V2::SpansListRequest.new({
 p api_instance.list_spans(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Search spans returns "OK" response with pagination
@@ -1310,7 +1310,7 @@ api_instance.list_spans_with_pagination(body) { |item| puts item }
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search spans returns "OK" response
@@ -1354,7 +1354,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Search spans returns "OK" response with pagination
@@ -1407,7 +1407,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1451,7 +1451,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1749,7 +1749,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/spans/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1776,8 +1776,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Aggregate spans returns "OK" response
@@ -1785,48 +1785,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SpansAggregateRequest{
-		Data: &datadogV2.SpansAggregateData{
-			Attributes: &datadogV2.SpansAggregateRequestAttributes{
-				Compute: []datadogV2.SpansCompute{
-					{
-						Aggregation: datadogV2.SPANSAGGREGATIONFUNCTION_COUNT,
-						Interval:    datadog.PtrString("5m"),
-						Type:        datadogV2.SPANSCOMPUTETYPE_TIMESERIES.Ptr(),
-					},
-				},
-				Filter: &datadogV2.SpansQueryFilter{
-					From:  datadog.PtrString("now-15m"),
-					Query: datadog.PtrString("*"),
-					To:    datadog.PtrString("now"),
-				},
-			},
-			Type: datadogV2.SPANSAGGREGATEREQUESTTYPE_AGGREGATE_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSpansApi(apiClient)
-	resp, r, err := api.AggregateSpans(ctx, body)
+    body := datadogV2.SpansAggregateRequest{
+        Data: &datadogV2.SpansAggregateData{
+            Attributes: &datadogV2.SpansAggregateRequestAttributes{
+                Compute: []datadogV2.SpansCompute{
+                    {
+                        Aggregation: datadogV2.SPANSAGGREGATIONFUNCTION_COUNT,
+                        Interval:    datadog.PtrString("5m"),
+                        Type:        datadogV2.SPANSCOMPUTETYPE_TIMESERIES.Ptr(),
+                    },
+                },
+                Filter: &datadogV2.SpansQueryFilter{
+                    From:  datadog.PtrString("now-15m"),
+                    Query: datadog.PtrString("*"),
+                    To:    datadog.PtrString("now"),
+                },
+            },
+            Type: datadogV2.SPANSAGGREGATEREQUESTTYPE_AGGREGATE_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSpansApi(apiClient)
+    resp, r, err := api.AggregateSpans(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.AggregateSpans`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SpansApi.AggregateSpans`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SpansApi.AggregateSpans`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SpansApi.AggregateSpans`:\n%s\n", responseContent)
 }
 ```
 
@@ -1834,7 +1834,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Aggregate spans returns "OK" response
@@ -1891,7 +1891,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1941,7 +1941,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Aggregate spans returns "OK" response
@@ -1975,7 +1975,7 @@ p api_instance.aggregate_spans(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Aggregate spans returns "OK" response
@@ -2023,7 +2023,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet client certificate rotation should be enabled
- 
+
 ## Description{% #description %}
 
 Kubelet client certificate rotation should be enabled. The `--rotate-certificates` setting tells the kubelet to rotate its client certificates by creating new CSRs when its existing credentials expire. This automated periodic rotation ensures that there is no downtime due to expired certificates and thus addresses availability in the CIA security triad.

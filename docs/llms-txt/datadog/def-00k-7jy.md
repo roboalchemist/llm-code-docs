@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The etcd data directory should have permissions of 700 or more restrictive
- 
+
 ## Description{% #description %}
 
 The etcd data directory should have permissions of `700` or more restrictive. Etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes. It should not be readable or writable by any group members or the world.

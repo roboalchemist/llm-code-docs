@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker server certificate key file should be owned by root
-Classification:complianceFramework:cis-dockerControl:3.13 
+Classification:complianceFramework:cis-dockerControl:3.13
 ## Description{% #description %}
 
 You should verify that the Docker server certificate key file, the file that is passed along with the `--tlskey` parameter, is individually owned and group owned by root.
@@ -23,7 +23,7 @@ The Docker server certificate key file should be protected from any tampering or
 Verify that the Docker server certificate key file is individually owned and group-owned by root, by running:
 
 ```
-stat -c %U:%G <path to Docker server certificate key file> | grep -v root:root 
+stat -c %U:%G <path to Docker server certificate key file> | grep -v root:root
 ```
 
 The command should return no results.

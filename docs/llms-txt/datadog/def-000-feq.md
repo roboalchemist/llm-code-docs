@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set GNOME3 Screensaver Lock Delay After Activation Period
- 
+
 ## Description{% #description %}
 
 To activate the locking delay of the screensaver in the GNOME3 desktop when the screensaver is activated, add or set `lock-delay` to `uint32 0` in `/etc/dconf/db/local.d/00-security-settings`. For example:
@@ -17,7 +17,7 @@ To activate the locking delay of the screensaver in the GNOME3 desktop when the 
 ```
 [org/gnome/desktop/screensaver]
 lock-delay=uint32 0
-         
+
 ```
 
 After the settings have been set, run `dconf update`.
@@ -111,7 +111,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*lock-delay\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)lock-delay(\s*=)/#\1lock-delay\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

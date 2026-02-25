@@ -71,12 +71,12 @@ public class MyClass()
 
 ```csharp
 /// <summary>
-/// 
+///
 /// </summary>
 public class MyClass()
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public void foo() {
 
@@ -88,6 +88,5 @@ public class MyClass()
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

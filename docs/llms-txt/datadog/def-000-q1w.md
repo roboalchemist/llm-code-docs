@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable systemd-journal-uploa
 ---
 
 # Enable systemd-journal-upload Service
- 
+
 ## Description{% #description %}
 
 Ubuntu 24.04 must offload rsyslog messages for networked systems in real time and offload standalone systems at least weekly. The `systemd-journal-upload` service can be enabled with the following command:

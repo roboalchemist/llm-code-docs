@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet.conf file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The kubelet.conf file should have permissions of `600` or more restrictive. The `kubelet.conf` file is the kubeconfig file for the node, and controls various parameters that set the behavior and identity of the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable only by the administrators of the system.

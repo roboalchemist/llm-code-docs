@@ -83,6 +83,5 @@ yaml.load("string", Loader=yaml.SafeLoader) # uses SafeLoader, so load is okay
 ```python
 yaml.load("string")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

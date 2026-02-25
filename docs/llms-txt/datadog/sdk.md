@@ -65,109 +65,109 @@ In the `main.go` file:
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"net/http"
-	"strings"
+    "encoding/json"
+    "log"
+    "net/http"
+    "strings"
 
-	"github.com/DataDog/dd-trace-go/v2/appsec"
-	"github.com/DataDog/dd-trace-go/v2/appsec/events"
-	"github.com/DataDog/dd-trace-go/v2/contrib/net/http/v2"
-	"github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
+    "github.com/DataDog/dd-trace-go/v2/appsec"
+    "github.com/DataDog/dd-trace-go/v2/appsec/events"
+    "github.com/DataDog/dd-trace-go/v2/contrib/net/http/v2"
+    "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
 )
 
 type LoginRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+    Username string `json:"username"`
+    Password string `json:"password"`
 }
 
 type User struct {
-	Name     string `json:name`
-	Username string `json:username`
-	Email    string `json:email`
-	password string
+    Name     string `json:name`
+    Username string `json:username`
+    Email    string `json:email`
+    password string
 }
 
 var users = []User{
-	{
-		Name: "John Doe",
-		Username: "realjoe",
-		Email: "john@gmail.com",
-		password: "not-my-birthday",
-	}
+    {
+        Name: "John Doe",
+        Username: "realjoe",
+        Email: "john@gmail.com",
+        password: "not-my-birthday",
+    }
 }
 
 func main() {
-	tracer.Start(tracer.WithService("my-web-app"), tracer.WithAppsecEnabled(true))
-	defer tracer.Stop()
+    tracer.Start(tracer.WithService("my-web-app"), tracer.WithAppsecEnabled(true))
+    defer tracer.Stop()
 
-	mux := httptrace.NewServeMux()
-	mux.HandleFunc("/login", loginHandler)
-	mux.HandleFunc("/profile", authMiddleware(profileHandler))
+    mux := httptrace.NewServeMux()
+    mux.HandleFunc("/login", loginHandler)
+    mux.HandleFunc("/profile", authMiddleware(profileHandler))
 
-	log.Fatal(http.ListenAndServe(":8080", mux))
+    log.Fatal(http.ListenAndServe(":8080", mux))
 }
 
 func loginHandler(w http.ResponseWriter, r *http.Request) {
-	var req LoginRequest
-	json.NewDecoder(r.Body).Decode(&req)
+    var req LoginRequest
+    json.NewDecoder(r.Body).Decode(&req)
 
-	// Monitor parsed request body
-	if err := appsec.MonitorParsedHTTPBody(r.Context(), req); err != nil {
-		if events.IsSecurityError(err) {
-			return // AppSec handles the blocking response
-		}
-	}
+    // Monitor parsed request body
+    if err := appsec.MonitorParsedHTTPBody(r.Context(), req); err != nil {
+        if events.IsSecurityError(err) {
+            return // AppSec handles the blocking response
+        }
+    }
 
-	for _, user := range users {
-		if req.Username == user.Username && req.Password == user.Password {
-			metadata := map[string]string{"login_method": "password"}
-			if err := appsec.TrackUserLoginSuccess(r.Context(), req.Username, "user123", metadata); err != nil && events.IsSecurityError(err) {
-				return // User is blocked
-			}
+    for _, user := range users {
+        if req.Username == user.Username && req.Password == user.Password {
+            metadata := map[string]string{"login_method": "password"}
+            if err := appsec.TrackUserLoginSuccess(r.Context(), req.Username, "user123", metadata); err != nil && events.IsSecurityError(err) {
+                return // User is blocked
+            }
 
-			response := map[string]string{"token": "<token_created>", "status": "success"}
+            response := map[string]string{"token": "<token_created>", "status": "success"}
 
-			// Monitor response body
-			appsec.MonitorHTTPResponseBody(r.Context(), response)
+            // Monitor response body
+            appsec.MonitorHTTPResponseBody(r.Context(), response)
 
-			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(response)
-			return
-		}
-	}
+            w.Header().Set("Content-Type", "application/json")
+            json.NewEncoder(w).Encode(response)
+            return
+        }
+    }
 
-	// Track failed login
-	appsec.TrackUserLoginFailure(r.Context(), req.Username, true, metadata)
-	http.Error(w, "Invalid credentials", http.StatusUnauthorized)
+    // Track failed login
+    appsec.TrackUserLoginFailure(r.Context(), req.Username, true, metadata)
+    http.Error(w, "Invalid credentials", http.StatusUnauthorized)
 }
 
 func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		user := "<username>" // Do real authentification here
+    return func(w http.ResponseWriter, r *http.Request) {
+        user := "<username>" // Do real authentification here
 
-		// Set user context on all authenticated requests
-		if err := appsec.SetUser(r.Context(), user); err != nil && events.IsSecurityError(err) {
-			return // User is blocked
-		}
+        // Set user context on all authenticated requests
+        if err := appsec.SetUser(r.Context(), user); err != nil && events.IsSecurityError(err) {
+            return // User is blocked
+        }
 
-		next.ServeHTTP(w, r)
-	}
+        next.ServeHTTP(w, r)
+    }
 }
 
 func profileHandler(w http.ResponseWriter, r *http.Request) {
-	// Track access to sensitive data
-	appsec.TrackCustomEvent(r.Context(), "profile.access", map[string]string{
-		"data_type": "personal_info",
-	})
+    // Track access to sensitive data
+    appsec.TrackCustomEvent(r.Context(), "profile.access", map[string]string{
+        "data_type": "personal_info",
+    })
 
-	userAsked := r.Query().Get("user")
-	user := users[0] // Search for the user
+    userAsked := r.Query().Get("user")
+    user := users[0] // Search for the user
 
-	// Monitor response body
-	appsec.MonitorHTTPResponseBody(r.Context(), user);
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(user)
+    // Monitor response body
+    appsec.MonitorHTTPResponseBody(r.Context(), user);
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(user)
 }
 ```
 

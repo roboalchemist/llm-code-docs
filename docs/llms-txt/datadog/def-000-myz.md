@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Avahi Server Softwar
 ---
 
 # Disable Avahi Server Software
- 
+
 ## Description{% #description %}
 
 The `avahi-daemon` service can be disabled with the following command:

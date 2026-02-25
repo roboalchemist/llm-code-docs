@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # App Service should use the latest version of TLS encryption
- 
+
 ## Description{% #description %}
 
 The Transport Layer Security (TLS) protocol ensures secure data transmission over the internet through standard encryption technology. To maximize security, it's crucial to use the latest version of TLS. By default, App Service uses TLS 1.3, which is now the benchmark in industry standards like PCI DSS. App Service supports various TLS versions, including 1.0, 1.1, 1.2, and 1.3. It is highly recommended to utilize TLS 1.3 to ensure the most secure connections.

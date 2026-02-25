@@ -94,6 +94,5 @@ app.disable('x-powered-by')
 
 // rest of your config
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

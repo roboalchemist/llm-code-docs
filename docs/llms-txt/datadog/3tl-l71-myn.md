@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > DNS lookup for paste service
 ---
 
 # DNS lookup for paste service
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105)
 ## What happened{% #what-happened %}
 
 `{{ @process.comm }}` made a DNS lookup for the domain `{{ @dns.question.name }}`, potentially to download malicious tools or to exfiltrate data.

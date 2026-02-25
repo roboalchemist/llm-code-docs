@@ -60,6 +60,5 @@ foo.RecordTypeId ='4532d'
 // 15 characters with a non-alphabetic one
 foo.RecordTypeId ='01230000000 5Km'
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudTrail logs S3 bucket should not be public accessible
- 
+
 ## Description{% #description %}
 
 The bucket policy or access control list (ACL) applied to the CloudTrail logs S3 bucket should prevent public access to the CloudTrail logs.

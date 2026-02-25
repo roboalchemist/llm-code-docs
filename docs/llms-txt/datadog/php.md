@@ -50,13 +50,13 @@ Download the official installer:
 
 ```shell
 curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datadog-setup.php
-```
+```text
 
 In case you are using Alpine Linux you need to install `libgcc_s` prior to running the installer:
 
 ```shell
 apk add libgcc
-```
+```text
 
 Run the installer:
 
@@ -72,7 +72,7 @@ php datadog-setup.php --php-bin=all --enable-appsec
 
 # APM + Profiling
 php datadog-setup.php --php-bin=all --enable-profiling
-```
+```text
 
 {% alert level="warning" %}
 **Note**: Only APM is supported on Windows. Do not use the `--enable-appsec` and `--enable-profiling` flags when tracing PHP applications on Windows.
@@ -150,57 +150,57 @@ To check if debug symbols are installed for PHP or PHP-FPM, use `gdb`.
 
 Install `gdb`:
 
-```
+```text
 apt|yum install -y gdb
-```
+```text
 
 Run `gdb` with the binary of interest. For example for PHP-FPM:
 
-```
+```text
 gdb php-fpm
-```
+```text
 
 If the `gdb` output contains a line similar to the text below, then debug symbols are already installed.
 
-```
+```text
 ...
 Reading symbols from php-fpm...Reading symbols from /usr/lib/debug/path/to/some/file.debug...done.
 ...
-```
+```text
 
 If the `gdb` output contains a line similar to the text below, then debug symbols need to be installed:
 
-```
+```text
 ...
 Reading symbols from php-fpm...(no debugging symbols found)...done.
 ...
-```
+```text
 
 #### Centos{% #centos %}
 
 Install package `yum-utils` that provides the program `debuginfo-install`:
 
-```
+```bash
 yum install -y yum-utils
-```
+```text
 
 Find the package name for your PHP binaries, it can vary depending on the PHP installation method:
 
-```
+```bash
 yum list installed | grep php
-```
+```text
 
 Install debug symbols. For example for package `php-fpm`:
 
-```
+```text
 debuginfo-install -y php-fpm
-```
+```text
 
 **Note**: If the repository that provides the PHP binaries is not enabled by default, it can be enabled when running the `debuginfo-install` command. For example:
 
-```
+```text
 debuginfo-install --enablerepo=remi-php74 -y php-fpm
-```
+```text
 
 #### Debian{% #debian %}
 
@@ -208,10 +208,10 @@ debuginfo-install --enablerepo=remi-php74 -y php-fpm
 
 If PHP was installed from the [Sury Debian DPA](https://packages.sury.org/php/), debug symbols are already available from the DPA. For example, for PHP-FPM 7.2:
 
-```
+```bash
 apt update
 apt install -y php7.2-fpm-dbgsym
-```
+```text
 
 ##### PHP installed from a different package{% #php-installed-from-a-different-package %}
 
@@ -225,41 +225,41 @@ Edit the file `/etc/apt/sources.list`:
 # add a `deb` deb http://deb.debian.org/debian-debug/ $RELEASE-debug main
 # For example for buster
 deb http://deb.debian.org/debian-debug/ buster-debug main
-```
+```text
 
 Update `apt`:
 
-```
+```bash
 apt update
-```
+```text
 
 Try canonical package names for debug symbols, first. For example, if the package name is `php7.2-fpm` try:
 
-```
+```bash
 apt install -y php7.2-fpm-dbgsym
 
 # if the above does not work
 
 apt install -y php7.2-fpm-dbg
-```
+```text
 
 If debug symbols cannot be found, use the utility tool `find-dbgsym-packages`. Install the binary:
 
-```
+```bash
 apt install -y debian-goodies
-```
+```text
 
 Attempt finding debug symbols from either the full path to the binary or the process id of a running process:
 
-```
+```text
 find-dbgsym-packages /usr/sbin/php-fpm7.2
-```
+```text
 
 Install the resulting package name, if found:
 
-```
+```bash
 apt install -y php7.2-fpm-{package-name-returned-by-find-dbgsym-packages}
-```
+```text
 
 #### Ubuntu{% #ubuntu %}
 
@@ -277,76 +277,76 @@ After:
 
 Update and install the debug symbols. For example, for PHP-FPM 7.2:
 
-```
+```bash
 apt update
 apt install -y php7.2-fpm-dbgsym
-```
+```text
 
 ##### PHP installed from a different package{% #php-installed-from-a-different-package-1 %}
 
 Find the package name for your PHP binaries, it can vary depending on the PHP installation method:
 
-```
+```bash
 apt list --installed | grep php
-```
+```text
 
 **Note**: In some cases `php-fpm` can be a metapackage that refers to the real package, for example `php7.2-fpm` in case of PHP-FPM 7.2. In this case the package name is the latter.
 
 Try canonical package names for debug symbols, first. For example, if the package name is `php7.2-fpm` try:
 
-```
+```bash
 apt install -y php7.2-fpm-dbgsym
 
 # if the above does not work
 
 apt install -y php7.2-fpm-dbg
-```
+```text
 
 If the `-dbg` and `-dbgsym` packages cannot be found, enable the `ddebs` repositories. Detailed information about how to [install debug symbols](https://wiki.ubuntu.com/Debug%20Symbol%20Packages) from the `ddebs` can be found in the Ubuntu documentation.
 
 For example, for Ubuntu 18.04+, enable the `ddebs` repo:
 
-```
+```text
 echo "deb http://ddebs.ubuntu.com $(lsb_release -cs) main restricted universe multiverse" | tee -a /etc/apt/sources.list.d/ddebs.list
 
 echo "deb http://ddebs.ubuntu.com $(lsb_release -cs)-updates main restricted universe multiverse" | tee -a /etc/apt/sources.list.d/ddebs.list
-```
+```text
 
 Import the signing key (make sure the [signing key is correct](https://wiki.ubuntu.com/Debug%20Symbol%20Packages#Getting_-dbgsym.ddeb_packages)):
 
-```
+```bash
 apt install ubuntu-dbgsym-keyring
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <SIGNING KEY FROM UBUNTU DOCUMENTATION>
 apt update
-```
+```text
 
 Try adding the canonical package names for debug symbols. For example, if the package name is `php7.2-fpm` try:
 
-```
+```bash
 apt install -y php7.2-fpm-dbgsym
 
 # if the above does not work
 
 apt install -y php7.2-fpm-dbg
-```
+```text
 
 In case debug symbols cannot be found, use the utility tool `find-dbgsym-packages`. Install the binary:
 
-```
+```bash
 apt install -y debian-goodies
-```
+```text
 
 Attempt finding debug symbols from either the full path to the binary or the process id of a running process:
 
-```
+```text
 find-dbgsym-packages /usr/sbin/php-fpm7.2
-```
+```text
 
 Install the resulting package name, if found:
 
-```
+```bash
 apt install -y php7.2-fpm-{package-name-returned-by-find-dbgsym-packages}
-```
+```text
 
 ### Obtaining a core dump{% #obtaining-a-core-dump %}
 
@@ -378,13 +378,13 @@ Use the information below to assist with obtaining a core dump in a Docker conta
 privileged: true
 ulimits:
   core: 99999999999
-```
+```text
 When running the container (and before starting the PHP application) you need to run the following commands:
-```
+```text
 ulimit -c unlimited
 echo '/tmp/core' > /proc/sys/kernel/core_pattern
 echo 1 > /proc/sys/fs/suid_dumpable
-```
+```text
 
 ### Obtaining a Valgrind trace{% #obtaining-a-valgrind-trace %}
 
@@ -400,15 +400,15 @@ For a CLI application, run:
 
 ```shell
 USE_ZEND_ALLOC=0 valgrind -- php path/to/script.php
-```
+```text
 When running `php-fpm` run:
 ```shell
 USE_ZEND_ALLOC=0 valgrind --trace-children=yes -- php-fpm -F --fpm-config <CONFIG_FILE_PATH> <MORE_OPTIONS>
-```
+```text
 When using Apache, run:
 ```shell
 (. /etc/apache2/envvars; USE_ZEND_ALLOC=0 valgrind --trace-children=yes -- apache2 -X)`
-```
+```text
 
 
 
@@ -451,7 +451,7 @@ The resulting Valgrind trace is printed by default to the standard error, follow
 ==322== Use --track-origins=yes to see where uninitialised values come from
 ==322== For lists of detected and suppressed errors, rerun with: -s
 ==322== ERROR SUMMARY: 18868 errors from 102 contexts (suppressed: 0 from 0)
-```
+```text
 
 ### Obtaining a strace{% #obtaining-a-strace %}
 
@@ -467,7 +467,7 @@ For a CLI application, run:
 
 ```shell
 strace -f php path/to/script.php
-```
+```text
 
 
 
@@ -475,7 +475,7 @@ For `php-fpm`, run:
 
 ```shell
 strace -f php-fpm -F --fpm-config <CONFIG_FILE_PATH> <MORE_OPTIONS>
-```
+```text
 
 
 
@@ -483,7 +483,7 @@ For Apache, run:
 
 ```shell
 (. /etc/apache2/envvars; strace -f apache2 -X)
-```
+```text
 
 
 

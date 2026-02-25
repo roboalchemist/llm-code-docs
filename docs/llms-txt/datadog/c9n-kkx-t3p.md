@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Processes in containers should have isolated Process ID (PID) namespaces
-Classification:complianceFramework:cis-dockerControl:5.15 
+Classification:complianceFramework:cis-dockerControl:5.15
 ## Description{% #description %}
 
 The Process ID (PID) namespace isolates the process ID space, meaning that processes in different PID namespaces can have the same PID. This creates process level isolation between the containers and the host.

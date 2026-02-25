@@ -52,6 +52,5 @@ session_id($_POST["s_id"]);
 session_id(bin2hex(random_bytes(16)));
 session_regenerate_id();
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Slack private channel converted to public
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detect when a Slack channel is changed from private to public.

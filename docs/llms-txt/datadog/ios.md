@@ -79,8 +79,6 @@ For more information about setting up a client token, see the [client token docu
 {% callout %}
 # Important note for users on the following Datadog sites: app.datadoghq.com
 
-
-
 {% tab title="Swift" %}
 
 ```swift
@@ -110,13 +108,10 @@ configuration.service = @"<service name>";
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: app.datadoghq.eu
-
-
 
 {% tab title="Swift" %}
 
@@ -149,13 +144,10 @@ configuration.site = [DDSite eu1];
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: us3.datadoghq.com
-
-
 
 {% tab title="Swift" %}
 
@@ -188,13 +180,10 @@ configuration.site = [DDSite us3];
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: us5.datadoghq.com
-
-
 
 {% tab title="Swift" %}
 
@@ -227,13 +216,10 @@ configuration.site = [DDSite us5];
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: app.ddog-gov.com
-
-
 
 {% tab title="Swift" %}
 
@@ -266,13 +252,10 @@ configuration.site = [DDSite us1_fed];
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: ap1.datadoghq.com
-
-
 
 {% tab title="Swift" %}
 
@@ -305,13 +288,10 @@ configuration.site = [DDSite ap1];
 
 {% /tab %}
 
-
 {% /callout %}
 
 {% callout %}
 # Important note for users on the following Datadog sites: ap2.datadoghq.com
-
-
 
 {% tab title="Swift" %}
 
@@ -343,7 +323,6 @@ configuration.site = [DDSite ap2];
 ```
 
 {% /tab %}
-
 
 {% /callout %}
 

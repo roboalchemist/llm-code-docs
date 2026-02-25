@@ -128,6 +128,5 @@ a.writeFloatBE(0, false)
 a.writeDoubleLE(0, false)
 a.writeDoubleBE(0, false)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

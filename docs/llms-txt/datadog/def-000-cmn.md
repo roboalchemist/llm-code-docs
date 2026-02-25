@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /etc/security/opasswd File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/security/opasswd`, run the command:

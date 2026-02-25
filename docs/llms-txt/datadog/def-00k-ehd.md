@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server should use TLS certificate client authentication
- 
+
 ## Description{% #description %}
 
 TLS connections should be enabled on the API server. The API server communication contains sensitive parameters that should remain encrypted in transit.

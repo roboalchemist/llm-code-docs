@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Disable Kernel Parameter for Sending ICMP Redirects on all IPv4 Interfaces by Default
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv4.conf.default.send_redirects` kernel parameter, run the following command:
@@ -78,7 +78,7 @@ fi
 
 #
 # If net.ipv4.conf.default.send_redirects present in /etc/sysctl.conf, change value to "0"
-#	else, add "net.ipv4.conf.default.send_redirects = 0" to /etc/sysctl.conf
+#   else, add "net.ipv4.conf.default.send_redirects = 0" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

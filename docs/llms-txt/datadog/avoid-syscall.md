@@ -45,6 +45,5 @@ Instead of using `syscall`, use the abstractions that Ruby provides. For example
 # See https://ruby-doc.org/core-2.4.1/Kernel.html
 syscall 4, 1, "hello\n", 6   # '4' is write(2) on our box
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

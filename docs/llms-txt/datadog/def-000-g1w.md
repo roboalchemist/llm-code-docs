@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should enable SSL/TLS for client connections
- 
+
 ## Description{% #description %}
 
 Enable the `require_ssl` parameter for your Amazon Redshift cluster.
@@ -35,6 +35,6 @@ In the `modify-cluster-parameter-group.sh` file:
     --parameter-group-name your-parameter-group
     --parameters ParameterName=require_ssl,ParameterValue=true
 
-  
+
 ```
 Run `reboot-cluster` with your [cluster identifier](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/redshift/reboot-cluster.html#synopsis) to enable the configuration changes.

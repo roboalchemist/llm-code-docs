@@ -36,7 +36,7 @@ kind: Deployment
 metadata:
   name: example-deployment
 spec:
-  #(...)  
+  #(...)
   template:
     metadata:
       labels:
@@ -138,7 +138,7 @@ Your output resembles the following:
 ...
 Admission Controller
 ====================
-  
+
     Webhooks info
     -------------
       MutatingWebhookConfigurations name: datadog-webhook
@@ -161,7 +161,7 @@ Admission Controller
         Object selector: &LabelSelector{MatchLabels:map[string]string{admission.datadoghq.com/enabled: true,},MatchExpressions:[]LabelSelectorRequirement{},}
         Rule 1: Operations: [CREATE] - APIGroups: [] - APIVersions: [v1] - Resources: [pods]
         Service: default/datadog-admission-controller - Port: 443 - Path: /injecttags
-  
+
     Secret info
     -----------
     Secret name: webhook-certificate

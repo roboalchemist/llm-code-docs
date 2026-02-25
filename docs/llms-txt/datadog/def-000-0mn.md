@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Restrict usage of ptrace to descendant processes
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `kernel.yama.ptrace_scope` kernel parameter, run the following command:
@@ -76,7 +76,7 @@ fi
 
 #
 # If kernel.yama.ptrace_scope present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "kernel.yama.ptrace_scope = value" to /etc/sysctl.conf
+#   else, add "kernel.yama.ptrace_scope = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

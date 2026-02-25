@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Synthetics
 ---
 
-# Synthetics
-
 Synthetic tests use simulated requests and actions so you can monitor the availability and performance of systems and applications. Datadog supports the following types of synthetic tests:
 
 - [API tests](https://docs.datadoghq.com/synthetics/api_tests/)
@@ -38,8 +36,6 @@ For more information, see the [Synthetic Monitoring documentation](https://docs.
 Create a Synthetic API test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -443,7 +439,7 @@ Details of the test to create.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -605,7 +601,7 @@ Details of the test to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -650,7 +646,7 @@ Details of the test to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1383,7 +1379,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \## Create an API test.
 # Example of an API test.
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/api" \
@@ -1558,8 +1554,8 @@ EOF\## Create a Multistep API test
   "type": "api"
 }
 EOF
-                        
-##### 
+
+#####
                           \## Create an API test.
 # Example of an API test.
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/api" \
@@ -1734,8 +1730,8 @@ EOF\## Create a Multistep API test
   "type": "api"
 }
 EOF
-                        
-##### 
+
+#####
                           \## Create an API test.
 # Example of an API test.
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/api" \
@@ -1910,8 +1906,8 @@ EOF\## Create a Multistep API test
   "type": "api"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a multi-step api test with every type of basicAuth returns "OK - Returns the created test details." response
@@ -1919,218 +1915,218 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsAPITest{
-		Config: datadogV1.SyntheticsAPITestConfig{
-			Steps: []datadogV1.SyntheticsAPIStep{
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
-									Password: datadog.PtrString("password"),
-									Username: datadog.PtrString("username"),
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
-									Password: datadog.PtrString("password"),
-									Username: datadog.PtrString("username"),
-									Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthSigv4: &datadogV1.SyntheticsBasicAuthSigv4{
-									AccessKey: "accessKey",
-									SecretKey: "secretKey",
-									Type:      datadogV1.SYNTHETICSBASICAUTHSIGV4TYPE_SIGV4,
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthNTLM: &datadogV1.SyntheticsBasicAuthNTLM{
-									Type: datadogV1.SYNTHETICSBASICAUTHNTLMTYPE_NTLM,
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthDigest: &datadogV1.SyntheticsBasicAuthDigest{
-									Password: "password",
-									Username: "username",
-									Type:     datadogV1.SYNTHETICSBASICAUTHDIGESTTYPE_DIGEST,
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthOauthClient: &datadogV1.SyntheticsBasicAuthOauthClient{
-									AccessTokenUrl:         "accessTokenUrl",
-									TokenApiAuthentication: datadogV1.SYNTHETICSBASICAUTHOAUTHTOKENAPIAUTHENTICATION_HEADER,
-									ClientId:               "clientId",
-									ClientSecret:           "clientSecret",
-									Type:                   datadogV1.SYNTHETICSBASICAUTHOAUTHCLIENTTYPE_OAUTH_CLIENT,
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthOauthROP: &datadogV1.SyntheticsBasicAuthOauthROP{
-									AccessTokenUrl:         "accessTokenUrl",
-									Password:               "password",
-									TokenApiAuthentication: datadogV1.SYNTHETICSBASICAUTHOAUTHTOKENAPIAUTHENTICATION_HEADER,
-									Username:               "username",
-									Type:                   datadogV1.SYNTHETICSBASICAUTHOAUTHROPTYPE_OAUTH_ROP,
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-			},
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "BDD test payload: synthetics_api_test_multi_step_with_every_type_of_basic_auth.json",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			TickEvery: datadog.PtrInt64(60),
-		},
-		Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_MULTI.Ptr(),
-		Type:    datadogV1.SYNTHETICSAPITESTTYPE_API,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
+    body := datadogV1.SyntheticsAPITest{
+        Config: datadogV1.SyntheticsAPITestConfig{
+            Steps: []datadogV1.SyntheticsAPIStep{
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
+                                    Password: datadog.PtrString("password"),
+                                    Username: datadog.PtrString("username"),
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
+                                    Password: datadog.PtrString("password"),
+                                    Username: datadog.PtrString("username"),
+                                    Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthSigv4: &datadogV1.SyntheticsBasicAuthSigv4{
+                                    AccessKey: "accessKey",
+                                    SecretKey: "secretKey",
+                                    Type:      datadogV1.SYNTHETICSBASICAUTHSIGV4TYPE_SIGV4,
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthNTLM: &datadogV1.SyntheticsBasicAuthNTLM{
+                                    Type: datadogV1.SYNTHETICSBASICAUTHNTLMTYPE_NTLM,
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthDigest: &datadogV1.SyntheticsBasicAuthDigest{
+                                    Password: "password",
+                                    Username: "username",
+                                    Type:     datadogV1.SYNTHETICSBASICAUTHDIGESTTYPE_DIGEST,
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthOauthClient: &datadogV1.SyntheticsBasicAuthOauthClient{
+                                    AccessTokenUrl:         "accessTokenUrl",
+                                    TokenApiAuthentication: datadogV1.SYNTHETICSBASICAUTHOAUTHTOKENAPIAUTHENTICATION_HEADER,
+                                    ClientId:               "clientId",
+                                    ClientSecret:           "clientSecret",
+                                    Type:                   datadogV1.SYNTHETICSBASICAUTHOAUTHCLIENTTYPE_OAUTH_CLIENT,
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthOauthROP: &datadogV1.SyntheticsBasicAuthOauthROP{
+                                    AccessTokenUrl:         "accessTokenUrl",
+                                    Password:               "password",
+                                    TokenApiAuthentication: datadogV1.SYNTHETICSBASICAUTHOAUTHTOKENAPIAUTHENTICATION_HEADER,
+                                    Username:               "username",
+                                    Type:                   datadogV1.SYNTHETICSBASICAUTHOAUTHROPTYPE_OAUTH_ROP,
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+            },
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "BDD test payload: synthetics_api_test_multi_step_with_every_type_of_basic_auth.json",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            TickEvery: datadog.PtrInt64(60),
+        },
+        Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_MULTI.Ptr(),
+        Type:    datadogV1.SYNTHETICSAPITESTTYPE_API,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a multistep test with subtest returns "OK" response
@@ -2138,81 +2134,81 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test" in the system
-	SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_api_test" in the system
+    SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsAPITest{
-		Config: datadogV1.SyntheticsAPITestConfig{
-			Steps: []datadogV1.SyntheticsAPIStep{
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
-						Assertions: []datadogV1.SyntheticsAssertion{
-							datadogV1.SyntheticsAssertion{
-								SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-									Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-									Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
-									Target: datadogV1.SyntheticsAssertionTargetValue{
-										SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
-								}},
-						},
-						Name: "request is sent",
-						Request: datadogV1.SyntheticsTestRequest{
-							Url:    datadog.PtrString("https://httpbin.org/status/200"),
-							Method: datadog.PtrString("GET"),
-							BasicAuth: &datadogV1.SyntheticsBasicAuth{
-								SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
-									Password: datadog.PtrString("password"),
-									Username: datadog.PtrString("username"),
-								}},
-						},
-						Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
-					}},
-				datadogV1.SyntheticsAPIStep{
-					SyntheticsAPISubtestStep: &datadogV1.SyntheticsAPISubtestStep{
-						Subtype:         datadogV1.SYNTHETICSAPISUBTESTSTEPSUBTYPE_PLAY_SUB_TEST,
-						SubtestPublicId: SyntheticsAPITestPublicID,
-						Name:            "subtest step",
-					}},
-			},
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "BDD test payload: synthetics_api_test_multi_step_with_subtest.json",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			TickEvery: datadog.PtrInt64(60),
-		},
-		Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_MULTI.Ptr(),
-		Type:    datadogV1.SYNTHETICSAPITESTTYPE_API,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
+    body := datadogV1.SyntheticsAPITest{
+        Config: datadogV1.SyntheticsAPITestConfig{
+            Steps: []datadogV1.SyntheticsAPIStep{
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPITestStep: &datadogV1.SyntheticsAPITestStep{
+                        Assertions: []datadogV1.SyntheticsAssertion{
+                            datadogV1.SyntheticsAssertion{
+                                SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                                    Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                                    Type:     datadogV1.SYNTHETICSASSERTIONTYPE_STATUS_CODE,
+                                    Target: datadogV1.SyntheticsAssertionTargetValue{
+                                        SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(200)},
+                                }},
+                        },
+                        Name: "request is sent",
+                        Request: datadogV1.SyntheticsTestRequest{
+                            Url:    datadog.PtrString("https://httpbin.org/status/200"),
+                            Method: datadog.PtrString("GET"),
+                            BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                                SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
+                                    Password: datadog.PtrString("password"),
+                                    Username: datadog.PtrString("username"),
+                                }},
+                        },
+                        Subtype: datadogV1.SYNTHETICSAPITESTSTEPSUBTYPE_HTTP,
+                    }},
+                datadogV1.SyntheticsAPIStep{
+                    SyntheticsAPISubtestStep: &datadogV1.SyntheticsAPISubtestStep{
+                        Subtype:         datadogV1.SYNTHETICSAPISUBTESTSTEPSUBTYPE_PLAY_SUB_TEST,
+                        SubtestPublicId: SyntheticsAPITestPublicID,
+                        Name:            "subtest step",
+                    }},
+            },
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "BDD test payload: synthetics_api_test_multi_step_with_subtest.json",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            TickEvery: datadog.PtrInt64(60),
+        },
+        Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_MULTI.Ptr(),
+        Type:    datadogV1.SYNTHETICSAPITESTTYPE_API,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create an API GRPC test returns "OK - Returns the created test details." response
@@ -2220,85 +2216,85 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsAPITest{
-		Config: datadogV1.SyntheticsAPITestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-						Target: datadogV1.SyntheticsAssertionTargetValue{
-							SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(1)},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_HEALTHCHECK_STATUS,
-					}},
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-						Target: datadogV1.SyntheticsAssertionTargetValue{
-							SyntheticsAssertionTargetValueString: datadog.PtrString("proto target")},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_PROTO,
-					}},
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-						Target: datadogV1.SyntheticsAssertionTargetValue{
-							SyntheticsAssertionTargetValueString: datadog.PtrString("123")},
-						Property: datadog.PtrString("property"),
-						Type:     datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_METADATA,
-					}},
-			},
-			Request: &datadogV1.SyntheticsTestRequest{
-				Host: datadog.PtrString("localhost"),
-				Port: &datadogV1.SyntheticsTestRequestPort{
-					SyntheticsTestRequestNumericalPort: datadog.PtrInt64(50051)},
-				Service:  datadog.PtrString("Hello"),
-				Method:   datadog.PtrString("GET"),
-				Message:  datadog.PtrString(""),
-				Metadata: map[string]string{},
-			},
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "BDD test payload: synthetics_api_grpc_test_payload.json",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			MinFailureDuration: datadog.PtrInt64(0),
-			MinLocationFailed:  datadog.PtrInt64(1),
-			MonitorOptions: &datadogV1.SyntheticsTestOptionsMonitorOptions{
-				RenotifyInterval: datadog.PtrInt64(0),
-			},
-			MonitorName: datadog.PtrString("Example-Synthetic"),
-			TickEvery:   datadog.PtrInt64(60),
-		},
-		Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_GRPC.Ptr(),
-		Tags: []string{
-			"testing:api",
-		},
-		Type: datadogV1.SYNTHETICSAPITESTTYPE_API,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
+    body := datadogV1.SyntheticsAPITest{
+        Config: datadogV1.SyntheticsAPITestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                        Target: datadogV1.SyntheticsAssertionTargetValue{
+                            SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(1)},
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_HEALTHCHECK_STATUS,
+                    }},
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                        Target: datadogV1.SyntheticsAssertionTargetValue{
+                            SyntheticsAssertionTargetValueString: datadog.PtrString("proto target")},
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_PROTO,
+                    }},
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                        Target: datadogV1.SyntheticsAssertionTargetValue{
+                            SyntheticsAssertionTargetValueString: datadog.PtrString("123")},
+                        Property: datadog.PtrString("property"),
+                        Type:     datadogV1.SYNTHETICSASSERTIONTYPE_GRPC_METADATA,
+                    }},
+            },
+            Request: &datadogV1.SyntheticsTestRequest{
+                Host: datadog.PtrString("localhost"),
+                Port: &datadogV1.SyntheticsTestRequestPort{
+                    SyntheticsTestRequestNumericalPort: datadog.PtrInt64(50051)},
+                Service:  datadog.PtrString("Hello"),
+                Method:   datadog.PtrString("GET"),
+                Message:  datadog.PtrString(""),
+                Metadata: map[string]string{},
+            },
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "BDD test payload: synthetics_api_grpc_test_payload.json",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            MinFailureDuration: datadog.PtrInt64(0),
+            MinLocationFailed:  datadog.PtrInt64(1),
+            MonitorOptions: &datadogV1.SyntheticsTestOptionsMonitorOptions{
+                RenotifyInterval: datadog.PtrInt64(0),
+            },
+            MonitorName: datadog.PtrString("Example-Synthetic"),
+            TickEvery:   datadog.PtrInt64(60),
+        },
+        Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_GRPC.Ptr(),
+        Tags: []string{
+            "testing:api",
+        },
+        Type: datadogV1.SYNTHETICSAPITESTTYPE_API,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsAPITest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsAPITest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsAPITest`:\n%s\n", responseContent)
 }
 ```
 
@@ -2306,7 +2302,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a multi-step api test with every type of basicAuth returns "OK - Returns the created test
@@ -2551,7 +2547,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a multistep test with subtest returns "OK" response
@@ -2642,7 +2638,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create an API GRPC test returns "OK - Returns the created test details." response
@@ -2734,7 +2730,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2936,7 +2932,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2961,7 +2957,6 @@ from datadog_api_client.v1.model.synthetics_test_details_sub_type import Synthet
 from datadog_api_client.v1.model.synthetics_test_options import SyntheticsTestOptions
 from datadog_api_client.v1.model.synthetics_test_request import SyntheticsTestRequest
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = environ["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = SyntheticsAPITest(
@@ -3013,7 +3008,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3096,7 +3091,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a multi-step api test with every type of basicAuth returns "OK - Returns the created test details." response
@@ -3264,7 +3259,7 @@ body = DatadogAPIClient::V1::SyntheticsAPITest.new({
 p api_instance.create_synthetics_api_test(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a multistep test with subtest returns "OK" response
@@ -3272,7 +3267,6 @@ p api_instance.create_synthetics_api_test(body)
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsAPITest.new({
@@ -3318,7 +3312,7 @@ body = DatadogAPIClient::V1::SyntheticsAPITest.new({
 p api_instance.create_synthetics_api_test(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an API GRPC test returns "OK - Returns the created test details." response
@@ -3382,7 +3376,7 @@ p api_instance.create_synthetics_api_test(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a multi-step api test with every type of basicAuth returns "OK - Returns
@@ -3600,7 +3594,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a multistep test with subtest returns "OK" response
@@ -3676,7 +3670,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create an API GRPC test returns "OK - Returns the created test details."
@@ -3769,7 +3763,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3950,7 +3944,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4018,7 +4012,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4113,8 +4107,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a Synthetic browser test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -4352,7 +4344,7 @@ Details of the test to create.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -4424,7 +4416,7 @@ Details of the test to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -4496,7 +4488,7 @@ Details of the test to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -5110,7 +5102,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5185,8 +5177,8 @@ Error response object.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5261,8 +5253,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5338,8 +5330,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a browser test returns "OK - Returns saved rumSettings." response
@@ -5347,100 +5339,100 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsBrowserTest{
-		Config: datadogV1.SyntheticsBrowserTestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{},
-			ConfigVariables: []datadogV1.SyntheticsConfigVariable{
-				{
-					Example: datadog.PtrString("content-type"),
-					Name:    "PROPERTY",
-					Pattern: datadog.PtrString("content-type"),
-					Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
-				},
-			},
-			Request: datadogV1.SyntheticsTestRequest{
-				Method: datadog.PtrString("GET"),
-				Url:    datadog.PtrString("https://datadoghq.com"),
-				CertificateDomains: []string{
-					"https://datadoghq.com",
-				},
-			},
-			SetCookie: datadog.PtrString("name:test"),
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "Test message",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			AcceptSelfSigned: datadog.PtrBool(false),
-			AllowInsecure:    datadog.PtrBool(true),
-			DeviceIds: []string{
-				"tablet",
-			},
-			DisableCors:        datadog.PtrBool(true),
-			FollowRedirects:    datadog.PtrBool(true),
-			MinFailureDuration: datadog.PtrInt64(10),
-			MinLocationFailed:  datadog.PtrInt64(1),
-			NoScreenshot:       datadog.PtrBool(true),
-			Retry: &datadogV1.SyntheticsTestOptionsRetry{
-				Count:    datadog.PtrInt64(2),
-				Interval: datadog.PtrFloat64(10),
-			},
-			RumSettings: &datadogV1.SyntheticsBrowserTestRumSettings{
-				IsEnabled:     true,
-				ApplicationId: datadog.PtrString("mockApplicationId"),
-				ClientTokenId: datadog.PtrInt64(12345),
-			},
-			TickEvery: datadog.PtrInt64(300),
-			Ci: &datadogV1.SyntheticsTestCiOptions{
-				ExecutionRule: datadogV1.SYNTHETICSTESTEXECUTIONRULE_SKIPPED,
-			},
-			IgnoreServerCertificateError: datadog.PtrBool(true),
-			DisableCsp:                   datadog.PtrBool(true),
-			InitialNavigationTimeout:     datadog.PtrInt64(200),
-		},
-		Tags: []string{
-			"testing:browser",
-		},
-		Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
-		Steps: []datadogV1.SyntheticsStep{
-			{
-				AllowFailure: datadog.PtrBool(false),
-				IsCritical:   datadog.PtrBool(true),
-				Name:         datadog.PtrString("Refresh page"),
-				Params:       new(interface{}),
-				Type:         datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
+    body := datadogV1.SyntheticsBrowserTest{
+        Config: datadogV1.SyntheticsBrowserTestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{},
+            ConfigVariables: []datadogV1.SyntheticsConfigVariable{
+                {
+                    Example: datadog.PtrString("content-type"),
+                    Name:    "PROPERTY",
+                    Pattern: datadog.PtrString("content-type"),
+                    Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
+                },
+            },
+            Request: datadogV1.SyntheticsTestRequest{
+                Method: datadog.PtrString("GET"),
+                Url:    datadog.PtrString("https://datadoghq.com"),
+                CertificateDomains: []string{
+                    "https://datadoghq.com",
+                },
+            },
+            SetCookie: datadog.PtrString("name:test"),
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "Test message",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            AcceptSelfSigned: datadog.PtrBool(false),
+            AllowInsecure:    datadog.PtrBool(true),
+            DeviceIds: []string{
+                "tablet",
+            },
+            DisableCors:        datadog.PtrBool(true),
+            FollowRedirects:    datadog.PtrBool(true),
+            MinFailureDuration: datadog.PtrInt64(10),
+            MinLocationFailed:  datadog.PtrInt64(1),
+            NoScreenshot:       datadog.PtrBool(true),
+            Retry: &datadogV1.SyntheticsTestOptionsRetry{
+                Count:    datadog.PtrInt64(2),
+                Interval: datadog.PtrFloat64(10),
+            },
+            RumSettings: &datadogV1.SyntheticsBrowserTestRumSettings{
+                IsEnabled:     true,
+                ApplicationId: datadog.PtrString("mockApplicationId"),
+                ClientTokenId: datadog.PtrInt64(12345),
+            },
+            TickEvery: datadog.PtrInt64(300),
+            Ci: &datadogV1.SyntheticsTestCiOptions{
+                ExecutionRule: datadogV1.SYNTHETICSTESTEXECUTIONRULE_SKIPPED,
+            },
+            IgnoreServerCertificateError: datadog.PtrBool(true),
+            DisableCsp:                   datadog.PtrBool(true),
+            InitialNavigationTimeout:     datadog.PtrInt64(200),
+        },
+        Tags: []string{
+            "testing:browser",
+        },
+        Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
+        Steps: []datadogV1.SyntheticsStep{
+            {
+                AllowFailure: datadog.PtrBool(false),
+                IsCritical:   datadog.PtrBool(true),
+                Name:         datadog.PtrString("Refresh page"),
+                Params:       new(interface{}),
+                Type:         datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a browser test returns "OK - Returns the created test details." response
@@ -5448,100 +5440,100 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsBrowserTest{
-		Config: datadogV1.SyntheticsBrowserTestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{},
-			Variables: []datadogV1.SyntheticsBrowserVariable{
-				{
-					Type:    datadogV1.SYNTHETICSBROWSERVARIABLETYPE_TEXT,
-					Name:    "TEST_VARIABLE",
-					Pattern: datadog.PtrString("secret"),
-					Secure:  datadog.PtrBool(true),
-					Example: datadog.PtrString("secret"),
-				},
-			},
-			ConfigVariables: []datadogV1.SyntheticsConfigVariable{
-				{
-					Example: datadog.PtrString("content-type"),
-					Name:    "PROPERTY",
-					Pattern: datadog.PtrString("content-type"),
-					Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
-					Secure:  datadog.PtrBool(true),
-				},
-			},
-			Request: datadogV1.SyntheticsTestRequest{
-				Method: datadog.PtrString("GET"),
-				Url:    datadog.PtrString("https://datadoghq.com"),
-			},
-			SetCookie: datadog.PtrString("name:test"),
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "Test message",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			AcceptSelfSigned: datadog.PtrBool(false),
-			AllowInsecure:    datadog.PtrBool(true),
-			DeviceIds: []string{
-				"chrome.laptop_large",
-			},
-			DisableCors:        datadog.PtrBool(true),
-			FollowRedirects:    datadog.PtrBool(true),
-			MinFailureDuration: datadog.PtrInt64(10),
-			MinLocationFailed:  datadog.PtrInt64(1),
-			NoScreenshot:       datadog.PtrBool(true),
-			Retry: &datadogV1.SyntheticsTestOptionsRetry{
-				Count:    datadog.PtrInt64(2),
-				Interval: datadog.PtrFloat64(10),
-			},
-			TickEvery:             datadog.PtrInt64(300),
-			EnableProfiling:       datadog.PtrBool(true),
-			EnableSecurityTesting: datadog.PtrBool(true),
-		},
-		Tags: []string{
-			"testing:browser",
-		},
-		Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
-		Steps: []datadogV1.SyntheticsStep{
-			{
-				AllowFailure:  datadog.PtrBool(false),
-				AlwaysExecute: datadog.PtrBool(true),
-				ExitIfSucceed: datadog.PtrBool(true),
-				IsCritical:    datadog.PtrBool(true),
-				Name:          datadog.PtrString("Refresh page"),
-				Params:        new(interface{}),
-				Type:          datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
+    body := datadogV1.SyntheticsBrowserTest{
+        Config: datadogV1.SyntheticsBrowserTestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{},
+            Variables: []datadogV1.SyntheticsBrowserVariable{
+                {
+                    Type:    datadogV1.SYNTHETICSBROWSERVARIABLETYPE_TEXT,
+                    Name:    "TEST_VARIABLE",
+                    Pattern: datadog.PtrString("secret"),
+                    Secure:  datadog.PtrBool(true),
+                    Example: datadog.PtrString("secret"),
+                },
+            },
+            ConfigVariables: []datadogV1.SyntheticsConfigVariable{
+                {
+                    Example: datadog.PtrString("content-type"),
+                    Name:    "PROPERTY",
+                    Pattern: datadog.PtrString("content-type"),
+                    Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
+                    Secure:  datadog.PtrBool(true),
+                },
+            },
+            Request: datadogV1.SyntheticsTestRequest{
+                Method: datadog.PtrString("GET"),
+                Url:    datadog.PtrString("https://datadoghq.com"),
+            },
+            SetCookie: datadog.PtrString("name:test"),
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "Test message",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            AcceptSelfSigned: datadog.PtrBool(false),
+            AllowInsecure:    datadog.PtrBool(true),
+            DeviceIds: []string{
+                "chrome.laptop_large",
+            },
+            DisableCors:        datadog.PtrBool(true),
+            FollowRedirects:    datadog.PtrBool(true),
+            MinFailureDuration: datadog.PtrInt64(10),
+            MinLocationFailed:  datadog.PtrInt64(1),
+            NoScreenshot:       datadog.PtrBool(true),
+            Retry: &datadogV1.SyntheticsTestOptionsRetry{
+                Count:    datadog.PtrInt64(2),
+                Interval: datadog.PtrFloat64(10),
+            },
+            TickEvery:             datadog.PtrInt64(300),
+            EnableProfiling:       datadog.PtrBool(true),
+            EnableSecurityTesting: datadog.PtrBool(true),
+        },
+        Tags: []string{
+            "testing:browser",
+        },
+        Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
+        Steps: []datadogV1.SyntheticsStep{
+            {
+                AllowFailure:  datadog.PtrBool(false),
+                AlwaysExecute: datadog.PtrBool(true),
+                ExitIfSucceed: datadog.PtrBool(true),
+                IsCritical:    datadog.PtrBool(true),
+                Name:          datadog.PtrString("Refresh page"),
+                Params:        new(interface{}),
+                Type:          datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a browser test with advanced scheduling options returns "OK - Returns the created test details." response
@@ -5549,97 +5541,97 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsBrowserTest{
-		Config: datadogV1.SyntheticsBrowserTestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{},
-			ConfigVariables: []datadogV1.SyntheticsConfigVariable{
-				{
-					Example: datadog.PtrString("content-type"),
-					Name:    "PROPERTY",
-					Pattern: datadog.PtrString("content-type"),
-					Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
-				},
-			},
-			Request: datadogV1.SyntheticsTestRequest{
-				Method: datadog.PtrString("GET"),
-				Url:    datadog.PtrString("https://datadoghq.com"),
-			},
-			SetCookie: datadog.PtrString("name:test"),
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "Test message",
-		Name:    "Example-Synthetic",
-		Options: datadogV1.SyntheticsTestOptions{
-			AcceptSelfSigned: datadog.PtrBool(false),
-			AllowInsecure:    datadog.PtrBool(true),
-			DeviceIds: []string{
-				"tablet",
-			},
-			DisableCors:        datadog.PtrBool(true),
-			FollowRedirects:    datadog.PtrBool(true),
-			MinFailureDuration: datadog.PtrInt64(10),
-			MinLocationFailed:  datadog.PtrInt64(1),
-			NoScreenshot:       datadog.PtrBool(true),
-			Retry: &datadogV1.SyntheticsTestOptionsRetry{
-				Count:    datadog.PtrInt64(2),
-				Interval: datadog.PtrFloat64(10),
-			},
-			TickEvery: datadog.PtrInt64(300),
-			Scheduling: &datadogV1.SyntheticsTestOptionsScheduling{
-				Timeframes: []datadogV1.SyntheticsTestOptionsSchedulingTimeframe{
-					{
-						Day:  1,
-						From: "07:00",
-						To:   "16:00",
-					},
-					{
-						Day:  3,
-						From: "07:00",
-						To:   "16:00",
-					},
-				},
-				Timezone: "America/New_York",
-			},
-		},
-		Tags: []string{
-			"testing:browser",
-		},
-		Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
-		Steps: []datadogV1.SyntheticsStep{
-			{
-				AllowFailure: datadog.PtrBool(false),
-				IsCritical:   datadog.PtrBool(true),
-				Name:         datadog.PtrString("Refresh page"),
-				Params:       new(interface{}),
-				Type:         datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
+    body := datadogV1.SyntheticsBrowserTest{
+        Config: datadogV1.SyntheticsBrowserTestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{},
+            ConfigVariables: []datadogV1.SyntheticsConfigVariable{
+                {
+                    Example: datadog.PtrString("content-type"),
+                    Name:    "PROPERTY",
+                    Pattern: datadog.PtrString("content-type"),
+                    Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
+                },
+            },
+            Request: datadogV1.SyntheticsTestRequest{
+                Method: datadog.PtrString("GET"),
+                Url:    datadog.PtrString("https://datadoghq.com"),
+            },
+            SetCookie: datadog.PtrString("name:test"),
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "Test message",
+        Name:    "Example-Synthetic",
+        Options: datadogV1.SyntheticsTestOptions{
+            AcceptSelfSigned: datadog.PtrBool(false),
+            AllowInsecure:    datadog.PtrBool(true),
+            DeviceIds: []string{
+                "tablet",
+            },
+            DisableCors:        datadog.PtrBool(true),
+            FollowRedirects:    datadog.PtrBool(true),
+            MinFailureDuration: datadog.PtrInt64(10),
+            MinLocationFailed:  datadog.PtrInt64(1),
+            NoScreenshot:       datadog.PtrBool(true),
+            Retry: &datadogV1.SyntheticsTestOptionsRetry{
+                Count:    datadog.PtrInt64(2),
+                Interval: datadog.PtrFloat64(10),
+            },
+            TickEvery: datadog.PtrInt64(300),
+            Scheduling: &datadogV1.SyntheticsTestOptionsScheduling{
+                Timeframes: []datadogV1.SyntheticsTestOptionsSchedulingTimeframe{
+                    {
+                        Day:  1,
+                        From: "07:00",
+                        To:   "16:00",
+                    },
+                    {
+                        Day:  3,
+                        From: "07:00",
+                        To:   "16:00",
+                    },
+                },
+                Timezone: "America/New_York",
+            },
+        },
+        Tags: []string{
+            "testing:browser",
+        },
+        Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
+        Steps: []datadogV1.SyntheticsStep{
+            {
+                AllowFailure: datadog.PtrBool(false),
+                IsCritical:   datadog.PtrBool(true),
+                Name:         datadog.PtrString("Refresh page"),
+                Params:       new(interface{}),
+                Type:         datadogV1.SYNTHETICSSTEPTYPE_REFRESH.Ptr(),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsBrowserTest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsBrowserTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsBrowserTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -5647,7 +5639,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a browser test returns "OK - Returns saved rumSettings." response
@@ -5743,7 +5735,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a browser test returns "OK - Returns the created test details." response
@@ -5836,7 +5828,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a browser test with advanced scheduling options returns "OK - Returns the created test
@@ -5935,7 +5927,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6034,7 +6026,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -6132,7 +6124,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -6237,7 +6229,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a browser test returns "OK - Returns saved rumSettings." response
@@ -6315,7 +6307,7 @@ body = DatadogAPIClient::V1::SyntheticsBrowserTest.new({
 p api_instance.create_synthetics_browser_test(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a browser test returns "OK - Returns the created test details." response
@@ -6393,7 +6385,7 @@ body = DatadogAPIClient::V1::SyntheticsBrowserTest.new({
 p api_instance.create_synthetics_browser_test(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a browser test with advanced scheduling options returns "OK - Returns the created test details." response
@@ -6476,7 +6468,7 @@ p api_instance.create_synthetics_browser_test(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a browser test returns "OK - Returns saved rumSettings." response
@@ -6563,7 +6555,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a browser test returns "OK - Returns the created test details." response
@@ -6649,7 +6641,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a browser test with advanced scheduling options returns "OK - Returns
@@ -6743,7 +6735,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6827,7 +6819,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -6913,7 +6905,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -7025,8 +7017,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a Synthetic mobile test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -7522,7 +7512,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/mobile" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7551,8 +7541,8 @@ Error response object.
   "steps": []
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a mobile test returns "OK - Returns the created test details." response
@@ -7560,50 +7550,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsMobileTest{
-		Name:   "Example-Synthetic",
-		Status: datadogV1.SYNTHETICSTESTPAUSESTATUS_PAUSED.Ptr(),
-		Type:   datadogV1.SYNTHETICSMOBILETESTTYPE_MOBILE,
-		Config: datadogV1.SyntheticsMobileTestConfig{
-			Variables: []datadogV1.SyntheticsConfigVariable{},
-		},
-		Message: "",
-		Options: datadogV1.SyntheticsMobileTestOptions{
-			DeviceIds: []string{
-				"synthetics:mobile:device:iphone_15_ios_17",
-			},
-			MobileApplication: datadogV1.SyntheticsMobileTestsMobileApplication{
-				ApplicationId: "ab0e0aed-536d-411a-9a99-5428c27d8f8e",
-				ReferenceId:   "6115922a-5f5d-455e-bc7e-7955a57f3815",
-				ReferenceType: datadogV1.SYNTHETICSMOBILETESTSMOBILEAPPLICATIONREFERENCETYPE_VERSION,
-			},
-			TickEvery: 3600,
-		},
-		Steps: []datadogV1.SyntheticsMobileStep{},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsMobileTest(ctx, body)
+    body := datadogV1.SyntheticsMobileTest{
+        Name:   "Example-Synthetic",
+        Status: datadogV1.SYNTHETICSTESTPAUSESTATUS_PAUSED.Ptr(),
+        Type:   datadogV1.SYNTHETICSMOBILETESTTYPE_MOBILE,
+        Config: datadogV1.SyntheticsMobileTestConfig{
+            Variables: []datadogV1.SyntheticsConfigVariable{},
+        },
+        Message: "",
+        Options: datadogV1.SyntheticsMobileTestOptions{
+            DeviceIds: []string{
+                "synthetics:mobile:device:iphone_15_ios_17",
+            },
+            MobileApplication: datadogV1.SyntheticsMobileTestsMobileApplication{
+                ApplicationId: "ab0e0aed-536d-411a-9a99-5428c27d8f8e",
+                ReferenceId:   "6115922a-5f5d-455e-bc7e-7955a57f3815",
+                ReferenceType: datadogV1.SYNTHETICSMOBILETESTSMOBILEAPPLICATIONREFERENCETYPE_VERSION,
+            },
+            TickEvery: 3600,
+        },
+        Steps: []datadogV1.SyntheticsMobileStep{},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsMobileTest(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsMobileTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsMobileTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsMobileTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsMobileTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -7611,7 +7601,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a mobile test returns "OK - Returns the created test details." response
@@ -7670,7 +7660,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7725,7 +7715,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a mobile test returns "OK - Returns the created test details." response
@@ -7761,7 +7751,7 @@ p api_instance.create_synthetics_mobile_test(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a mobile test returns "OK - Returns the created test details." response
@@ -7809,7 +7799,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7878,8 +7868,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the list of all Synthetic tests. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8391,13 +8379,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8419,7 +8407,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the list of all Synthetic tests returns "OK - Returns the list of all Synthetic tests." response
@@ -8433,7 +8421,7 @@ p api_instance.list_tests()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -8450,7 +8438,7 @@ dog.get_all_synthetics_tests()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the list of all Synthetic tests returns "OK - Returns the list of all Synthetic tests." response
@@ -8458,29 +8446,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.ListTests(ctx, *datadogV1.NewListTestsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.ListTests(ctx, *datadogV1.NewListTestsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -8488,7 +8476,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the list of all Synthetic tests returns "OK - Returns the list of all Synthetic tests."
@@ -8522,7 +8510,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -8541,7 +8529,7 @@ api.Synthetics.get_all_tests()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get the list of all Synthetic tests returns "OK - Returns the list of all
@@ -8567,7 +8555,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8614,8 +8602,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the detailed configuration associated with a Synthetic test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9121,13 +9107,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9151,7 +9137,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a test configuration returns "OK" response
@@ -9165,7 +9151,7 @@ p api_instance.get_test("public_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -9184,7 +9170,7 @@ dog.get_synthetics_test('test_id'  => test_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a test configuration returns "OK" response
@@ -9192,29 +9178,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetTest(ctx, "public_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetTest(ctx, "public_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -9222,7 +9208,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a test configuration returns "OK" response
@@ -9255,7 +9241,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -9276,7 +9262,7 @@ api.Synthetics.get_test(id=test_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get a test configuration returns "OK" response
@@ -9300,7 +9286,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9351,8 +9337,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Search for Synthetic tests. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9868,13 +9852,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9896,7 +9880,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search Synthetic tests returns "OK - Returns the list of Synthetic tests matching the search." response
@@ -9910,7 +9894,7 @@ p api_instance.search_tests()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search Synthetic tests returns "OK - Returns the list of Synthetic tests matching the search." response
@@ -9918,29 +9902,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.SearchTests(ctx, *datadogV1.NewSearchTestsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.SearchTests(ctx, *datadogV1.NewSearchTestsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SearchTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SearchTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SearchTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SearchTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -9948,7 +9932,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search Synthetic tests returns "OK - Returns the list of Synthetic tests matching the search."
@@ -9982,7 +9966,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search Synthetic tests returns "OK - Returns the list of Synthetic tests
@@ -10008,7 +9992,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10055,8 +10039,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the detailed configuration (including steps) associated with a Synthetic browser test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10580,13 +10562,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10610,7 +10592,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a browser test returns "OK" response
@@ -10624,7 +10606,7 @@ p api_instance.get_browser_test("public_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a browser test returns "OK" response
@@ -10632,29 +10614,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetBrowserTest(ctx, "public_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetBrowserTest(ctx, "public_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -10662,7 +10644,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a browser test returns "OK" response
@@ -10695,7 +10677,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a browser test returns "OK" response
@@ -10719,7 +10701,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10770,8 +10752,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the detailed configuration associated with a Synthetic API test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11433,13 +11413,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/api/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11463,7 +11443,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an API test returns "OK" response
@@ -11477,7 +11457,7 @@ p api_instance.get_api_test("public_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```java
 // Get an API test returns "OK" response
@@ -11510,7 +11490,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an API test returns "OK" response
@@ -11534,7 +11514,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11564,7 +11544,7 @@ apiInstance
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
-##### 
+#####
 
 ```go
 // Get an API test returns "OK" response
@@ -11572,29 +11552,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetAPITest(ctx, "public_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetAPITest(ctx, "public_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITest`:\n%s\n", responseContent)
 }
 ```
 
@@ -11623,8 +11603,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the detailed configuration associated with a Synthetic mobile test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11966,13 +11944,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/mobile/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11983,7 +11961,6 @@ from os import environ
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v1.api.synthetics_api import SyntheticsApi
 
-# there is a valid "synthetics_mobile_test" in the system
 SYNTHETICS_MOBILE_TEST_PUBLIC_ID = environ["SYNTHETICS_MOBILE_TEST_PUBLIC_ID"]
 
 configuration = Configuration()
@@ -12000,7 +11977,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Mobile test returns "OK" response
@@ -12008,7 +11985,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_mobile_test" in the system
 SYNTHETICS_MOBILE_TEST_PUBLIC_ID = ENV["SYNTHETICS_MOBILE_TEST_PUBLIC_ID"]
 p api_instance.get_mobile_test(SYNTHETICS_MOBILE_TEST_PUBLIC_ID)
 ```
@@ -12017,7 +11993,7 @@ p api_instance.get_mobile_test(SYNTHETICS_MOBILE_TEST_PUBLIC_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Mobile test returns "OK" response
@@ -12025,32 +12001,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_mobile_test" in the system
-	SyntheticsMobileTestPublicID := os.Getenv("SYNTHETICS_MOBILE_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_mobile_test" in the system
+    SyntheticsMobileTestPublicID := os.Getenv("SYNTHETICS_MOBILE_TEST_PUBLIC_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetMobileTest(ctx, SyntheticsMobileTestPublicID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetMobileTest(ctx, SyntheticsMobileTestPublicID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetMobileTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetMobileTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetMobileTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetMobileTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -12058,7 +12034,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Mobile test returns "OK" response
@@ -12094,7 +12070,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Mobile test returns "OK" response
@@ -12123,7 +12099,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12178,8 +12154,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the last 150 test results summaries for a given Synthetic API test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -12338,13 +12312,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}/results" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12368,7 +12342,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an API test's latest results summaries returns "OK" response
@@ -12382,7 +12356,7 @@ p api_instance.get_api_test_latest_results("hwb-332-3xe")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -12401,7 +12375,7 @@ dog.get_synthetics_results('test_id'  => test_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an API test's latest results summaries returns "OK" response
@@ -12409,29 +12383,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetAPITestLatestResults(ctx, "hwb-332-3xe", *datadogV1.NewGetAPITestLatestResultsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetAPITestLatestResults(ctx, "hwb-332-3xe", *datadogV1.NewGetAPITestLatestResultsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITestLatestResults`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITestLatestResults`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITestLatestResults`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITestLatestResults`:\n%s\n", responseContent)
 }
 ```
 
@@ -12439,7 +12413,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an API test's latest results summaries returns "OK" response
@@ -12473,7 +12447,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -12494,7 +12468,7 @@ api.Synthetics.get_results(id=test_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an API test's latest results summaries returns "OK" response
@@ -12524,7 +12498,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12575,8 +12549,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific full result from a given Synthetic API test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13074,13 +13046,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"export result_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}/results/${result_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13105,7 +13077,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an API test result returns "OK" response
@@ -13119,7 +13091,7 @@ p api_instance.get_api_test_result("hwb-332-3xe", "3420446318379485707")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -13130,7 +13102,6 @@ app_key = '<DATADOG_APPLICATION_KEY>'
 test_id = '<SYNTHETICS_TEST_PUBLIC_ID>'
 result_id = '<TEST_RESULT_ID>'
 
-
 dog = Dogapi::Client.new(api_key, app_key)
 
 dog.get_synthetics_result('test_id'  => test_id , 'result_id'  => result_id)
@@ -13140,7 +13111,7 @@ dog.get_synthetics_result('test_id'  => test_id , 'result_id'  => result_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an API test result returns "OK" response
@@ -13148,29 +13119,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetAPITestResult(ctx, "hwb-332-3xe", "3420446318379485707")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetAPITestResult(ctx, "hwb-332-3xe", "3420446318379485707")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITestResult`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetAPITestResult`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITestResult`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetAPITestResult`:\n%s\n", responseContent)
 }
 ```
 
@@ -13178,7 +13149,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an API test result returns "OK" response
@@ -13212,7 +13183,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -13234,7 +13205,7 @@ api.Synthetics.get_result(id=test_id, result_id=result_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an API test result returns "OK" response
@@ -13260,7 +13231,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13312,8 +13283,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the last 150 test results summaries for a given Synthetic browser test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13470,13 +13439,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser/${public_id}/results" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13500,7 +13469,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a browser test's latest results summaries returns "OK" response
@@ -13514,7 +13483,7 @@ p api_instance.get_browser_test_latest_results("2yy-sem-mjh")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a browser test's latest results summaries returns "OK" response
@@ -13522,29 +13491,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetBrowserTestLatestResults(ctx, "2yy-sem-mjh", *datadogV1.NewGetBrowserTestLatestResultsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetBrowserTestLatestResults(ctx, "2yy-sem-mjh", *datadogV1.NewGetBrowserTestLatestResultsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTestLatestResults`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTestLatestResults`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTestLatestResults`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTestLatestResults`:\n%s\n", responseContent)
 }
 ```
 
@@ -13552,7 +13521,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a browser test's latest results summaries returns "OK" response
@@ -13586,7 +13555,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a browser test's latest results summaries returns "OK" response
@@ -13616,7 +13585,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13667,8 +13636,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a specific full result from a given Synthetic browser test. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14178,13 +14145,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"export result_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser/${public_id}/results/${result_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14209,7 +14176,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a browser test result returns "OK" response
@@ -14223,7 +14190,7 @@ p api_instance.get_browser_test_result("2yy-sem-mjh", "5671719892074090418")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a browser test result returns "OK" response
@@ -14231,29 +14198,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetBrowserTestResult(ctx, "2yy-sem-mjh", "5671719892074090418")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetBrowserTestResult(ctx, "2yy-sem-mjh", "5671719892074090418")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTestResult`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetBrowserTestResult`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTestResult`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetBrowserTestResult`:\n%s\n", responseContent)
 }
 ```
 
@@ -14261,7 +14228,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a browser test result returns "OK" response
@@ -14295,7 +14262,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a browser test result returns "OK" response
@@ -14321,7 +14288,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14373,8 +14340,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a batch's updated details. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14512,13 +14477,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport batch_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/ci/batch/${batch_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14542,7 +14507,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get details of batch returns "OK" response
@@ -14556,7 +14521,7 @@ p api_instance.get_synthetics_ci_batch("batch_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get details of batch returns "OK" response
@@ -14564,29 +14529,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetSyntheticsCIBatch(ctx, "batch_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetSyntheticsCIBatch(ctx, "batch_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsCIBatch`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsCIBatch`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsCIBatch`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsCIBatch`:\n%s\n", responseContent)
 }
 ```
 
@@ -14594,7 +14559,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get details of batch returns "OK" response
@@ -14627,7 +14592,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get details of batch returns "OK" response
@@ -14651,7 +14616,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14702,8 +14667,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Trigger a set of Synthetic tests for continuous integration. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -14944,7 +14907,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/trigger/ci" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14959,8 +14922,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15019,7 +14982,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Trigger tests from CI/CD pipelines returns "OK" response
@@ -15060,7 +15023,7 @@ p api_instance.trigger_ci_tests(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Trigger tests from CI/CD pipelines returns "OK" response
@@ -15068,56 +15031,56 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsCITestBody{
-		Tests: []datadogV1.SyntheticsCITest{
-			{
-				BasicAuth: &datadogV1.SyntheticsBasicAuth{
-					SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
-						Password: datadog.PtrString("PaSSw0RD!"),
-						Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
-						Username: datadog.PtrString("my_username"),
-					}},
-				DeviceIds: []string{
-					"chrome.laptop_large",
-				},
-				Locations: []string{
-					"aws:eu-west-3",
-				},
-				Metadata: &datadogV1.SyntheticsCIBatchMetadata{
-					Ci: &datadogV1.SyntheticsCIBatchMetadataCI{
-						Pipeline: &datadogV1.SyntheticsCIBatchMetadataPipeline{},
-						Provider: &datadogV1.SyntheticsCIBatchMetadataProvider{},
-					},
-					Git: &datadogV1.SyntheticsCIBatchMetadataGit{},
-				},
-				PublicId: "aaa-aaa-aaa",
-				Retry:    &datadogV1.SyntheticsTestOptionsRetry{},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.TriggerCITests(ctx, body)
+    body := datadogV1.SyntheticsCITestBody{
+        Tests: []datadogV1.SyntheticsCITest{
+            {
+                BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                    SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
+                        Password: datadog.PtrString("PaSSw0RD!"),
+                        Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
+                        Username: datadog.PtrString("my_username"),
+                    }},
+                DeviceIds: []string{
+                    "chrome.laptop_large",
+                },
+                Locations: []string{
+                    "aws:eu-west-3",
+                },
+                Metadata: &datadogV1.SyntheticsCIBatchMetadata{
+                    Ci: &datadogV1.SyntheticsCIBatchMetadataCI{
+                        Pipeline: &datadogV1.SyntheticsCIBatchMetadataPipeline{},
+                        Provider: &datadogV1.SyntheticsCIBatchMetadataProvider{},
+                    },
+                    Git: &datadogV1.SyntheticsCIBatchMetadataGit{},
+                },
+                PublicId: "aaa-aaa-aaa",
+                Retry:    &datadogV1.SyntheticsTestOptionsRetry{},
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.TriggerCITests(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.TriggerCITests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.TriggerCITests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.TriggerCITests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.TriggerCITests`:\n%s\n", responseContent)
 }
 ```
 
@@ -15125,7 +15088,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Trigger tests from CI/CD pipelines returns "OK" response
@@ -15193,7 +15156,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Trigger tests from CI/CD pipelines returns "OK" response
@@ -15246,7 +15209,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15318,8 +15281,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Trigger a set of Synthetic tests. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -15460,7 +15421,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/trigger" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -15475,8 +15436,8 @@ Error response object.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Trigger Synthetic tests returns "OK" response
@@ -15484,39 +15445,39 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test" in the system
-	SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_api_test" in the system
+    SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsTriggerBody{
-		Tests: []datadogV1.SyntheticsTriggerTest{
-			{
-				PublicId: SyntheticsAPITestPublicID,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.TriggerTests(ctx, body)
+    body := datadogV1.SyntheticsTriggerBody{
+        Tests: []datadogV1.SyntheticsTriggerTest{
+            {
+                PublicId: SyntheticsAPITestPublicID,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.TriggerTests(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.TriggerTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.TriggerTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.TriggerTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.TriggerTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -15524,7 +15485,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Trigger Synthetic tests returns "OK" response
@@ -15569,7 +15530,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -15582,7 +15543,6 @@ from datadog_api_client.v1.api.synthetics_api import SyntheticsApi
 from datadog_api_client.v1.model.synthetics_trigger_body import SyntheticsTriggerBody
 from datadog_api_client.v1.model.synthetics_trigger_test import SyntheticsTriggerTest
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = environ["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = SyntheticsTriggerBody(
@@ -15605,7 +15565,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Trigger Synthetic tests returns "OK" response
@@ -15613,7 +15573,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsTriggerBody.new({
@@ -15630,7 +15589,7 @@ p api_instance.trigger_tests(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Trigger Synthetic tests returns "OK" response
@@ -15661,7 +15620,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15722,8 +15681,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Fetch uptime for multiple Synthetic tests by ID. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -15885,7 +15842,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/uptimes" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -15900,8 +15857,8 @@ Error response object.
   "to_ts": 1726055954
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Fetch uptime for multiple tests returns "OK." response
@@ -15909,36 +15866,36 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsFetchUptimesPayload{
-		FromTs: 1726041488,
-		PublicIds: []string{
-			"p8m-9gw-nte",
-		},
-		ToTs: 1726055954,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.FetchUptimes(ctx, body)
+    body := datadogV1.SyntheticsFetchUptimesPayload{
+        FromTs: 1726041488,
+        PublicIds: []string{
+            "p8m-9gw-nte",
+        },
+        ToTs: 1726055954,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.FetchUptimes(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.FetchUptimes`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.FetchUptimes`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.FetchUptimes`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.FetchUptimes`:\n%s\n", responseContent)
 }
 ```
 
@@ -15946,7 +15903,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Fetch uptime for multiple tests returns "OK." response
@@ -15988,7 +15945,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -16019,7 +15976,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Fetch uptime for multiple tests returns "OK." response
@@ -16041,7 +15998,7 @@ p api_instance.fetch_uptimes(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Fetch uptime for multiple tests returns "OK." response
@@ -16068,7 +16025,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -16123,8 +16080,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Edit the configuration of a Synthetic browser test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -17107,7 +17062,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/browser/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -17163,8 +17118,8 @@ Error response object.
   "type": "browser"
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -17316,7 +17271,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit a browser test returns "OK" response
@@ -17424,7 +17379,7 @@ p api_instance.update_browser_test("public_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Edit a browser test returns "OK" response
@@ -17432,123 +17387,123 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsBrowserTest{
-		Config: datadogV1.SyntheticsBrowserTestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{},
-			ConfigVariables: []datadogV1.SyntheticsConfigVariable{
-				{
-					Name:   "VARIABLE_NAME",
-					Secure: datadog.PtrBool(false),
-					Type:   datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
-				},
-			},
-			Request: datadogV1.SyntheticsTestRequest{
-				BasicAuth: &datadogV1.SyntheticsBasicAuth{
-					SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
-						Password: datadog.PtrString("PaSSw0RD!"),
-						Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
-						Username: datadog.PtrString("my_username"),
-					}},
-				BodyType: datadogV1.SYNTHETICSTESTREQUESTBODYTYPE_TEXT_PLAIN.Ptr(),
-				CallType: datadogV1.SYNTHETICSTESTCALLTYPE_UNARY.Ptr(),
-				Certificate: &datadogV1.SyntheticsTestRequestCertificate{
-					Cert: &datadogV1.SyntheticsTestRequestCertificateItem{},
-					Key:  &datadogV1.SyntheticsTestRequestCertificateItem{},
-				},
-				CertificateDomains: []string{},
-				Files: []datadogV1.SyntheticsTestRequestBodyFile{
-					{},
-				},
-				HttpVersion: datadogV1.SYNTHETICSTESTOPTIONSHTTPVERSION_HTTP1.Ptr(),
-				Proxy: &datadogV1.SyntheticsTestRequestProxy{
-					Url: "https://example.com",
-				},
-				Service: datadog.PtrString("Greeter"),
-				Url:     datadog.PtrString("https://example.com"),
-			},
-			Variables: []datadogV1.SyntheticsBrowserVariable{
-				{
-					Name: "VARIABLE_NAME",
-					Type: datadogV1.SYNTHETICSBROWSERVARIABLETYPE_TEXT,
-				},
-			},
-		},
-		Locations: []string{
-			"aws:eu-west-3",
-		},
-		Message: "",
-		Name:    "Example test name",
-		Options: datadogV1.SyntheticsTestOptions{
-			BlockedRequestPatterns: []string{},
-			Ci: &datadogV1.SyntheticsTestCiOptions{
-				ExecutionRule: datadogV1.SYNTHETICSTESTEXECUTIONRULE_BLOCKING,
-			},
-			DeviceIds: []string{
-				"chrome.laptop_large",
-			},
-			HttpVersion: datadogV1.SYNTHETICSTESTOPTIONSHTTPVERSION_HTTP1.Ptr(),
-			MonitorOptions: &datadogV1.SyntheticsTestOptionsMonitorOptions{
-				NotificationPresetName: datadogV1.SYNTHETICSTESTOPTIONSMONITOROPTIONSNOTIFICATIONPRESETNAME_SHOW_ALL.Ptr(),
-			},
-			RestrictedRoles: []string{
-				"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-			},
-			Retry: &datadogV1.SyntheticsTestOptionsRetry{},
-			RumSettings: &datadogV1.SyntheticsBrowserTestRumSettings{
-				ApplicationId: datadog.PtrString("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
-				ClientTokenId: datadog.PtrInt64(12345),
-				IsEnabled:     true,
-			},
-			Scheduling: &datadogV1.SyntheticsTestOptionsScheduling{
-				Timeframes: []datadogV1.SyntheticsTestOptionsSchedulingTimeframe{
-					{
-						Day:  1,
-						From: "07:00",
-						To:   "16:00",
-					},
-					{
-						Day:  3,
-						From: "07:00",
-						To:   "16:00",
-					},
-				},
-				Timezone: "America/New_York",
-			},
-		},
-		Status: datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
-		Steps: []datadogV1.SyntheticsStep{
-			{
-				Type: datadogV1.SYNTHETICSSTEPTYPE_ASSERT_ELEMENT_CONTENT.Ptr(),
-			},
-		},
-		Tags: []string{
-			"env:prod",
-		},
-		Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.UpdateBrowserTest(ctx, "public_id", body)
+    body := datadogV1.SyntheticsBrowserTest{
+        Config: datadogV1.SyntheticsBrowserTestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{},
+            ConfigVariables: []datadogV1.SyntheticsConfigVariable{
+                {
+                    Name:   "VARIABLE_NAME",
+                    Secure: datadog.PtrBool(false),
+                    Type:   datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
+                },
+            },
+            Request: datadogV1.SyntheticsTestRequest{
+                BasicAuth: &datadogV1.SyntheticsBasicAuth{
+                    SyntheticsBasicAuthWeb: &datadogV1.SyntheticsBasicAuthWeb{
+                        Password: datadog.PtrString("PaSSw0RD!"),
+                        Type:     datadogV1.SYNTHETICSBASICAUTHWEBTYPE_WEB.Ptr(),
+                        Username: datadog.PtrString("my_username"),
+                    }},
+                BodyType: datadogV1.SYNTHETICSTESTREQUESTBODYTYPE_TEXT_PLAIN.Ptr(),
+                CallType: datadogV1.SYNTHETICSTESTCALLTYPE_UNARY.Ptr(),
+                Certificate: &datadogV1.SyntheticsTestRequestCertificate{
+                    Cert: &datadogV1.SyntheticsTestRequestCertificateItem{},
+                    Key:  &datadogV1.SyntheticsTestRequestCertificateItem{},
+                },
+                CertificateDomains: []string{},
+                Files: []datadogV1.SyntheticsTestRequestBodyFile{
+                    {},
+                },
+                HttpVersion: datadogV1.SYNTHETICSTESTOPTIONSHTTPVERSION_HTTP1.Ptr(),
+                Proxy: &datadogV1.SyntheticsTestRequestProxy{
+                    Url: "https://example.com",
+                },
+                Service: datadog.PtrString("Greeter"),
+                Url:     datadog.PtrString("https://example.com"),
+            },
+            Variables: []datadogV1.SyntheticsBrowserVariable{
+                {
+                    Name: "VARIABLE_NAME",
+                    Type: datadogV1.SYNTHETICSBROWSERVARIABLETYPE_TEXT,
+                },
+            },
+        },
+        Locations: []string{
+            "aws:eu-west-3",
+        },
+        Message: "",
+        Name:    "Example test name",
+        Options: datadogV1.SyntheticsTestOptions{
+            BlockedRequestPatterns: []string{},
+            Ci: &datadogV1.SyntheticsTestCiOptions{
+                ExecutionRule: datadogV1.SYNTHETICSTESTEXECUTIONRULE_BLOCKING,
+            },
+            DeviceIds: []string{
+                "chrome.laptop_large",
+            },
+            HttpVersion: datadogV1.SYNTHETICSTESTOPTIONSHTTPVERSION_HTTP1.Ptr(),
+            MonitorOptions: &datadogV1.SyntheticsTestOptionsMonitorOptions{
+                NotificationPresetName: datadogV1.SYNTHETICSTESTOPTIONSMONITOROPTIONSNOTIFICATIONPRESETNAME_SHOW_ALL.Ptr(),
+            },
+            RestrictedRoles: []string{
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            },
+            Retry: &datadogV1.SyntheticsTestOptionsRetry{},
+            RumSettings: &datadogV1.SyntheticsBrowserTestRumSettings{
+                ApplicationId: datadog.PtrString("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+                ClientTokenId: datadog.PtrInt64(12345),
+                IsEnabled:     true,
+            },
+            Scheduling: &datadogV1.SyntheticsTestOptionsScheduling{
+                Timeframes: []datadogV1.SyntheticsTestOptionsSchedulingTimeframe{
+                    {
+                        Day:  1,
+                        From: "07:00",
+                        To:   "16:00",
+                    },
+                    {
+                        Day:  3,
+                        From: "07:00",
+                        To:   "16:00",
+                    },
+                },
+                Timezone: "America/New_York",
+            },
+        },
+        Status: datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
+        Steps: []datadogV1.SyntheticsStep{
+            {
+                Type: datadogV1.SYNTHETICSSTEPTYPE_ASSERT_ELEMENT_CONTENT.Ptr(),
+            },
+        },
+        Tags: []string{
+            "env:prod",
+        },
+        Type: datadogV1.SYNTHETICSBROWSERTESTTYPE_BROWSER,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.UpdateBrowserTest(ctx, "public_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateBrowserTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateBrowserTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateBrowserTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateBrowserTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -17556,7 +17511,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit a browser test returns "OK" response
@@ -17696,7 +17651,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Edit a browser test returns "OK" response
@@ -17829,7 +17784,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -17963,8 +17918,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Edit the configuration of a Synthetic mobile test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -18468,7 +18421,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/mobile/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -18497,7 +18450,7 @@ Error response object.
   "steps": []
 }
 EOF
-                        
+
 {% /tab %}
 
 ## Edit an API test{% #edit-an-api-test %}
@@ -18519,8 +18472,6 @@ EOF
 Edit the configuration of a Synthetic API test. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -19700,7 +19651,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/api/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -19793,8 +19744,8 @@ Error response object.
   "type": "api"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Edit an API test returns "OK" response
@@ -19802,124 +19753,124 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test" in the system
-	SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_api_test" in the system
+    SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsAPITest{
-		Config: datadogV1.SyntheticsAPITestConfig{
-			Assertions: []datadogV1.SyntheticsAssertion{
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
-						Property: datadog.PtrString("{{ PROPERTY }}"),
-						Target: datadogV1.SyntheticsAssertionTargetValue{
-							SyntheticsAssertionTargetValueString: datadog.PtrString("text/html")},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_HEADER,
-					}},
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_LESS_THAN,
-						Target: datadogV1.SyntheticsAssertionTargetValue{
-							SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(2000)},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_RESPONSE_TIME,
-					}},
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionJSONPathTarget: &datadogV1.SyntheticsAssertionJSONPathTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONJSONPATHOPERATOR_VALIDATES_JSON_PATH,
-						Target: &datadogV1.SyntheticsAssertionJSONPathTargetTarget{
-							JsonPath: datadog.PtrString("topKey"),
-							Operator: datadog.PtrString("isNot"),
-							TargetValue: &datadogV1.SyntheticsAssertionTargetValue{
-								SyntheticsAssertionTargetValueString: datadog.PtrString("0")},
-						},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_BODY,
-					}},
-				datadogV1.SyntheticsAssertion{
-					SyntheticsAssertionJSONSchemaTarget: &datadogV1.SyntheticsAssertionJSONSchemaTarget{
-						Operator: datadogV1.SYNTHETICSASSERTIONJSONSCHEMAOPERATOR_VALIDATES_JSON_SCHEMA,
-						Target: &datadogV1.SyntheticsAssertionJSONSchemaTargetTarget{
-							MetaSchema: datadogV1.SYNTHETICSASSERTIONJSONSCHEMAMETASCHEMA_DRAFT_07.Ptr(),
-							JsonSchema: datadog.PtrString(`{"type": "object", "properties":{"slideshow":{"type":"object"}}}`),
-						},
-						Type: datadogV1.SYNTHETICSASSERTIONTYPE_BODY,
-					}},
-			},
-			ConfigVariables: []datadogV1.SyntheticsConfigVariable{
-				{
-					Example: datadog.PtrString("content-type"),
-					Name:    "PROPERTY",
-					Pattern: datadog.PtrString("content-type"),
-					Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
-				},
-			},
-			Request: &datadogV1.SyntheticsTestRequest{
-				Certificate: &datadogV1.SyntheticsTestRequestCertificate{
-					Cert: &datadogV1.SyntheticsTestRequestCertificateItem{
-						Filename:  datadog.PtrString("cert-filename"),
-						UpdatedAt: datadog.PtrString("2020-10-16T09:23:24.857Z"),
-					},
-					Key: &datadogV1.SyntheticsTestRequestCertificateItem{
-						Filename:  datadog.PtrString("key-filename"),
-						UpdatedAt: datadog.PtrString("2020-10-16T09:23:24.857Z"),
-					},
-				},
-				Headers: map[string]string{
-					"unique": "examplesynthetic",
-				},
-				Method:  datadog.PtrString("GET"),
-				Timeout: datadog.PtrFloat64(10),
-				Url:     datadog.PtrString("https://datadoghq.com"),
-			},
-		},
-		Locations: []string{
-			"aws:us-east-2",
-		},
-		Message: "BDD test payload: synthetics_api_test_payload.json",
-		Name:    "Example-Synthetic-updated",
-		Options: datadogV1.SyntheticsTestOptions{
-			AcceptSelfSigned:   datadog.PtrBool(false),
-			AllowInsecure:      datadog.PtrBool(true),
-			FollowRedirects:    datadog.PtrBool(true),
-			MinFailureDuration: datadog.PtrInt64(10),
-			MinLocationFailed:  datadog.PtrInt64(1),
-			MonitorName:        datadog.PtrString("Test-TestSyntheticsAPITestLifecycle-1623076664"),
-			MonitorPriority:    datadog.PtrInt32(5),
-			Retry: &datadogV1.SyntheticsTestOptionsRetry{
-				Count:    datadog.PtrInt64(3),
-				Interval: datadog.PtrFloat64(10),
-			},
-			TickEvery: datadog.PtrInt64(60),
-		},
-		Status:  datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
-		Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_HTTP.Ptr(),
-		Tags: []string{
-			"testing:api",
-		},
-		Type: datadogV1.SYNTHETICSAPITESTTYPE_API,
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.UpdateAPITest(ctx, SyntheticsAPITestPublicID, body)
+    body := datadogV1.SyntheticsAPITest{
+        Config: datadogV1.SyntheticsAPITestConfig{
+            Assertions: []datadogV1.SyntheticsAssertion{
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_IS,
+                        Property: datadog.PtrString("{{ PROPERTY }}"),
+                        Target: datadogV1.SyntheticsAssertionTargetValue{
+                            SyntheticsAssertionTargetValueString: datadog.PtrString("text/html")},
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_HEADER,
+                    }},
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionTarget: &datadogV1.SyntheticsAssertionTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONOPERATOR_LESS_THAN,
+                        Target: datadogV1.SyntheticsAssertionTargetValue{
+                            SyntheticsAssertionTargetValueNumber: datadog.PtrFloat64(2000)},
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_RESPONSE_TIME,
+                    }},
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionJSONPathTarget: &datadogV1.SyntheticsAssertionJSONPathTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONJSONPATHOPERATOR_VALIDATES_JSON_PATH,
+                        Target: &datadogV1.SyntheticsAssertionJSONPathTargetTarget{
+                            JsonPath: datadog.PtrString("topKey"),
+                            Operator: datadog.PtrString("isNot"),
+                            TargetValue: &datadogV1.SyntheticsAssertionTargetValue{
+                                SyntheticsAssertionTargetValueString: datadog.PtrString("0")},
+                        },
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_BODY,
+                    }},
+                datadogV1.SyntheticsAssertion{
+                    SyntheticsAssertionJSONSchemaTarget: &datadogV1.SyntheticsAssertionJSONSchemaTarget{
+                        Operator: datadogV1.SYNTHETICSASSERTIONJSONSCHEMAOPERATOR_VALIDATES_JSON_SCHEMA,
+                        Target: &datadogV1.SyntheticsAssertionJSONSchemaTargetTarget{
+                            MetaSchema: datadogV1.SYNTHETICSASSERTIONJSONSCHEMAMETASCHEMA_DRAFT_07.Ptr(),
+                            JsonSchema: datadog.PtrString(`{"type": "object", "properties":{"slideshow":{"type":"object"}}}`),
+                        },
+                        Type: datadogV1.SYNTHETICSASSERTIONTYPE_BODY,
+                    }},
+            },
+            ConfigVariables: []datadogV1.SyntheticsConfigVariable{
+                {
+                    Example: datadog.PtrString("content-type"),
+                    Name:    "PROPERTY",
+                    Pattern: datadog.PtrString("content-type"),
+                    Type:    datadogV1.SYNTHETICSCONFIGVARIABLETYPE_TEXT,
+                },
+            },
+            Request: &datadogV1.SyntheticsTestRequest{
+                Certificate: &datadogV1.SyntheticsTestRequestCertificate{
+                    Cert: &datadogV1.SyntheticsTestRequestCertificateItem{
+                        Filename:  datadog.PtrString("cert-filename"),
+                        UpdatedAt: datadog.PtrString("2020-10-16T09:23:24.857Z"),
+                    },
+                    Key: &datadogV1.SyntheticsTestRequestCertificateItem{
+                        Filename:  datadog.PtrString("key-filename"),
+                        UpdatedAt: datadog.PtrString("2020-10-16T09:23:24.857Z"),
+                    },
+                },
+                Headers: map[string]string{
+                    "unique": "examplesynthetic",
+                },
+                Method:  datadog.PtrString("GET"),
+                Timeout: datadog.PtrFloat64(10),
+                Url:     datadog.PtrString("https://datadoghq.com"),
+            },
+        },
+        Locations: []string{
+            "aws:us-east-2",
+        },
+        Message: "BDD test payload: synthetics_api_test_payload.json",
+        Name:    "Example-Synthetic-updated",
+        Options: datadogV1.SyntheticsTestOptions{
+            AcceptSelfSigned:   datadog.PtrBool(false),
+            AllowInsecure:      datadog.PtrBool(true),
+            FollowRedirects:    datadog.PtrBool(true),
+            MinFailureDuration: datadog.PtrInt64(10),
+            MinLocationFailed:  datadog.PtrInt64(1),
+            MonitorName:        datadog.PtrString("Test-TestSyntheticsAPITestLifecycle-1623076664"),
+            MonitorPriority:    datadog.PtrInt32(5),
+            Retry: &datadogV1.SyntheticsTestOptionsRetry{
+                Count:    datadog.PtrInt64(3),
+                Interval: datadog.PtrFloat64(10),
+            },
+            TickEvery: datadog.PtrInt64(60),
+        },
+        Status:  datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
+        Subtype: datadogV1.SYNTHETICSTESTDETAILSSUBTYPE_HTTP.Ptr(),
+        Tags: []string{
+            "testing:api",
+        },
+        Type: datadogV1.SYNTHETICSAPITESTTYPE_API,
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.UpdateAPITest(ctx, SyntheticsAPITestPublicID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateAPITest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateAPITest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateAPITest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateAPITest`:\n%s\n", responseContent)
 }
 ```
 
@@ -19927,7 +19878,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit an API test returns "OK" response
@@ -20071,7 +20022,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -20111,7 +20062,6 @@ from datadog_api_client.v1.model.synthetics_test_request import SyntheticsTestRe
 from datadog_api_client.v1.model.synthetics_test_request_certificate import SyntheticsTestRequestCertificate
 from datadog_api_client.v1.model.synthetics_test_request_certificate_item import SyntheticsTestRequestCertificateItem
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = environ["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = SyntheticsAPITest(
@@ -20212,7 +20162,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit an API test returns "OK" response
@@ -20220,7 +20170,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsAPITest.new({
@@ -20315,7 +20264,7 @@ p api_instance.update_api_test(SYNTHETICS_API_TEST_PUBLIC_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Edit an API test returns "OK" response
@@ -20473,7 +20422,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -20609,8 +20558,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Patch the configuration of a Synthetic test with partial data. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -21203,7 +21150,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -21224,8 +21171,8 @@ Error response object.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Patch a Synthetic test returns "OK" response
@@ -21233,45 +21180,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test" in the system
-	SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_api_test" in the system
+    SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsPatchTestBody{
-		Data: []datadogV1.SyntheticsPatchTestOperation{
-			{
-				Op:    datadogV1.SYNTHETICSPATCHTESTOPERATIONNAME_REPLACE.Ptr(),
-				Path:  datadog.PtrString("/name"),
-				Value: "New test name",
-			},
-			{
-				Op:   datadogV1.SYNTHETICSPATCHTESTOPERATIONNAME_REMOVE.Ptr(),
-				Path: datadog.PtrString("/config/assertions/0"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.PatchTest(ctx, SyntheticsAPITestPublicID, body)
+    body := datadogV1.SyntheticsPatchTestBody{
+        Data: []datadogV1.SyntheticsPatchTestOperation{
+            {
+                Op:    datadogV1.SYNTHETICSPATCHTESTOPERATIONNAME_REPLACE.Ptr(),
+                Path:  datadog.PtrString("/name"),
+                Value: "New test name",
+            },
+            {
+                Op:   datadogV1.SYNTHETICSPATCHTESTOPERATIONNAME_REMOVE.Ptr(),
+                Path: datadog.PtrString("/config/assertions/0"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.PatchTest(ctx, SyntheticsAPITestPublicID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.PatchTest`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.PatchTest`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.PatchTest`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.PatchTest`:\n%s\n", responseContent)
 }
 ```
 
@@ -21279,7 +21226,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Patch a Synthetic test returns "OK" response
@@ -21331,7 +21278,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -21345,7 +21292,6 @@ from datadog_api_client.v1.model.synthetics_patch_test_body import SyntheticsPat
 from datadog_api_client.v1.model.synthetics_patch_test_operation import SyntheticsPatchTestOperation
 from datadog_api_client.v1.model.synthetics_patch_test_operation_name import SyntheticsPatchTestOperationName
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = environ["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = SyntheticsPatchTestBody(
@@ -21374,7 +21320,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Patch a Synthetic test returns "OK" response
@@ -21382,7 +21328,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsPatchTestBody.new({
@@ -21405,7 +21350,7 @@ p api_instance.patch_test(SYNTHETICS_API_TEST_PUBLIC_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Patch a Synthetic test returns "OK" response
@@ -21446,7 +21391,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21514,8 +21459,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Pause or start a Synthetic test by changing the status. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -21672,7 +21615,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}/status" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -21681,8 +21624,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -21712,7 +21655,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Pause or start a test returns "OK - Returns a boolean indicating if the update was successful." response
@@ -21730,7 +21673,7 @@ p api_instance.update_test_pause_status("public_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Pause or start a test returns "OK - Returns a boolean indicating if the update was successful." response
@@ -21738,32 +21681,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsUpdateTestPauseStatusPayload{
-		NewStatus: datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.UpdateTestPauseStatus(ctx, "public_id", body)
+    body := datadogV1.SyntheticsUpdateTestPauseStatusPayload{
+        NewStatus: datadogV1.SYNTHETICSTESTPAUSESTATUS_LIVE.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.UpdateTestPauseStatus(ctx, "public_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateTestPauseStatus`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdateTestPauseStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateTestPauseStatus`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdateTestPauseStatus`:\n%s\n", responseContent)
 }
 ```
 
@@ -21771,7 +21714,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Pause or start a test returns "OK - Returns a boolean indicating if the update was successful."
@@ -21809,7 +21752,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Pause or start a test returns "OK - Returns a boolean indicating if the update
@@ -21840,7 +21783,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -21894,8 +21837,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete multiple Synthetic tests by ID. This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -22059,7 +22000,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -22068,8 +22009,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -22081,7 +22022,6 @@ from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v1.api.synthetics_api import SyntheticsApi
 from datadog_api_client.v1.model.synthetics_delete_tests_payload import SyntheticsDeleteTestsPayload
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = environ["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = SyntheticsDeleteTestsPayload(
@@ -22102,7 +22042,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete tests returns "OK." response
@@ -22110,7 +22050,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test" in the system
 SYNTHETICS_API_TEST_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsDeleteTestsPayload.new({
@@ -22125,7 +22064,7 @@ p api_instance.delete_tests(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -22144,7 +22083,7 @@ dog.delete_synthetics_tests('test_ids' => test_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete tests returns "OK." response
@@ -22152,37 +22091,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test" in the system
-	SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
+    // there is a valid "synthetics_api_test" in the system
+    SyntheticsAPITestPublicID := os.Getenv("SYNTHETICS_API_TEST_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsDeleteTestsPayload{
-		PublicIds: []string{
-			SyntheticsAPITestPublicID,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.DeleteTests(ctx, body)
+    body := datadogV1.SyntheticsDeleteTestsPayload{
+        PublicIds: []string{
+            SyntheticsAPITestPublicID,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.DeleteTests(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.DeleteTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.DeleteTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -22190,7 +22129,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete tests returns "OK." response
@@ -22232,7 +22171,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -22253,7 +22192,7 @@ api.Synthetics.delete_test(public_ids=test_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Delete tests returns "OK." response
@@ -22282,7 +22221,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -22340,8 +22279,6 @@ Create a Synthetic global variable. This endpoint requires the `synthetics_globa
 
 OAuth apps require the `synthetics_global_variable_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
@@ -22379,7 +22316,7 @@ Details of the global variable to create.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -22390,7 +22327,7 @@ Details of the global variable to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -22411,7 +22348,7 @@ Details of the global variable to create.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -22614,7 +22551,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -22628,8 +22565,8 @@ Error response object.
   "tags": []
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -22653,8 +22590,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -22676,8 +22613,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a FIDO global variable returns "OK" response
@@ -22685,39 +22622,39 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsGlobalVariableRequest{
-		Description: "",
-		IsFido:      datadog.PtrBool(true),
-		Name:        "GLOBAL_VARIABLE_FIDO_PAYLOAD_EXAMPLESYNTHETIC",
-		Tags:        []string{},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateGlobalVariable(ctx, body)
+    body := datadogV1.SyntheticsGlobalVariableRequest{
+        Description: "",
+        IsFido:      datadog.PtrBool(true),
+        Name:        "GLOBAL_VARIABLE_FIDO_PAYLOAD_EXAMPLESYNTHETIC",
+        Tags:        []string{},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateGlobalVariable(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a TOTP global variable returns "OK" response
@@ -22725,49 +22662,49 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsGlobalVariableRequest{
-		Description: "",
-		IsTotp:      datadog.PtrBool(true),
-		Name:        "GLOBAL_VARIABLE_TOTP_PAYLOAD_EXAMPLESYNTHETIC",
-		Tags:        []string{},
-		Value: &datadogV1.SyntheticsGlobalVariableValue{
-			Secure: datadog.PtrBool(false),
-			Value:  datadog.PtrString(""),
-			Options: &datadogV1.SyntheticsGlobalVariableOptions{
-				TotpParameters: &datadogV1.SyntheticsGlobalVariableTOTPParameters{
-					Digits:          datadog.PtrInt32(6),
-					RefreshInterval: datadog.PtrInt32(30),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateGlobalVariable(ctx, body)
+    body := datadogV1.SyntheticsGlobalVariableRequest{
+        Description: "",
+        IsTotp:      datadog.PtrBool(true),
+        Name:        "GLOBAL_VARIABLE_TOTP_PAYLOAD_EXAMPLESYNTHETIC",
+        Tags:        []string{},
+        Value: &datadogV1.SyntheticsGlobalVariableValue{
+            Secure: datadog.PtrBool(false),
+            Value:  datadog.PtrString(""),
+            Options: &datadogV1.SyntheticsGlobalVariableOptions{
+                TotpParameters: &datadogV1.SyntheticsGlobalVariableTOTPParameters{
+                    Digits:          datadog.PtrInt32(6),
+                    RefreshInterval: datadog.PtrInt32(30),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateGlobalVariable(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a global variable from test returns "OK" response
@@ -22775,46 +22712,46 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "synthetics_api_test_multi_step" in the system
-	SyntheticsAPITestMultiStepPublicID := os.Getenv("SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID")
+    // there is a valid "synthetics_api_test_multi_step" in the system
+    SyntheticsAPITestMultiStepPublicID := os.Getenv("SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID")
 
-	body := datadogV1.SyntheticsGlobalVariableRequest{
-		Description: "",
-		Name:        "GLOBAL_VARIABLE_FROM_TEST_PAYLOAD_EXAMPLESYNTHETIC",
-		Tags:        []string{},
-		Value: &datadogV1.SyntheticsGlobalVariableValue{
-			Secure: datadog.PtrBool(false),
-			Value:  datadog.PtrString(""),
-		},
-		ParseTestPublicId: datadog.PtrString(SyntheticsAPITestMultiStepPublicID),
-		ParseTestOptions: &datadogV1.SyntheticsGlobalVariableParseTestOptions{
-			Type:              datadogV1.SYNTHETICSGLOBALVARIABLEPARSETESTOPTIONSTYPE_LOCAL_VARIABLE,
-			LocalVariableName: datadog.PtrString("EXTRACTED_VALUE"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateGlobalVariable(ctx, body)
+    body := datadogV1.SyntheticsGlobalVariableRequest{
+        Description: "",
+        Name:        "GLOBAL_VARIABLE_FROM_TEST_PAYLOAD_EXAMPLESYNTHETIC",
+        Tags:        []string{},
+        Value: &datadogV1.SyntheticsGlobalVariableValue{
+            Secure: datadog.PtrBool(false),
+            Value:  datadog.PtrString(""),
+        },
+        ParseTestPublicId: datadog.PtrString(SyntheticsAPITestMultiStepPublicID),
+        ParseTestOptions: &datadogV1.SyntheticsGlobalVariableParseTestOptions{
+            Type:              datadogV1.SYNTHETICSGLOBALVARIABLEPARSETESTOPTIONSTYPE_LOCAL_VARIABLE,
+            LocalVariableName: datadog.PtrString("EXTRACTED_VALUE"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateGlobalVariable(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
@@ -22822,7 +22759,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a FIDO global variable returns "OK" response
@@ -22858,7 +22795,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a TOTP global variable returns "OK" response
@@ -22907,7 +22844,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a global variable from test returns "OK" response
@@ -22959,7 +22896,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -22985,7 +22922,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -23026,7 +22963,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -23045,7 +22982,6 @@ from datadog_api_client.v1.model.synthetics_global_variable_parse_test_options_t
 from datadog_api_client.v1.model.synthetics_global_variable_request import SyntheticsGlobalVariableRequest
 from datadog_api_client.v1.model.synthetics_global_variable_value import SyntheticsGlobalVariableValue
 
-# there is a valid "synthetics_api_test_multi_step" in the system
 SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID = environ["SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID"]
 
 body = SyntheticsGlobalVariableRequest(
@@ -23075,7 +23011,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a FIDO global variable returns "OK" response
@@ -23092,7 +23028,7 @@ body = DatadogAPIClient::V1::SyntheticsGlobalVariableRequest.new({
 p api_instance.create_global_variable(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a TOTP global variable returns "OK" response
@@ -23119,7 +23055,7 @@ body = DatadogAPIClient::V1::SyntheticsGlobalVariableRequest.new({
 p api_instance.create_global_variable(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a global variable from test returns "OK" response
@@ -23127,7 +23063,6 @@ p api_instance.create_global_variable(body)
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::SyntheticsAPI.new
 
-# there is a valid "synthetics_api_test_multi_step" in the system
 SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID = ENV["SYNTHETICS_API_TEST_MULTI_STEP_PUBLIC_ID"]
 
 body = DatadogAPIClient::V1::SyntheticsGlobalVariableRequest.new({
@@ -23151,7 +23086,7 @@ p api_instance.create_global_variable(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a FIDO global variable returns "OK" response
@@ -23178,7 +23113,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a TOTP global variable returns "OK" response
@@ -23220,7 +23155,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a global variable from test returns "OK" response
@@ -23268,7 +23203,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -23299,7 +23234,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -23340,7 +23275,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -23408,10 +23343,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the list of all Synthetic global variables. This endpoint requires any of the following permissions:
 `synthetics_global_variable_read``apm_api_catalog_read`
 
-
 OAuth apps require the `apm_api_catalog_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Response
 
@@ -23550,13 +23482,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -23578,7 +23510,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all global variables returns "OK" response
@@ -23592,7 +23524,7 @@ p api_instance.list_global_variables()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all global variables returns "OK" response
@@ -23600,29 +23532,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.ListGlobalVariables(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.ListGlobalVariables(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListGlobalVariables`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListGlobalVariables`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListGlobalVariables`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListGlobalVariables`:\n%s\n", responseContent)
 }
 ```
 
@@ -23630,7 +23562,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all global variables returns "OK" response
@@ -23663,7 +23595,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all global variables returns "OK" response
@@ -23687,7 +23619,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -23734,8 +23666,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the detailed configuration of a global variable.
 
 OAuth apps require the `synthetics_global_variable_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -23902,13 +23832,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport variable_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables/${variable_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -23932,7 +23862,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a global variable returns "OK" response
@@ -23946,7 +23876,7 @@ p api_instance.get_global_variable("variable_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a global variable returns "OK" response
@@ -23954,29 +23884,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetGlobalVariable(ctx, "variable_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetGlobalVariable(ctx, "variable_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
@@ -23984,7 +23914,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a global variable returns "OK" response
@@ -24017,7 +23947,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a global variable returns "OK" response
@@ -24041,7 +23971,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24092,8 +24022,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Edit a Synthetic global variable. This endpoint requires the `synthetics_global_variable_write` permission.
 
 OAuth apps require the `synthetics_global_variable_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -24338,7 +24266,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport variable_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables/${variable_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -24360,8 +24288,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -24425,7 +24353,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit a global variable returns "OK" response
@@ -24467,7 +24395,7 @@ p api_instance.edit_global_variable("variable_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Edit a global variable returns "OK" response
@@ -24475,56 +24403,56 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsGlobalVariableRequest{
-		Attributes: &datadogV1.SyntheticsGlobalVariableAttributes{
-			RestrictedRoles: []string{
-				"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-			},
-		},
-		Description: "Example description",
-		Name:        "MY_VARIABLE",
-		ParseTestOptions: &datadogV1.SyntheticsGlobalVariableParseTestOptions{
-			Field:             datadog.PtrString("content-type"),
-			LocalVariableName: datadog.PtrString("LOCAL_VARIABLE"),
-			Parser: &datadogV1.SyntheticsVariableParser{
-				Type:  datadogV1.SYNTHETICSGLOBALVARIABLEPARSERTYPE_REGEX,
-				Value: datadog.PtrString(".*"),
-			},
-			Type: datadogV1.SYNTHETICSGLOBALVARIABLEPARSETESTOPTIONSTYPE_HTTP_BODY,
-		},
-		ParseTestPublicId: datadog.PtrString("abc-def-123"),
-		Tags: []string{
-			"team:front",
-			"test:workflow-1",
-		},
-		Value: &datadogV1.SyntheticsGlobalVariableValue{
-			Secure: datadog.PtrBool(true),
-			Value:  datadog.PtrString("value"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.EditGlobalVariable(ctx, "variable_id", body)
+    body := datadogV1.SyntheticsGlobalVariableRequest{
+        Attributes: &datadogV1.SyntheticsGlobalVariableAttributes{
+            RestrictedRoles: []string{
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            },
+        },
+        Description: "Example description",
+        Name:        "MY_VARIABLE",
+        ParseTestOptions: &datadogV1.SyntheticsGlobalVariableParseTestOptions{
+            Field:             datadog.PtrString("content-type"),
+            LocalVariableName: datadog.PtrString("LOCAL_VARIABLE"),
+            Parser: &datadogV1.SyntheticsVariableParser{
+                Type:  datadogV1.SYNTHETICSGLOBALVARIABLEPARSERTYPE_REGEX,
+                Value: datadog.PtrString(".*"),
+            },
+            Type: datadogV1.SYNTHETICSGLOBALVARIABLEPARSETESTOPTIONSTYPE_HTTP_BODY,
+        },
+        ParseTestPublicId: datadog.PtrString("abc-def-123"),
+        Tags: []string{
+            "team:front",
+            "test:workflow-1",
+        },
+        Value: &datadogV1.SyntheticsGlobalVariableValue{
+            Secure: datadog.PtrBool(true),
+            Value:  datadog.PtrString("value"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.EditGlobalVariable(ctx, "variable_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.EditGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.EditGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.EditGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.EditGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
@@ -24532,7 +24460,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit a global variable returns "OK" response
@@ -24595,7 +24523,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Edit a global variable returns "OK" response
@@ -24654,7 +24582,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -24727,8 +24655,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a Synthetic global variable. This endpoint requires the `synthetics_global_variable_write` permission.
 
 OAuth apps require the `synthetics_global_variable_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -24846,13 +24772,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport variable_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/variables/${variable_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -24874,7 +24800,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a global variable returns "OK" response
@@ -24888,7 +24814,7 @@ p api_instance.delete_global_variable("variable_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a global variable returns "OK" response
@@ -24896,25 +24822,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	r, err := api.DeleteGlobalVariable(ctx, "variable_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    r, err := api.DeleteGlobalVariable(ctx, "variable_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -24922,7 +24848,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a global variable returns "OK" response
@@ -24953,7 +24879,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a global variable returns "OK" response
@@ -24977,7 +24903,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25028,8 +24954,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new Synthetic private location. This endpoint requires the `synthetics_private_location_write` permission.
 
 OAuth apps require the `synthetics_private_location_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -25219,7 +25143,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/private-locations" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -25239,8 +25163,8 @@ Error response object.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a private location returns "OK" response
@@ -25248,44 +25172,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV1.SyntheticsPrivateLocation{
-		Description: "Test Example-Synthetic description",
-		Metadata: &datadogV1.SyntheticsPrivateLocationMetadata{
-			RestrictedRoles: []string{
-				RoleDataID,
-			},
-		},
-		Name: "Example-Synthetic",
-		Tags: []string{
-			"test:examplesynthetic",
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreatePrivateLocation(ctx, body)
+    body := datadogV1.SyntheticsPrivateLocation{
+        Description: "Test Example-Synthetic description",
+        Metadata: &datadogV1.SyntheticsPrivateLocationMetadata{
+            RestrictedRoles: []string{
+                RoleDataID,
+            },
+        },
+        Name: "Example-Synthetic",
+        Tags: []string{
+            "test:examplesynthetic",
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreatePrivateLocation(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreatePrivateLocation`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreatePrivateLocation`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreatePrivateLocation`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreatePrivateLocation`:\n%s\n", responseContent)
 }
 ```
 
@@ -25293,7 +25217,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a private location returns "OK" response
@@ -25341,7 +25265,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -25385,7 +25309,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a private location returns "OK" response
@@ -25415,7 +25339,7 @@ p api_instance.create_private_location(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a private location returns "OK" response
@@ -25451,7 +25375,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25513,8 +25437,6 @@ Get the list of public and private locations available for Synthetic tests. No a
 
 OAuth apps require the `synthetics_private_location_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
 
-
-
 ### Response
 
 {% tab title="200" %}
@@ -25574,13 +25496,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/locations" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -25602,7 +25524,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all locations (public and private) returns "OK" response
@@ -25616,7 +25538,7 @@ p api_instance.list_locations()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all locations (public and private) returns "OK" response
@@ -25624,29 +25546,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.ListLocations(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.ListLocations(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListLocations`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.ListLocations`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListLocations`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.ListLocations`:\n%s\n", responseContent)
 }
 ```
 
@@ -25654,7 +25576,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all locations (public and private) returns "OK" response
@@ -25687,7 +25609,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all locations (public and private) returns "OK" response
@@ -25711,7 +25633,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -25758,8 +25680,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a Synthetic private location. This endpoint requires the `synthetics_private_location_read` permission.
 
 OAuth apps require the `synthetics_private_location_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -25876,13 +25796,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport location_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/private-locations/${location_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -25906,7 +25826,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a private location returns "OK" response
@@ -25920,7 +25840,7 @@ p api_instance.get_private_location("location_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a private location returns "OK" response
@@ -25928,29 +25848,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetPrivateLocation(ctx, "location_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetPrivateLocation(ctx, "location_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetPrivateLocation`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetPrivateLocation`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetPrivateLocation`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetPrivateLocation`:\n%s\n", responseContent)
 }
 ```
 
@@ -25958,7 +25878,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a private location returns "OK" response
@@ -25991,7 +25911,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a private location returns "OK" response
@@ -26015,7 +25935,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26066,8 +25986,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Edit a Synthetic private location. This endpoint requires the `synthetics_private_location_write` permission.
 
 OAuth apps require the `synthetics_private_location_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -26228,7 +26146,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport location_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/private-locations/${location_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -26243,8 +26161,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26284,7 +26202,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit a private location returns "OK" response
@@ -26311,7 +26229,7 @@ p api_instance.update_private_location("location_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Edit a private location returns "OK" response
@@ -26319,41 +26237,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SyntheticsPrivateLocation{
-		Description: "Description of private location",
-		Metadata: &datadogV1.SyntheticsPrivateLocationMetadata{
-			RestrictedRoles: []string{
-				"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-			},
-		},
-		Name: "New private location",
-		Tags: []string{
-			"team:front",
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.UpdatePrivateLocation(ctx, "location_id", body)
+    body := datadogV1.SyntheticsPrivateLocation{
+        Description: "Description of private location",
+        Metadata: &datadogV1.SyntheticsPrivateLocationMetadata{
+            RestrictedRoles: []string{
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            },
+        },
+        Name: "New private location",
+        Tags: []string{
+            "team:front",
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.UpdatePrivateLocation(ctx, "location_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdatePrivateLocation`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.UpdatePrivateLocation`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdatePrivateLocation`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.UpdatePrivateLocation`:\n%s\n", responseContent)
 }
 ```
 
@@ -26361,7 +26279,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit a private location returns "OK" response
@@ -26406,7 +26324,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Edit a private location returns "OK" response
@@ -26443,7 +26361,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26502,8 +26420,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a Synthetic private location. This endpoint requires the `synthetics_private_location_write` permission.
 
 OAuth apps require the `synthetics_private_location_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -26571,12 +26487,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport location_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/private-locations/${location_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26598,7 +26514,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a private location returns "OK" response
@@ -26612,7 +26528,7 @@ api_instance.delete_private_location("location_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a private location returns "OK" response
@@ -26620,25 +26536,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	r, err := api.DeletePrivateLocation(ctx, "location_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    r, err := api.DeletePrivateLocation(ctx, "location_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeletePrivateLocation`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeletePrivateLocation`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -26646,7 +26562,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a private location returns "OK" response
@@ -26677,7 +26593,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a private location returns "OK" response
@@ -26701,7 +26617,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26804,13 +26720,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/settings/default_locations" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -26832,7 +26748,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the default locations returns "OK" response
@@ -26846,7 +26762,7 @@ p api_instance.get_synthetics_default_locations()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the default locations returns "OK" response
@@ -26854,29 +26770,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetSyntheticsDefaultLocations(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetSyntheticsDefaultLocations(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsDefaultLocations`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsDefaultLocations`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsDefaultLocations`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsDefaultLocations`:\n%s\n", responseContent)
 }
 ```
 
@@ -26884,7 +26800,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the default locations returns "OK" response
@@ -26917,7 +26833,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the default locations returns "OK" response
@@ -26941,7 +26857,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -26986,8 +26902,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint is deprecated. To create a test, use [Create an API test](https://docs.datadoghq.com/api/latest/synthetics/#create-an-api-test), or [Create a browser test](https://docs.datadoghq.com/api/latest/synthetics/#create-a-browser-test). This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
@@ -27971,7 +27885,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -28018,7 +27932,7 @@ Error response object.
   }
 }
 EOF
-                
+
 ## Edit a test{% #edit-a-test %}
 
 | Datadog site      | API endpoint                                                          |
@@ -28036,8 +27950,6 @@ EOF
 This endpoint is deprecated. To edit a test, use [Edit an API test](https://docs.datadoghq.com/api/latest/synthetics/#edit-an-api-test) or [Edit a browser test](https://docs.datadoghq.com/api/latest/synthetics/#edit-a-browser-test). This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -29029,7 +28941,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/synthetics/tests/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -29076,7 +28988,7 @@ Error response object.
   }
 }
 EOF
-                
+
 ## Save new value for on-demand concurrency cap{% #save-new-value-for-on-demand-concurrency-cap %}
 
 {% tab title="v2" %}
@@ -29179,7 +29091,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/settings/on_demand_concurrency_cap" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -29190,8 +29102,8 @@ API error response.
   "on_demand_concurrency_cap": 20
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Save new value for on-demand concurrency cap returns "OK" response
@@ -29199,32 +29111,32 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.OnDemandConcurrencyCapAttributes{
-		OnDemandConcurrencyCap: datadog.PtrFloat64(20),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.SetOnDemandConcurrencyCap(ctx, body)
+    body := datadogV2.OnDemandConcurrencyCapAttributes{
+        OnDemandConcurrencyCap: datadog.PtrFloat64(20),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.SetOnDemandConcurrencyCap(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SetOnDemandConcurrencyCap`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SetOnDemandConcurrencyCap`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SetOnDemandConcurrencyCap`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SetOnDemandConcurrencyCap`:\n%s\n", responseContent)
 }
 ```
 
@@ -29232,7 +29144,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Save new value for on-demand concurrency cap returns "OK" response
@@ -29269,7 +29181,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -29296,7 +29208,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Save new value for on-demand concurrency cap returns "OK" response
@@ -29314,7 +29226,7 @@ p api_instance.set_on_demand_concurrency_cap(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Save new value for on-demand concurrency cap returns "OK" response
@@ -29340,7 +29252,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -29452,13 +29364,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/settings/on_demand_concurrency_cap" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -29480,7 +29392,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get the on-demand concurrency cap returns "OK" response
@@ -29494,7 +29406,7 @@ p api_instance.get_on_demand_concurrency_cap()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get the on-demand concurrency cap returns "OK" response
@@ -29502,29 +29414,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetOnDemandConcurrencyCap(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetOnDemandConcurrencyCap(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetOnDemandConcurrencyCap`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetOnDemandConcurrencyCap`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetOnDemandConcurrencyCap`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetOnDemandConcurrencyCap`:\n%s\n", responseContent)
 }
 ```
 
@@ -29532,7 +29444,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get the on-demand concurrency cap returns "OK" response
@@ -29565,7 +29477,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get the on-demand concurrency cap returns "OK" response
@@ -29589,7 +29501,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -29633,8 +29545,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Patch a global variable using JSON Patch (RFC 6902). This endpoint allows partial updates to a global variable by specifying only the fields to modify.
 
 Common operations include:
@@ -29644,7 +29554,6 @@ Common operations include:
 - Add/update tags: `{"op": "add", "path": "/tags/-", "value": "new_tag"}`
 - Remove fields: `{"op": "remove", "path": "/description"}`
 This endpoint requires the `synthetics_global_variable_write` permission.
-
 
 ### Arguments
 
@@ -29862,7 +29771,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport variable_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/variables/${variable_id}/jsonpatch" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -29882,8 +29791,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -29927,7 +29836,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Patch a global variable returns "OK" response
@@ -29955,7 +29864,7 @@ p api_instance.patch_global_variable("variable_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Patch a global variable returns "OK" response
@@ -29963,42 +29872,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GlobalVariableJsonPatchRequest{
-		Data: datadogV2.GlobalVariableJsonPatchRequestData{
-			Attributes: &datadogV2.GlobalVariableJsonPatchRequestDataAttributes{
-				JsonPatch: []datadogV2.JsonPatchOperation{
-					{
-						Op:   datadogV2.JSONPATCHOPERATIONOP_ADD,
-						Path: "/name",
-					},
-				},
-			},
-			Type: datadogV2.GLOBALVARIABLEJSONPATCHTYPE_GLOBAL_VARIABLES_JSON_PATCH.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.PatchGlobalVariable(ctx, "variable_id", body)
+    body := datadogV2.GlobalVariableJsonPatchRequest{
+        Data: datadogV2.GlobalVariableJsonPatchRequestData{
+            Attributes: &datadogV2.GlobalVariableJsonPatchRequestDataAttributes{
+                JsonPatch: []datadogV2.JsonPatchOperation{
+                    {
+                        Op:   datadogV2.JSONPATCHOPERATIONOP_ADD,
+                        Path: "/name",
+                    },
+                },
+            },
+            Type: datadogV2.GLOBALVARIABLEJSONPATCHTYPE_GLOBAL_VARIABLES_JSON_PATCH.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.PatchGlobalVariable(ctx, "variable_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.PatchGlobalVariable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.PatchGlobalVariable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.PatchGlobalVariable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.PatchGlobalVariable`:\n%s\n", responseContent)
 }
 ```
 
@@ -30006,7 +29915,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Patch a global variable returns "OK" response
@@ -30059,7 +29968,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Patch a global variable returns "OK" response
@@ -30100,7 +30009,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30164,16 +30073,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires any of the following permissions:
 `synthetics_write``synthetics_create_edit_trigger`
 
-
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -30331,7 +30235,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/suites" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -30354,8 +30258,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Synthetics: Create a test suite returns "OK" response
@@ -30363,44 +30267,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SuiteCreateEditRequest{
-		Data: datadogV2.SuiteCreateEdit{
-			Attributes: datadogV2.SyntheticsSuite{
-				Message: datadog.PtrString("Notification message"),
-				Name:    "Example suite name",
-				Options: datadogV2.SyntheticsSuiteOptions{},
-				Tags: []string{
-					"env:production",
-				},
-				Tests: []datadogV2.SyntheticsSuiteTest{},
-				Type:  datadogV2.SYNTHETICSSUITETYPE_SUITE,
-			},
-			Type: datadogV2.SYNTHETICSSUITETYPES_SUITES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.CreateSyntheticsSuite(ctx, body)
+    body := datadogV2.SuiteCreateEditRequest{
+        Data: datadogV2.SuiteCreateEdit{
+            Attributes: datadogV2.SyntheticsSuite{
+                Message: datadog.PtrString("Notification message"),
+                Name:    "Example suite name",
+                Options: datadogV2.SyntheticsSuiteOptions{},
+                Tags: []string{
+                    "env:production",
+                },
+                Tests: []datadogV2.SyntheticsSuiteTest{},
+                Type:  datadogV2.SYNTHETICSSUITETYPE_SUITE,
+            },
+            Type: datadogV2.SYNTHETICSSUITETYPES_SUITES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.CreateSyntheticsSuite(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsSuite`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.CreateSyntheticsSuite`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsSuite`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.CreateSyntheticsSuite`:\n%s\n", responseContent)
 }
 ```
 
@@ -30408,7 +30312,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Synthetics: Create a test suite returns "OK" response
@@ -30461,7 +30365,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -30505,10 +30409,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Synthetics: Create a test suite returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SyntheticsAPI.new
@@ -30535,7 +30438,7 @@ p api_instance.create_synthetics_suite(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Synthetics: Create a test suite returns "OK" response
@@ -30576,7 +30479,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30639,8 +30542,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Search for test suites. This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -30774,13 +30675,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/suites/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -30802,10 +30703,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Search Synthetics suites returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SyntheticsAPI.new
@@ -30816,7 +30716,7 @@ p api_instance.search_suites()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search Synthetics suites returns "OK" response
@@ -30824,29 +30724,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.SearchSuites(ctx, *datadogV2.NewSearchSuitesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.SearchSuites(ctx, *datadogV2.NewSearchSuitesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SearchSuites`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.SearchSuites`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SearchSuites`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.SearchSuites`:\n%s\n", responseContent)
 }
 ```
 
@@ -30854,7 +30754,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search Synthetics suites returns "OK" response
@@ -30887,7 +30787,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search Synthetics suites returns "OK" response
@@ -30914,7 +30814,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -30961,8 +30861,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -31085,13 +30983,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/suites/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31115,10 +31013,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Synthetics: Get a suite returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SyntheticsAPI.new
@@ -31129,7 +31026,7 @@ p api_instance.get_synthetics_suite("public_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Synthetics: Get a suite returns "OK" response
@@ -31137,29 +31034,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.GetSyntheticsSuite(ctx, "public_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.GetSyntheticsSuite(ctx, "public_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsSuite`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.GetSyntheticsSuite`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsSuite`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.GetSyntheticsSuite`:\n%s\n", responseContent)
 }
 ```
 
@@ -31167,7 +31064,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Synthetics: Get a suite returns "OK" response
@@ -31200,7 +31097,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Synthetics: Get a suite returns "OK" response
@@ -31224,7 +31121,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -31275,8 +31172,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -31455,7 +31350,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/suites/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -31478,8 +31373,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31532,10 +31427,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Synthetics: Edit a test suite returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SyntheticsAPI.new
@@ -31567,7 +31461,7 @@ p api_instance.edit_synthetics_suite("public_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Synthetics: Edit a test suite returns "OK" response
@@ -31575,49 +31469,49 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SuiteCreateEditRequest{
-		Data: datadogV2.SuiteCreateEdit{
-			Attributes: datadogV2.SyntheticsSuite{
-				Message: datadog.PtrString("Notification message"),
-				Name:    "Example suite name",
-				Options: datadogV2.SyntheticsSuiteOptions{},
-				Tags: []string{
-					"env:production",
-				},
-				Tests: []datadogV2.SyntheticsSuiteTest{
-					{
-						AlertingCriticality: datadogV2.SYNTHETICSSUITETESTALERTINGCRITICALITY_CRITICAL.Ptr(),
-						PublicId:            "",
-					},
-				},
-				Type: datadogV2.SYNTHETICSSUITETYPE_SUITE,
-			},
-			Type: datadogV2.SYNTHETICSSUITETYPES_SUITES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.EditSyntheticsSuite(ctx, "public_id", body)
+    body := datadogV2.SuiteCreateEditRequest{
+        Data: datadogV2.SuiteCreateEdit{
+            Attributes: datadogV2.SyntheticsSuite{
+                Message: datadog.PtrString("Notification message"),
+                Name:    "Example suite name",
+                Options: datadogV2.SyntheticsSuiteOptions{},
+                Tags: []string{
+                    "env:production",
+                },
+                Tests: []datadogV2.SyntheticsSuiteTest{
+                    {
+                        AlertingCriticality: datadogV2.SYNTHETICSSUITETESTALERTINGCRITICALITY_CRITICAL.Ptr(),
+                        PublicId:            "",
+                    },
+                },
+                Type: datadogV2.SYNTHETICSSUITETYPE_SUITE,
+            },
+            Type: datadogV2.SYNTHETICSSUITETYPES_SUITES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.EditSyntheticsSuite(ctx, "public_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.EditSyntheticsSuite`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.EditSyntheticsSuite`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.EditSyntheticsSuite`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.EditSyntheticsSuite`:\n%s\n", responseContent)
 }
 ```
 
@@ -31625,7 +31519,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Synthetics: Edit a test suite returns "OK" response
@@ -31686,7 +31580,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Synthetics: Edit a test suite returns "OK" response
@@ -31732,7 +31626,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -31802,13 +31696,9 @@ This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -31932,7 +31822,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/suites/bulk-delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -31949,8 +31839,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -31987,10 +31877,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Synthetics: Bulk delete suites returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::SyntheticsAPI.new
@@ -32012,7 +31901,7 @@ p api_instance.delete_synthetics_suites(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Synthetics: Bulk delete suites returns "OK" response
@@ -32020,39 +31909,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DeletedSuitesRequestDeleteRequest{
-		Data: datadogV2.DeletedSuitesRequestDelete{
-			Attributes: datadogV2.DeletedSuitesRequestDeleteAttributes{
-				PublicIds: []string{
-					"",
-				},
-			},
-			Type: datadogV2.DELETEDSUITESREQUESTTYPE_DELETE_SUITES_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewSyntheticsApi(apiClient)
-	resp, r, err := api.DeleteSyntheticsSuites(ctx, body)
+    body := datadogV2.DeletedSuitesRequestDeleteRequest{
+        Data: datadogV2.DeletedSuitesRequestDelete{
+            Attributes: datadogV2.DeletedSuitesRequestDeleteAttributes{
+                PublicIds: []string{
+                    "",
+                },
+            },
+            Type: datadogV2.DELETEDSUITESREQUESTTYPE_DELETE_SUITES_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewSyntheticsApi(apiClient)
+    resp, r, err := api.DeleteSyntheticsSuites(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteSyntheticsSuites`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SyntheticsApi.DeleteSyntheticsSuites`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.DeleteSyntheticsSuites`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SyntheticsApi.DeleteSyntheticsSuites`:\n%s\n", responseContent)
 }
 ```
 
@@ -32060,7 +31949,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Synthetics: Bulk delete suites returns "OK" response
@@ -32107,7 +31996,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Synthetics: Bulk delete suites returns "OK" response
@@ -32141,7 +32030,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -32199,16 +32088,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires any of the following permissions:
 `synthetics_write``synthetics_create_edit_trigger`
 
-
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -32537,7 +32421,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/tests/network" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -32585,7 +32469,7 @@ API error response.
   }
 }
 EOF
-                        
+
 {% /tab %}
 
 ## Get a Network Path test{% #get-a-network-path-test %}
@@ -32607,8 +32491,6 @@ EOF
 This endpoint requires the `synthetics_read` permission.
 
 OAuth apps require the `synthetics_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -32853,12 +32735,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/tests/network/${public_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}
 
 ## Edit a Network Path test{% #edit-a-network-path-test %}
@@ -32880,10 +32762,7 @@ API error response.
 This endpoint requires any of the following permissions:
 `synthetics_write``synthetics_create_edit_trigger`
 
-
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -33281,7 +33160,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport public_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/tests/network/${public_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -33323,7 +33202,7 @@ API error response.
   }
 }
 EOF
-                
+
 {% /tab %}
 
 ## Bulk delete tests{% #bulk-delete-tests %}
@@ -33346,13 +33225,9 @@ This endpoint requires the `synthetics_write` permission.
 
 OAuth apps require the `synthetics_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#synthetics) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -33501,7 +33376,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/synthetics/tests/bulk-delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -33518,5 +33393,5 @@ API error response.
   }
 }
 EOF
-                
+
 {% /tab %}

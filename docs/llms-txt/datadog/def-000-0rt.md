@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/messages File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/messages`, run the command:

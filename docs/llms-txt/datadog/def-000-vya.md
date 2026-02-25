@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable core dump backtraces
 ---
 
 # Disable core dump backtraces
- 
+
 ## Description{% #description %}
 
 The `ProcessSizeMax` option in `[Coredump]` section of `/etc/systemd/coredump.conf` specifies the maximum size in bytes of a core which will be processed. Core dumps exceeding this size may be stored, but the backtrace will not be generated.
@@ -29,7 +29,7 @@ The following script can be run on the host to remediate the issue.
 if rpm --quiet -q systemd; then
 
 if [ -e "/etc/systemd/coredump.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*ProcessSizeMax\s*=\s*/Id" "/etc/systemd/coredump.conf"
 else
     touch "/etc/systemd/coredump.conf"

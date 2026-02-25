@@ -58,6 +58,5 @@ if 0 < nextSx <= len(subject):
 if 1 in ctx:
   print("foo")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

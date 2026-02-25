@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # PostgreSQL instances should have the 'log_connections' database flag set to 'on'
- 
+
 ## Description{% #description %}
 
 By enabling the `log_connections` setting, every attempted server connection is logged along with the successful completion of client authentication. Once the session starts, you cannot change this parameter.

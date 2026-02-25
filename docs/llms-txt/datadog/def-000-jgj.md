@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Container breakout attempt using container management socket
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was used to access a container management socket from inside a container, potentially to deploy a new container and escape isolation.

@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Use Only Strong Key Exchange
 ---
 
 # Use Only Strong Key Exchange algorithms
- 
+
 ## Description{% #description %}
 
 Limit the Key Exchange to strong algorithms. The following line in `/etc/ssh/sshd_config` demonstrates use of those:
 
 ```
 KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
-        
+
 ```
 
 ## Rationale{% #rationale %}
@@ -37,7 +37,7 @@ sshd_strong_kex='curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp2
 
 
 if [ -e "/etc/ssh/sshd_config" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*KexAlgorithms\s\+/Id" "/etc/ssh/sshd_config"
 else
     touch "/etc/ssh/sshd_config"

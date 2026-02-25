@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Table Service storage logging should be enabled for 'Read', 'Write', and 'Delete' requests
- 
+
 ## Description{% #description %}
 
 Storage Logging occurs server-side, recording details of both successful and failed requests in the storage account, and giving users insights into read, write, and delete operations against the tables. The logs contain detailed information about individual requests such as timing, authentication, concurrency information, and the sizes of request and response messages. Storage Analytics logs offer additional data about successful and failed requests to a storage service, aiding in monitoring each request for better security and diagnostics. However, due to its potential impact on storage costs, Storage Analytics logging is not automatically enabled and requires careful consideration of usage and projected costs before activation.

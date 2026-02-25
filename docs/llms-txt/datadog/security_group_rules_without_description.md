@@ -129,7 +129,7 @@ resource "aws_security_group" "allow_tls" {
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```terraform
-resource "aws_security_group" "positive2" { 
+resource "aws_security_group" "positive2" {
 
   name        = "${var.prefix}-external-http-https"
   description = "Allow main HTTP / HTTPS"

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Potential Google Cloud cryptomining attack from Tor IP
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when a Google Compute Engine cryptomining attack is observed from a Tor IP.

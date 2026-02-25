@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Copilot Studio agent sign-in topic modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when the M365 Copilot Studio agent's system "Sign in" topic is modified. When a customer begins a conversation with the agent, the "Sign in" topic triggers and prompts the user to sign in. Modification of system sign in topics may indicate an attacker adding actions to manipulate the agent's login process, which may include compromising the `User.AccessToken` variable. The `User.AccessToken` variable contains the user's token, which is obtained after the user is signed in.

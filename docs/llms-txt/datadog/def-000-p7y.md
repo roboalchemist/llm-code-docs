@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure AD possible MFA fatigu
 ---
 
 # Azure AD possible MFA fatigue attack
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621)
 ## Goal{% #goal %}
 
 Detects when multiple Azure AD multi-factor authentication (MFA) push notifications have been rejected or not responded to by a user.

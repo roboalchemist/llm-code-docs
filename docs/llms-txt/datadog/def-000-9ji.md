@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify the UEFI Boot Loader grub.cfg Group Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/efi/EFI/redhat/grub.cfg` should be group-owned by the `root` group to prevent destruction or modification of the file. To properly set the group owner of `/boot/efi/EFI/redhat/grub.cfg`, run the command:

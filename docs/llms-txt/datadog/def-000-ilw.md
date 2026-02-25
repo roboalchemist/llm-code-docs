@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM User created with AdministratorAccess policy attached
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136)
 ## Goal{% #goal %}
 
 Detect when an AWS IAM user is created and the managed AdministratorAccess policy is attached shortly after.

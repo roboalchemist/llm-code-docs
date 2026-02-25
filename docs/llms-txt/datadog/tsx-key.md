@@ -61,6 +61,5 @@ data.map((x) => <Hello key={x.id}>{x}</Hello>);
 Array.from([1, 2, 3], (x) => <Hello key={x.id}>{x}</Hello>);
 <Hello key={id} {...{ id, caption }} />
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

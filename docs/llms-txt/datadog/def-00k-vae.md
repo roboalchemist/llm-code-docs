@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The certificate authorities file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The certificate authorities file should have permissions of 600 or more restrictive. The certificate authorities file controls the authorities used to validate API requests. You should restrict its file permissions to maintain the integrity of the file.

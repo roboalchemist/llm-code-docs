@@ -36,16 +36,16 @@ Lexical declaration in switch cases are leaked throughout all other cases, which
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```javascript
-switch (a) { 
-    case 1: 
+switch (a) {
+    case 1:
         {}
-        function f() {} 
+        function f() {}
         break;
 }
-switch (a) { 
-    case 1: 
-    case 2: 
-        let x; 
+switch (a) {
+    case 1:
+    case 2:
+        let x;
 }
 switch (a) { case 1: let x = 1; break; }
 switch (a) { default: let x = 2; break; }
@@ -64,14 +64,13 @@ switch (a) { case 1: { let x = 1; break; } default: { let x = 2; break; } }
 switch (a) { case 1: { const x = 1; break; } default: { const x = 2; break; } }
 switch (a) { case 1: { function f() {} break; } default: { function f() {} break; } }
 switch (a) { case 1: { class C {} break; } default: { class C {} break; } }
-switch (a) { 
-    case 1: 
-    case 2: {} 
+switch (a) {
+    case 1:
+    case 2: {}
 }
 switch (a) {
-    case 1: var x; 
+    case 1: var x;
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

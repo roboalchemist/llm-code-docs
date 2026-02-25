@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kernel capabilities in Linux should only be granted when necessary
-Classification:complianceFramework:cis-dockerControl:5.3 
+Classification:complianceFramework:cis-dockerControl:5.3
 ## Description{% #description %}
 
 By default, Docker starts containers with a restricted set of Linux kernel capabilities. This means that any process can be granted the required capabilities instead of giving it root access. Using Linux kernel capabilities, processes in general do not need to run as the root user.

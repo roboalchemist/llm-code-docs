@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Delete Public Ip Address Rule' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance network security monitoring and expedite the detection of suspicious activity, it is recommended to create an activity log alert specifically for the "Delete Public IP Addresses Rule" event. By enabling this alert, you gain valuable insights into the deletions of public IP addresses rules. It is important to note that enabling this alert may result in a substantial increase in log size, particularly if there are numerous administrative actions performed on a server. However, the benefits of improved security monitoring outweigh the potential impact on log size.

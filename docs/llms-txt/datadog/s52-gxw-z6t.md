@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Multiple Okta push notifications denied followed by a successful login
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1621-multi-factor-authentication-request-generation](https://attack.mitre.org/techniques/T1621)
 ## Goal{% #goal %}
 
 Detect Okta Multi-factor Authentication (MFA) fatigue attacks.

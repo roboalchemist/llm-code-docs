@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on cron.hourly
 ---
 
 # Verify Owner on cron.hourly
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/cron.hourly`, run the command:
 
 ```
-$ sudo chown root /etc/cron.hourly 
+$ sudo chown root /etc/cron.hourly
 ```
 
 ## Rationale{% #rationale %}

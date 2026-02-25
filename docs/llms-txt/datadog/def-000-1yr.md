@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Limit Password Reuse (ubuntu
 ---
 
 # Limit Password Reuse (ubuntu2404)
- 
+
 ## Description{% #description %}
 
 Do not allow root to reuse recent passwords. This can be accomplished by using the `enforce_for_root` option for the `pam_pwhistory` PAM modules.
@@ -44,7 +44,7 @@ if [ -f /usr/bin/authselect ]; then
 
         authselect apply-changes -b
     else
-        
+
         if ! authselect check; then
         echo "
         authselect integrity check failed. Remediation aborted!
@@ -65,20 +65,20 @@ if [ -f /usr/bin/authselect ]; then
             fi
             authselect create-profile hardening -b $CURRENT_PROFILE
             CURRENT_PROFILE="custom/hardening"
-            
+
             authselect apply-changes -b --backup=before-hardening-custom-profile
             authselect select $CURRENT_PROFILE
             for feature in $ENABLED_FEATURES; do
                 authselect enable-feature $feature;
             done
-            
+
             authselect apply-changes -b --backup=after-hardening-custom-profile
         fi
         PAM_FILE_NAME=$(basename "cac_pwhistory")
         PAM_FILE_PATH="/etc/authselect/$CURRENT_PROFILE/$PAM_FILE_NAME"
 
         authselect apply-changes -b
-        
+
         if ! grep -qP "^\s*password\s+requisite\s+pam_pwhistory.so\s*.*" "$PAM_FILE_PATH"; then
             # Line matching group + control + module was not found. Check group + module.
             if [ "$(grep -cP '^\s*password\s+.*\s+pam_pwhistory.so\s*' "$PAM_FILE_PATH")" -eq 1 ]; then
@@ -110,7 +110,7 @@ DEBIAN_FRONTEND=noninteractive pam-auth-update
 fi
 conf_file=/usr/share/pam-configs/cac_pwhistory
 if ! grep -qE 'pam_pwhistory\.so\s+[^#\n]*\benforce_for_root\b' "$conf_file"; then
-	sed -i -E '/^Password:/,/^[^[:space:]]/ {
+    sed -i -E '/^Password:/,/^[^[:space:]]/ {
     /pam_pwhistory\.so/ {
         s/$/ enforce_for_root/g
     }

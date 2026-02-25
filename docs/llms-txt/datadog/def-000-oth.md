@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Snowflake abnormal usage of OAuth access token
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1528-steal-application-access-token](https://attack.mitre.org/techniques/T1528) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1528-steal-application-access-token](https://attack.mitre.org/techniques/T1528)
 ## Goal{% #goal %}
 
 Detect abnormal OAuth access token usage in your Snowflake environment.

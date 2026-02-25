@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # 'Blob public access' should be disabled for storage accounts with blob containers
- 
+
 ## Description{% #description %}
 
 Disallowing public access for a storage account overrides the public access settings for individual containers in that storage account.

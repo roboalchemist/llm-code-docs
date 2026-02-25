@@ -86,12 +86,12 @@ spec:
     matchLabels:
       app: redis
   template:
-    metadata:      
+    metadata:
       labels:
         app: redis
     spec:
       hostNetwork: true
-      hostPID: true 
+      hostPID: true
       hostIPC: true
       containers:
       - name: redis

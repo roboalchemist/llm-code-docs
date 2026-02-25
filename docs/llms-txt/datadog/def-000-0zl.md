@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Disabling or deletion of Customer-Managed Keys should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for customer-created CMKs that change to a disabled or scheduled deletion state to ensure data accessibility.

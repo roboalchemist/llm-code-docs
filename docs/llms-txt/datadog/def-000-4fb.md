@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Endpoint exposes stack trace
 ---
 
 # Endpoint exposes stack trace errors
- 
+
 ## Description{% #description %}
 
 An API endpoint was found [exposing stack trace errors](https://app.datadoghq.com/security/appsec/vm/code?query=status%3A%28Open%20OR%20%22In%20progress%22%29%20type%3A%22Stacktrace%20Leak%22&column=score&detection=runtime&order=desc). Stack trace leaks occur when an application displays detailed error messages that include internal code paths, function names, and line numbers when an error occurs.

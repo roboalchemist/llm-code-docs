@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Service Health' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 Activity Log Alerts for Service Health events provide notifications about Azure service issues, planned maintenance, and other health-related events that may affect your resources. It is recommended to configure these alerts to ensure timely awareness of service disruptions.

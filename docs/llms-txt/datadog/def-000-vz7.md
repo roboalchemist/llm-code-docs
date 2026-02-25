@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall talk Package
 ---
 
 # Uninstall talk Package
- 
+
 ## Description{% #description %}
 
 The `talk` package contains the client program for the Internet talk protocol, which allows the user to chat with other users on different systems. Talk is a communication program which copies lines from one terminal to the terminal of another user. The `talk` package can be removed with the following command:

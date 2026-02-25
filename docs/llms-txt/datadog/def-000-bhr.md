@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure the Default Umask is Set Correctly in /etc/profile
- 
+
 ## Description{% #description %}
 
 To ensure the default umask controlled by `/etc/profile` is set properly, add or correct the `umask` setting in `/etc/profile` to read as follows:
 
 ```
 umask 027
-         
+
 ```
 
 Note that `/etc/profile` also reads scrips within `/etc/profile.d` directory. These scripts are also valid files to set umask value. Therefore, they should also be considered during the check and properly remediated, if necessary.

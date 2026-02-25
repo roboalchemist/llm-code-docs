@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Test Optimization in Datadog
 ---
 
-# Test Optimization in Datadog
-
 {% callout %}
 # Important note for users on the following Datadog sites: app.ddog-gov.com
 

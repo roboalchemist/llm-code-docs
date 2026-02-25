@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Container accessed using kubectl in another container
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609)
 ## Goal{% #goal %}
 
 Detect the use of `kubectl` inside a container to access another container.

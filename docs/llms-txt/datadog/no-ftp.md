@@ -56,6 +56,5 @@ files = ftp.list('n*')
 ftp.getbinaryfile('nif.rb-0.91.gz', 'nif.gz', 1024)
 ftp.close
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

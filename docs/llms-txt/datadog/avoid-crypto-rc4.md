@@ -47,6 +47,5 @@ Use of RC4 security protocol exposes your application to vulnerabilities.
 var encrypted = CryptoJS.RC4.encrypt("Message", "Secret Passphrase");
 var decrypted = CryptoJS.RC4.decrypt(encrypted, "Secret Passphrase");
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

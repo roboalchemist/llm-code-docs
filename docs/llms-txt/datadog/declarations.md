@@ -61,6 +61,5 @@ a(function *allowedList() {});
 class primary {}
 const secondary = 0;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

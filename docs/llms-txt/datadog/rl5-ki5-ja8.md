@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Lambda function should not be accessible over the public internet
- 
+
 ## Description{% #description %}
 
 Identify instances where a Lambda function can be invoked by anyone, either directly or through a Lambda function URL. Allowing unrestricted access to your Amazon Lambda functions poses significant risks.

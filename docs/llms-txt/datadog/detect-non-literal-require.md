@@ -56,6 +56,5 @@ var a = require(`${c}`);
 var a = require('b');
 var a = require(`b`);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

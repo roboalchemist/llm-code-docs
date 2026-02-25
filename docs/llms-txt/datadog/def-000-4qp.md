@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Add noexec Option to /dev/sh
 ---
 
 # Add noexec Option to /dev/shm
- 
+
 ## Description{% #description %}
 
 The `noexec` mount option can be used to prevent binaries from being executed out of `/dev/shm`. It can be dangerous to allow the execution of binaries from world-writable temporary storage directories such as `/dev/shm`. Add the `noexec` option to the fourth column of `/etc/fstab` for the line which controls mounting of `/dev/shm`.
@@ -29,7 +29,7 @@ The following script can be run on the host to remediate the issue.
 if ! ( [ -f /.dockerenv ] || [ -f /run/.containerenv ] ); then
 
 function perform_remediation {
-    
+
 
 
     mount_point_match_regexp="$(printf "^[[:space:]]*[^#].*[[:space:]]%s[[:space:]]" /dev/shm)"

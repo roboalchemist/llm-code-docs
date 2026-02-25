@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Configure systemd-journal-upload TLS parameters: ServerKeyFile, ServerCertificateFile and TrustedCertificateFile
- 
+
 ## Description{% #description %}
 
 Ubuntu 24.04 must offload rsyslog messages for networked systems in real time and offload standalone systems at least weekly

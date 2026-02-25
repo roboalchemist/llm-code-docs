@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Minimum Different Characters
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `difok` parameter sets the number of characters in a password that must not be present in and old password during a password change.

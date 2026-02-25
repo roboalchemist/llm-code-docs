@@ -60,6 +60,5 @@ texts.each do |text|
   output << "<p>#{text}</p>"
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

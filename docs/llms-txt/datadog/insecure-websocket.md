@@ -48,6 +48,5 @@ const client = new WebSocket('ws://app.domain.tld')
 ```javascript
 const client = new WebSocket('wss://app.domain.tld')
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

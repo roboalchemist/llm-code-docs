@@ -41,7 +41,7 @@ By using the `is` or `has` prefix, it explicitly indicates that the function is 
 
 ```go
 func getSomething() bool {
-	
+
 }
 ```
 
@@ -49,9 +49,8 @@ func getSomething() bool {
 
 ```go
 func hasSomething() bool {
-	
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

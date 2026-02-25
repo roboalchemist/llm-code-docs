@@ -47,6 +47,5 @@ new Date()
 var a = new Date()
 var a; if (a === new Date()) { a = false; }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -28,13 +28,9 @@ Create a new API from the [OpenAPI](https://spec.openapis.org/oas/latest.html) s
 
 OAuth apps require the `apm_api_catalog_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#api-management) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -50,6 +46,7 @@ OAuth apps require the `apm_api_catalog_write` authorization [scope](https://doc
 {
   "openapi_spec_file": "string"
 }
+
 ```
 
 {% /tab %}
@@ -78,16 +75,15 @@ Response for `CreateOpenAPI` operation.
 {
   "data": {
     "attributes": {
-      "failed_endpoints": [
-        {
+      "failed_endpoints": [{
           "method": "string",
           "path": "string"
-        }
-      ]
+        }]
     },
     "id": "90646597-5fdb-4a17-a240-647003f8c028"
   }
 }
+
 ```
 
 {% /tab %}
@@ -117,8 +113,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -128,9 +123,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -160,8 +155,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -171,9 +165,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -195,10 +189,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -207,15 +200,15 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apicatalog/openapi" \
 -H "Accept: application/json" \
 -H "Content-Type: multipart/form-data" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -F openapi_spec_file=@string
-                
-##### 
+
+#####
 
 ```python
 """
@@ -234,13 +227,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new API returns "API created successfully" response
@@ -254,13 +248,14 @@ opts = {
   openapi_spec_file: File.open("openapi-spec.yaml", "r"),
 }
 p api_instance.create_open_api(opts)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create a new API returns "API created successfully" response
@@ -268,39 +263,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"io"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "io"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateOpenAPI", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPIManagementApi(apiClient)
-	resp, r, err := api.CreateOpenAPI(ctx, *datadogV2.NewCreateOpenAPIOptionalParameters().WithOpenapiSpecFile(func() io.Reader { fp, _ := os.Open("openapi-spec.yaml"); return fp }()))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateOpenAPI", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPIManagementApi(apiClient)
+    resp, r, err := api.CreateOpenAPI(ctx, *datadogV2.NewCreateOpenAPIOptionalParameters().WithOpenapiSpecFile(func() io.Reader { fp, _ := os.Open("openapi-spec.yaml"); return fp }()))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.CreateOpenAPI`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.CreateOpenAPI`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.CreateOpenAPI`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.CreateOpenAPI`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new API returns "API created successfully" response
@@ -332,13 +328,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create a new API returns "API created successfully" response
@@ -364,13 +361,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -399,6 +397,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -423,8 +422,6 @@ Update information about a specific API. The given content will replace all API 
 
 OAuth apps require the `apm_api_catalog_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#api-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -436,8 +433,6 @@ OAuth apps require the `apm_api_catalog_write` authorization [scope](https://doc
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -453,6 +448,7 @@ OAuth apps require the `apm_api_catalog_write` authorization [scope](https://doc
 {
   "openapi_spec_file": "string"
 }
+
 ```
 
 {% /tab %}
@@ -481,16 +477,15 @@ Response for `UpdateOpenAPI`.
 {
   "data": {
     "attributes": {
-      "failed_endpoints": [
-        {
+      "failed_endpoints": [{
           "method": "string",
           "path": "string"
-        }
-      ]
+        }]
     },
     "id": "90646597-5fdb-4a17-a240-647003f8c028"
   }
 }
+
 ```
 
 {% /tab %}
@@ -520,8 +515,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -531,9 +525,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -563,8 +557,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -574,9 +567,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -606,8 +599,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -617,9 +609,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -641,10 +633,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -653,15 +644,15 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="90646597-5fdb-4a17-a240-647003f8c028"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apicatalog/api/${id}/openapi" \
 -H "Accept: application/json" \
 -H "Content-Type: multipart/form-data" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -F openapi_spec_file=@string
-                
-##### 
+
+#####
 
 ```python
 """
@@ -685,13 +676,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an API returns "API updated successfully" response
@@ -708,13 +700,14 @@ opts = {
   openapi_spec_file: File.open("openapi-spec.yaml", "r"),
 }
 p api_instance.update_open_api(MANAGED_API_DATA_ID, opts)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update an API returns "API updated successfully" response
@@ -722,43 +715,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"io"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "io"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "managed_api" in the system
-	ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
+    // there is a valid "managed_api" in the system
+    ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateOpenAPI", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPIManagementApi(apiClient)
-	resp, r, err := api.UpdateOpenAPI(ctx, ManagedAPIDataID, *datadogV2.NewUpdateOpenAPIOptionalParameters().WithOpenapiSpecFile(func() io.Reader { fp, _ := os.Open("openapi-spec.yaml"); return fp }()))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateOpenAPI", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPIManagementApi(apiClient)
+    resp, r, err := api.UpdateOpenAPI(ctx, ManagedAPIDataID, *datadogV2.NewUpdateOpenAPIOptionalParameters().WithOpenapiSpecFile(func() io.Reader { fp, _ := os.Open("openapi-spec.yaml"); return fp }()))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.UpdateOpenAPI`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.UpdateOpenAPI`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.UpdateOpenAPI`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.UpdateOpenAPI`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an API returns "API updated successfully" response
@@ -800,13 +794,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update an API returns "API updated successfully" response
@@ -836,13 +831,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -875,6 +871,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -899,8 +896,6 @@ Retrieve information about a specific API in [OpenAPI](https://spec.openapis.org
 
 OAuth apps require the `apm_api_catalog_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#api-management) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -924,6 +919,7 @@ OK
 
 ```json
 {}
+
 ```
 
 {% /tab %}
@@ -953,8 +949,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -964,9 +959,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -996,8 +991,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1007,9 +1001,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1039,8 +1033,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1050,9 +1043,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1074,10 +1067,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1086,13 +1078,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="90646597-5fdb-4a17-a240-647003f8c028"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apicatalog/api/${id}/openapi" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1115,13 +1107,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response.read())
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an API returns "OK" response
@@ -1135,13 +1128,14 @@ api_instance = DatadogAPIClient::V2::APIManagementAPI.new
 # there is a valid "managed_api" in the system
 MANAGED_API_DATA_ID = ENV["MANAGED_API_DATA_ID"]
 p api_instance.get_open_api(MANAGED_API_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an API returns "OK" response
@@ -1149,42 +1143,43 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"io/ioutil"
-	"os"
+    "context"
+    "fmt"
+    "io/ioutil"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "managed_api" in the system
-	ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
+    // there is a valid "managed_api" in the system
+    ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetOpenAPI", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPIManagementApi(apiClient)
-	resp, r, err := api.GetOpenAPI(ctx, ManagedAPIDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetOpenAPI", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPIManagementApi(apiClient)
+    resp, r, err := api.GetOpenAPI(ctx, ManagedAPIDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.GetOpenAPI`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.GetOpenAPI`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := ioutil.ReadAll(resp)
-	fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.GetOpenAPI`:\n%s\n", responseContent)
+    responseContent, _ := ioutil.ReadAll(resp)
+    fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.GetOpenAPI`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an API returns "OK" response
@@ -1221,13 +1216,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an API returns "OK" response
@@ -1249,13 +1245,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1283,6 +1280,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1306,8 +1304,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List APIs and their IDs. This endpoint requires the `apm_api_catalog_read` permission.
 
 OAuth apps require the `apm_api_catalog_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#api-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1344,14 +1340,12 @@ Response for `ListAPIs`.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "name": "Payments API"
       },
       "id": "90646597-5fdb-4a17-a240-647003f8c028"
-    }
-  ],
+    }],
   "meta": {
     "pagination": {
       "limit": 20,
@@ -1360,6 +1354,7 @@ Response for `ListAPIs`.
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -1389,8 +1384,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1400,9 +1394,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1432,8 +1426,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1443,9 +1436,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1467,10 +1460,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1479,13 +1471,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apicatalog/api" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1502,13 +1494,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_apis()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List APIs returns "OK" response
@@ -1519,13 +1512,14 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::APIManagementAPI.new
 p api_instance.list_apis()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List APIs returns "OK" response
@@ -1533,38 +1527,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListAPIs", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPIManagementApi(apiClient)
-	resp, r, err := api.ListAPIs(ctx, *datadogV2.NewListAPIsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListAPIs", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPIManagementApi(apiClient)
+    resp, r, err := api.ListAPIs(ctx, *datadogV2.NewListAPIsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.ListAPIs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.ListAPIs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.ListAPIs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APIManagementApi.ListAPIs`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List APIs returns "OK" response
@@ -1592,13 +1587,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List APIs returns "OK" response
@@ -1618,13 +1614,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1645,6 +1642,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1668,8 +1666,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Delete a specific API by ID. This endpoint requires the `apm_api_catalog_write` permission.
 
 OAuth apps require the `apm_api_catalog_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#api-management) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1708,8 +1704,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1719,9 +1714,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1751,8 +1746,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1762,9 +1756,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1794,8 +1788,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -1805,9 +1798,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -1829,10 +1822,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1841,12 +1833,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="90646597-5fdb-4a17-a240-647003f8c028"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apicatalog/api/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1867,13 +1859,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_open_api(
         id=MANAGED_API_DATA_ID,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an API returns "API deleted successfully" response
@@ -1887,13 +1880,14 @@ api_instance = DatadogAPIClient::V2::APIManagementAPI.new
 # there is a valid "managed_api" in the system
 MANAGED_API_DATA_ID = ENV["MANAGED_API_DATA_ID"]
 api_instance.delete_open_api(MANAGED_API_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an API returns "API deleted successfully" response
@@ -1901,38 +1895,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "managed_api" in the system
-	ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
+    // there is a valid "managed_api" in the system
+    ManagedAPIDataID := uuid.MustParse(os.Getenv("MANAGED_API_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteOpenAPI", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPIManagementApi(apiClient)
-	r, err := api.DeleteOpenAPI(ctx, ManagedAPIDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteOpenAPI", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPIManagementApi(apiClient)
+    r, err := api.DeleteOpenAPI(ctx, ManagedAPIDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.DeleteOpenAPI`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APIManagementApi.DeleteOpenAPI`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an API returns "API deleted successfully" response
@@ -1967,13 +1962,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an API returns "API deleted successfully" response
@@ -1995,13 +1991,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2029,6 +2026,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

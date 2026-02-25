@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQS queue should not be accessible over the public internet
- 
+
 ## Description{% #description %}
 
 Update Amazon Simple Queue Service (SQS) queue permissions.

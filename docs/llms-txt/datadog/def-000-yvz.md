@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall the nis package
 ---
 
 # Uninstall the nis package
- 
+
 ## Description{% #description %}
 
 The support for Yellowpages should not be installed unless it is required.

@@ -53,6 +53,5 @@ ADD https://example.com/file.go /src
 ADD archive.tar.gz /src/archive
 ADD git@github.com:user/repo.git /src/foorepo
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

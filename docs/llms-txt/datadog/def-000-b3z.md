@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Blob Service storage logging should be enabled for 'Read', 'Write', and 'Delete' requests
- 
+
 ## Description{% #description %}
 
 Storage Logging operates on the server-side, logging details of both successful and failed requests in the storage account, including timing, authentication, concurrency information, and the sizes of the request and response messages. The logs provide insights into all read, write, and delete operations against the blobs. Additionally, Storage Analytics logs capture detailed information about requests to a storage service to monitor every individual request for increased security or diagnostics. However, due to its potential impact on costs, Storage Analytics logging is not automatically enabled and requires careful consideration of usage and projected costs before activation.

@@ -39,10 +39,10 @@ When `sealed` is used in the class definition, methods and attributes do not nee
 public sealed class MyClass {
 
     public sealed void myMethod() {
-        
+
     }
     sealed void myMethod() {
-        
+
     }
 }
 ```
@@ -56,10 +56,9 @@ class MyClass {
         if (foo) {
             throw new MyException();
         }
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

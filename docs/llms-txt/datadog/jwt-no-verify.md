@@ -50,6 +50,5 @@ jwt_token = JWT.decode raw_token, secret, false, { algorithm: 'HS256' }
 ```ruby
 jwt_token = JWT.decode raw_token, secret, true, { algorithm: 'HS256' }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

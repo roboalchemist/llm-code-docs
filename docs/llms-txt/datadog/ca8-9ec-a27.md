@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Redshift clusters should be 
 ---
 
 # Redshift clusters should be encrypted
- 
+
 ## Description{% #description %}
 
 Ensure that AWS RedShift clusters are encrypted.

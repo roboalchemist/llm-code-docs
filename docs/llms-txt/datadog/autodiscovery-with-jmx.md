@@ -179,7 +179,7 @@ ad.datadoghq.com/<CONTAINER_NAME>.checks: |
                "FreePhysicalMemorySize": {
                  "metric_type": "gauge",
                  "alias": "jvm.free_physical_memory"
-               } 
+               }
             }
           }
         }]
@@ -322,7 +322,7 @@ spec:
           -Dcom.sun.management.jmxremote.local.only=false
           -Dcom.sun.management.jmxremote.port=<JMX_PORT>
           -Dcom.sun.management.jmxremote.rmi.port=<JMX_PORT>
-          -Djava.rmi.server.hostname=$(POD_IP)   
+          -Djava.rmi.server.hostname=$(POD_IP)
 ```
 
 ## Available JMX integrations{% #available-jmx-integrations %}

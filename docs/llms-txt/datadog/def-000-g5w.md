@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Crowdstrike Alerts
 ---
 
 # Crowdstrike Alerts
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when Crowdstrike raises an alert.

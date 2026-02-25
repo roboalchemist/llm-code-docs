@@ -50,7 +50,7 @@ class keychainController: keychainViewController {
         query[kSecValueData as String] = token as AnyObject?
         query[kSecAttrAccessible as String] = kSecAttrAccessibleAlwaysThisDeviceOnly
         SecItemAdd(query as CFDictionary, nil)
-    }   
+    }
 }
 ```
 
@@ -71,7 +71,7 @@ class keychainController: keychainViewController {
 class keychainController: keychainViewController {
 
 
-    
+
     func test() {
         var query: [String: Any] = [kSecClass as String: kSecClassInternetPassword,
                                     kSecAttrAccount as String: account,
@@ -80,9 +80,9 @@ class keychainController: keychainViewController {
                                     kSecAttrAccessible as String: kSecAttrAccessibleAlways]
         SecItemAdd(query,r)
     }
-    
-    
-       
+
+
+
 }
 ```
 
@@ -113,7 +113,7 @@ class keychainController: keychainViewController {
 
         let status = SecItemAdd(keychainItemQuery, nil)
         print("Operation finished with status: \(status)")
-    } 
+    }
 }
 ```
 
@@ -126,7 +126,7 @@ class keychainController: keychainViewController {
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccessible: kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
         ] as CFDictionary
-        
+
         let status = SecItemAdd(keychainItemQuery, nil)
         print("Operation finished with status: \(status)")
     }
@@ -144,10 +144,9 @@ class keychainController: keychainViewController {
         let attributes: [NSString: Any] = [
             kSecValueData: data,
             kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        ] 
+        ]
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

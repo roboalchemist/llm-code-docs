@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The read-only port should be disabled in Kubelet
-Classification:complianceFramework:cis-kubernetesControl:4.2.4 
+Classification:complianceFramework:cis-kubernetesControl:4.2.4
 ## Description{% #description %}
 
 Disable the read-only port.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Vulnerability Assessment should be enabled for SQL server
- 
+
 ## Description{% #description %}
 
 The Vulnerability Assessment service is a valuable tool that analyzes SQL databases to identify security issues and deviations from best practices. It helps identify misconfigurations, excessive permissions, and other potential vulnerabilities. The service provides remediation steps, customizable scripts, and assessment reports with customizable baseline settings. Enabling these features in Microsoft Defender for SQL comes with additional costs per SQL server.

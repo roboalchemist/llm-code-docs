@@ -51,8 +51,7 @@ Response containing a list of AWS cloud authentication persona mappings
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "account_identifier": "test@test.com",
         "account_uuid": "12bbdc5c-5966-47e0-8733-285f9e44bcf4",
@@ -60,9 +59,9 @@ Response containing a list of AWS cloud authentication persona mappings
       },
       "id": "c5c758c6-18c2-4484-ae3f-46b84128404a",
       "type": "aws_cloud_auth_config"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -92,8 +91,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -103,9 +101,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -135,8 +133,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -146,9 +143,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -170,10 +167,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -182,10 +178,10 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/cloud_auth/aws/persona_mapping" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
+
 {% /tab %}

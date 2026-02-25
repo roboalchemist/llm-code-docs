@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not share the host's user namespaces
-Classification:complianceFramework:cis-dockerControl:5.30 
+Classification:complianceFramework:cis-dockerControl:5.30
 ## Description{% #description %}
 
 You should not share the host's user namespaces with containers running on it.

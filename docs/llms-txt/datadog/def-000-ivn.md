@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure All Accounts on the System Have Unique Names
- 
+
 ## Description{% #description %}
 
 Ensure accounts on the system have unique names. To ensure all accounts have unique names, run the following command:

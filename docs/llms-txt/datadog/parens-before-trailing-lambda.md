@@ -44,6 +44,5 @@ val foo = "some-string".count() { it == '-' }
 ```kotlin
 val foo = "some-string".count { it == '-' }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

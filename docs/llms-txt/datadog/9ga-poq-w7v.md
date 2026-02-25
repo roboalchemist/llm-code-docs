@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Lambda function should have access to VPC resources in configuration
- 
+
 ## Description{% #description %}
 
 Ensure your Amazon Lambda Function is configured to access VPC-only resources, enhancing the security of your connection to private resources.

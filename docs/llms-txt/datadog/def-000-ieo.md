@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/syslog File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/syslog`, run the command:

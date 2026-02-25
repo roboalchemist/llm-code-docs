@@ -50,6 +50,5 @@ hash.has_value?(value)
 hash.key?(:test)
 hash.value?(value)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

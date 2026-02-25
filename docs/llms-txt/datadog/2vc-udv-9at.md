@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker socket file should have permissions of 660 or stricter
-Classification:complianceFramework:cis-dockerControl:3.16 
+Classification:complianceFramework:cis-dockerControl:3.16
 ## Description{% #description %}
 
 You should verify that the Docker socket file has permissions of 660 or are configured more restrictively.

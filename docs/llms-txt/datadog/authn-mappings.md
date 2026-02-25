@@ -67,7 +67,7 @@ AuthN Mapping response from the API.
 | data                     | id                          | string          | The unique identifier of the team.                                                                                                                                                                                                                                                            |
 | data                     | type                        | enum            | Team type Allowed enum values: `team`                                                                                                                                                                                                                                                         |
 | data                     | type [*required*]      | enum            | AuthN Mappings resource type. Allowed enum values: `authn_mappings`                                                                                                                                                                                                                           |
-|                          | included                    | [ <oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
+|                          | included                    | [<oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
 | included                 | Option 1                    | object          | SAML assertion attribute.                                                                                                                                                                                                                                                                     |
 | Option 1                 | attributes                  | object          | Key/Value pair of attributes used in SAML assertion attributes.                                                                                                                                                                                                                               |
 | attributes               | attribute_key               | string          | Key portion of a key/value pair of the attribute sent from the Identity Provider.                                                                                                                                                                                                             |
@@ -137,17 +137,16 @@ AuthN Mapping response from the API.
     },
     "type": "authn_mappings"
   },
-  "included": [
-    {
+  "included": [{
       "attributes": {
         "attribute_key": "member-of",
         "attribute_value": "Development"
       },
       "id": "0",
       "type": "saml_assertion_attributes"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -169,10 +168,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -194,10 +192,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -219,10 +216,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -231,13 +227,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport authn_mapping_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/authn_mappings/${authn_mapping_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -259,13 +255,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an AuthN Mapping by UUID returns "OK" response
@@ -276,13 +273,14 @@ api_instance = DatadogAPIClient::V2::AuthNMappingsAPI.new
 # there is a valid "authn_mapping" in the system
 AUTHN_MAPPING_DATA_ID = ENV["AUTHN_MAPPING_DATA_ID"]
 p api_instance.get_authn_mapping(AUTHN_MAPPING_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an AuthN Mapping by UUID returns "OK" response
@@ -290,40 +288,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "authn_mapping" in the system
-	AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
+    // there is a valid "authn_mapping" in the system
+    AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuthNMappingsApi(apiClient)
-	resp, r, err := api.GetAuthNMapping(ctx, AuthnMappingDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuthNMappingsApi(apiClient)
+    resp, r, err := api.GetAuthNMapping(ctx, AuthnMappingDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.GetAuthNMapping`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.GetAuthNMapping`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.GetAuthNMapping`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.GetAuthNMapping`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an AuthN Mapping by UUID returns "OK" response
@@ -353,13 +352,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an AuthN Mapping by UUID returns "OK" response
@@ -379,13 +379,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -412,6 +413,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -449,8 +451,6 @@ Edit an AuthN Mapping. This endpoint requires the `user_access_manage` permissio
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -497,6 +497,7 @@ Edit an AuthN Mapping. This endpoint requires the `user_access_manage` permissio
     "type": "authn_mappings"
   }
 }
+
 ```
 
 {% /tab %}
@@ -532,7 +533,7 @@ AuthN Mapping response from the API.
 | data                     | id                          | string          | The unique identifier of the team.                                                                                                                                                                                                                                                            |
 | data                     | type                        | enum            | Team type Allowed enum values: `team`                                                                                                                                                                                                                                                         |
 | data                     | type [*required*]      | enum            | AuthN Mappings resource type. Allowed enum values: `authn_mappings`                                                                                                                                                                                                                           |
-|                          | included                    | [ <oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
+|                          | included                    | [<oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
 | included                 | Option 1                    | object          | SAML assertion attribute.                                                                                                                                                                                                                                                                     |
 | Option 1                 | attributes                  | object          | Key/Value pair of attributes used in SAML assertion attributes.                                                                                                                                                                                                                               |
 | attributes               | attribute_key               | string          | Key portion of a key/value pair of the attribute sent from the Identity Provider.                                                                                                                                                                                                             |
@@ -602,17 +603,16 @@ AuthN Mapping response from the API.
     },
     "type": "authn_mappings"
   },
-  "included": [
-    {
+  "included": [{
       "attributes": {
         "attribute_key": "member-of",
         "attribute_value": "Development"
       },
       "id": "0",
       "type": "saml_assertion_attributes"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -634,10 +634,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -659,10 +658,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -684,10 +682,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -709,10 +706,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -734,10 +730,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -759,10 +754,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -771,7 +765,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport authn_mapping_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/authn_mappings/${authn_mapping_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -797,8 +791,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Edit an AuthN Mapping returns "OK" response
@@ -806,62 +800,63 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "authn_mapping" in the system
-	AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
+    // there is a valid "authn_mapping" in the system
+    AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
 
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.AuthNMappingUpdateRequest{
-		Data: datadogV2.AuthNMappingUpdateData{
-			Attributes: &datadogV2.AuthNMappingUpdateAttributes{
-				AttributeKey:   datadog.PtrString("member-of"),
-				AttributeValue: datadog.PtrString("Development"),
-			},
-			Id: AuthnMappingDataID,
-			Relationships: &datadogV2.AuthNMappingUpdateRelationships{
-				AuthNMappingRelationshipToRole: &datadogV2.AuthNMappingRelationshipToRole{
-					Role: datadogV2.RelationshipToRole{
-						Data: &datadogV2.RelationshipToRoleData{
-							Id:   datadog.PtrString(RoleDataID),
-							Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-						},
-					},
-				}},
-			Type: datadogV2.AUTHNMAPPINGSTYPE_AUTHN_MAPPINGS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuthNMappingsApi(apiClient)
-	resp, r, err := api.UpdateAuthNMapping(ctx, AuthnMappingDataID, body)
+    body := datadogV2.AuthNMappingUpdateRequest{
+        Data: datadogV2.AuthNMappingUpdateData{
+            Attributes: &datadogV2.AuthNMappingUpdateAttributes{
+                AttributeKey:   datadog.PtrString("member-of"),
+                AttributeValue: datadog.PtrString("Development"),
+            },
+            Id: AuthnMappingDataID,
+            Relationships: &datadogV2.AuthNMappingUpdateRelationships{
+                AuthNMappingRelationshipToRole: &datadogV2.AuthNMappingRelationshipToRole{
+                    Role: datadogV2.RelationshipToRole{
+                        Data: &datadogV2.RelationshipToRoleData{
+                            Id:   datadog.PtrString(RoleDataID),
+                            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+                        },
+                    },
+                }},
+            Type: datadogV2.AUTHNMAPPINGSTYPE_AUTHN_MAPPINGS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuthNMappingsApi(apiClient)
+    resp, r, err := api.UpdateAuthNMapping(ctx, AuthnMappingDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.UpdateAuthNMapping`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.UpdateAuthNMapping`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.UpdateAuthNMapping`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.UpdateAuthNMapping`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit an AuthN Mapping returns "OK" response
@@ -923,13 +918,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -979,13 +975,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_authn_mapping(authn_mapping_id=AUTHN_MAPPING_DATA_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit an AuthN Mapping returns "OK" response
@@ -1018,13 +1015,14 @@ body = DatadogAPIClient::V2::AuthNMappingUpdateRequest.new({
   }),
 })
 p api_instance.update_authn_mapping(AUTHN_MAPPING_DATA_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Edit an AuthN Mapping returns "OK" response
@@ -1080,13 +1078,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1134,6 +1133,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1189,10 +1189,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1214,10 +1213,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1239,10 +1237,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1251,12 +1248,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport authn_mapping_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/authn_mappings/${authn_mapping_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1276,13 +1273,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_authn_mapping(
         authn_mapping_id=AUTHN_MAPPING_DATA_ID,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an AuthN Mapping returns "OK" response
@@ -1293,13 +1291,14 @@ api_instance = DatadogAPIClient::V2::AuthNMappingsAPI.new
 # there is a valid "authn_mapping" in the system
 AUTHN_MAPPING_DATA_ID = ENV["AUTHN_MAPPING_DATA_ID"]
 api_instance.delete_authn_mapping(AUTHN_MAPPING_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an AuthN Mapping returns "OK" response
@@ -1307,36 +1306,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "authn_mapping" in the system
-	AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
+    // there is a valid "authn_mapping" in the system
+    AuthnMappingDataID := os.Getenv("AUTHN_MAPPING_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuthNMappingsApi(apiClient)
-	r, err := api.DeleteAuthNMapping(ctx, AuthnMappingDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuthNMappingsApi(apiClient)
+    r, err := api.DeleteAuthNMapping(ctx, AuthnMappingDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.DeleteAuthNMapping`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.DeleteAuthNMapping`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an AuthN Mapping returns "OK" response
@@ -1364,13 +1364,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an AuthN Mapping returns "OK" response
@@ -1392,13 +1393,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1425,6 +1427,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1494,7 +1497,7 @@ Array of AuthN Mappings response.
 | data                     | id                          | string          | The unique identifier of the team.                                                                                                                                                                                                                                                            |
 | data                     | type                        | enum            | Team type Allowed enum values: `team`                                                                                                                                                                                                                                                         |
 | data                     | type [*required*]      | enum            | AuthN Mappings resource type. Allowed enum values: `authn_mappings`                                                                                                                                                                                                                           |
-|                          | included                    | [ <oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
+|                          | included                    | [<oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
 | included                 | Option 1                    | object          | SAML assertion attribute.                                                                                                                                                                                                                                                                     |
 | Option 1                 | attributes                  | object          | Key/Value pair of attributes used in SAML assertion attributes.                                                                                                                                                                                                                               |
 | attributes               | attribute_key               | string          | Key portion of a key/value pair of the attribute sent from the Identity Provider.                                                                                                                                                                                                             |
@@ -1537,8 +1540,7 @@ Array of AuthN Mappings response.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "attribute_key": "member-of",
         "attribute_value": "Development",
@@ -1568,18 +1570,15 @@ Array of AuthN Mappings response.
         }
       },
       "type": "authn_mappings"
-    }
-  ],
-  "included": [
-    {
+    }],
+  "included": [{
       "attributes": {
         "attribute_key": "member-of",
         "attribute_value": "Development"
       },
       "id": "0",
       "type": "saml_assertion_attributes"
-    }
-  ],
+    }],
   "meta": {
     "page": {
       "total_count": "integer",
@@ -1587,6 +1586,7 @@ Array of AuthN Mappings response.
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -1608,10 +1608,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1633,10 +1632,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1645,13 +1643,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/authn_mappings" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1667,13 +1665,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_authn_mappings()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all AuthN Mappings returns "OK" response
@@ -1681,13 +1680,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AuthNMappingsAPI.new
 p api_instance.list_authn_mappings()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all AuthN Mappings returns "OK" response
@@ -1695,37 +1695,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuthNMappingsApi(apiClient)
-	resp, r, err := api.ListAuthNMappings(ctx, *datadogV2.NewListAuthNMappingsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuthNMappingsApi(apiClient)
+    resp, r, err := api.ListAuthNMappings(ctx, *datadogV2.NewListAuthNMappingsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.ListAuthNMappings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.ListAuthNMappings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.ListAuthNMappings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.ListAuthNMappings`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all AuthN Mappings returns "OK" response
@@ -1752,13 +1753,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all AuthN Mappings returns "OK" response
@@ -1779,13 +1781,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1805,6 +1808,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1834,8 +1838,6 @@ Create an AuthN Mapping. This endpoint requires the `user_access_manage` permiss
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1880,6 +1882,7 @@ Create an AuthN Mapping. This endpoint requires the `user_access_manage` permiss
     "type": "authn_mappings"
   }
 }
+
 ```
 
 {% /tab %}
@@ -1915,7 +1918,7 @@ AuthN Mapping response from the API.
 | data                     | id                          | string          | The unique identifier of the team.                                                                                                                                                                                                                                                            |
 | data                     | type                        | enum            | Team type Allowed enum values: `team`                                                                                                                                                                                                                                                         |
 | data                     | type [*required*]      | enum            | AuthN Mappings resource type. Allowed enum values: `authn_mappings`                                                                                                                                                                                                                           |
-|                          | included                    | [ <oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
+|                          | included                    | [<oneOf>] | Included data in the AuthN Mapping response.                                                                                                                                                                                                                                                  |
 | included                 | Option 1                    | object          | SAML assertion attribute.                                                                                                                                                                                                                                                                     |
 | Option 1                 | attributes                  | object          | Key/Value pair of attributes used in SAML assertion attributes.                                                                                                                                                                                                                               |
 | attributes               | attribute_key               | string          | Key portion of a key/value pair of the attribute sent from the Identity Provider.                                                                                                                                                                                                             |
@@ -1985,17 +1988,16 @@ AuthN Mapping response from the API.
     },
     "type": "authn_mappings"
   },
-  "included": [
-    {
+  "included": [{
       "attributes": {
         "attribute_key": "member-of",
         "attribute_value": "Development"
       },
       "id": "0",
       "type": "saml_assertion_attributes"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2017,10 +2019,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2042,10 +2043,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2067,10 +2067,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2092,10 +2091,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2104,7 +2102,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/authn_mappings" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2129,8 +2127,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an AuthN Mapping returns "OK" response
@@ -2138,58 +2136,59 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.AuthNMappingCreateRequest{
-		Data: datadogV2.AuthNMappingCreateData{
-			Attributes: &datadogV2.AuthNMappingCreateAttributes{
-				AttributeKey:   datadog.PtrString("exampleauthnmapping"),
-				AttributeValue: datadog.PtrString("Example-AuthN-Mapping"),
-			},
-			Relationships: &datadogV2.AuthNMappingCreateRelationships{
-				AuthNMappingRelationshipToRole: &datadogV2.AuthNMappingRelationshipToRole{
-					Role: datadogV2.RelationshipToRole{
-						Data: &datadogV2.RelationshipToRoleData{
-							Id:   datadog.PtrString(RoleDataID),
-							Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-						},
-					},
-				}},
-			Type: datadogV2.AUTHNMAPPINGSTYPE_AUTHN_MAPPINGS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuthNMappingsApi(apiClient)
-	resp, r, err := api.CreateAuthNMapping(ctx, body)
+    body := datadogV2.AuthNMappingCreateRequest{
+        Data: datadogV2.AuthNMappingCreateData{
+            Attributes: &datadogV2.AuthNMappingCreateAttributes{
+                AttributeKey:   datadog.PtrString("exampleauthnmapping"),
+                AttributeValue: datadog.PtrString("Example-AuthN-Mapping"),
+            },
+            Relationships: &datadogV2.AuthNMappingCreateRelationships{
+                AuthNMappingRelationshipToRole: &datadogV2.AuthNMappingRelationshipToRole{
+                    Role: datadogV2.RelationshipToRole{
+                        Data: &datadogV2.RelationshipToRoleData{
+                            Id:   datadog.PtrString(RoleDataID),
+                            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+                        },
+                    },
+                }},
+            Type: datadogV2.AUTHNMAPPINGSTYPE_AUTHN_MAPPINGS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuthNMappingsApi(apiClient)
+    resp, r, err := api.CreateAuthNMapping(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.CreateAuthNMapping`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthNMappingsApi.CreateAuthNMapping`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.CreateAuthNMapping`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuthNMappingsApi.CreateAuthNMapping`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an AuthN Mapping returns "OK" response
@@ -2247,13 +2246,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2299,13 +2299,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_authn_mapping(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an AuthN Mapping returns "OK" response
@@ -2334,13 +2335,14 @@ body = DatadogAPIClient::V2::AuthNMappingCreateRequest.new({
   }),
 })
 p api_instance.create_authn_mapping(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an AuthN Mapping returns "OK" response
@@ -2388,13 +2390,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2437,6 +2440,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

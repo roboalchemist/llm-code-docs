@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on cron.weekly
 ---
 
 # Verify Owner on cron.weekly
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/cron.weekly`, run the command:
 
 ```
-$ sudo chown root /etc/cron.weekly 
+$ sudo chown root /etc/cron.weekly
 ```
 
 ## Rationale{% #rationale %}

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AKS cluster should use a network policy between nodes
- 
+
 ## Description{% #description %}
 
 Network policies restrict pod-to-pod traffic and should be implemented in AKS clusters.

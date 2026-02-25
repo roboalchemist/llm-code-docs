@@ -60,6 +60,5 @@ RUN foobar
 FROM debian:jessie
 RUN foobar
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

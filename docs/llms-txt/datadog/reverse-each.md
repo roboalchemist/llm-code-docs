@@ -54,6 +54,5 @@ array.reverse_each { }
 
 ["foo", "bar"].reverse_each { }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

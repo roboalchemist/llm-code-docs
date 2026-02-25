@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows MSSQL SPProcoption s
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1505-server-software-component](https://attack.mitre.org/techniques/T1505) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1505-server-software-component](https://attack.mitre.org/techniques/T1505)
 ## Goal{% #goal %}
 
 Detects the use of "sp_procoption" in Microsoft SQL Server, which can be used by attackers to establish persistence by marking stored procedures to automatically execute on server startup.

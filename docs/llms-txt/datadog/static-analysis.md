@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Static Analysis
 ---
 
-# Static Analysis
-
 API for static analysis
 
 ## POST request to resolve vulnerable symbols{% #post-request-to-resolve-vulnerable-symbols %}
@@ -26,17 +24,11 @@ API for static analysis
 
 ### Overview
 
-
-
 OAuth apps require the `code_analysis_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#static-analysis) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -150,7 +142,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis-sca/vulnerabilities/resolve-vulnerable-symbols" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -163,8 +155,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -204,7 +196,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # POST request to resolve vulnerable symbols returns "OK" response
@@ -230,7 +222,7 @@ p api_instance.create_sca_resolve_vulnerable_symbols(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // POST request to resolve vulnerable symbols returns "OK" response
@@ -238,38 +230,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ResolveVulnerableSymbolsRequest{
-		Data: &datadogV2.ResolveVulnerableSymbolsRequestData{
-			Attributes: &datadogV2.ResolveVulnerableSymbolsRequestDataAttributes{
-				Purls: []string{},
-			},
-			Type: datadogV2.RESOLVEVULNERABLESYMBOLSREQUESTDATATYPE_RESOLVE_VULNERABLE_SYMBOLS_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateSCAResolveVulnerableSymbols", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.CreateSCAResolveVulnerableSymbols(ctx, body)
+    body := datadogV2.ResolveVulnerableSymbolsRequest{
+        Data: &datadogV2.ResolveVulnerableSymbolsRequestData{
+            Attributes: &datadogV2.ResolveVulnerableSymbolsRequestDataAttributes{
+                Purls: []string{},
+            },
+            Type: datadogV2.RESOLVEVULNERABLESYMBOLSREQUESTDATATYPE_RESOLVE_VULNERABLE_SYMBOLS_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateSCAResolveVulnerableSymbols", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.CreateSCAResolveVulnerableSymbols(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateSCAResolveVulnerableSymbols`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateSCAResolveVulnerableSymbols`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.CreateSCAResolveVulnerableSymbols`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.CreateSCAResolveVulnerableSymbols`:\n%s\n", responseContent)
 }
 ```
 
@@ -277,7 +269,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // POST request to resolve vulnerable symbols returns "OK" response
@@ -325,7 +317,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // POST request to resolve vulnerable symbols returns "OK" response
@@ -360,7 +352,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -430,8 +422,6 @@ Revert a custom rule to a previous revision
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -582,7 +572,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}/revisions/revert" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -591,8 +581,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -626,7 +616,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Revert Custom Rule Revision returns "Successfully reverted" response
@@ -650,7 +640,7 @@ p api_instance.revert_custom_rule_revision("ruleset_name", "rule_name", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Revert Custom Rule Revision returns "Successfully reverted" response
@@ -658,32 +648,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RevertCustomRuleRevisionRequest{
-		Data: &datadogV2.RevertCustomRuleRevisionRequestData{
-			Attributes: &datadogV2.RevertCustomRuleRevisionRequestDataAttributes{},
-			Type:       datadogV2.REVERTCUSTOMRULEREVISIONDATATYPE_REVERT_CUSTOM_RULE_REVISION_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.RevertCustomRuleRevision", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	r, err := api.RevertCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
+    body := datadogV2.RevertCustomRuleRevisionRequest{
+        Data: &datadogV2.RevertCustomRuleRevisionRequestData{
+            Attributes: &datadogV2.RevertCustomRuleRevisionRequestDataAttributes{},
+            Type:       datadogV2.REVERTCUSTOMRULEREVISIONDATATYPE_REVERT_CUSTOM_RULE_REVISION_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.RevertCustomRuleRevision", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    r, err := api.RevertCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.RevertCustomRuleRevision`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.RevertCustomRuleRevision`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -691,7 +681,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Revert Custom Rule Revision returns "Successfully reverted" response
@@ -734,7 +724,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Revert Custom Rule Revision returns "Successfully reverted" response
@@ -770,7 +760,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -826,17 +816,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 OAuth apps require the `code_analysis_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#static-analysis) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1075,7 +1059,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis-sca/dependencies" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1088,8 +1072,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1194,7 +1178,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Post dependencies for analysis returns "OK" response
@@ -1264,7 +1248,7 @@ p api_instance.create_sca_result(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Post dependencies for analysis returns "OK" response
@@ -1272,78 +1256,78 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ScaRequest{
-		Data: &datadogV2.ScaRequestData{
-			Attributes: &datadogV2.ScaRequestDataAttributes{
-				Commit: &datadogV2.ScaRequestDataAttributesCommit{},
-				Dependencies: []datadogV2.ScaRequestDataAttributesDependenciesItems{
-					{
-						Exclusions: []string{},
-						Locations: []datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItems{
-							{
-								Block: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
-									End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-									Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-								},
-								Name: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
-									End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-									Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-								},
-								Namespace: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
-									End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-									Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-								},
-								Version: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
-									End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-									Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
-								},
-							},
-						},
-						ReachableSymbolProperties: []datadogV2.ScaRequestDataAttributesDependenciesItemsReachableSymbolPropertiesItems{
-							{},
-						},
-					},
-				},
-				Files: []datadogV2.ScaRequestDataAttributesFilesItems{
-					{},
-				},
-				Relations: []datadogV2.ScaRequestDataAttributesRelationsItems{
-					{
-						DependsOn: []string{},
-					},
-				},
-				Repository: &datadogV2.ScaRequestDataAttributesRepository{},
-				Vulnerabilities: []datadogV2.ScaRequestDataAttributesVulnerabilitiesItems{
-					{
-						Affects: []datadogV2.ScaRequestDataAttributesVulnerabilitiesItemsAffectsItems{
-							{},
-						},
-					},
-				},
-			},
-			Type: datadogV2.SCAREQUESTDATATYPE_SCAREQUESTS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateSCAResult", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	r, err := api.CreateSCAResult(ctx, body)
+    body := datadogV2.ScaRequest{
+        Data: &datadogV2.ScaRequestData{
+            Attributes: &datadogV2.ScaRequestDataAttributes{
+                Commit: &datadogV2.ScaRequestDataAttributesCommit{},
+                Dependencies: []datadogV2.ScaRequestDataAttributesDependenciesItems{
+                    {
+                        Exclusions: []string{},
+                        Locations: []datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItems{
+                            {
+                                Block: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
+                                    End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                    Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                },
+                                Name: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
+                                    End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                    Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                },
+                                Namespace: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
+                                    End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                    Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                },
+                                Version: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsFilePosition{
+                                    End:   &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                    Start: &datadogV2.ScaRequestDataAttributesDependenciesItemsLocationsItemsPosition{},
+                                },
+                            },
+                        },
+                        ReachableSymbolProperties: []datadogV2.ScaRequestDataAttributesDependenciesItemsReachableSymbolPropertiesItems{
+                            {},
+                        },
+                    },
+                },
+                Files: []datadogV2.ScaRequestDataAttributesFilesItems{
+                    {},
+                },
+                Relations: []datadogV2.ScaRequestDataAttributesRelationsItems{
+                    {
+                        DependsOn: []string{},
+                    },
+                },
+                Repository: &datadogV2.ScaRequestDataAttributesRepository{},
+                Vulnerabilities: []datadogV2.ScaRequestDataAttributesVulnerabilitiesItems{
+                    {
+                        Affects: []datadogV2.ScaRequestDataAttributesVulnerabilitiesItemsAffectsItems{
+                            {},
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.SCAREQUESTDATATYPE_SCAREQUESTS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateSCAResult", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    r, err := api.CreateSCAResult(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateSCAResult`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateSCAResult`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1351,7 +1335,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Post dependencies for analysis returns "OK" response
@@ -1453,7 +1437,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Post dependencies for analysis returns "OK" response
@@ -1576,7 +1560,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1929,13 +1913,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"export id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}/revisions/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1962,7 +1946,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Show Custom Rule Revision returns "Successful response" response
@@ -1979,7 +1963,7 @@ p api_instance.get_custom_rule_revision("ruleset_name", "rule_name", "id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Show Custom Rule Revision returns "Successful response" response
@@ -1987,30 +1971,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetCustomRuleRevision", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.GetCustomRuleRevision(ctx, "ruleset_name", "rule_name", "id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetCustomRuleRevision", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.GetCustomRuleRevision(ctx, "ruleset_name", "rule_name", "id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleRevision`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleRevision`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleRevision`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleRevision`:\n%s\n", responseContent)
 }
 ```
 
@@ -2018,7 +2002,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Show Custom Rule Revision returns "Successful response" response
@@ -2053,7 +2037,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Show Custom Rule Revision returns "Successful response" response
@@ -2084,7 +2068,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2149,8 +2133,6 @@ Create a new revision for a custom rule
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2393,7 +2375,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}/revisions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2438,8 +2420,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2508,7 +2490,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Custom Rule Revision returns "Successfully created" response
@@ -2564,7 +2546,7 @@ p api_instance.create_custom_rule_revision("ruleset_name", "rule_name", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create Custom Rule Revision returns "Successfully created" response
@@ -2572,64 +2554,64 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomRuleRevisionRequest{
-		Data: &datadogV2.CustomRuleRevisionRequestData{
-			Attributes: &datadogV2.CustomRuleRevisionInputAttributes{
-				Arguments: []datadogV2.Argument{
-					{
-						Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
-						Name:        "YXJndW1lbnRfbmFtZQ==",
-					},
-				},
-				Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
-				Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-				CreationMessage:  "Initial revision",
-				Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
-				Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
-				Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
-				DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
-				IsPublished:      false,
-				IsTesting:        false,
-				Language:         datadogV2.LANGUAGE_PYTHON,
-				Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
-				ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
-				ShouldUseAiFix:   false,
-				Tags: []string{
-					"security",
-					"custom",
-				},
-				Tests: []datadogV2.CustomRuleRevisionTest{
-					{
-						AnnotationCount: 1,
-						Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-						Filename:        "test.yaml",
-					},
-				},
-				TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-			},
-			Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateCustomRuleRevision", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	r, err := api.CreateCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
+    body := datadogV2.CustomRuleRevisionRequest{
+        Data: &datadogV2.CustomRuleRevisionRequestData{
+            Attributes: &datadogV2.CustomRuleRevisionInputAttributes{
+                Arguments: []datadogV2.Argument{
+                    {
+                        Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                        Name:        "YXJndW1lbnRfbmFtZQ==",
+                    },
+                },
+                Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
+                Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                CreationMessage:  "Initial revision",
+                Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
+                Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
+                Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
+                DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
+                IsPublished:      false,
+                IsTesting:        false,
+                Language:         datadogV2.LANGUAGE_PYTHON,
+                Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
+                ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+                ShouldUseAiFix:   false,
+                Tags: []string{
+                    "security",
+                    "custom",
+                },
+                Tests: []datadogV2.CustomRuleRevisionTest{
+                    {
+                        AnnotationCount: 1,
+                        Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                        Filename:        "test.yaml",
+                    },
+                },
+                TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+            },
+            Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateCustomRuleRevision", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    r, err := api.CreateCustomRuleRevision(ctx, "ruleset_name", "rule_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRuleRevision`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRuleRevision`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2637,7 +2619,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Custom Rule Revision returns "Successfully created" response
@@ -2714,7 +2696,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create Custom Rule Revision returns "Successfully created" response
@@ -2780,7 +2762,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3150,13 +3132,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}/revisions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3182,7 +3164,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Custom Rule Revisions returns "Successful response" response
@@ -3199,7 +3181,7 @@ p api_instance.list_custom_rule_revisions("ruleset_name", "rule_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Custom Rule Revisions returns "Successful response" response
@@ -3207,30 +3189,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListCustomRuleRevisions", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.ListCustomRuleRevisions(ctx, "ruleset_name", "rule_name", *datadogV2.NewListCustomRuleRevisionsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListCustomRuleRevisions", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.ListCustomRuleRevisions(ctx, "ruleset_name", "rule_name", *datadogV2.NewListCustomRuleRevisionsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.ListCustomRuleRevisions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.ListCustomRuleRevisions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.ListCustomRuleRevisions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.ListCustomRuleRevisions`:\n%s\n", responseContent)
 }
 ```
 
@@ -3238,7 +3220,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Custom Rule Revisions returns "Successful response" response
@@ -3273,7 +3255,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Custom Rule Revisions returns "Successful response" response
@@ -3305,7 +3287,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3528,13 +3510,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3558,7 +3540,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Custom Rule returns "Successfully deleted" response
@@ -3575,7 +3557,7 @@ p api_instance.delete_custom_rule("ruleset_name", "rule_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Custom Rule returns "Successfully deleted" response
@@ -3583,26 +3565,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteCustomRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	r, err := api.DeleteCustomRule(ctx, "ruleset_name", "rule_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteCustomRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    r, err := api.DeleteCustomRule(ctx, "ruleset_name", "rule_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3610,7 +3592,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Custom Rule returns "Successfully deleted" response
@@ -3642,7 +3624,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Custom Rule returns "Successfully deleted" response
@@ -3669,7 +3651,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3993,13 +3975,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"export rule_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules/${rule_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4025,7 +4007,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Show Custom Rule returns "Successful response" response
@@ -4042,7 +4024,7 @@ p api_instance.get_custom_rule("ruleset_name", "rule_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Show Custom Rule returns "Successful response" response
@@ -4050,30 +4032,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetCustomRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.GetCustomRule(ctx, "ruleset_name", "rule_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetCustomRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.GetCustomRule(ctx, "ruleset_name", "rule_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -4081,7 +4063,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Show Custom Rule returns "Successful response" response
@@ -4115,7 +4097,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Show Custom Rule returns "Successful response" response
@@ -4142,7 +4124,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4205,8 +4187,6 @@ Create a new custom rule within a ruleset
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4542,7 +4522,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4551,8 +4531,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4586,7 +4566,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Custom Rule returns "Successfully created" response
@@ -4610,7 +4590,7 @@ p api_instance.create_custom_rule("ruleset_name", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create Custom Rule returns "Successfully created" response
@@ -4618,36 +4598,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomRuleRequest{
-		Data: &datadogV2.CustomRuleRequestData{
-			Attributes: &datadogV2.CustomRuleRequestDataAttributes{},
-			Type:       datadogV2.CUSTOMRULEDATATYPE_CUSTOM_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateCustomRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.CreateCustomRule(ctx, "ruleset_name", body)
+    body := datadogV2.CustomRuleRequest{
+        Data: &datadogV2.CustomRuleRequestData{
+            Attributes: &datadogV2.CustomRuleRequestDataAttributes{},
+            Type:       datadogV2.CUSTOMRULEDATATYPE_CUSTOM_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateCustomRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.CreateCustomRule(ctx, "ruleset_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.CreateCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.CreateCustomRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.CreateCustomRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -4655,7 +4635,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Custom Rule returns "Successfully created" response
@@ -4700,7 +4680,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create Custom Rule returns "Successfully created" response
@@ -4736,7 +4716,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4963,13 +4943,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4992,7 +4972,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Custom Ruleset returns "Successfully deleted" response
@@ -5009,7 +4989,7 @@ p api_instance.delete_custom_ruleset("ruleset_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Custom Ruleset returns "Successfully deleted" response
@@ -5017,26 +4997,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteCustomRuleset", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	r, err := api.DeleteCustomRuleset(ctx, "ruleset_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteCustomRuleset", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    r, err := api.DeleteCustomRuleset(ctx, "ruleset_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.DeleteCustomRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5044,7 +5024,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Custom Ruleset returns "Successfully deleted" response
@@ -5076,7 +5056,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Custom Ruleset returns "Successfully deleted" response
@@ -5101,7 +5081,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5163,8 +5143,6 @@ Update an existing custom ruleset
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -5556,7 +5534,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5617,8 +5595,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5711,7 +5689,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Custom Ruleset returns "Successfully updated" response
@@ -5783,7 +5761,7 @@ p api_instance.update_custom_ruleset("ruleset_name", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update Custom Ruleset returns "Successfully updated" response
@@ -5791,85 +5769,85 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomRulesetRequest{
-		Data: &datadogV2.CustomRulesetRequestData{
-			Attributes: &datadogV2.CustomRulesetRequestDataAttributes{
-				Rules: []datadogV2.CustomRule{
-					{
-						CreatedAt: time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
-						CreatedBy: "foobarbaz",
-						LastRevision: datadogV2.CustomRuleRevision{
-							Attributes: datadogV2.CustomRuleRevisionAttributes{
-								Arguments: []datadogV2.Argument{
-									{
-										Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
-										Name:        "YXJndW1lbnRfbmFtZQ==",
-									},
-								},
-								Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
-								Checksum:         "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
-								Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-								CreatedAt:        time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
-								CreatedBy:        "foobarbaz",
-								CreationMessage:  "Initial revision",
-								Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
-								Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
-								Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
-								DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
-								IsPublished:      false,
-								IsTesting:        false,
-								Language:         datadogV2.LANGUAGE_PYTHON,
-								Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
-								ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
-								ShouldUseAiFix:   false,
-								Tags: []string{
-									"security",
-									"custom",
-								},
-								Tests: []datadogV2.CustomRuleRevisionTest{
-									{
-										AnnotationCount: 1,
-										Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-										Filename:        "test.yaml",
-									},
-								},
-								TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
-							},
-							Id:   "revision-123",
-							Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION,
-						},
-						Name: "my-rule",
-					},
-				},
-			},
-			Type: datadogV2.CUSTOMRULESETDATATYPE_CUSTOM_RULESET.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateCustomRuleset", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.UpdateCustomRuleset(ctx, "ruleset_name", body)
+    body := datadogV2.CustomRulesetRequest{
+        Data: &datadogV2.CustomRulesetRequestData{
+            Attributes: &datadogV2.CustomRulesetRequestDataAttributes{
+                Rules: []datadogV2.CustomRule{
+                    {
+                        CreatedAt: time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
+                        CreatedBy: "foobarbaz",
+                        LastRevision: datadogV2.CustomRuleRevision{
+                            Attributes: datadogV2.CustomRuleRevisionAttributes{
+                                Arguments: []datadogV2.Argument{
+                                    {
+                                        Description: "YXJndW1lbnQgZGVzY3JpcHRpb24=",
+                                        Name:        "YXJndW1lbnRfbmFtZQ==",
+                                    },
+                                },
+                                Category:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESCATEGORY_SECURITY,
+                                Checksum:         "8a66c4e4e631099ad71be3c1ea3ea8fc2d57193e56db2c296e2dd8a508b26b99",
+                                Code:             "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                                CreatedAt:        time.Date(2026, 1, 9, 13, 0, 57, 473141, time.UTC),
+                                CreatedBy:        "foobarbaz",
+                                CreationMessage:  "Initial revision",
+                                Cve:              *datadog.NewNullableString(datadog.PtrString("CVE-2024-1234")),
+                                Cwe:              *datadog.NewNullableString(datadog.PtrString("CWE-79")),
+                                Description:      "bG9uZyBkZXNjcmlwdGlvbg==",
+                                DocumentationUrl: *datadog.NewNullableString(datadog.PtrString("https://docs.example.com/rules/my-rule")),
+                                IsPublished:      false,
+                                IsTesting:        false,
+                                Language:         datadogV2.LANGUAGE_PYTHON,
+                                Severity:         datadogV2.CUSTOMRULEREVISIONATTRIBUTESSEVERITY_ERROR,
+                                ShortDescription: "c2hvcnQgZGVzY3JpcHRpb24=",
+                                ShouldUseAiFix:   false,
+                                Tags: []string{
+                                    "security",
+                                    "custom",
+                                },
+                                Tests: []datadogV2.CustomRuleRevisionTest{
+                                    {
+                                        AnnotationCount: 1,
+                                        Code:            "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                                        Filename:        "test.yaml",
+                                    },
+                                },
+                                TreeSitterQuery: "Y29uZHVjdG9yOgogICAgLSBkZXBsb3lfb25seTogdHJ1ZQ==",
+                            },
+                            Id:   "revision-123",
+                            Type: datadogV2.CUSTOMRULEREVISIONDATATYPE_CUSTOM_RULE_REVISION,
+                        },
+                        Name: "my-rule",
+                    },
+                },
+            },
+            Type: datadogV2.CUSTOMRULESETDATATYPE_CUSTOM_RULESET.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateCustomRuleset", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.UpdateCustomRuleset(ctx, "ruleset_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.UpdateCustomRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.UpdateCustomRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.UpdateCustomRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.UpdateCustomRuleset`:\n%s\n", responseContent)
 }
 ```
 
@@ -5877,7 +5855,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Custom Ruleset returns "Successfully updated" response
@@ -5992,7 +5970,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update Custom Ruleset returns "Successfully updated" response
@@ -6082,7 +6060,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6472,13 +6450,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport ruleset_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/static-analysis/custom/rulesets/${ruleset_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6503,7 +6481,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Show Custom Ruleset returns "Successful response" response
@@ -6520,7 +6498,7 @@ p api_instance.get_custom_ruleset("ruleset_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Show Custom Ruleset returns "Successful response" response
@@ -6528,30 +6506,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetCustomRuleset", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewStaticAnalysisApi(apiClient)
-	resp, r, err := api.GetCustomRuleset(ctx, "ruleset_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetCustomRuleset", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewStaticAnalysisApi(apiClient)
+    resp, r, err := api.GetCustomRuleset(ctx, "ruleset_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleset`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticAnalysisApi.GetCustomRuleset`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleset`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `StaticAnalysisApi.GetCustomRuleset`:\n%s\n", responseContent)
 }
 ```
 
@@ -6559,7 +6537,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Show Custom Ruleset returns "Successful response" response
@@ -6593,7 +6571,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Show Custom Ruleset returns "Successful response" response
@@ -6618,7 +6596,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

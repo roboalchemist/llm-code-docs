@@ -55,6 +55,5 @@ class A { foo(master, slave) {} }
 ```javascript
 function denyList(primary, secondary) {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

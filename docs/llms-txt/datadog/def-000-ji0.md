@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify nftables Service is D
 ---
 
 # Verify nftables Service is Disabled
- 
+
 ## Description{% #description %}
 
 nftables is a subsystem of the Linux kernel providing filtering and classification of network packets/datagrams/frames and is the successor to iptables. The `nftables` service can be disabled with the following command:

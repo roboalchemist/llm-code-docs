@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta phone number assigned to multiple users
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detects the reuse of the same phone number across different Okta user accounts during multi-factor enrollment.

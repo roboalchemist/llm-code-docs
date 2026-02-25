@@ -66,7 +66,7 @@ Resources:
   MyDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      PointInTimeRecoverySpecification: 
+      PointInTimeRecoverySpecification:
         PointInTimeRecoveryEnabled: true
 ```
 

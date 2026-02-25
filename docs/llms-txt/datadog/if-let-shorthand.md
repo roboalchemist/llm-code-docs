@@ -44,13 +44,13 @@ if let name = name {
 if let self = self {
     // ...
 }
-    
+
 if interactionEnabled,
    let userTapLocation = userTapLocation {
     // ...
 }
 
-if let user = user, 
+if let user = user,
    var device = device {
     // ...
 }
@@ -66,15 +66,14 @@ if let name {
 if let name = user?.name {
     // ...
 }
-    
+
 if let user = user as? User {
     // ...
 }
- 
+
 if var user = currentUser() {
     // ...
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

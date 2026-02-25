@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should have memory usage limits configured on Docker hosts
-Classification:complianceFramework:cis-dockerControl:5.10 
+Classification:complianceFramework:cis-dockerControl:5.10
 ## Description{% #description %}
 
 By default, all containers on a Docker host share resources equally. By using the resource management capabilities of the Docker host, you can control the amount of memory that a container is able to use.

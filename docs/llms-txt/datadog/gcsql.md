@@ -321,17 +321,17 @@ Using the [Operator instructions in Kubernetes and Integrations](https://docs.da
          apiSecret:
            secretName: datadog-agent-secret
            keyName: api-key
-   
+
      features:
        clusterChecks:
          enabled: true
-   
+
      override:
        nodeAgent:
          image:
            name: agent
            tag: <AGENT_VERSION>
-   
+
        clusterAgent:
          extraConfd:
            configDataMap:
@@ -376,7 +376,7 @@ Using the [Operator instructions in Kubernetes and Integrations](https://docs.da
              gcp:
                project_id: '<PROJECT_ID'
                instance_id: '<INSTANCE_ID'
-   
+
    clusterChecksRunner:
      enabled: true
    ```

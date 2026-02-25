@@ -170,13 +170,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -198,7 +198,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all custom destinations returns "OK" response
@@ -212,7 +212,7 @@ p api_instance.list_logs_custom_destinations()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all custom destinations returns "OK" response
@@ -220,29 +220,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.ListLogsCustomDestinations(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.ListLogsCustomDestinations(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.ListLogsCustomDestinations`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.ListLogsCustomDestinations`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.ListLogsCustomDestinations`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.ListLogsCustomDestinations`:\n%s\n", responseContent)
 }
 ```
 
@@ -250,7 +250,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all custom destinations returns "OK" response
@@ -284,7 +284,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all custom destinations returns "OK" response
@@ -308,7 +308,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -409,7 +409,7 @@ The definition of the new custom destination.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -439,7 +439,7 @@ The definition of the new custom destination.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -469,7 +469,7 @@ The definition of the new custom destination.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -684,7 +684,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -717,8 +717,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -751,8 +751,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -784,8 +784,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Basic HTTP custom destination returns "OK" response
@@ -793,60 +793,60 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomDestinationCreateRequest{
-		Data: &datadogV2.CustomDestinationCreateRequestDefinition{
-			Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
-				Enabled:     datadog.PtrBool(false),
-				ForwardTags: datadog.PtrBool(false),
-				ForwardTagsRestrictionList: []string{
-					"datacenter",
-					"host",
-				},
-				ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
-				ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
-					CustomDestinationForwardDestinationHttp: &datadogV2.CustomDestinationForwardDestinationHttp{
-						Auth: datadogV2.CustomDestinationHttpDestinationAuth{
-							CustomDestinationHttpDestinationAuthBasic: &datadogV2.CustomDestinationHttpDestinationAuthBasic{
-								Password: "datadog-custom-destination-password",
-								Type:     datadogV2.CUSTOMDESTINATIONHTTPDESTINATIONAUTHBASICTYPE_BASIC,
-								Username: "datadog-custom-destination-username",
-							}},
-						Endpoint: "https://example.com",
-						Type:     datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONHTTPTYPE_HTTP,
-					}},
-				Name:  "Nginx logs",
-				Query: datadog.PtrString("source:nginx"),
-			},
-			Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.CreateLogsCustomDestination(ctx, body)
+    body := datadogV2.CustomDestinationCreateRequest{
+        Data: &datadogV2.CustomDestinationCreateRequestDefinition{
+            Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
+                Enabled:     datadog.PtrBool(false),
+                ForwardTags: datadog.PtrBool(false),
+                ForwardTagsRestrictionList: []string{
+                    "datacenter",
+                    "host",
+                },
+                ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
+                ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
+                    CustomDestinationForwardDestinationHttp: &datadogV2.CustomDestinationForwardDestinationHttp{
+                        Auth: datadogV2.CustomDestinationHttpDestinationAuth{
+                            CustomDestinationHttpDestinationAuthBasic: &datadogV2.CustomDestinationHttpDestinationAuthBasic{
+                                Password: "datadog-custom-destination-password",
+                                Type:     datadogV2.CUSTOMDESTINATIONHTTPDESTINATIONAUTHBASICTYPE_BASIC,
+                                Username: "datadog-custom-destination-username",
+                            }},
+                        Endpoint: "https://example.com",
+                        Type:     datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONHTTPTYPE_HTTP,
+                    }},
+                Name:  "Nginx logs",
+                Query: datadog.PtrString("source:nginx"),
+            },
+            Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.CreateLogsCustomDestination(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a Custom Header HTTP custom destination returns "OK" response
@@ -854,60 +854,60 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomDestinationCreateRequest{
-		Data: &datadogV2.CustomDestinationCreateRequestDefinition{
-			Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
-				Enabled:     datadog.PtrBool(false),
-				ForwardTags: datadog.PtrBool(false),
-				ForwardTagsRestrictionList: []string{
-					"datacenter",
-					"host",
-				},
-				ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
-				ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
-					CustomDestinationForwardDestinationHttp: &datadogV2.CustomDestinationForwardDestinationHttp{
-						Auth: datadogV2.CustomDestinationHttpDestinationAuth{
-							CustomDestinationHttpDestinationAuthCustomHeader: &datadogV2.CustomDestinationHttpDestinationAuthCustomHeader{
-								HeaderValue: "my-secret",
-								Type:        datadogV2.CUSTOMDESTINATIONHTTPDESTINATIONAUTHCUSTOMHEADERTYPE_CUSTOM_HEADER,
-								HeaderName:  "MY-AUTHENTICATION-HEADER",
-							}},
-						Endpoint: "https://example.com",
-						Type:     datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONHTTPTYPE_HTTP,
-					}},
-				Name:  "Nginx logs",
-				Query: datadog.PtrString("source:nginx"),
-			},
-			Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.CreateLogsCustomDestination(ctx, body)
+    body := datadogV2.CustomDestinationCreateRequest{
+        Data: &datadogV2.CustomDestinationCreateRequestDefinition{
+            Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
+                Enabled:     datadog.PtrBool(false),
+                ForwardTags: datadog.PtrBool(false),
+                ForwardTagsRestrictionList: []string{
+                    "datacenter",
+                    "host",
+                },
+                ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
+                ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
+                    CustomDestinationForwardDestinationHttp: &datadogV2.CustomDestinationForwardDestinationHttp{
+                        Auth: datadogV2.CustomDestinationHttpDestinationAuth{
+                            CustomDestinationHttpDestinationAuthCustomHeader: &datadogV2.CustomDestinationHttpDestinationAuthCustomHeader{
+                                HeaderValue: "my-secret",
+                                Type:        datadogV2.CUSTOMDESTINATIONHTTPDESTINATIONAUTHCUSTOMHEADERTYPE_CUSTOM_HEADER,
+                                HeaderName:  "MY-AUTHENTICATION-HEADER",
+                            }},
+                        Endpoint: "https://example.com",
+                        Type:     datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONHTTPTYPE_HTTP,
+                    }},
+                Name:  "Nginx logs",
+                Query: datadog.PtrString("source:nginx"),
+            },
+            Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.CreateLogsCustomDestination(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a Microsoft Sentinel custom destination returns "OK" response
@@ -915,54 +915,54 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CustomDestinationCreateRequest{
-		Data: &datadogV2.CustomDestinationCreateRequestDefinition{
-			Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
-				Enabled:     datadog.PtrBool(false),
-				ForwardTags: datadog.PtrBool(false),
-				ForwardTagsRestrictionList: []string{
-					"datacenter",
-					"host",
-				},
-				ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
-				ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
-					CustomDestinationForwardDestinationMicrosoftSentinel: &datadogV2.CustomDestinationForwardDestinationMicrosoftSentinel{
-						Type:                   datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONMICROSOFTSENTINELTYPE_MICROSOFT_SENTINEL,
-						TenantId:               "f3c9a8a1-4c2e-4d2e-b911-9f3c28c3c8b2",
-						ClientId:               "9a2f4d83-2b5e-429e-a35a-2b3c4182db71",
-						DataCollectionEndpoint: "https://my-dce-5kyl.eastus-1.ingest.monitor.azure.com",
-						DataCollectionRuleId:   "dcr-000a00a000a00000a000000aa000a0aa",
-						StreamName:             "Custom-MyTable",
-					}},
-				Name:  "Nginx logs",
-				Query: datadog.PtrString("source:nginx"),
-			},
-			Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.CreateLogsCustomDestination(ctx, body)
+    body := datadogV2.CustomDestinationCreateRequest{
+        Data: &datadogV2.CustomDestinationCreateRequestDefinition{
+            Attributes: datadogV2.CustomDestinationCreateRequestAttributes{
+                Enabled:     datadog.PtrBool(false),
+                ForwardTags: datadog.PtrBool(false),
+                ForwardTagsRestrictionList: []string{
+                    "datacenter",
+                    "host",
+                },
+                ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_ALLOW_LIST.Ptr(),
+                ForwarderDestination: datadogV2.CustomDestinationForwardDestination{
+                    CustomDestinationForwardDestinationMicrosoftSentinel: &datadogV2.CustomDestinationForwardDestinationMicrosoftSentinel{
+                        Type:                   datadogV2.CUSTOMDESTINATIONFORWARDDESTINATIONMICROSOFTSENTINELTYPE_MICROSOFT_SENTINEL,
+                        TenantId:               "f3c9a8a1-4c2e-4d2e-b911-9f3c28c3c8b2",
+                        ClientId:               "9a2f4d83-2b5e-429e-a35a-2b3c4182db71",
+                        DataCollectionEndpoint: "https://my-dce-5kyl.eastus-1.ingest.monitor.azure.com",
+                        DataCollectionRuleId:   "dcr-000a00a000a00000a000000aa000a0aa",
+                        StreamName:             "Custom-MyTable",
+                    }},
+                Name:  "Nginx logs",
+                Query: datadog.PtrString("source:nginx"),
+            },
+            Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.CreateLogsCustomDestination(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.CreateLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.CreateLogsCustomDestination`:\n%s\n", responseContent)
 }
 ```
 
@@ -970,7 +970,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Basic HTTP custom destination returns "OK" response
@@ -1041,7 +1041,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a Custom Header HTTP custom destination returns "OK" response
@@ -1111,7 +1111,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a Microsoft Sentinel custom destination returns "OK" response
@@ -1182,7 +1182,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1249,7 +1249,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1316,7 +1316,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1380,7 +1380,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Basic HTTP custom destination returns "OK" response
@@ -1416,7 +1416,7 @@ body = DatadogAPIClient::V2::CustomDestinationCreateRequest.new({
 p api_instance.create_logs_custom_destination(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a Custom Header HTTP custom destination returns "OK" response
@@ -1452,7 +1452,7 @@ body = DatadogAPIClient::V2::CustomDestinationCreateRequest.new({
 p api_instance.create_logs_custom_destination(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a Microsoft Sentinel custom destination returns "OK" response
@@ -1491,7 +1491,7 @@ p api_instance.create_logs_custom_destination(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Basic HTTP custom destination returns "OK" response
@@ -1549,7 +1549,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a Custom Header HTTP custom destination returns "OK" response
@@ -1612,7 +1612,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a Microsoft Sentinel custom destination returns "OK" response
@@ -1671,7 +1671,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1718,7 +1718,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1765,7 +1765,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2030,13 +2030,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport custom_destination_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations/${custom_destination_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2064,7 +2064,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a custom destination returns "OK" response
@@ -2081,7 +2081,7 @@ p api_instance.get_logs_custom_destination(CUSTOM_DESTINATION_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a custom destination returns "OK" response
@@ -2089,32 +2089,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "custom_destination" in the system
-	CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
+    // there is a valid "custom_destination" in the system
+    CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.GetLogsCustomDestination(ctx, CustomDestinationDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.GetLogsCustomDestination(ctx, CustomDestinationDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.GetLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.GetLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.GetLogsCustomDestination`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.GetLogsCustomDestination`:\n%s\n", responseContent)
 }
 ```
 
@@ -2122,7 +2122,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a custom destination returns "OK" response
@@ -2160,7 +2160,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a custom destination returns "OK" response
@@ -2188,7 +2188,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2534,7 +2534,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport custom_destination_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations/${custom_destination_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2555,8 +2555,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a custom destination returns "OK" response
@@ -2564,45 +2564,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "custom_destination" in the system
-	CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
+    // there is a valid "custom_destination" in the system
+    CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
 
-	body := datadogV2.CustomDestinationUpdateRequest{
-		Data: &datadogV2.CustomDestinationUpdateRequestDefinition{
-			Attributes: &datadogV2.CustomDestinationUpdateRequestAttributes{
-				Name:                           datadog.PtrString("Nginx logs (Updated)"),
-				Query:                          datadog.PtrString("source:nginx"),
-				Enabled:                        datadog.PtrBool(false),
-				ForwardTags:                    datadog.PtrBool(false),
-				ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_BLOCK_LIST.Ptr(),
-			},
-			Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
-			Id:   CustomDestinationDataID,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	resp, r, err := api.UpdateLogsCustomDestination(ctx, CustomDestinationDataID, body)
+    body := datadogV2.CustomDestinationUpdateRequest{
+        Data: &datadogV2.CustomDestinationUpdateRequestDefinition{
+            Attributes: &datadogV2.CustomDestinationUpdateRequestAttributes{
+                Name:                           datadog.PtrString("Nginx logs (Updated)"),
+                Query:                          datadog.PtrString("source:nginx"),
+                Enabled:                        datadog.PtrBool(false),
+                ForwardTags:                    datadog.PtrBool(false),
+                ForwardTagsRestrictionListType: datadogV2.CUSTOMDESTINATIONATTRIBUTETAGSRESTRICTIONLISTTYPE_BLOCK_LIST.Ptr(),
+            },
+            Type: datadogV2.CUSTOMDESTINATIONTYPE_CUSTOM_DESTINATION,
+            Id:   CustomDestinationDataID,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    resp, r, err := api.UpdateLogsCustomDestination(ctx, CustomDestinationDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.UpdateLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.UpdateLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.UpdateLogsCustomDestination`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsCustomDestinationsApi.UpdateLogsCustomDestination`:\n%s\n", responseContent)
 }
 ```
 
@@ -2610,7 +2610,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a custom destination returns "OK" response
@@ -2668,7 +2668,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2719,7 +2719,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a custom destination returns "OK" response
@@ -2750,7 +2750,7 @@ p api_instance.update_logs_custom_destination(CUSTOM_DESTINATION_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a custom destination returns "OK" response
@@ -2799,7 +2799,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2982,12 +2982,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport custom_destination_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/custom-destinations/${custom_destination_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3013,7 +3013,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a custom destination returns "OK" response
@@ -3030,7 +3030,7 @@ api_instance.delete_logs_custom_destination(CUSTOM_DESTINATION_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a custom destination returns "OK" response
@@ -3038,28 +3038,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "custom_destination" in the system
-	CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
+    // there is a valid "custom_destination" in the system
+    CustomDestinationDataID := os.Getenv("CUSTOM_DESTINATION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
-	r, err := api.DeleteLogsCustomDestination(ctx, CustomDestinationDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsCustomDestinationsApi(apiClient)
+    r, err := api.DeleteLogsCustomDestination(ctx, CustomDestinationDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.DeleteLogsCustomDestination`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsCustomDestinationsApi.DeleteLogsCustomDestination`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3067,7 +3067,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a custom destination returns "OK" response
@@ -3102,7 +3102,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a custom destination returns "OK" response
@@ -3130,7 +3130,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

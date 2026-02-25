@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Amazon Machine Image (AMI) should not be publicly shared
- 
+
 ## Description{% #description %}
 
 Identify publicly accessible Amazon Machine Images (AMIs).

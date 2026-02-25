@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Jumpcloud admin login withou
 ---
 
 # Jumpcloud admin login without MFA
-Classification:complianceTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)Framework:cis-awsControl:4.2 
+Classification:complianceTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)Framework:cis-awsControl:4.2
 ## Goal{% #goal %}
 
 Detect when a JumpCloud administrator authenticates without multi-factor authentication (MFA) enabled. This is not indicative of malicious activity, however as a best practice, administrator accounts should have MFA enabled.

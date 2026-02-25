@@ -208,6 +208,5 @@ class C { #x; foo() { a.b.#x = function x() {}; } }
 class C { #x; foo() { a.b.#x = function y() {}; } }
 class C { #x; foo() { a.b.#x = function y() {}; } }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

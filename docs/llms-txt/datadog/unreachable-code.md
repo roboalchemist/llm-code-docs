@@ -50,10 +50,9 @@ def foo():
 
 ```python
 def foo():
-	foo()
-	pass
-	return 3
+    foo()
+    pass
+    return 3
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: Docs > APM > APM Troubleshooting
 ---
 
-# APM Troubleshooting
-
 If you experience unexpected behavior while using Datadog APM, read the information on this page to help resolve the issue. Datadog recommends regularly updating to the latest version of the Datadog tracing libraries you use, as each release contains improvements and fixes. If you continue to experience issues, reach out to [Datadog support](https://docs.datadoghq.com/help/).
 
 The following components are involved in sending APM data to Datadog:

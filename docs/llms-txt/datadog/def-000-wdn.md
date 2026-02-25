@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS clusters should be configured to use multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 This control ensures high availability is enabled for your RDS clusters. The control will fail if an RDS cluster is not deployed across multiple Availability Zones (AZs). RDS clusters should be configured to span multiple AZs to guarantee the availability of stored data. Deploying across multiple AZs provides automated failover capabilities in the event of an AZ availability issue and during regular RDS maintenance events.

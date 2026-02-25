@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install firewalld Package
 ---
 
 # Install firewalld Package
- 
+
 ## Description{% #description %}
 
 The `firewalld` package can be installed with the following command:

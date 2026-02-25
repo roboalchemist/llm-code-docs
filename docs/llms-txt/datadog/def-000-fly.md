@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify that audit tools are owned by root
- 
+
 ## Description{% #description %}
 
 The Ubuntu 20.04 operating system audit tools must have the proper ownership configured to protected against unauthorized access. Verify it by running the following command:

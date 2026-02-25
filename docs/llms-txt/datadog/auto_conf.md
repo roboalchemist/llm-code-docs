@@ -65,7 +65,7 @@ spec:
 
   override:
     nodeAgent:
-      containers: 
+      containers:
         agent:
           env:
             - name: DD_IGNORE_AUTOCONF

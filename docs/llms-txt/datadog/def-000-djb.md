@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitHub mass deletion of repo
 ---
 
 # GitHub mass deletion of repositories
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detects mass deletion of GitHub repositories or organization deletion events that could indicate potentially malicious destructive activities.

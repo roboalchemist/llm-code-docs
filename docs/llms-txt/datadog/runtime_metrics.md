@@ -85,7 +85,7 @@ This can be done either from the "Computer Management" UI, or from an administra
 
 ```shell
 net localgroup "Performance Monitor Users" "IIS APPPOOL\DefaultAppPool" /add
-```
+```text
 
 {% /tab %}
 
@@ -196,7 +196,7 @@ You can enable runtime metrics with environment variables or in code:
 ```python
 from ddtrace.runtime import RuntimeMetrics
 RuntimeMetrics.enable()
-```
+```text
 
 {% alert level="danger" %}
 This only applies if you are not using `ddtrace-run`
@@ -220,7 +220,7 @@ Datadog.configure do |c|
   # You can configure with host and port of Datadog agent; defaults to 'localhost:8125'.
   c.runtime_metrics.statsd = Datadog::Statsd.new
 end
-```
+```text
 
 {% /tab %}
 
@@ -236,7 +236,7 @@ tracer.Start(
   tracer.WithRuntimeMetrics(),
   tracer.WithDogstatsdAddr("custom-host:8125")
 )
-```
+```text
 
 The `WithDogstatsdAddr` option allows you to specify a custom address for the DogStatsD server. Use the [`WithDogstatsdAddr`](https://pkg.go.dev/github.com/DataDog/dd-trace-go/v2/ddtrace/tracer#WithDogstatsdAddr) (or [`WithDogstatsdAddress` v1](https://pkg.go.dev/gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer#WithDogstatsdAddress)) option if your address differs from the default `localhost:8125`. (Available for 1.18.0+)
 {% /tab %}
@@ -249,7 +249,7 @@ const tracer = require('dd-trace').init({
   // Other tracer options...
   runtimeMetrics: true
 })
-```
+```text
 
 {% /tab %}
 
@@ -306,7 +306,7 @@ jvm.gc.cms.count   => jvm.gc.minor_collection_count
                       jvm.gc.major_collection_count
 jvm.gc.parnew.time => jvm.gc.minor_collection_time
                       jvm.gc.major_collection_time
-```
+```text
 
 {% /tab %}
 

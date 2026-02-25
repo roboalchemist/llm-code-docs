@@ -75,7 +75,7 @@ exec(str)
 const {exec: nodeExec} = require('node:child_process');
 nodeExec(str)
 
-import {exec as foo} from 'child_process'; 
+import {exec as foo} from 'child_process';
 foo(com);
 ```
 
@@ -133,6 +133,5 @@ function fn () {
 // const FOO = 'ls';
 // child_process.exec(FOO);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

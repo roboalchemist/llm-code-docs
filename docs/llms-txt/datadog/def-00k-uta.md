@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The `admin.conf` file should be owned by root
- 
+
 ## Description{% #description %}
 
 Ensure that the `admin.conf` file ownership is set to `root:root`. This file contains the admin credentials for the cluster. You should set its file ownership to maintain the integrity of the file.

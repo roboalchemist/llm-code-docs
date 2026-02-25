@@ -43,8 +43,8 @@ if (foo) var a;
 if (foo) /* some comments */ var a;
 if (foo){ function f(){ if(bar){ var a; } } }
 if (foo) function f(){ if(bar) var a; }
-if (foo) { var fn = function(){} } 
-if (foo)  function f(){} 
+if (foo) { var fn = function(){} }
+if (foo)  function f(){}
 function bar() { if (foo) var a; }
 if (foo){ var a; }
 class C { method() { if(test) { var foo; } } }
@@ -85,6 +85,5 @@ class C { method() { var x; } }
 class C { static { function foo() {} } }
 class C { static { var x; } }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

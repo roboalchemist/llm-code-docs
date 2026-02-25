@@ -44,6 +44,5 @@ When using `.strip()`, you only need to pass the letters you want to split on. T
 ```python
 "Hello World".strip("Helo")  # letter l is present twice in the string
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

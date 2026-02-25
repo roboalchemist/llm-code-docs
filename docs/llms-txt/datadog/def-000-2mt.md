@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM users should not have both Console access and Access Keys
- 
+
 ## Description{% #description %}
 
 AWS IAM users should be granted the minimum necessary access according to the principle of least privilege. Having both Console access and Access Keys simultaneously can increase the risk surface if either credential type is compromised. Best practices recommend restricting IAM users to only one method of access based on their job functions to minimize security vulnerabilities.

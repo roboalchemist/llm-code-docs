@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1102-web-service](https://attack.mitre.org/techniques/T1102) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1102-web-service](https://attack.mitre.org/techniques/T1102)
 ## Goal{% #goal %}
 
 Identify users who are attempting to access an unusually anomalous number of blocked URLs.

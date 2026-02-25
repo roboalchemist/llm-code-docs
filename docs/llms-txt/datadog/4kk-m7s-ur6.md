@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # etcd servers should make use of TLS encryption for client connections
-Classification:complianceFramework:cis-kubernetesControl:1.2.29 
+Classification:complianceFramework:cis-kubernetesControl:1.2.29
 ## Description{% #description %}
 
 etcd should be configured to make use of TLS encryption for client connections.
@@ -33,7 +33,7 @@ Verify that the `--etcd-certfile` and `--etcd-keyfile` arguments exist and they 
 Follow the Kubernetes documentation and set up the TLS connection between the apiserver and etcd. Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and set the etcd certificate and key file parameters.
 
 ```
---etcd-certfile=<path/to/client-certificate-file> 
+--etcd-certfile=<path/to/client-certificate-file>
 --etcd-keyfile=<path/to/client-key-file>
 ```
 

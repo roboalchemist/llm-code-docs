@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set SSH Daemon LogLevel to V
 ---
 
 # Set SSH Daemon LogLevel to VERBOSE
- 
+
 ## Description{% #description %}
 
 The `VERBOSE` parameter configures the SSH daemon to record login and logout activity. To specify the log level in SSH, add or correct the following line in `/etc/ssh/sshd_config`:
@@ -33,7 +33,7 @@ The following script can be run on the host to remediate the issue.
 if [ ! -f /.dockerenv ] && [ ! -f /run/.containerenv ]; then
 
 if [ -e "/etc/ssh/sshd_config" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*LogLevel\s\+/Id" "/etc/ssh/sshd_config"
 else
     touch "/etc/ssh/sshd_config"

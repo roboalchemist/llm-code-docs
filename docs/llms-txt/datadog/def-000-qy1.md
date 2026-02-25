@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /etc/cron.allow file
- 
+
 ## Description{% #description %}
 
 If `/etc/cron.allow` exists, it must have permissions `0640` or more restrictive. To properly set the permissions of `/etc/cron.allow`, run the command:

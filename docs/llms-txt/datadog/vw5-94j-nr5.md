@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Pwnkit privilege escalation 
 ---
 
 # Pwnkit privilege escalation attempt
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1068-exploitation-for-privilege-escalation](https://attack.mitre.org/techniques/T1068) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1068-exploitation-for-privilege-escalation](https://attack.mitre.org/techniques/T1068)
 ## What happened{% #what-happened %}
 
 `{{ @process.comm }}` was executed with the `SHELL` or `PATH` environment variables, indicating exploitation of the vulnerability `CVE-2021-4034`.

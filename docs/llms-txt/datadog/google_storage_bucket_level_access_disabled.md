@@ -45,9 +45,9 @@ Enabling uniform bucket-level access simplifies permissions management and helps
 resource "google_storage_bucket" "secure_bucket" {
   name          = "image-store.com"
   location      = "EU"
-  
+
   uniform_bucket_level_access = true
-  
+
   // other configuration...
 }
 ```

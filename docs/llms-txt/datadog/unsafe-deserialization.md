@@ -44,6 +44,5 @@ To avoid this, use safe deserialization methods. Instead of using `Marshal.load`
 ```ruby
 obj = Marshal.load(data)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

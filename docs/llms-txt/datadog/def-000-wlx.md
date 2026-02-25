@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove the X Windows Package
 ---
 
 # Remove the X Windows Package Group
- 
+
 ## Description{% #description %}
 
 By removing the xorg-x11-server-common package, the system no longer has X Windows installed. If X Windows is not installed then the system cannot boot into graphical user mode. This prevents the system from being accidentally or maliciously booted into a `graphical.target` mode. To do so, run the following command:

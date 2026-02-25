@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet nodes should only be authorized to read objects they are associated with
- 
+
 ## Description{% #description %}
 
 Kubelet nodes should only read objects associated to them. The Node authorization mode only allows kubelets to read `Secret`, `ConfigMap`, `PersistentVolume`, and `PersistentVolumeClaim` objects associated with their nodes.

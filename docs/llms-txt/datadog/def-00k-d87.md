@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The `controller-manager.conf` file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The `controller-manager.conf` file should have permissions of `600` or more restrictive. The `controller-manager.conf` file is the kubeconfig file for the Controller Manager. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.

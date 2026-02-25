@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Minimum Uppercase Characters
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `ucredit=` parameter controls requirements for usage of uppercase letters in a password. When set to a negative number, any password will be required to contain that many uppercase characters. When set to a positive number, pam_pwquality will grant +1 additional length credit for each uppercase character. Modify the `ucredit` setting in `/etc/security/pwquality.conf` to require the use of an uppercase character in passwords.

@@ -128,7 +128,7 @@ To start, use a Terraform script to deploy to Amazon ECS:
 1. Open up another terminal and send API requests to exercise the app. The notes application is a REST API that stores data in an in-memory H2 database running on the same container. Send it a few commands:
 
    {% dl %}
-   
+
    {% dt %}
 `curl -X GET 'BASE_DOMAIN:8080/notes'`
    {% /dt %}
@@ -209,7 +209,7 @@ In the `cmd/notes/main.go` file:
         chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2"
         httptrace "github.com/DataDog/dd-trace-go/contrib/net/http/v2"
         "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
-      
+
 ```
 
 1. In the `main()` function, uncomment the following lines:
@@ -225,7 +225,7 @@ In the `cmd/notes/main.go` file:
       client = httptrace.WrapClient(client, httptrace.RTWithResourceNamer(func(req *http.Request) string {
          return fmt.Sprintf("%s %s", req.Method, req.URL.Path)
       }))
-      
+
 ```
 
 In the `cmd/notes/main.go` file:
@@ -275,7 +275,7 @@ In the `notes/notesController.go` file:
         r.Get("/notes/{noteID}", makeSpanMiddleware("GetNote", nr.GetNoteByID))          // GET /notes/123
         r.Put("/notes/{noteID}", makeSpanMiddleware("UpdateNote", nr.UpdateNoteByID))    // PUT /notes/123
         r.Delete("/notes/{noteID}", makeSpanMiddleware("DeleteNote", nr.DeleteNoteByID)) // DELETE /notes/123
-      
+
 ```
 
 Also remove the comment around the following import:
@@ -284,7 +284,7 @@ In the `notes/notesController.go` file:
 
    ```go
       "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer" // 2.x
-      
+
 ```
 
 1. The `doLongRunningProcess` function creates child spans from a parent context. Remove the comments to enable it:
@@ -296,7 +296,7 @@ In the `notes/notesHelper.go` file:
        childSpan, ctx := tracer.StartSpanFromContext(ctx, "traceMethod1")
        childSpan.SetTag(ext.ResourceName, "NotesHelper.doLongRunningProcess")
        defer childSpan.Finish()
-   
+
        time.Sleep(300 * time.Millisecond)
        log.Println("Hello from the long running process in Notes")
        privateMethod1(ctx)
@@ -317,7 +317,7 @@ In the `notes/notesHelper.go` file:
        )
        childSpan.SetTag(ext.ResourceName, "privateMethod1")
        defer childSpan.Finish()
-   
+
        time.Sleep(30 * time.Millisecond)
        log.Println("Hello from the custom privateMethod1 in Notes")
       }
@@ -332,7 +332,7 @@ For this tutorial, the `/terraform/EC2/deployment/main.tf` file already has thes
    ```yaml
    {
     ...
-   
+
       name : "notes-task",
       image : "${module.settings.aws_ecr_repository}:notes",
       essential : true,
@@ -368,7 +368,7 @@ For this tutorial, the `/terraform/EC2/deployment/main.tf` file already has thes
         "com.datadoghq.tags.version" : "0.0.1"
       },
     },
-   
+
     ...
    ```
 
@@ -376,7 +376,7 @@ And for `calendar`:
 
    ```yaml
    ...
-   
+
       name : "calendar-task",
       image : "${module.settings.aws_ecr_repository}:calendar",
       essential : true,
@@ -470,7 +470,7 @@ Redeploy the application and exercise the API:
 1. Wait a few minutes for the instances to start up. Wait a few minutes to ensure the containers for the applications are ready. Run some curl commands to exercise the instrumented app:
 
    {% dl %}
-   
+
    {% dt %}
 `curl -X GET 'BASE_DOMAIN:8080/notes'`
    {% /dt %}

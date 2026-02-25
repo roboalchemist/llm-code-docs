@@ -86,6 +86,7 @@ For information about the different methods for setting environment variables, s
    net start w3svc
    # Also, start any other services that were stopped when WAS was shut down.
    ```
+
 Important alert (level: danger): **Note:** Always use the commands above to completely stop and restart IIS to enable the tracer. Avoid using the IIS Manager GUI application or `iisreset.exe`.
 
 #### Services outside IIS{% #services-outside-iis %}
@@ -185,11 +186,14 @@ Set-ItemProperty HKLM:SYSTEM\CurrentControlSet\Services\<SERVICE NAME> -Name Env
 After installing the MSI, no additional configuration is needed to automatically instrument your IIS sites. To set additional environment variables that are inherited by all IIS sites, perform the following steps:
 
 1. Open the Registry Editor, find the multi-string value called `Environment` in the `HKLM\System\CurrentControlSet\Services\WAS` key, and add the environment variables, one per line. For example, to add logs injection and runtime metrics, add the following lines to the value data:
+
    ```text
    DD_LOGS_INJECTION=true
    DD_RUNTIME_METRICS_ENABLED=true
    ```
+
 1. Run the following commands to restart IIS:
+
    ```cmd
    net stop /y was
    net start w3svc

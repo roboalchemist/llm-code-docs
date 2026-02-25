@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An AKS Cluster's Kubelet should only allow explicitly authorized requests
- 
+
 ## Description{% #description %}
 
 Kubelets can be configured to allow all authenticated requests (even anonymous ones) without needing explicit authorization checks from the apiserver. You should restrict this behavior and only allow explicitly authorized requests.

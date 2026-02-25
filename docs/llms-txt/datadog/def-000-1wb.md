@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set PAM''s Password Hashing 
 ---
 
 # Set PAM''s Password Hashing Algorithm
- 
+
 ## Description{% #description %}
 
 The PAM system service can be configured to only store encrypted representations of passwords. In "/etc/pam.d/common-password", the `password` section of the file controls which PAM modules to execute during a password change. Set the `pam_unix.so` module in the `password` section to include the option `sha512` and no other hashing algorithms as shown below:
@@ -15,7 +15,7 @@ The PAM system service can be configured to only store encrypted representations
 ```
 password    [success=1 default=ignore]   pam_unix.so sha512
           other arguments...
-         
+
 ```
 
 This will help ensure that new passwords for local users will be stored using the sha512 algorithm.

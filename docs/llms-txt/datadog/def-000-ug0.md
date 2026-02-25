@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Do Not Allow SSH Environment
 ---
 
 # Do Not Allow SSH Environment Options
- 
+
 ## Description{% #description %}
 
 Ensure that users are not able to override environment variables of the SSH daemon.
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf
 LC_ALL=C sed -i "/^\s*PermitUserEnvironment\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*PermitUserEnvironment\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*PermitUserEnvironment\s\+/Id" "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"
 else
     touch "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"

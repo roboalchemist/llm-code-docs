@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Scheduler.conf file should only be alterable by owners with permissions of 644 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:1.1.15 
+Classification:complianceFramework:cis-kubernetesControl:1.1.15
 ## Description{% #description %}
 
 Ensure that the `scheduler.conf` file has permissions of 644 or more restrictive.

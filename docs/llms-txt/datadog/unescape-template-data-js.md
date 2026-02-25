@@ -91,7 +91,7 @@ func xss1Handler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 func main() {
     tmpl = fmt.Sprintf("something: %s", someData)
     template.JS(tmpl)
-	return template.JS(tmpl)
+    return template.JS(tmpl)
 
     if something {
         return template.JS(tmpl)
@@ -102,14 +102,14 @@ func main() {
 ```go
 func main() {
      tmpl := fmt.Sprintf("something: %s", someData)
-	return template.JS(tmpl)
+    return template.JS(tmpl)
 }
 ```
 
 ```go
 func main() {
     tmpl := "<html><body><title>" + injection + "</title></html>"
-	return template.JS(tmpl)
+    return template.JS(tmpl)
 }
 ```
 
@@ -118,9 +118,8 @@ func main() {
 ```go
 func main() {
     tmpl := "<html><body><title> Safe HTML </title></html>"
-	return template.JS(tmpl)
+    return template.JS(tmpl)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

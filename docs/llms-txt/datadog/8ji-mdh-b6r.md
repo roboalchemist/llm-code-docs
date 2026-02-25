@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd service should have client authentication enabled
-Classification:complianceFramework:cis-kubernetesControl:2.2 
+Classification:complianceFramework:cis-kubernetesControl:2.2
 ## Description{% #description %}
 
 Enable client authentication on etcd service.

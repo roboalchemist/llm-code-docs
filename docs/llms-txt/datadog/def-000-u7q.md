@@ -15,7 +15,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1080-taint-shared-content](https://attack.mitre.org/techniques/T1080) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1080-taint-shared-content](https://attack.mitre.org/techniques/T1080)
 ## Goal{% #goal %}
 
 Detects when a user uploads or shares malware-infected files within Office 365 or Google Mail. This activity may indicate a compromised account, an insider threat, or an attempt to distribute malware within the organization.

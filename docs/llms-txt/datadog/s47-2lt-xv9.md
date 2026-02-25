@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Reflected XSS attempts on routes returning HTML
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect Reflected Cross-Site Scripting (XSS) attempts on web services returning HTML. Such security activity generally indicates that an attacker is trying to exploit a potential XSS vulnerability or steal sensitive data.

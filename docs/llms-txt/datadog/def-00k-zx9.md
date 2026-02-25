@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Service accounts management should be automated
- 
+
 ## Description{% #description %}
 
 When you create a pod, if you do not specify a service account, it is automatically assigned the default service account in the same namespace. You should create your own service account and let the API server manage its security tokens.

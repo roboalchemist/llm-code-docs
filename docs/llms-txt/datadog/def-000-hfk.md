@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 Auto Scaling groups should use Amazon EC2 launch templates
- 
+
 ## Description{% #description %}
 
 This check verifies if an Amazon EC2 Auto Scaling group is established using an EC2 launch template. The check does not pass if the Auto Scaling group is created without a launch template, or if a launch template is absent in a mixed instances policy.

@@ -33,23 +33,23 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azuretable",
-	"id": "e3b7f697-3ae6-4d3b-bd7f-bac3e0cc05ae",
-	"region": "northcentralus",
-	"mapPos": [1,7.75],
-	"redundancy": "LRS",
-	"storageGb": 10,
-	"requestUnits": 0,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/storage/tables/",
-	"locked": true
+    "type": "azuretable",
+    "id": "e3b7f697-3ae6-4d3b-bd7f-bac3e0cc05ae",
+    "region": "northcentralus",
+    "mapPos": [1,7.75],
+    "redundancy": "LRS",
+    "storageGb": 10,
+    "requestUnits": 0,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/storage/tables/",
+    "locked": true
 }
 ```
 

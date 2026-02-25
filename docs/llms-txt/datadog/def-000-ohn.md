@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EC2 should be configured to use AWS VPC endpoints created for the Amazon EC2 service
- 
+
 ## Description{% #description %}
 
 This check verifies the presence of a service endpoint for Amazon EC2 within each VPC. It registers a failure if a VPC does not have an Amazon EC2 service endpoint created.

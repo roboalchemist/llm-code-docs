@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions should be configured with a default root object
- 
+
 ## Description{% #description %}
 
 This evaluation determines if an Amazon CloudFront distribution is set up to provide a designated object as the default root object. The evaluation is marked as failed if the CloudFront distribution lacks a configured default root object.

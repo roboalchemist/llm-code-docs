@@ -141,7 +141,7 @@ import * as mod from 'mod'; ({ bar: baz = mod.named } = foo);
 import * as mod from 'mod'; ({ [mod.named]: bar } = foo);
 import * as mod from 'mod'; var obj = { ...mod.named };
 import * as mod from 'mod'; var obj = { foo: mod.named };
-// scoped import name re-use not covered 
+// scoped import name re-use not covered
 // import mod from 'mod'; { let mod = 0; mod = 1 }
 // import * as mod from 'mod'; { let mod = 0; mod = 1 }
 // import * as mod from 'mod'; { let mod = 0; mod.named = 1 }
@@ -161,6 +161,5 @@ import * as mod from 'mod'; Object.seal(mod, obj)
 import * as mod from 'mod'; Object.preventExtensions(mod)
 import * as mod from 'mod'; Reflect.preventExtensions(mod)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -77,23 +77,23 @@ public class Foo {
         // if only - no braces
         if (true)
             x++;
-        
+
         // if/else - no braces
         if (true)
             x++;
-         else 
+         else
             x--;
-        
+
         // do/while - no braces
         do
             i++;
         while (true);
-        
+
         // case - no braces - allowed by default
         switch(i) {
             case (i < 42):
                 return "foo";
-            default: 
+            default:
                 return "bar";
         }
     }
@@ -138,20 +138,20 @@ public class Foo {
         if (true) {
             x++;
         }
-            
+
         // if/else - with braces
         if (true) {
             x++;
         } else {
             x--;
         }
-    
+
         // do/while - with braces
         do {
             i++;
         }
         while (true);
-        
+
         // case - with braces
         switch(i) {
             case (i < 42) {
@@ -164,6 +164,5 @@ public class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

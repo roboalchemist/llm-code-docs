@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove NIS Client
 ---
 
 # Remove NIS Client
- 
+
 ## Description{% #description %}
 
 The Network Information Service (NIS), formerly known as Yellow Pages, is a client-server directory service protocol used to distribute system configuration files. The NIS client (`ypbind`) was used to bind a system to an NIS server and receive the distributed configuration files.
@@ -26,10 +26,10 @@ The following script can be run on the host to remediate the issue.
 #!/bin/bash
 
 # CAUTION: This remediation script will remove ypbind
-#	   from the system, and may remove any packages
-#	   that depend on ypbind. Execute this
-#	   remediation AFTER testing on a non-production
-#	   system!
+#      from the system, and may remove any packages
+#      that depend on ypbind. Execute this
+#      remediation AFTER testing on a non-production
+#      system!
 
 if rpm -q --quiet "ypbind" ; then
 

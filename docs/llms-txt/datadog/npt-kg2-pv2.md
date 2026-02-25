@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPC flow logging should be enabled in all VPCs
- 
+
 ## Description{% #description %}
 
 VPC Flow Logs capture information about the IP traffic to and from network interfaces in your VPCs. This feature provides visibility into rejected network traffic and assists in detecting unusual traffic for enhanced security workflows. It is recommended to enable VPC Flow Logs for packet rejects to monitor and analyze network activity effectively.

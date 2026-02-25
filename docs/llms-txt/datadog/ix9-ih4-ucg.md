@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Application Load Balancers should use HTTPS
- 
+
 ## Description{% #description %}
 
 Use HTTPS to secure communication between your application client and an Elastic Load Balancer (ELB) listener.

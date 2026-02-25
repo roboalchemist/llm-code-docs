@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Instance roles should be used for AWS resource access from instances
- 
+
 ## Description{% #description %}
 
 This check ensures the EC2 instance uses IAM instance roles for granting resource access. By assigning an IAM role to your instances, you can access AWS resources securely and eliminate the need to manage credentials directly on the instances. IAM instance roles provide temporary credentials that are automatically rotated, reducing the risk of credential leakage and simplifying credential management.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install AIDE
 ---
 
 # Install AIDE
- 
+
 ## Description{% #description %}
 
 The `aide` package can be installed with the following command:

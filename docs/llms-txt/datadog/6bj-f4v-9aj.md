@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # PostgreSQL Database ingress traffic should be restricted to specified IP addresses
- 
+
 ## Description{% #description %}
 
 Ensure that no PostgreSQL Databases allow ingress from 0.0.0.0/0 (ANY IP).

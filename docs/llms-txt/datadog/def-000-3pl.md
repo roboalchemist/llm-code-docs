@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Mounting of freevxfs
 ---
 
 # Disable Mounting of freevxfs
- 
+
 ## Description{% #description %}
 
 To configure the system to prevent the `freevxfs` kernel module from being loaded, add the following line to the file `/etc/modprobe.d/freevxfs.conf`:
@@ -35,15 +35,15 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if LC_ALL=C grep -q -m 1 "^install freevxfs" /etc/modprobe.d/freevxfs.conf ; then
-	
-	sed -i 's#^install freevxfs.*#install freevxfs /bin/false#g' /etc/modprobe.d/freevxfs.conf
+
+    sed -i 's#^install freevxfs.*#install freevxfs /bin/false#g' /etc/modprobe.d/freevxfs.conf
 else
-	echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/freevxfs.conf
-	echo "install freevxfs /bin/false" >> /etc/modprobe.d/freevxfs.conf
+    echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/freevxfs.conf
+    echo "install freevxfs /bin/false" >> /etc/modprobe.d/freevxfs.conf
 fi
 
 if ! LC_ALL=C grep -q -m 1 "^blacklist freevxfs$" /etc/modprobe.d/freevxfs.conf ; then
-	echo "blacklist freevxfs" >> /etc/modprobe.d/freevxfs.conf
+    echo "blacklist freevxfs" >> /etc/modprobe.d/freevxfs.conf
 fi
 
 else

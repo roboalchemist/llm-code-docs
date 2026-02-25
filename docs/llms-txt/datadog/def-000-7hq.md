@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Unauthorized activity detect
 ---
 
 # Unauthorized activity detected
-Tactic:[TA0004-privilege_escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1134-access-token-manipulation](https://attack.mitre.org/techniques/T1134) 
+Tactic:[TA0004-privilege_escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1134-access-token-manipulation](https://attack.mitre.org/techniques/T1134)
 ### Goal{% #goal %}
 
 Sensitive action that should be admin-only was performed by an unauthorized actor.

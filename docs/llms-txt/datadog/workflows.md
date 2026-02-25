@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: Docs > Workflow Automation
 ---
 
-# Workflow Automation
-
 {% callout %}
 # Important note for users on the following Datadog sites: app.ddog-gov.com
 

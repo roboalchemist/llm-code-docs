@@ -46,6 +46,5 @@ COPY --chmod=777 src dst
 ADD --chmod=755 src dst
 COPY --chmod=755 src dst
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

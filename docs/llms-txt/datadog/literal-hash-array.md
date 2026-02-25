@@ -50,9 +50,8 @@ bar = Hash.new
 foo = []
 bar = {}
 # Okay since they contain values
-baz = Array.new(42) 
+baz = Array.new(42)
 qux = Hash.new(99)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

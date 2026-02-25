@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall apache2 Package
 ---
 
 # Uninstall apache2 Package
- 
+
 ## Description{% #description %}
 
 The `apache2` package can be removed with the following command:

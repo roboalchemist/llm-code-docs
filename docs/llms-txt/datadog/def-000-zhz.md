@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Exchange junk email settings modified by a suspicious VPN
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1564-hide-artifacts](https://attack.mitre.org/techniques/T1564) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1564-hide-artifacts](https://attack.mitre.org/techniques/T1564)
 ## Goal{% #goal %}
 
 Detect when the Exchange junk email settings have been modified by a suspicious VPN.

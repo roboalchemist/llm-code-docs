@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPCs should have interface endpoint for Amazon ECR API
- 
+
 ## Description{% #description %}
 
 Virtual private clouds (VPCs) should have interface VPC endpoints configured for Amazon ECR API to enable private access to ECR services. AWS PrivateLink enables customers to access services hosted on AWS while keeping all network traffic within the AWS network, which prevents traffic from service users from traversing the internet.

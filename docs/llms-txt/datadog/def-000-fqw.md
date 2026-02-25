@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Host-Based Authentic
 ---
 
 # Disable Host-Based Authentication
- 
+
 ## Description{% #description %}
 
 SSH's cryptographic host-based authentication is more secure than `.rhosts` authentication. However, it is not recommended that hosts unilaterally trust one another, even within an organization.
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf
 LC_ALL=C sed -i "/^\s*HostbasedAuthentication\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*HostbasedAuthentication\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*HostbasedAuthentication\s\+/Id" "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"
 else
     touch "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"

@@ -73,6 +73,5 @@ $OUTPUT_FIELD_SEPARATOR = ' -- '
 "Lorem ipsum dolor sit amet" =~ /dolor/
 print $POSTMATCH, $PID, "\n"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 
