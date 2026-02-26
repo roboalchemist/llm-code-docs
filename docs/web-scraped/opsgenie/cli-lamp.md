@@ -16,6 +16,7 @@ brew install lamp
 ### Linux
 
 Download from GitHub releases:
+
 ```bash
 wget https://github.com/opsgenie/opsgenie-lamp/releases/download/v1.x.x/lamp-linux-amd64.tar.gz
 tar xzf lamp-linux-amd64.tar.gz
@@ -384,7 +385,7 @@ fi
 
 ### Authentication Error
 
-```
+```text
 Error: Invalid API key
 ```
 
@@ -394,7 +395,7 @@ Error: Invalid API key
 
 ### Connection Error
 
-```
+```text
 Error: Failed to connect to API
 ```
 
@@ -414,5 +415,6 @@ Lamp is maintained alongside OpsGenie. As OpsGenie reaches end of support, migra
 ## Support
 
 For issues and feature requests:
+
 - GitHub: https://github.com/opsgenie/opsgenie-lamp
 - OpsGenie Docs: https://docs.opsgenie.com/docs/lamp

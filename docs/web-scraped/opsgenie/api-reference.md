@@ -3,6 +3,7 @@
 ## Overview
 
 The OpsGenie REST API provides programmatic access to:
+
 - Alert management (create, list, acknowledge, close)
 - Incident management (create, update, resolve)
 - Team management (create, list members)
@@ -15,12 +16,14 @@ All API endpoints use REST principles and return JSON responses.
 ## Base URLs
 
 **US Region:**
-```
+
+```text
 https://api.opsgenie.com/v2
 ```
 
 **EU Region:**
-```
+
+```text
 https://api.eu.opsgenie.com/v2
 ```
 
@@ -30,7 +33,7 @@ https://api.eu.opsgenie.com/v2
 
 Include your API key in the `Authorization` header:
 
-```
+```text
 Authorization: GenieKey YOUR_API_KEY
 ```
 
@@ -39,6 +42,7 @@ Get your API key from Settings > API Key Management in the OpsGenie UI.
 ### User-Level API Keys
 
 Create API keys with specific permissions:
+
 1. Go to Settings > API Key Management
 2. Click "Add New API Key"
 3. Select permissions (read, create, delete)
@@ -77,6 +81,7 @@ OpsGenie API has the following rate limits:
 - **1000 requests per minute** for enterprise API keys
 
 Rate limit headers in response:
+
 - `X-Rate-Limit-Limit` - Request limit
 - `X-Rate-Limit-Remaining` - Remaining requests
 - `X-Rate-Limit-Reset-After` - Reset time in seconds
@@ -134,15 +139,17 @@ curl -X POST https://api.opsgenie.com/v2/alerts \
 
 List endpoints support pagination:
 
-```
+```text
 GET /alerts?limit=20&offset=40
 ```
 
 Query parameters:
+
 - `limit` - Number of results (default: 20, max: 100)
 - `offset` - Number of items to skip
 
 Response includes:
+
 ```json
 {
   "data": [...],
@@ -159,7 +166,7 @@ Response includes:
 
 ### Alert Query Examples
 
-```
+```bash
 # Alerts from a specific team
 curl "https://api.opsgenie.com/v2/alerts?query=team%3Dplatform" \
   -H "Authorization: GenieKey YOUR_API_KEY"

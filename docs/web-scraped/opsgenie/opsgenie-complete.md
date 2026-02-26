@@ -1,8 +1,9 @@
 # OpsGenie Documentation
 
-**IMPORTANT: End of Support Notice**
+## IMPORTANT: End of Support Notice
 
 Atlassian has announced the discontinuation of OpsGenie. If you're using OpsGenie, you should plan your migration to:
+
 - **Jira Service Management** - For incident management and alerting
 - **Compass** - For service and dependency management
 
@@ -17,8 +18,8 @@ This documentation is provided for reference and to support existing OpsGenie de
 1. [Overview](#overview)
 2. [Getting Started](#getting-started)
 3. [API Reference](#api-reference)
-4. [Alert Management](#alert-management)
-5. [On-Call Scheduling](#on-call-scheduling)
+4. [Alert Management](#alert-management-overview)
+5. [On-Call Scheduling](#on-call-scheduling-overview)
 6. [Teams](#teams)
 7. [CLI (Lamp)](#cli-lamp)
 8. [Integrations](#integrations)
@@ -56,6 +57,7 @@ OpsGenie is an alert and on-call management platform designed to help teams resp
 ### Navigation
 
 The OpsGenie dashboard provides access to:
+
 - **Dashboard** - Overview of current incidents and alerts
 - **Alerts** - Searchable alert history and status
 - **Incidents** - Incident management and tracking
@@ -70,6 +72,7 @@ To test your setup:
 
 1. Go to Settings > Team Settings
 2. Create a test alert via API:
+
    ```bash
    curl -X POST https://api.opsgenie.com/v2/alerts \
      -H "Authorization: GenieKey YOUR_API_KEY" \
@@ -80,6 +83,7 @@ To test your setup:
        "priority": "P3"
      }'
    ```
+
 3. Verify you receive the notification
 
 ---
@@ -90,7 +94,7 @@ To test your setup:
 
 All API requests require an API Key. Include it in the `Authorization` header:
 
-```
+```text
 Authorization: GenieKey YOUR_API_KEY
 ```
 
@@ -98,12 +102,13 @@ Get your API key from Settings > API Key Management.
 
 ### Base URL
 
-```
+```text
 https://api.opsgenie.com/v2
 ```
 
 For EU region:
-```
+
+```text
 https://api.eu.opsgenie.com/v2
 ```
 
@@ -126,11 +131,12 @@ All API responses follow this format:
 
 #### Create Alert
 
-```
+```text
 POST /alerts
 ```
 
 **Request Body:**
+
 ```json
 {
   "message": "Alert Title",
@@ -150,6 +156,7 @@ POST /alerts
 ```
 
 **Response:**
+
 ```json
 {
   "data": {
@@ -162,29 +169,30 @@ POST /alerts
 
 #### Get Alert
 
-```
+```text
 GET /alerts/{alertId}
 ```
 
 #### Close Alert
 
-```
+```text
 POST /alerts/{alertId}/close
 ```
 
 #### Acknowledge Alert
 
-```
+```text
 POST /alerts/{alertId}/acknowledge
 ```
 
 #### List Alerts
 
-```
+```text
 GET /alerts
 ```
 
 Query parameters:
+
 - `query` - Alert query filter
 - `limit` - Number of results (default: 20, max: 100)
 - `offset` - Pagination offset
@@ -193,11 +201,12 @@ Query parameters:
 
 #### Add Note to Alert
 
-```
+```text
 POST /alerts/{alertId}/notes
 ```
 
 **Request Body:**
+
 ```json
 {
   "note": "Note text"
@@ -206,11 +215,12 @@ POST /alerts/{alertId}/notes
 
 #### Add Responder to Alert
 
-```
+```text
 POST /alerts/{alertId}/responders
 ```
 
 **Request Body:**
+
 ```json
 {
   "responder": {
@@ -224,11 +234,12 @@ POST /alerts/{alertId}/responders
 
 #### Create Incident
 
-```
+```text
 POST /incidents
 ```
 
 **Request Body:**
+
 ```json
 {
   "title": "Incident Title",
@@ -245,23 +256,24 @@ POST /incidents
 
 #### Get Incident
 
-```
+```text
 GET /incidents/{incidentId}
 ```
 
 #### List Incidents
 
-```
+```text
 GET /incidents
 ```
 
 #### Update Incident Status
 
-```
+```text
 PATCH /incidents/{incidentId}
 ```
 
 **Request Body:**
+
 ```json
 {
   "status": "resolved",
@@ -270,6 +282,7 @@ PATCH /incidents/{incidentId}
 ```
 
 Valid status values:
+
 - open
 - acknowledged
 - in_mitigation
@@ -283,11 +296,12 @@ Valid status values:
 
 #### Create Team
 
-```
+```text
 POST /teams
 ```
 
 **Request Body:**
+
 ```json
 {
   "name": "Team Name",
@@ -297,23 +311,24 @@ POST /teams
 
 #### Get Team
 
-```
+```text
 GET /teams/{teamId}
 ```
 
 #### List Teams
 
-```
+```text
 GET /teams
 ```
 
 #### Add Member to Team
 
-```
+```text
 POST /teams/{teamId}/members
 ```
 
 **Request Body:**
+
 ```json
 {
   "user": {
@@ -324,7 +339,7 @@ POST /teams/{teamId}/members
 
 #### Remove Member from Team
 
-```
+```text
 DELETE /teams/{teamId}/members/{memberId}
 ```
 
@@ -332,32 +347,34 @@ DELETE /teams/{teamId}/members/{memberId}
 
 #### Get On-Call Data
 
-```
+```text
 GET /schedules/{scheduleId}/on-calls
 ```
 
 Query parameters:
+
 - `flat` - Return flat user list (true/false)
 
 #### Get Schedule
 
-```
+```text
 GET /schedules/{scheduleId}
 ```
 
 #### List Schedules
 
-```
+```text
 GET /schedules
 ```
 
 #### Create Schedule
 
-```
+```text
 POST /schedules
 ```
 
 **Request Body:**
+
 ```json
 {
   "name": "On-Call Schedule",
@@ -370,23 +387,24 @@ POST /schedules
 
 #### Get User
 
-```
+```text
 GET /users/{userId}
 ```
 
 #### List Users
 
-```
+```text
 GET /users
 ```
 
 #### Create User
 
-```
+```text
 POST /users
 ```
 
 **Request Body:**
+
 ```json
 {
   "username": "user@example.com",
@@ -397,13 +415,13 @@ POST /users
 
 #### Update User
 
-```
+```text
 PATCH /users/{userId}
 ```
 
 ---
 
-## Alert Management
+## Alert Management (Overview)
 
 ### Creating Alerts
 
@@ -475,7 +493,7 @@ curl -X POST https://api.opsgenie.com/v2/alerts/ALERT_ID/close \
 
 ---
 
-## On-Call Scheduling
+## On-Call Scheduling (Overview)
 
 ### Creating Schedules
 
@@ -510,7 +528,7 @@ Create escalation policies to handle unacknowledged alerts:
 
 ### Example Escalation Policy
 
-```
+```text
 Alert created
     ↓
 Notify primary on-call (5 min delay)
@@ -524,9 +542,9 @@ Notify team manager
 
 ## Teams
 
-### Team Management
+### Team Management (Teams Section)
 
-#### Create Team
+#### Create Team via UI
 
 1. Go to Teams
 2. Click "Create Team"
@@ -563,6 +581,7 @@ Notify team manager
 ### Team Permissions
 
 Teams can be granted permissions to:
+
 - View specific alerts
 - Create incidents
 - Access integrations
@@ -600,10 +619,11 @@ Download the executable from GitHub releases and add to PATH.
 
 1. Get your API key from OpsGenie UI
 2. Configure Lamp:
-   ```bash
-   lamp config set apiKey YOUR_API_KEY
-   lamp config set region us  # or eu
-   ```
+
+```bash
+lamp config set apiKey YOUR_API_KEY
+lamp config set region us  # or eu
+```
 
 ### Commands
 
@@ -721,6 +741,7 @@ Export your OpsGenie data:
 #### Step 2: Assess Jira Service Management
 
 Jira Service Management provides:
+
 - Incident management (similar to OpsGenie incidents)
 - On-call scheduling
 - Alert integration
@@ -746,6 +767,7 @@ Update your monitoring tools to send alerts to Jira Service Management instead o
 #### Step 5: Decommission OpsGenie
 
 Once migration is complete:
+
 - Archive OpsGenie account
 - Verify all integrations are working in JSM
 - Update documentation
@@ -755,7 +777,7 @@ Once migration is complete:
 
 ## Best Practices
 
-### Alert Management
+### Best Practices - Alert Management
 
 1. **Avoid Alert Fatigue** - Tune alert thresholds to reduce false positives
 2. **Clear Descriptions** - Provide context so responders understand the issue
@@ -763,7 +785,7 @@ Once migration is complete:
 4. **Regular Review** - Audit alert rules monthly to ensure relevance
 5. **Correlation** - Group related alerts using tags and custom fields
 
-### On-Call Scheduling
+### Best Practices - On-Call Scheduling
 
 1. **Fair Rotation** - Distribute on-call duties evenly across team
 2. **Overlap Periods** - Have handoff time between shifts
@@ -771,7 +793,7 @@ Once migration is complete:
 4. **Time Zone Awareness** - Adjust schedules for distributed teams
 5. **Regular Updates** - Keep schedules current and notify team
 
-### Team Management
+### Best Practices - Team Management
 
 1. **Clear Responsibilities** - Define what each team responds to
 2. **Documentation** - Create runbooks for common incidents
