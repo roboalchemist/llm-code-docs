@@ -4,12 +4,11 @@
 
 Community
 
-## Join the Harbor community!
+## Join the Harbor community
 
 Harbor is developed in the open, and is constantly being improved by our **users, contributors, and maintainers**.
 It is because of you that we can bring great software to the community.
-  
-  
+
 **Come join us!**
 
 [Follow us on Twitter @project\_harbor](https://twitter.com/project_harbor)
@@ -35,7 +34,7 @@ See all the meeting information and add our planned calendar over at [our meetin
 ## Chat with us on the CNCF Slack
 
 [Slack: #harbor for end-user discussions](https://cloud-native.slack.com/messages/harbor)
- 
+
 [Slack: #harbor-dev for development of Harbor](https://cloud-native.slack.com/messages/harbor)
 
 Note: To access the CNCF slack, you need an invitation

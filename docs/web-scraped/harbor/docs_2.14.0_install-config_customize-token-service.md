@@ -42,14 +42,18 @@ Harbor requires the Docker client to access the Harbor registry with a token. Th
 
 1. Generate a private key.
 
-   ```
+   ```bash
    openssl genrsa -out private_key.pem 4096
-   ```
-2. Generate a certificate.
 
    ```
+
+2. Generate a certificate.
+
+   ```bash
    openssl req -new -x509 -key private_key.pem -out root.crt -days 3650
+
    ```
+
 3. Enter information to include in your certificate request.
 
    What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some of them blank. For some fields there is a default value. If you enter `.`, the field is left blank.
@@ -74,22 +78,23 @@ See
 
    Assuming that the new key and certificate are in `/root/cert`, and `/srv/harbor/data` was specified as `data_volume` run the following commands:
 
-   ```
+   ```bash
    cd config/ui
    cp /root/cert/private_key.pem /srv/harbor/data/secret/core/private_key.pem
    cp /root/cert/root.crt /srv/harbor/data/secret/registry/root.crt
-   ```
-2. Go back to the `make` directory, and start Harbor by using following command:
 
    ```
+
+2. Go back to the `make` directory, and start Harbor by using following command:
+
+   ```bash
    docker compose up -d
+
    ```
+
 3. Push and pull images to and from Harbor to check that your own certificate works.
 
 On this page
-
-  
-  
 
 Contributing
 

@@ -105,9 +105,6 @@ The table below lists the some of the key components that are deployed when you 
 
 On this page
 
-  
-  
-
 Contributing
 
 [Page source](https://github.com/goharbor/website/blob/release-2.14.0/docs/install-config/_index.md)

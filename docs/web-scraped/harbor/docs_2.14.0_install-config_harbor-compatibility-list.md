@@ -80,9 +80,6 @@ This document provides compatibility information for all Harbor components.
 
 On this page
 
-  
-  
-
 Contributing
 
 [Page source](https://github.com/goharbor/website/blob/release-2.14.0/docs/install-config/harbor-compatibility-list.md)

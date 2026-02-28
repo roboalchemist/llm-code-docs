@@ -39,7 +39,7 @@ You can install Harbor in different configurations:
 
 The default Harbor installation does not include Trivy service. Run the following command
 
-```
+```bash
 sudo ./install.sh
 ```
 
@@ -47,7 +47,7 @@ If the installation succeeds, you can open a browser to visit the Harbor interfa
 
 Log in to the admin portal and create a new project, for example, `myproject`. You can then use Docker commands to log in to Harbor, tag images, and push them to Harbor.
 
-```
+```bash
 docker login reg.yourdomain.com
 docker push reg.yourdomain.com/myproject/myrepo:mytag
 ```
@@ -59,7 +59,7 @@ docker push reg.yourdomain.com/myproject/myrepo:mytag
 
 To install Harbor with Trivy service, add the `--with-trivy` parameter when you run `install.sh`:
 
-```
+```bash
 sudo ./install.sh --with-trivy
 ```
 
@@ -74,7 +74,7 @@ For more information about how to use Trivy in an webproxy environment see
 
 For example, add the following to your `daemon.json` file:
 
-```
+```json
 {
 "insecure-registries" : ["myregistrydomain.com:5000", "0.0.0.0"]
 }
@@ -84,17 +84,19 @@ After you update `daemon.json`, you must restart both Docker Engine and Harbor.
 
 1. Restart Docker Engine.
 
-   ```
+   ```bash
    systemctl restart docker
    ```
+
 2. Stop Harbor.
 
-   ```
+   ```bash
    docker compose down -v
    ```
+
 3. Restart Harbor.
 
-   ```
+   ```bash
    docker compose up -d
    ```
 
@@ -108,9 +110,6 @@ After you update `daemon.json`, you must restart both Docker Engine and Harbor.
   [Troubleshooting Harbor Installation](/docs/2.14.0/install-config/troubleshoot-installation/).
 
 On this page
-
-  
-  
 
 Contributing
 

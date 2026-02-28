@@ -30,7 +30,7 @@ Harbor Installation Prerequisites
 
 Harbor can be deployed to a Docker host using Docker Compose, or to a Kubernetes cluster using Helm.
 
-### Resource Requirement
+## Resource Requirement
 
 The table below outlines the minimum and recommended resource requirement for deploying Harbor.
 
@@ -40,7 +40,7 @@ The table below outlines the minimum and recommended resource requirement for de
 | Mem | 4 GB | 8 GB |
 | Disk | 40 GB | 160 GB |
 
-### Software Stack Requirements Compose
+## Software Stack Requirements Compose
 
 The following table lists the software versions that must be installed on the target host.
 
@@ -50,7 +50,7 @@ The following table lists the software versions that must be installed on the ta
 | Docker Compose | Docker compose > 2.3 | Docker Compose is part of Docker Engine |
 | OpenSSL | Latest (optional) | Used to generate certificate and keys for Harbor |
 
-### Network ports
+## Network ports
 
 Harbor requires that the following ports be open on the target host.
 
@@ -69,9 +69,6 @@ To install docker with Helm, see the dedicated repository
 [Download the Harbor Installer](/docs/2.14.0/install-config/download-installer/).
 
 On this page
-
-  
-  
 
 Contributing
 

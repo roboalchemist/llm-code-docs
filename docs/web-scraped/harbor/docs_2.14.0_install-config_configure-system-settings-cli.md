@@ -35,13 +35,13 @@ Some Harbor configuration is configured separately from the
 
 **Get the current configuration:**
 
-```
+```bash
 curl -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/v2.0/configurations
 ```
 
 **Update the current configuration:**
 
-```
+```bash
 curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki <Harbor Server URL>/api/v2.0/configurations -d'{"<item_name>":"<item_value>"}'
 ```
 
@@ -49,13 +49,13 @@ curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki <
 
 Command
 
-```
+```bash
 curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"auth_mode":"ldap_auth"}'
 ```
 
 Output
 
-```
+```text
 HTTP/1.1 200 OK
 Server: nginx
 Date: Wed, 08 May 2019 08:22:02 GMT
@@ -69,13 +69,13 @@ Set-Cookie: sid=a5803a1265e2b095cf65ce1d8bbd79b1; Path=/; HttpOnly
 
 Command
 
-```
+```bash
 curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"project_creation_restriction":"adminonly"}'
 ```
 
 Output
 
-```
+```text
 HTTP/1.1 200 OK
 Server: nginx
 Date: Wed, 08 May 2019 08:24:32 GMT
@@ -89,13 +89,13 @@ Set-Cookie: sid=b7925eaf7af53bdefb13bdcae201a14a; Path=/; HttpOnly
 
 Command
 
-```
+```bash
 curl -X PUT -u "<username>:<password>" -H "Content-Type: application/json" -ki https://harbor.sample.domain/api/v2.0/configurations -d'{"token_expiration":"300"}'
 ```
 
 Output
 
-```
+```text
 HTTP/1.1 200 OK
 Server: nginx
 Date: Wed, 08 May 2019 08:23:38 GMT
@@ -111,7 +111,7 @@ Introduced in 2.3.0 is the ability to use an environment variable, `CONFIG_OVERW
 
 **Example CONFIG\_OVERWRITE\_JSON configuration:**
 
-```
+```bash
 CONFIG_OVERWRITE_JSON={"ldap_verify_cert":"false", "auth_mode":"ldap_auth","ldap_base_dn":"dc=example,dc=com", "ldap_search_dn":"cn=admin,dc=example,dc=com","ldap_search_password":"admin","ldap_url":"myldap.example.com", "ldap_scope":2}
 ```
 
@@ -170,9 +170,6 @@ If there is a legacy user in your instance of Harbor, the authentication mode ca
 Both booleans and numbers can be enclosed with double quote in the request json, for example: `123`, `"123"`, `"true"` or `true` is OK.
 
 On this page
-
-  
-  
 
 Contributing
 

@@ -8,7 +8,7 @@ Our Latest Posts
 
 ---
 
-### [Gitless GitOps: Using OCI Registries as a Secure, Trusted Hub for Multi-Zone Replication of Signed Artifacts](/blog/harbor-as-universal-oci-hub/)
+## [Gitless GitOps: Using OCI Registries as a Secure, Trusted Hub for Multi-Zone Replication of Signed Artifacts](/blog/harbor-as-universal-oci-hub/)
 
 July 8, 2025
 

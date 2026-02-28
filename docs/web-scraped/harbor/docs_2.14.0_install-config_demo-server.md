@@ -59,24 +59,32 @@ If you encounter any problems while using the demo server, open an
    [Create a Project](/docs/2.14.0/working-with-projects/create-projects/).
 7. Open a Docker client and log in to Harbor with the credentials that you created above.
 
-   ```
+   ```bash
    docker login demo.goharbor.io
+
    ```
+
 8. Create a very simple `Dockerfile` with the following contents.
 
-   ```
+   ```dockerfile
    FROM busybox:latest
+
    ```
+
 9. Build an image from this Dockerfile and tag it.
 
-   ```
+   ```bash
    docker build -t demo.goharbor.io/your-project/test-image .
+
    ```
+
 10. Push the image to your project in Harbor.
 
-    ```
+    ```bash
     docker push demo.goharbor.io/your-project/test-image
+
     ```
+
 11. In the Harbor interface, go to **Projects** > *your\_project* > **Repositories** to view the image repository that you pushed to your Harbor project.
 
 ## What to Do Next
@@ -85,9 +93,6 @@ See the
 [Harbor Installation Prerequisites](/docs/2.14.0/install-config/installation-prereqs/).
 
 On this page
-
-  
-  
 
 Contributing
 

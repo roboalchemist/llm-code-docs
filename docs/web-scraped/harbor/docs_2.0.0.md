@@ -55,9 +55,6 @@ For versions of the docs before 2.0.x, go to the
 
 On this page
 
-  
-  
-
 Contributing
 
 [Page source](https://github.com/goharbor/website/blob/release-2.0.0/docs/_index.md)

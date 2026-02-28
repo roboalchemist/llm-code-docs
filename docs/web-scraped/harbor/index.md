@@ -2,8 +2,6 @@
 
 **Source:** https://status.goharbor.io
 
-# All services are online
-
 Last updated on Feb 28 at 10:00pm CET
 
 Core Services
@@ -1128,7 +1126,7 @@ Feb 28, 2026
 
 Today
 
-### Previous incidents
+## Previous incidents
 
 Feb 26, 2026
 

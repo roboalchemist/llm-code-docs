@@ -29,9 +29,9 @@ Upgrade Harbor and Migrate Data
 * [Security Hub](/docs/2.14.0/administration/security-hub/)
 * [Job Service Dashboard](/docs/2.14.0/administration/jobservice-dashboard/)
 * [Upgrade Harbor and Migrate Data](/docs/2.14.0/administration/upgrade/)
-  + [Upgrading Harbor Deployed with Helm](/docs/2.14.0/administration/upgrade/helm-upgrade/)
-  + [Roll Back from an Upgrade](/docs/2.14.0/administration/upgrade/roll-back-upgrade/)
-  + [Test Harbor Upgrade](/docs/2.14.0/administration/upgrade/upgrade-test/)
+  * [Upgrading Harbor Deployed with Helm](/docs/2.14.0/administration/upgrade/helm-upgrade/)
+  * [Roll Back from an Upgrade](/docs/2.14.0/administration/upgrade/roll-back-upgrade/)
+  * [Test Harbor Upgrade](/docs/2.14.0/administration/upgrade/upgrade-test/)
 * [Backup And Restore Harbor With Velero](/docs/2.14.0/administration/backup-restore/)
 
 [Working with Projects](/docs/2.14.0/working-with-projects/)
@@ -66,20 +66,26 @@ Since the migration might alter the database schema and the settings of `harbor.
 
 1. Log in to the Harbor host and, if it is still running, stop and remove the existing Harbor instance.
 
-   ```
+   ```bash
    cd harbor
    docker compose down
+
    ```
+
 2. Back up Harbor’s current files so that you can roll back to the current version if necessary.
 
-   ```
+   ```bash
    mv harbor /my_backup_dir/harbor
-   ```
-3. Back up the database, which by default is in the directory `/data/database`.
 
    ```
+
+3. Back up the database, which by default is in the directory `/data/database`.
+
+   ```bash
    cp -r /data/database /my_backup_dir/
+
    ```
+
 4. Get the latest Harbor release package from
    <https://github.com/goharbor/harbor/releases> and extract it.
 
@@ -89,19 +95,21 @@ Since the migration might alter the database schema and the settings of `harbor.
 
    The migration tool is in harbor-prepare tools delivered as a docker image. You can pull the image from docker hub. in the following command:
 
-   ```
+   ```bash
    docker pull goharbor/prepare:[tag]
    ```
 
    Alternatively, if you are using an offline installer package, you can load it from the image tarball that is included in the offline installer package. Replace [tag] with the new Harbor version, for example v1.10.0, in the following command:
 
-   ```
+   ```bash
    tar zxf <offline package>
    docker image load -i harbor/harbor.[version].tar.gz
-   ```
-6. Copy the `/path/to/old/harbor.yml` to `harbor.yml` and upgrade it.
 
    ```
+
+6. Copy the `/path/to/old/harbor.yml` to `harbor.yml` and upgrade it.
+
+   ```bash
    docker run -it --rm -v /:/hostfs goharbor/prepare:[tag] migrate -i ${path to harbor.yml}
    ```
 
@@ -123,9 +131,6 @@ If you need to roll back to the previous version of Harbor, see
 * [Test Harbor Upgrade](/docs/2.14.0/administration/upgrade/upgrade-test/)
 
 On this page
-
-  
-  
 
 Contributing
 

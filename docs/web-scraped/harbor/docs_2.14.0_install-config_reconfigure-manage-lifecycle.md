@@ -37,7 +37,7 @@ See the
 
 To stop Harbor, run the following command.
 
-```
+```bash
 sudo docker compose stop
 Stopping nginx              ... done
 Stopping harbor-portal      ... done
@@ -54,7 +54,7 @@ Stopping harbor-log         ... done
 
 To restart Harbor, run the following command.
 
-```
+```bash
 sudo docker compose start
 Starting log         ... done
 Starting registry    ... done
@@ -73,28 +73,31 @@ To reconfigure Harbor, perform the following steps.
 
 1. Stop Harbor.
 
-   ```
+   ```bash
    sudo docker compose down -v
    ```
+
 2. Update `harbor.yml`.
 
-   ```
+   ```bash
    vim harbor.yml
    ```
+
 3. Run the `prepare` script to populate the configuration.
 
-   ```
+   ```bash
    sudo ./prepare
    ```
 
    To reconfigure Harbor to install Trivy, include the component in the `prepare` command.
 
-   ```
+   ```bash
    sudo ./prepare --with-trivy
    ```
+
 4. Re-create and start the Harbor instance.
 
-   ```
+   ```bash
    sudo docker compose up -d
    ```
 
@@ -102,22 +105,19 @@ To reconfigure Harbor, perform the following steps.
 
 Remove Harbor’s containers but keep all of the image data and Harbor’s database files in the file system:
 
-```
+```bash
 sudo docker compose down -v
 ```
 
 Remove the Harbor database and image data before performing a clean re-installation:
 
-```
+```bash
 rm -r /data/database
 rm -r /data/registry
 rm -r /data/redis
 ```
 
 On this page
-
-  
-  
 
 Contributing
 

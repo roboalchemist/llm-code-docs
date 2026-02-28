@@ -40,7 +40,7 @@ In addition, Harbor uses `rsyslog` to collect the logs of each container. By def
 
 If Harbor does not start or functions incorrectly, run the following command to check whether all of Harbor’s containers are in the `Up` state.
 
-```
+```bash
 sudo docker compose ps
         Name                     Command               State                    Ports
   -----------------------------------------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ If a container is not in the `Up` state, check the log file for that container i
 
 If Harbor is running behind an `nginx` proxy or elastic load balancing, open the file `common/config/nginx/nginx.conf` and search for the following line.
 
-```
+```nginx
 proxy_set_header X-Forwarded-Proto $scheme;
 ```
 
@@ -72,7 +72,7 @@ If the proxy already has similar settings, remove it from the sections `location
 
 If you use an intermediate certificate from a certificate issuer, merge the intermediate certificate with your own certificate to create a certificate bundle. Run the following command.
 
-```
+```bash
 cat intermediate-certificate.pem >> yourdomain.com.crt
 ```
 
@@ -80,21 +80,19 @@ When the Docker daemon runs on certain operating systems, you might need to trus
 
 * Ubuntu:
 
-  ```
-  cp yourdomain.com.crt /usr/local/share/ca-certificates/yourdomain.com.crt 
+  ```bash
+  cp yourdomain.com.crt /usr/local/share/ca-certificates/yourdomain.com.crt
   update-ca-certificates
   ```
+
 * Red Hat (CentOS etc):
 
-  ```
+  ```bash
   cp yourdomain.com.crt /etc/pki/ca-trust/source/anchors/yourdomain.com.crt
   update-ca-trust
   ```
 
 On this page
-
-  
-  
 
 Contributing
 

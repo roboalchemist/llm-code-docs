@@ -47,7 +47,7 @@ The installation processes are almost the same for the online and offline instal
 
    1. Obtain the public key for the `*.asc` file.
 
-      ```
+      ```bash
       gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys 644FF454C0B4115C
       ```
 
@@ -56,20 +56,23 @@ The installation processes are almost the same for the online and offline instal
 
       * Online installer:
 
-        ```
+        ```bash
         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-online-installer-version.tgz.asc
-        ```
-      * Offline installer:
 
         ```
+
+      * Offline installer:
+
+        ```bash
         gpg -v --keyserver hkps://keyserver.ubuntu.com --verify harbor-offline-installer-version.tgz.asc
+
         ```
 
       The `gpg` command verifies that the bundle’s signature matches that of the `*.asc` key file. You should see confirmation that the signature is correct.
 
-      ```
+      ```text
       gpg: armor header: Version: GnuPG v1
-      gpg: assuming signed data in 'harbor-online-installer-v2.0.2.tgz'
+      gpg: assuming signed data in ‘harbor-online-installer-v2.0.2.tgz’
       gpg: Signature made Tue Jul 28 09:49:20 2020 UTC
       gpg:                using RSA key 644FF454C0B4115C
       gpg: using pgp trust model
@@ -79,17 +82,21 @@ The installation processes are almost the same for the online and offline instal
       Primary key fingerprint: 7722 D168 DAEC 4578 06C9  6FF9 644F F454 C0B4 115C
       gpg: binary signature, digest algorithm SHA1, key algorithm rsa4096
       ```
+
 4. Use `tar` to extract the installer package:
 
    * Online installer:
 
-     ```
+     ```bash
      bash $ tar xzvf harbor-online-installer-version.tgz
-     ```
-   * Offline installer:
 
      ```
+
+   * Offline installer:
+
+     ```bash
      bash $ tar xzvf harbor-offline-installer-version.tgz
+
      ```
 
 ## Next Steps
@@ -100,9 +107,6 @@ The installation processes are almost the same for the online and offline instal
   [Configure the Harbor YML File](/docs/2.14.0/install-config/configure-yml-file/).
 
 On this page
-
-  
-  
 
 Contributing
 
