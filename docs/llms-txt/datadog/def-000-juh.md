@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable DHCP Service
 ---
 
 # Disable DHCP Service
- 
+
 ## Description{% #description %}
 
 The `dhcpd` service should be disabled on any system that does not need to act as a DHCP server. The `isc-dhcp-server` service can be disabled with the following command:

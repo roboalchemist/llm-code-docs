@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # A GKE Cluster's kubelet configuration file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 If the kubelet refers to a configuration file with the `--config` argument, you should set its file ownership to maintain integrity. The file should be owned by `root:root`.

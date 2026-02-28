@@ -69,37 +69,37 @@ spec:
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```yaml
---- 
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
-metadata: 
-  labels: 
+metadata:
+  labels:
     app: helm
     name: tiller
   name: tiller-deploy
-spec: 
-  containers: 
-    - 
+spec:
+  containers:
+    -
       image: tiller-image
       name: tiller-v1
-  template: 
-    metadata: 
-      labels: 
+  template:
+    metadata:
+      labels:
         app: helm
         name: tiller
-    spec: 
-      containers: 
-        - 
-          args: 
+    spec:
+      containers:
+        -
+          args:
             - "--listen=10.7.2.8:44134"
           image: tiller-image
           name: tiller-v2
-          ports: 
-            - 
+          ports:
+            -
               containerPort: 44134
               name: tiller
               protocol: TCP
-            - 
+            -
               containerPort: 44135
               name: http
               protocol: TCP

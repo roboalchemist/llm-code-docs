@@ -53,15 +53,15 @@ Therefore, always ensure that the `InsecureSkipVerify` parameter is set to 'fals
 package main
 
 import (
-	"crypto/tls"
-	"fmt"
-	"net/http"
+    "crypto/tls"
+    "fmt"
+    "net/http"
 )
 
 func main() {
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-	}
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+    }
 }
 ```
 
@@ -71,18 +71,17 @@ func main() {
 package main
 
 import (
-	"crypto/tls"
-	"fmt"
-	"net/http"
+    "crypto/tls"
+    "fmt"
+    "net/http"
 )
 
 func main() {
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: false},
-	}
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{InsecureSkipVerify: false},
+    }
 
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

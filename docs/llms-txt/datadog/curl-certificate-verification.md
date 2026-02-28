@@ -59,6 +59,5 @@ curl_setopt($curl, CURLOPT_URL, 'https://domain.tld/');
 curl_exec($curl);
 curl_close($curl);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

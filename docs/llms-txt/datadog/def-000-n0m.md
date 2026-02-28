@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions should be configured for origin failover
- 
+
 ## Description{% #description %}
 
 This assessment verifies if an Amazon CloudFront distribution has been set up with an origin grouping that contains at least two origins.

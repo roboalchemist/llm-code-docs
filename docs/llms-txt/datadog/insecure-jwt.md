@@ -75,6 +75,5 @@ jwt.decode(encoded, options={"verify_signature": True})
 ```python
 jwt.decode(encoded, options={"verify_signature": False})
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -86,7 +86,7 @@ Enables the integration.
 {% /dt %}
 
 {% dd %}
-Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**: 
+Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**:
 {% /dd %}
 
 {% dt %}
@@ -162,7 +162,7 @@ Enables the integration.
 {% /dt %}
 
 {% dd %}
-Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**: 
+Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**:
 {% /dd %}
 
 {% dt %}
@@ -267,7 +267,7 @@ Enables the integration.
 {% /dt %}
 
 {% dd %}
-Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**: 
+Specifies which [Datadog site](https://docs.datadoghq.com/getting_started/site/) to send data to.**Default**: `datadoghq.com`**Selected site**:
 {% /dd %}
 
 {% dt %}

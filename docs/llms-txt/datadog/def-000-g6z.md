@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1548-abuse-elevation-control-mechanism](https://attack.mitre.org/techniques/T1548) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1548-abuse-elevation-control-mechanism](https://attack.mitre.org/techniques/T1548)
 ## Goal{% #goal %}
 
 Detects potential privilege escalation attempts using local Kerberos relay attacks over LDAP.

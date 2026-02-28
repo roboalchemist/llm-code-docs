@@ -45,7 +45,7 @@ Example output:
 ```text
 [dd.trace 2021-08-17 18:04:50:282 +0000] [dd-trace-processor] DEBUG datadog.communication.ddagent.DDAgentFeaturesDiscovery - Error querying info at http://localhost:8126/
 java.net.ConnectException: Failed to connect to localhost/127.0.0.1:8126
-	at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.java:249)
+    at okhttp3.internal.connection.RealConnection.connectSocket(RealConnection.java:249)
 ```
 
 {% /tab %}

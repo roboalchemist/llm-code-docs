@@ -81,7 +81,7 @@ In the `.ddcoterm/config.yaml` file:
              if has_arg("scale") and flags.context == nil then
                return string.format("No kubectl context specified (effective context: '%s'). It is recommended to always explicitly specify the context when running `kubectl scale`.", k8s_context)
              end
-      
+
 ```
 
 With this configuration, CoTerm intercepts any `kubectl scale` command without a `--context` flag.
@@ -112,7 +112,7 @@ In the `.ddcoterm/config.yaml` file:
                local approver_message = "Ensure that the user has documented a rollback plan before approving."
                return applicable, user_message, approver_message
              actions: ["record", "logs", "process_info", "approval"]
-      
+
 ```
 
 With this configuration, when you run a `kubectl scale --context prod` command, CoTerm creates an approval request in [Case Management](https://docs.datadoghq.com/incident_response/case_management/). If you opt to associate the approval request with an active [incident](https://docs.datadoghq.com/incident_response/incident_management/), other incident responders are automatically added as approvers. After this request is approved, your command executes. You can also configure [case automation rules](https://docs.datadoghq.com/incident_response/case_management/automation_rules/) to trigger workflows based on approval requests.

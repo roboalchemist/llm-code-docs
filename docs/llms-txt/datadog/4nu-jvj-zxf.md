@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Kernel module directory modi
 ---
 
 # Kernel module directory modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` modified the kernel module file `{{ @file.path }}`, potentially to establish persistence or gain elevated privileges.

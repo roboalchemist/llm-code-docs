@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # API server audit log files should be retained for at least 10 log file rotations
- 
+
 ## Description{% #description %}
 
 Ten or more log files should be retained on the API server. Kubernetes automatically rotates the log files. Retaining old log files ensures that you would have sufficient log data available for carrying out any investigation or correlation.

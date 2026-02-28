@@ -50,6 +50,5 @@ ReadOnlySpan<char> slice = str[1..3];
 ```csharp
 ReadOnlySpan<char> slice = str.AsSpan(1, 3);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

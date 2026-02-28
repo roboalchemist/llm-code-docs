@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The etcd pod specification file should be owned by root
- 
+
 ## Description{% #description %}
 
 The `/etc/kubernetes/manifests/etcd.yaml` file ownership should be set to `root:root`. The file controls various parameters that set the behavior of the etcd service in the master node. Etcd is a highly-available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should set its file ownership to maintain the integrity of the file.

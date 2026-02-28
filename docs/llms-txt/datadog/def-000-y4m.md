@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure root account access is controlled
- 
+
 ## Description{% #description %}
 
 There are a number of methods to access the root account directly. Without a password set any user would be able to gain access and thus control over the entire system.

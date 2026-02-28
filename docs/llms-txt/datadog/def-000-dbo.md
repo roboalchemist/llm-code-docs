@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable GNOME3 Login Warning 
 ---
 
 # Enable GNOME3 Login Warning Banner
- 
+
 ## Description{% #description %}
 
 In the default graphical environment, displaying a login warning banner in the GNOME Display Manager's login screen can be enabled on the login screen by setting `banner-message-enable` to `true`.
@@ -80,7 +80,7 @@ chmod -R u=rwX,go=rX /etc/dconf/profile
 # Duplicate the setting also in 'greeter.dconf-defaults' for consistency with
 # 'dconf_gnome_login_banner_text' and better alignment with STIG V1R1.
 if [ -e "/etc/gdm3/greeter.dconf-defaults" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*banner\-message\-enable/Id" "/etc/gdm3/greeter.dconf-defaults"
 else
     touch "/etc/gdm3/greeter.dconf-defaults"
@@ -119,7 +119,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*banner-message-enable\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)banner-message-enable(\s*=)/#\1banner-message-enable\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

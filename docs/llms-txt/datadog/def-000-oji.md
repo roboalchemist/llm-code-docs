@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Missing Strict Transport Security HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint does not implement the HTTP Strict-Transport-Security (HSTS) header. This header is crucial for security as it instructs browsers to only interact with the application over HTTPS, protecting against protocol downgrade attacks and cookie hijacking. Without this header, users may be vulnerable to man-in-the-middle attacks where an attacker could intercept and modify traffic or steal sensitive information by forcing connections over unencrypted HTTP.

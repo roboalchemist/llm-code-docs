@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on cron.d
 ---
 
 # Verify Permissions on cron.d
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/cron.d`, run the command:

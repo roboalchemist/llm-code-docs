@@ -37,7 +37,7 @@ Set the `sessionReplaySampleRate` between 1 and 100.
 
    ```javascript
    import { datadogRum } from '@datadog/browser-rum';
-   
+
    datadogRum.init({
       applicationId: '<APP_ID>',
       clientToken: '<CLIENT_TOKEN>',

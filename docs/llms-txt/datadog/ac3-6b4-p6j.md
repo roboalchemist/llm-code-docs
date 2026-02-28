@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The API server should use secure authentication methods without token based authentication
-Classification:complianceFramework:cis-kubernetesControl:1.2.3 
+Classification:complianceFramework:cis-kubernetesControl:1.2.3
 ## Description{% #description %}
 
 Do not use token based authentication.
@@ -25,7 +25,7 @@ The token-based authentication utilizes static tokens to authenticate requests t
 Run the following command on the master node:
 
 ```
-ps -ef | grep kube-apiserver 
+ps -ef | grep kube-apiserver
 ```
 
 Verify that the `--token-auth-file` argument does not exist.

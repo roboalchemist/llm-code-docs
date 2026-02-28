@@ -53,15 +53,14 @@ Remember to always stay up-to-date with the latest best practices and security r
 package main
 
 import (
-	"crypto/md5"
-	"fmt"
+    "crypto/md5"
+    "fmt"
 )
 
 func main() {
-	h := md5.New()
-	fmt.Printf("%x", h.Sum(nil))
+    h := md5.New()
+    fmt.Printf("%x", h.Sum(nil))
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

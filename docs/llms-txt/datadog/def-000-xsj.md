@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Compute Engine service account used outside of Google Cloud
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when a [Google Compute Engine default service account](https://cloud.google.com/iam/docs/service-account-types#default) is used outside of Google Cloud.

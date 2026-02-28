@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redis server wrote suspicious module file
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1129-shared-modules](https://attack.mitre.org/techniques/T1129) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1129-shared-modules](https://attack.mitre.org/techniques/T1129)
 ## What happened{% #what-happened %}
 
 The file `{{ @file.path }}` was written by `{{ @process.comm }}` and could be a malicious module used to achieve command execution.

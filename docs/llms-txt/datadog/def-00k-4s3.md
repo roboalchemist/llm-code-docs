@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server should use a service account public key file for service accounts
- 
+
 ## Description{% #description %}
 
 A service account public key file should be explicitiy set for service accounts on the API server. By default, if no `--service-account-key-file` argument is specified to the apiserver, it uses the private key from the TLS serving certificate to verify service account tokens. To ensure that the keys for service account tokens can be rotated as needed, a separate public/private key pair should be used for signing service account tokens.

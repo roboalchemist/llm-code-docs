@@ -48,7 +48,7 @@ The geomap widget visualizes geographic data with shaded regions or points. It c
    {% /tab %}
 
    {% tab title="Points" %}
-   
+
 | Data source | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Log Events  | The group by tag must include a country ISO Code following the alpha-2 ISO format. You can use the [GeoIP Processor](https://docs.datadoghq.com/logs/log_configuration/processors/#geoip-parser) to do this, or manually include the [tags on ingest](https://docs.datadoghq.com/getting_started/tagging/#define-tags). See the [Log search documentation](https://docs.datadoghq.com/logs/search_syntax/) to configure a log event query. |

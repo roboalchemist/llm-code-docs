@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Consent given to application associated with business email compromise attacks in Microsoft 365
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1114-email-collection](https://attack.mitre.org/techniques/T1114) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1114-email-collection](https://attack.mitre.org/techniques/T1114)
 ## Goal{% #goal %}
 
 Detect when a user consents to an application associated with business email compromise.

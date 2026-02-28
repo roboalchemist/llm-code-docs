@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall tftpd-hpa Package
 ---
 
 # Uninstall tftpd-hpa Package
- 
+
 ## Description{% #description %}
 
 The `tftpd-hpa` package can be removed with the following command:

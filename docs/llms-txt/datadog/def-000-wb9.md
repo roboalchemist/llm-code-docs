@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub critical resource enumeration activity via API
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526)
 ## Goal{% #goal %}
 
 Detects mass access to secrets or workflow paths using an API request, which may represent critical data access.

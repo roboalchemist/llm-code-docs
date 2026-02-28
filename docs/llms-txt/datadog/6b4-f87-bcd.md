@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubernetes Service Created with NodePort
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## Goal{% #goal %}
 
 Detect when a service's port is attached to the node's IP.

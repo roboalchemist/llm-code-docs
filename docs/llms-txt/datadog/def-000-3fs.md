@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > The Chrony package is instal
 ---
 
 # The Chrony package is installed
- 
+
 ## Description{% #description %}
 
 System time should be synchronized between all systems in an environment. This is typically done by establishing an authoritative time server or set of servers and having all systems synchronize their clocks to them. The `chrony` package can be installed with the following command:

@@ -46,6 +46,5 @@ EXPOSE 22
 FROM debian:jessie
 EXPOSE 443
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

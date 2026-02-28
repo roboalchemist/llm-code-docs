@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GKE clusters should have monitoring and logging enabled
- 
+
 ## Description{% #description %}
 
 This control validates the configuration of logging and monitoring on GKE Clusters. Exporting logs and metrics to a dedicated, persistent datastore such as Cloud Operations for GKE ensures availability of audit data following a cluster security event, and provides a central location for analysis of log and metric data collected from multiple sources.

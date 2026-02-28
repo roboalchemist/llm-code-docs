@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cloud credentials accessed by network utility
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` made an IMDS request to an endpoint used to access temporary cloud credentials.

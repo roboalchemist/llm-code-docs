@@ -45,17 +45,17 @@ RSA keys should have a minimum length to ensure the security and strength of cry
 package main
 
 import (
-	"crypto/rand"
-	"crypto/rsa"
-	"fmt"
+    "crypto/rand"
+    "crypto/rsa"
+    "fmt"
 )
 
 func main() {
-	privateKey, err := rsa.GenerateKey(rand.Reader, 1024)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(privateKey)
+    privateKey, err := rsa.GenerateKey(rand.Reader, 1024)
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Println(privateKey)
 }
 ```
 
@@ -65,19 +65,18 @@ func main() {
 package main
 
 import (
-	"crypto/rand"
-	"crypto/rsa"
-	"fmt"
+    "crypto/rand"
+    "crypto/rsa"
+    "fmt"
 )
 
 func main() {
-	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(privateKey)
+    privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+    if err != nil {
+        fmt.Println(err)
+    }
+    fmt.Println(privateKey)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

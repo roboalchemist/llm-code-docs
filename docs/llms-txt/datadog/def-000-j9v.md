@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Lambda functions should not be configured with a privileged execution role
- 
+
 ## Description{% #description %}
 
 This control ensures that none of your Lambda functions are attached to a highly-privileged execution role. Reducing privileges for these roles minimizes security risks and potential vulnerabilities in your AWS environment.

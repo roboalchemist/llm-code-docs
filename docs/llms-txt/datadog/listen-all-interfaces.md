@@ -59,6 +59,5 @@ app.run(host="192.168.10.4")
 #ruleid:avoid_app_run_with_bad_host
 app.run("192.168.10.4")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

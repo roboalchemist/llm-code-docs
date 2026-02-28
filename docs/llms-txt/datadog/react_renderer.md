@@ -29,16 +29,16 @@ This page provides an example of how to use the React renderer component. For a 
 const App = (props) => {
   // Local component state
   const [localState, setLocalState] = React.useState(0);
-  
+
   // Access shared state from props
   const { count = 0 } = props.state;
-  
+
   const incrementShared = () => {
   // Update shared state that persists outside component
-        
+
 props.setComponentState({...props.state, count: count + 1});
 };
-  
+
   return (
     <div>
       <h3>Shared Count: {count}</h3>

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An EKS Cluster's Kubelet's read-only port should be disabled
- 
+
 ## Description{% #description %}
 
 The read-only port should be disabled so unauthenticated users cannot retrieve potentially sensitive information about the cluster.

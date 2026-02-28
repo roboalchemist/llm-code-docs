@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM User access keys should be created after initial setup
- 
+
 ## Description{% #description %}
 
 AWS console defaults to no check boxes selected when creating a new IAM user. When creating the IAM user credentials, you have to determine what type of access they require.

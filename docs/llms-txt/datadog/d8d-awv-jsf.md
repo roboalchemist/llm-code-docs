@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Google Workspace Alert Cente
 ---
 
 # Google Workspace Alert Center
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when [Google Workspace Alert Center](https://support.google.com/a/answer/9105393?hl=en) raises an alert.

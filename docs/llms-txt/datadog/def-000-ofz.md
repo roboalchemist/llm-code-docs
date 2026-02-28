@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on SSH Server config file
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/ssh/sshd_config`, run the command:

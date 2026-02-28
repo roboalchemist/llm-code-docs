@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable named Service
 ---
 
 # Disable named Service
- 
+
 ## Description{% #description %}
 
 The `named` service can be disabled with the following command:

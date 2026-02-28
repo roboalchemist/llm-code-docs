@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS EC2 instance has administrative privileges
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your EC2 instances have IAM roles with highly-privileged policies or administrative policies attached to them.

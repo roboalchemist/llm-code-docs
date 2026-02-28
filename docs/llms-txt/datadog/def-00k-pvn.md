@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler configuration file should only be alterable by owners
- 
+
 ## Description{% #description %}
 
 Ensure that the `scheduler.conf` file has permissions of `600` or more restrictive. This is the kubeconfig file for the scheduler. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.

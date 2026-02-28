@@ -167,6 +167,16 @@ Private action runner
 
 {% /dd %}
 
+{% dt %}
+Feature Flags
+{% /dt %}
+
+{% dd %}
+
+- Deliver flag configurations (targeting and assignment rules) to server-side SDKs for synchronous variant assignment based on evaluation context. See [Feature Flags](https://docs.datadoghq.com/feature_flags/) for more information.
+
+{% /dd %}
+
 {% /dl %}
 
 ## Security considerations{% #security-considerations %}
@@ -197,6 +207,7 @@ Enabling Remote Configuration impacts the following products. Each product defin
 | Network Device Monitoring (NDM)        | `NDM_DEVICE_PROFILES_VIEW``NDM_DEVICE_PROFILES_EDIT`                                                                                                                                                                                                                                                                                                    |
 | Container Autoscaling                  | `ORCHESTRATION_AUTOSCALING_MANAGE``ORCHESTRATION_WORKLOAD_SCALING_WRITE``ORCHESTRATION_WORKLOAD_SCALING_READ`                                                                                                                                                                                                                                           |
 | Serverless Lambda Auto-instrumentation | `SERVERLESS_AWS_INSTRUMENTATION_READ``SERVERLESS_AWS_INSTRUMENTATION_WRITE`For more information, see [Serverless](https://docs.datadoghq.com/account_management/rbac/permissions/#serverless).                                                                                                                                                          |
+| Feature Flags                          | `FEATURE_FLAG_CONFIG_READ``FEATURE_FLAG_CONFIG_WRITE``FEATURE_FLAG_ENVIRONMENT_CONFIG_READ``FEATURE_FLAG_ENVIRONMENT_CONFIG_WRITE`For more information, see [Feature Flags](https://docs.datadoghq.com/feature_flags/).                                                                                                                                 |
 
 ## Enable Remote Configuration{% #enable-remote-configuration %}
 
@@ -219,6 +230,7 @@ Consult the documentation below for instructions specific to the product you're 
 | Observability Pipelines | Ensure that you've [enabled Remote Configuration on the API key](https://app.datadoghq.com/organization-settings/remote-config/setup?page_id=api-key-enablement-step&standalone=1) you're using for Observability Pipelines. |
 | Sensitive Data Scanner  | [Cloud storage](https://docs.datadoghq.com/security/sensitive_data_scanner/setup/cloud_storage/?tab=newawsaccount)                                                                                                           |
 | Private Action Runner   | [Private Actions Overview](https://docs.datadoghq.com/actions/private_actions/)                                                                                                                                              |
+| Feature Flags           | [Server-Side Feature Flags](https://docs.datadoghq.com/feature_flags/server/)                                                                                                                                                |
 
 ## Best practices{% #best-practices %}
 

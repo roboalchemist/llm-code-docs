@@ -99,7 +99,7 @@ In the `datadog-dashboard.yaml` file:
                       "height": 2
                   }
                }]'
-      
+
 ```
 
 For all available configuration options, see the [Create a new dashboard API reference](https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard).

@@ -56,6 +56,5 @@ $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, 'https://domain.tld/');
 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 1); // This can be omitted as it's the default
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure LDAP client is not in
 ---
 
 # Ensure LDAP client is not installed
- 
+
 ## Description{% #description %}
 
 The Lightweight Directory Access Protocol (LDAP) is a service that provides a method for looking up information from a central database. The `ldap-utils` package can be removed with the following command:

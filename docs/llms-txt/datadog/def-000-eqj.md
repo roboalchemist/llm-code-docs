@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Core Dumps for SUID 
 ---
 
 # Disable Core Dumps for SUID programs
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `fs.suid_dumpable` kernel parameter, run the following command:
@@ -72,7 +72,7 @@ fi
 
 #
 # If fs.suid_dumpable present in /etc/sysctl.conf, change value to "0"
-#	else, add "fs.suid_dumpable = 0" to /etc/sysctl.conf
+#   else, add "fs.suid_dumpable = 0" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

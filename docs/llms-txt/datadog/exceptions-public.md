@@ -37,7 +37,7 @@ Exceptions should not be made `internal` and should be made `public`. Exceptions
 
 ```csharp
 internal class MyCustomException: Exception {
-    
+
 }
 ```
 
@@ -45,9 +45,8 @@ internal class MyCustomException: Exception {
 
 ```csharp
 public class MyCustomException: Exception {
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

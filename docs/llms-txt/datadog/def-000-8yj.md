@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OneLogin API activity from malicious IP address
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect and investigate OneLogin API activity originating from suspicious IP addresses, which may indicate potential unauthorized access attempts or malicious API interactions.

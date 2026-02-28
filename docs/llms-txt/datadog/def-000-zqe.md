@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on Backup passwd File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/passwd-`, run the command:

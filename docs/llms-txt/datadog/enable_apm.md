@@ -29,7 +29,7 @@ For a Datadog agent installed using the one-line installation command:
    -   events: false
    -   service_checks: false
    -   sketches: false
-   
+
      # Configuration to enable the collection of errors so they show up in Error Tracking.
      apm_config:
        enabled: true

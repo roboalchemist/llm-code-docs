@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Database process spawned she
 ---
 
 # Database process spawned shell
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was executed by a database process (for example, MySQL, PostgreSQL, or MongoDB), potentially by using an exploit.

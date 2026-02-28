@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Abnormal successful Microsoft 365 Exchange login event
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect an Impossible Travel event by a user logging in to Microsoft Exchange.

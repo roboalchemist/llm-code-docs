@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 general purpose buckets should have a lifecycle configuration
- 
+
 ## Description{% #description %}
 
 This check verifies if an Amazon S3 general-purpose bucket has at least one active Lifecycle configuration in place. The check will fail if the bucket has no Lifecycle configurations, or if all Lifecycle configurations are disabled.

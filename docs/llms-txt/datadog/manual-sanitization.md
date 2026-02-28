@@ -61,6 +61,5 @@ import sanitizeHtml from 'sanitize-html';
 
 const html = sanitizeHtml(`<strong>${input}</strong>`);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

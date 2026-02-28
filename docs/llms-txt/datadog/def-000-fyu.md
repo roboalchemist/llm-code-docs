@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ElastiCache Redis clusters should be configured for automatic backup
- 
+
 ## Description{% #description %}
 
 This check assesses if an Amazon ElastiCache for Redis cluster has automatic backups scheduled. It will not pass if the SnapshotRetentionLimit for the Redis cluster or replication group is disabled, indicated by a value of 0.

@@ -42,7 +42,7 @@ To avoid violating this rule, always use the hash syntax when defining enums in 
 ```ruby
 class Transaction < ApplicationRecord
   enum type: %i[income expense]
-  
+
   enum status: [:pending, :completed]
 end
 ```
@@ -55,13 +55,12 @@ class Transaction < ApplicationRecord
     income: 0,
     expense: 1
   }
-  
+
   enum status: {
     pending: 0,
     completed: 1
   }
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

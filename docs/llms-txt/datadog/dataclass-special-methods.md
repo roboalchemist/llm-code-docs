@@ -78,6 +78,5 @@ class _Leaf(Generic[T]):
     def __repr__(self):
         return self.value
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

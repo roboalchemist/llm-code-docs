@@ -227,13 +227,13 @@ For Helm resolution to work correctly, each chart directory must include the cha
 {% icon name="icon-cloud-thicc" /%}
  Beta - TKE cluster log agent is not enabledtke_cluster_log_disabled\>
 {% icon name="icon-cloud-thicc" /%}
- Beta - VPC flow logs disabledvpc_flow_log_disabled\>ProvidersAll  GitHub  AWS  Kubernetes 
+ Beta - VPC flow logs disabledvpc_flow_log_disabled\>ProvidersAll  GitHub  AWS  Kubernetes
 {% icon name="icon-cloud-thicc" /%}
- Alicloud  Azure 
+ Alicloud  Azure
 {% icon name="icon-cloud-thicc" /%}
- Common  Databricks  GCP 
+ Common  Databricks  GCP
 {% icon name="icon-cloud-thicc" /%}
- Nifcloud 
+ Nifcloud
 {% icon name="icon-cloud-thicc" /%}
  TencentCloudPlatformsAll  CICD  CloudFormation  Kubernetes  TerraformCategoriesAll Insecure Configurations Supply-Chain Access Control Networking and Firewall Encryption Observability Secret Management Resource Management Availability Best Practices Build Process Backup Insecure DefaultsSeveritiesAll CRITICAL HIGH MEDIUM LOW INFO
 ## Further Reading

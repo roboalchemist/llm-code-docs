@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Enforcing
- 
+
 ## Description{% #description %}
 
 Verify that the operating system uses "pwquality" to enforce the password complexity rules. Verify the pwquality module is being enforced by operating system by running the following command:
@@ -39,7 +39,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'libpwquality1' 2>/dev/null | grep -q '^installed$'; then
 
 if [ -e "/etc/security/pwquality.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*enforcing = 1/Id" "/etc/security/pwquality.conf"
 else
     touch "/etc/security/pwquality.conf"

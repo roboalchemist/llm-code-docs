@@ -50,6 +50,5 @@ user.articles.create_with(params[:content]).create
 ```ruby
 user.articles.create_with(params[:content].permit(:slug, :date)).create
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

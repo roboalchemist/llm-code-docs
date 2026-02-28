@@ -73,6 +73,5 @@ func main () {
     response, err := http.PostForm("http://127.0.0.1", myForm)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

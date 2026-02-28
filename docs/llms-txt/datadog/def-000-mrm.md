@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Site-to-Site VPN connection tunnels should be online
- 
+
 ## Description{% #description %}
 
 A VPN tunnel is an encrypted pathway that allows data to move securely between the customer network and AWS within an AWS Site-to-Site VPN connection. Each VPN connection includes two tunnels, which can operate simultaneously to ensure high availability. Keeping both VPN tunnels active is essential for maintaining a secure and resilient connection between an AWS VPC and your remote network.

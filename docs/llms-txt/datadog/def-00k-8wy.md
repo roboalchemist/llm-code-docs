@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubernetes API server profiling should be disabled
- 
+
 ## Description{% #description %}
 
 Kubernetes API server profiling should be disabled if not required. Profiling allows for the identification of specific performance bottlenecks, and generates a significant amount of program data that could potentially be exploited to uncover system and program details. If you are not experiencing any bottlenecks and do not need the profiler for troubleshooting purposes, it is recommended to turn it off to reduce the potential attack surface.

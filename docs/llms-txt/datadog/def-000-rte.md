@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Suspicious named pipe create
 ---
 
 # Suspicious named pipe created
-Classification:attackTactic:[TA0008-lateral-movement](https://attack.mitre.org/tactics/TA0008)Technique:[T1021-remote-services](https://attack.mitre.org/techniques/T1021) 
+Classification:attackTactic:[TA0008-lateral-movement](https://attack.mitre.org/tactics/TA0008)Technique:[T1021-remote-services](https://attack.mitre.org/techniques/T1021)
 ## Goal{% #goal %}
 
 Detects when a suspicious remote named pipe is observed, which could indicate lateral movement or remote execution attempts by malicious actors.

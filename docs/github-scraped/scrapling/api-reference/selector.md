@@ -15,11 +15,18 @@ You can import the `Selector` class directly from `scrapling`:
 from scrapling.parser import Selector
 ```
 
-## ::: scrapling.parser.Selector
+## Selector API
+
+```python
+::: scrapling.parser.Selector
     handler: python
     :docstring:
+```
 
-## ::: scrapling.parser.Selectors
+## Selectors API
+
+```python
+::: scrapling.parser.Selectors
     handler: python
     :docstring:
-
+```

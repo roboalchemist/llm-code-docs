@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Palo Alto Networks Firewall - crypto mining activity observed
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when Palo Alto Networks (PAN) Firewall detects cryptomining activity.

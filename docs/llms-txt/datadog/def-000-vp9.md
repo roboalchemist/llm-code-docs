@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/*.journal(~) File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/*.journal(~)`, run the command:

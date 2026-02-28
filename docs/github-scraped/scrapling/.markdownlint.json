@@ -1,0 +1,12 @@
+{
+  "extends": "default",
+  "MD013": false,
+  "MD033": false,
+  "MD034": false,
+  "MD055": false,
+  "MD056": false,
+  "MD059": false,
+  "MD060": false,
+  "MD046": false,
+  "MD031": false
+}

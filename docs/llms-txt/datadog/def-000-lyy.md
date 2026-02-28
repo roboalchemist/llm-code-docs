@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Auditing on SQL Server should be enabled
- 
+
 ## Description{% #description %}
 
 Enabling auditing on SQL Servers in the Azure platform ensures that all databases on the server instance are audited, maintaining regulatory compliance and providing insight into database activity to detect anomalies and security violations. Auditing policies applied at the database level do not override the policies and settings set at the server level.

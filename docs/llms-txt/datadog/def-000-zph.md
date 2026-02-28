@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns shadow
 ---
 
 # Verify Group Who Owns shadow File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/shadow`, run the command:

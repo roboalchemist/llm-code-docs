@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Amazon Bedrock discovery attempt by long term access key
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526)
 ## Goal{% #goal %}
 
 Detect unauthorized attempts to discover Amazon Bedrock models and training jobs using long-term AWS access keys.

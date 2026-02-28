@@ -39,31 +39,31 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azurecosmosdb",
-	"id": "c7fcbf73-87b1-48fd-886b-1ccdd38e0076",
-	"region": "centralus",
-	"mapPos": [-5,11],
-	"api": "sql",
-	"capacityMode": "provisioned",
-	"replicationMode": "standard",
-	"requestUnits": 400,
-	"storageGb": 1,
-	"postgresqlNodes": 1,
-	"postgresqlCoordinatorCores": 4,
-	"postgresqlCoordinatorStorage": 512,
-	"postgresqlWorkerCores": 2,
-	"postgresqlWorkerStorage": 128,
-	"postgresqlHighAvailability": false,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/cosmos-db/",
-	"locked": true
+    "type": "azurecosmosdb",
+    "id": "c7fcbf73-87b1-48fd-886b-1ccdd38e0076",
+    "region": "centralus",
+    "mapPos": [-5,11],
+    "api": "sql",
+    "capacityMode": "provisioned",
+    "replicationMode": "standard",
+    "requestUnits": 400,
+    "storageGb": 1,
+    "postgresqlNodes": 1,
+    "postgresqlCoordinatorCores": 4,
+    "postgresqlCoordinatorStorage": 512,
+    "postgresqlWorkerCores": 2,
+    "postgresqlWorkerStorage": 128,
+    "postgresqlHighAvailability": false,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/cosmos-db/",
+    "locked": true
 }
 ```
 

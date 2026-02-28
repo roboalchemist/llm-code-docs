@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Windows system environment variables modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112)
 ## Goal{% #goal %}
 
 Detect modifications of the Windows system environment variables registry key.

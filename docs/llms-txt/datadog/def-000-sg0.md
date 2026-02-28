@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure ufw Default Deny Fire
 ---
 
 # Ensure ufw Default Deny Firewall Policy
- 
+
 ## Description{% #description %}
 
 A default deny policy on connections ensures that any unconfigured network usage will be rejected. Note: Any port or protocol without a explicit allow before the default deny will be blocked.

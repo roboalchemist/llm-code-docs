@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Compiler wrote suspicious fi
 ---
 
 # Compiler wrote suspicious file
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` wrote the file `{{ @file.path }}`, which has a suspicious extension or path.

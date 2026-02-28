@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cryptocurrency miner attempted to boost CPU performance
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## What happened{% #what-happened %}
 
 A process modified a setting for model-specific registers (MSRs). This is used by the XMRig cryptocurrency miner to boost CPU performance.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # etcd should use TLS encryption for client connections
-Classification:complianceFramework:cis-kubernetesControl:1.2.32 
+Classification:complianceFramework:cis-kubernetesControl:1.2.32
 ## Description{% #description %}
 
 etcd should be configured to make use of TLS encryption for client connections.

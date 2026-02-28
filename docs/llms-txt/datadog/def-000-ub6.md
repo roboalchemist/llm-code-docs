@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EKS Cluster should have private endpoint enabled
- 
+
 ## Description{% #description %}
 
 The EKS cluster should have `Private Endpoint` enabled. This ensures that outside access to the Kubernetes API is disabled if not required.

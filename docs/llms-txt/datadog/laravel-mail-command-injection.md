@@ -80,6 +80,5 @@ Route::post('/products/{product}', function ($product) {
   return view('product.details', ['outcome' => $result]);
 });
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

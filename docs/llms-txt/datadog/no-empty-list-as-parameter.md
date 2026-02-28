@@ -78,6 +78,5 @@ newFunction('c', 3)
 # [2] ['b']
 # [3] ['c']
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

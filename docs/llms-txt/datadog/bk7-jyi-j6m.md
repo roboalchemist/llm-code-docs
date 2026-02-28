@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet authentication should require certificate-based authentication
-Classification:complianceFramework:cis-kubernetesControl:1.2.5 
+Classification:complianceFramework:cis-kubernetesControl:1.2.5
 ## Description{% #description %}
 
 Enable certificate based kubelet authentication.
@@ -33,7 +33,7 @@ Verify that the `--kubelet-client-certificate` and `--kubelet-client-key` argume
 Follow the Kubernetes documentation and set up the TLS connection between the apiserver and kubelets. Then, edit API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and set the kubelet client certificate and key parameters as below.
 
 ```
---kubelet-client-certificate=<path/to/client-certificate-file> 
+--kubelet-client-certificate=<path/to/client-certificate-file>
 --kubelet-client-key=<path/to/client-key-file>
 ```
 

@@ -86,7 +86,7 @@ import "regexp"
 func main () {
     var r *regexp.Regexp
     res := r.FindAll(something, 0)
-    
+
     var r2 regexp.Regexp
     res := r2.FindAll(something, 0)
 
@@ -115,6 +115,5 @@ func main() {
     res2 := myObj.FindAll(something, 0)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

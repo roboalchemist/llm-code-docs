@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub large amount of classic personal access token use via suspicious VPN
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detects when a GitHub personal access token is used with a non-corporate VPN to access your GitHub instance. Identifies potential unauthorized access or token compromise through anomalous client behavior.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SageMaker notebook instances should be launched in a custom VPC
- 
+
 ## Description{% #description %}
 
 This control evaluates whether an Amazon SageMaker notebook instance is launched within a custom virtual private cloud (VPC).

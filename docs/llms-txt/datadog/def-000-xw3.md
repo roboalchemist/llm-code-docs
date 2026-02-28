@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous failed SSH authentication attempts by a single IP address
-Classification:anomalyTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110) 
+Classification:anomalyTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110)
 ## Goal{% #goal %}
 
 Detect when an anomalous number of failed SSH authentication attempts have been made by a single IP address.

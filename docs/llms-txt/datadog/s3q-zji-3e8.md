@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker daemon log level should be set to 'info'
-Classification:complianceFramework:cis-dockerControl:2.2 
+Classification:complianceFramework:cis-dockerControl:2.2
 ## Description{% #description %}
 
 Set Docker daemon log level to `info`.
@@ -23,7 +23,7 @@ Setting up an appropriate log level configures the Docker daemon to log events t
 To confirm that the log level setting is `info`, review both the `dockerd` startup options, and also the log level settings in `/etc/docker/daemon.json`. To review the `dockerd` startup options, run:
 
 ```
-ps -ef | grep dockerd 
+ps -ef | grep dockerd
 ```
 
 Ensure that either the `--log-level` parameter is not present or if present, that it is set to `info`.
@@ -35,7 +35,7 @@ Similarly, review the `/etc/docker/daemon.json` for the `log-level` setting.
 Ensure that the Docker daemon configuration file has the following configuration included:
 
 ```
-"log-level": "info" 
+"log-level": "info"
 ```
 
 Alternatively, run the Docker daemon with the `log-level` specified:

@@ -49,6 +49,5 @@ end
 ```ruby
 value = Data.define(:first_name, :last_name)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

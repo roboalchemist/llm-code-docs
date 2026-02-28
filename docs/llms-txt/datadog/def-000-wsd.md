@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Azure should be configured to send email notifications about security alerts with High severity
- 
+
 ## Description{% #description %}
 
 Turning on the email alert feature ensures the subscription owner or chosen security contacts receive important security alerts. These alerts are delivered directly to your inbox to ensure the right people are immediately aware of security issues.

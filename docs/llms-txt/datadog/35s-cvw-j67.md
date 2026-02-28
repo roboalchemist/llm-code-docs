@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler service should only be bound to localhost
-Classification:complianceFramework:cis-kubernetesControl:1.4.2 
+Classification:complianceFramework:cis-kubernetesControl:1.4.2
 ## Description{% #description %}
 
 Do not bind the scheduler service to non-loopback insecure addresses.

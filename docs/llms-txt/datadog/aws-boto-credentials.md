@@ -54,7 +54,7 @@ cli = client(
 ```
 
 ```python
-import boto3 
+import boto3
 
 client = boto3.client(
     's3',
@@ -103,6 +103,5 @@ client = boto3.client(
     aws_session_token=SESSION_TOKEN
 )
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

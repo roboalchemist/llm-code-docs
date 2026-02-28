@@ -122,7 +122,7 @@ You should see something like this:
 
    ```
    NAME                                                READY   STATUS    RESTARTS  AGE
-   datadog-agent-4s8rb                                 3/3     Running   0	        30s
+   datadog-agent-4s8rb                                 3/3     Running   0          30s
    datadog-agent-cluster-agent-5666cffc44-d8qxk        1/1     Running   0         30s
    datadog-agent-kube-state-metrics-86f46b8484-mlqp7   1/1     Running   0         30s
    ```

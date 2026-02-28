@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EFS access points should enforce a root directory
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon EFS access points are set up to enforce a specific root directory. The control fails if the `Path` value is `/`, which represents the default root directory of the file system.

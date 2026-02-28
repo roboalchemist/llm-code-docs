@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure /dev/shm is configure
 ---
 
 # Ensure /dev/shm is configured
- 
+
 ## Description{% #description %}
 
 The `/dev/shm` is a traditional shared memory concept. One program will create a memory portion, which other processes (if permitted) can access. If `/dev/shm` is not configured, tmpfs will be mounted to /dev/shm by systemd.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/secure File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/secure`, run the command:

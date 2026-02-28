@@ -142,13 +142,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -170,7 +170,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all APM retention filters returns "OK" response
@@ -184,7 +184,7 @@ p api_instance.list_apm_retention_filters()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all APM retention filters returns "OK" response
@@ -192,29 +192,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.ListApmRetentionFilters(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.ListApmRetentionFilters(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.ListApmRetentionFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.ListApmRetentionFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.ListApmRetentionFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.ListApmRetentionFilters`:\n%s\n", responseContent)
 }
 ```
 
@@ -222,7 +222,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all APM retention filters returns "OK" response
@@ -255,7 +255,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all APM retention filters returns "OK" response
@@ -279,7 +279,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -355,7 +355,7 @@ The definition of the new retention filter.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -374,7 +374,7 @@ The definition of the new retention filter.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -558,7 +558,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -580,8 +580,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -604,8 +604,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a retention filter returns "OK" response
@@ -613,47 +613,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RetentionFilterCreateRequest{
-		Data: datadogV2.RetentionFilterCreateData{
-			Attributes: datadogV2.RetentionFilterCreateAttributes{
-				Enabled: true,
-				Filter: datadogV2.SpansFilterCreate{
-					Query: "@http.status_code:200 service:my-service",
-				},
-				FilterType: datadogV2.RETENTIONFILTERTYPE_SPANS_SAMPLING_PROCESSOR,
-				Name:       "my retention filter",
-				Rate:       1.0,
-			},
-			Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.CreateApmRetentionFilter(ctx, body)
+    body := datadogV2.RetentionFilterCreateRequest{
+        Data: datadogV2.RetentionFilterCreateData{
+            Attributes: datadogV2.RetentionFilterCreateAttributes{
+                Enabled: true,
+                Filter: datadogV2.SpansFilterCreate{
+                    Query: "@http.status_code:200 service:my-service",
+                },
+                FilterType: datadogV2.RETENTIONFILTERTYPE_SPANS_SAMPLING_PROCESSOR,
+                Name:       "my retention filter",
+                Rate:       1.0,
+            },
+            Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.CreateApmRetentionFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.CreateApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.CreateApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.CreateApmRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.CreateApmRetentionFilter`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a retention filter with trace rate returns "OK" response
@@ -661,44 +661,44 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RetentionFilterCreateRequest{
-		Data: datadogV2.RetentionFilterCreateData{
-			Attributes: datadogV2.RetentionFilterCreateAttributes{
-				Enabled: true,
-				Filter: datadogV2.SpansFilterCreate{
-					Query: "@http.status_code:200 service:my-service",
-				},
-				FilterType: datadogV2.RETENTIONFILTERTYPE_SPANS_SAMPLING_PROCESSOR,
-				Name:       "my retention filter",
-				Rate:       1.0,
-				TraceRate:  datadog.PtrFloat64(1.0),
-			},
-			Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.CreateApmRetentionFilter(ctx, body)
+    body := datadogV2.RetentionFilterCreateRequest{
+        Data: datadogV2.RetentionFilterCreateData{
+            Attributes: datadogV2.RetentionFilterCreateAttributes{
+                Enabled: true,
+                Filter: datadogV2.SpansFilterCreate{
+                    Query: "@http.status_code:200 service:my-service",
+                },
+                FilterType: datadogV2.RETENTIONFILTERTYPE_SPANS_SAMPLING_PROCESSOR,
+                Name:       "my retention filter",
+                Rate:       1.0,
+                TraceRate:  datadog.PtrFloat64(1.0),
+            },
+            Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.CreateApmRetentionFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.CreateApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.CreateApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.CreateApmRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.CreateApmRetentionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -706,7 +706,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a retention filter returns "OK" response
@@ -756,7 +756,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a retention filter with trace rate returns "OK" response
@@ -811,7 +811,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -850,7 +850,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -894,7 +894,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a retention filter returns "OK" response
@@ -919,7 +919,7 @@ body = DatadogAPIClient::V2::RetentionFilterCreateRequest.new({
 p api_instance.create_apm_retention_filter(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a retention filter with trace rate returns "OK" response
@@ -949,7 +949,7 @@ p api_instance.create_apm_retention_filter(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a retention filter returns "OK" response
@@ -985,7 +985,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a retention filter with trace rate returns "OK" response
@@ -1026,7 +1026,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1065,7 +1065,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1274,13 +1274,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport filter_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters/${filter_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1308,7 +1308,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a given APM retention filter returns "OK" response
@@ -1325,7 +1325,7 @@ p api_instance.get_apm_retention_filter(RETENTION_FILTER_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a given APM retention filter returns "OK" response
@@ -1333,32 +1333,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "retention_filter" in the system
-	RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
+    // there is a valid "retention_filter" in the system
+    RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.GetApmRetentionFilter(ctx, RetentionFilterDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.GetApmRetentionFilter(ctx, RetentionFilterDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.GetApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.GetApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.GetApmRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.GetApmRetentionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -1366,7 +1366,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a given APM retention filter returns "OK" response
@@ -1402,7 +1402,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a given APM retention filter returns "OK" response
@@ -1430,7 +1430,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1522,7 +1522,7 @@ The updated definition of the retention filter.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -1542,7 +1542,7 @@ The updated definition of the retention filter.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1727,7 +1727,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport filter_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters/${filter_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1750,8 +1750,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport filter_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters/${filter_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1775,8 +1775,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a retention filter returns "OK" response
@@ -1784,51 +1784,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "retention_filter" in the system
-	RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
+    // there is a valid "retention_filter" in the system
+    RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
 
-	body := datadogV2.RetentionFilterUpdateRequest{
-		Data: datadogV2.RetentionFilterUpdateData{
-			Attributes: datadogV2.RetentionFilterUpdateAttributes{
-				Name: "test",
-				Rate: 0.9,
-				Filter: datadogV2.SpansFilterCreate{
-					Query: "@_top_level:1 test:service-demo",
-				},
-				Enabled:    true,
-				FilterType: datadogV2.RETENTIONFILTERALLTYPE_SPANS_SAMPLING_PROCESSOR,
-			},
-			Id:   "test-id",
-			Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.UpdateApmRetentionFilter(ctx, RetentionFilterDataID, body)
+    body := datadogV2.RetentionFilterUpdateRequest{
+        Data: datadogV2.RetentionFilterUpdateData{
+            Attributes: datadogV2.RetentionFilterUpdateAttributes{
+                Name: "test",
+                Rate: 0.9,
+                Filter: datadogV2.SpansFilterCreate{
+                    Query: "@_top_level:1 test:service-demo",
+                },
+                Enabled:    true,
+                FilterType: datadogV2.RETENTIONFILTERALLTYPE_SPANS_SAMPLING_PROCESSOR,
+            },
+            Id:   "test-id",
+            Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.UpdateApmRetentionFilter(ctx, RetentionFilterDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.UpdateApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.UpdateApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.UpdateApmRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.UpdateApmRetentionFilter`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update a retention filter with trace rate returns "OK" response
@@ -1836,48 +1836,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "retention_filter" in the system
-	RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
+    // there is a valid "retention_filter" in the system
+    RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
 
-	body := datadogV2.RetentionFilterUpdateRequest{
-		Data: datadogV2.RetentionFilterUpdateData{
-			Attributes: datadogV2.RetentionFilterUpdateAttributes{
-				Name:      "test",
-				Rate:      0.9,
-				TraceRate: datadog.PtrFloat64(1.0),
-				Filter: datadogV2.SpansFilterCreate{
-					Query: "@_top_level:1 test:service-demo",
-				},
-				Enabled:    true,
-				FilterType: datadogV2.RETENTIONFILTERALLTYPE_SPANS_SAMPLING_PROCESSOR,
-			},
-			Id:   "test-id",
-			Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	resp, r, err := api.UpdateApmRetentionFilter(ctx, RetentionFilterDataID, body)
+    body := datadogV2.RetentionFilterUpdateRequest{
+        Data: datadogV2.RetentionFilterUpdateData{
+            Attributes: datadogV2.RetentionFilterUpdateAttributes{
+                Name:      "test",
+                Rate:      0.9,
+                TraceRate: datadog.PtrFloat64(1.0),
+                Filter: datadogV2.SpansFilterCreate{
+                    Query: "@_top_level:1 test:service-demo",
+                },
+                Enabled:    true,
+                FilterType: datadogV2.RETENTIONFILTERALLTYPE_SPANS_SAMPLING_PROCESSOR,
+            },
+            Id:   "test-id",
+            Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    resp, r, err := api.UpdateApmRetentionFilter(ctx, RetentionFilterDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.UpdateApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.UpdateApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.UpdateApmRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `APMRetentionFiltersApi.UpdateApmRetentionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -1885,7 +1885,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a retention filter returns "OK" response
@@ -1939,7 +1939,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update a retention filter with trace rate returns "OK" response
@@ -1998,7 +1998,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2042,7 +2042,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2091,7 +2091,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a retention filter returns "OK" response
@@ -2120,7 +2120,7 @@ body = DatadogAPIClient::V2::RetentionFilterUpdateRequest.new({
 p api_instance.update_apm_retention_filter(RETENTION_FILTER_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update a retention filter with trace rate returns "OK" response
@@ -2154,7 +2154,7 @@ p api_instance.update_apm_retention_filter(RETENTION_FILTER_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a retention filter returns "OK" response
@@ -2195,7 +2195,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update a retention filter with trace rate returns "OK" response
@@ -2241,7 +2241,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2285,7 +2285,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2451,13 +2451,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport filter_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters/${filter_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2483,7 +2483,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a retention filter returns "OK" response
@@ -2500,7 +2500,7 @@ p api_instance.delete_apm_retention_filter(RETENTION_FILTER_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a retention filter returns "OK" response
@@ -2508,28 +2508,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "retention_filter" in the system
-	RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
+    // there is a valid "retention_filter" in the system
+    RetentionFilterDataID := os.Getenv("RETENTION_FILTER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	r, err := api.DeleteApmRetentionFilter(ctx, RetentionFilterDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    r, err := api.DeleteApmRetentionFilter(ctx, RetentionFilterDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.DeleteApmRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.DeleteApmRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2537,7 +2537,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a retention filter returns "OK" response
@@ -2571,7 +2571,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a retention filter returns "OK" response
@@ -2599,7 +2599,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2770,7 +2770,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/apm/config/retention-filters-execution-order" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2790,8 +2790,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Re-order retention filters returns "OK" response
@@ -2799,37 +2799,37 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ReorderRetentionFiltersRequest{
-		Data: []datadogV2.RetentionFilterWithoutAttributes{
-			{
-				Id:   "jdZrilSJQLqzb6Cu7aub9Q",
-				Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-			},
-			{
-				Id:   "7RBOb7dLSYWI01yc3pIH8w",
-				Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
-	r, err := api.ReorderApmRetentionFilters(ctx, body)
+    body := datadogV2.ReorderRetentionFiltersRequest{
+        Data: []datadogV2.RetentionFilterWithoutAttributes{
+            {
+                Id:   "jdZrilSJQLqzb6Cu7aub9Q",
+                Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+            },
+            {
+                Id:   "7RBOb7dLSYWI01yc3pIH8w",
+                Type: datadogV2.APMRETENTIONFILTERTYPE_apm_retention_filter,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAPMRetentionFiltersApi(apiClient)
+    r, err := api.ReorderApmRetentionFilters(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.ReorderApmRetentionFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `APMRetentionFiltersApi.ReorderApmRetentionFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2837,7 +2837,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Re-order retention filters returns "OK" response
@@ -2884,7 +2884,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2920,7 +2920,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Re-order retention filters returns "OK" response
@@ -2947,7 +2947,7 @@ p api_instance.reorder_apm_retention_filters(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Re-order retention filters returns "OK" response
@@ -2984,7 +2984,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

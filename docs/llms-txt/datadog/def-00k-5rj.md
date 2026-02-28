@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API Server should require HTTPS connections
- 
+
 ## Description{% #description %}
 
 TLS should be set up on the Kubernetes API server. API server communication contains sensitive parameters that should remain encrypted in transit.
@@ -20,6 +20,6 @@ TLS should be set up on the Kubernetes API server. API server communication cont
 1. Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and set the TLS certificate and private key file parameters.
 
 ```
---tls-cert-file=<path/to/tls-certificate-file> 
+--tls-cert-file=<path/to/tls-certificate-file>
 --tls-private-key-file=<path/to/tls-key-file>
 ```

@@ -28,8 +28,6 @@ Search, send, or delete events for DORA Metrics to measure and improve your soft
 
 ### Overview
 
-
-
 Use this API endpoint to provide deployment data.
 
 This is necessary for:
@@ -38,13 +36,9 @@ This is necessary for:
 - Change Lead Time
 - Change Failure Rate
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -240,7 +234,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/deployment" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -261,8 +255,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Send a deployment event returns "OK" response
@@ -270,43 +264,43 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DORADeploymentRequest{
-		Data: datadogV2.DORADeploymentRequestData{
-			Attributes: datadogV2.DORADeploymentRequestAttributes{
-				FinishedAt: 1693491984000000000,
-				Git: &datadogV2.DORAGitInfo{
-					CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
-					RepositoryUrl: "https://github.com/organization/example-repository",
-				},
-				Service:   "shopist",
-				StartedAt: 1693491974000000000,
-				Version:   datadog.PtrString("v1.12.07"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.CreateDORADeployment(ctx, body)
+    body := datadogV2.DORADeploymentRequest{
+        Data: datadogV2.DORADeploymentRequestData{
+            Attributes: datadogV2.DORADeploymentRequestAttributes{
+                FinishedAt: 1693491984000000000,
+                Git: &datadogV2.DORAGitInfo{
+                    CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
+                    RepositoryUrl: "https://github.com/organization/example-repository",
+                },
+                Service:   "shopist",
+                StartedAt: 1693491974000000000,
+                Version:   datadog.PtrString("v1.12.07"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.CreateDORADeployment(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORADeployment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORADeployment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORADeployment`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORADeployment`:\n%s\n", responseContent)
 }
 ```
 
@@ -314,7 +308,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send a deployment event returns "OK" response
@@ -367,7 +361,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -408,7 +402,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send a deployment event returns "OK" response
@@ -437,7 +431,7 @@ p api_instance.create_dora_deployment(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Send a deployment event returns "OK" response
@@ -477,7 +471,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -538,8 +532,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Use this API endpoint to provide failure data.
 
 This is necessary for:
@@ -547,13 +539,9 @@ This is necessary for:
 - Change Failure Rate
 - Time to Restore
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -762,7 +750,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/failure" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -780,8 +768,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -832,7 +820,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send a failure event returns "OK - but delayed due to incident" response
@@ -871,7 +859,7 @@ p api_instance.create_dora_failure(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Send a failure event returns "OK - but delayed due to incident" response
@@ -879,53 +867,53 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DORAFailureRequest{
-		Data: datadogV2.DORAFailureRequestData{
-			Attributes: datadogV2.DORAFailureRequestAttributes{
-				CustomTags: *datadog.NewNullableList(&[]string{
-					"language:java",
-					"department:engineering",
-				}),
-				Env:        datadog.PtrString("staging"),
-				FinishedAt: datadog.PtrInt64(1693491984000000000),
-				Git: &datadogV2.DORAGitInfo{
-					CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
-					RepositoryUrl: "https://github.com/organization/example-repository",
-				},
-				Name: datadog.PtrString("Webserver is down failing all requests."),
-				Services: []string{
-					"shopist",
-				},
-				Severity:  datadog.PtrString("High"),
-				StartedAt: 1693491974000000000,
-				Team:      datadog.PtrString("backend"),
-				Version:   datadog.PtrString("v1.12.07"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.CreateDORAFailure(ctx, body)
+    body := datadogV2.DORAFailureRequest{
+        Data: datadogV2.DORAFailureRequestData{
+            Attributes: datadogV2.DORAFailureRequestAttributes{
+                CustomTags: *datadog.NewNullableList(&[]string{
+                    "language:java",
+                    "department:engineering",
+                }),
+                Env:        datadog.PtrString("staging"),
+                FinishedAt: datadog.PtrInt64(1693491984000000000),
+                Git: &datadogV2.DORAGitInfo{
+                    CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
+                    RepositoryUrl: "https://github.com/organization/example-repository",
+                },
+                Name: datadog.PtrString("Webserver is down failing all requests."),
+                Services: []string{
+                    "shopist",
+                },
+                Severity:  datadog.PtrString("High"),
+                StartedAt: 1693491974000000000,
+                Team:      datadog.PtrString("backend"),
+                Version:   datadog.PtrString("v1.12.07"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.CreateDORAFailure(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORAFailure`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORAFailure`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORAFailure`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORAFailure`:\n%s\n", responseContent)
 }
 ```
 
@@ -933,7 +921,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send a failure event returns "OK - but delayed due to incident" response
@@ -993,7 +981,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Send a failure event returns "OK - but delayed due to incident" response
@@ -1039,7 +1027,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1103,8 +1091,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 **Note**: This endpoint is deprecated. Please use `/api/v2/dora/failure` instead.
 
 Use this API endpoint to provide failure data.
@@ -1114,13 +1100,9 @@ This is necessary for:
 - Change Failure Rate
 - Time to Restore
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1323,7 +1305,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/incident" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1349,8 +1331,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Send a failure event returns "OK" response
@@ -1358,48 +1340,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DORAFailureRequest{
-		Data: datadogV2.DORAFailureRequestData{
-			Attributes: datadogV2.DORAFailureRequestAttributes{
-				FinishedAt: datadog.PtrInt64(1707842944600000000),
-				Git: &datadogV2.DORAGitInfo{
-					CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
-					RepositoryUrl: "https://github.com/organization/example-repository",
-				},
-				Name: datadog.PtrString("Webserver is down failing all requests"),
-				Services: []string{
-					"shopist",
-				},
-				Severity:  datadog.PtrString("High"),
-				StartedAt: 1707842944500000000,
-				Team:      datadog.PtrString("backend"),
-				Version:   datadog.PtrString("v1.12.07"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.CreateDORAIncident(ctx, body)
+    body := datadogV2.DORAFailureRequest{
+        Data: datadogV2.DORAFailureRequestData{
+            Attributes: datadogV2.DORAFailureRequestAttributes{
+                FinishedAt: datadog.PtrInt64(1707842944600000000),
+                Git: &datadogV2.DORAGitInfo{
+                    CommitSha:     "66adc9350f2cc9b250b69abddab733dd55e1a588",
+                    RepositoryUrl: "https://github.com/organization/example-repository",
+                },
+                Name: datadog.PtrString("Webserver is down failing all requests"),
+                Services: []string{
+                    "shopist",
+                },
+                Severity:  datadog.PtrString("High"),
+                StartedAt: 1707842944500000000,
+                Team:      datadog.PtrString("backend"),
+                Version:   datadog.PtrString("v1.12.07"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.CreateDORAIncident(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORAIncident`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.CreateDORAIncident`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORAIncident`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.CreateDORAIncident`:\n%s\n", responseContent)
 }
 ```
 
@@ -1407,7 +1389,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send a failure event returns "OK" response
@@ -1464,7 +1446,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1510,7 +1492,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send a failure event returns "OK" response
@@ -1544,7 +1526,7 @@ p api_instance.create_dora_incident(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Send a failure event returns "OK" response
@@ -1585,7 +1567,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1652,8 +1634,6 @@ Use this API endpoint to get a list of deployment events. This endpoint requires
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -1864,7 +1844,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/deployments" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1877,8 +1857,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1917,7 +1897,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of deployment events returns "OK" response
@@ -1942,7 +1922,7 @@ p api_instance.list_dora_deployments(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of deployment events returns "OK" response
@@ -1950,40 +1930,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DORAListDeploymentsRequest{
-		Data: datadogV2.DORAListDeploymentsRequestData{
-			Attributes: datadogV2.DORAListDeploymentsRequestAttributes{
-				From:  datadog.PtrTime(time.Date(2025, 3, 23, 0, 0, 0, 0, time.UTC)),
-				Limit: datadog.PtrInt32(1),
-				To:    datadog.PtrTime(time.Date(2025, 3, 24, 0, 0, 0, 0, time.UTC)),
-			},
-			Type: datadogV2.DORALISTDEPLOYMENTSREQUESTDATATYPE_DORA_DEPLOYMENTS_LIST_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.ListDORADeployments(ctx, body)
+    body := datadogV2.DORAListDeploymentsRequest{
+        Data: datadogV2.DORAListDeploymentsRequestData{
+            Attributes: datadogV2.DORAListDeploymentsRequestAttributes{
+                From:  datadog.PtrTime(time.Date(2025, 3, 23, 0, 0, 0, 0, time.UTC)),
+                Limit: datadog.PtrInt32(1),
+                To:    datadog.PtrTime(time.Date(2025, 3, 24, 0, 0, 0, 0, time.UTC)),
+            },
+            Type: datadogV2.DORALISTDEPLOYMENTSREQUESTDATATYPE_DORA_DEPLOYMENTS_LIST_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.ListDORADeployments(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.ListDORADeployments`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.ListDORADeployments`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.ListDORADeployments`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.ListDORADeployments`:\n%s\n", responseContent)
 }
 ```
 
@@ -1991,7 +1971,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of deployment events returns "OK" response
@@ -2040,7 +2020,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of deployment events returns "OK" response
@@ -2084,7 +2064,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2146,8 +2126,6 @@ Use this API endpoint to get a list of failure events. This endpoint requires th
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2358,7 +2336,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/failures" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2371,8 +2349,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2411,7 +2389,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of failure events returns "OK" response
@@ -2436,7 +2414,7 @@ p api_instance.list_dora_failures(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of failure events returns "OK" response
@@ -2444,40 +2422,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.DORAListFailuresRequest{
-		Data: datadogV2.DORAListFailuresRequestData{
-			Attributes: datadogV2.DORAListFailuresRequestAttributes{
-				From:  datadog.PtrTime(time.Date(2025, 3, 23, 0, 0, 0, 0, time.UTC)),
-				Limit: datadog.PtrInt32(1),
-				To:    datadog.PtrTime(time.Date(2025, 3, 24, 0, 0, 0, 0, time.UTC)),
-			},
-			Type: datadogV2.DORALISTFAILURESREQUESTDATATYPE_DORA_FAILURES_LIST_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.ListDORAFailures(ctx, body)
+    body := datadogV2.DORAListFailuresRequest{
+        Data: datadogV2.DORAListFailuresRequestData{
+            Attributes: datadogV2.DORAListFailuresRequestAttributes{
+                From:  datadog.PtrTime(time.Date(2025, 3, 23, 0, 0, 0, 0, time.UTC)),
+                Limit: datadog.PtrInt32(1),
+                To:    datadog.PtrTime(time.Date(2025, 3, 24, 0, 0, 0, 0, time.UTC)),
+            },
+            Type: datadogV2.DORALISTFAILURESREQUESTDATATYPE_DORA_FAILURES_LIST_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.ListDORAFailures(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.ListDORAFailures`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.ListDORAFailures`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.ListDORAFailures`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.ListDORAFailures`:\n%s\n", responseContent)
 }
 ```
 
@@ -2485,7 +2463,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of failure events returns "OK" response
@@ -2534,7 +2512,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of failure events returns "OK" response
@@ -2578,7 +2556,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2797,13 +2775,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport deployment_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/deployments/${deployment_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2827,7 +2805,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a deployment event returns "OK" response
@@ -2841,7 +2819,7 @@ p api_instance.get_dora_deployment("deployment_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a deployment event returns "OK" response
@@ -2849,29 +2827,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.GetDORADeployment(ctx, "deployment_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.GetDORADeployment(ctx, "deployment_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.GetDORADeployment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.GetDORADeployment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.GetDORADeployment`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.GetDORADeployment`:\n%s\n", responseContent)
 }
 ```
 
@@ -2879,7 +2857,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a deployment event returns "OK" response
@@ -2912,7 +2890,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a deployment event returns "OK" response
@@ -2936,7 +2914,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3152,13 +3130,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport failure_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/failures/${failure_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3182,7 +3160,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a failure event returns "OK" response
@@ -3196,7 +3174,7 @@ p api_instance.get_dora_failure("failure_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a failure event returns "OK" response
@@ -3204,29 +3182,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	resp, r, err := api.GetDORAFailure(ctx, "failure_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    resp, r, err := api.GetDORAFailure(ctx, "failure_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.GetDORAFailure`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.GetDORAFailure`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.GetDORAFailure`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DORAMetricsApi.GetDORAFailure`:\n%s\n", responseContent)
 }
 ```
 
@@ -3234,7 +3212,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a failure event returns "OK" response
@@ -3267,7 +3245,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a failure event returns "OK" response
@@ -3291,7 +3269,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3450,13 +3428,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport failure_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/failure/${failure_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3478,7 +3456,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a failure event returns "Accepted" response
@@ -3492,7 +3470,7 @@ p api_instance.delete_dora_failure("NO_VALUE")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a failure event returns "Accepted" response
@@ -3500,25 +3478,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	r, err := api.DeleteDORAFailure(ctx, "NO_VALUE")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    r, err := api.DeleteDORAFailure(ctx, "NO_VALUE")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.DeleteDORAFailure`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.DeleteDORAFailure`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3526,7 +3504,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a failure event returns "Accepted" response
@@ -3557,7 +3535,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a failure event returns "Accepted" response
@@ -3581,7 +3559,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3740,13 +3718,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport deployment_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/deployment/${deployment_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3768,7 +3746,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a deployment event returns "Accepted" response
@@ -3782,7 +3760,7 @@ p api_instance.delete_dora_deployment("NO_VALUE")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a deployment event returns "Accepted" response
@@ -3790,25 +3768,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDORAMetricsApi(apiClient)
-	r, err := api.DeleteDORADeployment(ctx, "NO_VALUE")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    r, err := api.DeleteDORADeployment(ctx, "NO_VALUE")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.DeleteDORADeployment`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.DeleteDORADeployment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3816,7 +3794,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a deployment event returns "Accepted" response
@@ -3847,7 +3825,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a deployment event returns "Accepted" response
@@ -3871,7 +3849,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3932,8 +3910,6 @@ Use this API endpoint to patch a deployment event. This endpoint requires the `d
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4071,7 +4047,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport deployment_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dora/deployments/${deployment_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4091,5 +4067,256 @@ API error response.
   }
 }
 EOF
-                
+
+#####
+
+```python
+"""
+Patch a deployment event returns "Accepted" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.dora_metrics_api import DORAMetricsApi
+from datadog_api_client.v2.model.dora_deployment_patch_remediation import DORADeploymentPatchRemediation
+from datadog_api_client.v2.model.dora_deployment_patch_remediation_type import DORADeploymentPatchRemediationType
+from datadog_api_client.v2.model.dora_deployment_patch_request import DORADeploymentPatchRequest
+from datadog_api_client.v2.model.dora_deployment_patch_request_attributes import DORADeploymentPatchRequestAttributes
+from datadog_api_client.v2.model.dora_deployment_patch_request_data import DORADeploymentPatchRequestData
+from datadog_api_client.v2.model.dora_deployment_patch_request_data_type import DORADeploymentPatchRequestDataType
+
+body = DORADeploymentPatchRequest(
+    data=DORADeploymentPatchRequestData(
+        attributes=DORADeploymentPatchRequestAttributes(
+            change_failure=True,
+            remediation=DORADeploymentPatchRemediation(
+                id="eG42zNIkVjM",
+                type=DORADeploymentPatchRemediationType.ROLLBACK,
+            ),
+        ),
+        id="z_RwVLi7v4Y",
+        type=DORADeploymentPatchRequestDataType.DORA_DEPLOYMENT_PATCH_REQUEST,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = DORAMetricsApi(api_client)
+    api_instance.patch_dora_deployment(deployment_id="deployment_id", body=body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+#####
+
+```ruby
+# Patch a deployment event returns "Accepted" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::DORAMetricsAPI.new
+
+body = DatadogAPIClient::V2::DORADeploymentPatchRequest.new({
+  data: DatadogAPIClient::V2::DORADeploymentPatchRequestData.new({
+    attributes: DatadogAPIClient::V2::DORADeploymentPatchRequestAttributes.new({
+      change_failure: true,
+      remediation: DatadogAPIClient::V2::DORADeploymentPatchRemediation.new({
+        id: "eG42zNIkVjM",
+        type: DatadogAPIClient::V2::DORADeploymentPatchRemediationType::ROLLBACK,
+      }),
+    }),
+    id: "z_RwVLi7v4Y",
+    type: DatadogAPIClient::V2::DORADeploymentPatchRequestDataType::DORA_DEPLOYMENT_PATCH_REQUEST,
+  }),
+})
+p api_instance.patch_dora_deployment("deployment_id", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+#####
+
+```go
+// Patch a deployment event returns "Accepted" response
+
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+    body := datadogV2.DORADeploymentPatchRequest{
+        Data: datadogV2.DORADeploymentPatchRequestData{
+            Attributes: datadogV2.DORADeploymentPatchRequestAttributes{
+                ChangeFailure: datadog.PtrBool(true),
+                Remediation: &datadogV2.DORADeploymentPatchRemediation{
+                    Id:   "eG42zNIkVjM",
+                    Type: datadogV2.DORADEPLOYMENTPATCHREMEDIATIONTYPE_ROLLBACK,
+                },
+            },
+            Id:   "z_RwVLi7v4Y",
+            Type: datadogV2.DORADEPLOYMENTPATCHREQUESTDATATYPE_DORA_DEPLOYMENT_PATCH_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDORAMetricsApi(apiClient)
+    r, err := api.PatchDORADeployment(ctx, "deployment_id", body)
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DORAMetricsApi.PatchDORADeployment`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+#####
+
+```java
+// Patch a deployment event returns "Accepted" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.DoraMetricsApi;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRemediation;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRemediationType;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequest;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestAttributes;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestData;
+import com.datadog.api.client.v2.model.DORADeploymentPatchRequestDataType;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    DoraMetricsApi apiInstance = new DoraMetricsApi(defaultClient);
+
+    DORADeploymentPatchRequest body =
+        new DORADeploymentPatchRequest()
+            .data(
+                new DORADeploymentPatchRequestData()
+                    .attributes(
+                        new DORADeploymentPatchRequestAttributes()
+                            .changeFailure(true)
+                            .remediation(
+                                new DORADeploymentPatchRemediation()
+                                    .id("eG42zNIkVjM")
+                                    .type(DORADeploymentPatchRemediationType.ROLLBACK)))
+                    .id("z_RwVLi7v4Y")
+                    .type(DORADeploymentPatchRequestDataType.DORA_DEPLOYMENT_PATCH_REQUEST));
+
+    try {
+      apiInstance.patchDORADeployment("deployment_id", body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DoraMetricsApi#patchDORADeployment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+#####
+
+```rust
+// Patch a deployment event returns "Accepted" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_dora_metrics::DORAMetricsAPI;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRemediation;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRemediationType;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequest;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestAttributes;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestData;
+use datadog_api_client::datadogV2::model::DORADeploymentPatchRequestDataType;
+
+#[tokio::main]
+async fn main() {
+    let body = DORADeploymentPatchRequest::new(DORADeploymentPatchRequestData::new(
+        DORADeploymentPatchRequestAttributes::new()
+            .change_failure(true)
+            .remediation(DORADeploymentPatchRemediation::new(
+                "eG42zNIkVjM".to_string(),
+                DORADeploymentPatchRemediationType::ROLLBACK,
+            )),
+        "z_RwVLi7v4Y".to_string(),
+        DORADeploymentPatchRequestDataType::DORA_DEPLOYMENT_PATCH_REQUEST,
+    ));
+    let configuration = datadog::Configuration::new();
+    let api = DORAMetricsAPI::with_config(configuration);
+    let resp = api
+        .patch_dora_deployment("deployment_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+#####
+
+```typescript
+/**
+ * Patch a deployment event returns "Accepted" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.DORAMetricsApi(configuration);
+
+const params: v2.DORAMetricsApiPatchDORADeploymentRequest = {
+  body: {
+    data: {
+      attributes: {
+        changeFailure: true,
+        remediation: {
+          id: "eG42zNIkVjM",
+          type: "rollback",
+        },
+      },
+      id: "z_RwVLi7v4Y",
+      type: "dora_deployment_patch_request",
+    },
+  },
+  deploymentId: "deployment_id",
+};
+
+apiInstance
+  .patchDORADeployment(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}

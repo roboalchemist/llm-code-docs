@@ -43,7 +43,7 @@ class MyClass {
             return null;
         }
         return null;
-        
+
     }
 }
 ```
@@ -63,10 +63,9 @@ class MyClass {
 class MyClass {
     public override string ToString()
     {
-        return string.Empty;;    
+        return string.Empty;;
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

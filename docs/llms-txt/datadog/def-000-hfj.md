@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Amazon Workspaces should enable volume encryption
- 
+
 ## Description{% #description %}
 
 Enable volume encryption for Amazon WorkSpaces to protect data at rest by encrypting both root and user volumes using AWS KMS keys.

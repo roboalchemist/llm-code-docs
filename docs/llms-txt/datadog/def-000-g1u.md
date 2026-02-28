@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 instances should not be publicly accessible
- 
+
 ## Description{% #description %}
 
 This validation examines whether EC2 instances are publicly accessible. Private IPv4 addresses can be used for communication within the same VPC or connected private network.

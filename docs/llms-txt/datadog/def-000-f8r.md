@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall nfs-kernel-server 
 ---
 
 # Uninstall nfs-kernel-server Package
- 
+
 ## Description{% #description %}
 
 The `nfs-kernel-server` package can be removed with the following command:

@@ -75,6 +75,5 @@ let moo = 'car';
 const JOE = 'schmoe';
 let moo = 'car';
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Verify Ownership of Files in /var/log/sssd
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/sssd/*`, run the command:
 
 ```gdscript3
-$ sudo chown sssd /var/log/sssd/* 
+$ sudo chown sssd /var/log/sssd/*
 ```
 
 or
 
 ```gdscript3
-$ sudo chown root /var/log/sssd/* 
+$ sudo chown root /var/log/sssd/*
 ```
 
 ## Rationale{% #rationale %}

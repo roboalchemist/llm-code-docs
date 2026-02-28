@@ -39,16 +39,16 @@ Closure expressions should not be nested too deeply, as excessive nesting makes 
 import SwiftUI
 
 struct AlbumDetail: View {
-	var album: Album
+    var album: Album
 
-	var body: some View {
-		List(album.songs) { song in 
-			HStack {
-				Image(album.cover)
-				VStack(alignment: .leading) {
-					Text(song.title)
-					Text(song.artist.name)
-						.foregroundStyle(.secondary)
+    var body: some View {
+        List(album.songs) { song in
+            HStack {
+                Image(album.cover)
+                VStack(alignment: .leading) {
+                    Text(song.title)
+                    Text(song.artist.name)
+                        .foregroundStyle(.secondary)
 
           VStack(alignment: .leading) {
             Text(song.title)
@@ -60,10 +60,10 @@ struct AlbumDetail: View {
                 .foregroundStyle(.secondary)
             }
           }
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -73,20 +73,20 @@ struct AlbumDetail: View {
 import SwiftUI
 
 struct AlbumDetail: View {
-	var album: Album
+    var album: Album
 
-	var body: some View {
-		List(album.songs) { song in 
-			HStack {
-				Image(album.cover)
-				VStack(alignment: .leading) {
-					Text(song.title)
-					Text(song.artist.name)
-						.foregroundStyle(.secondary)
-				}
-			}
-		}
-	}
+    var body: some View {
+        List(album.songs) { song in
+            HStack {
+                Image(album.cover)
+                VStack(alignment: .leading) {
+                    Text(song.title)
+                    Text(song.artist.name)
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -103,6 +103,5 @@ foo(42) { (x: Int) in
     print(x - 42)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

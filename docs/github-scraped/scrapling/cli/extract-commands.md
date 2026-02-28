@@ -38,15 +38,15 @@ The extract command is a set of simple terminal tools that:
     ```bash
     # Convert the HTML content to Markdown, then save it to the file (great for documentation)
     scrapling extract get "https://blog.example.com" article.md
-    
+
     # Save the HTML content as it is to the file
     scrapling extract get "https://example.com" page.html
-    
+
     # Save a clean version of the text content of the webpage to the file
     scrapling extract get "https://example.com" content.txt
-  
+
     # Or use the Docker image with something like this:
-    docker run -v $(pwd)/output:/output scrapling extract get "https://blog.example.com" /output/article.md 
+    docker run -v $(pwd)/output:/output scrapling extract get "https://blog.example.com" /output/article.md
     ```
 
 - **Extract Specific Content**
@@ -80,39 +80,39 @@ We will go through each command in detail below.
 1. **GET Request**
 
     The most common command for downloading website content:
-    
+
     ```bash
     scrapling extract get [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Basic download
     scrapling extract get "https://news.site.com" news.md
-    
+
     # Download with custom timeout
     scrapling extract get "https://example.com" content.txt --timeout 60
-    
+
     # Extract only specific content using CSS selectors
     scrapling extract get "https://blog.example.com" articles.md --css-selector "article"
-   
+
     # Send a request with cookies
     scrapling extract get "https://scrapling.requestcatcher.com" content.md --cookies "session=abc123; user=john"
-   
+
     # Add user agent
     scrapling extract get "https://api.site.com" data.json -H "User-Agent: MyBot 1.0"
-    
+
     # Add multiple headers
     scrapling extract get "https://site.com" page.html -H "Accept: text/html" -H "Accept-Language: en-US"
     ```
     Get the available options for the command with `scrapling extract get --help` as follows:
     ```bash
     Usage: scrapling extract get [OPTIONS] URL OUTPUT_FILE
-    
+
       Perform a GET request and save the content to a file.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       -H, --headers TEXT                             HTTP headers in format "Key: Value" (can be used multiple times)
       --cookies TEXT                                 Cookies string in format "name1=value1;name2=value2"
@@ -125,32 +125,32 @@ We will go through each command in detail below.
       --impersonate TEXT                             Browser to impersonate (e.g., chrome, firefox).
       --stealthy-headers / --no-stealthy-headers     Use stealthy browser headers (default: True)
       --help                                         Show this message and exit.
-    
+
     ```
     Note that the options will work in the same way for all other request commands, so no need to repeat them.
 
 2. **Post Request**
-    
+
     ```bash
     scrapling extract post [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Submit form data
     scrapling extract post "https://api.site.com/search" results.html --data "query=python&type=tutorial"
-    
+
     # Send JSON data
     scrapling extract post "https://api.site.com" response.json --json '{"username": "test", "action": "search"}'
     ```
     Get the available options for the command with `scrapling extract post --help` as follows:
     ```bash
     Usage: scrapling extract post [OPTIONS] URL OUTPUT_FILE
-    
+
       Perform a POST request and save the content to a file.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       -d, --data TEXT                                Form data to include in the request body (as string, ex: "param1=value1&param2=value2")
       -j, --json TEXT                                JSON data to include in the request body (as string)
@@ -165,31 +165,31 @@ We will go through each command in detail below.
       --impersonate TEXT                             Browser to impersonate (e.g., chrome, firefox).
       --stealthy-headers / --no-stealthy-headers     Use stealthy browser headers (default: True)
       --help                                         Show this message and exit.
-    
+
     ```
 
 3. **Put Request**
-    
+
     ```bash
     scrapling extract put [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Send data
     scrapling extract put "https://scrapling.requestcatcher.com/put" results.html --data "update=info" --impersonate "firefox"
-    
+
     # Send JSON data
     scrapling extract put "https://scrapling.requestcatcher.com/put" response.json --json '{"username": "test", "action": "search"}'
     ```
     Get the available options for the command with `scrapling extract put --help` as follows:
     ```bash
     Usage: scrapling extract put [OPTIONS] URL OUTPUT_FILE
-    
+
       Perform a PUT request and save the content to a file.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       -d, --data TEXT                                Form data to include in the request body
       -j, --json TEXT                                JSON data to include in the request body (as string)
@@ -207,27 +207,27 @@ We will go through each command in detail below.
     ```
 
 4. **Delete Request**
-    
+
     ```bash
     scrapling extract delete [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Send data
     scrapling extract delete "https://scrapling.requestcatcher.com/delete" results.html
-    
+
     # Send JSON data
     scrapling extract delete "https://scrapling.requestcatcher.com/" response.txt --impersonate "chrome"
     ```
     Get the available options for the command with `scrapling extract delete --help` as follows:
     ```bash
     Usage: scrapling extract delete [OPTIONS] URL OUTPUT_FILE
-    
+
       Perform a DELETE request and save the content to a file.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       -H, --headers TEXT                             HTTP headers in format "Key: Value" (can be used multiple times)
       --cookies TEXT                                 Cookies string in format "name1=value1;name2=value2"
@@ -247,30 +247,30 @@ We will go through each command in detail below.
 1. **fetch - Handle Dynamic Content**
 
     For websites that load content with dynamic content or have slight protection
-    
+
     ```bash
     scrapling extract fetch [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Wait for JavaScript to load content and finish network activity
     scrapling extract fetch "https://scrapling.requestcatcher.com/" content.md --network-idle
-    
+
     # Wait for specific content to appear
     scrapling extract fetch "https://scrapling.requestcatcher.com/" data.txt --wait-selector ".content-loaded"
-    
+
     # Run in visible browser mode (helpful for debugging)
     scrapling extract fetch "https://scrapling.requestcatcher.com/" page.html --no-headless --disable-resources
     ```
     Get the available options for the command with `scrapling extract fetch --help` as follows:
     ```bash
     Usage: scrapling extract fetch [OPTIONS] URL OUTPUT_FILE
-    
+
       Use DynamicFetcher to fetch content with browser automation.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       --headless / --no-headless                  Run browser in headless mode (default: True)
       --disable-resources / --enable-resources    Drop unnecessary resources for speed boost (default: False)
@@ -289,30 +289,30 @@ We will go through each command in detail below.
 2. **stealthy-fetch - Bypass Protection**
 
     For websites with anti-bot protection or Cloudflare protection
-    
+
     ```bash
     scrapling extract stealthy-fetch [URL] [OUTPUT_FILE] [OPTIONS]
     ```
-    
+
     **Examples:**
     ```bash
     # Bypass basic protection
     scrapling extract stealthy-fetch "https://scrapling.requestcatcher.com" content.md
-    
+
     # Solve Cloudflare challenges
     scrapling extract stealthy-fetch "https://nopecha.com/demo/cloudflare" data.txt --solve-cloudflare --css-selector "#padded_content a"
-    
+
     # Use a proxy for anonymity.
     scrapling extract stealthy-fetch "https://site.com" content.md --proxy "http://proxy-server:8080"
     ```
     Get the available options for the command with `scrapling extract stealthy-fetch --help` as follows:
     ```bash
     Usage: scrapling extract stealthy-fetch [OPTIONS] URL OUTPUT_FILE
-    
+
       Use StealthyFetcher to fetch content with advanced stealth features.
-    
+
       The output file path can be an HTML file, a Markdown file of the HTML content, or the text content itself. Use file extensions (`.html`/`.md`/`.txt`) respectively.
-    
+
     Options:
       --headless / --no-headless                  Run browser in headless mode (default: True)
       --disable-resources / --enable-resources    Drop unnecessary resources for speed boost (default: False)

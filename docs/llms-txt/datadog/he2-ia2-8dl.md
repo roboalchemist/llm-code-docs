@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a activity log alert configured for deallocating virtual machines
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Deallocate Virtual Machine event.

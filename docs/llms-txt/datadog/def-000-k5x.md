@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network gateway changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing AWS CloudTrail logs to AWS CloudWatch logs and establishing corresponding metric filters and alarms. Network gateways are essential for sending and receiving traffic to destinations outside of a VPC. It is recommended to create a metric filter and alarm to monitor changes to network gateways to ensure that all ingress and egress traffic traverses the VPC border using a controlled path.

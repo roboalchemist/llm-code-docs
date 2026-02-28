@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Endpoint vulnerable to JWT algorithm confusion
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint may be vulnerable to JWT algorithm confusion attacks. The endpoint accepts JWTs signed with both HMAC symmetric algorithms (HS256, HS384, HS512) and asymmetric algorithms (RSA or ECDSA such as RS256, PS256, ES256).

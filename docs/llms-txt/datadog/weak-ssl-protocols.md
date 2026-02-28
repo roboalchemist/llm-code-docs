@@ -64,11 +64,10 @@ class MyClass {
     {
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
-        
+
         SslProtocols = SslProtocols.Tls12;
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

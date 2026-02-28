@@ -48,6 +48,5 @@ p = Proc.new { |n| puts n }
 ```ruby
 p = proc { |n| puts n }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

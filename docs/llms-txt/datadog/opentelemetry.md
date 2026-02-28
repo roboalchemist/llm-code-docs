@@ -1,7 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/opentelemetry.md
-
-# Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/opentelemetry.md
-
 # Source: https://docs.datadoghq.com/opentelemetry.md
 
 ---

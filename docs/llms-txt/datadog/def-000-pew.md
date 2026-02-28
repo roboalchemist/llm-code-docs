@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Invitation sent to account to join AWS organization
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1535-unused-or-unsupported-cloud-regions](https://attack.mitre.org/techniques/T1535) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1535-unused-or-unsupported-cloud-regions](https://attack.mitre.org/techniques/T1535)
 ## Goal{% #goal %}
 
 Detect when there is an attempt to invite an AWS account to an AWS organization.

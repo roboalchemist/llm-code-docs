@@ -60,6 +60,5 @@ app.get("/", (req, res) => {
     res.render("error-page")
 })
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

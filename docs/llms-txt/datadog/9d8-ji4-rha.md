@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # All requests should not be allowed; explicit authorization should be enabled
-Classification:complianceFramework:cis-kubernetesControl:4.2.2 
+Classification:complianceFramework:cis-kubernetesControl:4.2.2
 ## Description{% #description %}
 
 Do not allow all requests. Enable explicit authorization.

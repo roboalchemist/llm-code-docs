@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPC Lambda functions should operate in multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 This control verifies whether an AWS Lambda function that connects to a Virtual Private Cloud (VPC) is deployed across at least two Availability Zones (AZs). The control will fail if the function does not meet the the minimum of two AZs.

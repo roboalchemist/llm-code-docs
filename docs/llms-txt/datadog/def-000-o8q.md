@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Unattached disks' should be encrypted with Customer Managed Key (CMK)
- 
+
 ## Description{% #description %}
 
 To enhance security and meet regulatory requirements, it is essential to ensure that unattached disks in a subscription are encrypted using a Customer Managed Key (CMK). By default, managed disks are encrypted with a Platform Managed Key (PMK), but utilizing CMK can provide an additional level of security.

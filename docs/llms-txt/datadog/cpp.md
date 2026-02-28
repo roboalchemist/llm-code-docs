@@ -66,6 +66,7 @@ int main() {
 
   return 0;
 }
+
 ```
 
 {% tab title="CPM" %}
@@ -82,6 +83,7 @@ add_executable(tracer_example tracer_example.cpp)
 # Statically link against `dd-trace-cpp`
 # NOTE: To dynamically link against `dd-trace-cpp` use the `dd_trace::shared` target
 target_link_libraries(tracer_example dd_trace::static)
+
 ```
 
 Build the example using the following commands:
@@ -92,6 +94,7 @@ cmake --build build --target tracer_example -j
 
 ./build/tracer_example
 DATADOG TRACER CONFIGURATION - {"collector":{"config":{"event_scheduler":{"type":"datadog::tracing::ThreadedEventScheduler" ... }}}
+
 ```
 
 {% /tab %}
@@ -118,6 +121,7 @@ add_executable(tracer_example tracer_example.cpp)
 # Statically link against `dd-trace-cpp`
 # NOTE: To dynamically link against `dd-trace-cpp` use the `dd_trace_cpp_shared` target
 target_link_libraries(tracer_example dd_trace::static)
+
 ```
 
 Build the example using the following commands:
@@ -128,6 +132,7 @@ cmake --build build --target tracer_example -j
 
 ./build/tracer_example
 DATADOG TRACER CONFIGURATION - {"collector":{"config":{"event_scheduler":{"type":"datadog::tracing::ThreadedEventScheduler" ... }}}
+
 ```
 
 {% /tab %}
@@ -146,23 +151,24 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-# Gets the latest release version number from GitHub.
+# Gets the latest release version number from GitHub
 get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" | jq --raw-output .tag_name
 }
 
 DD_TRACE_CPP_VERSION="$(get_latest_release DataDog/dd-trace-cpp)"
 
-# Download and install dd-trace-cpp library.
+# Download and install dd-trace-cpp library
 wget https://github.com/DataDog/dd-trace-cpp/archive/${DD_TRACE_CPP_VERSION}.tar.gz -O dd-trace-cpp.tar.gz
 mkdir dd-trace-cpp && tar zxvf dd-trace-cpp.tar.gz -C ./dd-trace-cpp/ --strip-components=1
 cd dd-trace-cpp
 
-# Download and install the correct version of dd-trace-cpp.
-# Configure the project, build it, and install it.
+# Download and install the correct version of dd-trace-cpp
+# Configure the project, build it, and install it
 cmake -B build .
 cmake --build build -j
 cmake --install build
+
 ```
 
 By default, `cmake --install` places the shared library and public headers into the appropriate system directories (for example, `/usr/local/[...]`). To install them in a specific location, use `cmake --install build --prefix <INSTALL_DIR>` instead.
@@ -175,6 +181,7 @@ Link against `libdd_trace_cpp.so`, making sure the shared library is in `LD_LIBR
 clang -std=c++17 -o tracer_example tracer_example.cpp -ldd_trace_cpp
 LD_LIBRARY_PATH=/usr/local/lib/ ./tracer_example
 DATADOG TRACER CONFIGURATION - {"collector":{"config":{"event_scheduler":{"type":"datadog::tracing::ThreadedEventScheduler" ... }}}
+
 ```
 
 {% /tab %}

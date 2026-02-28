@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The critical containers should be configured to remain responsive
-Classification:complianceFramework:cis-dockerControl:5.11 
+Classification:complianceFramework:cis-dockerControl:5.11
 ## Description{% #description %}
 
 By default, all containers on a Docker host share resources equally. By using the resource management capabilities of the Docker host you can control the host CPU resources that a container may consume.

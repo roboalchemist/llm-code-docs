@@ -56,6 +56,5 @@ func factorial(_ n: Int) -> Int {
     return n == 0 ? 1 : n * factorial(n - 1)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

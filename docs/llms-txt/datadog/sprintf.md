@@ -52,6 +52,5 @@ sprintf('%<foo>d %<bar>d', foo: 1, bar: 42)
 format('%d %d', 1, 42)
 format('%<foo>d %<bar>d', foo: 1, bar: 42)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

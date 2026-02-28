@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/incident_response/on-call.md
-
 # Source: https://docs.datadoghq.com/api/latest/on-call.md
 
 ---
@@ -414,7 +412,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/schedules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -467,8 +465,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create On-Call schedule returns "Created" response
@@ -476,81 +474,81 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.ScheduleCreateRequest{
-		Data: datadogV2.ScheduleCreateRequestData{
-			Attributes: datadogV2.ScheduleCreateRequestDataAttributes{
-				Layers: []datadogV2.ScheduleCreateRequestDataAttributesLayersItems{
-					{
-						EffectiveDate: time.Now().AddDate(0, 0, -10),
-						EndDate:       datadog.PtrTime(time.Now().AddDate(0, 0, 10)),
-						Interval: datadogV2.LayerAttributesInterval{
-							Days: datadog.PtrInt32(1),
-						},
-						Members: []datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItems{
-							{
-								User: &datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItemsUser{
-									Id: datadog.PtrString(UserDataID),
-								},
-							},
-						},
-						Name: "Layer 1",
-						Restrictions: []datadogV2.TimeRestriction{
-							{
-								EndDay:    datadogV2.WEEKDAY_FRIDAY.Ptr(),
-								EndTime:   datadog.PtrString("17:00:00"),
-								StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
-								StartTime: datadog.PtrString("09:00:00"),
-							},
-						},
-						RotationStart: time.Now().AddDate(0, 0, -5),
-					},
-				},
-				Name:     "Example-On-Call",
-				TimeZone: "America/New_York",
-			},
-			Relationships: &datadogV2.ScheduleCreateRequestDataRelationships{
-				Teams: &datadogV2.DataRelationshipsTeams{
-					Data: []datadogV2.DataRelationshipsTeamsDataItems{
-						{
-							Id:   DdTeamDataID,
-							Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.SCHEDULECREATEREQUESTDATATYPE_SCHEDULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.CreateOnCallSchedule(ctx, body, *datadogV2.NewCreateOnCallScheduleOptionalParameters())
+    body := datadogV2.ScheduleCreateRequest{
+        Data: datadogV2.ScheduleCreateRequestData{
+            Attributes: datadogV2.ScheduleCreateRequestDataAttributes{
+                Layers: []datadogV2.ScheduleCreateRequestDataAttributesLayersItems{
+                    {
+                        EffectiveDate: time.Now().AddDate(0, 0, -10),
+                        EndDate:       datadog.PtrTime(time.Now().AddDate(0, 0, 10)),
+                        Interval: datadogV2.LayerAttributesInterval{
+                            Days: datadog.PtrInt32(1),
+                        },
+                        Members: []datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItems{
+                            {
+                                User: &datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItemsUser{
+                                    Id: datadog.PtrString(UserDataID),
+                                },
+                            },
+                        },
+                        Name: "Layer 1",
+                        Restrictions: []datadogV2.TimeRestriction{
+                            {
+                                EndDay:    datadogV2.WEEKDAY_FRIDAY.Ptr(),
+                                EndTime:   datadog.PtrString("17:00:00"),
+                                StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
+                                StartTime: datadog.PtrString("09:00:00"),
+                            },
+                        },
+                        RotationStart: time.Now().AddDate(0, 0, -5),
+                    },
+                },
+                Name:     "Example-On-Call",
+                TimeZone: "America/New_York",
+            },
+            Relationships: &datadogV2.ScheduleCreateRequestDataRelationships{
+                Teams: &datadogV2.DataRelationshipsTeams{
+                    Data: []datadogV2.DataRelationshipsTeamsDataItems{
+                        {
+                            Id:   DdTeamDataID,
+                            Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.SCHEDULECREATEREQUESTDATATYPE_SCHEDULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.CreateOnCallSchedule(ctx, body, *datadogV2.NewCreateOnCallScheduleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateOnCallSchedule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateOnCallSchedule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateOnCallSchedule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateOnCallSchedule`:\n%s\n", responseContent)
 }
 ```
 
@@ -558,7 +556,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create On-Call schedule returns "Created" response
@@ -652,7 +650,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -751,7 +749,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create On-Call schedule returns "Created" response
@@ -817,7 +815,7 @@ p api_instance.create_on_call_schedule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create On-Call schedule returns "Created" response
@@ -905,7 +903,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1294,13 +1292,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport schedule_id="3653d3c6-0c75-11ea-ad28-fb5701eabc7d"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/schedules/${schedule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1328,7 +1326,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get On-Call schedule returns "OK" response
@@ -1345,7 +1343,7 @@ p api_instance.get_on_call_schedule(SCHEDULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get On-Call schedule returns "OK" response
@@ -1353,32 +1351,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "schedule" in the system
-	ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
+    // there is a valid "schedule" in the system
+    ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetOnCallSchedule(ctx, ScheduleDataID, *datadogV2.NewGetOnCallScheduleOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetOnCallSchedule(ctx, ScheduleDataID, *datadogV2.NewGetOnCallScheduleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallSchedule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallSchedule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallSchedule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallSchedule`:\n%s\n", responseContent)
 }
 ```
 
@@ -1386,7 +1384,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get On-Call schedule returns "OK" response
@@ -1422,7 +1420,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get On-Call schedule returns "OK" response
@@ -1454,7 +1452,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1623,12 +1621,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport schedule_id="3653d3c6-0c75-11ea-ad28-fb5701eabc7d"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/schedules/${schedule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1654,7 +1652,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete On-Call schedule returns "No Content" response
@@ -1671,7 +1669,7 @@ api_instance.delete_on_call_schedule(SCHEDULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete On-Call schedule returns "No Content" response
@@ -1679,28 +1677,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "schedule" in the system
-	ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
+    // there is a valid "schedule" in the system
+    ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	r, err := api.DeleteOnCallSchedule(ctx, ScheduleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    r, err := api.DeleteOnCallSchedule(ctx, ScheduleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteOnCallSchedule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteOnCallSchedule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1708,7 +1706,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete On-Call schedule returns "No Content" response
@@ -1742,7 +1740,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete On-Call schedule returns "No Content" response
@@ -1768,7 +1766,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2231,7 +2229,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport schedule_id="3653d3c6-0c75-11ea-ad28-fb5701eabc7d"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/schedules/${schedule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2286,8 +2284,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update On-Call schedule returns "OK" response
@@ -2295,87 +2293,87 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "schedule" in the system
-	ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
-	ScheduleDataRelationshipsLayersData0ID := os.Getenv("SCHEDULE_DATA_RELATIONSHIPS_LAYERS_DATA_0_ID")
+    // there is a valid "schedule" in the system
+    ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
+    ScheduleDataRelationshipsLayersData0ID := os.Getenv("SCHEDULE_DATA_RELATIONSHIPS_LAYERS_DATA_0_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.ScheduleUpdateRequest{
-		Data: datadogV2.ScheduleUpdateRequestData{
-			Id: ScheduleDataID,
-			Attributes: datadogV2.ScheduleUpdateRequestDataAttributes{
-				Layers: []datadogV2.ScheduleUpdateRequestDataAttributesLayersItems{
-					{
-						Id:            datadog.PtrString(ScheduleDataRelationshipsLayersData0ID),
-						EffectiveDate: time.Now().AddDate(0, 0, -10),
-						EndDate:       datadog.PtrTime(time.Now().AddDate(0, 0, 10)),
-						Interval: datadogV2.LayerAttributesInterval{
-							Seconds: datadog.PtrInt64(3600),
-						},
-						Members: []datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItems{
-							{
-								User: &datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItemsUser{
-									Id: datadog.PtrString(UserDataID),
-								},
-							},
-						},
-						Name: "Layer 1",
-						Restrictions: []datadogV2.TimeRestriction{
-							{
-								EndDay:    datadogV2.WEEKDAY_FRIDAY.Ptr(),
-								EndTime:   datadog.PtrString("17:00:00"),
-								StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
-								StartTime: datadog.PtrString("09:00:00"),
-							},
-						},
-						RotationStart: time.Now().AddDate(0, 0, -5),
-					},
-				},
-				Name:     "Example-On-Call",
-				TimeZone: "America/New_York",
-			},
-			Relationships: &datadogV2.ScheduleUpdateRequestDataRelationships{
-				Teams: &datadogV2.DataRelationshipsTeams{
-					Data: []datadogV2.DataRelationshipsTeamsDataItems{
-						{
-							Id:   DdTeamDataID,
-							Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.SCHEDULEUPDATEREQUESTDATATYPE_SCHEDULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.UpdateOnCallSchedule(ctx, ScheduleDataID, body, *datadogV2.NewUpdateOnCallScheduleOptionalParameters())
+    body := datadogV2.ScheduleUpdateRequest{
+        Data: datadogV2.ScheduleUpdateRequestData{
+            Id: ScheduleDataID,
+            Attributes: datadogV2.ScheduleUpdateRequestDataAttributes{
+                Layers: []datadogV2.ScheduleUpdateRequestDataAttributesLayersItems{
+                    {
+                        Id:            datadog.PtrString(ScheduleDataRelationshipsLayersData0ID),
+                        EffectiveDate: time.Now().AddDate(0, 0, -10),
+                        EndDate:       datadog.PtrTime(time.Now().AddDate(0, 0, 10)),
+                        Interval: datadogV2.LayerAttributesInterval{
+                            Seconds: datadog.PtrInt64(3600),
+                        },
+                        Members: []datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItems{
+                            {
+                                User: &datadogV2.ScheduleRequestDataAttributesLayersItemsMembersItemsUser{
+                                    Id: datadog.PtrString(UserDataID),
+                                },
+                            },
+                        },
+                        Name: "Layer 1",
+                        Restrictions: []datadogV2.TimeRestriction{
+                            {
+                                EndDay:    datadogV2.WEEKDAY_FRIDAY.Ptr(),
+                                EndTime:   datadog.PtrString("17:00:00"),
+                                StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
+                                StartTime: datadog.PtrString("09:00:00"),
+                            },
+                        },
+                        RotationStart: time.Now().AddDate(0, 0, -5),
+                    },
+                },
+                Name:     "Example-On-Call",
+                TimeZone: "America/New_York",
+            },
+            Relationships: &datadogV2.ScheduleUpdateRequestDataRelationships{
+                Teams: &datadogV2.DataRelationshipsTeams{
+                    Data: []datadogV2.DataRelationshipsTeamsDataItems{
+                        {
+                            Id:   DdTeamDataID,
+                            Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.SCHEDULEUPDATEREQUESTDATATYPE_SCHEDULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.UpdateOnCallSchedule(ctx, ScheduleDataID, body, *datadogV2.NewUpdateOnCallScheduleOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateOnCallSchedule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateOnCallSchedule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateOnCallSchedule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateOnCallSchedule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2383,7 +2381,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update On-Call schedule returns "OK" response
@@ -2484,7 +2482,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2589,7 +2587,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update On-Call schedule returns "OK" response
@@ -2661,7 +2659,7 @@ p api_instance.update_on_call_schedule(SCHEDULE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update On-Call schedule returns "OK" response
@@ -2760,7 +2758,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3274,7 +3272,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/escalation-policies" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3341,8 +3339,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create On-Call escalation policy returns "Created" response
@@ -3350,97 +3348,97 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "schedule" in the system
-	ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
+    // there is a valid "schedule" in the system
+    ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
 
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.EscalationPolicyCreateRequest{
-		Data: datadogV2.EscalationPolicyCreateRequestData{
-			Attributes: datadogV2.EscalationPolicyCreateRequestDataAttributes{
-				Name:                   "Example-On-Call",
-				ResolvePageOnPolicyEnd: datadog.PtrBool(true),
-				Retries:                datadog.PtrInt64(2),
-				Steps: []datadogV2.EscalationPolicyCreateRequestDataAttributesStepsItems{
-					{
-						Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_DEFAULT.Ptr(),
-						EscalateAfterSeconds: datadog.PtrInt64(3600),
-						Targets: []datadogV2.EscalationPolicyStepTarget{
-							{
-								Id:   datadog.PtrString(UserDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_USERS.Ptr(),
-							},
-							{
-								Id:   datadog.PtrString(ScheduleDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_SCHEDULES.Ptr(),
-							},
-							{
-								Config: &datadogV2.EscalationPolicyStepTargetConfig{
-									Schedule: &datadogV2.EscalationPolicyStepTargetConfigSchedule{
-										Position: datadogV2.SCHEDULETARGETPOSITION_PREVIOUS.Ptr(),
-									},
-								},
-								Id:   datadog.PtrString(ScheduleDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_SCHEDULES.Ptr(),
-							},
-							{
-								Id:   datadog.PtrString(DdTeamDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_TEAMS.Ptr(),
-							},
-						},
-					},
-					{
-						Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_ROUND_ROBIN.Ptr(),
-						EscalateAfterSeconds: datadog.PtrInt64(3600),
-						Targets: []datadogV2.EscalationPolicyStepTarget{
-							{
-								Id:   datadog.PtrString(DdTeamDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_TEAMS.Ptr(),
-							},
-						},
-					},
-				},
-			},
-			Relationships: &datadogV2.EscalationPolicyCreateRequestDataRelationships{
-				Teams: &datadogV2.DataRelationshipsTeams{
-					Data: []datadogV2.DataRelationshipsTeamsDataItems{
-						{
-							Id:   DdTeamDataID,
-							Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.ESCALATIONPOLICYCREATEREQUESTDATATYPE_POLICIES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.CreateOnCallEscalationPolicy(ctx, body, *datadogV2.NewCreateOnCallEscalationPolicyOptionalParameters().WithInclude("steps.targets"))
+    body := datadogV2.EscalationPolicyCreateRequest{
+        Data: datadogV2.EscalationPolicyCreateRequestData{
+            Attributes: datadogV2.EscalationPolicyCreateRequestDataAttributes{
+                Name:                   "Example-On-Call",
+                ResolvePageOnPolicyEnd: datadog.PtrBool(true),
+                Retries:                datadog.PtrInt64(2),
+                Steps: []datadogV2.EscalationPolicyCreateRequestDataAttributesStepsItems{
+                    {
+                        Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_DEFAULT.Ptr(),
+                        EscalateAfterSeconds: datadog.PtrInt64(3600),
+                        Targets: []datadogV2.EscalationPolicyStepTarget{
+                            {
+                                Id:   datadog.PtrString(UserDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_USERS.Ptr(),
+                            },
+                            {
+                                Id:   datadog.PtrString(ScheduleDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_SCHEDULES.Ptr(),
+                            },
+                            {
+                                Config: &datadogV2.EscalationPolicyStepTargetConfig{
+                                    Schedule: &datadogV2.EscalationPolicyStepTargetConfigSchedule{
+                                        Position: datadogV2.SCHEDULETARGETPOSITION_PREVIOUS.Ptr(),
+                                    },
+                                },
+                                Id:   datadog.PtrString(ScheduleDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_SCHEDULES.Ptr(),
+                            },
+                            {
+                                Id:   datadog.PtrString(DdTeamDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_TEAMS.Ptr(),
+                            },
+                        },
+                    },
+                    {
+                        Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_ROUND_ROBIN.Ptr(),
+                        EscalateAfterSeconds: datadog.PtrInt64(3600),
+                        Targets: []datadogV2.EscalationPolicyStepTarget{
+                            {
+                                Id:   datadog.PtrString(DdTeamDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_TEAMS.Ptr(),
+                            },
+                        },
+                    },
+                },
+            },
+            Relationships: &datadogV2.EscalationPolicyCreateRequestDataRelationships{
+                Teams: &datadogV2.DataRelationshipsTeams{
+                    Data: []datadogV2.DataRelationshipsTeamsDataItems{
+                        {
+                            Id:   DdTeamDataID,
+                            Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.ESCALATIONPOLICYCREATEREQUESTDATATYPE_POLICIES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.CreateOnCallEscalationPolicy(ctx, body, *datadogV2.NewCreateOnCallEscalationPolicyOptionalParameters().WithInclude("steps.targets"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateOnCallEscalationPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateOnCallEscalationPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateOnCallEscalationPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateOnCallEscalationPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -3448,7 +3446,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create On-Call escalation policy returns "Created" response
@@ -3566,7 +3564,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3683,7 +3681,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create On-Call escalation policy returns "Created" response
@@ -3769,7 +3767,7 @@ p api_instance.create_on_call_escalation_policy(body, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create On-Call escalation policy returns "Created" response
@@ -3870,7 +3868,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4402,7 +4400,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport policy_id="a3000000-0000-0000-0000-000000000000"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/escalation-policies/${policy_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4444,8 +4442,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update On-Call escalation policy returns "OK" response
@@ -4453,73 +4451,73 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "escalation_policy" in the system
-	EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
-	EscalationPolicyDataRelationshipsStepsData0ID := os.Getenv("ESCALATION_POLICY_DATA_RELATIONSHIPS_STEPS_DATA_0_ID")
+    // there is a valid "escalation_policy" in the system
+    EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
+    EscalationPolicyDataRelationshipsStepsData0ID := os.Getenv("ESCALATION_POLICY_DATA_RELATIONSHIPS_STEPS_DATA_0_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.EscalationPolicyUpdateRequest{
-		Data: datadogV2.EscalationPolicyUpdateRequestData{
-			Attributes: datadogV2.EscalationPolicyUpdateRequestDataAttributes{
-				Name:                   "Example-On-Call-updated",
-				ResolvePageOnPolicyEnd: datadog.PtrBool(false),
-				Retries:                datadog.PtrInt64(0),
-				Steps: []datadogV2.EscalationPolicyUpdateRequestDataAttributesStepsItems{
-					{
-						Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_DEFAULT.Ptr(),
-						EscalateAfterSeconds: datadog.PtrInt64(3600),
-						Id:                   datadog.PtrString(EscalationPolicyDataRelationshipsStepsData0ID),
-						Targets: []datadogV2.EscalationPolicyStepTarget{
-							{
-								Id:   datadog.PtrString(UserDataID),
-								Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_USERS.Ptr(),
-							},
-						},
-					},
-				},
-			},
-			Id: EscalationPolicyDataID,
-			Relationships: &datadogV2.EscalationPolicyUpdateRequestDataRelationships{
-				Teams: &datadogV2.DataRelationshipsTeams{
-					Data: []datadogV2.DataRelationshipsTeamsDataItems{
-						{
-							Id:   DdTeamDataID,
-							Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
-						},
-					},
-				},
-			},
-			Type: datadogV2.ESCALATIONPOLICYUPDATEREQUESTDATATYPE_POLICIES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.UpdateOnCallEscalationPolicy(ctx, EscalationPolicyDataID, body, *datadogV2.NewUpdateOnCallEscalationPolicyOptionalParameters())
+    body := datadogV2.EscalationPolicyUpdateRequest{
+        Data: datadogV2.EscalationPolicyUpdateRequestData{
+            Attributes: datadogV2.EscalationPolicyUpdateRequestDataAttributes{
+                Name:                   "Example-On-Call-updated",
+                ResolvePageOnPolicyEnd: datadog.PtrBool(false),
+                Retries:                datadog.PtrInt64(0),
+                Steps: []datadogV2.EscalationPolicyUpdateRequestDataAttributesStepsItems{
+                    {
+                        Assignment:           datadogV2.ESCALATIONPOLICYSTEPATTRIBUTESASSIGNMENT_DEFAULT.Ptr(),
+                        EscalateAfterSeconds: datadog.PtrInt64(3600),
+                        Id:                   datadog.PtrString(EscalationPolicyDataRelationshipsStepsData0ID),
+                        Targets: []datadogV2.EscalationPolicyStepTarget{
+                            {
+                                Id:   datadog.PtrString(UserDataID),
+                                Type: datadogV2.ESCALATIONPOLICYSTEPTARGETTYPE_USERS.Ptr(),
+                            },
+                        },
+                    },
+                },
+            },
+            Id: EscalationPolicyDataID,
+            Relationships: &datadogV2.EscalationPolicyUpdateRequestDataRelationships{
+                Teams: &datadogV2.DataRelationshipsTeams{
+                    Data: []datadogV2.DataRelationshipsTeamsDataItems{
+                        {
+                            Id:   DdTeamDataID,
+                            Type: datadogV2.DATARELATIONSHIPSTEAMSDATAITEMSTYPE_TEAMS,
+                        },
+                    },
+                },
+            },
+            Type: datadogV2.ESCALATIONPOLICYUPDATEREQUESTDATATYPE_POLICIES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.UpdateOnCallEscalationPolicy(ctx, EscalationPolicyDataID, body, *datadogV2.NewUpdateOnCallEscalationPolicyOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateOnCallEscalationPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateOnCallEscalationPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateOnCallEscalationPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateOnCallEscalationPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -4527,7 +4525,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update On-Call escalation policy returns "OK" response
@@ -4618,7 +4616,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4706,7 +4704,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update On-Call escalation policy returns "OK" response
@@ -4765,7 +4763,7 @@ p api_instance.update_on_call_escalation_policy(ESCALATION_POLICY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update On-Call escalation policy returns "OK" response
@@ -4845,7 +4843,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5279,13 +5277,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="a3000000-0000-0000-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/escalation-policies/${policy_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5314,7 +5312,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get On-Call escalation policy returns "OK" response
@@ -5334,7 +5332,7 @@ p api_instance.get_on_call_escalation_policy(ESCALATION_POLICY_DATA_ID, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get On-Call escalation policy returns "OK" response
@@ -5342,32 +5340,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "escalation_policy" in the system
-	EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
+    // there is a valid "escalation_policy" in the system
+    EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetOnCallEscalationPolicy(ctx, EscalationPolicyDataID, *datadogV2.NewGetOnCallEscalationPolicyOptionalParameters().WithInclude("steps.targets"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetOnCallEscalationPolicy(ctx, EscalationPolicyDataID, *datadogV2.NewGetOnCallEscalationPolicyOptionalParameters().WithInclude("steps.targets"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallEscalationPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallEscalationPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallEscalationPolicy`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallEscalationPolicy`:\n%s\n", responseContent)
 }
 ```
 
@@ -5375,7 +5373,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get On-Call escalation policy returns "OK" response
@@ -5415,7 +5413,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get On-Call escalation policy returns "OK" response
@@ -5447,7 +5445,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5618,12 +5616,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport policy_id="a3000000-0000-0000-0000-000000000000"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/escalation-policies/${policy_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5649,7 +5647,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete On-Call escalation policy returns "No Content" response
@@ -5666,7 +5664,7 @@ api_instance.delete_on_call_escalation_policy(ESCALATION_POLICY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete On-Call escalation policy returns "No Content" response
@@ -5674,28 +5672,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "escalation_policy" in the system
-	EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
+    // there is a valid "escalation_policy" in the system
+    EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	r, err := api.DeleteOnCallEscalationPolicy(ctx, EscalationPolicyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    r, err := api.DeleteOnCallEscalationPolicy(ctx, EscalationPolicyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteOnCallEscalationPolicy`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteOnCallEscalationPolicy`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5703,7 +5701,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete On-Call escalation policy returns "No Content" response
@@ -5737,7 +5735,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete On-Call escalation policy returns "No Content" response
@@ -5765,7 +5763,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5971,13 +5969,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="27590dae-47be-4a7d-9abf-8f4e45124020"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/teams/${team_id}/routing-rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6001,7 +5999,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get On-Call team routing rules returns "OK" response
@@ -6015,7 +6013,7 @@ p api_instance.get_on_call_team_routing_rules("27590dae-47be-4a7d-9abf-8f4e45124
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get On-Call team routing rules returns "OK" response
@@ -6023,29 +6021,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetOnCallTeamRoutingRules(ctx, "27590dae-47be-4a7d-9abf-8f4e45124020", *datadogV2.NewGetOnCallTeamRoutingRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetOnCallTeamRoutingRules(ctx, "27590dae-47be-4a7d-9abf-8f4e45124020", *datadogV2.NewGetOnCallTeamRoutingRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallTeamRoutingRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetOnCallTeamRoutingRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallTeamRoutingRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetOnCallTeamRoutingRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -6053,7 +6051,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get On-Call team routing rules returns "OK" response
@@ -6087,7 +6085,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get On-Call team routing rules returns "OK" response
@@ -6117,7 +6115,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6406,7 +6404,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="27590dae-47be-4a7d-9abf-8f4e45124020"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/teams/${team_id}/routing-rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6456,8 +6454,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Set On-Call team routing rules returns "OK" response
@@ -6465,78 +6463,78 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "escalation_policy" in the system
-	EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
+    // there is a valid "escalation_policy" in the system
+    EscalationPolicyDataID := os.Getenv("ESCALATION_POLICY_DATA_ID")
 
-	body := datadogV2.TeamRoutingRulesRequest{
-		Data: &datadogV2.TeamRoutingRulesRequestData{
-			Attributes: &datadogV2.TeamRoutingRulesRequestDataAttributes{
-				Rules: []datadogV2.TeamRoutingRulesRequestRule{
-					{
-						Actions: []datadogV2.RoutingRuleAction{
-							datadogV2.RoutingRuleAction{
-								SendSlackMessageAction: &datadogV2.SendSlackMessageAction{
-									Channel:   "channel",
-									Type:      datadogV2.SENDSLACKMESSAGEACTIONTYPE_SEND_SLACK_MESSAGE,
-									Workspace: "workspace",
-								}},
-						},
-						Query: datadog.PtrString("tags.service:test"),
-						TimeRestriction: &datadogV2.TimeRestrictions{
-							TimeZone: "Europe/Paris",
-							Restrictions: []datadogV2.TimeRestriction{
-								{
-									EndDay:    datadogV2.WEEKDAY_MONDAY.Ptr(),
-									EndTime:   datadog.PtrString("17:00:00"),
-									StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
-									StartTime: datadog.PtrString("09:00:00"),
-								},
-								{
-									EndDay:    datadogV2.WEEKDAY_TUESDAY.Ptr(),
-									EndTime:   datadog.PtrString("17:00:00"),
-									StartDay:  datadogV2.WEEKDAY_TUESDAY.Ptr(),
-									StartTime: datadog.PtrString("09:00:00"),
-								},
-							},
-						},
-					},
-					{
-						PolicyId: datadog.PtrString(EscalationPolicyDataID),
-						Query:    datadog.PtrString(""),
-						Urgency:  datadogV2.URGENCY_LOW.Ptr(),
-					},
-				},
-			},
-			Id:   datadog.PtrString(DdTeamDataID),
-			Type: datadogV2.TEAMROUTINGRULESREQUESTDATATYPE_TEAM_ROUTING_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.SetOnCallTeamRoutingRules(ctx, DdTeamDataID, body, *datadogV2.NewSetOnCallTeamRoutingRulesOptionalParameters().WithInclude("rules"))
+    body := datadogV2.TeamRoutingRulesRequest{
+        Data: &datadogV2.TeamRoutingRulesRequestData{
+            Attributes: &datadogV2.TeamRoutingRulesRequestDataAttributes{
+                Rules: []datadogV2.TeamRoutingRulesRequestRule{
+                    {
+                        Actions: []datadogV2.RoutingRuleAction{
+                            datadogV2.RoutingRuleAction{
+                                SendSlackMessageAction: &datadogV2.SendSlackMessageAction{
+                                    Channel:   "channel",
+                                    Type:      datadogV2.SENDSLACKMESSAGEACTIONTYPE_SEND_SLACK_MESSAGE,
+                                    Workspace: "workspace",
+                                }},
+                        },
+                        Query: datadog.PtrString("tags.service:test"),
+                        TimeRestriction: &datadogV2.TimeRestrictions{
+                            TimeZone: "Europe/Paris",
+                            Restrictions: []datadogV2.TimeRestriction{
+                                {
+                                    EndDay:    datadogV2.WEEKDAY_MONDAY.Ptr(),
+                                    EndTime:   datadog.PtrString("17:00:00"),
+                                    StartDay:  datadogV2.WEEKDAY_MONDAY.Ptr(),
+                                    StartTime: datadog.PtrString("09:00:00"),
+                                },
+                                {
+                                    EndDay:    datadogV2.WEEKDAY_TUESDAY.Ptr(),
+                                    EndTime:   datadog.PtrString("17:00:00"),
+                                    StartDay:  datadogV2.WEEKDAY_TUESDAY.Ptr(),
+                                    StartTime: datadog.PtrString("09:00:00"),
+                                },
+                            },
+                        },
+                    },
+                    {
+                        PolicyId: datadog.PtrString(EscalationPolicyDataID),
+                        Query:    datadog.PtrString(""),
+                        Urgency:  datadogV2.URGENCY_LOW.Ptr(),
+                    },
+                },
+            },
+            Id:   datadog.PtrString(DdTeamDataID),
+            Type: datadogV2.TEAMROUTINGRULESREQUESTDATATYPE_TEAM_ROUTING_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.SetOnCallTeamRoutingRules(ctx, DdTeamDataID, body, *datadogV2.NewSetOnCallTeamRoutingRulesOptionalParameters().WithInclude("rules"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.SetOnCallTeamRoutingRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.SetOnCallTeamRoutingRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.SetOnCallTeamRoutingRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.SetOnCallTeamRoutingRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -6544,7 +6542,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Set On-Call team routing rules returns "OK" response
@@ -6643,7 +6641,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6726,7 +6724,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Set On-Call team routing rules returns "OK" response
@@ -6792,7 +6790,7 @@ p api_instance.set_on_call_team_routing_rules(DD_TEAM_DATA_ID, body, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Set On-Call team routing rules returns "OK" response
@@ -6882,7 +6880,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7193,13 +7191,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport schedule_id="3653d3c6-0c75-11ea-ad28-fb5701eabc7d"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/schedules/${schedule_id}/on-call" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7227,7 +7225,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get scheduled on-call user returns "OK" response
@@ -7244,7 +7242,7 @@ p api_instance.get_schedule_on_call_user(SCHEDULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get scheduled on-call user returns "OK" response
@@ -7252,32 +7250,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "schedule" in the system
-	ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
+    // there is a valid "schedule" in the system
+    ScheduleDataID := os.Getenv("SCHEDULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetScheduleOnCallUser(ctx, ScheduleDataID, *datadogV2.NewGetScheduleOnCallUserOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetScheduleOnCallUser(ctx, ScheduleDataID, *datadogV2.NewGetScheduleOnCallUserOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetScheduleOnCallUser`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetScheduleOnCallUser`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetScheduleOnCallUser`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetScheduleOnCallUser`:\n%s\n", responseContent)
 }
 ```
 
@@ -7285,7 +7283,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get scheduled on-call user returns "OK" response
@@ -7321,7 +7319,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get scheduled on-call user returns "OK" response
@@ -7353,7 +7351,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7672,13 +7670,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="27590dae-47be-4a7d-9abf-8f4e45124020"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/teams/${team_id}/on-call" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7707,7 +7705,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team on-call users returns "OK" response
@@ -7727,7 +7725,7 @@ p api_instance.get_team_on_call_users(ROUTING_RULES_DATA_ID, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team on-call users returns "OK" response
@@ -7735,32 +7733,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there are valid "routing_rules" in the system
-	RoutingRulesDataID := os.Getenv("ROUTING_RULES_DATA_ID")
+    // there are valid "routing_rules" in the system
+    RoutingRulesDataID := os.Getenv("ROUTING_RULES_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetTeamOnCallUsers(ctx, RoutingRulesDataID, *datadogV2.NewGetTeamOnCallUsersOptionalParameters().WithInclude("responders,escalations.responders"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetTeamOnCallUsers(ctx, RoutingRulesDataID, *datadogV2.NewGetTeamOnCallUsersOptionalParameters().WithInclude("responders,escalations.responders"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetTeamOnCallUsers`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetTeamOnCallUsers`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetTeamOnCallUsers`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetTeamOnCallUsers`:\n%s\n", responseContent)
 }
 ```
 
@@ -7768,7 +7766,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team on-call users returns "OK" response
@@ -7809,7 +7807,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team on-call users returns "OK" response
@@ -7842,7 +7840,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8038,12 +8036,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"export channel_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-channels/${channel_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8073,7 +8071,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an On-Call notification channel for a user returns "No Content" response
@@ -8093,7 +8091,7 @@ api_instance.delete_user_notification_channel(USER_DATA_ID, ONCALL_EMAIL_NOTIFIC
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an On-Call notification channel for a user returns "No Content" response
@@ -8101,31 +8099,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_channel" in the system
-	OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
+    // there is a valid "oncall_email_notification_channel" in the system
+    OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	r, err := api.DeleteUserNotificationChannel(ctx, UserDataID, OncallEmailNotificationChannelDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    r, err := api.DeleteUserNotificationChannel(ctx, UserDataID, OncallEmailNotificationChannelDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteUserNotificationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteUserNotificationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8133,7 +8131,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an On-Call notification channel for a user returns "No Content" response
@@ -8172,7 +8170,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an On-Call notification channel for a user returns "No Content" response
@@ -8207,7 +8205,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8458,13 +8456,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"export channel_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-channels/${channel_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8496,7 +8494,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an On-Call notification channel for a user returns "OK" response
@@ -8516,7 +8514,7 @@ p api_instance.get_user_notification_channel(USER_DATA_ID, ONCALL_EMAIL_NOTIFICA
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an On-Call notification channel for a user returns "OK" response
@@ -8524,35 +8522,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_channel" in the system
-	OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
+    // there is a valid "oncall_email_notification_channel" in the system
+    OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetUserNotificationChannel(ctx, UserDataID, OncallEmailNotificationChannelDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetUserNotificationChannel(ctx, UserDataID, OncallEmailNotificationChannelDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetUserNotificationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetUserNotificationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetUserNotificationChannel`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetUserNotificationChannel`:\n%s\n", responseContent)
 }
 ```
 
@@ -8560,7 +8558,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an On-Call notification channel for a user returns "OK" response
@@ -8602,7 +8600,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an On-Call notification channel for a user returns "OK" response
@@ -8637,7 +8635,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8891,13 +8889,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-channels" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8925,7 +8923,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List On-Call notification channels for a user returns "OK" response
@@ -8942,7 +8940,7 @@ p api_instance.list_user_notification_channels(USER_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List On-Call notification channels for a user returns "OK" response
@@ -8950,32 +8948,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.ListUserNotificationChannels(ctx, UserDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.ListUserNotificationChannels(ctx, UserDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.ListUserNotificationChannels`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.ListUserNotificationChannels`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.ListUserNotificationChannels`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.ListUserNotificationChannels`:\n%s\n", responseContent)
 }
 ```
 
@@ -8983,7 +8981,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List On-Call notification channels for a user returns "OK" response
@@ -9020,7 +9018,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List On-Call notification channels for a user returns "OK" response
@@ -9048,7 +9046,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9338,7 +9336,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-channels" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9360,8 +9358,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an On-Call notification channel for a user returns "Created" response
@@ -9369,47 +9367,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.CreateUserNotificationChannelRequest{
-		Data: datadogV2.CreateNotificationChannelData{
-			Attributes: &datadogV2.CreateNotificationChannelAttributes{
-				Config: &datadogV2.CreateNotificationChannelConfig{
-					CreateEmailNotificationChannelConfig: &datadogV2.CreateEmailNotificationChannelConfig{
-						Address: "foo@bar.com",
-						Formats: []datadogV2.NotificationChannelEmailFormatType{
-							datadogV2.NOTIFICATIONCHANNELEMAILFORMATTYPE_HTML,
-						},
-						Type: datadogV2.NOTIFICATIONCHANNELEMAILCONFIGTYPE_EMAIL,
-					}},
-			},
-			Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.CreateUserNotificationChannel(ctx, UserDataID, body)
+    body := datadogV2.CreateUserNotificationChannelRequest{
+        Data: datadogV2.CreateNotificationChannelData{
+            Attributes: &datadogV2.CreateNotificationChannelAttributes{
+                Config: &datadogV2.CreateNotificationChannelConfig{
+                    CreateEmailNotificationChannelConfig: &datadogV2.CreateEmailNotificationChannelConfig{
+                        Address: "foo@bar.com",
+                        Formats: []datadogV2.NotificationChannelEmailFormatType{
+                            datadogV2.NOTIFICATIONCHANNELEMAILFORMATTYPE_HTML,
+                        },
+                        Type: datadogV2.NOTIFICATIONCHANNELEMAILCONFIGTYPE_EMAIL,
+                    }},
+            },
+            Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.CreateUserNotificationChannel(ctx, UserDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateUserNotificationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateUserNotificationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateUserNotificationChannel`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateUserNotificationChannel`:\n%s\n", responseContent)
 }
 ```
 
@@ -9417,7 +9415,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an On-Call notification channel for a user returns "Created" response
@@ -9478,7 +9476,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -9526,7 +9524,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an On-Call notification channel for a user returns "Created" response
@@ -9558,7 +9556,7 @@ p api_instance.create_user_notification_channel(USER_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an On-Call notification channel for a user returns "Created" response
@@ -9606,7 +9604,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9937,7 +9935,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9962,8 +9960,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an On-Call notification rule for a user returns "Created" response
@@ -9971,52 +9969,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_channel" in the system
-	OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
+    // there is a valid "oncall_email_notification_channel" in the system
+    OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
 
-	body := datadogV2.CreateOnCallNotificationRuleRequest{
-		Data: datadogV2.CreateOnCallNotificationRuleRequestData{
-			Attributes: &datadogV2.OnCallNotificationRuleRequestAttributes{
-				Category:     datadogV2.ONCALLNOTIFICATIONRULECATEGORY_HIGH_URGENCY.Ptr(),
-				DelayMinutes: datadog.PtrInt64(0),
-			},
-			Relationships: &datadogV2.OnCallNotificationRuleRelationships{
-				Channel: &datadogV2.OnCallNotificationRuleChannelRelationship{
-					Data: datadogV2.OnCallNotificationRuleChannelRelationshipData{
-						Id:   datadog.PtrString(OncallEmailNotificationChannelDataID),
-						Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS.Ptr(),
-					},
-				},
-			},
-			Type: datadogV2.ONCALLNOTIFICATIONRULETYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.CreateUserNotificationRule(ctx, UserDataID, body)
+    body := datadogV2.CreateOnCallNotificationRuleRequest{
+        Data: datadogV2.CreateOnCallNotificationRuleRequestData{
+            Attributes: &datadogV2.OnCallNotificationRuleRequestAttributes{
+                Category:     datadogV2.ONCALLNOTIFICATIONRULECATEGORY_HIGH_URGENCY.Ptr(),
+                DelayMinutes: datadog.PtrInt64(0),
+            },
+            Relationships: &datadogV2.OnCallNotificationRuleRelationships{
+                Channel: &datadogV2.OnCallNotificationRuleChannelRelationship{
+                    Data: datadogV2.OnCallNotificationRuleChannelRelationshipData{
+                        Id:   datadog.PtrString(OncallEmailNotificationChannelDataID),
+                        Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS.Ptr(),
+                    },
+                },
+            },
+            Type: datadogV2.ONCALLNOTIFICATIONRULETYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.CreateUserNotificationRule(ctx, UserDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateUserNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.CreateUserNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateUserNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.CreateUserNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -10024,7 +10022,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an On-Call notification rule for a user returns "Created" response
@@ -10091,7 +10089,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -10155,7 +10153,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an On-Call notification rule for a user returns "Created" response
@@ -10193,7 +10191,7 @@ p api_instance.create_user_notification_rule(USER_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an On-Call notification rule for a user returns "Created" response
@@ -10253,7 +10251,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10567,13 +10565,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10602,7 +10600,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List On-Call notification rules for a user returns "OK" response
@@ -10622,7 +10620,7 @@ p api_instance.list_user_notification_rules(USER_DATA_ID, opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List On-Call notification rules for a user returns "OK" response
@@ -10630,32 +10628,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.ListUserNotificationRules(ctx, UserDataID, *datadogV2.NewListUserNotificationRulesOptionalParameters().WithInclude("channel"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.ListUserNotificationRules(ctx, UserDataID, *datadogV2.NewListUserNotificationRulesOptionalParameters().WithInclude("channel"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.ListUserNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.ListUserNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.ListUserNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.ListUserNotificationRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -10663,7 +10661,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List On-Call notification rules for a user returns "OK" response
@@ -10702,7 +10700,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List On-Call notification rules for a user returns "OK" response
@@ -10734,7 +10732,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10930,12 +10928,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"export rule_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-rules/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10965,7 +10963,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an On-Call notification rule for a user returns "No Content" response
@@ -10985,7 +10983,7 @@ api_instance.delete_user_notification_rule(USER_DATA_ID, ONCALL_EMAIL_NOTIFICATI
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an On-Call notification rule for a user returns "No Content" response
@@ -10993,31 +10991,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_rule" in the system
-	OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "oncall_email_notification_rule" in the system
+    OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	r, err := api.DeleteUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    r, err := api.DeleteUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteUserNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.DeleteUserNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -11025,7 +11023,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an On-Call notification rule for a user returns "No Content" response
@@ -11063,7 +11061,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an On-Call notification rule for a user returns "No Content" response
@@ -11098,7 +11096,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11378,13 +11376,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"export rule_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11417,7 +11415,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an On-Call notification rule for a user returns "OK" response
@@ -11440,7 +11438,7 @@ p api_instance.get_user_notification_rule(USER_DATA_ID, ONCALL_EMAIL_NOTIFICATIO
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an On-Call notification rule for a user returns "OK" response
@@ -11448,35 +11446,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_rule" in the system
-	OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "oncall_email_notification_rule" in the system
+    OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.GetUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID, *datadogV2.NewGetUserNotificationRuleOptionalParameters().WithInclude("channel"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.GetUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID, *datadogV2.NewGetUserNotificationRuleOptionalParameters().WithInclude("channel"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetUserNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.GetUserNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetUserNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.GetUserNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -11484,7 +11482,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an On-Call notification rule for a user returns "OK" response
@@ -11529,7 +11527,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an On-Call notification rule for a user returns "OK" response
@@ -11566,7 +11564,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11900,7 +11898,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport user_id="00000000-0000-0000-0000-000000000000"export rule_id="00000000-0000-0000-0000-000000000000"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/on-call/users/${user_id}/notification-rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -11926,8 +11924,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an On-Call notification rule for a user returns "OK" response
@@ -11935,56 +11933,56 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	// there is a valid "oncall_email_notification_rule" in the system
-	OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "oncall_email_notification_rule" in the system
+    OncallEmailNotificationRuleDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_RULE_DATA_ID")
 
-	// there is a valid "oncall_email_notification_channel" in the system
-	OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
+    // there is a valid "oncall_email_notification_channel" in the system
+    OncallEmailNotificationChannelDataID := os.Getenv("ONCALL_EMAIL_NOTIFICATION_CHANNEL_DATA_ID")
 
-	body := datadogV2.UpdateOnCallNotificationRuleRequest{
-		Data: datadogV2.UpdateOnCallNotificationRuleRequestData{
-			Attributes: &datadogV2.UpdateOnCallNotificationRuleRequestAttributes{
-				Category:     datadogV2.ONCALLNOTIFICATIONRULECATEGORY_HIGH_URGENCY.Ptr(),
-				DelayMinutes: datadog.PtrInt64(1),
-			},
-			Id: datadog.PtrString(OncallEmailNotificationRuleDataID),
-			Relationships: &datadogV2.OnCallNotificationRuleRelationships{
-				Channel: &datadogV2.OnCallNotificationRuleChannelRelationship{
-					Data: datadogV2.OnCallNotificationRuleChannelRelationshipData{
-						Id:   datadog.PtrString(OncallEmailNotificationChannelDataID),
-						Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS.Ptr(),
-					},
-				},
-			},
-			Type: datadogV2.ONCALLNOTIFICATIONRULETYPE_NOTIFICATION_RULES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallApi(apiClient)
-	resp, r, err := api.UpdateUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID, body, *datadogV2.NewUpdateUserNotificationRuleOptionalParameters().WithInclude("channel"))
+    body := datadogV2.UpdateOnCallNotificationRuleRequest{
+        Data: datadogV2.UpdateOnCallNotificationRuleRequestData{
+            Attributes: &datadogV2.UpdateOnCallNotificationRuleRequestAttributes{
+                Category:     datadogV2.ONCALLNOTIFICATIONRULECATEGORY_HIGH_URGENCY.Ptr(),
+                DelayMinutes: datadog.PtrInt64(1),
+            },
+            Id: datadog.PtrString(OncallEmailNotificationRuleDataID),
+            Relationships: &datadogV2.OnCallNotificationRuleRelationships{
+                Channel: &datadogV2.OnCallNotificationRuleChannelRelationship{
+                    Data: datadogV2.OnCallNotificationRuleChannelRelationshipData{
+                        Id:   datadog.PtrString(OncallEmailNotificationChannelDataID),
+                        Type: datadogV2.NOTIFICATIONCHANNELTYPE_NOTIFICATION_CHANNELS.Ptr(),
+                    },
+                },
+            },
+            Type: datadogV2.ONCALLNOTIFICATIONRULETYPE_NOTIFICATION_RULES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallApi(apiClient)
+    resp, r, err := api.UpdateUserNotificationRule(ctx, UserDataID, OncallEmailNotificationRuleDataID, body, *datadogV2.NewUpdateUserNotificationRuleOptionalParameters().WithInclude("channel"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateUserNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallApi.UpdateUserNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateUserNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallApi.UpdateUserNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -11992,7 +11990,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an On-Call notification rule for a user returns "OK" response
@@ -12070,7 +12068,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -12140,7 +12138,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an On-Call notification rule for a user returns "OK" response
@@ -12185,7 +12183,7 @@ p api_instance.update_user_notification_rule(USER_DATA_ID, ONCALL_EMAIL_NOTIFICA
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an On-Call notification rule for a user returns "OK" response
@@ -12256,7 +12254,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

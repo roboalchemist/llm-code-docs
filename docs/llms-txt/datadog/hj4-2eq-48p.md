@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelets should have HTTPS connections with TLS setup
-Classification:complianceFramework:cis-kubernetesControl:4.2.10 
+Classification:complianceFramework:cis-kubernetesControl:4.2.10
 ## Description{% #description %}
 
 Setup TLS connection on the Kubelets.

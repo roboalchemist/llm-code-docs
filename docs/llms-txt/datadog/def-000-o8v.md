@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Existing Passwords Minim
 ---
 
 # Set Existing Passwords Minimum Age
- 
+
 ## Description{% #description %}
 
 Configure non-compliant accounts to enforce a 24 hours/1 day minimum password lifetime by running the following command:
 
 ```
 $ sudo chage -m 1 USER
-         
+
 ```
 
 ## Rationale{% #rationale %}
@@ -34,7 +34,7 @@ var_accounts_minimum_age_login_defs='1'
 
 
 while IFS= read -r i; do
-    
+
     chage -m $var_accounts_minimum_age_login_defs $i
 
 done <   <(awk -v var="$var_accounts_minimum_age_login_defs" -F: '(/^[^:]+:[^!*]/ && ($4 < var || $4 == "")) {print $1}' /etc/shadow)

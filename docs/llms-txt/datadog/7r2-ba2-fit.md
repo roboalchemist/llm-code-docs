@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The insecure API service should not be bound
-Classification:complianceFramework:cis-kubernetesControl:1.2.18 
+Classification:complianceFramework:cis-kubernetesControl:1.2.18
 ## Description{% #description %}
 
 Do not bind the insecure API service.

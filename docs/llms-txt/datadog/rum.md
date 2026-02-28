@@ -1,9 +1,3 @@
-# Source: https://docs.datadoghq.com/error_tracking/rum.md
-
-# Source: https://docs.datadoghq.com/account_management/billing/rum.md
-
-# Source: https://docs.datadoghq.com/tracing/other_telemetry/rum.md
-
 # Source: https://docs.datadoghq.com/api/latest/rum.md
 
 ---
@@ -65,7 +59,7 @@ This endpoint requires the `rum_apps_read` permission.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -83,9 +77,9 @@ This endpoint requires the `rum_apps_read` permission.
   },
   "sort": "timestamp"
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -103,7 +97,7 @@ This endpoint requires the `rum_apps_read` permission.
   },
   "sort": "timestamp"
 }
-```
+```text
 
 {% /tab %}
 
@@ -179,7 +173,7 @@ Response object with all events matching the request and pagination information.
     ]
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -204,7 +198,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -229,7 +223,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -254,7 +248,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -262,7 +256,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -285,8 +279,8 @@ API error response.
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -309,8 +303,8 @@ EOF
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search RUM events returns "OK" response
@@ -318,48 +312,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RUMSearchEventsRequest{
-		Filter: &datadogV2.RUMQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@type:session AND @session.type:user"),
-			To:    datadog.PtrString("now"),
-		},
-		Options: &datadogV2.RUMQueryOptions{
-			TimeOffset: datadog.PtrInt64(0),
-			Timezone:   datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.RUMQueryPageOptions{
-			Limit: datadog.PtrInt32(25),
-		},
-		Sort: datadogV2.RUMSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.SearchRUMEvents(ctx, body)
+    body := datadogV2.RUMSearchEventsRequest{
+        Filter: &datadogV2.RUMQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@type:session AND @session.type:user"),
+            To:    datadog.PtrString("now"),
+        },
+        Options: &datadogV2.RUMQueryOptions{
+            TimeOffset: datadog.PtrInt64(0),
+            Timezone:   datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.RUMQueryPageOptions{
+            Limit: datadog.PtrInt32(25),
+        },
+        Sort: datadogV2.RUMSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.SearchRUMEvents(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.SearchRUMEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.SearchRUMEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.SearchRUMEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.SearchRUMEvents`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Search RUM events returns "OK" response with pagination
@@ -367,52 +361,52 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RUMSearchEventsRequest{
-		Filter: &datadogV2.RUMQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@type:session AND @session.type:user"),
-			To:    datadog.PtrString("now"),
-		},
-		Options: &datadogV2.RUMQueryOptions{
-			TimeOffset: datadog.PtrInt64(0),
-			Timezone:   datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.RUMQueryPageOptions{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.RUMSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, _ := api.SearchRUMEventsWithPagination(ctx, body)
+    body := datadogV2.RUMSearchEventsRequest{
+        Filter: &datadogV2.RUMQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@type:session AND @session.type:user"),
+            To:    datadog.PtrString("now"),
+        },
+        Options: &datadogV2.RUMQueryOptions{
+            TimeOffset: datadog.PtrInt64(0),
+            Timezone:   datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.RUMQueryPageOptions{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.RUMSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, _ := api.SearchRUMEventsWithPagination(ctx, body)
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.SearchRUMEvents`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.SearchRUMEvents`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search RUM events returns "OK" response
@@ -455,9 +449,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Search RUM events returns "OK" response with pagination
@@ -501,13 +495,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -544,9 +538,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.search_rum_events(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -583,13 +577,13 @@ with ApiClient(configuration) as api_client:
     items = api_instance.search_rum_events_with_pagination(body=body)
     for item in items:
         print(item)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search RUM events returns "OK" response
@@ -613,9 +607,9 @@ body = DatadogAPIClient::V2::RUMSearchEventsRequest.new({
   sort: DatadogAPIClient::V2::RUMSort::TIMESTAMP_ASCENDING,
 })
 p api_instance.search_rum_events(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Search RUM events returns "OK" response with pagination
@@ -639,13 +633,13 @@ body = DatadogAPIClient::V2::RUMSearchEventsRequest.new({
   sort: DatadogAPIClient::V2::RUMSort::TIMESTAMP_ASCENDING,
 })
 api_instance.search_rum_events_with_pagination(body) { |item| puts item }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search RUM events returns "OK" response
@@ -682,9 +676,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Search RUM events returns "OK" response with pagination
@@ -726,13 +720,13 @@ async fn main() {
         }
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -770,9 +764,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -813,7 +807,7 @@ const params: v2.RUMApiSearchRUMEventsRequest = {
     console.error(error);
   }
 })();
-```
+```text
 
 #### Instructions
 
@@ -930,7 +924,7 @@ Response object with all events matching the request and pagination information.
     ]
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -955,7 +949,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -980,7 +974,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1005,7 +999,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1013,13 +1007,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1035,13 +1029,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_rum_events()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of RUM events returns "OK" response
@@ -1049,13 +1043,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RUMAPI.new
 p api_instance.list_rum_events()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of RUM events returns "OK" response
@@ -1063,37 +1057,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.ListRUMEvents(ctx, *datadogV2.NewListRUMEventsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.ListRUMEvents(ctx, *datadogV2.NewListRUMEventsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.ListRUMEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.ListRUMEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.ListRUMEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.ListRUMEvents`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of RUM events returns "OK" response
@@ -1120,13 +1114,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of RUM events returns "OK" response
@@ -1147,13 +1141,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1173,7 +1167,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1276,7 +1270,7 @@ The API endpoint to aggregate RUM events into buckets of computed metrics and ti
     "limit": 25
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1353,7 +1347,7 @@ The response object for the RUM events aggregate API endpoint.
     ]
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1378,7 +1372,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1403,7 +1397,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1428,7 +1422,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1436,7 +1430,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1471,8 +1465,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Aggregate RUM events returns "OK" response
@@ -1480,65 +1474,65 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RUMAggregateRequest{
-		Compute: []datadogV2.RUMCompute{
-			{
-				Aggregation: datadogV2.RUMAGGREGATIONFUNCTION_PERCENTILE_90,
-				Metric:      datadog.PtrString("@view.time_spent"),
-				Type:        datadogV2.RUMCOMPUTETYPE_TOTAL.Ptr(),
-			},
-		},
-		Filter: &datadogV2.RUMQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@type:view AND @session.type:user"),
-			To:    datadog.PtrString("now"),
-		},
-		GroupBy: []datadogV2.RUMGroupBy{
-			{
-				Facet: "@view.time_spent",
-				Limit: datadog.PtrInt64(10),
-				Total: &datadogV2.RUMGroupByTotal{
-					RUMGroupByTotalBoolean: datadog.PtrBool(false)},
-			},
-		},
-		Options: &datadogV2.RUMQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.RUMQueryPageOptions{
-			Limit: datadog.PtrInt32(25),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.AggregateRUMEvents(ctx, body)
+    body := datadogV2.RUMAggregateRequest{
+        Compute: []datadogV2.RUMCompute{
+            {
+                Aggregation: datadogV2.RUMAGGREGATIONFUNCTION_PERCENTILE_90,
+                Metric:      datadog.PtrString("@view.time_spent"),
+                Type:        datadogV2.RUMCOMPUTETYPE_TOTAL.Ptr(),
+            },
+        },
+        Filter: &datadogV2.RUMQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@type:view AND @session.type:user"),
+            To:    datadog.PtrString("now"),
+        },
+        GroupBy: []datadogV2.RUMGroupBy{
+            {
+                Facet: "@view.time_spent",
+                Limit: datadog.PtrInt64(10),
+                Total: &datadogV2.RUMGroupByTotal{
+                    RUMGroupByTotalBoolean: datadog.PtrBool(false)},
+            },
+        },
+        Options: &datadogV2.RUMQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.RUMQueryPageOptions{
+            Limit: datadog.PtrInt32(25),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.AggregateRUMEvents(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.AggregateRUMEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.AggregateRUMEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.AggregateRUMEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.AggregateRUMEvents`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Aggregate RUM events returns "OK" response
@@ -1597,13 +1591,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1655,13 +1649,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.aggregate_rum_events(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Aggregate RUM events returns "OK" response
@@ -1697,13 +1691,13 @@ body = DatadogAPIClient::V2::RUMAggregateRequest.new({
   }),
 })
 p api_instance.aggregate_rum_events(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Aggregate RUM events returns "OK" response
@@ -1745,13 +1739,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1801,7 +1795,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1857,7 +1851,7 @@ Update the RUM application with given ID in your organization. This endpoint req
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -1870,9 +1864,9 @@ Update the RUM application with given ID in your organization. This endpoint req
     "type": "rum_application_update"
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -1886,7 +1880,7 @@ Update the RUM application with given ID in your organization. This endpoint req
     "type": "rum_application_update"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1958,7 +1952,7 @@ RUM application response.
     "type": "rum_application"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1983,7 +1977,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2008,7 +2002,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2033,7 +2027,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2058,7 +2052,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2066,7 +2060,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2084,8 +2078,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2104,8 +2098,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a RUM application returns "OK" response
@@ -2113,46 +2107,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "rum_application" in the system
-	RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
+    // there is a valid "rum_application" in the system
+    RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
 
-	body := datadogV2.RUMApplicationUpdateRequest{
-		Data: datadogV2.RUMApplicationUpdate{
-			Attributes: &datadogV2.RUMApplicationUpdateAttributes{
-				Name: datadog.PtrString("updated_name_for_my_existing_rum_application"),
-				Type: datadog.PtrString("browser"),
-			},
-			Id:   RumApplicationDataID,
-			Type: datadogV2.RUMAPPLICATIONUPDATETYPE_RUM_APPLICATION_UPDATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.UpdateRUMApplication(ctx, RumApplicationDataID, body)
+    body := datadogV2.RUMApplicationUpdateRequest{
+        Data: datadogV2.RUMApplicationUpdate{
+            Attributes: &datadogV2.RUMApplicationUpdateAttributes{
+                Name: datadog.PtrString("updated_name_for_my_existing_rum_application"),
+                Type: datadog.PtrString("browser"),
+            },
+            Id:   RumApplicationDataID,
+            Type: datadogV2.RUMAPPLICATIONUPDATETYPE_RUM_APPLICATION_UPDATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.UpdateRUMApplication(ctx, RumApplicationDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.UpdateRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.UpdateRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.UpdateRUMApplication`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.UpdateRUMApplication`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Update a RUM application with Product Scales returns "OK" response
@@ -2160,51 +2154,51 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "rum_application" in the system
-	RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
+    // there is a valid "rum_application" in the system
+    RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
 
-	body := datadogV2.RUMApplicationUpdateRequest{
-		Data: datadogV2.RUMApplicationUpdate{
-			Attributes: &datadogV2.RUMApplicationUpdateAttributes{
-				Name:                           datadog.PtrString("updated_rum_with_product_scales"),
-				RumEventProcessingState:        datadogV2.RUMEVENTPROCESSINGSTATE_ALL.Ptr(),
-				ProductAnalyticsRetentionState: datadogV2.RUMPRODUCTANALYTICSRETENTIONSTATE_MAX.Ptr(),
-			},
-			Id:   RumApplicationDataID,
-			Type: datadogV2.RUMAPPLICATIONUPDATETYPE_RUM_APPLICATION_UPDATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.UpdateRUMApplication(ctx, RumApplicationDataID, body)
+    body := datadogV2.RUMApplicationUpdateRequest{
+        Data: datadogV2.RUMApplicationUpdate{
+            Attributes: &datadogV2.RUMApplicationUpdateAttributes{
+                Name:                           datadog.PtrString("updated_rum_with_product_scales"),
+                RumEventProcessingState:        datadogV2.RUMEVENTPROCESSINGSTATE_ALL.Ptr(),
+                ProductAnalyticsRetentionState: datadogV2.RUMPRODUCTANALYTICSRETENTIONSTATE_MAX.Ptr(),
+            },
+            Id:   RumApplicationDataID,
+            Type: datadogV2.RUMAPPLICATIONUPDATETYPE_RUM_APPLICATION_UPDATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.UpdateRUMApplication(ctx, RumApplicationDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.UpdateRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.UpdateRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.UpdateRUMApplication`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.UpdateRUMApplication`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a RUM application returns "OK" response
@@ -2250,9 +2244,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Update a RUM application with Product Scales returns "OK" response
@@ -2301,13 +2295,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2342,9 +2336,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_rum_application(id=RUM_APPLICATION_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -2382,13 +2376,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_rum_application(id=RUM_APPLICATION_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a RUM application returns "OK" response
@@ -2410,9 +2404,9 @@ body = DatadogAPIClient::V2::RUMApplicationUpdateRequest.new({
   }),
 })
 p api_instance.update_rum_application(RUM_APPLICATION_DATA_ID, body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Update a RUM application with Product Scales returns "OK" response
@@ -2435,13 +2429,13 @@ body = DatadogAPIClient::V2::RUMApplicationUpdateRequest.new({
   }),
 })
 p api_instance.update_rum_application(RUM_APPLICATION_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a RUM application returns "OK" response
@@ -2478,9 +2472,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Update a RUM application with Product Scales returns "OK" response
@@ -2520,13 +2514,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2563,9 +2557,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2603,7 +2597,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2705,7 +2699,7 @@ RUM application response.
     "type": "rum_application"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2730,7 +2724,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2755,7 +2749,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2763,13 +2757,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2791,13 +2785,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a RUM application returns "OK" response
@@ -2808,13 +2802,13 @@ api_instance = DatadogAPIClient::V2::RUMAPI.new
 # there is a valid "rum_application" in the system
 RUM_APPLICATION_DATA_ID = ENV["RUM_APPLICATION_DATA_ID"]
 p api_instance.get_rum_application(RUM_APPLICATION_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a RUM application returns "OK" response
@@ -2822,40 +2816,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "rum_application" in the system
-	RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
+    // there is a valid "rum_application" in the system
+    RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.GetRUMApplication(ctx, RumApplicationDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.GetRUMApplication(ctx, RumApplicationDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.GetRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.GetRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.GetRUMApplication`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.GetRUMApplication`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a RUM application returns "OK" response
@@ -2885,13 +2879,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a RUM application returns "OK" response
@@ -2913,13 +2907,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2946,7 +2940,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3005,7 +2999,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3030,7 +3024,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3038,12 +3032,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3063,13 +3057,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_rum_application(
         id=RUM_APPLICATION_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a RUM application returns "No Content" response
@@ -3080,13 +3074,13 @@ api_instance = DatadogAPIClient::V2::RUMAPI.new
 # there is a valid "rum_application" in the system
 RUM_APPLICATION_DATA_ID = ENV["RUM_APPLICATION_DATA_ID"]
 api_instance.delete_rum_application(RUM_APPLICATION_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a RUM application returns "No Content" response
@@ -3094,36 +3088,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "rum_application" in the system
-	RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
+    // there is a valid "rum_application" in the system
+    RumApplicationDataID := os.Getenv("RUM_APPLICATION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	r, err := api.DeleteRUMApplication(ctx, RumApplicationDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    r, err := api.DeleteRUMApplication(ctx, RumApplicationDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.DeleteRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.DeleteRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a RUM application returns "No Content" response
@@ -3151,13 +3145,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a RUM application returns "No Content" response
@@ -3179,13 +3173,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3212,7 +3206,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3259,7 +3253,7 @@ Create a new RUM application in your organization. This endpoint requires the `r
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -3271,9 +3265,9 @@ Create a new RUM application in your organization. This endpoint requires the `r
     "type": "rum_application_create"
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```json
 {
@@ -3287,7 +3281,7 @@ Create a new RUM application in your organization. This endpoint requires the `r
     "type": "rum_application_create"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -3359,7 +3353,7 @@ RUM application response.
     "type": "rum_application"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -3384,7 +3378,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3409,7 +3403,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3417,7 +3411,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3434,8 +3428,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3454,8 +3448,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new RUM application returns "OK" response
@@ -3463,42 +3457,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RUMApplicationCreateRequest{
-		Data: datadogV2.RUMApplicationCreate{
-			Attributes: datadogV2.RUMApplicationCreateAttributes{
-				Name: "test-rum-5c67ebb32077e1d9",
-				Type: datadog.PtrString("ios"),
-			},
-			Type: datadogV2.RUMAPPLICATIONCREATETYPE_RUM_APPLICATION_CREATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.CreateRUMApplication(ctx, body)
+    body := datadogV2.RUMApplicationCreateRequest{
+        Data: datadogV2.RUMApplicationCreate{
+            Attributes: datadogV2.RUMApplicationCreateAttributes{
+                Name: "test-rum-5c67ebb32077e1d9",
+                Type: datadog.PtrString("ios"),
+            },
+            Type: datadogV2.RUMAPPLICATIONCREATETYPE_RUM_APPLICATION_CREATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.CreateRUMApplication(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.CreateRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.CreateRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.CreateRUMApplication`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.CreateRUMApplication`:\n%s\n", responseContent)
 }
-```
+```text
 
-##### 
+#####
 
 ```go
 // Create a new RUM application with Product Scales returns "OK" response
@@ -3506,48 +3500,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RUMApplicationCreateRequest{
-		Data: datadogV2.RUMApplicationCreate{
-			Attributes: datadogV2.RUMApplicationCreateAttributes{
-				Name:                           "test-rum-with-product-scales-5c67ebb32077e1d9",
-				Type:                           datadog.PtrString("browser"),
-				RumEventProcessingState:        datadogV2.RUMEVENTPROCESSINGSTATE_ERROR_FOCUSED_MODE.Ptr(),
-				ProductAnalyticsRetentionState: datadogV2.RUMPRODUCTANALYTICSRETENTIONSTATE_NONE.Ptr(),
-			},
-			Type: datadogV2.RUMAPPLICATIONCREATETYPE_RUM_APPLICATION_CREATE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.CreateRUMApplication(ctx, body)
+    body := datadogV2.RUMApplicationCreateRequest{
+        Data: datadogV2.RUMApplicationCreate{
+            Attributes: datadogV2.RUMApplicationCreateAttributes{
+                Name:                           "test-rum-with-product-scales-5c67ebb32077e1d9",
+                Type:                           datadog.PtrString("browser"),
+                RumEventProcessingState:        datadogV2.RUMEVENTPROCESSINGSTATE_ERROR_FOCUSED_MODE.Ptr(),
+                ProductAnalyticsRetentionState: datadogV2.RUMPRODUCTANALYTICSRETENTIONSTATE_NONE.Ptr(),
+            },
+            Type: datadogV2.RUMAPPLICATIONCREATETYPE_RUM_APPLICATION_CREATE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.CreateRUMApplication(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.CreateRUMApplication`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.CreateRUMApplication`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.CreateRUMApplication`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.CreateRUMApplication`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new RUM application returns "OK" response
@@ -3588,9 +3582,9 @@ public class Example {
     }
   }
 }
-```
+```text
 
-##### 
+#####
 
 ```java
 // Create a new RUM application with Product Scales returns "OK" response
@@ -3635,13 +3629,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3671,9 +3665,9 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_rum_application(body=body)
 
     print(response)
-```
+```text
 
-##### 
+#####
 
 ```python
 """
@@ -3707,13 +3701,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_rum_application(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new RUM application returns "OK" response
@@ -3731,9 +3725,9 @@ body = DatadogAPIClient::V2::RUMApplicationCreateRequest.new({
   }),
 })
 p api_instance.create_rum_application(body)
-```
+```text
 
-##### 
+#####
 
 ```ruby
 # Create a new RUM application with Product Scales returns "OK" response
@@ -3753,13 +3747,13 @@ body = DatadogAPIClient::V2::RUMApplicationCreateRequest.new({
   }),
 })
 p api_instance.create_rum_application(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new RUM application returns "OK" response
@@ -3786,9 +3780,9 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
-##### 
+#####
 
 ```rust
 // Create a new RUM application with Product Scales returns "OK" response
@@ -3821,13 +3815,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3859,9 +3853,9 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3895,7 +3889,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3987,7 +3981,7 @@ RUM applications response.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4012,7 +4006,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4037,7 +4031,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4045,13 +4039,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4067,13 +4061,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_rum_applications()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all the RUM applications returns "OK" response
@@ -4081,13 +4075,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RUMAPI.new
 p api_instance.get_rum_applications()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all the RUM applications returns "OK" response
@@ -4095,37 +4089,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRUMApi(apiClient)
-	resp, r, err := api.GetRUMApplications(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRUMApi(apiClient)
+    resp, r, err := api.GetRUMApplications(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.GetRUMApplications`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RUMApi.GetRUMApplications`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RUMApi.GetRUMApplications`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RUMApi.GetRUMApplications`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all the RUM applications returns "OK" response
@@ -4152,13 +4146,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all the RUM applications returns "OK" response
@@ -4176,13 +4170,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4202,7 +4196,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

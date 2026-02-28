@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set configuration for loopba
 ---
 
 # Set configuration for loopback traffic
- 
+
 ## Description{% #description %}
 
 Configure the loopback interface to accept traffic. Configure all other interfaces to deny traffic to the loopback network.

@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071)
 ## Goal{% #goal %}
 
 Detects BITS transfer jobs that download files directly from IP addresses rather than domain names.

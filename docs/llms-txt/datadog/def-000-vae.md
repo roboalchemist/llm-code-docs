@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM users should have assigned permissions
- 
+
 ## Description{% #description %}
 
 IAM Users without permissions can lead to potential security risks and misconfigurations. Users without assigned policies should be investigated and removed if not needed.

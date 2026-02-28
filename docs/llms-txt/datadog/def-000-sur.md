@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM customer managed policies should not allow wildcard actions for services
- 
+
 ## Description{% #description %}
 
 IAM customer managed policies that allow wildcard actions for services (for example, `"Action": "*"`) can lead to unintended security risks by providing overly broad permissions. Best practices dictate that policies should be as specific as possible, granting only the necessary permissions required for a task. By avoiding wildcards in actions, you can significantly reduce the risk of unauthorized access and actions within your AWS environment.

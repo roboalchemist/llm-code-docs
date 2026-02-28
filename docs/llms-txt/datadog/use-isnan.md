@@ -105,6 +105,5 @@ foo(2 / Number.NaN)
 var x; if (x = Number.NaN) { }
 x === Number[NaN];
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

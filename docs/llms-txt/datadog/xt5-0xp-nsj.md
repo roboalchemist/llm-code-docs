@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Critical system binary modif
 ---
 
 # Critical system binary modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)Framework:pciControl:11.5 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)Framework:pciControl:11.5
 ## What happened{% #what-happened %}
 
 The system file `{{ @file.path }}` was modified by the process `{{ @process.comm }}`.

@@ -73,11 +73,11 @@ Follow the steps below to connect dbt Core to Datadog.
    export DD_SITE=datadoghq.com
    export DD_API_KEY=<YOUR_DATADOG_API_KEY>
    export OPENLINEAGE__TRANSPORT__TYPE=datadog
-   
+
    # OPENLINEAGE_NAMESPACE determines the Datadog tag value for the environment (similar to how the service tag identifies the application).
    # Typical values are dev, staging, or prod, but you can over ride it with any custom value.
    export OPENLINEAGE_NAMESPACE=<YOUR_ENV>
-   
+
    # Optional, for debugging purposes
    export OPENLINEAGE_CLIENT_LOGGING=DEBUG
    ```
@@ -91,10 +91,10 @@ Follow the steps below to connect dbt Core to Datadog.
    ```shell
    # Run models
    dbt-ol run --consume-structured-logs --openlineage-dbt-job-name <YOUR_DBT_JOB_NAME>
-   
+
    # Run tests (required to see test failures in Datadog)
    dbt-ol test --consume-structured-logs --openlineage-dbt-job-name <YOUR_DBT_JOB_NAME>
-   
+
    # Run build (runs models, tests, seeds, and snapshots)
    dbt-ol build --consume-structured-logs --openlineage-dbt-job-name <YOUR_DBT_JOB_NAME>
    ```

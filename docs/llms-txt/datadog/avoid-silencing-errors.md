@@ -62,6 +62,5 @@ This way, you can manage the error and take appropriate action, rather than igno
 <?php
 canThrowAnError();
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

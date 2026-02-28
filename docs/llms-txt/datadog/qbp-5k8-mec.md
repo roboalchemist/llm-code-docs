@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should run as a non-root user
-Classification:complianceFramework:cis-dockerControl:4.1 
+Classification:complianceFramework:cis-dockerControl:4.1
 ## Description{% #description %}
 
 Containers should run as a non-root user.

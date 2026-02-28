@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure All User Initialization Files Have Mode 0740 Or Less Permissive
- 
+
 ## Description{% #description %}
 
 Set the mode of the user initialization files to `0740` with the following command:
 
 ```
 $ sudo chmod 0740 /home/USER/.INIT_FILE
-        
+
 ```
 
 ## Rationale{% #rationale %}
@@ -44,7 +44,7 @@ USERS_IGNORED_REGEX='nobody|nfsnobody'
 for (( i=0; i<"${#interactive_users[@]}"; i++ )); do
     if ! grep -qP "$USERS_IGNORED_REGEX" <<< "${interactive_users[$i]}" && \
         [ "${interactive_users_shell[$i]}" != "/sbin/nologin" ]; then
-        
+
         readarray -t init_files < <(find "${interactive_users_home[$i]}" -maxdepth 1 \
             -exec basename {} \; | grep -P "$var_user_initialization_files_regex")
         for file in "${init_files[@]}"; do

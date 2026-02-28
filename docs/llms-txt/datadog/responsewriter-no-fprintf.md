@@ -51,6 +51,5 @@ func my_controller(anotherArgument myType1, responseWriter http.ResponseWriter, 
     fmt.Fprintf(responseWriter, "foo %s", something);
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

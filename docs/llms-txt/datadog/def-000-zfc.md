@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Audit Configuration Files Must Be Owned By Root
- 
+
 ## Description{% #description %}
 
 All audit configuration files must be owned by root user. To properly set the owner of `/etc/audit/`, run the command:
 
 ```
-$ sudo chown root /etc/audit/ 
+$ sudo chown root /etc/audit/
 ```
 
 To properly set the owner of `/etc/audit/rules.d/`, run the command:
 
 ```
-$ sudo chown root /etc/audit/rules.d/ 
+$ sudo chown root /etc/audit/rules.d/
 ```
 
 ## Rationale{% #rationale %}

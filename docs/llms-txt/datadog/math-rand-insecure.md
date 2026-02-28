@@ -54,8 +54,8 @@ package main
 import "math/rand"
 
 func main() {
-	myRandomNumber := rand.Int()
-	fmt.Println(myRandomNumber)
+    myRandomNumber := rand.Int()
+    fmt.Println(myRandomNumber)
 }
 ```
 
@@ -71,8 +71,8 @@ package main
 import "math/rand"
 
 func main() {
-	myRandomNumber := rand.Int()
-	fmt.Println(myRandomNumber)
+    myRandomNumber := rand.Int()
+    fmt.Println(myRandomNumber)
 }
 ```
 
@@ -84,14 +84,13 @@ package main
 import "crypto/rand"
 
 func main() {
-	b := make([]byte, 10)
-	_, err := rand.Read(b)
-	if err != nil {
-		fmt.Println("error:", err)
-		return
-	}
+    b := make([]byte, 10)
+    _, err := rand.Read(b)
+    if err != nil {
+        fmt.Println("error:", err)
+        return
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

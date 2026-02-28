@@ -44,6 +44,5 @@ notnulls = pd.notnull(val)
 ```python
 notnas = pd.notna(val)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

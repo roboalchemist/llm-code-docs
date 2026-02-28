@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set GNOME3 Screensaver Inactivity Timeout
- 
+
 ## Description{% #description %}
 
 The idle time-out value for inactivity in the GNOME3 desktop is configured via the `idle-delay` setting must be set under an appropriate configuration file(s) in the `/etc/dconf/db/local.d` directory and locked in `/etc/dconf/db/local.d/locks` directory to prevent user modification.
@@ -110,7 +110,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*idle-delay\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)idle-delay(\s*=)/#\1idle-delay\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

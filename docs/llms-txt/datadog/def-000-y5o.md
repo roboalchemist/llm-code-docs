@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # All keys in RBAC Azure Key Vault should have an expiration time set
- 
+
 ## Description{% #description %}
 
 Ensure that all keys in Role Based Access Control (RBAC) Azure Key Vaults have an expiration date set. The **exp** (expiration date) attribute identifies the expiration date on or after which the key **must not** be used for encryption of new data, wrapping of new keys, or signing. By default, keys never expire. It is thus recommended that keys be rotated in the key vault and assigned an explicit expiration date for all keys to help enforce the key rotation. This encourages rotation and ensures that the keys cannot be used indefinitely in the event of a leak.

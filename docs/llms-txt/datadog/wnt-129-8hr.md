@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > SSL certificate tampering
 ---
 
 # SSL certificate tampering
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1553-subvert-trust-controls](https://attack.mitre.org/techniques/T1553) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1553-subvert-trust-controls](https://attack.mitre.org/techniques/T1553)
 ## What happened{% #what-happened %}
 
 `{{ @file.path }}` was created or modified by `{{ @process.comm }}`, potentially to subvert trust.

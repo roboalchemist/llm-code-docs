@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable systemd_timesyncd Ser
 ---
 
 # Enable systemd_timesyncd Service
- 
+
 ## Description{% #description %}
 
 The `systemd_timesyncd` service can be enabled with the following command:

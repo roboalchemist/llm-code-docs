@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server pod specification file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 The API server pod specification file ownership should be set to `root:root`. The API server pod specification file controls various parameters that set the behavior of the API server. You should set its file ownership to maintain the integrity of the file.

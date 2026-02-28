@@ -112,19 +112,19 @@ When you create a new EMR cluster in the [Amazon EMR console](https://console.aw
 
    ```shell
    #!/bin/bash
-   
+
    # Set required parameter DD_SITE
    export DD_SITE=<YOUR_DATADOG_SITE>
-   
+
    # Set required parameter DD_API_KEY with Datadog API key.
    # The commands below assumes the API key is stored in AWS Secrets Manager, with the secret name as datadog/dd_api_key and the key as dd_api_key.
    # IMPORTANT: Modify if you choose to manage and retrieve your secret differently.
    SECRET_NAME=datadog/dd_api_key
    export DD_API_KEY=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME | jq -r .SecretString | jq -r '.["dd_api_key"]')
-   
+
    # Optional: uncomment to send spark driver and worker logs to Datadog
    # export DD_EMR_LOGS_ENABLED=true
-   
+
    # Download and run the latest init script
    curl -L https://install.datadoghq.com/scripts/install-emr.sh > djm-install-script; bash djm-install-script || true
    ```

@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows replay attack detect
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1558-steal-or-forge-kerberos-tickets](https://attack.mitre.org/techniques/T1558) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1558-steal-or-forge-kerberos-tickets](https://attack.mitre.org/techniques/T1558)
 ## Goal{% #goal %}
 
 Detects when a Windows replay attack is identified by the system.

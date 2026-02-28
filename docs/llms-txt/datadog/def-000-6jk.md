@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Cloud DNS should have DNSSEC
 ---
 
 # Cloud DNS should have DNSSEC enabled
- 
+
 ## Description{% #description %}
 
 Cloud Domain Name System (DNS) is a fast, reliable, and cost-effective domain name system that powers millions of domains on the internet. Domain Name System Security Extensions (DNSSEC) in Cloud DNS enables domain owners to take easy steps to protect their domains against DNS hijacking, man-in-the-middle attacks, and more.

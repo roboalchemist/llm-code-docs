@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFormation stacks should have termination protection enabled
- 
+
 ## Description{% #description %}
 
 CloudFormation stacks should have termination protection enabled to prevent accidental deletion. Termination protection helps protect critical infrastructure from unintended removal, which could cause service outages or data loss.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Google Workspace administrator has disabled 2-step verification for organizational unit
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when a Google Workspace administrator disables [2-step verification](https://support.google.com/a/answer/175197?hl=en&sjid=9379503525844318549-EU&visit_id=638187893511308166-3630995424&ref_topic=2759193&rd=1) (2SV) for an organizational unit.

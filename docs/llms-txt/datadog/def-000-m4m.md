@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Improper collection of metadata on login requests
- 
+
 ## Description{% #description %}
 
 This authentication endpoint lacks metadata to effectively detect Account Takeover Attacks (ATO) attempts by App & API Protection.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Container registries should use private link
- 
+
 ## Description{% #description %}
 
 This rule checks if Azure Container Registries are using Private Link connections. Using Private Link connections enhances security by ensuring that communication between resources is isolated and private.

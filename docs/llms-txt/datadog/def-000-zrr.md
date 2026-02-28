@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install pam_pwquality Packag
 ---
 
 # Install pam_pwquality Package
- 
+
 ## Description{% #description %}
 
 The `libpam-pwquality` package can be installed with the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Private endpoint should be enabled for MySQL servers
- 
+
 ## Description{% #description %}
 
 This rule checks if private endpoint connections are enabled for MySQL servers. Enabling private endpoint connections adds an additional layer of security by restricting access to the server to only specified networks or resources, reducing the exposure to potential threats from the public internet.

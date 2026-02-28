@@ -46,6 +46,5 @@ class Person(models.Model):
 class Person(models.Model):
     is_adult = models.BooleanField(null=True)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

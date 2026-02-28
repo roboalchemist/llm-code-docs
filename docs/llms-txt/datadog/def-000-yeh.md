@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DocumentDB cluster snapshots should not be shared with external accounts
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether Amazon DocumentDB cluster snapshots are shared with external AWS accounts that are not onboarded to Datadog. DocumentDB cluster snapshots contain complete copies of database clusters, including all data, configurations, and potentially sensitive information. Sharing cluster snapshots with unauthorized external accounts can lead to data exposure and security risks.

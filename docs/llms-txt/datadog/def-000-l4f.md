@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Elasticsearch domains should have at least three dedicated master nodes
- 
+
 ## Description{% #description %}
 
 This control verifies whether Elasticsearch domains are configured with at least three dedicated primary nodes and ensures that dedicated master is enabled.

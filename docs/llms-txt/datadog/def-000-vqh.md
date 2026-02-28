@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204)
 ## Goal{% #goal %}
 
 Detects instances where a user clicks on a malicious URL within an email (for example, Office 365 Mail, or Gmail) or a collaboration platform (for example, Google Drive, SharePoint, or Microsoft Teams). This may indicate a phishing attempt, malware delivery, or an attempt to steal user credentials.

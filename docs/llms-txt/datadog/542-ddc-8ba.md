@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM users should not have the 'AdministratorAccess' policy attached
- 
+
 ## Description{% #description %}
 
 Confirm there are no [Amazon IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) (privileged users) with administrator permissions for your AWS account.

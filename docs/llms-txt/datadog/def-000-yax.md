@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS SES add verified identity followed by the deletion of the identity
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1070-indicator-removal](https://attack.mitre.org/techniques/T1070) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1070-indicator-removal](https://attack.mitre.org/techniques/T1070)
 ## Goal{% #goal %}
 
 Detect when there is an attempt to add an email address to your Amazon SES account followed by the deletion of that address in a short time period.

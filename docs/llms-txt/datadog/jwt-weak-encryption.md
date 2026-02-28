@@ -51,6 +51,5 @@ jwt.verify(token, secret, { algorithms: ['none', 'RS256'] }, func);
 ```javascript
 jwt.verify(token, secret, { algorithms: ['RS256', 'HS256'] }, func);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

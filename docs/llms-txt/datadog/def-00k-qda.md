@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler configuration file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 The `scheduler.conf` file ownership should be set to `root:root`. This is the kubeconfig file for the scheduler. You should set its file ownership to maintain the integrity of the file.

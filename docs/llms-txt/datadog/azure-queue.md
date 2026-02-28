@@ -36,26 +36,26 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azurequeue",
-	"id": "6cc7f504-a5a5-4354-ad34-0d250b462ce2",
-	"region": "westeurope",
-	"mapPos": [0,6],
-	"kind": "Storage",
-	"redundancy": "LRS",
-	"storageGb": 1,
-	"requestUnitsC1": 0,
-	"requestUnitsC2": 0,
-	"replicationGb": 0,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/en-us/products/storage/queues/",
-	"locked": true
+    "type": "azurequeue",
+    "id": "6cc7f504-a5a5-4354-ad34-0d250b462ce2",
+    "region": "westeurope",
+    "mapPos": [0,6],
+    "kind": "Storage",
+    "redundancy": "LRS",
+    "storageGb": 1,
+    "requestUnitsC1": 0,
+    "requestUnitsC2": 0,
+    "replicationGb": 0,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/en-us/products/storage/queues/",
+    "locked": true
 }
 ```
 

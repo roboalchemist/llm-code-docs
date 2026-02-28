@@ -199,7 +199,7 @@ status:error / status:info
 Here is an example using the `max` operator to find the maximum CPU usage between two availability zones.
 
 ```text
-max(system.cpu.user{availability-zone:eastus-1}, system.cpu.user{availability-zone:eastus-2}) 
+max(system.cpu.user{availability-zone:eastus-1}, system.cpu.user{availability-zone:eastus-2})
 ```
 
 {% image

@@ -47,14 +47,14 @@ Granting write access to a file is a security since other users can modify the c
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	d1 := []byte("something somethingn")
-	err := ioutil.WriteFile("myfile", d1, 0777)
-	check(err)
+    d1 := []byte("something somethingn")
+    err := ioutil.WriteFile("myfile", d1, 0777)
+    check(err)
 }
 ```
 
@@ -64,16 +64,15 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	d1 := []byte("something somethingn")
-	err := ioutil.WriteFile("myfile", d1, 0770)
-	check(err)
+    d1 := []byte("something somethingn")
+    err := ioutil.WriteFile("myfile", d1, 0770)
+    check(err)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

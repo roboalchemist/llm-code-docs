@@ -7,7 +7,7 @@ breadcrumbs: 'Docs > Datadog Security > OOTB Rules > Limit Password Reuse: passw
 ---
 
 # Limit Password Reuse: password-auth
- 
+
 ## Description{% #description %}
 
 Do not allow users to reuse recent passwords. This can be accomplished by using the `remember` option for the `pam_pwhistory` PAM module.
@@ -18,7 +18,7 @@ For example:
 
 ```
 password requisite,required pam_pwhistory.so use_authtok remember=24
-         
+
 ```
 
 ## Rationale{% #rationale %}
@@ -57,7 +57,7 @@ if [ -f /usr/bin/authselect ]; then
 
         authselect apply-changes -b
     else
-        
+
         if ! authselect check; then
         echo "
         authselect integrity check failed. Remediation aborted!
@@ -73,13 +73,13 @@ if [ -f /usr/bin/authselect ]; then
             ENABLED_FEATURES=$(authselect current | tail -n+3 | awk '{ print $2 }')
             authselect create-profile hardening -b $CURRENT_PROFILE
             CURRENT_PROFILE="custom/hardening"
-            
+
             authselect apply-changes -b --backup=before-hardening-custom-profile
             authselect select $CURRENT_PROFILE
             for feature in $ENABLED_FEATURES; do
                 authselect enable-feature $feature;
             done
-            
+
             authselect apply-changes -b --backup=after-hardening-custom-profile
         fi
         PAM_FILE_NAME=$(basename "/etc/pam.d/password-auth")
@@ -130,7 +130,7 @@ if [ -f $PWHISTORY_CONF ]; then
     if [ -e "/etc/pam.d/password-auth" ] ; then
         PAM_FILE_PATH="/etc/pam.d/password-auth"
         if [ -f /usr/bin/authselect ]; then
-            
+
             if ! authselect check; then
             echo "
             authselect integrity check failed. Remediation aborted!
@@ -146,13 +146,13 @@ if [ -f $PWHISTORY_CONF ]; then
                 ENABLED_FEATURES=$(authselect current | tail -n+3 | awk '{ print $2 }')
                 authselect create-profile hardening -b $CURRENT_PROFILE
                 CURRENT_PROFILE="custom/hardening"
-                
+
                 authselect apply-changes -b --backup=before-hardening-custom-profile
                 authselect select $CURRENT_PROFILE
                 for feature in $ENABLED_FEATURES; do
                     authselect enable-feature $feature;
                 done
-                
+
                 authselect apply-changes -b --backup=after-hardening-custom-profile
             fi
             PAM_FILE_NAME=$(basename "/etc/pam.d/password-auth")
@@ -160,12 +160,12 @@ if [ -f $PWHISTORY_CONF ]; then
 
             authselect apply-changes -b
         fi
-        
+
     if grep -qP '^\s*password\s.*\bpam_pwhistory.so\s.*\bremember\b' "$PAM_FILE_PATH"; then
         sed -i -E --follow-symlinks 's/(.*password.*pam_pwhistory.so.*)\bremember\b=?[[:alnum:]]*(.*)/\1\2/g' "$PAM_FILE_PATH"
     fi
         if [ -f /usr/bin/authselect ]; then
-            
+
             authselect apply-changes -b
         fi
     else
@@ -174,7 +174,7 @@ if [ -f $PWHISTORY_CONF ]; then
 else
     PAM_FILE_PATH="/etc/pam.d/password-auth"
     if [ -f /usr/bin/authselect ]; then
-        
+
         if ! authselect check; then
         echo "
         authselect integrity check failed. Remediation aborted!
@@ -190,13 +190,13 @@ else
             ENABLED_FEATURES=$(authselect current | tail -n+3 | awk '{ print $2 }')
             authselect create-profile hardening -b $CURRENT_PROFILE
             CURRENT_PROFILE="custom/hardening"
-            
+
             authselect apply-changes -b --backup=before-hardening-custom-profile
             authselect select $CURRENT_PROFILE
             for feature in $ENABLED_FEATURES; do
                 authselect enable-feature $feature;
             done
-            
+
             authselect apply-changes -b --backup=after-hardening-custom-profile
         fi
         PAM_FILE_NAME=$(basename "/etc/pam.d/password-auth")
@@ -220,7 +220,7 @@ else
         sed -i -E --follow-symlinks 's/(\s*password\s+'"requisite"'\s+pam_pwhistory.so\s+.*)('"remember"'=)[[:alnum:]]+\s*(.*)/\1\2'"$var_password_pam_remember"' \3/' "$PAM_FILE_PATH"
     fi
     if [ -f /usr/bin/authselect ]; then
-        
+
         authselect apply-changes -b
     fi
 fi

@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1222-file-and-directory-permissions-modification](https://attack.mitre.org/techniques/T1222) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1222-file-and-directory-permissions-modification](https://attack.mitre.org/techniques/T1222)
 ## Goal{% #goal %}
 
 Detects an instance where a user or process modifies the Discretionary Access Control List (DACL) of an Active Directory (AD) object.

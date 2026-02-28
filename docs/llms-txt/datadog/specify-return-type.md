@@ -44,6 +44,5 @@ func addTwoNums(num1: Int, num2: Int) {
     return num1 + num2;
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

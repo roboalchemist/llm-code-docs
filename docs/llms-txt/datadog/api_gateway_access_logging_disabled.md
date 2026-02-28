@@ -163,7 +163,7 @@ Resources:
     Properties:
       StageName: Prod
       Description: Prod Stage
-      AccessLogSetting: 
+      AccessLogSetting:
         DestinationArn: "dest"
         Format: "format"
       RestApiId: !Ref MyRestApi

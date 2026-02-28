@@ -87,6 +87,5 @@ def test1():
     requests.get(f"https://api.tld/user/{user_id}")
     requests.get(f"http://localhost/user/{user_id}") # localhost and 127.0.0.1 are safe
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

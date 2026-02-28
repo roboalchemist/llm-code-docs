@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure AppArmor is enabled in the bootloader configuration
- 
+
 ## Description{% #description %}
 
 Configure AppArmor to be enabled at boot time and verify that it has not been overwritten by the bootloader boot parameters. Note: This recommendation is designed around the grub bootloader, if LILO or another bootloader is in use in your environment, enact equivalent settings.

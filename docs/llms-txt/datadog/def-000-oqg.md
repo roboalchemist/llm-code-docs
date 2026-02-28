@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set LogLevel to INFO
 ---
 
 # Set LogLevel to INFO
- 
+
 ## Description{% #description %}
 
 The INFO parameter specifices that record login and logout activity will be logged.
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf
 LC_ALL=C sed -i "/^\s*LogLevel\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*LogLevel\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*LogLevel\s\+/Id" "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"
 else
     touch "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"

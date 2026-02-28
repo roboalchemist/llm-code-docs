@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove the GDM Package Group
 ---
 
 # Remove the GDM Package Group
- 
+
 ## Description{% #description %}
 
 By removing the `gdm3` package, the system no longer has GNOME installed installed. If X Windows is not installed then the system cannot boot into graphical user mode. This prevents the system from being accidentally or maliciously booted into a `graphical.target` mode. To do so, run the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route returns PCI regulated data without HTTPS
- 
+
 ## Description{% #description %}
 
 The API transmits PCI regulated data over a non encrypted channel.

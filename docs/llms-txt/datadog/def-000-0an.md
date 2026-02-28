@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network Firewall policies should have at least one associated rule group
- 
+
 ## Description{% #description %}
 
 This control verifies if a Network Firewall policy includes at least one stateful or stateless rule group.

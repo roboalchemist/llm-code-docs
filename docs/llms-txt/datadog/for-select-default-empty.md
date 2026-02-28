@@ -48,11 +48,11 @@ To address these concerns, it is recommended to either provide a meaningful acti
 ```go
 func main () {
     for {
-		select {
-		    case <-myChannel:
-		    default:
-		}
-	}
+        select {
+            case <-myChannel:
+            default:
+        }
+    }
 }
 ```
 
@@ -61,46 +61,45 @@ func main () {
 ```go
 func main () {
     for {
-		select {
-		    case <-myChannel:
-				println("foo")
-		    default:
-				println("bar")
-				
-		}
-	}
+        select {
+            case <-myChannel:
+                println("foo")
+            default:
+                println("bar")
 
-	for {
-		select {
-		    case <-myChannel2:
-				println("foo")
-		    default:
-				// println("bar")
-		}
-	}
-
-	for something {
-		select {
-		    case <-myChannel2:
-				println("foo")
-		    default:
-		}
-	}
-
-	select {
-		case <-myChannel:
-		default:
-	}
+        }
+    }
 
     for {
-		select {
-		    case <-myChannel:
-		    default:
-		}
-		println("foo") // another statement after for, no warning
-	}
+        select {
+            case <-myChannel2:
+                println("foo")
+            default:
+                // println("bar")
+        }
+    }
+
+    for something {
+        select {
+            case <-myChannel2:
+                println("foo")
+            default:
+        }
+    }
+
+    select {
+        case <-myChannel:
+        default:
+    }
+
+    for {
+        select {
+            case <-myChannel:
+            default:
+        }
+        println("foo") // another statement after for, no warning
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

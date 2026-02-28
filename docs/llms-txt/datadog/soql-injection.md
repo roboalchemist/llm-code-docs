@@ -41,41 +41,41 @@ To avoid SOQL injection, always sanitize user inputs before incorporating them i
 
 ```
 public class ApexClass {
-	public void method(String foo) {
-		Database.query('SELECT Id FROM Account' + foo);
-	}
+    public void method(String foo) {
+        Database.query('SELECT Id FROM Account' + foo);
+    }
 }
 ```
 
 ```
 public class ApexClass {
-	public void method(String foo) {
-		String bar = foo;
-		Database.query('SELECT Id FROM Account' + bar);
-	}
+    public void method(String foo) {
+        String bar = foo;
+        Database.query('SELECT Id FROM Account' + bar);
+    }
 }
 ```
 
 ```
 public class ApexClass {
-	public void method(Integer i1, String s1, Integer s2) {
-		Database.query('SELECT Id FROM Account' + s1);
-	}
+    public void method(Integer i1, String s1, Integer s2) {
+        Database.query('SELECT Id FROM Account' + s1);
+    }
 
 }
 ```
 
 ```
 public class ApexClass {
-	public static List<Person> findPerson(String table, String name) {
-		List<Person> results = Database.query(
-			'SELECT Id, Name ' +
-				'FROM ' + objectName + ' ' +
-				'WHERE Name LIKE \'%' + String.escapeSingleQuotes(searchKey)
-		);
+    public static List<Person> findPerson(String table, String name) {
+        List<Person> results = Database.query(
+            'SELECT Id, Name ' +
+                'FROM ' + objectName + ' ' +
+                'WHERE Name LIKE \'%' + String.escapeSingleQuotes(searchKey)
+        );
 
-		return results;
-	}
+        return results;
+    }
 }
 ```
 
@@ -83,43 +83,42 @@ public class ApexClass {
 
 ```
 public class ApexClass {
-	public void method(String bar) {
-		String foo = String.escapeSingleQuotes(bar);
-		Database.query('SELECT Id FROM Account' + foo);
-	}
+    public void method(String bar) {
+        String foo = String.escapeSingleQuotes(bar);
+        Database.query('SELECT Id FROM Account' + foo);
+    }
 }
 ```
 
 ```
 public class ApexClass {
-	public void method(String foo) {
-		String bar = foo;
-		String baz = String.escapeSingleQuotes(bar);
-		Database.query('SELECT Id FROM Account' + baz);
-	}
+    public void method(String foo) {
+        String bar = foo;
+        String baz = String.escapeSingleQuotes(bar);
+        Database.query('SELECT Id FROM Account' + baz);
+    }
 }
 ```
 
 ```
 public class ApexClass {
-	public void method(Integer arg1, String arg2, Integer arg3) {
-		String foobar = String.escapeSingleQuotes(arg2);
-		Database.query('SELECT Id FROM Account' + foobar);
-	}
+    public void method(Integer arg1, String arg2, Integer arg3) {
+        String foobar = String.escapeSingleQuotes(arg2);
+        Database.query('SELECT Id FROM Account' + foobar);
+    }
 }
 ```
 
 ```
 public class ApexClass {
 
-	public void method(Integer arg1, String arg2, Integer arg3) {
-		String str = arg2;
-		String foobar = String.escapeSingleQuotes(str);
-		Database.query('SELECT Id FROM Account' + foobar);
-	}
+    public void method(Integer arg1, String arg2, Integer arg3) {
+        String str = arg2;
+        String foobar = String.escapeSingleQuotes(str);
+        Database.query('SELECT Id FROM Account' + foobar);
+    }
 
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

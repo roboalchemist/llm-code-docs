@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Ownership of Message of the Day Banner
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/motd`, run the command:

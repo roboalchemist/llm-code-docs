@@ -46,6 +46,5 @@ def scaffold_post_content
     ERB.new(File.read(File.expand_path(scaffold_path, site_template))).result
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

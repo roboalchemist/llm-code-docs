@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPCs should have interface endpoint for ECR Docker Registry
- 
+
 ## Description{% #description %}
 
 Virtual private clouds (VPCs) should have interface VPC endpoints configured for ECR Docker Registry to enable private access to ECR Docker Registry service. AWS PrivateLink enables customers to access services hosted on AWS while keeping all network traffic within the AWS network, which prevents traffic from service users from traversing the internet.

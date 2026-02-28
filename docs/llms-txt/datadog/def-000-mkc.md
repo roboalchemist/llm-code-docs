@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set configuration for IPv6 loopback traffic
- 
+
 ## Description{% #description %}
 
 Configure the loopback interface to accept traffic. Configure all other interfaces to deny traffic to the loopback network.

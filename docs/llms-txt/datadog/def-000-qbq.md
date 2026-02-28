@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the 'remote access' database flag set to 'off'
- 
+
 ## Description{% #description %}
 
 It is recommended to set the `remote access` database flag for Cloud SQL SQL Server instances to `off`.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A Kubernetes user was assigned cluster administrator permissions
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Identify when a Kubernetes user is assigned cluster-level administrative permissions.

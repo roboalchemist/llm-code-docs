@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta IDP creation followed by failed authentication attempts
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detects creation of a new Okta identity provider followed by repeated failed authentications through that external provider.

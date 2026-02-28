@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A log metric filter and alert should exist for audit configuration changes
- 
+
 ## Description{% #description %}
 
 Google Cloud Platform (GCP) services write audit log entries to the Admin Activity and Data Access logs to help answer the question of "Who did what, where, and when?" within GCP projects. Cloud audit logging records information such as the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by GCP services. Cloud audit logging provides a history of GCP API calls for an account, including API calls made through the console, SDKs, command-line tools, and other GCP services.

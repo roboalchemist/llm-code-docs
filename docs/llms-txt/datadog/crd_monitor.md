@@ -55,7 +55,7 @@ In the `datadog-metric-monitor.yaml` file:
           thresholds:
             critical: "0.5"
             warning: "0.28"
-      
+
 ```
 
 See the complete list of configuration fields.

@@ -95,6 +95,5 @@ if File.exist?(path)
   FileUtils.remove(other_path)
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

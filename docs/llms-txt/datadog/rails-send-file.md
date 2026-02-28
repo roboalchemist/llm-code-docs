@@ -67,6 +67,5 @@ def download_image
   send_file("#{Rails.root}/public/images/image.jpg", type: "image/jpeg", disposition: "inline")
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

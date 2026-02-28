@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker daemon should be allowed to configure the firewall rules
-Classification:complianceFramework:cis-dockerControl:2.3 
+Classification:complianceFramework:cis-dockerControl:2.3
 ## Description{% #description %}
 
 The `iptables` firewall is used to set up, maintain, and inspect the tables of IP packet filter rules within the Linux kernel. The Docker daemon should be allowed to make changes to the `iptables` ruleset.
@@ -23,7 +23,7 @@ Docker will not make changes to your system `iptables` rules unless you allow it
 To confirm that the Docker daemon is allowed to change the `iptables` ruleset, review the `dockerd` startup options and the settings in `/etc/docker/daemon.json`. To review the `dockerd` startup options, run:
 
 ```
-ps -ef | grep dockerd 
+ps -ef | grep dockerd
 ```
 
 Ensure that the `--iptables` parameter is either not present or not set to `false`. Also review the `/etc/docker/daemon.json` file to check that the `iptables` setting is not set to `false`.

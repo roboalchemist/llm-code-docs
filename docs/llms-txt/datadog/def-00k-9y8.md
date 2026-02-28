@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The controller manager should have a service account private key file set
- 
+
 ## Description{% #description %}
 
 A service account private key file should be set for service accounts on the controller manager. To ensure that keys for service account tokens can be rotated as needed, a separate public/private key pair should be used for signing service account tokens.

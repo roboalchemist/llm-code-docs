@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure managed identity has administrative privileges over resources
- 
+
 ## Description{% #description %}
 
 This rule identifies when a managed identity has administrative level permissions at the root (most permissive) scope.

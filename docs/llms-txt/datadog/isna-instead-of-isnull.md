@@ -48,6 +48,5 @@ nulls = pd.isnull(val)  # prefer using isna
 ```python
 nas = pd.isna(val)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

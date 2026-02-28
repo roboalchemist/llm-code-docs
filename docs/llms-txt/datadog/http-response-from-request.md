@@ -58,6 +58,5 @@ def execute_command(request):
     print("foobar")
     return HttpResponse("user '{user}' does not exist".format(sanitize_data(data)))
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

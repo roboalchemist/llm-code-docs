@@ -50,6 +50,5 @@ ActiveSupport.escape_html_entities_in_json = false
 ```ruby
 ActiveSupport.escape_html_entities_in_json = true
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

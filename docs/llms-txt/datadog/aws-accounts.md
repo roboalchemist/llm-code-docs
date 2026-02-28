@@ -57,39 +57,39 @@ curl --location 'https://api.cloudcraft.co/aws/account'
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// List all AWS accounts in the Cloudcraft account.
-	accounts, _, err := client.AWS.List(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
+    // List all AWS accounts in the Cloudcraft account.
+    accounts, _, err := client.AWS.List(context.Background())
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the name of each account.
-	for _, account := range accounts {
-		log.Println(account.Name)
-	}
+    // Print the name of each account.
+    for _, account := range accounts {
+        log.Println(account.Name)
+    }
 }
 ```
 
@@ -221,48 +221,48 @@ curl --location 'https://api.cloudcraft.co/aws/account' \
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 3 {
-		log.Fatalf("usage: %s <account-name> <role-arn>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 3 {
+        log.Fatalf("usage: %s <account-name> <role-arn>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a new AWS Account with the name and role ARN coming from command
-	// line arguments.
-	account, _, err := client.AWS.Create(
-		context.Background(),
-		&cloudcraft.AWSAccount{
-			Name:    os.Args[1],
-			RoleARN: os.Args[2],
-		})
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new AWS Account with the name and role ARN coming from command
+    // line arguments.
+    account, _, err := client.AWS.Create(
+        context.Background(),
+        &cloudcraft.AWSAccount{
+            Name:    os.Args[1],
+            RoleARN: os.Args[2],
+        })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the account ID.
-	log.Println(account.ID)
+    // Print the account ID.
+    log.Println(account.ID)
 }
 ```
 
@@ -380,41 +380,41 @@ curl --location 'https://api.cloudcraft.co/aws/account/iamParameters'
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"log"
-	"os"
+    "context"
+    "encoding/json"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Get the IAM parameters required for registering a new IAM Role in AWS for
-	// use with Cloudcraft.
-	params, _, err := client.AWS.IAMParameters(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Get the IAM parameters required for registering a new IAM Role in AWS for
+    // use with Cloudcraft.
+    params, _, err := client.AWS.IAMParameters(context.Background())
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Pretty print all IAM parameters returned by the API.
-	pretty, _ := json.MarshalIndent(params, "", "  ")
+    // Pretty print all IAM parameters returned by the API.
+    pretty, _ := json.MarshalIndent(params, "", "  ")
 
-	log.Println(string(pretty))
+    log.Println(string(pretty))
 }
 ```
 
@@ -495,42 +495,42 @@ curl --location --request DELETE 'https://api.cloudcraft.co/aws/account/{account
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Show usage if the number of command line arguments is not correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <account-id>", os.Args[0])
-	}
+    // Show usage if the number of command line arguments is not correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <account-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Delete the AWS account with the ID taken from a command line argument.
-	_, err = client.AWS.Delete(
-		context.Background(),
-		os.Args[1],
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Delete the AWS account with the ID taken from a command line argument.
+    _, err = client.AWS.Delete(
+        context.Background(),
+        os.Args[1],
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -614,46 +614,46 @@ curl --location --request PUT 'https://api.cloudcraft.co/aws/account/{account_id
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 4 {
-		log.Fatalf("usage: %s <account-id> <account-name> <role-arn>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 4 {
+        log.Fatalf("usage: %s <account-id> <account-name> <role-arn>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Update the AWS Account with the ID, name and role ARN coming from command
-	// line arguments.
-	_, err = client.AWS.Update(
-		context.Background(),
-		&cloudcraft.AWSAccount{
-			ID:      os.Args[1],
-			Name:    os.Args[2],
-			RoleARN: os.Args[3],
-		})
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Update the AWS Account with the ID, name and role ARN coming from command
+    // line arguments.
+    _, err = client.AWS.Update(
+        context.Background(),
+        &cloudcraft.AWSAccount{
+            ID:      os.Args[1],
+            Name:    os.Args[2],
+            RoleARN: os.Args[3],
+        })
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -793,54 +793,54 @@ curl --location 'https://api.cloudcraft.co/aws/account/{account_id}/{region}/{fo
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <account-id>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <account-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a new snapshot of the us-east-1 region with the given account-id
-	// coming from a command line argument.
-	snapshot, _, err := client.AWS.Snapshot(
-		context.Background(),
-		os.Args[1],
-		"us-east-1",
-		"png",
-		&cloudcraft.SnapshotParams{
-			Width:  1920,
-			Height: 1080,
-		},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new snapshot of the us-east-1 region with the given account-id
+    // coming from a command line argument.
+    snapshot, _, err := client.AWS.Snapshot(
+        context.Background(),
+        os.Args[1],
+        "us-east-1",
+        "png",
+        &cloudcraft.SnapshotParams{
+            Width:  1920,
+            Height: 1080,
+        },
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Save the snapshot to a file.
-	if err := os.WriteFile("snapshot.png", snapshot, 0o600); err != nil {
-		log.Fatal(err)
-	}
+    // Save the snapshot to a file.
+    if err := os.WriteFile("snapshot.png", snapshot, 0o600); err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 

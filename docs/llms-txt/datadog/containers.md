@@ -1,82 +1,386 @@
-# Source: https://docs.datadoghq.com/getting_started/containers.md
-
-# Source: https://docs.datadoghq.com/account_management/billing/containers.md
-
 # Source: https://docs.datadoghq.com/api/latest/containers.md
-
-# Source: https://docs.datadoghq.com/containers.md
 
 ---
 title: Containers
-description: Install & configure the Agent to collect data on containerized infrastructures
-breadcrumbs: Docs > Containers
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > API Reference > Containers
 ---
 
 # Containers
 
-To maintain the health, performance, and security of your containerized environments, you can install the Datadog Agent and use [Datadog Container Monitoring](https://app.datadoghq.com/containers).
+The Containers API allows you to query container data for your organization. See the [Container Monitoring page](https://docs.datadoghq.com/containers/) for more information.
 
-## Get started{% #get-started %}
+## Get All Containers{% #get-all-containers %}
 
-Log into Datadog and use the [Install Agents](https://app.datadoghq.com/fleet/install-agent/latest?platform=overview) page to install the Datadog Agent on your selected platform.
+{% tab title="v2" %}
 
-## Datadog Container Monitoring{% #datadog-container-monitoring %}
+| Datadog site      | API endpoint                                        |
+| ----------------- | --------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/containers |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/containers |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/containers      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/containers      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/containers     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/containers |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/containers |
 
-- [Containers Explorer: Use and configure Containers Explorer for real-time visibility into your containers.](https://docs.datadoghq.com/containers/monitoring/containers_explorer)
-- [Container Images Explorer: Use and configure Containers Images Explorer to monitor the container](https://docs.datadoghq.com/containers/monitoring/container_images)
-- [Kubernetes Explorer: Use the Kubernetes Explorer page to monitor your Kubernetes resources.](https://docs.datadoghq.com/containers/monitoring/kubernetes_explorer)
-- [Configure Kubernetes Explorer: Configure the Kubernetes Explorer page.](https://docs.datadoghq.com/containers/monitoring/kubernetes_explorer_configuration)
-- [Kubernetes Resource Utilization: Using and configuring the Kubernetes Resource Utilization page](https://docs.datadoghq.com/containers/monitoring/kubernetes_resource_utilization)
-- [Kubernetes Autoscaling: Using and configuring Kubernetes Autoscaling](https://docs.datadoghq.com/containers/autoscaling)
-- [Kubernetes Remediation: Using and configuring the Kubernetes Remediation page](https://docs.datadoghq.com/containers/bits_ai_kubernetes_remediation)
-- [Amazon ECS Explorer: Using and configuring the ECS Explorer page](https://docs.datadoghq.com/containers/monitoring/amazon_elastic_container_explorer)
+### Overview
 
-## Docker-based environments{% #docker-based-environments %}
+Get all containers for your organization.
 
-- [Datadog Docker Agent: Install and configure the Datadog Docker Agent for Docker, containerd, and Podman runtimes](https://docs.datadoghq.com/containers/docker)
-- [APM: Configure APM trace collection for applications running in Docker containers using the Datadog Agent](https://docs.datadoghq.com/containers/docker/apm)
-- [Log collection: Configure log collection for applications running in Docker containers using the Datadog Agent](https://docs.datadoghq.com/containers/docker/log)
-- [Tag extraction: Configure automatic tag extraction from Docker container labels and environment variables](https://docs.datadoghq.com/containers/docker/tag)
-- [Integrations: Configure monitoring integrations for applications running in Docker containers using Autodiscovery](https://docs.datadoghq.com/containers/docker/integrations)
-- [Prometheus: Collect Prometheus and OpenMetrics metrics from containerized Docker applications using the Datadog Agent](https://docs.datadoghq.com/containers/docker/prometheus)
-- [Data Collected: Reference guide for metrics and events collected by the Datadog Agent from Docker containers](https://docs.datadoghq.com/containers/docker/data_collected)
+### Arguments
 
-## Kubernetes environments{% #kubernetes-environments %}
+#### Query Strings
 
-- [Kubernetes: Install and configure the Datadog Agent on Kubernetes](https://docs.datadoghq.com/containers/kubernetes)
-- [Installation: Install and configure the Datadog Agent on Kubernetes using the Datadog Operator, Helm, or kubectl](https://docs.datadoghq.com/containers/kubernetes/installation)
-- [Further Configuration: Additional configuration options for APM, logs, processes, events, and other capabilities after installing the Datadog Agent](https://docs.datadoghq.com/containers/kubernetes/configuration)
-- [Distributions: Platform-specific installation and configuration instructions for Datadog Agent on various Kubernetes distributions](https://docs.datadoghq.com/containers/kubernetes/distributions)
-- [APM: Enable APM trace collection for containerized applications running in Kubernetes environments](https://docs.datadoghq.com/containers/kubernetes/apm)
-- [App and API Protection: Automatically enable App and API Protection for your Kubernetes ingress proxies and gateways](https://docs.datadoghq.com/containers/kubernetes/appsec)
-- [Log collection: Configure log collection from containerized applications running on Kubernetes using the Datadog Agent](https://docs.datadoghq.com/containers/kubernetes/log)
-- [Tag extraction: Configure automatic tag extraction from Kubernetes pod labels and annotations for enhanced monitoring](https://docs.datadoghq.com/containers/kubernetes/tag)
-- [Integrations: Configure monitoring integrations for applications running in Kubernetes using Autodiscovery templates](https://docs.datadoghq.com/containers/kubernetes/integrations)
-- [Prometheus & OpenMetrics: Collect Prometheus and OpenMetrics from Kubernetes workloads using the Datadog Agent with Autodiscovery](https://docs.datadoghq.com/containers/kubernetes/prometheus)
-- [Control plane monitoring: Monitor Kubernetes control plane components including API server, etcd, controller manager, and scheduler](https://docs.datadoghq.com/containers/kubernetes/control_plane)
-- [Data collected: Reference guide for metrics and events collected by the Datadog Agent from Kubernetes clusters](https://docs.datadoghq.com/containers/kubernetes/data_collected)
-- [kubectl Plugin: The`kubectl`plugin for the Datadog Operator, which provides a set of helper utilities that give visibility into certain internal components.](https://docs.datadoghq.com/containers/kubernetes/kubectl_plugin)
-- [Datadog CSI Driver: Observability for secure Kubernetes environments using the Datadog CSI Driver](https://docs.datadoghq.com/containers/kubernetes/csi_driver)
-- [Data security: Information about the security of Kubernetes data sent to Datadog](https://docs.datadoghq.com/data_security/kubernetes/)
+| Name         | Type    | Description                                                                                                                            |
+| ------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| filter[tags] | string  | Comma-separated list of tags to filter containers by.                                                                                  |
+| group_by     | string  | Comma-separated list of tags to group containers by.                                                                                   |
+| sort         | string  | Attribute to sort containers by.                                                                                                       |
+| page[size]   | integer | Maximum number of results returned.                                                                                                    |
+| page[cursor] | string  | String to query the next page of results. This key is provided with each valid response from the API in `meta.pagination.next_cursor`. |
 
-- [Cluster Agent for Kubernetes: Centralized approach to collecting cluster-level monitoring data with the Datadog Cluster Agent](https://docs.datadoghq.com/containers/cluster_agent)
-- [Datadog Operator: Deploy and manage the Datadog Agent on Kubernetes using the Datadog Operator](https://docs.datadoghq.com/containers/datadog_operator)
+### Response
 
-## Amazon ECS{% #amazon-ecs %}
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+List of containers.
 
-- [Amazon ECS: Install and configure the Datadog Agent on Amazon Elastic Container Service](https://docs.datadoghq.com/containers/amazon_ecs)
-- [Tracing ECS Applications: Configure APM trace collection for containerized applications running on Amazon ECS](https://docs.datadoghq.com/containers/amazon_ecs/apm)
-- [Log collection: Configure log collection from containerized applications running on Amazon ECS using the Datadog Agent](https://docs.datadoghq.com/containers/amazon_ecs/logs)
-- [Tag extraction: Configure automatic tag extraction from container labels and environment variables in Amazon ECS](https://docs.datadoghq.com/containers/amazon_ecs/tags)
-- [Data collection: Reference guide for metrics, logs, and events collected by the Datadog Agent on Amazon ECS](https://docs.datadoghq.com/containers/amazon_ecs/data_collected)
-- [Managed Instances: Install and configure the Datadog Agent on Amazon ECS Managed Instances](https://docs.datadoghq.com/containers/amazon_ecs/managed_instances)
-- [AWS Fargate with ECS: Monitor AWS Fargate for Amazon ECS](https://docs.datadoghq.com/integrations/ecs_fargate)
+| Parent field  | Field         | Type            | Description                                                       |
+| ------------- | ------------- | --------------- | ----------------------------------------------------------------- |
+|               | data          | [<oneOf>] | Array of Container objects.                                       |
+| data          | Option 1      | object          | Container object.                                                 |
+| Option 1      | attributes    | object          | Attributes for a container.                                       |
+| attributes    | container_id  | string          | The ID of the container.                                          |
+| attributes    | created_at    | string          | Time the container was created.                                   |
+| attributes    | host          | string          | Hostname of the host running the container.                       |
+| attributes    | image_digest  | string          | Digest of the compressed image manifest.                          |
+| attributes    | image_name    | string          | Name of the associated container image.                           |
+| attributes    | image_tags    | [string]        | List of image tags associated with the container image.           |
+| attributes    | name          | string          | Name of the container.                                            |
+| attributes    | started_at    | string          | Time the container was started.                                   |
+| attributes    | state         | string          | State of the container. This depends on the container runtime.    |
+| attributes    | tags          | [string]        | List of tags associated with the container.                       |
+| Option 1      | id            | string          | Container ID.                                                     |
+| Option 1      | type          | enum            | Type of container. Allowed enum values: `container`               |
+| data          | Option 2      | object          | Container group object.                                           |
+| Option 2      | attributes    | object          | Attributes for a container group.                                 |
+| attributes    | count         | int64           | Number of containers in the group.                                |
+| attributes    | tags          | object          | Tags from the group name parsed in key/value format.              |
+| Option 2      | id            | string          | Container Group ID.                                               |
+| Option 2      | relationships | object          | Relationships to containers inside a container group.             |
+| relationships | containers    | object          | Relationships to Containers inside a Container Group.             |
+| containers    | data          | [string]        | Links data.                                                       |
+| containers    | links         | object          | Links attributes.                                                 |
+| links         | related       | string          | Link to related containers.                                       |
+| Option 2      | type          | enum            | Type of container group. Allowed enum values: `container_group`   |
+|               | links         | object          | Pagination links.                                                 |
+| links         | first         | string          | Link to the first page.                                           |
+| links         | last          | string          | Link to the last page.                                            |
+| links         | next          | string          | Link to the next page.                                            |
+| links         | prev          | string          | Link to previous page.                                            |
+| links         | self          | string          | Link to current page.                                             |
+|               | meta          | object          | Response metadata object.                                         |
+| meta          | pagination    | object          | Paging attributes.                                                |
+| pagination    | cursor        | string          | The cursor used to get the current results, if any.               |
+| pagination    | limit         | int32           | Number of results returned                                        |
+| pagination    | next_cursor   | string          | The cursor used to get the next results, if any.                  |
+| pagination    | prev_cursor   | string          | The cursor used to get the previous results, if any.              |
+| pagination    | total         | int64           | Total number of records that match the query.                     |
+| pagination    | type          | enum            | Type of Container pagination. Allowed enum values: `cursor_limit` |
 
-## Miscellaneous{% #miscellaneous %}
+{% /tab %}
 
-- [Container Troubleshooting: Troubleshooting containers-related issues](https://docs.datadoghq.com/containers/troubleshooting)
-- [Container Guides: List of guides for container monitoring setup and configuration](https://docs.datadoghq.com/containers/guide)
+{% tab title="Example" %}
 
-## Further reading{% #further-reading %}
+```json
+{
+  "data": [{
+      "attributes": {
+        "container_id": "string",
+        "created_at": "string",
+        "host": "string",
+        "image_digest": "string",
+        "image_name": "string",
+        "image_tags": [],
+        "name": "string",
+        "started_at": "string",
+        "state": "string",
+        "tags": []
+      },
+      "id": "string",
+      "type": "container"
+    }],
+  "links": {
+    "first": "string",
+    "last": "string",
+    "next": "string",
+    "prev": "string",
+    "self": "string"
+  },
+  "meta": {
+    "pagination": {
+      "cursor": "string",
+      "limit": "integer",
+      "next_cursor": "string",
+      "prev_cursor": "string",
+      "total": "integer",
+      "type": "cursor_limit"
+    }
+  }
+}
 
-- [Datadog's Annual State of Containers Report](https://www.datadoghq.com/container-report/)
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": ["Bad Request"]
+}
+
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Authentication Error
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": ["Bad Request"]
+}
+
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": ["Bad Request"]
+}
+
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+#####
+                  \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/containers" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+
+#####
+
+```python
+"""
+Get All Containers returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.containers_api import ContainersApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = ContainersApi(api_client)
+    response = api_instance.list_containers()
+
+    print(response)
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+#####
+
+```ruby
+# Get All Containers returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::ContainersAPI.new
+p api_instance.list_containers()
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+#####
+
+```go
+// Get All Containers returns "OK" response
+
+package main
+
+import (
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewContainersApi(apiClient)
+    resp, r, err := api.ListContainers(ctx, *datadogV2.NewListContainersOptionalParameters())
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.ListContainers`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.ListContainers`:\n%s\n", responseContent)
+}
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+#####
+
+```java
+// Get All Containers returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.ContainersApi;
+import com.datadog.api.client.v2.model.ContainersResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ContainersApi apiInstance = new ContainersApi(defaultClient);
+
+    try {
+      ContainersResponse result = apiInstance.listContainers();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContainersApi#listContainers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+#####
+
+```rust
+// Get All Containers returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_containers::ContainersAPI;
+use datadog_api_client::datadogV2::api_containers::ListContainersOptionalParams;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = ContainersAPI::with_config(configuration);
+    let resp = api
+        .list_containers(ListContainersOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+#####
+
+```typescript
+/**
+ * Get All Containers returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v2.ContainersApi(configuration);
+
+apiInstance
+  .listContainers()
+  .then((data: v2.ContainersResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}

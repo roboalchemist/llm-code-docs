@@ -69,7 +69,7 @@ class CommandExecutor {
         val runtime = Runtime.getRuntime()
         // Safe: Use array form with fixed command and arguments
         runtime.exec(arrayOf("ls", userInput))
-        
+
         // Safe: Use ProcessBuilder with argument list
         ProcessBuilder("cat", userInput)
             .redirectError(ProcessBuilder.Redirect.INHERIT)
@@ -80,7 +80,7 @@ class CommandExecutor {
         val runtime = Runtime.getRuntime()
         // Safe: Use fixed, known library names
         runtime.loadLibrary("mylib")
-        
+
         // Alternative: Use allowlist for library names
         val allowedLibs = setOf("lib1", "lib2")
         if (libName in allowedLibs) {
@@ -89,6 +89,5 @@ class CommandExecutor {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

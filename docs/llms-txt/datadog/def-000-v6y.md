@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Application Load Balancers should have deletion protection enabled
- 
+
 ## Description{% #description %}
 
 This control verifies deletion protection is enabled for Application, Gateway, and Network Load Balancers. To safeguard your Load Balancer from accidental or unauthorized deletion, ensure that deletion protection is enabled.

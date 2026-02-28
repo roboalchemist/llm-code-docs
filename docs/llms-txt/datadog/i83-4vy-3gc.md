@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should use the cgroup configured in Docker
-Classification:complianceFramework:cis-dockerControl:5.24 
+Classification:complianceFramework:cis-dockerControl:5.24
 ## Description{% #description %}
 
 It is possible to attach to a particular `cgroup` when a container is instantiated. Confirming `cgroup` usage would ensure that containers are running in defined `cgroup`s.

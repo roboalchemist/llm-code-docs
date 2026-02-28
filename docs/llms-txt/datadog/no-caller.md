@@ -50,6 +50,5 @@ var x = arguments
 var x = arguments[0]
 var x = arguments[caller]
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

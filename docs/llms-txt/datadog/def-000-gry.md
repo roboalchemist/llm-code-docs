@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS EC2 instance can update the trust policy for a role with administrative privileges
- 
+
 ## Description{% #description %}
 
 In AWS environments, some IAM permissions can lead to privilege escalation, where an identity can gain access to another more privileged identity. This rule identifies when an EC2 instance has an IAM role that can use `iam:UpdateAssumeRolePolicy` to modify an existing trust policy for an IAM role with administrative privileges. By modifying the role trust policy, an adversary could assume that role and leverage their privileges.

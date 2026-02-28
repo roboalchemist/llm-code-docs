@@ -49,7 +49,7 @@ By implementing these good coding practices, developers can mitigate session coo
 
 ```go
 import (
-	"github.com/gorilla/sessions"
+    "github.com/gorilla/sessions"
 )
 
 func main () {
@@ -65,7 +65,7 @@ func main () {
 
 ```go
 import (
-	"github.com/gorilla/sessions"
+    "github.com/gorilla/sessions"
 )
 
 func main () {
@@ -76,6 +76,5 @@ func main () {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

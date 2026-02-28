@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should use the EC2-VPC platform for better security
- 
+
 ## Description{% #description %}
 
 Confirm [Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) are using the [AWS EC2-VPC platform](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.FindDefaultVPC.html) for better cluster security.
@@ -32,8 +32,8 @@ In the `describe-clusters.sh` file:
 
    ```bash
        aws redshift describe-clusters
-   	    --cluster-identifier cluster-id
-       
+        --cluster-identifier cluster-id
+
 ```
 
 1. Run `create-cluster` with the metadata to [launch a new cluster within a VPC](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/emr/create-cluster.html).
@@ -46,7 +46,7 @@ In the `describe-clusters.sh` file:
                --vpc-security-group-ids id-012a3b4c
                --port 5439
                ...
-       
+
 ```
 
 1. Re-run `describe-clusters` with a [custom query filter](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-endpoints-find.html) to retrieve the database cluster endpoint.
@@ -55,9 +55,9 @@ In the `describe-clusters.sh` file:
 
    ```bash
        aws redshift describe-clusters
-   	    --cluster-identifier cluster-id
-   	    --query 'Clusters[*].Endpoint.Address'
-       
+        --cluster-identifier cluster-id
+        --query 'Clusters[*].Endpoint.Address'
+
 ```
 
 1. Reload the old cluster data into the new database cluster with the [Unload Copy Utility](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility).
@@ -68,7 +68,7 @@ In the `delete-cluster.sh` file:
 
    ```bash
        aws redshift create-cluster
-   	    --cluster-identifier old-cluster-identifier
-   	    ...
-       
+        --cluster-identifier old-cluster-identifier
+        ...
+
 ```

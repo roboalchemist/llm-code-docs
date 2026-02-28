@@ -31,7 +31,7 @@ In the `datadog-slo.yaml` file:
       kind: DatadogSLO
       metadata:
         name: example-slo-monitor3
-        namespace: system 
+        namespace: system
       spec:
         name: example-slo-monitor3
         description: "This is an example monitor SLO from datadog-operator"
@@ -43,7 +43,7 @@ In the `datadog-slo.yaml` file:
         targetThreshold: "99.9"
         timeframe: "7d"
         type: "monitor"
-      
+
 ```
 
 **Example**: [Metric-based](https://docs.datadoghq.com/service_level_objectives/metric/) SLO
@@ -55,7 +55,7 @@ In the `datadog-slo.yaml` file:
       kind: DatadogSLO
       metadata:
         name: example-slo
-        namespace: system 
+        namespace: system
       spec:
         name: example-slo
         description: "This is an example metric SLO from datadog-operator"
@@ -68,7 +68,7 @@ In the `datadog-slo.yaml` file:
         targetThreshold: "99.9"
         timeframe: "7d"
         type: "metric"
-      
+
 ```
 
 For all available configuration options, see the [Create an SLO object API reference](https://docs.datadoghq.com/api/latest/service-level-objectives/#create-an-slo-object).

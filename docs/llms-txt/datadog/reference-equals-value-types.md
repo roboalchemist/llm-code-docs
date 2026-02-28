@@ -62,6 +62,5 @@ int int1 = 1, int2 = 1;
 Console.WriteLine(int1 == int2);
 Console.WriteLine(object.Equals(int1, int2));
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

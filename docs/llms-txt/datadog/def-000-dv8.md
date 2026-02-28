@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure No World-Writable Fil
 ---
 
 # Ensure No World-Writable Files Exist
- 
+
 ## Description{% #description %}
 
 It is generally a good idea to remove global (other) write access to a file when it is discovered. However, check with documentation for specific applications before making changes. Also, monitor for recurring world-writable files, as these may be symptoms of a misconfigured application or user account. Finally, this applies to real files and not virtual files that are a part of pseudo file systems such as `sysfs` or `procfs`.

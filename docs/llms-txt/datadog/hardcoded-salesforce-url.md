@@ -37,7 +37,7 @@ Using absolute URLs to reference Salesforce pages introduces fragility, as sandb
 
 ```
 public class AccountHelper {
-    
+
     // A method inside the class
     public List<Account> getActiveAccounts(Integer limitSize) {
         String foo = 'https://subdomain.salesforce.com/something';
@@ -49,13 +49,12 @@ public class AccountHelper {
 
 ```
 public class AccountHelper {
-    
+
     // A method inside the class
     public List<Account> getActiveAccounts(Integer limitSize) {
         String foo = URL.getSalesforceBaseUrl().toExternalForm() + '/something';
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -105,17 +105,14 @@ A paginated list of apps matching the specified filters and sorting.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
         "description": "string",
         "favorite": false,
         "name": "string",
         "selfService": false,
-        "tags": [
-          "service:webshop-backend",
-          "team:webshop"
-        ]
+        "tags": ["service:webshop-backend",
+          "team:webshop"]
       },
       "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
       "meta": {
@@ -144,10 +141,8 @@ A paginated list of apps matching the specified filters and sorting.
         }
       },
       "type": "appDefinitions"
-    }
-  ],
-  "included": [
-    {
+    }],
+  "included": [{
       "attributes": {
         "app_version_id": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
@@ -159,8 +154,7 @@ A paginated list of apps matching the specified filters and sorting.
         "user_uuid": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
       "type": "deployment"
-    }
-  ],
+    }],
   "meta": {
     "page": {
       "totalCount": "integer",
@@ -168,6 +162,7 @@ A paginated list of apps matching the specified filters and sorting.
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -197,8 +192,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -208,9 +202,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -240,8 +234,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -251,9 +244,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -275,10 +268,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -287,13 +279,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -309,13 +301,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_apps()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Apps returns "OK" response
@@ -323,13 +316,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 p api_instance.list_apps()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Apps returns "OK" response
@@ -337,37 +331,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.ListApps(ctx, *datadogV2.NewListAppsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.ListApps(ctx, *datadogV2.NewListAppsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.ListApps`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.ListApps`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.ListApps`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.ListApps`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Apps returns "OK" response
@@ -394,13 +389,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Apps returns "OK" response
@@ -419,13 +415,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -445,6 +442,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -472,12 +470,9 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new app, returning the app ID. This API requires a [registered application key](https://docs.datadoghq.com/api/latest/action-connection/#register-a-new-app-key). Alternatively, you can configure these permissions [in the UI](https://docs.datadoghq.com/account_management/api-app-keys/#actions-api-access). This endpoint requires all of the following permissions:
 `apps_write``connections_resolve``workflows_run`
 
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -511,7 +506,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
 | components           | type [*required*]       | enum            | The grid component type. Allowed enum values: `grid`                                                                                                                                                                                                                          |
 | attributes           | description                  | string          | A human-readable description for the app.                                                                                                                                                                                                                                     |
 | attributes           | name                         | string          | The name of the app.                                                                                                                                                                                                                                                          |
-| attributes           | queries                      | [ <oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
+| attributes           | queries                      | [<oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
 | queries              | Option 1                     | object          | An action query. This query type is used to trigger an action, such as sending a HTTP request.                                                                                                                                                                                |
 | Option 1             | events                       | [object]        | Events to listen for downstream of the action query.                                                                                                                                                                                                                          |
 | events               | name                         | enum            | The triggering action for the event. Allowed enum values: `pageChange,tableRowClick,_tableRowButtonClick,change,submit,click,toggleOpen,close,open,executionFinished`                                                                                                         |
@@ -583,18 +578,15 @@ Create a new app, returning the app ID. This API requires a [registered applicat
     "type": "appDefinitions",
     "attributes": {
       "rootInstanceName": "grid0",
-      "components": [
-        {
+      "components": [{
           "name": "grid0",
           "type": "grid",
           "properties": {
-            "children": [
-              {
+            "children": [{
                 "type": "gridCell",
                 "name": "gridCell0",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "text0",
                       "type": "text",
                       "properties": {
@@ -605,8 +597,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                         "isVisible": true
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -623,14 +614,12 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                 "type": "gridCell",
                 "name": "gridCell2",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "table0",
                       "type": "table",
                       "properties": {
                         "data": "${fetchFacts?.outputs?.body?.data}",
-                        "columns": [
-                          {
+                        "columns": [{
                             "dataPath": "fact",
                             "header": "fact",
                             "isHidden": false,
@@ -652,8 +641,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                               "format": "LARGE_WITHOUT_TIME"
                             },
                             "isDeleted": true
-                          }
-                        ],
+                          }],
                         "summary": true,
                         "pageSize": "${pageSize?.value}",
                         "paginationType": "server_side",
@@ -667,8 +655,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                         "totalCount": "${fetchFacts?.outputs?.body?.total}"
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -685,8 +672,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                 "type": "gridCell",
                 "name": "gridCell1",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "text1",
                       "type": "text",
                       "properties": {
@@ -697,8 +683,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                         "isVisible": true
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -715,8 +700,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                 "type": "gridCell",
                 "name": "gridCell3",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "button0",
                       "type": "button",
                       "properties": {
@@ -730,16 +714,13 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                         "iconLeft": "angleUp",
                         "iconRight": ""
                       },
-                      "events": [
-                        {
+                      "events": [{
                           "variableName": "pageSize",
                           "value": "${pageSize?.value + 1}",
                           "name": "click",
                           "type": "setStateVariableValue"
-                        }
-                      ]
-                    }
-                  ],
+                        }]
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -756,8 +737,7 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                 "type": "gridCell",
                 "name": "gridCell4",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "button1",
                       "type": "button",
                       "properties": {
@@ -771,16 +751,13 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                         "iconLeft": "angleDown",
                         "iconRight": ""
                       },
-                      "events": [
-                        {
+                      "events": [{
                           "variableName": "pageSize",
                           "value": "${pageSize?.value - 1}",
                           "name": "click",
                           "type": "setStateVariableValue"
-                        }
-                      ]
-                    }
-                  ],
+                        }]
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -792,15 +769,12 @@ Create a new app, returning the app ID. This API requires a [registered applicat
                   }
                 },
                 "events": []
-              }
-            ],
+              }],
             "backgroundColor": "default"
           },
           "events": []
-        }
-      ],
-      "queries": [
-        {
+        }],
+      "queries": [{
           "id": "92ff0bb8-553b-4f31-87c7-ef5bd16d47d5",
           "type": "action",
           "name": "fetchFacts",
@@ -812,16 +786,14 @@ Create a new app, returning the app ID. This API requires a [registered applicat
               "inputs": {
                 "verb": "GET",
                 "url": "https://catfact.ninja/facts",
-                "urlParams": [
-                  {
+                "urlParams": [{
                     "key": "limit",
                     "value": "${pageSize.value.toString()}"
                   },
                   {
                     "key": "page",
                     "value": "${(table0.pageIndex + 1).toString()}"
-                  }
-                ]
+                  }]
               }
             }
           }
@@ -841,13 +813,13 @@ Create a new app, returning the app ID. This API requires a [registered applicat
             "outputs": "${(() => {const facts = fetchFacts.outputs.body.data\nreturn facts[Math.floor(Math.random()*facts.length)]\n})()}"
           },
           "id": "0fb22859-47dc-4137-9e41-7b67d04c525c"
-        }
-      ],
+        }],
       "name": "Example Cat Facts Viewer",
       "description": "This is a slightly complicated example app that fetches and displays cat facts"
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -876,6 +848,7 @@ The response object after a new app is successfully created, with the app ID.
     "type": "appDefinitions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -905,8 +878,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -916,9 +888,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -948,8 +920,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -959,9 +930,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -983,10 +954,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -995,7 +965,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1007,18 +977,15 @@ API error response.
     "type": "appDefinitions",
     "attributes": {
       "rootInstanceName": "grid0",
-      "components": [
-        {
+      "components": [{
           "name": "grid0",
           "type": "grid",
           "properties": {
-            "children": [
-              {
+            "children": [{
                 "type": "gridCell",
                 "name": "gridCell0",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "text0",
                       "type": "text",
                       "properties": {
@@ -1029,8 +996,7 @@ API error response.
                         "isVisible": true
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -1047,14 +1013,12 @@ API error response.
                 "type": "gridCell",
                 "name": "gridCell2",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "table0",
                       "type": "table",
                       "properties": {
                         "data": "${fetchFacts?.outputs?.body?.data}",
-                        "columns": [
-                          {
+                        "columns": [{
                             "dataPath": "fact",
                             "header": "fact",
                             "isHidden": false,
@@ -1076,8 +1040,7 @@ API error response.
                               "format": "LARGE_WITHOUT_TIME"
                             },
                             "isDeleted": true
-                          }
-                        ],
+                          }],
                         "summary": true,
                         "pageSize": "${pageSize?.value}",
                         "paginationType": "server_side",
@@ -1091,8 +1054,7 @@ API error response.
                         "totalCount": "${fetchFacts?.outputs?.body?.total}"
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -1109,8 +1071,7 @@ API error response.
                 "type": "gridCell",
                 "name": "gridCell1",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "text1",
                       "type": "text",
                       "properties": {
@@ -1121,8 +1082,7 @@ API error response.
                         "isVisible": true
                       },
                       "events": []
-                    }
-                  ],
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -1139,8 +1099,7 @@ API error response.
                 "type": "gridCell",
                 "name": "gridCell3",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "button0",
                       "type": "button",
                       "properties": {
@@ -1154,16 +1113,13 @@ API error response.
                         "iconLeft": "angleUp",
                         "iconRight": ""
                       },
-                      "events": [
-                        {
+                      "events": [{
                           "variableName": "pageSize",
                           "value": "${pageSize?.value + 1}",
                           "name": "click",
                           "type": "setStateVariableValue"
-                        }
-                      ]
-                    }
-                  ],
+                        }]
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -1180,8 +1136,7 @@ API error response.
                 "type": "gridCell",
                 "name": "gridCell4",
                 "properties": {
-                  "children": [
-                    {
+                  "children": [{
                       "name": "button1",
                       "type": "button",
                       "properties": {
@@ -1195,16 +1150,13 @@ API error response.
                         "iconLeft": "angleDown",
                         "iconRight": ""
                       },
-                      "events": [
-                        {
+                      "events": [{
                           "variableName": "pageSize",
                           "value": "${pageSize?.value - 1}",
                           "name": "click",
                           "type": "setStateVariableValue"
-                        }
-                      ]
-                    }
-                  ],
+                        }]
+                    }],
                   "isVisible": "true",
                   "layout": {
                     "default": {
@@ -1216,15 +1168,12 @@ API error response.
                   }
                 },
                 "events": []
-              }
-            ],
+              }],
             "backgroundColor": "default"
           },
           "events": []
-        }
-      ],
-      "queries": [
-        {
+        }],
+      "queries": [{
           "id": "92ff0bb8-553b-4f31-87c7-ef5bd16d47d5",
           "type": "action",
           "name": "fetchFacts",
@@ -1236,16 +1185,14 @@ API error response.
               "inputs": {
                 "verb": "GET",
                 "url": "https://catfact.ninja/facts",
-                "urlParams": [
-                  {
+                "urlParams": [{
                     "key": "limit",
                     "value": "${pageSize.value.toString()}"
                   },
                   {
                     "key": "page",
                     "value": "${(table0.pageIndex + 1).toString()}"
-                  }
-                ]
+                  }]
               }
             }
           }
@@ -1265,16 +1212,15 @@ API error response.
             "outputs": "${(() => {const facts = fetchFacts.outputs.body.data\nreturn facts[Math.floor(Math.random()*facts.length)]\n})()}"
           },
           "id": "0fb22859-47dc-4137-9e41-7b67d04c525c"
-        }
-      ],
+        }],
       "name": "Example Cat Facts Viewer",
       "description": "This is a slightly complicated example app that fetches and displays cat facts"
     }
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create App returns "Created" response
@@ -1282,212 +1228,213 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	body := datadogV2.CreateAppRequest{
-		Data: &datadogV2.CreateAppRequestData{
-			Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
-			Attributes: &datadogV2.CreateAppRequestDataAttributes{
-				RootInstanceName: datadog.PtrString("grid0"),
-				Components: []datadogV2.ComponentGrid{
-					{
-						Name: "grid0",
-						Type: datadogV2.COMPONENTGRIDTYPE_GRID,
-						Properties: datadogV2.ComponentGridProperties{
-							Children: []datadogV2.Component{
-								{
-									Type: datadogV2.COMPONENTTYPE_GRIDCELL,
-									Name: "gridCell0",
-									Properties: datadogV2.ComponentProperties{
-										Children: []datadogV2.Component{
-											{
-												Name: "text0",
-												Type: datadogV2.COMPONENTTYPE_TEXT,
-												Properties: datadogV2.ComponentProperties{
-													IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-														Bool: datadog.PtrBool(true)},
-												},
-												Events: []datadogV2.AppBuilderEvent{},
-											},
-										},
-										IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-											String: datadog.PtrString("true")},
-									},
-									Events: []datadogV2.AppBuilderEvent{},
-								},
-								{
-									Type: datadogV2.COMPONENTTYPE_GRIDCELL,
-									Name: "gridCell2",
-									Properties: datadogV2.ComponentProperties{
-										Children: []datadogV2.Component{
-											{
-												Name: "table0",
-												Type: datadogV2.COMPONENTTYPE_TABLE,
-												Properties: datadogV2.ComponentProperties{
-													IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-														Bool: datadog.PtrBool(true)},
-												},
-												Events: []datadogV2.AppBuilderEvent{},
-											},
-										},
-										IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-											String: datadog.PtrString("true")},
-									},
-									Events: []datadogV2.AppBuilderEvent{},
-								},
-								{
-									Type: datadogV2.COMPONENTTYPE_GRIDCELL,
-									Name: "gridCell1",
-									Properties: datadogV2.ComponentProperties{
-										Children: []datadogV2.Component{
-											{
-												Name: "text1",
-												Type: datadogV2.COMPONENTTYPE_TEXT,
-												Properties: datadogV2.ComponentProperties{
-													IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-														Bool: datadog.PtrBool(true)},
-												},
-												Events: []datadogV2.AppBuilderEvent{},
-											},
-										},
-										IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-											String: datadog.PtrString("true")},
-									},
-									Events: []datadogV2.AppBuilderEvent{},
-								},
-								{
-									Type: datadogV2.COMPONENTTYPE_GRIDCELL,
-									Name: "gridCell3",
-									Properties: datadogV2.ComponentProperties{
-										Children: []datadogV2.Component{
-											{
-												Name: "button0",
-												Type: datadogV2.COMPONENTTYPE_BUTTON,
-												Properties: datadogV2.ComponentProperties{
-													IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-														Bool: datadog.PtrBool(true)},
-												},
-												Events: []datadogV2.AppBuilderEvent{
-													{
-														Name: datadogV2.APPBUILDEREVENTNAME_CLICK.Ptr(),
-														Type: datadogV2.APPBUILDEREVENTTYPE_SETSTATEVARIABLEVALUE.Ptr(),
-													},
-												},
-											},
-										},
-										IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-											String: datadog.PtrString("true")},
-									},
-									Events: []datadogV2.AppBuilderEvent{},
-								},
-								{
-									Type: datadogV2.COMPONENTTYPE_GRIDCELL,
-									Name: "gridCell4",
-									Properties: datadogV2.ComponentProperties{
-										Children: []datadogV2.Component{
-											{
-												Name: "button1",
-												Type: datadogV2.COMPONENTTYPE_BUTTON,
-												Properties: datadogV2.ComponentProperties{
-													IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-														Bool: datadog.PtrBool(true)},
-												},
-												Events: []datadogV2.AppBuilderEvent{
-													{
-														Name: datadogV2.APPBUILDEREVENTNAME_CLICK.Ptr(),
-														Type: datadogV2.APPBUILDEREVENTTYPE_SETSTATEVARIABLEVALUE.Ptr(),
-													},
-												},
-											},
-										},
-										IsVisible: &datadogV2.ComponentPropertiesIsVisible{
-											String: datadog.PtrString("true")},
-									},
-									Events: []datadogV2.AppBuilderEvent{},
-								},
-							},
-							BackgroundColor: datadog.PtrString("default"),
-						},
-						Events: []datadogV2.AppBuilderEvent{},
-					},
-				},
-				Queries: []datadogV2.Query{
-					datadogV2.Query{
-						ActionQuery: &datadogV2.ActionQuery{
-							Id:     uuid.MustParse("92ff0bb8-553b-4f31-87c7-ef5bd16d47d5"),
-							Type:   datadogV2.ACTIONQUERYTYPE_ACTION,
-							Name:   "fetchFacts",
-							Events: []datadogV2.AppBuilderEvent{},
-							Properties: datadogV2.ActionQueryProperties{
-								Spec: datadogV2.ActionQuerySpec{
-									ActionQuerySpecObject: &datadogV2.ActionQuerySpecObject{
-										Fqn:          "com.datadoghq.http.request",
-										ConnectionId: datadog.PtrString("5e63f4a8-4ce6-47de-ba11-f6617c1d54f3"),
-										Inputs: &datadogV2.ActionQuerySpecInputs{
-											ActionQuerySpecInput: map[string]interface{}{
-												"verb":      "GET",
-												"url":       "https://catfact.ninja/facts",
-												"urlParams": "[{'key': 'limit', 'value': '${pageSize.value.toString()}'}, {'key': 'page', 'value': '${(table0.pageIndex + 1).toString()}'}]",
-											}},
-									}},
-							},
-						}},
-					datadogV2.Query{
-						StateVariable: &datadogV2.StateVariable{
-							Type: datadogV2.STATEVARIABLETYPE_STATEVARIABLE,
-							Name: "pageSize",
-							Properties: datadogV2.StateVariableProperties{
-								DefaultValue: "${20}",
-							},
-							Id: uuid.MustParse("afd03c81-4075-4432-8618-ba09d52d2f2d"),
-						}},
-					datadogV2.Query{
-						DataTransform: &datadogV2.DataTransform{
-							Type: datadogV2.DATATRANSFORMTYPE_DATATRANSFORM,
-							Name: "randomFact",
-							Properties: datadogV2.DataTransformProperties{
-								Outputs: datadog.PtrString(`${(() => {const facts = fetchFacts.outputs.body.data
+    body := datadogV2.CreateAppRequest{
+        Data: &datadogV2.CreateAppRequestData{
+            Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
+            Attributes: &datadogV2.CreateAppRequestDataAttributes{
+                RootInstanceName: datadog.PtrString("grid0"),
+                Components: []datadogV2.ComponentGrid{
+                    {
+                        Name: "grid0",
+                        Type: datadogV2.COMPONENTGRIDTYPE_GRID,
+                        Properties: datadogV2.ComponentGridProperties{
+                            Children: []datadogV2.Component{
+                                {
+                                    Type: datadogV2.COMPONENTTYPE_GRIDCELL,
+                                    Name: "gridCell0",
+                                    Properties: datadogV2.ComponentProperties{
+                                        Children: []datadogV2.Component{
+                                            {
+                                                Name: "text0",
+                                                Type: datadogV2.COMPONENTTYPE_TEXT,
+                                                Properties: datadogV2.ComponentProperties{
+                                                    IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                                        Bool: datadog.PtrBool(true)},
+                                                },
+                                                Events: []datadogV2.AppBuilderEvent{},
+                                            },
+                                        },
+                                        IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                            String: datadog.PtrString("true")},
+                                    },
+                                    Events: []datadogV2.AppBuilderEvent{},
+                                },
+                                {
+                                    Type: datadogV2.COMPONENTTYPE_GRIDCELL,
+                                    Name: "gridCell2",
+                                    Properties: datadogV2.ComponentProperties{
+                                        Children: []datadogV2.Component{
+                                            {
+                                                Name: "table0",
+                                                Type: datadogV2.COMPONENTTYPE_TABLE,
+                                                Properties: datadogV2.ComponentProperties{
+                                                    IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                                        Bool: datadog.PtrBool(true)},
+                                                },
+                                                Events: []datadogV2.AppBuilderEvent{},
+                                            },
+                                        },
+                                        IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                            String: datadog.PtrString("true")},
+                                    },
+                                    Events: []datadogV2.AppBuilderEvent{},
+                                },
+                                {
+                                    Type: datadogV2.COMPONENTTYPE_GRIDCELL,
+                                    Name: "gridCell1",
+                                    Properties: datadogV2.ComponentProperties{
+                                        Children: []datadogV2.Component{
+                                            {
+                                                Name: "text1",
+                                                Type: datadogV2.COMPONENTTYPE_TEXT,
+                                                Properties: datadogV2.ComponentProperties{
+                                                    IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                                        Bool: datadog.PtrBool(true)},
+                                                },
+                                                Events: []datadogV2.AppBuilderEvent{},
+                                            },
+                                        },
+                                        IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                            String: datadog.PtrString("true")},
+                                    },
+                                    Events: []datadogV2.AppBuilderEvent{},
+                                },
+                                {
+                                    Type: datadogV2.COMPONENTTYPE_GRIDCELL,
+                                    Name: "gridCell3",
+                                    Properties: datadogV2.ComponentProperties{
+                                        Children: []datadogV2.Component{
+                                            {
+                                                Name: "button0",
+                                                Type: datadogV2.COMPONENTTYPE_BUTTON,
+                                                Properties: datadogV2.ComponentProperties{
+                                                    IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                                        Bool: datadog.PtrBool(true)},
+                                                },
+                                                Events: []datadogV2.AppBuilderEvent{
+                                                    {
+                                                        Name: datadogV2.APPBUILDEREVENTNAME_CLICK.Ptr(),
+                                                        Type: datadogV2.APPBUILDEREVENTTYPE_SETSTATEVARIABLEVALUE.Ptr(),
+                                                    },
+                                                },
+                                            },
+                                        },
+                                        IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                            String: datadog.PtrString("true")},
+                                    },
+                                    Events: []datadogV2.AppBuilderEvent{},
+                                },
+                                {
+                                    Type: datadogV2.COMPONENTTYPE_GRIDCELL,
+                                    Name: "gridCell4",
+                                    Properties: datadogV2.ComponentProperties{
+                                        Children: []datadogV2.Component{
+                                            {
+                                                Name: "button1",
+                                                Type: datadogV2.COMPONENTTYPE_BUTTON,
+                                                Properties: datadogV2.ComponentProperties{
+                                                    IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                                        Bool: datadog.PtrBool(true)},
+                                                },
+                                                Events: []datadogV2.AppBuilderEvent{
+                                                    {
+                                                        Name: datadogV2.APPBUILDEREVENTNAME_CLICK.Ptr(),
+                                                        Type: datadogV2.APPBUILDEREVENTTYPE_SETSTATEVARIABLEVALUE.Ptr(),
+                                                    },
+                                                },
+                                            },
+                                        },
+                                        IsVisible: &datadogV2.ComponentPropertiesIsVisible{
+                                            String: datadog.PtrString("true")},
+                                    },
+                                    Events: []datadogV2.AppBuilderEvent{},
+                                },
+                            },
+                            BackgroundColor: datadog.PtrString("default"),
+                        },
+                        Events: []datadogV2.AppBuilderEvent{},
+                    },
+                },
+                Queries: []datadogV2.Query{
+                    datadogV2.Query{
+                        ActionQuery: &datadogV2.ActionQuery{
+                            Id:     uuid.MustParse("92ff0bb8-553b-4f31-87c7-ef5bd16d47d5"),
+                            Type:   datadogV2.ACTIONQUERYTYPE_ACTION,
+                            Name:   "fetchFacts",
+                            Events: []datadogV2.AppBuilderEvent{},
+                            Properties: datadogV2.ActionQueryProperties{
+                                Spec: datadogV2.ActionQuerySpec{
+                                    ActionQuerySpecObject: &datadogV2.ActionQuerySpecObject{
+                                        Fqn:          "com.datadoghq.http.request",
+                                        ConnectionId: datadog.PtrString("5e63f4a8-4ce6-47de-ba11-f6617c1d54f3"),
+                                        Inputs: &datadogV2.ActionQuerySpecInputs{
+                                            ActionQuerySpecInput: map[string]interface{}{
+                                                "verb":      "GET",
+                                                "url":       "https://catfact.ninja/facts",
+                                                "urlParams": "[{'key': 'limit', 'value': '${pageSize.value.toString()}'}, {'key': 'page', 'value': '${(table0.pageIndex + 1).toString()}'}]",
+                                            }},
+                                    }},
+                            },
+                        }},
+                    datadogV2.Query{
+                        StateVariable: &datadogV2.StateVariable{
+                            Type: datadogV2.STATEVARIABLETYPE_STATEVARIABLE,
+                            Name: "pageSize",
+                            Properties: datadogV2.StateVariableProperties{
+                                DefaultValue: "${20}",
+                            },
+                            Id: uuid.MustParse("afd03c81-4075-4432-8618-ba09d52d2f2d"),
+                        }},
+                    datadogV2.Query{
+                        DataTransform: &datadogV2.DataTransform{
+                            Type: datadogV2.DATATRANSFORMTYPE_DATATRANSFORM,
+                            Name: "randomFact",
+                            Properties: datadogV2.DataTransformProperties{
+                                Outputs: datadog.PtrString(`${(() => {const facts = fetchFacts.outputs.body.data
 return facts[Math.floor(Math.random()*facts.length)]
 })()}`),
-							},
-							Id: uuid.MustParse("0fb22859-47dc-4137-9e41-7b67d04c525c"),
-						}},
-				},
-				Name:        datadog.PtrString("Example Cat Facts Viewer"),
-				Description: datadog.PtrString("This is a slightly complicated example app that fetches and displays cat facts"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.CreateApp(ctx, body)
+                            },
+                            Id: uuid.MustParse("0fb22859-47dc-4137-9e41-7b67d04c525c"),
+                        }},
+                },
+                Name:        datadog.PtrString("Example Cat Facts Viewer"),
+                Description: datadog.PtrString("This is a slightly complicated example app that fetches and displays cat facts"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.CreateApp(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.CreateApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.CreateApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.CreateApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.CreateApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create App returns "Created" response
@@ -1747,13 +1694,14 @@ return facts[Math.floor(Math.random()*facts.length)]
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1793,18 +1741,15 @@ body = CreateAppRequest(
         type=AppDefinitionType.APPDEFINITIONS,
         attributes=CreateAppRequestDataAttributes(
             root_instance_name="grid0",
-            components=[
-                ComponentGrid(
+            components=[ComponentGrid(
                     name="grid0",
                     type=ComponentGridType.GRID,
                     properties=ComponentGridProperties(
-                        children=[
-                            Component(
+                        children=[Component(
                                 type=ComponentType.GRIDCELL,
                                 name="gridCell0",
                                 properties=ComponentProperties(
-                                    children=[
-                                        Component(
+                                    children=[Component(
                                             name="text0",
                                             type=ComponentType.TEXT,
                                             properties=ComponentProperties(
@@ -1815,8 +1760,7 @@ body = CreateAppRequest(
                                                 is_visible=True,
                                             ),
                                             events=[],
-                                        ),
-                                    ],
+                                        ),],
                                     is_visible="true",
                                     layout=dict([("default", "{'x': 0, 'y': 0, 'width': 4, 'height': 5}")]),
                                 ),
@@ -1826,32 +1770,25 @@ body = CreateAppRequest(
                                 type=ComponentType.GRIDCELL,
                                 name="gridCell2",
                                 properties=ComponentProperties(
-                                    children=[
-                                        Component(
+                                    children=[Component(
                                             name="table0",
                                             type=ComponentType.TABLE,
                                             properties=ComponentProperties(
                                                 data="${fetchFacts?.outputs?.body?.data}",
-                                                columns=[
-                                                    dict(
-                                                        [
-                                                            ("dataPath", "fact"),
+                                                columns=[dict(
+                                                        [("dataPath", "fact"),
                                                             ("header", "fact"),
                                                             ("isHidden", "False"),
-                                                            ("id", "0ae2ae9e-0280-4389-83c6-1c5949f7e674"),
-                                                        ]
+                                                            ("id", "0ae2ae9e-0280-4389-83c6-1c5949f7e674"),]
                                                     ),
                                                     dict(
-                                                        [
-                                                            ("dataPath", "length"),
+                                                        [("dataPath", "length"),
                                                             ("header", "length"),
                                                             ("isHidden", "True"),
-                                                            ("id", "c9048611-0196-4a00-9366-1ef9e3ec0408"),
-                                                        ]
+                                                            ("id", "c9048611-0196-4a00-9366-1ef9e3ec0408"),]
                                                     ),
                                                     dict(
-                                                        [
-                                                            ("id", "8fa9284b-7a58-4f13-9959-57b7d8a7fe8f"),
+                                                        [("id", "8fa9284b-7a58-4f13-9959-57b7d8a7fe8f"),
                                                             ("dataPath", "Due Date"),
                                                             ("header", "Unused Old Column"),
                                                             ("disableSortBy", "False"),
@@ -1859,10 +1796,8 @@ body = CreateAppRequest(
                                                                 "formatter",
                                                                 "{'type': 'formatted_time', 'format': 'LARGE_WITHOUT_TIME'}",
                                                             ),
-                                                            ("isDeleted", "True"),
-                                                        ]
-                                                    ),
-                                                ],
+                                                            ("isDeleted", "True"),]
+                                                    ),],
                                                 summary=True,
                                                 page_size="${pageSize?.value}",
                                                 pagination_type="server_side",
@@ -1876,8 +1811,7 @@ body = CreateAppRequest(
                                                 total_count="${fetchFacts?.outputs?.body?.total}",
                                             ),
                                             events=[],
-                                        ),
-                                    ],
+                                        ),],
                                     is_visible="true",
                                     layout=dict([("default", "{'x': 0, 'y': 5, 'width': 12, 'height': 96}")]),
                                 ),
@@ -1887,8 +1821,7 @@ body = CreateAppRequest(
                                 type=ComponentType.GRIDCELL,
                                 name="gridCell1",
                                 properties=ComponentProperties(
-                                    children=[
-                                        Component(
+                                    children=[Component(
                                             name="text1",
                                             type=ComponentType.TEXT,
                                             properties=ComponentProperties(
@@ -1899,8 +1832,7 @@ body = CreateAppRequest(
                                                 is_visible=True,
                                             ),
                                             events=[],
-                                        ),
-                                    ],
+                                        ),],
                                     is_visible="true",
                                     layout=dict([("default", "{'x': 0, 'y': 101, 'width': 12, 'height': 16}")]),
                                 ),
@@ -1910,8 +1842,7 @@ body = CreateAppRequest(
                                 type=ComponentType.GRIDCELL,
                                 name="gridCell3",
                                 properties=ComponentProperties(
-                                    children=[
-                                        Component(
+                                    children=[Component(
                                             name="button0",
                                             type=ComponentType.BUTTON,
                                             properties=ComponentProperties(
@@ -1925,16 +1856,13 @@ body = CreateAppRequest(
                                                 icon_left="angleUp",
                                                 icon_right="",
                                             ),
-                                            events=[
-                                                AppBuilderEvent(
+                                            events=[AppBuilderEvent(
                                                     variable_name="pageSize",
                                                     value="${pageSize?.value + 1}",
                                                     name=AppBuilderEventName.CLICK,
                                                     type=AppBuilderEventType.SETSTATEVARIABLEVALUE,
-                                                ),
-                                            ],
-                                        ),
-                                    ],
+                                                ),],
+                                        ),],
                                     is_visible="true",
                                     layout=dict([("default", "{'x': 10, 'y': 134, 'width': 2, 'height': 4}")]),
                                 ),
@@ -1944,8 +1872,7 @@ body = CreateAppRequest(
                                 type=ComponentType.GRIDCELL,
                                 name="gridCell4",
                                 properties=ComponentProperties(
-                                    children=[
-                                        Component(
+                                    children=[Component(
                                             name="button1",
                                             type=ComponentType.BUTTON,
                                             properties=ComponentProperties(
@@ -1959,29 +1886,23 @@ body = CreateAppRequest(
                                                 icon_left="angleDown",
                                                 icon_right="",
                                             ),
-                                            events=[
-                                                AppBuilderEvent(
+                                            events=[AppBuilderEvent(
                                                     variable_name="pageSize",
                                                     value="${pageSize?.value - 1}",
                                                     name=AppBuilderEventName.CLICK,
                                                     type=AppBuilderEventType.SETSTATEVARIABLEVALUE,
-                                                ),
-                                            ],
-                                        ),
-                                    ],
+                                                ),],
+                                        ),],
                                     is_visible="true",
                                     layout=dict([("default", "{'x': 10, 'y': 138, 'width': 2, 'height': 4}")]),
                                 ),
                                 events=[],
-                            ),
-                        ],
+                            ),],
                         background_color="default",
                     ),
                     events=[],
-                ),
-            ],
-            queries=[
-                ActionQuery(
+                ),],
+            queries=[ActionQuery(
                     id=UUID("92ff0bb8-553b-4f31-87c7-ef5bd16d47d5"),
                     type=ActionQueryType.ACTION,
                     name="fetchFacts",
@@ -1991,14 +1912,12 @@ body = CreateAppRequest(
                             fqn="com.datadoghq.http.request",
                             connection_id="5e63f4a8-4ce6-47de-ba11-f6617c1d54f3",
                             inputs=ActionQuerySpecInput(
-                                [
-                                    ("verb", "GET"),
+                                [("verb", "GET"),
                                     ("url", "https://catfact.ninja/facts"),
                                     (
                                         "urlParams",
                                         "[{'key': 'limit', 'value': '${pageSize.value.toString()}'}, {'key': 'page', 'value': '${(table0.pageIndex + 1).toString()}'}]",
-                                    ),
-                                ]
+                                    ),]
                             ),
                         ),
                     ),
@@ -2018,8 +1937,7 @@ body = CreateAppRequest(
                         outputs="${(() => {const facts = fetchFacts.outputs.body.data\nreturn facts[Math.floor(Math.random()*facts.length)]\n})()}",
                     ),
                     id=UUID("0fb22859-47dc-4137-9e41-7b67d04c525c"),
-                ),
-            ],
+                ),],
             name="Example Cat Facts Viewer",
             description="This is a slightly complicated example app that fetches and displays cat facts",
         ),
@@ -2032,13 +1950,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_app(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create App returns "Created" response
@@ -2051,26 +1970,22 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
     type: DatadogAPIClient::V2::AppDefinitionType::APPDEFINITIONS,
     attributes: DatadogAPIClient::V2::CreateAppRequestDataAttributes.new({
       root_instance_name: "grid0",
-      components: [
-        DatadogAPIClient::V2::ComponentGrid.new({
+      components: [DatadogAPIClient::V2::ComponentGrid.new({
           name: "grid0",
           type: DatadogAPIClient::V2::ComponentGridType::GRID,
           properties: DatadogAPIClient::V2::ComponentGridProperties.new({
-            children: [
-              DatadogAPIClient::V2::Component.new({
+            children: [DatadogAPIClient::V2::Component.new({
                 type: DatadogAPIClient::V2::ComponentType::GRIDCELL,
                 name: "gridCell0",
                 properties: DatadogAPIClient::V2::ComponentProperties.new({
-                  children: [
-                    DatadogAPIClient::V2::Component.new({
+                  children: [DatadogAPIClient::V2::Component.new({
                       name: "text0",
                       type: DatadogAPIClient::V2::ComponentType::TEXT,
                       properties: DatadogAPIClient::V2::ComponentProperties.new({
                         is_visible: true,
                       }),
                       events: [],
-                    }),
-                  ],
+                    }),],
                   is_visible: "true",
                 }),
                 events: [],
@@ -2079,16 +1994,14 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
                 type: DatadogAPIClient::V2::ComponentType::GRIDCELL,
                 name: "gridCell2",
                 properties: DatadogAPIClient::V2::ComponentProperties.new({
-                  children: [
-                    DatadogAPIClient::V2::Component.new({
+                  children: [DatadogAPIClient::V2::Component.new({
                       name: "table0",
                       type: DatadogAPIClient::V2::ComponentType::TABLE,
                       properties: DatadogAPIClient::V2::ComponentProperties.new({
                         is_visible: true,
                       }),
                       events: [],
-                    }),
-                  ],
+                    }),],
                   is_visible: "true",
                 }),
                 events: [],
@@ -2097,16 +2010,14 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
                 type: DatadogAPIClient::V2::ComponentType::GRIDCELL,
                 name: "gridCell1",
                 properties: DatadogAPIClient::V2::ComponentProperties.new({
-                  children: [
-                    DatadogAPIClient::V2::Component.new({
+                  children: [DatadogAPIClient::V2::Component.new({
                       name: "text1",
                       type: DatadogAPIClient::V2::ComponentType::TEXT,
                       properties: DatadogAPIClient::V2::ComponentProperties.new({
                         is_visible: true,
                       }),
                       events: [],
-                    }),
-                  ],
+                    }),],
                   is_visible: "true",
                 }),
                 events: [],
@@ -2115,21 +2026,17 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
                 type: DatadogAPIClient::V2::ComponentType::GRIDCELL,
                 name: "gridCell3",
                 properties: DatadogAPIClient::V2::ComponentProperties.new({
-                  children: [
-                    DatadogAPIClient::V2::Component.new({
+                  children: [DatadogAPIClient::V2::Component.new({
                       name: "button0",
                       type: DatadogAPIClient::V2::ComponentType::BUTTON,
                       properties: DatadogAPIClient::V2::ComponentProperties.new({
                         is_visible: true,
                       }),
-                      events: [
-                        DatadogAPIClient::V2::AppBuilderEvent.new({
+                      events: [DatadogAPIClient::V2::AppBuilderEvent.new({
                           name: DatadogAPIClient::V2::AppBuilderEventName::CLICK,
                           type: DatadogAPIClient::V2::AppBuilderEventType::SETSTATEVARIABLEVALUE,
-                        }),
-                      ],
-                    }),
-                  ],
+                        }),],
+                    }),],
                   is_visible: "true",
                 }),
                 events: [],
@@ -2138,33 +2045,26 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
                 type: DatadogAPIClient::V2::ComponentType::GRIDCELL,
                 name: "gridCell4",
                 properties: DatadogAPIClient::V2::ComponentProperties.new({
-                  children: [
-                    DatadogAPIClient::V2::Component.new({
+                  children: [DatadogAPIClient::V2::Component.new({
                       name: "button1",
                       type: DatadogAPIClient::V2::ComponentType::BUTTON,
                       properties: DatadogAPIClient::V2::ComponentProperties.new({
                         is_visible: true,
                       }),
-                      events: [
-                        DatadogAPIClient::V2::AppBuilderEvent.new({
+                      events: [DatadogAPIClient::V2::AppBuilderEvent.new({
                           name: DatadogAPIClient::V2::AppBuilderEventName::CLICK,
                           type: DatadogAPIClient::V2::AppBuilderEventType::SETSTATEVARIABLEVALUE,
-                        }),
-                      ],
-                    }),
-                  ],
+                        }),],
+                    }),],
                   is_visible: "true",
                 }),
                 events: [],
-              }),
-            ],
+              }),],
             background_color: "default",
           }),
           events: [],
-        }),
-      ],
-      queries: [
-        DatadogAPIClient::V2::ActionQuery.new({
+        }),],
+      queries: [DatadogAPIClient::V2::ActionQuery.new({
           id: "92ff0bb8-553b-4f31-87c7-ef5bd16d47d5",
           type: DatadogAPIClient::V2::ActionQueryType::ACTION,
           name: "fetchFacts",
@@ -2190,21 +2090,21 @@ body = DatadogAPIClient::V2::CreateAppRequest.new({
             outputs: '${(() => {const facts = fetchFacts.outputs.body.data\nreturn facts[Math.floor(Math.random()*facts.length)]\n})()}',
           }),
           id: "0fb22859-47dc-4137-9e41-7b67d04c525c",
-        }),
-      ],
+        }),],
       name: "Example Cat Facts Viewer",
       description: "This is a slightly complicated example app that fetches and displays cat facts",
     }),
   }),
 })
 p api_instance.create_app(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create App returns "Created" response
@@ -2251,27 +2151,23 @@ async fn main() {
             ).attributes(
                 CreateAppRequestDataAttributes::new()
                     .components(
-                        vec![
-                            ComponentGrid::new(
+                        vec![ComponentGrid::new(
                                 "grid0".to_string(),
                                 ComponentGridProperties::new()
                                     .background_color("default".to_string())
                                     .children(
-                                        vec![
-                                            Component::new(
+                                        vec![Component::new(
                                                 "gridCell0".to_string(),
                                                 ComponentProperties::new()
                                                     .children(
-                                                        vec![
-                                                            Component::new(
+                                                        vec![Component::new(
                                                                 "text0".to_string(),
                                                                 ComponentProperties
                                                                 ::new().is_visible(
                                                                     ComponentPropertiesIsVisible::Bool(true),
                                                                 ),
                                                                 ComponentType::TEXT,
-                                                            ).events(vec![])
-                                                        ],
+                                                            ).events(vec![])],
                                                     )
                                                     .is_visible(
                                                         ComponentPropertiesIsVisible::String("true".to_string()),
@@ -2282,16 +2178,14 @@ async fn main() {
                                                 "gridCell2".to_string(),
                                                 ComponentProperties::new()
                                                     .children(
-                                                        vec![
-                                                            Component::new(
+                                                        vec![Component::new(
                                                                 "table0".to_string(),
                                                                 ComponentProperties
                                                                 ::new().is_visible(
                                                                     ComponentPropertiesIsVisible::Bool(true),
                                                                 ),
                                                                 ComponentType::TABLE,
-                                                            ).events(vec![])
-                                                        ],
+                                                            ).events(vec![])],
                                                     )
                                                     .is_visible(
                                                         ComponentPropertiesIsVisible::String("true".to_string()),
@@ -2302,16 +2196,14 @@ async fn main() {
                                                 "gridCell1".to_string(),
                                                 ComponentProperties::new()
                                                     .children(
-                                                        vec![
-                                                            Component::new(
+                                                        vec![Component::new(
                                                                 "text1".to_string(),
                                                                 ComponentProperties
                                                                 ::new().is_visible(
                                                                     ComponentPropertiesIsVisible::Bool(true),
                                                                 ),
                                                                 ComponentType::TEXT,
-                                                            ).events(vec![])
-                                                        ],
+                                                            ).events(vec![])],
                                                     )
                                                     .is_visible(
                                                         ComponentPropertiesIsVisible::String("true".to_string()),
@@ -2322,8 +2214,7 @@ async fn main() {
                                                 "gridCell3".to_string(),
                                                 ComponentProperties::new()
                                                     .children(
-                                                        vec![
-                                                            Component::new(
+                                                        vec![Component::new(
                                                                 "button0".to_string(),
                                                                 ComponentProperties
                                                                 ::new().is_visible(
@@ -2331,15 +2222,12 @@ async fn main() {
                                                                 ),
                                                                 ComponentType::BUTTON,
                                                             ).events(
-                                                                vec![
-                                                                    AppBuilderEvent::new()
+                                                                vec![AppBuilderEvent::new()
                                                                         .name(AppBuilderEventName::CLICK)
                                                                         .type_(
                                                                             AppBuilderEventType::SETSTATEVARIABLEVALUE,
-                                                                        )
-                                                                ],
-                                                            )
-                                                        ],
+                                                                        )],
+                                                            )],
                                                     )
                                                     .is_visible(
                                                         ComponentPropertiesIsVisible::String("true".to_string()),
@@ -2350,8 +2238,7 @@ async fn main() {
                                                 "gridCell4".to_string(),
                                                 ComponentProperties::new()
                                                     .children(
-                                                        vec![
-                                                            Component::new(
+                                                        vec![Component::new(
                                                                 "button1".to_string(),
                                                                 ComponentProperties
                                                                 ::new().is_visible(
@@ -2359,34 +2246,28 @@ async fn main() {
                                                                 ),
                                                                 ComponentType::BUTTON,
                                                             ).events(
-                                                                vec![
-                                                                    AppBuilderEvent::new()
+                                                                vec![AppBuilderEvent::new()
                                                                         .name(AppBuilderEventName::CLICK)
                                                                         .type_(
                                                                             AppBuilderEventType::SETSTATEVARIABLEVALUE,
-                                                                        )
-                                                                ],
-                                                            )
-                                                        ],
+                                                                        )],
+                                                            )],
                                                     )
                                                     .is_visible(
                                                         ComponentPropertiesIsVisible::String("true".to_string()),
                                                     ),
                                                 ComponentType::GRIDCELL,
-                                            ).events(vec![])
-                                        ],
+                                            ).events(vec![])],
                                     ),
                                 ComponentGridType::GRID,
-                            ).events(vec![])
-                        ],
+                            ).events(vec![])],
                     )
                     .description(
                         "This is a slightly complicated example app that fetches and displays cat facts".to_string(),
                     )
                     .name("Example Cat Facts Viewer".to_string())
                     .queries(
-                        vec![
-                            Query::ActionQuery(
+                        vec![Query::ActionQuery(
                                 Box::new(
                                     ActionQuery::new(
                                         Uuid::parse_str(
@@ -2405,15 +2286,13 @@ async fn main() {
                                                         .inputs(
                                                             ActionQuerySpecInputs::ActionQuerySpecInput(
                                                                 BTreeMap::from(
-                                                                    [
-                                                                        ("verb".to_string(), Value::from("GET")),
+                                                                    [("verb".to_string(), Value::from("GET")),
                                                                         (
                                                                             "url".to_string(),
                                                                             Value::from(
                                                                                 "https://catfact.ninja/facts",
                                                                             ),
-                                                                        ),
-                                                                    ],
+                                                                        ),],
                                                                 ),
                                                             ),
                                                         ),
@@ -2452,8 +2331,7 @@ return facts[Math.floor(Math.random()*facts.length)]
                                         DataTransformType::DATATRANSFORM,
                                     ),
                                 ),
-                            )
-                        ],
+                            )],
                     )
                     .root_instance_name("grid0".to_string()),
             ),
@@ -2467,13 +2345,14 @@ return facts[Math.floor(Math.random()*facts.length)]
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2491,26 +2370,22 @@ const params: v2.AppBuilderApiCreateAppRequest = {
       type: "appDefinitions",
       attributes: {
         rootInstanceName: "grid0",
-        components: [
-          {
+        components: [{
             name: "grid0",
             type: "grid",
             properties: {
-              children: [
-                {
+              children: [{
                   type: "gridCell",
                   name: "gridCell0",
                   properties: {
-                    children: [
-                      {
+                    children: [{
                         name: "text0",
                         type: "text",
                         properties: {
                           isVisible: true,
                         },
                         events: [],
-                      },
-                    ],
+                      },],
                     isVisible: "true",
                   },
                   events: [],
@@ -2519,16 +2394,14 @@ const params: v2.AppBuilderApiCreateAppRequest = {
                   type: "gridCell",
                   name: "gridCell2",
                   properties: {
-                    children: [
-                      {
+                    children: [{
                         name: "table0",
                         type: "table",
                         properties: {
                           isVisible: true,
                         },
                         events: [],
-                      },
-                    ],
+                      },],
                     isVisible: "true",
                   },
                   events: [],
@@ -2537,16 +2410,14 @@ const params: v2.AppBuilderApiCreateAppRequest = {
                   type: "gridCell",
                   name: "gridCell1",
                   properties: {
-                    children: [
-                      {
+                    children: [{
                         name: "text1",
                         type: "text",
                         properties: {
                           isVisible: true,
                         },
                         events: [],
-                      },
-                    ],
+                      },],
                     isVisible: "true",
                   },
                   events: [],
@@ -2555,21 +2426,17 @@ const params: v2.AppBuilderApiCreateAppRequest = {
                   type: "gridCell",
                   name: "gridCell3",
                   properties: {
-                    children: [
-                      {
+                    children: [{
                         name: "button0",
                         type: "button",
                         properties: {
                           isVisible: true,
                         },
-                        events: [
-                          {
+                        events: [{
                             name: "click",
                             type: "setStateVariableValue",
-                          },
-                        ],
-                      },
-                    ],
+                          },],
+                      },],
                     isVisible: "true",
                   },
                   events: [],
@@ -2578,33 +2445,26 @@ const params: v2.AppBuilderApiCreateAppRequest = {
                   type: "gridCell",
                   name: "gridCell4",
                   properties: {
-                    children: [
-                      {
+                    children: [{
                         name: "button1",
                         type: "button",
                         properties: {
                           isVisible: true,
                         },
-                        events: [
-                          {
+                        events: [{
                             name: "click",
                             type: "setStateVariableValue",
-                          },
-                        ],
-                      },
-                    ],
+                          },],
+                      },],
                     isVisible: "true",
                   },
                   events: [],
-                },
-              ],
+                },],
               backgroundColor: "default",
             },
             events: [],
-          },
-        ],
-        queries: [
-          {
+          },],
+        queries: [{
             id: "92ff0bb8-553b-4f31-87c7-ef5bd16d47d5",
             type: "action",
             name: "fetchFacts",
@@ -2638,8 +2498,7 @@ const params: v2.AppBuilderApiCreateAppRequest = {
                 "${(() => {const facts = fetchFacts.outputs.body.data\nreturn facts[Math.floor(Math.random()*facts.length)]\n})()}",
             },
             id: "0fb22859-47dc-4137-9e41-7b67d04c525c",
-          },
-        ],
+          },],
         name: "Example Cat Facts Viewer",
         description:
           "This is a slightly complicated example app that fetches and displays cat facts",
@@ -2656,6 +2515,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2686,8 +2546,6 @@ Delete multiple apps in a single request from a list of app IDs. This API requir
 
 #### Body Data (required)
 
-
-
 {% tab title="Model" %}
 
 | Parent field | Field                  | Type     | Description                                                    |
@@ -2702,13 +2560,12 @@ Delete multiple apps in a single request from a list of app IDs. This API requir
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
       "type": "appDefinitions"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2732,13 +2589,12 @@ The response object after multiple apps are successfully deleted.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
       "type": "appDefinitions"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2768,8 +2624,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -2779,9 +2634,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2811,8 +2666,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -2822,9 +2676,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2854,8 +2708,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -2865,9 +2718,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -2889,10 +2742,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2901,7 +2753,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2909,16 +2761,14 @@ API error response.
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-  "data": [
-    {
+  "data": [{
       "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
       "type": "appDefinitions"
-    }
-  ]
+    }]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete Multiple Apps returns "OK" response
@@ -2926,49 +2776,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	body := datadogV2.DeleteAppsRequest{
-		Data: []datadogV2.DeleteAppsRequestDataItems{
-			{
-				Id:   AppDataID,
-				Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.DeleteApps(ctx, body)
+    body := datadogV2.DeleteAppsRequest{
+        Data: []datadogV2.DeleteAppsRequestDataItems{
+            {
+                Id:   AppDataID,
+                Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.DeleteApps(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.DeleteApps`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.DeleteApps`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.DeleteApps`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.DeleteApps`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Multiple Apps returns "OK" response
@@ -3016,13 +2867,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3040,12 +2892,10 @@ from datadog_api_client.v2.model.delete_apps_request_data_items import DeleteApp
 APP_DATA_ID = environ["APP_DATA_ID"]
 
 body = DeleteAppsRequest(
-    data=[
-        DeleteAppsRequestDataItems(
+    data=[DeleteAppsRequestDataItems(
             id=APP_DATA_ID,
             type=AppDefinitionType.APPDEFINITIONS,
-        ),
-    ],
+        ),],
 )
 
 configuration = Configuration()
@@ -3054,13 +2904,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.delete_apps(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Multiple Apps returns "OK" response
@@ -3072,21 +2923,20 @@ api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 APP_DATA_ID = ENV["APP_DATA_ID"]
 
 body = DatadogAPIClient::V2::DeleteAppsRequest.new({
-  data: [
-    DatadogAPIClient::V2::DeleteAppsRequestDataItems.new({
+  data: [DatadogAPIClient::V2::DeleteAppsRequestDataItems.new({
       id: APP_DATA_ID,
       type: DatadogAPIClient::V2::AppDefinitionType::APPDEFINITIONS,
-    }),
-  ],
+    }),],
 })
 p api_instance.delete_apps(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete Multiple Apps returns "OK" response
@@ -3114,13 +2964,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3137,12 +2988,10 @@ const APP_DATA_ID = process.env.APP_DATA_ID as string;
 
 const params: v2.AppBuilderApiDeleteAppsRequest = {
   body: {
-    data: [
-      {
+    data: [{
         id: APP_DATA_ID,
         type: "appDefinitions",
-      },
-    ],
+      },],
   },
 };
 
@@ -3154,6 +3003,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3180,7 +3030,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 Get the full definition of an app. This API requires a [registered application key](https://docs.datadoghq.com/api/latest/action-connection/#register-a-new-app-key). Alternatively, you can configure these permissions [in the UI](https://docs.datadoghq.com/account_management/api-app-keys/#actions-api-access). This endpoint requires all of the following permissions:
 `apps_run``connections_read`
-
 
 ### Arguments
 
@@ -3234,7 +3083,7 @@ The full app definition response object.
 | attributes           | description                  | string          | A human-readable description for the app.                                                                                                                                                                                                                                     |
 | attributes           | favorite                     | boolean         | Whether the app is marked as a favorite by the current user.                                                                                                                                                                                                                  |
 | attributes           | name                         | string          | The name of the app.                                                                                                                                                                                                                                                          |
-| attributes           | queries                      | [ <oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
+| attributes           | queries                      | [<oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
 | queries              | Option 1                     | object          | An action query. This query type is used to trigger an action, such as sending a HTTP request.                                                                                                                                                                                |
 | Option 1             | events                       | [object]        | Events to listen for downstream of the action query.                                                                                                                                                                                                                          |
 | events               | name                         | enum            | The triggering action for the event. Allowed enum values: `pageChange,tableRowClick,_tableRowButtonClick,change,submit,click,toggleOpen,close,open,executionFinished`                                                                                                         |
@@ -3343,26 +3192,20 @@ The full app definition response object.
 {
   "data": {
     "attributes": {
-      "components": [
-        {
-          "events": [
-            {
+      "components": [{
+          "events": [{
               "name": "click",
               "type": "triggerQuery"
-            }
-          ],
+            }],
           "id": "string",
           "name": "",
           "properties": {
             "backgroundColor": "string",
-            "children": [
-              {
-                "events": [
-                  {
+            "children": [{
+                "events": [{
                     "name": "click",
                     "type": "triggerQuery"
-                  }
-                ],
+                  }],
                 "id": "string",
                 "name": "",
                 "properties": {
@@ -3372,26 +3215,21 @@ The full app definition response object.
                   }
                 },
                 "type": "text"
-              }
-            ],
+              }],
             "isVisible": {
               "type": "undefined"
             }
           },
           "type": "grid"
-        }
-      ],
+        }],
       "description": "string",
       "favorite": false,
       "name": "string",
-      "queries": [
-        {
-          "events": [
-            {
+      "queries": [{
+          "events": [{
               "name": "click",
               "type": "triggerQuery"
-            }
-          ],
+            }],
           "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
           "name": "fetchPendingOrders",
           "properties": {
@@ -3427,19 +3265,15 @@ The full app definition response object.
             }
           },
           "type": "action"
-        }
-      ],
+        }],
       "rootInstanceName": "string",
-      "tags": [
-        "service:webshop-backend",
-        "team:webshop"
-      ]
+      "tags": ["service:webshop-backend",
+        "team:webshop"]
     },
     "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
     "type": "appDefinitions"
   },
-  "included": [
-    {
+  "included": [{
       "attributes": {
         "app_version_id": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
@@ -3451,8 +3285,7 @@ The full app definition response object.
         "user_uuid": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
       "type": "deployment"
-    }
-  ],
+    }],
   "meta": {
     "created_at": "2019-09-19T10:00:00.000Z",
     "deleted_at": "2019-09-19T10:00:00.000Z",
@@ -3465,8 +3298,7 @@ The full app definition response object.
     "version": "integer"
   },
   "relationship": {
-    "connections": [
-      {
+    "connections": [{
         "attributes": {
           "name": "string",
           "onPremRunner": {
@@ -3476,8 +3308,7 @@ The full app definition response object.
         },
         "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
         "type": "custom_connections"
-      }
-    ],
+      }],
     "deployment": {
       "data": {
         "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
@@ -3492,6 +3323,7 @@ The full app definition response object.
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -3521,8 +3353,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -3532,9 +3363,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3564,8 +3395,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -3575,9 +3405,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3607,8 +3437,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -3618,9 +3447,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3650,8 +3479,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -3661,9 +3489,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3685,10 +3513,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3697,13 +3524,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="65bb1f25-52e1-4510-9f8d-22d1516ed693"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps/${app_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3725,13 +3552,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get App returns "OK" response
@@ -3742,13 +3570,14 @@ api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 # there is a valid "app" in the system
 APP_DATA_ID = ENV["APP_DATA_ID"]
 p api_instance.get_app(APP_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get App returns "OK" response
@@ -3756,41 +3585,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.GetApp(ctx, AppDataID, *datadogV2.NewGetAppOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.GetApp(ctx, AppDataID, *datadogV2.NewGetAppOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.GetApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.GetApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.GetApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.GetApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get App returns "OK" response
@@ -3826,13 +3656,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get App returns "OK" response
@@ -3856,13 +3687,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3889,6 +3721,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3916,7 +3749,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Update an existing app. This creates a new version of the app. This API requires a [registered application key](https://docs.datadoghq.com/api/latest/action-connection/#register-a-new-app-key). Alternatively, you can configure these permissions [in the UI](https://docs.datadoghq.com/account_management/api-app-keys/#actions-api-access). This endpoint requires all of the following permissions:
 `apps_write``connections_resolve``workflows_run`
 
-
 ### Arguments
 
 #### Path Parameters
@@ -3928,8 +3760,6 @@ Update an existing app. This creates a new version of the app. This API requires
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -3963,7 +3793,7 @@ Update an existing app. This creates a new version of the app. This API requires
 | components           | type [*required*]       | enum            | The grid component type. Allowed enum values: `grid`                                                                                                                                                                                                                          |
 | attributes           | description                  | string          | The new human-readable description for the app.                                                                                                                                                                                                                               |
 | attributes           | name                         | string          | The new name of the app.                                                                                                                                                                                                                                                      |
-| attributes           | queries                      | [ <oneOf>] | The new array of queries, such as external actions and state variables, that the app uses. If this field is set, all existing queries are replaced with the new queries under this field.                                                                                     |
+| attributes           | queries                      | [<oneOf>] | The new array of queries, such as external actions and state variables, that the app uses. If this field is set, all existing queries are replaced with the new queries under this field.                                                                                     |
 | queries              | Option 1                     | object          | An action query. This query type is used to trigger an action, such as sending a HTTP request.                                                                                                                                                                                |
 | Option 1             | events                       | [object]        | Events to listen for downstream of the action query.                                                                                                                                                                                                                          |
 | events               | name                         | enum            | The triggering action for the event. Allowed enum values: `pageChange,tableRowClick,_tableRowButtonClick,change,submit,click,toggleOpen,close,open,executionFinished`                                                                                                         |
@@ -4041,6 +3871,7 @@ Update an existing app. This creates a new version of the app. This API requires
     "type": "appDefinitions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4083,7 +3914,7 @@ The response object after an app is successfully updated.
 | attributes           | description                  | string          | The human-readable description for the app.                                                                                                                                                                                                                                   |
 | attributes           | favorite                     | boolean         | Whether the app is marked as a favorite by the current user.                                                                                                                                                                                                                  |
 | attributes           | name                         | string          | The name of the app.                                                                                                                                                                                                                                                          |
-| attributes           | queries                      | [ <oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
+| attributes           | queries                      | [<oneOf>] | An array of queries, such as external actions and state variables, that the app uses.                                                                                                                                                                                         |
 | queries              | Option 1                     | object          | An action query. This query type is used to trigger an action, such as sending a HTTP request.                                                                                                                                                                                |
 | Option 1             | events                       | [object]        | Events to listen for downstream of the action query.                                                                                                                                                                                                                          |
 | events               | name                         | enum            | The triggering action for the event. Allowed enum values: `pageChange,tableRowClick,_tableRowButtonClick,change,submit,click,toggleOpen,close,open,executionFinished`                                                                                                         |
@@ -4192,26 +4023,20 @@ The response object after an app is successfully updated.
 {
   "data": {
     "attributes": {
-      "components": [
-        {
-          "events": [
-            {
+      "components": [{
+          "events": [{
               "name": "click",
               "type": "triggerQuery"
-            }
-          ],
+            }],
           "id": "string",
           "name": "",
           "properties": {
             "backgroundColor": "string",
-            "children": [
-              {
-                "events": [
-                  {
+            "children": [{
+                "events": [{
                     "name": "click",
                     "type": "triggerQuery"
-                  }
-                ],
+                  }],
                 "id": "string",
                 "name": "",
                 "properties": {
@@ -4221,26 +4046,21 @@ The response object after an app is successfully updated.
                   }
                 },
                 "type": "text"
-              }
-            ],
+              }],
             "isVisible": {
               "type": "undefined"
             }
           },
           "type": "grid"
-        }
-      ],
+        }],
       "description": "string",
       "favorite": false,
       "name": "string",
-      "queries": [
-        {
-          "events": [
-            {
+      "queries": [{
+          "events": [{
               "name": "click",
               "type": "triggerQuery"
-            }
-          ],
+            }],
           "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
           "name": "fetchPendingOrders",
           "properties": {
@@ -4276,19 +4096,15 @@ The response object after an app is successfully updated.
             }
           },
           "type": "action"
-        }
-      ],
+        }],
       "rootInstanceName": "string",
-      "tags": [
-        "service:webshop-backend",
-        "team:webshop"
-      ]
+      "tags": ["service:webshop-backend",
+        "team:webshop"]
     },
     "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
     "type": "appDefinitions"
   },
-  "included": [
-    {
+  "included": [{
       "attributes": {
         "app_version_id": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
@@ -4300,8 +4116,7 @@ The response object after an app is successfully updated.
         "user_uuid": "65bb1f25-52e1-4510-9f8d-22d1516ed693"
       },
       "type": "deployment"
-    }
-  ],
+    }],
   "meta": {
     "created_at": "2019-09-19T10:00:00.000Z",
     "deleted_at": "2019-09-19T10:00:00.000Z",
@@ -4314,8 +4129,7 @@ The response object after an app is successfully updated.
     "version": "integer"
   },
   "relationship": {
-    "connections": [
-      {
+    "connections": [{
         "attributes": {
           "name": "string",
           "onPremRunner": {
@@ -4325,8 +4139,7 @@ The response object after an app is successfully updated.
         },
         "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
         "type": "custom_connections"
-      }
-    ],
+      }],
     "deployment": {
       "data": {
         "id": "65bb1f25-52e1-4510-9f8d-22d1516ed693",
@@ -4341,6 +4154,7 @@ The response object after an app is successfully updated.
     }
   }
 }
+
 ```
 
 {% /tab %}
@@ -4370,8 +4184,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4381,9 +4194,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4413,8 +4226,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4424,9 +4236,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4448,10 +4260,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4460,7 +4271,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport app_id="65bb1f25-52e1-4510-9f8d-22d1516ed693"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps/${app_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4478,8 +4289,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update App returns "OK" response
@@ -4487,51 +4298,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	body := datadogV2.UpdateAppRequest{
-		Data: &datadogV2.UpdateAppRequestData{
-			Attributes: &datadogV2.UpdateAppRequestDataAttributes{
-				Name:             datadog.PtrString("Updated Name"),
-				RootInstanceName: datadog.PtrString("grid0"),
-			},
-			Id:   &AppDataID,
-			Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.UpdateApp(ctx, AppDataID, body)
+    body := datadogV2.UpdateAppRequest{
+        Data: &datadogV2.UpdateAppRequestData{
+            Attributes: &datadogV2.UpdateAppRequestDataAttributes{
+                Name:             datadog.PtrString("Updated Name"),
+                RootInstanceName: datadog.PtrString("grid0"),
+            },
+            Id:   datadog.PtrUUID(AppDataID),
+            Type: datadogV2.APPDEFINITIONTYPE_APPDEFINITIONS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.UpdateApp(ctx, AppDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.UpdateApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.UpdateApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.UpdateApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.UpdateApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update App returns "OK" response
@@ -4582,13 +4394,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4623,13 +4436,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_app(app_id=APP_DATA_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update App returns "OK" response
@@ -4651,13 +4465,14 @@ body = DatadogAPIClient::V2::UpdateAppRequest.new({
   }),
 })
 p api_instance.update_app(APP_DATA_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update App returns "OK" response
@@ -4691,13 +4506,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4734,6 +4550,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4792,6 +4609,7 @@ The response object after an app is successfully deleted.
     "type": "appDefinitions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4821,8 +4639,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4832,9 +4649,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4864,8 +4681,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4875,9 +4691,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4907,8 +4723,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4918,9 +4733,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4950,8 +4765,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -4961,9 +4775,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -4985,10 +4799,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4997,13 +4810,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="65bb1f25-52e1-4510-9f8d-22d1516ed693"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps/${app_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5025,13 +4838,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete App returns "OK" response
@@ -5042,13 +4856,14 @@ api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 # there is a valid "app" in the system
 APP_DATA_ID = ENV["APP_DATA_ID"]
 p api_instance.delete_app(APP_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete App returns "OK" response
@@ -5056,41 +4871,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.DeleteApp(ctx, AppDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.DeleteApp(ctx, AppDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.DeleteApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.DeleteApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.DeleteApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.DeleteApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete App returns "OK" response
@@ -5126,13 +4942,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete App returns "OK" response
@@ -5153,13 +4970,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5186,6 +5004,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5260,6 +5079,7 @@ The response object after an app is successfully published.
     "type": "deployment"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5289,8 +5109,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5300,9 +5119,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5332,8 +5151,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5343,9 +5161,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5375,8 +5193,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5386,9 +5203,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5410,10 +5227,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5422,13 +5238,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="65bb1f25-52e1-4510-9f8d-22d1516ed693"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps/${app_id}/deployment" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5450,13 +5266,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Publish App returns "Created" response
@@ -5467,13 +5284,14 @@ api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 # there is a valid "app" in the system
 APP_DATA_ID = ENV["APP_DATA_ID"]
 p api_instance.publish_app(APP_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Publish App returns "Created" response
@@ -5481,41 +5299,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.PublishApp(ctx, AppDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.PublishApp(ctx, AppDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.PublishApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.PublishApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.PublishApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.PublishApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Publish App returns "Created" response
@@ -5551,13 +5370,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Publish App returns "Created" response
@@ -5578,13 +5398,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5611,6 +5432,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5685,6 +5507,7 @@ The response object after an app is successfully unpublished.
     "type": "deployment"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5714,8 +5537,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5725,9 +5547,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5757,8 +5579,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5768,9 +5589,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5800,8 +5621,7 @@ API error response.
 
 ```json
 {
-  "errors": [
-    {
+  "errors": [{
       "detail": "Missing required attribute in body",
       "meta": {},
       "source": {
@@ -5811,9 +5631,9 @@ API error response.
       },
       "status": "400",
       "title": "Bad Request"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -5835,10 +5655,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5847,13 +5666,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="65bb1f25-52e1-4510-9f8d-22d1516ed693"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/app-builder/apps/${app_id}/deployment" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5875,13 +5694,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Unpublish App returns "OK" response
@@ -5892,13 +5712,14 @@ api_instance = DatadogAPIClient::V2::AppBuilderAPI.new
 # there is a valid "app" in the system
 APP_DATA_ID = ENV["APP_DATA_ID"]
 p api_instance.unpublish_app(APP_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Unpublish App returns "OK" response
@@ -5906,41 +5727,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "app" in the system
-	AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
+    // there is a valid "app" in the system
+    AppDataID := uuid.MustParse(os.Getenv("APP_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAppBuilderApi(apiClient)
-	resp, r, err := api.UnpublishApp(ctx, AppDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAppBuilderApi(apiClient)
+    resp, r, err := api.UnpublishApp(ctx, AppDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.UnpublishApp`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppBuilderApi.UnpublishApp`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.UnpublishApp`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AppBuilderApi.UnpublishApp`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Unpublish App returns "OK" response
@@ -5976,13 +5798,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Unpublish App returns "OK" response
@@ -6003,13 +5826,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6036,6 +5860,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

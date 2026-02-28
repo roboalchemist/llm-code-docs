@@ -9,13 +9,13 @@ breadcrumbs: Docs > Datadog Security > Detection Rules
 # Detection Rules
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security | 
+ Cloud Security |
 {% icon name="icon-app-sec" /%}
- App and API Protection | 
+ App and API Protection |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection 
+ Workload Protection
 Detection rules define conditional logic that is applied to all ingested logs and cloud configurations. When at least one case defined in a rule is matched over a given period of time, a security signal is generated. You can view these signals in the [Signals Explorer](https://app.datadoghq.com/security).
 
 ## Out-of-the-box detection rules{% #out-of-the-box-detection-rules %}
@@ -34,11 +34,11 @@ Out-of-the box rules are available for the following security products:
 ## MITRE ATT&CK map{% #mitre-attck-map %}
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-app-sec" /%}
- App and API Protection | 
+ App and API Protection |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection 
+ Workload Protection
 MITRE ATT&CK is a framework that helps organizations understand how cyber attackers operate. It maps the following:
 
 - **Tactics:** The "why" of an attack. These are the high-level goals, like gaining initial access, executing malicious code, or stealing data.
@@ -50,7 +50,7 @@ To use the MITRE ATT&CK map, do the following:
 
 1. Open Detection Rules in [SIEM](https://app.datadoghq.com/security/siem/rules) or [Workload Protection](https://app.datadoghq.com/security/workload-protection/detection-rules).
 1. Select **MITRE ATT&CK map**.
-1. Select one of more products in the filter 
+1. Select one of more products in the filter
    {% icon name="icon-filter" /%}
 .
 1. Review the map for the following:

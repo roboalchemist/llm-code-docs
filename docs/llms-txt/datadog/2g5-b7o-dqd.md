@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Certificate managed by ACM should not be expired
- 
+
 ## Description{% #description %}
 
 Remove expired Secure Socket Layer/Transport Layer Security (SSL/TLS) certificates with AWS Certificate Manager (ACM).

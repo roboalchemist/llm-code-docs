@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Secrets Manager secrets should be rotated within 90 days
- 
+
 ## Description{% #description %}
 
 This control verifies whether an AWS Secrets Manager secret is rotated at least once within 90 days. The control will fail if the secret is not rotated within this period. This control does not apply to secrets created within the last 90 days.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure that Root's Path Does Not Include Relative Paths or Null Directories
- 
+
 ## Description{% #description %}
 
 Ensure that none of the directories in root's path is equal to a single `.` character, or that it contains any instances that lead to relative path traversal, such as `..` or beginning a path without the slash (`/`) character. Also ensure that there are no "empty" elements in the path, such as in these examples:

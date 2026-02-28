@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Encrypted administrator password retrieved for Windows EC2 instance
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555)
 ## Goal{% #goal %}
 
 Detect a user attempting to retrieve the encrypted Administrator password for a Windows EC2 instance.

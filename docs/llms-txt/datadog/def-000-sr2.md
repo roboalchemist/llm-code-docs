@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 instances managed by SSM should have a compliant patch status
- 
+
 ## Description{% #description %}
 
 This control verifies the status of Systems Manager patch compliance, ensuring that patch installations on EC2 instances are successful. If there are any patch compliance events with a status of `NON_COMPLIANT`, the control will fail. This check applies only to EC2 instances managed by Systems Manager Patch Manager.

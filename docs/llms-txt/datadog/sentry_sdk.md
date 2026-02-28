@@ -65,7 +65,7 @@ To configure the Sentry SDK to send events into Datadog:
           }
       }
   });
-  
+
 ```
 
 {% /tab %}
@@ -77,7 +77,7 @@ To configure the Sentry SDK to send events into Datadog:
       dsn="https://<TOKEN>@sentry-intake.<DD_SITE>/1",
   )
   sentry_sdk.set_tag("service", "my-app")
-  
+
 ```
 
 {% /tab %}
@@ -91,7 +91,7 @@ To configure the Sentry SDK to send events into Datadog:
   Sentry.configureScope(scope -> {
       scope.setTag("service", "my-app");
   });
-  
+
 ```
 
 {% /tab %}
@@ -107,7 +107,7 @@ To configure the Sentry SDK to send events into Datadog:
           return sentryEvent;
       });
   });
-  
+
 ```
 
 {% /tab %}
@@ -121,7 +121,7 @@ To configure the Sentry SDK to send events into Datadog:
   sentry.ConfigureScope(func(scope *sentry.Scope) {
       scope.SetTag("service", "my-app");
   })
-  
+
 ```
 
 {% /tab %}
@@ -133,7 +133,7 @@ To configure the Sentry SDK to send events into Datadog:
       config.dsn = https://<TOKEN>@sentry-intake.<DD_SITE>/1'
   end
   Sentry.set_tags('service': 'my-app')
-  
+
 ```
 
 {% /tab %}
@@ -367,53 +367,53 @@ Sentry.setTag("service", "my-app");
 
 ```go
 type MultiTransport struct {
-	dsns       []string
-	transports []*sentry.HTTPTransport
+    dsns       []string
+    transports []*sentry.HTTPTransport
 }
 
 func NewMultiTransport(dsns []string) *MultiTransport {
-	transports := make([]*sentry.HTTPTransport, len(dsns))
-	for i := range dsns {
-		transports[i] = sentry.NewHTTPTransport()
-	}
-	return &MultiTransport{
-		dsns:       dsns,
-		transports: transports,
-	}
+    transports := make([]*sentry.HTTPTransport, len(dsns))
+    for i := range dsns {
+        transports[i] = sentry.NewHTTPTransport()
+    }
+    return &MultiTransport{
+        dsns:       dsns,
+        transports: transports,
+    }
 }
 
 func (mt *MultiTransport) Configure(options sentry.ClientOptions) {
-	for i := range mt.dsns {
-		options.Dsn = mt.dsns[i]
-		if options.EnableTracing {
-			// Replicating the default behavior:
-			// https://github.com/getsentry/sentry-go/blob/v0.32.0/client.go#L358
-			mt.transports[i].BufferSize = 1000
-		}
-		mt.transports[i].Configure(options)
-	}
+    for i := range mt.dsns {
+        options.Dsn = mt.dsns[i]
+        if options.EnableTracing {
+            // Replicating the default behavior:
+            // https://github.com/getsentry/sentry-go/blob/v0.32.0/client.go#L358
+            mt.transports[i].BufferSize = 1000
+        }
+        mt.transports[i].Configure(options)
+    }
 }
 
 func (mt *MultiTransport) Flush(timeout time.Duration) bool {
-	allDone := true
-	for _, t := range mt.transports {
-		if ok := t.Flush(timeout); !ok {
-			allDone = false
-		}
-	}
-	return allDone
+    allDone := true
+    for _, t := range mt.transports {
+        if ok := t.Flush(timeout); !ok {
+            allDone = false
+        }
+    }
+    return allDone
 }
 
 func (mt *MultiTransport) SendEvent(event *sentry.Event) {
-	for _, t := range mt.transports {
-		t.SendEvent(event)
-	}
+    for _, t := range mt.transports {
+        t.SendEvent(event)
+    }
 }
 
 func (mt *MultiTransport) Close() {
-	for _, t := range mt.transports {
-		t.Close()
-	}
+    for _, t := range mt.transports {
+        t.Close()
+    }
 }
 ```
 Use as follows:
@@ -422,12 +422,12 @@ sentryDSN := "<SENTRY_DSN>"
 datadogDSN := "<DATADOG_DSN>"
 
 err := sentry.Init(sentry.ClientOptions{
-	Dsn: sentryDSN,
-	Transport: NewMultiTransport([]string{sentryDSN, datadogDSN}),
+    Dsn: sentryDSN,
+    Transport: NewMultiTransport([]string{sentryDSN, datadogDSN}),
 })
 // ...
 sentry.ConfigureScope(func(scope *sentry.Scope) {
-	scope.SetTag("service", "my-app")
+    scope.SetTag("service", "my-app")
 })
 ```
 

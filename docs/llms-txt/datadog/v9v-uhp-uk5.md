@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The 'root' account should not be used for daily tasks
- 
+
 ## Description{% #description %}
 
 With the creation of an AWS account, a root user is established that cannot be disabled or deleted. This user has unrestricted access to and control over all resources in the account. Datadog highly recommends that you avoid using this account for everyday tasks to adhere to security best practices.

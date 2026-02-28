@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > New Amazon EC2 Instance type
 ---
 
 # New Amazon EC2 Instance type
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204)
 ## Goal{% #goal %}
 
 Detect when an attacker spawns an instance for malicious purposes.

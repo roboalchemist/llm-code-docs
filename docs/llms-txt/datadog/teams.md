@@ -1,9 +1,3 @@
-# Source: https://docs.datadoghq.com/incident_response/on-call/teams.md
-
-# Source: https://docs.datadoghq.com/cloudcraft/api/teams.md
-
-# Source: https://docs.datadoghq.com/account_management/teams.md
-
 # Source: https://docs.datadoghq.com/api/latest/teams.md
 
 ---
@@ -11,8 +5,6 @@ title: Teams
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Teams
 ---
-
-# Teams
 
 View and manage teams within Datadog. See the [Teams page](https://docs.datadoghq.com/account_management/teams/) for more information.
 
@@ -35,8 +27,6 @@ View and manage teams within Datadog. See the [Teams page](https://docs.datadogh
 Get all teams. Can be used to search for teams using the `filter[keyword]` and `filter[me]` query parameters. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -336,13 +326,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -364,10 +354,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Get all teams returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::TeamsAPI.new
@@ -378,7 +367,7 @@ p api_instance.list_teams()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all teams returns "OK" response
@@ -386,29 +375,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.ListTeams(ctx, *datadogV2.NewListTeamsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.ListTeams(ctx, *datadogV2.NewListTeamsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeams`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeams`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeams`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeams`:\n%s\n", responseContent)
 }
 ```
 
@@ -416,7 +405,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all teams returns "OK" response
@@ -449,7 +438,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all teams returns "OK" response
@@ -474,7 +463,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -521,16 +510,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new team. User IDs passed through the `users` relationship field are added to the team. This endpoint requires all of the following permissions:
 `teams_read``teams_manage`
 
-
 OAuth apps require the `teams_read, teams_manage` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -555,7 +539,7 @@ OAuth apps require the `teams_read, teams_manage` authorization [scope](https://
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -574,7 +558,7 @@ OAuth apps require the `teams_read, teams_manage` authorization [scope](https://
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -770,7 +754,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -792,8 +776,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -819,8 +803,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a team returns "CREATED" response
@@ -828,47 +812,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.TeamCreateRequest{
-		Data: datadogV2.TeamCreate{
-			Attributes: datadogV2.TeamCreateAttributes{
-				Handle: "test-handle-a0fc0297eb519635",
-				Name:   "test-name-a0fc0297eb519635",
-			},
-			Relationships: &datadogV2.TeamCreateRelationships{
-				Users: &datadogV2.RelationshipToUsers{
-					Data: []datadogV2.RelationshipToUserData{},
-				},
-			},
-			Type: datadogV2.TEAMTYPE_TEAM,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeam(ctx, body)
+    body := datadogV2.TeamCreateRequest{
+        Data: datadogV2.TeamCreate{
+            Attributes: datadogV2.TeamCreateAttributes{
+                Handle: "test-handle-a0fc0297eb519635",
+                Name:   "test-name-a0fc0297eb519635",
+            },
+            Relationships: &datadogV2.TeamCreateRelationships{
+                Users: &datadogV2.RelationshipToUsers{
+                    Data: []datadogV2.RelationshipToUserData{},
+                },
+            },
+            Type: datadogV2.TEAMTYPE_TEAM,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeam(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a team with V2 fields returns "CREATED" response
@@ -876,47 +860,47 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.TeamCreateRequest{
-		Data: datadogV2.TeamCreate{
-			Attributes: datadogV2.TeamCreateAttributes{
-				Handle: "test-handle-a0fc0297eb519635",
-				Name:   "test-name-a0fc0297eb519635",
-				Avatar: *datadog.NewNullableString(datadog.PtrString("ð¥")),
-				Banner: *datadog.NewNullableInt64(datadog.PtrInt64(7)),
-				VisibleModules: []string{
-					"m1",
-					"m2",
-				},
-				HiddenModules: []string{
-					"m3",
-				},
-			},
-			Type: datadogV2.TEAMTYPE_TEAM,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeam(ctx, body)
+    body := datadogV2.TeamCreateRequest{
+        Data: datadogV2.TeamCreate{
+            Attributes: datadogV2.TeamCreateAttributes{
+                Handle: "test-handle-a0fc0297eb519635",
+                Name:   "test-name-a0fc0297eb519635",
+                Avatar: *datadog.NewNullableString(datadog.PtrString("ð¥")),
+                Banner: *datadog.NewNullableInt64(datadog.PtrInt64(7)),
+                VisibleModules: []string{
+                    "m1",
+                    "m2",
+                },
+                HiddenModules: []string{
+                    "m3",
+                },
+            },
+            Type: datadogV2.TEAMTYPE_TEAM,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeam(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`:\n%s\n", responseContent)
 }
 ```
 
@@ -924,7 +908,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a team returns "CREATED" response
@@ -970,7 +954,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a team with V2 fields returns "CREATED" response
@@ -1023,7 +1007,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1062,7 +1046,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1107,7 +1091,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a team returns "CREATED" response
@@ -1132,7 +1116,7 @@ body = DatadogAPIClient::V2::TeamCreateRequest.new({
 p api_instance.create_team(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a team with V2 fields returns "CREATED" response
@@ -1165,7 +1149,7 @@ p api_instance.create_team(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a team returns "CREATED" response
@@ -1201,7 +1185,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a team with V2 fields returns "CREATED" response
@@ -1240,7 +1224,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1279,7 +1263,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1342,8 +1326,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a single team using the team's `id`. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1524,13 +1506,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1558,7 +1540,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a team returns "OK" response
@@ -1575,7 +1557,7 @@ p api_instance.get_team(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a team returns "OK" response
@@ -1583,32 +1565,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeam(ctx, DdTeamDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeam(ctx, DdTeamDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeam`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeam`:\n%s\n", responseContent)
 }
 ```
 
@@ -1616,7 +1598,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a team returns "OK" response
@@ -1652,7 +1634,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a team returns "OK" response
@@ -1678,7 +1660,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1733,8 +1715,6 @@ Update a team using the team's `id`. If the `team_links` relationship is present
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -1746,8 +1726,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -2019,7 +1997,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2045,8 +2023,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a team returns "OK" response
@@ -2054,51 +2032,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataAttributesHandle := os.Getenv("DD_TEAM_DATA_ATTRIBUTES_HANDLE")
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataAttributesHandle := os.Getenv("DD_TEAM_DATA_ATTRIBUTES_HANDLE")
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.TeamUpdateRequest{
-		Data: datadogV2.TeamUpdate{
-			Attributes: datadogV2.TeamUpdateAttributes{
-				Handle: DdTeamDataAttributesHandle,
-				Name:   "Example Team updated",
-				Avatar: *datadog.NewNullableString(datadog.PtrString("ð¥")),
-				Banner: *datadog.NewNullableInt64(datadog.PtrInt64(7)),
-				HiddenModules: []string{
-					"m3",
-				},
-				VisibleModules: []string{
-					"m1",
-					"m2",
-				},
-			},
-			Type: datadogV2.TEAMTYPE_TEAM,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeam(ctx, DdTeamDataID, body)
+    body := datadogV2.TeamUpdateRequest{
+        Data: datadogV2.TeamUpdate{
+            Attributes: datadogV2.TeamUpdateAttributes{
+                Handle: DdTeamDataAttributesHandle,
+                Name:   "Example Team updated",
+                Avatar: *datadog.NewNullableString(datadog.PtrString("ð¥")),
+                Banner: *datadog.NewNullableInt64(datadog.PtrInt64(7)),
+                HiddenModules: []string{
+                    "m3",
+                },
+                VisibleModules: []string{
+                    "m1",
+                    "m2",
+                },
+            },
+            Type: datadogV2.TEAMTYPE_TEAM,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.UpdateTeam(ctx, DdTeamDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeam`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeam`:\n%s\n", responseContent)
 }
 ```
 
@@ -2106,7 +2084,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a team returns "OK" response
@@ -2164,7 +2142,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2215,7 +2193,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a team returns "OK" response
@@ -2253,7 +2231,7 @@ p api_instance.update_team(DD_TEAM_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a team returns "OK" response
@@ -2295,7 +2273,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2364,10 +2342,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Remove a team using the team's `id`. This endpoint requires all of the following permissions:
 `teams_read``teams_manage`
 
-
 OAuth apps require the `teams_read, teams_manage` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -2460,12 +2435,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2491,7 +2466,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a team returns "No Content" response
@@ -2508,7 +2483,7 @@ api_instance.delete_team(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a team returns "No Content" response
@@ -2516,28 +2491,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.DeleteTeam(ctx, DdTeamDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.DeleteTeam(ctx, DdTeamDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2545,7 +2520,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a team returns "No Content" response
@@ -2579,7 +2554,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a team returns "No Content" response
@@ -2605,7 +2580,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2659,8 +2634,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a paginated list of members for a team This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -2973,13 +2946,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3007,7 +2980,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team memberships returns "Represents a user's association to a team" response
@@ -3024,7 +2997,7 @@ p api_instance.get_team_memberships(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team memberships returns "Represents a user's association to a team" response
@@ -3032,32 +3005,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamMemberships(ctx, DdTeamDataID, *datadogV2.NewGetTeamMembershipsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamMemberships(ctx, DdTeamDataID, *datadogV2.NewGetTeamMembershipsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamMemberships`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamMemberships`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamMemberships`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamMemberships`:\n%s\n", responseContent)
 }
 ```
 
@@ -3065,7 +3038,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team memberships returns "Represents a user's association to a team" response
@@ -3101,7 +3074,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team memberships returns "Represents a user's association to a team"
@@ -3134,7 +3107,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3185,15 +3158,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Add a user to a team.
 
 **Note**: Each team has a setting that determines who is allowed to modify membership of the team. The `user_access_manage` permission generally grants access to modify membership of any team. To get the full picture, see [Team Membership documentation](https://docs.datadoghq.com/account_management/teams/manage/#team-membership).
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3206,8 +3175,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -3542,7 +3509,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3569,8 +3536,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3627,7 +3594,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add a user to a team returns "Represents a user's association to a team" response
@@ -3664,7 +3631,7 @@ p api_instance.create_team_membership("team_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Add a user to a team returns "Represents a user's association to a team" response
@@ -3672,51 +3639,51 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UserTeamRequest{
-		Data: datadogV2.UserTeamCreate{
-			Attributes: &datadogV2.UserTeamAttributes{
-				Role: *datadogV2.NewNullableUserTeamRole(datadogV2.USERTEAMROLE_ADMIN.Ptr()),
-			},
-			Relationships: &datadogV2.UserTeamRelationships{
-				Team: &datadogV2.RelationshipToUserTeamTeam{
-					Data: datadogV2.RelationshipToUserTeamTeamData{
-						Id:   "d7e15d9d-d346-43da-81d8-3d9e71d9a5e9",
-						Type: datadogV2.USERTEAMTEAMTYPE_TEAM,
-					},
-				},
-				User: &datadogV2.RelationshipToUserTeamUser{
-					Data: datadogV2.RelationshipToUserTeamUserData{
-						Id:   "b8626d7e-cedd-11eb-abf5-da7ad0900001",
-						Type: datadogV2.USERTEAMUSERTYPE_USERS,
-					},
-				},
-			},
-			Type: datadogV2.USERTEAMTYPE_TEAM_MEMBERSHIPS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeamMembership(ctx, "team_id", body)
+    body := datadogV2.UserTeamRequest{
+        Data: datadogV2.UserTeamCreate{
+            Attributes: &datadogV2.UserTeamAttributes{
+                Role: *datadogV2.NewNullableUserTeamRole(datadogV2.USERTEAMROLE_ADMIN.Ptr()),
+            },
+            Relationships: &datadogV2.UserTeamRelationships{
+                Team: &datadogV2.RelationshipToUserTeamTeam{
+                    Data: datadogV2.RelationshipToUserTeamTeamData{
+                        Id:   "d7e15d9d-d346-43da-81d8-3d9e71d9a5e9",
+                        Type: datadogV2.USERTEAMTEAMTYPE_TEAM,
+                    },
+                },
+                User: &datadogV2.RelationshipToUserTeamUser{
+                    Data: datadogV2.RelationshipToUserTeamUserData{
+                        Id:   "b8626d7e-cedd-11eb-abf5-da7ad0900001",
+                        Type: datadogV2.USERTEAMUSERTYPE_USERS,
+                    },
+                },
+            },
+            Type: datadogV2.USERTEAMTYPE_TEAM_MEMBERSHIPS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeamMembership(ctx, "team_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamMembership`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamMembership`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamMembership`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamMembership`:\n%s\n", responseContent)
 }
 ```
 
@@ -3724,7 +3691,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add a user to a team returns "Represents a user's association to a team" response
@@ -3790,7 +3757,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Add a user to a team returns "Represents a user's association to a team"
@@ -3848,7 +3815,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3918,15 +3885,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Remove a user from a team.
 
 **Note**: Each team has a setting that determines who is allowed to modify membership of the team. The `user_access_manage` permission generally grants access to modify membership of any team. To get the full picture, see [Team Membership documentation](https://docs.datadoghq.com/account_management/teams/manage/#team-membership).
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4020,12 +3983,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"export user_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships/${user_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4052,7 +4015,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a user from a team returns "No Content" response
@@ -4069,7 +4032,7 @@ api_instance.delete_team_membership(DD_TEAM_DATA_ID, "user_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a user from a team returns "No Content" response
@@ -4077,28 +4040,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.DeleteTeamMembership(ctx, DdTeamDataID, "user_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.DeleteTeamMembership(ctx, DdTeamDataID, "user_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamMembership`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamMembership`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -4106,7 +4069,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a user from a team returns "No Content" response
@@ -4140,7 +4103,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a user from a team returns "No Content" response
@@ -4168,7 +4131,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4220,15 +4183,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Update a user's membership attributes on a team.
 
 **Note**: Each team has a setting that determines who is allowed to modify membership of the team. The `user_access_manage` permission generally grants access to modify membership of any team. To get the full picture, see [Team Membership documentation](https://docs.datadoghq.com/account_management/teams/manage/#team-membership).
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4242,8 +4201,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -4264,7 +4221,7 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 {
   "data": {
     "attributes": {
-      "role": "string"
+      "role": "admin"
     },
     "type": "team_memberships"
   }
@@ -4276,7 +4233,7 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Response
 
 {% tab title="200" %}
-Represents a user's association to a team
+OK
 {% tab title="Model" %}
 Team membership response
 
@@ -4453,6 +4410,31 @@ Team membership response
 
 {% /tab %}
 
+{% tab title="400" %}
+API error response.
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
 {% tab title="403" %}
 Forbidden
 {% tab title="Model" %}
@@ -4530,8 +4512,8 @@ API error response.
 
 ### Code Example
 
-##### 
-                  \# Path parametersexport team_id="CHANGE_ME"export user_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships/${user_id}" \
+#####
+                          \# Path parametersexport team_id="CHANGE_ME"export user_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/memberships/${user_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -4539,109 +4521,59 @@ API error response.
 -d @- << EOF
 {
   "data": {
+    "attributes": {
+      "role": "admin"
+    },
     "type": "team_memberships"
   }
 }
 EOF
-                
-##### 
 
-```python
-"""
-Update a user's membership attributes on a team returns "Represents a user's association to a team" response
-"""
-
-from datadog_api_client import ApiClient, Configuration
-from datadog_api_client.v2.api.teams_api import TeamsApi
-from datadog_api_client.v2.model.user_team_attributes import UserTeamAttributes
-from datadog_api_client.v2.model.user_team_role import UserTeamRole
-from datadog_api_client.v2.model.user_team_type import UserTeamType
-from datadog_api_client.v2.model.user_team_update import UserTeamUpdate
-from datadog_api_client.v2.model.user_team_update_request import UserTeamUpdateRequest
-
-body = UserTeamUpdateRequest(
-    data=UserTeamUpdate(
-        attributes=UserTeamAttributes(
-            role=UserTeamRole.ADMIN,
-        ),
-        type=UserTeamType.TEAM_MEMBERSHIPS,
-    ),
-)
-
-configuration = Configuration()
-with ApiClient(configuration) as api_client:
-    api_instance = TeamsApi(api_client)
-    response = api_instance.update_team_membership(team_id="team_id", user_id="user_id", body=body)
-
-    print(response)
-```
-
-#### Instructions
-
-First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
-    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
-
-```ruby
-# Update a user's membership attributes on a team returns "Represents a user's association to a team" response
-
-require "datadog_api_client"
-api_instance = DatadogAPIClient::V2::TeamsAPI.new
-
-body = DatadogAPIClient::V2::UserTeamUpdateRequest.new({
-  data: DatadogAPIClient::V2::UserTeamUpdate.new({
-    attributes: DatadogAPIClient::V2::UserTeamAttributes.new({
-      role: DatadogAPIClient::V2::UserTeamRole::ADMIN,
-    }),
-    type: DatadogAPIClient::V2::UserTeamType::TEAM_MEMBERSHIPS,
-  }),
-})
-p api_instance.update_team_membership("team_id", "user_id", body)
-```
-
-#### Instructions
-
-First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
-    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
-// Update a user's membership attributes on a team returns "Represents a user's association to a team" response
+// Update a user's membership attributes on a team returns "OK" response
 
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UserTeamUpdateRequest{
-		Data: datadogV2.UserTeamUpdate{
-			Attributes: &datadogV2.UserTeamAttributes{
-				Role: *datadogV2.NewNullableUserTeamRole(datadogV2.USERTEAMROLE_ADMIN.Ptr()),
-			},
-			Type: datadogV2.USERTEAMTYPE_TEAM_MEMBERSHIPS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeamMembership(ctx, "team_id", "user_id", body)
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamMembership`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamMembership`:\n%s\n", responseContent)
+    body := datadogV2.UserTeamUpdateRequest{
+        Data: datadogV2.UserTeamUpdate{
+            Attributes: &datadogV2.UserTeamAttributes{
+                Role: *datadogV2.NewNullableUserTeamRole(datadogV2.USERTEAMROLE_ADMIN.Ptr()),
+            },
+            Type: datadogV2.USERTEAMTYPE_TEAM_MEMBERSHIPS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.UpdateTeamMembership(ctx, DdTeamDataID, UserDataID, body)
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamMembership`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamMembership`:\n%s\n", responseContent)
 }
 ```
 
@@ -4649,11 +4581,10 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
-// Update a user's membership attributes on a team returns "Represents a user's association to a
-// team" response
+// Update a user's membership attributes on a team returns "OK" response
 
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -4670,6 +4601,12 @@ public class Example {
     ApiClient defaultClient = ApiClient.getDefaultApiClient();
     TeamsApi apiInstance = new TeamsApi(defaultClient);
 
+    // there is a valid "dd_team" in the system
+    String DD_TEAM_DATA_ID = System.getenv("DD_TEAM_DATA_ID");
+
+    // there is a valid "user" in the system
+    String USER_DATA_ID = System.getenv("USER_DATA_ID");
+
     UserTeamUpdateRequest body =
         new UserTeamUpdateRequest()
             .data(
@@ -4678,7 +4615,8 @@ public class Example {
                     .type(UserTeamType.TEAM_MEMBERSHIPS));
 
     try {
-      UserTeamResponse result = apiInstance.updateTeamMembership("team_id", "user_id", body);
+      UserTeamResponse result =
+          apiInstance.updateTeamMembership(DD_TEAM_DATA_ID, USER_DATA_ID, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TeamsApi#updateTeamMembership");
@@ -4695,11 +4633,82 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
+
+```python
+"""
+Update a user's membership attributes on a team returns "OK" response
+"""
+
+from os import environ
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.teams_api import TeamsApi
+from datadog_api_client.v2.model.user_team_attributes import UserTeamAttributes
+from datadog_api_client.v2.model.user_team_role import UserTeamRole
+from datadog_api_client.v2.model.user_team_type import UserTeamType
+from datadog_api_client.v2.model.user_team_update import UserTeamUpdate
+from datadog_api_client.v2.model.user_team_update_request import UserTeamUpdateRequest
+
+# there is a valid "dd_team" in the system
+DD_TEAM_DATA_ID = environ["DD_TEAM_DATA_ID"]
+
+# there is a valid "user" in the system
+USER_DATA_ID = environ["USER_DATA_ID"]
+
+body = UserTeamUpdateRequest(
+    data=UserTeamUpdate(
+        attributes=UserTeamAttributes(
+            role=UserTeamRole.ADMIN,
+        ),
+        type=UserTeamType.TEAM_MEMBERSHIPS,
+    ),
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TeamsApi(api_client)
+    response = api_instance.update_team_membership(team_id=DD_TEAM_DATA_ID, user_id=USER_DATA_ID, body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+#####
+
+```ruby
+# Update a user's membership attributes on a team returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V2::TeamsAPI.new
+
+# there is a valid "dd_team" in the system
+DD_TEAM_DATA_ID = ENV["DD_TEAM_DATA_ID"]
+
+# there is a valid "user" in the system
+USER_DATA_ID = ENV["USER_DATA_ID"]
+
+body = DatadogAPIClient::V2::UserTeamUpdateRequest.new({
+  data: DatadogAPIClient::V2::UserTeamUpdate.new({
+    attributes: DatadogAPIClient::V2::UserTeamAttributes.new({
+      role: DatadogAPIClient::V2::UserTeamRole::ADMIN,
+    }),
+    type: DatadogAPIClient::V2::UserTeamType::TEAM_MEMBERSHIPS,
+  }),
+})
+p api_instance.update_team_membership(DD_TEAM_DATA_ID, USER_DATA_ID, body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+#####
 
 ```rust
-// Update a user's membership attributes on a team returns "Represents a user's
-// association to a team" response
+// Update a user's membership attributes on a team returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_teams::TeamsAPI;
 use datadog_api_client::datadogV2::model::UserTeamAttributes;
@@ -4710,6 +4719,11 @@ use datadog_api_client::datadogV2::model::UserTeamUpdateRequest;
 
 #[tokio::main]
 async fn main() {
+    // there is a valid "dd_team" in the system
+    let dd_team_data_id = std::env::var("DD_TEAM_DATA_ID").unwrap();
+
+    // there is a valid "user" in the system
+    let user_data_id = std::env::var("USER_DATA_ID").unwrap();
     let body = UserTeamUpdateRequest::new(
         UserTeamUpdate::new(UserTeamType::TEAM_MEMBERSHIPS)
             .attributes(UserTeamAttributes::new().role(Some(UserTeamRole::ADMIN))),
@@ -4717,7 +4731,7 @@ async fn main() {
     let configuration = datadog::Configuration::new();
     let api = TeamsAPI::with_config(configuration);
     let resp = api
-        .update_team_membership("team_id".to_string(), "user_id".to_string(), body)
+        .update_team_membership(dd_team_data_id.clone(), user_data_id.clone(), body)
         .await;
     if let Ok(value) = resp {
         println!("{:#?}", value);
@@ -4731,17 +4745,23 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
- * Update a user's membership attributes on a team returns "Represents a user's association to a team" response
+ * Update a user's membership attributes on a team returns "OK" response
  */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
 const configuration = client.createConfiguration();
 const apiInstance = new v2.TeamsApi(configuration);
+
+// there is a valid "dd_team" in the system
+const DD_TEAM_DATA_ID = process.env.DD_TEAM_DATA_ID as string;
+
+// there is a valid "user" in the system
+const USER_DATA_ID = process.env.USER_DATA_ID as string;
 
 const params: v2.TeamsApiUpdateTeamMembershipRequest = {
   body: {
@@ -4752,8 +4772,8 @@ const params: v2.TeamsApiUpdateTeamMembershipRequest = {
       type: "team_memberships",
     },
   },
-  teamId: "team_id",
-  userId: "user_id",
+  teamId: DD_TEAM_DATA_ID,
+  userId: USER_DATA_ID,
 };
 
 apiInstance
@@ -4791,8 +4811,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all links for a given team. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4922,13 +4940,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/links" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4956,7 +4974,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get links for a team returns "OK" response
@@ -4973,7 +4991,7 @@ p api_instance.get_team_links(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get links for a team returns "OK" response
@@ -4981,32 +4999,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamLinks(ctx, DdTeamDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamLinks(ctx, DdTeamDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamLinks`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamLinks`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamLinks`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamLinks`:\n%s\n", responseContent)
 }
 ```
 
@@ -5014,7 +5032,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get links for a team returns "OK" response
@@ -5050,7 +5068,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get links for a team returns "OK" response
@@ -5076,7 +5094,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5131,8 +5149,6 @@ Add a new link to a team. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -5144,8 +5160,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -5321,7 +5335,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/links" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5339,8 +5353,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a team link returns "OK" response
@@ -5348,42 +5362,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.TeamLinkCreateRequest{
-		Data: datadogV2.TeamLinkCreate{
-			Attributes: datadogV2.TeamLinkAttributes{
-				Label:    "Link label",
-				Url:      "https://example.com",
-				Position: datadog.PtrInt32(0),
-			},
-			Type: datadogV2.TEAMLINKTYPE_TEAM_LINKS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeamLink(ctx, DdTeamDataID, body)
+    body := datadogV2.TeamLinkCreateRequest{
+        Data: datadogV2.TeamLinkCreate{
+            Attributes: datadogV2.TeamLinkAttributes{
+                Label:    "Link label",
+                Url:      "https://example.com",
+                Position: datadog.PtrInt32(0),
+            },
+            Type: datadogV2.TEAMLINKTYPE_TEAM_LINKS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeamLink(ctx, DdTeamDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamLink`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamLink`:\n%s\n", responseContent)
 }
 ```
 
@@ -5391,7 +5405,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a team link returns "OK" response
@@ -5442,7 +5456,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5483,7 +5497,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a team link returns "OK" response
@@ -5511,7 +5525,7 @@ p api_instance.create_team_link(DD_TEAM_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a team link returns "OK" response
@@ -5546,7 +5560,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5610,8 +5624,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a single link for a team. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5740,13 +5752,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"export link_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/links/${link_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5778,7 +5790,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a team link returns "OK" response
@@ -5798,7 +5810,7 @@ p api_instance.get_team_link(DD_TEAM_DATA_ID, TEAM_LINK_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a team link returns "OK" response
@@ -5806,35 +5818,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_link" in the system
-	TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
+    // there is a valid "team_link" in the system
+    TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamLink(ctx, DdTeamDataID, TeamLinkDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamLink(ctx, DdTeamDataID, TeamLinkDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamLink`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamLink`:\n%s\n", responseContent)
 }
 ```
 
@@ -5842,7 +5854,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a team link returns "OK" response
@@ -5881,7 +5893,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a team link returns "OK" response
@@ -5912,7 +5924,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5971,8 +5983,6 @@ Update a team link. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -5985,8 +5995,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -6136,7 +6144,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"export link_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/links/${link_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6153,8 +6161,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a team link returns "OK" response
@@ -6162,44 +6170,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_link" in the system
-	TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
+    // there is a valid "team_link" in the system
+    TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
 
-	body := datadogV2.TeamLinkCreateRequest{
-		Data: datadogV2.TeamLinkCreate{
-			Attributes: datadogV2.TeamLinkAttributes{
-				Label: "New Label",
-				Url:   "https://example.com",
-			},
-			Type: datadogV2.TEAMLINKTYPE_TEAM_LINKS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeamLink(ctx, DdTeamDataID, TeamLinkDataID, body)
+    body := datadogV2.TeamLinkCreateRequest{
+        Data: datadogV2.TeamLinkCreate{
+            Attributes: datadogV2.TeamLinkAttributes{
+                Label: "New Label",
+                Url:   "https://example.com",
+            },
+            Type: datadogV2.TEAMLINKTYPE_TEAM_LINKS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.UpdateTeamLink(ctx, DdTeamDataID, TeamLinkDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamLink`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamLink`:\n%s\n", responseContent)
 }
 ```
 
@@ -6207,7 +6215,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a team link returns "OK" response
@@ -6259,7 +6267,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6302,7 +6310,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a team link returns "OK" response
@@ -6332,7 +6340,7 @@ p api_instance.update_team_link(DD_TEAM_DATA_ID, TEAM_LINK_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a team link returns "OK" response
@@ -6371,7 +6379,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6438,8 +6446,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Remove a link from a team. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6533,12 +6539,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"export link_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/links/${link_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6568,7 +6574,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a team link returns "No Content" response
@@ -6588,7 +6594,7 @@ api_instance.delete_team_link(DD_TEAM_DATA_ID, TEAM_LINK_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a team link returns "No Content" response
@@ -6596,31 +6602,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_link" in the system
-	TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
+    // there is a valid "team_link" in the system
+    TeamLinkDataID := os.Getenv("TEAM_LINK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.DeleteTeamLink(ctx, DdTeamDataID, TeamLinkDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.DeleteTeamLink(ctx, DdTeamDataID, TeamLinkDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -6628,7 +6634,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a team link returns "No Content" response
@@ -6665,7 +6671,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a team link returns "No Content" response
@@ -6696,7 +6702,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6754,8 +6760,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all permission settings for a given team. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6887,13 +6891,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/permission-settings" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6921,7 +6925,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get permission settings for a team returns "OK" response
@@ -6938,7 +6942,7 @@ p api_instance.get_team_permission_settings(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get permission settings for a team returns "OK" response
@@ -6946,32 +6950,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamPermissionSettings(ctx, DdTeamDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamPermissionSettings(ctx, DdTeamDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamPermissionSettings`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamPermissionSettings`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamPermissionSettings`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamPermissionSettings`:\n%s\n", responseContent)
 }
 ```
 
@@ -6979,7 +6983,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get permission settings for a team returns "OK" response
@@ -7016,7 +7020,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get permission settings for a team returns "OK" response
@@ -7044,7 +7048,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7098,8 +7102,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get all team synchronization configurations. Returns a list of configurations used for linking or provisioning teams with external sources like GitHub. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -7229,13 +7231,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport filter[source]="github"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/sync?filter[source]=${filter[source]}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7260,7 +7262,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team sync configurations returns "OK" response
@@ -7274,7 +7276,7 @@ p api_instance.get_team_sync(TeamSyncAttributesSource::GITHUB)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team sync configurations returns "OK" response
@@ -7282,29 +7284,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamSync(ctx, datadogV2.TEAMSYNCATTRIBUTESSOURCE_GITHUB)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamSync(ctx, datadogV2.TEAMSYNCATTRIBUTESSOURCE_GITHUB)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamSync`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamSync`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamSync`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamSync`:\n%s\n", responseContent)
 }
 ```
 
@@ -7312,7 +7314,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team sync configurations returns "OK" response
@@ -7346,7 +7348,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team sync configurations returns "OK" response
@@ -7371,7 +7373,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7423,8 +7425,6 @@ Update a team permission setting for a given team. This endpoint requires the `t
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -7437,8 +7437,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -7586,7 +7584,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"export action="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/permission-settings/${action}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7602,8 +7600,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update permission setting for team returns "OK" response
@@ -7611,40 +7609,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.TeamPermissionSettingUpdateRequest{
-		Data: datadogV2.TeamPermissionSettingUpdate{
-			Attributes: &datadogV2.TeamPermissionSettingUpdateAttributes{
-				Value: datadogV2.TEAMPERMISSIONSETTINGVALUE_ADMINS.Ptr(),
-			},
-			Type: datadogV2.TEAMPERMISSIONSETTINGTYPE_TEAM_PERMISSION_SETTINGS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeamPermissionSetting(ctx, DdTeamDataID, "manage_membership", body)
+    body := datadogV2.TeamPermissionSettingUpdateRequest{
+        Data: datadogV2.TeamPermissionSettingUpdate{
+            Attributes: &datadogV2.TeamPermissionSettingUpdateAttributes{
+                Value: datadogV2.TEAMPERMISSIONSETTINGVALUE_ADMINS.Ptr(),
+            },
+            Type: datadogV2.TEAMPERMISSIONSETTINGTYPE_TEAM_PERMISSION_SETTINGS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.UpdateTeamPermissionSetting(ctx, DdTeamDataID, "manage_membership", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamPermissionSetting`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamPermissionSetting`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamPermissionSetting`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamPermissionSetting`:\n%s\n", responseContent)
 }
 ```
 
@@ -7652,7 +7650,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update permission setting for team returns "OK" response
@@ -7703,7 +7701,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7745,7 +7743,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update permission setting for team returns "OK" response
@@ -7771,7 +7769,7 @@ p api_instance.update_team_permission_setting(DD_TEAM_DATA_ID, "manage_membershi
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update permission setting for team returns "OK" response
@@ -7815,7 +7813,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7878,8 +7876,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a list of memberships for a user This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8158,13 +8154,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_uuid="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/users/${user_uuid}/memberships" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8192,7 +8188,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get user memberships returns "Represents a user's association to a team" response
@@ -8209,7 +8205,7 @@ p api_instance.get_user_memberships(USER_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get user memberships returns "Represents a user's association to a team" response
@@ -8217,32 +8213,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetUserMemberships(ctx, UserDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetUserMemberships(ctx, UserDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetUserMemberships`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetUserMemberships`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetUserMemberships`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetUserMemberships`:\n%s\n", responseContent)
 }
 ```
 
@@ -8250,7 +8246,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get user memberships returns "Represents a user's association to a team" response
@@ -8286,7 +8282,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get user memberships returns "Represents a user's association to a team"
@@ -8313,7 +8309,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8364,8 +8360,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 This endpoint attempts to link your existing Datadog teams with GitHub teams by matching their names. It evaluates all current Datadog teams and compares them against teams in the GitHub organization connected to your Datadog account, based on Datadog Team handle and GitHub Team slug (lowercased and kebab-cased).
 
 This operation is read-only on the GitHub side, no teams will be modified or created.
@@ -8374,13 +8368,9 @@ This operation is read-only on the GitHub side, no teams will be modified or cre
 This endpoint requires the `teams_manage` permission.
 OAuth apps require the `teams_manage` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -8496,7 +8486,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/sync" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -8513,8 +8503,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Sync teams returns "OK" response
@@ -8522,34 +8512,34 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.TeamSyncRequest{
-		Data: datadogV2.TeamSyncData{
-			Attributes: datadogV2.TeamSyncAttributes{
-				Source: datadogV2.TEAMSYNCATTRIBUTESSOURCE_GITHUB,
-				Type:   datadogV2.TEAMSYNCATTRIBUTESTYPE_LINK,
-			},
-			Type: datadogV2.TEAMSYNCBULKTYPE_TEAM_SYNC_BULK,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.SyncTeams(ctx, body)
+    body := datadogV2.TeamSyncRequest{
+        Data: datadogV2.TeamSyncData{
+            Attributes: datadogV2.TeamSyncAttributes{
+                Source: datadogV2.TEAMSYNCATTRIBUTESSOURCE_GITHUB,
+                Type:   datadogV2.TEAMSYNCATTRIBUTESTYPE_LINK,
+            },
+            Type: datadogV2.TEAMSYNCBULKTYPE_TEAM_SYNC_BULK,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.SyncTeams(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.SyncTeams`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.SyncTeams`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8557,7 +8547,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Sync teams returns "OK" response
@@ -8604,7 +8594,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -8640,10 +8630,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Sync teams returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::TeamsAPI.new
@@ -8664,7 +8653,7 @@ p api_instance.sync_teams(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Sync teams returns "OK" response
@@ -8701,7 +8690,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8755,15 +8744,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Add a member team. Adds the team given by the `id` in the body as a member team of the super team.
 
 **Note**: This API is deprecated. For creating team hierarchy links, use the team hierarchy links API: `POST /api/v2/team-hierarchy-links`.
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -8776,8 +8761,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -8885,7 +8868,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport super_team_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${super_team_id}/member_teams" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -8898,8 +8881,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -8930,7 +8913,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add a member team returns "Added" response
@@ -8954,7 +8937,7 @@ api_instance.add_member_team("super_team_id", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Add a member team returns "Added" response
@@ -8962,32 +8945,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AddMemberTeamRequest{
-		Data: datadogV2.MemberTeam{
-			Id:   "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
-			Type: datadogV2.MEMBERTEAMTYPE_MEMBER_TEAMS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.AddMemberTeam", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.AddMemberTeam(ctx, "super_team_id", body)
+    body := datadogV2.AddMemberTeamRequest{
+        Data: datadogV2.MemberTeam{
+            Id:   "aeadc05e-98a8-11ec-ac2c-da7ad0900001",
+            Type: datadogV2.MEMBERTEAMTYPE_MEMBER_TEAMS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.AddMemberTeam", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.AddMemberTeam(ctx, "super_team_id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddMemberTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddMemberTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -8995,7 +8978,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add a member team returns "Added" response
@@ -9037,7 +9020,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Add a member team returns "Added" response
@@ -9069,7 +9052,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9125,8 +9108,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 List all team hierarchy links that match the provided filters. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9360,13 +9341,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team-hierarchy-links" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9402,7 +9383,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team hierarchy links returns "OK" response
@@ -9426,7 +9407,7 @@ p api_instance.list_team_hierarchy_links(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team hierarchy links returns "OK" response
@@ -9434,33 +9415,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "team_hierarchy_link" in the system
-	TeamHierarchyLinkDataRelationshipsParentTeamDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_RELATIONSHIPS_PARENT_TEAM_DATA_ID")
-	TeamHierarchyLinkDataRelationshipsSubTeamDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_RELATIONSHIPS_SUB_TEAM_DATA_ID")
+    // there is a valid "team_hierarchy_link" in the system
+    TeamHierarchyLinkDataRelationshipsParentTeamDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_RELATIONSHIPS_PARENT_TEAM_DATA_ID")
+    TeamHierarchyLinkDataRelationshipsSubTeamDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_RELATIONSHIPS_SUB_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.ListTeamHierarchyLinks(ctx, *datadogV2.NewListTeamHierarchyLinksOptionalParameters().WithFilterParentTeam(TeamHierarchyLinkDataRelationshipsParentTeamDataID).WithFilterSubTeam(TeamHierarchyLinkDataRelationshipsSubTeamDataID).WithPageNumber(0).WithPageSize(100))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.ListTeamHierarchyLinks(ctx, *datadogV2.NewListTeamHierarchyLinksOptionalParameters().WithFilterParentTeam(TeamHierarchyLinkDataRelationshipsParentTeamDataID).WithFilterSubTeam(TeamHierarchyLinkDataRelationshipsSubTeamDataID).WithPageNumber(0).WithPageSize(100))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamHierarchyLinks`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamHierarchyLinks`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamHierarchyLinks`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamHierarchyLinks`:\n%s\n", responseContent)
 }
 ```
 
@@ -9468,7 +9449,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team hierarchy links returns "OK" response
@@ -9514,7 +9495,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team hierarchy links returns "OK" response
@@ -9554,7 +9535,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9614,8 +9595,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a single team hierarchy link for the given link_id. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -9847,13 +9826,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport link_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team-hierarchy-links/${link_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9881,7 +9860,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a team hierarchy link returns "OK" response
@@ -9898,7 +9877,7 @@ p api_instance.get_team_hierarchy_link(TEAM_HIERARCHY_LINK_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a team hierarchy link returns "OK" response
@@ -9906,32 +9885,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "team_hierarchy_link" in the system
-	TeamHierarchyLinkDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_ID")
+    // there is a valid "team_hierarchy_link" in the system
+    TeamHierarchyLinkDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamHierarchyLink(ctx, TeamHierarchyLinkDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamHierarchyLink(ctx, TeamHierarchyLinkDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamHierarchyLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamHierarchyLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamHierarchyLink`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamHierarchyLink`:\n%s\n", responseContent)
 }
 ```
 
@@ -9939,7 +9918,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a team hierarchy link returns "OK" response
@@ -9976,7 +9955,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a team hierarchy link returns "OK" response
@@ -10004,7 +9983,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10054,15 +10033,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Get all member teams.
 
 **Note**: This API is deprecated. For team hierarchy relationships (parent-child teams), use the team hierarchy links API: `GET /api/v2/team-hierarchy-links`.
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -10389,13 +10364,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport super_team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${super_team_id}/member_teams" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10420,10 +10395,9 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
-# Get all member teams returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
@@ -10437,7 +10411,7 @@ p api_instance.list_member_teams("super_team_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all member teams returns "OK" response
@@ -10445,30 +10419,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListMemberTeams", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.ListMemberTeams(ctx, "super_team_id", *datadogV2.NewListMemberTeamsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListMemberTeams", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.ListMemberTeams(ctx, "super_team_id", *datadogV2.NewListMemberTeamsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListMemberTeams`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListMemberTeams`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListMemberTeams`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListMemberTeams`:\n%s\n", responseContent)
 }
 ```
 
@@ -10476,7 +10450,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all member teams returns "OK" response
@@ -10510,7 +10484,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all member teams returns "OK" response
@@ -10541,7 +10515,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10591,16 +10565,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Create a new team hierarchy link between a parent team and a sub team. This endpoint requires all of the following permissions:
 `teams_read``teams_manage`
 
-
 OAuth apps require the `teams_read, teams_manage` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -10868,7 +10837,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team-hierarchy-links" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10895,8 +10864,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a team hierarchy link returns "OK" response
@@ -10904,54 +10873,54 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "dd_team_2" in the system
-	DdTeam2DataID := os.Getenv("DD_TEAM_2_DATA_ID")
+    // there is a valid "dd_team_2" in the system
+    DdTeam2DataID := os.Getenv("DD_TEAM_2_DATA_ID")
 
-	body := datadogV2.TeamHierarchyLinkCreateRequest{
-		Data: datadogV2.TeamHierarchyLinkCreate{
-			Relationships: datadogV2.TeamHierarchyLinkCreateRelationships{
-				ParentTeam: datadogV2.TeamHierarchyLinkCreateTeamRelationship{
-					Data: datadogV2.TeamHierarchyLinkCreateTeam{
-						Id:   DdTeamDataID,
-						Type: datadogV2.TEAMTYPE_TEAM,
-					},
-				},
-				SubTeam: datadogV2.TeamHierarchyLinkCreateTeamRelationship{
-					Data: datadogV2.TeamHierarchyLinkCreateTeam{
-						Id:   DdTeam2DataID,
-						Type: datadogV2.TEAMTYPE_TEAM,
-					},
-				},
-			},
-			Type: datadogV2.TEAMHIERARCHYLINKTYPE_TEAM_HIERARCHY_LINKS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.AddTeamHierarchyLink(ctx, body)
+    body := datadogV2.TeamHierarchyLinkCreateRequest{
+        Data: datadogV2.TeamHierarchyLinkCreate{
+            Relationships: datadogV2.TeamHierarchyLinkCreateRelationships{
+                ParentTeam: datadogV2.TeamHierarchyLinkCreateTeamRelationship{
+                    Data: datadogV2.TeamHierarchyLinkCreateTeam{
+                        Id:   DdTeamDataID,
+                        Type: datadogV2.TEAMTYPE_TEAM,
+                    },
+                },
+                SubTeam: datadogV2.TeamHierarchyLinkCreateTeamRelationship{
+                    Data: datadogV2.TeamHierarchyLinkCreateTeam{
+                        Id:   DdTeam2DataID,
+                        Type: datadogV2.TEAMTYPE_TEAM,
+                    },
+                },
+            },
+            Type: datadogV2.TEAMHIERARCHYLINKTYPE_TEAM_HIERARCHY_LINKS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.AddTeamHierarchyLink(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamHierarchyLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamHierarchyLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddTeamHierarchyLink`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddTeamHierarchyLink`:\n%s\n", responseContent)
 }
 ```
 
@@ -10959,7 +10928,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a team hierarchy link returns "OK" response
@@ -11025,7 +10994,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -11083,7 +11052,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a team hierarchy link returns "OK" response
@@ -11123,7 +11092,7 @@ p api_instance.add_team_hierarchy_link(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a team hierarchy link returns "OK" response
@@ -11172,7 +11141,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11242,15 +11211,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Remove a super team's member team identified by `member_team_id`.
 
 **Note**: This API is deprecated. For deleting team hierarchy links, use the team hierarchy links API: `DELETE /api/v2/team-hierarchy-links/{link_id}`.
 This endpoint requires the `teams_read` permission.
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11344,12 +11309,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport super_team_id="CHANGE_ME"export member_team_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${super_team_id}/member_teams/${member_team_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11373,7 +11338,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a member team returns "No Content" response
@@ -11390,7 +11355,7 @@ api_instance.remove_member_team("super_team_id", "member_team_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a member team returns "No Content" response
@@ -11398,26 +11363,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.RemoveMemberTeam", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.RemoveMemberTeam(ctx, "super_team_id", "member_team_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.RemoveMemberTeam", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.RemoveMemberTeam(ctx, "super_team_id", "member_team_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveMemberTeam`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveMemberTeam`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -11425,7 +11390,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a member team returns "No Content" response
@@ -11457,7 +11422,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a member team returns "No Content" response
@@ -11484,7 +11449,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11535,10 +11500,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Remove a team hierarchy link by the given link_id. This endpoint requires all of the following permissions:
 `teams_read``teams_manage`
 
-
 OAuth apps require the `teams_read, teams_manage` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -11631,12 +11593,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport link_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team-hierarchy-links/${link_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -11662,7 +11624,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a team hierarchy link returns "No Content" response
@@ -11679,7 +11641,7 @@ api_instance.remove_team_hierarchy_link(TEAM_HIERARCHY_LINK_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a team hierarchy link returns "No Content" response
@@ -11687,28 +11649,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "team_hierarchy_link" in the system
-	TeamHierarchyLinkDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_ID")
+    // there is a valid "team_hierarchy_link" in the system
+    TeamHierarchyLinkDataID := os.Getenv("TEAM_HIERARCHY_LINK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.RemoveTeamHierarchyLink(ctx, TeamHierarchyLinkDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.RemoveTeamHierarchyLink(ctx, TeamHierarchyLinkDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveTeamHierarchyLink`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveTeamHierarchyLink`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -11716,7 +11678,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a team hierarchy link returns "No Content" response
@@ -11750,7 +11712,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a team hierarchy link returns "No Content" response
@@ -11778,7 +11740,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11833,8 +11795,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Returns all team connections. This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -12010,13 +11970,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/connections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```ruby
 # List team connections returns "OK" response
@@ -12030,7 +11990,7 @@ p api_instance.list_team_connections()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```python
 """
@@ -12052,7 +12012,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```go
 // List team connections returns "OK" response
@@ -12060,29 +12020,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.ListTeamConnections(ctx, *datadogV2.NewListTeamConnectionsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.ListTeamConnections(ctx, *datadogV2.NewListTeamConnectionsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -12090,7 +12050,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List team connections returns "OK" response
@@ -12123,7 +12083,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List team connections returns "OK" response
@@ -12150,7 +12110,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12198,13 +12158,9 @@ Create multiple team connections. This endpoint requires the `teams_read` permis
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -12445,7 +12401,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/connections" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -12474,8 +12430,8 @@ API error response.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -12539,7 +12495,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create team connections returns "Created" response
@@ -12585,7 +12541,7 @@ p api_instance.create_team_connections(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create team connections returns "Created" response
@@ -12593,58 +12549,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.TeamConnectionCreateRequest{
-		Data: []datadogV2.TeamConnectionCreateData{
-			{
-				Type: datadogV2.TEAMCONNECTIONTYPE_TEAM_CONNECTION,
-				Attributes: &datadogV2.TeamConnectionAttributes{
-					Source:    datadog.PtrString("github"),
-					ManagedBy: datadog.PtrString("datadog"),
-				},
-				Relationships: &datadogV2.TeamConnectionRelationships{
-					Team: &datadogV2.TeamRef{
-						Data: &datadogV2.TeamRefData{
-							Id:   DdTeamDataID,
-							Type: datadogV2.TEAMREFDATATYPE_TEAM,
-						},
-					},
-					ConnectedTeam: &datadogV2.ConnectedTeamRef{
-						Data: &datadogV2.ConnectedTeamRefData{
-							Id:   "@MyGitHubAccount/my-team-name",
-							Type: datadogV2.CONNECTEDTEAMREFDATATYPE_GITHUB_TEAM,
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateTeamConnections", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeamConnections(ctx, body)
+    body := datadogV2.TeamConnectionCreateRequest{
+        Data: []datadogV2.TeamConnectionCreateData{
+            {
+                Type: datadogV2.TEAMCONNECTIONTYPE_TEAM_CONNECTION,
+                Attributes: &datadogV2.TeamConnectionAttributes{
+                    Source:    datadog.PtrString("github"),
+                    ManagedBy: datadog.PtrString("datadog"),
+                },
+                Relationships: &datadogV2.TeamConnectionRelationships{
+                    Team: &datadogV2.TeamRef{
+                        Data: &datadogV2.TeamRefData{
+                            Id:   DdTeamDataID,
+                            Type: datadogV2.TEAMREFDATATYPE_TEAM,
+                        },
+                    },
+                    ConnectedTeam: &datadogV2.ConnectedTeamRef{
+                        Data: &datadogV2.ConnectedTeamRefData{
+                            Id:   "@MyGitHubAccount/my-team-name",
+                            Type: datadogV2.CONNECTEDTEAMREFDATATYPE_GITHUB_TEAM,
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateTeamConnections", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeamConnections(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -12652,7 +12608,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create team connections returns "Created" response
@@ -12724,7 +12680,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create team connections returns "Created" response
@@ -12781,7 +12737,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -12861,13 +12817,9 @@ Delete multiple team connections. This endpoint requires the `teams_read` permis
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -13002,7 +12954,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/connections" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -13017,8 +12969,8 @@ API error response.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13050,7 +13002,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete team connections returns "No Content" response
@@ -13073,7 +13025,7 @@ api_instance.delete_team_connections(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete team connections returns "No Content" response
@@ -13081,33 +13033,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.TeamConnectionDeleteRequest{
-		Data: []datadogV2.TeamConnectionDeleteRequestDataItem{
-			{
-				Id:   "12345678-1234-5678-9abc-123456789012",
-				Type: datadogV2.TEAMCONNECTIONTYPE_TEAM_CONNECTION,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.DeleteTeamConnections(ctx, body)
+    body := datadogV2.TeamConnectionDeleteRequest{
+        Data: []datadogV2.TeamConnectionDeleteRequestDataItem{
+            {
+                Id:   "12345678-1234-5678-9abc-123456789012",
+                Type: datadogV2.TEAMCONNECTIONTYPE_TEAM_CONNECTION,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.DeleteTeamConnections(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -13115,7 +13067,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete team connections returns "No Content" response
@@ -13158,7 +13110,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete team connections returns "No Content" response
@@ -13189,7 +13141,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13247,8 +13199,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -13414,13 +13364,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/notification-rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -13448,7 +13398,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team notification rules returns "OK" response
@@ -13465,7 +13415,7 @@ p api_instance.get_team_notification_rules(DD_TEAM_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team notification rules returns "OK" response
@@ -13473,32 +13423,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamNotificationRules(ctx, DdTeamDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamNotificationRules(ctx, DdTeamDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamNotificationRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamNotificationRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamNotificationRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamNotificationRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -13506,7 +13456,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team notification rules returns "OK" response
@@ -13542,7 +13492,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team notification rules returns "OK" response
@@ -13570,7 +13520,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -13625,8 +13575,6 @@ This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -13638,8 +13586,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -13839,7 +13785,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/notification-rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -13861,8 +13807,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create team notification rule returns "OK" response
@@ -13870,46 +13816,46 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	body := datadogV2.TeamNotificationRuleRequest{
-		Data: datadogV2.TeamNotificationRule{
-			Type: datadogV2.TEAMNOTIFICATIONRULETYPE_TEAM_NOTIFICATION_RULES,
-			Attributes: datadogV2.TeamNotificationRuleAttributes{
-				Email: &datadogV2.TeamNotificationRuleAttributesEmail{
-					Enabled: datadog.PtrBool(true),
-				},
-				Slack: &datadogV2.TeamNotificationRuleAttributesSlack{
-					Workspace: datadog.PtrString("Datadog"),
-					Channel:   datadog.PtrString("aaa-omg-ops"),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.CreateTeamNotificationRule(ctx, DdTeamDataID, body)
+    body := datadogV2.TeamNotificationRuleRequest{
+        Data: datadogV2.TeamNotificationRule{
+            Type: datadogV2.TEAMNOTIFICATIONRULETYPE_TEAM_NOTIFICATION_RULES,
+            Attributes: datadogV2.TeamNotificationRuleAttributes{
+                Email: &datadogV2.TeamNotificationRuleAttributesEmail{
+                    Enabled: datadog.PtrBool(true),
+                },
+                Slack: &datadogV2.TeamNotificationRuleAttributesSlack{
+                    Workspace: datadog.PtrString("Datadog"),
+                    Channel:   datadog.PtrString("aaa-omg-ops"),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.CreateTeamNotificationRule(ctx, DdTeamDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeamNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeamNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -13917,7 +13863,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create team notification rule returns "OK" response
@@ -13973,7 +13919,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -14020,7 +13966,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create team notification rule returns "OK" response
@@ -14052,7 +13998,7 @@ p api_instance.create_team_notification_rule(DD_TEAM_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create team notification rule returns "OK" response
@@ -14096,7 +14042,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14164,8 +14110,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -14308,13 +14252,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"export rule_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/notification-rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -14346,7 +14290,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get team notification rule returns "OK" response
@@ -14366,7 +14310,7 @@ p api_instance.get_team_notification_rule(DD_TEAM_DATA_ID, TEAM_NOTIFICATION_RUL
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get team notification rule returns "OK" response
@@ -14374,35 +14318,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_notification_rule" in the system
-	TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "team_notification_rule" in the system
+    TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.GetTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.GetTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -14410,7 +14354,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get team notification rule returns "OK" response
@@ -14450,7 +14394,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get team notification rule returns "OK" response
@@ -14484,7 +14428,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -14544,8 +14488,6 @@ This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -14558,8 +14500,6 @@ OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -14735,7 +14675,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport team_id="CHANGE_ME"export rule_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/notification-rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -14758,8 +14698,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update team notification rule returns "OK" response
@@ -14767,50 +14707,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_notification_rule" in the system
-	TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "team_notification_rule" in the system
+    TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
 
-	body := datadogV2.TeamNotificationRuleRequest{
-		Data: datadogV2.TeamNotificationRule{
-			Type: datadogV2.TEAMNOTIFICATIONRULETYPE_TEAM_NOTIFICATION_RULES,
-			Id:   datadog.PtrString(TeamNotificationRuleDataID),
-			Attributes: datadogV2.TeamNotificationRuleAttributes{
-				Pagerduty: &datadogV2.TeamNotificationRuleAttributesPagerduty{
-					ServiceName: datadog.PtrString("Datadog-prod"),
-				},
-				Slack: &datadogV2.TeamNotificationRuleAttributesSlack{
-					Workspace: datadog.PtrString("Datadog"),
-					Channel:   datadog.PtrString("aaa-governance-ops"),
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	resp, r, err := api.UpdateTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID, body)
+    body := datadogV2.TeamNotificationRuleRequest{
+        Data: datadogV2.TeamNotificationRule{
+            Type: datadogV2.TEAMNOTIFICATIONRULETYPE_TEAM_NOTIFICATION_RULES,
+            Id:   datadog.PtrString(TeamNotificationRuleDataID),
+            Attributes: datadogV2.TeamNotificationRuleAttributes{
+                Pagerduty: &datadogV2.TeamNotificationRuleAttributesPagerduty{
+                    ServiceName: datadog.PtrString("Datadog-prod"),
+                },
+                Slack: &datadogV2.TeamNotificationRuleAttributesSlack{
+                    Workspace: datadog.PtrString("Datadog"),
+                    Channel:   datadog.PtrString("aaa-governance-ops"),
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    resp, r, err := api.UpdateTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamNotificationRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamNotificationRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -14818,7 +14758,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update team notification rule returns "OK" response
@@ -14881,7 +14821,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -14936,7 +14876,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update team notification rule returns "OK" response
@@ -14972,7 +14912,7 @@ p api_instance.update_team_notification_rule(DD_TEAM_DATA_ID, TEAM_NOTIFICATION_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update team notification rule returns "OK" response
@@ -15029,7 +14969,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -15103,8 +15043,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 This endpoint requires the `teams_read` permission.
 
 OAuth apps require the `teams_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#teams) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -15198,12 +15136,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport team_id="CHANGE_ME"export rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/team/${team_id}/notification-rules/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -15233,7 +15171,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete team notification rule returns "No Content" response
@@ -15253,7 +15191,7 @@ api_instance.delete_team_notification_rule(DD_TEAM_DATA_ID, TEAM_NOTIFICATION_RU
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete team notification rule returns "No Content" response
@@ -15261,31 +15199,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dd_team" in the system
-	DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
+    // there is a valid "dd_team" in the system
+    DdTeamDataID := os.Getenv("DD_TEAM_DATA_ID")
 
-	// there is a valid "team_notification_rule" in the system
-	TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
+    // there is a valid "team_notification_rule" in the system
+    TeamNotificationRuleDataID := os.Getenv("TEAM_NOTIFICATION_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTeamsApi(apiClient)
-	r, err := api.DeleteTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTeamsApi(apiClient)
+    r, err := api.DeleteTeamNotificationRule(ctx, DdTeamDataID, TeamNotificationRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamNotificationRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeamNotificationRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -15293,7 +15231,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete team notification rule returns "No Content" response
@@ -15330,7 +15268,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete team notification rule returns "No Content" response
@@ -15364,7 +15302,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

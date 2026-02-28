@@ -55,6 +55,5 @@ foo[`__proto`] = null;
 foo[`__proto__\n`] = null;
 class C { #__proto__; foo() { this.#__proto__; } }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

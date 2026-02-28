@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kube-proxy configuration file should be owned by root:root
-Classification:complianceFramework:cis-kubernetesControl:4.1.4 
+Classification:complianceFramework:cis-kubernetesControl:4.1.4
 ## Description{% #description %}
 
 If kube-proxy is running, ensure that the file ownership of its kubeconfig file is set to root:root.

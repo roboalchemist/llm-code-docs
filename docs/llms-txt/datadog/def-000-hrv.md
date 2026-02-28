@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Publicly accessible EC2 instance should not have open administrative ports
- 
+
 ## Description{% #description %}
 
 This rule checks if an EC2 instance accessible from the public internet has open administrative ports, specifically port 22 (SSH) and port 3389 (RDP). Having these ports open poses a security risk as it can expose the instance to unauthorized access.

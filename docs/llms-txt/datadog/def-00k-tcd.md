@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet service file should be owned by root
- 
+
 ## Description{% #description %}
 
 The kubelet service file ownership should be set to `root:root`. The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should set its file ownership to maintain the integrity of the file.

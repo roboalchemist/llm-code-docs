@@ -1,0 +1,121 @@
+{
+  "scraped_at": "2026-02-24 18:24:55",
+  "source_url": "https://retejs.org",
+  "pages_fetched": 19,
+  "pages": [
+    {
+      "title": "Concepts - Plugin System",
+      "url": "https://retejs.org/docs/concepts/plugin-system",
+      "file": "docs-concepts-plugin-system.md",
+      "size": 10043
+    },
+    {
+      "title": "Concepts - Presets",
+      "url": "https://retejs.org/docs/concepts/presets",
+      "file": "docs-concepts-presets.md",
+      "size": 8532
+    },
+    {
+      "title": "Concepts - Editor",
+      "url": "https://retejs.org/docs/concepts/editor",
+      "file": "docs-concepts-editor.md",
+      "size": 11555
+    },
+    {
+      "title": "Concepts - Engine",
+      "url": "https://retejs.org/docs/concepts/engine",
+      "file": "docs-concepts-engine.md",
+      "size": 11273
+    },
+    {
+      "title": "Concepts - Integration",
+      "url": "https://retejs.org/docs/concepts/integration",
+      "file": "docs-concepts-integration.md",
+      "size": 10138
+    },
+    {
+      "title": "Guide - React Renderer",
+      "url": "https://retejs.org/docs/guides/renderers/react",
+      "file": "docs-guides-renderers-react.md",
+      "size": 15130
+    },
+    {
+      "title": "Guide - Vue Renderer",
+      "url": "https://retejs.org/docs/guides/renderers/vue",
+      "file": "docs-guides-renderers-vue.md",
+      "size": 14274
+    },
+    {
+      "title": "Guide - Angular Renderer",
+      "url": "https://retejs.org/docs/guides/renderers/angular",
+      "file": "docs-guides-renderers-angular.md",
+      "size": 14147
+    },
+    {
+      "title": "Guide - Svelte Renderer",
+      "url": "https://retejs.org/docs/guides/renderers/svelte",
+      "file": "docs-guides-renderers-svelte.md",
+      "size": 12721
+    },
+    {
+      "title": "Guide - Lit Renderer",
+      "url": "https://retejs.org/docs/guides/renderers/lit",
+      "file": "docs-guides-renderers-lit.md",
+      "size": 12970
+    },
+    {
+      "title": "Guide - Dataflow Engine",
+      "url": "https://retejs.org/docs/guides/processing/dataflow",
+      "file": "docs-guides-processing-dataflow.md",
+      "size": 10453
+    },
+    {
+      "title": "Guide - Control Flow Engine",
+      "url": "https://retejs.org/docs/guides/processing/control-flow",
+      "file": "docs-guides-processing-control-flow.md",
+      "size": 10601
+    },
+    {
+      "title": "Guide - Codegen",
+      "url": "https://retejs.org/docs/guides/processing/codegen",
+      "file": "docs-guides-processing-codegen.md",
+      "size": 6999
+    },
+    {
+      "title": "Guide - Data Structures",
+      "url": "https://retejs.org/docs/guides/data-structures",
+      "file": "docs-guides-data-structures.md",
+      "size": 13951
+    },
+    {
+      "title": "Development - Rete Kit",
+      "url": "https://retejs.org/docs/development/rete-kit",
+      "file": "docs-development-rete-kit.md",
+      "size": 13256
+    },
+    {
+      "title": "Development - Rete CLI",
+      "url": "https://retejs.org/docs/development/rete-cli",
+      "file": "docs-development-rete-cli.md",
+      "size": 9607
+    },
+    {
+      "title": "Migration Guide",
+      "url": "https://retejs.org/docs/migration",
+      "file": "docs-migration.md",
+      "size": 19524
+    },
+    {
+      "title": "Troubleshooting",
+      "url": "https://retejs.org/docs/troubleshooting",
+      "file": "docs-troubleshooting.md",
+      "size": 9089
+    },
+    {
+      "title": "FAQ",
+      "url": "https://retejs.org/docs/faq",
+      "file": "docs-faq.md",
+      "size": 21885
+    }
+  ]
+}

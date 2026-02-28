@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS databases should have 'Auto Minor Version Upgrade' enabled
- 
+
 ## Description{% #description %}
 
 Ensuring that RDS database instances have the Auto Minor Version Upgrade flag enabled allows the instances to automatically receive minor engine upgrades, which include features, bug fixes, and security patches during the specified maintenance window. AWS RDS occasionally deprecates minor engine versions and introduces new ones. By having the Auto Minor Version Upgrade feature enabled, these upgrades occur seamlessly during the specified maintenance window, maintaining database performance and security with minimal administrative intervention.

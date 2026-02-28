@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # VM disks for critical VMs should be encrypted with customer-supplied encryption keys
- 
+
 ## Description{% #description %}
 
 Customer-Supplied Encryption Keys (CSEK) are a feature in Google Cloud Storage and Google Compute Engine. If you supply your own encryption keys, Google uses your key to protect the Google-generated keys used to encrypt and decrypt your data. By default, Google Compute Engine encrypts all data at rest. Compute Engine handles and manages this encryption for you without any additional actions on your part. However, if you wanted to control and manage this encryption yourself, you can provide your own encryption keys.

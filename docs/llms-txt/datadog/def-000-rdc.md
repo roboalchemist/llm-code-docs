@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Access to Azure services for PostgreSQL Database Server should be disabled
- 
+
 ## Description{% #description %}
 
 Disable access from Azure services to PostgreSQL Database Server. If access from Azure services is enabled, the server's firewall will accept connections from all Azure resources, including resources not in your subscription. This is usually not a desired configuration. Instead, set up firewall rules to allow access from specific network ranges or VNET rules to allow access from specific virtual networks.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify pam_pwquality module is activated
- 
+
 ## Description{% #description %}
 
 The `pam_pwquality.so` module ensures password quality by evaluating user-created passwords against a system dictionary and a set of rules designed to detect weak choices. Originally derived from the pam_cracklib module, this module is backward-compatible with options of pam_cracklib.

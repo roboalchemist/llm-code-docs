@@ -24,8 +24,6 @@ breadcrumbs: >-
   Single Step APM Instrumentation on Windows
 ---
 
-# Single Step APM Instrumentation on Windows
-
 ## Overview{% #overview %}
 
 With Single Step Instrumentation (SSI), you can enable APM for your Java and .NET applications on Windows VMs using a single Datadog Agent installation command.

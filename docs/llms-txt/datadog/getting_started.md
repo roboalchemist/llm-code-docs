@@ -1,7 +1,3 @@
-# Source: https://docs.datadoghq.com/error_tracking/backend/getting_started.md
-
-# Source: https://docs.datadoghq.com/administrators_guide/getting_started.md
-
 # Source: https://docs.datadoghq.com/getting_started.md
 
 ---

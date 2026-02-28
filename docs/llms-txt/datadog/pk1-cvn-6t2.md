@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Log4j Scanner detected in user agent or referrer
-Classification:attackTactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595) 
+Classification:attackTactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595)
 ## Goal{% #goal %}
 
 This rule detects if your Apache or NGINX web servers are being scanned for the log4j vulnerability. The initial vulnerability was identified as [CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228).

@@ -52,6 +52,5 @@ foos.each { |path| do_bar(path) }
 ```ruby
 Array(foos).each { |foo| do_bar(foo) }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

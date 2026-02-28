@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # CodeBuild project environment variables should not contain plain text credentials
- 
+
 ## Description{% #description %}
 
 This rule verifies whether the project has plain text environment variables that include the string `AWS_ACCESS_KEY_ID` or `AWS_SECRET_ACCESS_KEY`. Storing authentication credentials such as these in plain text poses a security risk, as it may result in unauthorized access and potential data exposure.

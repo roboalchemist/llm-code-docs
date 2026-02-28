@@ -65,6 +65,5 @@ foo.bar.baz === foo.bar.qux
 class C { #field; foo() { this.#field === this['#field']; } }
 class C { #field; foo() { this['#field'] === this.#field; } }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

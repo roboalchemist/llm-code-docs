@@ -80,7 +80,7 @@ spec:
         command: ["etcd"]
         args: ["--trusted-ca-file=/etc/env/valid2.pem"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -111,7 +111,7 @@ spec:
         command: ["etcd"]
         args: ["--trusted-ca-file=/etc/env/valid3.pem"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ---
 apiVersion: v1

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable cron Service
 ---
 
 # Enable cron Service
- 
+
 ## Description{% #description %}
 
 The `crond` service is used to execute commands at preconfigured times. It is required by almost all systems to perform necessary maintenance tasks, such as notifying root of system activity. The `cron` service can be enabled with the following command:

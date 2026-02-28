@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Crypto miner process observe
 ---
 
 # Crypto miner process observed
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was identified as a crypto miner. Cryptocurrency mining monopolizes CPU usage, slowing legitimate services.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Projects should not have legacy networks configured for older projects
- 
+
 ## Description{% #description %}
 
 To prevent use of legacy networks, a project should not have a legacy network configured. Legacy networks can no longer be created, and their use is not recommended. This recommendation is to check old projects to ensure that they are not using Legacy Networks.

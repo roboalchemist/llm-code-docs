@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Missing Content-Security-Policy HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint was found responding with HTML or browser-rendered content and does not implement the Content Security Policy (CSP) header. Since the response content of this API can be rendered by a browser, this header specifies which domains the browser should consider as valid sources and prevent unwanted executable scripts, and other resources.

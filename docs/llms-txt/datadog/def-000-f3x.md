@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Storage account encryption scopes should use customer-managed keys to encrypt data at rest
- 
+
 ## Description{% #description %}
 
 This rule checks whether storage account encryption scopes are using customer-managed keys to encrypt data at rest. It is important to use customer-managed keys for encryption to ensure better control and security of data at rest.

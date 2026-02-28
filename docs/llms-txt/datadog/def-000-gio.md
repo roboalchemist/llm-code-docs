@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 paravirtual instance types should not be used
- 
+
 ## Description{% #description %}
 
 This control checks the virtualization type of an EC2 instance to determine if it is set to paravirtual. The control fails if the instance is using paravirtualization.

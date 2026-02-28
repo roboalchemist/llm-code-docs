@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Missing Access-Control-Allow-Origin HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint does not implement the Access-Control-Allow-Origin (ACAO) header, which may allow attackers to exploit Cross-Origin Resource Sharing (CORS) vulnerabilities. Without this header properly configured, the API may be vulnerable to cross-site request forgery (CSRF) attacks where malicious websites could make unauthorized requests to the API using the user's credentials.

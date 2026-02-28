@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall rsh Package
 ---
 
 # Uninstall rsh Package
- 
+
 ## Description{% #description %}
 
 The `rsh-client` package contains the client commands for the rsh services

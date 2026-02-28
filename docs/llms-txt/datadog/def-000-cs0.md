@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > The Web UI Dashboard should 
 ---
 
 # The Web UI Dashboard should be disabled
- 
+
 ## Description{% #description %}
 
 The Web UI dashboard should be disabled since it is historically a good source of vulnerabilities for a cluster.

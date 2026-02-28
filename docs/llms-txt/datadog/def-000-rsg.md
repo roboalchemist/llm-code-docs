@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # ECS Fargate services should automatically use the latest Fargate platform version
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon ECS Fargate services are configured to automatically utilize the latest Fargate platform version.

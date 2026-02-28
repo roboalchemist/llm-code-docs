@@ -137,7 +137,7 @@ If your application does not use the supported gems (Rails or Hanami) above, you
    require 'sinatra'
    require 'faraday'
    require 'redis'
-   
+
    require 'ddtrace/auto_instrument'
    ```
 
@@ -172,7 +172,7 @@ Using this block you can:
    require 'opentracing'
    require 'datadog/tracing'
    require 'datadog/opentracer'
-   
+
    # Activate the Datadog tracer for OpenTracing
    OpenTracing.global_tracer = Datadog::OpenTracer::Tracer.new
    ```
@@ -229,7 +229,7 @@ Datadog::Tracing.trace(name, **options) do |span, trace|
   # Additionally, you can modify the span here.
   # e.g. Change the resource name, set tags, etc...
 end
-```
+```text
 
 Where `name` should be a `String` that describes the generic kind of operation being done (e.g. `'web.request'`, or `'request.parse'`)
 
@@ -268,7 +268,7 @@ get '/posts' do
     end
   end
 end
-```
+```text
 
 ### Asynchronous tracing{% #asynchronous-tracing %}
 
@@ -283,7 +283,7 @@ def db_query(start, finish, query)
   span.resource = query
   span.finish(finish)
 end
-```
+```text
 
 Calling `Datadog::Tracing.trace` without a block will cause the function to return a `Datadog::Tracing::SpanOperation` that is started, but not finished. You can then modify this span however you wish, then close it `finish`.
 
@@ -307,7 +307,7 @@ def finish(name, id, payload)
     current_span.finish
   end
 end
-```
+```text
 
 ### Enriching traces from nested methods{% #enriching-traces-from-nested-methods %}
 
@@ -318,7 +318,7 @@ You can tag additional information to the current active span from any method. N
 
 current_span = Datadog::Tracing.active_span
 current_span.set_tag('my_tag', 'my_value') unless current_span.nil?
-```
+```text
 
 You can also get the current active trace using the `active_trace` method. This method will return `nil` if there is no active trace.
 
@@ -326,7 +326,7 @@ You can also get the current active trace using the `active_trace` method. This 
 # e.g. accessing active trace
 
 current_trace = Datadog::Tracing.active_trace
-```
+```text
 
 ## Integration instrumentation{% #integration-instrumentation %}
 
@@ -337,7 +337,7 @@ Datadog.configure do |c|
   # Activates and configures an integration
   c.tracing.instrument :integration_name, **options
 end
-```
+```text
 
 `options` are keyword arguments for integration-specific configuration.
 
@@ -354,7 +354,7 @@ Datadog.configure do |c|
   # Activates and configures an integration
   c.ci.instrument :integration_name, **options
 end
-```
+```text
 
 `options` are keyword arguments for integration-specific configuration.
 
@@ -372,7 +372,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :action_cable
 end
-```
+```text
 
 ### Action Mailer{% #action-mailer %}
 
@@ -385,7 +385,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :action_mailer, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -404,7 +404,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :action_pack
 end
-```
+```text
 
 ### Action View{% #action-view %}
 
@@ -417,7 +417,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :action_view, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -438,7 +438,7 @@ Datadog.configure do |c|
 end
 
 ExampleJob.perform_later
-```
+```text
 
 ### Active Model Serializers{% #active-model-serializers %}
 
@@ -454,7 +454,7 @@ end
 
 my_object = MyModel.new(name: 'my object')
 ActiveModelSerializers::SerializableResource.new(test_obj).serializable_hash
-```
+```text
 
 ### Active Record{% #active-record %}
 
@@ -475,7 +475,7 @@ Dir::Tmpname.create(['test', '.sqlite']) do |db|
                                                  database: db)
   conn.connection.execute('SELECT 42') # traced!
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -524,7 +524,7 @@ Datadog.configure do |c|
   c.tracing.instrument :active_record, describes: { makara_role: 'primary' }, service_name: 'primary-db'
   c.tracing.instrument :active_record, describes: { makara_role: 'replica' }, service_name: 'secondary-db'
 end
-```
+```text
 
 You can also create configurations based on partial matching of database connection fields:
 
@@ -543,7 +543,7 @@ Datadog.configure do |c|
   # will be configured `service_name: 'reports-db'`, not `service_name: 'mysql-db'`.
   c.tracing.instrument :active_record, describes: { adapter: 'mysql2', database:  'reports'}, service_name: 'reports-db'
 end
-```
+```text
 
 When multiple `describes` configurations match a connection, the latest configured rule that matches will be applied.
 
@@ -563,7 +563,7 @@ end
 
 cache = ActiveSupport::Cache::MemoryStore.new
 cache.read('city')
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -585,7 +585,7 @@ end
 
 # Perform traced call
 Aws::S3::Client.new.list_buckets
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -624,7 +624,7 @@ end
 Datadog::Tracing.trace('outer') do
   MyClass.new.async.foo
 end
-```
+```text
 
 ### Cucumber{% #cucumber %}
 
@@ -651,7 +651,7 @@ Around do |scenario, block|
   end
   block.call
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -677,7 +677,7 @@ end
 # Configure Dalli tracing behavior for single client
 client = Dalli::Client.new('localhost:11211', **options)
 client.set('abc', 123)
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -699,7 +699,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :delayed_job, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -725,7 +725,7 @@ response = client.perform_request 'GET', '_cluster/health'
 
 # In case you want to override the global configuration for a certain client instance
 Datadog.configure_onto(client.transport, **options)
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -751,7 +751,7 @@ Datadog.configure do |c|
     ethon.split_by_domain = false # Only necessary if split_by_domain is true by default
   end
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -783,7 +783,7 @@ end
 
 connection = Excon.new('https://example.com')
 connection.get
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -816,7 +816,7 @@ Excon.new(
     Excon::Middleware::Idempotent
   ]
 )
-```
+```text
 
 Where `options` is a Hash that contains any of the parameters listed in the table above.
 
@@ -846,7 +846,7 @@ connection = Faraday.new('https://example.com') do |builder|
 end
 
 connection.get('/foo')
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -881,7 +881,7 @@ class RackTestingAPI < Grape::API
     'Hello world!'
   end
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -904,7 +904,7 @@ end
 
 # Then run a GraphQL query
 YourSchema.execute(query, variables: {}, context: {}, operation_name: nil)
-```
+```text
 
 The `instrument :graphql` method accepts the following parameters. Additional options can be substituted in for `options`:
 
@@ -925,7 +925,7 @@ class YourSchema < GraphQL::Schema
     service: 'graphql'
   )
 end
-```
+```text
 
 ```ruby
 # .define-style schema
@@ -935,7 +935,7 @@ YourSchema = GraphQL::Schema.define do
     service: 'graphql'
   )
 end
-```
+```text
 
 Or you can modify an already defined schema:
 
@@ -945,7 +945,7 @@ YourSchema.use(
     GraphQL::Tracing::DataDogTracing,
     service: 'graphql'
 )
-```
+```text
 
 ```ruby
 # .define-style schema
@@ -955,7 +955,7 @@ YourSchema.define do
     service: 'graphql'
   )
 end
-```
+```text
 
 Do *NOT* `instrument :graphql` in `Datadog.configure` if you choose to configure manually, as to avoid double tracing. These two means of configuring GraphQL tracing are considered mutually exclusive.
 
@@ -982,7 +982,7 @@ server.run_till_terminated
 # Client side
 client = Demo.rpc_stub_class.new('localhost:50051', :this_channel_is_insecure)
 client.my_endpoint(DemoMessage.new(contents: 'hello!'))
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1012,7 +1012,7 @@ alternate_client = Demo::Echo::Service.rpc_stub_class.new(
   :this_channel_is_insecure,
   :interceptors => [configured_interceptor]
 )
-```
+```text
 
 The integration will ensure that the `configured_interceptor` establishes a unique tracing setup for that client instance.
 
@@ -1020,9 +1020,9 @@ The integration will ensure that the `configured_interceptor` establishes a uniq
 
 The `hanami` integration will instrument routing, action and render for your hanami application. To enable the `hanami` instrumentation, it is recommended to auto instrument with
 
-```
+```text
 gem 'ddtrace', require: 'ddtrace/auto_instrument'
-```
+```text
 
 and create an initializer file in your `config/initializers` folder:
 
@@ -1031,7 +1031,7 @@ and create an initializer file in your `config/initializers` folder:
 Datadog.configure do |c|
   c.tracing.instrument :hanami, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1054,7 +1054,7 @@ Datadog.configure do |c|
     httprb.split_by_domain = false # Only necessary if split_by_domain is true by default
   end
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1081,7 +1081,7 @@ Datadog.configure do |c|
     httpclient.split_by_domain = false # Only necessary if split_by_domain is true by default
   end
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1110,7 +1110,7 @@ Datadog.configure do |c|
     http.split_by_domain = false # Only necessary if split_by_domain is true by default
   end
 end
-```
+```text
 
 ### Kafka{% #kafka %}
 
@@ -1126,7 +1126,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :kafka
 end
-```
+```text
 
 ### Minitest{% #minitest %}
 
@@ -1142,7 +1142,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.ci.instrument :minitest, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1171,7 +1171,7 @@ collection.insert_one({ name: 'Steve' })
 
 # In case you want to override the global configuration for a certain client instance
 Datadog.configure_onto(client, **options)
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1208,7 +1208,7 @@ client = Mongo::Client.new([ 'localhost:27017' ], :database => 'artists')
 collection = client[:people]
 collection.insert_one({ name: 'Steve' })
 # Traced call will belong to `mongo-secondary` service
-```
+```text
 
 When multiple `describes` configurations match a connection, the latest configured rule that matches will be applied.
 
@@ -1226,7 +1226,7 @@ end
 
 client = Mysql2::Client.new(:host => "localhost", :username => "root")
 client.query("SELECT * FROM users WHERE group='x'")
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1261,7 +1261,7 @@ Net::HTTP.start('127.0.0.1', 8080) do |http|
 end
 
 content = Net::HTTP.get(URI('http://127.0.0.1/index.html'))
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1278,7 +1278,7 @@ If you wish to configure each connection object individually, you may use the `D
 ```ruby
 client = Net::HTTP.new(host, port)
 Datadog.configure_onto(client, **options)
-```
+```text
 
 ### OpenSearch{% #opensearch %}
 
@@ -1299,7 +1299,7 @@ client = OpenSearch::Client.new(
   password: 'password',
 )
 client.cluster.health
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1324,7 +1324,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :pg, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1359,7 +1359,7 @@ client = Presto::Client.new(
 )
 
 client.run("select * from system.nodes")
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1380,7 +1380,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :qless, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1401,7 +1401,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :que, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1424,7 +1424,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :racecar, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1454,7 +1454,7 @@ app = proc do |env|
 end
 
 run app
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1529,7 +1529,7 @@ Datadog.configure do |c|
   # http://example.com/path?password=qwerty&sort_by=asc#featured --> /path?REMOVED&sort_by=asc
   c.tracing.instrument :rack, quantize: { query: { obfuscate: { with: 'REMOVED' } } }
 end
-```
+```text
 
 ### Rails{% #rails %}
 
@@ -1544,7 +1544,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :rails, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1592,7 +1592,7 @@ task :my_task do
 end
 
 Rake::Task['my_task'].invoke
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1635,7 +1635,7 @@ Datadog.configure do |c|
   # `rake.execute.args` tag --> {}
   c.tracing.instrument :rake, quantize: { args: { exclude: :all } }
 end
-```
+```text
 
 ### Redis{% #redis %}
 
@@ -1652,7 +1652,7 @@ end
 # Perform Redis commands
 redis = Redis.new
 redis.set 'foo', 'bar'
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1681,7 +1681,7 @@ invoice_cache = Redis.new(custom: { datadog: { service_name: 'invoice-cache' } }
 customer_cache.get(...)
 # Traced call will belong to `invoice-cache` service
 invoice_cache.get(...)
-```
+```text
 
 With a standalone `RedisClient`:
 
@@ -1696,7 +1696,7 @@ Datadog.configure do |c|
 end
 
 redis.call('PING')
-```
+```text
 
 With Redis version < 5:
 
@@ -1718,7 +1718,7 @@ Datadog.configure_onto(invoice_cache, service_name: 'invoice-cache')
 customer_cache.get(...)
 # Traced call will belong to `invoice-cache` service
 invoice_cache.get(...)
-```
+```text
 
 **Configuring trace settings per connection**
 
@@ -1750,7 +1750,7 @@ Datadog.configure do |c|
   c.tracing.instrument :redis, describes: { host: ENV['APP_CACHE_HOST'], port: ENV['APP_CACHE_PORT'] }, service_name: 'redis-cache'
   c.tracing.instrument :redis, describes: { host: ENV['SIDEKIQ_CACHE_HOST'] }, service_name: 'redis-sidekiq'
 end
-```
+```text
 
 When multiple `describes` configurations match a connection, the latest configured rule that matches will be applied.
 
@@ -1767,7 +1767,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :resque, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1786,7 +1786,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :rest_client, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1822,7 +1822,7 @@ class SampleApp < Roda
     end
   end
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1844,7 +1844,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.ci.instrument :rspec, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1878,7 +1878,7 @@ end
 # Perform a query
 articles = database[:articles]
 articles.all
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1897,7 +1897,7 @@ postgres_database = Sequel.connect('postgres://user:password@host:port/database_
 # Configure each database with different service names
 Datadog.configure_onto(sqlite_database, service_name: 'my-sqlite-db')
 Datadog.configure_onto(postgres_database, service_name: 'my-postgres-db')
-```
+```text
 
 ### Shoryuken{% #shoryuken %}
 
@@ -1911,7 +1911,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :shoryuken, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1932,7 +1932,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :sidekiq, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -1962,7 +1962,7 @@ end
 get '/' do
   'Hello world!'
 end
-```
+```text
 
 #### Modular application{% #modular-application %}
 
@@ -1987,7 +1987,7 @@ class App < Sinatra::Base
     'Hello world!'
   end
 end
-```
+```text
 
 #### Instrumentation options{% #instrumentation-options %}
 
@@ -2011,7 +2011,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :sneakers, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -2033,7 +2033,7 @@ require 'ddtrace'
 Datadog.configure do |c|
   c.tracing.instrument :stripe, **options
 end
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -2054,7 +2054,7 @@ end
 
 # Execution of this job is traced
 LogJob.perform_async('login')
-```
+```text
 
 ### Trilogy{% #trilogy %}
 
@@ -2070,7 +2070,7 @@ end
 
 client = Trilogy.new(host: "localhost", username: "root")
 client.query("SELECT * FROM users WHERE group='x'")
-```
+```text
 
 `options` are the following keyword arguments:
 
@@ -2089,7 +2089,7 @@ To change the default behavior of `ddtrace`, you can use, in order of priority, 
    Datadog.configure do |c|
      c.service = 'billing-api'
      c.env = ENV['RACK_ENV']
-   
+
      c.tracing.report_hostname = true
      c.tracing.test_mode.enabled = (ENV['RACK_ENV'] == 'test')
    end
@@ -2155,7 +2155,7 @@ Datadog.configure do |c|
 end
 
 Datadog.logger.info { "this is typically called by tracing code" }
-```
+```text
 
 #### Environment and tags{% #environment-and-tags %}
 
@@ -2177,7 +2177,7 @@ Datadog.configure do |c|
   c.tags = { 'team' => 'qa' }
   c.version = '1.3-alpha'
 end
-```
+```text
 
 This enables you to set this value on a per application basis, so you can have for example several applications reporting for different environments on the same host.
 
@@ -2195,7 +2195,7 @@ You can enable this via `diagnostics.debug = true` or `DD_TRACE_DEBUG`.
 
 ```ruby
 Datadog.configure { |c| c.diagnostics.debug = true }
-```
+```text
 
 **We do NOT recommend use of this feature in production or other sensitive environments**, as it can be very verbose under load. It's best to use this in a controlled environment where you can control application load.
 
@@ -2207,7 +2207,7 @@ You can enable this via `diagnostics.startup_logs.enabled = true` or `DD_TRACE_S
 
 ```ruby
 Datadog.configure { |c| c.diagnostics.startup_logs.enabled = true }
-```
+```text
 
 By default, this will be activated whenever `ddtrace` detects the application is running in a non-development environment.
 
@@ -2243,7 +2243,7 @@ Datadog::Tracing.reject!
 
 # Keeps the active trace
 Datadog::Tracing.keep!
-```
+```text
 
 It's safe to use `Datadog::Tracing.reject!` and `Datadog::Tracing.keep!` when no trace is active.
 
@@ -2258,7 +2258,7 @@ trace.reject!
 
 # Keeps the trace
 trace.keep!
-```
+```text
 
 #### Single Span Sampling{% #single-span-sampling %}
 
@@ -2285,7 +2285,7 @@ sampler = Datadog::Tracing::Sampling::RateSampler.new(0.5) # sample 50% of the t
 Datadog.configure do |c|
   c.tracing.sampler = sampler
 end
-```
+```text
 
 See Additional Configuration for more details about these settings.
 
@@ -2303,7 +2303,7 @@ To trace requests across application boundaries, the following must be propagate
 
 Such propagation can be visualized as:
 
-```
+```text
 Service A:
   Trace ID:  100000000000000001
   Parent ID: 0
@@ -2339,7 +2339,7 @@ Service C:
   Parent ID: 100000000000000456
   Span ID:   100000000000000789
   Priority:  1
-```
+```text
 
 **Via HTTP**
 
@@ -2353,7 +2353,7 @@ For HTTP requests between instrumented applications, this trace metadata is prop
 
 Such that:
 
-```
+```text
 Service A:
   Trace ID:  100000000000000001
   Parent ID: 0
@@ -2389,7 +2389,7 @@ Service C:
   Parent ID: 100000000000000456
   Span ID:   100000000000000789
   Priority:  1
-```
+```text
 
 #### Distributed header formats{% #distributed-header-formats %}
 
@@ -2411,7 +2411,7 @@ Datadog.configure do |c|
   # List of header formats that should be injected
   c.tracing.distributed_tracing.propagation_inject_style = [ 'tracecontext', 'Datadog' ]
 end
-```
+```text
 
 **Activating distributed tracing for integrations**
 
@@ -2445,7 +2445,7 @@ Datadog::Tracing.trace('web.call') do |span, trace|
   # Inject trace headers into request headers (`env` must be a Hash)
   Datadog::Tracing::Propagation::HTTP.inject!(trace.to_digest, env)
 end
-```
+```text
 
 On the server:
 
@@ -2455,7 +2455,7 @@ trace_digest = Datadog::Tracing::Propagation::HTTP.extract(request.env)
 Datadog::Tracing.trace('web.work', continue_from: trace_digest) do |span|
   # Do web work...
 end
-```
+```text
 
 ### HTTP request queuing{% #http-request-queuing %}
 
@@ -2463,7 +2463,7 @@ Traces that originate from HTTP requests can be configured to include the time s
 
 This feature is disabled by default. To activate it, you must add an `X-Request-Start` or `X-Queue-Start` header from your web server (i.e., Nginx). The following is an Nginx configuration example:
 
-```
+```text
 # /etc/nginx/conf.d/ruby_service.conf
 server {
     listen 8080;
@@ -2473,7 +2473,7 @@ server {
       proxy_pass http://web:3000;
     }
 }
-```
+```text
 
 Then you must enable the request queuing feature. The following options are available for the `:request_queuing` configuration:
 
@@ -2499,7 +2499,7 @@ Datadog::Tracing.before_flush(
   # Remove spans that are trafficked to localhost
   Datadog::Tracing::Pipeline::SpanFilter.new { |span| span.get_tag('host') == 'localhost' }
 )
-```
+```text
 
 #### Processing{% #processing %}
 
@@ -2510,7 +2510,7 @@ Datadog::Tracing.before_flush(
   # Strip matching text from the resource field
   Datadog::Tracing::Pipeline::SpanProcessor.new { |span| span.resource.gsub!(/password=.*/, '') }
 )
-```
+```text
 
 #### Custom processor{% #custom-processor %}
 
@@ -2523,7 +2523,7 @@ Datadog::Tracing.before_flush do |trace|
    # Processing logic...
    trace
 end
-```
+```text
 
 For a custom processor class:
 
@@ -2536,7 +2536,7 @@ class MyCustomProcessor
 end
 
 Datadog::Tracing.before_flush(MyCustomProcessor.new)
-```
+```text
 
 In both cases, the processor method *must* return the `trace` object; this return value will be passed to the next processor in the pipeline.
 
@@ -2597,7 +2597,7 @@ logger.warn('This is an untraced operation.')
 # When a trace is active
 Datadog::Tracing.trace('my.operation') { logger.warn('This is a traced operation.') }
 # [2019-01-16 18:38:41 +0000][my_app][WARN][dd.env=production dd.service=billing-api dd.version=2.5.17 dd.trace_id=8545847825299552251 dd.span_id=3711755234730770098] This is a traced operation.
-```
+```text
 
 ### Configuring the transport layer{% #configuring-the-transport-layer %}
 
@@ -2620,7 +2620,7 @@ Datadog.configure do |c|
   c.agent.host = '127.0.0.1'
   c.agent.port = 8126
 end
-```
+```text
 
 See Additional Configuration for more details.
 
@@ -2635,7 +2635,7 @@ Datadog.configure do |c|
     t.adapter :net_http, '127.0.0.1', 8126, timeout: 30
   }
 end
-```
+```text
 
 #### Using the Unix Domain Socket (UDS) adapter{% #using-the-unix-domain-socket-uds-adapter %}
 
@@ -2650,7 +2650,7 @@ Datadog.configure do |c|
     t.adapter :unix, '/tmp/ddagent/trace.sock'
   }
 end
-```
+```text
 
 #### Using the transport test adapter{% #using-the-transport-test-adapter %}
 
@@ -2667,7 +2667,7 @@ Datadog.configure do |c|
     t.adapter :test, []
   }
 end
-```
+```text
 
 #### Using a custom transport adapter{% #using-a-custom-transport-adapter %}
 
@@ -2681,7 +2681,7 @@ Datadog.configure do |c|
     t.adapter custom_adapter
   }
 end
-```
+```text
 
 ### Setting the time provider{% #setting-the-time-provider %}
 
@@ -2696,7 +2696,7 @@ Datadog.configure do |c|
   # For Timecop, for example, `->{ Time.now_without_mock_time }` allows the tracer to use the real wall time.
   c.time_now_provider = -> { Time.now_without_mock_time }
 end
-```
+```text
 
 Span duration calculation will still use the system monotonic clock when available, thus not being affected by this setting.
 
@@ -2730,7 +2730,7 @@ Datadog.configure do |c|
   # You can configure with host and port of Datadog Agent; defaults to 'localhost:8125'.
   c.runtime_metrics.statsd = Datadog::Statsd.new
 end
-```
+```text
 
 See the [Dogstatsd documentation](https://www.rubydoc.info/github/DataDog/dogstatsd-ruby/master/frames) for more details about configuring `Datadog::Statsd`.
 
@@ -2765,7 +2765,7 @@ The underlying Datadog tracer can be configured by passing options (which match 
 ```ruby
 # Where `options` is a Hash of options provided to Datadog::Tracer
 OpenTracing.global_tracer = Datadog::OpenTracer::Tracer.new(**options)
-```
+```text
 
 It can also be configured by using `Datadog.configure` described in the Additional Configuration section.
 

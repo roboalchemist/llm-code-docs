@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure journald ForwardToSyslog is disabled
- 
+
 ## Description{% #description %}
 
 Data from journald should be kept in the confines of the service and not forwarded to other services.
@@ -31,7 +31,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$' && { ( dpkg-query --show --showformat='${db:Status-Status}' 'systemd' 2>/dev/null | grep -q '^installed$' && ! (systemctl is-active rsyslog &>/dev/null) ); }; then
 
 if [ -e "/etc/systemd/journald.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*ForwardToSyslog\s*=\s*/d" "/etc/systemd/journald.conf"
 else
     touch "/etc/systemd/journald.conf"

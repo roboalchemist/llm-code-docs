@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should have an enabled AppArmor profile
-Classification:complianceFramework:cis-dockerControl:5.1 
+Classification:complianceFramework:cis-dockerControl:5.1
 ## Description{% #description %}
 
 AppArmor is an effective and easy-to-use Linux application security system. It is available on some Linux distributions by default, for example, on Debian and Ubuntu.

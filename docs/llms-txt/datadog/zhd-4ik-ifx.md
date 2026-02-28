@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet should enable authentication using certificates for TLS client authentication
-Classification:complianceFramework:cis-kubernetesControl:4.2.3 
+Classification:complianceFramework:cis-kubernetesControl:4.2.3
 ## Description{% #description %}
 
 Enable Kubelet authentication using certificates.

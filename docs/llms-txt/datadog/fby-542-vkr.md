@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Application Load Balancers should have Access logging enabled
- 
+
 ## Description{% #description %}
 
 Enable Access Logging for your Amazon Application Load Balancers (ALBs).

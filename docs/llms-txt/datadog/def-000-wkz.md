@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Configure SELinux Policy
 ---
 
 # Configure SELinux Policy
- 
+
 ## Description{% #description %}
 
 The SELinux `targeted` policy is appropriate for general-purpose desktops and servers, as well as systems in many other roles. To configure the system to use this policy, add or correct the following line in `/etc/selinux/config`:
 
 ```
 SELINUXTYPE=targeted
-       
+
 ```
 
 Other policies, such as `mls`, provide additional security labeling and greater confinement but are not compatible with many general-purpose use cases.
@@ -41,7 +41,7 @@ var_selinux_policy_name='targeted'
 
 
 if [ -e "/etc/selinux/config" ] ; then
-    
+
     LC_ALL=C sed -i "/^SELINUXTYPE=/Id" "/etc/selinux/config"
 else
     touch "/etc/selinux/config"

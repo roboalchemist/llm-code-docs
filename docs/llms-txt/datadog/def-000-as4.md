@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS services should have volume encryption for mounted EFS volumes
- 
+
 ## Description{% #description %}
 
 ECS services that mount EFS volumes should ensure that all mounted EFS file systems have encryption enabled to protect data at rest.

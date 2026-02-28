@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The docker.socket file should be owned by root
-Classification:complianceFramework:cis-dockerControl:3.3 
+Classification:complianceFramework:cis-dockerControl:3.3
 ## Description{% #description %}
 
 You should verify that the docker.socket file ownership and group ownership are correctly set to root.
@@ -26,7 +26,7 @@ The docker.socket file contains sensitive parameters that may alter the behavior
    ```
 1. If the file does not exist, this recommendation is not applicable. If the file exists, verify that the file is owned and group-owned by root by running the following command with the correct filepath:
    ```
-   stat -c %U:%G /usr/lib/systemd/system/docker.socket | grep -v root:root 
+   stat -c %U:%G /usr/lib/systemd/system/docker.socket | grep -v root:root
    ```
 The command should not return a value.
 

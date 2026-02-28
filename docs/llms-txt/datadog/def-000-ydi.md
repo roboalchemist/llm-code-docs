@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS containers should run as non-privileged
- 
+
 ## Description{% #description %}
 
 This assessment examines whether the privileged setting in the container definition of Amazon ECS Task Definitions is enabled. The assessment will not pass if the privileged setting is enabled. This evaluation is based on the most recent active revision of an Amazon ECS task definition.

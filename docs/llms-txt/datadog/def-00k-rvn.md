@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kube-proxy configuration file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 If kube-proxy is running, ensure that the file ownership of its kubeconfig file is set to `root:root`. The kube-proxy's kubeconfig file controls various parameters for the the service in the worker node. You should set its file ownership to maintain the integrity of the file.

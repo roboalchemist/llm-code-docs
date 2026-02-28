@@ -14,7 +14,7 @@ breadcrumbs: Docs > Event Management > Events Guides > Events with email
 
 
 {% alert level="danger" %}
-Events with email is not supported on 
+Events with email is not supported on
 {% /alert %}
 
 

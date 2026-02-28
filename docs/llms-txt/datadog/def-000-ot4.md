@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Jamf Protect alerts
 ---
 
 # Jamf Protect alerts
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when a [Jamf Protect alert](https://learn.jamf.com/bundle/jamf-protect-documentation/page/Alerts.html) with a severity greater than `0` has been raised.

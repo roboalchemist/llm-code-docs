@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SSH interesting hostname login notice from Zeek
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect the [SSH interesting hostname login notice](https://docs.zeek.org/en/master/scripts/policy/protocols/ssh/interesting-hostnames.zeek.html).

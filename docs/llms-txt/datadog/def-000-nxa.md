@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install iptables Package
 ---
 
 # Install iptables Package
- 
+
 ## Description{% #description %}
 
 The `iptables` package can be installed with the following command:

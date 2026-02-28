@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitHub OAuth access token co
 ---
 
 # GitHub OAuth access token compromise
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1528-steal-application-access-token](https://attack.mitre.org/techniques/T1528) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1528-steal-application-access-token](https://attack.mitre.org/techniques/T1528)
 ## Goal{% #goal %}
 
 Detect when an OAuth access token is used from multiple autonomous system numbers (ASNs) and multiple user agents.

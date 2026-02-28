@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Log entries should have log sinks configured for exporting
- 
+
 ## Description{% #description %}
 
 It is recommended to create a sink that will export copies of all log entries. This can help aggregate logs from multiple projects and export them to a Security Information and Event Management (SIEM).
@@ -64,7 +64,7 @@ Currently findings are only audited at the project level. Folder and Organizatio
    ```
 1. Sinks can be created for a folder or organization, which will include all projects.
    ```
-   gcloud logging sinks create <sink-name> 
+   gcloud logging sinks create <sink-name>
    storage.googleapis.com/DESTINATION_BUCKET_NAME --include-children -- folder=FOLDER_ID | --organization=ORGANIZATION_ID
    ```
 

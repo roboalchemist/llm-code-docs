@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set Password Maximum Consecutive Repeating Characters
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `maxrepeat` parameter controls requirements for consecutive repeating characters. When set to a positive number, it will reject passwords which contain more than that number of consecutive characters. Modify the `maxrepeat` setting in `/etc/security/pwquality.conf` to equal 3 to prevent a run of (3 + 1) or more identical characters.

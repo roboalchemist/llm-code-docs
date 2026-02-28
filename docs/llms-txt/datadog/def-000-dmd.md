@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domain connections should be encrypted using the latest TLS security policy
- 
+
 ## Description{% #description %}
 
 This control checks whether an Amazon OpenSearch Service domain endpoint is configured to use the latest TLS security policy, `Policy-Min-TLS-1-2-PFS-2023-10`. The control fails if the endpoint is not using this policy or if HTTPS is not enabled. Enforcing the latest version of TLS 1.2 helps secure data in transit by preventing eavesdropping and manipulation through man-in-the-middle attacks.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Impossible travel observed from business logic event
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect an Impossible Travel event when two business logic events attributed to the same user occur within a short time frame from IPs that are geographically distant from one another.

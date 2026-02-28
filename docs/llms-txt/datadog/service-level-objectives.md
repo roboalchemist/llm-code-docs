@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Service Level Objectives
 ---
 
-# Service Level Objectives
-
 [Service Level Objectives](https://docs.datadoghq.com/monitors/service_level_objectives/#configuration) (or SLOs) are a key part of the site reliability engineering toolkit. SLOs provide a framework for defining clear targets around application performance, which ultimately help teams provide a consistent customer experience, balance feature development with platform stability, and improve communication with internal and external users.
 
 ## Create an SLO object{% #create-an-slo-object %}
@@ -30,8 +28,6 @@ Create a service level objective object. This endpoint requires the `slos_write`
 
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
@@ -40,48 +36,110 @@ Service level objective request object.
 
 {% tab title="Model" %}
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                              |
-| ----------------- | ----------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                               | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-|                   | groups                        | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                         | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-|                   | monitor_ids                   | [integer]       | A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                    |
-|                   | name [*required*]        | string          | The name of the service level objective object.                                                                                                                                                                                                          |
-|                   | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.           |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                         |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                  |
-|                   | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                            |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                          |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                  |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                          |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                 |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                      |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                      |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                              |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                   |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                    |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                          |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                   |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                  |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                           |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                            |
-|                   | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                |
-|                   | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                            |
-|                   | thresholds [*required*]  | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                              |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                     |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                     | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                          |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                       |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                           | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-|                   | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                          |
-|                   | type [*required*]        | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                |
-|                   | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold. |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                             |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                              | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+|                      | groups                                 | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                        | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+|                      | monitor_ids                            | [integer]       | A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                   |
+|                      | name [*required*]                 | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                         |
+|                      | query                                  | object          | A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                        |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                 |
+|                      | sli_specification                      |  <oneOf>   | A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                            |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                         |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                 |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                         |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                     |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                     |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                             |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                  |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                               |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                   |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                         |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                  |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                               |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                 |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                          |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                           |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                             |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                       |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                     |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                  |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                               |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                   |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                         |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                  |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                               |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                 |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                     |
+|                      | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                               |
+|                      | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                           |
+|                      | thresholds [*required*]           | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                             |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                    |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                    | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                         |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                      |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                          | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+|                      | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                         |
+|                      | type [*required*]                 | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                               |
+|                      | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                |
 
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
+
+```json
+{
+  "type": "metric",
+  "description": "Metric SLO using sli_specification",
+  "name": "Example-Service-Level-Objective",
+  "sli_specification": {
+    "count": {
+      "good_events_formula": {
+        "formula": "query1 - query2"
+      },
+      "total_events_formula": {
+        "formula": "query1"
+      },
+      "queries": [
+        {
+          "data_source": "metrics",
+          "name": "query1",
+          "query": "sum:httpservice.hits{*}.as_count()"
+        },
+        {
+          "data_source": "metrics",
+          "name": "query2",
+          "query": "sum:httpservice.errors{*}.as_count()"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "env:prod",
+    "type:count"
+  ],
+  "thresholds": [
+    {
+      "target": 99.0,
+      "target_display": "99.0",
+      "timeframe": "7d",
+      "warning": 99.5,
+      "warning_display": "99.5"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 99.0,
+  "warning_threshold": 99.5
+}
+```
+
+#####
 
 ```json
 {
@@ -126,7 +184,7 @@ Service level objective request object.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -170,57 +228,71 @@ OK
 {% tab title="Model" %}
 A response with one or more service level objective.
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| ----------------- | ----------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | data                          | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
-| data              | created_at                    | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
-| data              | creator                       | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
-| creator           | email                         | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
-| creator           | handle                        | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
-| creator           | name                          | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
-| data              | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-| data              | groups                        | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-| data              | id                            | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
-| data              | modified_at                   | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
-| data              | monitor_ids                   | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
-| data              | monitor_tags                  | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
-| data              | name [*required*]        | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
-| data              | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                                                                                                |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
-| data              | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                                                                                                                                                 |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
-| data              | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
-| data              | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
-| data              | thresholds [*required*]  | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-| data              | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| data              | type [*required*]        | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
-| data              | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
-|                   | errors                        | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
-|                   | metadata                      | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
-| metadata          | page                          | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
-| page              | total_count                   | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
-| page              | total_filtered_count          | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                                   | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
+| data                 | created_at                             | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | creator                                | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
+| creator              | email                                  | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
+| creator              | handle                                 | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
+| creator              | name                                   | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
+| data                 | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+| data                 | groups                                 | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+| data                 | id                                     | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | modified_at                            | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | monitor_ids                            | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
+| data                 | monitor_tags                           | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
+| data                 | name [*required*]                 | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
+| data                 | query                                  | object          | A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                       |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
+| data                 | sli_specification                      |  <oneOf>   | A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                                                                                  |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                                                                                   |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                                                                             |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| data                 | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
+| data                 | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
+| data                 | thresholds [*required*]           | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+| data                 | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| data                 | type [*required*]                 | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
+| data                 | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
+|                      | errors                                 | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
+|                      | metadata                               | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
+| metadata             | page                                   | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
+| page                 | total_count                            | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
+| page                 | total_filtered_count                   | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
 
 {% /tab %}
 
@@ -377,7 +449,59 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
+                          \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{
+  "type": "metric",
+  "description": "Metric SLO using sli_specification",
+  "name": "Example-Service-Level-Objective",
+  "sli_specification": {
+    "count": {
+      "good_events_formula": {
+        "formula": "query1 - query2"
+      },
+      "total_events_formula": {
+        "formula": "query1"
+      },
+      "queries": [
+        {
+          "data_source": "metrics",
+          "name": "query1",
+          "query": "sum:httpservice.hits{*}.as_count()"
+        },
+        {
+          "data_source": "metrics",
+          "name": "query2",
+          "query": "sum:httpservice.errors{*}.as_count()"
+        }
+      ]
+    }
+  },
+  "tags": [
+    "env:prod",
+    "type:count"
+  ],
+  "thresholds": [
+    {
+      "target": 99.0,
+      "target_display": "99.0",
+      "timeframe": "7d",
+      "warning": 99.5,
+      "warning_display": "99.5"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 99.0,
+  "warning_threshold": 99.5
+}
+EOF
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -425,8 +549,8 @@ Error response object.
   "warning_threshold": 98
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -464,8 +588,88 @@ EOF
   "warning_threshold": 98
 }
 EOF
-                        
-##### 
+
+#####
+
+```go
+// Create a new metric SLO object using sli_specification returns "OK" response
+
+package main
+
+import (
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_METRIC,
+        Description: *datadog.NewNullableString(datadog.PtrString("Metric SLO using sli_specification")),
+        Name:        "Example-Service-Level-Objective",
+        SliSpecification: &datadogV1.SLOSliSpec{
+            SLOCountSpec: &datadogV1.SLOCountSpec{
+                Count: datadogV1.SLOCountDefinition{
+                    GoodEventsFormula: datadogV1.SLOFormula{
+                        Formula: "query1 - query2",
+                    },
+                    TotalEventsFormula: datadogV1.SLOFormula{
+                        Formula: "query1",
+                    },
+                    Queries: []datadogV1.SLODataSourceQueryDefinition{
+                        datadogV1.SLODataSourceQueryDefinition{
+                            FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                Name:       "query1",
+                                Query:      "sum:httpservice.hits{*}.as_count()",
+                            }},
+                        datadogV1.SLODataSourceQueryDefinition{
+                            FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                Name:       "query2",
+                                Query:      "sum:httpservice.errors{*}.as_count()",
+                            }},
+                    },
+                },
+            }},
+        Tags: []string{
+            "env:prod",
+            "type:count",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         99.0,
+                TargetDisplay:  datadog.PtrString("99.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(99.5),
+                WarningDisplay: datadog.PtrString("99.5"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(99.0),
+        WarningThreshold: datadog.PtrFloat64(99.5),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+}
+```
+
+#####
 
 ```go
 // Create a time-slice SLO object returns "OK" response
@@ -473,75 +677,75 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type:        datadogV1.SLOTYPE_TIME_SLICE,
-		Description: *datadog.NewNullableString(datadog.PtrString("string")),
-		Name:        "Example-Service-Level-Objective",
-		SliSpecification: &datadogV1.SLOSliSpec{
-			SLOTimeSliceSpec: &datadogV1.SLOTimeSliceSpec{
-				TimeSlice: datadogV1.SLOTimeSliceCondition{
-					Query: datadogV1.SLOTimeSliceQuery{
-						Formulas: []datadogV1.SLOFormula{
-							{
-								Formula: "query1",
-							},
-						},
-						Queries: []datadogV1.SLODataSourceQueryDefinition{
-							datadogV1.SLODataSourceQueryDefinition{
-								FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
-									DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
-									Name:       "query1",
-									Query:      "trace.servlet.request{env:prod}",
-								}},
-						},
-					},
-					Comparator: datadogV1.SLOTIMESLICECOMPARATOR_GREATER,
-					Threshold:  5,
-				},
-			}},
-		Tags: []string{
-			"env:prod",
-		},
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:         97.0,
-				TargetDisplay:  datadog.PtrString("97.0"),
-				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:        datadog.PtrFloat64(98),
-				WarningDisplay: datadog.PtrString("98.0"),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLO(ctx, body)
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_TIME_SLICE,
+        Description: *datadog.NewNullableString(datadog.PtrString("string")),
+        Name:        "Example-Service-Level-Objective",
+        SliSpecification: &datadogV1.SLOSliSpec{
+            SLOTimeSliceSpec: &datadogV1.SLOTimeSliceSpec{
+                TimeSlice: datadogV1.SLOTimeSliceCondition{
+                    Query: datadogV1.SLOTimeSliceQuery{
+                        Formulas: []datadogV1.SLOFormula{
+                            {
+                                Formula: "query1",
+                            },
+                        },
+                        Queries: []datadogV1.SLODataSourceQueryDefinition{
+                            datadogV1.SLODataSourceQueryDefinition{
+                                FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
+                                    DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
+                                    Name:       "query1",
+                                    Query:      "trace.servlet.request{env:prod}",
+                                }},
+                        },
+                    },
+                    Comparator: datadogV1.SLOTIMESLICECOMPARATOR_GREATER,
+                    Threshold:  5,
+                },
+            }},
+        Tags: []string{
+            "env:prod",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         97.0,
+                TargetDisplay:  datadog.PtrString("97.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(98),
+                WarningDisplay: datadog.PtrString("98.0"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create an SLO object returns "OK" response
@@ -549,59 +753,59 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type:        datadogV1.SLOTYPE_METRIC,
-		Description: *datadog.NewNullableString(datadog.PtrString("string")),
-		Groups: []string{
-			"env:test",
-			"role:mysql",
-		},
-		MonitorIds: []int64{},
-		Name:       "Example-Service-Level-Objective",
-		Query: &datadogV1.ServiceLevelObjectiveQuery{
-			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
-		},
-		Tags: []string{
-			"env:prod",
-			"app:core",
-		},
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:         97.0,
-				TargetDisplay:  datadog.PtrString("97.0"),
-				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:        datadog.PtrFloat64(98),
-				WarningDisplay: datadog.PtrString("98.0"),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLO(ctx, body)
+    body := datadogV1.ServiceLevelObjectiveRequest{
+        Type:        datadogV1.SLOTYPE_METRIC,
+        Description: *datadog.NewNullableString(datadog.PtrString("string")),
+        Groups: []string{
+            "env:test",
+            "role:mysql",
+        },
+        MonitorIds: []int64{},
+        Name:       "Example-Service-Level-Objective",
+        Query: &datadogV1.ServiceLevelObjectiveQuery{
+            Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+            Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
+        },
+        Tags: []string{
+            "env:prod",
+            "app:core",
+        },
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:         97.0,
+                TargetDisplay:  datadog.PtrString("97.0"),
+                Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:        datadog.PtrFloat64(98),
+                WarningDisplay: datadog.PtrString("98.0"),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLO(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -609,7 +813,88 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
+
+```java
+// Create a new metric SLO object using sli_specification returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi;
+import com.datadog.api.client.v1.model.FormulaAndFunctionMetricDataSource;
+import com.datadog.api.client.v1.model.FormulaAndFunctionMetricQueryDefinition;
+import com.datadog.api.client.v1.model.SLOCountDefinition;
+import com.datadog.api.client.v1.model.SLOCountSpec;
+import com.datadog.api.client.v1.model.SLODataSourceQueryDefinition;
+import com.datadog.api.client.v1.model.SLOFormula;
+import com.datadog.api.client.v1.model.SLOListResponse;
+import com.datadog.api.client.v1.model.SLOSliSpec;
+import com.datadog.api.client.v1.model.SLOThreshold;
+import com.datadog.api.client.v1.model.SLOTimeframe;
+import com.datadog.api.client.v1.model.SLOType;
+import com.datadog.api.client.v1.model.ServiceLevelObjectiveRequest;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+
+    ServiceLevelObjectiveRequest body =
+        new ServiceLevelObjectiveRequest()
+            .type(SLOType.METRIC)
+            .description("Metric SLO using sli_specification")
+            .name("Example-Service-Level-Objective")
+            .sliSpecification(
+                new SLOSliSpec(
+                    new SLOCountSpec()
+                        .count(
+                            new SLOCountDefinition()
+                                .goodEventsFormula(new SLOFormula().formula("query1 - query2"))
+                                .totalEventsFormula(new SLOFormula().formula("query1"))
+                                .queries(
+                                    Arrays.asList(
+                                        new SLODataSourceQueryDefinition(
+                                            new FormulaAndFunctionMetricQueryDefinition()
+                                                .dataSource(
+                                                    FormulaAndFunctionMetricDataSource.METRICS)
+                                                .name("query1")
+                                                .query("sum:httpservice.hits{*}.as_count()")),
+                                        new SLODataSourceQueryDefinition(
+                                            new FormulaAndFunctionMetricQueryDefinition()
+                                                .dataSource(
+                                                    FormulaAndFunctionMetricDataSource.METRICS)
+                                                .name("query2")
+                                                .query("sum:httpservice.errors{*}.as_count()")))))))
+            .tags(Arrays.asList("env:prod", "type:count"))
+            .thresholds(
+                Collections.singletonList(
+                    new SLOThreshold()
+                        .target(99.0)
+                        .targetDisplay("99.0")
+                        .timeframe(SLOTimeframe.SEVEN_DAYS)
+                        .warning(99.5)
+                        .warningDisplay("99.5")))
+            .timeframe(SLOTimeframe.SEVEN_DAYS)
+            .targetThreshold(99.0)
+            .warningThreshold(99.5);
+
+    try {
+      SLOListResponse result = apiInstance.createSLO(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#####
 
 ```java
 // Create a time-slice SLO object returns "OK" response
@@ -692,7 +977,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create an SLO object returns "OK" response
@@ -755,7 +1040,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -790,7 +1075,80 @@ api.ServiceLevelObjective.create(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
+
+```python
+"""
+Create a new metric SLO object using sli_specification returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.service_level_objectives_api import ServiceLevelObjectivesApi
+from datadog_api_client.v1.model.formula_and_function_metric_data_source import FormulaAndFunctionMetricDataSource
+from datadog_api_client.v1.model.formula_and_function_metric_query_definition import (
+    FormulaAndFunctionMetricQueryDefinition,
+)
+from datadog_api_client.v1.model.service_level_objective_request import ServiceLevelObjectiveRequest
+from datadog_api_client.v1.model.slo_count_definition import SLOCountDefinition
+from datadog_api_client.v1.model.slo_count_spec import SLOCountSpec
+from datadog_api_client.v1.model.slo_formula import SLOFormula
+from datadog_api_client.v1.model.slo_threshold import SLOThreshold
+from datadog_api_client.v1.model.slo_timeframe import SLOTimeframe
+from datadog_api_client.v1.model.slo_type import SLOType
+
+body = ServiceLevelObjectiveRequest(
+    type=SLOType.METRIC,
+    description="Metric SLO using sli_specification",
+    name="Example-Service-Level-Objective",
+    sli_specification=SLOCountSpec(
+        count=SLOCountDefinition(
+            good_events_formula=SLOFormula(
+                formula="query1 - query2",
+            ),
+            total_events_formula=SLOFormula(
+                formula="query1",
+            ),
+            queries=[
+                FormulaAndFunctionMetricQueryDefinition(
+                    data_source=FormulaAndFunctionMetricDataSource.METRICS,
+                    name="query1",
+                    query="sum:httpservice.hits{*}.as_count()",
+                ),
+                FormulaAndFunctionMetricQueryDefinition(
+                    data_source=FormulaAndFunctionMetricDataSource.METRICS,
+                    name="query2",
+                    query="sum:httpservice.errors{*}.as_count()",
+                ),
+            ],
+        ),
+    ),
+    tags=[
+        "env:prod",
+        "type:count",
+    ],
+    thresholds=[
+        SLOThreshold(
+            target=99.0,
+            target_display="99.0",
+            timeframe=SLOTimeframe.SEVEN_DAYS,
+            warning=99.5,
+            warning_display="99.5",
+        ),
+    ],
+    timeframe=SLOTimeframe.SEVEN_DAYS,
+    target_threshold=99.0,
+    warning_threshold=99.5,
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.create_slo(body=body)
+
+    print(response)
+```
+
+#####
 
 ```python
 """
@@ -862,7 +1220,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -920,7 +1278,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -951,7 +1309,61 @@ dog.create_service_level_objective(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
+
+```ruby
+# Create a new metric SLO object using sli_specification returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
+
+body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
+  type: DatadogAPIClient::V1::SLOType::METRIC,
+  description: "Metric SLO using sli_specification",
+  name: "Example-Service-Level-Objective",
+  sli_specification: DatadogAPIClient::V1::SLOCountSpec.new({
+    count: DatadogAPIClient::V1::SLOCountDefinition.new({
+      good_events_formula: DatadogAPIClient::V1::SLOFormula.new({
+        formula: "query1 - query2",
+      }),
+      total_events_formula: DatadogAPIClient::V1::SLOFormula.new({
+        formula: "query1",
+      }),
+      queries: [
+        DatadogAPIClient::V1::FormulaAndFunctionMetricQueryDefinition.new({
+          data_source: DatadogAPIClient::V1::FormulaAndFunctionMetricDataSource::METRICS,
+          name: "query1",
+          query: "sum:httpservice.hits{*}.as_count()",
+        }),
+        DatadogAPIClient::V1::FormulaAndFunctionMetricQueryDefinition.new({
+          data_source: DatadogAPIClient::V1::FormulaAndFunctionMetricDataSource::METRICS,
+          name: "query2",
+          query: "sum:httpservice.errors{*}.as_count()",
+        }),
+      ],
+    }),
+  }),
+  tags: [
+    "env:prod",
+    "type:count",
+  ],
+  thresholds: [
+    DatadogAPIClient::V1::SLOThreshold.new({
+      target: 99.0,
+      target_display: "99.0",
+      timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+      warning: 99.5,
+      warning_display: "99.5",
+    }),
+  ],
+  timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+  target_threshold: 99.0,
+  warning_threshold: 99.5,
+})
+p api_instance.create_slo(body)
+```
+
+#####
 
 ```ruby
 # Create a time-slice SLO object returns "OK" response
@@ -1002,7 +1414,7 @@ body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
 p api_instance.create_slo(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an SLO object returns "OK" response
@@ -1047,7 +1459,73 @@ p api_instance.create_slo(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
+
+```rust
+// Create a new metric SLO object using sli_specification returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
+use datadog_api_client::datadogV1::model::FormulaAndFunctionMetricDataSource;
+use datadog_api_client::datadogV1::model::FormulaAndFunctionMetricQueryDefinition;
+use datadog_api_client::datadogV1::model::SLOCountDefinition;
+use datadog_api_client::datadogV1::model::SLOCountSpec;
+use datadog_api_client::datadogV1::model::SLODataSourceQueryDefinition;
+use datadog_api_client::datadogV1::model::SLOFormula;
+use datadog_api_client::datadogV1::model::SLOSliSpec;
+use datadog_api_client::datadogV1::model::SLOThreshold;
+use datadog_api_client::datadogV1::model::SLOTimeframe;
+use datadog_api_client::datadogV1::model::SLOType;
+use datadog_api_client::datadogV1::model::ServiceLevelObjectiveRequest;
+
+#[tokio::main]
+async fn main() {
+    let body = ServiceLevelObjectiveRequest::new(
+        "Example-Service-Level-Objective".to_string(),
+        vec![SLOThreshold::new(99.0, SLOTimeframe::SEVEN_DAYS)
+            .target_display("99.0".to_string())
+            .warning(99.5 as f64)
+            .warning_display("99.5".to_string())],
+        SLOType::METRIC,
+    )
+    .description(Some("Metric SLO using sli_specification".to_string()))
+    .sli_specification(SLOSliSpec::SLOCountSpec(Box::new(SLOCountSpec::new(
+        SLOCountDefinition::new(
+            SLOFormula::new("query1 - query2".to_string()),
+            vec![
+                SLODataSourceQueryDefinition::FormulaAndFunctionMetricQueryDefinition(Box::new(
+                    FormulaAndFunctionMetricQueryDefinition::new(
+                        FormulaAndFunctionMetricDataSource::METRICS,
+                        "query1".to_string(),
+                        "sum:httpservice.hits{*}.as_count()".to_string(),
+                    ),
+                )),
+                SLODataSourceQueryDefinition::FormulaAndFunctionMetricQueryDefinition(Box::new(
+                    FormulaAndFunctionMetricQueryDefinition::new(
+                        FormulaAndFunctionMetricDataSource::METRICS,
+                        "query2".to_string(),
+                        "sum:httpservice.errors{*}.as_count()".to_string(),
+                    ),
+                )),
+            ],
+            SLOFormula::new("query1".to_string()),
+        ),
+    ))))
+    .tags(vec!["env:prod".to_string(), "type:count".to_string()])
+    .target_threshold(99.0 as f64)
+    .timeframe(SLOTimeframe::SEVEN_DAYS)
+    .warning_threshold(99.5 as f64);
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.create_slo(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#####
 
 ```rust
 // Create a time-slice SLO object returns "OK" response
@@ -1111,7 +1589,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create an SLO object returns "OK" response
@@ -1159,7 +1637,72 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
+
+```typescript
+/**
+ * Create a new metric SLO object using sli_specification returns "OK" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
+
+const params: v1.ServiceLevelObjectivesApiCreateSLORequest = {
+  body: {
+    type: "metric",
+    description: "Metric SLO using sli_specification",
+    name: "Example-Service-Level-Objective",
+    sliSpecification: {
+      count: {
+        goodEventsFormula: {
+          formula: "query1 - query2",
+        },
+        totalEventsFormula: {
+          formula: "query1",
+        },
+        queries: [
+          {
+            dataSource: "metrics",
+            name: "query1",
+            query: "sum:httpservice.hits{*}.as_count()",
+          },
+          {
+            dataSource: "metrics",
+            name: "query2",
+            query: "sum:httpservice.errors{*}.as_count()",
+          },
+        ],
+      },
+    },
+    tags: ["env:prod", "type:count"],
+    thresholds: [
+      {
+        target: 99.0,
+        targetDisplay: "99.0",
+        timeframe: "7d",
+        warning: 99.5,
+        warningDisplay: "99.5",
+      },
+    ],
+    timeframe: "7d",
+    targetThreshold: 99.0,
+    warningThreshold: 99.5,
+  },
+};
+
+apiInstance
+  .createSLO(params)
+  .then((data: v1.SLOListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#####
 
 ```typescript
 /**
@@ -1222,7 +1765,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1296,8 +1839,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get a list of service level objective objects for your organization. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -1657,13 +2198,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1693,7 +2234,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search for SLOs returns "OK" response
@@ -1715,7 +2256,7 @@ p api_instance.search_slo(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search for SLOs returns "OK" response
@@ -1723,32 +2264,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0Name := os.Getenv("SLO_DATA_0_NAME")
+    // there is a valid "slo" in the system
+    SloData0Name := os.Getenv("SLO_DATA_0_NAME")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.SearchSLO(ctx, *datadogV1.NewSearchSLOOptionalParameters().WithQuery(SloData0Name).WithPageSize(20).WithPageNumber(0))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.SearchSLO(ctx, *datadogV1.NewSearchSLOOptionalParameters().WithQuery(SloData0Name).WithPageSize(20).WithPageNumber(0))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.SearchSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.SearchSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.SearchSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.SearchSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -1756,7 +2297,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search for SLOs returns "OK" response
@@ -1798,7 +2339,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search for SLOs returns "OK" response
@@ -1832,7 +2373,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1889,8 +2430,6 @@ Get a list of service level objective objects for your organization. This endpoi
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Query Strings
@@ -1911,57 +2450,71 @@ OK
 {% tab title="Model" %}
 A response with one or more service level objective.
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| ----------------- | ----------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | data                          | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
-| data              | created_at                    | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
-| data              | creator                       | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
-| creator           | email                         | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
-| creator           | handle                        | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
-| creator           | name                          | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
-| data              | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-| data              | groups                        | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-| data              | id                            | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
-| data              | modified_at                   | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
-| data              | monitor_ids                   | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
-| data              | monitor_tags                  | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
-| data              | name [*required*]        | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
-| data              | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                                                                                                |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
-| data              | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                                                                                                                                                 |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
-| data              | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
-| data              | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
-| data              | thresholds [*required*]  | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-| data              | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| data              | type [*required*]        | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
-| data              | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
-|                   | errors                        | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
-|                   | metadata                      | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
-| metadata          | page                          | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
-| page              | total_count                   | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
-| page              | total_filtered_count          | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                                   | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
+| data                 | created_at                             | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | creator                                | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
+| creator              | email                                  | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
+| creator              | handle                                 | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
+| creator              | name                                   | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
+| data                 | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+| data                 | groups                                 | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+| data                 | id                                     | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | modified_at                            | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | monitor_ids                            | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
+| data                 | monitor_tags                           | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
+| data                 | name [*required*]                 | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
+| data                 | query                                  | object          | A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                       |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
+| data                 | sli_specification                      |  <oneOf>   | A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                                                                                  |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                                                                                   |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                                                                             |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| data                 | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
+| data                 | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
+| data                 | thresholds [*required*]           | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+| data                 | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| data                 | type [*required*]                 | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
+| data                 | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
+|                      | errors                                 | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
+|                      | metadata                               | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
+| metadata             | page                                   | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
+| page                 | total_count                            | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
+| page                 | total_filtered_count                   | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
 
 {% /tab %}
 
@@ -2143,13 +2696,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2177,7 +2730,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all SLOs returns "OK" response
@@ -2197,7 +2750,7 @@ p api_instance.list_slos(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -2220,7 +2773,7 @@ dog.search_service_level_objective(query: query, offset: 0)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all SLOs returns "OK" response
@@ -2228,32 +2781,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.ListSLOs(ctx, *datadogV1.NewListSLOsOptionalParameters().WithIds(SloData0ID))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.ListSLOs(ctx, *datadogV1.NewListSLOsOptionalParameters().WithIds(SloData0ID))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.ListSLOs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.ListSLOs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.ListSLOs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.ListSLOs`:\n%s\n", responseContent)
 }
 ```
 
@@ -2261,7 +2814,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all SLOs returns "OK" response
@@ -2299,7 +2852,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -2326,7 +2879,7 @@ api.ServiceLevelObjective.get_all(query=query, offset=0)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get all SLOs returns "OK" response
@@ -2355,7 +2908,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2410,8 +2963,6 @@ Update the specified service level objective object. This endpoint requires the 
 
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -2428,51 +2979,65 @@ The edited service level objective request object.
 
 {% tab title="Model" %}
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| ----------------- | ----------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | created_at                    | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
-|                   | creator                       | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
-| creator           | email                         | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
-| creator           | handle                        | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
-| creator           | name                          | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
-|                   | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-|                   | groups                        | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-|                   | id                            | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
-|                   | modified_at                   | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
-|                   | monitor_ids                   | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
-|                   | monitor_tags                  | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
-|                   | name [*required*]        | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
-|                   | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                                                                                                |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
-|                   | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                                                                                                                                                 |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
-|                   | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
-|                   | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
-|                   | thresholds [*required*]  | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-|                   | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-|                   | type [*required*]        | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
-|                   | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | created_at                             | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
+|                      | creator                                | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
+| creator              | email                                  | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
+| creator              | handle                                 | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
+| creator              | name                                   | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
+|                      | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+|                      | groups                                 | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+|                      | id                                     | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
+|                      | modified_at                            | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
+|                      | monitor_ids                            | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
+|                      | monitor_tags                           | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
+|                      | name [*required*]                 | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
+|                      | query                                  | object          | A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                       |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
+|                      | sli_specification                      |  <oneOf>   | A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                                                                                  |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                                                                                   |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                                                                             |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+|                      | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
+|                      | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
+|                      | thresholds [*required*]           | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+|                      | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+|                      | type [*required*]                 | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
+|                      | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
 
 {% /tab %}
 
@@ -2508,57 +3073,71 @@ OK
 {% tab title="Model" %}
 A response with one or more service level objective.
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
-| ----------------- | ----------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | data                          | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
-| data              | created_at                    | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
-| data              | creator                       | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
-| creator           | email                         | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
-| creator           | handle                        | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
-| creator           | name                          | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
-| data              | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-| data              | groups                        | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-| data              | id                            | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
-| data              | modified_at                   | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
-| data              | monitor_ids                   | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
-| data              | monitor_tags                  | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
-| data              | name [*required*]        | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
-| data              | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                                                                                                |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
-| data              | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                                                                                                                                                 |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
-| data              | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
-| data              | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
-| data              | thresholds [*required*]  | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-| data              | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
-| data              | type [*required*]        | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
-| data              | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
-|                   | errors                        | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
-|                   | metadata                      | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
-| metadata          | page                          | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
-| page              | total_count                   | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
-| page              | total_filtered_count          | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                                   | [object]        | An array of service level objective objects.                                                                                                                                                                                                                                                                                                                                  |
+| data                 | created_at                             | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                     | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | creator                                | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                          |
+| creator              | email                                  | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                         |
+| creator              | handle                                 | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                        |
+| creator              | name                                   | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                          |
+| data                 | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                                    | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+| data                 | groups                                 | [string]        | A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                              | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+| data                 | id                                     | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                                   | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | modified_at                            | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                                 | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | monitor_ids                            | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                         |
+| data                 | monitor_tags                           | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
+| data                 | name [*required*]                 | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                               |
+| data                 | query                                  | object          | A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                       |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                              |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                       |
+| data                 | sli_specification                      |  <oneOf>   | A generic SLI specification. This is used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                                                                                  |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                       |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                               |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                      |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                           |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                   |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                                |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                                 |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                                                                                   |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                                                                             |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                                     |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                         |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                               |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                        |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                                     |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                       |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                      |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                           |
+| data                 | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                                     |
+| data                 | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                                 |
+| data                 | thresholds [*required*]           | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                                   |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                          |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                          | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                            |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                                | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+| data                 | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                               |
+| data                 | type [*required*]                 | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                                     |
+| data                 | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                      |
+|                      | errors                                 | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                           |
+|                      | metadata                               | object          | The metadata object containing additional information about the list of SLOs.                                                                                                                                                                                                                                                                                                 |
+| metadata             | page                                   | object          | The object containing information about the pages of the list of SLOs.                                                                                                                                                                                                                                                                                                        |
+| page                 | total_count                            | int64           | The total number of resources that could be retrieved ignoring the parameters and filters in the request.                                                                                                                                                                                                                                                                     |
+| page                 | total_filtered_count                   | int64           | The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.                                                                                                                                                                                                            |
 
 {% /tab %}
 
@@ -2740,7 +3319,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2766,8 +3345,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an SLO returns "OK" response
@@ -2775,51 +3354,51 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
-	SloData0Name := os.Getenv("SLO_DATA_0_NAME")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    SloData0Name := os.Getenv("SLO_DATA_0_NAME")
 
-	body := datadogV1.ServiceLevelObjective{
-		Type: datadogV1.SLOTYPE_METRIC,
-		Name: SloData0Name,
-		Thresholds: []datadogV1.SLOThreshold{
-			{
-				Target:    97.0,
-				Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning:   datadog.PtrFloat64(98.0),
-			},
-		},
-		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold:  datadog.PtrFloat64(97.0),
-		WarningThreshold: datadog.PtrFloat64(98),
-		Query: &datadogV1.ServiceLevelObjectiveQuery{
-			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
-			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.UpdateSLO(ctx, SloData0ID, body)
+    body := datadogV1.ServiceLevelObjective{
+        Type: datadogV1.SLOTYPE_METRIC,
+        Name: SloData0Name,
+        Thresholds: []datadogV1.SLOThreshold{
+            {
+                Target:    97.0,
+                Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+                Warning:   datadog.PtrFloat64(98.0),
+            },
+        },
+        Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+        TargetThreshold:  datadog.PtrFloat64(97.0),
+        WarningThreshold: datadog.PtrFloat64(98),
+        Query: &datadogV1.ServiceLevelObjectiveQuery{
+            Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
+            Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.UpdateSLO(ctx, SloData0ID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.UpdateSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.UpdateSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.UpdateSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.UpdateSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -2827,7 +3406,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an SLO returns "OK" response
@@ -2888,7 +3467,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2939,7 +3518,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an SLO returns "OK" response
@@ -2976,7 +3555,7 @@ p api_instance.update_slo(SLO_DATA_0_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an SLO returns "OK" response
@@ -3020,7 +3599,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3094,8 +3673,6 @@ Get a service level objective object. This endpoint requires the `slos_read` per
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
 
-
-
 ### Arguments
 
 #### Path Parameters
@@ -3117,54 +3694,68 @@ OK
 {% tab title="Model" %}
 A service level objective response containing a single service level objective.
 
-| Parent field      | Field                         | Type            | Description                                                                                                                                                                                                                                                                                                                                                             |
-| ----------------- | ----------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | data                          | object          | A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.).                                                                                                                                                                                                         |
-| data              | configured_alert_ids          | [integer]       | A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query.                                                                                                                                                                                                                            |
-| data              | created_at                    | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                               | Always included in service level objective responses.                                                                                                                                                               |
-| data              | creator                       | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                    |
-| creator           | email                         | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                   |
-| creator           | handle                        | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                  |
-| creator           | name                          | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                    |
-| data              | description                   | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                              | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
-| data              | groups                        | [string]        | A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                         | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
-| data              | id                            | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                             | Always included in service level objective responses.                                                                                                                                                               |
-| data              | modified_at                   | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                           | Always included in service level objective responses.                                                                                                                                                               |
-| data              | monitor_ids                   | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                   |
-| data              | monitor_tags                  | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
-| data              | name                          | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                         |
-| data              | query                         | object          | A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.                                                                                                                          |
-| query             | denominator [*required*] | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                        |
-| query             | numerator [*required*]   | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                 |
-| data              | sli_specification             |  <oneOf>   | A generic SLI specification. This is currently used for time-slice SLOs only.                                                                                                                                                                                                                                                                                           |
-| sli_specification | Option 1                      | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                         |
-| Option 1          | time_slice [*required*]  | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                 |
-| time_slice        | comparator [*required*]  | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                         |
-| time_slice        | query [*required*]       | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                |
-| query             | formulas [*required*]    | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                     |
-| formulas          | formula [*required*]     | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                     |
-| query             | queries [*required*]     | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                             |
-| queries           | Option 1                      | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                  |
-| Option 1          | aggregator                    | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                               |
-| Option 1          | cross_org_uuids               | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                   |
-| Option 1          | data_source [*required*] | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                         |
-| Option 1          | name [*required*]        | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                  |
-| Option 1          | query [*required*]       | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                               |
-| Option 1          | semantic_mode                 | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                 |
-| time_slice        | query_interval_seconds        | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                          |
-| time_slice        | threshold [*required*]   | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                           |
-| data              | tags                          | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                               |
-| data              | target_threshold              | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                           |
-| data              | thresholds                    | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                             |
-| thresholds        | target [*required*]      | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                    |
-| thresholds        | target_display                | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                    | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
-| thresholds        | timeframe [*required*]   | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                         |
-| thresholds        | warning                       | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                      |
-| thresholds        | warning_display               | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                          | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
-| data              | timeframe                     | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                         |
-| data              | type                          | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                               |
-| data              | warning_threshold             | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                |
-|                   | errors                        | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                     |
+| Parent field         | Field                                  | Type            | Description                                                                                                                                                                                                                                                                                                                                                             |
+| -------------------- | -------------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                      | data                                   | object          | A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.).                                                                                                                                                                                                         |
+| data                 | configured_alert_ids                   | [integer]       | A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query.                                                                                                                                                                                                                            |
+| data                 | created_at                             | int64           | Creation timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                               | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | creator                                | object          | Object describing the creator of the shared element.                                                                                                                                                                                                                                                                                                                    |
+| creator              | email                                  | string          | Email of the creator.                                                                                                                                                                                                                                                                                                                                                   |
+| creator              | handle                                 | string          | Handle of the creator.                                                                                                                                                                                                                                                                                                                                                  |
+| creator              | name                                   | string          | Name of the creator.                                                                                                                                                                                                                                                                                                                                                    |
+| data                 | description                            | string          | A user-defined description of the service level objective.                                                                                                                                                                                                                                                                                                              | Always included in service level objective responses (but may be `null`). Optional in create/update requests.                                                                                                       |
+| data                 | groups                                 | [string]        | A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective.                                                                                                                                                                                                                                                                         | Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. |
+| data                 | id                                     | string          | A unique identifier for the service level objective object.                                                                                                                                                                                                                                                                                                             | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | modified_at                            | int64           | Modification timestamp (UNIX time in seconds)                                                                                                                                                                                                                                                                                                                           | Always included in service level objective responses.                                                                                                                                                               |
+| data                 | monitor_ids                            | [integer]       | A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**.                                                                                                                                                                                                                                                   |
+| data                 | monitor_tags                           | [string]        | The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). |
+| data                 | name                                   | string          | The name of the service level objective object.                                                                                                                                                                                                                                                                                                                         |
+| data                 | query                                  | object          | The metric query used to define a count-based SLO as the ratio of good events to total events.                                                                                                                                                                                                                                                                          |
+| query                | denominator [*required*]          | string          | A Datadog metric query for total (valid) events.                                                                                                                                                                                                                                                                                                                        |
+| query                | numerator [*required*]            | string          | A Datadog metric query for good events.                                                                                                                                                                                                                                                                                                                                 |
+| data                 | sli_specification                      |  <oneOf>   | A generic SLI specification. This is currently used for time-slice and count-based (metric) SLOs only.                                                                                                                                                                                                                                                                  |
+| sli_specification    | Option 1                               | object          | A time-slice SLI specification.                                                                                                                                                                                                                                                                                                                                         |
+| Option 1             | time_slice [*required*]           | object          | The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.                                                                                                                                                                                 |
+| time_slice           | comparator [*required*]           | enum            | The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`                                                                                                                                                                                                                                                                         |
+| time_slice           | query [*required*]                | object          | The queries and formula used to calculate the SLI value.                                                                                                                                                                                                                                                                                                                |
+| query                | formulas [*required*]             | [object]        | A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.                                                                                                                                                                                                                                                                     |
+| formulas             | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                     |
+| query                | queries [*required*]              | [ <oneOf>] | A list of queries that are used to calculate the SLI value.                                                                                                                                                                                                                                                                                                             |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                  |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                               |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                   |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                         |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                  |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                 |
+| time_slice           | query_interval_seconds                 | enum            | The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`                                                                                                                                          |
+| time_slice           | threshold [*required*]            | double          | The threshold value to which each SLI value will be compared.                                                                                                                                                                                                                                                                                                           |
+| sli_specification    | Option 2                               | object          | A metric SLI specification.                                                                                                                                                                                                                                                                                                                                             |
+| Option 2             | count [*required*]                | object          | A count-based (metric) SLI specification, composed of three parts: the good events formula, the total events formula, and the underlying queries.                                                                                                                                                                                                                       |
+| count                | good_events_formula [*required*]  | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                |
+| good_events_formula  | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                     |
+| count                | queries [*required*]              | [ <oneOf>] |
+| queries              | Option 1                               | object          | A formula and functions metrics query.                                                                                                                                                                                                                                                                                                                                  |
+| Option 1             | aggregator                             | enum            | The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`                                                                                                                                                                                                                                               |
+| Option 1             | cross_org_uuids                        | [string]        | The source organization UUID for cross organization queries. Feature in Private Beta.                                                                                                                                                                                                                                                                                   |
+| Option 1             | data_source [*required*]          | enum            | Data source for metrics queries. Allowed enum values: `metrics`                                                                                                                                                                                                                                                                                                         |
+| Option 1             | name [*required*]                 | string          | Name of the query for use in formulas.                                                                                                                                                                                                                                                                                                                                  |
+| Option 1             | query [*required*]                | string          | Metrics query definition.                                                                                                                                                                                                                                                                                                                                               |
+| Option 1             | semantic_mode                          | enum            | Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`                                                                                                                                                                                                                 |
+| count                | total_events_formula [*required*] | object          | A formula that specifies how to combine the results of multiple queries.                                                                                                                                                                                                                                                                                                |
+| total_events_formula | formula [*required*]              | string          | The formula string, which is an expression involving named queries.                                                                                                                                                                                                                                                                                                     |
+| data                 | tags                                   | [string]        | A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.                                                                                                                                                                                               |
+| data                 | target_threshold                       | double          | The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.                                                                                                                                                                                                                           |
+| data                 | thresholds                             | [object]        | The thresholds (timeframes and associated targets) for this service level objective object.                                                                                                                                                                                                                                                                             |
+| thresholds           | target [*required*]               | double          | The target value for the service level indicator within the corresponding timeframe.                                                                                                                                                                                                                                                                                    |
+| thresholds           | target_display                         | string          | A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).                                                                                                                                                                                                                    | Always included in service level objective responses. Ignored in create/update requests.                                                                                                                            |
+| thresholds           | timeframe [*required*]            | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                         |
+| thresholds           | warning                                | double          | The warning value for the service level objective.                                                                                                                                                                                                                                                                                                                      |
+| thresholds           | warning_display                        | string          | A string representation of the warning target (see the description of the `target_display` field for details).                                                                                                                                                                                                                                                          | Included in service level objective responses if a warning target exists. Ignored in create/update requests.                                                                                                        |
+| data                 | timeframe                              | enum            | The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`                                                                                                                                                         |
+| data                 | type                                   | enum            | The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`                                                                                                                                                                                                                                                                               |
+| data                 | warning_threshold                      | double          | The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.                                                                                                                |
+|                      | errors                                 | [string]        | An array of error messages. Each endpoint documents how/whether this field is used.                                                                                                                                                                                                                                                                                     |
 
 {% /tab %}
 
@@ -3318,13 +3909,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3352,7 +3943,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an SLO's details returns "OK" response
@@ -3369,7 +3960,7 @@ p api_instance.get_slo(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # This is not currently available for the Ruby API.
@@ -3379,7 +3970,7 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an SLO's details returns "OK" response
@@ -3387,32 +3978,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLO(ctx, SloData0ID, *datadogV1.NewGetSLOOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLO(ctx, SloData0ID, *datadogV1.NewGetSLOOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -3420,7 +4011,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an SLO's details returns "OK" response
@@ -3456,7 +4047,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -3477,7 +4068,7 @@ api.ServiceLevelObjective.get(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an SLO's details returns "OK" response
@@ -3506,7 +4097,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3557,15 +4148,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Permanently delete the specified service level objective object.
 
 If an SLO is used in a dashboard, the `DELETE /v1/slo/` endpoint returns a 409 conflict error because the SLO is referenced in a dashboard.
 This endpoint requires the `slos_write` permission.
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -3716,13 +4303,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3750,7 +4337,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an SLO returns "OK" response
@@ -3767,7 +4354,7 @@ p api_instance.delete_slo(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -3785,7 +4372,7 @@ dog.delete_service_level_objective(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an SLO returns "OK" response
@@ -3793,32 +4380,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.DeleteSLO(ctx, SloData0ID, *datadogV1.NewDeleteSLOOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.DeleteSLO(ctx, SloData0ID, *datadogV1.NewDeleteSLOOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -3826,7 +4413,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an SLO returns "OK" response
@@ -3862,7 +4449,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -3883,7 +4470,7 @@ api.ServiceLevelObjective.delete(slo_id)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Delete an SLO returns "OK" response
@@ -3912,7 +4499,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3963,8 +4550,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Get a specific SLO's history, regardless of its SLO type.
 
 The detailed history data is structured according to the source data type. For example, metric data is included for event SLOs that use the metric source, and monitor SLO types include the monitor transition history.
@@ -3972,8 +4557,6 @@ The detailed history data is structured according to the source data type. For e
 **Note:** There are different response formats for event based and time based SLOs. Examples of both are shown.
 This endpoint requires the `slos_read` permission.
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4385,13 +4968,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Required query argumentsexport from_ts="CHANGE_ME"export to_ts="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/history?from_ts=${from_ts}&to_ts=${to_ts}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4423,7 +5006,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an SLO's history returns "OK" response
@@ -4440,7 +5023,7 @@ p api_instance.get_slo_history(SLO_DATA_0_ID, (Time.now + -1 * 86400).to_i, Time
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -4461,7 +5044,7 @@ dog.get_service_level_objective_history(slo_id, from_ts, to_ts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an SLO's history returns "OK" response
@@ -4469,33 +5052,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOHistory(ctx, SloData0ID, time.Now().AddDate(0, 0, -1).Unix(), time.Now().Unix(), *datadogV1.NewGetSLOHistoryOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOHistory(ctx, SloData0ID, time.Now().AddDate(0, 0, -1).Unix(), time.Now().Unix(), *datadogV1.NewGetSLOHistoryOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOHistory`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOHistory`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOHistory`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOHistory`:\n%s\n", responseContent)
 }
 ```
 
@@ -4503,7 +5086,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an SLO's history returns "OK" response
@@ -4543,7 +5126,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -4568,7 +5151,7 @@ api.ServiceLevelObjective.history(slo_id, from_ts=from_ts, to_ts=to_ts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get an SLO's history returns "OK" response
@@ -4602,7 +5185,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4660,8 +5243,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get corrections applied to an SLO This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -4856,13 +5437,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/corrections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4890,7 +5471,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get Corrections For an SLO returns "OK" response
@@ -4907,7 +5488,7 @@ p api_instance.get_slo_corrections(SLO_DATA_0_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get Corrections For an SLO returns "OK" response
@@ -4915,32 +5496,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOCorrections(ctx, SloData0ID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOCorrections(ctx, SloData0ID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOCorrections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOCorrections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOCorrections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOCorrections`:\n%s\n", responseContent)
 }
 ```
 
@@ -4948,7 +5529,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get Corrections For an SLO returns "OK" response
@@ -4984,7 +5565,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get Corrections For an SLO returns "OK" response
@@ -5010,7 +5591,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5064,8 +5645,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Check if an SLO can be safely deleted. For example, assure an SLO can be deleted without disrupting a dashboard. This endpoint requires the `slos_read` permission.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -5216,13 +5795,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport ids="id1, id2, id3"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/can_delete?ids=${ids}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5246,7 +5825,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Check if SLOs can be safely deleted returns "OK" response
@@ -5260,7 +5839,7 @@ p api_instance.check_can_delete_slo("ids")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -5278,7 +5857,7 @@ dog.can_delete_service_level_objective(slo_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5286,29 +5865,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CheckCanDeleteSLO(ctx, "ids")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CheckCanDeleteSLO(ctx, "ids")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CheckCanDeleteSLO`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CheckCanDeleteSLO`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CheckCanDeleteSLO`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CheckCanDeleteSLO`:\n%s\n", responseContent)
 }
 ```
 
@@ -5316,7 +5895,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5349,7 +5928,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -5370,7 +5949,7 @@ api.ServiceLevelObjective.can_delete(slo_ids)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Check if SLOs can be safely deleted returns "OK" response
@@ -5394,7 +5973,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5442,15 +6021,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Delete (or partially delete) multiple service level objective objects.
 
 This endpoint facilitates deletion of one or more thresholds for one or more service level objective objects. If all thresholds are deleted, the service level objective object is deleted as well.
 This endpoint requires the `slos_write` permission.
 OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Request
 
@@ -5489,12 +6064,9 @@ Delete multiple service level objective objects request body.
 OK
 {% tab title="Model" %}
 
-
 The bulk partial delete service level objective object endpoint response.
 
 This endpoint operates on multiple service level objective objects, so it may be partially successful. In such cases, the "data" and "error" fields in this response indicate which deletions succeeded and failed.
-
-
 
 | Parent field | Field                       | Type     | Description                                                                                                                                                                                  |
 | ------------ | --------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5607,7 +6179,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/bulk_delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5625,8 +6197,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5661,7 +6233,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Bulk Delete SLO Timeframes returns "OK" response
@@ -5685,7 +6257,7 @@ p api_instance.delete_slo_timeframe_in_bulk(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'dogapi'
@@ -5710,7 +6282,7 @@ dog.delete_timeframes_service_level_objective(thresholds)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -5718,39 +6290,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := map[string][]datadogV1.SLOTimeframe{
-		"id1": []datadogV1.SLOTimeframe{
-			datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-			datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
-		},
-		"id2": []datadogV1.SLOTimeframe{
-			datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-			datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.DeleteSLOTimeframeInBulk(ctx, body)
+    body := map[string][]datadogV1.SLOTimeframe{
+        "id1": []datadogV1.SLOTimeframe{
+            datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+            datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
+        },
+        "id2": []datadogV1.SLOTimeframe{
+            datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+            datadogV1.SLOTIMEFRAME_THIRTY_DAYS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.DeleteSLOTimeframeInBulk(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`:\n%s\n", responseContent)
 }
 ```
 
@@ -5758,7 +6330,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -5801,7 +6373,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -5828,7 +6400,7 @@ api.ServiceLevelObjective.bulk_delete(delete_timeframes)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Bulk Delete SLO Timeframes returns "OK" response
@@ -5864,7 +6436,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5915,15 +6487,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Create a job to generate an SLO report. The report job is processed asynchronously and eventually results in a CSV report being available for download.
 
 Check the status of the job and download the CSV report using the returned `report_id`.
 This endpoint requires the `slos_read` permission.
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Request
 
@@ -6070,7 +6638,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -6089,8 +6657,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new SLO report returns "OK" response
@@ -6098,42 +6666,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.SloReportCreateRequest{
-		Data: datadogV2.SloReportCreateRequestData{
-			Attributes: datadogV2.SloReportCreateRequestAttributes{
-				FromTs:   time.Now().AddDate(0, 0, -40).Unix(),
-				ToTs:     time.Now().Unix(),
-				Query:    `slo_type:metric "SLO Reporting Test"`,
-				Interval: datadogV2.SLOREPORTINTERVAL_MONTHLY.Ptr(),
-				Timezone: datadog.PtrString("America/New_York"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateSLOReportJob", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.CreateSLOReportJob(ctx, body)
+    body := datadogV2.SloReportCreateRequest{
+        Data: datadogV2.SloReportCreateRequestData{
+            Attributes: datadogV2.SloReportCreateRequestAttributes{
+                FromTs:   time.Now().AddDate(0, 0, -40).Unix(),
+                ToTs:     time.Now().Unix(),
+                Query:    `slo_type:metric "SLO Reporting Test"`,
+                Interval: datadogV2.SLOREPORTINTERVAL_MONTHLY.Ptr(),
+                Timezone: datadog.PtrString("America/New_York"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateSLOReportJob", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.CreateSLOReportJob(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLOReportJob`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLOReportJob`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLOReportJob`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLOReportJob`:\n%s\n", responseContent)
 }
 ```
 
@@ -6141,7 +6709,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new SLO report returns "OK" response
@@ -6193,7 +6761,7 @@ slo_type:metric "SLO Reporting Test"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6234,7 +6802,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new SLO report returns "OK" response
@@ -6263,7 +6831,7 @@ p api_instance.create_slo_report_job(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new SLO report returns "OK" response
@@ -6301,7 +6869,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6365,8 +6933,6 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 Get the status of the SLO report job.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6513,13 +7079,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport report_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/status" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6548,7 +7114,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SLO report status returns "OK" response
@@ -6568,7 +7134,7 @@ p api_instance.get_slo_report_job_status(REPORT_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SLO report status returns "OK" response
@@ -6576,33 +7142,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "report" in the system
-	ReportDataID := os.Getenv("REPORT_DATA_ID")
+    // there is a valid "report" in the system
+    ReportDataID := os.Getenv("REPORT_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSLOReportJobStatus", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOReportJobStatus(ctx, ReportDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSLOReportJobStatus", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOReportJobStatus(ctx, ReportDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReportJobStatus`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReportJobStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReportJobStatus`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReportJobStatus`:\n%s\n", responseContent)
 }
 ```
 
@@ -6610,7 +7176,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SLO report status returns "OK" response
@@ -6647,7 +7213,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SLO report status returns "OK" response
@@ -6674,7 +7240,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6726,15 +7292,11 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 
 ### Overview
 
-
-
 Download an SLO report. This can only be performed after the report job has completed.
 
 Reports are not guaranteed to exist indefinitely. Datadog recommends that you download the report as soon as it is available.
 
 OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
-
-
 
 ### Arguments
 
@@ -6867,13 +7429,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport report_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/download" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6896,7 +7458,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get SLO report returns "OK" response
@@ -6913,7 +7475,7 @@ p api_instance.get_slo_report("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get SLO report returns "OK" response
@@ -6921,28 +7483,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetSLOReport", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
-	resp, r, err := api.GetSLOReport(ctx, "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSLOReport", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSLOReport(ctx, "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReport`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOReport`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReport`:\n%s\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReport`:\n%s\n", resp)
 }
 ```
 
@@ -6950,7 +7512,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get SLO report returns "OK" response
@@ -6983,7 +7545,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get SLO report returns "OK" response
@@ -7010,7 +7572,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7030,6 +7592,441 @@ const params: v2.ServiceLevelObjectivesApiGetSLOReportRequest = {
 apiInstance
   .getSLOReport(params)
   .then((data: string) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Get SLO status{% #get-slo-status %}
+
+{% tab title="v2" %}
+**Note**: This endpoint is in public beta and it's subject to change. If you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/).
+| Datadog site      | API endpoint                                                 |
+| ----------------- | ------------------------------------------------------------ |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v2/slo/{slo_id}/status |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v2/slo/{slo_id}/status |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v2/slo/{slo_id}/status      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v2/slo/{slo_id}/status      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v2/slo/{slo_id}/status     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v2/slo/{slo_id}/status |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v2/slo/{slo_id}/status |
+
+### Overview
+
+Get the status of a Service Level Objective (SLO) for a given time period.
+
+This endpoint returns the current SLI value, error budget remaining, and other status information for the specified SLO.
+This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                     | Type   | Description        |
+| ------------------------ | ------ | ------------------ |
+| slo_id [*required*] | string | The ID of the SLO. |
+
+#### Query Strings
+
+| Name                      | Type    | Description                                                                               |
+| ------------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| from_ts [*required*] | integer | The starting timestamp for the SLO status query in epoch seconds.                         |
+| to_ts [*required*]   | integer | The ending timestamp for the SLO status query in epoch seconds.                           |
+| disable_corrections       | boolean | Whether to exclude correction windows from the SLO status calculation. Defaults to false. |
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+The SLO status response.
+
+| Parent field               | Field                                        | Type   | Description                                                              |
+| -------------------------- | -------------------------------------------- | ------ | ------------------------------------------------------------------------ |
+|                            | data [*required*]                       | object | The data portion of the SLO status response.                             |
+| data                       | attributes [*required*]                 | object | The attributes of the SLO status.                                        |
+| attributes                 | error_budget_remaining [*required*]     | double | The percentage of error budget remaining.                                |
+| attributes                 | raw_error_budget_remaining [*required*] | object | The raw error budget remaining for the SLO.                              |
+| raw_error_budget_remaining | unit [*required*]                       | string | The unit of the error budget (for example, `seconds`, `requests`).       |
+| raw_error_budget_remaining | value [*required*]                      | double | The numeric value of the remaining error budget.                         |
+| attributes                 | sli [*required*]                        | double | The current Service Level Indicator (SLI) value as a percentage.         |
+| attributes                 | span_precision [*required*]             | int64  | The precision of the time span in seconds.                               |
+| attributes                 | state [*required*]                      | string | The current state of the SLO (for example, `breached`, `warning`, `ok`). |
+| data                       | id [*required*]                         | string | The ID of the SLO.                                                       |
+| data                       | type [*required*]                       | enum   | The type of the SLO status resource. Allowed enum values: `slo_status`   |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "data": {
+    "attributes": {
+      "error_budget_remaining": 99.5,
+      "raw_error_budget_remaining": {
+        "unit": "seconds",
+        "value": 86400.5
+      },
+      "sli": 99.95,
+      "span_precision": 2,
+      "state": "ok"
+    },
+    "id": "00000000-0000-0000-0000-000000000000",
+    "type": "slo_status"
+  }
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="400" %}
+Bad Request
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+API error response.
+
+| Parent field | Field                    | Type     | Description                                                                     |
+| ------------ | ------------------------ | -------- | ------------------------------------------------------------------------------- |
+|              | errors [*required*] | [object] | A list of errors.                                                               |
+| errors       | detail                   | string   | A human-readable explanation specific to this occurrence of the error.          |
+| errors       | meta                     | object   | Non-standard meta-information about the error                                   |
+| errors       | source                   | object   | References to the source of the error.                                          |
+| source       | header                   | string   | A string indicating the name of a single request header which caused the error. |
+| source       | parameter                | string   | A string indicating which URI query parameter caused the error.                 |
+| source       | pointer                  | string   | A JSON pointer to the value in the request document that caused the error.      |
+| errors       | status                   | string   | Status code of the response.                                                    |
+| errors       | title                    | string   | Short human-readable summary of the error.                                      |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+API error response.
+
+| Field                    | Type     | Description       |
+| ------------------------ | -------- | ----------------- |
+| errors [*required*] | [string] | A list of errors. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+#####
+                  \# Path parametersexport slo_id="00000000-0000-0000-0000-000000000000"\# Required query argumentsexport from_ts="1.69090187e+09"export to_ts="1.70680307e+09"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/${slo_id}/status?from_ts=${from_ts}&to_ts=${to_ts}" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+
+#####
+
+```python
+"""
+Get SLO status returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.service_level_objectives_api import ServiceLevelObjectivesApi
+
+configuration = Configuration()
+configuration.unstable_operations["get_slo_status"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo_status(
+        slo_id="00000000-0000-0000-0000-000000000000",
+        from_ts=1690901870,
+        to_ts=1706803070,
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+#####
+
+```ruby
+# Get SLO status returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.get_slo_status".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::ServiceLevelObjectivesAPI.new
+p api_instance.get_slo_status("00000000-0000-0000-0000-000000000000", 1690901870, 1706803070)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+#####
+
+```go
+// Get SLO status returns "OK" response
+
+package main
+
+import (
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetSloStatus", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceLevelObjectivesApi(apiClient)
+    resp, r, err := api.GetSloStatus(ctx, "00000000-0000-0000-0000-000000000000", 1690901870, 1706803070, *datadogV2.NewGetSloStatusOptionalParameters())
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSloStatus`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSloStatus`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+#####
+
+```java
+// Get SLO status returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.ServiceLevelObjectivesApi;
+import com.datadog.api.client.v2.model.SloStatusResponse;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getSloStatus", true);
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+
+    try {
+      SloStatusResponse result =
+          apiInstance.getSloStatus(
+              "00000000-0000-0000-0000-000000000000", 1690901870L, 1706803070L);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSloStatus");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+#####
+
+```rust
+// Get SLO status returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_service_level_objectives::GetSloStatusOptionalParams;
+use datadog_api_client::datadogV2::api_service_level_objectives::ServiceLevelObjectivesAPI;
+
+#[tokio::main]
+async fn main() {
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetSloStatus", true);
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .get_slo_status(
+            "00000000-0000-0000-0000-000000000000".to_string(),
+            1690901870,
+            1706803070,
+            GetSloStatusOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+#####
+
+```typescript
+/**
+ * Get SLO status returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.getSloStatus"] = true;
+const apiInstance = new v2.ServiceLevelObjectivesApi(configuration);
+
+const params: v2.ServiceLevelObjectivesApiGetSloStatusRequest = {
+  sloId: "00000000-0000-0000-0000-000000000000",
+  fromTs: 1690901870,
+  toTs: 1706803070,
+};
+
+apiInstance
+  .getSloStatus(params)
+  .then((data: v2.SloStatusResponse) => {
     console.log(
       "API called successfully. Returned data: " + JSON.stringify(data)
     );

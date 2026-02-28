@@ -9,11 +9,11 @@ breadcrumbs: Docs > Datadog Security > Access Control
 # Access Control
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection | 
+ Workload Protection |
 {% icon name="icon-app-sec" /%}
- App and API Protection 
+ App and API Protection
 ## Overview{% #overview %}
 
 Datadog's access management system uses role-based access control, enabling you to define the level of access users have to Datadog resources. Users are assigned to roles that define their account permissions, including what data they can read and which account assets they can modify. When permissions are granted to a role, any user who is associated with that role receives those permissions. See the [Account Management Access Control](https://docs.datadoghq.com/account_management/rbac/#role-based-access-control) documentation for more information.

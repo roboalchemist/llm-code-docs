@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/cloud-init.log File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/cloud-init.log`, run the command:
 
 ```gdscript3
-$ sudo chown syslog /var/log/cloud-init.log 
+$ sudo chown syslog /var/log/cloud-init.log
 ```
 
 or
 
 ```gdscript3
-$ sudo chown root /var/log/cloud-init.log 
+$ sudo chown root /var/log/cloud-init.log
 ```
 
 ## Rationale{% #rationale %}

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Compiler executed in contain
 ---
 
 # Compiler executed in container
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1027-obfuscated-files-or-information](https://attack.mitre.org/techniques/T1027)
 ## What happened{% #what-happened %}
 
 The compiler process `{{ @process.comm }}` was executed inside a container, which is bad practice outside of build services.

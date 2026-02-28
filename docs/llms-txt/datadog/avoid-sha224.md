@@ -58,6 +58,5 @@ hash_hmac("sha3-224", $content, $key);
 hash('sha256', $content, $key);
 ?>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

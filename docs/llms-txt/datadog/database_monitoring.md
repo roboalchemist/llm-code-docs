@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/database_monitoring.md
-
 # Source: https://docs.datadoghq.com/database_monitoring.md
 
 ---
@@ -34,8 +32,6 @@ Datadog Database Monitoring supports self-hosted and managed cloud versions of *
 - [PostgreSQL](https://docs.datadoghq.com/database_monitoring/setup_postgres/azure)
 - [PostgreSQL](https://docs.datadoghq.com/database_monitoring/setup_postgres/heroku)
 
-
-
 ### MySQL{% #mysql %}
 
 - [Selfhosted](https://docs.datadoghq.com/database_monitoring/setup_mysql/selfhosted)
@@ -43,8 +39,6 @@ Datadog Database Monitoring supports self-hosted and managed cloud versions of *
 - [Aurora](https://docs.datadoghq.com/database_monitoring/setup_mysql/aurora)
 - [Google Cloud SQL](https://docs.datadoghq.com/database_monitoring/setup_mysql/gcsql)
 - [MySQL](https://docs.datadoghq.com/database_monitoring/setup_mysql/azure)
-
-
 
 ### Oracle{% #oracle %}
 
@@ -54,8 +48,6 @@ Datadog Database Monitoring supports self-hosted and managed cloud versions of *
 - [Exadata](https://docs.datadoghq.com/database_monitoring/setup_oracle/exadata)
 - [Selfhosted](https://docs.datadoghq.com/database_monitoring/setup_oracle/autonomous_database)
 
-
-
 ### SQL Server{% #sql-server %}
 
 - [Selfhosted](https://docs.datadoghq.com/database_monitoring/setup_sql_server/selfhosted)
@@ -63,20 +55,14 @@ Datadog Database Monitoring supports self-hosted and managed cloud versions of *
 - [Aurora](https://docs.datadoghq.com/database_monitoring/setup_sql_server/azure)
 - [Google Cloud SQL](https://docs.datadoghq.com/database_monitoring/setup_sql_server/gcsql)
 
-
-
 ### MongoDB{% #mongodb %}
 
 - [Self-hosted](https://docs.datadoghq.com/database_monitoring/setup_mongodb/selfhosted)
 - [MongoDB Atlas](https://docs.datadoghq.com/database_monitoring/setup_mongodb/mongodbatlas)
 
-
-
 ### Amazon DocumentDB{% #amazon-documentdb %}
 
 - [Amazon DocumentDB](https://docs.datadoghq.com/database_monitoring/setup_documentdb/amazon_documentdb)
-
-
 
 ## Explore Datadog Database Monitoring{% #explore-datadog-database-monitoring %}
 

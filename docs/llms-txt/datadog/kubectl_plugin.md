@@ -26,9 +26,9 @@ Installing plugin: datadog
 Installed plugin: datadog
 \
  | Use this plugin:
- | 	kubectl datadog
+ |  kubectl datadog
  | Documentation:
- | 	https://github.com/DataDog/datadog-operator
+ |  https://github.com/DataDog/datadog-operator
 /
 ```
 

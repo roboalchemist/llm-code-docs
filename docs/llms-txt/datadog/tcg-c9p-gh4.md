@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Default encryption should be enabled on S3 buckets
- 
+
 ## Description{% #description %}
 
 Amazon S3 provides a variety of no-cost or low-cost encryption options to protect data at rest.

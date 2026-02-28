@@ -103,6 +103,5 @@ class C { #parseInt; foo() { Number.#parseInt(foo, 10); } }
 // /* globals parseInt:off */ parseInt(foo);
 // Number.parseInt(foo, 10);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should verify the kubelet's certificate before connecting
-Classification:complianceFramework:cis-kubernetesControl:1.2.6 
+Classification:complianceFramework:cis-kubernetesControl:1.2.6
 ## Description{% #description %}
 
 Verify kubelet's certificate before establishing connection.

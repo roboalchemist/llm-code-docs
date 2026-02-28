@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM role has trust policy containing cross-OU principal
- 
+
 ## Description{% #description %}
 
 This control examines whether IAM roles have trust policies that allow access to principals from different AWS organizational units (OUs). The control will fail if the following conditions are true:

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Root Has A Primary GI
 ---
 
 # Verify Root Has A Primary GID 0
- 
+
 ## Description{% #description %}
 
 The `root` user should have a primary group of 0.

@@ -64,7 +64,7 @@ fun configuredRequest() {
 class LegacyApiService {
     // UNSAFE: Storing deprecated client as class member
     private val httpClient = DefaultHttpClient()
-    
+
     fun fetchData(): String {
         val response = httpClient.execute(HttpGet("https://api.example.com"))
         return EntityUtils.toString(response.entity)
@@ -97,13 +97,12 @@ fun configuredSecureRequest() {
 class ModernApiService {
     // SAFE: Using TLS 1.2 capable client
     private val httpClient = SystemDefaultHttpClient()
-    
+
     fun fetchData(): String {
         val response = httpClient.execute(HttpGet("https://api.example.com"))
         return EntityUtils.toString(response.entity)
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EC2 setting 'Block public access for EBS snapshots' should be enabled and enforced by declarative policy
- 
+
 ## Description{% #description %}
 
 Enabling the EC2 setting 'Block public access for EBS snapshots' ensures that EBS snapshots cannot accidentally be shared publicly. This setting helps avoid inadvertent data exposure by preventing unauthorised users from accessing EBS snapshots containing sensitive information. **Note**: This setting is configured at a per-account, per-region level. The setting can be configured as either 'Block all sharing' or 'Block new sharing' depending on your requirements.

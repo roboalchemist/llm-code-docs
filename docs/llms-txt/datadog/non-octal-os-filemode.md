@@ -39,18 +39,18 @@ You do not need to convert the string into a slice of bytes to use `Write`, you 
 package main
 
 import (
-	"log"
-	"os"
+    "log"
+    "os"
 )
 
 func main() {
-	f, err := os.OpenFile("notes.txt", os.O_RDWR|os.O_CREATE, 644)
-	if err != nil {
-		log.Fatal(err)
-	}
-	if err := f.Close(); err != nil {
-		log.Fatal(err)
-	}
+    f, err := os.OpenFile("notes.txt", os.O_RDWR|os.O_CREATE, 644)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if err := f.Close(); err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -60,20 +60,19 @@ func main() {
 package main
 
 import (
-	"log"
-	"os"
+    "log"
+    "os"
 )
 
 func main() {
-	f, err := os.OpenFile("notes.txt", os.O_RDWR|os.O_CREATE, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-	if err := f.Close(); err != nil {
-		log.Fatal(err)
-	}
+    f, err := os.OpenFile("notes.txt", os.O_RDWR|os.O_CREATE, 0644)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if err := f.Close(); err != nil {
+        log.Fatal(err)
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

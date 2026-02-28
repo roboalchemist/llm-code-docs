@@ -22,5 +22,5 @@ Set the `DD_SITE` variable to or update the parameter `site` parameter in your 
 ## @param site - string - optional - default: datadoghq.com
 ## The site of the Datadog intake to send Agent data to.
 #
-site: 
+site:
 ```

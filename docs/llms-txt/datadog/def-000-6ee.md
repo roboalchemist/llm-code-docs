@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Auto-Repair for nodes should be enabled in GKE clusters
- 
+
 ## Description{% #description %}
 
 Auto-repair should be enabled for nodes. Auto-repair fixes nodes in a degraded state. Fixing nodes in a degraded state can help prevent unknown situations that could affect the security of the cluster.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Local Login Warning Banner Is Configured Properly
- 
+
 ## Description{% #description %}
 
 To configure the system local login warning banner edit the `/etc/issue` file. The contents of this file is displayed to users prior to login to local terminals. Replace the default text with a message compliant with the local site policy. The message should not contain information about operating system version, release, kernel version or patch level. The recommended banner text can be tailored in the XCCDF Value `xccdf_org.ssgproject.content_value_cis_banner_text`:

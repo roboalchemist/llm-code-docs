@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS Organizations centralized root credentials management feature should be enabled
- 
+
 ## Description{% #description %}
 
 To ensure the security of your AWS environment, you should centrally manage the root user credentials for all accounts within your AWS Organization. The root user has unrestricted access to all services and resources. By centralizing the management of these credentials, you can prevent unauthorized recovery and large-scale access, strengthening the security posture of your organization.

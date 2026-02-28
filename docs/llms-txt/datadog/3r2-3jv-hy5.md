@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # /usr/bin/containerd should be audited if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.11 
+Classification:complianceFramework:cis-dockerControl:1.2.11
 ## Description{% #description %}
 
 Audit `/usr/bin/containerd`, if applicable.

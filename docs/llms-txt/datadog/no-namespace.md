@@ -85,6 +85,5 @@ export declare namespace foo { export namespace bar { namespace baz {} } }
 namespace foo {}
 module foo {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Excessive sensitive activity from an IP (SDK instrumented)
- 
+
 ### Goal{% #goal %}
 
 Detect excessive activity performed from an IP.

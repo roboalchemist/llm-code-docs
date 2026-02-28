@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure gpgcheck Enabled for All yum Package Repositories
- 
+
 ## Description{% #description %}
 
 To ensure signature checking is not disabled for any repos, remove any lines from files in `/etc/yum.repos.d` of the form:

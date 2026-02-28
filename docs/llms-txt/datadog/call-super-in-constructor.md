@@ -48,12 +48,11 @@ public class Foo extends Bar{
     public Foo() {
         super(); // calls the Bar constructor
     }
-    
+
     public Foo(int code) {
         this(); // also valid
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

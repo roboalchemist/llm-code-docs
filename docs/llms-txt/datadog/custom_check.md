@@ -22,7 +22,7 @@ Each check needs a configuration file (`hello.yaml`) and a script file (`hello.p
 
    ```yaml
    init_config:
-   
+
    instances: [{}]
    ```
 
@@ -30,7 +30,7 @@ Each check needs a configuration file (`hello.yaml`) and a script file (`hello.p
 
    ```python
    from datadog_checks.base import AgentCheck
-   
+
    __version__ = "1.0.0"
    class HelloCheck(AgentCheck):
        def check(self, instance):
@@ -56,7 +56,7 @@ After you create the `hello` check files, create the associated ConfigMaps:
    data:
      hello.yaml: |
        init_config:
-   
+
        instances: [{}]
    kind: ConfigMap
    metadata:
@@ -79,7 +79,7 @@ After you create the `hello` check files, create the associated ConfigMaps:
    data:
      hello.py: |
       from datadog_checks.base import AgentCheck
-   
+
       __version__ = "1.0.0"
       class HelloCheck(AgentCheck):
         def check(self, instance):

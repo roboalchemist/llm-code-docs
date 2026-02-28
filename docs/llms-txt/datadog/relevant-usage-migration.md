@@ -425,7 +425,7 @@ After October 1, 2024, the [Get usage across your account](https://docs.datadogh
    "start_date":"2024-10",
    "end_date":"2024-10",
    "last_updated":"2024-10-01T00",
-// Three keys representing SKUs that your RUM usage may be billed on 
+// Three keys representing SKUs that your RUM usage may be billed on
    "rum_total_session_count_agg_sum":null,
    "rum_replay_session_count_agg_sum":50,
    "rum_lite_session_count_agg_sum":null,
@@ -444,7 +444,7 @@ After October 1, 2024, the [Get usage across your account](https://docs.datadogh
    "rum_mobile_lite_session_count_ios_agg_sum":0,
    "rum_mobile_lite_session_count_reactnative_agg_sum":0,
    "rum_mobile_lite_session_count_roku_agg_sum":0,
-   
+
 // Legacy usage keys are nulled
    "rum_session_count_agg_sum": null,
    "mobile_rum_session_count_flutter_agg_sum": null,

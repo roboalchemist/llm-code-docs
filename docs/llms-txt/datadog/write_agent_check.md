@@ -155,13 +155,13 @@ In the `checks.d/custom_checkvalue.py` file:
    import urllib2
    import simplejson
    from checks import AgentCheck
-   
+
    class CheckValue(AgentCheck):
      def check(self, instance):
        lburl = instance['ipaddress']
        response = urllib2.urlopen("http://" + lburl + "/rest")
        data = simplejson.load(response)
-   
+
        self.gauge('coreapp.update.value', data["value"])
 ```
 
@@ -173,7 +173,7 @@ In the `conf.d/custom_checkvalue.yaml` file:
 
    ```yaml
    init_config:
-   
+
    instances:
      - ipaddress: 1.2.3.4
 ```

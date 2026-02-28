@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/docker directory permissions should be set to 755 or stricter
-Classification:complianceFramework:cis-dockerControl:3.6 
+Classification:complianceFramework:cis-dockerControl:3.6
 ## Description{% #description %}
 
 You should verify that the `/etc/docker` directory permissions are correctly set to 755 or more restrictively.

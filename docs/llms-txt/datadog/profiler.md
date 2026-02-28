@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/profiler.md
-
 # Source: https://docs.datadoghq.com/profiler.md
 
 ---

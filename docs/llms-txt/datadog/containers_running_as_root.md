@@ -57,7 +57,7 @@ spec:
       runAsUser: 10100
       allowPrivilegeEscalation: false
       runAsNonRoot: true
-      
+
 ```
 
 ```yaml
@@ -80,7 +80,7 @@ spec:
     securityContext:
       runAsUser: 2000
       runAsNonRoot: true
-      
+
 ```
 
 ```yaml
@@ -98,7 +98,7 @@ spec:
     securityContext:
       runAsUser: 1000
       runAsNonRoot: false
-      
+
 ```
 
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
@@ -123,7 +123,7 @@ spec:
     securityContext:
       runAsUser: 0
       runAsNonRoot: false
-      
+
 ```
 
 ```yaml
@@ -141,8 +141,8 @@ spec:
     securityContext:
       runAsUser: 0
       runAsNonRoot: false
-      
-      
+
+
 ```
 
 ```yaml

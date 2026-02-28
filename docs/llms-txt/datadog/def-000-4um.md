@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Configure the Use of the pam_faillock.so Module in the /etc/pam.d/system-auth File.
- 
+
 ## Description{% #description %}
 
 The pam_faillock.so module must be loaded in preauth in /etc/pam.d/system-auth.
@@ -42,7 +42,7 @@ authselect enable-feature with-faillock
 
 authselect apply-changes -b
 else
-    
+
 AUTH_FILES=("/etc/pam.d/system-auth" "/etc/pam.d/password-auth")
 for pam_file in "${AUTH_FILES[@]}"
 do

@@ -69,7 +69,7 @@ resource "aws_ami" "negative1" {
     device_name = "/dev/xvda2"
     snapshot_id = "snap-xxxxxxxx"
     volume_size = 8
-	encrypted   = true
+    encrypted   = true
   }
 }
 ```
@@ -101,7 +101,7 @@ resource "aws_ami" "positive2" {
     device_name = "/dev/xvda1"
     snapshot_id = "snap-xxxxxxxx"
     volume_size = 8
-	  encrypted			  = false
+      encrypted           = false
   }
 }
 

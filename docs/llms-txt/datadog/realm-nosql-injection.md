@@ -51,7 +51,7 @@ class User: Object {
 
 func findUser(username: String) {
     let realm = try! Realm()
-    
+
     // --- NON-COMPLIANT ---
     // The query predicate is built by concatenating a string with user input
     // *directly inside the filter call*. This pattern is detected by the rule.
@@ -90,6 +90,5 @@ func findUserSafely(username: String) {
 // Example usage
 findUserSafely(username: "guest' OR isAdmin = true")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

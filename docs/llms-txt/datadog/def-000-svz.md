@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove iptables-persistent P
 ---
 
 # Remove iptables-persistent Package
- 
+
 ## Description{% #description %}
 
 The `iptables-persistent` package can be removed with the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/cloud-init.log(.*) Files
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/cloud-init.log`, run the command:

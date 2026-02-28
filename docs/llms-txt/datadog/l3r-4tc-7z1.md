@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a activity log alert configured for creating or updating virtual machines
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Create or Update Virtual Machine event.

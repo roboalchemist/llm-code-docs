@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should have a TLS connection setup
-Classification:complianceFramework:cis-kubernetesControl:1.2.30 
+Classification:complianceFramework:cis-kubernetesControl:1.2.30
 ## Description{% #description %}
 
 Setup TLS connection on the API server.
@@ -33,7 +33,7 @@ Verify that the `--tls-cert-file` and `--tls-private-key-file` arguments exist a
 Follow the Kubernetes documentation and set up the TLS connection on the apiserver. Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and set the TLS certificate and private key file parameters.
 
 ```
---tls-cert-file=<path/to/tls-certificate-file> 
+--tls-cert-file=<path/to/tls-certificate-file>
 --tls-private-key-file=<path/to/tls-key-file>
 ```
 

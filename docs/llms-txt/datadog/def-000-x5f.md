@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EC2 setting 'Block public access for AMIs' should be enabled and enforced by declarative policy
- 
+
 ## Description{% #description %}
 
 Enabling the EC2 setting 'Block public access for AMIs' ensures that AMIs cannot accidentally be shared publicly. This setting helps avoid inadvertent data exposure by preventing unauthorised users from accessing AMIs containing sensitive information. **Note**: This setting is configured at a per-account, per-region level. Additionally, the setting only prevents public access from the time it is enabled. AMIs made publicly accessible before the setting is enabled continue to be publicly accessible and must be manually remediated.

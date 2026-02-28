@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EMR block public access setting should be enabled
- 
+
 ## Description{% #description %}
 
 Amazon EMR provides the 'Block public access' (BPA) setting to help restrict unintended public access to data stored in EMR. By default, accounts that have created Amazon EMR clusters after July 2019 have this setting enabled automatically. Additionally, an exemption for SSH traffic on port 22 is present by default. Exemptions can be added or removed as necessary depending on your requirements.

@@ -135,7 +135,7 @@ In the `cmd/notes/main.go` file:
 
 ```go
   sqltrace "github.com/DataDog/dd-trace-go/contrib/database/sql/v2"
-  chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2" 
+  chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2"
   httptrace "github.com/DataDog/dd-trace-go/contrib/net/http/v2"
   "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
   "fmt"
@@ -170,8 +170,8 @@ In the `cmd/notes/main.go` file:
 
 ```go
 client = httptrace.WrapClient(client, httptrace.RTWithResourceNamer(func(req *http.Request) string {
-		return fmt.Sprintf("%s %s", req.Method, req.URL.Path)
-	}))
+        return fmt.Sprintf("%s %s", req.Method, req.URL.Path)
+    }))
 ```
 
 In the `cmd/notes/main.go` file:
@@ -369,13 +369,13 @@ In the `notes/notesHelper.go` file:
 
 ```go
 func doLongRunningProcess(ctx context.Context) {
-	childSpan, ctx := tracer.StartSpanFromContext(ctx, "traceMethod1")
-	childSpan.SetTag(ext.ResourceName, "NotesHelper.doLongRunningProcess")
-	defer childSpan.Finish()
+    childSpan, ctx := tracer.StartSpanFromContext(ctx, "traceMethod1")
+    childSpan.SetTag(ext.ResourceName, "NotesHelper.doLongRunningProcess")
+    defer childSpan.Finish()
 
-	time.Sleep(300 * time.Millisecond)
-	log.Println("Hello from the long running process in Notes")
-	privateMethod1(ctx)
+    time.Sleep(300 * time.Millisecond)
+    log.Println("Hello from the long running process in Notes")
+    privateMethod1(ctx)
 }
 ```
 
@@ -385,15 +385,15 @@ In the `notes/notesHelper.go` file:
 
 ```go
 func privateMethod1(ctx context.Context) {
-	childSpan, _ := tracer.StartSpanFromContext(ctx, "manualSpan1",
-		tracer.SpanType("web"),
-		tracer.ServiceName("noteshelper"),
-	)
-	childSpan.SetTag(ext.ResourceName, "privateMethod1")
-	defer childSpan.Finish()
+    childSpan, _ := tracer.StartSpanFromContext(ctx, "manualSpan1",
+        tracer.SpanType("web"),
+        tracer.ServiceName("noteshelper"),
+    )
+    childSpan.SetTag(ext.ResourceName, "privateMethod1")
+    defer childSpan.Finish()
 
-	time.Sleep(30 * time.Millisecond)
-	log.Println("Hello from the custom privateMethod1 in Notes")
+    time.Sleep(30 * time.Millisecond)
+    log.Println("Hello from the custom privateMethod1 in Notes")
 }
 ```
 

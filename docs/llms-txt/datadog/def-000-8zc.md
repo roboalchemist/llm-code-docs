@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # KMS keys should not be unintentionally deleted
- 
+
 ## Description{% #description %}
 
 This control verifies if KMS keys are set for deletion. The control will not pass if a KMS key is set for deletion and replicas do not exist.

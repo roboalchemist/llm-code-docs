@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS containers should be limited to read-only access to root filesystems
- 
+
 ## Description{% #description %}
 
 This evaluation examines whether Amazon ECS containers are restricted to read-only access to mounted root filesystems. The evaluation will not succeed if the `readonlyRootFilesystem` parameter is set to false or if the parameter is missing from the container definition in the task definition. This assessment is based on the most recent active revision of an Amazon ECS task definition.

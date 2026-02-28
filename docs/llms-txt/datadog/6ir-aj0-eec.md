@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Firewall Threat Intelligence Alert
-Classification:threat-intel 
+Classification:threat-intel
 ## Goal{% #goal %}
 
 Detect when an Azure firewall threat intelligence alert is received.

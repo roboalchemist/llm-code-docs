@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure that /etc/at.allow ex
 ---
 
 # Ensure that /etc/at.allow exists
- 
+
 ## Description{% #description %}
 
 The file `/etc/at.allow` should exist and should be used instead of `/etc/at.deny`.

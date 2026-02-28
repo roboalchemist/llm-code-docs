@@ -70,6 +70,5 @@ val process: (suspend () -> Unit)? = null
 // Function type as parameter
 suspend fun execute(task: suspend () -> Unit) { task() }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

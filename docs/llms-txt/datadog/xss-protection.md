@@ -71,7 +71,7 @@ namespace VulnerableApp
             // Non-compliant: Unencoded user input in Content
             return Content("<div>Hello, " + username + "</div>", "text/html");
         }
-        
+
         [HttpGet("/comment")]
         public IActionResult ShowComment(string comment)
         {
@@ -79,14 +79,14 @@ namespace VulnerableApp
             ViewBag.UserComment = Html.Raw(comment);
             return View();
         }
-        
+
         [HttpGet("/search")]
         public IActionResult Search(string query)
         {
             // Non-compliant: Direct Response.Write with user input
             Response.ContentType = "text/html";
             Response.Write("<h2>Search results for: " + query + "</h2>");
-            
+
             return new EmptyResult();
         }
     }
@@ -109,23 +109,23 @@ namespace SecureApp
         {
             // Compliant: Using HTML encoding
             return Content("<div>Hello, " + HtmlEncoder.Default.Encode(username) + "</div>", "text/html");
-            
+
             // Also compliant: Using HttpUtility
             // return Content("<div>Hello, " + HttpUtility.HtmlEncode(username) + "</div>", "text/html");
         }
-        
+
         [HttpGet("/welcome")]
         public IActionResult Welcome(string name)
         {
             // Compliant: Static string without user input
             return Content("<h1>Welcome to our site!</h1>", "text/html");
         }
-        
+
         [HttpGet("/product")]
         public IActionResult ShowProduct(int id)
         {
             string productName = GetProductName(id); // From database, not user input
-            
+
             // Compliant: Values from trusted sources
             ViewBag.ProductName = productName;
             return View();
@@ -133,6 +133,5 @@ namespace SecureApp
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

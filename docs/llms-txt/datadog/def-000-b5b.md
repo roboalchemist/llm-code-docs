@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable rsyslog Service
 ---
 
 # Enable rsyslog Service
- 
+
 ## Description{% #description %}
 
 The `rsyslog` service provides syslog-style logging by default on Ubuntu 20.04. The `rsyslog` service can be enabled with the following command:

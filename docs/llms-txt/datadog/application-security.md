@@ -204,13 +204,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport exclusion_filter_id="3b5-v82-ns6"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/exclusion_filters/${exclusion_filter_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -238,7 +238,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a WAF exclusion filter returns "OK" response
@@ -255,7 +255,7 @@ p api_instance.get_application_security_waf_exclusion_filter(EXCLUSION_FILTER_DA
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a WAF exclusion filter returns "OK" response
@@ -263,32 +263,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "exclusion_filter" in the system
-	ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
+    // there is a valid "exclusion_filter" in the system
+    ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.GetApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.GetApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.GetApplicationSecurityWafExclusionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.GetApplicationSecurityWafExclusionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.GetApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.GetApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -296,7 +296,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a WAF exclusion filter returns "OK" response
@@ -334,7 +334,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a WAF exclusion filter returns "OK" response
@@ -362,7 +362,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -679,7 +679,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/exclusion_filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -714,8 +714,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a WAF exclusion filter returns "OK" response
@@ -723,56 +723,56 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ApplicationSecurityWafExclusionFilterCreateRequest{
-		Data: datadogV2.ApplicationSecurityWafExclusionFilterCreateData{
-			Attributes: datadogV2.ApplicationSecurityWafExclusionFilterCreateAttributes{
-				Description: "Exclude false positives on a path",
-				Enabled:     true,
-				Parameters: []string{
-					"list.search.query",
-				},
-				PathGlob: datadog.PtrString("/accounts/*"),
-				RulesTarget: []datadogV2.ApplicationSecurityWafExclusionFilterRulesTarget{
-					{
-						Tags: &datadogV2.ApplicationSecurityWafExclusionFilterRulesTargetTags{
-							Category: datadog.PtrString("attack_attempt"),
-							Type:     datadog.PtrString("lfi"),
-						},
-					},
-				},
-				Scope: []datadogV2.ApplicationSecurityWafExclusionFilterScope{
-					{
-						Env:     datadog.PtrString("www"),
-						Service: datadog.PtrString("prod"),
-					},
-				},
-			},
-			Type: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERTYPE_EXCLUSION_FILTER,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.CreateApplicationSecurityWafExclusionFilter(ctx, body)
+    body := datadogV2.ApplicationSecurityWafExclusionFilterCreateRequest{
+        Data: datadogV2.ApplicationSecurityWafExclusionFilterCreateData{
+            Attributes: datadogV2.ApplicationSecurityWafExclusionFilterCreateAttributes{
+                Description: "Exclude false positives on a path",
+                Enabled:     true,
+                Parameters: []string{
+                    "list.search.query",
+                },
+                PathGlob: datadog.PtrString("/accounts/*"),
+                RulesTarget: []datadogV2.ApplicationSecurityWafExclusionFilterRulesTarget{
+                    {
+                        Tags: &datadogV2.ApplicationSecurityWafExclusionFilterRulesTargetTags{
+                            Category: datadog.PtrString("attack_attempt"),
+                            Type:     datadog.PtrString("lfi"),
+                        },
+                    },
+                },
+                Scope: []datadogV2.ApplicationSecurityWafExclusionFilterScope{
+                    {
+                        Env:     datadog.PtrString("www"),
+                        Service: datadog.PtrString("prod"),
+                    },
+                },
+            },
+            Type: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERTYPE_EXCLUSION_FILTER,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.CreateApplicationSecurityWafExclusionFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.CreateApplicationSecurityWafExclusionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.CreateApplicationSecurityWafExclusionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.CreateApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.CreateApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -780,7 +780,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a WAF exclusion filter returns "OK" response
@@ -848,7 +848,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -919,7 +919,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a WAF exclusion filter returns "OK" response
@@ -961,7 +961,7 @@ p api_instance.create_application_security_waf_exclusion_filter(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a WAF exclusion filter returns "OK" response
@@ -1017,7 +1017,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1237,13 +1237,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/exclusion_filters" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1265,7 +1265,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all WAF exclusion filters returns "OK" response
@@ -1279,7 +1279,7 @@ p api_instance.list_application_security_waf_exclusion_filters()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all WAF exclusion filters returns "OK" response
@@ -1287,29 +1287,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.ListApplicationSecurityWafExclusionFilters(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.ListApplicationSecurityWafExclusionFilters(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.ListApplicationSecurityWafExclusionFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.ListApplicationSecurityWafExclusionFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.ListApplicationSecurityWafExclusionFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.ListApplicationSecurityWafExclusionFilters`:\n%s\n", responseContent)
 }
 ```
 
@@ -1317,7 +1317,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all WAF exclusion filters returns "OK" response
@@ -1353,7 +1353,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all WAF exclusion filters returns "OK" response
@@ -1377,7 +1377,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1699,7 +1699,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport exclusion_filter_id="3b5-v82-ns6"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/exclusion_filters/${exclusion_filter_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1720,8 +1720,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a WAF exclusion filter returns "OK" response
@@ -1729,45 +1729,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "exclusion_filter" in the system
-	ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
+    // there is a valid "exclusion_filter" in the system
+    ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
 
-	body := datadogV2.ApplicationSecurityWafExclusionFilterUpdateRequest{
-		Data: datadogV2.ApplicationSecurityWafExclusionFilterUpdateData{
-			Attributes: datadogV2.ApplicationSecurityWafExclusionFilterUpdateAttributes{
-				Description: "Exclude false positives on a path",
-				Enabled:     false,
-				IpList: []string{
-					"198.51.100.72",
-				},
-				OnMatch: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERONMATCH_MONITOR.Ptr(),
-			},
-			Type: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERTYPE_EXCLUSION_FILTER,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.UpdateApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID, body)
+    body := datadogV2.ApplicationSecurityWafExclusionFilterUpdateRequest{
+        Data: datadogV2.ApplicationSecurityWafExclusionFilterUpdateData{
+            Attributes: datadogV2.ApplicationSecurityWafExclusionFilterUpdateAttributes{
+                Description: "Exclude false positives on a path",
+                Enabled:     false,
+                IpList: []string{
+                    "198.51.100.72",
+                },
+                OnMatch: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERONMATCH_MONITOR.Ptr(),
+            },
+            Type: datadogV2.APPLICATIONSECURITYWAFEXCLUSIONFILTERTYPE_EXCLUSION_FILTER,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.UpdateApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.UpdateApplicationSecurityWafExclusionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.UpdateApplicationSecurityWafExclusionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.UpdateApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.UpdateApplicationSecurityWafExclusionFilter`:\n%s\n", responseContent)
 }
 ```
 
@@ -1775,7 +1775,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a WAF exclusion filter returns "OK" response
@@ -1832,7 +1832,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1889,7 +1889,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a WAF exclusion filter returns "OK" response
@@ -1920,7 +1920,7 @@ p api_instance.update_application_security_waf_exclusion_filter(EXCLUSION_FILTER
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a WAF exclusion filter returns "OK" response
@@ -1964,7 +1964,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2145,12 +2145,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport exclusion_filter_id="3b5-v82-ns6"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/exclusion_filters/${exclusion_filter_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2176,7 +2176,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a WAF exclusion filter returns "OK" response
@@ -2193,7 +2193,7 @@ api_instance.delete_application_security_waf_exclusion_filter(EXCLUSION_FILTER_D
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a WAF exclusion filter returns "OK" response
@@ -2201,28 +2201,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "exclusion_filter" in the system
-	ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
+    // there is a valid "exclusion_filter" in the system
+    ExclusionFilterDataID := os.Getenv("EXCLUSION_FILTER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	r, err := api.DeleteApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    r, err := api.DeleteApplicationSecurityWafExclusionFilter(ctx, ExclusionFilterDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.DeleteApplicationSecurityWafExclusionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.DeleteApplicationSecurityWafExclusionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2230,7 +2230,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a WAF exclusion filter returns "OK" response
@@ -2266,7 +2266,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a WAF exclusion filter returns "OK" response
@@ -2294,7 +2294,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2526,13 +2526,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport custom_rule_id="3b5-v82-ns6"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/custom_rules/${custom_rule_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2556,7 +2556,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a WAF custom rule returns "OK" response
@@ -2570,7 +2570,7 @@ p api_instance.get_application_security_waf_custom_rule("custom_rule_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a WAF custom rule returns "OK" response
@@ -2578,29 +2578,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.GetApplicationSecurityWafCustomRule(ctx, "custom_rule_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.GetApplicationSecurityWafCustomRule(ctx, "custom_rule_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.GetApplicationSecurityWafCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.GetApplicationSecurityWafCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.GetApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.GetApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2608,7 +2608,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a WAF custom rule returns "OK" response
@@ -2643,7 +2643,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a WAF custom rule returns "OK" response
@@ -2669,7 +2669,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3040,7 +3040,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/custom_rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3080,8 +3080,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3195,7 +3195,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a WAF custom rule returns "Created" response
@@ -3259,7 +3259,7 @@ p api_instance.create_application_security_waf_custom_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create a WAF custom rule returns "Created" response
@@ -3267,78 +3267,78 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ApplicationSecurityWafCustomRuleCreateRequest{
-		Data: datadogV2.ApplicationSecurityWafCustomRuleCreateData{
-			Attributes: datadogV2.ApplicationSecurityWafCustomRuleCreateAttributes{
-				Action: &datadogV2.ApplicationSecurityWafCustomRuleAction{
-					Action: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULEACTIONACTION_BLOCK_REQUEST.Ptr(),
-					Parameters: &datadogV2.ApplicationSecurityWafCustomRuleActionParameters{
-						Location:   datadog.PtrString("/blocking"),
-						StatusCode: datadog.PtrInt64(403),
-					},
-				},
-				Blocking: false,
-				Conditions: []datadogV2.ApplicationSecurityWafCustomRuleCondition{
-					{
-						Operator: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONOPERATOR_MATCH_REGEX,
-						Parameters: datadogV2.ApplicationSecurityWafCustomRuleConditionParameters{
-							Data: datadog.PtrString("blocked_users"),
-							Inputs: []datadogV2.ApplicationSecurityWafCustomRuleConditionInput{
-								{
-									Address: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONINPUTADDRESS_SERVER_DB_STATEMENT,
-									KeyPath: []string{},
-								},
-							},
-							List: []string{},
-							Options: &datadogV2.ApplicationSecurityWafCustomRuleConditionOptions{
-								CaseSensitive: datadog.PtrBool(false),
-								MinLength:     datadog.PtrInt64(0),
-							},
-							Regex: datadog.PtrString("path.*"),
-							Value: datadog.PtrString("custom_tag"),
-						},
-					},
-				},
-				Enabled:  false,
-				Name:     "Block request from a bad useragent",
-				PathGlob: datadog.PtrString("/api/search/*"),
-				Scope: []datadogV2.ApplicationSecurityWafCustomRuleScope{
-					{
-						Env:     "prod",
-						Service: "billing-service",
-					},
-				},
-				Tags: datadogV2.ApplicationSecurityWafCustomRuleTags{
-					Category: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETAGSCATEGORY_BUSINESS_LOGIC,
-					Type:     "users.login.success",
-				},
-			},
-			Type: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETYPE_CUSTOM_RULE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.CreateApplicationSecurityWafCustomRule(ctx, body)
+    body := datadogV2.ApplicationSecurityWafCustomRuleCreateRequest{
+        Data: datadogV2.ApplicationSecurityWafCustomRuleCreateData{
+            Attributes: datadogV2.ApplicationSecurityWafCustomRuleCreateAttributes{
+                Action: &datadogV2.ApplicationSecurityWafCustomRuleAction{
+                    Action: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULEACTIONACTION_BLOCK_REQUEST.Ptr(),
+                    Parameters: &datadogV2.ApplicationSecurityWafCustomRuleActionParameters{
+                        Location:   datadog.PtrString("/blocking"),
+                        StatusCode: datadog.PtrInt64(403),
+                    },
+                },
+                Blocking: false,
+                Conditions: []datadogV2.ApplicationSecurityWafCustomRuleCondition{
+                    {
+                        Operator: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONOPERATOR_MATCH_REGEX,
+                        Parameters: datadogV2.ApplicationSecurityWafCustomRuleConditionParameters{
+                            Data: datadog.PtrString("blocked_users"),
+                            Inputs: []datadogV2.ApplicationSecurityWafCustomRuleConditionInput{
+                                {
+                                    Address: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONINPUTADDRESS_SERVER_DB_STATEMENT,
+                                    KeyPath: []string{},
+                                },
+                            },
+                            List: []string{},
+                            Options: &datadogV2.ApplicationSecurityWafCustomRuleConditionOptions{
+                                CaseSensitive: datadog.PtrBool(false),
+                                MinLength:     datadog.PtrInt64(0),
+                            },
+                            Regex: datadog.PtrString("path.*"),
+                            Value: datadog.PtrString("custom_tag"),
+                        },
+                    },
+                },
+                Enabled:  false,
+                Name:     "Block request from a bad useragent",
+                PathGlob: datadog.PtrString("/api/search/*"),
+                Scope: []datadogV2.ApplicationSecurityWafCustomRuleScope{
+                    {
+                        Env:     "prod",
+                        Service: "billing-service",
+                    },
+                },
+                Tags: datadogV2.ApplicationSecurityWafCustomRuleTags{
+                    Category: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETAGSCATEGORY_BUSINESS_LOGIC,
+                    Type:     "users.login.success",
+                },
+            },
+            Type: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETYPE_CUSTOM_RULE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.CreateApplicationSecurityWafCustomRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.CreateApplicationSecurityWafCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.CreateApplicationSecurityWafCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.CreateApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.CreateApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -3346,7 +3346,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a WAF custom rule returns "Created" response
@@ -3449,7 +3449,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create a WAF custom rule returns "Created" response
@@ -3544,7 +3544,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3815,13 +3815,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/custom_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3843,7 +3843,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all WAF custom rules returns "OK" response
@@ -3857,7 +3857,7 @@ p api_instance.list_application_security_waf_custom_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all WAF custom rules returns "OK" response
@@ -3865,29 +3865,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.ListApplicationSecurityWAFCustomRules(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.ListApplicationSecurityWAFCustomRules(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.ListApplicationSecurityWAFCustomRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.ListApplicationSecurityWAFCustomRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.ListApplicationSecurityWAFCustomRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.ListApplicationSecurityWAFCustomRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -3895,7 +3895,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all WAF custom rules returns "OK" response
@@ -3930,7 +3930,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all WAF custom rules returns "OK" response
@@ -3954,7 +3954,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4341,7 +4341,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport custom_rule_id="3b5-v82-ns6"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/custom_rules/${custom_rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4386,8 +4386,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a WAF Custom Rule returns "OK" response
@@ -4395,69 +4395,69 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "custom_rule" in the system
-	CustomRuleDataID := os.Getenv("CUSTOM_RULE_DATA_ID")
+    // there is a valid "custom_rule" in the system
+    CustomRuleDataID := os.Getenv("CUSTOM_RULE_DATA_ID")
 
-	body := datadogV2.ApplicationSecurityWafCustomRuleUpdateRequest{
-		Data: datadogV2.ApplicationSecurityWafCustomRuleUpdateData{
-			Type: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETYPE_CUSTOM_RULE,
-			Attributes: datadogV2.ApplicationSecurityWafCustomRuleUpdateAttributes{
-				Blocking: false,
-				Conditions: []datadogV2.ApplicationSecurityWafCustomRuleCondition{
-					{
-						Operator: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONOPERATOR_MATCH_REGEX,
-						Parameters: datadogV2.ApplicationSecurityWafCustomRuleConditionParameters{
-							Inputs: []datadogV2.ApplicationSecurityWafCustomRuleConditionInput{
-								{
-									Address: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONINPUTADDRESS_SERVER_REQUEST_QUERY,
-									KeyPath: []string{
-										"id",
-									},
-								},
-							},
-							Regex: datadog.PtrString("badactor"),
-						},
-					},
-				},
-				Enabled:  false,
-				Name:     "test",
-				PathGlob: datadog.PtrString("/test"),
-				Scope: []datadogV2.ApplicationSecurityWafCustomRuleScope{
-					{
-						Env:     "test",
-						Service: "test",
-					},
-				},
-				Tags: datadogV2.ApplicationSecurityWafCustomRuleTags{
-					Category: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETAGSCATEGORY_ATTACK_ATTEMPT,
-					Type:     "test",
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	resp, r, err := api.UpdateApplicationSecurityWafCustomRule(ctx, CustomRuleDataID, body)
+    body := datadogV2.ApplicationSecurityWafCustomRuleUpdateRequest{
+        Data: datadogV2.ApplicationSecurityWafCustomRuleUpdateData{
+            Type: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETYPE_CUSTOM_RULE,
+            Attributes: datadogV2.ApplicationSecurityWafCustomRuleUpdateAttributes{
+                Blocking: false,
+                Conditions: []datadogV2.ApplicationSecurityWafCustomRuleCondition{
+                    {
+                        Operator: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONOPERATOR_MATCH_REGEX,
+                        Parameters: datadogV2.ApplicationSecurityWafCustomRuleConditionParameters{
+                            Inputs: []datadogV2.ApplicationSecurityWafCustomRuleConditionInput{
+                                {
+                                    Address: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULECONDITIONINPUTADDRESS_SERVER_REQUEST_QUERY,
+                                    KeyPath: []string{
+                                        "id",
+                                    },
+                                },
+                            },
+                            Regex: datadog.PtrString("badactor"),
+                        },
+                    },
+                },
+                Enabled:  false,
+                Name:     "test",
+                PathGlob: datadog.PtrString("/test"),
+                Scope: []datadogV2.ApplicationSecurityWafCustomRuleScope{
+                    {
+                        Env:     "test",
+                        Service: "test",
+                    },
+                },
+                Tags: datadogV2.ApplicationSecurityWafCustomRuleTags{
+                    Category: datadogV2.APPLICATIONSECURITYWAFCUSTOMRULETAGSCATEGORY_ATTACK_ATTEMPT,
+                    Type:     "test",
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    resp, r, err := api.UpdateApplicationSecurityWafCustomRule(ctx, CustomRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.UpdateApplicationSecurityWafCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.UpdateApplicationSecurityWafCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.UpdateApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationSecurityApi.UpdateApplicationSecurityWafCustomRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -4465,7 +4465,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a WAF Custom Rule returns "OK" response
@@ -4555,7 +4555,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4649,7 +4649,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a WAF Custom Rule returns "OK" response
@@ -4704,7 +4704,7 @@ p api_instance.update_application_security_waf_custom_rule(CUSTOM_RULE_DATA_ID, 
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a WAF Custom Rule returns "OK" response
@@ -4774,7 +4774,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4979,12 +4979,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport custom_rule_id="3b5-v82-ns6"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/remote_config/products/asm/waf/custom_rules/${custom_rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5006,7 +5006,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a WAF Custom Rule returns "No Content" response
@@ -5020,7 +5020,7 @@ api_instance.delete_application_security_waf_custom_rule("custom_rule_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a WAF Custom Rule returns "No Content" response
@@ -5028,25 +5028,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewApplicationSecurityApi(apiClient)
-	r, err := api.DeleteApplicationSecurityWafCustomRule(ctx, "custom_rule_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewApplicationSecurityApi(apiClient)
+    r, err := api.DeleteApplicationSecurityWafCustomRule(ctx, "custom_rule_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.DeleteApplicationSecurityWafCustomRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecurityApi.DeleteApplicationSecurityWafCustomRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -5054,7 +5054,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a WAF Custom Rule returns "No Content" response
@@ -5086,7 +5086,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a WAF Custom Rule returns "No Content" response
@@ -5112,7 +5112,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -36,7 +36,7 @@ This rule enforces the inclusion of a final newline at the end of every file. Ma
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```kotlin
-package main 
+package main
 
 fun main(args : Array<String>) {
     println("Hello world!")
@@ -46,12 +46,11 @@ fun main(args : Array<String>) {
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```kotlin
-package main 
+package main
 
 fun main(args : Array<String>) {
     println("Hello world!")
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

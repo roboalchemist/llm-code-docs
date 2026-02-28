@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # User Initialization Files Must Be Group-Owned By The Primary Group
- 
+
 ## Description{% #description %}
 
 Change the group owner of interactive users files to the group found in
@@ -22,7 +22,7 @@ for the user. To change the group owner of a local interactive user home directo
 
 ```
 $ sudo chgrp USER_GROUP /home/USER/.INIT_FILE
-        
+
 ```
 
 This rule ensures every initialization file related to an interactive user is group-owned by an interactive user.

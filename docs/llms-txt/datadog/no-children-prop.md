@@ -58,6 +58,5 @@ React.createElement("div", { children: 'Children' });
 React.createElement("div", {}, 'Children');
 React.createElement("div", 'Child 1', 'Child 2');
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

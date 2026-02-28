@@ -33,15 +33,15 @@ If you are using `v1alpha1` with a 0.X version of the Datadog Operator and would
 Start by ensuring that you have the minimum required version of the chart and its dependencies:
 
 ```
-NAME                	CHART VERSION	APP VERSION	DESCRIPTION
-datadog/datadog-crds	1.0.0        	1          	Datadog Kubernetes CRDs chart
+NAME                    CHART VERSION   APP VERSION DESCRIPTION
+datadog/datadog-crds    1.0.0           1           Datadog Kubernetes CRDs chart
 ```
 
 For the Datadog Operator chart:
 
 ```
-NAME                    	CHART VERSION	APP VERSION	DESCRIPTION
-datadog/datadog-operator	1.0.0        	1.0.0      	Datadog Operator
+NAME                        CHART VERSION   APP VERSION DESCRIPTION
+datadog/datadog-operator    1.0.0           1.0.0       Datadog Operator
 ```
 
 #### Install cert manager{% #install-cert-manager %}

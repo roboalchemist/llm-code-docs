@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # User has admin level privileges at the subscription scope
- 
+
 ## Description{% #description %}
 
 This rule identifies when an Azure user has administrative-level permissions at the subscription scope.

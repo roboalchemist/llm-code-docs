@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EC2 setting 'VPC Block Public Access' should be enabled and be enforced by declarative policy
- 
+
 ## Description{% #description %}
 
 Enabling the EC2 setting 'VPC Block Public Access' is an important preventative measure against inadvertent exposure of EC2 instances and other resources within a Virtual Private Cloud (VPC). This setting acts as a centralized control, overriding individual security group or network ACL configurations that might otherwise allow unrestricted public access. By enforcing this boundary, it helps to mitigate the risk of data breaches and unauthorized access stemming from misconfigurations.

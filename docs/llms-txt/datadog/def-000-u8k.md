@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1546-event-triggered-execution](https://attack.mitre.org/techniques/T1546) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1546-event-triggered-execution](https://attack.mitre.org/techniques/T1546)
 ## Goal{% #goal %}
 
 Detects suspicious child process execution from Exchange Transport Service that may indicate WMI backdoor persistence mechanisms.

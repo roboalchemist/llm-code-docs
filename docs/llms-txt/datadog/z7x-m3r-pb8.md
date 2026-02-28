@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Scheduler profiling should b
 ---
 
 # Scheduler profiling should be disabled
-Classification:complianceFramework:cis-kubernetesControl:1.4.1 
+Classification:complianceFramework:cis-kubernetesControl:1.4.1
 ## Description{% #description %}
 
 Disable profiling, if not needed.

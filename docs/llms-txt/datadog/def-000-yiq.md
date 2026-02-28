@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta admin console activity from new device
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detects Okta Admin Console sign-in from a new device and geolocation. Using Okta's new device and location enrichment, alerts are triggered from allowed sign-ons to the Okta's administrator console.

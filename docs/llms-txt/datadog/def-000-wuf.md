@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Network Firewall policy default stateless action for full packets should be drop or forward
- 
+
 ## Description{% #description %}
 
 This control verifies whether the default stateless action for full packets in a Network Firewall policy is set to `aws:drop` or `aws:forward_to_sfe`. The control fails if the default stateless action is `aws:pass`.

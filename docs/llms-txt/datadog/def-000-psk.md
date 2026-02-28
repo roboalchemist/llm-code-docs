@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS task definitions should have secure networking modes and user definitions
- 
+
 ## Description{% #description %}
 
 This configuration check verifies Amazon Elastic Container Service (Amazon ECS) task definitions do not have unauthorized permissions. If task definitions have `NetworkMode` set to `host`, the rule fails if the container definitions have **user** set to `root` or `empty` and **privileged** set to `false` or `empty`.

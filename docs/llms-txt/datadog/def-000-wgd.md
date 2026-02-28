@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure journald is configured to compress large log files
- 
+
 ## Description{% #description %}
 
 The journald system can compress large log files to avoid fill the system disk.
@@ -31,7 +31,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if [ -e "/etc/systemd/journald.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*Compress\s*=\s*/d" "/etc/systemd/journald.conf"
 else
     touch "/etc/systemd/journald.conf"

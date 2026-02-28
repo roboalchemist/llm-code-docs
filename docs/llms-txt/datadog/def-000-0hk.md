@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall nftables package
 ---
 
 # Uninstall nftables package
- 
+
 ## Description{% #description %}
 
 nftables is a subsystem of the Linux kernel providing filtering and classification of network packets/datagrams/frames and is the successor to iptables. The `nftables` package can be removed with the following command:

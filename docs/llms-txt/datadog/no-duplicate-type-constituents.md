@@ -123,6 +123,5 @@ type RR = 'A';
 type SS = 'B';
 type TT = Record<string, A | B>;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

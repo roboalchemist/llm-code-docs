@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS ConsoleLogin with MFA triggered Impossible Travel scenario
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect an Impossible Travel event when a `@userIdentity.type:` `{{@userIdentity.type}}` performs a `consoleLogin` with a multi-factor authentication (MFA) device.

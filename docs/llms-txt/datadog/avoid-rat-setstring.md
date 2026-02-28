@@ -45,15 +45,15 @@ Do not use the function `SetString` from `big.Rat` as it as a potential overflow
 package main
 
 import (
-	"math/big"
-	"fmt"
+    "math/big"
+    "fmt"
 )
 
 func main() {
-	var r = big.Rat{}
-	r.SetString("13e-9223372036854775808")
+    var r = big.Rat{}
+    r.SetString("13e-9223372036854775808")
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 ```
 
@@ -61,31 +61,31 @@ func main() {
 package main
 
 import (
-	"math/big"
-	"fmt"
+    "math/big"
+    "fmt"
 )
 
 func anotherFunction() {
-	r = big.Rat{}
-	fmt.Println(r)
-	r.SetString("13e-9223372036854775808")
+    r = big.Rat{}
+    fmt.Println(r)
+    r.SetString("13e-9223372036854775808")
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 
 func anotherFunction2() {
-	var r big.Rat
-	fmt.Println(r)
-	r.SetString("13e-9223372036854775808")
+    var r big.Rat
+    fmt.Println(r)
+    r.SetString("13e-9223372036854775808")
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 
 func main() {
-	var r = big.Rat{}
-	r.SetString("13e-9223372036854775808")
+    var r = big.Rat{}
+    r.SetString("13e-9223372036854775808")
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 ```
 
@@ -93,15 +93,15 @@ func main() {
 package main
 
 import (
-	"math/big"
-	"fmt"
+    "math/big"
+    "fmt"
 )
 
 func main() {
-	r := big.Rat{}
-	r.SetString("13e-9223372036854775808")
+    r := big.Rat{}
+    r.SetString("13e-9223372036854775808")
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 ```
 
@@ -111,16 +111,15 @@ func main() {
 package main
 
 import (
-	"math/big"
-	"fmt"
+    "math/big"
+    "fmt"
 )
 
 func main() {
-	r := big.NewRat(10, 3)
+    r := big.NewRat(10, 3)
 
-	fmt.Println(r)
+    fmt.Println(r)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

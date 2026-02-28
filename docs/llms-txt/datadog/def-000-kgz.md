@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # WAF web ACLs should have at least one rule or rule group
- 
+
 ## Description{% #description %}
 
 This control verifies that an AWS WAFV2 web access control list (web ACL) includes at least one rule or rule group. The control is considered non-compliant if a web ACL lacks any rules or rule groups.

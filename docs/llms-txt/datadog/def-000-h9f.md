@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An AKS Cluster's Kubelet configuration file should disable anonymous requests
- 
+
 ## Description{% #description %}
 
 Disable anonymous requests to the Kubelet server. You should rely on authentication to authorize access and disallow anonymous requests to prevent unwanted actions in your cluster.

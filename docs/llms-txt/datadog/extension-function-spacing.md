@@ -53,7 +53,7 @@ fun Foo.Bar. printAll() {}
 
 fun Foo.Bar.printAll () {}
 fun Foo.Bar.printAll (
-    
+
 ) {}
 ```
 
@@ -67,9 +67,8 @@ fun String?.printAll() {}
 fun Foo.Bar.printAll() {}
 
 fun Foo.Bar.printAll(
-    
+
 ) {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

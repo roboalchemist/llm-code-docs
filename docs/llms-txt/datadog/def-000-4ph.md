@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Authentication route is not protected by AAP's ATO Detection
- 
+
 ## Description{% #description %}
 
 This rule identifies when an authentication route is not protected from Account Takeover Attacks (ATO) by App & API Protection's ATO Detection.

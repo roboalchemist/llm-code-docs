@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns cron.w
 ---
 
 # Verify Group Who Owns cron.weekly
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/cron.weekly`, run the command:

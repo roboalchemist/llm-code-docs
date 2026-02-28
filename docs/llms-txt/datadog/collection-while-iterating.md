@@ -56,6 +56,5 @@ for element in my_list:
     new_list["stuff"] = i  # putting value to a new dictionary
     i += 1
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

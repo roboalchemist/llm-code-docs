@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB cluster snapshots should not be public
- 
+
 ## Description{% #description %}
 
 This control ensures that a Neptune manual DB cluster snapshot is not publicly accessible.

@@ -58,6 +58,5 @@ FROM debian
 RUN curl http://google.com
 RUN curl http://bing.com
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

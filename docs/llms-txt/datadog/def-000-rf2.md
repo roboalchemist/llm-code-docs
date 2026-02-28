@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM user has administrative privileges and is inactive
- 
+
 ## Description{% #description %}
 
 If an IAM user is highly privileged or has administrative privileges and is inactive, this may indicate the role is not regularly used and may be removed.

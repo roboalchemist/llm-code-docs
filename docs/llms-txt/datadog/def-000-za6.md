@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure GKE node pools do not use default service accounts
- 
+
 ## Description{% #description %}
 
 The service account running the nodes in a cluster should have the principle of least privilege applied. Without a minimally privileged service account, the impact during a node comprise could be much worse.

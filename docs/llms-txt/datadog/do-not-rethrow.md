@@ -56,7 +56,7 @@ class Foo {
             if (foo) {
                 throw ex2;
             }
-            
+
         }
     }
 }
@@ -77,7 +77,7 @@ class Foo {
             if (foo) {
                 throw ex2;
             }
-            
+
         }
     }
 }
@@ -98,6 +98,5 @@ class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

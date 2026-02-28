@@ -79,6 +79,5 @@ BOOKS = meta.tables['books']
 query = sqlalchemy.select(BOOKS).where(BOOKS.c.genre == 'fiction')
 result = engine.execute(query).fetchall()
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -98,6 +98,5 @@ if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
 }
 ?>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

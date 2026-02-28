@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet read-only port should be disabled
- 
+
 ## Description{% #description %}
 
 The read-only port should be disabled. The Kubelet process provides a read-only API in addition to the main Kubelet API. Unauthenticated access is provided to this read-only API which could possibly retrieve potentially sensitive information about the cluster.

@@ -38,7 +38,7 @@ When using `indexOf` with only one character, use a character and not a string a
 ```java
 class Main {
     public static void main(String[] args) {
-        int pos = s.indexOf("f"); 
+        int pos = s.indexOf("f");
     }
 }
 ```
@@ -48,10 +48,9 @@ class Main {
 ```java
 class Main {
     public static void main(String[] args) {
-        int pos = s.indexOf('f'); 
+        int pos = s.indexOf('f');
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

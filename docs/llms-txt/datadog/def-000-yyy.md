@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Bitsadmin used to download or execute a file
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105)
 ## What happened{% #what-happened %}
 
 `{{ @process.executable.name }}` was used to download or execute a file, potentially to download malicious tools.

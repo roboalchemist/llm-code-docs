@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/docker directory should be owned by root account
-Classification:complianceFramework:cis-dockerControl:3.5 
+Classification:complianceFramework:cis-dockerControl:3.5
 ## Description{% #description %}
 
 You should verify that the `/etc/docker` directory ownership and group ownership is correctly set to root.

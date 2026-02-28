@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure rsyslog Default File Permissions Configured
- 
+
 ## Description{% #description %}
 
 rsyslog will create logfiles that do not already exist on the system. This settings controls what permissions will be applied to these newly created files.

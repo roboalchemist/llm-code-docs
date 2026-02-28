@@ -301,7 +301,7 @@ The following steps walk you through adding annotations to the code to trace som
 
    ```python
    class NotesHelper:
-   
+
        @tracer.wrap(service="notes_helper")
        def long_running_process(self):
            time.sleep(.3)
@@ -354,7 +354,7 @@ The sample project includes a second application called `calendar_app` that retu
 1. Send a POST request with the `add_date` parameter:
 
    {% dl %}
-   
+
    {% dt %}
 `curl -X POST 'localhost:8080/notes?desc=hello_again&add_date=y'`
    {% /dt %}

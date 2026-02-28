@@ -75,7 +75,7 @@ resource "azurerm_linux_web_app" "example3" {
   site_config{
     application_stack{
       php_version = "8.1"
-    }    
+    }
   }
 }
 ```
@@ -106,7 +106,7 @@ resource "azurerm_windows_web_app" "example2" {
    site_config{
     application_stack{
       php_version = "v8.1"
-    }    
+    }
   }
 }
 ```
@@ -117,8 +117,8 @@ resource "azurerm_app_service" "example1" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   app_service_plan_id = azurerm_app_service_plan.example.id
-  
-  # SiteConfig block is optional before AzureRM version 3.0 
+
+  # SiteConfig block is optional before AzureRM version 3.0
   site_config {
     dotnet_framework_version = "v4.0"
     scm_type                 = "LocalGit"
@@ -165,7 +165,7 @@ resource "azurerm_windows_web_app" "example5" {
    site_config{
     application_stack{
       php_version = "v7.3"
-    }    
+    }
   }
 }
 ```
@@ -197,7 +197,7 @@ resource "azurerm_linux_web_app" "example6" {
   site_config{
     application_stack{
       php_version = "7.4"
-    }    
+    }
   }
 }
 ```
@@ -209,8 +209,8 @@ resource "azurerm_app_service" "example4" {
   resource_group_name = azurerm_resource_group.example.name
   app_service_plan_id = azurerm_app_service_plan.example.id
 
-  # SiteConfig block is optional before AzureRM version 3.0 
-  site_config { 
+  # SiteConfig block is optional before AzureRM version 3.0
+  site_config {
     dotnet_framework_version = "v4.0"
     scm_type                 = "LocalGit"
     php_version              = "7.3"

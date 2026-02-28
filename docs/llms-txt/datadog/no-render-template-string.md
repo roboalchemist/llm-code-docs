@@ -60,6 +60,5 @@ def require_api_key(f):
             return render_template_string('no api key found'), 401
     return wrap
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

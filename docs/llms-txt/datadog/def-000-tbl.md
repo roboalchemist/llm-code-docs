@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
- 
+
 ## Goal{% #goal %}
 
 Detect events related to content violations as identified by Trend Micro Vision One Endpoint Security.

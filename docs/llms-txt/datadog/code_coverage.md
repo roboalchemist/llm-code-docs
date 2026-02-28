@@ -19,14 +19,6 @@ This product is not supported for your selected [Datadog site](https://docs.data
 
 {% /callout %}
 
-{% callout %}
-##### Join the Preview!
-
-Code Coverage is in Preview. This product replaces Test Optimization's [code coverage](https://docs.datadoghq.com/tests/code_coverage) feature, which is being deprecated. Complete the form to request access for the new Code Coverage product.
-
-[Request Access](http://datadoghq.com/product-preview/code-coverage/)
-{% /callout %}
-
 [Code Coverage](https://app.datadoghq.com/ci/code-coverage) lets you upload coverage reports to Datadog, visualize aggregated coverage data for pull requests, and block merges based on configurable coverage thresholds.
 
 For setup instructions, see [Set up Code Coverage](https://docs.datadoghq.com/code_coverage/setup).
@@ -39,5 +31,6 @@ For setup instructions, see [Set up Code Coverage](https://docs.datadoghq.com/co
 
 - [Set up Code Coverage](https://docs.datadoghq.com/code_coverage/setup)
 - [Configure Code Coverage](https://docs.datadoghq.com/code_coverage/configuration)
+- [Organize coverage data with flags](https://docs.datadoghq.com/code_coverage/flags)
 - [Learn what data is collected for Code Coverage](https://docs.datadoghq.com/code_coverage/data_collected)
 - [Learn how Code Coverage supports large monorepos](https://docs.datadoghq.com/code_coverage/monorepo_support)

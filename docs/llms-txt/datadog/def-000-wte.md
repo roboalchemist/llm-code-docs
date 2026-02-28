@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta user's MFA factors reset followed by access to the administrative console
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when the multi-factor authentication (MFA) factors for an enrolled Okta user are reset followed by that user accessing the administrative console.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions should use origin access control
- 
+
 ## Description{% #description %}
 
 This control verifies that every S3-based origin used in an Amazon CloudFront distribution has origin access control (OAC) enabled. S3-based origins that use static website hosting domains (such as `bucket-name.s3-website.<region>.amazonaws.com`) are excluded from this control, as they are assumed to be intentionally public.

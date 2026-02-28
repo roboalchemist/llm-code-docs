@@ -42,18 +42,18 @@ class NonCompliant
     {
         string str1 = "foo";
         foreach (char ch in str1.toCharArray())
-		{
-		    Console.WriteLine($"{ch}");
-		}
+        {
+            Console.WriteLine($"{ch}");
+        }
         foreach (char ch in "foo".toCharArray())
-		{
-		    Console.WriteLine($"{ch}");
-		}
-		var obj1 = new { str1 = "foo" };
+        {
+            Console.WriteLine($"{ch}");
+        }
+        var obj1 = new { str1 = "foo" };
         foreach (char ch in obj1.str1.toCharArray())
-		{
-		    Console.WriteLine($"{ch}");
-		}
+        {
+            Console.WriteLine($"{ch}");
+        }
     }
 }
 ```
@@ -67,21 +67,20 @@ class Compliant
     {
         string str1 = "foo";
         foreach (char ch in str1)
-		{
-		    Console.WriteLine($"{ch}");
-		}
+        {
+            Console.WriteLine($"{ch}");
+        }
         foreach (char ch in "foo")
-		{
-		    Console.WriteLine($"{ch}");
-		}
+        {
+            Console.WriteLine($"{ch}");
+        }
         var obj1 = new { str1 = "foo" };
         foreach (char ch in obj1.str1)
-		{
-		    Console.WriteLine($"{ch}");
-		}
+        {
+            Console.WriteLine($"{ch}");
+        }
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

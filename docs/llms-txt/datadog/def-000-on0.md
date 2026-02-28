@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure that /etc/cron.allow 
 ---
 
 # Ensure that /etc/cron.allow exists
- 
+
 ## Description{% #description %}
 
 The file `/etc/cron.allow` should exist and should be used instead of `/etc/cron.deny`.

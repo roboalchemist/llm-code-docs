@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM password policy should require at least one lowercase letter
- 
+
 ## Description{% #description %}
 
 Password policies are, in part, used to enforce password complexity requirements. IAM password policies can be used to ensure password are comprised of different character sets. It is recommended that the password policy require at least one lowercase letter.

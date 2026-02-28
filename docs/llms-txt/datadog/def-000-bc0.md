@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket policy changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for changes to S3 bucket policies to reduce the time to detect and correct permissive policies on sensitive S3 buckets.

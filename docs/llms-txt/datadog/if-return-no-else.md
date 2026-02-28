@@ -37,35 +37,34 @@ If the code in the `if` branch returns a value, do not have the `else` branch pr
 
 ```python
 if bla:
-	foo()
-	return 1
+    foo()
+    return 1
 else:  # unnecessary, remove the else branch
-	return 2
+    return 2
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 if bla:
-	foo()
-	return 1
+    foo()
+    return 1
 elif bar:
-	return 2
+    return 2
 ```
 
 ```python
 if bla:
-	foo()
-	return 1
+    foo()
+    return 1
 return 2
 ```
 
 ```python
 if bla:
-	foo()
+    foo()
 else:
-	return 2
+    return 2
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

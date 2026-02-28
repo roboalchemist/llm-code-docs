@@ -54,6 +54,5 @@ test = { foo: 'foo', is_bar: false }
 # fetch works on falsey values, so you get expected results
 test.fetch(:is_bar, true) # => false
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet server certificate rotation should be enabled
- 
+
 ## Description{% #description %}
 
 Kubelet server certificate rotation should be enabled. `RotateKubeletServerCertificate` causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.

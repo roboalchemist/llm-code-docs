@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub personal access token used by previously unseen user agent
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detects when a GitHub personal access token is used by a previously unseen user agent. Identifies potential unauthorized access or token compromise through anomalous client behavior.

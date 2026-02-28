@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Tor client IP address identified in Slack
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090)
 ## Goal{% #goal %}
 
 Detect when Tor client activity is seen in Slack audit logs.

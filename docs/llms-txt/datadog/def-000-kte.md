@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Windows firewall configuration registry key modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112)
 ## What happened{% #what-happened %}
 
 `{{ @process.executable.name }}` modified the firewall configuration registry key `{{ @registry.key_name }}`.

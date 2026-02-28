@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An AWS S3 bucket lifecycle expiration policy was set to disabled
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect if an AWS S3 lifecycle expiration policy is set to disabled in your CloudTrail logs.

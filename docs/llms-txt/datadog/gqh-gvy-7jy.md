@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd data directory should have permissions of 700 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:1.1.11 
+Classification:complianceFramework:cis-kubernetesControl:1.1.11
 ## Description{% #description %}
 
 Ensure that the etcd data directory has permissions of 700 or more restrictive.

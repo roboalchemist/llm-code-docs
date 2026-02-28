@@ -64,6 +64,5 @@ const a = { c, ...denylist } = b;
 const { AllowedList } = b;
 [primary, ...secondary] = b;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

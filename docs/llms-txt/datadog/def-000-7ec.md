@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Grouponwership of Files in /var/log/sssd
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/sssd/*`, run the command:

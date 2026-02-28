@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Disable Kernel Parameter for IPv6 Forwarding
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv6.conf.all.forwarding` kernel parameter, run the following command:
@@ -76,7 +76,7 @@ fi
 
 #
 # If net.ipv6.conf.all.forwarding present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv6.conf.all.forwarding = value" to /etc/sysctl.conf
+#   else, add "net.ipv6.conf.all.forwarding = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

@@ -13,6 +13,10 @@ You can import it directly like below:
 from scrapling.fetchers import ProxyRotator
 ```
 
-## ::: scrapling.engines.toolbelt.proxy_rotation.ProxyRotator
+## ProxyRotator API
+
+```python
+::: scrapling.engines.toolbelt.proxy_rotation.ProxyRotator
     handler: python
     :docstring:
+```

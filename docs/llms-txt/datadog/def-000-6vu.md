@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the `3625 (trace flag)` database flag set to 'on'
- 
+
 ## Description{% #description %}
 
 It is recommended to set `3625 (trace flag)` database flag to `off` for GCP SQL Server instance.

@@ -64,6 +64,5 @@ val foo = "foo"
 
 // ... as demonstrated here
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

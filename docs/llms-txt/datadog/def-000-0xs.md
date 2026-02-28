@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EBS volume snapshot should not be shared with external accounts
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether Amazon Elastic Block Store (Amazon EBS) volume snapshots are shared with external AWS accounts that are not onboarded to Datadog. EBS snapshots contain point-in-time copies of your volumes and may include sensitive data. Sharing snapshots with unauthorized external accounts can lead to data exposure and security risks.

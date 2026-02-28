@@ -94,11 +94,11 @@ let trustKitConfig: [String: Any] = [
             // COMPLIANT: Pinning is explicitly enforced. This is the most critical setting
             // to prevent MitM attacks.
             kTSKEnforcePinning: true,
-            
+
             // COMPLIANT: Pinning is also enforced for all subdomains, ensuring
             // comprehensive security coverage for the entire domain.
             kTSKIncludeSubdomains: true,
-            
+
             // Provide the valid Base64-encoded SHA-256 hashes of the public keys.
             kTSKPublicKeyHashes: [
                 "khh4hgtv9b0z6yioj2l8f9d6h3j3b2b1j6g6f8d3d2c2b1a0", // Primary key
@@ -114,6 +114,5 @@ TrustKit.init(configuration: trustKitConfig)
 
 print("TrustKit has been initialized with a SECURE pinning configuration.")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

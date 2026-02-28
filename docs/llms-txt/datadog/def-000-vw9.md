@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # A log metric filter and alert should exist for VPC network firewall rule changes
- 
+
 ## Description{% #description %}
 
 It is recommended that a metric filter and alarm be established for Virtual Private Cloud (VPC) network firewall rule changes.

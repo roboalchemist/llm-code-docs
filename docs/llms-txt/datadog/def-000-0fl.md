@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure One Logging Service I
 ---
 
 # Ensure One Logging Service Is In Use
- 
+
 ## Description{% #description %}
 
 Ensure that a logging system is active and in use.

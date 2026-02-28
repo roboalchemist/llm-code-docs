@@ -53,15 +53,15 @@ Therefore, it is advised to set permissions carefully, considering the principle
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	err := os.Mkdir("/path/to/new/directory", 0777)
-	if err != nil {
-		return
-	}
+    err := os.Mkdir("/path/to/new/directory", 0777)
+    if err != nil {
+        return
+    }
 }
 ```
 
@@ -71,17 +71,16 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	err := os.Mkdir("/path/to/new/directory", 0770)
-	if err != nil {
-		return
-	}
+    err := os.Mkdir("/path/to/new/directory", 0770)
+    if err != nil {
+        return
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

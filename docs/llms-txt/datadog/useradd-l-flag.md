@@ -46,6 +46,5 @@ RUN useradd -u 123456 foobar
 ```docker
 RUN useradd -l -u 123456 foobar
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

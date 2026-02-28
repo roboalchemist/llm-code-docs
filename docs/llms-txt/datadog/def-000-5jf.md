@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Mounting of hfsplus
 ---
 
 # Disable Mounting of hfsplus
- 
+
 ## Description{% #description %}
 
 To configure the system to prevent the `hfsplus` kernel module from being loaded, add the following line to the file `/etc/modprobe.d/hfsplus.conf`:
@@ -35,15 +35,15 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if LC_ALL=C grep -q -m 1 "^install hfsplus" /etc/modprobe.d/hfsplus.conf ; then
-	
-	sed -i 's#^install hfsplus.*#install hfsplus /bin/false#g' /etc/modprobe.d/hfsplus.conf
+
+    sed -i 's#^install hfsplus.*#install hfsplus /bin/false#g' /etc/modprobe.d/hfsplus.conf
 else
-	echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/hfsplus.conf
-	echo "install hfsplus /bin/false" >> /etc/modprobe.d/hfsplus.conf
+    echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/hfsplus.conf
+    echo "install hfsplus /bin/false" >> /etc/modprobe.d/hfsplus.conf
 fi
 
 if ! LC_ALL=C grep -q -m 1 "^blacklist hfsplus$" /etc/modprobe.d/hfsplus.conf ; then
-	echo "blacklist hfsplus" >> /etc/modprobe.d/hfsplus.conf
+    echo "blacklist hfsplus" >> /etc/modprobe.d/hfsplus.conf
 fi
 
 else

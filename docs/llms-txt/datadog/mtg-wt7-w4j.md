@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet server certificate rotation on controller-manager should be enabled
-Classification:complianceFramework:cis-kubernetesControl:1.3.6 
+Classification:complianceFramework:cis-kubernetesControl:1.3.6
 ## Description{% #description %}
 
 Enable kubelet server certificate rotation on controller-manager.

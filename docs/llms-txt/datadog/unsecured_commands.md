@@ -46,7 +46,7 @@ name: test-positive
 on:
   pull_request:
     types: [opened, synchronize, edited, reopened]
-    branches: 
+    branches:
       - master
 jobs:
   test-positive:

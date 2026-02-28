@@ -62,7 +62,7 @@ By using `for range s {}`, `x = someMap[key]`, and `<-ch` instead of assigning t
 ```go
 func main() {
     for _ = range aSlice {
-        
+
     }
     x, _ = myMap[key]
     _ = <- aChannel
@@ -70,11 +70,11 @@ func main() {
     x, _ = myFunction()
 
     for key, _ = range myMap {
-        
+
     }
 
     for _, _ = range myMap {
-        
+
     }
 }
 ```
@@ -84,16 +84,15 @@ func main() {
 ```go
 func main() {
     for aSlice {
-        
+
     }
     x = myMap[key]
     <- aChannel
 
     for _, val = range mySlice {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

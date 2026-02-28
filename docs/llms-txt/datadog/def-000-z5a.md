@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Dovecot Service
 ---
 
 # Disable Dovecot Service
- 
+
 ## Description{% #description %}
 
 The `dovecot` service can be disabled with the following command:

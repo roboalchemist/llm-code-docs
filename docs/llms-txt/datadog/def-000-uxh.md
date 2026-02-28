@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Copilot Studio Application Insights logging modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect when an M365 Copilot Studio agent's Application Insights settings are modified. This may indicate an attacker with control over this Copilot Studio agent is attempting to disable Copilot Studio conversation logging, or exfiltrate conversation logs to an Application Insights resource under their control.

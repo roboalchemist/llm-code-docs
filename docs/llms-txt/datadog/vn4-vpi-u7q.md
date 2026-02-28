@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Load Balancers should use the latest security policy
- 
+
 ## Description{% #description %}
 
 Secure your Amazon Application Load Balancer (ALB) with the latest predefined AWS security policy.

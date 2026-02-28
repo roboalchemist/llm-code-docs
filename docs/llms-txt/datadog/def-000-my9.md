@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable nginx Service
 ---
 
 # Disable nginx Service
- 
+
 ## Description{% #description %}
 
 The `nginx` service can be disabled with the following command:

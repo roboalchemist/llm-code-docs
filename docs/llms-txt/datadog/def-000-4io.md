@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 instances managed by SSM should have a compliant association status
- 
+
 ## Description{% #description %}
 
 This control verifies if the AWS Systems Manager `association_status` status is `Success` following the execution of the association on an EC2 instance. Instances that have an empty `association_status`, or an `association_status` of `PENDING` are skipped as they may have been recently onboarded to Systems Manager.

@@ -262,8 +262,8 @@ For version **0.87.0** and later, if the raw headers are available, use the `DDT
 
 ```php
 $headers = [
-	"x-datadog-trace-id" => "1234567890",
-	"x-datadog-parent-id" => "987654321",
+    "x-datadog-trace-id" => "1234567890",
+    "x-datadog-parent-id" => "987654321",
 ];
 
 \DDTrace\consume_distributed_tracing_headers($headers);
@@ -686,9 +686,9 @@ async fn your_handler_logic() -> Response<Full<Bytes>> {
 async fn hyper_handler(req: Request<Incoming>) -> Response<Full<Bytes>> {
     // Extract the parent context from the incoming headers
     let parent_cx = extract_context(&req);
-    
+
     let tracer = global::tracer("my-server-component");
-    
+
     // Start the server span as a child of the extracted context
     let server_span = tracer
         .span_builder("http.server.request")

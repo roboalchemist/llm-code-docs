@@ -47,7 +47,7 @@ To prevent OS Command Injection vulnerabilities when handling user input for she
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```python
-import os 
+import os
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -140,11 +140,10 @@ def run_command_safe_subprocess():
 @app.route("/run_config_command", methods=["POST"])
 def run_config_command():
     # data = request.get_json() # Input not used for command
-    command_from_config = "ls -l /etc" 
+    command_from_config = "ls -l /etc"
     stream = os.popen(command_from_config)
     output = stream.read()
     return f"<pre>{output}</pre>"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

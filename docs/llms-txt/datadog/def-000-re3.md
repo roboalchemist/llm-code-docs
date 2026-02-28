@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify that All World-Writable Directories Have Sticky Bits Set
- 
+
 ## Description{% #description %}
 
 When the so-called 'sticky bit' is set on a directory, only the owner of a given file may remove that file from the directory. Without the sticky bit, any user with write access to a directory may remove any file in the directory. Setting the sticky bit prevents users from removing each other's files. In cases where there is no reason for a directory to be world-writable, a better solution is to remove that permission rather than to set the sticky bit. However, if a directory is used by a particular application, consult that application's documentation instead of blindly changing modes.
@@ -18,7 +18,7 @@ To set the sticky bit on a world-writable directory *DIR*, run the following com
 
 ```
 $ sudo chmod +t DIR
-        
+
 ```
 
 ## Rationale{% #rationale %}

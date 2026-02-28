@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns passwd 
 ---
 
 # Verify User Who Owns passwd File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/passwd`, run the command:
 
 ```
-$ sudo chown root /etc/passwd 
+$ sudo chown root /etc/passwd
 ```
 
 ## Rationale{% #rationale %}

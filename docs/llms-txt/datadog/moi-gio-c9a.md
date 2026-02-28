@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unfamiliar process accessed AWS EKS service account token
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` accessed the EKS service account token which could be an attempt to steal credentials.

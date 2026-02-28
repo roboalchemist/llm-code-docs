@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # User activity detected from unauthorized countries
- 
+
 ### Goal{% #goal %}
 
 Detect user activity from a country that's part of a denylist.

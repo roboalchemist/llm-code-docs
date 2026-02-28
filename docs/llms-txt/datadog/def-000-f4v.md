@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # EC2 setting 'Allowed AMIs' should be enabled and enforced by declarative policy
- 
+
 ## Description{% #description %}
 
 Enabling the EC2 setting 'Allowed AMIs' ensures that only approved and trusted Amazon Machine Images are used to launch instances within your environment. By restricting the available AMIs, you can prevent the use of unvetted or potentially compromised images that could introduce security vulnerabilities or malware. **Note**: Previously launched instances are unaffected by this setting. The state of the setting must be `enabled` for this rule to pass.

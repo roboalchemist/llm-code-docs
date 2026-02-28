@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > SSRF exploited
 ---
 
 # SSRF exploited
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect successful exploitation attempts of the SSRF vulnerability.

@@ -40,6 +40,5 @@ To avoid the violation of this rule, you should consider using a struct or a cla
 ```swift
 func myfunction() -> (Int, Int, Int, String) {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

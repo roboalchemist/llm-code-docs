@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install ufw Package
 ---
 
 # Install ufw Package
- 
+
 ## Description{% #description %}
 
 The `ufw` package can be installed with the following command:

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Anomalous number of S3 bucke
 ---
 
 # Anomalous number of S3 buckets accessed
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1619-cloud-storage-object-discovery](https://attack.mitre.org/techniques/T1619) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1619-cloud-storage-object-discovery](https://attack.mitre.org/techniques/T1619)
 ## Goal{% #goal %}
 
 Detect when an AWS assumed role accesses S3 buckets that they do not usually access.

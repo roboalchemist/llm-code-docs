@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network policies should be defined to isolate traffic in cluster network
-Classification:complianceFramework:cis-kubernetesControl:5.3.2 
+Classification:complianceFramework:cis-kubernetesControl:5.3.2
 ## Description{% #description %}
 
 Use network policies to isolate traffic in your cluster network.

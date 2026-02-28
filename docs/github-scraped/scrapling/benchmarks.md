@@ -2,9 +2,9 @@
 
 Scrapling isn't just powerful—it's also blazing fast. The following benchmarks compare Scrapling's parser with the latest versions of other popular libraries.
 
-### Text Extraction Speed Test (5000 nested elements)
+## Text Extraction Speed Test (5000 nested elements)
 
-| # |      Library      | Time (ms) | vs Scrapling | 
+| # |      Library      | Time (ms) | vs Scrapling |
 |---|:-----------------:|:---------:|:------------:|
 | 1 |     Scrapling     |   2.02    |     1.0x     |
 | 2 |   Parsel/Scrapy   |   2.04    |     1.01     |
@@ -15,8 +15,7 @@ Scrapling isn't just powerful—it's also blazing fast. The following benchmarks
 | 7 |   BS4 with Lxml   |  1584.31  |   ~784.3x    |
 | 8 | BS4 with html5lib |  3391.91  |   ~1679.1x   |
 
-
-### Element Similarity & Text Search Performance
+## Element Similarity & Text Search Performance
 
 Scrapling's adaptive element finding capabilities significantly outperform alternatives:
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Blob Storage versioning should be enabled
- 
+
 ## Description{% #description %}
 
 Enable versioning for Azure Blob Storage to maintain previous versions of blobs and protect against accidental modifications or deletions.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 subnets should not automatically assign public IP addresses
- 
+
 ## Description{% #description %}
 
 This check verifies if the configuration of public IP assignment in Amazon Virtual Private Cloud (VPC) subnets has the value of `MapPublicIpOnLaunch` set to FALSE. The validation is successful only when this attribute is configured as FALSE.

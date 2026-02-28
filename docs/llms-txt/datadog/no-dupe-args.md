@@ -55,6 +55,5 @@ function a({a, b}, {c, d}){}
 function a([ , a]) {}
 function foo([[a, b], [c, d]]) {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

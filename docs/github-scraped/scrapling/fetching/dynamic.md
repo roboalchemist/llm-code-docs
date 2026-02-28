@@ -11,6 +11,7 @@ As we will explain later, to automate the page, you need some knowledge of [Play
     3. You've completed or read the [Main classes](../parsing/main_classes.md) page to know what properties/methods the [Response](../fetching/choosing.md#response-object) class is inheriting from the [Selector](../parsing/main_classes.md#selector) class.
 
 ## Basic Usage
+
 You have one primary way to import this Fetcher, which is the same for all fetchers.
 
 ```python
@@ -24,18 +25,19 @@ Now, we will review most of the arguments one by one, using examples. If you wan
 
     The async version of the `fetch` method is `async_fetch`, of course.
 
-
 This fetcher currently provides three main run options that can be combined as desired.
 
 Which are:
 
 ### 1. Vanilla Playwright
+
 ```python
 DynamicFetcher.fetch('https://example.com')
 ```
 Using it in that manner will open a Chromium browser and load the page. There are optimizations for speed, and some stealth goes automatically under the hood, but other than that, there are no tricks or extra features unless you enable some; it's just a plain PlayWright API.
 
 ### 2. Real Chrome
+
 ```python
 DynamicFetcher.fetch('https://example.com', real_chrome=True)
 ```
@@ -47,11 +49,11 @@ playwright install chrome
 ```
 
 ### 3. CDP Connection
+
 ```python
 DynamicFetcher.fetch('https://example.com', cdp_url='ws://localhost:9222')
 ```
 Instead of launching a browser locally (Chromium/Google Chrome), you can connect to a remote browser through the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
-
 
 !!! note "Notes:"
 
@@ -59,6 +61,7 @@ Instead of launching a browser locally (Chromium/Google Chrome), you can connect
     * This makes it less confusing for new users, easier to maintain, and provides other benefits, as explained on the [StealthyFetcher page](../fetching/stealthy.md).
 
 ## Full list of arguments
+
 Scrapling provides many options with this fetcher and its session classes. To make it as simple as possible, we will list the options here and give examples of how to use most of them.
 
 |      Argument       | Description                                                                                                                                                                                                                         | Optional |
@@ -101,34 +104,42 @@ In session classes, all these arguments can be set globally for the session. Sti
     3. Since version 0.3.13, the `stealth` option has been removed here in favor of the `StealthyFetcher` class, and the `hide_canvas` option has been moved to it. The `disable_webgl` argument has been moved to the `StealthyFetcher` class and renamed as `allow_webgl`.
     4. If you didn't set a user agent and enabled headless mode, the fetcher will generate a real user agent for the same browser version and use it. If you didn't set a user agent and didn't enable headless mode, the fetcher will use the browser's default user agent, which is the same as in standard browsers in the latest versions.
 
-
 ## Examples
+
 It's easier to understand with examples, so let's take a look.
 
 ### Resource Control
 
 ```python
+
 # Disable unnecessary resources
+
 page = DynamicFetcher.fetch('https://example.com', disable_resources=True)  # Blocks fonts, images, media, etc.
 ```
 
 ### Domain Blocking
 
 ```python
+
 # Block requests to specific domains (and their subdomains)
+
 page = DynamicFetcher.fetch('https://example.com', blocked_domains={"ads.example.com", "tracker.net"})
 ```
 
 ### Network Control
 
 ```python
+
 # Wait for network idle (Consider fetch to be finished when there are no network connections for at least 500 ms)
+
 page = DynamicFetcher.fetch('https://example.com', network_idle=True)
 
 # Custom timeout (in milliseconds)
+
 page = DynamicFetcher.fetch('https://example.com', timeout=30000)  # 30 seconds
 
 # Proxy support (It can also be a dictionary with only the keys 'server', 'username', and 'password'.)
+
 page = DynamicFetcher.fetch('https://example.com', proxy='http://username:password@host:port')
 ```
 
@@ -138,6 +149,7 @@ page = DynamicFetcher.fetch('https://example.com', proxy='http://username:passwo
 from scrapling.fetchers import DynamicSession, ProxyRotator
 
 # Set up proxy rotation
+
 rotator = ProxyRotator([
     "http://proxy1:8080",
     "http://proxy2:8080",
@@ -145,6 +157,7 @@ rotator = ProxyRotator([
 ])
 
 # Use with session - rotates proxy automatically with each request
+
 with DynamicSession(proxy_rotator=rotator, headless=True) as session:
     page1 = session.fetch('https://example1.com')
     page2 = session.fetch('https://example2.com')
@@ -169,6 +182,7 @@ with open(file='main_cover.png', mode='wb') as f:
 The `body` attribute of the `Response` object always returns `bytes`.
 
 ### Browser Automation
+
 This is where your knowledge about [Playwright's Page API](https://playwright.dev/python/docs/api/class-page) comes into play. The function you pass here takes the page object from Playwright's API, performs the desired action, and then the fetcher continues.
 
 This function is executed immediately after waiting for `network_idle` (if enabled) and before waiting for the `wait_selector` argument, allowing it to be used for purposes beyond automation. You can alter the page as you want.
@@ -199,7 +213,9 @@ page = await DynamicFetcher.async_fetch('https://example.com', page_action=scrol
 ### Wait Conditions
 
 ```python
+
 # Wait for the selector
+
 page = DynamicFetcher.fetch(
     'https://example.com',
     wait_selector='h1',
@@ -229,6 +245,7 @@ page = DynamicFetcher.fetch(
 ```
 
 ### General example
+
 ```python
 from scrapling.fetchers import DynamicFetcher
 
@@ -239,10 +256,10 @@ def scrape_dynamic_content():
         network_idle=True,
         wait_selector='.content'
     )
-    
+
     # Extract dynamic content
     content = page.css('.content')
-    
+
     return {
         'title': content.css('h1::text').get(),
         'items': [
@@ -259,6 +276,7 @@ To keep the browser open until you make multiple requests with the same configur
 from scrapling.fetchers import DynamicSession
 
 # Create a session with default configuration
+
 with DynamicSession(
     headless=True,
     disable_resources=True,
@@ -268,7 +286,7 @@ with DynamicSession(
     page1 = session.fetch('https://example1.com')
     page2 = session.fetch('https://example2.com')
     page3 = session.fetch('https://dynamic-site.com')
-    
+
     # All requests reuse the same tab on the same browser instance
 ```
 
@@ -317,6 +335,6 @@ Use DynamicFetcher when:
 - Want multiple browser options
 - Using a real Chrome browser
 - Need custom browser config
-- Want a few stealth options 
+- Want a few stealth options
 
 If you want more stealth and control without much config, check out the [StealthyFetcher](stealthy.md).

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS task definitions should not share the host's process namespace
- 
+
 ## Description{% #description %}
 
 This assessment verifies whether Amazon ECS task definitions are set up to share a host's process namespace with its containers. The assessment will not pass if the task definition allows the host's process namespace to be shared with the containers it runs. This evaluation is based on the most recent active revision of an Amazon ECS task definition.

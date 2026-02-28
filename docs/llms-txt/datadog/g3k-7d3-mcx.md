@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure user viewed CosmosDB a
 ---
 
 # Azure user viewed CosmosDB access keys
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580)
 ## Goal{% #goal %}
 
 Detect when a user successfully requests to view a CosmoDB access key with the Azure API. An attacker with the appropriate privileges can view an access key and use it to access and manage the CosmoDB database.

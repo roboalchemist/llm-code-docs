@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Outbound access on all ports should be restricted
- 
+
 ## Description{% #description %}
 
 Reduce the probability of a breach by checking [EC2 security groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) for outbound rules that allow unfettered access to any TCP/UDP ports and restrict access to IP addresses that require this port.
@@ -34,7 +34,7 @@ In the `revoke-security-group-egress.sh` file:
        aws ec2 revoke-security-group-egress
            --group-id your-group-id
            --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "0.0.0.0/0"}]}]'
-       
+
 ```
 
 1. Run `authorize-security-group-egress` with new parameters to restrict outbound access to specific destinations.
@@ -45,5 +45,5 @@ In the `authorize-security-group-egress.sh` file:
        aws ec2 authorize-security-group-egress
            --group-id your-group-id
            --ip-permissions '[{"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "0.0.0.0/0"}]}]'
-       
+
 ```

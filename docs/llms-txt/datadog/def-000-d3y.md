@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub activity from automated scraping tool
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detects GitHub API requests from automated scraping tools that may be collecting sensitive repository data.

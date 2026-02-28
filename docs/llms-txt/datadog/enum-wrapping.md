@@ -53,11 +53,11 @@ enum class Foo {
 ```kotlin
 enum class Foo { A, B, C, D }
 
-enum class Foo { 
-    A, 
+enum class Foo {
+    A,
     B,
-    C, 
-    D 
+    C,
+    D
 }
 
 enum class Foo {
@@ -70,6 +70,5 @@ enum class Foo {
     fun foo() = "foo"
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

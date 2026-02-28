@@ -126,6 +126,5 @@ hashlib.new('sha3_256')
 from cryptography.hazmat.primitives import hashes
 digest = hashes.Hash(hashes.SHA256())
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

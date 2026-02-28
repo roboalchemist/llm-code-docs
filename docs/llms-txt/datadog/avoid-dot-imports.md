@@ -48,8 +48,8 @@ To avoid these issues, it is generally recommended to explicitly import packages
 package main
 
 import (
-	"foo/utils"
-	. "bar"
+    "foo/utils"
+    . "bar"
 )
 ```
 
@@ -59,11 +59,10 @@ import (
 package main
 
 import (
-	. "github.com/onsi/ginkgo/v2"
+    . "github.com/onsi/ginkgo/v2"
     . "github.com/onsi/gomega"
     . "github.com/smartystreets/goconvey/convey"
 )
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

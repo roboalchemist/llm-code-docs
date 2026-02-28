@@ -136,7 +136,7 @@ class Compliant {
     public static void Main()
     {
         dynamic dyn = 4;
-        
+
         var binExp = dyn << 1;
         binExp = dyn << (int)2.1;
         binExp = dyn << (byte)2.1;
@@ -166,6 +166,5 @@ class Compliant {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

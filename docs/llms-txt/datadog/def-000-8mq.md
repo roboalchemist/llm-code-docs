@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Microsoft 365 Security and C
 ---
 
 # Microsoft 365 Security and Compliance
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when [Microsoft 365 Security and Compliance](https://learn.microsoft.com/en-us/microsoft-365/compliance/alert-policies?view=o365-worldwide) raises an alert.

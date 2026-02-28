@@ -49,16 +49,16 @@ Granting write access to a file is a security since other users can modify the c
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	err := os.Chmod("/tmp/somefile", 0777)
-	if err != nil {
-		fmt.Println("Error when changing file permissions!")
-		return
-	}
+    err := os.Chmod("/tmp/somefile", 0777)
+    if err != nil {
+        fmt.Println("Error when changing file permissions!")
+        return
+    }
 }
 ```
 
@@ -66,16 +66,16 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	_, err := os.OpenFile("/tmp/thing", os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		fmt.Println("Cannot create file")
-		return
-	}
+    _, err := os.OpenFile("/tmp/thing", os.O_CREATE|os.O_WRONLY, 0666)
+    if err != nil {
+        fmt.Println("Cannot create file")
+        return
+    }
 }
 ```
 
@@ -85,16 +85,16 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	err := os.Chmod("/tmp/somefile", 0770)
-	if err != nil {
-		fmt.Println("Error when changing file permissions!")
-		return
-	}
+    err := os.Chmod("/tmp/somefile", 0770)
+    if err != nil {
+        fmt.Println("Error when changing file permissions!")
+        return
+    }
 }
 ```
 
@@ -102,18 +102,17 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
 func main() {
-	_, err := os.OpenFile("/tmp/thing", os.O_CREATE|os.O_WRONLY, 0660)
-	if err != nil {
-		fmt.Println("Cannot create file")
-		return
-	}
+    _, err := os.OpenFile("/tmp/thing", os.O_CREATE|os.O_WRONLY, 0660)
+    if err != nil {
+        fmt.Println("Cannot create file")
+        return
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

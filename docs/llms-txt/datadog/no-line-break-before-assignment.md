@@ -84,6 +84,5 @@ val generate: () -> String? =
 
 fun sum(a: Int, b: Int): Int = a + b
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

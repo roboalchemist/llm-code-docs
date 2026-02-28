@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQL servers should use customer-managed keys to encrypt data at rest
- 
+
 ## Description{% #description %}
 
 This rule checks if SQL servers are using customer-managed keys to encrypt data at rest. This is important for ensuring that sensitive data stored on SQL servers is securely encrypted and protected from unauthorized access.

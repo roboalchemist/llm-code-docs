@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Lambda function should use the latest runtime environment version
- 
+
 ## Description{% #description %}
 
 This control ensures that your Amazon Lambda Function is updated to the most recent runtime environment version. Regularly updating your Lambda functions to the latest runtime version is a best practice recommended by Amazon. It is crucial for incorporating security patches, bug fixes, and accessing the latest features, ensuring the security and efficiency of your application.

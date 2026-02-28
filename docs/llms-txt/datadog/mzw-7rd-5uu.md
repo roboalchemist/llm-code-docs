@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The TLS CA certificate file should have read-only or more restrictive permissions
-Classification:complianceFramework:cis-dockerControl:3.10 
+Classification:complianceFramework:cis-dockerControl:3.10
 ## Description{% #description %}
 
 You should verify that the TLS CA certificate file, the file that is passed along with the `--tlscacert` parameter, has permissions of 444 or is set more restrictively.

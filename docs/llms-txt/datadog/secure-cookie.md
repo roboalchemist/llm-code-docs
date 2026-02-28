@@ -55,6 +55,5 @@ response.set_cookie('username', 'flask', samesite=None, httponly=True)
 ```python
 response.set_cookie('username', 'flask', secure=True, httponly=True, samesite='Lax')
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

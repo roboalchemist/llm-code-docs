@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Snowflake anomalous querying of data by user
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530)
 ## Goal{% #goal %}
 
 Detect anomalous amount of data queried by a user account in your Snowflake environment.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The default Docker configuration file should be audited, if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.8 
+Classification:complianceFramework:cis-dockerControl:1.2.8
 ## Description{% #description %}
 
 Audit `/etc/default/docker`, if applicable.

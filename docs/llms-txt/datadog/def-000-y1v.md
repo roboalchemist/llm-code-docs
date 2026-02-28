@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Only Group Root Has G
 ---
 
 # Verify Only Group Root Has GID 0
- 
+
 ## Description{% #description %}
 
 If any group other than root has a GID of 0, this misconfiguration should be investigated and the groups other than root should be removed or have their GID changed.

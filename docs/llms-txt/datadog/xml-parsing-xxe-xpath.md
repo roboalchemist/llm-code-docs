@@ -53,7 +53,7 @@ class MyClass {
 
         DocumentBuilder db2 = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
-    
+
 }
 ```
 
@@ -67,9 +67,8 @@ class MyClass {
         df.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         DocumentBuilder builder = df.newDocumentBuilder();
     }
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

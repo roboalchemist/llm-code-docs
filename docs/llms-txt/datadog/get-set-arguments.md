@@ -47,7 +47,7 @@ class Foo:
    @property
    def get_my_attribute(self, foo):  # getter should have only one argument
       return self.my_attribute
-   
+
    @attr.setter
    def set_attr(self, v, bar):  # setter should have only two arguments
       self._attr = v
@@ -63,7 +63,7 @@ class Foo:
 class Foo:
    def get_my_attribute(self):
       return self.my_attribute
-   
+
    def get_my_attribute(self, foo): # Not a property or attr, valid
       return self.my_attribute
 
@@ -82,6 +82,5 @@ class Foo:
    def del_attr(self,):
       return self._attr
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

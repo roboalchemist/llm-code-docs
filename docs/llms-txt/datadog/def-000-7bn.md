@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure that Root's Path Does Not Include World or Group-Writable Directories
- 
+
 ## Description{% #description %}
 
 For each element in root's path, run:
 
 ```
 # ls -ld DIR
-         
+
 ```
 
 and ensure that write permissions are disabled for group and other.

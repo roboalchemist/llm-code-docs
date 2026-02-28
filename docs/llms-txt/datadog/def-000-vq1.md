@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway REST API cache data should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control evaluates whether execution logging is enabled for all stages of an Amazon API Gateway REST API. The control passes only if the logging level has been configured for each API method within the API stage. The logging level must be set to either `ERROR` or `INFO`.

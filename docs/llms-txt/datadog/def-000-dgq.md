@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable systemd_timesyncd Se
 ---
 
 # Disable systemd_timesyncd Service
- 
+
 ## Description{% #description %}
 
 The `systemd_timesyncd` service can be disabled with the following command:

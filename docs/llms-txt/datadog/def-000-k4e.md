@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft Defender for SQL Server should be on for critical SQL Servers
- 
+
 ## Description{% #description %}
 
 Enabling 'Microsoft Defender for SQL' on critical SQL Servers is highly recommended. By default, this feature is set to 'Off'. Microsoft Defender for SQL is a unified package that provides advanced SQL security capabilities, including sensitive data discovery, vulnerability mitigation, and anomaly detection. It is available for Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics, offering a comprehensive solution for securing your databases. Enabling this feature provides a centralized location for managing and enabling these capabilities. However, it is important to note that Microsoft Defender for SQL is a paid feature and may incur additional costs for each SQL server. It can be enabled at the SQL server level, and the same settings will be applied to the hosted SQL databases.

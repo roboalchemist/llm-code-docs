@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Blob Containers anonymous access should be restricted
- 
+
 ## Description{% #description %}
 
 Ensures that Azure Storage Blob Containers are not publicly accessible.

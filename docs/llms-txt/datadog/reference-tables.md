@@ -65,7 +65,7 @@ Create a reference table upload for bulk data ingestion
     "type": "upload"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -98,7 +98,7 @@ Information about the upload created containing the upload ID and pre-signed URL
     "type": "upload"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -123,7 +123,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -148,7 +148,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -173,7 +173,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -181,7 +181,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/uploads" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -203,8 +203,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -240,13 +240,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_reference_table_upload(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create reference table upload returns "Created" response
@@ -270,13 +270,13 @@ body = DatadogAPIClient::V2::CreateUploadRequest.new({
   }),
 })
 p api_instance.create_reference_table_upload(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create reference table upload returns "Created" response
@@ -284,52 +284,52 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateUploadRequest{
-		Data: &datadogV2.CreateUploadRequestData{
-			Attributes: &datadogV2.CreateUploadRequestDataAttributes{
-				Headers: []string{
-					"id",
-					"name",
-					"value",
-				},
-				TableName: "test_upload_table_Example-Reference-Table",
-				PartCount: 1,
-				PartSize:  1024,
-			},
-			Type: datadogV2.CREATEUPLOADREQUESTDATATYPE_UPLOAD,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	resp, r, err := api.CreateReferenceTableUpload(ctx, body)
+    body := datadogV2.CreateUploadRequest{
+        Data: &datadogV2.CreateUploadRequestData{
+            Attributes: &datadogV2.CreateUploadRequestDataAttributes{
+                Headers: []string{
+                    "id",
+                    "name",
+                    "value",
+                },
+                TableName: "test_upload_table_Example-Reference-Table",
+                PartCount: 1,
+                PartSize:  1024,
+            },
+            Type: datadogV2.CREATEUPLOADREQUESTDATATYPE_UPLOAD,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    resp, r, err := api.CreateReferenceTableUpload(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.CreateReferenceTableUpload`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.CreateReferenceTableUpload`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.CreateReferenceTableUpload`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.CreateReferenceTableUpload`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create reference table upload returns "Created" response
@@ -373,13 +373,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create reference table upload returns "Created" response
@@ -411,13 +411,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -451,7 +451,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -581,7 +581,7 @@ Creates a reference table. You can provide data in two ways:
     "type": "reference_table"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -684,7 +684,7 @@ A reference table resource containing its full configuration and state.
     "type": "reference_table"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -709,7 +709,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -734,7 +734,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -759,7 +759,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -767,9 +767,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## Create table from cloud storage (S3)
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -819,7 +819,7 @@ API error response.
   }
 }
 EOF\## Create table from local file upload
-# 
+#
 \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -862,8 +862,8 @@ EOF\## Create table from local file upload
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -954,13 +954,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_reference_table(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create reference table returns "Created" response
@@ -1016,13 +1016,13 @@ body = DatadogAPIClient::V2::CreateTableRequest.new({
   }),
 })
 p api_instance.create_reference_table(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create reference table returns "Created" response
@@ -1030,85 +1030,85 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateTableRequest{
-		Data: &datadogV2.CreateTableRequestData{
-			Attributes: &datadogV2.CreateTableRequestDataAttributes{
-				FileMetadata: &datadogV2.CreateTableRequestDataAttributesFileMetadata{
-					CreateTableRequestDataAttributesFileMetadataCloudStorage: &datadogV2.CreateTableRequestDataAttributesFileMetadataCloudStorage{
-						AccessDetails: datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetails{
-							AwsDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsAwsDetail{
-								AwsAccountId:  "123456789000",
-								AwsBucketName: "example-data-bucket",
-								FilePath:      "reference-tables/users.csv",
-							},
-							AzureDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsAzureDetail{
-								AzureClientId:           "aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb",
-								AzureContainerName:      "reference-data",
-								AzureStorageAccountName: "examplestorageaccount",
-								AzureTenantId:           "cccccccc-4444-5555-6666-dddddddddddd",
-								FilePath:                "tables/users.csv",
-							},
-							GcpDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsGcpDetail{
-								FilePath:               "data/reference_tables/users.csv",
-								GcpBucketName:          "example-data-bucket",
-								GcpProjectId:           "example-gcp-project-12345",
-								GcpServiceAccountEmail: "example-service@example-gcp-project-12345.iam.gserviceaccount.com",
-							},
-						},
-						SyncEnabled: false,
-					}},
-				Schema: datadogV2.CreateTableRequestDataAttributesSchema{
-					Fields: []datadogV2.CreateTableRequestDataAttributesSchemaFieldsItems{
-						{
-							Name: "field_1",
-							Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_STRING,
-						},
-					},
-					PrimaryKeys: []string{
-						"field_1",
-					},
-				},
-				Source:    datadogV2.REFERENCETABLECREATESOURCETYPE_LOCAL_FILE,
-				TableName: "table_1",
-				Tags: []string{
-					"tag_1",
-					"tag_2",
-				},
-			},
-			Type: datadogV2.CREATETABLEREQUESTDATATYPE_REFERENCE_TABLE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	resp, r, err := api.CreateReferenceTable(ctx, body)
+    body := datadogV2.CreateTableRequest{
+        Data: &datadogV2.CreateTableRequestData{
+            Attributes: &datadogV2.CreateTableRequestDataAttributes{
+                FileMetadata: &datadogV2.CreateTableRequestDataAttributesFileMetadata{
+                    CreateTableRequestDataAttributesFileMetadataCloudStorage: &datadogV2.CreateTableRequestDataAttributesFileMetadataCloudStorage{
+                        AccessDetails: datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetails{
+                            AwsDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsAwsDetail{
+                                AwsAccountId:  "123456789000",
+                                AwsBucketName: "example-data-bucket",
+                                FilePath:      "reference-tables/users.csv",
+                            },
+                            AzureDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsAzureDetail{
+                                AzureClientId:           "aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb",
+                                AzureContainerName:      "reference-data",
+                                AzureStorageAccountName: "examplestorageaccount",
+                                AzureTenantId:           "cccccccc-4444-5555-6666-dddddddddddd",
+                                FilePath:                "tables/users.csv",
+                            },
+                            GcpDetail: &datadogV2.CreateTableRequestDataAttributesFileMetadataOneOfAccessDetailsGcpDetail{
+                                FilePath:               "data/reference_tables/users.csv",
+                                GcpBucketName:          "example-data-bucket",
+                                GcpProjectId:           "example-gcp-project-12345",
+                                GcpServiceAccountEmail: "example-service@example-gcp-project-12345.iam.gserviceaccount.com",
+                            },
+                        },
+                        SyncEnabled: false,
+                    }},
+                Schema: datadogV2.CreateTableRequestDataAttributesSchema{
+                    Fields: []datadogV2.CreateTableRequestDataAttributesSchemaFieldsItems{
+                        {
+                            Name: "field_1",
+                            Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_STRING,
+                        },
+                    },
+                    PrimaryKeys: []string{
+                        "field_1",
+                    },
+                },
+                Source:    datadogV2.REFERENCETABLECREATESOURCETYPE_LOCAL_FILE,
+                TableName: "table_1",
+                Tags: []string{
+                    "tag_1",
+                    "tag_2",
+                },
+            },
+            Type: datadogV2.CREATETABLEREQUESTDATATYPE_REFERENCE_TABLE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    resp, r, err := api.CreateReferenceTable(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.CreateReferenceTable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.CreateReferenceTable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.CreateReferenceTable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.CreateReferenceTable`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create reference table returns "Created" response
@@ -1198,13 +1198,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create reference table returns "Created" response
@@ -1296,13 +1296,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1368,7 +1368,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1550,7 +1550,7 @@ List of reference tables.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1575,7 +1575,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1600,7 +1600,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1608,13 +1608,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1630,13 +1630,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_tables()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List tables returns "OK" response
@@ -1644,13 +1644,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ReferenceTablesAPI.new
 p api_instance.list_tables()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List tables returns "OK" response
@@ -1658,37 +1658,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	resp, r, err := api.ListTables(ctx, *datadogV2.NewListTablesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    resp, r, err := api.ListTables(ctx, *datadogV2.NewListTablesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.ListTables`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.ListTables`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.ListTables`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.ListTables`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List tables returns "OK" response
@@ -1715,13 +1715,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List tables returns "OK" response
@@ -1740,13 +1740,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1766,7 +1766,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1899,7 +1899,7 @@ A reference table resource containing its full configuration and state.
     "type": "reference_table"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1924,7 +1924,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1949,7 +1949,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1974,7 +1974,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1982,13 +1982,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2006,13 +2006,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get table returns "OK" response
@@ -2020,13 +2020,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ReferenceTablesAPI.new
 p api_instance.get_table("id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get table returns "OK" response
@@ -2034,37 +2034,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	resp, r, err := api.GetTable(ctx, "id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    resp, r, err := api.GetTable(ctx, "id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.GetTable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.GetTable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.GetTable`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.GetTable`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get table returns "OK" response
@@ -2091,13 +2091,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get table returns "OK" response
@@ -2115,13 +2115,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2145,7 +2145,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2216,7 +2216,7 @@ List of rows from a reference table query.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2241,7 +2241,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2266,7 +2266,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2291,7 +2291,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2299,13 +2299,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="table-123"\# Required query argumentsexport row_id_0="row_id_0"export row_id_1="row_id_1"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}/rows?row_id=${row_id_0}&row_id=${row_id_1}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2324,13 +2324,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get rows by id returns "Some or all requested rows were found." response
@@ -2338,13 +2338,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ReferenceTablesAPI.new
 p api_instance.get_rows_by_id("id", [])
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get rows by id returns "Some or all requested rows were found." response
@@ -2352,37 +2352,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	resp, r, err := api.GetRowsByID(ctx, "id", []string{})
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    resp, r, err := api.GetRowsByID(ctx, "id", []string{})
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.GetRowsByID`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.GetRowsByID`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.GetRowsByID`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceTablesApi.GetRowsByID`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get rows by id returns "Some or all requested rows were found." response
@@ -2411,13 +2411,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get rows by id returns "Some or all requested rows were found." response
@@ -2435,13 +2435,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2466,7 +2466,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2593,7 +2593,7 @@ Update a reference table by ID. You can update the table's data, description, an
     "type": "reference_table"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2622,7 +2622,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2647,7 +2647,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2672,7 +2672,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2680,7 +2680,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2706,8 +2706,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2764,7 +2764,6 @@ body = PatchTableRequest(
                     "id",
                 ],
             ),
-            sync_enabled=False,
             tags=[
                 "test_tag",
             ],
@@ -2777,13 +2776,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = ReferenceTablesApi(api_client)
     api_instance.update_reference_table(id="id", body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update reference table returns "OK" response
@@ -2820,7 +2819,6 @@ body = DatadogAPIClient::V2::PatchTableRequest.new({
           "id",
         ],
       }),
-      sync_enabled: false,
       tags: [
         "test_tag",
       ],
@@ -2829,13 +2827,13 @@ body = DatadogAPIClient::V2::PatchTableRequest.new({
   }),
 })
 p api_instance.update_reference_table("id", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update reference table returns "OK" response
@@ -2843,71 +2841,70 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.PatchTableRequest{
-		Data: &datadogV2.PatchTableRequestData{
-			Attributes: &datadogV2.PatchTableRequestDataAttributes{
-				Description: datadog.PtrString("this is a cloud table generated via a cloud bucket sync"),
-				FileMetadata: &datadogV2.PatchTableRequestDataAttributesFileMetadata{
-					PatchTableRequestDataAttributesFileMetadataCloudStorage: &datadogV2.PatchTableRequestDataAttributesFileMetadataCloudStorage{
-						AccessDetails: &datadogV2.PatchTableRequestDataAttributesFileMetadataOneOfAccessDetails{
-							AwsDetail: &datadogV2.PatchTableRequestDataAttributesFileMetadataOneOfAccessDetailsAwsDetail{
-								AwsAccountId:  datadog.PtrString("test-account-id"),
-								AwsBucketName: datadog.PtrString("test-bucket"),
-								FilePath:      datadog.PtrString("test_rt.csv"),
-							},
-						},
-						SyncEnabled: datadog.PtrBool(true),
-					}},
-				Schema: &datadogV2.PatchTableRequestDataAttributesSchema{
-					Fields: []datadogV2.PatchTableRequestDataAttributesSchemaFieldsItems{
-						{
-							Name: "id",
-							Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_INT32,
-						},
-						{
-							Name: "name",
-							Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_STRING,
-						},
-					},
-					PrimaryKeys: []string{
-						"id",
-					},
-				},
-				SyncEnabled: datadog.PtrBool(false),
-				Tags: []string{
-					"test_tag",
-				},
-			},
-			Type: datadogV2.PATCHTABLEREQUESTDATATYPE_REFERENCE_TABLE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	r, err := api.UpdateReferenceTable(ctx, "id", body)
+    body := datadogV2.PatchTableRequest{
+        Data: &datadogV2.PatchTableRequestData{
+            Attributes: &datadogV2.PatchTableRequestDataAttributes{
+                Description: datadog.PtrString("this is a cloud table generated via a cloud bucket sync"),
+                FileMetadata: &datadogV2.PatchTableRequestDataAttributesFileMetadata{
+                    PatchTableRequestDataAttributesFileMetadataCloudStorage: &datadogV2.PatchTableRequestDataAttributesFileMetadataCloudStorage{
+                        AccessDetails: &datadogV2.PatchTableRequestDataAttributesFileMetadataOneOfAccessDetails{
+                            AwsDetail: &datadogV2.PatchTableRequestDataAttributesFileMetadataOneOfAccessDetailsAwsDetail{
+                                AwsAccountId:  datadog.PtrString("test-account-id"),
+                                AwsBucketName: datadog.PtrString("test-bucket"),
+                                FilePath:      datadog.PtrString("test_rt.csv"),
+                            },
+                        },
+                        SyncEnabled: datadog.PtrBool(true),
+                    }},
+                Schema: &datadogV2.PatchTableRequestDataAttributesSchema{
+                    Fields: []datadogV2.PatchTableRequestDataAttributesSchemaFieldsItems{
+                        {
+                            Name: "id",
+                            Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_INT32,
+                        },
+                        {
+                            Name: "name",
+                            Type: datadogV2.REFERENCETABLESCHEMAFIELDTYPE_STRING,
+                        },
+                    },
+                    PrimaryKeys: []string{
+                        "id",
+                    },
+                },
+                Tags: []string{
+                    "test_tag",
+                },
+            },
+            Type: datadogV2.PATCHTABLEREQUESTDATATYPE_REFERENCE_TABLE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    r, err := api.UpdateReferenceTable(ctx, "id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.UpdateReferenceTable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.UpdateReferenceTable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update reference table returns "OK" response
@@ -2963,7 +2960,6 @@ public class Example {
                                                 .name("name")
                                                 .type(ReferenceTableSchemaFieldType.STRING)))
                                     .primaryKeys(Collections.singletonList("id")))
-                            .syncEnabled(false)
                             .tags(Collections.singletonList("test_tag")))
                     .type(PatchTableRequestDataType.REFERENCE_TABLE));
 
@@ -2978,13 +2974,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update reference table returns "OK" response
@@ -3046,7 +3042,6 @@ async fn main() {
                             vec!["id".to_string()],
                         ),
                     )
-                    .sync_enabled(false)
                     .tags(vec!["test_tag".to_string()]),
             ),
         );
@@ -3059,13 +3054,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3105,7 +3100,6 @@ const params: v2.ReferenceTablesApiUpdateReferenceTableRequest = {
           ],
           primaryKeys: ["id"],
         },
-        syncEnabled: false,
         tags: ["test_tag"],
       },
       type: "reference_table",
@@ -3122,7 +3116,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3181,7 +3175,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3206,7 +3200,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3231,7 +3225,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3239,13 +3233,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3261,13 +3255,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_table(
         id="id",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete table returns "OK" response
@@ -3275,13 +3269,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ReferenceTablesAPI.new
 p api_instance.delete_table("id")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete table returns "OK" response
@@ -3289,33 +3283,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	r, err := api.DeleteTable(ctx, "id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    r, err := api.DeleteTable(ctx, "id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.DeleteTable`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.DeleteTable`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete table returns "OK" response
@@ -3340,13 +3334,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete table returns "OK" response
@@ -3364,13 +3358,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3394,7 +3388,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3468,7 +3462,7 @@ Create or update rows in a Reference Table by their primary key values. If a row
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3497,7 +3491,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3522,7 +3516,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3547,7 +3541,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3572,7 +3566,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3597,7 +3591,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3605,9 +3599,9 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \## Upsert a row with mixed string and int values
-# 
+#
 \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}/rows" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3630,8 +3624,8 @@ API error response.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3649,10 +3643,7 @@ body = BatchUpsertRowsRequestArray(
     data=[
         BatchUpsertRowsRequestData(
             attributes=BatchUpsertRowsRequestDataAttributes(
-                values=dict(
-                    example_key_value="primary_key_value",
-                    name="row_name",
-                ),
+                values=dict(),
             ),
             id="primary_key_value",
             type=TableRowResourceDataType.ROW,
@@ -3664,13 +3655,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = ReferenceTablesApi(api_client)
     api_instance.upsert_rows(id="id", body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Upsert rows returns "Rows created or updated successfully" response
@@ -3682,9 +3673,7 @@ body = DatadogAPIClient::V2::BatchUpsertRowsRequestArray.new({
   data: [
     DatadogAPIClient::V2::BatchUpsertRowsRequestData.new({
       attributes: DatadogAPIClient::V2::BatchUpsertRowsRequestDataAttributes.new({
-        values: {
-          example_key_value: "primary_key_value", name: "row_name",
-        },
+        values: {},
       }),
       id: "primary_key_value",
       type: DatadogAPIClient::V2::TableRowResourceDataType::ROW,
@@ -3692,13 +3681,13 @@ body = DatadogAPIClient::V2::BatchUpsertRowsRequestArray.new({
   ],
 })
 p api_instance.upsert_rows("id", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Upsert rows returns "Rows created or updated successfully" response
@@ -3706,47 +3695,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BatchUpsertRowsRequestArray{
-		Data: []datadogV2.BatchUpsertRowsRequestData{
-			{
-				Attributes: &datadogV2.BatchUpsertRowsRequestDataAttributes{
-					Values: map[string]interface{}{
-						"example_key_value": "primary_key_value",
-						"name":              "row_name",
-					},
-				},
-				Id:   "primary_key_value",
-				Type: datadogV2.TABLEROWRESOURCEDATATYPE_ROW,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	r, err := api.UpsertRows(ctx, "id", body)
+    body := datadogV2.BatchUpsertRowsRequestArray{
+        Data: []datadogV2.BatchUpsertRowsRequestData{
+            {
+                Attributes: &datadogV2.BatchUpsertRowsRequestDataAttributes{
+                    Values: map[string]datadogV2.BatchUpsertRowsRequestDataAttributesValue{},
+                },
+                Id:   "primary_key_value",
+                Type: datadogV2.TABLEROWRESOURCEDATATYPE_ROW,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    r, err := api.UpsertRows(ctx, "id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.UpsertRows`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.UpsertRows`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Upsert rows returns "Rows created or updated successfully" response
@@ -3772,11 +3758,7 @@ public class Example {
                 Collections.singletonList(
                     new BatchUpsertRowsRequestData()
                         .attributes(
-                            new BatchUpsertRowsRequestDataAttributes()
-                                .values(
-                                    Map.ofEntries(
-                                        Map.entry("example_key_value", "primary_key_value"),
-                                        Map.entry("name", "row_name"))))
+                            new BatchUpsertRowsRequestDataAttributes().values(Map.ofEntries()))
                         .id("primary_key_value")
                         .type(TableRowResourceDataType.ROW)));
 
@@ -3791,13 +3773,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Upsert rows returns "Rows created or updated successfully" response
@@ -3807,7 +3789,6 @@ use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestArray;
 use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestData;
 use datadog_api_client::datadogV2::model::BatchUpsertRowsRequestDataAttributes;
 use datadog_api_client::datadogV2::model::TableRowResourceDataType;
-use serde_json::Value;
 use std::collections::BTreeMap;
 
 #[tokio::main]
@@ -3816,13 +3797,9 @@ async fn main() {
         "primary_key_value".to_string(),
         TableRowResourceDataType::ROW,
     )
-    .attributes(BatchUpsertRowsRequestDataAttributes::new(BTreeMap::from([
-        (
-            "example_key_value".to_string(),
-            Value::from("primary_key_value"),
-        ),
-        ("name".to_string(), Value::from("row_name")),
-    ])))]);
+    .attributes(BatchUpsertRowsRequestDataAttributes::new(
+        BTreeMap::from([]),
+    ))]);
     let configuration = datadog::Configuration::new();
     let api = ReferenceTablesAPI::with_config(configuration);
     let resp = api.upsert_rows("id".to_string(), body).await;
@@ -3832,13 +3809,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3855,10 +3832,7 @@ const params: v2.ReferenceTablesApiUpsertRowsRequest = {
     data: [
       {
         attributes: {
-          values: {
-            example_key_value: "primary_key_value",
-            name: "row_name",
-          },
+          values: {},
         },
         id: "primary_key_value",
         type: "row",
@@ -3876,7 +3850,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3937,7 +3911,7 @@ Delete multiple rows from a Reference Table by their primary key values.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3966,7 +3940,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3991,7 +3965,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4016,7 +3990,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4041,7 +4015,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4066,7 +4040,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4074,7 +4048,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/reference-tables/tables/${id}/rows" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4090,8 +4064,8 @@ API error response.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4117,13 +4091,13 @@ configuration = Configuration()
 with ApiClient(configuration) as api_client:
     api_instance = ReferenceTablesApi(api_client)
     api_instance.delete_rows(id="id", body=body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete rows returns "Rows deleted successfully" response
@@ -4140,13 +4114,13 @@ body = DatadogAPIClient::V2::BatchDeleteRowsRequestArray.new({
   ],
 })
 p api_instance.delete_rows("id", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete rows returns "Rows deleted successfully" response
@@ -4154,41 +4128,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.BatchDeleteRowsRequestArray{
-		Data: []datadogV2.BatchDeleteRowsRequestData{
-			{
-				Id:   "primary_key_value",
-				Type: datadogV2.TABLEROWRESOURCEDATATYPE_ROW,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewReferenceTablesApi(apiClient)
-	r, err := api.DeleteRows(ctx, "id", body)
+    body := datadogV2.BatchDeleteRowsRequestArray{
+        Data: []datadogV2.BatchDeleteRowsRequestData{
+            {
+                Id:   "primary_key_value",
+                Type: datadogV2.TABLEROWRESOURCEDATATYPE_ROW,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewReferenceTablesApi(apiClient)
+    r, err := api.DeleteRows(ctx, "id", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.DeleteRows`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceTablesApi.DeleteRows`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete rows returns "Rows deleted successfully" response
@@ -4225,13 +4199,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete rows returns "Rows deleted successfully" response
@@ -4256,13 +4230,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4294,7 +4268,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

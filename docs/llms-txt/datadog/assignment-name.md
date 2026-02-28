@@ -64,6 +64,5 @@ const md5 = 'foo';
 const PCKG_OS_NAME = 'foo';
 const _unusedVar = 200;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

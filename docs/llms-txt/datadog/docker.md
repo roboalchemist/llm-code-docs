@@ -111,9 +111,11 @@ If you don't want to collect trace data for a particular service, host, VM, or c
 To remove APM instrumentation and stop sending traces from a specific service:
 
 1. Add the `DD_INSTRUMENT_SERVICE_WITH_APM` environment variable to the service startup command:
+
    ```shell
    docker run -e DD_INSTRUMENT_SERVICE_WITH_APM=false <service_start_command>
    ```
+
 1. Restart the service.
 
 ### Remove APM for all services on the infrastructure{% #remove-apm-for-all-services-on-the-infrastructure %}
@@ -121,13 +123,17 @@ To remove APM instrumentation and stop sending traces from a specific service:
 To stop producing traces, uninstall APM and restart the infrastructure:
 
 1. Run:
+
    ```shell
    dd-container-install --uninstall
    ```
+
 1. Restart Docker:
+
    ```shell
    systemctl restart docker
    ```
+
 Or use the equivalent for your environment.
 
 ## Troubleshooting{% #troubleshooting %}

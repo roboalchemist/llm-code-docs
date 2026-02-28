@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on Backup shadow File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/shadow-`, run the command:

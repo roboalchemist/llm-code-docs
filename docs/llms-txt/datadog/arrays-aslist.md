@@ -40,7 +40,7 @@ class Main {
     public List<Integer> getListOfSomething() {
         List<Integer> myList = new ArrayList<>();
         Integer[] myArray = getArrayFromCall();
-        
+
         foo();
         for (int i = 0; i < myArray.length; i++) {
             myList.add(myArray[i]);
@@ -74,6 +74,5 @@ class Main {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -39,20 +39,20 @@ You do not need to convert the string into a slice of bytes to use `Write`, you 
 package main
 
 func main() {
-	n := 5
-	if !!(n == 5) {
-		fmt.Println("hello")
-	} else if !(!(n == 5)) {
-		fmt.Println("hi")
-	} 
-	
-	if !!true{
-		fmt.Println("howdy")
-	} else if !(!true){
-		fmt.Println("partner")
-	}
+    n := 5
+    if !!(n == 5) {
+        fmt.Println("hello")
+    } else if !(!(n == 5)) {
+        fmt.Println("hi")
+    }
 
-	fmt.Println("goodbye")
+    if !!true{
+        fmt.Println("howdy")
+    } else if !(!true){
+        fmt.Println("partner")
+    }
+
+    fmt.Println("goodbye")
 }
 ```
 
@@ -62,14 +62,13 @@ func main() {
 package main
 
 func main() {
-	n := 5
-	if !(n == 5) {
-		fmt.Println("hello")
-	}
+    n := 5
+    if !(n == 5) {
+        fmt.Println("hello")
+    }
 
-	fmt.Println("goodbye")
+    fmt.Println("goodbye")
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -50,6 +50,5 @@ To comply with this rule, always use the `join` method when your intention is to
 %w[foo bar baz].join(', ')
 # => 'foo, bar, baz'
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -40,13 +40,13 @@ To avoid violations of this rule, ensure that comparisons involving collection s
 ```swift
 if (something.count < 0) {
     // some statement
-} 
+}
 ```
 
 ```swift
 if (something.count >= 0) {
     // some statement
-} 
+}
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -54,14 +54,13 @@ if (something.count >= 0) {
 ```swift
 if (something.count == 0) {
     // some statement
-} 
+}
 ```
 
 ```swift
 if (something.count > 0) {
     // some statement
-} 
+}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

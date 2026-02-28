@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # PostgreSQL instance should have the 'log_disconnections' database flag enabled
- 
+
 ## Description{% #description %}
 
 Enabling the `log_disconnections` setting logs the end of each session, including the session duration.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # 'Create or Update SQL Server Firewall Rule' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance the monitoring of network access changes and reduce the time it takes to identify suspicious activity, it is recommended to create an activity log alert specifically for the "Create or Update SQL Server Firewall Rule" event. By enabling this alert, you gain valuable insights into modifications made to SQL Server firewall rules. It is important to note that enabling this alert may lead to a substantial increase in log size if there are numerous administrative actions on a server. However, the benefits of improved security monitoring outweigh the potential impact on log size.

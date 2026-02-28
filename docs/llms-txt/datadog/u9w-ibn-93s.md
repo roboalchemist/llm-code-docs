@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet.conf file should be owned by root
-Classification:complianceFramework:cis-kubernetesControl:4.1.6 
+Classification:complianceFramework:cis-kubernetesControl:4.1.6
 ## Description{% #description %}
 
 Ensure that the `kubelet.conf` file ownership is set to `root:root`.

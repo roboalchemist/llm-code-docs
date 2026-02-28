@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > EBS volumes should be encryp
 ---
 
 # EBS volumes should be encrypted
- 
+
 ## Description{% #description %}
 
 Enable encryption for Elastic Block Store (EBS) by default in the region. EBS uses AES-256 encryption to protect data stored on volumes, disk I/O, and snapshots, safeguarding your sensitive data from exploits and unauthorized users.

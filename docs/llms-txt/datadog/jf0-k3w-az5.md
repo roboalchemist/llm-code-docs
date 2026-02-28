@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for power off events
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Power Off Virtual Machine event.

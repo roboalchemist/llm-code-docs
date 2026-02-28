@@ -85,8 +85,8 @@ Resources:
         - subnet-e7e761ac
       RemoteAccess:
         Ec2SshKey: ED25519
-        SourceSecurityGroups: 
-          - !Ref SSHAccessToNodeSG                            
+        SourceSecurityGroups:
+          - !Ref SSHAccessToNodeSG
 ```
 
 ```json

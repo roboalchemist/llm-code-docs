@@ -44,6 +44,5 @@ MAINTAINER Jean Bar <jean@bar.fr>
 ```docker
 LABEL maintainer="Jean Bar <jean@bar.fr>"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

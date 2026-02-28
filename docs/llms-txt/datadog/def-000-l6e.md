@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM policy with administrative privileges is not attached to any principal
- 
+
 ## Description{% #description %}
 
 A privileged IAM policy exists but is not attached to any principal.

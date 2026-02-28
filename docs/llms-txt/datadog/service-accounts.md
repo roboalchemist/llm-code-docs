@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Service Accounts
 ---
 
-# Service Accounts
-
 Create, edit, and disable service accounts. See the [Service Accounts page](https://docs.datadoghq.com/account_management/org_settings/service_accounts/) for more information.
 
 ## Create a service account{% #create-a-service-account %}
@@ -31,8 +29,6 @@ Create a service account for your organization. This endpoint requires the `serv
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -87,79 +83,80 @@ OK
 {% tab title="Model" %}
 Response containing information about a single user.
 
-| Parent field  | Field                  | Type            | Description                                                                           |
-| ------------- | ---------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                   | object          | User object returned by the API.                                                      |
-| data          | attributes             | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at             | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled               | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                  | string          | Email of the user.                                                                    |
-| attributes    | handle                 | string          | Handle of the user.                                                                   |
-| attributes    | icon                   | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time        | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled            | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at            | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                   | string          | Name of the user.                                                                     |
-| attributes    | service_account        | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                 | string          | Status of the user.                                                                   |
-| attributes    | title                  | string          | Title of the user.                                                                    |
-| attributes    | verified               | boolean         | Whether the user is verified.                                                         |
-| data          | id                     | string          | ID of the user.                                                                       |
-| data          | relationships          | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                    | object          | Relationship to an organization.                                                      |
-| org           | data [*required*] | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs             | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*] | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users            | object          | Relationship to users.                                                                |
-| other_users   | data [*required*] | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]   | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*] | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                  | object          | Relationship to roles.                                                                |
-| roles         | data                   | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                     | string          | The unique identifier of the role.                                                    |
-| data          | type                   | enum            | Roles type. Allowed enum values: `roles`                                              |
-| data          | type                   | enum            | Users resource type. Allowed enum values: `users`                                     |
-|               | included               | [ <oneOf>] | Array of objects related to the user.                                                 |
-| included      | Option 1               | object          | Organization object.                                                                  |
-| Option 1      | attributes             | object          | Attributes of the organization.                                                       |
-| attributes    | created_at             | date-time       | Creation time of the organization.                                                    |
-| attributes    | description            | string          | Description of the organization.                                                      |
-| attributes    | disabled               | boolean         | Whether or not the organization is disabled.                                          |
-| attributes    | modified_at            | date-time       | Time of last organization modification.                                               |
-| attributes    | name                   | string          | Name of the organization.                                                             |
-| attributes    | public_id              | string          | Public ID of the organization.                                                        |
-| attributes    | sharing                | string          | Sharing type of the organization.                                                     |
-| attributes    | url                    | string          | URL of the site that this organization exists at.                                     |
-| Option 1      | id                     | string          | ID of the organization.                                                               |
-| Option 1      | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| included      | Option 2               | object          | Permission object.                                                                    |
-| Option 2      | attributes             | object          | Attributes of a permission.                                                           |
-| attributes    | created                | date-time       | Creation time of the permission.                                                      |
-| attributes    | description            | string          | Description of the permission.                                                        |
-| attributes    | display_name           | string          | Displayed name for the permission.                                                    |
-| attributes    | display_type           | string          | Display type.                                                                         |
-| attributes    | group_name             | string          | Name of the permission group.                                                         |
-| attributes    | name                   | string          | Name of the permission.                                                               |
-| attributes    | restricted             | boolean         | Whether or not the permission is restricted.                                          |
-| Option 2      | id                     | string          | ID of the permission.                                                                 |
-| Option 2      | type [*required*] | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| included      | Option 3               | object          | Role object returned by the API.                                                      |
-| Option 3      | attributes             | object          | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time       | Time of last role modification.                                                       |
-| attributes    | name                   | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64           | Number of users with that role.                                                       |
-| Option 3      | id                     | string          | The unique identifier of the role.                                                    |
-| Option 3      | relationships          | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]        | Relationships to permission objects.                                                  |
-| data          | id                     | string          | ID of the permission.                                                                 |
-| data          | type                   | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 3      | type [*required*] | enum            | Roles type. Allowed enum values: `roles`                                              |
+| Parent field  | Field                     | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | object          | User object returned by the API.                                                                                                                                                                                                                                                              |
+| data          | attributes                | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                  | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                     | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                    | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                      | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time           | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled               | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at               | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                      | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account           | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                    | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                     | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                  | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| data          | id                        | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| data          | relationships             | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                       | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]    | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]    | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users               | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]    | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]      | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                     | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                      | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                      | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| data          | type                      | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+|               | included                  | [ <oneOf>] | Array of objects related to the user.                                                                                                                                                                                                                                                         |
+| included      | Option 1                  | object          | Organization object.                                                                                                                                                                                                                                                                          |
+| Option 1      | attributes                | object          | Attributes of the organization.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                | date-time       | Creation time of the organization.                                                                                                                                                                                                                                                            |
+| attributes    | description               | string          | Description of the organization.                                                                                                                                                                                                                                                              |
+| attributes    | disabled                  | boolean         | Whether or not the organization is disabled.                                                                                                                                                                                                                                                  |
+| attributes    | modified_at               | date-time       | Time of last organization modification.                                                                                                                                                                                                                                                       |
+| attributes    | name                      | string          | Name of the organization.                                                                                                                                                                                                                                                                     |
+| attributes    | public_id                 | string          | Public ID of the organization.                                                                                                                                                                                                                                                                |
+| attributes    | sharing                   | string          | Sharing type of the organization.                                                                                                                                                                                                                                                             |
+| attributes    | url                       | string          | URL of the site that this organization exists at.                                                                                                                                                                                                                                             |
+| Option 1      | id                        | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| Option 1      | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| included      | Option 2                  | object          | Permission object.                                                                                                                                                                                                                                                                            |
+| Option 2      | attributes                | object          | Attributes of a permission.                                                                                                                                                                                                                                                                   |
+| attributes    | created                   | date-time       | Creation time of the permission.                                                                                                                                                                                                                                                              |
+| attributes    | description               | string          | Description of the permission.                                                                                                                                                                                                                                                                |
+| attributes    | display_name              | string          | Displayed name for the permission.                                                                                                                                                                                                                                                            |
+| attributes    | display_type              | string          | Display type.                                                                                                                                                                                                                                                                                 |
+| attributes    | group_name                | string          | Name of the permission group.                                                                                                                                                                                                                                                                 |
+| attributes    | name                      | string          | Name of the permission.                                                                                                                                                                                                                                                                       |
+| attributes    | restricted                | boolean         | Whether or not the permission is restricted.                                                                                                                                                                                                                                                  |
+| Option 2      | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| Option 2      | type [*required*]    | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| included      | Option 3                  | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 3      | attributes                | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 3      | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 3      | relationships             | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 3      | type [*required*]    | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -318,7 +315,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -346,8 +343,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a service account returns "OK" response
@@ -355,52 +352,52 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.ServiceAccountCreateRequest{
-		Data: datadogV2.ServiceAccountCreateData{
-			Type: datadogV2.USERSTYPE_USERS,
-			Attributes: datadogV2.ServiceAccountCreateAttributes{
-				Name:           datadog.PtrString("Test API Client"),
-				Email:          "Example-Service-Account@datadoghq.com",
-				ServiceAccount: true,
-			},
-			Relationships: &datadogV2.UserRelationships{
-				Roles: &datadogV2.RelationshipToRoles{
-					Data: []datadogV2.RelationshipToRoleData{
-						{
-							Id:   datadog.PtrString(RoleDataID),
-							Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.CreateServiceAccount(ctx, body)
+    body := datadogV2.ServiceAccountCreateRequest{
+        Data: datadogV2.ServiceAccountCreateData{
+            Type: datadogV2.USERSTYPE_USERS,
+            Attributes: datadogV2.ServiceAccountCreateAttributes{
+                Name:           datadog.PtrString("Test API Client"),
+                Email:          "Example-Service-Account@datadoghq.com",
+                ServiceAccount: true,
+            },
+            Relationships: &datadogV2.UserRelationships{
+                Roles: &datadogV2.RelationshipToRoles{
+                    Data: []datadogV2.RelationshipToRoleData{
+                        {
+                            Id:   datadog.PtrString(RoleDataID),
+                            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.CreateServiceAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccount`:\n%s\n", responseContent)
 }
 ```
 
@@ -408,7 +405,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a service account returns "OK" response
@@ -473,7 +470,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -528,7 +525,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a service account returns "OK" response
@@ -566,7 +563,7 @@ p api_instance.create_service_account(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a service account returns "OK" response
@@ -616,7 +613,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -704,76 +701,77 @@ OK
 {% tab title="Model" %}
 Response for retrieving a partial application key.
 
-| Parent field  | Field                        | Type            | Description                                                                           |
-| ------------- | ---------------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                         | object          | Partial Datadog application key.                                                      |
-| data          | attributes                   | object          | Attributes of a partial application key.                                              |
-| attributes    | created_at                   | string          | Creation date of the application key.                                                 |
-| attributes    | last4                        | string          | The last four characters of the application key.                                      |
-| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                          |
-| attributes    | name                         | string          | Name of the application key.                                                          |
-| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                         |
-| data          | id                           | string          | ID of the application key.                                                            |
-| data          | relationships                | object          | Resources related to the application key.                                             |
-| relationships | owned_by                     | object          | Relationship to user.                                                                 |
-| owned_by      | data [*required*]       | object          | Relationship to user object.                                                          |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`               |
-|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                      |
-| included      | Option 1                     | object          | User object returned by the API.                                                      |
-| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at                   | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                        | string          | Email of the user.                                                                    |
-| attributes    | handle                       | string          | Handle of the user.                                                                   |
-| attributes    | icon                         | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                         | string          | Name of the user.                                                                     |
-| attributes    | service_account              | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                       | string          | Status of the user.                                                                   |
-| attributes    | title                        | string          | Title of the user.                                                                    |
-| attributes    | verified                     | boolean         | Whether the user is verified.                                                         |
-| Option 1      | id                           | string          | ID of the user.                                                                       |
-| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                          | object          | Relationship to an organization.                                                      |
-| org           | data [*required*]       | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs                   | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users                  | object          | Relationship to users.                                                                |
-| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                        | object          | Relationship to roles.                                                                |
-| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                           | string          | The unique identifier of the role.                                                    |
-| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                              |
-| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                     |
-| included      | Option 2                     | object          | Role object returned by the API.                                                      |
-| Option 2      | attributes                   | object          | Attributes of the role.                                                               |
-| attributes    | created_at                   | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at                  | date-time       | Time of last role modification.                                                       |
-| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count                   | int64           | Number of users with that role.                                                       |
-| Option 2      | id                           | string          | The unique identifier of the role.                                                    |
-| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                         | [object]        | Relationships to permission objects.                                                  |
-| data          | id                           | string          | ID of the permission.                                                                 |
-| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                              |
-| included      | Option 3                     | object          | The definition of LeakedKey object.                                                   |
-| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                         |
-| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                         |
-| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                  |
-| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                     |
-| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`            |
+| Parent field  | Field                        | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                         | object          | Partial Datadog application key.                                                                                                                                                                                                                                                              |
+| data          | attributes                   | object          | Attributes of a partial application key.                                                                                                                                                                                                                                                      |
+| attributes    | created_at                   | string          | Creation date of the application key.                                                                                                                                                                                                                                                         |
+| attributes    | last4                        | string          | The last four characters of the application key.                                                                                                                                                                                                                                              |
+| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                                                                                                                                                                                                                                  |
+| attributes    | name                         | string          | Name of the application key.                                                                                                                                                                                                                                                                  |
+| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                                                                                                                                                                                                                                 |
+| data          | id                           | string          | ID of the application key.                                                                                                                                                                                                                                                                    |
+| data          | relationships                | object          | Resources related to the application key.                                                                                                                                                                                                                                                     |
+| relationships | owned_by                     | object          | Relationship to user.                                                                                                                                                                                                                                                                         |
+| owned_by      | data [*required*]       | object          | Relationship to user object.                                                                                                                                                                                                                                                                  |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`                                                                                                                                                                                                                       |
+|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                                                                                                                                                                                                                              |
+| included      | Option 1                     | object          | User object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                   | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                        | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                       | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                         | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                         | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account              | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                       | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                        | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                     | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| Option 1      | id                           | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                          | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]       | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                   | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users                  | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                        | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| included      | Option 2                     | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 2      | attributes                   | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                   | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from    | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                   | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 2      | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| included      | Option 3                     | object          | The definition of LeakedKey object.                                                                                                                                                                                                                                                           |
+| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                                                                                                                                                                                                                                 |
+| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                                                                                                                                                                                                                                 |
+| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                                                                                                                                                                                                                          |
+| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                                                                                                                                                                                                                             |
+| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`                                                                                                                                                                                                                    |
 
 {% /tab %}
 
@@ -941,13 +939,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"export app_key_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys/${app_key_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -979,7 +977,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get one application key for this service account returns "OK" response
@@ -999,7 +997,7 @@ p api_instance.get_service_account_application_key(SERVICE_ACCOUNT_USER_DATA_ID,
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get one application key for this service account returns "OK" response
@@ -1007,35 +1005,35 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	// there is a valid "service_account_application_key" for "service_account_user"
-	ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
+    // there is a valid "service_account_application_key" for "service_account_user"
+    ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.GetServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.GetServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.GetServiceAccountApplicationKey`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.GetServiceAccountApplicationKey`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.GetServiceAccountApplicationKey`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.GetServiceAccountApplicationKey`:\n%s\n", responseContent)
 }
 ```
 
@@ -1043,7 +1041,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get one application key for this service account returns "OK" response
@@ -1086,7 +1084,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get one application key for this service account returns "OK" response
@@ -1121,7 +1119,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1193,8 +1191,6 @@ Edit an application key owned by this service account. This endpoint requires th
 
 #### Body Data (required)
 
-
-
 {% tab title="Model" %}
 
 | Parent field | Field                        | Type     | Description                                                             |
@@ -1231,76 +1227,77 @@ OK
 {% tab title="Model" %}
 Response for retrieving a partial application key.
 
-| Parent field  | Field                        | Type            | Description                                                                           |
-| ------------- | ---------------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                         | object          | Partial Datadog application key.                                                      |
-| data          | attributes                   | object          | Attributes of a partial application key.                                              |
-| attributes    | created_at                   | string          | Creation date of the application key.                                                 |
-| attributes    | last4                        | string          | The last four characters of the application key.                                      |
-| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                          |
-| attributes    | name                         | string          | Name of the application key.                                                          |
-| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                         |
-| data          | id                           | string          | ID of the application key.                                                            |
-| data          | relationships                | object          | Resources related to the application key.                                             |
-| relationships | owned_by                     | object          | Relationship to user.                                                                 |
-| owned_by      | data [*required*]       | object          | Relationship to user object.                                                          |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`               |
-|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                      |
-| included      | Option 1                     | object          | User object returned by the API.                                                      |
-| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at                   | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                        | string          | Email of the user.                                                                    |
-| attributes    | handle                       | string          | Handle of the user.                                                                   |
-| attributes    | icon                         | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                         | string          | Name of the user.                                                                     |
-| attributes    | service_account              | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                       | string          | Status of the user.                                                                   |
-| attributes    | title                        | string          | Title of the user.                                                                    |
-| attributes    | verified                     | boolean         | Whether the user is verified.                                                         |
-| Option 1      | id                           | string          | ID of the user.                                                                       |
-| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                          | object          | Relationship to an organization.                                                      |
-| org           | data [*required*]       | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs                   | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users                  | object          | Relationship to users.                                                                |
-| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                        | object          | Relationship to roles.                                                                |
-| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                           | string          | The unique identifier of the role.                                                    |
-| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                              |
-| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                     |
-| included      | Option 2                     | object          | Role object returned by the API.                                                      |
-| Option 2      | attributes                   | object          | Attributes of the role.                                                               |
-| attributes    | created_at                   | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at                  | date-time       | Time of last role modification.                                                       |
-| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count                   | int64           | Number of users with that role.                                                       |
-| Option 2      | id                           | string          | The unique identifier of the role.                                                    |
-| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                         | [object]        | Relationships to permission objects.                                                  |
-| data          | id                           | string          | ID of the permission.                                                                 |
-| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                              |
-| included      | Option 3                     | object          | The definition of LeakedKey object.                                                   |
-| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                         |
-| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                         |
-| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                  |
-| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                     |
-| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`            |
+| Parent field  | Field                        | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                         | object          | Partial Datadog application key.                                                                                                                                                                                                                                                              |
+| data          | attributes                   | object          | Attributes of a partial application key.                                                                                                                                                                                                                                                      |
+| attributes    | created_at                   | string          | Creation date of the application key.                                                                                                                                                                                                                                                         |
+| attributes    | last4                        | string          | The last four characters of the application key.                                                                                                                                                                                                                                              |
+| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                                                                                                                                                                                                                                  |
+| attributes    | name                         | string          | Name of the application key.                                                                                                                                                                                                                                                                  |
+| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                                                                                                                                                                                                                                 |
+| data          | id                           | string          | ID of the application key.                                                                                                                                                                                                                                                                    |
+| data          | relationships                | object          | Resources related to the application key.                                                                                                                                                                                                                                                     |
+| relationships | owned_by                     | object          | Relationship to user.                                                                                                                                                                                                                                                                         |
+| owned_by      | data [*required*]       | object          | Relationship to user object.                                                                                                                                                                                                                                                                  |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`                                                                                                                                                                                                                       |
+|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                                                                                                                                                                                                                              |
+| included      | Option 1                     | object          | User object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                   | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                        | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                       | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                         | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                         | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account              | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                       | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                        | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                     | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| Option 1      | id                           | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                          | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]       | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                   | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users                  | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                        | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| included      | Option 2                     | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 2      | attributes                   | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                   | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from    | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                   | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 2      | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| included      | Option 3                     | object          | The definition of LeakedKey object.                                                                                                                                                                                                                                                           |
+| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                                                                                                                                                                                                                                 |
+| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                                                                                                                                                                                                                                 |
+| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                                                                                                                                                                                                                          |
+| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                                                                                                                                                                                                                             |
+| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`                                                                                                                                                                                                                    |
 
 {% /tab %}
 
@@ -1493,7 +1490,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"export app_key_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys/${app_key_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1510,8 +1507,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Edit an application key for this service account returns "OK" response
@@ -1519,44 +1516,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	// there is a valid "service_account_application_key" for "service_account_user"
-	ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
+    // there is a valid "service_account_application_key" for "service_account_user"
+    ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
 
-	body := datadogV2.ApplicationKeyUpdateRequest{
-		Data: datadogV2.ApplicationKeyUpdateData{
-			Id:   ServiceAccountApplicationKeyDataID,
-			Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
-			Attributes: datadogV2.ApplicationKeyUpdateAttributes{
-				Name: datadog.PtrString("Application Key for managing dashboards-updated"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.UpdateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID, body)
+    body := datadogV2.ApplicationKeyUpdateRequest{
+        Data: datadogV2.ApplicationKeyUpdateData{
+            Id:   ServiceAccountApplicationKeyDataID,
+            Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
+            Attributes: datadogV2.ApplicationKeyUpdateAttributes{
+                Name: datadog.PtrString("Application Key for managing dashboards-updated"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.UpdateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.UpdateServiceAccountApplicationKey`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.UpdateServiceAccountApplicationKey`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.UpdateServiceAccountApplicationKey`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.UpdateServiceAccountApplicationKey`:\n%s\n", responseContent)
 }
 ```
 
@@ -1564,7 +1561,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Edit an application key for this service account returns "OK" response
@@ -1623,7 +1620,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1669,7 +1666,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Edit an application key for this service account returns "OK" response
@@ -1700,7 +1697,7 @@ p api_instance.update_service_account_application_key(SERVICE_ACCOUNT_USER_DATA_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Edit an application key for this service account returns "OK" response
@@ -1746,7 +1743,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1906,12 +1903,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"export app_key_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys/${app_key_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1941,7 +1938,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an application key for this service account returns "No Content" response
@@ -1961,7 +1958,7 @@ api_instance.delete_service_account_application_key(SERVICE_ACCOUNT_USER_DATA_ID
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an application key for this service account returns "No Content" response
@@ -1969,31 +1966,31 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	// there is a valid "service_account_application_key" for "service_account_user"
-	ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
+    // there is a valid "service_account_application_key" for "service_account_user"
+    ServiceAccountApplicationKeyDataID := os.Getenv("SERVICE_ACCOUNT_APPLICATION_KEY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	r, err := api.DeleteServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    r, err := api.DeleteServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, ServiceAccountApplicationKeyDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteServiceAccountApplicationKey`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteServiceAccountApplicationKey`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2001,7 +1998,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an application key for this service account returns "No Content" response
@@ -2041,7 +2038,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an application key for this service account returns "No Content" response
@@ -2076,7 +2073,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2147,8 +2144,6 @@ Create an application key for this service account. This endpoint requires the `
 
 #### Body Data (required)
 
-
-
 {% tab title="Model" %}
 
 | Parent field | Field                        | Type     | Description                                                             |
@@ -2162,7 +2157,7 @@ Create an application key for this service account. This endpoint requires the `
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -2175,7 +2170,7 @@ Create an application key for this service account. This endpoint requires the `
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2202,77 +2197,78 @@ Created
 {% tab title="Model" %}
 Response for retrieving an application key.
 
-| Parent field  | Field                        | Type            | Description                                                                           |
-| ------------- | ---------------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                         | object          | Datadog application key.                                                              |
-| data          | attributes                   | object          | Attributes of a full application key.                                                 |
-| attributes    | created_at                   | date-time       | Creation date of the application key.                                                 |
-| attributes    | key                          | string          | The application key.                                                                  |
-| attributes    | last4                        | string          | The last four characters of the application key.                                      |
-| attributes    | last_used_at                 | date-time       | Last usage timestamp of the application key.                                          |
-| attributes    | name                         | string          | Name of the application key.                                                          |
-| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                         |
-| data          | id                           | string          | ID of the application key.                                                            |
-| data          | relationships                | object          | Resources related to the application key.                                             |
-| relationships | owned_by                     | object          | Relationship to user.                                                                 |
-| owned_by      | data [*required*]       | object          | Relationship to user object.                                                          |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`               |
-|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                      |
-| included      | Option 1                     | object          | User object returned by the API.                                                      |
-| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at                   | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                        | string          | Email of the user.                                                                    |
-| attributes    | handle                       | string          | Handle of the user.                                                                   |
-| attributes    | icon                         | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                         | string          | Name of the user.                                                                     |
-| attributes    | service_account              | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                       | string          | Status of the user.                                                                   |
-| attributes    | title                        | string          | Title of the user.                                                                    |
-| attributes    | verified                     | boolean         | Whether the user is verified.                                                         |
-| Option 1      | id                           | string          | ID of the user.                                                                       |
-| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                          | object          | Relationship to an organization.                                                      |
-| org           | data [*required*]       | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs                   | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users                  | object          | Relationship to users.                                                                |
-| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                        | object          | Relationship to roles.                                                                |
-| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                           | string          | The unique identifier of the role.                                                    |
-| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                              |
-| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                     |
-| included      | Option 2                     | object          | Role object returned by the API.                                                      |
-| Option 2      | attributes                   | object          | Attributes of the role.                                                               |
-| attributes    | created_at                   | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at                  | date-time       | Time of last role modification.                                                       |
-| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count                   | int64           | Number of users with that role.                                                       |
-| Option 2      | id                           | string          | The unique identifier of the role.                                                    |
-| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                         | [object]        | Relationships to permission objects.                                                  |
-| data          | id                           | string          | ID of the permission.                                                                 |
-| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                              |
-| included      | Option 3                     | object          | The definition of LeakedKey object.                                                   |
-| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                         |
-| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                         |
-| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                  |
-| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                     |
-| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`            |
+| Parent field  | Field                        | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                         | object          | Datadog application key.                                                                                                                                                                                                                                                                      |
+| data          | attributes                   | object          | Attributes of a full application key.                                                                                                                                                                                                                                                         |
+| attributes    | created_at                   | date-time       | Creation date of the application key.                                                                                                                                                                                                                                                         |
+| attributes    | key                          | string          | The application key.                                                                                                                                                                                                                                                                          |
+| attributes    | last4                        | string          | The last four characters of the application key.                                                                                                                                                                                                                                              |
+| attributes    | last_used_at                 | date-time       | Last usage timestamp of the application key.                                                                                                                                                                                                                                                  |
+| attributes    | name                         | string          | Name of the application key.                                                                                                                                                                                                                                                                  |
+| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                                                                                                                                                                                                                                 |
+| data          | id                           | string          | ID of the application key.                                                                                                                                                                                                                                                                    |
+| data          | relationships                | object          | Resources related to the application key.                                                                                                                                                                                                                                                     |
+| relationships | owned_by                     | object          | Relationship to user.                                                                                                                                                                                                                                                                         |
+| owned_by      | data [*required*]       | object          | Relationship to user object.                                                                                                                                                                                                                                                                  |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`                                                                                                                                                                                                                       |
+|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                                                                                                                                                                                                                              |
+| included      | Option 1                     | object          | User object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                   | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                        | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                       | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                         | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                         | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account              | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                       | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                        | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                     | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| Option 1      | id                           | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                          | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]       | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                   | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users                  | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                        | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| included      | Option 2                     | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 2      | attributes                   | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                   | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from    | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                   | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 2      | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| included      | Option 3                     | object          | The definition of LeakedKey object.                                                                                                                                                                                                                                                           |
+| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                                                                                                                                                                                                                                 |
+| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                                                                                                                                                                                                                                 |
+| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                                                                                                                                                                                                                          |
+| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                                                                                                                                                                                                                             |
+| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`                                                                                                                                                                                                                    |
 
 {% /tab %}
 
@@ -2441,7 +2437,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2457,8 +2453,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2479,8 +2475,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an application key for this service account returns "Created" response
@@ -2488,44 +2484,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	body := datadogV2.ApplicationKeyCreateRequest{
-		Data: datadogV2.ApplicationKeyCreateData{
-			Attributes: datadogV2.ApplicationKeyCreateAttributes{
-				Name: "Example-Service-Account",
-			},
-			Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.CreateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, body)
+    body := datadogV2.ApplicationKeyCreateRequest{
+        Data: datadogV2.ApplicationKeyCreateData{
+            Attributes: datadogV2.ApplicationKeyCreateAttributes{
+                Name: "Example-Service-Account",
+            },
+            Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.CreateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccountApplicationKey`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccountApplicationKey`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccountApplicationKey`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccountApplicationKey`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create an application key with scopes for this service account returns "Created" response
@@ -2533,45 +2529,45 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	body := datadogV2.ApplicationKeyCreateRequest{
-		Data: datadogV2.ApplicationKeyCreateData{
-			Attributes: datadogV2.ApplicationKeyCreateAttributes{
-				Name: "Example-Service-Account",
-				Scopes: *datadog.NewNullableList(&[]string{
-					"dashboards_read",
-					"dashboards_write",
-					"dashboards_public_share",
-				}),
-			},
-			Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.CreateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, body)
+    body := datadogV2.ApplicationKeyCreateRequest{
+        Data: datadogV2.ApplicationKeyCreateData{
+            Attributes: datadogV2.ApplicationKeyCreateAttributes{
+                Name: "Example-Service-Account",
+                Scopes: *datadog.NewNullableList(&[]string{
+                    "dashboards_read",
+                    "dashboards_write",
+                    "dashboards_public_share",
+                }),
+            },
+            Type: datadogV2.APPLICATIONKEYSTYPE_APPLICATION_KEYS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.CreateServiceAccountApplicationKey(ctx, ServiceAccountUserDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccountApplicationKey`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.CreateServiceAccountApplicationKey`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccountApplicationKey`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.CreateServiceAccountApplicationKey`:\n%s\n", responseContent)
 }
 ```
 
@@ -2579,7 +2575,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an application key for this service account returns "Created" response
@@ -2625,7 +2621,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create an application key with scopes for this service account returns "Created" response
@@ -2682,7 +2678,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2719,7 +2715,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2765,7 +2761,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an application key for this service account returns "Created" response
@@ -2787,7 +2783,7 @@ body = DatadogAPIClient::V2::ApplicationKeyCreateRequest.new({
 p api_instance.create_service_account_application_key(SERVICE_ACCOUNT_USER_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an application key with scopes for this service account returns "Created" response
@@ -2818,7 +2814,7 @@ p api_instance.create_service_account_application_key(SERVICE_ACCOUNT_USER_DATA_
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an application key for this service account returns "Created" response
@@ -2850,7 +2846,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create an application key with scopes for this service account returns
@@ -2893,7 +2889,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2931,7 +2927,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3024,80 +3020,81 @@ OK
 {% tab title="Model" %}
 Response for a list of application keys.
 
-| Parent field  | Field                        | Type            | Description                                                                           |
-| ------------- | ---------------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                         | [object]        | Array of application keys.                                                            |
-| data          | attributes                   | object          | Attributes of a partial application key.                                              |
-| attributes    | created_at                   | string          | Creation date of the application key.                                                 |
-| attributes    | last4                        | string          | The last four characters of the application key.                                      |
-| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                          |
-| attributes    | name                         | string          | Name of the application key.                                                          |
-| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                         |
-| data          | id                           | string          | ID of the application key.                                                            |
-| data          | relationships                | object          | Resources related to the application key.                                             |
-| relationships | owned_by                     | object          | Relationship to user.                                                                 |
-| owned_by      | data [*required*]       | object          | Relationship to user object.                                                          |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`               |
-|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                      |
-| included      | Option 1                     | object          | User object returned by the API.                                                      |
-| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at                   | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                        | string          | Email of the user.                                                                    |
-| attributes    | handle                       | string          | Handle of the user.                                                                   |
-| attributes    | icon                         | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                         | string          | Name of the user.                                                                     |
-| attributes    | service_account              | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                       | string          | Status of the user.                                                                   |
-| attributes    | title                        | string          | Title of the user.                                                                    |
-| attributes    | verified                     | boolean         | Whether the user is verified.                                                         |
-| Option 1      | id                           | string          | ID of the user.                                                                       |
-| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                          | object          | Relationship to an organization.                                                      |
-| org           | data [*required*]       | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs                   | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]         | string          | ID of the organization.                                                               |
-| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users                  | object          | Relationship to users.                                                                |
-| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]         | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                        | object          | Relationship to roles.                                                                |
-| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                           | string          | The unique identifier of the role.                                                    |
-| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                              |
-| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                     |
-| included      | Option 2                     | object          | Role object returned by the API.                                                      |
-| Option 2      | attributes                   | object          | Attributes of the role.                                                               |
-| attributes    | created_at                   | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at                  | date-time       | Time of last role modification.                                                       |
-| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count                   | int64           | Number of users with that role.                                                       |
-| Option 2      | id                           | string          | The unique identifier of the role.                                                    |
-| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                         | [object]        | Relationships to permission objects.                                                  |
-| data          | id                           | string          | ID of the permission.                                                                 |
-| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                              |
-| included      | Option 3                     | object          | The definition of LeakedKey object.                                                   |
-| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                         |
-| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                         |
-| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                  |
-| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                     |
-| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`            |
-|               | meta                         | object          | Additional information related to the application key response.                       |
-| meta          | max_allowed_per_user         | int64           | Max allowed number of application keys per user.                                      |
-| meta          | page                         | object          | Additional information related to the application key response.                       |
-| page          | total_filtered_count         | int64           | Total filtered application key count.                                                 |
+| Parent field  | Field                        | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                         | [object]        | Array of application keys.                                                                                                                                                                                                                                                                    |
+| data          | attributes                   | object          | Attributes of a partial application key.                                                                                                                                                                                                                                                      |
+| attributes    | created_at                   | string          | Creation date of the application key.                                                                                                                                                                                                                                                         |
+| attributes    | last4                        | string          | The last four characters of the application key.                                                                                                                                                                                                                                              |
+| attributes    | last_used_at                 | string          | Last usage timestamp of the application key.                                                                                                                                                                                                                                                  |
+| attributes    | name                         | string          | Name of the application key.                                                                                                                                                                                                                                                                  |
+| attributes    | scopes                       | [string]        | Array of scopes to grant the application key.                                                                                                                                                                                                                                                 |
+| data          | id                           | string          | ID of the application key.                                                                                                                                                                                                                                                                    |
+| data          | relationships                | object          | Resources related to the application key.                                                                                                                                                                                                                                                     |
+| relationships | owned_by                     | object          | Relationship to user.                                                                                                                                                                                                                                                                         |
+| owned_by      | data [*required*]       | object          | Relationship to user object.                                                                                                                                                                                                                                                                  |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| data          | type                         | enum            | Application Keys resource type. Allowed enum values: `application_keys`                                                                                                                                                                                                                       |
+|               | included                     | [ <oneOf>] | Array of objects related to the application key.                                                                                                                                                                                                                                              |
+| included      | Option 1                     | object          | User object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 1      | attributes                   | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                   | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                     | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                        | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                       | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                         | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time              | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled                  | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at                  | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                         | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account              | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                       | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                        | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                     | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| Option 1      | id                           | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| Option 1      | relationships                | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                          | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]       | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                   | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]       | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]         | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]       | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users                  | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]       | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]         | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                        | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                         | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                         | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| Option 1      | type                         | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| included      | Option 2                     | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 2      | attributes                   | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                   | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                         | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from    | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                   | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 2      | id                           | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 2      | relationships                | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions                  | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 2      | type [*required*]       | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| included      | Option 3                     | object          | The definition of LeakedKey object.                                                                                                                                                                                                                                                           |
+| Option 3      | attributes [*required*] | object          | The definition of LeakedKeyAttributes object.                                                                                                                                                                                                                                                 |
+| attributes    | date [*required*]       | date-time       | The LeakedKeyAttributes date.                                                                                                                                                                                                                                                                 |
+| attributes    | leak_source                  | string          | The LeakedKeyAttributes leak_source.                                                                                                                                                                                                                                                          |
+| Option 3      | id [*required*]         | string          | The LeakedKey id.                                                                                                                                                                                                                                                                             |
+| Option 3      | type [*required*]       | enum            | The definition of LeakedKeyType object. Allowed enum values: `leaked_keys`                                                                                                                                                                                                                    |
+|               | meta                         | object          | Additional information related to the application key response.                                                                                                                                                                                                                               |
+| meta          | max_allowed_per_user         | int64           | Max allowed number of application keys per user.                                                                                                                                                                                                                                              |
+| meta          | page                         | object          | Additional information related to the application key response.                                                                                                                                                                                                                               |
+| page          | total_filtered_count         | int64           | Total filtered application key count.                                                                                                                                                                                                                                                         |
 
 {% /tab %}
 
@@ -3298,13 +3295,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service_account_id="00000000-0000-1234-0000-000000000000"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/service_accounts/${service_account_id}/application_keys" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3332,7 +3329,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List application keys for this service account returns "OK" response
@@ -3349,7 +3346,7 @@ p api_instance.list_service_account_application_keys(SERVICE_ACCOUNT_USER_DATA_I
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List application keys for this service account returns "OK" response
@@ -3357,32 +3354,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "service_account_user" in the system
-	ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
+    // there is a valid "service_account_user" in the system
+    ServiceAccountUserDataID := os.Getenv("SERVICE_ACCOUNT_USER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceAccountsApi(apiClient)
-	resp, r, err := api.ListServiceAccountApplicationKeys(ctx, ServiceAccountUserDataID, *datadogV2.NewListServiceAccountApplicationKeysOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceAccountsApi(apiClient)
+    resp, r, err := api.ListServiceAccountApplicationKeys(ctx, ServiceAccountUserDataID, *datadogV2.NewListServiceAccountApplicationKeysOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListServiceAccountApplicationKeys`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListServiceAccountApplicationKeys`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListServiceAccountApplicationKeys`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.ListServiceAccountApplicationKeys`:\n%s\n", responseContent)
 }
 ```
 
@@ -3390,7 +3387,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List application keys for this service account returns "OK" response
@@ -3428,7 +3425,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List application keys for this service account returns "OK" response
@@ -3460,7 +3457,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

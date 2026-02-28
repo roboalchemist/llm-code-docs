@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The Docker server certificate file should have read-only or more restrictive permissions
-Classification:complianceFramework:cis-dockerControl:3.12 
+Classification:complianceFramework:cis-dockerControl:3.12
 ## Description{% #description %}
 
 You should verify that the Docker server certificate file, the file that is passed along with the `--tlscert` parameter, has permissions of 444 or more restrictive permissions.

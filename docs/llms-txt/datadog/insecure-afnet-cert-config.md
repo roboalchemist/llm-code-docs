@@ -52,38 +52,38 @@ import AFNetworking
 class NetworkManager {
     func createInsecureSessionWithDefaultPolicy() -> AFHTTPSessionManager {
         let manager = AFHTTPSessionManager()
-        
+
         // NON-COMPLIANT: The default policy has pinning disabled (AFSSLPinningMode.none).
         // This will be flagged by the rule.
         manager.securityPolicy = AFSecurityPolicy.default()
-        
+
         return manager
     }
-    
+
     func createInsecureSessionWithInvalidCerts() -> AFHTTPSessionManager {
         let manager = AFHTTPSessionManager()
-        
+
         // This policy seems secure at first glance...
         let policy = AFSecurityPolicy(pinningMode: .publicKey)
-        
+
         // NON-COMPLIANT: ...but setting allowInvalidCertificates to true bypasses all
         // certificate validation, making pinning useless. This will be flagged.
         policy.allowInvalidCertificates = true
-        
+
         manager.securityPolicy = policy
         return manager
     }
 
     func createInsecureSessionWithNoDomainValidation() -> AFHTTPSessionManager {
         let manager = AFHTTPSessionManager()
-        
+
         let policy = AFSecurityPolicy(pinningMode: .publicKey)
-        
+
         // NON-COMPLIANT: Disabling domain name validation is a security risk,
         // as it allows a certificate for a different domain to be accepted.
         // This will be flagged by the rule.
         policy.validatesDomainName = false
-        
+
         manager.securityPolicy = policy
         return manager
     }
@@ -99,7 +99,7 @@ class SecureNetworkManager {
 
     func createSecureSessionManager() -> AFHTTPSessionManager {
         let manager = AFHTTPSessionManager()
-        
+
         // COMPLIANT: Initialize the policy with a secure pinning mode,
         // such as .publicKey or .certificate.
         let policy = AFSecurityPolicy(pinningMode: .publicKey)
@@ -107,11 +107,11 @@ class SecureNetworkManager {
         // COMPLIANT: Ensure that self-signed or otherwise invalid certificates are not allowed.
         // This is the default, but it is good practice to be explicit.
         policy.allowInvalidCertificates = false
-        
+
         // COMPLIANT: Ensure that the certificate's domain name is validated against the server's domain.
         // This is also the default.
         policy.validatesDomainName = true
-        
+
         // To complete the implementation, you must provide the public keys or certificates
         // of the servers you want to trust.
         // For example, load certificates from your app's bundle.
@@ -122,9 +122,9 @@ class SecureNetworkManager {
             // For security, you might want to prevent the manager from being used.
             fatalError("Could not load pinned certificates.")
         }
-        
+
         manager.securityPolicy = policy
-        
+
         return manager
     }
 
@@ -142,6 +142,5 @@ class SecureNetworkManager {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

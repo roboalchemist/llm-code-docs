@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The controller-manager.conf file should have permissions of 644 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:1.1.17 
+Classification:complianceFramework:cis-kubernetesControl:1.1.17
 ## Description{% #description %}
 
 Ensure that the `controller-manager.conf` file has permissions of 644 or more restrictive.

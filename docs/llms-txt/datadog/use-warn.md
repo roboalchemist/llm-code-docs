@@ -48,6 +48,5 @@ $stderr.puts 'foo bar baz'
 ```ruby
 warn 'foo bar baz'
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

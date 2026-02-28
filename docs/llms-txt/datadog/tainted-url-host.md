@@ -78,6 +78,5 @@ public void safeRedirect(@RequestParam String path) throws MalformedURLException
     URL newUrl = new URL(baseUrl + URLEncoder.encode(path, "UTF-8"));  // Good: User input only affects the path, not the host
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

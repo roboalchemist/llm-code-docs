@@ -13,6 +13,10 @@ You can import the `Response` class like below:
 from scrapling.engines.toolbelt.custom import Response
 ```
 
-## ::: scrapling.engines.toolbelt.custom.Response
+## Response API
+
+```python
+::: scrapling.engines.toolbelt.custom.Response
     handler: python
     :docstring:
+```

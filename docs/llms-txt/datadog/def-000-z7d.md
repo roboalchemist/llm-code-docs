@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure that All Root's Path Directories Are Owned by Root
- 
+
 ## Description{% #description %}
 
 For each element in root's path, run:
 
 ```
 # ls -ld DIR
-         
+
 ```
 
 and ensure that the directory is owned by the root user.

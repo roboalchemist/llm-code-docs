@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instance snapshots should not be publicly shared
- 
+
 ## Description{% #description %}
 
 Secure your Amazon Relational Database Service (RDS) database snapshots by ensuring they are not publicly accessible.

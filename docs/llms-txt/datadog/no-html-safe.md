@@ -50,6 +50,5 @@ To avoid this, use other methods for escaping HTML. For instance, the `h` method
 
 page_content = "<div>hello</div>".html_safe + "<p>world</p>"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

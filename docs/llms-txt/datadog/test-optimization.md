@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > API Reference > Test Optimization
 ---
 
-# Test Optimization
-
 Search and manage flaky tests through Test Optimization. See the [Test Optimization page](https://docs.datadoghq.com/tests/) for more information.
 
 ## Search flaky tests{% #search-flaky-tests %}
@@ -26,31 +24,41 @@ Search and manage flaky tests through Test Optimization. See the [Test Optimizat
 
 ### Overview
 
-List endpoint returning flaky tests from Flaky Test Management. Results are paginated. This endpoint requires the `test_optimization_read` permission.
+List endpoint returning flaky tests from Flaky Test Management. Results are paginated.
 
+The response includes comprehensive test information including:
+
+- Test identification and metadata (module, suite, name)
+- Flaky state and categorization
+- First and last flake occurrences (timestamp, branch, commit SHA)
+- Test execution statistics from the last 7 days (failure rate)
+- Pipeline impact metrics (failed pipelines count, total lost time)
+- Complete status change history (optional, ordered from most recent to oldest)
+
+Set `include_history` to `true` in the request to receive the status change history for each test. History is disabled by default for better performance.
+
+Results support filtering by various facets including service, environment, repository, branch, and test state.
+This endpoint requires the `test_optimization_read` permission.
 OAuth apps require the `test_optimization_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#test-optimization) to access this endpoint.
-
-
 
 ### Request
 
-#### Body Data 
-
-
+#### Body Data
 
 {% tab title="Model" %}
 
-| Parent field | Field      | Type   | Description                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------ | ---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|              | data       | object | The JSON:API data for flaky tests search request.                                                                                                                                                                                                                                                                                                                           |
-| data         | attributes | object | Attributes for the flaky tests search request.                                                                                                                                                                                                                                                                                                                              |
-| attributes   | filter     | object | Search filter settings.                                                                                                                                                                                                                                                                                                                                                     |
-| filter       | query      | string | Search query following log syntax used to filter flaky tests, same as on Flaky Tests Management UI. The supported search keys are:                                                                                                                                                                                                                                          |
-| attributes   | page       | object | Pagination attributes for listing flaky tests.                                                                                                                                                                                                                                                                                                                              |
-| page         | cursor     | string | List following results with a cursor provided in the previous request.                                                                                                                                                                                                                                                                                                      |
-| page         | limit      | int64  | Maximum number of flaky tests in the response.                                                                                                                                                                                                                                                                                                                              |
-| attributes   | sort       | enum   | Parameter for sorting flaky test results. The default sort is by ascending Fully Qualified Name (FQN). The FQN is the concatenation of the test module, suite, and name. Allowed enum values: `fqn,-fqn,first_flaked,-first_flaked,last_flaked,-last_flaked,failure_rate,-failure_rate,pipelines_failed,-pipelines_failed,pipelines_duration_lost,-pipelines_duration_lost` |
-| data         | type       | enum   | The definition of `FlakyTestsSearchRequestDataType` object. Allowed enum values: `search_flaky_tests_request`                                                                                                                                                                                                                                                               |
+| Parent field | Field           | Type    | Description                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------ | --------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|              | data            | object  | The JSON:API data for flaky tests search request.                                                                                                                                                                                                                                                                                                                           |
+| data         | attributes      | object  | Attributes for the flaky tests search request.                                                                                                                                                                                                                                                                                                                              |
+| attributes   | filter          | object  | Search filter settings.                                                                                                                                                                                                                                                                                                                                                     |
+| filter       | query           | string  | Search query following log syntax used to filter flaky tests, same as on Flaky Tests Management UI. The supported search keys are:                                                                                                                                                                                                                                          |
+| attributes   | include_history | boolean | Whether to include the status change history for each flaky test in the response. When set to true, each test will include a `history` array with chronological status changes. Defaults to false.                                                                                                                                                                          |
+| attributes   | page            | object  | Pagination attributes for listing flaky tests.                                                                                                                                                                                                                                                                                                                              |
+| page         | cursor          | string  | List following results with a cursor provided in the previous request.                                                                                                                                                                                                                                                                                                      |
+| page         | limit           | int64   | Maximum number of flaky tests in the response.                                                                                                                                                                                                                                                                                                                              |
+| attributes   | sort            | enum    | Parameter for sorting flaky test results. The default sort is by ascending Fully Qualified Name (FQN). The FQN is the concatenation of the test module, suite, and name. Allowed enum values: `fqn,-fqn,first_flaked,-first_flaked,last_flaked,-last_flaked,failure_rate,-failure_rate,pipelines_failed,-pipelines_failed,pipelines_duration_lost,-pipelines_duration_lost` |
+| data         | type            | enum    | The definition of `FlakyTestsSearchRequestDataType` object. Allowed enum values: `search_flaky_tests_request`                                                                                                                                                                                                                                                               |
 
 {% /tab %}
 
@@ -63,6 +71,7 @@ OAuth apps require the `test_optimization_read` authorization [scope](https://do
       "filter": {
         "query": "flaky_test_state:active @git.repository.id_v2:\"github.com/datadog/shopist\""
       },
+      "include_history": true,
       "page": {
         "cursor": "eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ==",
         "limit": 25
@@ -83,42 +92,46 @@ OK
 {% tab title="Model" %}
 Response object with flaky tests matching the search request.
 
-| Parent field      | Field               | Type     | Description                                                                                                                                                                                                 |
-| ----------------- | ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                   | data                | [object] | Array of flaky tests matching the request.                                                                                                                                                                  |
-| data              | attributes          | object   | Attributes of a flaky test.                                                                                                                                                                                 |
-| attributes        | attempt_to_fix_id   | string   | Unique identifier for the attempt to fix this flaky test. Use this ID in the Git commit message in order to trigger the attempt to fix workflow.                                                            | When the workflow is triggered the test is automatically retried by the tracer a certain number of configurable times. When all retries pass, the test is automatically marked as fixed in Flaky Test Management. Test runs are tagged with @test.test_management.attempt_to_fix_passed and @test.test_management.is_attempt_to_fix when the attempt to fix workflow is triggered. |
-| attributes        | codeowners          | [string] | The name of the test's code owners as inferred from the repository configuration.                                                                                                                           |
-| attributes        | envs                | [string] | List of environments where this test has been flaky.                                                                                                                                                        |
-| attributes        | first_flaked_branch | string   | The branch name where the test exhibited flakiness for the first time.                                                                                                                                      |
-| attributes        | first_flaked_sha    | string   | The commit SHA where the test exhibited flakiness for the first time.                                                                                                                                       |
-| attributes        | first_flaked_ts     | int64    | Unix timestamp when the test exhibited flakiness for the first time.                                                                                                                                        |
-| attributes        | flaky_category      | string   | The category of a flaky test.                                                                                                                                                                               |
-| attributes        | flaky_state         | enum     | The current state of the flaky test. Allowed enum values: `active,fixed,quarantined,disabled`                                                                                                               |
-| attributes        | last_flaked_branch  | string   | The branch name where the test exhibited flakiness for the last time.                                                                                                                                       |
-| attributes        | last_flaked_sha     | string   | The commit SHA where the test exhibited flakiness for the last time.                                                                                                                                        |
-| attributes        | last_flaked_ts      | int64    | Unix timestamp when the test exhibited flakiness for the last time.                                                                                                                                         |
-| attributes        | module              | string   | The name of the test module. The definition of module changes slightly per language:                                                                                                                        |
-| attributes        | name                | string   | The test name. A concise name for a test case. Defined in the test itself.                                                                                                                                  |
-| attributes        | pipeline_stats      | object   | CI pipeline related statistics for the flaky test. This information is only available if test runs are associated with CI pipeline events from CI Visibility.                                               |
-| pipeline_stats    | failed_pipelines    | int64    | The number of pipelines that failed due to this test for the past 7 days. This is computed as the sum of failed CI pipeline events associated with test runs where the flaky test failed.                   |
-| pipeline_stats    | total_lost_time_ms  | int64    | The total time lost by CI pipelines due to this flaky test in milliseconds. This is computed as the sum of the duration of failed CI pipeline events associated with test runs where the flaky test failed. |
-| attributes        | services            | [string] | List of test service names where this test has been flaky.                                                                                                                                                  | A test service is a group of tests associated with a project or repository. It contains all the individual tests for your code, optionally organized into test suites, which are like folders for your tests.                                                                                                                                                                      |
-| attributes        | suite               | string   | The name of the test suite. A group of tests exercising the same unit of code depending on your language and testing framework.                                                                             |
-| attributes        | test_run_metadata   | object   | Metadata about the latest failed test run of the flaky test.                                                                                                                                                |
-| test_run_metadata | duration_ms         | int64    | The duration of the test run in milliseconds.                                                                                                                                                               |
-| test_run_metadata | error_message       | string   | The error message from the test failure.                                                                                                                                                                    |
-| test_run_metadata | error_stack         | string   | The stack trace from the test failure.                                                                                                                                                                      |
-| test_run_metadata | source_end          | int64    | The line number where the test ends in the source file.                                                                                                                                                     |
-| test_run_metadata | source_file         | string   | The source file where the test is defined.                                                                                                                                                                  |
-| test_run_metadata | source_start        | int64    | The line number where the test starts in the source file.                                                                                                                                                   |
-| attributes        | test_stats          | object   | Test statistics for the flaky test.                                                                                                                                                                         |
-| test_stats        | failure_rate_pct    | double   | The failure rate percentage of the test for the past 7 days. This is the number of failed test runs divided by the total number of test runs (excluding skipped test runs).                                 |
-| data              | id                  | string   | Test's ID. This ID is the hash of the test's Fully Qualified Name and Git repository ID. On the Test Runs UI it is the same as the `test_fingerprint_fqn` tag.                                              |
-| data              | type                | enum     | The type of the flaky test from Flaky Test Management. Allowed enum values: `flaky_test`                                                                                                                    |
-|                   | meta                | object   | Metadata for the flaky tests search response.                                                                                                                                                               |
-| meta              | pagination          | object   | Pagination metadata for flaky tests.                                                                                                                                                                        |
-| pagination        | next_page           | string   | Cursor for the next page of results.                                                                                                                                                                        |
+| Parent field      | Field                        | Type     | Description                                                                                                                                                                                                        |
+| ----------------- | ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|                   | data                         | [object] | Array of flaky tests matching the request.                                                                                                                                                                         |
+| data              | attributes                   | object   | Attributes of a flaky test.                                                                                                                                                                                        |
+| attributes        | attempt_to_fix_id            | string   | Unique identifier for the attempt to fix this flaky test. Use this ID in the Git commit message in order to trigger the attempt to fix workflow.                                                                   | When the workflow is triggered the test is automatically retried by the tracer a certain number of configurable times. When all retries pass, the test is automatically marked as fixed in Flaky Test Management. Test runs are tagged with @test.test_management.attempt_to_fix_passed and @test.test_management.is_attempt_to_fix when the attempt to fix workflow is triggered. |
+| attributes        | codeowners                   | [string] | The name of the test's code owners as inferred from the repository configuration.                                                                                                                                  |
+| attributes        | envs                         | [string] | List of environments where this test has been flaky.                                                                                                                                                               |
+| attributes        | first_flaked_branch          | string   | The branch name where the test exhibited flakiness for the first time.                                                                                                                                             |
+| attributes        | first_flaked_sha             | string   | The commit SHA where the test exhibited flakiness for the first time.                                                                                                                                              |
+| attributes        | first_flaked_ts              | int64    | Unix timestamp when the test exhibited flakiness for the first time.                                                                                                                                               |
+| attributes        | flaky_category               | string   | The category of a flaky test.                                                                                                                                                                                      |
+| attributes        | flaky_state                  | enum     | The current state of the flaky test. Allowed enum values: `active,fixed,quarantined,disabled`                                                                                                                      |
+| attributes        | history                      | [object] | Chronological history of status changes for this flaky test, ordered from most recent to oldest. Includes state transitions like new -> quarantined -> fixed, along with the associated commit SHA when available. |
+| history           | commit_sha [*required*] | string   | The commit SHA associated with this status change. Will be an empty string if the commit SHA is not available.                                                                                                     |
+| history           | status [*required*]     | string   | The test status at this point in history.                                                                                                                                                                          |
+| history           | timestamp [*required*]  | int64    | Unix timestamp in milliseconds when this status change occurred.                                                                                                                                                   |
+| attributes        | last_flaked_branch           | string   | The branch name where the test exhibited flakiness for the last time.                                                                                                                                              |
+| attributes        | last_flaked_sha              | string   | The commit SHA where the test exhibited flakiness for the last time.                                                                                                                                               |
+| attributes        | last_flaked_ts               | int64    | Unix timestamp when the test exhibited flakiness for the last time.                                                                                                                                                |
+| attributes        | module                       | string   | The name of the test module. The definition of module changes slightly per language:                                                                                                                               |
+| attributes        | name                         | string   | The test name. A concise name for a test case. Defined in the test itself.                                                                                                                                         |
+| attributes        | pipeline_stats               | object   | CI pipeline related statistics for the flaky test. This information is only available if test runs are associated with CI pipeline events from CI Visibility.                                                      |
+| pipeline_stats    | failed_pipelines             | int64    | The number of pipelines that failed due to this test for the past 7 days. This is computed as the sum of failed CI pipeline events associated with test runs where the flaky test failed.                          |
+| pipeline_stats    | total_lost_time_ms           | int64    | The total time lost by CI pipelines due to this flaky test in milliseconds. This is computed as the sum of the duration of failed CI pipeline events associated with test runs where the flaky test failed.        |
+| attributes        | services                     | [string] | List of test service names where this test has been flaky.                                                                                                                                                         | A test service is a group of tests associated with a project or repository. It contains all the individual tests for your code, optionally organized into test suites, which are like folders for your tests.                                                                                                                                                                      |
+| attributes        | suite                        | string   | The name of the test suite. A group of tests exercising the same unit of code depending on your language and testing framework.                                                                                    |
+| attributes        | test_run_metadata            | object   | Metadata about the latest failed test run of the flaky test.                                                                                                                                                       |
+| test_run_metadata | duration_ms                  | int64    | The duration of the test run in milliseconds.                                                                                                                                                                      |
+| test_run_metadata | error_message                | string   | The error message from the test failure.                                                                                                                                                                           |
+| test_run_metadata | error_stack                  | string   | The stack trace from the test failure.                                                                                                                                                                             |
+| test_run_metadata | source_end                   | int64    | The line number where the test ends in the source file.                                                                                                                                                            |
+| test_run_metadata | source_file                  | string   | The source file where the test is defined.                                                                                                                                                                         |
+| test_run_metadata | source_start                 | int64    | The line number where the test starts in the source file.                                                                                                                                                          |
+| attributes        | test_stats                   | object   | Test statistics for the flaky test.                                                                                                                                                                                |
+| test_stats        | failure_rate_pct             | double   | The failure rate percentage of the test for the past 7 days. This is the number of failed test runs divided by the total number of test runs (excluding skipped test runs).                                        |
+| data              | id                           | string   | Test's ID. This ID is the hash of the test's Fully Qualified Name and Git repository ID. On the Test Runs UI it is the same as the `test_fingerprint_fqn` tag.                                                     |
+| data              | type                         | enum     | The type of the flaky test from Flaky Test Management. Allowed enum values: `flaky_test`                                                                                                                           |
+|                   | meta                         | object   | Metadata for the flaky tests search response.                                                                                                                                                                      |
+| meta              | pagination                   | object   | Pagination metadata for flaky tests.                                                                                                                                                                               |
+| pagination        | next_page                    | string   | Cursor for the next page of results.                                                                                                                                                                               |
 
 {% /tab %}
 
@@ -140,6 +153,13 @@ Response object with flaky tests matching the search request.
         "first_flaked_ts": 1757688149,
         "flaky_category": "Timeout",
         "flaky_state": "active",
+        "history": [
+          {
+            "commit_sha": "abc123def456",
+            "status": "quarantined",
+            "timestamp": 1704067200000
+          }
+        ],
         "last_flaked_branch": "main",
         "last_flaked_sha": "0c6be03165b7f7ffe96e076ffb29afb2825616c3",
         "last_flaked_ts": 1757688149,
@@ -259,7 +279,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/test/flaky-test-management/tests" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -268,8 +288,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -292,6 +312,7 @@ body = FlakyTestsSearchRequest(
             filter=FlakyTestsSearchFilter(
                 query='flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"',
             ),
+            include_history=True,
             page=FlakyTestsSearchPageOptions(
                 cursor="eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ==",
                 limit=25,
@@ -315,7 +336,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search flaky tests returns "OK" response
@@ -332,6 +353,7 @@ body = DatadogAPIClient::V2::FlakyTestsSearchRequest.new({
       filter: DatadogAPIClient::V2::FlakyTestsSearchFilter.new({
         query: 'flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"',
       }),
+      include_history: true,
       page: DatadogAPIClient::V2::FlakyTestsSearchPageOptions.new({
         cursor: "eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ==",
         limit: 25,
@@ -351,7 +373,7 @@ p api_instance.search_flaky_tests(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Search flaky tests returns "OK" response
@@ -359,45 +381,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.FlakyTestsSearchRequest{
-		Data: &datadogV2.FlakyTestsSearchRequestData{
-			Attributes: &datadogV2.FlakyTestsSearchRequestAttributes{
-				Filter: &datadogV2.FlakyTestsSearchFilter{
-					Query: datadog.PtrString(`flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"`),
-				},
-				Page: &datadogV2.FlakyTestsSearchPageOptions{
-					Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
-					Limit:  datadog.PtrInt64(25),
-				},
-				Sort: datadogV2.FLAKYTESTSSEARCHSORT_FAILURE_RATE_ASCENDING.Ptr(),
-			},
-			Type: datadogV2.FLAKYTESTSSEARCHREQUESTDATATYPE_SEARCH_FLAKY_TESTS_REQUEST.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.SearchFlakyTests", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewTestOptimizationApi(apiClient)
-	resp, r, err := api.SearchFlakyTests(ctx, *datadogV2.NewSearchFlakyTestsOptionalParameters().WithBody(body))
+    body := datadogV2.FlakyTestsSearchRequest{
+        Data: &datadogV2.FlakyTestsSearchRequestData{
+            Attributes: &datadogV2.FlakyTestsSearchRequestAttributes{
+                Filter: &datadogV2.FlakyTestsSearchFilter{
+                    Query: datadog.PtrString(`flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"`),
+                },
+                IncludeHistory: datadog.PtrBool(true),
+                Page: &datadogV2.FlakyTestsSearchPageOptions{
+                    Cursor: datadog.PtrString("eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ=="),
+                    Limit:  datadog.PtrInt64(25),
+                },
+                Sort: datadogV2.FLAKYTESTSSEARCHSORT_FAILURE_RATE_ASCENDING.Ptr(),
+            },
+            Type: datadogV2.FLAKYTESTSSEARCHREQUESTDATATYPE_SEARCH_FLAKY_TESTS_REQUEST.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.SearchFlakyTests", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTestOptimizationApi(apiClient)
+    resp, r, err := api.SearchFlakyTests(ctx, *datadogV2.NewSearchFlakyTestsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.SearchFlakyTests`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.SearchFlakyTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.SearchFlakyTests`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.SearchFlakyTests`:\n%s\n", responseContent)
 }
 ```
 
@@ -405,7 +428,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search flaky tests returns "OK" response
@@ -441,6 +464,7 @@ public class Example {
                                         """
 flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"
 """))
+                            .includeHistory(true)
                             .page(
                                 new FlakyTestsSearchPageOptions()
                                     .cursor(
@@ -468,7 +492,7 @@ flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Search flaky tests returns "OK" response
@@ -497,6 +521,7 @@ async fn main() {
                                 r#"flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist""#.to_string(),
                             ),
                         )
+                        .include_history(true)
                         .page(
                             FlakyTestsSearchPageOptions::new()
                                 .cursor(
@@ -526,7 +551,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -546,6 +571,7 @@ const params: v2.TestOptimizationApiSearchFlakyTestsRequest = {
         filter: {
           query: `flaky_test_state:active @git.repository.id_v2:"github.com/datadog/shopist"`,
         },
+        includeHistory: true,
         page: {
           cursor:
             "eyJzdGFydEF0IjoiQVFBQUFYS2tMS3pPbm40NGV3QUFBQUJCV0V0clRFdDZVbG8zY3pCRmNsbHJiVmxDWlEifQ==",
@@ -594,13 +620,9 @@ Update the state of multiple flaky tests in Flaky Test Management. This endpoint
 
 OAuth apps require the `test_optimization_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#test-optimization) to access this endpoint.
 
-
-
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -758,7 +780,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/test/flaky-test-management/tests" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -779,5 +801,266 @@ API error response.
   }
 }
 EOF
-                
+
+#####
+
+```python
+"""
+Update flaky test states returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v2.api.test_optimization_api import TestOptimizationApi
+from datadog_api_client.v2.model.update_flaky_tests_request import UpdateFlakyTestsRequest
+from datadog_api_client.v2.model.update_flaky_tests_request_attributes import UpdateFlakyTestsRequestAttributes
+from datadog_api_client.v2.model.update_flaky_tests_request_data import UpdateFlakyTestsRequestData
+from datadog_api_client.v2.model.update_flaky_tests_request_data_type import UpdateFlakyTestsRequestDataType
+from datadog_api_client.v2.model.update_flaky_tests_request_test import UpdateFlakyTestsRequestTest
+from datadog_api_client.v2.model.update_flaky_tests_request_test_new_state import UpdateFlakyTestsRequestTestNewState
+
+body = UpdateFlakyTestsRequest(
+    data=UpdateFlakyTestsRequestData(
+        attributes=UpdateFlakyTestsRequestAttributes(
+            tests=[
+                UpdateFlakyTestsRequestTest(
+                    id="4eb1887a8adb1847",
+                    new_state=UpdateFlakyTestsRequestTestNewState.ACTIVE,
+                ),
+            ],
+        ),
+        type=UpdateFlakyTestsRequestDataType.UPDATE_FLAKY_TEST_STATE_REQUEST,
+    ),
+)
+
+configuration = Configuration()
+configuration.unstable_operations["update_flaky_tests"] = True
+with ApiClient(configuration) as api_client:
+    api_instance = TestOptimizationApi(api_client)
+    response = api_instance.update_flaky_tests(body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+#####
+
+```ruby
+# Update flaky test states returns "OK" response
+
+require "datadog_api_client"
+DatadogAPIClient.configure do |config|
+  config.unstable_operations["v2.update_flaky_tests".to_sym] = true
+end
+api_instance = DatadogAPIClient::V2::TestOptimizationAPI.new
+
+body = DatadogAPIClient::V2::UpdateFlakyTestsRequest.new({
+  data: DatadogAPIClient::V2::UpdateFlakyTestsRequestData.new({
+    attributes: DatadogAPIClient::V2::UpdateFlakyTestsRequestAttributes.new({
+      tests: [
+        DatadogAPIClient::V2::UpdateFlakyTestsRequestTest.new({
+          id: "4eb1887a8adb1847",
+          new_state: DatadogAPIClient::V2::UpdateFlakyTestsRequestTestNewState::ACTIVE,
+        }),
+      ],
+    }),
+    type: DatadogAPIClient::V2::UpdateFlakyTestsRequestDataType::UPDATE_FLAKY_TEST_STATE_REQUEST,
+  }),
+})
+p api_instance.update_flaky_tests(body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+#####
+
+```go
+// Update flaky test states returns "OK" response
+
+package main
+
+import (
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+)
+
+func main() {
+    body := datadogV2.UpdateFlakyTestsRequest{
+        Data: datadogV2.UpdateFlakyTestsRequestData{
+            Attributes: datadogV2.UpdateFlakyTestsRequestAttributes{
+                Tests: []datadogV2.UpdateFlakyTestsRequestTest{
+                    {
+                        Id:       "4eb1887a8adb1847",
+                        NewState: datadogV2.UPDATEFLAKYTESTSREQUESTTESTNEWSTATE_ACTIVE,
+                    },
+                },
+            },
+            Type: datadogV2.UPDATEFLAKYTESTSREQUESTDATATYPE_UPDATE_FLAKY_TEST_STATE_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateFlakyTests", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewTestOptimizationApi(apiClient)
+    resp, r, err := api.UpdateFlakyTests(ctx, body)
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TestOptimizationApi.UpdateFlakyTests`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `TestOptimizationApi.UpdateFlakyTests`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+#####
+
+```java
+// Update flaky test states returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v2.api.TestOptimizationApi;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequest;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequestAttributes;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequestData;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequestDataType;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequestTest;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsRequestTestNewState;
+import com.datadog.api.client.v2.model.UpdateFlakyTestsResponse;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.updateFlakyTests", true);
+    TestOptimizationApi apiInstance = new TestOptimizationApi(defaultClient);
+
+    UpdateFlakyTestsRequest body =
+        new UpdateFlakyTestsRequest()
+            .data(
+                new UpdateFlakyTestsRequestData()
+                    .attributes(
+                        new UpdateFlakyTestsRequestAttributes()
+                            .tests(
+                                Collections.singletonList(
+                                    new UpdateFlakyTestsRequestTest()
+                                        .id("4eb1887a8adb1847")
+                                        .newState(UpdateFlakyTestsRequestTestNewState.ACTIVE))))
+                    .type(UpdateFlakyTestsRequestDataType.UPDATE_FLAKY_TEST_STATE_REQUEST));
+
+    try {
+      UpdateFlakyTestsResponse result = apiInstance.updateFlakyTests(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TestOptimizationApi#updateFlakyTests");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+#####
+
+```rust
+// Update flaky test states returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV2::api_test_optimization::TestOptimizationAPI;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequest;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequestAttributes;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequestData;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequestDataType;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequestTest;
+use datadog_api_client::datadogV2::model::UpdateFlakyTestsRequestTestNewState;
+
+#[tokio::main]
+async fn main() {
+    let body = UpdateFlakyTestsRequest::new(UpdateFlakyTestsRequestData::new(
+        UpdateFlakyTestsRequestAttributes::new(vec![UpdateFlakyTestsRequestTest::new(
+            "4eb1887a8adb1847".to_string(),
+            UpdateFlakyTestsRequestTestNewState::ACTIVE,
+        )]),
+        UpdateFlakyTestsRequestDataType::UPDATE_FLAKY_TEST_STATE_REQUEST,
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.UpdateFlakyTests", true);
+    let api = TestOptimizationAPI::with_config(configuration);
+    let resp = api.update_flaky_tests(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+#####
+
+```typescript
+/**
+ * Update flaky test states returns "OK" response
+ */
+
+import { client, v2 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+configuration.unstableOperations["v2.updateFlakyTests"] = true;
+const apiInstance = new v2.TestOptimizationApi(configuration);
+
+const params: v2.TestOptimizationApiUpdateFlakyTestsRequest = {
+  body: {
+    data: {
+      attributes: {
+        tests: [
+          {
+            id: "4eb1887a8adb1847",
+            newState: "active",
+          },
+        ],
+      },
+      type: "update_flaky_test_state_request",
+    },
+  },
+};
+
+apiInstance
+  .updateFlakyTests(params)
+  .then((data: v2.UpdateFlakyTestsResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
 {% /tab %}

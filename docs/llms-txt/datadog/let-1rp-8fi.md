@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Java code injections attempt
 ---
 
 # Java code injections attempts
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect Java code injections attempts on web services executing OGNL expressions. Such security activity generally indicates that an attacker is trying to discover and exploit a potential OGNL code injection which can turn into a Remote Code Execution.

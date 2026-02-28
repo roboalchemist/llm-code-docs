@@ -133,6 +133,5 @@ func anotherServe(ctx context.Context, myVar,anotherVar string){
 func displayHelpMessage(ctx workflow.Context, args interface{}, action *something.Action, sb *strings.Builder, executionContext something.ExecutionContext) error {
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

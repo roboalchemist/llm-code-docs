@@ -78,6 +78,5 @@ let webView = WKWebView(frame: .zero, configuration: webConfiguration)
 
 print("WKWebView configured securely.")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

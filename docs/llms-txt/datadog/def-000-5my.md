@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route returns sensitive PII data without rate limit
- 
+
 ## Description{% #description %}
 
 The API returns sensitive personally identifiable information (PII) and does not implement any rate-limiting protection.

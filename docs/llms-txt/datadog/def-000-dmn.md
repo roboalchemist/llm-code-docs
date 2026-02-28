@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EFS access points should enforce a user identity
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon EFS access points are configured to enforce a specific user identity. The control is marked as non-compliant if a POSIX user identity is not defined during the creation of the EFS access point.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure Base Chains Exist for
 ---
 
 # Ensure Base Chains Exist for Nftables
- 
+
 ## Description{% #description %}
 
 Tables in nftables hold chains. Each table only has one address family and only applies to packets of this family. Tables can have one of six families. Chains are containers for rules. They exist in two kinds, base chains and regular chains. A base chain is an entry point for packets from the networking stack, a regular chain may be used as jump target and is used for better rule organization.
@@ -31,7 +31,7 @@ if dpkg-query --show --showformat='${db:Status-Status}' 'nftables' 2>/dev/null |
 #Name of the table
 var_nftables_table='filter'
 
-#Familiy of the table 
+#Familiy of the table
 var_nftables_family='inet'
 
 #Name(s) of base chain
@@ -46,7 +46,7 @@ var_nftables_base_chain_hooks='input,forward,output'
 #Priority
 var_nftables_base_chain_priorities='0,0,0'
 
-#Policy 
+#Policy
 var_nftables_base_chain_policies='accept,accept,accept'
 
 
@@ -61,7 +61,7 @@ my_cmd="nft list tables | grep '$var_nftables_family $var_nftables_table'"
 eval IS_TABLE_EXIST=\$\($my_cmd\)
 if [ -z "$IS_TABLE_EXIST" ]
 then
-  # We create a table and add chains to it 
+  # We create a table and add chains to it
   nft create table "$var_nftables_family" "$var_nftables_table"
   num_of_chains=${#names[@]}
   for ((i=0; i < num_of_chains; i++))
@@ -69,7 +69,7 @@ then
    chain_to_add="add chain $var_nftables_family $var_nftables_table ${names[$i]} { type ${types[$i]} hook ${hooks[$i]} priority ${priorities[$i]} ; policy ${policies[$i]} ; }"
    my_cmd="nft '$chain_to_add'"
    eval $my_cmd
-  done    
+  done
 else
   # We add missing chains to the existing table
   num_of_chains=${#names[@]}
@@ -82,7 +82,7 @@ else
         my_cmd="nft '$chain_to_add'"
         eval $my_cmd
     fi
-  done 
+  done
 fi
 
 else

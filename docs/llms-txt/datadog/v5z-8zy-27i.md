@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Privileged port mapping for containers should be restricted to increase security
-Classification:complianceFramework:cis-dockerControl:5.7 
+Classification:complianceFramework:cis-dockerControl:5.7
 ## Description{% #description %}
 
 The TCP/IP port numbers below 1024are considered privileged ports. Normal users and processes are not allowed to use them for various security reasons. Docker does, however allow a container port to be mapped to a privileged port.

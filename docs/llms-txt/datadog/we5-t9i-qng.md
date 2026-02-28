@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS GuardDuty finding
 ---
 
 # AWS GuardDuty finding
- 
+
 ## Goal{% #goal %}
 
 Detect when an [AWS GuardDuty finding](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html) has been raised.

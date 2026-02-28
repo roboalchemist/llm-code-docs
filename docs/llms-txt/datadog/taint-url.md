@@ -43,19 +43,19 @@ Therefore, to maintain a secure code environment, it is crucial to avoid using t
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
+    "fmt"
+    "io/ioutil"
+    "net/http"
 )
 
 url := "https://www.datadoghq.com"
 func main() {
-	
 
-	resp, err := http.Get(url)
-	if err != nil {
-		panic(err)
-	}
+
+    resp, err := http.Get(url)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
 
@@ -63,18 +63,18 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
+    "fmt"
+    "io/ioutil"
+    "net/http"
 )
 
 var url string = "https://www.datadoghq.com"
 
 func main() {
-	resp, err := http.Get(url)
-	if err != nil {
-		panic(err)
-	}
+    resp, err := http.Get(url)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
 
@@ -84,21 +84,20 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
+    "fmt"
+    "io/ioutil"
+    "net/http"
 )
 
 const url = "https://www.datadoghq.com"
 func main() {
-	
 
-	resp, err := http.Get(url)
-	if err != nil {
-		panic(err)
-	}
+
+    resp, err := http.Get(url)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

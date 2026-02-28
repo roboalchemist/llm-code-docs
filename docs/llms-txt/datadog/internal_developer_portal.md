@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/internal_developer_portal.md
-
 # Source: https://docs.datadoghq.com/internal_developer_portal.md
 
 ---
@@ -34,8 +32,6 @@ If you're new to IDP, start with the [Getting Started guide](https://docs.datado
 
 {% callout %}
 ##### Sign up for early access to our upcoming features!
-
-
 
 [Request Access](https://www.datadoghq.com/product-preview/idp-preview-features/)
 {% /callout %}

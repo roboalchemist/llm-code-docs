@@ -13,30 +13,54 @@ You can import them directly like below:
 from scrapling.spiders import Spider, Request, CrawlResult, SessionManager, Response
 ```
 
-## ::: scrapling.spiders.Spider
-    handler: python
-    :docstring:
+## Spider API
 
-## ::: scrapling.spiders.Request
+```python
+::: scrapling.spiders.Spider
     handler: python
     :docstring:
+```
+
+## Request API
+
+```python
+::: scrapling.spiders.Request
+    handler: python
+    :docstring:
+```
 
 ## Result Classes
 
-## ::: scrapling.spiders.result.CrawlResult
-    handler: python
-    :docstring:
+## CrawlResult API
 
-## ::: scrapling.spiders.result.CrawlStats
+```python
+::: scrapling.spiders.result.CrawlResult
     handler: python
     :docstring:
+```
 
-## ::: scrapling.spiders.result.ItemList
+## CrawlStats API
+
+```python
+::: scrapling.spiders.result.CrawlStats
     handler: python
     :docstring:
+```
+
+## ItemList API
+
+```python
+::: scrapling.spiders.result.ItemList
+    handler: python
+    :docstring:
+```
 
 ## Session Management
 
-## ::: scrapling.spiders.session.SessionManager
+## SessionManager API
+
+```python
+::: scrapling.spiders.session.SessionManager
     handler: python
     :docstring:
+```
