@@ -42,3 +42,6 @@ Thumbs.db
 .cache/
 tmp/
 
+# Doc index database (built locally)
+scripts/doc_index.db
+

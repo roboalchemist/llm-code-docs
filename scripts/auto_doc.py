@@ -80,6 +80,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 INDEX_PATH = REPO_ROOT / "index.yaml"
 LLMS_SITES_YAML = SCRIPT_DIR / "llms-sites.yaml"
 REPO_CONFIG_YAML = SCRIPT_DIR / "repo_config.yaml"
+DOC_INDEX_DB = SCRIPT_DIR / "doc_index.db"
 
 # ---------------------------------------------------------------------------
 # Import helper – existing scripts have hyphens in filenames
@@ -410,6 +411,40 @@ def _discover_domain_guess(library: str) -> dict:
     return info
 
 
+def _lookup_doc_index(library: str) -> list[dict] | None:
+    """Check the pre-computed doc index for known documentation sources.
+
+    Returns a list of {platform, doc_url, doc_type, ...} dicts if found,
+    or None if the index doesn't exist or has no entry for this library.
+    """
+    if not DOC_INDEX_DB.exists():
+        return None
+    try:
+        from doc_index import get_db, lookup
+        conn = get_db(DOC_INDEX_DB)
+        try:
+            results = lookup(conn, library)
+        finally:
+            conn.close()
+        return results if results else None
+    except Exception:
+        return None
+
+
+def _best_guess_from_index(index_results: list[dict]) -> dict:
+    """Extract a best_guess {domain, github} from doc index results."""
+    domain = None
+    for r in index_results:
+        url = r.get("doc_url", "")
+        if url:
+            from urllib.parse import urlparse as _urlparse
+            host = _urlparse(url).netloc
+            if host:
+                domain = host
+                break
+    return {"domain": domain, "github": None}
+
+
 def discover(library: str) -> dict:
     """Discover all possible documentation sources for a library.
 
@@ -423,6 +458,7 @@ def discover(library: str) -> dict:
       - exa_search: web search results
       - domain_guess: HEAD-probed common TLDs
       - best_guess: {domain, github} — our best deterministic pick (may be wrong)
+      - doc_index: pre-computed index results (if found)
     """
     discovery: dict = {
         "registries": {},
@@ -432,7 +468,14 @@ def discover(library: str) -> dict:
         "best_guess": {"domain": None, "github": None},
     }
 
-    # Run all discovery sources in parallel
+    # Check pre-computed doc index first — skip expensive web searches if found
+    index_results = _lookup_doc_index(library)
+    if index_results:
+        discovery["doc_index"] = index_results
+        discovery["best_guess"] = _best_guess_from_index(index_results)
+        return discovery
+
+    # Fall back to web discovery if not in index
     with ThreadPoolExecutor(max_workers=6) as pool:
         fut_pypi = pool.submit(_discover_pypi, library)
         fut_npm = pool.submit(_discover_npm, library)
@@ -816,6 +859,29 @@ def decide(probe_output: dict) -> dict:
 
     Returns: {"source": "llms-txt"|"github"|"web"|"skip", "url": "...", "reason": "..."}
     """
+
+    # --- Rule 0: doc_index hit — we know where docs are ---
+    index_hits = probe_output.get("discovery", {}).get("doc_index")
+    if index_hits:
+        # Prefer html/llms-txt over cheatsheets/api-specs
+        type_priority = {"llms-txt": 0, "html": 1, "api-spec": 2, "cheatsheet": 3}
+        best_hit = min(index_hits, key=lambda h: type_priority.get(
+            h.get("doc_type", "html"), 99))
+        doc_url = best_hit["doc_url"]
+        platform = best_hit["platform"]
+        doc_type = best_hit.get("doc_type", "html")
+        # Map doc_type to auto_doc source type
+        if doc_type == "llms-txt":
+            source = "llms-txt"
+        elif doc_type == "api-spec":
+            source = "web"
+        else:
+            source = "web"
+        return {
+            "source": source,
+            "url": doc_url,
+            "reason": f"doc-index: {platform} ({doc_type})",
+        }
 
     # --- Rule 1: llms-txt ---
     # Build set of domains that are relevant to this library
