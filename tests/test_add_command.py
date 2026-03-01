@@ -29,8 +29,10 @@ def mock_probe_output():
         "discovery": {
             "registries": {"pypi": {"domain": "testlib.dev", "github": "org/testlib", "pypi_found": True}},
             "github_search": {"candidates": [], "found": False},
-            "exa_search": {"search_results": [], "available": False},
+            "tavily_search": {"search_results": [], "answer": None, "available": False},
             "domain_guess": {"probed": []},
+            "unified_index": {},
+            "enumerated_domains": {},
             "best_guess": {"domain": "testlib.dev", "github": "org/testlib"},
         },
         "llms_txt": [
@@ -66,8 +68,10 @@ def mock_probe_github():
                 "candidates": [{"full_name": "org/ghlib", "stars": 5000, "homepage": ""}],
                 "found": True, "github": "org/ghlib",
             },
-            "exa_search": {"search_results": [], "available": False},
+            "tavily_search": {"search_results": [], "answer": None, "available": False},
             "domain_guess": {"probed": []},
+            "unified_index": {},
+            "enumerated_domains": {},
             "best_guess": {"domain": None, "github": "org/ghlib"},
         },
         "llms_txt": [],
@@ -100,8 +104,10 @@ def mock_probe_nothing():
         "discovery": {
             "registries": {},
             "github_search": {"candidates": [], "found": False},
-            "exa_search": {"search_results": [], "available": False},
+            "tavily_search": {"search_results": [], "answer": None, "available": False},
             "domain_guess": {"probed": []},
+            "unified_index": {},
+            "enumerated_domains": {},
             "best_guess": {"domain": None, "github": None},
         },
         "llms_txt": [],
@@ -240,12 +246,12 @@ class TestAddWebScraper:
 
     @patch("auto_doc._invoke_probe")
     @patch("auto_doc.decide")
-    @patch("auto_doc.generate_and_run_scraper")
+    @patch("auto_doc.fetch_via_jina")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_happy_path_web(
-        self, mock_git, mock_review, mock_lint, mock_scraper, mock_decide, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_jina, mock_decide, mock_probe,
         tmp_path,
     ):
         mock_probe.return_value = {
@@ -253,12 +259,13 @@ class TestAddWebScraper:
             "already_exists": False,
             "existing_paths": [],
             "discovery": {"registries": {}, "best_guess": {"domain": "weblib.io", "github": None},
-                          "exa_search": {"search_results": [{"url": "https://weblib.io/docs", "title": "WebLib"}]}},
+                          "tavily_search": {"search_results": [{"url": "https://weblib.io/docs", "title": "WebLib"}], "answer": None, "available": True},
+                          "unified_index": {}, "enumerated_domains": {}},
             "llms_txt": [],
             "github_candidates": [],
         }
         mock_decide.return_value = {"source": "web", "url": "https://weblib.io/", "reason": "web docs"}
-        mock_scraper.return_value = {"success": True, "file_count": 10}
+        mock_jina.return_value = {"success": True, "file_count": 10}
         mock_lint.return_value = {"files_checked": 10, "issues_fixed": 1}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "Good"}
         mock_git.return_value = {"commit_sha": "web123", "error": None}
@@ -272,7 +279,7 @@ class TestAddWebScraper:
 
         assert result["success"] is True
         assert result["source_used"] == "web"
-        mock_scraper.assert_called_once_with("weblib", "https://weblib.io/")
+        mock_jina.assert_called_once_with("weblib", "https://weblib.io/")
 
 
 # ---------------------------------------------------------------------------
@@ -317,8 +324,9 @@ class TestAddAlreadyExists:
 
         result = auto_doc.add_library("fastapi")
 
-        assert result["success"] is False
-        assert "already has docs" in result["error"]
+        assert result["success"] is True
+        assert result["source_used"] == "already_exists"
+        assert result["error"] is None
 
 
 # ---------------------------------------------------------------------------

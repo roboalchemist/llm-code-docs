@@ -17,6 +17,7 @@ import importlib.util
 import json
 import os
 import re
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -31,20 +32,27 @@ import typer
 import yaml
 
 
-def _ensure_exa_key():
-    """Load EXA_API_KEY from 1Password if not already set."""
-    if os.environ.get("EXA_API_KEY"):
+# ---------------------------------------------------------------------------
+# Verbose logging
+# ---------------------------------------------------------------------------
+_VERBOSE = bool(os.environ.get("AUTO_DOC_VERBOSE"))
+
+
+_STDERR_FD = None
+
+
+def _log(msg: str) -> None:
+    """Print a debug message to stderr when verbose mode is on.
+
+    Uses os.write to the original stderr fd so that typer's CliRunner
+    (which monkey-patches sys.stderr) cannot capture debug output.
+    """
+    if not _VERBOSE:
         return
-    try:
-        result = subprocess.run(
-            ["op", "item", "get", "EXA_API_KEY", "--vault", "Agents",
-             "--fields", "label=credential", "--reveal"],
-            capture_output=True, text=True, timeout=10,
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            os.environ["EXA_API_KEY"] = result.stdout.strip()
-    except Exception:
-        pass
+    global _STDERR_FD
+    if _STDERR_FD is None:
+        _STDERR_FD = os.dup(2)  # duplicate the real fd 2 before CliRunner can touch it
+    os.write(_STDERR_FD, f"  [debug] {msg}\n".encode())
 
 
 def _ensure_github_token():
@@ -68,7 +76,6 @@ def _ensure_github_token():
         pass
 
 
-_ensure_exa_key()
 _ensure_github_token()
 
 # ---------------------------------------------------------------------------
@@ -81,6 +88,9 @@ INDEX_PATH = REPO_ROOT / "index.yaml"
 LLMS_SITES_YAML = SCRIPT_DIR / "llms-sites.yaml"
 REPO_CONFIG_YAML = SCRIPT_DIR / "repo_config.yaml"
 DOC_INDEX_DB = SCRIPT_DIR / "doc_index.db"
+UNIFIED_INDEX_DB = Path.home() / "gitea" / "reverse-dns-indexer" / "results" / "unified-index.db"
+DOMAINS_DIR = Path.home() / "gitea" / "auto-doc" / "domains"
+STACK_V2_DB = Path.home() / "gitea" / "auto-doc" / "stack-v2" / "results" / "doc_platforms.db"
 
 # ---------------------------------------------------------------------------
 # Import helper – existing scripts have hyphens in filenames
@@ -175,6 +185,7 @@ def _discover_pypi(library: str) -> dict:
 
     data = r.json().get("info", {})
     info["pypi_found"] = True
+    _log(f"pypi: found '{library}'")
     project_urls = data.get("project_urls") or {}
 
     # Find documentation URL
@@ -225,6 +236,7 @@ def _discover_npm(library: str) -> dict:
 
     data = r.json()
     info["npm_found"] = True
+    _log(f"npm: found '{library}'")
 
     # Homepage
     homepage = data.get("homepage", "")
@@ -268,6 +280,7 @@ def _discover_crates_io(library: str) -> dict:
 
     crate = r.json().get("crate", {})
     info["found"] = True
+    _log(f"crates.io: found '{library}'")
 
     doc_url = crate.get("documentation") or ""
     if doc_url and "docs.rs" not in doc_url and "github.com" not in doc_url:
@@ -292,7 +305,7 @@ def _discover_crates_io(library: str) -> dict:
 def _discover_github_search(library: str) -> dict:
     """Search GitHub API for repositories matching the library name.
 
-    Returns raw results for the GLM to reason about — does NOT pick a winner.
+    Returns raw results for the LLM to reason about — does NOT pick a winner.
     """
     info: dict = {"source": "github_search", "domain": None, "github": None,
                   "candidates": [], "found": False}
@@ -317,6 +330,7 @@ def _discover_github_search(library: str) -> dict:
         }
         info["candidates"].append(candidate)
 
+    _log(f"github_search: {len(info['candidates'])} candidates")
     # Best-effort pick: exact name match with most stars
     for c in info["candidates"]:
         if c["name"].lower() == library.lower() and not c["fork"]:
@@ -329,49 +343,171 @@ def _discover_github_search(library: str) -> dict:
     return info
 
 
-def _discover_exa(library: str) -> dict:
-    """Use exa search to find documentation sites and repos.
+def _discover_tavily(library: str) -> dict:
+    """Use Tavily search to find documentation sites and repos.
 
     This is the primary discovery mechanism for libraries not in any
-    package registry. Returns raw search results for the GLM.
+    package registry. Returns raw search results for the LLM.
+    Always runs — even with index hits — to provide grounding.
     """
-    info: dict = {"source": "exa", "domain": None, "github": None,
-                  "search_results": [], "available": False}
+    info: dict = {"source": "tavily", "domain": None, "github": None,
+                  "search_results": [], "answer": None, "available": False}
 
-    # 1-25 results cost the same ($0.005/query), so request max 25
     stdout = _run_cmd(
-        ["exa", "search", f"{library} official documentation",
-         "-n", "25", "--json", "--fields", "title,url"],
+        ["tavily", "-f", "json", "search",
+         f"{library} official documentation", "-n", "10"],
         timeout=15,
     )
     if not stdout:
         return info
 
     info["available"] = True
+    _log(f"tavily: search returned results")
 
     try:
         parsed = json.loads(stdout)
-        # exa-cli returns a raw array, not {"results": [...]}
-        results = parsed if isinstance(parsed, list) else parsed.get("results", [])
     except (json.JSONDecodeError, AttributeError):
+        _log("tavily: failed to parse JSON response")
         return info
+
+    info["answer"] = parsed.get("answer")
+    results = parsed.get("results", [])
+    _log(f"tavily: {len(results)} results, answer={'yes' if info['answer'] else 'no'}")
 
     for item in results:
         url = item.get("url", "")
         title = item.get("title", "")
-        parsed = urlparse(url)
-        host = parsed.netloc or ""
+        p = urlparse(url)
+        host = p.netloc or ""
 
         info["search_results"].append({"title": title, "url": url})
 
         if "github.com" in host:
-            parts = parsed.path.strip("/").split("/")
+            parts = p.path.strip("/").split("/")
             if len(parts) >= 2 and not info["github"]:
                 info["github"] = f"{parts[0]}/{parts[1]}"
         elif host and host not in NOISE_DOMAINS:
             if not info["domain"]:
                 info["domain"] = host
 
+    return info
+
+
+def _discover_unified_index(library: str) -> dict:
+    """Check the unified package index (5.14M packages / 53 registries) for doc URLs."""
+    info: dict = {"source": "unified_index", "found": False, "matches": [],
+                  "domain": None, "github": None}
+    if not UNIFIED_INDEX_DB.exists():
+        _log(f"unified_index: DB not found at {UNIFIED_INDEX_DB}")
+        return info
+    norm = library.lower().replace("_", "-")
+    conn = sqlite3.connect(str(UNIFIED_INDEX_DB))
+    try:
+        rows = conn.execute(
+            "SELECT registry, name, docs_url, homepage, repository_url, "
+            "doc_host, downloads FROM packages "
+            "WHERE LOWER(REPLACE(name, '_', '-')) = ? "
+            "AND docs_url IS NOT NULL AND docs_url <> '' "
+            "ORDER BY downloads DESC LIMIT 20",
+            (norm,)
+        ).fetchall()
+        cols = ["registry", "name", "docs_url", "homepage", "repository_url",
+                "doc_host", "downloads"]
+        for row in rows:
+            m = dict(zip(cols, row))
+            host = m.get("doc_host", "") or ""
+            # Filter out forge URLs (github/gitlab/bitbucket)
+            if host in ("github.com", "gitlab.com", "bitbucket.org"):
+                continue
+            info["matches"].append(m)
+            if not info["domain"] and host:
+                info["domain"] = host
+            if not info["github"] and m.get("repository_url"):
+                repo = m["repository_url"]
+                if "github.com" in repo:
+                    parts = urlparse(repo).path.strip("/").rstrip(".git").split("/")
+                    if len(parts) >= 2:
+                        info["github"] = f"{parts[0]}/{parts[1]}"
+        info["found"] = bool(info["matches"])
+        _log(f"unified_index: {len(info['matches'])} matches, domain={info['domain']}, github={info['github']}")
+    finally:
+        conn.close()
+    return info
+
+
+_DOMAIN_CACHE: dict[str, list[tuple[str, str]]] = {}  # {platform: [(domain, full_url)]}
+
+
+def _load_domains() -> list[tuple[str, str]]:
+    """Load all enumerated doc domains (cached)."""
+    if _DOMAIN_CACHE:
+        return [(d, p) for p, pairs in _DOMAIN_CACHE.items() for d, _ in pairs]
+    files = {
+        "gitbook": DOMAINS_DIR / "gitbook" / "clean-gitbook.txt",
+        "readme": DOMAINS_DIR / "readme" / "clean-readme.txt",
+        "mintlify": DOMAINS_DIR / "mintlify" / "clean-mintlify-app-names.txt",
+        "fern": DOMAINS_DIR / "fern" / "clean-ferndocs.txt",
+        "custom": DOMAINS_DIR / "custom-domains" / "clean-custom-domains.txt",
+    }
+    for platform, path in files.items():
+        if not path.exists():
+            continue
+        entries = []
+        for line in path.read_text().splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            if platform == "mintlify":
+                entries.append((line, f"https://{line}.mintlify.app"))
+            elif platform == "custom":
+                entries.append((line.split("/")[0], f"https://{line}"))
+            else:
+                entries.append((line, f"https://{line}"))
+        _DOMAIN_CACHE[platform] = entries
+    return [(d, p) for p, pairs in _DOMAIN_CACHE.items() for d, _ in pairs]
+
+
+def _discover_domains(library: str) -> dict:
+    """Check enumerated doc-hosting domains (6.8K) for matches."""
+    info: dict = {"source": "enumerated_domains", "found": False, "matches": [], "domain": None}
+    norm = library.lower().replace("_", "-")
+    _load_domains()
+    for platform, entries in _DOMAIN_CACHE.items():
+        for domain, url in entries:
+            slug = domain.split(".")[0].lower() if "." in domain else domain.lower()
+            if slug == norm or norm in slug.split("-"):
+                info["matches"].append({"domain": domain, "platform": platform, "url": url})
+                if not info["domain"]:
+                    info["domain"] = domain
+    info["found"] = bool(info["matches"])
+    _log(f"enumerated_domains: {len(info['matches'])} matches, domain={info['domain']}")
+    return info
+
+
+def _enrich_stack_v2(github_repo: str) -> dict:
+    """Check Stack V2 for doc-platform signals on a GitHub repo."""
+    info: dict = {"found": False, "platforms": [], "star_events_count": 0}
+    if not STACK_V2_DB.exists() or not github_repo:
+        _log(f"stack_v2: skipped (db_exists={STACK_V2_DB.exists()}, repo={github_repo})")
+        return info
+    conn = sqlite3.connect(str(STACK_V2_DB))
+    try:
+        rows = conn.execute(
+            "SELECT platform, matched_files FROM platform_repos WHERE repo_name = ?",
+            (github_repo,)
+        ).fetchall()
+        for platform, matched_files in rows:
+            info["platforms"].append({"platform": platform, "matched_files": matched_files})
+        star_row = conn.execute(
+            "SELECT star_events_count FROM repos_with_docs WHERE repo_name = ?",
+            (github_repo,)
+        ).fetchone()
+        if star_row:
+            info["star_events_count"] = star_row[0] or 0
+        info["found"] = bool(info["platforms"])
+        _log(f"stack_v2: {len(info['platforms'])} platforms, stars={info['star_events_count']}")
+    finally:
+        conn.close()
     return info
 
 
@@ -450,12 +586,12 @@ def discover(library: str) -> dict:
 
     Runs ALL discovery sources in parallel and returns structured results
     for downstream LLM decision-making. Does NOT pick a single winner —
-    that's the GLM's job.
+    that's the LLM's job (MiniMax-M2.5 via clauded-mm).
 
     Returns dict with:
       - registries: results from PyPI, npm, crates.io
       - github_search: GitHub search results with candidates
-      - exa_search: web search results
+      - tavily_search: web search results (always runs, even with index hit)
       - domain_guess: HEAD-probed common TLDs
       - best_guess: {domain, github} — our best deterministic pick (may be wrong)
       - doc_index: pre-computed index results (if found)
@@ -463,33 +599,45 @@ def discover(library: str) -> dict:
     discovery: dict = {
         "registries": {},
         "github_search": {},
-        "exa_search": {},
+        "tavily_search": {},
         "domain_guess": {},
+        "unified_index": {},
+        "enumerated_domains": {},
         "best_guess": {"domain": None, "github": None},
     }
 
-    # Check pre-computed doc index first — skip expensive web searches if found
+    # Check pre-computed doc index (fast, local)
+    _log(f"discover: starting parallel discovery for '{library}'")
     index_results = _lookup_doc_index(library)
     if index_results:
         discovery["doc_index"] = index_results
         discovery["best_guess"] = _best_guess_from_index(index_results)
-        return discovery
+        _log(f"discover: doc_index hit — {len(index_results)} entries, best_guess={discovery['best_guess']}")
+    else:
+        _log("discover: no doc_index hit")
 
-    # Fall back to web discovery if not in index
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    # Always run Tavily for grounding + full discovery for non-index cases
+    _log("discover: launching 8 parallel discovery workers")
+    with ThreadPoolExecutor(max_workers=8) as pool:
         fut_pypi = pool.submit(_discover_pypi, library)
         fut_npm = pool.submit(_discover_npm, library)
         fut_crates = pool.submit(_discover_crates_io, library)
         fut_gh = pool.submit(_discover_github_search, library)
-        fut_exa = pool.submit(_discover_exa, library)
+        fut_tavily = pool.submit(_discover_tavily, library)
         fut_guess = pool.submit(_discover_domain_guess, library)
+        fut_unified = pool.submit(_discover_unified_index, library)
+        fut_domains = pool.submit(_discover_domains, library)
 
         pypi = fut_pypi.result()
         npm = fut_npm.result()
         crates = fut_crates.result()
         gh_search = fut_gh.result()
-        exa_info = fut_exa.result()
+        tavily_info = fut_tavily.result()
         domain_guess = fut_guess.result()
+        unified = fut_unified.result()
+        domains = fut_domains.result()
+
+    _log("discover: all workers completed")
 
     # Store raw results
     if pypi.get("pypi_found"):
@@ -500,8 +648,18 @@ def discover(library: str) -> dict:
         discovery["registries"]["crates_io"] = crates
 
     discovery["github_search"] = gh_search
-    discovery["exa_search"] = exa_info
+    discovery["tavily_search"] = tavily_info
     discovery["domain_guess"] = domain_guess
+    if unified.get("found"):
+        discovery["unified_index"] = unified
+    if domains.get("found"):
+        discovery["enumerated_domains"] = domains
+
+    regs = list(discovery["registries"].keys())
+    _log(f"discover: registries={regs}, gh_candidates={len(gh_search.get('candidates', []))}, "
+         f"tavily_results={len(tavily_info.get('search_results', []))}, "
+         f"unified={'yes' if unified.get('found') else 'no'}, "
+         f"domains={'yes' if domains.get('found') else 'no'}")
 
     # Build best_guess using a scoring approach rather than first-wins
     # The GLM gets ALL data and can override this
@@ -530,11 +688,21 @@ def discover(library: str) -> dict:
         if src.get("domain"):
             domain_candidates.append((src["domain"], 40))
 
-    # Exa: good signal when available
-    if exa_info.get("github"):
-        github_candidates.append((exa_info["github"], 60))
-    if exa_info.get("domain"):
-        domain_candidates.append((exa_info["domain"], 60))
+    # Tavily: good signal when available
+    if tavily_info.get("github"):
+        github_candidates.append((tavily_info["github"], 60))
+    if tavily_info.get("domain"):
+        domain_candidates.append((tavily_info["domain"], 60))
+
+    # Unified index: strong for github, moderate for domain
+    if unified.get("github"):
+        github_candidates.append((unified["github"], 75))
+    if unified.get("domain"):
+        domain_candidates.append((unified["domain"], 65))
+
+    # Enumerated domains: moderate signal
+    if domains.get("domain"):
+        domain_candidates.append((domains["domain"], 55))
 
     # Domain guessing: weakest signal
     if domain_guess.get("domain"):
@@ -561,6 +729,7 @@ def discover(library: str) -> dict:
                     break
 
     discovery["best_guess"] = {"domain": domain, "github": github}
+    _log(f"discover: best_guess domain={domain}, github={github}")
 
     return discovery
 
@@ -854,13 +1023,14 @@ def decide(probe_output: dict) -> dict:
       1. llms-txt with valid content (not stub, >5KB, score>=75)
       2. Language-specific doc hosts (docs.rs, pkg.go.dev) + GitHub homepage
       3. GitHub repo with substantial docs (>5 files, has markdown, not fork)
-      4. LLM-guided URL selection via GLM-5
+      4. LLM-guided URL selection via MiniMax-M2.5
       5. Skip if nothing viable
 
     Returns: {"source": "llms-txt"|"github"|"web"|"skip", "url": "...", "reason": "..."}
     """
+    _log("decide: evaluating rules...")
 
-    # --- Rule 0: doc_index hit — we know where docs are ---
+    # --- Rule 0: doc_index hit + Tavily grounding ---
     index_hits = probe_output.get("discovery", {}).get("doc_index")
     if index_hits:
         # Prefer html/llms-txt over cheatsheets/api-specs
@@ -870,18 +1040,40 @@ def decide(probe_output: dict) -> dict:
         doc_url = best_hit["doc_url"]
         platform = best_hit["platform"]
         doc_type = best_hit.get("doc_type", "html")
-        # Map doc_type to auto_doc source type
-        if doc_type == "llms-txt":
-            source = "llms-txt"
-        elif doc_type == "api-spec":
-            source = "web"
-        else:
-            source = "web"
-        return {
-            "source": source,
-            "url": doc_url,
-            "reason": f"doc-index: {platform} ({doc_type})",
-        }
+
+        # Tavily grounding check: if Tavily ran, verify the index domain
+        # appears in search results. If Tavily disagrees, fall through to other rules.
+        tavily = probe_output.get("discovery", {}).get("tavily_search", {})
+        tavily_available = tavily.get("available", False)
+        index_domain = urlparse(doc_url).netloc.lower() if doc_url else ""
+
+        tavily_confirms = False
+        if tavily_available and index_domain:
+            for sr in tavily.get("search_results", []):
+                sr_domain = urlparse(sr.get("url", "")).netloc.lower()
+                if sr_domain == index_domain or sr_domain.endswith("." + index_domain) or index_domain.endswith("." + sr_domain):
+                    tavily_confirms = True
+                    break
+        _log(f"decide: Rule 0 — index_hit={platform}/{doc_type}, url={doc_url}, "
+             f"tavily_available={tavily_available}, tavily_confirms={tavily_confirms}")
+
+        # Use index hit if: Tavily confirms, OR Tavily unavailable (trust index)
+        if tavily_confirms or not tavily_available:
+            # Map doc_type to auto_doc source type
+            if doc_type == "llms-txt":
+                source = "llms-txt"
+            elif doc_type == "api-spec":
+                source = "web"
+            else:
+                source = "web"
+            grounding = "tavily-confirmed" if tavily_confirms else "no-tavily"
+            return {
+                "source": source,
+                "url": doc_url,
+                "reason": f"doc-index: {platform} ({doc_type}) [{grounding}]",
+            }
+        # Tavily available but disagrees — fall through to other rules
+        _log(f"decide: Rule 0 — tavily disagrees with index domain '{index_domain}', falling through")
 
     # --- Rule 1: llms-txt ---
     # Build set of domains that are relevant to this library
@@ -954,6 +1146,7 @@ def decide(probe_output: dict) -> dict:
             if score is None or score >= 75:
                 viable_llms.append(r)
 
+    _log(f"decide: Rule 1 — {len(viable_llms)} viable llms-txt files from {len(probe_output.get('llms_txt', []))} probed")
     if viable_llms:
         # Pick best: highest validation_score first, then largest size
         def _llms_sort_key(r):
@@ -1067,9 +1260,10 @@ def decide(probe_output: dict) -> dict:
                 }
 
     # --- Rule 4: LLM-guided URL selection (NEW) ---
-    # Pass the full discovery context to GLM-5 to pick the best docs URL.
+    # Pass the full discovery context to MiniMax-M2.5 to pick the best docs URL.
     import shutil
-    if shutil.which("clauded-glm"):
+    _log("decide: Rules 1-3 didn't match, trying Rule 4 (LLM-guided)")
+    if shutil.which("clauded-mm"):
         # Build discovery data summary for the prompt
         _github_candidates = discovery.get("github_search", {}).get("candidates", [])[:5]
         gh_summary_lines = []
@@ -1083,19 +1277,45 @@ def decide(probe_output: dict) -> dict:
             )
         gh_summary = "\n".join(gh_summary_lines) if gh_summary_lines else "  (none)"
 
-        exa = discovery.get("exa_search", {})
-        exa_results = (exa.get("search_results") or [])[:10]
-        exa_summary_lines = []
-        for sr in exa_results:
+        tavily = discovery.get("tavily_search", {})
+        tavily_results = (tavily.get("search_results") or [])[:10]
+        tavily_summary_lines = []
+        for sr in tavily_results:
             title = sr.get("title", "")[:80]
             url = sr.get("url", "")
-            exa_summary_lines.append(f"  - {title}: {url}")
-        exa_summary = "\n".join(exa_summary_lines) if exa_summary_lines else "  (none)"
+            tavily_summary_lines.append(f"  - {title}: {url}")
+        tavily_summary = "\n".join(tavily_summary_lines) if tavily_summary_lines else "  (none)"
+        tavily_answer = tavily.get("answer") or "(none)"
 
         reg_names = [k for k, v in registries.items() if v.get("found")]
         reg_summary = ", ".join(reg_names) if reg_names else "(none)"
 
-        glm_prompt = f"""Given these discovery results for the library "{library}", pick the single
+        # Unified index matches
+        unified_data = discovery.get("unified_index", {})
+        unified_lines = []
+        for m in (unified_data.get("matches") or [])[:5]:
+            dl = m.get("downloads") or 0
+            unified_lines.append(
+                f"  - [{m.get('registry', '?')}] {m.get('name', '?')}: "
+                f"{m.get('docs_url', '?')} (downloads: {dl:,})"
+            )
+        unified_summary = "\n".join(unified_lines) if unified_lines else "  (none)"
+
+        # Enumerated domain matches
+        enum_domains = discovery.get("enumerated_domains", {})
+        enum_lines = []
+        for m in (enum_domains.get("matches") or [])[:5]:
+            enum_lines.append(f"  - {m.get('platform', '?')}: {m.get('url', '?')}")
+        enum_summary = "\n".join(enum_lines) if enum_lines else "  (none)"
+
+        # Stack V2 data (if available from probe)
+        stack_v2 = probe_output.get("stack_v2", {})
+        stack_lines = []
+        for p in (stack_v2.get("platforms") or [])[:5]:
+            stack_lines.append(f"  - {p.get('platform', '?')}: {p.get('matched_files', '?')}")
+        stack_summary = "\n".join(stack_lines) if stack_lines else "  (none)"
+
+        llm_prompt = f"""Given these discovery results for the library "{library}", pick the single
 best URL to fetch documentation from.
 
 Consider:
@@ -1130,8 +1350,19 @@ Best guess GitHub: {best_github or "(none)"}
 Top GitHub candidates:
 {gh_summary}
 
-Top Exa search results:
-{exa_summary}
+Unified index matches (5.14M packages / 53 registries):
+{unified_summary}
+
+Enumerated doc domains:
+{enum_summary}
+
+Stack V2 doc platforms:
+{stack_summary}
+
+Tavily answer: {tavily_answer}
+
+Top Tavily search results:
+{tavily_summary}
 
 Respond with ONLY valid JSON:
 {{"url": "https://...", "reason": "one sentence explanation"}}
@@ -1141,8 +1372,8 @@ If no good documentation URL can be determined, respond with:
 
         try:
             result = subprocess.run(
-                ["clauded-glm", "-p"],
-                input=glm_prompt, capture_output=True, text=True, timeout=60,
+                ["clauded-mm", "-p"],
+                input=llm_prompt, capture_output=True, text=True, timeout=60,
             )
         except (subprocess.TimeoutExpired, Exception):
             result = None
@@ -1178,9 +1409,9 @@ If no good documentation URL can be determined, respond with:
                 return {
                     "source": "web",
                     "url": parsed["url"],
-                    "reason": parsed.get("reason", "GLM-5 selected URL"),
+                    "reason": parsed.get("reason", "MiniMax-M2.5 selected URL"),
                 }
-        # GLM failed or returned invalid — fall through to skip
+        # LLM failed or returned invalid — fall through to skip
 
     # --- Rule 5: Skip ---
     return {
@@ -1200,8 +1431,12 @@ def probe(
     domain: Optional[str] = typer.Option(None, help="Skip discovery, use this domain"),
     github: Optional[str] = typer.Option(None, help="Skip discovery, use this GitHub repo (owner/repo)"),
     json_output: bool = typer.Option(False, "--json", help="Output structured JSON to stdout"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable debug logging"),
 ):
     """Discover, probe, and assess all documentation sources for a library."""
+    global _VERBOSE
+    if verbose:
+        _VERBOSE = True
 
     output: dict = {
         "library": library,
@@ -1254,15 +1489,15 @@ def probe(
         for reg_info in disc.get("registries", {}).values():
             if reg_info.get("domain"):
                 domains_to_probe.add(reg_info["domain"])
-        # Extract domains from exa results — only those that appear 2+ times
+        # Extract domains from tavily results — only those that appear 2+ times
         # (single mentions are likely pages that reference the library, not its docs)
-        exa_domain_counts: dict[str, int] = {}
+        tavily_domain_counts: dict[str, int] = {}
         lib_lower = library.lower().replace("-", "").replace("_", "")
-        for sr in disc.get("exa_search", {}).get("search_results", []):
+        for sr in disc.get("tavily_search", {}).get("search_results", []):
             host = urlparse(sr.get("url", "")).netloc
             if host and host not in NOISE_DOMAINS:
-                exa_domain_counts[host] = exa_domain_counts.get(host, 0) + 1
-        for host, count in exa_domain_counts.items():
+                tavily_domain_counts[host] = tavily_domain_counts.get(host, 0) + 1
+        for host, count in tavily_domain_counts.items():
             # Include if: appears 2+ times, OR domain contains the library name
             host_clean = host.lower().replace("-", "").replace(".", "")
             if count >= 2 or lib_lower in host_clean:
@@ -1278,6 +1513,14 @@ def probe(
                     domains_to_probe.add(host)
         if disc.get("domain_guess", {}).get("domain"):
             domains_to_probe.add(disc["domain_guess"]["domain"])
+        # Unified index domains
+        if disc.get("unified_index", {}).get("domain"):
+            domains_to_probe.add(disc["unified_index"]["domain"])
+        # Enumerated domain matches
+        for m in disc.get("enumerated_domains", {}).get("matches", [])[:3]:
+            d = m.get("domain", "")
+            if d:
+                domains_to_probe.add(d)
 
     # Cap domains to probe — each domain generates ~20 HTTP calls
     if len(domains_to_probe) > 10:
@@ -1326,9 +1569,9 @@ def probe(
         for c in disc.get("github_search", {}).get("candidates", []):
             if c.get("full_name") and not c.get("fork"):
                 github_repos_to_assess.add(c["full_name"])
-        # Also from exa
-        if disc.get("exa_search", {}).get("github"):
-            github_repos_to_assess.add(disc["exa_search"]["github"])
+        # Also from tavily
+        if disc.get("tavily_search", {}).get("github"):
+            github_repos_to_assess.add(disc["tavily_search"]["github"])
 
     if github_repos_to_assess:
         if not json_output:
@@ -1344,6 +1587,12 @@ def probe(
         # Sort by stars descending
         gh_results.sort(key=lambda x: x.get("stars", 0), reverse=True)
         output["github_candidates"] = gh_results
+
+    # Step 4b: Enrich with Stack V2 doc-platform signals
+    if discovered_github:
+        stack_v2 = _enrich_stack_v2(discovered_github)
+        if stack_v2.get("found"):
+            output["stack_v2"] = stack_v2
 
     # Step 5: Determine recommendation
     has_good_llms = any(
@@ -1403,10 +1652,12 @@ def _print_probe_report(output: dict):
             names = ", ".join(registries.keys())
             w(f"\n  Found in registries: {names}")
 
-        exa = disc.get("exa_search", {})
-        if exa.get("search_results"):
-            w(f"  Exa search: {len(exa['search_results'])} results")
-            for sr in exa["search_results"][:3]:
+        tavily = disc.get("tavily_search", {})
+        if tavily.get("search_results"):
+            w(f"  Tavily search: {len(tavily['search_results'])} results")
+            if tavily.get("answer"):
+                w(f"    Answer: {tavily['answer'][:120]}")
+            for sr in tavily["search_results"][:3]:
                 w(f"    {sr.get('title', '?')[:60]} — {sr['url']}")
 
         gh_search = disc.get("github_search", {})
@@ -2022,10 +2273,10 @@ def cleanup_markdownlint(docs_dir: Path) -> dict:
 
 
 def review_content(library: str, docs_dir: Path) -> dict:
-    """Review fetched documentation content using GLM-5 via clauded-glm.
+    """Review fetched documentation content using MiniMax-M2.5 via clauded-mm.
 
     Reads markdown files from docs_dir, samples up to 10 (prioritizing largest),
-    and asks GLM-5 to evaluate identity, substance, encoding, duplication,
+    and asks MiniMax-M2.5 to evaluate identity, substance, encoding, duplication,
     coverage, and completeness.
 
     Returns: {"pass": bool, "issues": [...], "files_to_delete": [...], "summary": "..."}
@@ -2035,7 +2286,7 @@ def review_content(library: str, docs_dir: Path) -> dict:
         "pass": False,
         "issues": [f"review failed: {reason}"],
         "files_to_delete": [],
-        "summary": f"GLM-5 review failed: {reason}",
+        "summary": f"MiniMax-M2.5 review failed: {reason}",
     }
 
     # Collect markdown files
@@ -2096,30 +2347,30 @@ Respond with ONLY valid JSON matching this exact schema:
 Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to false if there are serious problems (wrong library, mostly cruft, severe encoding issues).
 """
 
-    # Check if clauded-glm is available
+    # Check if clauded-mm is available
     import shutil
-    if not shutil.which("clauded-glm"):
-        return fail_result("clauded-glm not found in PATH")
+    if not shutil.which("clauded-mm"):
+        return fail_result("clauded-mm not found in PATH")
 
-    # Call GLM-5 via subprocess
+    # Call MiniMax-M2.5 via subprocess
     try:
         result = subprocess.run(
-            ["clauded-glm", "-p"],
+            ["clauded-mm", "-p"],
             input=prompt, capture_output=True, text=True, timeout=120,
         )
     except subprocess.TimeoutExpired:
-        return fail_result("clauded-glm timed out after 120s")
+        return fail_result("clauded-mm timed out after 120s")
     except Exception as e:
-        return fail_result(f"clauded-glm execution error: {e}")
+        return fail_result(f"clauded-mm execution error: {e}")
 
     if result.returncode != 0:
         stderr_snippet = (result.stderr or "")[:200]
-        return fail_result(f"clauded-glm returned exit code {result.returncode}: {stderr_snippet}")
+        return fail_result(f"clauded-mm returned exit code {result.returncode}: {stderr_snippet}")
 
     # Parse JSON response
     stdout = result.stdout.strip()
     if not stdout:
-        return fail_result("clauded-glm returned empty output")
+        return fail_result("clauded-mm returned empty output")
 
     # Try to extract JSON from the output (may have non-JSON preamble)
     try:
@@ -2143,13 +2394,13 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
                         except json.JSONDecodeError:
                             pass
             else:
-                return fail_result(f"could not parse JSON from clauded-glm output: {stdout[:200]}")
+                return fail_result(f"could not parse JSON from clauded-mm output: {stdout[:200]}")
         else:
-            return fail_result(f"could not parse JSON from clauded-glm output: {stdout[:200]}")
+            return fail_result(f"could not parse JSON from clauded-mm output: {stdout[:200]}")
 
     # Validate expected schema fields
     if not isinstance(parsed, dict) or "pass" not in parsed:
-        return fail_result(f"clauded-glm response missing 'pass' field: {stdout[:200]}")
+        return fail_result(f"clauded-mm response missing 'pass' field: {stdout[:200]}")
 
     return {
         "pass": bool(parsed.get("pass", False)),
@@ -2490,7 +2741,12 @@ def _invoke_probe(library: str) -> dict:
     """
     from typer.testing import CliRunner as _CliRunner
     _runner = _CliRunner()
-    probe_result = _runner.invoke(app, ["probe", library, "--json"])
+    # Pass --verbose if active so probe logs during its execution.
+    # _log() uses os.write to the real fd 2, bypassing CliRunner's capture.
+    args = ["probe", library, "--json"]
+    if _VERBOSE:
+        args.append("--verbose")
+    probe_result = _runner.invoke(app, args)
     if probe_result.exit_code != 0:
         raise RuntimeError(f"probe failed: {probe_result.output[:300]}")
     try:
@@ -2521,24 +2777,29 @@ def add_library(
     }
 
     # Step 1: Probe
+    _log(f"add_library: Step 1 — probing '{library}'")
     try:
         probe_output = _invoke_probe(library)
     except (RuntimeError, Exception) as e:
+        _log(f"add_library: probe failed — {e}")
         result["error"] = str(e)
         return result
 
     # Check if already exists
     if probe_output.get("already_exists"):
+        _log(f"add_library: '{library}' already exists")
         result["success"] = True
         result["source_used"] = "already_exists"
         result["error"] = None
         return result
 
     # Step 2: Decide
+    _log(f"add_library: Step 2 — deciding source")
     decision = decide(probe_output)
     source = decision.get("source", "skip")
     url = decision.get("url", "")
     reason = decision.get("reason", "")
+    _log(f"add_library: decision — source={source}, url={url}, reason={reason}")
 
     result["source_used"] = source
 
@@ -2553,6 +2814,7 @@ def add_library(
         return result
 
     # Step 3: Fetch or scrape
+    _log(f"add_library: Step 3 — fetching via {source}")
     fetch_result: dict = {}
 
     if source == "llms-txt":
@@ -2566,10 +2828,12 @@ def add_library(
         return result
 
     if not fetch_result.get("success"):
+        _log(f"add_library: fetch failed — {fetch_result.get('error', 'unknown')}")
         result["error"] = f"fetch failed ({source}): {fetch_result.get('error', 'unknown')}"
         return result
 
     result["files_added"] = fetch_result.get("file_count", 0)
+    _log(f"add_library: fetched {result['files_added']} files")
 
     # Determine the docs directory
     if source == "llms-txt":
@@ -2582,11 +2846,15 @@ def add_library(
         docs_dir = DOCS_DIR / library
 
     # Step 4: Markdownlint cleanup
+    _log(f"add_library: Step 4 — markdownlint cleanup in {docs_dir}")
     if docs_dir.exists():
-        cleanup_markdownlint(docs_dir)
+        lint_result = cleanup_markdownlint(docs_dir)
+        _log(f"add_library: markdownlint — {lint_result.get('files_checked', 0)} files, {lint_result.get('issues_fixed', 0)} issues fixed")
 
     # Step 5: LLM content review
+    _log(f"add_library: Step 5 — LLM content review")
     review = review_content(library, docs_dir)
+    _log(f"add_library: review result — pass={review.get('pass')}, summary={review.get('summary', '')[:100]}")
     if review.get("pass"):
         result["quality_score"] = "pass"
     else:
@@ -2608,6 +2876,7 @@ def add_library(
         return result
 
     # Step 6: Git commit + push
+    _log("add_library: Step 6 — git commit + push")
     if no_commit:
         result["success"] = True
         return result
@@ -2630,8 +2899,12 @@ def add(
     json_output: bool = typer.Option(False, "--json", help="Output structured JSON"),
     no_commit: bool = typer.Option(False, "--no-commit", help="Skip git commit and push"),
     dry_run: bool = typer.Option(False, "--dry-run", help="Probe and decide only, don't fetch or commit"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable debug logging"),
 ):
     """Add documentation for a library: probe, decide, fetch, clean, review, commit."""
+    global _VERBOSE
+    if verbose:
+        _VERBOSE = True
     result = add_library(library, dry_run=dry_run, no_commit=no_commit)
 
     if json_output:
@@ -2776,8 +3049,12 @@ def plow(
     dry_run: bool = typer.Option(False, "--dry-run", help="Probe and decide only, don't fetch or commit"),
     project_id: str = typer.Option(DOCS_PROJECT_ID, "--project-id", help="trckr project UUID"),
     json_output: bool = typer.Option(False, "--json", help="Output structured JSON"),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Enable debug logging"),
 ):
     """Batch-process documentation tickets from the DOCS project queue."""
+    global _VERBOSE
+    if verbose:
+        _VERBOSE = True
     summary = plow_batch(limit=limit, dry_run=dry_run, project_id=project_id)
 
     if json_output:
