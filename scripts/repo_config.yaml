@@ -1336,3 +1336,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/greenlet
   branch: main
+- name: grafanalib
+  description: grafanalib from GitHub
+  repo_url: https://github.com/weaveworks/grafanalib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/grafanalib
+  branch: main
