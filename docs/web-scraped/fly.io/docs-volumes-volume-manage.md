@@ -1,0 +1,253 @@
+# Source: https://fly.io/docs/volumes/volume-manage/
+
+Title: Create and manage volumes
+
+URL Source: https://fly.io/docs/volumes/volume-manage/
+
+Markdown Content:
+[Docs](https://fly.io/docs/)[Fly Volumes](https://fly.io/docs/volumes)Create and manage volumes
+You can manage Fly Volumes using the [`fly volumes`](https://fly.io/docs/flyctl/volumes/) command.
+
+Fly Volumes are local persistent storage for [Fly Machines](https://fly.io/docs/machines/). Learn [how Fly Volumes work](https://fly.io/docs/volumes/overview/).
+
+**Note**: `fly volumes` is aliased to `fly volume` and `fly vol`.
+
+[](https://fly.io/docs/volumes/volume-manage/#access-a-volume)Access a volume
+-----------------------------------------------------------------------------
+
+Access and write to a volume on a Machine just like a regular directory.
+
+For Machines managed with Fly Launch, the `destination` under `[mounts]` in `fly.toml` is the path for the mounted volumes.
+
+For unmanaged Machines, you specify the mount path when you [add a volume to a cloned Machine](https://fly.io/docs/volumes/volume-manage/#add-a-volume-to-an-unmanaged-machine) or [create a Machine and attach a volume](https://fly.io/docs/machines/flyctl/fly-machine-run/#mount-a-fly-volume).
+
+[](https://fly.io/docs/volumes/volume-manage/#create-a-volume)Create a volume
+-----------------------------------------------------------------------------
+
+Create a Fly Volume:
+
+```
+fly volumes create <my_volume_name>
+```
+
+Use the `--region` option to set a [region](https://fly.io/docs/reference/regions/), or select a region when prompted.
+
+Use the `--count` option to create more than one volume.
+
+Use the `--snapshot-retention` option to change the number of days we retain snapshots (default is 5 days).
+
+Use the `--scheduled-snapshots=false` option to disable automatic daily snapshots.
+
+For more options, refer to the [`fly volumes create` docs](https://fly.io/docs/flyctl/volumes-create/) or run `fly volumes create --help`.
+
+[](https://fly.io/docs/volumes/volume-manage/#extend-a-volume)Extend a volume
+-----------------------------------------------------------------------------
+
+You can make a volume bigger using the `fly volume extend` command. Note that you can extend (increase) a volume’s size, but you can’t make a volume smaller.
+
+You can also configure a volume to extend automatically after a certain threshold [using the Machines API](https://fly.io/docs/machines/api/volumes-resource/#extend-a-volume) or [in the [mounts] section](https://fly.io/docs/reference/configuration/#auto-extend-volume-size-configuration) of your app’s `fly.toml` file.
+
+1.   Run `fly volumes list` and copy the ID of the volume to extend.
+
+2.   Extend the volume size:
+
+```
+`fly volumes extend <volume id> -s <new size in GB>`
+``` 
+3.   (Optional) Check the new volume size in the Machine’s file system:
+
+```
+fly ssh console -s -C df
+``` 
+Example output:
+
+```
+? Select VM:  [Use arrows to move, type to filter]
+> yyz: 4d891de2f66587 fdaa:0:3b99:a7b:ef:8cc4:dc49:2 withered-shadow-4027           
+Connecting to fdaa:0:3b99:a7b:ef:8cc4:dc49:2... complete
+Filesystem     1K-blocks   Used Available Use% Mounted on
+devtmpfs          103068      0    103068   0% /dev
+/dev/vda         8191416 172752   7582852   3% /
+shm               113224      0    113224   0% /dev/shm
+tmpfs             113224      0    113224   0% /sys/fs/cgroup
+/dev/vdb         2043856   3072   1930400   1% /storage
+``` 
+In the preceding example, the volume is mounted under `/storage` and has been resized to from 1GB to 2GB. The `df` command shows disk space in 1K blocks by default. Use the `-h` flag to return a more human-readable format.
+
+For options, refer to the [`fly volumes extend` docs](https://fly.io/docs/flyctl/volumes-extend/) or run `fly volumes extend --help`.
+
+[](https://fly.io/docs/volumes/volume-manage/#create-a-copy-of-a-volume-fork-a-volume)Create a copy of a volume (Fork a volume)
+-------------------------------------------------------------------------------------------------------------------------------
+
+Create an exact copy of a volume, including its data. By default, we place the new volume on a separate physical host in the same region. Use the `--region` option to fork the volume into another region.
+
+**Important:** After you fork a volume, the new volume is independent of the source volume. The new volume and the source volume do not continue to sync.
+
+1.   Run `fly volumes list` and copy the ID of the volume to fork.
+
+2.   Fork the volume:
+
+```
+fly volumes fork <volume ID> --region <region>
+``` 
+Example output:
+
+```
+ID: vol_grnoq5796wwj0dkv
+     Name: my_volume_name
+      App: my-app-name
+   Region: yyz
+     Zone: 511d
+  Size GB: 3
+Encrypted: true
+Created at: 12 Oct 23 18:57 UTC
+``` 
+3.   (Optional) Use [`fly scale count`](https://fly.io/docs/apps/scale-count/#scale-an-app-with-volumes) to create a new Machine that picks up the unattached volume, or attach the volume to a new Machine by cloning with the following command:
+
+```
+`fly machine clone <machine id> --region <region code> --attach-volume <volume id>:<destination mount path>`
+```
+
+For options, refer to the [`fly volumes fork` docs](https://fly.io/docs/flyctl/volumes-fork/) or run `fly volumes fork --help`.
+
+A detailed guide to [volume forking](https://fly.io/docs/blueprints/volume-forking/) is also available.
+
+[](https://fly.io/docs/volumes/volume-manage/#add-a-volume-to-an-unmanaged-machine)Add a volume to an unmanaged Machine
+-----------------------------------------------------------------------------------------------------------------------
+
+For Machines that aren’t managed with Fly Launch (`fly.toml` and `fly deploy`), you can create a volume and attach it when you clone a Machine. You can also [clone a Machine with a volume](https://fly.io/docs/volumes/volume-manage/#clone-a-machine-with-a-volume) to get a new Machine with an empty volume.
+
+1.   Create the volume in the same region as your app. For example:
+
+```
+fly volumes create <volume name> --region <region code>
+``` 
+2.   Clone one of your app’s Machines (with no volume) and attach the volume you just created:
+
+```
+fly machine clone <machine id> --region <region code> --attach-volume <volume id>:<destination mount path>
+``` 
+`destination-mount-path` is the directory where the volume should be mounted on the file system. Note that you can’t mount a volume with a `destination-mount-path` of `/`, since `/` is used for the root file system.
+
+For example:
+
+```
+fly machine clone 148eddeef09789 --region yyz --attach-volume vol_8l524yj0ko347zmp:/data
+``` 
+3.   Repeat the preceding steps as needed to create more Machines with volumes.
+
+4.   Confirm that the volume is attached to a Machine with `fly machine list` or `fly volumes list`.
+
+5.   (Optional) Destroy the Machine used to create the clone:
+
+```
+fly machine destroy <machine id>
+``` 
+
+[](https://fly.io/docs/volumes/volume-manage/#clone-a-machine-with-a-volume)Clone a Machine with a volume
+---------------------------------------------------------------------------------------------------------
+
+Clone a Machine with a volume to create a new Machine in the same region with an empty volume. Use the `-r` option to clone the Machine into a different [region](https://fly.io/docs/reference/regions/).
+
+1.   Run `fly status` and copy the Machine ID of the Machine to clone.
+
+2.   Clone the Machine:
+
+```
+fly machine clone <machine id>
+``` 
+3.   List volumes to check the result:
+
+```
+fly volumes list
+``` 
+Example output showing two volumes with attached Machines:
+
+```
+ID                      STATE   NAME    SIZE    REGION  ZONE    ENCRYPTED       ATTACHED VM     CREATED AT     
+vol_ez1nvxkwl3jrmxl7    created data    1GB     lhr     4de2    true            91851edb6ee983  39 seconds ago
+vol_zmjnv8m81p5rywgx    created data    1GB     lhr     b6a7    true            5683606c41098e  7 minutes ago
+``` 
+
+**Note:**`fly machine clone` doesn’t write data into the new volume.
+
+For options, refer to the [`fly machine clone` docs](https://fly.io/docs/flyctl/machine-clone/) or run `fly machine clone --help`.
+
+[](https://fly.io/docs/volumes/volume-manage/#destroy-a-volume)Destroy a volume
+-------------------------------------------------------------------------------
+
+**Warning:** When you destroy a volume, you permanently delete all its data. There is no undo. Make sure you’ve backed up any data you want to keep.
+
+1.   List volumes and find the ID for the one you want to destroy: 
+
+```
+fly volumes list
+```
+
+1.   Destroy the volume using its ID: 
+
+```
+fly volumes destroy <volume id>
+```
+
+For options, refer to the [`fly volumes destroy` docs](https://fly.io/docs/flyctl/volumes-destroy/) or run `fly volumes destroy --help`.
+
+**Volumes attached to Machines**
+
+Volumes attached to Machines can’t be destroyed. You can check which Machine (if any) a volume is attached to by running `fly volumes list` First, stop and destroy the Machine, then the unattached volume can be destroyed.
+
+If you’re replacing the Machine, use `fly scale count` or `fly machine clone` to launch a new one. This will create and mount a fresh volume based on your `fly.toml` config.
+
+To stop using volumes entirely, remove any `[mounts]` from `fly.toml` and redeploy. The Machine will be replaced without the volumes. After redeploying, you can destroy the volumes.
+
+**Note:** Snapshots taken before deletion may still be restorable for a limited time, provided you have the volume ID (default retention is 5 days).
+
+[](https://fly.io/docs/volumes/volume-manage/#restore-a-deleted-volume)Restore a deleted volume
+-----------------------------------------------------------------------------------------------
+
+You can restore data from a deleted volume using a volume snapshot. At this time, you can only retrieve a deleted volume’s ID for 24 hours after deletion. If you already have the volume ID, then you can still use it to access the volume’s snapshots within the snapshot retention period. The default snapshot retention period is 5 days. Learn how to [set or change the snapshot retention period](https://fly.io/docs/volumes/snapshots/#set-or-change-the-snapshot-retention-period).
+
+1.   Run `fly volumes list --all` and copy the ID of the deleted volume.
+
+2.   List the volume’s snapshots and copy the ID of the snapshot to restore:
+
+```
+fly volumes snapshots list <volume id>
+``` 
+Example output:
+
+```
+Snapshots
+ID                  SIZE        CREATED AT
+vs_MgLAggLZkYx89fLy 17638389    1 hour ago
+vs_1KRgwpDqZ2ll5tx  17649006    1 day ago
+vs_nymJyYMwXpjxqTzJ 17677766    2 days ago
+vs_R3OPAz5jBqzogF16 17689473    3 days ago
+vs_pZlGZvq3gkAlAcaZ 17655830    4 days ago
+vs_A9k6age3bQov6twj 17631880    5 days ago
+``` 
+3.   Restore from the volume snapshot into a new volume of equal or greater size:
+
+```
+fly volumes create <volume name> --snapshot-id <snapshot id> -s <volume size in GB>
+``` 
+Example output:
+
+```
+? Select region: Sydney, Australia (syd)
+        ID: vol_mjn924o9l3q403lq
+      Name: pg_data
+      App: my-app-name
+    Region: syd
+      Zone: 180d
+  Size GB: 3
+Encrypted: true
+Created at: 02 Aug 22 21:27 UTC
+``` 
+
+For options, refer to the [`fly volumes snapshots` docs](https://fly.io/docs/flyctl/volumes-snapshots/) or run `fly volumes snapshots --help`.
+
+*   [Fly Volumes overview](https://fly.io/docs/volumes/overview/)
+*   [Manage volume snapshots](https://fly.io/docs/volumes/snapshots/)
+*   [Add volume storage to a Fly Launch app](https://fly.io/docs/apps/volume-storage/)
+*   [Scale an app with volumes](https://fly.io/docs/apps/scale-count/#scale-an-app-with-volumes)
