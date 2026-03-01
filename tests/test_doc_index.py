@@ -456,17 +456,13 @@ GOLANG_NDJSON = (
     '{"Path":"golang.org/x/net","Version":"v0.20.0","Timestamp":"2026-01-01T00:00:00Z"}\n'
 )
 
-RTD_RESPONSE = {
-    "results": [
-        {
-            "slug": "requests",
-            "name": "Requests",
-            "programming_language": {"code": "python"},
-            "urls": {"documentation": "https://requests.readthedocs.io/"},
-        },
-    ],
-    "next": None,
-}
+RTD_SUBFINDER_OUTPUT = """\
+requests.readthedocs.io
+flask.readthedocs.io
+www.readthedocs.io
+api.readthedocs.io
+nested.sub.readthedocs.io
+"""
 
 CLJDOC_SITEMAP = """\
 <?xml version="1.0" encoding="UTF-8"?>
@@ -570,20 +566,31 @@ class TestGolangAdapter:
 
 
 class TestReadTheDocsAdapter:
-    @patch("doc_index_sources.readthedocs.requests.get")
-    @patch("doc_index_sources.readthedocs.time.sleep")
-    def test_parse(self, mock_sleep, mock_get):
-        mock_get.return_value = MagicMock(
-            status_code=200, json=lambda: RTD_RESPONSE
-        )
-        mock_get.return_value.raise_for_status = MagicMock()
+    @patch("doc_index_sources.readthedocs._find_subfinder")
+    @patch("doc_index_sources.readthedocs.subprocess.run")
+    @patch("doc_index_sources.readthedocs.Path.read_text")
+    @patch("doc_index_sources.readthedocs.Path.unlink")
+    def test_parse(self, mock_unlink, mock_read, mock_run, mock_find):
+        mock_find.return_value = "/usr/bin/subfinder"
+        mock_run.return_value = MagicMock(returncode=0)
+        mock_read.return_value = RTD_SUBFINDER_OUTPUT
 
         source = ReadTheDocsSource()
         entries = list(source.fetch())
-        assert len(entries) == 1
-        assert entries[0].name == "requests"
-        assert entries[0].language == "python"
-        assert entries[0].doc_url == "https://requests.readthedocs.io/"
+        # www, api, and nested.sub should be filtered out
+        assert len(entries) == 2
+        names = {e.name for e in entries}
+        assert "requests" in names
+        assert "flask" in names
+        assert entries[0].doc_url.endswith(".readthedocs.io/")
+        assert entries[0].quality_signals["discovery"] == "subfinder"
+
+    @patch("doc_index_sources.readthedocs._find_subfinder")
+    def test_no_subfinder(self, mock_find):
+        mock_find.return_value = None
+        source = ReadTheDocsSource()
+        with pytest.raises(RuntimeError, match="subfinder not found"):
+            list(source.fetch())
 
 
 class TestCljdocAdapter:
