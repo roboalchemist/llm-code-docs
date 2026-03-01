@@ -1330,3 +1330,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/@typescript-eslint/utils
   branch: main
+- name: greenlet
+  description: greenlet from GitHub
+  repo_url: https://github.com/python-greenlet/greenlet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/greenlet
+  branch: main
