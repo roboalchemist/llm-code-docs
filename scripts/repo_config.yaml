@@ -1342,3 +1342,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/grafanalib
   branch: main
+- name: googleapiclient
+  description: googleapiclient from GitHub
+  repo_url: https://github.com/googleapis/google-api-python-client.git
+  source_folder: docs
+  target_folder: docs/github-scraped/googleapiclient
+  branch: main
