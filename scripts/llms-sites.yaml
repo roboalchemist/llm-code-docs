@@ -1114,3 +1114,6 @@ sites:
 - name: uvicorn
   base_url: https://www.uvicorn.dev/
   description: uvicorn documentation
+- name: nats
+  base_url: https://docs.nats.io/
+  description: nats documentation
