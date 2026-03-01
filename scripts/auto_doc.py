@@ -750,7 +750,7 @@ def check_existing(library: str) -> dict:
     names = {library, library.lower(), library.replace("-", ""), library.replace("_", "-")}
 
     # Check docs directories
-    for source in ["llms-txt", "github-scraped", "web-scraped"]:
+    for source in ["llms-txt", "github-scraped", "web-scraped", "go-native"]:
         source_dir = DOCS_DIR / source
         if not source_dir.exists():
             continue
@@ -1210,16 +1210,48 @@ def decide(probe_output: dict) -> dict:
                 "reason": f"metacpan.org/{cpan_name}: Perl CPAN module docs",
             }
 
-    # 2d: Go module → pkg.go.dev
+    # 2d: Go module → prefer real doc site, fall back to gomarkdoc
+    # Detect Go via: (a) GitHub search says language=Go, or (b) library name is a Go module path
+    _go_module_prefixes = ("github.com/", "golang.org/", "google.golang.org/",
+                           "go.uber.org/", "go.etcd.io/", "go.opentelemetry.io/",
+                           "cloud.google.com/go", "k8s.io/", "sigs.k8s.io/")
+    is_go_by_name = any(library.startswith(p) for p in _go_module_prefixes) or (
+        "." in library.split("/")[0] if "/" in library else False
+    )
+    is_go_by_github = False
+    go_homepage = ""
     if best_github:
         for c in discovery.get("github_search", {}).get("candidates", []):
             if c.get("full_name") == best_github and c.get("language", "").lower() == "go":
-                pkg_url = f"https://pkg.go.dev/{best_github}"
-                return {
-                    "source": "web",
-                    "url": pkg_url,
-                    "reason": f"pkg.go.dev/{best_github}: Go module auto-docs",
-                }
+                is_go_by_github = True
+                go_homepage = c.get("homepage", "")
+                break
+
+    if is_go_by_name or is_go_by_github:
+        # Check if the repo has a real docs homepage (not pkg.go.dev)
+        if go_homepage:
+            hp_host = urlparse(go_homepage).netloc
+            if hp_host and hp_host not in NOISE_DOMAINS and "pkg.go.dev" not in hp_host:
+                status = _head(go_homepage)
+                if 200 <= status < 400:
+                    return {
+                        "source": "web",
+                        "url": go_homepage,
+                        "reason": f"Go module docs site: {go_homepage} (HTTP {status})",
+                    }
+        # No real doc site → use gomarkdoc for native markdown
+        # Use library name as module path if it looks like one, else derive from GitHub
+        if "/" in library and "." in library.split("/")[0]:
+            module_path = library  # Already a Go module path like go.uber.org/zap
+        elif best_github:
+            module_path = f"github.com/{best_github}"
+        else:
+            module_path = library
+        return {
+            "source": "go-native",
+            "url": module_path,
+            "reason": f"gomarkdoc: native Go docs from {module_path}",
+        }
 
     # 2c: GitHub repo homepage field → often points to docs site
     if best_github:
@@ -1729,8 +1761,10 @@ def fetch(
         result = _fetch_llms_txt(library, url, force)
     elif source == "github":
         result = _fetch_github(library, url, force)
+    elif source == "go-native":
+        result = _fetch_go_module(library, url, force)
     else:
-        typer.echo(f"Unknown source: {source}. Use 'llms-txt' or 'github'.", err=True)
+        typer.echo(f"Unknown source: {source}. Use 'llms-txt', 'github', or 'go-native'.", err=True)
         raise typer.Exit(2)
 
     # Update index
@@ -1913,6 +1947,114 @@ def _fetch_github(library: str, repo: str, force: bool) -> dict:
     return result
 
 
+def _fetch_go_module(library: str, module_path: str, force: bool) -> dict:
+    """Fetch Go module docs using gomarkdoc (native markdown from source).
+
+    1. Resolve VCS origin via proxy.golang.org/@latest
+    2. Shallow clone the repo
+    3. Run gomarkdoc ./... to generate markdown
+    4. Save to docs/go-native/{library}/
+    """
+    import shutil
+
+    result = {"library": library, "source": "go-native", "url": module_path,
+              "success": False, "file_count": 0, "error": None}
+
+    gomarkdoc = shutil.which("gomarkdoc") or os.path.expanduser("~/go/bin/gomarkdoc")
+    if not os.path.isfile(gomarkdoc):
+        result["error"] = "gomarkdoc not installed"
+        return result
+
+    # Sanitize library name for filesystem (go.uber.org/zap → go.uber.org-zap)
+    safe_name = library.replace("/", "-")
+    output_dir = DOCS_DIR / "go-native" / safe_name
+    if output_dir.exists() and not force:
+        md_files = list(output_dir.rglob("*.md"))
+        if md_files:
+            result["success"] = True
+            result["file_count"] = len(md_files)
+            result["output_dir"] = str(output_dir.relative_to(REPO_ROOT))
+            return result
+
+    # Resolve VCS repo URL via Go module proxy
+    _log(f"_fetch_go_module: resolving {module_path} via proxy.golang.org")
+    proxy_url = f"https://proxy.golang.org/{module_path}/@latest"
+    resp = _get(proxy_url, timeout=10.0)
+    if not resp or resp.status_code != 200:
+        result["error"] = f"proxy.golang.org lookup failed for {module_path}"
+        return result
+
+    # Extract clone URL from proxy response Origin.URL (handles vanity imports)
+    proxy_data = resp.json()
+    origin_url = proxy_data.get("Origin", {}).get("URL", "")
+    if origin_url:
+        clone_url = origin_url if origin_url.endswith(".git") else origin_url + ".git"
+    else:
+        # Fallback: derive from module path for known hosts
+        parts = module_path.split("/")
+        if len(parts) >= 3 and parts[0] in ("github.com", "gitlab.com", "bitbucket.org"):
+            clone_url = f"https://{parts[0]}/{parts[1]}/{parts[2]}.git"
+        elif parts[0] == "golang.org" and len(parts) >= 3 and parts[1] == "x":
+            clone_url = f"https://github.com/golang/{parts[2]}.git"
+        else:
+            root = "/".join(parts[:3]) if len(parts) >= 3 else module_path
+            clone_url = f"https://{root}.git"
+
+    _log(f"_fetch_go_module: cloning {clone_url}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp) / "repo"
+            subprocess.run(
+                ["git", "clone", "--depth", "1", "--single-branch", clone_url, str(tmp_path)],
+                capture_output=True, text=True, timeout=120, check=True,
+            )
+
+            # If the module path is a sub-directory of the repo, cd into it
+            # e.g. google.golang.org/api/drive/v3 → the repo root has the go.mod
+            # but sub-packages live in subdirectories
+            work_dir = tmp_path
+
+            # Run gomarkdoc ./... to generate all-in-one markdown
+            _log(f"_fetch_go_module: running gomarkdoc in {work_dir}")
+            proc = subprocess.run(
+                [gomarkdoc, "./..."],
+                capture_output=True, text=True, timeout=120, cwd=str(work_dir),
+                env={**os.environ, "GOFLAGS": "-mod=mod"},
+            )
+
+            if proc.returncode != 0:
+                _log(f"_fetch_go_module: gomarkdoc failed: {proc.stderr[:300]}")
+                result["error"] = f"gomarkdoc failed: {proc.stderr[:200]}"
+                return result
+
+            content = proc.stdout
+            if not content or len(content.strip()) < 200:
+                result["error"] = "gomarkdoc produced empty/minimal output"
+                return result
+
+            # Write the combined output
+            out_file = output_dir / f"{safe_name}.md"
+            out_file.write_text(content, encoding="utf-8")
+            file_count = 1
+
+            _log(f"_fetch_go_module: wrote {len(content)} bytes to {out_file}")
+
+            result["success"] = True
+            result["file_count"] = file_count
+            result["output_dir"] = str(output_dir.relative_to(REPO_ROOT))
+
+    except subprocess.TimeoutExpired:
+        result["error"] = "Git clone or gomarkdoc timed out (120s)"
+    except subprocess.CalledProcessError as e:
+        result["error"] = f"Git clone failed: {e.stderr[:200]}"
+    except Exception as e:
+        result["error"] = str(e)
+
+    return result
+
+
 def _ensure_llms_site_config(name: str, base_url: str):
     """Add a site to llms-sites.yaml if not already present."""
     config = {"sites": []}
@@ -2047,7 +2189,7 @@ def status(
         "total_size_bytes": 0,
     }
 
-    for source_name in ["llms-txt", "github-scraped", "web-scraped"]:
+    for source_name in ["llms-txt", "github-scraped", "web-scraped", "go-native"]:
         source_dir = DOCS_DIR / source_name
         if not source_dir.exists():
             result["sources"][source_name] = {"libraries": 0, "files": 0, "size_bytes": 0}
@@ -2834,6 +2976,8 @@ def add_library(
         fetch_result = _fetch_llms_txt(library, url, force=False)
     elif source == "github":
         fetch_result = _fetch_github(library, url, force=False)
+    elif source == "go-native":
+        fetch_result = _fetch_go_module(library, url, force=False)
     elif source == "web":
         fetch_result = fetch_via_jina(library, url)
     else:
@@ -2853,6 +2997,8 @@ def add_library(
         docs_dir = DOCS_DIR / "llms-txt" / library
     elif source == "github":
         docs_dir = DOCS_DIR / "github-scraped" / library
+    elif source == "go-native":
+        docs_dir = DOCS_DIR / "go-native" / library.replace("/", "-")
     elif source == "web":
         docs_dir = DOCS_DIR / "web-scraped" / library
     else:
