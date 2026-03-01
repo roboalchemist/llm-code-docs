@@ -1787,7 +1787,14 @@ def _fetch_llms_txt(library: str, url: str, force: bool) -> dict:
     }
 
     try:
-        stats = scraper.process_site(site_config, mode="both", force=force)
+        # Redirect stdout to stderr during scraper call — the scraper prints
+        # progress to stdout which corrupts JSON output from the CLI.
+        _saved_stdout = sys.stdout
+        sys.stdout = sys.stderr
+        try:
+            stats = scraper.process_site(site_config, mode="both", force=force)
+        finally:
+            sys.stdout = _saved_stdout
         individual = stats.get("individual_success", 0)
         full = 1 if stats.get("full_success") else 0
         result["success"] = individual > 0 or full > 0
@@ -2566,7 +2573,7 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
     all_urls = [docs_url] + [l for l in links if l != docs_url]
     all_urls = all_urls[:MAX_PAGES]
 
-    print(f"  Jina Reader: found {len(links)} doc links, will fetch {len(all_urls)} pages (including index)")
+    print(f"  Jina Reader: found {len(links)} doc links, will fetch {len(all_urls)} pages (including index)", file=sys.stderr)
 
     # Step 3: Create output directory
     output_path.mkdir(parents=True, exist_ok=True)
@@ -2597,35 +2604,35 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
                 r = SESSION.get(jina_page_url, headers=jina_headers, timeout=REQUEST_TIMEOUT)
                 if r.status_code == 429:
                     wait = RATE_LIMIT_DELAY * (2 ** attempt)
-                    print(f"  [{i+1}/{len(all_urls)}] 429 rate limited, waiting {wait:.0f}s...")
+                    print(f"  [{i+1}/{len(all_urls)}] 429 rate limited, waiting {wait:.0f}s...", file=sys.stderr)
                     time.sleep(wait)
                     continue
                 break
             if r.status_code != 200:
                 errors.append(f"HTTP {r.status_code} for {page_url}")
-                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (HTTP {r.status_code})")
+                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (HTTP {r.status_code})", file=sys.stderr)
                 continue
 
             page_markdown = r.text
             content_size = len(page_markdown.encode("utf-8"))
             if content_size < MIN_CONTENT_BYTES:
                 errors.append(f"Too small ({content_size}b) for {page_url}")
-                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (too small: {content_size}b)")
+                print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (too small: {content_size}b)", file=sys.stderr)
                 continue
 
             # Write with source header
             full_content = f"# Source: {page_url}\n\n{page_markdown}"
             filepath.write_text(full_content, encoding="utf-8")
             saved_count += 1
-            print(f"  [{i+1}/{len(all_urls)}] OK   {page_url} -> {filepath.name} ({content_size}b)")
+            print(f"  [{i+1}/{len(all_urls)}] OK   {page_url} -> {filepath.name} ({content_size}b)", file=sys.stderr)
 
         except requests.exceptions.Timeout:
             errors.append(f"Timeout for {page_url}")
-            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (timeout)")
+            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} (timeout)", file=sys.stderr)
             continue
         except Exception as e:
             errors.append(f"Error for {page_url}: {e}")
-            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} ({e})")
+            print(f"  [{i+1}/{len(all_urls)}] SKIP {page_url} ({e})", file=sys.stderr)
             continue
 
     # Step 5: Validate results
@@ -2636,9 +2643,9 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
     result["success"] = True
     result["file_count"] = saved_count
     if errors:
-        print(f"  Jina Reader: {saved_count} pages saved, {len(errors)} skipped")
+        print(f"  Jina Reader: {saved_count} pages saved, {len(errors)} skipped", file=sys.stderr)
     else:
-        print(f"  Jina Reader: {saved_count} pages saved successfully")
+        print(f"  Jina Reader: {saved_count} pages saved successfully", file=sys.stderr)
     return result
 
 
