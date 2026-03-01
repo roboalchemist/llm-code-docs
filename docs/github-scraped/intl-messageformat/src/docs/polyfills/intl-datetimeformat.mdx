@@ -1,0 +1,258 @@
+A spec-compliant polyfill for Intl.DateTimeFormat fully tested by the [official ECMAScript Conformance test suite](https://github.com/tc39/test262)
+
+[![npm Version](https://img.shields.io/npm/v/@formatjs/intl-datetimeformat.svg?style=flat-square)](https://www.npmjs.org/package/@formatjs/intl-datetimeformat)
+![size](https://badgen.net/bundlephobia/minzip/@formatjs/intl-datetimeformat)
+
+<Admonition type="caution">
+  Right now we only support Gregorian calendar in this polyfill. Therefore we
+  recommend setting `calendar: 'gregory'` in your options to be safe.
+</Admonition>
+
+<Admonition type="caution">
+  Right now this polyfill supports daylight transition until 2100 to reduce the
+  dataset size
+</Admonition>
+
+## ECMA-402 Spec Compliance
+
+This package is **fully compliant** with the ECMA-402 specification for `Intl.DateTimeFormat`, including all finalized proposals.
+
+### Implemented Features
+
+#### ✅ Core Methods
+
+- **`format(date)`** - Format a single date/time
+- **`formatToParts(date)`** - Format a date/time and return parts array
+- **`formatRange(startDate, endDate)`** - Format a date range ([Proposal](https://github.com/tc39/proposal-intl-DateTimeFormat-formatRange))
+- **`formatRangeToParts(startDate, endDate)`** - Format a date range and return parts array with source attribution
+- **`resolvedOptions()`** - Return resolved formatting options
+
+#### ✅ dateStyle & timeStyle Options
+
+- **Proposal**: [Intl.DateTimeFormat dateStyle & timeStyle](https://github.com/tc39/proposal-intl-datetime-style)
+- **Values**: `'full'`, `'long'`, `'medium'`, `'short'`
+- **Usage**: Can be used individually or together for quick date/time formatting
+- **Example**:
+
+#### Global import
+
+```js
+new Intl.DateTimeFormat('en', {dateStyle: 'long', timeStyle: 'short'})
+// "January 1, 2024 at 12:00 PM"
+```
+
+<Admonition type="info">
+    The global import does not include TypeScript type declarations.
+    For TypeScript projects, we recommend using ES module imports instead.
+
+    If you choose to use the global import, in order to prevent type errors, you must manually include the corresponding type declaration files (.d.ts) in your project.
+
+</Admonition>
+
+#### ES Modules
+
+```js
+import {DateTimeFormat} from '@formatjs/intl-datetimeformat'
+
+new DateTimeFormat('en', {dateStyle: 'long', timeStyle: 'short'})
+// "January 1, 2024 at 12:00 PM"
+```
+
+#### ✅ Extended timeZoneName Options
+
+All 6 `timeZoneName` values are supported:
+
+- **`'short'`** - Short standard format (e.g., "EST", "PST")
+- **`'long'`** - Long standard format (e.g., "Eastern Standard Time")
+- **`'shortOffset'`** - Short format with UTC offset (e.g., "GMT-5")
+- **`'longOffset'`** - Long format with UTC offset (e.g., "GMT-05:00")
+- **`'shortGeneric'`** - Short generic non-location format (e.g., "ET", "PT")
+- **`'longGeneric'`** - Long generic non-location format (e.g., "Eastern Time")
+
+#### ✅ Additional Features
+
+- **dayPeriod** - Format day periods (`'narrow'`, `'short'`, `'long'`)
+- **fractionalSecondDigits** - Control decimal precision for seconds (1-3 digits)
+- **era** - Format era information (`'narrow'`, `'short'`, `'long'`)
+- **hour12** and **hourCycle** - 12/24 hour format control
+- **Full IANA timezone support** - 600+ timezones with accurate DST transitions
+- **UTC offset timezones** - Direct offset support (e.g., `'+01:00'`, `'-05:30'`)
+
+### Not Implemented (Stage 2.7 Proposals - Not Yet Finalized)
+
+- **eraDisplay option** - Control era visibility (`'always'`, `'never'`, `'auto'`)
+- **monthCode support** - ISO 8601 month codes for non-Gregorian calendars
+
+## Features
+
+- [dateStyle/timeStyle](https://github.com/tc39/proposal-intl-datetime-style)
+- [formatRange](https://github.com/tc39/proposal-intl-DateTimeFormat-formatRange)
+
+## Installation
+
+<Tabs
+groupId="npm"
+defaultValue="npm"
+values={[
+{label: 'npm', value: 'npm'},
+{label: 'yarn', value: 'yarn'},
+{label: 'pnpm', value: 'pnpm'},
+]}>
+<TabItem value="npm">
+
+```sh
+npm i @formatjs/intl-datetimeformat
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```sh
+yarn add @formatjs/intl-datetimeformat
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```sh
+pnpm add @formatjs/intl-datetimeformat
+```
+
+</TabItem>
+</Tabs>
+
+## Requirements
+
+This package requires the following capabilities:
+
+- [`Intl.getCanonicalLocales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/getCanonicalLocales) or [polyfill](intl-getcanonicallocales)
+- [`Intl.Locale`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) or [polyfill](intl-locale).
+- [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) or [polyfill](intl-numberformat).
+
+## Usage
+
+### Via polyfill-fastly.io
+
+You can use [polyfill-fastly.io URL Builder](https://polyfill-fastly.io/) to create a polyfill script tag for `Intl.DateTimeFormat`. By default the created URL does not come with any locale data. In order to add locale data, append `Intl.DateTimeFormat.~locale.<locale>`, as well as locale data for any required polyfills, to your list of features. For example:
+
+```html
+<!-- Polyfill Intl.DateTimeFormat, its dependencies & `en` locale data -->
+<script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=Intl.DateTimeFormat,Intl.DateTimeFormat.~locale.en,Intl.NumberFormat.~locale.en"></script>
+```
+
+### Simple
+
+```tsx
+import '@formatjs/intl-datetimeformat/polyfill.js'
+import '@formatjs/intl-datetimeformat/locale-data/en.js' // locale-data for en
+import '@formatjs/intl-datetimeformat/add-all-tz.js' // Add ALL tz data
+```
+
+### Dynamic import + capability detection
+
+```tsx
+async function polyfill(locale: string) {
+  const unsupportedLocale = shouldPolyfill(locale)
+  // This locale is supported
+  if (!unsupportedLocale) {
+    return
+  }
+  // Load the polyfill 1st BEFORE loading data
+  await import('@formatjs/intl-datetimeformat/polyfill-force.js')
+
+  // Parallelize CLDR data loading
+  const dataPolyfills = [
+    import('@formatjs/intl-datetimeformat/add-all-tz.js'),
+    import(`@formatjs/intl-datetimeformat/locale-data/${unsupportedLocale}.js`),
+  ]
+  await Promise.all(dataPolyfills)
+}
+```
+
+### Adding IANA Timezone Database
+
+We provide 2 pre-processed IANA Timezone:
+
+#### Full: contains ALL Timezone from IANA database
+
+```tsx
+import '@formatjs/intl-datetimeformat/polyfill.js'
+import '@formatjs/intl-datetimeformat/add-all-tz.js'
+```
+
+#### Golden: contains popular set of timezones from IANA database
+
+```tsx
+import '@formatjs/intl-datetimeformat/polyfill.js'
+import '@formatjs/intl-datetimeformat/add-golden-tz.js'
+```
+
+### UTC Offset Timezones
+
+This polyfill supports UTC offset timezone identifiers as specified in [ECMA-402](https://tc39.es/ecma402/) (ES2026). You can use offset-based timezone strings in addition to IANA timezone names.
+
+#### Supported Formats
+
+The following UTC offset formats are supported:
+
+- `±HH:MM` - e.g., `"+01:00"`, `"-05:00"` (recommended format)
+- `±HHMM` - e.g., `"+0100"`, `"-0500"`
+- `±HH` - e.g., `"+01"`, `"-05"`
+- `±HH:MM:SS` - e.g., `"+01:30:45"` (with seconds)
+- `±HH:MM:SS.sss` - e.g., `"+01:30:45.123"` (with fractional seconds)
+
+All offset formats are automatically canonicalized to `±HH:MM` format (with seconds/fractional seconds preserved if non-zero).
+
+#### Usage Example
+
+```tsx
+import '@formatjs/intl-datetimeformat/polyfill.js'
+import '@formatjs/intl-datetimeformat/locale-data/en.js'
+
+// Using UTC offset timezone
+const formatter = new Intl.DateTimeFormat('en-GB', {
+  timeZone: '+01:00',
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+})
+
+console.log(formatter.format(new Date('2024-01-01T00:00:00Z')))
+// Output: "01/01/2024, 01:00"
+
+// Works with @date-fns/tz and other libraries
+const dtf = new Intl.DateTimeFormat('en-GB', {
+  timeZone: '+01:00',
+  hour: 'numeric',
+  timeZoneName: 'longOffset',
+})
+```
+
+#### Compatibility
+
+- UTC offset timezones work without loading any timezone data (`add-all-tz.js` or `add-golden-tz.js`)
+- Compatible with libraries like `@date-fns/tz` in React Native/Hermes environments
+- Follows the same behavior as Chrome and Node.js 22+ native implementations
+
+### Default Timezone
+
+Since JS Engines do not expose default timezone, there's currently no way for us to detect local timezone that a browser is in. Therefore, the default timezone in this polyfill is `UTC`.
+
+You can change this by either calling `__setDefaultTimeZone` or always explicitly pass in `timeZone` option for accurate date time calculation.
+
+Since `__setDefaultTimeZone` is not in the spec, you should make sure to check for its existence before calling it & after tz data has been loaded, e.g:
+
+```tsx
+import '@formatjs/intl-datetimeformat/polyfill.js'
+import '@formatjs/intl-datetimeformat/add-all-tz.js'
+
+if ('__setDefaultTimeZone' in Intl.DateTimeFormat) {
+  Intl.DateTimeFormat.__setDefaultTimeZone('America/Los_Angeles')
+}
+```
+
+## Tests
+
+This library is fully [test262](https://github.com/tc39/test262/tree/master/test/intl402/DateTimeFormat)-compliant.

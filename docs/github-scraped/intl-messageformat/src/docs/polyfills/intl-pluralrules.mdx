@@ -1,0 +1,147 @@
+A spec-compliant polyfill for [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/PluralRules) fully tested by the [official ECMAScript Conformance test suite](https://github.com/tc39/test262)
+
+[![npm Version](https://img.shields.io/npm/v/@formatjs/intl-pluralrules.svg?style=flat-square)](https://www.npmjs.org/package/@formatjs/intl-pluralrules)
+![size](https://badgen.net/bundlephobia/minzip/@formatjs/intl-pluralrules)
+
+## ECMA-402 Spec Compliance
+
+This package is **fully compliant** with the ECMA-402 specification for `Intl.PluralRules` and is **test262-compliant**.
+
+### ✅ Implemented Features
+
+#### Core Methods
+
+- **`select(number)`** - Returns the plural category for a number (`'zero'`, `'one'`, `'two'`, `'few'`, `'many'`, `'other'`)
+- **`selectRange(start, end)`** - Returns the plural category for a number range
+- **`resolvedOptions()`** - Returns resolved options
+- **`supportedLocalesOf(locales)`** - Returns supported locales
+
+#### Rule Types
+
+- **`'cardinal'`** (default) - For cardinal numbers (e.g., "1 item", "2 items")
+- **`'ordinal'`** - For ordinal numbers (e.g., "1st", "2nd", "3rd")
+
+#### Locale Data
+
+- Supports 700+ locales with accurate LDML plural rules
+- Includes all 6 plural categories per LDML specification
+- Handles complex plural rules (e.g., Arabic has 6 forms, Chinese has 1)
+
+### Example Usage
+
+#### Global import
+
+```js
+import '@formatjs/intl-pluralrules/polyfill.js'
+
+const pr = new Intl.PluralRules('en')
+pr.select(0) // "other"
+pr.select(1) // "one"
+pr.select(2) // "other"
+
+const prOrdinal = new Intl.PluralRules('en', {type: 'ordinal'})
+prOrdinal.select(1) // "one"   (1st)
+prOrdinal.select(2) // "two"   (2nd)
+prOrdinal.select(3) // "few"   (3rd)
+prOrdinal.select(4) // "other" (4th)
+
+// selectRange for ranges
+pr.selectRange(1, 5) // "other" (1-5 items)
+```
+
+<Admonition type="info">
+    The global import does not include TypeScript type declarations.
+    For TypeScript projects, we recommend using ES module imports instead.
+
+    If you choose to use the global import, in order to prevent type errors, you must manually include the corresponding type declaration files (.d.ts) in your project.
+
+</Admonition>
+
+#### ES Modules
+
+```js
+import {PluralRules} from '@formatjs/intl-pluralrules'
+
+const pr = new PluralRules('en')
+pr.select(0) // "other"
+```
+
+## Installation
+
+<Tabs
+groupId="npm"
+defaultValue="npm"
+values={[
+{label: 'npm', value: 'npm'},
+{label: 'yarn', value: 'yarn'},
+{label: 'pnpm', value: 'pnpm'},
+]}>
+<TabItem value="npm">
+
+```sh
+npm i @formatjs/intl-pluralrules
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```sh
+yarn add @formatjs/intl-pluralrules
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```sh
+pnpm add @formatjs/intl-pluralrules
+```
+
+</TabItem>
+</Tabs>
+
+## Requirements
+
+- [`Intl.getCanonicalLocales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/getCanonicalLocales) or [polyfill](intl-getcanonicallocales)
+- [`Intl.Locale`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) or [polyfill](intl-locale).
+
+## Usage
+
+### Via polyfill-fastly.io
+
+You can use [polyfill-fastly.io URL Builder](https://polyfill-fastly.io/) to create a polyfill script tag for `Intl.PluralRules`. By default the created URL does not come with any locale data. In order to add locale data, append `Intl.PluralRules.~locale.<locale>` to your list of features. For example:
+
+```html
+<!-- Polyfill Intl.PluralRules, its dependencies & `en` locale data -->
+<script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=Intl.PluralRules,Intl.PluralRules.~locale.en"></script>
+```
+
+### Simple
+
+```tsx
+import '@formatjs/intl-pluralrules/polyfill.js'
+import '@formatjs/intl-pluralrules/locale-data/en.js' // locale-data for en
+```
+
+### React Native
+
+The polyfill conditional detection code runs [very slowly on Android](https://github.com/formatjs/formatjs/issues/4463) and can slow down your app's startup time by seconds. Since React Native uses Hermes which does not support `Intl.PluralRules`, import `/polyfill-force` instead for much better performance:
+
+```tsx
+import '@formatjs/intl-pluralrules/polyfill-force.js' // instead of /polyfill
+import '@formatjs/intl-pluralrules/locale-data/en.js'
+```
+
+### Dynamic import + capability detection
+
+```tsx
+async function polyfill(locale: string) {
+  const unsupportedLocale = shouldPolyfill(locale)
+  // This locale is supported
+  if (!unsupportedLocale) {
+    return
+  }
+  // Load the polyfill 1st BEFORE loading data
+  await import('@formatjs/intl-pluralrules/polyfill-force.js')
+  await import(`@formatjs/intl-pluralrules/locale-data/${unsupportedLocale}.js`)
+}
+```

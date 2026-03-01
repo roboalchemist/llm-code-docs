@@ -1105,3 +1105,9 @@ sites:
 - name: lottie
   base_url: https://developers.lottiefiles.com/
   description: lottie documentation
+- name: curator
+  base_url: https://docs.curator.interworks.com/
+  description: curator documentation
+- name: buffer
+  base_url: https://developers.buffer.com/
+  description: buffer documentation
