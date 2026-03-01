@@ -2495,6 +2495,7 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
     }
 
     MAX_PAGES = 100
+    MAX_TOTAL_BYTES = 20 * 1024 * 1024  # 20MB total output cap
     MIN_CONTENT_BYTES = 500
     REQUEST_TIMEOUT = 30
     RATE_LIMIT_DELAY = 3.5  # Jina free tier: 20 RPM, stay safely under
@@ -2580,9 +2581,13 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
 
     # Step 4: Fetch each page and save as markdown
     saved_count = 0
+    total_bytes_saved = 0
     errors = []
 
     for i, page_url in enumerate(all_urls):
+        if total_bytes_saved >= MAX_TOTAL_BYTES:
+            print(f"  Jina Reader: stopping — reached {total_bytes_saved / 1024 / 1024:.1f}MB total size cap", file=sys.stderr)
+            break
         if i > 0:
             time.sleep(RATE_LIMIT_DELAY)
 
@@ -2624,6 +2629,7 @@ def fetch_via_jina(library: str, docs_url: str) -> dict:
             full_content = f"# Source: {page_url}\n\n{page_markdown}"
             filepath.write_text(full_content, encoding="utf-8")
             saved_count += 1
+            total_bytes_saved += content_size
             print(f"  [{i+1}/{len(all_urls)}] OK   {page_url} -> {filepath.name} ({content_size}b)", file=sys.stderr)
 
         except requests.exceptions.Timeout:
