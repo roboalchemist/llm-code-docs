@@ -1117,3 +1117,6 @@ sites:
 - name: nats
   base_url: https://docs.nats.io/
   description: nats documentation
+- name: fiber
+  base_url: https://docs.gofiber.io/
+  description: fiber documentation
