@@ -1111,3 +1111,6 @@ sites:
 - name: buffer
   base_url: https://developers.buffer.com/
   description: buffer documentation
+- name: uvicorn
+  base_url: https://www.uvicorn.dev/
+  description: uvicorn documentation
