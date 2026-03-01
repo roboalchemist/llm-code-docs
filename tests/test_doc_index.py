@@ -18,6 +18,13 @@ from doc_index_sources.devdocs import DevDocsSource, _normalize_name
 from doc_index_sources.dash import DashSource
 from doc_index_sources.devhints import DevhintsSource
 from doc_index_sources.apisguru import APIsGuruSource
+from doc_index_sources.hexdocs import HexDocsSource
+from doc_index_sources.pubdev import PubDevSource
+from doc_index_sources.hackage import HackageSource
+from doc_index_sources.swiftpkg import SwiftPkgSource
+from doc_index_sources.golang import GolangSource
+from doc_index_sources.readthedocs import ReadTheDocsSource
+from doc_index_sources.cljdoc import CljdocSource
 
 
 # ---------------------------------------------------------------------------
@@ -411,6 +418,191 @@ class TestCLI:
         result = runner.invoke(app, ["build", "unknown_platform",
                                      "--db", str(tmp_db)])
         assert result.exit_code == 1
+
+
+# ---------------------------------------------------------------------------
+# Base class tests
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Tier B adapter test data
+# ---------------------------------------------------------------------------
+
+HEXDOCS_PAGE1 = [
+    {"name": "phoenix", "downloads": {"all": 50000000}, "updated_at": "2026-01-01T00:00:00Z"},
+    {"name": "ecto", "downloads": {"all": 40000000}, "updated_at": "2026-01-01T00:00:00Z"},
+]
+
+PUBDEV_RESPONSE = {
+    "packages": [
+        {"name": "flutter_bloc"},
+        {"name": "provider"},
+    ],
+    "next_url": None,
+}
+
+HACKAGE_RESPONSE = [
+    {"packageName": "aeson"},
+    {"packageName": "lens"},
+]
+
+SWIFTPKG_RESPONSE = [
+    "https://github.com/Alamofire/Alamofire.git",
+    "https://github.com/onevcat/Kingfisher",
+]
+
+GOLANG_NDJSON = (
+    '{"Path":"github.com/gin-gonic/gin","Version":"v1.9.1","Timestamp":"2026-01-01T00:00:00Z"}\n'
+    '{"Path":"golang.org/x/net","Version":"v0.20.0","Timestamp":"2026-01-01T00:00:00Z"}\n'
+)
+
+RTD_RESPONSE = {
+    "results": [
+        {
+            "slug": "requests",
+            "name": "Requests",
+            "programming_language": {"code": "python"},
+            "urls": {"documentation": "https://requests.readthedocs.io/"},
+        },
+    ],
+    "next": None,
+}
+
+CLJDOC_SITEMAP = """\
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cljdoc.org/d/ring/ring-core/1.9.0</loc></url>
+  <url><loc>https://cljdoc.org/d/ring/ring-core/1.8.0</loc></url>
+  <url><loc>https://cljdoc.org/d/metosin/reitit/0.7.0</loc></url>
+</urlset>
+"""
+
+
+# ---------------------------------------------------------------------------
+# Tier B adapter parsing tests
+# ---------------------------------------------------------------------------
+
+class TestHexDocsAdapter:
+    @patch("doc_index_sources.hexdocs.requests.get")
+    @patch("doc_index_sources.hexdocs.time.sleep")
+    def test_parse(self, mock_sleep, mock_get):
+        # First call returns data, second returns empty list (end pagination)
+        resp1 = MagicMock(status_code=200, json=lambda: HEXDOCS_PAGE1)
+        resp1.raise_for_status = MagicMock()
+        resp2 = MagicMock(status_code=200, json=lambda: [])
+        resp2.raise_for_status = MagicMock()
+        mock_get.side_effect = [resp1, resp2]
+
+        source = HexDocsSource()
+        entries = list(source.fetch())
+        assert len(entries) == 2
+        assert entries[0].name == "phoenix"
+        assert entries[0].language == "elixir"
+        assert entries[0].doc_url == "https://hexdocs.pm/phoenix/"
+        assert entries[0].quality_signals["downloads"] == 50000000
+
+
+class TestPubDevAdapter:
+    @patch("doc_index_sources.pubdev.requests.get")
+    @patch("doc_index_sources.pubdev.time.sleep")
+    def test_parse(self, mock_sleep, mock_get):
+        mock_get.return_value = MagicMock(
+            status_code=200, json=lambda: PUBDEV_RESPONSE
+        )
+        mock_get.return_value.raise_for_status = MagicMock()
+
+        source = PubDevSource()
+        entries = list(source.fetch())
+        assert len(entries) == 2
+        assert entries[0].name == "flutter-bloc"
+        assert entries[0].language == "dart"
+        assert "pub.dev/documentation" in entries[0].doc_url
+
+
+class TestHackageAdapter:
+    @patch("doc_index_sources.hackage.requests.get")
+    def test_parse(self, mock_get):
+        mock_get.return_value = MagicMock(
+            status_code=200, json=lambda: HACKAGE_RESPONSE
+        )
+        mock_get.return_value.raise_for_status = MagicMock()
+
+        source = HackageSource()
+        entries = list(source.fetch())
+        assert len(entries) == 2
+        assert entries[0].name == "aeson"
+        assert entries[0].language == "haskell"
+        assert "hackage.haskell.org" in entries[0].doc_url
+
+
+class TestSwiftPkgAdapter:
+    @patch("doc_index_sources.swiftpkg.requests.get")
+    def test_parse(self, mock_get):
+        mock_get.return_value = MagicMock(
+            status_code=200, json=lambda: SWIFTPKG_RESPONSE
+        )
+        mock_get.return_value.raise_for_status = MagicMock()
+
+        source = SwiftPkgSource()
+        entries = list(source.fetch())
+        assert len(entries) == 2
+        assert entries[0].name == "alamofire"
+        assert entries[0].language == "swift"
+        assert "swiftpackageindex.com" in entries[0].doc_url
+        assert entries[1].name == "kingfisher"
+
+
+class TestGolangAdapter:
+    @patch("doc_index_sources.golang.requests.get")
+    def test_parse(self, mock_get):
+        mock_resp = MagicMock(status_code=200)
+        mock_resp.raise_for_status = MagicMock()
+        mock_resp.iter_lines = MagicMock(return_value=GOLANG_NDJSON.strip().split("\n"))
+        mock_get.return_value = mock_resp
+
+        source = GolangSource()
+        entries = list(source.fetch())
+        assert len(entries) == 2
+        assert entries[0].name == "gin"
+        assert entries[0].language == "go"
+        assert "pkg.go.dev/github.com/gin-gonic/gin" in entries[0].doc_url
+        assert entries[1].name == "net"
+
+
+class TestReadTheDocsAdapter:
+    @patch("doc_index_sources.readthedocs.requests.get")
+    @patch("doc_index_sources.readthedocs.time.sleep")
+    def test_parse(self, mock_sleep, mock_get):
+        mock_get.return_value = MagicMock(
+            status_code=200, json=lambda: RTD_RESPONSE
+        )
+        mock_get.return_value.raise_for_status = MagicMock()
+
+        source = ReadTheDocsSource()
+        entries = list(source.fetch())
+        assert len(entries) == 1
+        assert entries[0].name == "requests"
+        assert entries[0].language == "python"
+        assert entries[0].doc_url == "https://requests.readthedocs.io/"
+
+
+class TestCljdocAdapter:
+    @patch("doc_index_sources.cljdoc.requests.get")
+    def test_parse(self, mock_get):
+        mock_get.return_value = MagicMock(
+            status_code=200, content=CLJDOC_SITEMAP.encode()
+        )
+        mock_get.return_value.raise_for_status = MagicMock()
+
+        source = CljdocSource()
+        entries = list(source.fetch())
+        # ring/ring-core appears twice (two versions) but deduped
+        assert len(entries) == 2
+        names = {e.name for e in entries}
+        assert "ring-core" in names
+        assert "reitit" in names
+        assert entries[0].language == "clojure"
+        assert "cljdoc.org/d/ring/ring-core" in entries[0].doc_url
 
 
 # ---------------------------------------------------------------------------
