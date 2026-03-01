@@ -1354,3 +1354,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/google/protobuf
   branch: main
+- name: github.com/zclconf/go-cty
+  description: github.com/zclconf/go-cty from GitHub
+  repo_url: https://github.com/zclconf/go-cty.git
+  source_folder: docs
+  target_folder: docs/github-scraped/github.com/zclconf/go-cty
+  branch: main
