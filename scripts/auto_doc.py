@@ -2356,10 +2356,10 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
     try:
         result = subprocess.run(
             ["clauded-mm", "-p"],
-            input=prompt, capture_output=True, text=True, timeout=120,
+            input=prompt, capture_output=True, text=True, timeout=300,
         )
     except subprocess.TimeoutExpired:
-        return fail_result("clauded-mm timed out after 120s")
+        return fail_result("clauded-mm timed out after 300s")
     except Exception as e:
         return fail_result(f"clauded-mm execution error: {e}")
 

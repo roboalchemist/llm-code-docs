@@ -1,0 +1,426 @@
+# Source: https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12
+
+Title: grpc package - github.com/DataDog/dd-trace-go/contrib/google.golang.org/grpc.v12 - Go Packages
+
+URL Source: https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12
+
+Markdown Content:
+grpc package - github.com/DataDog/dd-trace-go/contrib/google.golang.org/grpc.v12 - Go Packages
+===============
+
+[![Image 1: Go](https://pkg.go.dev/static/shared/logo/go-white.svg)](https://go.dev/)
+
+[Skip to Main Content](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#main-content)
+
+![Image 2](https://pkg.go.dev/static/shared/icon/search_gm_grey_24dp.svg)![Image 3](https://pkg.go.dev/static/shared/icon/search_gm_grey_24dp.svg)
+
+*   [Why Go ![Image 4: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+    *   [Case Studies](https://go.dev/solutions#case-studies) 
+Common problems companies solve with Go
+
+    *   [Use Cases](https://go.dev/solutions#use-cases) 
+Stories about how and why companies use Go
+
+    *   [Security](https://go.dev/security/) 
+How Go can help keep you secure by default
+
+*   [Learn](https://go.dev/learn/)
+*   [Docs ![Image 5: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+    *   [Effective Go](https://go.dev/doc/effective_go) 
+Tips for writing clear, performant, and idiomatic Go code
+
+    *   [Go User Manual](https://go.dev/doc/) 
+A complete introduction to building software with Go
+
+    *   [Standard library](https://pkg.go.dev/std) 
+Reference documentation for Go's standard library
+
+    *   [Release Notes](https://go.dev/doc/devel/release) 
+Learn what's new in each Go release
+
+*   [Packages](https://pkg.go.dev/)
+*   [Community ![Image 6: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+    *   [Recorded Talks](https://go.dev/talks/) 
+Videos from prior events
+
+    *   [Meetups _![Image 7](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://www.meetup.com/pro/go) 
+Meet other local Go developers
+
+    *   [Conferences _![Image 8](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://github.com/golang/go/wiki/Conferences) 
+Learn and network with Go developers from around the world
+
+    *   [Go blog](https://go.dev/blog) 
+The Go project's official blog.
+
+    *   [Go project](https://go.dev/help) 
+Get help and stay informed from Go
+
+    *    Get connected  [![Image 9](https://pkg.go.dev/static/shared/logo/social/google-groups.svg)](https://groups.google.com/g/golang-nuts "Get connected with google-groups (Opens in new window)")[![Image 10](https://pkg.go.dev/static/shared/logo/social/github.svg)](https://github.com/golang "Get connected with github (Opens in new window)")[![Image 11](https://pkg.go.dev/static/shared/logo/social/twitter.svg)](https://twitter.com/golang "Get connected with twitter (Opens in new window)")[![Image 12](https://pkg.go.dev/static/shared/logo/social/reddit.svg)](https://www.reddit.com/r/golang/ "Get connected with reddit (Opens in new window)")[![Image 13](https://pkg.go.dev/static/shared/logo/social/slack.svg)](https://invite.slack.golangbridge.org/ "Get connected with slack (Opens in new window)")[![Image 14](https://pkg.go.dev/static/shared/logo/social/stack-overflow.svg)](https://stackoverflow.com/collectives/go) 
+
+[![Image 15: Go](https://pkg.go.dev/static/shared/logo/go-blue.svg)](https://go.dev/)
+
+*   [Why Go _![Image 16](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+
+[_![Image 17](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Why Go](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#) 
+    *   [Case Studies](https://go.dev/solutions#case-studies)
+    *   [Use Cases](https://go.dev/solutions#use-cases)
+    *   [Security](https://go.dev/security/)
+
+*   [Learn](https://go.dev/learn/)
+*   [Docs _![Image 18](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+
+[_![Image 19](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Docs](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#) 
+    *   [Effective Go](https://go.dev/doc/effective_go)
+    *   [Go User Manual](https://go.dev/doc/)
+    *   [Standard library](https://pkg.go.dev/std)
+    *   [Release Notes](https://go.dev/doc/devel/release)
+
+*   [Packages](https://pkg.go.dev/)
+*   [Community _![Image 20](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#)
+
+[_![Image 21](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Community](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#) 
+    *   [Recorded Talks](https://go.dev/talks/)
+    *   [Meetups _![Image 22](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://www.meetup.com/pro/go)
+    *   [Conferences _![Image 23](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://github.com/golang/go/wiki/Conferences)
+    *   [Go blog](https://go.dev/blog)
+    *   [Go project](https://go.dev/help)
+    *   Get connected [![Image 24](https://pkg.go.dev/static/shared/logo/social/google-groups.svg)](https://groups.google.com/g/golang-nuts)[![Image 25](https://pkg.go.dev/static/shared/logo/social/github.svg)](https://github.com/golang)[![Image 26](https://pkg.go.dev/static/shared/logo/social/twitter.svg)](https://twitter.com/golang)[![Image 27](https://pkg.go.dev/static/shared/logo/social/reddit.svg)](https://www.reddit.com/r/golang/)[![Image 28](https://pkg.go.dev/static/shared/logo/social/slack.svg)](https://invite.slack.golangbridge.org/)[![Image 29](https://pkg.go.dev/static/shared/logo/social/stack-overflow.svg)](https://stackoverflow.com/collectives/go) 
+
+![Image 30: Notice](https://pkg.go.dev/static/shared/icon/info_gm_grey_24dp.svg) The highest tagged major version is [v2](https://pkg.go.dev/github.com/DataDog/dd-trace-go/v2). 
+
+1.   [Discover Packages](https://pkg.go.dev/)
+2.   [github.com/DataDog/dd-trace-go](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1)
+3.   [contrib](https://pkg.go.dev/github.com/DataDog/dd-trace-go/contrib@v1.24.1)
+4.   [google.golang.org](https://pkg.go.dev/github.com/DataDog/dd-trace-go/contrib/google.golang.org@v1.24.1)
+5.   [grpc.v12](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12)![Image 31](https://pkg.go.dev/static/shared/icon/content_copy_gm_grey_24dp.svg)
+
+[![Image 32: Go](https://pkg.go.dev/static/shared/logo/go-blue.svg)](https://go.dev/)
+grpc
+====
+
+package![Image 33](https://pkg.go.dev/static/shared/icon/content_copy_gm_grey_24dp.svg)
+
+[Version: v1.24.1](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12?tab=versions)
+
+ Opens a new window with list of versions in this module. 
+
+Latest Latest 
+
+![Image 34: Warning](https://pkg.go.dev/static/shared/icon/alert_gm_grey_24dp.svg)
+This package is not in the latest version of its module.
+
+[Go to latest](https://pkg.go.dev/github.com/DataDog/dd-trace-go/contrib/google.golang.org/grpc.v12) Published: May 18, 2020  License: [Apache-2.0, BSD-3-Clause, Apache-2.0](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12?tab=licenses)
+
+ Opens a new window with license information. 
+
+[Imports: 13](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12?tab=imports)
+
+ Opens a new window with list of imports. 
+
+[Imported by: 0](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12?tab=importedby)
+
+ Opens a new window with list of known importers. 
+
+Details
+-------
+
+*   ![Image 35: unchecked](https://pkg.go.dev/static/shared/icon/cancel_gm_grey_24dp.svg) Valid go.mod file ![Image 36](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+The Go module system was introduced in Go 1.11 and is the official dependency management solution for Go. 
+*   ![Image 37: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Redistributable license ![Image 38](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+Redistributable licenses place minimal restrictions on how software can be used, modified, and redistributed. 
+*   ![Image 39: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Tagged version ![Image 40](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+Modules with tagged versions give importers more predictable builds. 
+*   ![Image 41: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Stable version ![Image 42](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+When a project reaches major version v1 it is considered stable. 
+*   [Learn more about best practices](https://pkg.go.dev/about#best-practices)
+
+Repository
+----------
+
+[github.com/DataDog/dd-trace-go](https://github.com/DataDog/dd-trace-go "https://github.com/DataDog/dd-trace-go")
+
+Links
+-----
+
+*   [![Image 43: Open Source Insights Logo](https://pkg.go.dev/static/shared/icon/depsdev-logo.svg) Open Source Insights](https://deps.dev/go/github.com%2FDataDog%2Fdd-trace-go/v1.24.1 "View this module on Open Source Insights")
+
+ Jump to ... 
+
+*   [Documentation](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#section-documentation)
+    *   [Overview](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-overview)
+    *   [Index](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-index)
+    *   [Examples](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-examples)
+        *   [Package (Client)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Client "Package (Client)")
+        *   [Package (Server)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Server "Package (Server)")
+
+    *   [Constants](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-constants)
+    *   [Variables](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-variables)
+    *   [Functions](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-functions)
+        *   [RegisterFixtureServer(s, srv)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#RegisterFixtureServer "RegisterFixtureServer(s, srv)")
+        *   [UnaryClientInterceptor(opts)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryClientInterceptor "UnaryClientInterceptor(opts)")
+        *   [UnaryServerInterceptor(opts)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryServerInterceptor "UnaryServerInterceptor(opts)")
+
+    *   [Types](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-types)
+        *   [type FixtureClient](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureClient "type FixtureClient")
+            *   [NewFixtureClient(cc)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#NewFixtureClient "NewFixtureClient(cc)")
+
+        *   [type FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply "type FixtureReply")
+            *   [Descriptor()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Descriptor "Descriptor()")
+            *   [(m) GetMessage()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.GetMessage "(m) GetMessage()")
+            *   [ProtoMessage()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.ProtoMessage "ProtoMessage()")
+            *   [(m) Reset()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Reset "(m) Reset()")
+            *   [(m) String()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.String "(m) String()")
+
+        *   [type FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest "type FixtureRequest")
+            *   [Descriptor()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Descriptor "Descriptor()")
+            *   [(m) GetName()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.GetName "(m) GetName()")
+            *   [ProtoMessage()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.ProtoMessage "ProtoMessage()")
+            *   [(m) Reset()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Reset "(m) Reset()")
+            *   [(m) String()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.String "(m) String()")
+
+        *   [type FixtureServer](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureServer "type FixtureServer")
+        *   [type InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption "type InterceptorOption")
+            *   [WithAnalytics(on)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalytics "WithAnalytics(on)")
+            *   [WithAnalyticsRate(rate)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalyticsRate "WithAnalyticsRate(rate)")
+            *   [WithServiceName(name)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithServiceName "WithServiceName(name)")
+
+*   [Source Files](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#section-sourcefiles)
+
+![Image 44](https://pkg.go.dev/static/shared/icon/code_gm_grey_24dp.svg) Documentation [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#section-documentation "Go to Documentation")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Overview [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-overview "Go to Overview")
+
+Package grpc is a generated protocol buffer package.
+
+It is generated from these files:
+
+fixtures_test.proto
+
+It has these top-level messages:
+
+FixtureRequest
+FixtureReply
+
+Package grpc provides functions to trace the google.golang.org/grpc package v1.2.
+
+Example (Client) [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Client "Go to Example (Client)")
+
+Share Format Run
+
+Example (Server) [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Server "Go to Example (Server)")
+
+Share Format Run
+
+### Index [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-index "Go to Index")
+
+*   [func RegisterFixtureServer(s *grpc1.Server, srv FixtureServer)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#RegisterFixtureServer)
+*   [func UnaryClientInterceptor(opts ...InterceptorOption) grpc.UnaryClientInterceptor](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryClientInterceptor)
+*   [func UnaryServerInterceptor(opts ...InterceptorOption) grpc.UnaryServerInterceptor](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryServerInterceptor)
+*   [type FixtureClient](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureClient)
+*       *   [func NewFixtureClient(cc *grpc1.ClientConn) FixtureClient](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#NewFixtureClient)
+
+*   [type FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)
+*       *   [func (*FixtureReply) Descriptor() ([]byte, []int)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Descriptor)
+    *   [func (m *FixtureReply) GetMessage() string](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.GetMessage)
+    *   [func (*FixtureReply) ProtoMessage()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.ProtoMessage)
+    *   [func (m *FixtureReply) Reset()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Reset)
+    *   [func (m *FixtureReply) String() string](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.String)
+
+*   [type FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)
+*       *   [func (*FixtureRequest) Descriptor() ([]byte, []int)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Descriptor)
+    *   [func (m *FixtureRequest) GetName() string](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.GetName)
+    *   [func (*FixtureRequest) ProtoMessage()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.ProtoMessage)
+    *   [func (m *FixtureRequest) Reset()](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Reset)
+    *   [func (m *FixtureRequest) String() string](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.String)
+
+*   [type FixtureServer](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureServer)
+*   [type InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)
+*       *   [func WithAnalytics(on bool) InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalytics)
+    *   [func WithAnalyticsRate(rate float64) InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalyticsRate)
+    *   [func WithServiceName(name string) InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithServiceName)
+
+### Examples [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-examples "Go to Examples")
+
+*   [Package (Client)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Client)
+*   [Package (Server)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#example-package-Server)
+
+### Constants [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-constants "Go to Constants")
+
+This section is empty.
+
+### Variables [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-variables "Go to Variables")
+
+This section is empty.
+
+### Functions [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-functions "Go to Functions")
+
+#### func [RegisterFixtureServer](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L117)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#RegisterFixtureServer "Go to RegisterFixtureServer")added in v1.0.0
+
+func RegisterFixtureServer(s *[grpc1](https://pkg.go.dev/google.golang.org/grpc).[Server](https://pkg.go.dev/google.golang.org/grpc#Server), srv [FixtureServer](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureServer))
+
+#### func [UnaryClientInterceptor](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/grpc.go#L67)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryClientInterceptor "Go to UnaryClientInterceptor")
+
+func UnaryClientInterceptor(opts ...[InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)) [grpc](https://pkg.go.dev/google.golang.org/grpc).[UnaryClientInterceptor](https://pkg.go.dev/google.golang.org/grpc#UnaryClientInterceptor)
+
+UnaryClientInterceptor will add tracing to a gprc client.
+
+#### func [UnaryServerInterceptor](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/grpc.go#L28)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#UnaryServerInterceptor "Go to UnaryServerInterceptor")
+
+func UnaryServerInterceptor(opts ...[InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)) [grpc](https://pkg.go.dev/google.golang.org/grpc).[UnaryServerInterceptor](https://pkg.go.dev/google.golang.org/grpc#UnaryServerInterceptor)
+
+UnaryServerInterceptor will trace requests to the given grpc server.
+
+### Types [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#pkg-types "Go to Types")
+
+#### type [FixtureClient](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L90)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureClient "Go to FixtureClient")added in v1.0.0
+
+type FixtureClient interface {
+ Ping(ctx [context](https://pkg.go.dev/golang.org/x/net/context).[Context](https://pkg.go.dev/golang.org/x/net/context#Context), in *[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest), opts ...[grpc1](https://pkg.go.dev/google.golang.org/grpc).[CallOption](https://pkg.go.dev/google.golang.org/grpc#CallOption)) (*[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply), [error](https://pkg.go.dev/builtin#error)) }
+
+#### func [NewFixtureClient](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L98)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#NewFixtureClient "Go to NewFixtureClient")added in v1.0.0
+
+func NewFixtureClient(cc *[grpc1](https://pkg.go.dev/google.golang.org/grpc).[ClientConn](https://pkg.go.dev/google.golang.org/grpc#ClientConn)) [FixtureClient](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureClient)
+
+#### type [FixtureReply](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L59)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply "Go to FixtureReply")added in v1.0.0
+
+type FixtureReply struct {
+ Message [string](https://pkg.go.dev/builtin#string) `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"` }
+
+The response message containing the greetings
+
+#### func (*FixtureReply) [Descriptor](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L66)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Descriptor "Go to FixtureReply.Descriptor")added in v1.0.0
+
+func (*[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)) Descriptor() ([][byte](https://pkg.go.dev/builtin#byte), [][int](https://pkg.go.dev/builtin#int))
+
+#### func (*FixtureReply) [GetMessage](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L68)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.GetMessage "Go to FixtureReply.GetMessage")added in v1.0.0
+
+func (m *[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)) GetMessage() [string](https://pkg.go.dev/builtin#string)
+
+#### func (*FixtureReply) [ProtoMessage](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L65)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.ProtoMessage "Go to FixtureReply.ProtoMessage")added in v1.0.0
+
+func (*[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)) ProtoMessage()
+
+#### func (*FixtureReply) [Reset](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L63)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.Reset "Go to FixtureReply.Reset")added in v1.0.0
+
+func (m *[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)) Reset()
+
+#### func (*FixtureReply) [String](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L64)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply.String "Go to FixtureReply.String")added in v1.0.0
+
+func (m *[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply)) String() [string](https://pkg.go.dev/builtin#string)
+
+#### type [FixtureRequest](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L42)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest "Go to FixtureRequest")added in v1.0.0
+
+type FixtureRequest struct {
+ Name [string](https://pkg.go.dev/builtin#string) `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"` }
+
+The request message containing the user's name.
+
+#### func (*FixtureRequest) [Descriptor](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L49)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Descriptor "Go to FixtureRequest.Descriptor")added in v1.0.0
+
+func (*[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) Descriptor() ([][byte](https://pkg.go.dev/builtin#byte), [][int](https://pkg.go.dev/builtin#int))
+
+#### func (*FixtureRequest) [GetName](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L51)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.GetName "Go to FixtureRequest.GetName")added in v1.0.0
+
+func (m *[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) GetName() [string](https://pkg.go.dev/builtin#string)
+
+#### func (*FixtureRequest) [ProtoMessage](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L48)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.ProtoMessage "Go to FixtureRequest.ProtoMessage")added in v1.0.0
+
+func (*[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) ProtoMessage()
+
+#### func (*FixtureRequest) [Reset](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L46)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.Reset "Go to FixtureRequest.Reset")added in v1.0.0
+
+func (m *[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) Reset()
+
+#### func (*FixtureRequest) [String](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L47)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest.String "Go to FixtureRequest.String")added in v1.0.0
+
+func (m *[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) String() [string](https://pkg.go.dev/builtin#string)
+
+#### type [FixtureServer](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go#L113)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureServer "Go to FixtureServer")added in v1.0.0
+
+type FixtureServer interface {
+ Ping([context](https://pkg.go.dev/golang.org/x/net/context).[Context](https://pkg.go.dev/golang.org/x/net/context#Context), *[FixtureRequest](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureRequest)) (*[FixtureReply](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#FixtureReply), [error](https://pkg.go.dev/builtin#error)) }
+
+#### type [InterceptorOption](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/option.go#L19)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption "Go to InterceptorOption")added in v1.0.0
+
+type InterceptorOption func(*interceptorConfig)
+
+InterceptorOption represents an option that can be passed to the grpc unary client and server interceptors.
+
+#### func [WithAnalytics](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/option.go#L35)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalytics "Go to WithAnalytics")added in v1.11.0
+
+func WithAnalytics(on [bool](https://pkg.go.dev/builtin#bool)) [InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)
+
+WithAnalytics enables Trace Analytics for all started spans.
+
+#### func [WithAnalyticsRate](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/option.go#L47)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithAnalyticsRate "Go to WithAnalyticsRate")added in v1.11.0
+
+func WithAnalyticsRate(rate [float64](https://pkg.go.dev/builtin#float64)) [InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)
+
+WithAnalyticsRate sets the sampling rate for Trace Analytics events correlated to started spans.
+
+#### func [WithServiceName](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/option.go#L28)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#WithServiceName "Go to WithServiceName")added in v1.0.0
+
+func WithServiceName(name [string](https://pkg.go.dev/builtin#string)) [InterceptorOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#InterceptorOption)
+
+WithServiceName sets the given service name for the intercepted client.
+
+![Image 45](https://pkg.go.dev/static/shared/icon/insert_drive_file_gm_grey_24dp.svg) Source Files [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/contrib/google.golang.org/grpc.v12#section-sourcefiles "Go to Source Files")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[View all Source files](https://github.com/DataDog/dd-trace-go/tree/v1.24.1/contrib/google.golang.org/grpc.v12)
+
+*   [fixtures_test.pb.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/fixtures_test.pb.go "fixtures_test.pb.go")
+*   [grpc.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/grpc.go "grpc.go")
+*   [option.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/option.go "option.go")
+*   [tags.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/contrib/google.golang.org/grpc.v12/tags.go "tags.go")
+
+ Click to show internal directories. 
+
+ Click to hide internal directories. 
+
+[Why Go](https://go.dev/solutions)[Use Cases](https://go.dev/solutions#use-cases)[Case Studies](https://go.dev/solutions#case-studies)
+
+[Get Started](https://learn.go.dev/)[Playground](https://play.golang.org/)[Tour](https://tour.golang.org/)[Stack Overflow](https://stackoverflow.com/questions/tagged/go?tab=Newest)[Help](https://go.dev/help)
+
+[Packages](https://pkg.go.dev/)[Standard Library](https://pkg.go.dev/std)[Sub-repositories](https://pkg.go.dev/golang.org/x)[About Go Packages](https://pkg.go.dev/about)
+
+[About](https://go.dev/project)[Download](https://go.dev/dl/)[Blog](https://go.dev/blog)[Issue Tracker](https://github.com/golang/go/issues)[Release Notes](https://go.dev/doc/devel/release.html)[Brand Guidelines](https://go.dev/brand)[Code of Conduct](https://go.dev/conduct)
+
+[Connect](https://www.twitter.com/golang)[Twitter](https://www.twitter.com/golang)[GitHub](https://github.com/golang)[Slack](https://invite.slack.golangbridge.org/)[r/golang](https://reddit.com/r/golang)[Meetup](https://www.meetup.com/pro/go)[Golang Weekly](https://golangweekly.com/)
+
+![Image 46: Gopher in flight goggles](https://pkg.go.dev/static/shared/gopher/pilot-bust-1431x901.svg)
+*   [Copyright](https://go.dev/copyright)
+*   [Terms of Service](https://go.dev/tos)
+*   [Privacy Policy](http://www.google.com/intl/en/policies/privacy/)
+*   [Report an Issue](https://go.dev/s/pkgsite-feedback)
+*   ![Image 47: System theme](https://pkg.go.dev/static/shared/icon/brightness_6_gm_grey_24dp.svg)![Image 48: Dark theme](https://pkg.go.dev/static/shared/icon/brightness_2_gm_grey_24dp.svg)![Image 49: Light theme](https://pkg.go.dev/static/shared/icon/light_mode_gm_grey_24dp.svg)
+Theme Toggle
+
+*   ![Image 50](https://pkg.go.dev/static/shared/icon/keyboard_grey_24dp.svg)
+Shortcuts Modal
+
+[![Image 51: Google logo](https://pkg.go.dev/static/shared/logo/google-white.svg)](https://google.com/)
+
+Jump to
+-------
+
+![Image 52](https://pkg.go.dev/static/shared/icon/close_gm_grey_24dp.svg)
+
+Close
+
+Keyboard shortcuts
+------------------
+
+![Image 53](https://pkg.go.dev/static/shared/icon/close_gm_grey_24dp.svg)
+
+**?**: This menu
+**/**: Search site
+**f** or **F**: Jump to
+**y** or **Y**: Canonical URL
+
+Close
+
+go.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic. [Learn more.](https://policies.google.com/technologies/cookies)
+
+Okay
