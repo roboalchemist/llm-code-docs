@@ -2016,18 +2016,35 @@ def _fetch_go_module(library: str, module_path: str, force: bool) -> dict:
             # but sub-packages live in subdirectories
             work_dir = tmp_path
 
+            # Ensure Go module deps are available
+            _log(f"_fetch_go_module: downloading module deps in {work_dir}")
+            subprocess.run(
+                ["go", "mod", "download"],
+                capture_output=True, text=True, timeout=120, cwd=str(work_dir),
+            )
+
             # Run gomarkdoc ./... to generate all-in-one markdown
+            # Note: Do NOT set GOFLAGS — gomarkdoc parses it as its own flags
             _log(f"_fetch_go_module: running gomarkdoc in {work_dir}")
+            gomarkdoc_env = {k: v for k, v in os.environ.items() if k != "GOFLAGS"}
             proc = subprocess.run(
                 [gomarkdoc, "./..."],
                 capture_output=True, text=True, timeout=120, cwd=str(work_dir),
-                env={**os.environ, "GOFLAGS": "-mod=mod"},
+                env=gomarkdoc_env,
             )
 
             if proc.returncode != 0:
                 _log(f"_fetch_go_module: gomarkdoc failed: {proc.stderr[:300]}")
-                result["error"] = f"gomarkdoc failed: {proc.stderr[:200]}"
-                return result
+                # Some repos have dirs that aren't valid Go packages — retry with just root
+                _log(f"_fetch_go_module: retrying with root package only")
+                proc = subprocess.run(
+                    [gomarkdoc, "."],
+                    capture_output=True, text=True, timeout=120, cwd=str(work_dir),
+                    env=gomarkdoc_env,
+                )
+                if proc.returncode != 0:
+                    result["error"] = f"gomarkdoc failed: {proc.stderr[:200]}"
+                    return result
 
             content = proc.stdout
             if not content or len(content.strip()) < 200:
