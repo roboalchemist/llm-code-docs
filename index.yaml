@@ -1305,8 +1305,8 @@ llms_txt:
   url: https://ionet.com/
   path: docs/llms-txt/ionet/
   status: fetched
-  file_count: 235
-  size: 2.0MB
+  file_count: 247
+  size: 2.8MB
   last_updated: 2026-03-06 14:22
 - name: ironclad
   description: Authentication (Activity API)
