@@ -1,0 +1,237 @@
+# Source: https://docs.vast.ai/mining-on-bittensor.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Mining on Bittensor
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Test Bittensor Subnets on Vast.ai",
+  "description": "A tutorial showing how to use the Bittensor testnet to create a subnet and run your incentive mechanism, including wallet creation, subnet registration, and running miners and validators.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Install Bittensor Subnet Template",
+      "text": "Navigate to your project directory and clone the bittensor-subnet-template repo with 'git clone https://github.com/opentensor/bittensor-subnet-template.git'. Then cd into the bittensor-subnet-template directory and install the package with 'python -m pip install -e .'."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Create Wallets",
+      "text": "Create wallets for subnet owner, validator, and miner. Run 'btcli wallet new_coldkey --wallet.name owner' for owner. For miner, create coldkey with 'btcli wallet new_coldkey --wallet.name miner' and hotkey with 'btcli wallet new_hotkey --wallet.name miner --wallet.hotkey default'. For validator, create coldkey with 'btcli wallet new_coldkey --wallet.name validator' and hotkey with 'btcli wallet new_hotkey --wallet.name validator --wallet.hotkey default'."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Get Subnet Creation Price and Request Test Taos",
+      "text": "Check the subnet lock cost with 'btcli subnet lock_cost --subtensor.network test'. The command will show the current cost (e.g., τ100.000000000). Go to the Bittensor Discord channel and request test Taos. Transfer test Taos to your miner and validator wallets using 'btcli wallet transfer' commands."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Register Keys to Subnet",
+      "text": "Register your miner key with 'btcli subnet register --netuid 15 --subtensor.network test --wallet.name miner --wallet.hotkey default'. Then register your validator key with 'btcli subnet recycle_register --netuid 15 --subtensor.network test --wallet.name validator --wallet.hotkey default'. Follow the prompts and select yes (y) to confirm registrations."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Verify Registration and Run Subnet",
+      "text": "Check that your miner has been registered with 'btcli wallet overview --wallet.name miner --subtensor.network test'. Run the subnet miner with 'python neurons/miner.py --netuid 15 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug'. You will see terminal output showing 'Miner running...' with timestamps."
+    }
+  ]
+})
+}}
+/>
+
+# Vast internal guide to test subnets inside the Opentensor image
+
+This tutorial shows how to use the Bittensor testnet to create a subnet and run your incentive mechanism on it.
+
+## 1. Install Bittensor subnet template
+
+`cd` into your project directory and clone the bittensor-subnet-template repo:
+
+```bash Bash theme={null}
+git clone https://github.com/opentensor/bittensor-subnet-template.git 
+```
+
+Next, `cd` into bittensor-subnet-template repo directory:
+
+```bash Bash theme={null}
+cd bittensor-subnet-template # Enter the 
+```
+
+Install the bittensor-subnet-template package:
+
+```bash Bash theme={null}
+python -m pip install -e . 
+```
+
+## 2. Create wallets
+
+Create wallets for subnet owner, subnet validator and for subnet miner.
+
+Follow all of these steps:
+
+```bash Bash theme={null}
+btcli wallet new_coldkey --wallet.name owner
+```
+
+Create a coldkey and hotkey for your miner wallet:
+
+```bash Bash theme={null}
+btcli wallet new_coldkey --wallet.name miner
+```
+
+and
+
+```bash Bash theme={null}
+btcli wallet new_hotkey --wallet.name miner --wallet.hotkey default
+```
+
+Create a coldkey and hotkey for your validator wallet:
+
+```bash Bash theme={null}
+btcli wallet new_coldkey --wallet.name validator
+```
+
+and
+
+```bash Bash theme={null}
+btcli wallet new_hotkey --wallet.name validator --wallet.hotkey default
+```
+
+## 3. Get the price of subnet creation
+
+Creating subnets on the testnet is competitive. The cost is determined by the rate at which new subnets are being registered onto the chain.
+
+```bash Bash theme={null}
+btcli subnet lock_cost --subtensor.network test
+```
+
+The above command will show:
+
+```bash Bash theme={null}
+>> Subnet lock cost: τ100.000000000
+```
+
+## 4 Go to the Bittensor discord channel and ask them for test Taos
+
+Here is the [link](https://discord.com/channels/799672011265015819/830068283314929684) to the discord channel for Bittensor.
+
+## 4.5 Transfer test Taos to your miner wallet
+
+Use the following command to list all your wallets:
+
+```text Text theme={null}
+    btcli w list
+```
+
+You will get an output like this:
+
+```text Text theme={null}
+    Wallets
+    ├── 
+    │   owner (5FyRdpzddeN7KGLhn6S6ia1up7dzbtXiZ5trc2hmm9AN9Pj4)
+    ├── 
+    │   miner (5GCahkVacWRHzVgRBfSmnt11gHnWWZhkapquzPEwR7je1a8w)
+    │   └── default (5CUgZBi3GQpJDhe1EhdPJfzBb6pyWvnkuSWJ6SBhEpSby1XP)
+    └── 
+        validator (5FZSLAZsiFaZzhcL2oxMesSrQQHmWHSGpPfNjMUmiruBpYGB)
+        └── default (5EqaFbjHDUQCHRbG5592QvCbpNkvAxsLCLKRNoLaVLN76g55)
+```
+
+Then transfer 0.001 Taos to your miner and validator wallet.
+
+### Transfer to miner wallet
+
+```text Text theme={null}
+    btcli wallet transfer --dest 5GCahkVacWRHzVgRBfSmnt11gHnWWZhkapquzPEwR7je1a8w --wallet.name owner --amount 0.001 --subtensor.network test
+```
+
+Make sure the --dest key is the same as your wallet key that you get from the btcli w list command.
+
+### Transfer to validator wallet
+
+Repeat this step for the validator wallet as well.
+
+```text Text theme={null}
+    btcli wallet transfer --dest 5FZSLAZsiFaZzhcL2oxMesSrQQHmWHSGpPfNjMUmiruBpYGB --wallet.name owner --amount 0.001 --subtensor.network test
+```
+
+## 6. Register keys
+
+This step registers your subnet validator and subnet miner keys to the subnet, giving them the **first two slots** on the subnet.
+
+Register your miner key to the subnet:
+
+```bash Bash theme={null}
+btcli subnet register --netuid 15 --subtensor.network test --wallet.name miner --wallet.hotkey default
+```
+
+Follow the below prompts:
+
+```bash Bash theme={null}
+>> Enter netuid [1] (1): # Enter netuid 1 to specify the subnet you just created.
+>> Continue Registration?
+  hotkey:     ...
+  coldkey:    ...
+  network:    finney [y/n]: # Select yes (y)
+>> ✅ Registered
+```
+
+Next, register your validator key to the subnet:
+
+```bash Bash theme={null}
+btcli subnet recycle_register --netuid 15 --subtensor.network test --wallet.name validator --wallet.hotkey default
+```
+
+Follow the prompts:
+
+```bash Bash theme={null}
+>> Enter netuid [1] (1): # Enter netuid 1 to specify the subnet you just created.
+>> Continue Registration?
+  hotkey:     ...
+  coldkey:    ...
+  network:    finney [y/n]: # Select yes (y)
+>> ✅ Registered
+```
+
+## 7. Check that your keys have been registered
+
+This step returns information about your registered keys.
+
+Check that your miner has been registered:
+
+```bash Bash theme={null}
+btcli wallet overview --wallet.name miner --subtensor.network test
+```
+
+The above command will display the below:
+
+```bash Bash theme={null}
+Subnet: 1                                                                                                                                                                
+COLDKEY  HOTKEY   UID  ACTIVE  STAKE(τ)     RANK    TRUST  CONSENSUS  INCENTIVE  DIVIDENDS  EMISSION(ρ)   VTRUST  VPERMIT  UPDATED  AXON  HOTKEY_SS58                    
+miner    default  1      True   0.00000  0.00000  0.00000    0.00000    0.00000    0.00000            0  0.00000                14  none  5GTFrsEQfvTsh3WjiEVFeKzFTc2xcf…
+1        1        2            τ0.00000  0.00000  0.00000    0.00000    0.00000    0.00000           ρ0  0.00000                                                         
+                                                                          Wallet balance: τ0.0   
+```
+
+## 8. Run subnet miner and subnet validator
+
+Run the subnet miner:
+
+```bash Bash theme={null}
+python neurons/miner.py --netuid 15 --subtensor.network test --wallet.name miner --wallet.hotkey default --logging.debug
+```
+
+You will see the below terminal output:
+
+```bash Bash theme={null}
+2024-01-22 17:34:42.694 |       INFO       | Miner running...              1705944882.6945262
+2024-01-22 17:34:47.700 |       INFO       | Miner running...              1705944887.7002594
+2024-01-22 17:34:52.706 |       INFO       | Miner running...              1705944892.7061048
+2024-01-22 17:34:57.712 |       INFO       | Miner running...              1705944897.7120056
+```

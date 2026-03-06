@@ -948,8 +948,8 @@ sites:
   base_url: https://docs.vapi.ai/
   description: Vapi voice AI platform and API
 - name: vast
-  base_url: https://vast.ai/
-  description: Vast.ai decentralized GPU cloud computing platform for ML workloads
+  base_url: https://docs.vast.ai/
+  description: Vast.ai GPU cloud computing - CLI and API documentation
 - name: venice
   base_url: https://docs.venice.ai/
   description: Venice decentralized AI platform

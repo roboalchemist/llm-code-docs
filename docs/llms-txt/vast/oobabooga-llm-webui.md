@@ -1,0 +1,140 @@
+# Source: https://docs.vast.ai/oobabooga-llm-webui.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Oobabooga (LLM webui)
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Run Oobabooga LLM WebUI on Vast.ai",
+  "description": "A complete guide to running large language models using Oobabooga's Gradio-based web interface on Vast.ai, including setup, GPU selection, model download, and usage.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Setup Your Vast Account",
+      "text": "Create a Vast.ai account and verify your email address. Head to the Billing tab and add credits. Vast uses Stripe to process credit card payments and also accepts major cryptocurrencies through Coinbase or Crypto.com. $20 should be enough to start. You can setup auto-top ups for when your balance is low."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Pick the Oobabooga Template",
+      "text": "Go to the Templates tab and search for 'Oobabooga' among recommended templates and select it. This template provides a Gradio-based web UI for interacting with Open Source LLMs."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Allocate Storage",
+      "text": "The default storage amount will not be enough for downloading an LLM. Use the slider under the Instance Configuration to allocate more storage. 100GB should be enough for most models."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Pick a GPU Offer",
+      "text": "You need to understand how much GPU RAM the LLM requires before picking a GPU. For example, Falcon 40B Instruct requires 85-100 GB of GPU RAM, while Falcon 7B only requires 16GB. You can use multiple GPUs in a single instance and add their GPU RAM together. For Falcon 40B Instruct, a 2X A6000 instance with 96GB total GPU RAM is recommended."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Open Oobabooga",
+      "text": "Once the instance boots up, the Open button will open port 7860 in a new browser window showing the Oobabooga web interface. The web GUI can take an additional 1-2 minutes to load. If stuck on 'Connecting' for more than 10 minutes, check the log for errors."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Download the LLM",
+      "text": "Click on the Model tab in the interface. Enter the Hugging Face username/model path (e.g., tiiuae/falcon-40b-instruct). To specify a branch, add it after a ':' character. The download will take 15-20 minutes depending on internet connection. Check progress in the instance log."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Load the LLM",
+      "text": "If using multiple GPUs, move the memory slider all the way over for all GPUs. You may need to select 'trust-remote-code' option if you get that error. Once configured, reload the model. Any errors loading the model will appear under the download button."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Start Chatting",
+      "text": "Navigate to the Text generation tab to start chatting with the model. This is the most basic way to use Oobabooga - there are many other settings and features available in the interface."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Destroy the Instance When Done",
+      "text": "If you STOP the instance, you'll no longer pay hourly GPU charges but will still incur storage charges. To incur no other charges, DESTROY the instance using the trash can icon. We recommend destroying instances to avoid storage charges while not using the system."
+    }
+  ]
+})
+}}
+/>
+
+A large language model(LLM) learns to predict the next word in a sentence by analyzing the patterns and structures in the text it has been trained on. This enables it to generate human-like text based on the input it receives.
+
+There are many popular Open Source LLMs: Falcon 40B, Guanaco 65B, LLaMA and Vicuna. Hugging Face maintains [a leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) of the most popular Open Source models that they have available.
+
+[Oobabooga](https://github.com/oobabooga/text-generation-webui) is a front end that uses Gradio to serve a simple web UI for interacting with the Open Source model. In this guide, we will show you how to run an LLM using Oobabooga on Vast.
+
+## 1) Setup your Vast account
+
+The first thing to do if you are new to Vast is to create an account and verify your email address. Then head to the Billing tab and add credits. Vast uses Stripe to processes credit card payments and also accepts major cryptocurrencies through Coinbase or Crypto.com. \$20 should be enough to start. You can setup auto-top ups so that your credit card is charged when your balance is low.
+
+## 2) Pick the Oobabooga template
+
+Go to the [Templates tab](https://cloud.vast.ai/templates/) and search for "Oobabooga" among recommended templates and select it.
+
+## 3) Allocate storage
+
+The default storage amount will not be enough for downloading an LLM. Use the slider under the Instance Configuration to allocate more storage. 100GB should be enough.
+
+<Frame caption="Ooobaboogasize">
+    <img src="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=475f6f1f9679f7248a2ea66250bba3f0" alt="Ooobaboogasize" data-og-width="362" width="362" data-og-height="418" height="418" data-path="images/use-cases-ai-text-generation-oobabooga.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=280&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=ae8de18a0a969cd3cb4a4d41a751abd6 280w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=560&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=c58b8676132f511b0ed5d0287ad62634 560w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=840&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=1dc197058d6de5dcba6e6a7a6ff530a4 840w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=1100&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=79d65d76951b5d68bbe1f3148fc399cb 1100w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=1650&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=fc76db914cea236ec6fbb456492719d1 1650w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga.png?w=2500&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=ecf742ff152e495017ae93e32fc1a277 2500w" />
+</Frame>
+
+## 4) Pick a GPU offer
+
+You will need to understand how much GPU RAM the LLM requires before you pick a GPU. For example, the [Falcon 40B Instruct](https://huggingface.co/tiiuae/falcon-40b-instruct) model requires 85-100 GB of GPU RAM. Falcon 7B only requires 16GB. Other models do not have great documentation on how much GPU RAM they require. If the instance doesn't have enough GPU RAM, there will be an error when trying to load the model. You can use multiple GPUs in a single instance and add their GPU RAM together.
+
+For this guide, we will load the Falcon 40B Instruct model on a 2X A6000 instance, which has 96GB of GPU RAM in total.
+
+<Frame caption="Oobabooga search">
+    <img src="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=276afbf4f3c2004ff62c918280d2d6dd" alt="Oobaboogasearch" data-og-width="1074" width="1074" data-og-height="558" height="558" data-path="images/use-cases-ai-text-generation-oobabooga-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=280&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=590ff34e45967b02360839859d37c925 280w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=560&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=b5cc3116532d57a2dd33ff895e55ef9e 560w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=840&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=2ee38cb6dcfec6c090ae706e84d46f0f 840w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=1100&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=87e230fddabcead2affee7beee6f0448 1100w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=1650&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=0b0c361361cd226ad9dbbd964b7d29ff 1650w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-2.png?w=2500&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=9c002e403413387129032b9bbd5ffa97 2500w" />
+</Frame>
+
+Click on the RENT button to start the instance which will download the docker container and boot up.
+
+## 5) Open Oobabooga
+
+Once the instance boots up, the Open button will open port 7860 in a new browser window. This is the Oobabooga web interface.
+
+The web gui can take an additional 1-2 minutes to load. If the button is stuck on "Connecting" for more than 10 minutes, then something has gone wrong. You can check the log for an error and/or contact us on website chat support for 24/7 help.
+
+## 6) Download the LLM
+
+Click on the Model tab in the interface. Enter the Hugging Face username/model path, for instance: tiiuae/falcon-40b-instruct. To specify a branch, add it at the end after a ":" character like this: tiiuae/falcon-40b-instruct
+
+The download will take 15-20 minutes depending on the machine's internet connection.
+
+<Frame caption="Oob Downloading">
+    <img src="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=5631c7665f59711749e088019273888e" alt="Oob Downloading" data-og-width="1669" width="1669" data-og-height="765" height="765" data-path="images/use-cases-ai-text-generation-oobabooga-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=280&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=b8bdaeed15b65ab4ecc1753da22b3878 280w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=560&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=380f2b11a7ffe18a8e8617a4b7ec1d79 560w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=840&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=91a9f825be927d61cb3a93f9815e2ddf 840w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=1100&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=42f275645f69019502b8a26d17ea3e30 1100w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=1650&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=e71af6f32e8eca4c13475fa6381fbda7 1650w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-3.png?w=2500&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=169d6e6f25ae31e2d1baee1eb87548a9 2500w" />
+</Frame>
+
+To check the progress of the download, you can click on the log button on the Vast instance card on [cloud.vast.ai/instances/](https://cloud.vast.ai/instances/) which will show you the download speed for each of the LLM file segments.
+
+## 7) Load the LLM
+
+If you are using multiple GPUs such as the 2X A6000 selected in this guide, you will need to move the memory slider all the way over for all the GPUs. You may also have to select the "trust-remote-code" option if you get that error. Once those items are fixed, you can reload the model.
+
+<Frame caption="Oob Model Load">
+    <img src="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=fa4a800581cb9543e7ec83c3d731aea3" alt="Oob Model Load" data-og-width="1670" width="1670" data-og-height="750" height="750" data-path="images/use-cases-ai-text-generation-oobabooga-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=280&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=dea2a27ae3ce45d95526d3a16edfac22 280w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=560&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=140e027234e2a93594660f21d138555c 560w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=840&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=91ce3e994c6c14f413f83ae19fde424e 840w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=1100&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=16dc6922ecea4a94e83f9ab168276837 1100w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=1650&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=e59c4152b1722219c311b645bd0d2e42 1650w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-text-generation-oobabooga-4.png?w=2500&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=59e065d29171306e50ec040e599ded42 2500w" />
+</Frame>
+
+Any errrors loading the model will appear under the download button.
+
+## 8) Start chatting!
+
+Navigate to the Text generation tab to start chatting with the model. This is the most basic way to use Oobabooga, there are many other settings and things you can do with the interface.
+
+## 9) Done? Destroy the instance
+
+If you STOP the instance using the stop button, you will no longer pay the hourly GPU charges. **However you will still incur storage charges** because the data is still stored on the host machine. When you hit the START button to restart the instance, you are also not guaranteed that you can rent the GPU as someone else might have rented it while it was stopped.
+
+To incur no other charges you have to DESTROY the instance using the trash can icon. **We recommend you destroy instances** so as not to incur storage charges while you are not using the system.
+
+Have fun!

@@ -1,0 +1,210 @@
+# Source: https://docs.vast.ai/blender-batch-rendering.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Blender Batch Rendering
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Blender Batch Rendering on Vast.ai",
+  "description": "A step-by-step guide to automating Blender animation rendering for batches of blend files using GPUs on Vast.ai, including template selection, instance setup, and batch processing workflows.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Open Vast's Blender Batch Renderer Template",
+      "text": "Click on the Blender Batch Renderer Template link to select the vast/blender-batch-renderer template from the Vast.ai platform."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Check Secure Cloud (Optional)",
+      "text": "Narrow your search results to only data center machines if you want insured security standards from trusted datacenters by checking the Secure Cloud box."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Filter for a Suitable GPU",
+      "text": "Select a GPU that suits your needs. NVIDIA GeForce RTX 4090 gives the best render speed with Blender. Go to the GPUs filter and check the box for RTX 4090 or another GPU instance based on your requirements."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Choose a GPU and Click RENT",
+      "text": "Choose a GPU that meets your budget, desired reliability percentage, and other constraints by clicking RENT. GPUs are sorted by a complex proprietary algorithm that aims to give users the best machines for their value by default."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Use Jupyter Direct HTTPS Launch Mode",
+      "text": "Follow the instructions related to adding a certificate to your browser when it asks you to Setup Jupyter Direct HTTPS and click CONTINUE. This provides faster download speeds and a more reliable connection."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Open Jupyter Notebook",
+      "text": "Click the Open Button or Jupyter Notebook button on your instance card to open Jupyter Notebook where you can upload blend files and run batch rendering scripts."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Render Animation for Each Blend File in Batch",
+      "text": "Navigate to /Desktop/render_animation_for_each_blend_file_in_batch_of_blend_files/ folder, upload your .blend files, open the corresponding .ipynb notebook, click Run tab and select Run All Cells. The notebook will render an animation for each blend file you uploaded."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Render Xth Frame of Each Blend File in Batch",
+      "text": "Navigate to /Desktop/render_Xth_frame_of_batch_of_blend_files/ folder, upload .blend files, open the notebook, set frame_number to your desired frame (e.g., frame_number=2), click Run tab and select Run All Cells. The notebook will render the specified frame for each blend file."
+    }
+  ]
+})
+}}
+/>
+
+Blender is a free, open source 3D creation suite. It can be used to create animated films, visual effects, art, 3D-printed models, motion graphics, interactive 3D applications, virtual reality, and video games. It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation. You can find more information about Blender at [blender.org](https://www.blender.org/).
+
+Animators, game developers, 3D modelers, visual effects artists, architects, and product designers are some people who use Blender.
+
+GPUs can speed up rendering in Blender.
+
+You can save time by automating away the rendering of animations for batch of blend files.
+
+## Step 1 - Open Vast's Blender Batch Renderer Template
+
+Click on this link [Blender Batch Renderer Template](https://cloud.vast.ai/?ref_id=142678\&template_id=7b570ea8454e5f2b4b026139709fa0e8) to select the vast/blender-batch-renderer template.
+
+## Step 2 - Check the Secure Cloud box if you want a secure machine from trusted datacenters (Optional)
+
+You can narrow your search results to only data center machines if you want insured security standards from our trusted datacenters.
+
+<Frame caption="Highlighted Secure Cloud">
+  ![Highlighted Secure Cloud](https://vast.ai/uploads/highlighted_secure_cloud.png)
+</Frame>
+
+## Step 3 - Filter for a GPU that you feel best suits your needs
+
+If you have questions about which GPU to choose, there is some data around NVIDIA Geforce RTX 4090 giving the best render speed with Blender. You can find other GPUs that work well with Blender here [Blender GPU Benchmarks](https://opendata.blender.org/benchmarks/query/?group_by=device_name\&blender_version=3.6.0). You can also find other options by searching on Google or asking ChatGPT.
+
+The version of Blender running within Vast while using the template linked above at the time of this writing is 3.6.2.
+
+Go to the GPUs filter and check the box for RTX 4090 or another GPU instance.
+
+For example,
+
+<Frame caption="Highlighted Rtx 4090 Filter Pic">
+  ![Highlighted Rtx 4090 Filter Pic](https://vast.ai/uploads/highlighted_rtx_4090_filter_pic.png)
+</Frame>
+
+## Step 4 - Choose a GPU by Clicking "RENT"
+
+Choose a GPU that meets your budget, desired reliability %, and other constraints by clicking "RENT". GPUs are sorted by a complex proprietary algorithm that aims to give users the best machines for their value by default.
+You can filter GPUs further per your requirements if desired.
+
+<Frame caption="Highlighted Rent">
+  ![Highlighted Rent](https://vast.ai/uploads/highlighted_rent.png)
+</Frame>
+
+## Step 5 - Use Jupyter Direct HTTPS Launch Mode
+
+Follow the instructions related to adding a certificate to your browser if you need to when it asks you to "Setup Jupyter Direct HTTPS" and click "CONTINUE". Here's more information on the Jupyter direct HTTPS Launch Mode and Installing the TLS certificate: [Jupyter](/documentation/instances/jupyter).
+
+<Frame caption="Updated Jupyter Direct Https Continue">
+  ![Updated Jupyter Direct Https Continue](https://vast.ai/uploads/updated_jupyter_direct_https_continue.png)
+</Frame>
+
+## Step 6 - Click the Open Button or Jupyter Notebook button to open Jupyter Notebook
+
+<Frame caption="Jupyter Notebook Button">
+  ![Jupyter Notebook Button](https://vast.ai/uploads/jupyter_notebook_button.png)
+</Frame>
+
+## Step 7 - To Render Animation For Each Blend File In Batch Of Blend Files
+
+If you want to render a respective animation for each blend file in a batch of blend files, follow the following steps.
+
+Go to /Desktop/render\_animation\_for\_each\_blend\_file\_in\_batch\_of\_blend\_files/ folder in Jupyter Notebook
+
+<Frame caption="Go Render Animation For Batch Folder">
+  ![Go Render Animation For Batch Folder](https://vast.ai/uploads/go_render_animation_for_batch_folder.png)
+</Frame>
+
+Upload .blend files to /Desktop/render\_animation\_for\_each\_blend\_file\_in\_batch\_of\_blend\_files/ folder
+
+<Frame caption="Upload 100 Color Vortex">
+  ![Upload 100 Color Vortex](https://vast.ai/uploads/upload_100_color_vortex.png)
+</Frame>
+
+<br />
+
+<Frame caption="Upload Render Animation Batch Highlighted">
+  ![Upload Render Animation Batch Highlighted](https://vast.ai/uploads/upload_render_animation_batch_highlighted.png)
+</Frame>
+
+Open render\_animation\_for\_each\_blend\_file\_in\_batch\_of\_blend\_files.ipynb
+
+<Frame caption="Open Render Animation For Batch Folder Notebook">
+  ![Open Render Animation For Batch Folder Notebook](https://vast.ai/uploads/open_render_animation_for_batch_folder_notebook.png)
+</Frame>
+
+Click the Run tab and click Run All Cells
+
+<Frame caption="Show Rendering Animations">
+  ![Show Rendering Animations](https://vast.ai/uploads/show_rendering_animations.png)
+</Frame>
+
+<br />
+
+<Frame caption="Click Run All Cells Highlighted">
+  ![Click Run All Cells Highlighted](https://vast.ai/uploads/click_run_all_cells_highlighted.png)
+</Frame>
+
+Now a corresponding animation will be rendered for each .blend file you have uploaded to this folder.
+You can also close out your jupyter notebook tab in your browser and this notebook will keep running as long as your instance in Vast is running.
+
+## Step 8 - To Render Animation For Xth Frame of Each Blend File In Batch Of Blend Files
+
+If you want to render a respective animation for the Xth frame of each blend file in a batch of blend files, follow the following steps.
+
+Go to /Desktop/render\_Xth\_frame\_of\_batch\_of\_blend\_files/ folder in Jupyter Notebook
+
+<Frame caption="Go To Render Xth Frame For Batch Folder">
+  ![Go To Render Xth Frame For Batch Folder](https://vast.ai/uploads/go_to_render_xth_frame_for_batch_folder.png)
+</Frame>
+
+Upload .blend files to /Desktop/render\_Xth\_frame\_of\_batch\_of\_blend\_files/ folder
+
+<Frame caption="Upload Blend Files For Xth Frame">
+  ![Upload Blend Files For Xth Frame](https://vast.ai/uploads/upload_blend_files_for_xth_frame.png)
+</Frame>
+
+<br />
+
+<Frame caption="Upload Xth Frame Highlighted">
+  ![Upload Xth Frame Highlighted](https://vast.ai/uploads/upload_xth_frame_highlighted.png)
+</Frame>
+
+Open render\_Xth\_frame\_of\_batch\_of\_blend\_files.ipynb
+
+<Frame caption="Open Render Animation For Each Blend File In Batch Of Blend Files Ipynb">
+  ![Open Render Animation For Each Blend File In Batch Of Blend Files Ipynb](https://vast.ai/uploads/open_render_animation_for_each_blend_file_in_batch_of_blend_files_ipynb.png)
+</Frame>
+
+Set frame\_number equal to a particular frame number. For ex. frame\_number=2
+
+<Frame caption="Set Frame Number 2">
+  ![Set Frame Number 2](https://vast.ai/uploads/set_frame_number_2.png)
+</Frame>
+
+Click the Run tab and click Run All Cells
+
+<Frame caption="Xth Frames Rendering">
+  ![Xth Frames Rendering](https://vast.ai/uploads/xth_frames_rendering.png)
+</Frame>
+
+<br />
+
+<Frame caption="Run All Cells Xth Frame Highlighted">
+  ![Run All Cells Xth Frame Highlighted](https://vast.ai/uploads/run_all_cells_xth_frame_highlighted.png)
+</Frame>
+
+Now a corresponding animation will be rendered for each Xth frame of each .blend file you have uploaded to this folder.
+You can also close out your jupyter notebook tab in your browser and this notebook will keep running as long as your instance in Vast is running.

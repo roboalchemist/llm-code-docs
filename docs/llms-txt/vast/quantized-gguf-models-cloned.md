@@ -1,0 +1,114 @@
+# Source: https://docs.vast.ai/quantized-gguf-models-cloned.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Quantized GGUF models (cloned)
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Run Quantized GGUF Models on Vast.ai",
+  "description": "A step-by-step guide to running quantized LLM models in multi-part GGUF format using llama.cpp on Vast.ai, demonstrated with Deepseek-R1 Q8_0 model.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Setup Account and Select Template",
+      "text": "Setup your Vast account and add credit by reviewing the quickstart guide. Use the Open WebUI + Ollama template which contains pre-compiled CUDA compatible versions of llama-server and llama-cli. Ensure you have enough disk space and suitable configuration (for Deepseek-R1 Q8_0: at least 800GB VRAM and 700GB storage space). Recommended: 8 x H200 with 750GB storage."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Pull the Model",
+      "text": "Open a terminal on your instance. Download the models from the Hugging Face repo to /workspace/llama.cpp/models directory using the included script: 'llama-dl.sh --repo unsloth/DeepSeek-R1-GGUF --version Q8_0'. This download will take time as HuggingFace limits download speed (may take up to an hour)."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Serve the Model",
+      "text": "Once download is complete, serve the model using llama-server: 'llama-server --model /workspace/llama.cpp/models/DeepSeek-R1-Q8_0/DeepSeek-R1.Q8_0-00001-of-00015.gguf --ctx-size 8192 --n-gpu-layers 62 --port 20000'. This command loads all model layers into GPU VRAM and begins serving the API at http://localhost:20000. The model will take time to load to GPU."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Access the Model via OpenWebUI",
+      "text": "Once the model has finished loading to GPU, it will be available directly from the OpenWebui interface in the model selector. You may need to refresh the page if OpenWebUI was already open. The template is pre-configured to find the API running on http://localhost:20000."
+    }
+  ]
+})
+}}
+/>
+
+Here's a step-by-step guide to running quantized LLM models in multi-part GGUF format.  We will use [Unsloth's Deepseek-R1 Q8\_0 model](https://huggingface.co/unsloth/DeepSeek-R1-GGUF) as an example.  This model is very large and will require an 8xH200 machine configuration, but you can also follow this guide for much smaller models.
+
+Before moving on with the guide,**&#x20;Setup your Vast account and add credit**. Review the [quickstart guide](/documentation/get-started/quickstart) to get familar with the service if you do not have an account with credits loaded.
+
+## Llama.cpp
+
+Llama.cpp is the recommended method for loading these models as it is able to directly load a split file of many parts without first merging them.
+
+While it's easy to build llama.cpp inside one of our instances, we will focus on running this model in the Open WebUI template which contains a pre-compiled CUDA compatible versions of llama-server and llama-cli.&#x20;
+
+## Open WebUI Template &#x20;
+
+OpenWebui + Ollama is one of our recommended templates.  While its default setup uses Ollama as a backend, it can also access an OpenAI-compatible API and it has been pre-configured to find one running on `http://localhost:20000`
+
+A full guide to getting started with the OpenWebUI template is available [here](/ollama-webui)
+
+Ensure you have enough disk space and a suitable configuration.  For Deepseek-R1 Q8\_0 you'll need:
+
+* At least 800GB VRAM
+* 700GB storage space
+
+The recommended configuration for this particular model is 8 x H200 with 750GB storage.
+
+Once you have loaded up the template, you'll need to open up a terminal where we will pull and then serve the model.
+
+### Pulling the model
+
+You will want to download the models from the [Deepseek-R1 Q8\_0 model](https://huggingface.co/unsloth/DeepSeek-R1-GGUF) hugging face repo to the `/workspace/llama.cpp/models` directory on your instance. We have included a script with the [Ollama + Open WebUI](https://cloud.vast.ai?ref_id=62897\&template_id=d8aa06abd242979cee20d6646068167d) template that you may use to easily download the models.
+
+```bash Bash theme={null}
+llama-dl.sh --repo unsloth/DeepSeek-R1-GGUF --version Q8_0
+```
+
+This download will take some time as HuggingFace limits download speed, so even on an instance with very fast download speeds it may take up to an hour to completely download.
+
+### Serving the model
+
+Once the dowload has completed it's time to serve the model using the pre-built `llama-server` application.
+
+Again, from the terminal, type the following:
+
+```javascript JavaScript icon="js" theme={null}
+llama-server \
+--model /workspace/llama.cpp/models/DeepSeek-R1-Q8_0/DeepSeek-R1.Q8_0-00001-of-00015.gguf \
+--ctx-size 8192 \
+--n-gpu-layers 62 \
+--port 20000
+```
+
+This command will load all of the model layers into GPU VRAM and begin serving the API at http\://localhost:20000
+
+Once the model has finished loading to the GPU, it will be availabe directly from the OpenWebui interface in the model selector.  Again, this may take some time to load and if you already have OpenWebui open then you may need to refresh the page.
+
+## Building Llama.cpp
+
+If you prefer to build llama.cpp yourself, you can simply run the following from any Vast-built template.  The Recommended Nvidia CUDA template would be an ideal start.
+
+```bash Bash theme={null}
+apt-get install libcurl4-openssl-dev
+git clone https://github.com/ggerganov/llama.cpp
+cmake llama.cpp -B /tmp/llama.cpp/build \
+        -DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DLLAMA_CURL=ON
+cmake --build /tmp/llama.cpp/build --config Release -j --clean-first --target llama-quantize llama-cli llama-server llama-gguf-split
+```
+
+These commands will build the `llama-quantize` `llama-cli` `llama-server` and `llama-gguf-split` tools.
+
+For advanced build instructions you should see the [official documentation](https://github.com/ggerganov/llama.cpp?tab=readme-ov-file#building-the-project) on GitHub.&#x20;
+
+## Further Reading
+
+Please see the template Readme for advanced template configuration, particularly if you would like to modify the template to make the llama-server API available externally with authentication or via a SSH tunnel.
