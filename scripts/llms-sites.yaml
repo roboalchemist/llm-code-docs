@@ -454,6 +454,10 @@ sites:
 - name: inkeep
   base_url: https://docs.inkeep.com/
   description: Inkeep AI-powered documentation search
+- name: ionet
+  base_url: https://io.net/docs/
+  description: io.net decentralized GPU network for AI/ML workloads with 320K+ GPUs
+    across 138 countries - covers API, CLI, cluster deployment, GPU management, tokenomics
 - name: ironclad
   base_url: https://clickwrap-developer.ironcladapp.com/
   description: Ironclad Clickwrap API and SDK documentation for digital agreement
@@ -632,6 +636,9 @@ sites:
 - name: netlify
   base_url: https://docs.netlify.com/
   description: Netlify web deployment platform
+- name: northflank
+  base_url: https://northflank.com/docs/
+  description: Northflank full-stack cloud platform with GPU orchestration, BYOC, auto spot, API and CLI
 - name: nextjs
   base_url: https://nextjs.org/docs/
   description: Next.js React framework
@@ -814,6 +821,9 @@ sites:
 - name: saaspegasus
   base_url: https://docs.saaspegasus.com/
   description: Saaspegasus documentation
+- name: saladcloud
+  base_url: https://docs.salad.com/
+  description: SaladCloud distributed GPU cloud platform for AI/ML workloads with Container Engine, APIs, CLI, and batch processing
 - name: sardine
   base_url: https://docs.sardine.ai/
   description: Sardine documentation
@@ -923,6 +933,10 @@ sites:
   base_url: https://www.traceloop.com/docs/
   description: OpenLLMetry - open-source observability SDK for LLM applications based
     on OpenTelemetry
+- name: thundercompute
+  base_url: https://www.thundercompute.com/docs/
+  description: Thunder Compute - budget GPU cloud for LLMs and AI workloads with VS
+    Code integration
 - name: turbo
   base_url: https://turbo.build/
   description: Turborepo monorepo build system

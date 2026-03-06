@@ -1,0 +1,66 @@
+# Source: https://www.thundercompute.com/docs/prototyping-vs-production.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.thundercompute.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Prototyping vs Production
+
+> Choose between optimized development pricing and full compatibility for your workloads
+
+Thunder Compute offers two modes for running instances.
+
+| Feature                   | Prototyping        | Production              |
+| ------------------------- | ------------------ | ----------------------- |
+| Cost                      | Lower              | Higher                  |
+| Compatibility             | Most ML workloads  | Full CUDA compatibility |
+| GPUs                      | A6000, A100, H100  | A100, H100              |
+| Multi-GPU                 | H100: up to 2 GPUs | Up to 8 GPUs            |
+| Graphics (OpenGL, Vulkan) | No                 | Yes                     |
+
+## Prototyping Mode
+
+<Note>
+  Prototyping mode is currently in beta and exclusively available on Thunder Compute.
+</Note>
+
+Prototyping mode applies CUDA-level optimizations to maximize GPU utilization, significantly reducing costs for AI/ML development workflows.
+
+### Supported Software
+
+* **PyTorch**: Fully supported (downgrading from the pre-installed version may cause issues)
+* **TensorFlow**
+* **JAX**
+* **Jupyter Notebooks**
+* **Model Serving**: ComfyUI, Ollama, VLLM, and others
+* **Fine Tuning**: Unsloth and others
+
+### Unsupported Workloads
+
+* Graphics workloads (OpenGL, Vulkan, FFMPEG)
+* Custom CUDA kernels (may exhibit unpredictable behavior)
+* Hardware-specific profiling tools
+
+<Tip>
+  If you encounter issues with an unsupported workload, switch to production mode with [modify](/vscode/operations/modifying-instances) for full compatibility.
+</Tip>
+
+## Production Mode
+
+Production mode provisions a standard virtual machine with full CUDA compatibility and predictable performance.
+
+### When to Choose Production
+
+* Long-running training jobs
+* Multi-GPU workloads (up to 8 GPUs)
+* Graphics workloads (OpenGL, Vulkan, FFMPEG)
+* Custom CUDA kernels
+* Workloads requiring accurate hardware metrics
+
+## Switching Between Modes
+
+[Modify existing instances](/vscode/operations/modifying-instances) to switch between prototyping and production mode. This also lets you change GPU type, vCPUs, and RAM. Storage can be expanded but not reduced.
+
+## Learn More
+
+* [Technical Specifications](/technical-specs) - Hardware, networking, and storage details
