@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/serverless/vllm.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -68,7 +69,7 @@ async def main():
                 "temperature" : 0.7
             }
         }
-        
+
         response = await endpoint.request("/v1/completions", payload, cost=MAX_TOKENS)
         print(response["response"]["choices"][0]["text"])
 

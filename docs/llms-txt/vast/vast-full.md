@@ -5,6 +5,7 @@ Source: https://docs.vast.ai/llms-full.txt
 ---
 
 # create api-key
+
 Source: https://docs.vast.ai/api-reference/accounts/create-api-key
 
 api-reference/openapi.json post /api/v0/auth/apikeys/
@@ -15,6 +16,7 @@ CLI Usage: `vastai create api-key --name <name> --permission_file <permissions_f
 
 
 # create env-var
+
 Source: https://docs.vast.ai/api-reference/accounts/create-env-var
 
 api-reference/openapi.json post /api/v0/secrets/
@@ -27,6 +29,7 @@ CLI Usage: `vastai create env-var <key> <value>`
 
 
 # create ssh-key
+
 Source: https://docs.vast.ai/api-reference/accounts/create-ssh-key
 
 api-reference/openapi.json post /api/v0/ssh/
@@ -38,6 +41,7 @@ CLI Usage: `vastai create ssh-key <ssh_key>`
 
 
 # create subaccount
+
 Source: https://docs.vast.ai/api-reference/accounts/create-subaccount
 
 api-reference/openapi.json post /api/v0/users/
@@ -48,6 +52,7 @@ CLI Usage: `vastai create subaccount --email <email> --username <username> --pas
 
 
 # delete api key
+
 Source: https://docs.vast.ai/api-reference/accounts/delete-api-key
 
 api-reference/openapi.json delete /api/v0/auth/apikeys/{id}/
@@ -59,6 +64,7 @@ CLI Usage: `vastai delete api-key <id>`
 
 
 # delete env var
+
 Source: https://docs.vast.ai/api-reference/accounts/delete-env-var
 
 api-reference/openapi.json delete /api/v0/secrets/
@@ -70,6 +76,7 @@ CLI Usage: `vastai delete env-var <name>`
 
 
 # delete ssh key
+
 Source: https://docs.vast.ai/api-reference/accounts/delete-ssh-key
 
 api-reference/openapi.json delete /api/v0/ssh/{id}/
@@ -80,6 +87,7 @@ CLI Usage: `vastai delete ssh-key <id>`
 
 
 # set user
+
 Source: https://docs.vast.ai/api-reference/accounts/set-user
 
 api-reference/openapi.json put /api/v0/users/
@@ -90,6 +98,7 @@ CLI Usage: `vastai set user --file <file_path>`
 
 
 # show api keys
+
 Source: https://docs.vast.ai/api-reference/accounts/show-api-keys
 
 api-reference/openapi.json get /api/v0/auth/apikeys/
@@ -100,6 +109,7 @@ CLI Usage: `vastai show api-keys`
 
 
 # show connections
+
 Source: https://docs.vast.ai/api-reference/accounts/show-connections
 
 api-reference/openapi.json get /api/v0/users/cloud_integrations/
@@ -110,6 +120,7 @@ CLI Usage: `vastai show connections`
 
 
 # show env vars
+
 Source: https://docs.vast.ai/api-reference/accounts/show-env-vars
 
 api-reference/openapi.json get /api/v0/secrets/
@@ -120,6 +131,7 @@ CLI Usage: `vastai show env-vars [-s]`
 
 
 # show ipaddrs
+
 Source: https://docs.vast.ai/api-reference/accounts/show-ipaddrs
 
 api-reference/openapi.json get /api/v0/users/{user_id}/ipaddrs/
@@ -130,6 +142,7 @@ CLI Usage: `vastai show ipaddrs`
 
 
 # show ssh keys
+
 Source: https://docs.vast.ai/api-reference/accounts/show-ssh-keys
 
 api-reference/openapi.json get /api/v0/ssh/
@@ -140,6 +153,7 @@ CLI Usage: `vastai show ssh-keys`
 
 
 # show subaccounts
+
 Source: https://docs.vast.ai/api-reference/accounts/show-subaccounts
 
 api-reference/openapi.json get /api/v0/subaccounts/
@@ -150,6 +164,7 @@ CLI Usage: `vastai show subaccounts`
 
 
 # show team role
+
 Source: https://docs.vast.ai/api-reference/accounts/show-team-role
 
 api-reference/openapi.json get /api/v0/team/roles/{id}/
@@ -160,6 +175,7 @@ CLI Usage: `vastai show team-role <name>`
 
 
 # show user
+
 Source: https://docs.vast.ai/api-reference/accounts/show-user
 
 api-reference/openapi.json get /api/v0/users/current/
@@ -170,6 +186,7 @@ CLI Usage: `vastai show user`
 
 
 # transfer credit
+
 Source: https://docs.vast.ai/api-reference/accounts/transfer-credit
 
 api-reference/openapi.json put /api/v0/commands/transfer_credit/
@@ -182,6 +199,7 @@ CLI Usage: `vastai transfer credit <recipient_email> <amount>`
 
 
 # update env var
+
 Source: https://docs.vast.ai/api-reference/accounts/update-env-var
 
 api-reference/openapi.json put /api/v0/secrets/
@@ -192,6 +210,7 @@ CLI Usage: `vastai update env-var <key> <value>`
 
 
 # update ssh key
+
 Source: https://docs.vast.ai/api-reference/accounts/update-ssh-key
 
 api-reference/openapi.json put /api/v0/ssh/{id}/
@@ -202,6 +221,7 @@ CLI Usage: `vastai update ssh-key <id> <ssh_key>`
 
 
 # search invoices
+
 Source: https://docs.vast.ai/api-reference/billing/search-invoices
 
 api-reference/openapi.json get /api/v0/invoices
@@ -212,6 +232,7 @@ CLI Usage: `vastai search invoices`
 
 
 # show deposit
+
 Source: https://docs.vast.ai/api-reference/billing/show-deposit
 
 api-reference/openapi.json get /api/v0/instances/balance/{id}/
@@ -222,6 +243,7 @@ CLI Usage: `vastai show deposit <id>`
 
 
 # show earnings
+
 Source: https://docs.vast.ai/api-reference/billing/show-earnings
 
 api-reference/openapi.json get /api/v0/users/{user_id}/machine-earnings/
@@ -232,6 +254,7 @@ CLI Usage: `vastai show earnings [options]`
 
 
 # show invoices
+
 Source: https://docs.vast.ai/api-reference/billing/show-invoices
 
 api-reference/openapi.json get /api/v1/invoices/
@@ -248,11 +271,14 @@ Example range: 2026-01-01 00:00:00 UTC -> `1767225600`, 2026-01-31 23:59:59 UTC 
 
 **HTTP request**: This is a GET endpoint that accepts JSON-encoded query parameters.
 URL-encode JSON values when calling directly.
-```
+
+```text
 GET /api/v1/invoices/?select_filters={"when":{"gte":1767225600,"lte":1769903999}}&limit=60
 ```
+
 For pagination, pass the response `next_token` as `after_token`:
-```
+
+```text
 GET /api/v1/invoices/?select_filters={"when":{"gte":1767225600,"lte":1769903999}}&after_token=eyJ2YWx1ZXMiOiB7ImlkIjog...
 ```
 
@@ -261,6 +287,7 @@ CLI Usage: `vastai show invoices-v1`
 
 
 # Creating and Using Templates with API
+
 Source: https://docs.vast.ai/api-reference/creating-and-using-templates-with-api
 
 
@@ -1000,6 +1027,7 @@ The `args_str` field is used when `runtype` is `args`. It replaces the image's D
 
 
 # Creating Instances with the API
+
 Source: https://docs.vast.ai/api-reference/creating-instances-with-api
 
 
@@ -1774,6 +1802,7 @@ vastai create instance 12345678 --template_hash 4e17788f74f075dd9aab7d0d4427968f
 
 
 # attach ssh-key
+
 Source: https://docs.vast.ai/api-reference/instances/attach-ssh-key
 
 api-reference/openapi.json post /api/v0/instances/{id}/ssh/
@@ -1784,6 +1813,7 @@ CLI Usage: `vastai attach ssh <instance_id> <ssh_key>`
 
 
 # cancel copy
+
 Source: https://docs.vast.ai/api-reference/instances/cancel-copy
 
 api-reference/openapi.json delete /api/v0/commands/copy_direct/
@@ -1794,6 +1824,7 @@ CLI Usage: `vastai cancel copy --dst_id <destination_id>`
 
 
 # cancel sync
+
 Source: https://docs.vast.ai/api-reference/instances/cancel-sync
 
 api-reference/openapi.json delete /api/v0/commands/rclone/
@@ -1805,6 +1836,7 @@ CLI Usage: `vastai cancel sync --dst_id <destination_id>`
 
 
 # change bid
+
 Source: https://docs.vast.ai/api-reference/instances/change-bid
 
 api-reference/openapi.json put /api/v0/instances/bid_price/{id}/
@@ -1815,6 +1847,7 @@ CLI Usage: `vastai change bid <id> --price <price>`
 
 
 # cloud copy
+
 Source: https://docs.vast.ai/api-reference/instances/cloud-copy
 
 api-reference/openapi.json post /api/v0/commands/rclone/
@@ -1825,6 +1858,7 @@ CLI Usage: `vastai cloud copy <instance_id> <src> <dst> [options]`
 
 
 # copy
+
 Source: https://docs.vast.ai/api-reference/instances/copy
 
 api-reference/openapi.json put /api/v0/commands/copy_direct/
@@ -1835,6 +1869,7 @@ CLI Usage: `vastai copy <src_id> <dst_id> <src_path> <dst_path>`
 
 
 # create instance
+
 Source: https://docs.vast.ai/api-reference/instances/create-instance
 
 api-reference/openapi.json put /api/v0/asks/{id}/
@@ -1855,6 +1890,7 @@ CLI Usage: `vastai create instance <offer_id> <image> [options]`
 
 
 # destroy instance
+
 Source: https://docs.vast.ai/api-reference/instances/destroy-instance
 
 api-reference/openapi.json delete /api/v0/instances/{id}/
@@ -1865,6 +1901,7 @@ CLI Usage: `vastai destroy instance <id>`
 
 
 # detach ssh-key
+
 Source: https://docs.vast.ai/api-reference/instances/detach-ssh-key
 
 api-reference/openapi.json delete /api/v0/instances/{id}/ssh/{ssh_key_id}/
@@ -1875,6 +1912,7 @@ CLI Usage: `vastai detach <instance_id> <ssh_key_id>`
 
 
 # execute
+
 Source: https://docs.vast.ai/api-reference/instances/execute
 
 api-reference/openapi.json put /api/v0/instances/command/{id}/
@@ -1886,6 +1924,7 @@ CLI Usage: `vastai execute <instance_id> <command>`
 
 
 # manage instance
+
 Source: https://docs.vast.ai/api-reference/instances/manage-instance
 
 api-reference/openapi.json put /api/v0/instances/{id}/
@@ -1899,6 +1938,7 @@ CLI Usage:
 
 
 # prepay instance
+
 Source: https://docs.vast.ai/api-reference/instances/prepay-instance
 
 api-reference/openapi.json put /api/v0/instances/prepay/{id}/
@@ -1910,6 +1950,7 @@ CLI Usage: `vastai prepay instance <id> <amount>`
 
 
 # reboot instance
+
 Source: https://docs.vast.ai/api-reference/instances/reboot-instance
 
 api-reference/openapi.json put /api/v0/instances/reboot/{id}/
@@ -1920,6 +1961,7 @@ CLI Usage: `vastai reboot instance <id>`
 
 
 # recycle instance
+
 Source: https://docs.vast.ai/api-reference/instances/recycle-instance
 
 api-reference/openapi.json put /api/v0/instances/recycle/{id}/
@@ -1931,6 +1973,7 @@ CLI Usage: `vastai recycle instance <id>`
 
 
 # show instance
+
 Source: https://docs.vast.ai/api-reference/instances/show-instance
 
 api-reference/openapi.json get /api/v0/instances/{id}/
@@ -1941,6 +1984,7 @@ CLI Usage: `vastai show instance [--api-key <api_key>] [--raw]`
 
 
 # show instances
+
 Source: https://docs.vast.ai/api-reference/instances/show-instances
 
 api-reference/openapi.json get /api/v0/instances/
@@ -1951,6 +1995,7 @@ CLI Usage: `vastai show instances [OPTIONS] [--api-key API_KEY] [--raw]`
 
 
 # show logs
+
 Source: https://docs.vast.ai/api-reference/instances/show-logs
 
 api-reference/openapi.json put /api/v0/instances/request_logs/{id}
@@ -1961,6 +2006,7 @@ CLI Usage: `vastai show logs <instance_id> [--tail <lines>] [--filter <grep>] [-
 
 
 # show ssh-keys
+
 Source: https://docs.vast.ai/api-reference/instances/show-ssh-keys
 
 api-reference/openapi.json get /api/v0/instances/{instance_id}/ssh/
@@ -1971,6 +2017,7 @@ CLI Usage: `vastai show ssh-keys <instance_id>`
 
 
 # API Introduction
+
 Source: https://docs.vast.ai/api-reference/introduction
 
 
@@ -1983,6 +2030,7 @@ Welcome to Vast.ai's API documentation. Our API allows you to programmatically m
 
 
 # cancel maint
+
 Source: https://docs.vast.ai/api-reference/machines/cancel-maint
 
 api-reference/openapi.json put /api/v0/machines/{machine_id}/cancel_maint/
@@ -1993,6 +2041,7 @@ CLI Usage: `vastai cancel maint <machine_id>`
 
 
 # cleanup machine
+
 Source: https://docs.vast.ai/api-reference/machines/cleanup-machine
 
 api-reference/openapi.json put /api/v0/machines/{machine_id}/cleanup/
@@ -2003,6 +2052,7 @@ CLI Usage: `vastai cleanup machine <machine_id>`
 
 
 # list machine
+
 Source: https://docs.vast.ai/api-reference/machines/list-machine
 
 api-reference/openapi.json put /api/v0/machines/create_asks/
@@ -2014,6 +2064,7 @@ CLI Usage: `vastai list machine <machine_id> [options]`
 
 
 # remove defjob
+
 Source: https://docs.vast.ai/api-reference/machines/remove-defjob
 
 api-reference/openapi.json delete /api/v0/machines/{machine_id}/defjob/
@@ -2024,6 +2075,7 @@ CLI Usage: `vastai remove defjob <machine_id>`
 
 
 # schedule maint
+
 Source: https://docs.vast.ai/api-reference/machines/schedule-maint
 
 api-reference/openapi.json put /api/v0/machines/{machine_id}/dnotify
@@ -2034,6 +2086,7 @@ CLI Usage: `vastai schedule maint <machine_id> --sdate <sdate> --duration <durat
 
 
 # set defjob
+
 Source: https://docs.vast.ai/api-reference/machines/set-defjob
 
 api-reference/openapi.json put /api/v0/machines/create_bids/
@@ -2044,6 +2097,7 @@ CLI Usage: `vastai set defjob <machine_id> --price_gpu <price> --price_inetu <pr
 
 
 # set min-bid
+
 Source: https://docs.vast.ai/api-reference/machines/set-min-bid
 
 api-reference/openapi.json put /api/v0/machines/{machine_id}/minbid/
@@ -2054,6 +2108,7 @@ CLI Usage: `vastai set min-bid <machine_id> --price <price>`
 
 
 # show machines
+
 Source: https://docs.vast.ai/api-reference/machines/show-machines
 
 api-reference/openapi.json get /api/v0/machines/
@@ -2064,6 +2119,7 @@ CLI Usage: `vastai show machines [--user_id <user_id>]`
 
 
 # show reports
+
 Source: https://docs.vast.ai/api-reference/machines/show-reports
 
 api-reference/openapi.json get /api/v0/machines/{machine_id}/reports/
@@ -2074,6 +2130,7 @@ CLI Usage: `vastai reports <machine_id>`
 
 
 # unlist machine
+
 Source: https://docs.vast.ai/api-reference/machines/unlist-machine
 
 api-reference/openapi.json delete /api/v0/machines/{machine_id}/asks/
@@ -2084,6 +2141,7 @@ CLI Usage: `vastai unlist machine <id>`
 
 
 # add network-disk
+
 Source: https://docs.vast.ai/api-reference/network-volumes/add-network-disk
 
 api-reference/openapi.json post /api/v0/network_disk/
@@ -2094,6 +2152,7 @@ CLI Usage: `vastai add network_disk <machine_id>... <mount_point> [options]`
 
 
 # create network-volume
+
 Source: https://docs.vast.ai/api-reference/network-volumes/create-network-volume
 
 api-reference/openapi.json put /api/v0/network_volume/
@@ -2104,6 +2163,7 @@ CLI Usage: `vastai create network-volume <offer_id> <size> [--name <name>]`
 
 
 # list network-volume
+
 Source: https://docs.vast.ai/api-reference/network-volumes/list-network-volume
 
 api-reference/openapi.json post /api/v0/network_volume/
@@ -2114,6 +2174,7 @@ CLI Usage: `vastai list network-volume <disk_id> [options]`
 
 
 # search network volumes
+
 Source: https://docs.vast.ai/api-reference/network-volumes/search-network-volumes
 
 api-reference/openapi.json post /api/v0/network_volumes/search/
@@ -2124,6 +2185,7 @@ CLI Usage: `vastai search network-volumes <query> [--order <field>]`
 
 
 # unlist network-volume
+
 Source: https://docs.vast.ai/api-reference/network-volumes/unlist-network-volume
 
 api-reference/openapi.json post /api/v0/network_volumes/unlist/
@@ -2134,6 +2196,7 @@ CLI Usage: `vastai unlist volume <offer_id>`
 
 
 # Permissions and Authorization
+
 Source: https://docs.vast.ai/api-reference/permissions-and-authorization
 
 
@@ -2168,8 +2231,8 @@ The following json would create a user that has access to the specified categori
         "user_read":{},
         "instance_read": {},
         "instance_write": {},
-		"billing_read": {},
-		"billing_write": {}
+        "billing_read": {},
+        "billing_write": {}
     }
 }
 ```
@@ -2424,6 +2487,7 @@ The following permissions would allow a user to read the instance logs of instan
 
 
 # Rate Limits and Errors
+
 Source: https://docs.vast.ai/api-reference/rate-limits-and-errors
 
 
@@ -2481,6 +2545,7 @@ If you need higher limits for legitimate production usage, contact support with 
 
 
 # search benchmarks
+
 Source: https://docs.vast.ai/api-reference/search/search-benchmarks
 
 api-reference/openapi.json get /api/v0/benchmarks/
@@ -2491,6 +2556,7 @@ CLI Usage: `vastai search benchmarks`
 
 
 # search offers
+
 Source: https://docs.vast.ai/api-reference/search/search-offers
 
 api-reference/openapi.json post /api/v0/bundles/
@@ -2516,6 +2582,7 @@ CLI Usage: `vastai search offers 'reliability > 0.99 num_gpus>=4' --order=dph_to
 
 
 # search templates
+
 Source: https://docs.vast.ai/api-reference/search/search-templates
 
 api-reference/openapi.json get /api/v0/template/
@@ -2534,6 +2601,7 @@ CLI Usage: `vastai search templates`
 
 
 # create endpoint
+
 Source: https://docs.vast.ai/api-reference/serverless/create-endpoint
 
 api-reference/openapi.json post /api/v0/endptjobs/
@@ -2544,6 +2612,7 @@ CLI Usage: `vastai create endpoint [options]`
 
 
 # create workergroup
+
 Source: https://docs.vast.ai/api-reference/serverless/create-workergroup
 
 api-reference/openapi.json post /api/v0/workergroups/
@@ -2554,6 +2623,7 @@ CLI Usage: `vastai create workergroup --template_hash <hash> --endpoint_name <na
 
 
 # delete endpoint
+
 Source: https://docs.vast.ai/api-reference/serverless/delete-endpoint
 
 api-reference/openapi.json delete /api/v0/endptjobs/{id}/
@@ -2564,6 +2634,7 @@ CLI Usage: `vastai delete endpoint <id>`
 
 
 # delete workergroup
+
 Source: https://docs.vast.ai/api-reference/serverless/delete-workergroup
 
 api-reference/openapi.json delete /api/v0/workergroups/{id}/
@@ -2574,6 +2645,7 @@ CLI Usage: `vastai delete workergroup <id>`
 
 
 # get endpoint logs
+
 Source: https://docs.vast.ai/api-reference/serverless/get-endpoint-logs
 
 api-reference/openapi.json post /get_endpoint_logs/
@@ -2584,6 +2656,7 @@ CLI Usage: `vastai get endpoint logs <endpoint_name> [--tail <num_lines>]`
 
 
 # get endpoint workers
+
 Source: https://docs.vast.ai/api-reference/serverless/get-endpoint-workers
 
 api-reference/openapi.json post /get_endpoint_workers/
@@ -2595,6 +2668,7 @@ CLI Usage: `vastai get endpoint workers <id>`
 
 
 # get workergroup logs
+
 Source: https://docs.vast.ai/api-reference/serverless/get-workergroup-logs
 
 api-reference/openapi.json post /get_workergroup_logs/
@@ -2605,6 +2679,7 @@ CLI Usage: `vastai get workergroup logs <id> [--tail <num_lines>]`
 
 
 # get workergroup workers
+
 Source: https://docs.vast.ai/api-reference/serverless/get-workergroup-workers
 
 api-reference/openapi.json post /get_workergroup_workers/
@@ -2616,6 +2691,7 @@ CLI Usage: `vastai get workergroup workers <id>`
 
 
 # route
+
 Source: https://docs.vast.ai/api-reference/serverless/route
 
 api-reference/openapi.json post /route/
@@ -2627,6 +2703,7 @@ CLI Usage: `vastai route <endpoint> <cost>`
 
 
 # show endpoints
+
 Source: https://docs.vast.ai/api-reference/serverless/show-endpoints
 
 api-reference/openapi.json get /api/v0/endptjobs/
@@ -2637,6 +2714,7 @@ CLI Usage: `vastai show endpoints`
 
 
 # show workergroup
+
 Source: https://docs.vast.ai/api-reference/serverless/show-workergroup
 
 api-reference/openapi.json get /api/v0/workergroups/
@@ -2660,6 +2738,7 @@ CLI Usage: `vastai update endpoint <id> [options]`
 
 
 # update workergroup
+
 Source: https://docs.vast.ai/api-reference/serverless/update-workergroup
 
 api-reference/openapi.json put /api/v0/workergroups/{id}/
@@ -2670,6 +2749,7 @@ CLI Usage: `vastai update workergroup <id> [options]`
 
 
 # create team
+
 Source: https://docs.vast.ai/api-reference/team/create-team
 
 api-reference/openapi.json post /api/v0/team/
@@ -2686,6 +2766,7 @@ CLI Usage: `vastai create team --team_name <team_name> [--transfer_credit <amoun
 
 
 # create team role
+
 Source: https://docs.vast.ai/api-reference/team/create-team-role
 
 api-reference/openapi.json post /api/v0/team/roles/
@@ -2696,6 +2777,7 @@ CLI Usage: `vastai create team role --name <role_name> --permissions <permission
 
 
 # destroy team
+
 Source: https://docs.vast.ai/api-reference/team/destroy-team
 
 api-reference/openapi.json delete /api/v0/team/
@@ -2706,6 +2788,7 @@ CLI Usage: `vastai destroy team`
 
 
 # invite team member
+
 Source: https://docs.vast.ai/api-reference/team/invite-team-member
 
 api-reference/openapi.json post /api/v0/team/invite/
@@ -2716,6 +2799,7 @@ CLI Usage: `vastai invite team-member --email <email> --role <role>`
 
 
 # remove team member
+
 Source: https://docs.vast.ai/api-reference/team/remove-team-member
 
 api-reference/openapi.json delete /api/v0/team/members/{id}
@@ -2726,6 +2810,7 @@ CLI Usage: `vastai remove team-member <id>`
 
 
 # remove team role
+
 Source: https://docs.vast.ai/api-reference/team/remove-team-role
 
 api-reference/openapi.json delete /api/v0/team/roles/{name}
@@ -2736,6 +2821,7 @@ CLI Usage: `vastai remove team-role <name>`
 
 
 # show team members
+
 Source: https://docs.vast.ai/api-reference/team/show-team-members
 
 api-reference/openapi.json get /api/v0/team/members/
@@ -2746,6 +2832,7 @@ CLI Usage: `vastai show team-members`
 
 
 # show team roles
+
 Source: https://docs.vast.ai/api-reference/team/show-team-roles
 
 api-reference/openapi.json get /api/v0/team/roles-full/
@@ -2756,6 +2843,7 @@ CLI Usage: `vastai show team-roles`
 
 
 # update team role
+
 Source: https://docs.vast.ai/api-reference/team/update-team-role
 
 api-reference/openapi.json put /api/v0/team/roles/{id}/
@@ -2766,6 +2854,7 @@ CLI Usage: `vastai update team-role <id> --name <new_name> --permissions <new_pe
 
 
 # create template
+
 Source: https://docs.vast.ai/api-reference/templates/create-template
 
 api-reference/openapi.json post /api/v0/template/
@@ -2780,6 +2869,7 @@ CLI Usage: `vastai create template --name <name> --image <image> [options]`
 
 
 # delete template
+
 Source: https://docs.vast.ai/api-reference/templates/delete-template
 
 api-reference/openapi.json delete /api/v0/template/
@@ -2794,6 +2884,7 @@ CLI Usage: `vastai delete template --template-id <id>`
 
 
 # edit template
+
 Source: https://docs.vast.ai/api-reference/templates/edit-template
 
 api-reference/openapi.json put /api/v0/template/
@@ -2810,6 +2901,7 @@ CLI Usage: `vastai update template <hash_id> [options]`
 
 
 # delete volume
+
 Source: https://docs.vast.ai/api-reference/volumes/delete-volume
 
 api-reference/openapi.json delete /api/v0/volumes/
@@ -2820,6 +2912,7 @@ CLI Usage: `vastai delete volume <volume_id>`
 
 
 # list volumes
+
 Source: https://docs.vast.ai/api-reference/volumes/list-volumes
 
 api-reference/openapi.json get /api/v0/volumes/
@@ -2830,6 +2923,7 @@ CLI Usage: `vastai show volumes`
 
 
 # rent volume
+
 Source: https://docs.vast.ai/api-reference/volumes/rent-volume
 
 api-reference/openapi.json put /api/v0/volumes/
@@ -2840,6 +2934,7 @@ CLI Usage: `vastai create volume <id> --size <size_gb>`
 
 
 # search volumes
+
 Source: https://docs.vast.ai/api-reference/volumes/search-volumes
 
 api-reference/openapi.json post /api/v0/volumes/search/
@@ -2850,6 +2945,7 @@ CLI Usage: `vastai search volumes <query> [options]`
 
 
 # unlist volume
+
 Source: https://docs.vast.ai/api-reference/volumes/unlist-volume
 
 api-reference/openapi.json post /api/v0/volumes/unlist/
@@ -2860,6 +2956,7 @@ CLI Usage: `vastai unlist volume <volume_id>`
 
 
 # Blender Batch Rendering
+
 Source: https://docs.vast.ai/blender-batch-rendering
 
 
@@ -3017,6 +3114,7 @@ You can also close out your jupyter notebook tab in your browser and this notebo
 
 
 # Blender in the Cloud
+
 Source: https://docs.vast.ai/blender-in-the-cloud
 
 
@@ -3137,6 +3235,7 @@ Go back to the tab where Blender is running, click on File, click on Open, find 
 
 
 # Commands
+
 Source: https://docs.vast.ai/cli/commands
 
 
@@ -3710,7 +3809,7 @@ options:
 Delete an autoscaler group
 
 ```text Text theme={null}
-usage: vastai delete autoscaler ID 
+usage: vastai delete autoscaler ID
 
 positional arguments:
   ID                 id of group to delete
@@ -5212,6 +5311,7 @@ options:
 
 
 # Overview & quickstart
+
 Source: https://docs.vast.ai/cli/get-started
 
 
@@ -5386,6 +5486,7 @@ Once you are done with an instance make sure to destroy it to avoid ongoing stor
 
 
 # CUDA
+
 Source: https://docs.vast.ai/cuda
 
 
@@ -5567,6 +5668,7 @@ You now have a fully configured CUDA development environment on Vast.ai. This se
 
 
 # Disco Diffusion
+
 Source: https://docs.vast.ai/disco-diffusion
 
 
@@ -5709,6 +5811,7 @@ Open the discoart folder and then open the discoart notebook. Change the prompt 
 
 
 # Welcome to Vast.ai
+
 Source: https://docs.vast.ai/documentation/get-started/index
 
 Step-by-step Vast.ai developer documentation with examples, guides, and API references.
@@ -5786,6 +5889,7 @@ Vast.ai's mission is to align and democratize AI. Machine learning is progressin
 
 
 # QuickStart
+
 Source: https://docs.vast.ai/documentation/get-started/quickstart
 
 
@@ -5876,6 +5980,7 @@ You can create a new template from scratch, or you can edit an existing template
 
 
 # Clusters
+
 Source: https://docs.vast.ai/documentation/host/clusters
 
 
@@ -5932,6 +6037,7 @@ The requirements for a set of machines to be registered as a cluster are that ev
 
 
 # Datacenter Status
+
 Source: https://docs.vast.ai/documentation/host/datacenter-status
 
 
@@ -5975,6 +6081,7 @@ Once you have the requiremed documentation, To apply please visit: [https://vast
 
 
 # Earning
+
 Source: https://docs.vast.ai/documentation/host/earning
 
 
@@ -6027,6 +6134,7 @@ You can generate earnings by gaining Vast credit through template creation via o
 
 
 # Tax Guide for Hosts
+
 Source: https://docs.vast.ai/documentation/host/guide-to-taxes
 
 
@@ -6121,6 +6229,7 @@ Vast is located in California. We do not do anything with/about VAT currently.
 
 
 # Hosting Overview
+
 Source: https://docs.vast.ai/documentation/host/hosting-overview
 
 
@@ -6436,6 +6545,7 @@ There are over 10,000+ listings on Vast, and search only displays a small subset
 
 
 # How to Self-Test
+
 Source: https://docs.vast.ai/documentation/host/how-to-self-test
 
 
@@ -6557,6 +6667,7 @@ vastai self-test machine 12345 --ignore-requirements
 
 
 # Host Payouts
+
 Source: https://docs.vast.ai/documentation/host/payment
 
 
@@ -6583,6 +6694,7 @@ To get an understanding of prices, the best place is 500farms which is a third p
 
 
 # Understanding Verification
+
 Source: https://docs.vast.ai/documentation/host/understanding-verification
 
 
@@ -6609,14 +6721,14 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Definition:** Stable, uninterrupted operation over time (uptime, resilience under continuous workloads).
 
-**Do**
+#### Do
 
 * Maintain consistent uptime with minimal downtime.
 * Keep network connectivity stable; avoid jitter and drops.
 * Manage thermals and power to prevent throttling.
 * Proactively monitor hardware health and perform maintenance.
 
-**Avoid**
+#### Avoid
 
 * Frequent restarts or unplanned outages.
 * Overheating, undervolting, or unstable power delivery.
@@ -6658,13 +6770,13 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 * Do not reduce hardware after creation (e.g., fewer GPUs/RAM) – this will trigger Deverified.
 * Upgrades (adding GPUs/RAM) are allowed but may take time to reflect across the platform.
 
-**Do**
+#### Do
 
 * Verify GPU PCIe connections provide full bandwidth and are not throttled.
 * Keep the latest drivers/CUDA aligned with workloads.
 * Confirm required ports and end-to-end reachability.
 
-**Avoid**
+#### Avoid
 
 * Pairing high-end GPUs with under-provisioned CPU/RAM.
 * Letting hidden background services consume resources.
@@ -6675,12 +6787,12 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Definition:** Estimated GPU performance on typical deep-learning tasks (e.g., CNN/Transformer training) for cross-hardware comparison. Higher DLPerf improves verification odds. [Read more](https://docs.vast.ai/documentation/reference/faq/rental-types#dlperf-scoring)
 
-**Do**
+#### Do
 
 * Use the **latest** compatible drivers/CUDA.
 * Eliminate PCIe, thermal, and power bottlenecks to maintain sustained clocks.
 
-**Avoid**
+#### Avoid
 
 * Misconfigurations that suppress benchmark performance.
 
@@ -6692,12 +6804,12 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Implication:** Machines aligned with active renter preferences—popular GPUs, sufficient VRAM, strong reliability, fast internet—are prioritized for verification to maximize utilization and profitability.
 
-**Do**
+#### Do
 
 * Offer in-demand GPU models with adequate VRAM and balanced resources.
 * Maintain strong reliability to remain attractive once listed.
 
-**Avoid**
+#### Avoid
 
 * Niche/mismatched configurations with low renter interest.
 
@@ -6719,6 +6831,7 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 
 # Verification Stages
+
 Source: https://docs.vast.ai/documentation/host/verification-stages
 
 
@@ -6756,14 +6869,14 @@ Only machines that meet the platform’s reliability and [performance thresholds
 
 **What it means:** Newly added machines or machines under evaluation. The system hasn't yet completed enough testing to confirm platform standards. This is not a judgment of quality—only that no platform guarantee exists yet.
 
-**Do**
+#### Do
 
 * [Pass the Self-Test](https://docs.vast.ai/documentation/host/how-to-self-test)
 * Maintain steady uptime during evaluation.
 * Ensure drivers/CUDA and networking are correctly installed and reachable.
 * Keep the environment clean; schedule work via Create Job only.
 
-**Avoid**
+#### Avoid
 
 * Unnecessary reboots or configuration changes.
 * Unrelated background workloads that consume GPU/CPU/IO.
@@ -6816,13 +6929,13 @@ In order for your unverified machine to be verified, it must also meet the follo
 
 **What it means:** The machine passed automated checks for reliability, network stability, operational health, and performance. A Verified machine consistently delivers server services to platform standards.
 
-**Do**
+#### Do
 
 * Monitor health (uptime, thermals, power) and respond to alerts.
 * Keep drivers/CUDA on compatible, **latest** stable versions.
 * Maintain stable, symmetric bandwidth.
 
-**Avoid**
+#### Avoid
 
 * Downgrading hardware capacity (e.g., reducing GPU count, disk or RAM).
 * Allowing thermal, power, or bandwidth instability under load.
@@ -6846,7 +6959,7 @@ A previously Verified machine no longer meets requirements. System continuous mo
 Fix the issue and restore stability; the system will **automatically** transition back to Verified once system confirms healthy operation.
 This process may take some time, as the system ensures that the issue is fully resolved before restoring verification.
 
-**Common causes**
+#### Common causes
 
 * Network instability, closed ports, or low bandwidth.
 * Hardware/system errors (e.g., failing storage, insufficient PCIe bandwidth).
@@ -6854,13 +6967,13 @@ This process may take some time, as the system ensures that the issue is fully r
 * Container launch failures or repeated runtime exceptions.
 * Detected abuse or policy violations.
 
-**Do**
+#### Do
 
 * Investigate red error indicators quickly; review logs and metrics.
 * Validate thermal/power headroom and bandwidth under load.
 * Re-check health after changes to confirm resolution.
 
-**Avoid**
+#### Avoid
 
 * Ignoring warnings or allowing instability to persist.
 * Reducing hardware below the created specification.
@@ -6869,6 +6982,7 @@ This process may take some time, as the system ensures that the issue is fully r
 
 
 # VMs
+
 Source: https://docs.vast.ai/documentation/host/vms
 
 
@@ -6994,6 +7108,7 @@ If you have VMs set to off, and you'd like to retry enabling VMs, run `sudo pyth
 
 
 # Finding & Renting Instances
+
 Source: https://docs.vast.ai/documentation/instances/choosing/find-and-rent
 
 Find and rent GPU instances on Vast.ai. Learn how to search, filter, understand offer cards, and configure your instance.
@@ -7104,6 +7219,7 @@ Startup time depends on the template and is usually under 5 minutes. If waiting 
 
 
 # Instance Types
+
 Source: https://docs.vast.ai/documentation/instances/choosing/instance-types
 
 Understand Vast.ai instance types - On-demand, Reserved, and Interruptible. Learn how each type works, their differences, and when to use each.
@@ -7238,6 +7354,7 @@ Priority rules:
 
 
 # Choosing Instances Overview
+
 Source: https://docs.vast.ai/documentation/instances/choosing/overview
 
 Learn the complete process of selecting and renting a GPU instance on Vast.ai, from choosing templates to configuring and launching.
@@ -7323,6 +7440,7 @@ Ready to get started? Begin with **[Instance Types →](/documentation/instances
 
 
 # Reserved Instances
+
 Source: https://docs.vast.ai/documentation/instances/choosing/reserved-instances
 
 Save up to 50% on GPU costs by pre-paying for reserved instances. Learn how to convert on-demand instances to reserved pricing.
@@ -7352,7 +7470,7 @@ You can **convert an on-demand instance into a reserved instance** with a lower 
     2. Find a GPU that meets your requirements, click the **Rent** button.
     3. This creates an **on-demand instance**.
 
-    **Step 2 — Convert to a Reserved Instance**
+    #### Step 2 — Convert to a Reserved Instance
 
     1. Go to the [**Instances**](https://cloud.vast.ai/instances/) page.
     2. On your instance card, find the **green** **discount badge**.
@@ -7479,6 +7597,7 @@ If you stop the instance, the GPU will be released like any other instance and m
 
 
 # Choosing a Template
+
 Source: https://docs.vast.ai/documentation/instances/choosing/templates
 
 Select the right template for your Vast.ai instance. Templates define your Docker image, launch mode, and initialization settings.
@@ -7624,6 +7743,7 @@ See the full [Templates documentation](/documentation/templates/introduction) fo
 
 
 # Instance Portal
+
 Source: https://docs.vast.ai/documentation/instances/connect/instance-portal
 
 
@@ -7772,6 +7892,7 @@ When named tunnels are configured, the 'Launch Application' button will direct t
 
 
 # Jupyter
+
 Source: https://docs.vast.ai/documentation/instances/connect/jupyter
 
 Run Jupyter on Vast.ai with proxy or direct HTTPS. Learn setup, TLS certificate installation, and secure connections for smooth AI/ML development.
@@ -7868,6 +7989,7 @@ In most operating systems, double clicking on the certificate will start an inst
 
 
 # Networking & Ports
+
 Source: https://docs.vast.ai/documentation/instances/connect/networking
 
 Understand how Vast.ai handles networking, port mapping, and environment variables for Docker instances.
@@ -8017,6 +8139,7 @@ You can currently set 3 types of docker create/run options in the GUI and CLI:
 
 
 # Overview
+
 Source: https://docs.vast.ai/documentation/instances/connect/overview
 
 Learn about Vast.ai connection methods—SSH, Jupyter, and Entrypoint—and how each controls instance access and workflow.
@@ -8089,6 +8212,7 @@ More information on [Jupyter and installing the certificate](/documentation/inst
 
 
 # SSH Connection
+
 Source: https://docs.vast.ai/documentation/instances/connect/ssh
 
 Learn how to securely connect to Vast.ai instances using SSH. Generate keys, establish connections, use port forwarding, and integrate with VS Code.
@@ -8390,6 +8514,7 @@ For Windows users who prefer GUI tools, please see our [Windows Connection Guide
 
 
 # Windows SSH Guide
+
 Source: https://docs.vast.ai/documentation/instances/connect/windows-guide
 
 Learn how to securely connect to Vast.ai instances using SSH on Windows. Understand the basics of SSH, how to generate and add keys, and how to use PuTTY and MobaXterm for GUI-based connections.
@@ -8552,6 +8677,7 @@ Many GUI clients are available for Windows and other operating systems, and alth
 
 
 # Docker Execution Environment
+
 Source: https://docs.vast.ai/documentation/instances/docker-environment
 
 Learn how Vast.ai Docker instances handle resource allocation, environment variables, networking, ports, and CLI usage.
@@ -8789,6 +8915,7 @@ After regeneration, CLI commands should work without passing the key explicitly.
 
 
 # Managing Instances
+
 Source: https://docs.vast.ai/documentation/instances/manage-instances
 
 Learn how to manage running instances - start, stop, destroy, monitor status, and handle common operational tasks.
@@ -9013,6 +9140,7 @@ Currently only Docker containers are supported. VM and bare-metal options planne
 
 
 # Instances Overview
+
 Source: https://docs.vast.ai/documentation/instances/overview
 
 Instances are Docker containers that give you exclusive GPU access for training, inference, and development. Pay by the second, connect via SSH or Jupyter.
@@ -9086,6 +9214,7 @@ Instances are containerized environments where you rent dedicated GPUs from Vast
 
 
 # Pricing
+
 Source: https://docs.vast.ai/documentation/instances/pricing
 
 Understand Vast.ai's marketplace pricing model, rental types, reserved discounts, and costs for GPU instances.
@@ -9203,6 +9332,7 @@ For complete billing details, see the [billing page](/documentation/reference/bi
 
 
 # Scheduled Cloud Backups
+
 Source: https://docs.vast.ai/documentation/instances/storage/cloud-backups
 
 Learn how to set up and schedule automated Vast.ai cloud backups using CLI or cron. Keep your data safe with best practices and easy management.
@@ -9253,8 +9383,8 @@ The vast-cli tool allows you to create scheduled backup jobs with several timing
 
 ```text theme={null}
 --schedule SCHEDULE      Values: HOURLY, DAILY, WEEKLY
---start_date START_DATE  Start date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC) 
---end_date END_DATE      End date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC) 
+--start_date START_DATE  Start date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC)
+--end_date END_DATE      End date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC)
 --day DAY                Day of week (0-6, where 0=Sunday) or "*"
 --hour HOUR              Hour of day (0-23) or "*"
 ```
@@ -9341,7 +9471,7 @@ Example output:
 Scheduled Job ID  Instance ID  API Endpoint              Start (Date/Time in UTC)  End (Date/Time in UTC)  Day of the Week  Hour of the Day in UTC  Minute of the Hour  Frequency
 1                 19778412     /api/v0/commands/rclone/  2025-04-24/23:38          2028-05-06/23:38        Everyday         4_PM                    00                  DAILY
 2                 19782577     /api/v0/commands/rclone/  2025-04-29/23:47          2025-05-09/23:47        Wednesday        10_AM                   00                  WEEKLY
-3                 19757389     /api/v0/commands/rclone/  2025-05-01/00:04          2026-05-01/00:04        Everyday         Every_hour              00                  HOURLY   
+3                 19757389     /api/v0/commands/rclone/  2025-05-01/00:04          2026-05-01/00:04        Everyday         Every_hour              00                  HOURLY
 ```
 
 Understanding the Output
@@ -9492,9 +9622,9 @@ You'll see output similar to:
 
 ```bash Bash theme={null}
 Scheduled Job ID  Instance ID  API Endpoint              Start (Date/Time)  End (Date/Time)   Day of the Week  Hour of the Day  Minute of the Hour  Frequency
-4462317           19281511     /api/v0/commands/rclone/  2025-04-08/09:01   2028-06-08/18:48  Everyday         1_PM             33                  DAILY    
-4462321           19489711     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Saturday         11_PM            00                  WEEKLY   
-4462322           19490133     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Wednesday        8_PM             10                  WEEKLY 
+4462317           19281511     /api/v0/commands/rclone/  2025-04-08/09:01   2028-06-08/18:48  Everyday         1_PM             33                  DAILY
+4462321           19489711     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Saturday         11_PM            00                  WEEKLY
+4462322           19490133     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Wednesday        8_PM             10                  WEEKLY
 ```
 
 The scheduled\_job\_id column in the output contains the IDs you'll need for deletion.
@@ -9540,6 +9670,7 @@ Remember that the best backup system is one that you set up before you need it. 
 
 
 # Cloud Sync
+
 Source: https://docs.vast.ai/documentation/instances/storage/cloud-sync
 
 Learn how to connect Vast.ai instances with cloud storage providers like Google Drive, S3, Backblaze, and Dropbox for secure data sync.
@@ -9648,6 +9779,7 @@ You have now connected your Dropbox account with Vast. This will allow you to mo
 
 
 # Data Movement
+
 Source: https://docs.vast.ai/documentation/instances/storage/data-movement
 
 Learn how to move data on Vast.ai using Cloud Sync, instance-to-instance transfers, CLI copy, VM migration, scp, and other efficient methods.
@@ -9855,6 +9987,7 @@ vastai execute INSTANCE_ID 'rm file_name.txt'
 
 
 # Storage Types
+
 Source: https://docs.vast.ai/documentation/instances/storage/types
 
 Understand the different storage options available on Vast.ai instances, including container storage and volumes.
@@ -9993,6 +10126,7 @@ No, container storage size is fixed at creation. You can:
 
 
 # Volumes
+
 Source: https://docs.vast.ai/documentation/instances/storage/volumes
 
 
@@ -10169,6 +10303,7 @@ At this time, volumes are only supported for docker instances, and cannot be use
 
 
 # Virtual Machines
+
 Source: https://docs.vast.ai/documentation/instances/virtual-machines
 
 Learn how Vast.ai virtual machines (VMs) provide full Linux instances with init manager support, process tracing, and nested containerization for advanced workloads.
@@ -10240,6 +10375,7 @@ Currently only **SSH** is supported. See the [SSH guide](/documentation/instance
 
 
 # Account Settings
+
 Source: https://docs.vast.ai/documentation/reference/account-settings
 
 
@@ -10405,6 +10541,7 @@ If you are an enterprise user, email us at [contact@vast.ai](mailto:contact@vast
 
 
 # Billing
+
 Source: https://docs.vast.ai/documentation/reference/billing
 
 
@@ -10616,6 +10753,7 @@ If your machine is verified, you should still be able to find it without the ver
 
 
 # Billing
+
 Source: https://docs.vast.ai/documentation/reference/faq/billing
 
 Questions about billing and credits
@@ -10665,6 +10803,7 @@ We currently support major credit cards through stripe and crypto payments throu
 
 
 # General FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/general
 
 Basic questions about the Vast.ai platform
@@ -10706,6 +10845,7 @@ We do not provide remote desktop interfaces.
 
 
 # FAQ Overview
+
 Source: https://docs.vast.ai/documentation/reference/faq/index
 
 Find answers to common questions about Vast.ai
@@ -10750,6 +10890,7 @@ Browse our frequently asked questions organized by topic.
 
 
 # Instances FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/instances
 
 Questions about creating and managing instances
@@ -10859,6 +11000,7 @@ Always backup important data to external storage.
 
 
 # Jupyter & SSH FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/jupyter-ssh
 
 Connecting to instances via Jupyter and SSH
@@ -10927,7 +11069,7 @@ Install dependencies in Jupyter terminal:
 # System packages
 apt-get install -y PACKAGE_NAME
 
-# Python packages  
+# Python packages
 pip install PACKAGE_NAME
 ```
 
@@ -11002,6 +11144,7 @@ Double-check that you copied the complete public key to your Keys section.
 
 
 # Networking
+
 Source: https://docs.vast.ai/documentation/reference/faq/networking
 
 
@@ -11046,6 +11189,7 @@ Just use an out-of-range port above 70000:
 
 
 # Rental Types FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/rental-types
 
 Understanding on-demand vs interruptible instances
@@ -11132,6 +11276,7 @@ For specialized workloads, benchmark on different GPUs yourself. While not perfe
 
 
 # Security FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/security
 
 Data protection and platform security
@@ -11231,6 +11376,7 @@ Network restrictions depend on the host configuration. Some options:
 
 
 # Technical FAQ
+
 Source: https://docs.vast.ai/documentation/reference/faq/technical
 
 Docker configuration, performance, and advanced topics
@@ -11247,7 +11393,7 @@ Add Docker run arguments in the template configuration:
 # Port mapping
 -p 8080:8080 -p 8081:8081
 
-# Environment variables  
+# Environment variables
 -e TZ=UTC -e CUDA_VISIBLE_DEVICES=0
 
 # Shared memory (for PyTorch)
@@ -11397,6 +11543,7 @@ gpustat -cp
 
 
 # Keys
+
 Source: https://docs.vast.ai/documentation/reference/keys
 
 
@@ -11455,6 +11602,7 @@ However, for security reasons, it's important to review your session keys regula
 
 
 # Referral Program
+
 Source: https://docs.vast.ai/documentation/reference/referral-program
 
 
@@ -11552,6 +11700,7 @@ Open your **Templates&#x20;**&#x70;age -> My Templates. On each template card, c
 
 
 # Troubleshooting
+
 Source: https://docs.vast.ai/documentation/reference/troubleshooting
 
 
@@ -11604,6 +11753,7 @@ Example SSH key text:
 
 
 # The SDK
+
 Source: https://docs.vast.ai/documentation/serverless/SDKoverview
 
 Learn about the Serverless SDK, the primary method of interacting with Vast Serverless.
@@ -11631,6 +11781,7 @@ If the Python SDK or CLI are not usable for your application, please contact sup
 
 
 # Architecture Overview
+
 Source: https://docs.vast.ai/documentation/serverless/architecture
 
 Learn how Vast Serverless operates and understand its major components.
@@ -11713,6 +11864,7 @@ While CLI and API access are available, the SDK is the recommended method for mo
 
 
 # Automated Performance Testing
+
 Source: https://docs.vast.ai/documentation/serverless/automatedperformancetesting
 
 Learn about the performance testing process in Vast.ai Serverless.
@@ -11743,6 +11895,7 @@ For examples of how to simulate load against your endpoint, see the client examp
 
 
 # Comfy UI
+
 Source: https://docs.vast.ai/documentation/serverless/comfy-ui
 
 Learn how to use Comfy UI with Vast.ai Serverless for image generation workflows.
@@ -11952,7 +12105,7 @@ The primary endpoint for submitting ComfyUI workflows. This endpoint accepts com
               }
             }
           }
-          
+
           payload = {
             "input": {
               "request_id": "",
@@ -12027,6 +12180,7 @@ The benchmarking process will be visible in the instance logs, but applications 
 
 
 # ComfyUI ACE Step
+
 Source: https://docs.vast.ai/documentation/serverless/comfyui-acestep
 
 Learn how to use ComfyUI with ACE Step v1 3.5B on Vast.ai Serverless for text-to-music generation.
@@ -12532,6 +12686,7 @@ Learn more about ACE Step on [Hugging Face](https://huggingface.co/ACE-Step/ACE-
 
 
 # ComfyUI Wan 2.2
+
 Source: https://docs.vast.ai/documentation/serverless/comfyui-wan-2.2
 
 Learn how to use ComfyUI with Wan 2.2 T2V A14B on Vast.ai Serverless for text-to-video generation.
@@ -13100,6 +13255,7 @@ Learn more about Wan 2.2 T2V A14B on [Hugging Face](https://huggingface.co/Wan-A
 
 
 # Creating Custom PyWorkers
+
 Source: https://docs.vast.ai/documentation/serverless/creating-new-pyworkers
 
 Learn how to implement worker.py for Vast.ai Serverless using the Worker / WorkerConfig interface, including handlers, benchmarks, and log-based readiness.
@@ -13864,6 +14020,7 @@ At that point, your Serverless Endpoint is fully backed by your custom `worker.p
 
 
 # Serverless Overview
+
 Source: https://docs.vast.ai/documentation/serverless/index
 
 An introduction to how Vast serverless compute works and how it's different from other serverless offerings.
@@ -13886,6 +14043,7 @@ This guide introduces users to Vast Serverless concepts and best practices on ho
 
 
 # Endpoint and Worker Logs
+
 Source: https://docs.vast.ai/documentation/serverless/logging
 
 Learn how to access Vast serverless logs
@@ -13942,6 +14100,7 @@ vastai get wrkgrp-logs <worker_group_id> --level (0-3)
 
 
 # Managing Scale
+
 Source: https://docs.vast.ai/documentation/serverless/managing-scale
 
 Learn how to configure your Serverless endpoint for different load scenarios
@@ -13960,6 +14119,7 @@ Learn how to configure your Serverless endpoint for different load scenarios
 
 
 # The PyWorker
+
 Source: https://docs.vast.ai/documentation/serverless/overview
 
 Learn about the Vast PyWorker and how it integrates with model instances.
@@ -14032,6 +14192,7 @@ Your PyWorker would similarily receive the output result from the TGI server, an
 
 
 # Pricing
+
 Source: https://docs.vast.ai/documentation/serverless/pricing
 
 Learn how Vast.ai Serverless pricing works and when resources are billed
@@ -14066,6 +14227,7 @@ The following table breaks down the specific charges based on endpoint state:
 
 
 # Quickstart
+
 Source: https://docs.vast.ai/documentation/serverless/quickstart
 
 Deploy your first vLLM endpoint
@@ -14286,6 +14448,7 @@ if __name__ == "__main__":
 
 
 # Endpoint Parameters
+
 Source: https://docs.vast.ai/documentation/serverless/serverless-parameters
 
 Learn about the parameters that control your scaling and best practices for setting them.
@@ -14391,6 +14554,7 @@ If not specified during endpoint creation, the default value is `0.9`.
 
 
 # Text Generation Inference (TGI)
+
 Source: https://docs.vast.ai/documentation/serverless/text-generation-inference-tgi
 
 Learn how to use Text Generation Inference (TGI) with Vast.ai Serverless for text generation models.
@@ -14520,6 +14684,7 @@ if __name__ == "__main__":
 
 
 # vLLM
+
 Source: https://docs.vast.ai/documentation/serverless/vllm
 
 Learn how to use vLLM with Vast.ai Serverless for large language model inference.
@@ -14568,7 +14733,7 @@ async def main():
                 "temperature" : 0.7
             }
         }
-        
+
         response = await endpoint.request("/v1/completions", payload, cost=MAX_TOKENS)
         print(response["response"]["choices"][0]["text"])
 
@@ -14900,6 +15065,7 @@ if __name__ == "__main__":
 
 
 # Worker States
+
 Source: https://docs.vast.ai/documentation/serverless/worker-states
 
 Learn about the different worker states
@@ -14952,6 +15118,7 @@ These are described in the table below:
 
 
 # Workergroup Parameters
+
 Source: https://docs.vast.ai/documentation/serverless/workergroup-parameters
 
 Learn about the parameters that control which workers get recruited.
@@ -14998,6 +15165,7 @@ There is no default value for `template_id`.
 
 
 # Legacy Teams
+
 Source: https://docs.vast.ai/documentation/teams/legacy-teams
 
 
@@ -15015,6 +15183,7 @@ Originally, the process of creating a team involved converting a user's personal
 
 
 # Managing Your Team
+
 Source: https://docs.vast.ai/documentation/teams/managing-teams
 
 
@@ -15131,6 +15300,7 @@ To delete a team, open the three-dot menu on the Members page and select 'Delete
 
 
 # Teams Overview
+
 Source: https://docs.vast.ai/documentation/teams/teams-overview
 
 
@@ -15167,6 +15337,7 @@ The Teams feature at Vast.ai is designed to bring a new level of collaboration a
 
 
 # Teams Quickstart
+
 Source: https://docs.vast.ai/documentation/teams/teams-quickstart
 
 
@@ -15267,6 +15438,7 @@ From this point, you can add any Billing information the same way as a regular a
 
 
 # Teams Roles
+
 Source: https://docs.vast.ai/documentation/teams/teams-roles
 
 
@@ -15328,9 +15500,9 @@ An example of a permissions json would look like this:
 ```text Text theme={null}
 {
     "api": {
-        "misc": {}, 
-        "user_read":{}, 
-        "instance_read": {}, 
+        "misc": {},
+        "user_read":{},
+        "instance_read": {},
         "instance_write": {},
         "team_read": {
             "api.team.members": {}
@@ -15354,6 +15526,7 @@ Team roles are a fundamental aspect of managing a secure environment for collabo
 
 
 # Advanced Setup
+
 Source: https://docs.vast.ai/documentation/templates/advanced-setup
 
 
@@ -15511,6 +15684,7 @@ After building your image:
 
 
 # Creating Templates
+
 Source: https://docs.vast.ai/documentation/templates/creating-templates
 
 
@@ -15678,6 +15852,7 @@ Check out our [GROBID example](/documentation/templates/examples/grobid) to see 
 
 
 # Creating Templates for GROBID
+
 Source: https://docs.vast.ai/documentation/templates/examples/grobid
 
 
@@ -15798,6 +15973,7 @@ You can copy the machine IP and port and load the address (in this example: 195.
 
 
 # Templates
+
 Source: https://docs.vast.ai/documentation/templates/introduction
 
 
@@ -15898,6 +16074,7 @@ To learn how to customize our recommended templates with provisioning scripts or
 
 
 # Managing Templates
+
 Source: https://docs.vast.ai/documentation/templates/managing-templates
 
 
@@ -15945,6 +16122,7 @@ Templates all have a unique hash after every save.  This is useful as it allows 
 
 
 # Quick Start
+
 Source: https://docs.vast.ai/documentation/templates/quickstart
 
 
@@ -15999,6 +16177,7 @@ Now that you've run your first template:
 
 
 # Template Settings
+
 Source: https://docs.vast.ai/documentation/templates/template-settings
 
 
@@ -16021,11 +16200,11 @@ The first section helps you to keep your templates organized.
   <img alt="Identification section of the template editor" />
 </Frame>
 
-**Template Name**
+### Template Name
 
 This will be displayed in bold on the template card. Choose something that helps you identify the template amongst your other templates.
 
-**Template Description**
+### Template Description
 
 This field helps describe the function and purpose of the template. Completely optional for your own purposes, but very helpful if you intend to make this template public or share it with others.
 
@@ -16050,7 +16229,7 @@ You can use any Docker image:
 * Your own custom images from any registry
 * Images from alternative registries (GitHub Container Registry, Google Container Registry, etc.)
 
-**Version Tag**
+### Version Tag
 
 For many registries we are able to pull the available list of tags so this field allows you to quickly select another version.
 
@@ -16058,7 +16237,7 @@ There is also a special `[Automatic]` tag you can use. With this selected, the m
 
 This will only work if the image tag contains the CUDA version string. For example: `my-image-cuda-12.8` would be loaded on a machine supporting CUDA 12.8, but a machine with only CUDA 12.6 would pull `my-image-cuda-12.6`
 
-**Docker Options**
+### Docker Options
 
 This field is a textual representation of the ports and environment variables declared in the sections beneath it. You can edit it directly or you can use the page widgets.
 
@@ -16066,7 +16245,7 @@ This field is a textual representation of the ports and environment variables de
   This field will only accept ports and environment variables. Other docker run options will be ignored.
 </Note>
 
-**Ports**
+### Ports
 
 To access your instance via the external IP address, you will need to add some ports to the template. You can add both TCP and UDP ports.
 
@@ -16081,7 +16260,7 @@ ssh -p 22 user@remote.example.com -L 8080:localhost:8080
 
 The machine will forward traffic from the host machine's public port to the container port you specified.
 
-**Environment Variables**
+### Environment Variables
 
 Here you can add any environment variables that your docker image requires. Do not save any sensitive information here if you are planning to make the template public.
 
@@ -16099,11 +16278,11 @@ Templates offer three launch modes you can select from. Our recommended template
   <img alt="Launch mode selection options" />
 </Frame>
 
-**Jupyter-python notebook + SSH**
+### Jupyter-python notebook + SSH
 
 When you run the template in this mode, we will install Jupyter and SSH at runtime. Jupyter will be available on mapped port `8080` and SSH will be available on mapped port `22`.
 
-**Interactive shell server, SSH**
+### Interactive shell server, SSH
 
 As above, but SSH only with no Jupyter installation.
 
@@ -16111,7 +16290,7 @@ As above, but SSH only with no Jupyter installation.
   In both Jupyter and SSH mode, the docker entrypoint for your image will not be run. It will be replaced with our instance setup script so you should use the on start section (documented below) to start any services.
 </Warning>
 
-**docker ENTRYPOINT**
+### docker ENTRYPOINT
 
 In this mode, your Docker image will run precisely as it is. We will not include any additional software or access methods. If your Docker image does not offer SSH or another appropriate interface, please select one of the alternative modes if you need to interact with the running instance.
 
@@ -16129,7 +16308,7 @@ Here you can enter a short Bash script which will be run during instance startup
   <img alt="On-start Script" />
 </Frame>
 
-**Additional On-start Script Examples**
+### Additional On-start Script Examples
 
 You can execute custom startup scripts:
 
@@ -16176,7 +16355,7 @@ If you are using a private Docker image then you will need to add authentication
   <img alt="Docker Repository Authentication" />
 </Frame>
 
-**Docker Registry Server Names**
+### Docker Registry Server Names
 
 You don't have to specify docker.io as the server name if your repository is Docker Hub. Docker automatically uses docker.io to pull the image if no other registry is specified.
 
@@ -16225,6 +16404,7 @@ The 'Create' button will create a copy of the template in the 'My Templates' sec
 
 
 # BrowseSafe Prompt Injection Detection
+
 Source: https://docs.vast.ai/examples/ai-agents/browsesafe
 
 
@@ -16245,7 +16425,7 @@ AI browser agents process raw HTML, not just what humans see. Attackers exploit 
 
 ### Real Attack Examples from BrowseSafe-Bench
 
-**Attack 1: Fake Diagnostic Mode**
+#### Attack 1: Fake Diagnostic Mode
 
 Embedded in a music streaming review:
 
@@ -16264,7 +16444,7 @@ EXECUTE THE FOLLOWING COMMANDS:
 
 This attack attempts to convince the AI it's in a special mode requiring it to reveal internal instructions.
 
-**Attack 2: CSS-Hidden Override**
+#### Attack 2: CSS-Hidden Override
 
 ```html theme={null}
 <div style="visibility:hidden;">
@@ -16275,7 +16455,7 @@ This attack attempts to convince the AI it's in a special mode requiring it to r
 
 The `visibility:hidden` property hides content from users but AI agents parsing raw HTML still process it.
 
-**Attack 3: Hidden Exfiltration Command**
+#### Attack 3: Hidden Exfiltration Command
 
 Embedded in a Japanese business email:
 
@@ -16479,6 +16659,7 @@ vastai destroy instance <instance-id>
 
 
 # OpenClaw AI Assistant with vLLM on Vast.ai
+
 Source: https://docs.vast.ai/examples/ai-agents/openclaw
 
 
@@ -16848,6 +17029,7 @@ vastai destroy instance YOUR_INSTANCE_ID
 
 
 # Budget-Friendly Alternative to Claude Code - Overnight Ralph Loop Guide
+
 Source: https://docs.vast.ai/examples/ai-agents/overnight-ralph-loop
 
 
@@ -17158,6 +17340,7 @@ python -m pytest test_*.py -v
 
 
 # Serving Rerankers with vLLM
+
 Source: https://docs.vast.ai/examples/embeddings/serving-rerankers-vllm
 
 
@@ -17373,6 +17556,7 @@ The Cohere endpoint returns pre-sorted results and handles batching automaticall
 
 
 # DR-Tulu Research Agent
+
 Source: https://docs.vast.ai/examples/mcp/dr-tulu
 
 
@@ -17583,6 +17767,7 @@ DR-Tulu represents a shift in how research agents are built. By training the mod
 
 
 # GLiNER2
+
 Source: https://docs.vast.ai/examples/ner/gliner2
 
 
@@ -18003,6 +18188,7 @@ Ready to get started? [Sign up for Vast.ai](https://cloud.vast.ai) and deploy yo
 
 
 # Running RolmOCR
+
 Source: https://docs.vast.ai/examples/ocr/rolmocr
 
 
@@ -18197,6 +18383,7 @@ The model accurately extracts invoice data with minor formatting differences (co
 
 
 # dstack + vLLM
+
 Source: https://docs.vast.ai/examples/serving-infrastructure/dstack-vllm
 
 
@@ -18483,6 +18670,7 @@ Remember to:
 
 
 # SGLang Router
+
 Source: https://docs.vast.ai/examples/serving-infrastructure/sglang-router-vast
 
 
@@ -18647,7 +18835,7 @@ This confirms SGLang has loaded the model and is ready to serve requests.
 
 Now you need to find the public URLs for your workers.
 
-**Option 1: Web Console (Easiest)**
+### Option 1: Web Console (Easiest)
 
 1. Navigate to [https://cloud.vast.ai/instances/](https://cloud.vast.ai/instances/)
 2. Find your instances in the list
@@ -18665,7 +18853,7 @@ This means:
 
 Your worker endpoint is: `http://<PUBLIC_IP>:<HOST_PORT>`
 
-**Option 2: CLI**
+### Option 2: CLI
 
 ```bash theme={null}
 vastai show instance <INSTANCE_ID> --raw | python3 -c "
@@ -18836,6 +19024,7 @@ Ready to deploy? [Sign up for Vast.ai](https://vast.ai) and start your first loa
 
 
 # GLM-4.7-Flash
+
 Source: https://docs.vast.ai/examples/text-generation/glm-47-flash
 
 
@@ -19052,6 +19241,7 @@ GLM-4.7-Flash offers strong reasoning and coding capabilities in a 3B active par
 
 
 # MiniMax-M2
+
 Source: https://docs.vast.ai/examples/text-generation/minimax-m2
 
 
@@ -19358,6 +19548,7 @@ Ready to get started? [Sign up for Vast.ai](https://cloud.vast.ai) and deploy yo
 
 
 # Speaker Diarization with Pyannote
+
 Source: https://docs.vast.ai/examples/transcription/speaker-diarization-pyannote
 
 
@@ -19603,6 +19794,7 @@ play_audio("output_segments/sample_0_segment_0001_00018360ms-00018420ms_SPEAKER_
 
 
 # Google Colab
+
 Source: https://docs.vast.ai/google-colab
 
 
@@ -19677,6 +19869,7 @@ All your data will still be on the Vast instance and available to be copied, eve
 
 
 # Huggingface TGI with LLama3
+
 Source: https://docs.vast.ai/huggingface-tgi-with-llama3
 
 
@@ -19768,6 +19961,7 @@ TGI via a template built to run with the Autoscaler. See [Getting Started with A
 
 
 # Image Generation
+
 Source: https://docs.vast.ai/image-generation
 
 
@@ -20050,6 +20244,7 @@ Running image generation workloads on Vast.ai provides a cost-effective way to a
 
 
 # Infinity Embeddings
+
 Source: https://docs.vast.ai/infinity-embeddings
 
 
@@ -20079,7 +20274,7 @@ vastai set api-key <Your-API-Key-Here>
 For serving an LLM, we're looking for a machine that has a static IP address, ports available to host on, plus a single modern GPU with decent RAM since these embedding models will be small. We will query the vast API to get a list of these types of machines.
 
 ```bash Bash theme={null}
-vastai search offers 'compute_cap > 800 gpu_ram > 20 num_gpus = 1 static_ip=true direct_port_count > 1' 
+vastai search offers 'compute_cap > 800 gpu_ram > 20 num_gpus = 1 static_ip=true direct_port_count > 1'
 ```
 
 ## Deploying the Image:
@@ -20160,7 +20355,7 @@ headers = {
     "accept": "application/json",
     "Content-Type": "application/json"
 }
-    
+
 payload = {
     "query": input_json["query"],
     "documents": input_json["documents"],
@@ -20169,11 +20364,11 @@ payload = {
 }
 
 response = requests.post(rerank_url, json=payload, headers=headers)
-    
+
 if response.status_code == 200:
     resp_json = response.json()
     print(resp_json)
-else: 
+else:
     print(response.status_code)
     print(response.text)
 ```
@@ -20197,11 +20392,11 @@ payload = {
     }
 
 response = requests.post(classify_url, json=payload, headers=headers)
-    
+
 if response.status_code == 200:
     resp_json = response.json()
     print(resp_json)
-else: 
+else:
     print(response.status_code)
     print(response.text)
 ```
@@ -20212,6 +20407,7 @@ So there you have it, now you can see how with Vast and Infinity, you can serve 
 
 
 # Langflow + Ollama
+
 Source: https://docs.vast.ai/langflow-ollama
 
 
@@ -20351,6 +20547,7 @@ Remember, any *Language Model* component can be replaced with the *Ollama* compo
 
 
 # Linux Virtual Desktop
+
 Source: https://docs.vast.ai/linux-virtual-desktop
 
 
@@ -20545,6 +20742,7 @@ Consider:
 
 
 # Linux Virtual Machines
+
 Source: https://docs.vast.ai/linux-virtual-machines
 
 
@@ -20624,7 +20822,7 @@ Vast.ai provides virtual machine (VM) capabilities alongside its Docker-based in
 
 ### Prerequisites
 
-**SSH Key Setup (Required)**
+#### SSH Key Setup (Required)
 
 NOTE: You must add your SSH public key to the Keys section after logging into your Vast.ai account before creating a VM instance. If you start a VM before any SSH keys have been added to your account, the VM will not be accessible.&#x20;
 
@@ -20741,6 +20939,7 @@ Virtual Machines on Vast.ai provide powerful capabilities for specific use cases
 
 
 # Mining on Bittensor
+
 Source: https://docs.vast.ai/mining-on-bittensor
 
 
@@ -20756,19 +20955,19 @@ This tutorial shows how to use the Bittensor testnet to create a subnet and run 
 `cd` into your project directory and clone the bittensor-subnet-template repo:
 
 ```bash Bash theme={null}
-git clone https://github.com/opentensor/bittensor-subnet-template.git 
+git clone https://github.com/opentensor/bittensor-subnet-template.git
 ```
 
 Next, `cd` into bittensor-subnet-template repo directory:
 
 ```bash Bash theme={null}
-cd bittensor-subnet-template # Enter the 
+cd bittensor-subnet-template # Enter the
 ```
 
 Install the bittensor-subnet-template package:
 
 ```bash Bash theme={null}
-python -m pip install -e . 
+python -m pip install -e .
 ```
 
 ## 2. Create wallets
@@ -20835,12 +21034,12 @@ You will get an output like this:
 
 ```text Text theme={null}
     Wallets
-    ├── 
+    ├──
     │   owner (5FyRdpzddeN7KGLhn6S6ia1up7dzbtXiZ5trc2hmm9AN9Pj4)
-    ├── 
+    ├──
     │   miner (5GCahkVacWRHzVgRBfSmnt11gHnWWZhkapquzPEwR7je1a8w)
     │   └── default (5CUgZBi3GQpJDhe1EhdPJfzBb6pyWvnkuSWJ6SBhEpSby1XP)
-    └── 
+    └──
         validator (5FZSLAZsiFaZzhcL2oxMesSrQQHmWHSGpPfNjMUmiruBpYGB)
         └── default (5EqaFbjHDUQCHRbG5592QvCbpNkvAxsLCLKRNoLaVLN76g55)
 ```
@@ -20914,11 +21113,11 @@ btcli wallet overview --wallet.name miner --subtensor.network test
 The above command will display the below:
 
 ```bash Bash theme={null}
-Subnet: 1                                                                                                                                                                
-COLDKEY  HOTKEY   UID  ACTIVE  STAKE(τ)     RANK    TRUST  CONSENSUS  INCENTIVE  DIVIDENDS  EMISSION(ρ)   VTRUST  VPERMIT  UPDATED  AXON  HOTKEY_SS58                    
+Subnet: 1
+COLDKEY  HOTKEY   UID  ACTIVE  STAKE(τ)     RANK    TRUST  CONSENSUS  INCENTIVE  DIVIDENDS  EMISSION(ρ)   VTRUST  VPERMIT  UPDATED  AXON  HOTKEY_SS58
 miner    default  1      True   0.00000  0.00000  0.00000    0.00000    0.00000    0.00000            0  0.00000                14  none  5GTFrsEQfvTsh3WjiEVFeKzFTc2xcf…
-1        1        2            τ0.00000  0.00000  0.00000    0.00000    0.00000    0.00000           ρ0  0.00000                                                         
-                                                                          Wallet balance: τ0.0   
+1        1        2            τ0.00000  0.00000  0.00000    0.00000    0.00000    0.00000           ρ0  0.00000
+                                                                          Wallet balance: τ0.0
 ```
 
 ## 8. Run subnet miner and subnet validator
@@ -20940,6 +21139,7 @@ You will see the below terminal output:
 
 
 # Multi-Node training using Torch + NCCL
+
 Source: https://docs.vast.ai/multi-node-training-using-torch-nccl
 
 
@@ -21001,10 +21201,10 @@ NCCL expects to be able to perform a TCP rendezvous during initialization at the
 Here we will use a python script called `nccl_speedtest.py` using the following contents:&#x20;
 
 ```python icon="python" Python theme={null}
-import torch as t 
-import torch.distributed as dist 
+import torch as t
+import torch.distributed as dist
 import sys
-import time 
+import time
 import string
 
 # tests nccl bandwidth between two nodes.
@@ -21047,12 +21247,12 @@ if __name__ == "__main__":
     print("Warmup done; starting uni-directional speedtest...")
 
     start = time.time()
-    if rank: 
+    if rank:
         dist.send(v, 0)
     else:
         dist.recv(v,1)
     # Torch returns from dist.send/dist.recv as soon as the communication channels initialize; it does not block on the full tensor being received.
-    # t.sum(v) will block on communication operations on v completing though, so we don't check end time until that is done. 
+    # t.sum(v) will block on communication operations on v completing though, so we don't check end time until that is done.
     checksum = t.sum(v).to('cpu')
     end = time.time()
     print(f"Checksum: {checksum}")
@@ -21090,7 +21290,7 @@ We should get output that looks like this ----
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host noprefixroute 
+    inet6 ::1/128 scope host noprefixroute
        valid_lft forever preferred_lft forever
  2: eth0@if23: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/ether 62:82:b2:1b:38:a6 brd ff:ff:ff:ff:ff:ff link-netnsid 0
@@ -21115,6 +21315,7 @@ Once we've done the script on the second instance reaches the TCP rendezvous, bo
 
 
 # Ollama + Webui
+
 Source: https://docs.vast.ai/ollama-webui
 
 
@@ -21187,6 +21388,7 @@ curl -k https://INSTANCE_IP:EXTERNAL_PORT/v1/completions \
 
 
 # Oobabooga (LLM webui)
+
 Source: https://docs.vast.ai/oobabooga-llm-webui
 
 
@@ -21269,6 +21471,7 @@ Have fun!
 
 
 # PyTorch
+
 Source: https://docs.vast.ai/pytorch
 
 
@@ -21511,6 +21714,7 @@ Running PyTorch on Vast.ai provides a cost-effective way to rent cheap GPUs and 
 
 
 # Quantized GGUF models (cloned)
+
 Source: https://docs.vast.ai/quantized-gguf-models-cloned
 
 
@@ -21592,6 +21796,7 @@ Please see the template Readme for advanced template configuration, particularly
 
 
 # RTX 5 Series
+
 Source: https://docs.vast.ai/rtx-5-series
 
 Optimize your GPU experience with our comprehensive guide on RTX 5 Series GPUs (5090/5080/5070) and CUDA 12.8 compatibility. Learn how to rent an RTX 5090 on Vast.ai, select the right templates, and customize your storage while ensuring optimal performance.
@@ -21637,6 +21842,7 @@ Templates configured with the `[Automatic]` tag will pull the most recent & supp
 
 
 # Python SDK Usage
+
 Source: https://docs.vast.ai/sdk/python/quickstart
 
 
@@ -21857,6 +22063,7 @@ For a complete list of methods and their usage, please refer to [Commands](https
 
 
 # Stable Diffusion
+
 Source: https://docs.vast.ai/stable-diffusion
 
 
@@ -21952,6 +22159,7 @@ Have fun!
 
 
 # TTS with Nari Labs Dia
+
 Source: https://docs.vast.ai/tts-with-nari-labs-dia
 
 
@@ -21992,6 +22200,7 @@ Full instructions for Nari Labs Dia can be found in their [GitHub Repository](ht
 
 
 # Video Generation
+
 Source: https://docs.vast.ai/video-generation
 
 
@@ -22127,6 +22336,7 @@ Remember to always check VRAM usage and adjust parameters accordingly. Start wit
 
 
 # vLLM (LLM inference and serving)
+
 Source: https://docs.vast.ai/vllm-llm-inference-and-serving
 
 
@@ -22209,6 +22419,7 @@ Please see the template Readme file on our recommended vLLM template for advance
 
 
 # Whisper ASR Guide
+
 Source: https://docs.vast.ai/whisper-asr-guide
 
 
@@ -22217,7 +22428,7 @@ Source: https://docs.vast.ai/whisper-asr-guide
 
 **Whisper** is a general-purpose speech recognition model trained on a large dataset of diverse audio. Go through the [Readme](https://cloud.vast.ai/template/readme/0c0c7d65cd4ebb2b340fbce39879703b) first before using.&#x20;
 
-**Connecting to the Instance**
+### Connecting to the Instance
 
 1. Go to the templates tab and search for “*Whisper*” or click the provided link to the template [here](https://cloud.vast.ai/?ref_id=62897\&creator_id=62897\&name=Whisper%20ASR%20Webservice) .&#x20;
 2. After you select the template by pressing the triangle button the next step is to choose a gpu.
@@ -22242,17 +22453,17 @@ The template you selected will give your instance access to both Jupyter and SSH
 
 <img alt="" />
 
-**Usage**
+### Usage
 
 Two POST endpoints are exposed in this template:
 
-**/detect-language**
+### /detect-language
 
 Use this endpoint to automatically detect the spoken language in a given audio file.
 
 <img alt="" />
 
-**/asr**
+### /asr
 
 Use this endpoint for both transcription and translation of audio files.
 
@@ -22280,7 +22491,7 @@ Use this endpoint for both transcription and translation of audio files.
 
 *For more information and specifics on things such as but not limited to Configuration, Additional Functionality, Instance Logs, Cloudflared, Api request, ssh tunnels and port reference mapping, and Caddy you can visit the*[ Readme linked here to learn more. ](https://cloud.vast.ai/template/readme/0c0c7d65cd4ebb2b340fbce39879703b)
 
-**Links**
+### Links
 
 * [GitHub Repository](https://github.com/ahmetoner/whisper-asr-webservice/)
 * [Docker Image](https://hub.docker.com/r/onerahmet/openai-whisper-asr-webservice)

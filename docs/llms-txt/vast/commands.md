@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/cli/commands.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -600,7 +601,7 @@ options:
 Delete an autoscaler group
 
 ```text Text theme={null}
-usage: vastai delete autoscaler ID 
+usage: vastai delete autoscaler ID
 
 positional arguments:
   ID                 id of group to delete

@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/serving-infrastructure/dstack-vllm.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -71,7 +72,7 @@ Replace `YOUR_VASTAI_API_KEY` with your actual Vast.ai API key.
 
 You'll see output like:
 
-```
+```text
 ╭━━┳━━┳━┳╮╭┳━━┳━╮
 ┃━━┫┃━┫╭┫╰╯┃┃━┫╭╯
 ┣━━┃┃━┫┃╰╮╭┫┃━┫┃
@@ -137,7 +138,7 @@ max_price: 2.50
 
 dstack will search for available instances and show you the options:
 
-```
+```text
  Project          main
  User             admin
  Configuration    serve-qwen.dstack.yml
@@ -170,7 +171,7 @@ View deployment logs:
 
 When ready, you'll see in the logs:
 
-```
+```text
 (APIServer pid=122) INFO:     Application startup complete.
 ```
 

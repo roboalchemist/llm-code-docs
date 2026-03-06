@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/instances/storage/cloud-sync.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -11,9 +12,9 @@
 <Note>
   This feature appears as:
 
-  * **"Cloud Copy"** button in the web interface
-  * **`vastai cloud copy`** command in the CLI
-  * **"Cloud Sync"** in the documentation navigation
+* **"Cloud Copy"** button in the web interface
+* **`vastai cloud copy`** command in the CLI
+* **"Cloud Sync"** in the documentation navigation
 
   All refer to the same feature for syncing data with cloud storage providers.
 </Note>

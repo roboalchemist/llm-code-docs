@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/whisper-asr-guide.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -47,7 +48,7 @@ __html: JSON.stringify({
 
 **Whisper** is a general-purpose speech recognition model trained on a large dataset of diverse audio. Go through the [Readme](https://cloud.vast.ai/template/readme/0c0c7d65cd4ebb2b340fbce39879703b) first before using.&#x20;
 
-**Connecting to the Instance**
+### Connecting to the Instance
 
 1. Go to the templates tab and search for “*Whisper*” or click the provided link to the template [here](https://cloud.vast.ai/?ref_id=62897\&creator_id=62897\&name=Whisper%20ASR%20Webservice) .&#x20;
 2. After you select the template by pressing the triangle button the next step is to choose a gpu.
@@ -72,17 +73,17 @@ The template you selected will give your instance access to both Jupyter and SSH
 
 <img src="https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=4582d62ecc00b116421db56a8c9a2a35" alt="" data-og-width="1154" width="1154" data-og-height="601" height="601" data-path="images/use-cases-audio-to-text-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=280&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=fcdb58beb0d30aee8b86edc43376d96c 280w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=560&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=5453f339a637b848c1d11ea397d03d69 560w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=840&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=741cdfd31be34b5d6ee600e37ab8c28e 840w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=1100&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=c002c7fcbad11880b422741aed167e5b 1100w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=1650&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=06d550e69c33d2c7f2950ebeb4bb4f21 1650w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-5.png?w=2500&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=b1ac6d0f3a669a2c0313f2ffdcba6fc1 2500w" />
 
-**Usage**
+### Usage
 
 Two POST endpoints are exposed in this template:
 
-**/detect-language**
+### /detect-language
 
 Use this endpoint to automatically detect the spoken language in a given audio file.
 
 <img src="https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=18950fe4f6e962ce51085815d1ed1526" alt="" data-og-width="1109" width="1109" data-og-height="942" height="942" data-path="images/use-cases-audio-to-text-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=280&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=040d71ce4101d47aeb3350c450d8cf42 280w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=560&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=b05305002ed7a562a258dd1be69f0a04 560w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=840&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=f66b84a4cd8026432d70151cff692962 840w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=1100&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=a04795a1596c67e75ceb27e1239fe3ae 1100w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=1650&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=d3ba68f63379b7e5285dd775c6124b28 1650w, https://mintcdn.com/vastai-80aa3a82/rfbLJXS6cduyf_mj/images/use-cases-audio-to-text-6.png?w=2500&fit=max&auto=format&n=rfbLJXS6cduyf_mj&q=85&s=3d923ab4905226baa8cd8b6418e94733 2500w" />
 
-**/asr**
+### /asr
 
 Use this endpoint for both transcription and translation of audio files.
 
@@ -110,7 +111,7 @@ Use this endpoint for both transcription and translation of audio files.
 
 *For more information and specifics on things such as but not limited to Configuration, Additional Functionality, Instance Logs, Cloudflared, Api request, ssh tunnels and port reference mapping, and Caddy you can visit the*[ Readme linked here to learn more. ](https://cloud.vast.ai/template/readme/0c0c7d65cd4ebb2b340fbce39879703b)
 
-**Links**
+### Links
 
 * [GitHub Repository](https://github.com/ahmetoner/whisper-asr-webservice/)
 * [Docker Image](https://hub.docker.com/r/onerahmet/openai-whisper-asr-webservice)

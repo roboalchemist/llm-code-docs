@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/text-generation/glm-47-flash.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -186,7 +187,7 @@ print(response.choices[0].message.content)
 
 **Example output:**
 
-```
+```text
 Parallel threads,
 Calculated at once,
 Rise from the shadows.

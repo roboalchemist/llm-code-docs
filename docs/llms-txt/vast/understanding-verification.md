@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/host/understanding-verification.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -70,14 +71,14 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Definition:** Stable, uninterrupted operation over time (uptime, resilience under continuous workloads).
 
-**Do**
+#### Do
 
 * Maintain consistent uptime with minimal downtime.
 * Keep network connectivity stable; avoid jitter and drops.
 * Manage thermals and power to prevent throttling.
 * Proactively monitor hardware health and perform maintenance.
 
-**Avoid**
+#### Avoid
 
 * Frequent restarts or unplanned outages.
 * Overheating, undervolting, or unstable power delivery.
@@ -119,13 +120,13 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 * Do not reduce hardware after creation (e.g., fewer GPUs/RAM) – this will trigger Deverified.
 * Upgrades (adding GPUs/RAM) are allowed but may take time to reflect across the platform.
 
-**Do**
+#### Do
 
 * Verify GPU PCIe connections provide full bandwidth and are not throttled.
 * Keep the latest drivers/CUDA aligned with workloads.
 * Confirm required ports and end-to-end reachability.
 
-**Avoid**
+#### Avoid
 
 * Pairing high-end GPUs with under-provisioned CPU/RAM.
 * Letting hidden background services consume resources.
@@ -136,12 +137,12 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Definition:** Estimated GPU performance on typical deep-learning tasks (e.g., CNN/Transformer training) for cross-hardware comparison. Higher DLPerf improves verification odds. [Read more](https://docs.vast.ai/documentation/reference/faq/rental-types#dlperf-scoring)
 
-**Do**
+#### Do
 
 * Use the **latest** compatible drivers/CUDA.
 * Eliminate PCIe, thermal, and power bottlenecks to maintain sustained clocks.
 
-**Avoid**
+#### Avoid
 
 * Misconfigurations that suppress benchmark performance.
 
@@ -153,12 +154,12 @@ To qualify, a machine must pass [minimum baseline](https://docs.vast.ai/document
 
 **Implication:** Machines aligned with active renter preferences—popular GPUs, sufficient VRAM, strong reliability, fast internet—are prioritized for verification to maximize utilization and profitability.
 
-**Do**
+#### Do
 
 * Offer in-demand GPU models with adequate VRAM and balanced resources.
 * Maintain strong reliability to remain attractive once listed.
 
-**Avoid**
+#### Avoid
 
 * Niche/mismatched configurations with low renter interest.
 

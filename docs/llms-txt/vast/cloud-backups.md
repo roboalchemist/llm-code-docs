@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/instances/storage/cloud-backups.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -91,8 +92,8 @@ The vast-cli tool allows you to create scheduled backup jobs with several timing
 
 ```text  theme={null}
 --schedule SCHEDULE      Values: HOURLY, DAILY, WEEKLY
---start_date START_DATE  Start date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC) 
---end_date END_DATE      End date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC) 
+--start_date START_DATE  Start date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC)
+--end_date END_DATE      End date in format 'YYYY-MM-DD HH:MM:SS PM' (UTC)
 --day DAY                Day of week (0-6, where 0=Sunday) or "*"
 --hour HOUR              Hour of day (0-23) or "*"
 ```
@@ -179,7 +180,7 @@ Example output:
 Scheduled Job ID  Instance ID  API Endpoint              Start (Date/Time in UTC)  End (Date/Time in UTC)  Day of the Week  Hour of the Day in UTC  Minute of the Hour  Frequency
 1                 19778412     /api/v0/commands/rclone/  2025-04-24/23:38          2028-05-06/23:38        Everyday         4_PM                    00                  DAILY
 2                 19782577     /api/v0/commands/rclone/  2025-04-29/23:47          2025-05-09/23:47        Wednesday        10_AM                   00                  WEEKLY
-3                 19757389     /api/v0/commands/rclone/  2025-05-01/00:04          2026-05-01/00:04        Everyday         Every_hour              00                  HOURLY   
+3                 19757389     /api/v0/commands/rclone/  2025-05-01/00:04          2026-05-01/00:04        Everyday         Every_hour              00                  HOURLY
 ```
 
 Understanding the Output
@@ -330,9 +331,9 @@ You'll see output similar to:
 
 ```bash Bash theme={null}
 Scheduled Job ID  Instance ID  API Endpoint              Start (Date/Time)  End (Date/Time)   Day of the Week  Hour of the Day  Minute of the Hour  Frequency
-4462317           19281511     /api/v0/commands/rclone/  2025-04-08/09:01   2028-06-08/18:48  Everyday         1_PM             33                  DAILY    
-4462321           19489711     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Saturday         11_PM            00                  WEEKLY   
-4462322           19490133     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Wednesday        8_PM             10                  WEEKLY 
+4462317           19281511     /api/v0/commands/rclone/  2025-04-08/09:01   2028-06-08/18:48  Everyday         1_PM             33                  DAILY
+4462321           19489711     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Saturday         11_PM            00                  WEEKLY
+4462322           19490133     /api/v0/commands/rclone/  2025-04-15/20:00   2025-04-19/20:00  Wednesday        8_PM             10                  WEEKLY
 ```
 
 The scheduled\_job\_id column in the output contains the IDs you'll need for deletion.

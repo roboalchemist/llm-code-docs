@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/api-reference/billing/show-invoices.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -19,11 +20,14 @@ Example range: 2026-01-01 00:00:00 UTC -> `1767225600`, 2026-01-31 23:59:59 UTC 
 
 **HTTP request**: This is a GET endpoint that accepts JSON-encoded query parameters.
 URL-encode JSON values when calling directly.
-```
+
+```text
 GET /api/v1/invoices/?select_filters={"when":{"gte":1767225600,"lte":1769903999}}&limit=60
 ```
+
 For pagination, pass the response `next_token` as `after_token`:
-```
+
+```text
 GET /api/v1/invoices/?select_filters={"when":{"gte":1767225600,"lte":1769903999}}&after_token=eyJ2YWx1ZXMiOiB7ImlkIjog...
 ```
 

@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/multi-node-training-using-torch-nccl.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -100,10 +101,10 @@ NCCL expects to be able to perform a TCP rendezvous during initialization at the
 Here we will use a python script called `nccl_speedtest.py` using the following contents:&#x20;
 
 ```python icon="python" Python theme={null}
-import torch as t 
-import torch.distributed as dist 
+import torch as t
+import torch.distributed as dist
 import sys
-import time 
+import time
 import string
 
 # tests nccl bandwidth between two nodes.
@@ -146,12 +147,12 @@ if __name__ == "__main__":
     print("Warmup done; starting uni-directional speedtest...")
 
     start = time.time()
-    if rank: 
+    if rank:
         dist.send(v, 0)
     else:
         dist.recv(v,1)
     # Torch returns from dist.send/dist.recv as soon as the communication channels initialize; it does not block on the full tensor being received.
-    # t.sum(v) will block on communication operations on v completing though, so we don't check end time until that is done. 
+    # t.sum(v) will block on communication operations on v completing though, so we don't check end time until that is done.
     checksum = t.sum(v).to('cpu')
     end = time.time()
     print(f"Checksum: {checksum}")
@@ -189,7 +190,7 @@ We should get output that looks like this ----
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host noprefixroute 
+    inet6 ::1/128 scope host noprefixroute
        valid_lft forever preferred_lft forever
  2: eth0@if23: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/ether 62:82:b2:1b:38:a6 brd ff:ff:ff:ff:ff:ff link-netnsid 0

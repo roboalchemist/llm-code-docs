@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/mining-on-bittensor.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -54,19 +55,19 @@ This tutorial shows how to use the Bittensor testnet to create a subnet and run 
 `cd` into your project directory and clone the bittensor-subnet-template repo:
 
 ```bash Bash theme={null}
-git clone https://github.com/opentensor/bittensor-subnet-template.git 
+git clone https://github.com/opentensor/bittensor-subnet-template.git
 ```
 
 Next, `cd` into bittensor-subnet-template repo directory:
 
 ```bash Bash theme={null}
-cd bittensor-subnet-template # Enter the 
+cd bittensor-subnet-template # Enter the
 ```
 
 Install the bittensor-subnet-template package:
 
 ```bash Bash theme={null}
-python -m pip install -e . 
+python -m pip install -e .
 ```
 
 ## 2. Create wallets
@@ -133,12 +134,12 @@ You will get an output like this:
 
 ```text Text theme={null}
     Wallets
-    ├── 
+    ├──
     │   owner (5FyRdpzddeN7KGLhn6S6ia1up7dzbtXiZ5trc2hmm9AN9Pj4)
-    ├── 
+    ├──
     │   miner (5GCahkVacWRHzVgRBfSmnt11gHnWWZhkapquzPEwR7je1a8w)
     │   └── default (5CUgZBi3GQpJDhe1EhdPJfzBb6pyWvnkuSWJ6SBhEpSby1XP)
-    └── 
+    └──
         validator (5FZSLAZsiFaZzhcL2oxMesSrQQHmWHSGpPfNjMUmiruBpYGB)
         └── default (5EqaFbjHDUQCHRbG5592QvCbpNkvAxsLCLKRNoLaVLN76g55)
 ```
@@ -212,11 +213,11 @@ btcli wallet overview --wallet.name miner --subtensor.network test
 The above command will display the below:
 
 ```bash Bash theme={null}
-Subnet: 1                                                                                                                                                                
-COLDKEY  HOTKEY   UID  ACTIVE  STAKE(τ)     RANK    TRUST  CONSENSUS  INCENTIVE  DIVIDENDS  EMISSION(ρ)   VTRUST  VPERMIT  UPDATED  AXON  HOTKEY_SS58                    
+Subnet: 1
+COLDKEY  HOTKEY   UID  ACTIVE  STAKE(τ)     RANK    TRUST  CONSENSUS  INCENTIVE  DIVIDENDS  EMISSION(ρ)   VTRUST  VPERMIT  UPDATED  AXON  HOTKEY_SS58
 miner    default  1      True   0.00000  0.00000  0.00000    0.00000    0.00000    0.00000            0  0.00000                14  none  5GTFrsEQfvTsh3WjiEVFeKzFTc2xcf…
-1        1        2            τ0.00000  0.00000  0.00000    0.00000    0.00000    0.00000           ρ0  0.00000                                                         
-                                                                          Wallet balance: τ0.0   
+1        1        2            τ0.00000  0.00000  0.00000    0.00000    0.00000    0.00000           ρ0  0.00000
+                                                                          Wallet balance: τ0.0
 ```
 
 ## 8. Run subnet miner and subnet validator

@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/host/verification-stages.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -81,14 +82,14 @@ Only machines that meet the platform’s reliability and [performance thresholds
 
 **What it means:** Newly added machines or machines under evaluation. The system hasn't yet completed enough testing to confirm platform standards. This is not a judgment of quality—only that no platform guarantee exists yet.
 
-**Do**
+#### Do
 
 * [Pass the Self-Test](https://docs.vast.ai/documentation/host/how-to-self-test)
 * Maintain steady uptime during evaluation.
 * Ensure drivers/CUDA and networking are correctly installed and reachable.
 * Keep the environment clean; schedule work via Create Job only.
 
-**Avoid**
+#### Avoid
 
 * Unnecessary reboots or configuration changes.
 * Unrelated background workloads that consume GPU/CPU/IO.
@@ -141,13 +142,13 @@ In order for your unverified machine to be verified, it must also meet the follo
 
 **What it means:** The machine passed automated checks for reliability, network stability, operational health, and performance. A Verified machine consistently delivers server services to platform standards.
 
-**Do**
+#### Do
 
 * Monitor health (uptime, thermals, power) and respond to alerts.
 * Keep drivers/CUDA on compatible, **latest** stable versions.
 * Maintain stable, symmetric bandwidth.
 
-**Avoid**
+#### Avoid
 
 * Downgrading hardware capacity (e.g., reducing GPU count, disk or RAM).
 * Allowing thermal, power, or bandwidth instability under load.
@@ -171,7 +172,7 @@ A previously Verified machine no longer meets requirements. System continuous mo
 Fix the issue and restore stability; the system will **automatically** transition back to Verified once system confirms healthy operation.
 This process may take some time, as the system ensures that the issue is fully resolved before restoring verification.
 
-**Common causes**
+#### Common causes
 
 * Network instability, closed ports, or low bandwidth.
 * Hardware/system errors (e.g., failing storage, insufficient PCIe bandwidth).
@@ -179,13 +180,13 @@ This process may take some time, as the system ensures that the issue is fully r
 * Container launch failures or repeated runtime exceptions.
 * Detected abuse or policy violations.
 
-**Do**
+#### Do
 
 * Investigate red error indicators quickly; review logs and metrics.
 * Validate thermal/power headroom and bandwidth under load.
 * Re-check health after changes to confirm resolution.
 
-**Avoid**
+#### Avoid
 
 * Ignoring warnings or allowing instability to persist.
 * Reducing hardware below the created specification.

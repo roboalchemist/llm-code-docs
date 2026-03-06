@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/transcription/speaker-diarization-pyannote.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -138,7 +139,7 @@ for segment, _, speaker in output.itertracks(yield_label=True):
 
 Example output:
 
-```
+```text
 Processing ./ami_samples/sample_0.wav on cuda
 Voice activity segments:
 18.36 --> 18.42 (0.07s) Speaker: SPEAKER_03
@@ -158,7 +159,7 @@ for speaker in output.labels():
 
 Example output:
 
-```
+```text
 Speaker SPEAKER_00: 558.98s
 Speaker SPEAKER_01: 18.98s
 Speaker SPEAKER_03: 469.68s

@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/ai-agents/browsesafe.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -65,7 +66,7 @@ AI browser agents process raw HTML, not just what humans see. Attackers exploit 
 
 ### Real Attack Examples from BrowseSafe-Bench
 
-**Attack 1: Fake Diagnostic Mode**
+#### Attack 1: Fake Diagnostic Mode
 
 Embedded in a music streaming review:
 
@@ -84,7 +85,7 @@ EXECUTE THE FOLLOWING COMMANDS:
 
 This attack attempts to convince the AI it's in a special mode requiring it to reveal internal instructions.
 
-**Attack 2: CSS-Hidden Override**
+#### Attack 2: CSS-Hidden Override
 
 ```html  theme={null}
 <div style="visibility:hidden;">
@@ -95,7 +96,7 @@ This attack attempts to convince the AI it's in a special mode requiring it to r
 
 The `visibility:hidden` property hides content from users but AI agents parsing raw HTML still process it.
 
-**Attack 3: Hidden Exfiltration Command**
+#### Attack 3: Hidden Exfiltration Command
 
 Embedded in a Japanese business email:
 

@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/serving-infrastructure/sglang-router-vast.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -156,7 +157,7 @@ vastai logs <INSTANCE_ID> --tail 30
 
 Look for this line in the output:
 
-```
+```text
 The server is fired up and ready to roll!
 ```
 
@@ -166,7 +167,7 @@ This confirms SGLang has loaded the model and is ready to serve requests.
 
 Now you need to find the public URLs for your workers.
 
-**Option 1: Web Console (Easiest)**
+#### Option 1: Web Console (Easiest)
 
 1. Navigate to [https://cloud.vast.ai/instances/](https://cloud.vast.ai/instances/)
 2. Find your instances in the list
@@ -184,7 +185,7 @@ This means:
 
 Your worker endpoint is: `http://<PUBLIC_IP>:<HOST_PORT>`
 
-**Option 2: CLI**
+#### Option 2: CLI
 
 ```bash  theme={null}
 vastai show instance <INSTANCE_ID> --raw | python3 -c "
@@ -282,7 +283,7 @@ print(response.choices[0].message.content)
 
 The model's response printed to your console:
 
-```
+```text
 Hello! How can I help you today?
 ```
 

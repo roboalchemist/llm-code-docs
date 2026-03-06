@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/teams/teams-roles.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -81,9 +82,9 @@ An example of a permissions json would look like this:
 ```text Text theme={null}
 {
     "api": {
-        "misc": {}, 
-        "user_read":{}, 
-        "instance_read": {}, 
+        "misc": {},
+        "user_read":{},
+        "instance_read": {},
         "instance_write": {},
         "team_read": {
             "api.team.members": {}

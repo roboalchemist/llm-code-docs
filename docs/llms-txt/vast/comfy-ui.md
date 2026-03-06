@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/serverless/comfy-ui.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -229,7 +230,7 @@ The primary endpoint for submitting ComfyUI workflows. This endpoint accepts com
               }
             }
           }
-          
+
           payload = {
             "input": {
               "request_id": "",

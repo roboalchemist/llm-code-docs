@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/embeddings/serving-rerankers-vllm.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -153,7 +154,7 @@ openai_score(query, documents)
 
 Output:
 
-```
+```text
 Score: 0.999512 | Deep learning is a subset of machine learning...
 Score: 0.176270 | Deep learning enables computers to learn from...
 Score: 0.000037 | The weather is nice today...

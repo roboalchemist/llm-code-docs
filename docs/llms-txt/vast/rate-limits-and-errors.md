@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/api-reference/rate-limits-and-errors.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -37,13 +38,13 @@ Some endpoints also use **method-specific** limits (GET vs POST) and/or **max-ca
 
 When you hit a rate limit, you will receive **HTTP 429**. The response body is often plain text (in certain cases JSON with `success`/`error`/`msg` like above) with one of the following messages:
 
-```
+```text
 API requests too frequent
 ```
 
 or
 
-```
+```text
 API requests too frequent: endpoint threshold=...
 ```
 

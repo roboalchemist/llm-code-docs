@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/templates/template-settings.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -40,11 +41,11 @@ The first section helps you to keep your templates organized.
     <img src="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=92d2cbbecc86af090d7d43a8e6409515" alt="Identification section of the template editor" data-og-width="936" width="936" data-og-height="294" height="294" data-path="images/console-templates-5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=280&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=b326bc9a8573f910771c8078028477b3 280w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=560&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=1e16e256733332321ed15b0477c7c5d4 560w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=840&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=960ce67c4b5e6bef28204d285e9d6af5 840w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=1100&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=e9a3251d5cc29821078a0c685735afb4 1100w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=1650&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=9bf15355378ba5f5f296b6a27c689aab 1650w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-5.webp?w=2500&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=c6fb73fca150d0b06f40a727e01de7d0 2500w" />
 </Frame>
 
-**Template Name**
+### Template Name
 
 This will be displayed in bold on the template card. Choose something that helps you identify the template amongst your other templates.
 
-**Template Description**
+### Template Description
 
 This field helps describe the function and purpose of the template. Completely optional for your own purposes, but very helpful if you intend to make this template public or share it with others.
 
@@ -69,7 +70,7 @@ You can use any Docker image:
 * Your own custom images from any registry
 * Images from alternative registries (GitHub Container Registry, Google Container Registry, etc.)
 
-**Version Tag**
+### Version Tag
 
 For many registries we are able to pull the available list of tags so this field allows you to quickly select another version.
 
@@ -77,7 +78,7 @@ There is also a special `[Automatic]` tag you can use. With this selected, the m
 
 This will only work if the image tag contains the CUDA version string. For example: `my-image-cuda-12.8` would be loaded on a machine supporting CUDA 12.8, but a machine with only CUDA 12.6 would pull `my-image-cuda-12.6`
 
-**Docker Options**
+### Docker Options
 
 This field is a textual representation of the ports and environment variables declared in the sections beneath it. You can edit it directly or you can use the page widgets.
 
@@ -85,7 +86,7 @@ This field is a textual representation of the ports and environment variables de
   This field will only accept ports and environment variables. Other docker run options will be ignored.
 </Note>
 
-**Ports**
+### Ports
 
 To access your instance via the external IP address, you will need to add some ports to the template. You can add both TCP and UDP ports.
 
@@ -100,7 +101,7 @@ ssh -p 22 user@remote.example.com -L 8080:localhost:8080
 
 The machine will forward traffic from the host machine's public port to the container port you specified.
 
-**Environment Variables**
+### Environment Variables
 
 Here you can add any environment variables that your docker image requires. Do not save any sensitive information here if you are planning to make the template public.
 
@@ -118,11 +119,11 @@ Templates offer three launch modes you can select from. Our recommended template
     <img src="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=accc9a98a9c908de96ffd1be1b44979b" alt="Launch mode selection options" data-og-width="936" width="936" data-og-height="191" height="191" data-path="images/console-templates-7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=280&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=fe6bd58c7bb8e942baa1e07f714df807 280w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=560&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=ed25b25c7de241a57a6ef26b49fd8fe4 560w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=840&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=9c708ed19996a249cec72a6eae791bd1 840w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=1100&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=56e8dcfd5d4704647e9391fcc013f3a2 1100w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=1650&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=9d57ee991fa568a44878ba3567799dc8 1650w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-7.webp?w=2500&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=466d12e23ca96bc9d03d5059a428612d 2500w" />
 </Frame>
 
-**Jupyter-python notebook + SSH**
+### Jupyter-python notebook + SSH
 
 When you run the template in this mode, we will install Jupyter and SSH at runtime. Jupyter will be available on mapped port `8080` and SSH will be available on mapped port `22`.
 
-**Interactive shell server, SSH**
+### Interactive shell server, SSH
 
 As above, but SSH only with no Jupyter installation.
 
@@ -130,7 +131,7 @@ As above, but SSH only with no Jupyter installation.
   In both Jupyter and SSH mode, the docker entrypoint for your image will not be run. It will be replaced with our instance setup script so you should use the on start section (documented below) to start any services.
 </Warning>
 
-**docker ENTRYPOINT**
+### docker ENTRYPOINT
 
 In this mode, your Docker image will run precisely as it is. We will not include any additional software or access methods. If your Docker image does not offer SSH or another appropriate interface, please select one of the alternative modes if you need to interact with the running instance.
 
@@ -148,7 +149,7 @@ Here you can enter a short Bash script which will be run during instance startup
     <img src="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=e5684180dfcbbb1b24441dda6dc62851" alt="On-start Script" data-og-width="936" width="936" data-og-height="177" height="177" data-path="images/console-templates-9.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=280&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=ffc64a21cca13ae1be0deb35c3326204 280w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=560&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=462a27c896e9ffaf6457361c5beac9aa 560w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=840&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=8683feca744ec21671fdecb28838e1da 840w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=1100&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=721f6644f78497b0cb094a25bf42e45c 1100w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=1650&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=d15e1062f506f6a6e2c149cf3cd6742b 1650w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-9.webp?w=2500&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=c1c1676721633844f5bd8c65cec7bef4 2500w" />
 </Frame>
 
-**Additional On-start Script Examples**
+### Additional On-start Script Examples
 
 You can execute custom startup scripts:
 
@@ -195,7 +196,7 @@ If you are using a private Docker image then you will need to add authentication
     <img src="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=845e9caffad7a7cf2063bc9c9a74195c" alt="Docker Repository Authentication" data-og-width="945" width="945" data-og-height="152" height="152" data-path="images/console-templates-11.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=280&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=64d8129734e54342c9f0ad8a468c241a 280w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=560&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=346890098f2918b036798ee6e72c7840 560w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=840&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=cc1ce3577f7e7ec29c24de6be5b619c4 840w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=1100&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=687cc079e04e348b468c8cae13ab1de3 1100w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=1650&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=5a6d6173d6dd2f3f4b9e030394078335 1650w, https://mintcdn.com/vastai-80aa3a82/v_EM_-NdbnPjb9tX/images/console-templates-11.webp?w=2500&fit=max&auto=format&n=v_EM_-NdbnPjb9tX&q=85&s=da79a3dd042f2f457189e1df0aabd978 2500w" />
 </Frame>
 
-**Docker Registry Server Names**
+### Docker Registry Server Names
 
 You don't have to specify docker.io as the server name if your repository is Docker Hub. Docker automatically uses docker.io to pull the image if no other registry is specified.
 

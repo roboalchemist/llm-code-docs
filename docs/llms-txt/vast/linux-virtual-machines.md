@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/linux-virtual-machines.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -97,7 +98,7 @@ Vast.ai provides virtual machine (VM) capabilities alongside its Docker-based in
 
 ### Prerequisites
 
-**SSH Key Setup (Required)**
+#### SSH Key Setup (Required)
 
 NOTE: You must add your SSH public key to the Keys section after logging into your Vast.ai account before creating a VM instance. If you start a VM before any SSH keys have been added to your account, the VM will not be accessible.&#x20;
 

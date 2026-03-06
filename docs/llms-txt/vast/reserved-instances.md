@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/documentation/instances/choosing/reserved-instances.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -70,7 +71,7 @@ You can **convert an on-demand instance into a reserved instance** with a lower 
     2. Find a GPU that meets your requirements, click the **Rent** button.
     3. This creates an **on-demand instance**.
 
-    **Step 2 — Convert to a Reserved Instance**
+    #### Step 2 — Convert to a Reserved Instance
 
     1. Go to the [**Instances**](https://cloud.vast.ai/instances/) page.
     2. On your instance card, find the **green** **discount badge**.

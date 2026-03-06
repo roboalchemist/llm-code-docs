@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/examples/ocr/rolmocr.md
 
 > ## Documentation Index
+>>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -175,7 +176,7 @@ for sample in subset:
 
 Example output:
 
-```
+```text
 Expected: {'invoice_number': '40378170', 'invoice_amount': '$8,25'}
 Extracted: {'invoice_number': '40378170', 'invoice_amount': '$8.25'}
 

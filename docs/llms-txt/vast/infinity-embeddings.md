@@ -1,6 +1,7 @@
 # Source: https://docs.vast.ai/infinity-embeddings.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -68,7 +69,7 @@ vastai set api-key <Your-API-Key-Here>
 For serving an LLM, we're looking for a machine that has a static IP address, ports available to host on, plus a single modern GPU with decent RAM since these embedding models will be small. We will query the vast API to get a list of these types of machines.
 
 ```bash Bash theme={null}
-vastai search offers 'compute_cap > 800 gpu_ram > 20 num_gpus = 1 static_ip=true direct_port_count > 1' 
+vastai search offers 'compute_cap > 800 gpu_ram > 20 num_gpus = 1 static_ip=true direct_port_count > 1'
 ```
 
 ## Deploying the Image:
@@ -149,7 +150,7 @@ headers = {
     "accept": "application/json",
     "Content-Type": "application/json"
 }
-    
+
 payload = {
     "query": input_json["query"],
     "documents": input_json["documents"],
@@ -158,11 +159,11 @@ payload = {
 }
 
 response = requests.post(rerank_url, json=payload, headers=headers)
-    
+
 if response.status_code == 200:
     resp_json = response.json()
     print(resp_json)
-else: 
+else:
     print(response.status_code)
     print(response.text)
 ```
@@ -186,11 +187,11 @@ payload = {
     }
 
 response = requests.post(classify_url, json=payload, headers=headers)
-    
+
 if response.status_code == 200:
     resp_json = response.json()
     print(resp_json)
-else: 
+else:
     print(response.status_code)
     print(response.text)
 ```
