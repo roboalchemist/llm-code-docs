@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/api-keys.mdx
 
 ---
+
 title: '`<APIKeys />` component'
 description: Clerk's <APIKeys /> component renders a UI to manage API keys.
 sdk: astro, chrome-extension, nextjs, nuxt, react, react-router, tanstack-react-start, vue, js-frontend
@@ -114,12 +115,12 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<APIKeys />` component:
 
-  - [`mountAPIKeys()`](#mount-api-keys)
-  - [`unmountAPIKeys()`](#unmount-api-keys)
+- [`mountAPIKeys()`](#mount-api-keys)
+- [`unmountAPIKeys()`](#unmount-api-keys)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### `mountAPIKeys()`
+### `mountAPIKeys()`
 
   Render the `<APIKeys />` component to an HTML `<div>` element.
 
@@ -127,7 +128,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
   function mountAPIKeys(node: HTMLDivElement, props?: APIKeysProps): void
   ```
 
-  #### `mountAPIKeys()` params
+#### `mountAPIKeys()` params
 
   <Properties>
     - `node`
@@ -143,7 +144,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
     The properties to pass to the `<APIKeys />` component
   </Properties>
 
-  #### `mountAPIKeys()` usage
+#### `mountAPIKeys()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -166,7 +167,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
   })
   ```
 
-  ### `unmountAPIKeys()`
+### `unmountAPIKeys()`
 
   Unmount and run cleanup on an existing `<APIKeys />` component instance.
 
@@ -174,7 +175,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
   function unmountAPIKeys(node: HTMLDivElement): void
   ```
 
-  #### `unmountAPIKeys()` params
+#### `unmountAPIKeys()` params
 
   <Properties>
     - `node`
@@ -183,7 +184,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
     The container `<div>` element with a rendered `<APIKeys />` component instance
   </Properties>
 
-  #### `unmountAPIKeys()` usage
+#### `unmountAPIKeys()` usage
 
   ```js {{ filename: 'main.js', mark: [19] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -206,6 +207,7 @@ To utilize the `<APIKeys />` component, you must first enable API keys in the Cl
 
   clerk.unmountAPIKeys(apiKeysDiv)
   ```
+
 </If>
 
 ## Properties
@@ -220,22 +222,22 @@ All props are optional.
 
   ---
 
-  - `showDescription?`
-  - `boolean`
+- `showDescription?`
+- `boolean`
 
   Whether to show the description field in the API key creation form. Defaults to `false`.
 
   ---
 
-  - `appearance?`
-  - <code>[Appearance](/docs/guides/customizing-clerk/appearance-prop/overview) | undefined</code>
+- `appearance?`
+- <code>[Appearance](/docs/guides/customizing-clerk/appearance-prop/overview) | undefined</code>
 
   Optional object to style your components. Will only affect [Clerk components](/docs/reference/components/overview) and not [Account Portal](/docs/guides/account-portal/overview) pages.
 
   ---
 
-  - `fallback?`
-  - `ReactNode`
+- `fallback?`
+- `ReactNode`
 
   An optional element to be rendered while the component is mounting.
 </Properties>

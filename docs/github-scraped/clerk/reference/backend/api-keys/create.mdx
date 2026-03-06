@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/api-keys/create.mdx
 
 ---
+
 title: '`create()`'
 description: Use Clerk's JS Backend SDK to create an API key.
 sdk: js-backend
@@ -24,43 +25,43 @@ function create(params: CreateAPIKeyParams): Promise<APIKeyResource>
 
   ---
 
-  - `subject`
-  - `string`
+- `subject`
+- `string`
 
   The user ID (`user_xxx`) or organization ID (`org_xxx`) to associate the API key with.
 
   ---
 
-  - `description?`
-  - `string | null`
+- `description?`
+- `string | null`
 
   A longer description of what the API key is used for.
 
   ---
 
-  - `scopes?`
-  - `string[]`
+- `scopes?`
+- `string[]`
 
   An array of scope strings that define what the API key can access.
 
   ---
 
-  - `claims?`
-  - `Record<string, unknown> | null`
+- `claims?`
+- `Record<string, unknown> | null`
 
   Additional custom claims to store additional information about the API key.
 
   ---
 
-  - `createdBy?`
-  - `string | null`
+- `createdBy?`
+- `string | null`
 
   The user ID of the user creating the API key (for audit purposes).
 
   ---
 
-  - `secondsUntilExpiration?`
-  - `number | null`
+- `secondsUntilExpiration?`
+- `number | null`
 
   Number of seconds until the API key expires. Defaults to `null` (API key does not expire).
 </Properties>

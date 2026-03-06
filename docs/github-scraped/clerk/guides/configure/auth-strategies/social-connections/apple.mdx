@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/apple.mdx
 
 ---
+
 title: Add Apple as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Apple ID using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Apple ID using OAuth
 ---
 
 <TutorialHero
@@ -52,7 +53,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Email Source for Apple Private Email Relay** and **Return URL** values somewhere secure, as you'll need to provide them to Apple later. Keep this page open.
 
-  ### Get your Apple Team ID
+### Get your Apple Team ID
 
   To get your **Apple Team ID**, create a new **App ID** in the Apple Developer portal by following these steps:
 
@@ -66,7 +67,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. At the top of the page, you'll see your **App ID Prefix**. Save this value somewhere secure. This is your **Apple Team ID** in Clerk.
   1. Finally, select **Register**. You'll be redirected to the **Identifiers** page.
 
-  ### Get your Apple Services ID
+### Get your Apple Services ID
 
   To get your **Apple Services ID**, create a new **Services ID** in the Apple Developer portal.
 
@@ -84,7 +85,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Continue**. You'll be redirected to the confirmation page.
   1. Select **Save**. You'll be redirected to the **Identifiers** page.
 
-  ### Get your Apple Private Key and Key ID
+### Get your Apple Private Key and Key ID
 
   To get your **Apple Private Key** and **Key ID**, create a new **Key** in the Apple Developer portal.
 
@@ -97,7 +98,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Download the private key file. This is your **Apple Private Key** in Clerk. Ensure you back up the key in a secure location, as it cannot be downloaded again later.
   1. Select **Done**. You'll be redirected to the **Keys** page.
 
-  ### Configure Email Source for Apple Private Relay
+### Configure Email Source for Apple Private Relay
 
   > [!NOTE]
   > In some regions (such as China and India), Apple IDs may not include an email address at all, and instead are tied only to a phone number. If your instance requires all users to have an email, Sign in with Apple may fail for these users. Depending on your user base, you may want to navigate to the [**User & authentication**](https://dashboard.clerk.com/~/user-authentication/user-and-authentication) page in the Clerk Dashboard and disable the **Sign-up with email** setting.
@@ -120,17 +121,17 @@ To make the setup process easier, it's recommended to keep two browser tabs open
 
   For more info about Apple's Private Relay service, refer to the following documentation:
 
-  - [https://support.apple.com/en-us/HT210425#hideemail](https://support.apple.com/en-us/HT210425#hideemail)
-  - [https://developer.apple.com/help/account/configure-app-capabilities/configure-private-email-relay-service](https://developer.apple.com/help/account/configure-app-capabilities/configure-private-email-relay-service)
+- [https://support.apple.com/en-us/HT210425#hideemail](https://support.apple.com/en-us/HT210425#hideemail)
+- [https://developer.apple.com/help/account/configure-app-capabilities/configure-private-email-relay-service](https://developer.apple.com/help/account/configure-app-capabilities/configure-private-email-relay-service)
 
-  ### Connect your Apple app to your Clerk app
+### Connect your Apple app to your Clerk app
 
   By now, you should have the following values saved from the Apple Developer portal:
 
-  - **Apple Team ID**
-  - **Apple Services ID**
-  - **Apple Key ID**
-  - **Apple Private Key** file
+- **Apple Team ID**
+- **Apple Services ID**
+- **Apple Key ID**
+- **Apple Private Key** file
 
   Connect your Apple app to your Clerk app by adding these values to the Clerk Dashboard.
 
@@ -138,7 +139,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Add all the corresponding fields depending on your desired flow. For the **Apple Private Key** file, open it with a text editor and copy/paste the contents. You must include the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` lines.
   1. Select **Save**.
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

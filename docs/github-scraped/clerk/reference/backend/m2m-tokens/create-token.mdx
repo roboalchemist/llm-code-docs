@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/m2m-tokens/create-token.mdx
 
 ---
+
 title: '`createToken()`'
 description: Use Clerk's JS Backend SDK to create a M2M token.
 sdk: js-backend
@@ -22,22 +23,22 @@ function createToken(params?: CreateM2MTokenParams): Promise<M2MToken>
 
   ---
 
-  - `tokenFormat?`
-  - `'opaque' | 'jwt'`
+- `tokenFormat?`
+- `'opaque' | 'jwt'`
 
   The format of the token. Defaults to `'opaque'`. Set to `'jwt'` to create a [JSON Web Token](/docs/guides/how-clerk-works/tokens-and-signatures#json-web-tokens-jwts) that can be verified locally without a network request. For a detailed comparison of the two formats, see [Token formats](/docs/guides/development/machine-auth/token-formats).
 
   ---
 
-  - `secondsUntilExpiration?`
-  - `number | null`
+- `secondsUntilExpiration?`
+- `number | null`
 
   Number of seconds until the token expires. Defaults to `null` (token does not expire).
 
   ---
 
-  - `claims?`
-  - `Record<string, unknown> | null`
+- `claims?`
+- `Record<string, unknown> | null`
 
   Additional custom claims to include in the token payload.
 </Properties>

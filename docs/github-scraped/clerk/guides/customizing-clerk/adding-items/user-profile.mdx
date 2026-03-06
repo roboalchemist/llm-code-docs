@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/adding-items/user-profile.mdx
 
 ---
+
 title: Add custom pages and links to the `<UserProfile />` component
 description: Learn how to add custom pages and include external links within the navigation sidenav of the <UserProfile /> component.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -46,22 +47,22 @@ To add a custom page to the `<UserProfile />` component, you will need to use on
 
   ---
 
-  - `labelIcon`
-  - `React.ReactElement`
+- `labelIcon`
+- `React.ReactElement`
 
   An icon displayed next to the label in the navigation sidenav.
 
   ---
 
-  - `url`
-  - `string`
+- `url`
+- `string`
 
   The path segment that will be used to navigate to the custom page. For example, if the `<UserProfile />` component is rendered at `/user`, then the custom page will be accessed at `/user/{url}` when using [path routing](/docs/guides/how-clerk-works/routing).
 
   ---
 
-  - `children`
-  - `React.ReactElement`
+- `children`
+- `React.ReactElement`
 
   The content to be rendered inside the custom page.
 </Properties>
@@ -357,6 +358,7 @@ To add a custom page to the `<UserProfile />` component, you will need to use on
     ],
   })
   ```
+
 </If>
 
 ## Add a custom link
@@ -374,7 +376,7 @@ To add a custom page to the `<UserProfile />` component, you will need to use on
   | `<UserButton />` component | `<UserButton.UserProfileLink />` |
   | Dedicated page with the `<UserProfile />` component | `<UserProfile.Link />` |
 
-  ### Props
+### Props
 
   `<UserButton.UserProfileLink />` and `<UserProfile.Link />` accept the following props, all of which are **required**:
 
@@ -399,7 +401,7 @@ To add a custom page to the `<UserProfile />` component, you will need to use on
     The path segment that will be used to navigate to the custom page. For example, if the `<UserProfile />` component is rendered at `/user`, then the custom link will be navigate to `/user/{url}` when using [path routing](/docs/guides/how-clerk-works/routing).
   </Properties>
 
-  ### Example
+### Example
 
   The following example adds a custom link to the `<UserProfile />` sidenav that navigates to the homepage.
 
@@ -740,7 +742,7 @@ The following example adds a custom page as the first item in the sidenav, follo
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="user-profile"></div>
+<div id="user-profile"></div>
   `
 
   const userProfileDiv = document.getElementById('user-profile')
@@ -758,7 +760,7 @@ The following example adds a custom page as the first item in the sidenav, follo
         },
         mount: (el) => {
           el.innerHTML = `
-            <h1><b>Custom Page</b></h1>
+<h1><b>Custom Page</b></h1>
             <p>This is the content of the custom page.</p>
             `
         },
@@ -774,6 +776,7 @@ The following example adds a custom page as the first item in the sidenav, follo
       },
     ],
   })
+
   ```
 </If>
 

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/user.mdx
 
 ---
+
 title: '`User` object'
 description: The User object holds all the information for a user of your application and provides a set of methods to manage their account. Users have a unique authentication identifier which might be their email address, phone number or a username.
 sdk: js-frontend
@@ -20,232 +21,232 @@ The ClerkJS SDK provides some helper [methods](#methods) on the `User` object to
 
   ---
 
-  - `createdAt`
-  - `Date | null`
+- `createdAt`
+- `Date | null`
 
   The date when the user was first created.
 
   ---
 
-  - `createOrganizationEnabled`
-  - `boolean`
+- `createOrganizationEnabled`
+- `boolean`
 
   A boolean indicating whether the Organization creation permission is enabled for the user. Defaults to `false`.
 
   ---
 
-  - `createOrganizationsLimit`
-  - `number`
+- `createOrganizationsLimit`
+- `number`
 
   A number indicating the number of Organizations that can be created by the user. If the value is `0`, then the user can create unlimited Organizations. Defaults to `null`.
 
   ---
 
-  - `deleteSelfEnabled`
-  - `boolean`
+- `deleteSelfEnabled`
+- `boolean`
 
   A boolean indicating whether the user is able to delete their own account.
 
   ---
 
-  - `emailAddresses`
-  - <code>[EmailAddress][email-ref]\[]</code>
+- `emailAddresses`
+- <code>[EmailAddress][email-ref]\[]</code>
 
   An array of all the `EmailAddress` objects associated with the user. Includes the primary.
 
   ---
 
-  - `enterpriseAccounts`
-  - <code>[EnterpriseAccount](/docs/reference/javascript/types/enterprise-account)\[]</code>
+- `enterpriseAccounts`
+- <code>[EnterpriseAccount](/docs/reference/javascript/types/enterprise-account)\[]</code>
 
   An array of all the `EnterpriseAccount` objects associated with the user.
 
   ---
 
-  - `externalAccounts`
-  - <code>[ExternalAccount][exacc-ref]\[]</code>
+- `externalAccounts`
+- <code>[ExternalAccount][exacc-ref]\[]</code>
 
   An array of all the `ExternalAccount` objects associated with the user via OAuth. This includes both verified & unverified external accounts.
 
   ---
 
-  - `externalId`
-  - `string | null`
+- `externalId`
+- `string | null`
 
   The user's ID as used in your external systems. Must be unique across your instance.
 
   ---
 
-  - `firstName`
-  - `string | null`
+- `firstName`
+- `string | null`
 
   The user's first name.
 
   ---
 
-  - `fullName`
-  - `string | null`
+- `fullName`
+- `string | null`
 
   The user's full name.
 
   ---
 
-  - `hasImage`
-  - `boolean`
+- `hasImage`
+- `boolean`
 
   A boolean that indicates whether the user has uploaded an image or one was copied from OAuth. Returns `false` if Clerk is displaying an avatar for the user.
 
   ---
 
-  - `hasVerifiedEmailAddress`
-  - `boolean`
+- `hasVerifiedEmailAddress`
+- `boolean`
 
   A boolean that indicates whether the user has verified an email address.
 
   ---
 
-  - `hasVerifiedPhoneNumber`
-  - `boolean`
+- `hasVerifiedPhoneNumber`
+- `boolean`
 
   A boolean that indicates whether the user has verified a phone number.
 
   ---
 
-  - `id`
-  - `string`
+- `id`
+- `string`
 
   The user's unique identifier.
 
   ---
 
-  - `imageUrl`
-  - `string`
+- `imageUrl`
+- `string`
 
   Holds the default avatar or user's uploaded profile image. Compatible with Clerk's [Image Optimization](/docs/guides/development/image-optimization).
 
   ---
 
-  - `lastSignInAt`
-  - `Date | null`
+- `lastSignInAt`
+- `Date | null`
 
   The date when the user last signed in. `null` if the user has never signed in.
 
   ---
 
-  - `lastName`
-  - `string | null`
+- `lastName`
+- `string | null`
 
   The user's last name.
 
   ---
 
-  - `legalAcceptedAt`
-  - `Date | null`
+- `legalAcceptedAt`
+- `Date | null`
 
   The date when the user accepted the legal documents. `null` if [**Require express consent to legal documents**](/docs/guides/secure/legal-compliance) is not enabled.
 
   ---
 
-  - `organizationMemberships`
-  - <code>[OrganizationMembership](/docs/reference/javascript/types/organization-membership)\[]</code>
+- `organizationMemberships`
+- <code>[OrganizationMembership](/docs/reference/javascript/types/organization-membership)\[]</code>
 
   A list of `OrganizationMembership`s representing the list of Organizations the user is a member of.
 
   ---
 
-  - `passkeys`
-  - <code>[PasskeyResource](/docs/reference/javascript/types/passkey-resource)\[] | null</code>
+- `passkeys`
+- <code>[PasskeyResource](/docs/reference/javascript/types/passkey-resource)\[] | null</code>
 
   An array of passkeys associated with the user's account.
 
   ---
 
-  - `passwordEnabled`
-  - `boolean`
+- `passwordEnabled`
+- `boolean`
 
   A boolean indicating whether the user has a password on their account.
 
   ---
 
-  - `phoneNumbers`
-  - <code>[PhoneNumber][phone-ref]\[]</code>
+- `phoneNumbers`
+- <code>[PhoneNumber][phone-ref]\[]</code>
 
   An array of all the `PhoneNumber` objects associated with the user. Includes the primary.
 
   ---
 
-  - `primaryEmailAddress`
-  - <code>[EmailAddress][email-ref] | null</code>
+- `primaryEmailAddress`
+- <code>[EmailAddress][email-ref] | null</code>
 
   Information about the user's primary email address.
 
   ---
 
-  - `primaryEmailAddressId`
-  - `string | null`
+- `primaryEmailAddressId`
+- `string | null`
 
   The ID for the `EmailAddress` that the user has set as primary.
 
   ---
 
-  - `primaryPhoneNumber`
-  - <code>[PhoneNumber][phone-ref] | null</code>
+- `primaryPhoneNumber`
+- <code>[PhoneNumber][phone-ref] | null</code>
 
   Information about the user's primary phone number.
 
   ---
 
-  - `primaryPhoneNumberId`
-  - `string | null`
+- `primaryPhoneNumberId`
+- `string | null`
 
   The ID for the `PhoneNumber` that the user has set as primary.
 
   ---
 
-  - `primaryWeb3Wallet`
-  - <code>[Web3Wallet][web3-ref] | null</code>
+- `primaryWeb3Wallet`
+- <code>[Web3Wallet][web3-ref] | null</code>
 
   The `Web3Wallet` that the user signed up with.
 
   ---
 
-  - `primaryWeb3WalletId`
-  - `string | null`
+- `primaryWeb3WalletId`
+- `string | null`
 
   The ID for the [`Web3Wallet`][web3-ref] that the user signed up with.
 
   ---
 
-  - `privateMetadata`
-  - [`UserPrivateMetadata`](/docs/reference/javascript/types/metadata#user-private-metadata)
+- `privateMetadata`
+- [`UserPrivateMetadata`](/docs/reference/javascript/types/metadata#user-private-metadata)
 
   Metadata that can be read and set only from the [Backend API](/docs/reference/backend-api){{ target: '_blank' }}.
 
   ---
 
-  - `publicMetadata`
-  - [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
+- `publicMetadata`
+- [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
 
   Metadata that can be read from the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }} and can be set only from the Backend API.
 
   ---
 
-  - `totpEnabled`
-  - `boolean`
+- `totpEnabled`
+- `boolean`
 
   A boolean indicating whether the user has enabled TOTP by generating a TOTP secret and verifying it via an authenticator app.
 
   ---
 
-  - `twoFactorEnabled`
-  - `boolean`
+- `twoFactorEnabled`
+- `boolean`
 
   A boolean indicating whether the user has enabled two-factor authentication.
 
   ---
 
-  - `unsafeMetadata`
-  - [`UserUnsafeMetadata`](/docs/reference/javascript/types/metadata#user-unsafe-metadata)
+- `unsafeMetadata`
+- [`UserUnsafeMetadata`](/docs/reference/javascript/types/metadata#user-unsafe-metadata)
 
   Metadata that can be read and set from the Frontend API. It's considered unsafe because it can be modified from the frontend.
 
@@ -253,43 +254,43 @@ The ClerkJS SDK provides some helper [methods](#methods) on the `User` object to
 
   ---
 
-  - `updatedAt`
-  - `Date | null`
+- `updatedAt`
+- `Date | null`
 
   The date when the user was last updated.
 
   ---
 
-  - `verifiedExternalAccounts`
-  - <code>[ExternalAccount][exacc-ref]\[]</code>
+- `verifiedExternalAccounts`
+- <code>[ExternalAccount][exacc-ref]\[]</code>
 
   An array of all the `ExternalAccount` objects associated with the user via OAuth that are verified.
 
   ---
 
-  - `verifiedWeb3Wallets`
-  - <code>[Web3Wallet][web3-ref]\[]</code>
+- `verifiedWeb3Wallets`
+- <code>[Web3Wallet][web3-ref]\[]</code>
 
   An array of all the `Web3Wallet` objects associated with the user that are verified.
 
   ---
 
-  - `unverifiedExternalAccounts`
-  - <code>[ExternalAccount][exacc-ref]\[]</code>
+- `unverifiedExternalAccounts`
+- <code>[ExternalAccount][exacc-ref]\[]</code>
 
   An array of all the `ExternalAccount` objects associated with the user via OAuth that are not verified.
 
   ---
 
-  - `username`
-  - `string | null`
+- `username`
+- `string | null`
 
   The user's [username](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#username). Only supported if username is enabled in the instance settings.
 
   ---
 
-  - `web3Wallets`
-  - <code>[Web3Wallet][web3-ref]\[]</code>
+- `web3Wallets`
+- <code>[Web3Wallet][web3-ref]\[]</code>
 
   An array of all the `Web3Wallet` objects associated with the user. Includes the primary.
 </Properties>
@@ -357,29 +358,29 @@ function createExternalAccount(params: CreateExternalAccountParams): Promise<Ext
 
   ---
 
-  - `redirectUrl?`
-  - `string`
+- `redirectUrl?`
+- `string`
 
   The full URL or path that the OAuth provider should redirect to, on successful authorization on their part. Typically, this will be a simple `/sso-callback` route that calls [`Clerk.handleRedirectCallback`](/docs/reference/javascript/clerk#handle-redirect-callback) or mounts the [`<AuthenticateWithRedirectCallback />`](/docs/reference/components/control/authenticate-with-redirect-callback) component. See the [custom flow](/docs/guides/development/custom-flows/authentication/oauth-connections) for implementation details.
 
   ---
 
-  - `additionalScopes?`
-  - `string[]`
+- `additionalScopes?`
+- `string[]`
 
   Additional scopes for your user to be prompted to approve.
 
   ---
 
-  - `oidcPrompt?`
-  - `string`
+- `oidcPrompt?`
+- `string`
 
   The value to pass to the [OIDC `prompt` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=prompt,reauthentication%20and%20consent.) in the generated OAuth redirect URL.
 
   ---
 
-  - `oidcLoginHint?`
-  - `string`
+- `oidcLoginHint?`
+- `string`
 
   The value to pass to the [OIDC `login_hint` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=login_hint,in%20\(if%20necessary\).) in the generated OAuth redirect URL.
 </Properties>
@@ -396,6 +397,7 @@ Upon return, inspect within the `user.externalAccounts` the entry that correspon
 The following example demonstrates how to add a Notion account as an external account for the user. When the user selects the "Add Notion as a social connection" button, the user will be redirected to Notion to connect their account. After connecting their account, they will be redirected to the `/` route of your application, and the status of the connection will be displayed.
 
 <CodeBlockTabs options={["index.html", "main.js"]}>
+
   ```html {{ filename: 'index.html', collapsible: true }}
   <!doctype html>
   <html lang="en">
@@ -455,6 +457,7 @@ The following example demonstrates how to add a Notion account as an external ac
     clerk.mountSignIn(signInDiv)
   }
   ```
+
 </CodeBlockTabs>
 
 ### `createPasskey()`
@@ -589,15 +592,15 @@ function getOrganizationInvitations(
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that indicates the maximum number of results that should be returned for a specific page.
 
   ---
 
-  - `status?`
-  - `'pending' | 'accepted' | 'revoked'`
+- `status?`
+- `'pending' | 'accepted' | 'revoked'`
 
   The status an invitation can have.
 </Properties>
@@ -628,8 +631,8 @@ function getOrganizationMemberships(
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that indicates the maximum number of results that should be returned for a specific page.
 </Properties>
@@ -660,15 +663,15 @@ function getOrganizationSuggestions(
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that indicates the maximum number of results that should be returned for a specific page.
 
   ---
 
-  - `status?`
-  - `'pending' | 'accepted' | ['pending' | 'accepted']`
+- `status?`
+- `'pending' | 'accepted' | ['pending' | 'accepted']`
 
   The status an invitation can have.
 </Properties>
@@ -821,15 +824,15 @@ function setProfileImage(params: SetProfileImageParams): Promise<ImageResource>
 
   ---
 
-  - `name`
-  - `string | null`
+- `name`
+- `string | null`
 
   The name of the image.
 
   ---
 
-  - `publicUrl`
-  - `string | null`
+- `publicUrl`
+- `string | null`
 
   The publicly accessible url for the image.
 </Properties>
@@ -862,43 +865,43 @@ All props below are optional.
 
   ---
 
-  - `firstName`
-  - `string`
+- `firstName`
+- `string`
 
   The user's first name.
 
   ---
 
-  - `lastName`
-  - `string`
+- `lastName`
+- `string`
 
   The user's last name.
 
   ---
 
-  - `primaryEmailAddressId`
-  - `string`
+- `primaryEmailAddressId`
+- `string`
 
   The ID for the [`EmailAddress`][email-ref] that the user has set as primary.
 
   ---
 
-  - `primaryPhoneNumberId`
-  - `string`
+- `primaryPhoneNumberId`
+- `string`
 
   The ID for the [`PhoneNumber`][phone-ref] that the user has set as primary.
 
   ---
 
-  - `primaryWeb3WalletId`
-  - `string`
+- `primaryWeb3WalletId`
+- `string`
 
   The ID for the [`Web3Wallet`][web3-ref] that the user signed up with.
 
   ---
 
-  - `unsafeMetadata`
-  - [`UserUnsafeMetadata`](/docs/reference/javascript/types/metadata#user-unsafe-metadata)
+- `unsafeMetadata`
+- [`UserUnsafeMetadata`](/docs/reference/javascript/types/metadata#user-unsafe-metadata)
 
   Metadata that can be read and set from the Frontend API. One common use case for this attribute is to implement custom fields that will be attached to the `User` object. Updating this value overrides the previous value; it does not merge. To perform a merge, you can pass something like `{ …user.unsafeMetadata, …newData }` to this parameter.
 </Properties>
@@ -927,15 +930,15 @@ function updatePassword(params: UpdateUserPasswordParams): Promise<User>
 
   ---
 
-  - `currentPassword?`
-  - `string`
+- `currentPassword?`
+- `string`
 
   The user's current password.
 
   ---
 
-  - `signOutOfOtherSessions?`
-  - `boolean | undefined`
+- `signOutOfOtherSessions?`
+- `boolean | undefined`
 
   If set to `true`, all sessions will be signed out.
 </Properties>

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/secure/best-practices/csrf-protection.mdx
 
 ---
+
 title: CSRF protection
-description: CSRF is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim’s behalf.
+description: CSRF is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim’s behalf
 ---
 
 Cross Site Request Forgery (CSRF) is an attack that deceives a victim into submitting a malicious request. The attack inherits the victim's identity and privileges to perform an undesired action on the their behalf. For most sites, browser requests automatically include credentials associated with the site, such as the user's session cookie, IP address, Windows domain credentials, and more. Therefore, if the user is currently authenticated, the site cannot distinguish between a forged request initiated by the attacker and a legitimate request from the user.

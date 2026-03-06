@@ -1,11 +1,12 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/upgrading/upgrade-guides/core-2/nextjs.mdx
 
 ---
+
 title: Upgrading `@clerk/nextjs` to Core 2
 description: "Learn how to upgrade Clerk's Next.js SDK to the latest version."
 ---
 
-{/* WARNING: This is a generated file and should not be edited directly. To update its contents, see the "upgrade" package in the clerk/javascript repo. */}
+{/*WARNING: This is a generated file and should not be edited directly. To update its contents, see the "upgrade" package in the clerk/javascript repo.*/}
 
 Core 2 is included in the Next.js SDK starting with version 5.0.0. This new version ships with an improved design and UX for its built-in components, no "flash of white page" when authenticating, a substantially improved middleware import, and a variety of smaller DX improvements and housekeeping items. Each of the potentially breaking changes are detailed in this guide, below.
 
@@ -108,7 +109,7 @@ See the [`clerkMiddleware()`](/docs/reference/nextjs/clerk-middleware) docs for 
 
 #### Migrating to `clerkMiddleware()`
 
-Clerk strongly recommends migrating to the new `clerkMiddleware()` for an improved DX and access to all present and upcoming features. However, `authMiddleware()`, while deprecated, will continue to work in v5 and will not be removed until the next major version, so you do not _need_ to make any changes to your Middleware setup this version.
+Clerk strongly recommends migrating to the new `clerkMiddleware()` for an improved DX and access to all present and upcoming features. However, `authMiddleware()`, while deprecated, will continue to work in v5 and will not be removed until the next major version, so you do not *need* to make any changes to your Middleware setup this version.
 
 The most basic migration will be updating the import and changing out the default export, then mirroring the previous behavior of protecting all routes except `/sign-in` or `/sign-up` by doing the following:
 

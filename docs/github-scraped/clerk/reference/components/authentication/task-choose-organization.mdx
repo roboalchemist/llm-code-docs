@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/authentication/task-choose-organization.mdx
 
 ---
+
 title: '`<TaskChooseOrganization />` component'
 description: Clerk's <TaskSelectComponent /> component renders a UI for resolving the choose-organization task.
 sdk: js-frontend, nextjs, react, react-router, remix, tanstack-react-start
@@ -225,12 +226,12 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<TaskChooseOrganization />` component:
 
-  - [`mountTaskChooseOrganization()`](#mount-task-choose-organization)
-  - [`unmountTaskChooseOrganization()`](#unmount-task-choose-organization)
+- [`mountTaskChooseOrganization()`](#mount-task-choose-organization)
+- [`unmountTaskChooseOrganization()`](#unmount-task-choose-organization)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### `mountTaskChooseOrganization()`
+### `mountTaskChooseOrganization()`
 
   Render the `<TaskChooseOrganization />` component to an HTML `<div>` element.
 
@@ -241,7 +242,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
   ): void
   ```
 
-  #### `mountTaskChooseOrganization()` params
+#### `mountTaskChooseOrganization()` params
 
   <Properties>
     - `node `
@@ -257,7 +258,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
     The properties to pass to the `<TaskChooseOrganization />` component.
   </Properties>
 
-  #### `mountTaskChooseOrganization()` usage
+#### `mountTaskChooseOrganization()` usage
 
   ```typescript {{ filename: 'main.ts', mark: [26] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -291,7 +292,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
   }
   ```
 
-  ### `unmountTaskChooseOrganization()`
+### `unmountTaskChooseOrganization()`
 
   Unmount and run cleanup on an existing `<TaskChooseOrganization />` component instance.
 
@@ -299,7 +300,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
   function unmountTaskChooseOrganization(node: HTMLDivElement): void
   ```
 
-  #### `unmountTaskChooseOrganization()` params
+#### `unmountTaskChooseOrganization()` params
 
   <Properties>
     - `node `
@@ -308,7 +309,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
     The container `<div>` element with a rendered `<SignUp />` component instance
   </Properties>
 
-  #### `unmountTaskChooseOrganization()` usage
+#### `unmountTaskChooseOrganization()` usage
 
   ```typescript {{ filename: 'main.ts', mark: [30] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -345,6 +346,7 @@ If you want to customize the route where the `<TaskChooseOrganization />` compon
     }
   }
   ```
+
 </If>
 
 ## Properties

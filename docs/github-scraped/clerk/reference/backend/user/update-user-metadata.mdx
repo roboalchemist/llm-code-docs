@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/user/update-user-metadata.mdx
 
 ---
+
 title: '`updateUserMetadata()`'
 description: Use Clerk's JS Backend SDK to update the metadata associated with the specified user.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L171 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L171*/}
 
 Updates the metadata associated with the specified user by merging existing values with the provided parameters.
 
@@ -28,15 +29,15 @@ function updateUserMetadata(userId: string, params: UpdateUserMetadataParams): P
 
   ---
 
-  - `publicMetadata?`
-  - [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
+- `publicMetadata?`
+- [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
 
   Metadata that can be read from the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }} and can be set only from the Backend API.
 
   ---
 
-  - `privateMetadata?`
-  - [`UserPrivateMetadata`](/docs/reference/javascript/types/metadata#user-private-metadata)
+- `privateMetadata?`
+- [`UserPrivateMetadata`](/docs/reference/javascript/types/metadata#user-private-metadata)
 
   Metadata that can be read and set only from the [Backend API](/docs/reference/backend-api){{ target: '_blank' }}.
 </Properties>

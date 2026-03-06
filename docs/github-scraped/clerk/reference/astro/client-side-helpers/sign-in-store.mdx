@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/astro/client-side-helpers/sign-in-store.mdx
 
 ---
+
 title: '`$signInStore`'
 description: Clerk's $signInStore nanostore provides a convenient way to access the SignIn object, which allows you to check the current state of a sign-in.
 sdk: astro
@@ -15,6 +16,7 @@ The `$signInStore` store provides a convenient way to access the [`SignIn`](/doc
 The following example demonstrates how to use the `$signInStore` store to check the current state of a sign-in.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'sign-in-step.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $signInStore } from '@clerk/astro/client'
@@ -62,6 +64,7 @@ The following example demonstrates how to use the `$signInStore` store to check 
     <div>The current sign in attempt status is {$signIn.status}.</div>
   {/if}
   ```
+
 </CodeBlockTabs>
 
 The possible values for the `status` property of the `SignIn` resource are listed [here](/docs/reference/javascript/sign-in#properties).

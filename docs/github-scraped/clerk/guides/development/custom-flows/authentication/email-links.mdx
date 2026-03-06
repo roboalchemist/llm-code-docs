@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/email-links.mdx
 
 ---
+
 title: Build a custom flow for handling email links
-description: Learn how to build a custom flow using Clerk's API to handle email links for sign-up, sign-in, and email address verification.
+description: Learn how to build a custom flow using Clerk's API to handle email links for sign-up, sign-in, and email address verification
 ---
 
 <If sdk={["expo", "ios", "android"]}>
@@ -37,11 +38,11 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
 
   This guide demonstrates how to use Clerk's API to build a custom flow for handling email links. It covers the following scenarios:
 
-  - [Sign up](#sign-up-flow)
-  - [Sign in](#sign-in-flow)
-  - [Verify a new email address](#add-new-email-flow)
+- [Sign up](#sign-up-flow)
+- [Sign in](#sign-in-flow)
+- [Verify a new email address](#add-new-email-flow)
 
-  ## Enable email link authentication
+## Enable email link authentication
 
   To allow your users to sign up or sign in using email links, you must first configure the appropriate settings in the Clerk Dashboard. **For the examples in this guide to work, you must enable the following settings.** If your application requires more settings to be enabled, you'll need to combine this custom flow with the other appropriate custom flows.
 
@@ -49,7 +50,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
   1. Enable **Sign-up with email**. Enable **Verify at sign-up** and enable **Email verification link**.
   1. Enable **Sign-in with email**. Enable **Email verification link**. By default, [**Require the same device and browser**](!require-same-device-browser) setting is enabled. This guide includes the code necessary to handle this setting, but you can remove it if you don't want to enforce this setting; there will be a comment in the code to indicate where to remove the code.
 
-  ## Sign-up flow
+## Sign-up flow
 
   <If notSdk="nextjs">
     <Include src="_partials/sdk-examples-not-available-callout" />
@@ -246,7 +247,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
     ```
   </CodeBlockTabs>
 
-  ## Sign-in flow
+## Sign-in flow
 
   <If notSdk="nextjs">
     <Include src="_partials/sdk-examples-not-available-callout" />
@@ -457,7 +458,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
     ```
   </CodeBlockTabs>
 
-  ## Add new email flow
+## Add new email flow
 
   When a user adds an email address to their account, you can use email links to verify the email address.
 

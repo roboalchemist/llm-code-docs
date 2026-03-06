@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/clerk-api-error.mdx
 
 ---
+
 title: '`ClerkAPIError`'
 description: An interface that represents an error returned by the Clerk API.
 sdk: js-frontend
@@ -16,120 +17,120 @@ An interface that represents an error returned by the Clerk API.
 
   ---
 
-  - `message`
-  - `string`
+- `message`
+- `string`
 
   A message that describes the error.
 
   ---
 
-  - `longMessage?`
-  - `string`
+- `longMessage?`
+- `string`
 
   A more detailed message that describes the error.
 
   ---
 
-  - `meta?`
-  - `object`
+- `meta?`
+- `object`
 
   Additional information about the error.
 
   ---
 
-  - `meta.paramName?`
-  - `string`
+- `meta.paramName?`
+- `string`
 
   The name of the parameter that caused the error.
 
   ---
 
-  - `meta.sessionId?`
-  - `string`
+- `meta.sessionId?`
+- `string`
 
   The ID of the session that caused the error.
 
   ---
 
-  - `meta.emailAddresses?`
-  - `string[]`
+- `meta.emailAddresses?`
+- `string[]`
 
   The email addresses that caused the error.
 
   ---
 
-  - `meta.identifiers?`
-  - `string[]`
+- `meta.identifiers?`
+- `string[]`
 
   The identifiers that caused the error.
 
   ---
 
-  - `meta.zxcvbn?`
-  - `object`
+- `meta.zxcvbn?`
+- `object`
 
   The [zxcvbn](https://github.com/dropbox/zxcvbn) score of the password that caused the error.
 
   ---
 
-  - `meta.zxcvbn.suggestions?`
-  - `{ code: string; message: string; }[]`
+- `meta.zxcvbn.suggestions?`
+- `{ code: string; message: string; }[]`
 
   Suggestions to improve the password.
 
   ---
 
-  - `meta.permissions?`
-  - `string[]`
+- `meta.permissions?`
+- `string[]`
 
   The permissions that caused the error.
 
   ---
 
-  - `meta.plan?`
-  - `object`
+- `meta.plan?`
+- `object`
 
   The plan that caused the error.
 
   ---
 
-  - `meta.plan.id?`
-  - `string`
+- `meta.plan.id?`
+- `string`
 
   The ID of the plan that caused the error.
 
   ---
 
-  - `meta.plan.name?`
-  - `string`
+- `meta.plan.name?`
+- `string`
 
   The name of the plan.
 
   ---
 
-  - `meta.plan.amount_formatted?`
-  - `string`
+- `meta.plan.amount_formatted?`
+- `string`
 
   The formatted amount of the plan.
 
   ---
 
-  - `meta.plan.annual_monthly_amount_formatted?`
-  - `string`
+- `meta.plan.annual_monthly_amount_formatted?`
+- `string`
 
   The formatted annual or monthly amount of the plan.
 
   ---
 
-  - `meta.plan.currency_symbol?`
-  - `string`
+- `meta.plan.currency_symbol?`
+- `string`
 
   The currency symbol of the plan.
 
   ---
 
-  - `meta.isPlanUpgradePossible?`
-  - `boolean`
+- `meta.isPlanUpgradePossible?`
+- `boolean`
 
   Whether the plan upgrade is possible.
 </Properties>

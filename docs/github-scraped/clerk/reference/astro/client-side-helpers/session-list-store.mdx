@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/astro/client-side-helpers/session-list-store.mdx
 
 ---
+
 title: '`$sessionListStore`'
 description: Clerk's $sessionList store retrieves a list of sessions that have been registered on the client device.
 sdk: astro
@@ -13,6 +14,7 @@ The `$sessionListStore` store returns an array of [`Session`](/docs/reference/ja
 The following example demonstrates how to use the `$sessionListStore` to create a basic user button component. This component displays the current session's email address and provides a menu to switch between active sessions or sign out of all accounts.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'user-button.tsx' }}
   import { $sessionListStore, $clerkStore } from '@clerk/astro/client'
 
@@ -94,4 +96,5 @@ The following example demonstrates how to use the `$sessionListStore` to create 
     </div>
   {/if}
   ```
+
 </CodeBlockTabs>

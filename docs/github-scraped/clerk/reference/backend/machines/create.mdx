@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/machines/create.mdx
 
 ---
+
 title: '`create()`'
 description: Use Clerk's Backend SDK to create a machine.
 sdk: js-backend
@@ -22,15 +23,15 @@ function create(params: CreateMachineParams): Promise<Machine>
 
   ---
 
-  - `scopedMachines?`
-  - `string[]`
+- `scopedMachines?`
+- `string[]`
 
   Array of machine IDs that this machine will have access to.
 
   ---
 
-  - `defaultTokenTtl?`
-  - `number`
+- `defaultTokenTtl?`
+- `number`
 
   The default time-to-live (TTL) in seconds for tokens created by this machine.
 </Properties>

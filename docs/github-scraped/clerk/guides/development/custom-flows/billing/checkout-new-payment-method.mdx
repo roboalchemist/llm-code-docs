@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/billing/checkout-new-payment-method.mdx
 
 ---
+
 title: Build a custom checkout flow with a new payment method
-description: Learn how to use the Clerk API to build a custom checkout flow that allows users to add a new payment method during checkout.
+description: Learn how to use the Clerk API to build a custom checkout flow that allows users to add a new payment method during checkout
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -20,7 +21,7 @@ For the custom flow that allows users to add a new payment method to their accou
 
   To use Billing Features, you first need to ensure they are enabled for your application. Follow the [Billing documentation](/docs/guides/billing/overview) to enable them and setup your Plans.
 
-  ## Build the custom flow
+## Build the custom flow
 
   To create a checkout session with a new payment card, you must:
 
@@ -36,9 +37,9 @@ For the custom flow that allows users to add a new payment method to their accou
   1. Uses the [`usePaymentElement()`](/docs/reference/hooks/use-payment-element) hook to control the payment element, which is rendered by `<PaymentElement />`.
   1. Assumes that you have already have a valid `planId`, which you can acquire in many ways.
 
-  - [Copy from the Clerk Dashboard](https://dashboard.clerk.com/~/billing/plans).
-  - Use the [Clerk Backend API](/docs/reference/backend-api/tag/commerce/get/commerce/plans#tag/commerce/get/commerce/plans){{ target: '_blank' }}.
-  - Use the new [`usePlans()`](/docs/reference/hooks/use-plans) hook to get the Plan details.
+- [Copy from the Clerk Dashboard](https://dashboard.clerk.com/~/billing/plans).
+- Use the [Clerk Backend API](/docs/reference/backend-api/tag/commerce/get/commerce/plans#tag/commerce/get/commerce/plans){{ target: '_blank' }}.
+- Use the new [`usePlans()`](/docs/reference/hooks/use-plans) hook to get the Plan details.
 
   <If notSdk="nextjs">
     <Include src="_partials/sdk-examples-not-available-callout" />
@@ -186,4 +187,5 @@ For the custom flow that allows users to add a new payment method to their accou
     )
   }
   ```
+
 </Steps>

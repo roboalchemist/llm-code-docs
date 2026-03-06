@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/sign-in-with-google.mdx
 
 ---
+
 title: Sign in with Google
 description: Learn how to configure Sign in with Google for your Clerk-powered Android app.
 sdk: android
@@ -36,7 +37,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Authorized Redirect URI** somewhere secure. Keep this page open.
 
-  ## Create the Google Developer Android client
+## Create the Google Developer Android client
 
   1. Navigate to the [Google Cloud Console](https://console.cloud.google.com/).
   1. Select an existing project or [create a new one](https://console.cloud.google.com/projectcreate). You'll be redirected to your project's **Dashboard** page.
@@ -53,20 +54,21 @@ To make the setup process easier, it's recommended to keep two browser tabs open
        ```sh {{ filename: 'terminal' }}
        keytool -keystore path-to-debug-or-production-keystore -list -v
        ```
+
   1. Select **Create**.
 
-  ## Create the Google Developer Web client
+## Create the Google Developer Web client
 
   1. In the same project, create another client. Next to **Credentials**, select **Create Credentials**. Then, select **OAuth client ID.**
   1. For the **Application type**, select **Web Application**.
   1. Complete the required fields. In the **Authorized Redirect URIs** setting, paste the **Authorized Redirect URI** value you saved from the Clerk Dashboard.
   1. Select **Create**. A modal will open with your **Client ID** and **Client Secret**. Save these values somewhere secure.
 
-  ## Set the Client ID and Client Secret in the Clerk Dashboard
+## Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ## Test your connection
+## Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 

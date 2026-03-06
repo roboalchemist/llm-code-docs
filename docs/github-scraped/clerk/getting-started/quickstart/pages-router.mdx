@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart/pages-router.mdx
 
 ---
+
 title: Next.js Quickstart (Pages Router)
 description: Add authentication and user management to your Next.js app with Clerk.
 sdk: nextjs
@@ -35,7 +36,7 @@ sdk: nextjs
 
   <Include src="_partials/nextjs/sdk-installation-step" />
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-api-keys" />
 
@@ -44,7 +45,7 @@ sdk: nextjs
   CLERK_SECRET_KEY={{secret}}
   ```
 
-  ## Add `clerkMiddleware()` to your app
+## Add `clerkMiddleware()` to your app
 
   [`clerkMiddleware()`](/docs/reference/nextjs/clerk-middleware) grants you access to user authentication state throughout your app. It also allows you to protect specific routes from unauthenticated users. To add `clerkMiddleware()` to your app, follow these steps:
 
@@ -69,9 +70,10 @@ sdk: nextjs
        ],
      }
      ```
+
   1. By default, `clerkMiddleware()` will not protect any routes. All routes are public and you must opt-in to protection for routes. See the [`clerkMiddleware()` reference](/docs/reference/nextjs/clerk-middleware) to learn how to require authentication for specific routes.
 
-  ## Add `<ClerkProvider>` to your app
+## Add `<ClerkProvider>` to your app
 
   <Include src="_partials/clerk-provider/explanation" />
 
@@ -98,11 +100,11 @@ sdk: nextjs
   export default MyApp
   ```
 
-  ## Update `globals.css`
+## Update `globals.css`
 
   <Include src="_partials/nextjs/update-globals-css" />
 
-  ## Create a header with Clerk components
+## Create a header with Clerk components
 
   You can control which content signed-in and signed-out users can see with the [prebuilt control components](/docs/reference/components/overview#control-components). The following example creates a header using the following components:
 

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.chrome-extension.mdx
 
 ---
+
 title: Chrome Extension Quickstart (Plasmo)
 description: Add authentication and user management to your Chrome Extension with Clerk using Plasmo.
 sdk: chrome-extension
@@ -27,13 +28,13 @@ sdk: chrome-extension
 
   <Include src="_partials/native-api-callout" />
 
-  ## Configure your authentication options
+## Configure your authentication options
 
   When creating your Clerk application in the Clerk Dashboard, your authentication options will depend on how you configure your Chrome Extension. Chrome Extensions can be used as a popup, a side panel, or in conjunction with a web app. Popups and side panels have limited authentication options. [Learn more about what options are available.](/docs/reference/chrome-extension/overview#authentication-options)
 
   This guide will use a popup.
 
-  ## Create a new Chrome Extension app
+## Create a new Chrome Extension app
 
   [Plasmo](https://docs.plasmo.com/framework) is a browser extension framework that includes hot reloading and creating development and production extension builds easily from the same code.
 
@@ -46,7 +47,7 @@ sdk: chrome-extension
   cd clerk-chrome-extension
   ```
 
-  ## Install `@clerk/chrome-extension`
+## Install `@clerk/chrome-extension`
 
   The [Clerk Chrome Extension SDK](/docs/reference/chrome-extension/overview) gives you access to prebuilt components, hooks, and helpers to make user authentication easier.
 
@@ -56,7 +57,7 @@ sdk: chrome-extension
   pnpm add @clerk/chrome-extension
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   Plasmo offers [several options](https://docs.plasmo.com/framework/env) for environment variable files, as the same codebase can be used for development and production builds, as well as for targeting different browsers. This guide uses `.env.development` and `.env.chrome` files.
 
@@ -77,7 +78,7 @@ sdk: chrome-extension
   CLERK_FRONTEND_API=https://{{fapi_url}}
   ```
 
-  ## Add `<ClerkProvider>` to your app
+## Add `<ClerkProvider>` to your app
 
   <Include src="_partials/clerk-provider/explanation" />
 
@@ -107,7 +108,7 @@ sdk: chrome-extension
   export default IndexPopup
   ```
 
-  ## Create a header with Clerk components
+## Create a header with Clerk components
 
   You can control what content signed in and signed out users can see with Clerk's [prebuilt components](/docs/reference/components/overview). Create a header with the following Clerk components. (With Chrome Extensions, you can also add this logic to a footer).
 
@@ -155,7 +156,7 @@ sdk: chrome-extension
   export default IndexPopup
   ```
 
-  ## Update `<ClerkProvider>` props for Chrome Extension navigation
+## Update `<ClerkProvider>` props for Chrome Extension navigation
 
   To avoid navigation errors, set the `afterSignOutUrl`, `signInFallbackRedirectUrl` and `signUpFallbackRedirectUrl` props for `<ClerkProvider>`. Chrome Extensions don't use an `http` URL, such as `http://localhost:3000`. Instead, they use a `chrome-extension://` URL appended with an unique extension ID called a CRX ID. This URL is what you will pass to these props.
 
@@ -208,7 +209,7 @@ sdk: chrome-extension
   export default IndexPopup
   ```
 
-  ## Create a consistent CRX ID for your extension
+## Create a consistent CRX ID for your extension
 
   Chrome Extensions have a unique CRX ID that rotates by default, which can cause errors with the Clerk integration. To avoid these problems, ensure that you have a **consistent** CRX ID in both development and production for your extension by following these steps:
 
@@ -216,7 +217,7 @@ sdk: chrome-extension
   1. Select **Generate KeyPairs**.
   1. Save the **Private Key** somewhere secure in case you need it in the future. Save the **Public Key** and the **CRX ID** for the next steps.
 
-  ## Create an `.env.chrome` file to store your public key
+## Create an `.env.chrome` file to store your public key
 
   Create an `.env.chrome` file and add your public key to it, as shown in the following example:
 
@@ -224,15 +225,15 @@ sdk: chrome-extension
   CRX_PUBLIC_KEY=<YOUR_PUBLIC_KEY>
   ```
 
-  ## Edit your `package.json` to use the new public key
+## Edit your `package.json` to use the new public key
 
   Plasmo [uses the `package.json` to generate a `manifest.json` on build](https://docs.plasmo.com/framework#where-is-the-manifestjson-file), and allows for the use of environment variables in `package.json`.
 
   In your `package.json`, in the `manifest` object:
 
-  - Set the `key` value to `"$CRX_PUBLIC_KEY"`. This helps configure the consistent CRX ID for your extension.
-  - Set the `permissions` array to include `"cookies"` and `"storage"`. `permissions` specifies which permissions your extension requires.
-  - Set or update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`. `host_permissions` specifies which hosts, or websites, have permission to sync auth state with your app.
+- Set the `key` value to `"$CRX_PUBLIC_KEY"`. This helps configure the consistent CRX ID for your extension.
+- Set the `permissions` array to include `"cookies"` and `"storage"`. `permissions` specifies which permissions your extension requires.
+- Set or update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`. `host_permissions` specifies which hosts, or websites, have permission to sync auth state with your app.
 
   ```json {{ filename: 'package.json' }}
   {
@@ -245,7 +246,7 @@ sdk: chrome-extension
   }
   ```
 
-  ## Use `pnpm dev` to start your development server and create a build
+## Use `pnpm dev` to start your development server and create a build
 
   Plasmo facilitates Chrome Extension development by automatically "hot loading" the app whenever you save a changed file in the project. This ensures the `build/chrome-mv3-dev` folder remains up to date. Without the plugin, you would need to manually execute the build command and reload your Chrome Extension after each change. Plasmo automates this process, streamlining development.
 
@@ -255,7 +256,7 @@ sdk: chrome-extension
   pnpm dev
   ```
 
-  ## Load your Chrome Extension into your Chromium-based browser
+## Load your Chrome Extension into your Chromium-based browser
 
   To load your Chrome Extension, follow these steps:
 
@@ -265,7 +266,7 @@ sdk: chrome-extension
   1. Navigate to where your project is located and select the `build/chrome-mv3-dev` folder. Then select **Select**. Your extension will now be loaded and shown in the list of extensions.
   1. Confirm that the ID shown in your extension matches the CRX ID you saved [earlier](#create-a-consistent-crx-id-for-your-extension).
 
-  ## Test your Chrome Extension
+## Test your Chrome Extension
 
   In your Chrome browser, open the extension popup. Ensure that the `<SignInButton>` appears, and that selecting it opens the `<SignIn />` modal. Sign in and ensure that the `<UserButton />` appears in the header.
 
@@ -285,26 +286,26 @@ Learn how to add routing to your Chrome Extension, keep user sessions in sync, a
 
   ---
 
-  - [Sync your Chrome Extension with your web app](/docs/guides/sessions/sync-host)
-  - Learn how to configure your Chrome Extension to sync user authentication with your web app.
+- [Sync your Chrome Extension with your web app](/docs/guides/sessions/sync-host)
+- Learn how to configure your Chrome Extension to sync user authentication with your web app.
 
   ---
 
-  - [createClerkClient()](/docs/reference/chrome-extension/create-clerk-client)
-  - Learn how to use Clerk's `createClerkClient()` function in a background service worker to ensure that the user's session is always fresh.
+- [createClerkClient()](/docs/reference/chrome-extension/create-clerk-client)
+- Learn how to use Clerk's `createClerkClient()` function in a background service worker to ensure that the user's session is always fresh.
 
   ---
 
-  - [Deploy a Chrome Extension to production](/docs/guides/development/deployment/chrome-extension)
-  - Learn how to deploy your Clerk Chrome Extension to production.
+- [Deploy a Chrome Extension to production](/docs/guides/development/deployment/chrome-extension)
+- Learn how to deploy your Clerk Chrome Extension to production.
 
   ---
 
-  - [Configure a consistent CRX ID](/docs/guides/development/configure-consistent-crx-id)
-  - Learn how to configure a consistent CRX ID to ensure your extension has a stable, unchanging key.
+- [Configure a consistent CRX ID](/docs/guides/development/configure-consistent-crx-id)
+- Learn how to configure a consistent CRX ID to ensure your extension has a stable, unchanging key.
 
   ---
 
-  - [Clerk Chrome Extension SDK Reference](/docs/reference/chrome-extension/overview)
-  - Learn about the Clerk Chrome Extension SDK and how to integrate it into your app.
+- [Clerk Chrome Extension SDK Reference](/docs/reference/chrome-extension/overview)
+- Learn about the Clerk Chrome Extension SDK and how to integrate it into your app.
 </Cards>

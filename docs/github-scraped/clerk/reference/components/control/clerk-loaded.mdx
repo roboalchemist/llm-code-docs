@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/control/clerk-loaded.mdx
 
 ---
+
 title: '`<ClerkLoaded>`'
 description: The <ClerkLoaded> component guarantees that the Clerk object has loaded and will be available under window.Clerk. This allows you to wrap child components to access the Clerk object without the need to check it exists.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -81,11 +82,11 @@ The `<ClerkLoaded>` component guarantees that the Clerk object has loaded (the `
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class is used to render and control the `<ClerkLoaded />` component:
 
-  - [`load()`](#load)
+- [`load()`](#load)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### `load()`
+### `load()`
 
   Render the `<ClerkLoaded>` component to an HTML `<div>` element.
 
@@ -93,11 +94,11 @@ The `<ClerkLoaded>` component guarantees that the Clerk object has loaded (the `
   function load(options?: ClerkOptions): Promise<void>
   ```
 
-  #### `ClerkOptions`
+#### `ClerkOptions`
 
   <Include src="_partials/javascript/clerk-options" />
 
-  #### `load()` usage
+#### `load()` usage
 
   ```js {{ filename: 'main.js', mark: [7] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -108,4 +109,5 @@ The `<ClerkLoaded>` component guarantees that the Clerk object has loaded (the `
   const clerk = new Clerk(clerkPubKey)
   await clerk.load()
   ```
+
 </If>

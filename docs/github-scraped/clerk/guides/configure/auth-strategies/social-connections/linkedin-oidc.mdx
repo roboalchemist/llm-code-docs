@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/linkedin-oidc.mdx
 
 ---
+
 title: Add LinkedIn Open ID Connect (OIDC) as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their LinkedIn Open ID Connect (OIDC) account.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their LinkedIn Open ID Connect (OIDC) account
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a LinkedIn application
+### Create a LinkedIn application
 
   > [!TIP]
   > If you already have a LinkedIn app you'd like to connect to Clerk, select your app from the [**My apps**](https://www.linkedin.com/developers/apps?appStatus=active) page in the LinkedIn Developer Portal and proceed to the [next step](#set-the-client-id-and-primary-client-secret-in-the-clerk-dashboard) in this tutorial.
@@ -58,7 +59,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Add redirect URL** and paste the **Redirect URL** you copied from the Clerk Dashboard.
   1. Select **Update**.
 
-  ### Set the Client ID and Primary Client Secret in the Clerk Dashboard
+### Set the Client ID and Primary Client Secret in the Clerk Dashboard
 
   1. Navigate back to the Clerk Dashboard where the configuration page should still be open. Paste the **Client ID** and **Primary Client Secret** values that you saved into the respective fields.
   1. Select **Save**.
@@ -66,7 +67,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If the page is no longer open, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page in the Clerk Dashboard. Select the connection. Under **Use custom credentials**, paste the values into their respective fields.
 
-  ### Enable OpenID Connect in your LinkedIn application
+### Enable OpenID Connect in your LinkedIn application
 
   1. Select the **Products** tab.
   1. Next to **Sign In with LinkedIn using OpenID Connect**, select **Request access**. A modal will open.
@@ -75,7 +76,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If you need to ensure the longevity of the user's [access token](!access-token) without requiring re-authentication, consider getting approval as a [Marketing Developer Platform (MDP) partner](https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2023-10#step-1-apply-for-api-access). This isn't necessary if you don't directly interact with the LinkedIn API using the access token.
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

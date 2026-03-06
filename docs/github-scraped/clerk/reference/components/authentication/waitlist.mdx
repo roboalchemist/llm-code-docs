@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/authentication/waitlist.mdx
 
 ---
+
 title: '`<Waitlist />` component'
 description: The <Waitlist /> component renders a waitlist form that allows users to join for early access to your application.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -39,14 +40,14 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<Waitlist />` component:
 
-  - [`mountWaitlist()`](#mount-waitlist)
-  - [`unmountWaitlist()`](#unmount-waitlist)
-  - [`openWaitlist()`](#open-waitlist)
-  - [`closeWaitlist()`](#close-waitlist)
+- [`mountWaitlist()`](#mount-waitlist)
+- [`unmountWaitlist()`](#unmount-waitlist)
+- [`openWaitlist()`](#open-waitlist)
+- [`closeWaitlist()`](#close-waitlist)
 
   The following examples assume that you followed the [quickstart](/docs/js-frontend/getting-started/quickstart) to add Clerk to your JavaScript app.
 
-  ### <code>mount<wbr />Waitlist()</code>
+### <code>mount<wbr />Waitlist()</code>
 
   Render the `<Waitlist />` component to an HTML `<div>` element.
 
@@ -54,7 +55,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   function mountWaitlist(node: HTMLDivElement, props?: WaitlistProps): void
   ```
 
-  ### <code>mount<wbr />Waitlist()</code> params
+### <code>mount<wbr />Waitlist()</code> params
 
   <Properties>
     - `node`
@@ -70,7 +71,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
     The properties to pass to the `<Waitlist />` component
   </Properties>
 
-  #### `mountWaitlist()` usage
+#### `mountWaitlist()` usage
 
   ```js {{ filename: 'main.js', mark: [13] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -88,7 +89,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   clerk.mountWaitlist(waitlistDiv)
   ```
 
-  ### <code>unmount<wbr />Waitlist()</code>
+### <code>unmount<wbr />Waitlist()</code>
 
   Unmount and run cleanup on an existing `<Waitlist />` component instance.
 
@@ -96,7 +97,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   function unmountWaitlist(node: HTMLDivElement): void
   ```
 
-  #### `unmountWaitlist()` params
+#### `unmountWaitlist()` params
 
   <Properties>
     - `node`
@@ -105,7 +106,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
     The container `<div>` element with a rendered `<Waitlist />` component instance
   </Properties>
 
-  #### `unmountWaitlist()` usage
+#### `unmountWaitlist()` usage
 
   ```js {{ filename: 'main.js', mark: [17] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -127,7 +128,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   clerk.unmountWaitlist(waitlistDiv)
   ```
 
-  ### `openWaitlist()`
+### `openWaitlist()`
 
   Opens the `<Waitlist />` component as an overlay at the root of your HTML `body` element.
 
@@ -135,7 +136,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   function openWaitlist(props?: WaitlistProps): void
   ```
 
-  #### `openWaitlist()` params
+#### `openWaitlist()` params
 
   <Properties>
     - `props?`
@@ -144,7 +145,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
     The properties to pass to the `<Waitlist />` component
   </Properties>
 
-  #### `openWaitlist()` usage
+#### `openWaitlist()` usage
 
   ```js {{ filename: 'main.js', mark: [13] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -162,7 +163,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   clerk.openWaitlist(waitlistDiv)
   ```
 
-  ### `closeWaitlist()`
+### `closeWaitlist()`
 
   Closes the waitlist overlay.
 
@@ -170,7 +171,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
   function closeWaitlist(): void
   ```
 
-  #### `closeWaitlist()` usage
+#### `closeWaitlist()` usage
 
   ```js {{ filename: 'main.js', mark: [17] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -191,6 +192,7 @@ Before using the `<Waitlist />` component, you must enable **Waitlist** mode in 
 
   clerk.closeWaitlist(waitlistDiv)
   ```
+
 </If>
 
 ## Properties
@@ -205,22 +207,22 @@ All props are optional.
 
   ---
 
-  - `appearance`
-  - <code>[Appearance](/docs/guides/customizing-clerk/appearance-prop/overview) | undefined</code>
+- `appearance`
+- <code>[Appearance](/docs/guides/customizing-clerk/appearance-prop/overview) | undefined</code>
 
   Optional object to style your components. Will only affect [Clerk components](/docs/reference/components/overview) and not [Account Portal](/docs/guides/account-portal/overview) pages.
 
   ---
 
-  - `fallback?`
-  - `ReactNode`
+- `fallback?`
+- `ReactNode`
 
   An optional element to be rendered while the component is mounting.
 
   ---
 
-  - `signInUrl`
-  - `string`
+- `signInUrl`
+- `string`
 
   The full URL or path to the sign in page. Used for the 'Already have an account? Sign in' link that's rendered. It's recommended to use [the environment variable](/docs/guides/development/clerk-environment-variables#sign-in-and-sign-up-redirects) instead.
 </Properties>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/machines/list.mdx
 
 ---
+
 title: '`list()`'
 description: Use Clerk's Backend SDK to get a list of machines for your application.
 sdk: js-backend
@@ -22,22 +23,22 @@ function list(params: GetMachineListParams = {}): Promise<PaginatedResourceRespo
 
   ---
 
-  - `offset?`
-  - `number`
+- `offset?`
+- `number`
 
   Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. Defaults to `0`.
 
   ---
 
-  - `orderBy?`
-  - `'name' | 'created_at'`
+- `orderBy?`
+- `'name' | 'created_at'`
 
   Return machines in a particular order. Prefix with a `-` to reverse the order. Prefix with a `+` to list in ascending order. Defaults to `'+created_at'`.
 
   ---
 
-  - `query?`
-  - `string`
+- `query?`
+- `string`
 
   Filters machines with ID or name that match the given query.
 </Properties>

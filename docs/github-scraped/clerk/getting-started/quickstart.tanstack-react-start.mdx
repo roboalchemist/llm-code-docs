@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.tanstack-react-start.mdx
 
 ---
+
 title: TanStack React Start Quickstart
 description: Learn how to use Clerk to quickly and easily add secure authentication and user management to your TanStack React Start application.
 sdk: tanstack-react-start
@@ -27,7 +28,7 @@ sdk: tanstack-react-start
   npm install
   ```
 
-  ## Install `@clerk/tanstack-react-start`
+## Install `@clerk/tanstack-react-start`
 
   The [Clerk TanStack React Start SDK](/docs/reference/tanstack-react-start/overview) gives you access to prebuilt components, hooks, and helpers to make user authentication easier.
 
@@ -37,7 +38,7 @@ sdk: tanstack-react-start
   npm install @clerk/tanstack-react-start
   ```
 
-  ## Add `clerkMiddleware()` to your app
+## Add `clerkMiddleware()` to your app
 
   [`clerkMiddleware()`](/docs/reference/tanstack-react-start/clerk-middleware) grants you access to user authentication state throughout your app. It also allows you to protect specific routes from unauthenticated users. To add `clerkMiddleware()` to your app, follow these steps:
 
@@ -56,7 +57,7 @@ sdk: tanstack-react-start
 
   1. By default, `clerkMiddleware()` will not protect any routes. All routes are public and you must opt-in to protection for routes. See the [`clerkMiddleware()` reference](/docs/reference/tanstack-react-start/clerk-middleware) to learn how to require authentication for specific routes.
 
-  ## Add `<ClerkProvider>` to your app
+## Add `<ClerkProvider>` to your app
 
   <Include src="_partials/clerk-provider/explanation" />
 
@@ -115,9 +116,9 @@ sdk: tanstack-react-start
   }
   ```
 
-  ## Protect your pages
+## Protect your pages
 
-  ### Client-side
+### Client-side
 
   To protect your pages on the client-side, you can use Clerk's [prebuilt control components](/docs/reference/components/overview#control-components) that control the visibility of content based on the user's authentication state.
 
@@ -149,7 +150,7 @@ sdk: tanstack-react-start
   }
   ```
 
-  ### Server-side
+### Server-side
 
   To protect your routes, create a [server function](https://tanstack.com/start/latest/docs/framework/react/guide/server-functions) that checks the user's authentication state via the [`auth()`](/docs/reference/tanstack-react-start/auth) method. If the user is not authenticated, they are redirected to a sign-in page. If authenticated, the user's `userId` is passed to the route, allowing access to the `<Home />` component, which welcomes the user and displays their `userId`. The [`beforeLoad()`](https://tanstack.com/router/latest/docs/framework/react/api/router/RouteOptionsType#beforeload-method) method ensures authentication is checked before loading the page, and the [`loader()`](https://tanstack.com/router/latest/docs/framework/react/api/router/RouteOptionsType#loader-method) method returns the user data for use in the component.
 
@@ -195,7 +196,7 @@ sdk: tanstack-react-start
 
   <Include src="_partials/quickstarts/create-first-user-step" />
 
-  3. To make configuration changes to your Clerk development instance, claim the Clerk keys that were generated for you by selecting **Configure your application** in the bottom right of your app. This will associate the application with your Clerk account.
+  1. To make configuration changes to your Clerk development instance, claim the Clerk keys that were generated for you by selecting **Configure your application** in the bottom right of your app. This will associate the application with your Clerk account.
 </Steps>
 
 ## Next steps
@@ -208,26 +209,26 @@ Learn more about Clerk components, how to customize them, and how to use Clerk's
 
   ---
 
-  - [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
-  - Learn how to customize and localize Clerk components.
+- [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
+- Learn how to customize and localize Clerk components.
 
   ---
 
-  - [Create a custom sign-in-or-up page](/docs/tanstack-react-start/guides/development/custom-sign-in-or-up-page)
-  - Learn how to create a custom sign-in-or-up page with Clerk components.
+- [Create a custom sign-in-or-up page](/docs/tanstack-react-start/guides/development/custom-sign-in-or-up-page)
+- Learn how to create a custom sign-in-or-up page with Clerk components.
 
   ---
 
-  - [Protect content and read user data](/docs/tanstack-react-start/guides/users/reading)
-  - Learn how to use Clerk's hooks and helpers to protect content and read user data in your TanStack React Start app.
+- [Protect content and read user data](/docs/tanstack-react-start/guides/users/reading)
+- Learn how to use Clerk's hooks and helpers to protect content and read user data in your TanStack React Start app.
 
   ---
 
-  - [Client-side helpers (hooks)](/docs/reference/tanstack-react-start/overview#client-side-helpers)
-  - Learn more about Clerk's client-side helpers and how to use them.
+- [Client-side helpers (hooks)](/docs/reference/tanstack-react-start/overview#client-side-helpers)
+- Learn more about Clerk's client-side helpers and how to use them.
 
   ---
 
-  - [Clerk TanStack React Start SDK Reference](/docs/reference/tanstack-react-start/overview)
-  - Learn about the Clerk TanStack React Start SDK and how to integrate it into your app.
+- [Clerk TanStack React Start SDK Reference](/docs/reference/tanstack-react-start/overview)
+- Learn about the Clerk TanStack React Start SDK and how to integrate it into your app.
 </Cards>

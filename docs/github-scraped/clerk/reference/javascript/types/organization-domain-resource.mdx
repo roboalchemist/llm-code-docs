@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/organization-domain-resource.mdx
 
 ---
+
 title: '`OrganizationDomainResource`'
 description: The OrganizationDomainResource object is the model around an Organization domain.
 sdk: js-frontend
@@ -18,64 +19,64 @@ The `OrganizationDomainResource` object is the model around an Organization doma
 
   ---
 
-  - `name`
-  - `string`
+- `name`
+- `string`
 
   The name for this Organization domain (e.g. example.com).
 
   ---
 
-  - `organizationId`
-  - `string`
+- `organizationId`
+- `string`
 
   The Organization ID of the Organization this domain is for.
 
   ---
 
-  - `enrollmentMode`
-  - `'manual_invitation' | 'automatic_invitation' | 'automatic_suggestion'`
+- `enrollmentMode`
+- `'manual_invitation' | 'automatic_invitation' | 'automatic_suggestion'`
 
   An [enrollment mode](/docs/guides/organizations/add-members/verified-domains#enable-verified-domains) will change how new users join an Organization.
 
   ---
 
-  - `verification`
-  - [`OrganizationDomainVerification`](#organization-domain-verification)
+- `verification`
+- [`OrganizationDomainVerification`](#organization-domain-verification)
 
   The object that describes the status of the verification process of the domain.
 
   ---
 
-  - `affiliationEmailAddress`
-  - `string | null`
+- `affiliationEmailAddress`
+- `string | null`
 
   The email address that was used to verify this Organization domain.
 
   ---
 
-  - `totalPendingInvitations`
-  - `number`
+- `totalPendingInvitations`
+- `number`
 
   The number of total pending invitations sent to emails that match the domain name.
 
   ---
 
-  - `totalPendingSuggestions`
-  - `number`
+- `totalPendingSuggestions`
+- `number`
 
   The number of total pending suggestions sent to emails that match the domain name.
 
   ---
 
-  - `createdAt`
-  - `Date`
+- `createdAt`
+- `Date`
 
   The date when the Organization domain was created.
 
   ---
 
-  - `updatedAt`
-  - `Date`
+- `updatedAt`
+- `Date`
 
   The date when the Organization domain was last updated.
 </Properties>
@@ -90,22 +91,22 @@ The `OrganizationDomainResource` object is the model around an Organization doma
 
   ---
 
-  - `strategy`
-  - `'email_code'`
+- `strategy`
+- `'email_code'`
 
   A string that indicates strategy of the verification.
 
   ---
 
-  - `attempts`
-  - `number`
+- `attempts`
+- `number`
 
   A number that indicates how many attempts have occurred in order to verify the domain.
 
   ---
 
-  - `expiresAt`
-  - `Date`
+- `expiresAt`
+- `Date`
 
   The expiration date and time of the verification.
 </Properties>

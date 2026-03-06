@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/appearance-prop/bring-your-own-css.mdx
 
 ---
+
 title: Bring your own CSS
 description: Learn how to bring your own CSS to Clerk's prebuilt components.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, fastify, js-frontend, expressjs, js-backend, go, ruby
@@ -84,6 +85,7 @@ Remove the `cl-` prefix from a class and use it as the key for a new object in t
 The following example shows how to style the primary button in a `<SignIn />` component with custom CSS classes:
 
 <If notSdk={["vue", "nuxt"]}>
+
   ```tsx {{ mark: [4] }}
   <SignIn
     appearance={{
@@ -93,9 +95,11 @@ The following example shows how to style the primary button in a `<SignIn />` co
     }}
   />
   ```
+
 </If>
 
 <If sdk={["vue", "nuxt"]}>
+
   ```vue {{ mark: [4, 10] }}
   <script setup lang="ts">
   const appearance = {
@@ -109,6 +113,7 @@ The following example shows how to style the primary button in a `<SignIn />` co
     <SignIn :appearance="appearance" />
   </template>
   ```
+
 </If>
 
 ## Use Tailwind
@@ -263,6 +268,7 @@ To use Tailwind CSS v4, you must set the `cssLayerName` property to ensure that 
 Then, you can use Tailwind's classes to style the elements of the Clerk component. The following example shows how to use Tailwind classes to style the primary button in a `<SignIn />` component:
 
 <If notSdk={["vue", "nuxt"]}>
+
   ```tsx {{ mark: [4] }}
   <SignIn
     appearance={{
@@ -272,9 +278,11 @@ Then, you can use Tailwind's classes to style the elements of the Clerk componen
     }}
   />
   ```
+
 </If>
 
 <If sdk={["vue", "nuxt"]}>
+
   ```vue {{ mark: [4, 10] }}
   <script setup lang="ts">
   const appearance = {
@@ -288,6 +296,7 @@ Then, you can use Tailwind's classes to style the elements of the Clerk componen
     <SignIn :appearance="appearance" />
   </template>
   ```
+
 </If>
 
 #### Use CSS modules to style Clerk components
@@ -306,6 +315,7 @@ Create your module file and add the CSS you want to apply, as shown in the follo
 Then you can apply this by importing the file and using the classes whenever required:
 
 <If notSdk={["vue", "nuxt"]}>
+
   ```tsx {{ mark: [1, 8] }}
   import styles from '../styles/SignIn.module.css'
 
@@ -321,9 +331,11 @@ Then you can apply this by importing the file and using the classes whenever req
     )
   }
   ```
+
 </If>
 
 <If sdk={["vue", "nuxt"]}>
+
   ```vue {{ mark: [2, 6, 12] }}
   <script setup lang="ts">
   import styles from '../styles/SignIn.module.css'
@@ -339,6 +351,7 @@ Then you can apply this by importing the file and using the classes whenever req
     <SignIn :appearance="appearance" />
   </template>
   ```
+
 </If>
 
 ## Use inline CSS objects
@@ -348,6 +361,7 @@ You can style the elements of a Clerk component with inline CSS objects.
 The following example shows how to style the primary button in a `<SignIn />` component with an inline CSS object:
 
 <If notSdk={["vue", "nuxt"]}>
+
   ```tsx {{ mark: [[4, 11]] }}
   <SignIn
     appearance={{
@@ -364,9 +378,11 @@ The following example shows how to style the primary button in a `<SignIn />` co
     }}
   />
   ```
+
 </If>
 
 <If sdk={["vue", "nuxt"]}>
+
   ```vue {{ mark: [[4, 11], 17] }}
   <script setup lang="ts">
   const appearance = {
@@ -387,4 +403,5 @@ The following example shows how to style the primary button in a `<SignIn />` co
     <SignIn :appearance="appearance" />
   </template>
   ```
+
 </If>

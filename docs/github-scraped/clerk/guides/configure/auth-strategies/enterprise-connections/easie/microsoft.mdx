@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/enterprise-connections/easie/microsoft.mdx
 
 ---
+
 title: Add Microsoft as an EASIE connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Microsoft account using EASIE SSO.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Microsoft account using EASIE SSO
 ---
 
 <TutorialHero
@@ -52,27 +53,27 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Enter the **Domain**. This is the email domain of the users you want to allow to sign in to your application. Optionally, select an **Organization**.
   1. Save the **Redirect URI** somewhere secure. Keep this modal and page open.
 
-  ### Create a Microsoft Entra ID app
+### Create a Microsoft Entra ID app
 
   <Include src="_partials/authentication/microsoft/create-app" />
 
-  ### Get your Client ID and Client Secret
+### Get your Client ID and Client Secret
 
   <Include src="_partials/authentication/microsoft/get-client-id-secret" />
 
-  ### Enable OpenID
+### Enable OpenID
 
   <Include src="_partials/authentication/microsoft/enable-openid" />
 
-  ### Secure your app against the nOAuth vulnerability
+### Secure your app against the nOAuth vulnerability
 
   <Include src="_partials/authentication/microsoft/noauth" />
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

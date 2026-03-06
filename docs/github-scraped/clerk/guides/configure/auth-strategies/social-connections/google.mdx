@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/google.mdx
 
 ---
+
 title: Add Google as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Google account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Google account using OAuth
 ---
 
 <TutorialHero
@@ -48,7 +49,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Authorized Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a Google Developer project
+### Create a Google Developer project
 
   1. Navigate to the [Google Cloud Console](https://console.cloud.google.com/).
   1. Select a project or [create a new one](https://console.cloud.google.com/projectcreate). You'll be redirected to your project's **Dashboard** page.
@@ -59,11 +60,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the **Authorized Redirect URIs** setting, paste the **Authorized Redirect URI** value you saved from the Clerk Dashboard.
   1. Select **Create**. A modal will open with your **Client ID** and **Client Secret**. Save these values somewhere secure.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 

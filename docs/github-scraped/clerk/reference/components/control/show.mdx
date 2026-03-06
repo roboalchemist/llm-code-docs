@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/control/show.mdx
 
 ---
+
 title: '`<Show>`'
 description: The Show component protects content or even entire routes based on authentication, and optionally, authorization.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue
@@ -37,6 +38,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -54,6 +56,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -81,6 +84,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -96,6 +100,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
     )
   }
   ```
+
 </If>
 
 <If sdk="remix">
@@ -109,6 +114,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -124,6 +130,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
     )
   }
   ```
+
 </If>
 
 <If sdk="tanstack-react-start">
@@ -142,6 +149,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -160,6 +168,7 @@ The [`<Show />`](/docs/reference/components/control/show) component protects con
     </Show>
   </template>
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -205,6 +214,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -225,6 +235,7 @@ The following example demonstrates how to use the `<Show />` component to protec
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -237,6 +248,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     <p slot="fallback">You do not have the Permissions to create an invoice.</p>
     <p>Users with Permission org:invoices:create can see this.</p>
   </Show>
+
   ```
 </If>
 
@@ -256,6 +268,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -272,6 +285,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -290,6 +304,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -306,6 +321,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -329,6 +345,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="vue">
@@ -385,6 +402,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -405,6 +423,7 @@ The following example demonstrates how to use the `<Show />` component to protec
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -417,6 +436,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     <p slot="fallback">Only a member of the Billing department can access this content.</p>
     <p>Users with Role org:billing can see this.</p>
   </Show>
+
   ```
 </If>
 
@@ -436,6 +456,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -452,6 +473,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -470,6 +492,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -486,6 +509,7 @@ The following example demonstrates how to use the `<Show />` component to protec
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -509,6 +533,7 @@ The following example demonstrates how to use the `<Show />` component to protec
     )
   }
   ```
+
 </If>
 
 <If sdk="vue">
@@ -563,6 +588,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -583,6 +609,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -595,6 +622,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     <p slot="fallback">Sorry, only subscribers to the Bronze plan can access this content.</p>
     <p>Welcome, Bronze subscriber!</p>
   </Show>
+
   ```
 </If>
 
@@ -614,6 +642,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -630,6 +659,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -648,6 +678,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -664,6 +695,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -687,6 +719,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="vue">
@@ -743,6 +776,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -765,6 +799,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -779,6 +814,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     </p>
     <p>Congratulations! You have access to the Premium Access feature.</p>
   </Show>
+
   ```
 </If>
 
@@ -802,6 +838,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -820,6 +857,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -840,6 +878,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -858,6 +897,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -883,6 +923,7 @@ The following example demonstrates how to use `<Show />` to protect content by c
     )
   }
   ```
+
 </If>
 
 <If sdk="vue">
@@ -938,6 +979,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -958,6 +1000,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -970,6 +1013,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
     <p slot="fallback">Only an Admin or Billing Manager can access this content.</p>
     <p>The settings page.</p>
   </Show>
+
   ```
 </If>
 
@@ -989,6 +1033,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -1005,6 +1050,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -1023,6 +1069,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -1039,6 +1086,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -1062,6 +1110,7 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
     )
   }
   ```
+
 </If>
 
 <If sdk="vue">
@@ -1108,15 +1157,15 @@ The following example uses `<Show>`'s `when` prop with a callback function to co
 
   ---
 
-  - `treatPendingAsSignedOut?`
-  - `boolean`
+- `treatPendingAsSignedOut?`
+- `boolean`
 
   A boolean that indicates whether to treat [pending sessions](/docs/reference/javascript/types/session-status#properties) as signed out. Defaults to `true`.
 
   ---
 
-  - `when`
-  - `'signed-in' | 'signed-out' | { feature: string } | { permission: string } | { plan: string } | { role: string } | (has) => boolean`
+- `when`
+- `'signed-in' | 'signed-out' | { feature: string } | { permission: string } | { plan: string } | { role: string } | (has) => boolean`
 
   Determines when to render the children. Can be `'signed-in'` or `'signed-out'` for authentication checks, an object with a [Feature](/docs/guides/billing/overview), [Permission](/docs/guides/organizations/control-access/roles-and-permissions), [Plan](/docs/guides/billing/overview), or [Role](/docs/guides/organizations/control-access/roles-and-permissions) for authorization checks, or a callback function for custom conditional logic.
 </Properties>

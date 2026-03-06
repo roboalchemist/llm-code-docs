@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.vue.mdx
 
 ---
+
 title: Vue Quickstart
 description: Add authentication and user management to your Vue app with Clerk.
 sdk: vue
@@ -36,7 +37,7 @@ This tutorial assumes that you're using [Vue 3](https://vuejs.org/) with [TypeSc
   npm install
   ```
 
-  ## Install `@clerk/vue`
+## Install `@clerk/vue`
 
   The [Clerk Vue SDK](/docs/reference/vue/overview) gives you access to prebuilt components, composables, and helpers to make user authentication easier.
 
@@ -46,7 +47,7 @@ This tutorial assumes that you're using [Vue 3](https://vuejs.org/) with [TypeSc
   npm install @clerk/vue
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-publishable-key" />
 
@@ -54,7 +55,7 @@ This tutorial assumes that you're using [Vue 3](https://vuejs.org/) with [TypeSc
   VITE_CLERK_PUBLISHABLE_KEY={{pub_key}}
   ```
 
-  ## Add `clerkPlugin` to your app
+## Add `clerkPlugin` to your app
 
   [`clerkPlugin`](/docs/reference/vue/clerk-plugin) provides session and user context to Clerk's components and composables. It's required to pass your Clerk [Publishable Key](!publishable-key) as an option. You can add an `if` statement to check that the key is imported properly. This prevents the app from running without the Publishable Key and catches TypeScript errors.
 
@@ -77,7 +78,7 @@ This tutorial assumes that you're using [Vue 3](https://vuejs.org/) with [TypeSc
   app.mount('#app')
   ```
 
-  ## Create a header with Clerk components
+## Create a header with Clerk components
 
   You can control which content signed-in and signed-out users can see with Clerk's [prebuilt control components](/docs/reference/components/overview#control-components). The following example creates a header using the following components:
 
@@ -116,21 +117,21 @@ Learn more about Clerk components, how to customize them, and how to use Clerk's
 
   ---
 
-  - [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
-  - Learn how to customize and localize Clerk components.
+- [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
+- Learn how to customize and localize Clerk components.
 
   ---
 
-  - [Client-side helpers (composables)](/docs/reference/vue/overview#custom-composables)
-  - Learn more about Clerk's client-side helpers and how to use them.
+- [Client-side helpers (composables)](/docs/reference/vue/overview#custom-composables)
+- Learn more about Clerk's client-side helpers and how to use them.
 
   ---
 
-  - [Update Clerk options at runtime](/docs/reference/vue/update-clerk-options)
-  - Learn how to update Clerk's options at runtime in your Vue app.
+- [Update Clerk options at runtime](/docs/reference/vue/update-clerk-options)
+- Learn how to update Clerk's options at runtime in your Vue app.
 
   ---
 
-  - [Clerk Vue SDK Reference](/docs/reference/vue/overview)
-  - Learn about the Clerk Vue SDK and how to integrate it into your app.
+- [Clerk Vue SDK Reference](/docs/reference/vue/overview)
+- Learn about the Clerk Vue SDK and how to integrate it into your app.
 </Cards>

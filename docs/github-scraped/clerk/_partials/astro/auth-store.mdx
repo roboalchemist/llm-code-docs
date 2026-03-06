@@ -3,6 +3,7 @@
 The following example demonstrates how to use the [`$authStore`](/docs/reference/astro/client-side-helpers/auth-store) to access the current auth state. It uses `userId` to detect if the user is signed in.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'components/external-data.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $authStore } from '@clerk/astro/client'
@@ -54,4 +55,5 @@ The following example demonstrates how to use the [`$authStore`](/docs/reference
     <div>...</div>
   {/if}
   ```
+
 </CodeBlockTabs>

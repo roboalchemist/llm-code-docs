@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/client.mdx
 
 ---
+
 title: '`Client` object'
 description: The Client object keeps track of the authenticated sessions in the current device. The device can be a browser, a native application or any other medium that is usually the requesting part in a request/response architecture.
 sdk: js-frontend
@@ -20,67 +21,67 @@ The `Client` object also holds information about any sign in or sign up attempts
 
   ---
 
-  - `cookieExpiresAt`
-  - `Date | null`
+- `cookieExpiresAt`
+- `Date | null`
 
   The date and time when the client's authentication cookie expires.
 
   ---
 
-  - `createdAt`
-  - `Date | null`
+- `createdAt`
+- `Date | null`
 
   The date when the client was first created.
 
   ---
 
-  - `lastActiveSessionId`
-  - `string | null`
+- `lastActiveSessionId`
+- `string | null`
 
   The ID of the last active [`Session`][session-ref] on this client.
 
   ---
 
-  - `lastAuthenticationStrategy`
-  - <code>[LastAuthenticationStrategy](/docs/reference/javascript/types/last-authentication-strategy) | null</code>
+- `lastAuthenticationStrategy`
+- <code>[LastAuthenticationStrategy](/docs/reference/javascript/types/last-authentication-strategy) | null</code>
 
   The last authentication strategy used by the client, or `null` if there is none.
 
   ---
 
-  - `sessions`
-  - [`Session[]`][session-ref]
+- `sessions`
+- [`Session[]`][session-ref]
 
   A list of sessions that have been created on this client.
 
   ---
 
-  - `signedInSessions`
-  - [`SignedInSessionResource[]`][signed-in-session-ref]
+- `signedInSessions`
+- [`SignedInSessionResource[]`][signed-in-session-ref]
 
   A list of sessions on this client where the user has completed the full sign-in flow. Sessions can be in one of the following states:
 
-  - **active**: The user has completed the full sign-in flow and all pending tasks.
-  - **pending**: The user has completed the sign-in flow but still needs to complete one or more required steps (**pending tasks**).
+- **active**: The user has completed the full sign-in flow and all pending tasks.
+- **pending**: The user has completed the sign-in flow but still needs to complete one or more required steps (**pending tasks**).
 
   ---
 
-  - `signIn`
-  - <code>[SignIn](/docs/reference/javascript/sign-in) | null</code>
+- `signIn`
+- <code>[SignIn](/docs/reference/javascript/sign-in) | null</code>
 
   The current sign in attempt, or `null` if there is none.
 
   ---
 
-  - `signUp`
-  - <code>[SignUp](/docs/reference/javascript/sign-up) | null</code>
+- `signUp`
+- <code>[SignUp](/docs/reference/javascript/sign-up) | null</code>
 
   The current sign up attempt, or `null` if there is none.
 
   ---
 
-  - `updatedAt`
-  - `Date | null`
+- `updatedAt`
+- `Date | null`
 
   The date when the client was last updated.
 </Properties>

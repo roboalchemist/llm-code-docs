@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/enterprise-connections/easie/google.mdx
 
 ---
+
 title: Add Google as an EASIE connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Google account using EASIE SSO.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Google account using EASIE SSO
 ---
 
 <TutorialHero
@@ -55,7 +56,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Enter the **Domain**. This is the email domain of the users you want to allow to sign in to your application. Optionally, select an **Organization**.
   1. Save the **Redirect URI** somewhere secure. Keep this modal open to enter the OAuth credentials in the following steps.
 
-  ### Create a Google Developer project
+### Create a Google Developer project
 
   1. Navigate to the [Google Cloud Console](https://console.cloud.google.com/).
   1. Select a project or [create a new one](https://console.cloud.google.com/projectcreate).
@@ -66,7 +67,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the **Authorized redirect URIs** section, select **Add URI** and paste the **Redirect URI** value you saved from the Clerk Dashboard.
   1. Select **Create**.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   Once the OAuth client is created in the Google Cloud Console, a modal will open with your **Client ID** and **Client Secret**. Save these values somewhere secure.
 

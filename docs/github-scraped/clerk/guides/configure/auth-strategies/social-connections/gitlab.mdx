@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/gitlab.mdx
 
 ---
+
 title: Add GitLab as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their GitLab account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their GitLab account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a GitLab app
+### Create a GitLab app
 
   1. In [Gitlab](https://gitlab.com), navigate to the [**Applications**](https://gitlab.com/-/user_settings/applications) page.
   1. Select **Add new application**.
@@ -54,7 +55,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select the **Scopes** needed for your app. At minimum, select `read_user`.
   1. Select **Save application**. You'll be redirected to your app's settings page. Save the **Application ID** and **Secret** somewhere secure.
 
-  ### Set the Application ID and Secret in the Clerk Dashboard
+### Set the Application ID and Secret in the Clerk Dashboard
 
   1. Navigate back to the Clerk Dashboard where the configuration page should still be open. Paste the **Application ID** and **Secret** values that you saved into the respective fields.
   1. Select **Save**.
@@ -62,7 +63,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If the page is no longer open, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page in the Clerk Dashboard. Select the connection. Under **Use custom credentials**, you can paste the values into their respective fields.
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

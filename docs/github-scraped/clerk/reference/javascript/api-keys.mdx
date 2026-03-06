@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/api-keys.mdx
 
 ---
+
 title: '`APIKeys` object'
 description: The APIKeys object provides methods for creating, listing, and revoking API keys that allow users to grant third-party services programmatic access to your application's API endpoints.
 sdk: js-frontend
@@ -33,22 +34,22 @@ function getAll(params?: GetAPIKeysParams): Promise<ClerkPaginatedResponse<APIKe
 
   ---
 
-  - `query?`
-  - `string`
+- `query?`
+- `string`
 
   A search query to filter API keys by name.
 
   ---
 
-  - `initialPage?`
-  - `number`
+- `initialPage?`
+- `number`
 
   A number that can be used to skip the first n-1 pages. For example, if `initialPage` is set to 10, it will skip the first 9 pages and will fetch the 10th page.
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that indicates the maximum number of results that should be returned for a specific page.
 </Properties>
@@ -80,22 +81,22 @@ function create(params: CreateAPIKeyParams): Promise<APIKeyResource>
 
   ---
 
-  - `subject?`
-  - `string`
+- `subject?`
+- `string`
 
   The user or organization ID to associate the API key with. If not provided, defaults to the [Active Organization](!active-organization), then the current User.
 
   ---
 
-  - `secondsUntilExpiration?`
-  - `number | null`
+- `secondsUntilExpiration?`
+- `number | null`
 
   The number of seconds until the API key expires. Set to `null` or omit to create a key that never expires.
 
   ---
 
-  - `description?`
-  - `string | null`
+- `description?`
+- `string | null`
 
   An optional description for the API key.
 </Properties>
@@ -131,8 +132,8 @@ function revoke(params: RevokeAPIKeyParams): Promise<APIKeyResource>
 
   ---
 
-  - `revocationReason?`
-  - `string | null`
+- `revocationReason?`
+- `string | null`
 
   An optional reason for revoking the API key.
 </Properties>

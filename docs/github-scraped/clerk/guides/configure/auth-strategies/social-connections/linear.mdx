@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/linear.mdx
 
 ---
+
 title: Add Linear as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Linear account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Linear account using OAuth
 ---
 
 <TutorialHero
@@ -48,18 +49,18 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Callback URL** somewhere secure. Keep this page open.
 
-  ### Create a Linear app
+### Create a Linear app
 
   1. In the top-left of [Linear](https://linear.app/), select your workspace, then select **Settings**.
   1. In the sidenav, under **Account**, select **API**. Scroll down to **OAuth Applications** and select **Create new OAuth Application**. You'll be navigated to the [**Create new application**](https://linear.app/clerk/settings/api/applications/new) page.
   1. Complete the required fields. In **Callback URLs**, paste the **Redirect URI** you saved from the Clerk Dashboard.
   1. Select **Save**. The page will refresh and you should see the **Client ID** and **Client Secret** at the top. Save both values somewhere secure.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

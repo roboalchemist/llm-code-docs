@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/email-addresses/create-email-address.mdx
 
 ---
+
 title: '`createEmailAddress()`'
 description: Use Clerk's JS Backend SDK to create an email address for the specified user.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/EmailAddressApi.ts#L29 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/EmailAddressApi.ts#L29*/}
 
 Creates an [`EmailAddress`](/docs/reference/javascript/types/email-address) for the specified user.
 
@@ -24,22 +25,22 @@ function createEmailAddress(params: CreateEmailAddressParams): Promise<EmailAddr
 
   ---
 
-  - `emailAddress`
-  - `string`
+- `emailAddress`
+- `string`
 
   The email address to assign to the specified user.
 
   ---
 
-  - `primary?`
-  - `boolean`
+- `primary?`
+- `boolean`
 
   Whether or not to set the email address as the user's primary email address. Defaults to `false`, unless it is the first email address.
 
   ---
 
-  - `verified?`
-  - `boolean`
+- `verified?`
+- `boolean`
 
   Whether or not the email address is verified.
 </Properties>

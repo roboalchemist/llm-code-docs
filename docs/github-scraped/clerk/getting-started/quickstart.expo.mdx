@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.expo.mdx
 
 ---
+
 title: Expo Quickstart
 description: Add authentication and user management to your Expo app with Clerk.
 sdk: expo
@@ -27,7 +28,7 @@ sdk: expo
 
   <Include src="_partials/native-api-callout" />
 
-  ## Create a new Expo app
+## Create a new Expo app
 
   If you don't already have an Expo app, run the following commands to [create a new one](https://docs.expo.dev/tutorial/create-your-first-app/).
 
@@ -37,10 +38,10 @@ sdk: expo
   npm install
   ```
 
-  ## Install `@clerk/expo` and `expo-secure-store`
+## Install `@clerk/expo` and `expo-secure-store`
 
-  - The [Clerk Expo SDK](/docs/reference/expo/overview) gives you access to prebuilt components, hooks, and helpers to make user authentication easier.
-  - Clerk stores the active user's session token in memory by default. In Expo apps, the recommended way to store sensitive data, such as tokens, is by using `expo-secure-store` which encrypts the data before storing it.
+- The [Clerk Expo SDK](/docs/reference/expo/overview) gives you access to prebuilt components, hooks, and helpers to make user authentication easier.
+- Clerk stores the active user's session token in memory by default. In Expo apps, the recommended way to store sensitive data, such as tokens, is by using `expo-secure-store` which encrypts the data before storing it.
 
   Run the following command to install the SDK and its required peer dependency for secure token storage:
 
@@ -48,7 +49,7 @@ sdk: expo
   npm install @clerk/expo expo-secure-store
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-publishable-key" />
 
@@ -56,7 +57,7 @@ sdk: expo
   EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY={{pub_key}}
   ```
 
-  ## Add `<ClerkProvider>` to your root layout
+## Add `<ClerkProvider>` to your root layout
 
   <Include src="_partials/clerk-provider/explanation" />
 
@@ -85,11 +86,11 @@ sdk: expo
   > [!TIP]
   > When you sign a user out with [`signOut()`](/docs/reference/hooks/use-auth#returns), Clerk will remove the user's session JWT from the token cache.
 
-  ## Add sign-up and sign-in pages
+## Add sign-up and sign-in pages
 
   Clerk currently only supports [control components](/docs/reference/components/overview#control-components) for Expo native. UI components are only available for Expo web. Instead, you must build [custom flows](!custom-flow) using Clerk's API. The following sections demonstrate how to build [custom email/password sign-up and sign-in flows](/docs/guides/development/custom-flows/authentication/email-password). If you want to use different authentication methods, such as passwordless or OAuth, see the dedicated custom flow guides.
 
-  ### Layout page
+### Layout page
 
   First, protect your sign-up and sign-in pages.
 
@@ -115,17 +116,17 @@ sdk: expo
   }
   ```
 
-  ### Sign-up page
+### Sign-up page
 
   <Include src="_partials/expo/email-pass-sign-up" />
 
-  ### Sign-in page
+### Sign-in page
 
   <Include src="_partials/expo/email-pass-sign-in" />
 
   For more information about building these [custom flows](!custom-flow), including guided comments in the code examples, see the [Build a custom email/password authentication flow](/docs/guides/development/custom-flows/authentication/email-password) guide.
 
-  ## Add a sign-out button
+## Add a sign-out button
 
   At this point, your users can sign up or in, but they need a way to sign out.
 
@@ -133,12 +134,12 @@ sdk: expo
 
   <Include src="_partials/expo/sign-out-custom-flow" />
 
-  ## Add a home screen
+## Add a home screen
 
   You can control which content signed-in and signed-out users can see with Clerk's [prebuilt control components](/docs/reference/components/overview#control-components). For this quickstart, you'll use:
 
-  - [`<Show when="signed-in">`](/docs/reference/components/control/show): Children of this component can only be seen while **signed in**.
-  - [`<Show when="signed-out">`](/docs/reference/components/control/show): Children of this component can only be seen while **signed out**.
+- [`<Show when="signed-in">`](/docs/reference/components/control/show): Children of this component can only be seen while **signed in**.
+- [`<Show when="signed-out">`](/docs/reference/components/control/show): Children of this component can only be seen while **signed out**.
 
   To get started:
 
@@ -211,7 +212,7 @@ sdk: expo
   })
   ```
 
-  ## Run your project
+## Run your project
 
   Run your project with the following command:
 
@@ -219,7 +220,7 @@ sdk: expo
   npm start
   ```
 
-  ## Create your first user
+## Create your first user
 
   1. Visit your app's homepage at [http://localhost:8081](http://localhost:8081).
   1. Select "Sign up" on the page and authenticate to create your first user.
@@ -241,21 +242,21 @@ Learn how to build custom flows for your native apps using the following guides.
 
   ---
 
-  - [Protect content and read user data](/docs/expo/guides/users/reading)
-  - Learn how to use Clerk's hooks and helpers to protect content and read user data in your Expo app.
+- [Protect content and read user data](/docs/expo/guides/users/reading)
+- Learn how to use Clerk's hooks and helpers to protect content and read user data in your Expo app.
 
   ---
 
-  - [Custom flows](/docs/guides/development/custom-flows/overview)
-  - Expo native apps require custom flows in place of prebuilt components.
+- [Custom flows](/docs/guides/development/custom-flows/overview)
+- Expo native apps require custom flows in place of prebuilt components.
 
   ---
 
-  - [Deploy an Expo app to production](/docs/guides/development/deployment/expo)
-  - Learn how to deploy your Expo app to production.
+- [Deploy an Expo app to production](/docs/guides/development/deployment/expo)
+- Learn how to deploy your Expo app to production.
 
   ---
 
-  - [Clerk Expo SDK Reference](/docs/reference/expo/overview)
-  - Learn about the Clerk Expo SDK and how to integrate it into your app.
+- [Clerk Expo SDK Reference](/docs/reference/expo/overview)
+- Learn about the Clerk Expo SDK and how to integrate it into your app.
 </Cards>

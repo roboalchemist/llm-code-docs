@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/coinbase.mdx
 
 ---
+
 title: Add Coinbase as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Coinbase account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Coinbase account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a Coinbase app
+### Create a Coinbase app
 
   > [!NOTE]
   > Coinbase automatically creates a default project for you named `Project 1`. Select the icon next to the project name to rename it.
@@ -55,11 +56,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Complete the required fields. In **Redirect URIs**, paste the **Redirect URI** you saved from the Clerk Dashboard.
   1. Select **Create client**. The page will refresh and you should see the **Client ID** and **Client Secret**. Save these values somewhere secure.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

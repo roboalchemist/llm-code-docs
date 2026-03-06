@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/saml-connections/update-saml-connection.mdx
 
 ---
+
 title: '`updateSamlConnection()`'
 description: Use Clerk's JS Backend SDK to update a SAML connection.
 sdk: js-backend
@@ -25,92 +26,92 @@ function updateSamlConnection(
 
   ---
 
-  - `provider?`
-  - `'saml_custom' | 'saml_okta' | 'saml_google' | 'saml_microsoft'`
+- `provider?`
+- `'saml_custom' | 'saml_okta' | 'saml_google' | 'saml_microsoft'`
 
   The IdP provider of the connection.
 
   ---
 
-  - `domain?`
-  - `string`
+- `domain?`
+- `string`
 
   The domain of your Organization. Sign in flows using an email with this domain will use this SAML Connection. For example: `'clerk.dev'`
 
   ---
 
-  - `OId?`
-  - `string`
+- `OId?`
+- `string`
 
   The ID of the Organization to which users of this SAML Connection will be added
 
   ---
 
-  - `idpEntityId?`
-  - `string`
+- `idpEntityId?`
+- `string`
 
   The Entity ID as provided by the IdP.
 
   ---
 
-  - `idpSsoUrl?`
-  - `string`
+- `idpSsoUrl?`
+- `string`
 
   The Single-Sign On URL as provided by the IdP.
 
   ---
 
-  - `idpCertificate?`
-  - `string`
+- `idpCertificate?`
+- `string`
 
   The X.509 certificate as provided by the IdP.
 
   ---
 
-  - `idpMetadataUrl?`
-  - `string`
+- `idpMetadataUrl?`
+- `string`
 
   The URL which serves the IdP metadata. If present, it takes priority over the corresponding individual properties.
 
   ---
 
-  - `idpMetadata?`
-  - `string`
+- `idpMetadata?`
+- `string`
 
   The XML content of the IdP metadata file. If present, it takes priority over the corresponding individual properties.
 
   ---
 
-  - `attributeMapping?`
-  - `{ emailAddress?: string, firstName?: string, lastName?: string, userId?: string }`
+- `attributeMapping?`
+- `{ emailAddress?: string, firstName?: string, lastName?: string, userId?: string }`
 
   The attribute mapping for the SAML connection.
 
   ---
 
-  - `active?`
-  - `boolean`
+- `active?`
+- `boolean`
 
   Indicates whether the connection is active or not.
 
   ---
 
-  - `syncUserAttributes?`
-  - `boolean`
+- `syncUserAttributes?`
+- `boolean`
 
   Indicates whether the connection syncs user attributes between the Service Provider (SP) and Identity Provider (IdP) or not.
 
   ---
 
-  - `allowSubdomains?`
-  - `boolean`
+- `allowSubdomains?`
+- `boolean`
 
   Indicates whether users with an email address subdomain are allowed to use this connection in order to authenticate or not.
 
   ---
 
-  - `allowIdpInitiated?`
-  - `boolean`
+- `allowIdpInitiated?`
+- `boolean`
 
   Indicates whether the connection allows Identity Provider (IdP) initiated flows or not.
 </Properties>

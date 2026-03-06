@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/spotify.mdx
 
 ---
+
 title: Add Spotify as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Spotify account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Spotify account using OAuth
 ---
 
 <TutorialHero
@@ -36,7 +37,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ## Create a Spotify app
+## Create a Spotify app
 
   1. In the top-right of the [Spotify Developer Dashboard](https://developer.spotify.com/), select **Create app**.
   1. Complete the required fields. For **Redirect URIs**, paste the **Redirect URI** that you saved from Clerk Dashboard.
@@ -44,11 +45,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Settings**.
   1. Save the **Client ID** and **Client secret** somewhere secure. To get the **Client secret**, select **View client secret**.
 
-  ## Set the Client ID and Client Secret in the Clerk Dashboard
+## Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ## Test your connection
+## Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

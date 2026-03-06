@@ -18,6 +18,7 @@
 
     return <h1>Our Exclusive Content</h1>
   }
+
   ```
 
   ```astro {{ filename: 'src/pages/manage-premium-content.astro' }}
@@ -32,6 +33,7 @@
     </body>
   </html>
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -44,7 +46,7 @@
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="manage-premium-content"></div>
+<div id="manage-premium-content"></div>
   `
 
   const managePremiumContentDiv = document.getElementById('manage-premium-content')
@@ -55,13 +57,14 @@
 
   if (!hasPremiumAccessManage) {
     managePremiumContentDiv.innerHTML = `
-      <h1>Only subscribers with the Premium Access Manage permission can access this content.</h1>
+<h1>Only subscribers with the Premium Access Manage permission can access this content.</h1>
     `
   } else {
     managePremiumContentDiv.innerHTML = `
-      <h1>Our Exclusive Content</h1>
+<h1>Our Exclusive Content</h1>
     `
   }
+
   ```
 </If>
 
@@ -82,6 +85,7 @@
     return <h1>Our Exclusive Content</h1>
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -150,6 +154,7 @@
 
     return <h1>Our Exclusive Content</h1>
   }
+
   ```
 </If>
 
@@ -177,6 +182,7 @@
     return <h1>Our Exclusive Content</h1>
   }
   ```
+
 </If>
 
 <If sdk="remix">
@@ -200,6 +206,7 @@
 
     return <h1>Our Exclusive Content</h1>
   }
+
   ```
 </If>
 
@@ -240,6 +247,7 @@
     return <h1>Our Exclusive Content</h1>
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -263,6 +271,7 @@
 
     return <Text>Our Exclusive Content</Text>
   }
+
   ```
 </If>
 
@@ -287,6 +296,7 @@
 
   export default router
   ```
+
 </If>
 
 <If sdk="fastify">
@@ -309,6 +319,7 @@
       }
     })
   }
+
   ```
 </If>
 
@@ -346,4 +357,5 @@
     return new Response('Our Exclusive Content')
   }
   ```
+
 </If>

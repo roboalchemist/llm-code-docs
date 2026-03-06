@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/totp-resource.mdx
 
 ---
+
 title: '`TOTPResource`'
 description: An interface that represents a TOTP secret.
 sdk: js-frontend
@@ -16,43 +17,43 @@ An interface that represents a TOTP secret.
 
   ---
 
-  - `secret?`
-  - `string`
+- `secret?`
+- `string`
 
   The generated TOTP secret. This is only returned to the client upon creation and cannot be retrieved afterwards.
 
   ---
 
-  - `uri?`
-  - `string`
+- `uri?`
+- `string`
 
   A complete TOTP configuration URI including the Issuer, Account, etc that can be pasted to an authenticator app or encoded to a QR code and scanned for convenience. This is only returned to the client upon creation and cannot be retrieved afterwards.
 
   ---
 
-  - `verified`
-  - `boolean`
+- `verified`
+- `boolean`
 
   A boolean indicating whether this TOTP secret has been verified by the user by providing one code generated with it. TOTP is not enabled on the user unless they have a verified secret.
 
   ---
 
-  - `backupCodes?`
-  - `string[]`
+- `backupCodes?`
+- `string[]`
 
   A set of fresh generated Backup codes. This will be populated if the feature is enabled in your instance and the user doesn't already have backup codes generated.
 
   ---
 
-  - `createdAt`
-  - `Date`
+- `createdAt`
+- `Date`
 
   The date when the TOTP secret was created.
 
   ---
 
-  - `updatedAt`
-  - `Date`
+- `updatedAt`
+- `Date`
 
   The date when the TOTP secret was last updated.
 </Properties>

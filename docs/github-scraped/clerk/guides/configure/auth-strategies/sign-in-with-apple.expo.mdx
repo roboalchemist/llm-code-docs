@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/sign-in-with-apple.expo.mdx
 
 ---
+
 title: Sign in with Apple
 description: Learn how to use Clerk to natively Sign in with Apple in your Expo app.
 sdk: expo
@@ -16,7 +17,7 @@ This guide will teach you how to add native [Sign in with Apple](https://develop
 
   Add your iOS application to the [**Native applications**](https://dashboard.clerk.com/~/native-applications) page in the Clerk Dashboard. You will need your iOS app's **App ID Prefix** (Team ID) and **Bundle ID**.
 
-  ## Enable Apple as a social connection
+## Enable Apple as a social connection
 
   1. In the Clerk Dashboard, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page.
   1. Select **Add connection** and select **For all users**.
@@ -26,7 +27,7 @@ This guide will teach you how to add native [Sign in with Apple](https://develop
   > [!NOTE]
   > Apple provides a privacy feature called [Hide My Email](https://support.apple.com/en-us/HT210425#hideemail), allowing users to sign in to your app with Apple without disclosing their actual email addresses. Instead, your instance receives an app-specific email address that forwards any emails to the user's real address. To be able to send emails properly to users with hidden addresses, you must configure an additional setting in the Apple Developer portal. See [Configure Email Source for Apple Private Relay](/docs/guides/configure/auth-strategies/social-connections/apple#configure-email-source-for-apple-private-relay){{ target: '_blank' }} for more information.
 
-  ## Install dependencies
+## Install dependencies
 
   The [Expo Apple Authentication library](https://docs.expo.dev/versions/latest/sdk/apple-authentication/) provides access to Apple's native Sign in with Apple functionality from your Expo app.
 
@@ -36,7 +37,7 @@ This guide will teach you how to add native [Sign in with Apple](https://develop
   npx expo install expo-apple-authentication
   ```
 
-  ## Add `expo-apple-authentication` to your app config
+## Add `expo-apple-authentication` to your app config
 
   Add the `expo-apple-authentication` plugin to your `app.json` or `app.config.js`.
 
@@ -58,11 +59,11 @@ This guide will teach you how to add native [Sign in with Apple](https://develop
     ```
   </CodeBlockTabs>
 
-  ## Build your authentication flow
+## Build your authentication flow
 
   <Include src="_partials/expo/use-sign-in-with-apple-example" />
 
-  ## Create a native build
+## Create a native build
 
   Create a native build with EAS Build or a local prebuild, since Apple Authentication is not supported in Expo Go.
 
@@ -73,4 +74,5 @@ This guide will teach you how to add native [Sign in with Apple](https://develop
   # Or using local prebuild
   npx expo prebuild && npx expo run:ios --device
   ```
+
 </Steps>

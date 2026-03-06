@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/billing/checkout-button.mdx
 
 ---
+
 title: "`<CheckoutButton />` component"
 description: "Clerk's <CheckoutButton /> component renders a button that opens the checkout drawer for Subscription Plans."
 sdk: react, nextjs, vue
@@ -60,7 +61,7 @@ The `<CheckoutButton />` component renders a button that opens the checkout draw
   export default function PricingPage() {
     return (
       <Show when="signed-in">
-        {/* Basic usage */}
+        {/*Basic usage*/}
         <CheckoutButton planId="cplan_xxx" planPeriod="month" />
 
         {/* Customizes the appearance of the checkout drawer */}
@@ -91,6 +92,7 @@ The `<CheckoutButton />` component renders a button that opens the checkout draw
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -136,6 +138,7 @@ The `<CheckoutButton />` component renders a button that opens the checkout draw
 
   export default PricingSection
   ```
+
 </If>
 
 <If sdk="vue">
@@ -189,45 +192,45 @@ The `<CheckoutButton />` component renders a button that opens the checkout draw
 
   ---
 
-  - `planPeriod?`
-  - `'month' | 'annual'`
+- `planPeriod?`
+- `'month' | 'annual'`
 
   The billing period for the Subscription.
 
   ---
 
-  - `for?`
-  - `'user' | 'organization'`
+- `for?`
+- `'user' | 'organization'`
 
   Determines whether the Subscription is for the current user or Organization. Defaults to `'user'`.
 
   ---
 
-  - `children?`
-  - `React.ReactNode`
+- `children?`
+- `React.ReactNode`
 
   A custom button element. If not provided, defaults to a button with the text "Checkout".
 
   ---
 
-  - `onSubscriptionComplete?`
-  - `() => void`
+- `onSubscriptionComplete?`
+- `() => void`
 
   A callback function that is called when a Subscription is successfully completed.
 
   ---
 
-  - `newSubscriptionRedirectUrl?`
-  - `string`
+- `newSubscriptionRedirectUrl?`
+- `string`
 
   The URL to redirect to after a successful Subscription.
 
   ---
 
-  - `checkoutProps?`
-  - `{ appearance: Appearance }`
+- `checkoutProps?`
+- `{ appearance: Appearance }`
 
   Options for the checkout drawer. Accepts the following properties:
 
-  - [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<CheckoutButton checkoutProps={{ appearance: { ... } }} />`.
+- [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<CheckoutButton checkoutProps={{ appearance: { ... } }} />`.
 </Properties>

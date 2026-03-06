@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/x-twitter.mdx
 
 ---
+
 title: Add X/Twitter v2 as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their X/Twitter account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their X/Twitter account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **X/Twitter** from the provider list.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ## Configure additional OAuth scopes (optional)
+## Configure additional OAuth scopes (optional)
 
   Scopes are the permissions your app requests from a user's X/Twitter account. Clerk pre-configures the required OAuth scopes for X/Twitter as a social connection, but you can configure additional scopes if needed. The scopes you define should align with your app's functionality and your selected **App Permissions** in the X/Twitter Developer Portal. For example, if you only select **Read** in the X/Twitter Developer Portal, Clerk's request for `tweet.write` will be rejected, even if you include it in Clerk's configuration.
 
@@ -57,7 +58,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If the page is no longer open, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page in the Clerk Dashboard. Select the connection.
 
-  ## Create an X/Twitter application
+## Create an X/Twitter application
 
   When signing up for a new X/Twitter Developer account, you'll be required to describe your app's use cases. After completing this step, you'll be redirected to the **Dashboard** page. Under **Projects**, you'll see an automatically generated app with a randomly generated string as its name.
 
@@ -73,11 +74,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Complete any other required fields, such as the **Website URL**.
   1. Select **Save**. You'll be redirected to a page that shows your app's **Client ID** and **Client Secret**. Save these values somewhere secure.
 
-  ## Set the Client ID and Client Secret in the Clerk Dashboard
+## Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ## Test your connection
+## Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

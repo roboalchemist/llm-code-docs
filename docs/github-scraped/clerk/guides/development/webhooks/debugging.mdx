@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/webhooks/debugging.mdx
 
 ---
+
 title: Debug your webhooks
 description: Understand how to debug your webhooks while developing your application
 ---
@@ -46,13 +47,16 @@ export const config = {
 If you are having trouble with your webhook, you can create a basic Route Handler to test it locally.
 
 1. Create a test route by adding the following file and code to your application:
+
    ```ts
    export async function POST() {
      return Response.json({ message: 'The route is working' })
    }
    ```
+
 1. Run your application.
 1. Send a request to the test route using the following command:
+
    ```bash
    curl -H 'Content-Type: application/json' \
        -X POST http://localhost:3000/api/webhooks/test

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/types/commerce-subscription.mdx
 
 ---
+
 title: '`CommerceSubscription`'
 description: The Backend CommerceSubscription object holds information about a Subscription of your application.
 sdk: js-backend
@@ -20,64 +21,64 @@ The `CommerceSubscription` object is similar to the [`BillingSubscriptionResourc
 
   ---
 
-  - `status`
-  - `"abandoned" | "active" | "ended" | "canceled" | "incomplete" | "past_due"`
+- `status`
+- `"abandoned" | "active" | "ended" | "canceled" | "incomplete" | "past_due"`
 
   The current status of the Subscription.
 
   ---
 
-  - `payerId`
-  - `string`
+- `payerId`
+- `string`
 
   The ID of the payer for this Subscription.
 
   ---
 
-  - `createdAt`
-  - `number`
+- `createdAt`
+- `number`
 
   Unix timestamp (milliseconds) of when the Subscription was created.
 
   ---
 
-  - `updatedAt`
-  - `number`
+- `updatedAt`
+- `number`
 
   Unix timestamp (milliseconds) of when the Subscription was last updated.
 
   ---
 
-  - `activeAt`
-  - `number | null`
+- `activeAt`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the Subscription became active.
 
   ---
 
-  - `pastDueAt`
-  - `number | null`
+- `pastDueAt`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the Subscription became past due.
 
   ---
 
-  - `subscriptionItems`
-  - <code>[CommerceSubscriptionItem](/docs/reference/backend/types/commerce-subscription-item)\[]</code>
+- `subscriptionItems`
+- <code>[CommerceSubscriptionItem](/docs/reference/backend/types/commerce-subscription-item)\[]</code>
 
   Array of Subscription Items in this Subscription.
 
   ---
 
-  - `nextPayment`
-  - <code>null | \{ amount: [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount); date: number; }</code>
+- `nextPayment`
+- <code>null | \{ amount: [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount); date: number; }</code>
 
   Information about the next scheduled payment.
 
   ---
 
-  - `eligibleForFreeTrial`
-  - `boolean`
+- `eligibleForFreeTrial`
+- `boolean`
 
   Whether the payer is eligible for a free trial.
 </Properties>

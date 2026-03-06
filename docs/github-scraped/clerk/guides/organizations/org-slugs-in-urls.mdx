@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/organizations/org-slugs-in-urls.mdx
 
 ---
+
 title: Use Organization slugs in URLs
 description: Learn how to use Organization slugs in your application URLs to build tenant-specific authentication flows. Enable seamless switching between active Organizations (one-to-many or many-to-many) with Clerk's secure and scalable multi-tenant authentication suite.
 metadata:
@@ -70,8 +71,8 @@ This guide shows you how to add Organization slugs to your app's URLs, configure
 
   Set the following properties to configure the components to handle slug-based navigation:
 
-  - Set `afterCreateOrganizationUrl` to `/orgs/:slug` to navigate the user to the Organization's slug after creating an Organization.
-  - Set `afterSelectOrganizationUrl` to `/orgs/:slug` to navigate the user to the Organization's slug after selecting it.
+- Set `afterCreateOrganizationUrl` to `/orgs/:slug` to navigate the user to the Organization's slug after creating an Organization.
+- Set `afterSelectOrganizationUrl` to `/orgs/:slug` to navigate the user to the Organization's slug after selecting it.
 
   For example, if the Organization has the slug `acmecorp`, when a user creates or selects that Organization using either component, they'll be redirected to `/orgs/acmecorp`.
 
@@ -107,7 +108,7 @@ This guide shows you how to add Organization slugs to your app's URLs, configure
     </Tab>
   </Tabs>
 
-  ## Configure `clerkMiddleware()` to set the Active Organization
+## Configure `clerkMiddleware()` to set the Active Organization
 
   > [!TIP]
   > If your app doesn't use `clerkMiddleware()`, or you prefer to manually set the [Active Organization](!active-organization), use the [`setActive()`](/docs/reference/javascript/clerk) method to control the Active Organization on the client-side.
@@ -148,7 +149,7 @@ This guide shows you how to add Organization slugs to your app's URLs, configure
   }
   ```
 
-  ### Handle failed activation
+### Handle failed activation
 
   Now that `clerkMiddleware()` is configured to activate Organizations, you can build an Organization-specific page while handling cases where the Organization can't be activated.
 
@@ -189,7 +190,7 @@ This guide shows you how to add Organization slugs to your app's URLs, configure
   }
   ```
 
-  ## Render Organization-specific content
+## Render Organization-specific content
 
   Use the following tabs to learn how to access Organization information on the server-side and client-side.
 

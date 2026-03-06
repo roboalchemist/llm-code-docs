@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/troubleshooting/email-domain-name-warmup.mdx
 
 ---
+
 title: New domain reputation and email warm-up
-description: Learn how email providers evaluate new domains, how to warm up your domain for reliable verification email delivery, and what metrics to monitor as a Clerk customer.
+description: Learn how email providers evaluate new domains, how to warm up your domain for reliable verification email delivery, and what metrics to monitor as a Clerk customer
 ---
 
 ## Why your domain reputation matters
@@ -93,15 +94,15 @@ Domain warm-up is the process of gradually increasing your email sending volume 
 
   If you know you'll need email verification, register the production domain as early as possible — even if you're not ready to launch. A domain that has existed for a few weeks before it starts sending email looks less suspicious than one registered the same day.
 
-  ### Set up a real mailbox behind your "from" address
+### Set up a real mailbox behind your "from" address
 
   By default, Clerk sends from several different aliases such as `noreply@your-domain.com`, `invitations@your-domain.com`, and `notifications@your-domain.com`. The specific addresses depend on the email templates, by default. For each active email template, it's recommended to [check the Clerk Dashboard](https://dashboard.clerk.com/~/customization/email), where default aliases can be seen and customized for each email template. All sending addresses should be functioning mailboxes that can receive replies. Providers check this — if a recipient replies and the email bounces, it's a negative signal. You can change the "from" address [in the Clerk Dashboard](https://dashboard.clerk.com/~/customization/email).
 
-  ### Set up DMARC
+### Set up DMARC
 
   [SPF](!spf) and [DKIM](!dkim) are configured during Clerk production setup, but [DMARC](!dmarc) is your responsibility. Do this before you send your first production email.
 
-  ### Verify everything is passing
+### Verify everything is passing
 
   Use free tools like [MXToolbox's SuperTool](https://mxtoolbox.com/SuperTool.aspx) or [Google's Check MX](https://toolbox.googleapps.com/apps/checkmx/) to confirm your SPF, DKIM, and DMARC records are all valid before your first users sign up.
 </Steps>
@@ -186,6 +187,6 @@ During warm-up and ongoing, monitor these numbers:
 
   ---
 
-  - [Known provider-related issues](/docs/guides/development/troubleshooting/email-deliverability#known-provider-related-issues)
-  - Troubleshoot Gmail delays, Microsoft Defender quarantining, and other provider-specific issues.
+- [Known provider-related issues](/docs/guides/development/troubleshooting/email-deliverability#known-provider-related-issues)
+- Troubleshoot Gmail delays, Microsoft Defender quarantining, and other provider-specific issues.
 </Cards>

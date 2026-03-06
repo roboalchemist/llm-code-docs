@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/webhooks/syncing.mdx
 
 ---
+
 title: Sync Clerk data to your app with webhooks
-description: Learn how to sync Clerk data to your app with webhooks.
+description: Learn how to sync Clerk data to your app with webhooks
 ---
 
 <TutorialHero
@@ -36,6 +37,7 @@ If you want to use webhooks to sync Clerk data because **you want to store extra
 1. (Recommended) **If it's more than 1.2KB,** you could store _only_ the extra user data in your own database.
    - Store the user's Clerk ID as a column in the users table in your own database, and only store extra user data. When you need to access Clerk user data, access it directly from the [Clerk session token](/docs/guides/sessions/session-tokens). When you need to access the extra user data, do a lookup in your database using the Clerk user ID. Consider indexing the Clerk user ID column since it will be used frequently for lookups.
    - For example, Clerk doesn't collect a user's birthday, country, or bio, but if you wanted to collect these fields, you could store them in your own database like this:
+
      | id | clerk\_id | birthday | country | bio |
      | - | - | - | - | - |
      | user123abc | user\_123 | 1990-05-12 | USA | Coffee enthusiast. |
@@ -69,7 +71,7 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
   1. On the ngrok dashboard homepage, follow the [setup guide](https://dashboard.ngrok.com/get-started/setup) instructions. Under **Deploy your app online**, select **Static domain**. Run the provided command, replacing the port number with your server's port. For example, if your development server runs on port 3000, the command should resemble `ngrok http --url=<YOUR_FORWARDING_URL> 3000`. This creates a free static domain and starts a tunnel.
   1. Save your **Forwarding** URL somewhere secure.
 
-  ## Set up a webhook endpoint
+## Set up a webhook endpoint
 
   1. In the Clerk Dashboard, navigate to the [**Webhooks**](https://dashboard.clerk.com/~/webhooks) page.
   1. Select **Add Endpoint**.
@@ -77,7 +79,7 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
   1. In the **Subscribe to events** section, scroll down and select `user.created`.
   1. Select **Create**. You'll be redirected to your endpoint's settings page. Keep this page open.
 
-  ## Add your Signing Secret to `.env`
+## Add your Signing Secret to `.env`
 
   To verify the webhook payload, you'll need your endpoint's **Signing Secret**. Since you don't want this secret exposed in your codebase, store it as an environment variable in your `.env` file during local development.
 
@@ -95,11 +97,11 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
   CLERK_WEBHOOK_SIGNING_SECRET=whsec_123
   ```
 
-  ## Make sure the webhook route is public
+## Make sure the webhook route is public
 
   Incoming webhook events don't contain auth information. They come from an external source and aren't signed in or out, so the route must be public to allow access. If you're using `clerkMiddleware()`, ensure that the `/api/webhooks(.*)` route is set as public. For information on configuring routes, see the [`clerkMiddleware()` guide](/docs/reference/nextjs/clerk-middleware).
 
-  ## Create a route handler to verify the webhook
+## Create a route handler to verify the webhook
 
   Set up a Route Handler that uses Clerk's [`verifyWebhook()`](/docs/reference/backend/verify-webhook) function to verify the incoming Clerk webhook and process the payload.
 
@@ -351,7 +353,7 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
     </Tab>
   </Tabs>
 
-  ## Narrow to a webhook event for type inference
+## Narrow to a webhook event for type inference
 
   `WebhookEvent` encompasses all possible webhook types. Narrow down the event type for accurate typing for specific events.
 
@@ -368,16 +370,16 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
 
   To handle types manually, import the following types from your backend SDK (e.g., `@clerk/nextjs/webhooks`):
 
-  - `DeletedObjectJSON`
-  - `EmailJSON`
-  - `OrganizationInvitationJSON`
-  - `OrganizationJSON`
-  - `OrganizationMembershipJSON`
-  - `SessionJSON`
-  - `SMSMessageJSON`
-  - `UserJSON`
+- `DeletedObjectJSON`
+- `EmailJSON`
+- `OrganizationInvitationJSON`
+- `OrganizationJSON`
+- `OrganizationMembershipJSON`
+- `SessionJSON`
+- `SMSMessageJSON`
+- `UserJSON`
 
-  ## Test the webhook
+## Test the webhook
 
   1. Start your Next.js server.
   1. In your endpoint's settings page in the Clerk Dashboard, select the **Testing** tab.
@@ -385,14 +387,14 @@ These steps apply to any Clerk event. To make the setup process easier, it's rec
   1. Select **Send Example**.
   1. In the **Message Attempts** section, confirm that the event's **Status** is labeled with **Succeeded**. In your server's terminal where your app is running, you should see the webhook's payload.
 
-  ### Handling failed messages
+### Handling failed messages
 
   1. In the **Message Attempts** section, select the event whose **Status** is labeled with **Failed**.
   1. Scroll down to the **Webhook Attempts** section.
   1. Toggle the arrow next to the **Status** column.
   1. Review the error. Solutions vary by error type. For more information, refer to the [guide on debugging your webhooks](/docs/guides/development/webhooks/debugging).
 
-  ## Trigger the webhook
+## Trigger the webhook
 
   To trigger the `user.created` event, create a new user in your app.
 

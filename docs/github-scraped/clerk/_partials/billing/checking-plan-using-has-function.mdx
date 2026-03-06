@@ -15,6 +15,7 @@
 
     return <h1>For Bronze subscribers only</h1>
   }
+
   ```
 
   ```astro {{ filename: 'src/pages/content.astro' }}
@@ -29,6 +30,7 @@
     </body>
   </html>
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -41,7 +43,7 @@
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="bronze-content"></div>
+<div id="bronze-content"></div>
   `
 
   const bronzeContentDiv = document.getElementById('bronze-content')
@@ -50,13 +52,14 @@
 
   if (!hasBronzePlan) {
     bronzeContentDiv.innerHTML = `
-      <h1>Only subscribers to the Bronze plan can access this content.</h1>
+<h1>Only subscribers to the Bronze plan can access this content.</h1>
     `
   } else {
     bronzeContentDiv.innerHTML = `
-      <h1>For Bronze subscribers only</h1>
+<h1>For Bronze subscribers only</h1>
     `
   }
+
   ```
 </If>
 
@@ -74,6 +77,7 @@
     return <h1>For Bronze subscribers only</h1>
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -131,6 +135,7 @@
 
     return <h1>For Bronze subscribers only</h1>
   }
+
   ```
 </If>
 
@@ -155,6 +160,7 @@
     return <h1>For Bronze subscribers only</h1>
   }
   ```
+
 </If>
 
 <If sdk="remix">
@@ -175,6 +181,7 @@
 
     return <h1>For Bronze subscribers only</h1>
   }
+
   ```
 </If>
 
@@ -212,6 +219,7 @@
     return <h1>For Bronze subscribers only</h1>
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -231,6 +239,7 @@
 
     return <Text>For Bronze subscribers only</Text>
   }
+
   ```
 </If>
 
@@ -255,6 +264,7 @@
 
   export default router
   ```
+
 </If>
 
 <If sdk="fastify">
@@ -275,6 +285,7 @@
       }
     })
   }
+
   ```
 </If>
 
@@ -310,4 +321,5 @@
     return new Response('Only subscribers to the Bronze plan can access this content.')
   }
   ```
+
 </If>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/expo/passkeys.mdx
 
 ---
+
 title: Configure passkeys for Expo
 description: Learn how to configure passkeys for your Expo application.
 sdk: expo
@@ -16,7 +17,7 @@ sdk: expo
 
   To use passkeys, first enable the strategy in the [Clerk Dashboard](https://dashboard.clerk.com/~/user-authentication/user-and-authentication?user_auth_tab=passkeys).
 
-  ## Configure passkeys
+## Configure passkeys
 
   Use the following tabs to configure your passkeys for `iOS` or `Android`.
 
@@ -130,7 +131,7 @@ sdk: expo
     </Tab>
   </Tabs>
 
-  ## Install `@clerk/expo-passkeys`
+## Install `@clerk/expo-passkeys`
 
   Run the following command to install the `@clerk/expo-passkeys` package:
 
@@ -138,7 +139,7 @@ sdk: expo
   npm install @clerk/expo-passkeys
   ```
 
-  ## Prebuild Expo project
+## Prebuild Expo project
 
   Run the following command to prebuild your Expo project:
 
@@ -146,7 +147,7 @@ sdk: expo
   npx expo prebuild
   ```
 
-  ## Update your `<ClerkProvider>`
+## Update your `<ClerkProvider>`
 
   Pass the `passkeys` object to the `__experimental_passkeys` property of your `<ClerkProvider>` component, as shown in the following example:
 
@@ -175,6 +176,7 @@ sdk: expo
     )
   }
   ```
+
 </Steps>
 
 ## Usage

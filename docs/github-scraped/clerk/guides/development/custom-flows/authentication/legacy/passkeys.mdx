@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/legacy/passkeys.mdx
 
 ---
+
 title: Build a custom authentication flow using passkeys
-description: Learn how to use the Clerk API to build a custom authentication flow using passkeys.
+description: Learn how to use the Clerk API to build a custom authentication flow using passkeys
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -59,6 +60,7 @@ To create a passkey for a user, you must call [`User.createPasskey()`](/docs/ref
 
     return <button onClick={createClerkPasskey}>Create a passkey</button>
   }
+
   ```
 </If>
 
@@ -120,6 +122,7 @@ To create a passkey for a user, you must call [`User.createPasskey()`](/docs/ref
     },
   })
   ```
+
 </If>
 
 ## Sign a user in with a passkey
@@ -179,6 +182,7 @@ To sign a user into your Clerk app with a passkey, you must call [`SignIn.authen
     return <button onClick={signInWithPasskey}>Sign in with a passkey</button>
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -258,6 +262,7 @@ To sign a user into your Clerk app with a passkey, you must call [`SignIn.authen
       fontWeight: '600',
     },
   })
+
   ```
 </If>
 
@@ -318,6 +323,7 @@ Clerk generates a name based on the device associated with the passkey when it's
     )
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -501,6 +507,7 @@ Clerk generates a name based on the device associated with the passkey when it's
       fontWeight: '500',
     },
   })
+
   ```
 </If>
 
@@ -554,6 +561,7 @@ To delete a user's passkey from your Clerk app, you must call the [`delete()`](/
     )
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -728,5 +736,6 @@ To delete a user's passkey from your Clerk app, you must call the [`delete()`](/
       fontWeight: '500',
     },
   })
+
   ```
 </If>

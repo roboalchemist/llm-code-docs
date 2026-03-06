@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/phone-numbers/create-phone-number.mdx
 
 ---
+
 title: '`createPhoneNumber()`'
 description: Use Clerk's JS Backend SDK to create a phone number for the specified user.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/PhoneNumberApi.ts#L29 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/PhoneNumberApi.ts#L29*/}
 
 Creates a [`PhoneNumber`](/docs/reference/javascript/types/phone-number) for the specified user.
 
@@ -24,29 +25,29 @@ function createPhoneNumber(params: CreatePhoneNumberParams): Promise<PhoneNumber
 
   ---
 
-  - `phoneNumber`
-  - `string`
+- `phoneNumber`
+- `string`
 
   The phone number to assign to the specified user. Must adhere to the [E.164 format](https://en.wikipedia.org/wiki/E.164) standard for phone number format.
 
   ---
 
-  - `primary?`
-  - `boolean`
+- `primary?`
+- `boolean`
 
   Whether or not to set the phone number as the user's primary phone number. Defaults to `false`, unless it is the first phone number.
 
   ---
 
-  - `verified?`
-  - `boolean`
+- `verified?`
+- `boolean`
 
   Whether or not the phone number is verified.
 
   ---
 
-  - `reservedForSecondFactor`
-  - `boolean`
+- `reservedForSecondFactor`
+- `boolean`
 
   Whether or not the phone number is reserved for [multi-factor authentication](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#multi-factor-authentication). The phone number must also be verified. If there are no other reserved [second factors](!second-factor-verification), the phone number will be set as the default second factor.
 </Properties>

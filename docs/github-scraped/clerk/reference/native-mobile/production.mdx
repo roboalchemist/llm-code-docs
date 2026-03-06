@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/native-mobile/production.mdx
 
 ---
+
 title: Deploy your Clerk app to production
 description: Learn how to deploy your Clerk app to production.
 sdk: ios, android
@@ -78,11 +79,11 @@ To share sessions and authentication across two different domains with the same 
   Make sure your iOS app exists in the production instance under [**Native Applications**](https://dashboard.clerk.com/~/native-applications).
   You will need your **App ID Prefix** and **Bundle ID**.
 
-  ## Configure allowlisted redirect URLs
+## Configure allowlisted redirect URLs
 
   <Include src="_partials/allowlist-redirect-urls" />
 
-  ## Update associated domains
+## Update associated domains
 
   In Xcode, update **Associated Domains** to use your production [Frontend API URL](!frontend-api-url):
 
@@ -96,7 +97,7 @@ To share sessions and authentication across two different domains with the same 
   Make sure your Android app exists in the production instance under [**Native Applications**](https://dashboard.clerk.com/~/native-applications).
   You will need your **Package Name** and **SHA-256 certificate fingerprint**.
 
-  ## Configure allowlisted redirect URLs
+## Configure allowlisted redirect URLs
 
   <Include src="_partials/allowlist-redirect-urls" />
 </If>

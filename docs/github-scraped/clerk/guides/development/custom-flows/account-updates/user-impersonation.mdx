@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/account-updates/user-impersonation.mdx
 
 ---
+
 title: Build a custom flow for handling user impersonation
-description: Learn how to build a custom flow using the Clerk API that handles user impersonation.
+description: Learn how to build a custom flow using the Clerk API that handles user impersonation
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -24,11 +25,12 @@ This guide will walk you through how to build a custom flow that handles user im
 
   Use the following tabs to view the code for:
 
-  - The main page that gets the list of the application's users using the [JS Backend SDK](/docs/reference/backend/user/get-user-list)
-  - The Client Component that has the UI for displaying the users and the ability to impersonate them
-  - The Server Action that generates the actor token using the [Backend API](/docs/reference/backend-api/tag/actor-tokens/post/actor_tokens){{ target: '_blank' }}
+- The main page that gets the list of the application's users using the [JS Backend SDK](/docs/reference/backend/user/get-user-list)
+- The Client Component that has the UI for displaying the users and the ability to impersonate them
+- The Server Action that generates the actor token using the [Backend API](/docs/reference/backend-api/tag/actor-tokens/post/actor_tokens){{ target: '_blank' }}
 
   <CodeBlockTabs options={["Main page", "Client Component", "Server Action"]}>
+
     ```tsx {{ filename: 'app/dashboard/page.tsx' }}
     import { auth, clerkClient } from '@clerk/nextjs/server'
     import ImpersonateUsers from './_components'
@@ -193,7 +195,9 @@ This guide will walk you through how to build a custom flow that handles user im
       return { ok: true, token: data.token }
     }
     ```
+
   </CodeBlockTabs>
+
 </If>
 
 <If sdk="expo">
@@ -492,5 +496,6 @@ This guide will walk you through how to build a custom flow that handles user im
         // for more info on error handling
       }
   }
+
   ```
 </If>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/composables/use-user.mdx
 
 ---
+
 title: useUser() | Vue
 description: Access and manage the current user's data in your Vue application with Clerk's useUser() composable.
 sdk: vue, nuxt
@@ -18,15 +19,15 @@ The `useUser()` composable provides access to the current user's [`User`](/docs/
 
   ---
 
-  - `user`
-  - <code>Ref\<[User](/docs/reference/javascript/user)></code>
+- `user`
+- <code>Ref\<[User](/docs/reference/javascript/user)></code>
 
   The `User` object for the current active user. If the user isn't signed in, `user` will be `null`.
 
   ---
 
-  - `isSignedIn`
-  - `Ref<boolean>`
+- `isSignedIn`
+- `Ref<boolean>`
 
   Indicates whether a user is currently signed in.
 </Properties>

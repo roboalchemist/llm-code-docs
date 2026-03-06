@@ -5,6 +5,7 @@ The following example demonstrates how to use the [`$userStore`](/docs/reference
 For more information, see the [`User` reference](/docs/reference/javascript/user){{ target: '_blank' }}.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'user.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $userStore } from '@clerk/astro/client'
@@ -57,4 +58,5 @@ For more information, see the [`User` reference](/docs/reference/javascript/user
     <div>Hello {$user.fullName}!</div>
   {/if}
   ```
+
 </CodeBlockTabs>

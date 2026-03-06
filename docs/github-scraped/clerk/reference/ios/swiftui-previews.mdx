@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/ios/swiftui-previews.mdx
 
 ---
+
 title: SwiftUI previews
 description: Use Clerk.preview() and ClerkEnvironment.json to render iOS previews with realistic Clerk configuration.
 sdk: ios
@@ -53,7 +54,7 @@ For more realistic preview behavior, add your instance's `/v1/environment` respo
 
   Then, copy the raw JSON response body.
 
-  ### Create `ClerkEnvironment.json`
+### Create `ClerkEnvironment.json`
 
   In Xcode:
 
@@ -64,7 +65,7 @@ For more realistic preview behavior, add your instance's `/v1/environment` respo
   > [!NOTE]
   > If you change your Clerk configuration, fetch `/v1/environment` again and replace `ClerkEnvironment.json` so previews stay in sync.
 
-  ### Refresh previews
+### Refresh previews
 
   Rebuild the preview canvas. `Clerk.preview()` will:
 

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/rendering-modes.mdx
 
 ---
+
 title: Next.js rendering modes and Clerk
 description: Learn how Clerk's SDK interacts with Next.js's different rendering modes.
 sdk: nextjs
@@ -51,6 +52,7 @@ However, if you'd like the components that use `useAuth()` to be dynamically ren
 The following example demonstrates how to use `<ClerkProvider dynamic>` in a page's layout in order to opt it into dynamic rendering. In this case, the [root layout](/docs/nextjs/getting-started/quickstart#add-clerk-provider-to-your-app) would still be wrapped with `<ClerkProvider>` to provide the authentication context to the entire app, but without the `dynamic` prop being passed as to not opt your entire app into dynamic rendering.
 
 <CodeBlockTabs options={["Layout", "Page"]}>
+
   ```tsx {{ filename: 'app/example/layout.tsx' }}
   import { ClerkProvider } from '@clerk/nextjs'
   import { Suspense } from 'react'
@@ -87,4 +89,5 @@ The following example demonstrates how to use `<ClerkProvider dynamic>` in a pag
     )
   }
   ```
+
 </CodeBlockTabs>

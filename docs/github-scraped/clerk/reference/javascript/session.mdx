@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/session.mdx
 
 ---
+
 title: '`Session` object'
 description: The Session object is an abstraction over an HTTP session. It models the period of information exchange between a user and the server.
 search:
@@ -33,99 +34,99 @@ All sessions that are **expired**, **removed**, **replaced**, **ended** or **aba
 
   ---
 
-  - `actor`
-  - `ActJWTClaim | null`
+- `actor`
+- `ActJWTClaim | null`
 
   The JWT actor for the session. Holds identifier for the user that is impersonating the current user. Read more about [impersonation](/docs/guides/users/impersonation).
 
   ---
 
-  - `createdAt`
-  - `Date`
+- `createdAt`
+- `Date`
 
   The date when the session was created.
 
   ---
 
-  - `currentTask`
-  - <code>[SessionTask](/docs/reference/javascript/types/session-task) | undefined</code>
+- `currentTask`
+- <code>[SessionTask](/docs/reference/javascript/types/session-task) | undefined</code>
 
   The current pending task for the session. Read more about [session tasks](/docs/guides/configure/session-tasks).
 
   ---
 
-  - `expireAt`
-  - `Date`
+- `expireAt`
+- `Date`
 
   The time the session expires and will cease to be active.
 
   ---
 
-  - `factorVerificationAge`
-  - `[number, number] | null`
+- `factorVerificationAge`
+- `[number, number] | null`
 
   An array where each item represents the number of minutes since the last verification of a first or second factor: `[firstFactorAge, secondFactorAge]`.
 
   ---
 
-  - `id`
-  - `string`
+- `id`
+- `string`
 
   The unique identifier for the session.
 
   ---
 
-  - `lastActiveAt`
-  - `Date`
+- `lastActiveAt`
+- `Date`
 
   The time the session was last active on the [`Client`][client-ref].
 
   ---
 
-  - `lastActiveOrganizationId`
-  - `string | null`
+- `lastActiveOrganizationId`
+- `string | null`
 
   The ID of the last [Active Organization](!active-organization).
 
   ---
 
-  - `lastActiveToken`
-  - `TokenResource | null`
+- `lastActiveToken`
+- `TokenResource | null`
 
   The last active token for the session
 
   ---
 
-  - `publicUserData`
-  - [`PublicUserData`](/docs/reference/javascript/types/public-user-data)
+- `publicUserData`
+- [`PublicUserData`](/docs/reference/javascript/types/public-user-data)
 
   Public information about the user that this session belongs to.
 
   ---
 
-  - `status`
-  - [`SessionStatus`](/docs/reference/javascript/types/session-status)
+- `status`
+- [`SessionStatus`](/docs/reference/javascript/types/session-status)
 
   The current state of the session.
 
   ---
 
-  - `tasks`
-  - <code>[SessionTask](/docs/reference/javascript/types/session-task)\[] | null</code>
+- `tasks`
+- <code>[SessionTask](/docs/reference/javascript/types/session-task)\[] | null</code>
 
   The pending tasks for the session.
 
   ---
 
-  - `updatedAt`
-  - `Date`
+- `updatedAt`
+- `Date`
 
   The last time the session recorded activity of any kind.
 
   ---
 
-  - `user`
-  - [`User`](/docs/reference/javascript/user)
+- `user`
+- [`User`](/docs/reference/javascript/user)
 
   The user associated with the session.
 </Properties>
@@ -279,29 +280,29 @@ type CheckAuthorizationParams = WithReverification<
 
   ---
 
-  - `permission`
-  - `string`
+- `permission`
+- `string`
 
   Accepts [Permission](/docs/guides/organizations/control-access/roles-and-permissions#permissions) key.
 
   ---
 
-  - `feature`
-  - `string`
+- `feature`
+- `string`
 
   Accepts [Feature](/docs/guides/secure/features) key.
 
   ---
 
-  - `plan`
-  - `string`
+- `plan`
+- `string`
 
   Accepts [Plan](/docs/guides/billing/overview) key.
 
   ---
 
-  - `reverification?`
-  - <code>[ReverificationConfig](/docs/reference/backend/types/auth-object#reverification-config)</code>
+- `reverification?`
+- <code>[ReverificationConfig](/docs/reference/backend/types/auth-object#reverification-config)</code>
 
   The reverification configuration to check for. This feature is currently in public beta. **It is not recommended for production use**.
 </Properties>
@@ -378,22 +379,22 @@ function getToken(options?: GetTokenOptions): Promise<string | null>
 
   ---
 
-  - `template?`
-  - `string`
+- `template?`
+- `string`
 
   The name of the JWT template from the [Clerk Dashboard](https://dashboard.clerk.com/~/jwt-templates) to generate a new token from. E.g. 'firebase', 'grafbase', or your custom template's name.
 
   ---
 
-  - `skipCache?`
-  - `boolean`
+- `skipCache?`
+- `boolean`
 
   Whether to skip the cache lookup and force a call to the server instead, even within the TTL. Useful if the token claims are time-sensitive or depend on data that can be updated (e.g. user fields). Defaults to `false`.
 
   ---
 
-  - `organizationId?`
-  - `string`
+- `organizationId?`
+- `string`
 
   The Organization associated with the generated session token. _Does not modify the session's currently [Active Organization](!active-organization)._
 </Properties>

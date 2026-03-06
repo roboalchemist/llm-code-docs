@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/_partials/custom-flows/email-code-verification.mdx
 
-{/* Adds an email address to a user's account, and verifies it using an email with an OTP. */}
+{/*Adds an email address to a user's account, and verifies it using an email with an OTP.*/}
 
 <If notSdk={["ios", "android"]}>
+
   1. Every user has a [`User`](/docs/reference/javascript/user) object that represents their account. The `User` object has a `emailAddresses` property that contains all the email addresses associated with the user. The [`useUser()`](/docs/reference/hooks/use-user) hook is used to get the `User` object.
   1. The [`User.createEmailAddress()`](/docs/reference/javascript/user#create-email-address) method is passed to the [`useReverification()`](/docs/reference/hooks/use-reverification) hook to require the user to reverify their credentials before being able to add an email address to their account.
   1. If the `createEmailAddress()` function is successful, a new [`EmailAddress`](/docs/reference/javascript/types/email-address) object is created and stored in `User.emailAddresses`.
@@ -401,6 +402,7 @@
         }
       }
     }
+
   ```
 </If>
 

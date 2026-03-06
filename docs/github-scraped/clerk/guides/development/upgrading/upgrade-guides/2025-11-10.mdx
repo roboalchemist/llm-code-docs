@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/upgrading/upgrade-guides/2025-11-10.mdx
 
 ---
+
 title: Upgrade to API version 2025-11-10
-description: Learn how to upgrade to version 2025-11-10 of Clerk's API.
+description: Learn how to upgrade to version 2025-11-10 of Clerk's API
 ---
 
 **Version 2025-11-10** of Clerk's Frontend and Backend APIs introduces updates to how Clerk Billing formats its responses. These changes improve consistency and clarity across the APIs, making them easier to work with and understand.
@@ -30,57 +31,57 @@ The following sections provide a detailed overview of the response type and endp
 
   ---
 
-  - `organization_name`
-  - `string | null`
+- `organization_name`
+- `string | null`
 
   The `organization_name` field will now be explicitly `null` for user payers, instead of omitted. It can still be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `user_id`
-  - `string | null`
+- `user_id`
+- `string | null`
 
   The `user_id` field will now be explicity `null` for Organization payers, instead of omitted.
 
   ---
 
-  - `first_name`
-  - `string | null`
+- `first_name`
+- `string | null`
 
   The `first_name` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `last_name`
-  - `string | null`
+- `last_name`
+- `string | null`
 
   The `last_name` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `email`
-  - `string | null`
+- `email`
+- `string | null`
 
   The `email` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `image_url`
-  - `string`
+- `image_url`
+- `string`
 
   The `image_url` field will now be omitted from endpoints that do not provide that data, instead of returning `""`.
 
   ---
 
-  - `created_at`
-  - `number`
+- `created_at`
+- `number`
 
   The `created_at` field will now be omitted instead of returning `0` when an endpoint does not provide that data.
 
   ---
 
-  - `updated_at`
-  - `number`
+- `updated_at`
+- `number`
 
   The `updated_at` field will now be omitted instead of returning `0` when an endpoint does not provide that data.
 </Properties>
@@ -95,43 +96,43 @@ The following sections provide a detailed overview of the response type and endp
 
   ---
 
-  - `payment_source`
-  - [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
+- `payment_source`
+- [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
 
   The `payment_source` field has been removed in favor of the `payment_method` field.
 
   ---
 
-  - `invoice_id`
-  - `string`
+- `invoice_id`
+- `string`
 
   The `invoice_id` field has been removed in favor of the `statement_id` field.
 
   ---
 
-  - `gateway_external_id`
-  - `string | null`
+- `gateway_external_id`
+- `string | null`
 
   The `gateway_external_id` field can now be explicitly `null`. Previously, it would be set to `""` if unset.
 
   ---
 
-  - `gateway_external_url`
-  - `string | null`
+- `gateway_external_url`
+- `string | null`
 
   The `gateway_external_url` field can now be explicitly `null`. Previously, it was omitted if unset.
 
   ---
 
-  - `paid_at`
-  - `number | null`
+- `paid_at`
+- `number | null`
 
   The `paid_at` field can now be explicitly `null`. Previously, it was unset if the payment attempt had not succeeded yet.
 
   ---
 
-  - `failed_at`
-  - `number | null`
+- `failed_at`
+- `number | null`
 
   The `failed_at` field can now be explicitly `null`. Previously, it was unset if the payment attempt hadn't failed.
 </Properties>
@@ -148,57 +149,57 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `payment_method`
-  - `string`
+- `payment_method`
+- `string`
 
   The `payment_method` field has been removed in favor of the `payment_type` field.
 
   ---
 
-  - `last4`
-  - `string | null`
+- `last4`
+- `string | null`
 
   The `last4` field can now be `null`.
 
   ---
 
-  - `wallet_type`
-  - `string | null`
+- `wallet_type`
+- `string | null`
 
   The `wallet_type` field can now be `null` or omitted.
 
   ---
 
-  - `card_type`
-  - `string | null`
+- `card_type`
+- `string | null`
 
   The `card_type` field can now be `null`.
 
   ---
 
-  - `expiry_year`
-  - `number | null`
+- `expiry_year`
+- `number | null`
 
   The `expiry_year` field can now be `null` or omitted.
 
   ---
 
-  - `expiry_month`
-  - `number | null`
+- `expiry_month`
+- `number | null`
 
   The `expiry_month` field can now be `null` or omitted.
 
   ---
 
-  - `created_at`
-  - `number`
+- `created_at`
+- `number`
 
   The `created_at` field can now be omitted when previously it was set to `0`.
 
   ---
 
-  - `updated_at`
-  - `number`
+- `updated_at`
+- `number`
 
   The `updated_at` field can now be omitted when previously it was set to `0`.
 </Properties>
@@ -222,78 +223,78 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `amount_formatted`
-  - `string`
+- `amount_formatted`
+- `string`
 
   The `amount_formatted` field has been removed. Use `fee.amount_formatted` instead.
 
   ---
 
-  - `annual_monthly_amount`
-  - `number`
+- `annual_monthly_amount`
+- `number`
 
   The `annual_monthly_amount` field has been removed. Use `annual_monthly_fee.amount` instead.
 
   ---
 
-  - `annual_monthly_amount_formatted`
-  - `string`
+- `annual_monthly_amount_formatted`
+- `string`
 
   The `annual_monthly_amount_formatted` field has been removed. Use `annual_monthly_fee.amount_formatted` instead.
 
   ---
 
-  - `annual_amount`
-  - `number`
+- `annual_amount`
+- `number`
 
   The `annual_amount` field has been removed. Use `annual_fee.amount` instead.
 
   ---
 
-  - `annual_amount_formatted`
-  - `string`
+- `annual_amount_formatted`
+- `string`
 
   The `annual_amount_formatted` field has been removed. Use `annual_fee.amount_formatted` instead.
 
   ---
 
-  - `currency`
-  - `string`
+- `currency`
+- `string`
 
   The `currency` field has been removed. Use `fee.currency`, `annual_monthly_fee.currency`, or `annual_fee.currency` instead.
 
   ---
 
-  - `currency_symbol`
-  - `string`
+- `currency_symbol`
+- `string`
 
   The `currency_symbol` field has been removed. Use `fee.currency_symbol`, `annual_monthly_fee.currency_symbol`, or `annual_fee.currency_symbol` instead.
 
   ---
 
-  - `payer_type`
-  - `array of strings`
+- `payer_type`
+- `array of strings`
 
   The `payer_type` field has been removed. Use `for_payer_type` instead.
 
   ---
 
-  - `description`
-  - `string | null`
+- `description`
+- `string | null`
 
   The `description` field can now be `null`.
 
   ---
 
-  - `avatar_url`
-  - `string | null`
+- `avatar_url`
+- `string | null`
 
   The `avatar_url` field can now be `null`.
 
   ---
 
-  - `features`
-  - <code>[Feature](/docs/reference/backend/types/feature)\[]</code>
+- `features`
+- <code>[Feature](/docs/reference/backend/types/feature)\[]</code>
 
   The `features` field can now be omitted from responses.
 </Properties>
@@ -308,71 +309,71 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `plan_id`
-  - `string | null`
+- `plan_id`
+- `string | null`
 
   The `plan_id` field can now be `null`, in preparation for a future change to Subscription Items that represent an inactive Subscription.
 
   ---
 
-  - `lifetime_paid`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
+- `lifetime_paid`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
 
   The `lifetime_paid` field can no longer be `null`. It will instead be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `amount`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
+- `amount`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
 
   The `amount` field can no longer be `null`. It will instead be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `next_invoice`
-  - [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
+- `next_invoice`
+- [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
 
   The `next_invoice` field has been removed, in favor of the `next_payment` field.
 
   ---
 
-  - `next_payment`
-  - [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
+- `next_payment`
+- [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
 
   The `next_payment` field can be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `payer`
-  - [BillingPayerResource](/docs/reference/javascript/types/billing-payer-resource)
+- `payer`
+- [BillingPayerResource](/docs/reference/javascript/types/billing-payer-resource)
 
   The `payer` field can no longer be `null`, and will instead be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `period_start`
-  - `number`
+- `period_start`
+- `number`
 
   The `period_start` field can no longer be `null`.
 
   ---
 
-  - `proration_date`
-  - `string`
+- `proration_date`
+- `string`
 
   The `proration_date` field can now be omitted when the response does not contain information about proration.
 
   ---
 
-  - `payment_source`
-  - [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
+- `payment_source`
+- [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
 
   The `payment_source` field has been removed, in favor of the `payment_method` field.
 
   ---
 
-  - `payment_source_id`
-  - `string`
+- `payment_source_id`
+- `string`
 
   The `payment_source_id` field has been removed, in favor of the `payment_method_id` field.
 </Properties>
@@ -387,8 +388,8 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `date`
-  - `number`
+- `date`
+- `number`
 
   The `date` field can no longer be `null`.
 </Properties>
@@ -419,22 +420,22 @@ The following endpoints have changed their URLs:
 
   ---
 
-  - `stripe_publishable_key`
-  - `string | null`
+- `stripe_publishable_key`
+- `string | null`
 
   The `stripe_publishable_key` field can no longer be omitted and will instead be `null` when unset.
 
   ---
 
-  - `has_paid_user_plans`
-  - `boolean`
+- `has_paid_user_plans`
+- `boolean`
 
   The `has_paid_user_plans` field has been removed in favor of the `user.has_paid_plans` field.
 
   ---
 
-  - `has_paid_org_plans`
-  - `boolean`
+- `has_paid_org_plans`
+- `boolean`
 
   The `has_paid_org_plans` field has been removed in favor of the `organization.has_paid_plans` field.
 </Properties>
@@ -462,57 +463,57 @@ The following endpoints have changed their URLs:
 
   ---
 
-  - `organization_name`
-  - `string | null`
+- `organization_name`
+- `string | null`
 
   The `organization_name` field will now be explicitly `null` for user payers, instead of omitted. It can still be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `user_id`
-  - `string | null`
+- `user_id`
+- `string | null`
 
   The `user_id` field will now be explicity `null` for Organization payers, instead of omitted.
 
   ---
 
-  - `first_name`
-  - `string | null`
+- `first_name`
+- `string | null`
 
   The `first_name` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `last_name`
-  - `string | null`
+- `last_name`
+- `string | null`
 
   The `last_name` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `email`
-  - `string | null`
+- `email`
+- `string | null`
 
   The `email` field will now be explicitly `null` for Organization payers, instead of `""`. It can also be omitted from certain endpoints that do not provide that data.
 
   ---
 
-  - `image_url`
-  - `string`
+- `image_url`
+- `string`
 
   The `image_url` field will now be omitted from endpoints that do not provide that data, instead of returning `""`.
 
   ---
 
-  - `created_at`
-  - `number`
+- `created_at`
+- `number`
 
   The `created_at` field will now be omitted instead of returning `0` when an endpoint does not provide that data.
 
   ---
 
-  - `updated_at`
-  - `number`
+- `updated_at`
+- `number`
 
   The `updated_at` field will now be omitted instead of returning `0` when an endpoint does not provide that data.
 </Properties>
@@ -527,43 +528,43 @@ The following endpoints have changed their URLs:
 
   ---
 
-  - `payment_source`
-  - [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
+- `payment_source`
+- [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
 
   The `payment_source` field has been removed in favor of the `payment_method` field.
 
   ---
 
-  - `invoice_id`
-  - `string`
+- `invoice_id`
+- `string`
 
   The `invoice_id` field has been removed in favor of the `statement_id` field.
 
   ---
 
-  - `gateway_external_id`
-  - `string | null`
+- `gateway_external_id`
+- `string | null`
 
   The `gateway_external_id` field can now be explicitly `null`. Previously, it would be set to `""` if unset.
 
   ---
 
-  - `gateway_external_url`
-  - `string | null`
+- `gateway_external_url`
+- `string | null`
 
   The `gateway_external_url` field can now be explicitly `null`. Previously, it was omitted if unset.
 
   ---
 
-  - `paid_at`
-  - `number | null`
+- `paid_at`
+- `number | null`
 
   The `paid_at` field can now be explicitly `null`. Previously, it was unset if the payment attempt had not succeeded yet.
 
   ---
 
-  - `failed_at`
-  - `number | null`
+- `failed_at`
+- `number | null`
 
   The `failed_at` field can now be explicitly `null`. Previously, it was unset if the payment attempt hadn't failed.
 </Properties>
@@ -580,55 +581,55 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `payment_method`
-  - `string`
+- `payment_method`
+- `string`
 
   The `payment_method` field has been removed in favor of the `payment_type` field.
 
   ---
 
-  - `last4`
-  - `string | null`
+- `last4`
+- `string | null`
 
   The `last4` field can now be `null`.
 
-  - `wallet_type`
-  - `string | null`
+- `wallet_type`
+- `string | null`
 
   The `wallet_type` field can now be `null` or omitted.
 
   ---
 
-  - `card_type`
-  - `string | null`
+- `card_type`
+- `string | null`
 
   The `card_type` field can now be `null`.
 
   ---
 
-  - `expiry_year`
-  - `number | null`
+- `expiry_year`
+- `number | null`
 
   The `expiry_year` field can now be `null` or omitted.
 
   ---
 
-  - `expiry_month`
-  - `number | null`
+- `expiry_month`
+- `number | null`
 
   The `expiry_month` field can now be `null` or omitted.
 
   ---
 
-  - `created_at`
-  - `number`
+- `created_at`
+- `number`
 
   The `created_at` field can now be omitted when previously it was set to `0`.
 
   ---
 
-  - `updated_at`
-  - `number`
+- `updated_at`
+- `number`
 
   The `updated_at` field can now be omitted when previously it was set to `0`.
 </Properties>
@@ -643,78 +644,78 @@ The **payment sources** response type has been renamed to **payment methods**.
 
   ---
 
-  - `amount_formatted`
-  - `string`
+- `amount_formatted`
+- `string`
 
   The `amount_formatted` field has been removed. Use `fee.amount_formatted` instead.
 
   ---
 
-  - `annual_monthly_amount`
-  - `number`
+- `annual_monthly_amount`
+- `number`
 
   The `annual_monthly_amount` field has been removed. Use `annual_monthly_fee.amount` instead.
 
   ---
 
-  - `annual_monthly_amount_formatted`
-  - `string`
+- `annual_monthly_amount_formatted`
+- `string`
 
   The `annual_monthly_amount_formatted` field has been removed. Use `annual_monthly_fee.amount_formatted` instead.
 
   ---
 
-  - `annual_amount`
-  - `number`
+- `annual_amount`
+- `number`
 
   The `annual_amount` field has been removed. Use `annual_fee.amount` instead.
 
   ---
 
-  - `annual_amount_formatted`
-  - `string`
+- `annual_amount_formatted`
+- `string`
 
   The `annual_amount_formatted` field has been removed. Use `annual_fee.amount_formatted` instead.
 
   ---
 
-  - `currency`
-  - `string`
+- `currency`
+- `string`
 
   The `currency` field has been removed. Use `fee.currency`, `annual_monthly_fee.currency`, or `annual_fee.currency` instead.
 
   ---
 
-  - `currency_symbol`
-  - `string`
+- `currency_symbol`
+- `string`
 
   The `currency_symbol` field has been removed. Use `fee.currency_symbol`, `annual_monthly_fee.currency_symbol`, or `annual_fee.currency_symbol` instead.
 
   ---
 
-  - `payer_type`
-  - `string[]`
+- `payer_type`
+- `string[]`
 
   The `payer_type` field has been removed. Use `for_payer_type` instead.
 
   ---
 
-  - `description`
-  - `string | null`
+- `description`
+- `string | null`
 
   The `description` field can now be `null`.
 
   ---
 
-  - `avatar_url`
-  - `string | null`
+- `avatar_url`
+- `string | null`
 
   The `avatar_url` field can now be `null`.
 
   ---
 
-  - `features`
-  - <code>[Feature](/docs/reference/backend/types/feature)\[]</code>
+- `features`
+- <code>[Feature](/docs/reference/backend/types/feature)\[]</code>
 
   The `features` field can now be omitted from responses.
 </Properties>
@@ -742,57 +743,57 @@ Products have been removed.
 
   ---
 
-  - `amount`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
+- `amount`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)
 
   The `amount` field can no longer be `null`. It will instead be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `next_invoice`
-  - [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
+- `next_invoice`
+- [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
 
   The `next_invoice` field has been removed, in favor of the `next_payment` field.
 
   ---
 
-  - `next_payment`
-  - [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
+- `next_payment`
+- [BillingSubscriptionItemResource](/docs/reference/javascript/types/billing-subscription-item-resource)
 
   The `next_payment` field can be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `payer`
-  - [BillingPayerResource](/docs/reference/javascript/types/billing-payer-resource)
+- `payer`
+- [BillingPayerResource](/docs/reference/javascript/types/billing-payer-resource)
 
   The `payer` field can no longer be `null`, and will instead be omitted when the endpoint doesn't include that data in the response.
 
   ---
 
-  - `period_start`
-  - `number`
+- `period_start`
+- `number`
 
   The `period_start` field can no longer be `null`.
 
   ---
 
-  - `proration_date`
-  - `string`
+- `proration_date`
+- `string`
 
   The `proration_date` field can now be omitted when the response does not contain information about proration.
 
   ---
 
-  - `payment_source`
-  - [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
+- `payment_source`
+- [BillingPaymentMethodResource](/docs/reference/javascript/types/billing-payment-method-resource)
 
   The `payment_source` field has been removed, in favor of the `payment_method` field.
 
   ---
 
-  - `payment_source_id`
-  - `string`
+- `payment_source_id`
+- `string`
 
   The `payment_source_id` field has been removed, in favor of the `payment_method_id` field.
 </Properties>
@@ -807,8 +808,8 @@ Products have been removed.
 
   ---
 
-  - `date`
-  - `number`
+- `date`
+- `number`
 
   The `date` field can no longer be `null`.
 </Properties>
@@ -823,29 +824,29 @@ Products have been removed.
 
   ---
 
-  - `credit`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
+- `credit`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
 
   The `credit` field can no longer be omitted, and will instead be `null` when it doesn't apply.
 
   ---
 
-  - `past_due`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
+- `past_due`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
 
   The `past_due` field can no longer be omitted, and will instead be `null` when it doesn't apply.
 
   ---
 
-  - `total_due_now`
-  - [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
+- `total_due_now`
+- [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount) | `null`
 
   The `total_due_now` field can no longer be omitted, and will instead be `null` when it doesn't apply.
 
   ---
 
-  - `proration`
-  - [BillingCheckoutTotals](/docs/reference/javascript/types/billing-checkout-totals) | `null`
+- `proration`
+- [BillingCheckoutTotals](/docs/reference/javascript/types/billing-checkout-totals) | `null`
 
   The `proration` field can no longer be omitted, and will instead be `null` when it doesn't apply.
 </Properties>

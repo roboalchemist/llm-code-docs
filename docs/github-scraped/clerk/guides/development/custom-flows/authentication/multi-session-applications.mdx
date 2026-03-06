@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/multi-session-applications.mdx
 
 ---
+
 title: Build a custom multi-session flow
-description: Learn how to use the Clerk API to add multi-session handling to your application.
+description: Learn how to use the Clerk API to add multi-session handling to your application
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -29,6 +30,7 @@ To enable multi-session in your application, you need to configure it in the Cle
 ## Get the session and user
 
 <If notSdk={["js-frontend", "ios", "android"]}>
+
   ```jsx
   // Import the useClerk() hook from whatever SDK you're using
   import { useClerk } from '@clerk/react'
@@ -36,6 +38,7 @@ To enable multi-session in your application, you need to configure it in the Cle
   // Get the session and user
   const { session, user } = useClerk()
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -45,6 +48,7 @@ To enable multi-session in your application, you need to configure it in the Cle
 
   // Get the user
   const currentUser = window.Clerk.user
+
   ```
 </If>
 
@@ -56,6 +60,7 @@ To enable multi-session in your application, you need to configure it in the Cle
   // Get the current user
   var currentUser: User? { clerk.user }
   ```
+
 </If>
 
 <If sdk="android">
@@ -65,6 +70,7 @@ To enable multi-session in your application, you need to configure it in the Cle
 
   // Get the current user
   val currentUser = Clerk.user
+
   ```
 </If>
 
@@ -101,6 +107,7 @@ To enable multi-session in your application, you need to configure it in the Cle
     },
   })
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -127,6 +134,7 @@ To enable multi-session in your application, you need to configure it in the Cle
       }
     },
   })
+
   ```
 </If>
 
@@ -138,6 +146,7 @@ To enable multi-session in your application, you need to configure it in the Cle
   // Use setActive() to set the session as active.
   try await clerk.auth.setActive(sessionId: availableSessions[0].id)
   ```
+
 </If>
 
 <If sdk="android">
@@ -158,6 +167,7 @@ To enable multi-session in your application, you need to configure it in the Cle
       // See https://clerk.com/docs/guides/development/custom-flows/error-handling
       // for more info on error handling
     }
+
   ```
 </If>
 
@@ -183,6 +193,7 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate all s
   // Use signOut to sign-out all active sessions
   await signOut()
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -215,6 +226,7 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate all s
       // See https://clerk.com/docs/guides/development/custom-flows/error-handling
       // for more info on error handling
     }
+
   ```
 </If>
 
@@ -232,6 +244,7 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate a spe
   // Use signOut to sign-out the active session
   await signOut(session.id)
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -241,6 +254,7 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate a spe
 
   // Use signOut to sign-out the active session
   await window.Clerk.signOut(currentSession.id)
+
   ```
 </If>
 
@@ -249,6 +263,7 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate a spe
   // Use signOut to sign-out a specific session
   try await clerk.auth.signOut(sessionId: session.id)
   ```
+
 </If>
 
 <If sdk="android">
@@ -269,5 +284,6 @@ Use [`signOut()`](/docs/reference/javascript/clerk#sign-out) to deactivate a spe
       // See https://clerk.com/docs/guides/development/custom-flows/error-handling
       // for more info on error handling
     }
+
   ```
 </If>

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/legacy/embedded-email-links.mdx
 
 ---
+
 title: Embeddable email links with sign-in tokens
-description: Learn how to build custom embeddable email link sign-in flows to increase user engagement and reduce drop off in transactional emails, SMS's, and more.
+description: Learn how to build custom embeddable email link sign-in flows to increase user engagement and reduce drop off in transactional emails, SMS's, and more
 ---
 
 <If sdk={["expo", "ios", "android"]}>
@@ -19,10 +20,10 @@ description: Learn how to build custom embeddable email link sign-in flows to in
 
   Common use cases include:
 
-  - Welcome emails when users are added off a waitlist
-  - Promotional emails for users
-  - Recovering abandoned carts
-  - Surveys or questionnaires
+- Welcome emails when users are added off a waitlist
+- Promotional emails for users
+- Recovering abandoned carts
+- Surveys or questionnaires
 
   This guide will demonstrate how to generate a sign-in token and use it to sign in a user.
 
@@ -52,7 +53,7 @@ description: Learn how to build custom embeddable email link sign-in flows to in
 
     Then, you can embed this link anywhere, such as an email.
 
-    ## Build a custom flow for signing in with a sign-in token
+  ## Build a custom flow for signing in with a sign-in token
 
     To handle email links with sign-in tokens, you must set up a page in your frontend that detects the token, signs the user in, and performs any additional actions you need.
 
@@ -129,5 +130,7 @@ description: Learn how to build custom embeddable email link sign-in flows to in
       return <div>Signed in as {user.id}</div>
     }
     ```
+
   </Steps>
+
 </If>

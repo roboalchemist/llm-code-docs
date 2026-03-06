@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/sign-up.mdx
 
 ---
+
 title: '`SignUp` object'
 description: The SignUp object holds the state of the current sign-up and provides helper methods to navigate and complete the sign-up flow.
 sdk: js-frontend
@@ -18,124 +19,124 @@ The `SignUp` object holds the state of the current sign-up and provides helper m
 
   ---
 
-  - `status`
-  - `'missing_requirements' | 'complete' | 'abandoned' | null`
+- `status`
+- `'missing_requirements' | 'complete' | 'abandoned' | null`
 
   The status of the current sign-up. The following values are supported:
 
-  - `complete:` The user has been created and the [custom flow](!custom-flow) can proceed to `setActive()` to create session.
-  - `missing_requirements:` A requirement is unverified or missing from the [**User & authentication**](https://dashboard.clerk.com/~/user-authentication/user-and-authentication) settings. For example, in the Clerk Dashboard, the **Password** setting is required but a password wasn't provided in the custom flow.
-  - `abandoned:` The sign-up has been inactive for over 24 hours.
+- `complete:` The user has been created and the [custom flow](!custom-flow) can proceed to `setActive()` to create session.
+- `missing_requirements:` A requirement is unverified or missing from the [**User & authentication**](https://dashboard.clerk.com/~/user-authentication/user-and-authentication) settings. For example, in the Clerk Dashboard, the **Password** setting is required but a password wasn't provided in the custom flow.
+- `abandoned:` The sign-up has been inactive for over 24 hours.
 
   ---
 
-  - `requiredFields`
-  - `string[]`
+- `requiredFields`
+- `string[]`
 
   An array of all the required fields that need to be supplied and verified in order for this sign-up to be marked as complete and converted into a user.
 
   ---
 
-  - `optionalFields`
-  - `string[]`
+- `optionalFields`
+- `string[]`
 
   An array of all the fields that can be supplied to the sign-up, but their absence does not prevent the sign-up from being marked as complete.
 
   ---
 
-  - `missingFields`
-  - `string[]`
+- `missingFields`
+- `string[]`
 
   An array of all the fields whose values are not supplied yet but they are mandatory in order for a sign-up to be marked as complete.
 
   ---
 
-  - `unverifiedFields`
-  - `string[]`
+- `unverifiedFields`
+- `string[]`
 
   An array of all the fields whose values have been supplied, but they need additional verification in order for them to be accepted. Examples of such fields are `emailAddress` and `phoneNumber`.
 
   ---
 
-  - `verifications`
-  - `SignUpVerifications`
+- `verifications`
+- `SignUpVerifications`
 
   An object that contains information about all the verifications that are in-flight.
 
   ---
 
-  - `username`
-  - `string | null`
+- `username`
+- `string | null`
 
   The [username](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#username) supplied to the current sign-up. Only supported if username is enabled in the instance settings.
 
   ---
 
-  - `emailAddress`
-  - `string | null`
+- `emailAddress`
+- `string | null`
 
   The email address supplied to the current sign-up. Only supported if [email address](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#email) is enabled in the instance settings.
 
   ---
 
-  - `phoneNumber`
-  - `string | null`
+- `phoneNumber`
+- `string | null`
 
   The user's phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164). Only supported if [phone number](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#phone) is enabled in the instance settings.
 
   ---
 
-  - `web3Wallet`
-  - `string | null`
+- `web3Wallet`
+- `string | null`
 
   The Web3 wallet address, made up of 0x + 40 hexadecimal characters or a `base58` encoded `ed25519` public key (for Solana wallets). Only supported if [Web3 authentication](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#web3-authentication) is enabled in the instance settings.
 
   ---
 
-  - `hasPassword`
-  - `boolean`
+- `hasPassword`
+- `boolean`
 
   The value of this attribute is true if a password was supplied to the current sign-up. Only supported if [**Password**](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#password) is enabled in the instance settings.
 
   ---
 
-  - `firstName`
-  - `string | null`
+- `firstName`
+- `string | null`
 
   The first name supplied to the current sign-up. Only supported if [**First and last name**](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#user-model) is enabled in the instance settings.
 
   ---
 
-  - `lastName`
-  - `string | null`
+- `lastName`
+- `string | null`
 
   The last name supplied to the current sign-up. Only supported if [**First and last name**](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#user-model) is enabled in the instance settings.
 
   ---
 
-  - `unsafeMetadata`
-  - [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
+- `unsafeMetadata`
+- [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
 
   Metadata that can be read and set from the frontend. Once the sign-up is complete, the value of this field will be automatically copied to the newly created user's unsafe metadata. One common use case for this attribute is to use it to implement custom fields that can be collected during sign-up and will automatically be attached to the created `User` object.
 
   ---
 
-  - `createdSessionId`
-  - `string | null`
+- `createdSessionId`
+- `string | null`
 
   The identifier of the newly-created session. This attribute is populated only when the sign-up is complete.
 
   ---
 
-  - `createdUserId`
-  - `string | null`
+- `createdUserId`
+- `string | null`
 
   The identifier of the newly-created user. This attribute is populated only when the sign-up is complete.
 
   ---
 
-  - `abandonAt`
-  - `number | null`
+- `abandonAt`
+- `number | null`
 
   The epoch numerical time when the sign-up was abandoned by the user.
 </Properties>
@@ -202,25 +203,25 @@ function attemptVerification(params: AttemptVerificationParams): Promise<SignUp>
 
   The verification strategy to complete the user's sign-up request against. The following strategies are supported:
 
-  - `'phone_code'`: Validates an SMS with a unique token to input.
-  - `'email_code'`: Validates an email with a unique token to input.
-  - `'web3_base_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Base](https://docs.base.org/base-account/guides/authenticate-users). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_metamask_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Metamask](https://metamask.io/). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_coinbase_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Coinbase Wallet](https://www.coinbase.com/wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_okx_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [OKX Wallet](https://www.okx.com/help/section/faq-web3-wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_solana_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via their [Solana wallet provider](https://solana.com/solana-wallets). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'phone_code'`: Validates an SMS with a unique token to input.
+- `'email_code'`: Validates an email with a unique token to input.
+- `'web3_base_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Base](https://docs.base.org/base-account/guides/authenticate-users). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_metamask_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Metamask](https://metamask.io/). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_coinbase_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Coinbase Wallet](https://www.coinbase.com/wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_okx_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [OKX Wallet](https://www.okx.com/help/section/faq-web3-wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_solana_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via their [Solana wallet provider](https://solana.com/solana-wallets). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
 
   ---
 
-  - `code`
-  - `string`
+- `code`
+- `string`
 
   **Required** if `strategy` is set to `'phone_code'` or `'email_code'`. The [OTP](!otp) that was sent to the user.
 
   ---
 
-  - `signature`
-  - `string`
+- `signature`
+- `string`
 
   **Required** if `strategy` is set to `'web3_base_signature'`, `'web3_metamask_signature'`, `'web3_coinbase_wallet_signature'`, `'web3_okx_wallet_signature'`, or `'web3_solana_signature'`. The signature that was sent to the user via the Web3 verification strategy.
 </Properties>
@@ -327,15 +328,15 @@ function authenticateWithSolana(params: SignUpAuthenticateWithSolanaParams): Pro
 
   ---
 
-  - `legalAccepted?`
-  - `boolean`
+- `legalAccepted?`
+- `boolean`
 
   A boolean indicating whether the user has agreed to the [legal compliance](/docs/guides/secure/legal-compliance) documents.
 
   ---
 
-  - `unsafeMetadata?`
-  - `SignUpUnsafeMetadata`
+- `unsafeMetadata?`
+- `SignUpUnsafeMetadata`
 
   Optional metadata to attach to the sign-in attempt. See [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata) for more information.
 </Properties>
@@ -362,76 +363,76 @@ function authenticateWithRedirect(params: AuthenticateWithRedirectParams): Promi
 
   The strategy to use for authentication. The following strategies are supported:
 
-  - `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
-  - `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
+- `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
+- `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
 
   ---
 
-  - `redirectUrl`
-  - `string`
+- `redirectUrl`
+- `string`
 
   The full URL or path that the OAuth provider should redirect to after successful authorization on their part. Typically, this will be a simple `/sso-callback` route that either calls [`Clerk.handleRedirectCallback`](/docs/reference/javascript/clerk#handle-redirect-callback) or mounts the [`<AuthenticateWithRedirectCallback />`](/docs/reference/components/control/authenticate-with-redirect-callback) component. See the [custom flow](/docs/guides/development/custom-flows/authentication/oauth-connections) for implementation details.
 
   ---
 
-  - `redirectUrlComplete`
-  - `string`
+- `redirectUrlComplete`
+- `string`
 
   The full URL or path to navigate to after the OAuth or SAML flow completes.
 
   ---
 
-  - `continueSignUp?`
-  - `boolean | undefined`
+- `continueSignUp?`
+- `boolean | undefined`
 
   Whether to continue (i.e. PATCH) an existing `SignUp` (if present) or create a new `SignUp`.
 
   ---
 
-  - `continueSignIn?`
-  - `boolean | undefined`
+- `continueSignIn?`
+- `boolean | undefined`
 
   Whether to continue (i.e. PATCH) an existing `SignIn` (if present) or create a new `SignIn`.
 
   ---
 
-  - `identifier?`
-  - `string | undefined`
+- `identifier?`
+- `string | undefined`
 
   The ID used to target an enterprise connection during sign-up.
 
   ---
 
-  - `emailAddress?`
-  - `string | undefined`
+- `emailAddress?`
+- `string | undefined`
 
   The email address used to target an enterprise connection during sign-up.
 
   ---
 
-  - `legalAccepted?`
-  - `boolean`
+- `legalAccepted?`
+- `boolean`
 
   A boolean indicating whether the user has agreed to the [legal compliance](/docs/guides/secure/legal-compliance) documents.
 
   ---
 
-  - `unsafeMetadata`
-  - [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
+- `unsafeMetadata`
+- [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
 
   Metadata that can be read and set from the frontend. Once the sign-up is complete, the value of this field will be automatically copied to the newly created user's unsafe metadata. One common use case for this attribute is to use it to implement custom fields that can be collected during sign-up and will automatically be attached to the created `User` object.
 
   ---
 
-  - `oidcPrompt?`
-  - `string`
+- `oidcPrompt?`
+- `string`
 
   The value to pass to the [OIDC prompt parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=prompt,reauthentication%20and%20consent.) in the generated OAuth redirect URL.
 
   ---
 
-  - `enterpriseConnectionId?`
-  - `string`
+- `enterpriseConnectionId?`
+- `string`
 
   **Optional if the `strategy` is set to `enterprise_sso`.** The identifier of the enterprise connection to target during sign-up. This is required if there are multiple enterprise connections configured in the instance.
 </Properties>
@@ -485,36 +486,36 @@ function authenticateWithWeb3(params: AuthenticateWithWeb3Params): Promise<SignU
 
   ---
 
-  - `generateSignature`
-  - <code>(opts: [GenerateSignatureParams](#generate-signature-params)) => Promise\<string></code>
+- `generateSignature`
+- <code>(opts: [GenerateSignatureParams](#generate-signature-params)) => Promise\<string></code>
 
   The method of how to generate the signature for the Web3 sign-in. See [`GenerateSignatureParams`](#generate-signature-params) for more information.
 
   ---
 
-  - `strategy?`
-  - `Web3Strategy`
+- `strategy?`
+- `Web3Strategy`
 
   The Web3 verification strategy.
 
   ---
 
-  - `legalAccepted?`
-  - `boolean`
+- `legalAccepted?`
+- `boolean`
 
   A boolean indicating whether the user has agreed to the [legal compliance](/docs/guides/secure/legal-compliance) documents.
 
   ---
 
-  - `unsafeMetadata`
-  - [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
+- `unsafeMetadata`
+- [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
 
   Metadata that can be read and set from the frontend. Once the sign-up is complete, the value of this field will be automatically copied to the newly created user's unsafe metadata. One common use case for this attribute is to use it to implement custom fields that can be collected during sign-up and will automatically be attached to the created `User` object.
 
   ---
 
-  - `walletName?`
-  - `string`
+- `walletName?`
+- `string`
 
   The name of the wallet provider to use for generating the signature. This parameter is _**required**_ when using `web3_solana_signature` as the `strategy`.
 </Properties>
@@ -529,29 +530,29 @@ function authenticateWithWeb3(params: AuthenticateWithWeb3Params): Promise<SignU
 
   ---
 
-  - `nonce`
-  - `string`
+- `nonce`
+- `string`
 
   The [cryptographic nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) used in the sign-in.
 
   ---
 
-  - `provider`
-  - `Web3Provider`
+- `provider`
+- `Web3Provider`
 
   The Web3 provider to generate the signature with. See [`Web3Provider`](/docs/reference/javascript/types/web3-wallet#web3-provider) for more information.
 
   ---
 
-  - `legalAccepted?`
-  - `boolean`
+- `legalAccepted?`
+- `boolean`
 
   A boolean indicating whether the user has agreed to the [legal compliance](/docs/guides/secure/legal-compliance) documents.
 
   ---
 
-  - `walletName?`
-  - `string`
+- `walletName?`
+- `string`
 
   The name of the wallet provider to use for generating the signature. This parameter is _**required**_ when using `solana` as the `provider`.
 </Properties>
@@ -587,71 +588,71 @@ function create(params: SignUpCreateParams): Promise<SignUpResource>
 
   The strategy to use for the sign-up flow. The following strategies are supported:
 
-  - `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
-  - `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
-  - `'ticket'`: The user will be authenticated via the ticket _or token_ generated from the Backend API.
-  - `'google_one_tap'`: The user will be authenticated with the Google One Tap UI. It's recommended to use [`authenticateWithGoogleOneTap()`](/docs/reference/components/authentication/google-one-tap#authenticate-with-google-one-tap) instead, as it will also set the user's current session as active for you.
+- `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
+- `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
+- `'ticket'`: The user will be authenticated via the ticket _or token_ generated from the Backend API.
+- `'google_one_tap'`: The user will be authenticated with the Google One Tap UI. It's recommended to use [`authenticateWithGoogleOneTap()`](/docs/reference/components/authentication/google-one-tap#authenticate-with-google-one-tap) instead, as it will also set the user's current session as active for you.
 
   ---
 
-  - `firstName`
-  - `string | null`
+- `firstName`
+- `string | null`
 
   The user's first name. Only supported if [**First and last name**](https://dashboard.clerk.com/~/user-authentication/user-and-authentication) is enabled.
 
   ---
 
-  - `lastName`
-  - `string | null`
+- `lastName`
+- `string | null`
 
   The user's last name. Only supported if [**First and last name**](https://dashboard.clerk.com/~/user-authentication/user-and-authentication) is enabled.
 
   ---
 
-  - `password`
-  - `string | null`
+- `password`
+- `string | null`
 
   The user's password. Only supported if [**Password**](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#password) is enabled.
 
   ---
 
-  - `emailAddress`
-  - `string | null`
+- `emailAddress`
+- `string | null`
 
   The user's email address. Only supported if [**Email address**](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#email) is enabled. Keep in mind that the email address requires an extra verification process.
 
   ---
 
-  - `phoneNumber`
-  - `string | null`
+- `phoneNumber`
+- `string | null`
 
   The user's phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164). Only supported if [phone number](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#phone) is enabled. Keep in mind that the phone number requires an extra verification process.
 
   ---
 
-  - `web3Wallet`
-  - `string | null`
+- `web3Wallet`
+- `string | null`
 
   **Required** if [Web3 authentication](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#web3-authentication) is enabled. The Web3 wallet address, made up of 0x + 40 hexadecimal characters or a `base58` encoded `ed25519` public key (for Solana wallets).
 
   ---
 
-  - `username`
-  - `string | null`
+- `username`
+- `string | null`
 
   The user's [username](/docs/guides/configure/auth-strategies/sign-up-sign-in-options#username). Only supported if username is enabled in the instance settings.
 
   ---
 
-  - `unsafeMetadata`
-  - [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
+- `unsafeMetadata`
+- [`SignUpUnsafeMetadata`](/docs/reference/javascript/types/metadata#sign-up-unsafe-metadata)
 
   Metadata that can be read and set from the frontend. Once the sign-up is complete, the value of this field will be automatically copied to the newly created user's unsafe metadata. One common use case for this attribute is to use it to implement custom fields that can be collected during sign-up and will automatically be attached to the created `User` object.
 
   ---
 
-  - `redirectUrl`
-  - `string`
+- `redirectUrl`
+- `string`
 
   If `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`, this specifies full URL or path that the OAuth provider should redirect to after successful authorization on their part. Typically, this will be a simple `/sso-callback` route that either calls [`Clerk.handleRedirectCallback()`](/docs/reference/javascript/clerk#handle-redirect-callback) or mounts the [`<AuthenticateWithRedirectCallback />`](/docs/reference/components/control/authenticate-with-redirect-callback) component. See the [custom flow](/docs/guides/development/custom-flows/authentication/oauth-connections) for implementation details.
 
@@ -659,43 +660,43 @@ function create(params: SignUpCreateParams): Promise<SignUpResource>
 
   ---
 
-  - `actionCompleteRedirectUrl`
-  - `string`
+- `actionCompleteRedirectUrl`
+- `string`
 
   **Optional** if `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`. The full URL or path that the user will be redirected to after successful authorization from the OAuth provider and Clerk sign-in.
 
   ---
 
-  - `ticket`
-  - `string`
+- `ticket`
+- `string`
 
   **Required** if `strategy` is set to `'ticket'`. The [ticket _or token_](/docs/guides/development/custom-flows/authentication/application-invitations) generated from the Backend API.
 
   ---
 
-  - `transfer`
-  - `boolean`
+- `transfer`
+- `boolean`
 
   When set to `true`, the `SignUp` will attempt to retrieve information from the active `SignIn` instance and use it to complete the sign-up process. This is useful when you want to seamlessly transition a user from a sign-in attempt to a sign-up attempt.
 
   ---
 
-  - `legalAccepted`
-  - `boolean`
+- `legalAccepted`
+- `boolean`
 
   A boolean indicating whether the user has agreed to the [legal compliance](/docs/guides/secure/legal-compliance) documents.
 
   ---
 
-  - `oidcPrompt`
-  - `string`
+- `oidcPrompt`
+- `string`
 
   **Optional** if `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`. The value to pass to the [OIDC `prompt` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=prompt,reauthentication%20and%20consent.) in the generated OAuth redirect URL.
 
   ---
 
-  - `oidcLoginHint`
-  - `string`
+- `oidcLoginHint`
+- `string`
 
   **Optional** if `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`. The value to pass to the [OIDC `login_hint` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=login_hint,in%20\(if%20necessary\).) in the generated OAuth redirect URL.
 </Properties>
@@ -762,13 +763,13 @@ function prepareEmailAddressVerification(
 
   The verification strategy to validate the user's sign-up request. The following strategies are supported:
 
-  - `'email_code'`: Send an email with an [OTP](!otp) to input.
-  - `'email_link'`: Send an email with a link which validates sign-up.
+- `'email_code'`: Send an email with an [OTP](!otp) to input.
+- `'email_link'`: Send an email with a link which validates sign-up.
 
   ---
 
-  - `redirectUrl`
-  - `string`
+- `redirectUrl`
+- `string`
 
   **Required** if `strategy` is set to `'email_link'`. The full URL that the user will be redirected to when they visit the email link. See the [custom flow](/docs/guides/development/custom-flows/authentication/email-links) for implementation details.
 </Properties>
@@ -793,17 +794,17 @@ function preparePhoneNumberVerification(
 
   The verification strategy to validate the user's sign-up request. The following strategies are supported:
 
-  - `'phone_code'`: Send an SMS with an [OTP](!otp) to input.
+- `'phone_code'`: Send an SMS with an [OTP](!otp) to input.
 
   ---
 
-  - `channel?`
-  - `'sms' | 'whatsapp'`
+- `channel?`
+- `'sms' | 'whatsapp'`
 
   The channel to use for sending the verification code. The following channels are supported:
 
-  - `'sms'`: Send an SMS with an [OTP](!otp) to input.
-  - `'whatsapp'`: Send a WhatsApp message with an [OTP](!otp) to input.
+- `'sms'`: Send an SMS with an [OTP](!otp) to input.
+- `'whatsapp'`: Send a WhatsApp message with an [OTP](!otp) to input.
 </Properties>
 
 ### `prepareVerification()`
@@ -822,21 +823,21 @@ function prepareVerification(params: PrepareVerificationParams): Promise<SignUpR
 
   The verification strategy to validate the user's sign-up request. The following strategies are supported:
 
-  - `'phone_code'`: User will receive an [OTP](!otp) via SMS.
-  - `'email_code'`: Send an email with an [OTP](!otp) to input.
-  - `'email_link'`: Send an email with a link which validates sign-up.
-  - `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
-  - `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
-  - `'web3_base_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Base](https://docs.base.org/base-account/guides/authenticate-users). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_metamask_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Metamask](https://metamask.io/). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_coinbase_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Coinbase Wallet](https://www.coinbase.com/wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_okx_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [OKX Wallet](https://www.okx.com/help/section/faq-web3-wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
-  - `'web3_solana_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via their [Solana wallet provider](https://solana.com/solana-wallets). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'phone_code'`: User will receive an [OTP](!otp) via SMS.
+- `'email_code'`: Send an email with an [OTP](!otp) to input.
+- `'email_link'`: Send an email with a link which validates sign-up.
+- `'oauth_<provider>'`: The user will be authenticated with their [social connection account](/docs/guides/configure/auth-strategies/social-connections/overview). See a list of [supported values for `<provider>`](/docs/reference/javascript/types/sso).
+- `'enterprise_sso'`: The user will be authenticated either through SAML or OIDC depending on the configuration of their [enterprise SSO account](/docs/guides/configure/auth-strategies/enterprise-connections/overview).
+- `'web3_base_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Base](https://docs.base.org/base-account/guides/authenticate-users). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_metamask_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Metamask](https://metamask.io/). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_coinbase_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [Coinbase Wallet](https://www.coinbase.com/wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_okx_wallet_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via [OKX Wallet](https://www.okx.com/help/section/faq-web3-wallet). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
+- `'web3_solana_signature'`: The verification will attempt to be completed using the user's Web3 wallet address via their [Solana wallet provider](https://solana.com/solana-wallets). The `web3_wallet_id` parameter can also be specified to select which of the user's known Web3 wallets will be used.
 
   ---
 
-  - `redirectUrl`
-  - `string`
+- `redirectUrl`
+- `string`
 
   If `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`, this specifies the full URL or path that the OAuth provider should redirect to after successful authorization. Typically, this will be a simple `/sso-callback` route that either calls [`Clerk.handleRedirectCallback()`](/docs/reference/javascript/clerk#handle-redirect-callback) or mounts the [`<AuthenticateWithRedirectCallback />`](/docs/reference/components/control/authenticate-with-redirect-callback) component. See the [custom flow](/docs/guides/development/custom-flows/authentication/oauth-connections) for implementation details.
 
@@ -844,22 +845,22 @@ function prepareVerification(params: PrepareVerificationParams): Promise<SignUpR
 
   ---
 
-  - `actionCompleteRedirectUrl?`
-  - `string`
+- `actionCompleteRedirectUrl?`
+- `string`
 
   The full URL or path that the user will be redirected to after successful authorization from the OAuth provider and Clerk sign-in.
 
   ---
 
-  - `oidcPrompt?`
-  - `string`
+- `oidcPrompt?`
+- `string`
 
   **Optional** if `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`. The value to pass to the [OIDC `prompt` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=prompt,reauthentication%20and%20consent) in the generated OAuth redirect URL.
 
   ---
 
-  - `oidcLoginHint?`
-  - `string`
+- `oidcLoginHint?`
+- `string`
 
   **Optional** if `strategy` is set to `'oauth_<provider>'` or `'enterprise_sso'`. The value to pass to the [OIDC `login_hint` parameter](https://openid.net/specs/openid-connect-core-1_0.html#:~:text=login_hint,in%20\(if%20necessary\).) in the generated OAuth redirect URL.
 </Properties>
@@ -884,11 +885,11 @@ function prepareWeb3WalletVerification(
 
   The verification strategy to validate the user's sign-up request. The following strategies are supported:
 
-  - `'web3_base_signature'`: User will need to sign a message and generate a signature using Base popup.
-  - `'web3_metamask_signature'`: User will need to sign a message and generate a signature using MetaMask browser extension.
-  - `'web3_coinbase_wallet_signature'`: User will need to sign a message and generate a signature using Coinbase Wallet.
-  - `'web3_okx_wallet_signature'`: User will need to sign a message and generate a signature using OKX Wallet.
-  - `'web3_solana_signature'`: User will need to sign a message and generate a signature using their Solana wallet provider.
+- `'web3_base_signature'`: User will need to sign a message and generate a signature using Base popup.
+- `'web3_metamask_signature'`: User will need to sign a message and generate a signature using MetaMask browser extension.
+- `'web3_coinbase_wallet_signature'`: User will need to sign a message and generate a signature using Coinbase Wallet.
+- `'web3_okx_wallet_signature'`: User will need to sign a message and generate a signature using OKX Wallet.
+- `'web3_solana_signature'`: User will need to sign a message and generate a signature using their Solana wallet provider.
 </Properties>
 
 ### `update()`

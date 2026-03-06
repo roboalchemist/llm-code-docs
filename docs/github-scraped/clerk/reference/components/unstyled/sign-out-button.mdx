@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/unstyled/sign-out-button.mdx
 
 ---
+
 title: '`<SignOutButton>`'
 description: The <SignOutButton> component is a button that signs a user out.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue
@@ -19,6 +20,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
   export default function Home() {
     return <SignOutButton />
   }
+
   ```
 </If>
 
@@ -32,6 +34,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -54,6 +57,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
     return <SignOutButton />
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -63,6 +67,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
   export default function SignOutPage() {
     return <SignOutButton />
   }
+
   ```
 </If>
 
@@ -74,6 +79,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
     return <SignOutButton />
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -83,6 +89,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
   export default function Home() {
     return <SignOutButton />
   }
+
   ```
 </If>
 
@@ -99,6 +106,7 @@ The `<SignOutButton>` component is a button that signs a user out. By default, i
     return <SignOutButton />
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -140,6 +148,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignOutButton>
     )
   }
+
   ```
 </If>
 
@@ -157,6 +166,7 @@ You can create a custom button by wrapping your own button, or button text, in t
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -171,6 +181,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     <button>Custom sign out button</button>
   </SignOutButton>
   ```
+
 </If>
 
 <If sdk="expo">
@@ -187,6 +198,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -200,6 +212,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignOutButton>
     )
   }
+
   ```
 </If>
 
@@ -215,6 +228,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -228,6 +242,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignOutButton>
     )
   }
+
   ```
 </If>
 
@@ -243,6 +258,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     </SignOutButton>
   </template>
   ```
+
 </If>
 
 <If sdk="vue">
@@ -275,6 +291,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignOutButton>
     )
   }
+
   ```
 </If>
 
@@ -306,6 +323,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
     return <SignOutButton sessionId={sessionId} />
   }
   ```
+
 </If>
 
 <If sdk="react">
@@ -323,6 +341,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
   }
 
   export default App
+
   ```
 </If>
 
@@ -340,6 +359,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
     return <SignOutButton sessionId={sessionId} />
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -355,6 +375,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
 
     return <SignOutButton sessionId={sessionId} />
   }
+
   ```
 </If>
 
@@ -372,6 +393,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
     return <SignOutButton sessionId={sessionId} />
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -413,6 +435,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
   ---
 
   {sessionId ? <SignOutButton sessionId={sessionId} /> : <SignInButton />}
+
   ```
 </If>
 
@@ -432,6 +455,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
     return <SignOutButton sessionId={sessionId} />
   }
   ```
+
 </If>
 
 <If sdk="tanstack-react-start">
@@ -452,6 +476,7 @@ In the following example, the `sessionId` is retrieved from the [`useAuth()`](/d
 
     return <SignOutButton sessionId={sessionId} />
   }
+
   ```
 </If>
 

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/organization/create-organization.mdx
 
 ---
+
 title: '`<CreateOrganization />` component'
 description: Clerk's <CreateOrganization /> component is used to render an Organization creation UI that allows users to create brand new Organizations within your application.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -134,14 +135,14 @@ The `<CreateOrganization />` component is used to render an Organization creatio
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<CreateOrganization />` component:
 
-  - [`mountCreateOrganization`](#mount-create-organization)
-  - [`unmountCreateOrganization`](#unmount-create-organization)
-  - [`openCreateOrganization`](#open-create-organization)
-  - [`closeCreateOrganization`](#close-create-organization)
+- [`mountCreateOrganization`](#mount-create-organization)
+- [`unmountCreateOrganization`](#unmount-create-organization)
+- [`openCreateOrganization`](#open-create-organization)
+- [`closeCreateOrganization`](#close-create-organization)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### <code>mountCreate<wbr />Organization()</code>
+### <code>mountCreate<wbr />Organization()</code>
 
   Render the `<CreateOrganization />` component to an HTML `<div>` element.
 
@@ -149,7 +150,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   function mountCreateOrganization(node: HTMLDivElement, props?: CreateOrganizationProps): void
   ```
 
-  ### <code>mountCreate<wbr />Organization()</code> params
+### <code>mountCreate<wbr />Organization()</code> params
 
   <Properties>
     - `node`
@@ -165,7 +166,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
     The properties to pass to the `<CreateOrganization />` component
   </Properties>
 
-  #### `mountCreateOrganization()` usage
+#### `mountCreateOrganization()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -185,7 +186,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   clerk.mountCreateOrganization(createOrgDiv)
   ```
 
-  ### <code>unmountCreate<wbr />Organization()</code>
+### <code>unmountCreate<wbr />Organization()</code>
 
   Unmount and run cleanup on an existing `<CreateOrganization />` component instance.
 
@@ -193,7 +194,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   function unmountCreateOrganization(node: HTMLDivElement): void
   ```
 
-  #### `unmountCreateOrganization()` params
+#### `unmountCreateOrganization()` params
 
   <Properties>
     - `node`
@@ -202,7 +203,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
     The container `<div>` element with a rendered `<CreateOrganization />` component instance
   </Properties>
 
-  #### `unmountCreateOrganization()` usage
+#### `unmountCreateOrganization()` usage
 
   ```js {{ filename: 'main.js', mark: [19] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -226,7 +227,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   clerk.unmountCreateOrganization(createOrgDiv)
   ```
 
-  ### `openCreateOrganization()`
+### `openCreateOrganization()`
 
   Opens the `<CreateOrganization />` component as an overlay at the root of your HTML `body` element.
 
@@ -234,7 +235,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   function openCreateOrganization(props?: CreateOrganizationProps): void
   ```
 
-  #### `openCreateOrganization()` params
+#### `openCreateOrganization()` params
 
   <Properties>
     - `props?`
@@ -243,7 +244,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
     The properties to pass to the `<CreateOrganization />` component
   </Properties>
 
-  #### `openCreateOrganization()` usage
+#### `openCreateOrganization()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -263,7 +264,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   clerk.openCreateOrganization(createOrgDiv)
   ```
 
-  ### `closeCreateOrganization()`
+### `closeCreateOrganization()`
 
   Closes the organization profile overlay.
 
@@ -271,7 +272,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
   function closeCreateOrganization(): void
   ```
 
-  #### `closeCreateOrganization()` usage
+#### `closeCreateOrganization()` usage
 
   ```js {{ filename: 'main.js', mark: [19] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -294,6 +295,7 @@ The `<CreateOrganization />` component is used to render an Organization creatio
 
   clerk.closeCreateOrganization(createOrgDiv)
   ```
+
 </If>
 
 ## Properties
@@ -308,36 +310,36 @@ All props are optional.
 
   ---
 
-  - `afterCreateOrganizationUrl`
-  - `string`
+- `afterCreateOrganizationUrl`
+- `string`
 
   Full URL or path to navigate to after creating a new organization.
 
   ---
 
-  - `routing`
-  - `'hash' | 'path'`
+- `routing`
+- `'hash' | 'path'`
 
   The [routing](/docs/guides/how-clerk-works/routing) strategy for your pages.  Defaults to `'path'` for frameworks that handle routing, such as Next.js and Remix. Defaults to `hash` for all other SDK's, such as React.
 
   ---
 
-  - `path`
-  - `string`
+- `path`
+- `string`
 
   The path where the component is mounted on when `routing` is set to `path`. It is ignored in hash-based routing. For example: `/create-organization`.
 
   ---
 
-  - `skipInvitationScreen`
-  - `boolean`
+- `skipInvitationScreen`
+- `boolean`
 
   Hides the screen for sending invitations after an Organization is created. When left undefined, Clerk will automatically hide the screen if the number of max allowed members is equal to 1
 
   ---
 
-  - `fallback?`
-  - `ReactNode`
+- `fallback?`
+- `ReactNode`
 
   An optional element to be rendered while the component is mounting.
 </Properties>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/email-sms-otp.mdx
 
 ---
+
 title: Build a custom sign-in flow with email or phone code
 description: Learn how build a custom passwordless sign-in flow with email or phone code using the Clerk API.
 search:
@@ -45,7 +46,7 @@ This guide demonstrates how to build a custom user interface for signing up and 
   1. Ensure **Sign-in with email** is enabled, with **Email verification code** selected.
   1. Ensure **Password** is disabled, as you want to use email OTP and not password authentication.
 
-  ## Sign-up flow
+## Sign-up flow
 
   <If notSdk={["ios", "android"]}>
     <If notSdk="nextjs">
@@ -635,7 +636,7 @@ This guide demonstrates how to build a custom user interface for signing up and 
     </If>
   </If>
 
-  ## Sign-in flow
+## Sign-in flow
 
   <If notSdk={["ios", "android"]}>
     <If notSdk="nextjs">

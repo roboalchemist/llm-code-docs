@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/ruby/sinatra.mdx
 
 ---
+
 title: Sinatra integration
 description: The Clerk Ruby SDK provides a Sinatra extension to integrate Clerk into your Sinatra app.
 sdk: ruby
@@ -13,11 +14,11 @@ The Clerk Ruby SDK provides a seamless integration with Sinatra through a dedica
 
   <Include src="_partials/ruby/installation" />
 
-  ## Configuration
+## Configuration
 
   <Include src="_partials/ruby/configuration" />
 
-  ## Add Clerk's Sinatra extension
+## Add Clerk's Sinatra extension
 
   The `clerk` object provides access to the [Ruby SDK's available methods](/docs/reference/ruby/overview#available-methods). To get access to the `clerk` object, you must `register` the `Sinatra::Clerk` extension.
 
@@ -39,6 +40,7 @@ The Clerk Ruby SDK provides a seamless integration with Sinatra through a dedica
     run! if app_file == $0
   end
   ```
+
 </Steps>
 
 ## Example: Protect routes

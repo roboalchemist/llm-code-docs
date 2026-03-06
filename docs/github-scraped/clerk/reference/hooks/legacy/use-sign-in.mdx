@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/hooks/legacy/use-sign-in.mdx
 
 ---
+
 title: useSignIn()
 description: Access and manage the current user's sign-in state in your React application with Clerk's useSignIn() hook.
 sdk: chrome-extension, expo, nextjs, react, react-router, tanstack-react-start
@@ -31,6 +32,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
 
     return <div>The current sign-in attempt status is {signIn?.status}.</div>
   }
+
   ```
 </If>
 
@@ -49,6 +51,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
     return <div>The current sign-in attempt status is {signIn?.status}.</div>
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -63,6 +66,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
 
     return <div>The current sign-in attempt status is {signIn?.status}.</div>
   }
+
   ```
 </If>
 
@@ -81,6 +85,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
     return <div>The current sign-in attempt status is {signIn?.status}.</div>
   }
   ```
+
 </If>
 
 <If sdk="tanstack-react-start">
@@ -100,6 +105,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
 
     return <div>The current sign-in attempt status is {signIn?.status}.</div>
   }
+
   ```
 </If>
 
@@ -121,6 +127,7 @@ The following example uses the `useSignIn()` hook to access the [`SignIn`](/docs
     )
   }
   ```
+
 </If>
 
 ### Create a custom sign-in flow with `useSignIn()`

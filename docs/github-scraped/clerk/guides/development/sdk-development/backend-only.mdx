@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/sdk-development/backend-only.mdx
 
 ---
+
 title: Backend-only SDK
 description: A reference for implementing a backend-only Clerk SDK
 ---
@@ -71,7 +72,7 @@ You can manually create a wrapper library around the [BAPI OpenAPI](/docs/refere
   })
   ```
 
-  ### Create your middleware/plugin
+### Create your middleware/plugin
 
   Inside the middleware, you’ll use the user-provided Clerk client (or use the default one created in the previous step) and authenticate the request. [`authenticateRequest`](/docs/reference/backend/authenticate-request) returns `Promise<RequestState>`. The middleware should set `requestState.toAuth()` into its context as this will contain the resolved signed-in/signed-out [`Auth`](/docs/reference/backend/types/auth-object) object. This way other helpers can access it later in the chain.
 
@@ -94,7 +95,7 @@ You can manually create a wrapper library around the [BAPI OpenAPI](/docs/refere
   }
   ```
 
-  ### Create a `getAuth` helper
+### Create a `getAuth` helper
 
   This utility will access the stored `requestState` (in the example above saved as `clerkAuth`) and return it.
 
@@ -122,7 +123,7 @@ You can manually create a wrapper library around the [BAPI OpenAPI](/docs/refere
   > [!TIP]
   > See the Next.js [`getAuth()`](/docs/reference/nextjs/pages-router/get-auth) reference to see how it's implemented.
 
-  ### Create a `requireAuth` helper
+### Create a `requireAuth` helper
 
   This utility will require auth requests for user authenticated or authorized requests. An HTTP `401` status code is returned for unauthorized requests.
 
@@ -163,4 +164,5 @@ You can manually create a wrapper library around the [BAPI OpenAPI](/docs/refere
 
   app.get('/path', requireAuth(), hasPermission())
   ```
+
 </Steps>

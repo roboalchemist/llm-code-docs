@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/organizations/manage-organization-invitations.mdx
 
 ---
+
 title: Build a custom flow for creating and managing Organization invitations
-description: Learn how to use the Clerk API to build a custom flow for creating and managing Organization invitations.
+description: Learn how to use the Clerk API to build a custom flow for creating and managing Organization invitations
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -35,8 +36,8 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
 
   The following example includes:
 
-  - An `<InviteMember />` component that allows administrators to invite new members to their Organization.
-  - An `<InvitationList />` component that lists all pending invitations and allows administrators to revoke them.
+- An `<InviteMember />` component that allows administrators to invite new members to their Organization.
+- An `<InvitationList />` component that lists all pending invitations and allows administrators to revoke them.
 
   <If notSdk="expo">
     ```tsx {{ filename: 'app/components/InvitationList.tsx', collapsible: true }}
@@ -216,6 +217,7 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
         </>
       )
     }
+
     ```
   </If>
 
@@ -617,7 +619,9 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
       },
     })
     ```
+
   </If>
+
 </If>
 
 <If sdk="js-frontend">
@@ -639,12 +643,13 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
 
   The following example includes:
 
-  - A `renderInvitations()` function that lists all invitations and allows administrators to revoke them.
-  - An `checkAdminAndRenderInvitations()` function that gets the current Organization, checks if the current user is an admin, renders invitations, and sets up a form that allows administrators to invite new members to their Organization.
+- A `renderInvitations()` function that lists all invitations and allows administrators to revoke them.
+- An `checkAdminAndRenderInvitations()` function that gets the current Organization, checks if the current user is an admin, renders invitations, and sets up a form that allows administrators to invite new members to their Organization.
 
   Use the following tabs to view the code necessary for the `index.html` and `main.js` files.
 
   <CodeBlockTabs options={["index.html", "main.js"]}>
+
     ```html {{ filename: 'index.html', collapsible: true }}
     <!doctype html>
     <html lang="en">
@@ -789,7 +794,9 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
       clerk.mountSignIn(signInDiv)
     }
     ```
+
   </CodeBlockTabs>
+
 </If>
 
 <If sdk="ios">
@@ -863,6 +870,7 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
       }
     }
   }
+
   ```
 </If>
 
@@ -905,6 +913,7 @@ This guide will demonstrate how to use the Clerk API to build a custom flow for 
     invitation.revoke()
   }
   ```
+
 </If>
 
 ## Next steps

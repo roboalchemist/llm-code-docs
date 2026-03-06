@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/pinning.mdx
 
 ---
+
 title: Pin a Clerk SDK
-description: Learn how to pin a Clerk SDK to a specific version.
+description: Learn how to pin a Clerk SDK to a specific version
 ---
 
 Dependency pinning allows you to specify exact package versions in your project, ensuring consistent behavior across different environments and preventing unexpected updates from breaking your application.
@@ -16,10 +17,13 @@ When you **pin a dependency**, you specify the exact version **without any range
 With Clerk, we recommend pinning your Clerk SDK in **both** of these ways:
 
 1. Pin your Clerk SDK in your `package.json` file to a specific version (no range operators).
+
    ```json {{ filename: 'package.json', prettier: false }}
    "@clerk/nextjs": "1.1.0"
    ```
+
 1. Set the `clerkJsVersion` property when you initialize the Clerk integration. For most SDKs, this is done in the `<ClerkProvider>` component. For SDKs like Astro or Nuxt, this is done in the configuration file.
+
    ```tsx {{ prettier: false }}
    <ClerkProvider clerkJsVersion="1.1.0">
    ```

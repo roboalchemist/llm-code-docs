@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/nextjs/app-router/server-actions.mdx
 
 ---
+
 title: Server Actions
 description: Learn how to use Clerk with Server Actions.
 sdk: nextjs
@@ -126,6 +127,7 @@ When you define a Server Action inside a Client Component, the request headers a
 The following example demonstrates the flow of data from the Server Action being passed to the Client Component, and the Client Component being used on a page. Use the following tabs to view the example code for each file.
 
 <CodeBlockTabs options={["Server Action", "Client Component", "Page"]}>
+
   ```tsx {{ filename: 'app/actions.ts' }}
   'use server'
   import { auth, currentUser } from '@clerk/nextjs/server'
@@ -168,4 +170,5 @@ The following example demonstrates the flow of data from the Server Action being
     return <AddHobby addHobby={addHobby} />
   }
   ```
+
 </CodeBlockTabs>

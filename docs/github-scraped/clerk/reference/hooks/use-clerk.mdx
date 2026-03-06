@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/hooks/use-clerk.mdx
 
 ---
+
 title: useClerk()
 description: Access and manage the Clerk object in your React application with Clerk's useClerk() hook.
 sdk: chrome-extension, expo, nextjs, react, react-router, tanstack-react-start
@@ -26,6 +27,7 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
 
     return <button onClick={() => clerk.openSignIn({})}>Sign in</button>
   }
+
   ```
 </If>
 
@@ -41,6 +43,7 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
     return <button onClick={() => clerk.openSignIn({})}>Sign in</button>
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -52,6 +55,7 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
 
     return <button onClick={() => clerk.openSignIn({})}>Sign in</button>
   }
+
   ```
 </If>
 
@@ -65,6 +69,7 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
     return <button onClick={() => clerk.openSignIn({})}>Sign in</button>
   }
   ```
+
 </If>
 
 <If sdk="tanstack-react-start">
@@ -81,6 +86,7 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
 
     return <button onClick={() => clerk.openSignIn({})}>Sign in</button>
   }
+
   ```
 </If>
 
@@ -101,4 +107,5 @@ The following example uses the `useClerk()` hook to access the `clerk` object. T
     )
   }
   ```
+
 </If>

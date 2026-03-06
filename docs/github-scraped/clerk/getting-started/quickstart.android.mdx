@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.android.mdx
 
 ---
+
 title: Android Quickstart
 description: Add authentication and user management to your Android app with Clerk.
 sdk: android
@@ -27,7 +28,7 @@ sdk: android
 
   <Include src="_partials/native-api-callout" />
 
-  ## Create a new Android app
+## Create a new Android app
 
   1. If you don't already have an Android app, create a new project in Android Studio using the **Empty Activity** template. This tutorial uses `MyClerkApp` as the app name. If your app has a different name, be sure to update any code examples accordingly to match your app's name.
 
@@ -55,7 +56,7 @@ sdk: android
 
   1. Sync your project to apply the changes after adding the dependencies.
 
-  ## Initialize Clerk
+## Initialize Clerk
 
   In `app/src/main/java/com/example/myclerkapp/`, create a Kotlin class named `MyClerkApp`. Add the following code to:
 
@@ -76,7 +77,7 @@ sdk: android
 
   <Include src="_partials/android/initialize-clerk" />
 
-  ## Configure the `AndroidManifest.xml`
+## Configure the `AndroidManifest.xml`
 
   In `app/src/main/AndroidManifest.xml`, add the following configuration:
 
@@ -97,7 +98,7 @@ sdk: android
      </application>
      ```
 
-  ## Listen for SDK initialization and authentication events
+## Listen for SDK initialization and authentication events
 
   Let's start building out your home page.
 
@@ -136,7 +137,7 @@ sdk: android
   }
   ```
 
-  ## Conditionally render content
+## Conditionally render content
 
   Now that you're listening for initialization and authentication events, set up your UI to react to them. In your `MainActivity.kt`, add the following code. This will show a loading indicator while the Clerk SDK is initializing, and a signed in or signed out experience based on the user's authentication state.
 
@@ -180,9 +181,9 @@ sdk: android
   }
   ```
 
-  ## Create sign-up and sign-in views
+## Create sign-up and sign-in views
 
-  ### Sign-up view
+### Sign-up view
 
   Create a Kotlin class named `SignUpViewModel` with the following code. It allows users to sign up using their email address and password, and sends an email verification code to confirm their email address.
 
@@ -306,7 +307,7 @@ sdk: android
   }
   ```
 
-  ### Sign-in view
+### Sign-in view
 
   Create a Kotlin class named `SignInViewModel` with the following code. It allows users to sign in using their email address and password.
 
@@ -389,7 +390,7 @@ sdk: android
   }
   ```
 
-  ### Combine the views
+### Combine the views
 
   Commonly, authentication flows will allow users to switch between sign up and sign in, such as a "Already signed up? Sign in" button. To add this to your app, create a `SignInOrUpView` file with the following code. This container view combines the `SignUpView` and `SignInView`, and allows users to switch between them.
 
@@ -478,7 +479,7 @@ sdk: android
   }
   ```
 
-  ## Allow users to sign out
+## Allow users to sign out
 
   Finally, provide users with a way to sign out of your app.
 
@@ -578,11 +579,11 @@ sdk: android
   }
   ```
 
-  ## Run your project
+## Run your project
 
   In Android Studio, select `Run ▶︎` to build and launch the app.
 
-  ## Create your first user
+## Create your first user
 
   Once the app launches successfully, tap "Sign up" and authenticate to create your first user.
 </Steps>
@@ -597,16 +598,16 @@ Learn more about Clerk views, how to customize them, and explore the Clerk Andro
 
   ---
 
-  - [Customization with ClerkTheme](/docs/android/guides/customizing-clerk/clerk-theme)
-  - Learn how to customize Clerk views using `ClerkTheme`.
+- [Customization with ClerkTheme](/docs/android/guides/customizing-clerk/clerk-theme)
+- Learn how to customize Clerk views using `ClerkTheme`.
 
   ---
 
-  - [Add native Sign in with Google](/docs/guides/configure/auth-strategies/sign-in-with-google)
-  - Learn how to add native Sign in with Google to your Clerk apps on Android platforms.
+- [Add native Sign in with Google](/docs/guides/configure/auth-strategies/sign-in-with-google)
+- Learn how to add native Sign in with Google to your Clerk apps on Android platforms.
 
   ---
 
-  - [Clerk Android SDK Reference](/docs/reference/native-mobile/overview)
-  - Learn about the Clerk Android SDK and how to integrate it into your app.
+- [Clerk Android SDK Reference](/docs/reference/native-mobile/overview)
+- Learn about the Clerk Android SDK and how to integrate it into your app.
 </Cards>

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/enterprise-connections/saml/google.mdx
 
 ---
+
 title: Add Google Workspace as a SAML connection
-description: Learn how to integrate Google Workspace with Clerk using SAML SSO.
+description: Learn how to integrate Google Workspace with Clerk using SAML SSO
 ---
 
 <TutorialHero
@@ -35,7 +36,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Add connection**. You'll be redirected to the connection's configuration page.
   1. In the **Service Provider Configuration** section, save the **ACS URL** and **Entity ID** values somewhere secure. Keep this page open.
 
-  ## Create a new enterprise application in Google
+## Create a new enterprise application in Google
 
   1. Navigate to the [Google Admin Console](https://admin.google.com/) and sign in.
   1. In the navigation sidenav, under **Apps**, select **Web and mobile apps**.
@@ -44,39 +45,39 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the **App details** section, an **App name** is required.
   1. Select the **Continue** button.
 
-  ## Configure Google as your Identity Provider
+## Configure Google as your Identity Provider
 
   There are two options for configuring your identity provider:
 
-  - **[Metadata configuration](#metadata-configuration) (recommended)** - A URL or file to your IdP's metadata. This is quicker than manually inputting the configuration settings.
-  - [**Custom configuration**](#custom-configuration) - Manually input the configuration settings for your IdP.
+- **[Metadata configuration](#metadata-configuration) (recommended)** - A URL or file to your IdP's metadata. This is quicker than manually inputting the configuration settings.
+- [**Custom configuration**](#custom-configuration) - Manually input the configuration settings for your IdP.
 
-  ### Metadata configuration
+### Metadata configuration
 
   1. In the Google Admin Console, under **Option 1: Download IdP Metadata**, select the **Download Metadata** button.
   1. Navigate back to the Clerk Dashboard and in the **Identity Provider Configuration** section, select the **Upload file** button.
   1. Upload the metadata file you downloaded from Google.
 
-  ### Custom configuration
+### Custom configuration
 
   If you choose to manually input the configuration settings for your IdP, you must add these three fields to your Clerk settings:
 
-  - **SSO URL** - The unique identifier of your IdP application.
-  - **Entity ID** - Your IdP's URL that Clerk will redirect your users to so that they can authenticate.
-  - **Certificate** - The certificate needed for Clerk to securely connect to your IdP.
+- **SSO URL** - The unique identifier of your IdP application.
+- **Entity ID** - Your IdP's URL that Clerk will redirect your users to so that they can authenticate.
+- **Certificate** - The certificate needed for Clerk to securely connect to your IdP.
 
   1. In the Google Admin Console, under **Option 2**, copy the **SSO URL**, **Entity ID**, and download the **Certificate**.
   1. Navigate back to the Clerk Dashboard and in the **Identity Provider Configuration** section, select **Use manual configuration**.
   1. Fill in the **SSO URL**, **Entity ID**, and upload the **Certificate**. Don't forget to select **Save**.
   1. In the Google Admin Console, select the **Continue** button.
 
-  ## Configure Clerk as your Service Provider
+## Configure Clerk as your Service Provider
 
   1. In the Google Admin Console, paste the **ACS URL** and **Entity ID** values you saved from the Clerk Dashboard into their respective fields.
   1. Under the **Name ID** section, select the **Name ID format** dropdown and select **Email**.
   1. Select **Continue**.
 
-  ## Map Google claims to Clerk attributes
+## Map Google claims to Clerk attributes
 
   Mapping the claims in your IdP to the attributes in Clerk ensures that the data from your IdP is correctly mapped to the data in Clerk.
 
@@ -94,7 +95,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the **App attributes** field, enter `mail`.
   1. If you have additional claims that you would like to map to Clerk, you can do so by following the steps in the [Map other claims](#map-other-claims-optional) section. Otherwise, select the **Finish** button.
 
-  ### Map other claims (optional)
+### Map other claims (optional)
 
   In Clerk, the [`User`](/docs/reference/javascript/user) object has a `publicMetadata` property that you can use to store additional information about your users.
 
@@ -111,7 +112,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
 
   Learn more about [how to access the metadata from our APIs](/docs/guides/users/extending).
 
-  ## Enable the connection in Google
+## Enable the connection in Google
 
   Once the configuration is complete in Google, you'll be redirected to the app's overview page.
 
@@ -119,7 +120,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **ON for everyone**.
   1. Select **Save**.
 
-  ## Enable the connection in Clerk
+## Enable the connection in Clerk
 
   <Include src="_partials/authentication/saml/enable-connection" />
 </Steps>

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/localization.mdx
 
 ---
+
 title: Localization prop (experimental)
-description: Use the Clerk localizations package to override and provide predefined or custom localizations for your Clerk components, enabling you to offer localized content or tailor the wording to match your brand.
+description: Use the Clerk localizations package to override and provide predefined or custom localizations for your Clerk components, enabling you to offer localized content or tailor the wording to match your brand
 ---
 
 > [!WARNING]
@@ -96,6 +97,7 @@ Once the `@clerk/localizations` package is installed, you can import the localiz
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -117,6 +119,7 @@ Once the `@clerk/localizations` package is installed, you can import the localiz
     ],
   })
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -194,6 +197,7 @@ Once the `@clerk/localizations` package is installed, you can import the localiz
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -212,6 +216,7 @@ Once the `@clerk/localizations` package is installed, you can import the localiz
     },
   })
   ```
+
 </If>
 
 <If sdk="fastify">
@@ -231,6 +236,7 @@ Once the `@clerk/localizations` package is installed, you can import the localiz
     localization: frFR,
   })
   ```
+
 </If>
 
 ## Adding or updating a localization
@@ -257,6 +263,7 @@ For example, say you want to change the text of the "Continue" button on the `<S
 Now that you know the key, you can pass it to the `localization` prop and set the value to the text you want to display. In this case, you'd set the value to "LETS GO!", as shown in the following example.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt", "fastify"]}>
+
   ```tsx {{ prettier: false, mark: [[1, 4], 6] }}
   // Set your customizations in a `localization` object
   const localization = {
@@ -267,6 +274,7 @@ Now that you know the key, you can pass it to the `localization` prop and set th
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -286,6 +294,7 @@ Now that you know the key, you can pass it to the `localization` prop and set th
     ],
   })
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -354,6 +363,7 @@ Now that you know the key, you can pass it to the `localization` prop and set th
     },
   })
   app.mount('#app')
+
   ```
 </If>
 
@@ -368,6 +378,7 @@ Now that you know the key, you can pass it to the `localization` prop and set th
     },
   })
   ```
+
 </If>
 
 <If sdk="fastify">
@@ -382,6 +393,7 @@ Now that you know the key, you can pass it to the `localization` prop and set th
       formButtonPrimary: 'LETS GO!',
     },
   })
+
   ```
 </If>
 
@@ -404,6 +416,7 @@ You can also customize multiple entries by passing multiple keys. The following 
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -427,6 +440,7 @@ You can also customize multiple entries by passing multiple keys. The following 
       }),
     ],
   })
+
   ```
 </If>
 
@@ -511,6 +525,7 @@ You can also customize multiple entries by passing multiple keys. The following 
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -552,6 +567,7 @@ You can also customize multiple entries by passing multiple keys. The following 
       },
     },
   })
+
   ```
 </If>
 
@@ -574,6 +590,7 @@ The following example updates the `not_allowed_access` error message. This messa
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -593,6 +610,7 @@ The following example updates the `not_allowed_access` error message. This messa
       }),
     ],
   })
+
   ```
 </If>
 
@@ -669,6 +687,7 @@ The following example updates the `not_allowed_access` error message. This messa
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -702,5 +721,6 @@ The following example updates the `not_allowed_access` error message. This messa
       },
     },
   })
+
   ```
 </If>

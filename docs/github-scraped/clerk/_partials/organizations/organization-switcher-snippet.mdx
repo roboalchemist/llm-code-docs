@@ -38,7 +38,8 @@
           <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
             <ClerkProvider>
               <header className="flex justify-end items-center p-4 gap-4 h-16">
-  +             <OrganizationSwitcher />
+
++             <OrganizationSwitcher />
                 <Show when="signed-out">
                   <SignInButton />
                 </Show>
@@ -52,7 +53,9 @@
         </html>
       )
     }
+
   ```
+
 </If>
 
 <If sdk="react">
@@ -69,7 +72,8 @@
       return (
         <>
           <header>
-  +         <OrganizationSwitcher />
+
++         <OrganizationSwitcher />
             <Show when="signed-out">
               <SignInButton />
             </Show>
@@ -82,7 +86,9 @@
     }
 
     export default App
+
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -142,7 +148,8 @@
         // Pass the `loaderData` to the `<ClerkProvider>` component
         <ClerkProvider loaderData={loaderData}>
           <header className="flex items-center justify-center py-8 px-4">
-  +         <OrganizationSwitcher />
+
++         <OrganizationSwitcher />
             <Show when="signed-out">
               <SignInButton />
             </Show>
@@ -181,7 +188,9 @@
         </main>
       )
     }
+
   ```
+
 </If>
 
 <If sdk="astro">
@@ -206,7 +215,8 @@
       </head>
       <body>
         <header>
-  +       <OrganizationSwitcher />
+
++       <OrganizationSwitcher />
           <Show when="signed-out">
             <SignInButton mode="modal" />
           </Show>
@@ -226,7 +236,9 @@
         height: 100%;
       }
     </style>
+
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -246,5 +258,7 @@
         <NuxtPage />
       </main>
     </template>
+
   ```
+
 </If>

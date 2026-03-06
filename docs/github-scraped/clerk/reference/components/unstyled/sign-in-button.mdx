@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/unstyled/sign-in-button.mdx
 
 ---
+
 title: '`<SignInButton>`'
 description: The <SignInButton> component is a button that links to the sign-in page or displays the sign-in modal.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue
@@ -19,6 +20,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
   export default function Home() {
     return <SignInButton />
   }
+
   ```
 </If>
 
@@ -32,6 +34,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -54,6 +57,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
     return <SignInButton />
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -63,6 +67,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
   export default function SignInPage() {
     return <SignInButton />
   }
+
   ```
 </If>
 
@@ -74,6 +79,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
     return <SignInButton />
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -83,6 +89,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
   export default function Home() {
     return <SignInButton />
   }
+
   ```
 </If>
 
@@ -99,6 +106,7 @@ The `<SignInButton>` component is a button that, by default, links to your app's
     return <SignInButton />
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -140,6 +148,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignInButton>
     )
   }
+
   ```
 </If>
 
@@ -157,6 +166,7 @@ You can create a custom button by wrapping your own button, or button text, in t
 
   export default App
   ```
+
 </If>
 
 <If sdk="astro">
@@ -171,6 +181,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     <button>Custom sign in button</button>
   </SignInButton>
   ```
+
 </If>
 
 <If sdk="expo">
@@ -187,6 +198,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     )
   }
   ```
+
 </If>
 
 <If sdk="chrome-extension">
@@ -200,6 +212,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignInButton>
     )
   }
+
   ```
 </If>
 
@@ -215,6 +228,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -228,6 +242,7 @@ You can create a custom button by wrapping your own button, or button text, in t
       </SignInButton>
     )
   }
+
   ```
 </If>
 
@@ -248,6 +263,7 @@ You can create a custom button by wrapping your own button, or button text, in t
     )
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -288,56 +304,56 @@ You can create a custom button by wrapping your own button, or button text, in t
 
   ---
 
-  - `fallbackRedirectUrl?`
-  - `string`
+- `fallbackRedirectUrl?`
+- `string`
 
   The fallback URL to redirect to after the user signs in, if there's no `redirect_url` in the path already. Defaults to `/`. It's recommended to use [the environment variable](/docs/guides/development/clerk-environment-variables#sign-in-and-sign-up-redirects) instead.
 
   ---
 
-  - `oauthFlow`
-  - `"redirect" | "popup" | "auto"`
+- `oauthFlow`
+- `"redirect" | "popup" | "auto"`
 
   Determines how OAuth authentication is performed. Accepts the following properties:
 
-  - `"redirect"`: Redirect to the OAuth provider on the current page.
-  - `"popup"`: Open a popup window.
-  - `"auto"`: Choose the best method based on whether the current domain typically requires the `"popup"` flow to correctly perform authentication.
+- `"redirect"`: Redirect to the OAuth provider on the current page.
+- `"popup"`: Open a popup window.
+- `"auto"`: Choose the best method based on whether the current domain typically requires the `"popup"` flow to correctly perform authentication.
 
   Defaults to `"auto"`.
 
   ---
 
-  - `signUpForceRedirectUrl?`
-  - `string`
+- `signUpForceRedirectUrl?`
+- `string`
 
   If provided, this URL will always be redirected to after the user signs up. It's recommended to use [the environment variable](/docs/guides/development/clerk-environment-variables#sign-in-and-sign-up-redirects) instead.
 
   ---
 
-  - `signUpFallbackRedirectUrl?`
-  - `string`
+- `signUpFallbackRedirectUrl?`
+- `string`
 
   The fallback URL to redirect to after the user signs up, if there's no `redirect_url` in the path already. Defaults to `/`. It's recommended to use [the environment variable](/docs/guides/development/clerk-environment-variables#sign-in-and-sign-up-redirects) instead.
 
   ---
 
-  - `mode?`
-  - `'redirect' | 'modal'`
+- `mode?`
+- `'redirect' | 'modal'`
 
   Determines what happens when a user clicks on the `<SignInButton>`. Setting this to `'redirect'` will redirect the user to the sign-in route. Setting this to `'modal'` will open a modal on the current route. Defaults to `'redirect'`.
 
   ---
 
-  - `children?`
-  - `React.ReactNode`
+- `children?`
+- `React.ReactNode`
 
   Children you want to wrap the `<SignInButton>` in.
 
   ---
 
-  - `initialValues`
-  - [`SignInInitialValues`](/docs/reference/javascript/types/sign-in-initial-values)
+- `initialValues`
+- [`SignInInitialValues`](/docs/reference/javascript/types/sign-in-initial-values)
 
   The values used to prefill the sign-in fields with.
 </Properties>

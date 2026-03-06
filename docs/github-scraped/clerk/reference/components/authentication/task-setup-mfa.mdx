@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/authentication/task-setup-mfa.mdx
 
 ---
+
 title: '`<TaskSetupMFA />` component'
 description: Clerk's <TaskSetupMFA /> component renders a UI for resolving the setup-mfa task.
 sdk: js-frontend, nextjs, react, react-router, tanstack-react-start
@@ -172,12 +173,12 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<TaskSetupMFA />` component:
 
-  - [`mountTaskSetupMFA()`](#mount-task-setup-mfa)
-  - [`unmountTaskSetupMFA()`](#unmount-task-setup-mfa)
+- [`mountTaskSetupMFA()`](#mount-task-setup-mfa)
+- [`unmountTaskSetupMFA()`](#unmount-task-setup-mfa)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### `mountTaskSetupMFA()`
+### `mountTaskSetupMFA()`
 
   Render the `<TaskSetupMFA />` component to an HTML `<div>` element.
 
@@ -185,7 +186,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
   function mountTaskSetupMFA(node: HTMLDivElement, props?: TaskSetupMFAProps): void
   ```
 
-  #### `mountTaskSetupMFA()` params
+#### `mountTaskSetupMFA()` params
 
   <Properties>
     - `node `
@@ -201,7 +202,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
     The properties to pass to the `<TaskSetupMFA />` component.
   </Properties>
 
-  #### `mountTaskSetupMFA()` usage
+#### `mountTaskSetupMFA()` usage
 
   ```typescript {{ filename: 'main.ts', mark: [26] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -235,7 +236,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
   }
   ```
 
-  ### `unmountTaskSetupMFA()`
+### `unmountTaskSetupMFA()`
 
   Unmount and run cleanup on an existing `<TaskSetupMFA />` component instance.
 
@@ -243,7 +244,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
   function unmountTaskSetupMFA(node: HTMLDivElement): void
   ```
 
-  #### `unmountTaskSetupMFA()` params
+#### `unmountTaskSetupMFA()` params
 
   <Properties>
     - `node `
@@ -252,7 +253,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
     The container `<div>` element with a rendered `<SignUp />` component instance
   </Properties>
 
-  #### `unmountTaskSetupMFA()` usage
+#### `unmountTaskSetupMFA()` usage
 
   ```typescript {{ filename: 'main.ts', mark: [30] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -289,6 +290,7 @@ If you want to customize the route where the `<TaskSetupMFA />` component is ren
     }
   }
   ```
+
 </If>
 
 ## Properties

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/nextjs/errors/auth-was-called.mdx
 
 ---
+
 title: "Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware()"
-description: Learn how to handle auth() was called but Clerk can't detect usage of clerkMiddleware() when getting 404 errors in Next.js.
+description: Learn how to handle auth() was called but Clerk can't detect usage of clerkMiddleware() when getting 404 errors in Next.js
 ---
 
 This error occurs when a request that is not covered by `clerkMiddleware()` gets a 404 return in a Clerk + Next.js App Router setup.
@@ -58,6 +59,7 @@ For example,
    - A `500` or `404` error in your browser's network tab.
    - `GET /{non-existing-path}.{static-asset-extension} 500 | 404` in your terminal or logs.
    - The following Clerk error in the console:
+
      ```text
      x [Error: Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
       Your Middleware exists at ./src/middleware.(ts|js)

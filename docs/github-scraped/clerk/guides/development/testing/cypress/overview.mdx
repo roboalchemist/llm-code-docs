@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/testing/cypress/overview.mdx
 
 ---
+
 title: Testing with Cypress
-description: Use Cypress to write end-to-end tests with Clerk.
+description: Use Cypress to write end-to-end tests with Clerk
 ---
 
 > [!WARNING]
@@ -34,14 +35,14 @@ This guide will help you set up your environment for creating Clerk-authenticate
     ```
   </CodeBlockTabs>
 
-  ## Set your API keys
+## Set your API keys
 
   In your test runner, set your [Publishable Key](!publishable-key) and [Secret Key](!secret-key) as the `CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` environment variables, respectively.
 
   > [!WARNING]
   > Ensure you provide the Secret Key in a secure manner, to avoid leaking it to third parties. For example, if you are using GitHub Actions, refer to [_Using secrets in GitHub Actions_](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions).
 
-  ## Global setup
+## Global setup
 
   To set up Clerk with Cypress, call the `clerkSetup()` function in your [`cypress.config.ts`](https://docs.cypress.io/guides/references/configuration) file.
 
@@ -61,7 +62,7 @@ This guide will help you set up your environment for creating Clerk-authenticate
 
   `clerkSetup()` will retrieve a [Testing Token](/docs/guides/development/testing/overview#testing-tokens) once the test suite starts, making it available for all subsequent tests.
 
-  ## Use Clerk Testing Tokens
+## Use Clerk Testing Tokens
 
   Now that Cypress is configured with Clerk, use the `setupClerkTestingToken()` function in your tests to integrate the Testing Token. See the following example:
 
@@ -75,4 +76,5 @@ This guide will help you set up your environment for creating Clerk-authenticate
     // Add any other actions to test
   })
   ```
+
 </Steps>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/appearance-prop/themes.mdx
 
 ---
+
 title: Themes
 description: Clerk currently offers six prebuilt themes for you to customize the overall appearance of your Clerk app.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend, fastify, expressjs, js-backend, go, ruby
@@ -15,6 +16,7 @@ Clerk currently offers [six prebuilt themes](#available-themes) for you to custo
    ```npm
    npm install @clerk/ui
    ```
+
 1. To use a theme, import it from `@clerk/ui` and apply it using the [`appearance` prop](/docs/guides/customizing-clerk/appearance-prop/overview).
 
 ## Usage
@@ -45,6 +47,7 @@ For more customization options, refer to the [Advanced usage](#advanced-usage) s
      {/* ... */}
    </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -66,6 +69,7 @@ For more customization options, refer to the [Advanced usage](#advanced-usage) s
     ],
   })
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -145,6 +149,7 @@ For more customization options, refer to the [Advanced usage](#advanced-usage) s
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -164,6 +169,7 @@ For more customization options, refer to the [Advanced usage](#advanced-usage) s
     },
   })
   ```
+
 </If>
 
 <If sdk="fastify">
@@ -183,6 +189,7 @@ For more customization options, refer to the [Advanced usage](#advanced-usage) s
     },
   })
   ```
+
 </If>
 
 ### Apply a theme to all instances of a Clerk component
@@ -192,6 +199,7 @@ To apply a theme to all instances of a Clerk component, you can pass the name of
 In the following example, the "Neobrutalism" theme is applied to all instances of the [`<SignIn />`](/docs/reference/components/authentication/sign-in) component.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt", "fastify"]}>
+
   ```tsx {{ prettier: false, mark: [1, [4, 7]] }}
   import { dark, neobrutalism } from '@clerk/ui/themes'
 
@@ -204,6 +212,7 @@ In the following example, the "Neobrutalism" theme is applied to all instances o
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -221,6 +230,7 @@ In the following example, the "Neobrutalism" theme is applied to all instances o
       }),
     ],
   })
+
   ```
 </If>
 
@@ -295,6 +305,7 @@ In the following example, the "Neobrutalism" theme is applied to all instances o
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -310,6 +321,7 @@ In the following example, the "Neobrutalism" theme is applied to all instances o
       },
     },
   })
+
   ```
 </If>
 
@@ -328,6 +340,7 @@ In the following example, the "Neobrutalism" theme is applied to all instances o
     },
   })
   ```
+
 </If>
 
 ### Apply a theme to a single Clerk component
@@ -337,6 +350,7 @@ To apply a theme to a single Clerk component, pass the `theme` property to the `
 In the following example, the "Dark" theme is applied to the [`<SignIn />`](/docs/reference/components/authentication/sign-in) component.
 
 <If notSdk={["vue", "nuxt"]}>
+
   ```tsx {{ mark: [[2, 4]] }}
   <SignIn
     appearance={{
@@ -344,9 +358,11 @@ In the following example, the "Dark" theme is applied to the [`<SignIn />`](/doc
     }}
   />
   ```
+
 </If>
 
 <If sdk={["vue", "nuxt"]}>
+
   ```vue {{ mark: [6] }}
   <script setup lang="ts">
   // Components are automatically imported
@@ -356,6 +372,7 @@ In the following example, the "Dark" theme is applied to the [`<SignIn />`](/doc
     <SignIn :appearance="{ theme: dark }" />
   </template>
   ```
+
 </If>
 
 ## Advanced usage
@@ -367,6 +384,7 @@ You can also stack themes by passing an array of themes to the `theme` property 
 In the following example, the "Dark" theme is applied first, then the "Neobrutalism" theme is applied on top of it.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt", "fastify"]}>
+
   ```tsx {{ prettier: false, mark: [1, [4, 6]] }}
    import { dark, neobrutalism } from '@clerk/ui/themes'
 
@@ -378,6 +396,7 @@ In the following example, the "Dark" theme is applied first, then the "Neobrutal
      {/* ... */}
    </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -394,6 +413,7 @@ In the following example, the "Dark" theme is applied first, then the "Neobrutal
       }),
     ],
   })
+
   ```
 </If>
 
@@ -466,6 +486,7 @@ In the following example, the "Dark" theme is applied first, then the "Neobrutal
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -480,6 +501,7 @@ In the following example, the "Dark" theme is applied first, then the "Neobrutal
       },
     },
   })
+
   ```
 </If>
 
@@ -496,6 +518,7 @@ In the following example, the "Dark" theme is applied first, then the "Neobrutal
     },
   })
   ```
+
 </If>
 
 ### Customize a theme using variables
@@ -508,6 +531,7 @@ You can customize a theme by passing an object of variables to the `variables` p
 In the following example, the primary color of the themes are customized.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt", "fastify"]}>
+
   ```tsx {{ prettier: false, mark: [1, [4, 11]] }}
   import { dark, neobrutalism, shadesOfPurple } from '@clerk/ui/themes'
 
@@ -524,6 +548,7 @@ In the following example, the primary color of the themes are customized.
     {/* ... */}
   </ClerkProvider>
   ```
+
 </If>
 
 <If sdk="astro">
@@ -545,6 +570,7 @@ In the following example, the primary color of the themes are customized.
       }),
     ],
   })
+
   ```
 </If>
 
@@ -627,6 +653,7 @@ In the following example, the primary color of the themes are customized.
   })
   app.mount('#app')
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -646,6 +673,7 @@ In the following example, the primary color of the themes are customized.
       },
     },
   })
+
   ```
 </If>
 
@@ -667,6 +695,7 @@ In the following example, the primary color of the themes are customized.
     },
   })
   ```
+
 </If>
 
 ## Available themes

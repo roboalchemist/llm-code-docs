@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/nextjs/app-router/auth.mdx
 
 ---
+
 title: '`auth()`'
 description: Access minimal authentication data for managing sessions and data fetching.
 sdk: nextjs
@@ -22,7 +23,7 @@ The `auth()` helper returns the [`Auth`](/docs/reference/backend/types/auth-obje
 
   <Include src="_partials/machine-auth/accepts-token-explanation" />
 
-  - `treatPendingAsSignedOut?`: A boolean that indicates whether to treat [`pending` session status](/docs/reference/javascript/types/session-status#properties) as signed out. Defaults to `true`.
+- `treatPendingAsSignedOut?`: A boolean that indicates whether to treat [`pending` session status](/docs/reference/javascript/types/session-status#properties) as signed out. Defaults to `true`.
 </Properties>
 
 ## `auth.protect()`
@@ -57,49 +58,49 @@ The following table describes how `auth.protect()` behaves based on user authent
 
   ---
 
-  - `permission?`
-  - `string`
+- `permission?`
+- `string`
 
   The Permission to check for.
 
   ---
 
-  - `has?`
-  - `(isAuthorizedParams: CheckAuthorizationParamsWithCustomPermissions) => boolean`
+- `has?`
+- `(isAuthorizedParams: CheckAuthorizationParamsWithCustomPermissions) => boolean`
 
   A function that checks if the user has an Organization Role or Custom Permission. See the [reference](/docs/reference/backend/types/auth-object#has) for more information.
 
   ---
 
-  - `unauthorizedUrl?`
-  - `string`
+- `unauthorizedUrl?`
+- `string`
 
   The URL to redirect the user to if they are not authorized.
 
   ---
 
-  - `unauthenticatedUrl?`
-  - `string`
+- `unauthenticatedUrl?`
+- `string`
 
   The URL to redirect the user to if they are not authenticated.
 
   ---
 
-  - `token?`
-  - `TokenType`
+- `token?`
+- `TokenType`
 
   The type of authentication token(s) to accept. Valid values are:
 
-  - `'session_token'` - authenticates a user session.
-  - `'oauth_token'` - authenticates a machine request using OAuth.
-  - `'machine_token'` - authenticates a machine to machine request.
-  - `'api_key'` - authenticates a machine request using API keys.
+- `'session_token'` - authenticates a user session.
+- `'oauth_token'` - authenticates a machine request using OAuth.
+- `'machine_token'` - authenticates a machine to machine request.
+- `'api_key'` - authenticates a machine request using API keys.
 
   Can be set to:
 
-  - A single token type.
-  - An array of token types.
-  - `'any'` to accept all available token types.
+- A single token type.
+- An array of token types.
+- `'any'` to accept all available token types.
 
   Defaults to `'session_token'`.
 </Properties>

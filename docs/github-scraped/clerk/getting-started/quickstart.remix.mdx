@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.remix.mdx
 
 ---
+
 title: Remix Quickstart
 description: Learn how to use Clerk to quickly and easily add secure authentication and user management to your Remix application.
 sdk: remix
@@ -41,7 +42,7 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   npm install
   ```
 
-  ## Install `@clerk/remix`
+## Install `@clerk/remix`
 
   The [Clerk Remix SDK](/docs/reference/remix/overview) gives you access to prebuilt components, hooks, and helpers to make user authentication easier.
 
@@ -51,7 +52,7 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   npm install @clerk/remix
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-api-keys" />
 
@@ -60,7 +61,7 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   CLERK_SECRET_KEY={{secret}}
   ```
 
-  ## Configure `rootAuthLoader()`
+## Configure `rootAuthLoader()`
 
   The [`rootAuthLoader()`](/docs/reference/remix/root-auth-loader) function is a helper function that provides the authentication state to your Remix application. You must export `rootAuthLoader()` as the root `loader()` function.
 
@@ -105,7 +106,7 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   }
   ```
 
-  ## Configure `ClerkApp`
+## Configure `ClerkApp`
 
   Clerk provides a [`ClerkApp`](/docs/reference/remix/clerk-app) wrapper to provide the authentication state to your React tree. This helper works with Remix SSR out-of-the-box and follows the "higher-order component" paradigm.
 
@@ -154,9 +155,9 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   export default ClerkApp(App)
   ```
 
-  ## Protect your pages
+## Protect your pages
 
-  ### Client-side
+### Client-side
 
   To protect your pages on the client-side, you can use Clerk's [prebuilt control components](/docs/reference/components/overview#control-components) that control the visibility of content based on the user's authentication state.
 
@@ -183,7 +184,7 @@ Learn how to use Clerk to quickly and easily add secure authentication and user 
   }
   ```
 
-  ### Server-side
+### Server-side
 
   To protect your routes, use the [`getAuth()`](/docs/reference/nextjs/pages-router/get-auth) function in your loader. This function retrieves the authentication state from the request object, returning an [`Auth`](/docs/reference/backend/types/auth-object) object that includes the `isAuthenticated`, allowing you to determine if the user is authenticated.
 
@@ -226,26 +227,26 @@ Learn more about Clerk components, how to customize them, and how to use Clerk's
 
   ---
 
-  - [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
-  - Learn how to customize and localize Clerk components.
+- [Customization & localization](/docs/guides/customizing-clerk/appearance-prop/overview)
+- Learn how to customize and localize Clerk components.
 
   ---
 
-  - [Create a custom sign-in-or-up page](/docs/remix/guides/development/custom-sign-in-or-up-page)
-  - Learn how to create a custom sign-in-or-up page with Clerk components.
+- [Create a custom sign-in-or-up page](/docs/remix/guides/development/custom-sign-in-or-up-page)
+- Learn how to create a custom sign-in-or-up page with Clerk components.
 
   ---
 
-  - [Protect content and read user data](/docs/remix/guides/users/reading)
-  - Learn how to use Clerk's hooks and helpers to protect content and read user data in your Remix app.
+- [Protect content and read user data](/docs/remix/guides/users/reading)
+- Learn how to use Clerk's hooks and helpers to protect content and read user data in your Remix app.
 
   ---
 
-  - [Remix SPA Mode](/docs/guides/development/spa-mode)
-  - Learn how to use Clerk with Remix in SPA mode.
+- [Remix SPA Mode](/docs/guides/development/spa-mode)
+- Learn how to use Clerk with Remix in SPA mode.
 
   ---
 
-  - [Clerk Remix SDK Reference](/docs/reference/remix/overview)
-  - Learn about the Clerk Remix SDK and how to integrate it into your app.
+- [Clerk Remix SDK Reference](/docs/reference/remix/overview)
+- Learn about the Clerk Remix SDK and how to integrate it into your app.
 </Cards>

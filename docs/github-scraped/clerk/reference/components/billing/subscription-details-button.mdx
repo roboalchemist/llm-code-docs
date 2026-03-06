@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/billing/subscription-details-button.mdx
 
 ---
+
 title: "`<SubscriptionDetailsButton />` component"
 description: "Clerk's <SubscriptionDetailsButton /> component renders a button that opens the Subscription details drawer."
 sdk: react, nextjs, vue
@@ -50,7 +51,7 @@ The `<SubscriptionDetailsButton />` component renders a button that opens the Su
   export default function BillingPage() {
     return (
       <Show when="signed-in">
-        {/* Basic usage */}
+        {/*Basic usage*/}
         <SubscriptionDetailsButton />
 
         {/* Customizes the appearance of the Subscription details drawer */}
@@ -72,6 +73,7 @@ The `<SubscriptionDetailsButton />` component renders a button that opens the Su
       </Show>
     )
   }
+
   ```
 </If>
 
@@ -108,6 +110,7 @@ The `<SubscriptionDetailsButton />` component renders a button that opens the Su
 
   export default BillingSection
   ```
+
 </If>
 
 <If sdk="vue">
@@ -152,24 +155,24 @@ All props are optional.
 
   ---
 
-  - `children?`
-  - `React.ReactNode`
+- `children?`
+- `React.ReactNode`
 
   Optional custom button element. If not provided, defaults to a button with the text "Subscription details".
 
   ---
 
-  - `onSubscriptionCancel?`
-  - `() => void`
+- `onSubscriptionCancel?`
+- `() => void`
 
   A callback function that is called when a Subscription is cancelled.
 
   ---
 
-  - `subscriptionDetailsProps?`
-  - `{ appearance: Appearance }`
+- `subscriptionDetailsProps?`
+- `{ appearance: Appearance }`
 
   Options for the Subscription details drawer. Accepts the following properties:
 
-  - [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<SubscriptionDetailsButton subscriptionDetailsProps={{ appearance: { ... } }} />`.
+- [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<SubscriptionDetailsButton subscriptionDetailsProps={{ appearance: { ... } }} />`.
 </Properties>

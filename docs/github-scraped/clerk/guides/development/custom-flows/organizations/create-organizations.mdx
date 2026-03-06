@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/organizations/create-organizations.mdx
 
 ---
+
 title: Build a custom flow for creating Organizations
-description: Learn how to use the Clerk API to build a custom flow for creating Organizations.
+description: Learn how to use the Clerk API to build a custom flow for creating Organizations
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -12,10 +13,11 @@ This guide demonstrates how to use Clerk's API to build a custom flow for creati
 <If notSdk={["js-frontend", "ios", "android"]}>
   The following example uses these hooks:
 
-  - The [`useOrganizationList()`](/docs/reference/hooks/use-organization-list) hook to access the `createOrganization()` method. This method is used to create a new Organization with the provided name.
-  - The [`useOrganizationCreationDefaults()`](/docs/reference/hooks/use-organization-creation-defaults) hook to pre-populate the form with a suggested organization name based on your application's [default naming rules](/docs/guides/organizations/configure#default-naming-rules), and to display a warning if an organization with that name or domain already exists.
+- The [`useOrganizationList()`](/docs/reference/hooks/use-organization-list) hook to access the `createOrganization()` method. This method is used to create a new Organization with the provided name.
+- The [`useOrganizationCreationDefaults()`](/docs/reference/hooks/use-organization-creation-defaults) hook to pre-populate the form with a suggested organization name based on your application's [default naming rules](/docs/guides/organizations/configure#default-naming-rules), and to display a warning if an organization with that name or domain already exists.
 
   <Include src="_partials/custom-flows/create-organizations" />
+
 </If>
 
 <If sdk="js-frontend">
@@ -133,6 +135,7 @@ This guide demonstrates how to use Clerk's API to build a custom flow for creati
       }
     }
   }
+
   ```
 </If>
 
@@ -218,4 +221,5 @@ This guide demonstrates how to use Clerk's API to build a custom flow for creati
     return createdOrganization
   }
   ```
+
 </If>

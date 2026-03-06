@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.fastify.mdx
 
 ---
+
 title: Fastify Quickstart
 description: Learn how to integrate Clerk for secure authentication and user management into your application using a Fastify backend.
 sdk: fastify
@@ -45,7 +46,7 @@ Learn how to integrate Clerk into your Fastify backend for secure user authentic
   npm install @clerk/fastify
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-api-keys" />
 
@@ -54,7 +55,7 @@ Learn how to integrate Clerk into your Fastify backend for secure user authentic
   CLERK_SECRET_KEY={{secret}}
   ```
 
-  ## Configure `clerkPlugin()` for all routes
+## Configure `clerkPlugin()` for all routes
 
   The [`clerkPlugin()`](/docs/reference/fastify/clerk-plugin) function is a Fastify plugin provided by Clerk to integrate authentication into your Fastify application. To ensure that Clerk's authentication and user management features are applied across your Fastify application, configure the `clerkPlugin()` to handle all routes or limit it to specific ones.
 
@@ -84,7 +85,7 @@ Learn how to integrate Clerk into your Fastify backend for secure user authentic
   start()
   ```
 
-  ## Protect your routes using `getAuth()`
+## Protect your routes using `getAuth()`
 
   The [`getAuth()`](/docs/reference/fastify/get-auth) helper retrieves the current user's authentication state from the `request` object. It returns the [`Auth` object](/docs/reference/backend/types/auth-object){{ target: '_blank' }}.
 
@@ -101,16 +102,16 @@ Learn how to protect routes, handle authentication and authorization, and prepar
 
   ---
 
-  - [Protect routes based on authorization status](/docs/reference/fastify/get-auth)
-  - Learn how to protect a route based on both authentication and authorization status.
+- [Protect routes based on authorization status](/docs/reference/fastify/get-auth)
+- Learn how to protect a route based on both authentication and authorization status.
 
   ---
 
-  - [Deploy to production](/docs/guides/development/deployment/production)
-  - Learn how to deploy your Clerk app to production.
+- [Deploy to production](/docs/guides/development/deployment/production)
+- Learn how to deploy your Clerk app to production.
 
   ---
 
-  - [Clerk Fastify SDK reference](/docs/reference/fastify/overview)
-  - Learn about the Clerk Fastify SDK and how to integrate it into your app.
+- [Clerk Fastify SDK reference](/docs/reference/fastify/overview)
+- Learn about the Clerk Fastify SDK and how to integrate it into your app.
 </Cards>

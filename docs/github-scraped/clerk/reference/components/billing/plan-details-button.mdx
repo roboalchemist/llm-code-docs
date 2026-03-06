@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/billing/plan-details-button.mdx
 
 ---
+
 title: "`<PlanDetailsButton />` component"
 description: "Clerk's <PlanDetailsButton /> component renders a button that opens the Plan details drawer."
 sdk: react, nextjs, vue
@@ -49,7 +50,7 @@ const portalRoot = document.getElementById('custom-portal')
   export default function PricingPage() {
     return (
       <div>
-        {/* Basic usage with Plan ID */}
+        {/*Basic usage with Plan ID*/}
         <PlanDetailsButton planId="cplan_xxx" />
 
         {/* Customizes the appearance of the Plan details drawer */}
@@ -73,6 +74,7 @@ const portalRoot = document.getElementById('custom-portal')
       </div>
     )
   }
+
   ```
 </If>
 
@@ -110,6 +112,7 @@ const portalRoot = document.getElementById('custom-portal')
 
   export default PricingSection
   ```
+
 </If>
 
 <If sdk="vue">
@@ -153,31 +156,31 @@ const portalRoot = document.getElementById('custom-portal')
 
   ---
 
-  - `plan?`
-  - [`BillingPlanResource`](/docs/reference/javascript/types/billing-plan-resource)
+- `plan?`
+- [`BillingPlanResource`](/docs/reference/javascript/types/billing-plan-resource)
 
   The Plan to display details for. It is used as initial data until the Plan is fetched from the server.
 
   ---
 
-  - `children?`
-  - `React.ReactNode`
+- `children?`
+- `React.ReactNode`
 
   Optional custom button element. If not provided, defaults to a button with the text "Plan details".
 
   ---
 
-  - `initialPlanPeriod?`
-  - `'month' | 'annual'`
+- `initialPlanPeriod?`
+- `'month' | 'annual'`
 
   Optional prop to set the initial billing period view when the Plan details drawer opens.
 
   ---
 
-  - `planDetailsProps?`
-  - `{ appearance: Appearance }`
+- `planDetailsProps?`
+- `{ appearance: Appearance }`
 
   Options for the Plan details drawer. Accepts the following properties:
 
-  - [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<PlanDetailsButton planDetailsProps={{ appearance: { ... } }} />`.
+- [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview): an object used to style your components. For example: `<PlanDetailsButton planDetailsProps={{ appearance: { ... } }} />`.
 </Properties>

@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/atlassian.mdx
 
 ---
+
 title: Add Atlassian as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Atlassian account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Atlassian account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Callback URL** somewhere secure. Keep this page open.
 
-  ### Create an Atlassian workspace
+### Create an Atlassian workspace
 
   > [!TIP]
   > If you already have an Atlassian workspace you'd like to connect to Clerk, select your workspace from the [Atlassian Developer console](https://developer.atlassian.com/console/myapps/) and skip to [the next step in this tutorial](#configure-your-atlassian-app).
@@ -53,7 +54,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the [Atlassian Developer console](https://developer.atlassian.com/console/myapps/), next to **My apps**, select **Create**. Then, select **OAuth 2.0 integration**. You'll be redirected to the **Create a new OAuth 2.0 (3LO) integration** page.
   1. Fill out the necessary information. Then, select **Create**. Once the integration is created, you'll be redirected to the app's **Overview** page.
 
-  ### Configure your Atlassian app
+### Configure your Atlassian app
 
   1. In the left sidenav of your app's **Overview** page, select **Permissions**. Configure the OAuth 2.0 scopes to request from your users when they connect with Atlassian. At a minimum, next to **User identity API**, select **Add**.
   1. In the left sidenav, select **Authorization**.
@@ -68,11 +69,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Complete the required fields. For **Does your app store personal data?**, select **Yes**, as Clerk uses the user's personal data to authenticate them.
   1. Select **Save changes**.
 
-  ### Set the Client ID and Secret in the Clerk Dashboard
+### Set the Client ID and Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   > [!WARNING]
   > To be able to connect, the user must have access to at least one Atlassian site (e.g. JIRA, Confluence). Currently, the user can authorize access only to a single Atlassian site.

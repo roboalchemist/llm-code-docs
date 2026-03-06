@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/adding-items/organization-profile.mdx
 
 ---
+
 title: Add custom pages and links to the `<OrganizationProfile />` component
 description: Learn how to add custom pages and include external links within the navigation sidenav of the <OrganizationProfile /> component.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -46,22 +47,22 @@ To add a custom page to the `<OrganizationProfile />` component, you will need t
 
   ---
 
-  - `labelIcon`
-  - `React.ReactElement`
+- `labelIcon`
+- `React.ReactElement`
 
   An icon displayed next to the label in the navigation sidenav.
 
   ---
 
-  - `url`
-  - `string`
+- `url`
+- `string`
 
   The path segment that will be used to navigate to the custom page. For example, if the `<OrganizationProfile />` component is rendered at `/organization`, then the custom page will be accessed at `/organization/{url}` when using [path routing](/docs/guides/how-clerk-works/routing).
 
   ---
 
-  - `children`
-  - `React.ReactElement`
+- `children`
+- `React.ReactElement`
 
   The content to be rendered inside the custom page.
 </Properties>
@@ -365,6 +366,7 @@ To add a custom page to the `<OrganizationProfile />` component, you will need t
     ],
   })
   ```
+
 </If>
 
 ## Add a custom link
@@ -382,7 +384,7 @@ To add a custom page to the `<OrganizationProfile />` component, you will need t
   | `<OrganizationSwitcher />` component | `<OrganizationSwitcher.OrganizationProfileLink />` |
   | Dedicated page with the `<OrganizationProfile />` component | `<OrganizationProfile.Link />` |
 
-  ### Props
+### Props
 
   `<OrganizationSwitcher.OrganizationProfileLink />` and `<OrganizationProfile.Link />` accept the following props, all of which are **required**:
 
@@ -407,7 +409,7 @@ To add a custom page to the `<OrganizationProfile />` component, you will need t
     The full URL or path that will be used to navigate to the external link. For path segments, if the `<OrganizationProfile />` component is rendered at `/organization`, then the external link will be accessed at `/organization/{url}` when using [path routing](/docs/guides/how-clerk-works/routing).
   </Properties>
 
-  ### Example
+### Example
 
   The following example adds a custom link to the `<OrganizationProfile />` sidenav that navigates to the homepage.
 
@@ -760,7 +762,7 @@ The following example adds a custom page as the first item in the sidenav, follo
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="organization-profile"></div>
+<div id="organization-profile"></div>
   `
 
   const orgProfileDiv = document.getElementById('organization-profile')
@@ -778,7 +780,7 @@ The following example adds a custom page as the first item in the sidenav, follo
         },
         mount: (el) => {
           el.innerHTML = `
-            <h1><b>Custom Page</b></h1>
+<h1><b>Custom Page</b></h1>
             <p>This is the content of the custom page.</p>
             `
         },
@@ -794,6 +796,7 @@ The following example adds a custom page as the first item in the sidenav, follo
       },
     ],
   })
+
   ```
 </If>
 

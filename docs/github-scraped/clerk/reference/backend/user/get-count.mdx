@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/user/get-count.mdx
 
 ---
+
 title: '`getCount()`'
 description: Use Clerk's JS Backend SDK to retrieve the total number of users.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L189 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L189*/}
 
 Retrieves the total number of users.
 
@@ -26,57 +27,57 @@ The total count of users can be filtered down by adding one or more of these par
 
   ---
 
-  - `phoneNumber?`
-  - `string[]`
+- `phoneNumber?`
+- `string[]`
 
   Counts users with phone numbers that match the given query, via case-insensitive partial match. For example, `555` will match a user with the phone number `+1555xxxxxxx`.
 
   ---
 
-  - `externalId?`
-  - `string[]`
+- `externalId?`
+- `string[]`
 
   Counts users with the specified external IDs.
 
   ---
 
-  - `username?`
-  - `string[]`
+- `username?`
+- `string[]`
 
   Counts users with the specified usernames.
 
   ---
 
-  - `web3wallet?`
-  - `string[]`
+- `web3wallet?`
+- `string[]`
 
   Counts users with the specified Web3 wallet addresses.
 
   ---
 
-  - `userId?`
-  - `string`
+- `userId?`
+- `string`
 
   Counts users with the user IDs specified.
 
   ---
 
-  - `query?`
-  - `string`
+- `query?`
+- `string`
 
   Counts users that match the given query. For possible matches, Clerk checks the email addresses, phone numbers, usernames, Web3 wallet addresses, user IDs, first and last names. The query value doesn't need to match the exact value you are looking for, it is capable of partial matches as well.
 
   ---
 
-  - `lastSignInAtAfter?`
-  - `number`
+- `lastSignInAtAfter?`
+- `number`
 
   Counts users that signed in after the given Unix timestamp (in milliseconds).
 
   ---
 
-  - `lastSignInAtBefore?`
-  - `number`
+- `lastSignInAtBefore?`
+- `number`
 
   Counts users that signed in before the given Unix timestamp (in milliseconds).
 </Properties>

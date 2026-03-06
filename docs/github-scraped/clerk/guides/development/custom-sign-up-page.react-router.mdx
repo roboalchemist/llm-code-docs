@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-sign-up-page.react-router.mdx
 
 ---
+
 title: Build your own sign-up page for your React Router app with Clerk
 description: Learn how to add a custom sign-up page to your React Router app with Clerk's prebuilt components.
 sdk: react-router
@@ -31,7 +32,7 @@ To set up a single sign-in-or-up page, follow the [custom sign-in-or-up page gui
   }
   ```
 
-  ## Configure routes
+## Configure routes
 
   React Router expects you to define routes in [`app/routes.ts`](https://reactrouter.com/start/framework/routing). Add the previously created sign-up page to your route configuration.
 
@@ -45,11 +46,11 @@ To set up a single sign-in-or-up page, follow the [custom sign-in-or-up page gui
   ] satisfies RouteConfig
   ```
 
-  ## Configure redirect behavior
+## Configure redirect behavior
 
-  - Set the `CLERK_SIGN_UP_URL` environment variable to tell Clerk where the `<SignUp />` component is being hosted.
-  - Set `CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` as a fallback URL incase users visit the `/sign-up` route directly.
-  - Set `CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` as a fallback URL incase users select the 'Already have an account? Sign in' link at the bottom of the component.
+- Set the `CLERK_SIGN_UP_URL` environment variable to tell Clerk where the `<SignUp />` component is being hosted.
+- Set `CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` as a fallback URL incase users visit the `/sign-up` route directly.
+- Set `CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` as a fallback URL incase users select the 'Already have an account? Sign in' link at the bottom of the component.
 
   Learn more about these environment variables and how to customize Clerk's redirect behavior in the [dedicated guide](/docs/guides/development/customize-redirect-urls).
 
@@ -61,7 +62,7 @@ To set up a single sign-in-or-up page, follow the [custom sign-in-or-up page gui
 
   These values control the behavior of the `<SignUp />` and `<SignIn />` components and when you visit the respective links at the bottom of each component.
 
-  ## Visit your new page
+## Visit your new page
 
   Run your project with the following command:
 

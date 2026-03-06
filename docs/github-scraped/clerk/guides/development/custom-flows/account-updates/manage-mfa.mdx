@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/account-updates/manage-mfa.mdx
 
 ---
+
 title: Build a custom flow for managing multi-factor authentication
-description: Learn how to use the Clerk API to build a custom flow for managing multi-factor authentication.
+description: Learn how to use the Clerk API to build a custom flow for managing multi-factor authentication
 ---
 
 <Include src="_partials/custom-flows-callout" />
@@ -27,12 +28,12 @@ This guide will walk you through how to build a custom flow that allows users to
   1. For the purpose of this guide, toggle on both the **SMS verification code** and **Backup codes** strategies.
   1. Select **Save**.
 
-  ### Build the custom flow
+### Build the custom flow
 
   This example consists of two pages:
 
-  - The main page where users can manage their SMS MFA settings
-  - The page where users can add a phone number to their account
+- The main page where users can manage their SMS MFA settings
+- The page where users can add a phone number to their account
 
   Use the following tabs to view the code necessary for each page.
 
@@ -795,6 +796,7 @@ This guide will walk you through how to build a custom flow that allows users to
       <Include src="_partials/custom-flows/add-phone" />
     </Tab>
   </Tabs>
+
 </Steps>
 
 ## Authenticator application (TOTP)
@@ -818,7 +820,7 @@ This guide will walk you through how to build a custom flow that allows users to
     ```
   </If>
 
-  ### Build the custom flow
+### Build the custom flow
 
   <If notSdk={["ios", "android"]}>
     <If notSdk="expo">

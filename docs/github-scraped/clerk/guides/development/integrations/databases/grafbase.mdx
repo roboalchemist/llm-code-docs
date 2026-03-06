@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/integrations/databases/grafbase.mdx
 
 ---
+
 title: Integrate Grafbase with Clerk
 description: Learn how to integrate Clerk and Grafbase into your application
 ---
@@ -36,7 +37,7 @@ This tutorial will show you how to integrate Clerk into your Grafbase applicatio
   1. Select **New template** and then from the list of templates, select **Grafbase**. You'll be redirected to the template's settings page.
   1. Copy and save the **Issuer** URL somewhere secure. This URL is the issuer domain for Clerk's JWT templates, which is your application's [Frontend API URL](!frontend-api-url). In development, it's format will be `https://verb-noun-00.clerk.accounts.dev`. In production, it's format will be `https://clerk.<your-domain>.com`.
 
-  ## Map additional claims (optional)
+## Map additional claims (optional)
 
   In the **Claims** section, the default claims required by Grafbase are pre-mapped. You can include additional claims as necessary. For example, **if your GraphQL API restricts access based on groups, you'll need to specify the user groups in the `groups` claim.** So you would add something like:
 
@@ -46,13 +47,16 @@ This tutorial will show you how to integrate Clerk into your Grafbase applicatio
   }
   ```
 
-  ## Configure Grafbase with the issuer domain
+## Configure Grafbase with the issuer domain
 
   1. In your `env` file, add your **Issuer** URL as the `CLERK_FRONTEND_API_URL` environment variable. If this has already been configured, you can proceed to the next step.
+
      ```env {{ filename: '.env' }}
      NEXT_PUBLIC_CLERK_FRONTEND_API_URL={{fapi_url}}
      ```
+
   1. In your Grafbase app, update your schema with the following:
+
      ```graphql
      schema
        @auth(
@@ -62,7 +66,9 @@ This tutorial will show you how to integrate Clerk into your Grafbase applicatio
        query: Query
      }
      ```
+
   1. If you're working with group-based user access, add `allow: groups` to the `@auth` rules, and provide an array of your user groups to the `groups` property:
+
      ```graphql
      schema
        @auth(
@@ -73,7 +79,7 @@ This tutorial will show you how to integrate Clerk into your Grafbase applicatio
      }
      ```
 
-  ## Authenticate requests
+## Authenticate requests
 
   When making requests to your Grafbase API, you must send Clerk's session token as a Bearer token in the `Authorization` header.
 
@@ -111,13 +117,13 @@ This tutorial will show you how to integrate Clerk into your Grafbase applicatio
     }
 
     const YOUR_GRAPHQL_QUERY = `
-    	query {
-    		__schema {
-    			types {
-    				name
-    			}
-    		}
-    	}
+     query {
+      __schema {
+       types {
+        name
+       }
+      }
+     }
     `
 
     const SchemaPage = () => {

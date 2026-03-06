@@ -26,12 +26,13 @@
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="pricing-table"></div>
+<div id="pricing-table"></div>
   `
 
   const pricingTableDiv = document.getElementById('pricing-table')
 
   clerk.mountPricingTable(pricingTableDiv)
+
   ```
 </If>
 
@@ -47,6 +48,7 @@
     )
   }
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -88,6 +90,7 @@
       </div>
     )
   }
+
   ```
 </If>
 
@@ -108,6 +111,7 @@
     )
   }
   ```
+
 </If>
 
 <If sdk="remix">
@@ -121,6 +125,7 @@
       </div>
     )
   }
+
   ```
 </If>
 
@@ -141,6 +146,7 @@
     )
   }
   ```
+
 </If>
 
 <If sdk="expo">
@@ -159,6 +165,7 @@
     )
   }
   ```
+
 </If>
 
 <If sdk={["expressjs", "fastify", "js-backend"]}>

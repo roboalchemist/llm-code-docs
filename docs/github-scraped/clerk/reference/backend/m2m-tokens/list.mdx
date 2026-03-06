@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/m2m-tokens/list.mdx
 
 ---
+
 title: '`list()`'
 description: Use Clerk's JS Backend SDK to get a list of M2M tokens for your a given machine.
 sdk: js-backend
@@ -27,36 +28,36 @@ function list(queryParams: GetM2MTokenListParams): Promise<PaginatedResourceResp
 
   ---
 
-  - `machineSecretKey?`
-  - `string`
+- `machineSecretKey?`
+- `string`
 
   Custom machine secret key for authentication. If not provided, the SDK will use the value from the environment variable.
 
   ---
 
-  - `revoked?`
-  - `boolean`
+- `revoked?`
+- `boolean`
 
   Whether to include revoked M2M tokens. Defaults to `false`.
 
   ---
 
-  - `expired?`
-  - `boolean`
+- `expired?`
+- `boolean`
 
   Whether to include expired M2M tokens. Defaults to `false`.
 
   ---
 
-  - `limit?`
-  - `number`
+- `limit?`
+- `number`
 
   The maximum number of M2M tokens to return. Defaults to `10`.
 
   ---
 
-  - `offset?`
-  - `number`
+- `offset?`
+- `number`
 
   The number of M2M tokens to skip before returning results. Defaults to `0`.
 </Properties>

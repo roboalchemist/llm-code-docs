@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/dashboard/dns-domains/proxy-fapi.mdx
 
 ---
+
 title: Proxying the Clerk Frontend API
-description: Learn how to proxy the Clerk Frontend API through your domain.
+description: Learn how to proxy the Clerk Frontend API through your domain
 ---
 
 <Include src="_partials/advanced-feature-callout" />
@@ -26,23 +27,23 @@ When using a proxy, all requests to the Frontend API will be made through your d
   > [!NOTE]
   > For more information on creating a Clerk application, see the [setup guide](/docs/getting-started/quickstart/setup-clerk).
 
-  ### Configure your proxy server
+### Configure your proxy server
 
   For this example, `/__clerk` is used as the path for the proxy. Your proxy server must be on the same domain as your application.
 
   You can choose any path you'd like, but it must be unique and not conflict with any other routes in your application.
 
-  #### Requirements
+#### Requirements
 
   Requests to `https://app.dev/__clerk/*` must be forwarded to `https://frontend-api.clerk.dev/*` with the body and all headers intact.
 
   Three additional headers must be set
 
-  - `Clerk-Proxy-Url`: Needs to have the full proxy URL.
-  - `Clerk-Secret-Key`: Your Clerk [Secret Key](!secret-key).
-  - `X-Forwarded-For`: The IP address of the original client making the request.
+- `Clerk-Proxy-Url`: Needs to have the full proxy URL.
+- `Clerk-Secret-Key`: Your Clerk [Secret Key](!secret-key).
+- `X-Forwarded-For`: The IP address of the original client making the request.
 
-  #### Example configuration
+#### Example configuration
 
   <Tabs items={["Next.js", "Express", "Nginx", "Cloudflare Workers"]}>
     <Tab>
@@ -154,7 +155,7 @@ When using a proxy, all requests to the Frontend API will be made through your d
   > [!NOTE]
   > Every proxy configuration will be different and we're here to help. [Contact support](/contact/support){{ target: '_blank' }} if there's a specific use-case you're looking to solve.
 
-  ### Enable proxying
+### Enable proxying
 
   In order to enable proxying, you need to set a proxy URL for your Clerk instance's domain. This can be done through the Clerk Dashboard or through the Backend API.
 
@@ -181,17 +182,17 @@ When using a proxy, all requests to the Frontend API will be made through your d
     </Tab>
   </Tabs>
 
-  ### Configure your proxy setup
+### Configure your proxy setup
 
   > [!IMPORTANT]
   > If you used the `frontendApiProxy` option in `clerkMiddleware()` (Next.js or Express), the server-side `proxyUrl` is auto-derived from the proxy configuration. You only need to set the client-side environment variable (e.g., `NEXT_PUBLIC_CLERK_PROXY_URL`) so that ClerkJS in the browser routes requests through the proxy.
 
   You can configure your proxy setup by either:
 
-  - Setting environment variables
-  - Using properties in your application
+- Setting environment variables
+- Using properties in your application
 
-  #### Environment variables
+#### Environment variables
 
   To configure your proxy setup using environment variables, your `.env` file should look like this:
 
@@ -235,7 +236,7 @@ When using a proxy, all requests to the Frontend API will be made through your d
     </Tab>
   </Tabs>
 
-  #### Properties in your application
+#### Properties in your application
 
   <Tabs items={["Next.js", "Express", "Remix", "JavaScript"]}>
     <Tab>
@@ -318,7 +319,7 @@ When using a proxy, all requests to the Frontend API will be made through your d
     </Tab>
   </Tabs>
 
-  ### Ready to go 🎉
+### Ready to go 🎉
 
   Your application should now be able to access the Frontend API from your proxy!
 </Steps>

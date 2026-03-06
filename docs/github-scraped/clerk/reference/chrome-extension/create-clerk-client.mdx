@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/chrome-extension/create-clerk-client.mdx
 
 ---
+
 title: '`createClerkClient()`'
 description: "createClerkClient() allows Chrome Extension developers to initialize Clerk in popups, side panels, and background service workers without React."
 sdk: chrome-extension
@@ -110,11 +111,12 @@ The following example:
   })
   ```
 
-  ### Create the tab with the content script
+### Create the tab with the content script
 
   1. In the `src/` directory, create the `tabs/` directory.
   1. In the `tabs/` directory, create the `background-worker-demo.html` file.
   1. In the `background-worker-demo.html` file, paste the following code to create a basic HTML file that will house the React component for the content script.
+
      ```html {{ filename: 'src/tabs/background-worker-demo.html' }}
      <!doctype html>
      <html>
@@ -127,8 +129,10 @@ The following example:
        <body></body>
      </html>
      ```
+
   1. In the `tabs/` directory, create the `background-worker-demo.tsx` file.
   1. In the `background-worker-demo.tsx` file, paste the following code to create a React component with a button that will trigger the background service worker to get the token. If the token is returned, it will be displayed on the page.
+
      ```tsx {{ filename: 'src/tabs/background-worker-demo.tsx' }}
      import * as React from 'react'
 
@@ -164,7 +168,7 @@ The following example:
      }
      ```
 
-  ### Add a button to the extension to open the new tab
+### Add a button to the extension to open the new tab
 
   Add a button to your Chrome Extension to open the page you created in the previous step as a new tab. This can be added anywhere in your extension. The following example places the button on the home page of the extension.
 
@@ -187,12 +191,14 @@ The following example:
   }
   ```
 
-  ### Test the background service worker
+### Test the background service worker
 
   1. Run your project with the following command:
+
      ```npm
      npm run dev
      ```
+
   1. In your Chrome browser, open the extension popup and sign in.
   1. Once you've signed in, select the button that you added and a new tab will open.
   1. In the new tab, select the **Get token from service worker** button. The token will be displayed on the page.
@@ -210,15 +216,15 @@ The `createClerkClient()` function accepts an optional object. The following opt
 
   ---
 
-  - `background?`
-  - `boolean`
+- `background?`
+- `boolean`
 
   Set to `true` when using `createClerkClient()` in a [background service worker](https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/basics). This optimizes the client for background contexts where there is no DOM. Defaults to `false`.
 
   ---
 
-  - `syncHost?`
-  - `string`
+- `syncHost?`
+- `string`
 
   The host to sync the session with. For more information, see [the dedicated guide](/docs/guides/sessions/sync-host).
 </Properties>

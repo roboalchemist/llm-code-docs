@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/configure-consistent-crx-id.mdx
 
 ---
+
 title: Configure a consistent CRX ID for your Chrome Extension
 description: Learn how to configure a consistent CRX ID in your Chrome Extension.
 sdk: chrome-extension
@@ -27,7 +28,7 @@ To configure a consistent CRX ID for a new extension, follow these steps:
   1. Select **Generate KeyPairs**.
   1. Save the **Private Key** somewhere secure in case you need it in the future. Save the **Public Key** and the **CRX ID** for the next steps.
 
-  ### Create an `.env.chrome` file to store your public key
+### Create an `.env.chrome` file to store your public key
 
   Create an `.env.chrome` file and add your public key to it, as shown in the following example:
 
@@ -35,15 +36,15 @@ To configure a consistent CRX ID for a new extension, follow these steps:
   CRX_PUBLIC_KEY="<PUBLIC KEY>"
   ```
 
-  ### Edit your `package.json` to use the new public key
+### Edit your `package.json` to use the new public key
 
   Plasmo uses the `package.json` to generate a `manifest.json` on build, and allows for the use of environment variables in `package.json`.
 
   In your `package.json`, in the `manifest` object:
 
-  - Add `"key": "$CRX_PUBLIC_KEY"`.
-  - Set the `permissions` array to include `"cookies"` and `"storage"`.
-  - Set/update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`.
+- Add `"key": "$CRX_PUBLIC_KEY"`.
+- Set the `permissions` array to include `"cookies"` and `"storage"`.
+- Set/update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`.
 
   ```json {{ filename: 'package.json' }}
   {
@@ -56,7 +57,7 @@ To configure a consistent CRX ID for a new extension, follow these steps:
   }
   ```
 
-  ### Verify the CRX ID
+### Verify the CRX ID
 
   1. Ensure that the development build is updated by running `pnpm dev`.
   1. Open Chrome or a Chromium-based browser and navigate to `chrome://extensions`.
@@ -76,7 +77,7 @@ If you have already uploaded a version of your extension to the Chrome Developer
   1. Select **View public key**. A modal will open with your public key.
   1. Copy the string between `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`.
 
-  ### Create an `.env.chrome` file to store your public key
+### Create an `.env.chrome` file to store your public key
 
   Create an `.env.chrome` file and add your public key to it, as shown in the following example:
 
@@ -84,15 +85,15 @@ If you have already uploaded a version of your extension to the Chrome Developer
   CRX_PUBLIC_KEY=<YOUR_PUBLIC_KEY>
   ```
 
-  ### Edit your `package.json` to use the new public key
+### Edit your `package.json` to use the new public key
 
   Plasmo uses the `package.json` to generate a `manifest.json` on build, and allows for the use of environment variables in `package.json`.
 
   In your `package.json`, in the `manifest` object:
 
-  - Add `"key": "$CRX_PUBLIC_KEY"`.
-  - Set the `permissions` array to include `"cookies"` and `"storage"`.
-  - Set/update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`.
+- Add `"key": "$CRX_PUBLIC_KEY"`.
+- Set the `permissions` array to include `"cookies"` and `"storage"`.
+- Set/update the `host_permissions` array to include `"http://localhost/*"` and `"$CLERK_FRONTEND_API/*"`.
 
   ```json {{ filename: 'package.json' }}
   {
@@ -105,7 +106,7 @@ If you have already uploaded a version of your extension to the Chrome Developer
   }
   ```
 
-  ### Validate the Extension ID
+### Validate the Extension ID
 
   Verify that your extension has a consistent CRX ID by following these steps:
 

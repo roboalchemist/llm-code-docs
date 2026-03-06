@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/testing/playwright/test-helpers.mdx
 
 ---
+
 title: Test helpers
-description: Use test helpers to sign in/sign out with Clerk in your Playwright tests.
+description: Use test helpers to sign in/sign out with Clerk in your Playwright tests
 ---
 
 The `@clerk/testing` package also provides some helper functions to sign in/sign out with Clerk in your Playwright tests without having to interact with the UI.
@@ -29,22 +30,22 @@ Before calling `clerk.signIn()`, it is required to call `page.goto()` and naviga
 
   ---
 
-  - `emailAddress?`
-  - `string`
+- `emailAddress?`
+- `string`
 
   The email address of the user to sign in. This is an alternative to using the `signInParams` parameter. A [Secret Key](!secret-key) is required to be set in the `CLERK_SECRET_KEY` environment variable to use this parameter.
 
   ---
 
-  - `signInParams`
-  - [`ClerkSignInParams`](#clerk-sign-in-params)
+- `signInParams`
+- [`ClerkSignInParams`](#clerk-sign-in-params)
 
   The parameters to use for the sign-in operation. See [`ClerkSignInParams`](#clerk-sign-in-params).
 
   ---
 
-  - `setupClerkTestingTokenOptions?`
-  - [`SetupClerkTestingTokenOptions`](#setup-clerk-testing-token-options)
+- `setupClerkTestingTokenOptions?`
+- [`SetupClerkTestingTokenOptions`](#setup-clerk-testing-token-options)
 
   Options to pass to `setupClerkTestingToken()`. See [`SetupClerkTestingTokenOptions`](#setup-clerk-testing-token-options).
 </Properties>
@@ -59,21 +60,21 @@ The `ClerkSignInParams` type is used to define the object that is passed to the 
 
   The sign-in strategy. Supported strategies are:
 
-  - `password`: The command will sign in the user using the provided password and identifier.
-  - `phone_code`: You must have a user with a test phone number as an identifier (e.g., `+15555550100`). Currently only supported in development environments.
-  - `email_code`: You must have a user with a test email as an identifier (e.g., `your_email+clerk_test@example.com`). Currently only supported in development environments.
+- `password`: The command will sign in the user using the provided password and identifier.
+- `phone_code`: You must have a user with a test phone number as an identifier (e.g., `+15555550100`). Currently only supported in development environments.
+- `email_code`: You must have a user with a test email as an identifier (e.g., `your_email+clerk_test@example.com`). Currently only supported in development environments.
 
   ---
 
-  - `identifier`
-  - `string`
+- `identifier`
+- `string`
 
   The user's identifier. This could be a username, a phone number, or an email.
 
   ---
 
-  - `password`
-  - `string`
+- `password`
+- `string`
 
   The user's password. This is required only if the `strategy` is set to `'password'`.
 </Properties>
@@ -146,8 +147,8 @@ Before calling `clerk.signOut()`, it is required to call `page.goto()` and navig
 
   ---
 
-  - `signOutOptions?`
-  - `SignOutOptions`
+- `signOutOptions?`
+- `SignOutOptions`
 
   Options to pass to `clerk.signOut()`. See [`SignOutOptions`](#sign-out-options).
 </Properties>
@@ -164,8 +165,8 @@ The `SignOutOptions` type is used to define the object that is passed to the `si
 
   ---
 
-  - `redirectUrl?`
-  - `string`
+- `redirectUrl?`
+- `string`
 
   The full URL or path to navigate after sign-out is complete.
 </Properties>

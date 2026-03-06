@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/sessions/sync-host.mdx
 
 ---
+
 title: Sync auth status between your Chrome Extension and web app
 description: Learn how to configure your Chrome Extension to sync user authentication with your web application.
 sdk: chrome-extension
@@ -45,7 +46,7 @@ Clerk allows you to sync the authentication state from your web app to your Chro
     </Tab>
   </Tabs>
 
-  ## Add `syncHost` prop to your `<ClerkProvider>`
+## Add `syncHost` prop to your `<ClerkProvider>`
 
   Add the `syncHost` prop to your Chrome Extension's `<ClerkProvider>` component. This prop tells the `<ClerkProvider>` which host to sync with.
 
@@ -94,7 +95,7 @@ Clerk allows you to sync the authentication state from your web app to your Chro
   }
   ```
 
-  ### Hide unsupported authentication methods
+### Hide unsupported authentication methods
 
   When using the Sync Host feature, authentication methods that you want to use in your web app [may not be fully supported in the Chrome Extension environment](/docs/reference/chrome-extension/overview#authentication-options). To hide unsupported methods in your Chrome Extension, you can use the [`appearance`](/docs/guides/customizing-clerk/appearance-prop/overview) prop with your extension's `<SignUp>` and `<SignIn>` components as demonstrated in the following examples.
 
@@ -122,7 +123,7 @@ Clerk allows you to sync the authentication state from your web app to your Chro
     ```
   </CodeBlockTabs>
 
-  ## Configure `host_permissions`
+## Configure `host_permissions`
 
   `host_permissions` specifies which hosts, or websites, will have permission to sync auth state with your app. It accepts an array, allowing you to add more than one host.
 
@@ -139,7 +140,7 @@ Clerk allows you to sync the authentication state from your web app to your Chro
   }
   ```
 
-  ## Add the Extension's ID to your web app's `allowed_origins`
+## Add the Extension's ID to your web app's `allowed_origins`
 
   To allow your Chrome Extension to sync with your web app, you must add the extension's ID to your web app's `allowed_origins`.
 
@@ -158,4 +159,5 @@ Clerk allows you to sync the authentication state from your web app to your Chro
     -H "Content-type: application/json" \
     -d '{"allowed_origins": ["chrome-extension://<CHROME_EXTENSION_ID>"]}'
   ```
+
 </Steps>

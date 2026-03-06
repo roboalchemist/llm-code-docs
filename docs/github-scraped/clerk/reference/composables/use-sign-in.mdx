@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/composables/use-sign-in.mdx
 
 ---
+
 title: useSignIn() | Vue
 description: Access and manage sign-in state in your Vue application with Clerk's useSignIn() composable.
 sdk: vue, nuxt
@@ -18,15 +19,15 @@ The `useSignIn()` composable provides access to the [`SignIn`](/docs/reference/j
 
   ---
 
-  - `setActive()`
-  - <code>Ref\<(params: [SetActiveParams](/docs/reference/javascript/types/set-active-params)) => Promise\<void>></code>
+- `setActive()`
+- <code>Ref\<(params: [SetActiveParams](/docs/reference/javascript/types/set-active-params)) => Promise\<void>></code>
 
   A function that sets the active session.
 
   ---
 
-  - `signIn`
-  - <code>Ref\<[SignIn](/docs/reference/javascript/sign-in)></code>
+- `signIn`
+- <code>Ref\<[SignIn](/docs/reference/javascript/sign-in)></code>
 
   An object that contains the current sign-in attempt status and methods to create a new sign-in attempt.
 </Properties>

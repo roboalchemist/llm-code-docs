@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/sdk-development/frontend-only.mdx
 
 ---
+
 title: Frontend-only SDK
 description: A reference for implementing a frontend-only Clerk SDK
 ---
@@ -41,7 +42,7 @@ While the implementation details will vary for each SDK, there are certain steps
   }
   ```
 
-  ### Hotload ClerkJS
+### Hotload ClerkJS
 
   In order to make `Clerk` available on the `window` object, your SDK needs to load ClerkJS. Call `loadClerkJsScript()` from `@clerk/shared`.
 
@@ -70,7 +71,7 @@ While the implementation details will vary for each SDK, there are certain steps
   }
   ```
 
-  ### Call `window.Clerk.load()`
+### Call `window.Clerk.load()`
 
   By calling [`window.Clerk.load()`](/docs/reference/javascript/clerk#load) the Clerk class is initialized and your SDK now has access to all its functionality.
 
@@ -96,7 +97,7 @@ While the implementation details will vary for each SDK, there are certain steps
   }
   ```
 
-  ### Add event listeners
+### Add event listeners
 
   Expose properties to the internal state (e.g. a `useState` in React) through adding [event listeners](/docs/reference/javascript/clerk#add-listener).
 
@@ -129,7 +130,7 @@ While the implementation details will vary for each SDK, there are certain steps
   }
   ```
 
-  ### Add UI components
+### Add UI components
 
   Build out the components that your users will utilize in their app. Call the `mount()` function when the component is in view/mounts and the `unmount()` function when the component is unmounted. These functions are described in the [`Clerk` class components](/docs/reference/javascript/clerk#components).
 
@@ -150,4 +151,5 @@ While the implementation details will vary for each SDK, there are certain steps
     }
   }
   ```
+
 </Steps>

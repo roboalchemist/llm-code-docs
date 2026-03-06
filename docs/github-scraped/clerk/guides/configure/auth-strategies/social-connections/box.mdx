@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/box.mdx
 
 ---
+
 title: Add Box as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Box account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Box account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a Box app
+### Create a Box app
 
   1. On the homepage of the [Box Developer Console](https://app.box.com/developers/console), select **Custom App**. A modal will open.
   1. Fill out the necessary information. Use Box's [guide on OAuth 2.0 setup](https://developer.box.com/guides/authentication/oauth2/oauth2-setup/#app-creation-steps) to help you.
@@ -55,11 +56,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the **OAuth 2.0 Redirect URIs** section, paste the **Redirect URI** value you saved from the Clerk Dashboard.
   1. In the **OAuth 2.0 Credentials** section, save the **Client ID** and **Client Secret** somewhere secure.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

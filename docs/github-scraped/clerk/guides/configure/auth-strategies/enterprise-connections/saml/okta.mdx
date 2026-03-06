@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/enterprise-connections/saml/okta.mdx
 
 ---
+
 title: Add Okta Workforce as a SAML connection
-description: Learn how to integrate Okta Workforce with Clerk using SAML SSO.
+description: Learn how to integrate Okta Workforce with Clerk using SAML SSO
 ---
 
 <TutorialHero
@@ -33,15 +34,15 @@ Enabling SAML with Okta Workforce allows your users to sign up and sign in to yo
   1. Select **Add connection**. You'll be redirected to the connection's configuration page. Note that the connection is disabled by default.
   1. In the **Service Provider Configuration** section, save the **Single sign-on URL** and **Audience URI (SP Entity ID)** values somewhere secure. You'll need to give these to the customer so they can configure their Okta app.
 
-  ## Configure SAML app
+## Configure SAML app
 
   Now that the enterprise connection is configured in Clerk and the **Single sign-on URL** and **Audience URI (SP Entity ID)** are known, the customer's Okta app needs to be configured. At a high level, the process is:
 
-  - Create a new enterprise app in Okta.
-  - Add the **Single sign-on URL** and **Audience URI (SP Entity ID)** from Clerk to the Okta app's SAML configuration.
-  - Verify that the attribute mappings are correct.
-  - Assign selected users or groups to the app.
-  - Obtain and share the app's **Metadata URL**.
+- Create a new enterprise app in Okta.
+- Add the **Single sign-on URL** and **Audience URI (SP Entity ID)** from Clerk to the Okta app's SAML configuration.
+- Verify that the attribute mappings are correct.
+- Assign selected users or groups to the app.
+- Obtain and share the app's **Metadata URL**.
 
   To get you started, you can use the following email template with detailed instructions:
 
@@ -63,12 +64,12 @@ Enabling SAML with Okta Workforce allows your users to sign up and sign in to yo
 
     We expect your SAML responses to have the following specific attributes:
 
-    - Email address (required). This is the email address that your users will use to authenticate into your app:
-      - Claim name: `user.email`
-    - First name (optional):
-      - Claim name: `user.firstName`
-    - Last name (optional):
-      - Claim name: `user.lastName`
+  - Email address (required). This is the email address that your users will use to authenticate into your app:
+    - Claim name: `user.email`
+  - First name (optional):
+    - Claim name: `user.firstName`
+  - Last name (optional):
+    - Claim name: `user.lastName`
 
     These are the defaults, and probably won't need you to change them. However, many SAML configuration errors are due to incorrect attribute mappings, so it's worth double-checking. Here's how:
 
@@ -99,7 +100,7 @@ Enabling SAML with Okta Workforce allows your users to sign up and sign in to yo
     Once you have completed the setup in Okta, you will be redirected to the application's instances page with the **Sign On** tab selected. Under **Sign on methods**, copy the **Metadata URL**.
   </Copyable>
 
-  ## Add the Metadata URL in the Clerk Dashboard
+## Add the Metadata URL in the Clerk Dashboard
 
   After following the instructions in the email, your customer should have sent you the Okta app's **Metadata URL**. Now, you're going to add it to the Clerk connection, completing the SAML connection configuration.
 
@@ -108,7 +109,7 @@ Enabling SAML with Okta Workforce allows your users to sign up and sign in to yo
   1. In the **Identity Provider Configuration** section, under **Metadata configuration**, paste the **Metadata URL** that you received from the customer.
   1. Select **Fetch & save**. Keep the page open for the next step.
 
-  ## Enable the connection in Clerk
+## Enable the connection in Clerk
 
   <Include src="_partials/authentication/saml/enable-connection" />
 </Steps>

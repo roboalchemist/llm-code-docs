@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/multi-factor-authentication.mdx
 
 ---
+
 title: Build a custom sign-in flow with multi-factor authentication (MFA)
 description: Learn how to build a custom sign-in flow that requires multi-factor authentication (MFA).
 search:
@@ -48,7 +49,7 @@ This guide will demonstrate how to build a custom user interface for adding MFA 
 
   <Include src="_partials/custom-flows/enable-email-password" />
 
-  ### Enable multi-factor authentication (MFA)
+### Enable multi-factor authentication (MFA)
 
   1. In the Clerk Dashboard, navigate to the [**Multi-factor**](https://dashboard.clerk.com/~/user-authentication/multi-factor) page.
   1. Enable the strategy you want to use for your second factor.
@@ -58,7 +59,7 @@ This guide will demonstrate how to build a custom user interface for adding MFA 
 
   <Include src="_partials/custom-flows/manage-mfa-callout" />
 
-  ### Build the custom flow
+### Build the custom flow
 
   <If notSdk={["ios", "android"]}>
     The following example demonstrates how to build a custom sign-in flow that supports SMS verification codes, authenticator app codes, and backup codes. Essentially, you want to:

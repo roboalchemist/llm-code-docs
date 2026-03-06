@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/billing.mdx
 
 ---
+
 title: '`Billing` object'
 description: The Billing object provides methods for managing billing for a user or organization.
 sdk: js-frontend
@@ -33,8 +34,8 @@ function getPaymentAttempt(params: GetPaymentAttemptParams): Promise<BillingPaym
 
   ---
 
-  - `orgId?`
-  - `string`
+- `orgId?`
+- `string`
 
   The Organization ID to perform the request on.
 </Properties>
@@ -67,15 +68,15 @@ function getPaymentAttempts(
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that specifies the maximum number of results to return per page.
 
   ---
 
-  - `orgId?`
-  - `string`
+- `orgId?`
+- `string`
 
   The Organization ID to perform the request on.
 </Properties>
@@ -129,15 +130,15 @@ function getPlans(params?: GetPlansParams): Promise<ClerkPaginatedResponse<Billi
 
   ---
 
-  - `initialPage?`
-  - `number`
+- `initialPage?`
+- `number`
 
   A number that specifies which page to fetch. For example, if `initialPage` is set to `10`, it will skip the first 9 pages and fetch the 10th page.
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that specifies the maximum number of results to return per page.
 </Properties>
@@ -166,8 +167,8 @@ function getStatement(params: GetStatementParams): Promise<BillingStatementResou
 
   ---
 
-  - `orgId?`
-  - `string`
+- `orgId?`
+- `string`
 
   The Organization ID to perform the request on.
 </Properties>
@@ -200,15 +201,15 @@ function getStatements(
 
   ---
 
-  - `pageSize?`
-  - `number`
+- `pageSize?`
+- `number`
 
   A number that specifies the maximum number of results to return per page.
 
   ---
 
-  - `orgId?`
-  - `string`
+- `orgId?`
+- `string`
 
   The Organization ID to perform the request on.
 </Properties>
@@ -262,15 +263,15 @@ function startCheckout(params: CreateCheckoutParams): Promise<BillingCheckoutRes
 
   ---
 
-  - `planPeriod`
-  - `"month" | "annual"`
+- `planPeriod`
+- `"month" | "annual"`
 
   The billing period for the Plan.
 
   ---
 
-  - `orgId?`
-  - `string`
+- `orgId?`
+- `string`
 
   The Organization ID to perform the request on.
 </Properties>

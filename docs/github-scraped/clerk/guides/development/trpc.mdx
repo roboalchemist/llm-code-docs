@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/trpc.mdx
 
 ---
+
 title: Integrate Clerk into your Next.js + tRPC app
 description: Learn how to integrate Clerk into your Next.js app using tRPC.
 sdk: nextjs
@@ -64,7 +65,7 @@ This guide demonstrates how to create a Clerk authentication context and use it 
   }
   ```
 
-  ## Create the tRPC context
+## Create the tRPC context
 
   Create a file that will be used to create the context for every tRPC query sent to the server. The context will use the [`auth()`](/docs/reference/nextjs/app-router/auth) helper from Clerk to access the user's `Auth` object.
 
@@ -96,7 +97,7 @@ This guide demonstrates how to create a Clerk authentication context and use it 
   export { handler as GET, handler as POST }
   ```
 
-  ## Access the context data in your procedures
+## Access the context data in your procedures
 
   The tRPC context, or `ctx`, should now have access to the Clerk `Auth` object.
 
@@ -124,7 +125,7 @@ This guide demonstrates how to create a Clerk authentication context and use it 
   export type exampleRouter = typeof exampleRouter
   ```
 
-  ## Create a protected procedure
+## Create a protected procedure
 
   In many applications, it's essential to restrict access to certain routes based on user authentication status. This ensures that sensitive data and functionality are only accessible to authorized users. tRPC middleware provides a powerful mechanism for implementing this protection within your application.
 
@@ -154,7 +155,7 @@ This guide demonstrates how to create a Clerk authentication context and use it 
   export const protectedProcedure = t.procedure.use(isAuthed)
   ```
 
-  ## Use your protected procedure
+## Use your protected procedure
 
   Once you have created your procedure, you can use it in any router.
 
@@ -173,4 +174,5 @@ This guide demonstrates how to create a Clerk authentication context and use it 
     }),
   })
   ```
+
 </Steps>

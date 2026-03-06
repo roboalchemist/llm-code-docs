@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/adding-items/user-button.mdx
 
 ---
+
 title: Add custom items and links to the `<UserButton />` component
 description: Learn how to add custom items and include external links within the <UserButton /> menu.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -31,22 +32,22 @@ You can also [reorder default items](#reorder-default-items) and [conditionally 
 
   ---
 
-  - `labelIcon`
-  - `React.ReactElement`
+- `labelIcon`
+- `React.ReactElement`
 
   An icon displayed next to the label in the menu.
 
   ---
 
-  - `open?`
-  - `string`
+- `open?`
+- `string`
 
   The path segment that will be used to open the user profile modal to a specific page.
 
   ---
 
-  - `onClick?`
-  - `void`
+- `onClick?`
+- `void`
 
   A function to be called when the menu item is clicked.
 </Properties>
@@ -58,6 +59,7 @@ You can also [reorder default items](#reorder-default-items) and [conditionally 
 The following example adds an "Open chat" action to the `<UserButton />` component. When a user selects the `<UserButton />`, there will be an "Open chat" menu item.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt"]}>
+
   ```tsx
   const DotIcon = () => {
     return (
@@ -85,6 +87,7 @@ The following example adds an "Open chat" action to the `<UserButton />` compone
 
   export default CustomUserButton
   ```
+
 </If>
 
 <If sdk="astro">
@@ -135,6 +138,7 @@ The following example adds an "Open chat" action to the `<UserButton />` compone
     })
   </script>
   ```
+
 </If>
 
 <If sdk="js-frontend">
@@ -169,6 +173,7 @@ The following example adds an "Open chat" action to the `<UserButton />` compone
     ],
   })
   ```
+
 </If>
 
 <If sdk="vue">
@@ -231,6 +236,7 @@ The following example adds an "Open chat" action to the `<UserButton />` compone
 The following example adds an "Open help" action to the `<UserButton />` component, as well as a [custom page](/docs/guides/customizing-clerk/adding-items/user-profile) titled "Help". When a user selects the `<UserButton />`, there will be "Open help" and "Help" menu items.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt"]}>
+
   ```tsx
   const DotIcon = () => {
     return (
@@ -261,6 +267,7 @@ The following example adds an "Open help" action to the `<UserButton />` compone
 
   export default CustomUserButton
   ```
+
 </If>
 
 <If sdk="astro">
@@ -361,6 +368,7 @@ The following example adds an "Open help" action to the `<UserButton />` compone
     ],
   })
   ```
+
 </If>
 
 <If sdk="vue">
@@ -451,15 +459,15 @@ The following example adds an "Open help" action to the `<UserButton />` compone
 
   ---
 
-  - `labelIcon`
-  - `React.ReactElement`
+- `labelIcon`
+- `React.ReactElement`
 
   An icon displayed next to the label in the menu.
 
   ---
 
-  - `href`
-  - `string`
+- `href`
+- `string`
 
   The path segment that will be used to navigate to the custom page.
 </Properties>
@@ -469,6 +477,7 @@ The following example adds an "Open help" action to the `<UserButton />` compone
 The following example adds a "Create organization" link to the `<UserButton />` component. When a user selects the `<UserButton />`, there will be a "Create organization" menu item.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt"]}>
+
   ```tsx
   const DotIcon = () => {
     return (
@@ -496,6 +505,7 @@ The following example adds a "Create organization" link to the `<UserButton />` 
 
   export default CustomUserButton
   ```
+
 </If>
 
 <If sdk="astro">
@@ -553,6 +563,7 @@ The following example adds a "Create organization" link to the `<UserButton />` 
     ],
   })
   ```
+
 </If>
 
 <If sdk="vue">
@@ -610,6 +621,7 @@ The `<UserButton />` component includes two default menu items: `Manage account`
 In the following example, the "Sign out" menu item is moved to the top of the menu, a custom "Create organization" link is added as the second menu item, and the "Manage account" menu item is moved to the bottom of the menu.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt"]}>
+
   ```tsx
   const DotIcon = () => {
     return (
@@ -639,6 +651,7 @@ In the following example, the "Sign out" menu item is moved to the top of the me
 
   export default CustomUserButton
   ```
+
 </If>
 
 <If sdk="astro">
@@ -678,7 +691,7 @@ In the following example, the "Sign out" menu item is moved to the top of the me
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="user-button"></div>
+<div id="user-button"></div>
   `
 
   const userButtonDiv = document.getElementById('user-button')
@@ -701,6 +714,7 @@ In the following example, the "Sign out" menu item is moved to the top of the me
       },
     ],
   })
+
   ```
 </If>
 
@@ -728,6 +742,7 @@ In the following example, the "Sign out" menu item is moved to the top of the me
     </header>
   </template>
   ```
+
 </If>
 
 <If sdk="nuxt">
@@ -769,6 +784,7 @@ In the following example, the "Sign out" menu item is moved to the top of the me
 In the following example, the "Create organization" menu item will only render if the current user has the `org:app:admin` permission.
 
 <If notSdk={["astro", "js-frontend", "vue", "nuxt"]}>
+
   ```tsx
   const DotIcon = () => {
     return (
@@ -806,6 +822,7 @@ In the following example, the "Create organization" menu item will only render i
 
   export default CustomUserButton
   ```
+
 </If>
 
 <If sdk="astro">
@@ -815,7 +832,7 @@ In the following example, the "Create organization" menu item will only render i
 
   const { has } = Astro.locals.auth()
 
-  const isAdmin = has({ permission: 'org:app:admin' })
+const isAdmin = has({ permission: 'org:app:admin' })
   ---
 
   <header>
@@ -851,7 +868,7 @@ In the following example, the "Create organization" menu item will only render i
   await clerk.load()
 
   document.getElementById('app').innerHTML = `
-    <div id="user-button"></div>
+<div id="user-button"></div>
   `
 
   const userButtonDiv = document.getElementById('user-button')
@@ -884,6 +901,7 @@ In the following example, the "Create organization" menu item will only render i
       clerk.mountUserButton(userButtonDiv)
     }
   }
+
   ```
 </If>
 
@@ -914,6 +932,7 @@ In the following example, the "Create organization" menu item will only render i
     </header>
   </template>
   ```
+
 </If>
 
 <If sdk="nuxt">

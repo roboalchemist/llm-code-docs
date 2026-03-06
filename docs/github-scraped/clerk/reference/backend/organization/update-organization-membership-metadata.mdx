@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/organization/update-organization-membership-metadata.mdx
 
 ---
+
 title: '`updateOrganizationMembershipMetadata()`'
 description: Use Clerk's JS Backend SDK to update the metadata associated with a user's Organization membership.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L214 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L214*/}
 
 Update the metadata attributes of an [`OrganizationMembership`](/docs/reference/backend/types/backend-organization-membership) by merging existing values with the provided parameters. Metadata values will be updated via a "deep" merge - "deep" means that any nested JSON objects will be merged as well. You can remove metadata keys at any level by setting their value to `null`.
 
@@ -26,22 +27,22 @@ function updateOrganizationMembershipMetadata(
 
   ---
 
-  - `userId`
-  - `string`
+- `userId`
+- `string`
 
   The ID of the user that this membership belongs to.
 
   ---
 
-  - `publicMetadata?`
-  - [`OrganizationMembershipPublicMetadata`](/docs/reference/javascript/types/metadata#organization-membership-public-metadata)
+- `publicMetadata?`
+- [`OrganizationMembershipPublicMetadata`](/docs/reference/javascript/types/metadata#organization-membership-public-metadata)
 
   Metadata that can be read from both the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }}, but can be set only from the Backend API.
 
   ---
 
-  - `privateMetadata?`
-  - [`OrganizationMembershipPrivateMetadata`](/docs/reference/javascript/types/metadata#organization-membership-private-metadata)
+- `privateMetadata?`
+- [`OrganizationMembershipPrivateMetadata`](/docs/reference/javascript/types/metadata#organization-membership-private-metadata)
 
   Metadata that is only visible to your [Backend API](/docs/reference/backend-api){{ target: '_blank' }}.
 </Properties>

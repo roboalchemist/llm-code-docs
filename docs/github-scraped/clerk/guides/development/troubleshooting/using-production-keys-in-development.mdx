@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/troubleshooting/using-production-keys-in-development.mdx
 
 ---
+
 title: Using production keys in local development
-description: Learn how to use your production Clerk instance locally for debugging.
+description: Learn how to use your production Clerk instance locally for debugging
 ---
 
 > [!CAUTION]
@@ -75,7 +76,7 @@ However, [authentication across subdomains works by default](/docs/guides/develo
     </Tab>
   </Tabs>
 
-  ## Configure environment variables
+## Configure environment variables
 
   Update your `.env` file to use your production Clerk keys. Production keys start with `pk_live_` and `sk_live_` instead of `pk_test_` and `sk_test_`.
 
@@ -86,7 +87,7 @@ However, [authentication across subdomains works by default](/docs/guides/develo
 
   Replace `pk_live_xxxxx` and `sk_live_xxxxx` with your actual production keys from the **[API keys](https://dashboard.clerk.com/~/api-keys)** page in the Clerk Dashboard.
 
-  ## Run your server with HTTPS on port 443
+## Run your server with HTTPS on port 443
 
   > [!IMPORTANT]
   > You must run your server on port 443 (the standard HTTPS port). When browsers send requests from non-standard ports like `3000`, they include the port in the `Origin` header (e.g., `https://local.your-domain.com:3000`). Clerk's origin validation fails when the port is included.
@@ -136,7 +137,7 @@ However, [authentication across subdomains works by default](/docs/guides/develo
     </Tab>
   </Tabs>
 
-  ## Test the configuration
+## Test the configuration
 
   1. Open your browser and navigate to your local subdomain: `https://local.your-domain.com`
   1. If you see a certificate warning, select **Advanced** and proceed to the site.
@@ -144,7 +145,7 @@ However, [authentication across subdomains works by default](/docs/guides/develo
 
   If you navigate to `https://localhost` instead, you should see the origin validation error, which confirms that production keys are correctly restricted.
 
-  ## Clean up
+## Clean up
 
   After debugging:
 

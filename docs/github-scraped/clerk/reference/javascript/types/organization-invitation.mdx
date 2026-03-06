@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/organization-invitation.mdx
 
 ---
+
 title: '`OrganizationInvitation`'
 description: The OrganizationInvitation object is the model around an Organization invitation.
 sdk: js-frontend
@@ -18,50 +19,50 @@ The `OrganizationInvitation` object is the model around an Organization invitati
 
   ---
 
-  - `emailAddress`
-  - `string`
+- `emailAddress`
+- `string`
 
   The email address the invitation has been sent to.
 
   ---
 
-  - `organizationId`
-  - `string`
+- `organizationId`
+- `string`
 
   The Organization ID of the Organization this invitation is for.
 
   ---
 
-  - `publicMetadata`
-  - [`OrganizationInvitationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-invitation-public-metadata)
+- `publicMetadata`
+- [`OrganizationInvitationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-invitation-public-metadata)
 
   Metadata that can be read from the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }} and can be set only from the Backend API.
 
   ---
 
-  - `role`
-  - [`OrganizationCustomRoleKey`](/docs/reference/javascript/types/organization-custom-role-key)
+- `role`
+- [`OrganizationCustomRoleKey`](/docs/reference/javascript/types/organization-custom-role-key)
 
   The [Role](/docs/guides/organizations/control-access/roles-and-permissions) of the current user in the Organization.
 
   ---
 
-  - `status`
-  - `'pending' | 'accepted' | 'revoked'`
+- `status`
+- `'pending' | 'accepted' | 'revoked'`
 
   The status of the invitation.
 
   ---
 
-  - `createdAt`
-  - `Date`
+- `createdAt`
+- `Date`
 
   The date when the invitation was created.
 
   ---
 
-  - `updatedAt`
-  - `Date`
+- `updatedAt`
+- `Date`
 
   The date when the invitation was last updated.
 </Properties>

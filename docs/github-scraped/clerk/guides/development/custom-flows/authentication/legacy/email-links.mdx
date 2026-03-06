@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/authentication/legacy/email-links.mdx
 
 ---
+
 title: Build a custom flow for handling email links
-description: Learn how to build a custom flow using Clerk's API to handle email links for sign-up, sign-in, and email address verification.
+description: Learn how to build a custom flow using Clerk's API to handle email links for sign-up, sign-in, and email address verification
 ---
 
 <If sdk={["expo", "ios", "android"]}>
@@ -27,11 +28,11 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
 
   This guide demonstrates how to use Clerk's API to build a custom flow for handling email links. It covers the following scenarios:
 
-  - [Sign up](#sign-up-flow)
-  - [Sign in](#sign-in-flow)
-  - [Verify a new email address](#add-new-email-flow)
+- [Sign up](#sign-up-flow)
+- [Sign in](#sign-in-flow)
+- [Verify a new email address](#add-new-email-flow)
 
-  ## Enable email link authentication
+## Enable email link authentication
 
   To allow your users to sign up or sign in using email links, you must first configure the appropriate settings in the Clerk Dashboard.
 
@@ -39,7 +40,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
   1. Enable **Verify at sign-up**, and under **Verification methods**, enable **Email verification link**.
   1. Enable **Sign-in with email**. Because this guide focuses on email links, disable **Email verification code** and enable **Email verification link**. By default, **Require the same device and browser** is enabled, which means that email links are required to be verified from the same device and browser on which the sign-up or sign-in was initiated. For this guide, leave this setting enabled.
 
-  ## Sign-up flow
+## Sign-up flow
 
   1. The [`useSignUp()`](/docs/reference/hooks/use-sign-up) hook is used to get the [`SignUp`](/docs/reference/javascript/sign-up) object.
   1. The `SignUp` object is used to access the [`createEmailLinkFlow()`](/docs/reference/javascript/types/email-address#create-email-link-flow) method.
@@ -268,7 +269,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
     ```
   </CodeBlockTabs>
 
-  ## Sign-in flow
+## Sign-in flow
 
   1. The [`useSignIn()`](/docs/reference/hooks/use-sign-in) hook is used to get the [`SignIn`](/docs/reference/javascript/sign-in) object.
   1. The `SignIn` object is used to access the [`createEmailLinkFlow()`](/docs/reference/javascript/types/email-address#create-email-link-flow) method.
@@ -511,7 +512,7 @@ description: Learn how to build a custom flow using Clerk's API to handle email 
     ```
   </CodeBlockTabs>
 
-  ## Add new email flow
+## Add new email flow
 
   When a user adds an email address to their account, you can use email links to verify the email address.
 

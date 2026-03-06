@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/ruby/rack.mdx
 
 ---
+
 title: Ruby with Rack
 description: The Clerk Ruby SDK provides a Rack middleware to integrate Clerk into your Rack-based application.
 sdk: ruby
@@ -13,11 +14,11 @@ The Clerk Ruby SDK provides a Rack middleware to integrate Clerk into your Rack-
 
   <Include src="_partials/ruby/installation" />
 
-  ## Configuration
+## Configuration
 
   <Include src="_partials/ruby/configuration" />
 
-  ## Add Clerk's Rack middleware
+## Add Clerk's Rack middleware
 
   Add the Clerk middleware to your Rack application by updating your `config.ru` file with the following code:
 
@@ -31,7 +32,7 @@ The Clerk Ruby SDK provides a Rack middleware to integrate Clerk into your Rack-
   run App.new
   ```
 
-  ## Access the `clerk` object
+## Access the `clerk` object
 
   Once you've added the middleware, you can access the `clerk` object in your actions and views. The `clerk` object provides access to the [Ruby SDK's available methods](/docs/reference/ruby/overview#available-methods).
 
@@ -53,6 +54,7 @@ The Clerk Ruby SDK provides a Rack middleware to integrate Clerk into your Rack-
     end
   end
   ```
+
 </Steps>
 
 ## Example: Reverification

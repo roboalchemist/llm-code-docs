@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/deployment/changing-domains.mdx
 
 ---
+
 title: Change domain or subdomain
-description: Learn how to change your Clerk production instance's domain or subdomain.
+description: Learn how to change your Clerk production instance's domain or subdomain
 ---
 
 Learn how to change your Clerk production instance's domain or subdomain.
@@ -43,7 +44,7 @@ To update your production domain using the [Backend API](/docs/reference/backend
   2. Replace `YOUR_SECRET_KEY` with your Clerk [Secret Key](!secret-key).
 </SignedOut>
 
-3. Replace `YOUR_PROD_URL` with your new production domain.
+1. Replace `YOUR_PROD_URL` with your new production domain.
 
 ```bash {{ filename: 'terminal' }}
 curl -XPOST -H 'Authorization: {{secret}}' -H "Content-type: application/json" -d '{

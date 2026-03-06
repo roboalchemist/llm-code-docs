@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/types/commerce-subscription-item.mdx
 
 ---
+
 title: '`CommerceSubscriptionItem`'
 description: The Backend CommerceSubscriptionItem object holds information about a Subscription Item of your application.
 sdk: js-backend
@@ -20,113 +21,113 @@ The `CommerceSubscriptionItem` object is similar to the [`BillingSubscriptionIte
 
   ---
 
-  - `status`
-  - `'active' | 'past_due' | 'upcoming' | 'canceled' | 'ended' | 'expired' | 'incomplete' | 'abandoned'`
+- `status`
+- `'active' | 'past_due' | 'upcoming' | 'canceled' | 'ended' | 'expired' | 'incomplete' | 'abandoned'`
 
   The status of the Subscription Item.
 
   ---
 
-  - `planPeriod`
-  - `'month' | 'annual'`
+- `planPeriod`
+- `'month' | 'annual'`
 
   The Plan period for the Subscription Item.
 
   ---
 
-  - `periodStart`
-  - `number`
+- `periodStart`
+- `number`
 
   Unix timestamp (milliseconds) of when the current period starts.
 
   ---
 
-  - `periodEnd`
-  - `number | null`
+- `periodEnd`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the current period ends.
 
   ---
 
-  - `nextPayment`
-  - `null | { amount: number; date: number; }`
+- `nextPayment`
+- `null | { amount: number; date: number; }`
 
   The next payment information. If present, contains the amount of the next payment and the Unix timestamp (milliseconds) of when the next payment is scheduled.
 
   ---
 
-  - `amount`
-  - <code>undefined | null | [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)</code>
+- `amount`
+- <code>undefined | null | [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)</code>
 
   The current amount for the Subscription Item.
 
   ---
 
-  - `plan`
-  - <code>[CommercePlan](/docs/reference/backend/types/commerce-plan)</code>
+- `plan`
+- <code>[CommercePlan](/docs/reference/backend/types/commerce-plan)</code>
 
   The Plan associated with this Subscription Item.
 
   ---
 
-  - `planId`
-  - `string`
+- `planId`
+- `string`
 
   The Plan ID.
 
   ---
 
-  - `createdAt`
-  - `number`
+- `createdAt`
+- `number`
 
   Unix timestamp (milliseconds) of when the Subscription Item was created.
 
   ---
 
-  - `updatedAt`
-  - `number`
+- `updatedAt`
+- `number`
 
   Unix timestamp (milliseconds) of when the Subscription Item was last updated.
 
   ---
 
-  - `canceledAt`
-  - `number | null`
+- `canceledAt`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the Subscription Item was canceled.
 
   ---
 
-  - `pastDueAt`
-  - `number | null`
+- `pastDueAt`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the Subscription Item became past due.
 
   ---
 
-  - `endedAt`
-  - `number | null`
+- `endedAt`
+- `number | null`
 
   Unix timestamp (milliseconds) of when the Subscription Item ended.
 
   ---
 
-  - `payerId`
-  - `string`
+- `payerId`
+- `string`
 
   The payer ID.
 
   ---
 
-  - `isFreeTrial?`
-  - `boolean`
+- `isFreeTrial?`
+- `boolean`
 
   Whether this Subscription Item is currently in a free trial period.
 
   ---
 
-  - `lifetimePaid?`
-  - <code>null | [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)</code>
+- `lifetimePaid?`
+- <code>null | [BillingMoneyAmount](/docs/reference/javascript/types/billing-money-amount)</code>
 
   The lifetime amount paid for this Subscription Item.
 </Properties>

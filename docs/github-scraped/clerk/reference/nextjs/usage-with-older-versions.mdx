@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/nextjs/usage-with-older-versions.mdx
 
 ---
+
 title: Use Clerk with Next.js 12 and older
-description: Learn how to use Clerk with older versions of Next.js.
+description: Learn how to use Clerk with older versions of Next.js
 ---
 
 Clerk's [prebuilt components](/docs/reference/components/overview) are exported from the `@clerk/nextjs` package and leverage APIs from Next.js itself. These APIs often change between major Next.js releases. While Clerk tries to offer the highest compatibility for any supported Next.js version, for Next.js 12 and older, you need to modify your setup.
@@ -19,7 +20,7 @@ Clerk's [prebuilt components](/docs/reference/components/overview) are exported 
   npm install @clerk/nextjs@^4.0.0
   ```
 
-  ## Change your `next.config.js`
+## Change your `next.config.js`
 
   As mentioned previously, the `@clerk/nextjs` components contain code for multiple Next.js versions, but depending on your version, only certain components will be used. Update your `next.config.js` to instruct webpack to ignore modules on code paths that won't be used.
 
@@ -40,4 +41,5 @@ Clerk's [prebuilt components](/docs/reference/components/overview) are exported 
 
   module.exports = nextConfig
   ```
+
 </Steps>

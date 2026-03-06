@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/hooks/use-organization-creation-defaults.mdx
 
 ---
+
 title: useOrganizationCreationDefaults()
 description: Retrieve organization creation defaults for the current user in your React application with Clerk's useOrganizationCreationDefaults() hook.
 sdk: chrome-extension, expo, nextjs, react, react-router, tanstack-react-start
@@ -26,21 +27,21 @@ The `useOrganizationCreationDefaults()` hook retrieves the organization creation
 
   An object containing the suggested form values:
 
-  - `name` - The suggested organization name.
-  - `slug` - The suggested organization slug.
-  - `logo` - The suggested organization logo URL, or `null`.
-  - `blurHash` - The blur hash for the logo, or `null`.
+- `name` - The suggested organization name.
+- `slug` - The suggested organization slug.
+- `logo` - The suggested organization logo URL, or `null`.
+- `blurHash` - The blur hash for the logo, or `null`.
 
   ---
 
-  - `advisory`
-  - `object | null`
+- `advisory`
+- `object | null`
 
   An advisory object if there's a potential issue with the suggested organization, or `null` if no issues. Contains:
 
-  - `code` - The advisory type. Currently only `'organization_already_exists'`.
-  - `severity` - The severity level. Currently only `'warning'`.
-  - `meta` - Additional metadata, such as `organization_name` and `organization_domain` for existing organizations.
+- `code` - The advisory type. Currently only `'organization_already_exists'`.
+- `severity` - The severity level. Currently only `'warning'`.
+- `meta` - Additional metadata, such as `organization_name` and `organization_domain` for existing organizations.
 </Properties>
 
 ## Examples
@@ -85,6 +86,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
       </form>
     )
   }
+
   ```
 </If>
 
@@ -127,6 +129,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
     )
   }
   ```
+
 </If>
 
 <If sdk="react-router">
@@ -165,6 +168,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
       </form>
     )
   }
+
   ```
 </If>
 
@@ -205,6 +209,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
     )
   }
   ```
+
 </If>
 
 <If sdk="tanstack-react-start">
@@ -243,6 +248,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
       </form>
     )
   }
+
   ```
 </If>
 
@@ -284,6 +290,7 @@ The following example demonstrates how to use the `useOrganizationCreationDefaul
     )
   }
   ```
+
 </If>
 
 ### Display advisory warnings
@@ -300,6 +307,6 @@ The following example demonstrates how to use the `advisory` property to display
 
   ---
 
-  - [Configure default naming rules](/docs/guides/organizations/configure#default-naming-rules)
-  - Learn how to configure default naming rules for your Organizations.
+- [Configure default naming rules](/docs/guides/organizations/configure#default-naming-rules)
+- Learn how to configure default naming rules for your Organizations.
 </Cards>

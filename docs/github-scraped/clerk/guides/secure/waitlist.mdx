@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/secure/waitlist.mdx
 
 ---
+
 title: Set up a waitlist in your app
 description: Learn how to add a waitlist to your application.
 sdk: nextjs, react, expo, react-router, astro, nuxt, vue, chrome-extension, tanstack-react-start
@@ -25,7 +26,7 @@ In [**Waitlist** mode](/docs/guides/secure/restricting-access#waitlist), users c
 
   <Include src="_partials/waitlist/enable-waitlist-mode" />
 
-  ## Add the `<Waitlist />` component to your app
+## Add the `<Waitlist />` component to your app
 
   The [`<Waitlist />`](/docs/reference/components/authentication/waitlist) component provides a form where users can submit their details to join the waitlist and express their interest in your app. Once approved by admins, users will receive an email with access instructions.
 
@@ -38,7 +39,7 @@ In [**Waitlist** mode](/docs/guides/secure/restricting-access#waitlist), users c
 
   <Include src="_partials/components/waitlist-examples" />
 
-  ## Provide the `waitlistUrl` prop
+## Provide the `waitlistUrl` prop
 
   The `waitlistUrl` prop is used to specify the URL of your waitlist page. It should point to the route where your `<Waitlist />` component is mounted. If `undefined`, the user will be redirected to the [Account Portal waitlist page](/docs/guides/account-portal/overview#waitlist). You'll need to set `waitlistUrl` where you initialize Clerk.
 
@@ -99,7 +100,7 @@ In [**Waitlist** mode](/docs/guides/secure/restricting-access#waitlist), users c
     ```
   </If>
 
-  ## Add a sign-in page
+## Add a sign-in page
 
   To allow users to sign in once they've been approved from the waitlist, you need to set up a custom sign-in page.
 
@@ -110,7 +111,7 @@ In [**Waitlist** mode](/docs/guides/secure/restricting-access#waitlist), users c
   > [!NOTE]
   > Alternatively, you can add the `waitlistUrl` prop to the `<SignIn />` component instead of `<ClerkProvider>` if needed.
 
-  ## Manage users on your waitlist
+## Manage users on your waitlist
 
   Once users join your waitlist, you can manage their access from the Clerk Dashboard. You can approve or deny users, which will trigger an email notification to them with instructions on how to access your app if approved.
 

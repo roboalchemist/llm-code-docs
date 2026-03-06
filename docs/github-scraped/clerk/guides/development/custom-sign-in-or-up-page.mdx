@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-sign-in-or-up-page.mdx
 
 ---
+
 title: Build your own sign-in-or-up page for your Next.js app with Clerk
 description: Learn how to add a custom sign-in-or-up page to your Next.js app with Clerk's prebuilt components.
 sdk: nextjs
@@ -26,7 +27,7 @@ To set up separate sign-in and sign-up pages, follow this guide, and then follow
   }
   ```
 
-  ## Make the sign-in-or-up route public
+## Make the sign-in-or-up route public
 
   By default, `clerkMiddleware()` makes all routes public. **This step is specifically for applications that have configured `clerkMiddleware()` to make [all routes protected](/docs/reference/nextjs/clerk-middleware#protect-all-routes).** If you have not configured `clerkMiddleware()` to protect all routes, you can skip this step.
 
@@ -34,9 +35,9 @@ To set up separate sign-in and sign-up pages, follow this guide, and then follow
 
   To make the sign-in route public:
 
-  - Navigate to your `proxy.ts` file.
-  - Create a new [route matcher](/docs/reference/nextjs/clerk-middleware#create-route-matcher) that matches the sign-in route, or you can add it to your existing route matcher that is making routes public.
-  - Create a check to see if the user's current route is a public route. If it is not a public route, use [`auth.protect()`](/docs/reference/nextjs/app-router/auth#auth-protect) to protect the route.
+- Navigate to your `proxy.ts` file.
+- Create a new [route matcher](/docs/reference/nextjs/clerk-middleware#create-route-matcher) that matches the sign-in route, or you can add it to your existing route matcher that is making routes public.
+- Create a check to see if the user's current route is a public route. If it is not a public route, use [`auth.protect()`](/docs/reference/nextjs/app-router/auth#auth-protect) to protect the route.
 
   ```tsx {{ filename: 'proxy.ts' }}
   import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
@@ -59,11 +60,11 @@ To set up separate sign-in and sign-up pages, follow this guide, and then follow
   }
   ```
 
-  ## Update your environment variables
+## Update your environment variables
 
-  - Set the `CLERK_SIGN_IN_URL` environment variable to tell Clerk where the `<SignIn />` component is being hosted.
-  - Set `CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` as a fallback URL incase users visit the `/sign-in` route directly.
-  - Set `CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` as a fallback URL incase users select the 'Don't have an account? Sign up' link at the bottom of the component.
+- Set the `CLERK_SIGN_IN_URL` environment variable to tell Clerk where the `<SignIn />` component is being hosted.
+- Set `CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` as a fallback URL incase users visit the `/sign-in` route directly.
+- Set `CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` as a fallback URL incase users select the 'Don't have an account? Sign up' link at the bottom of the component.
 
   Learn more about these environment variables and how to customize Clerk's redirect behavior in the [dedicated guide](/docs/guides/development/customize-redirect-urls).
 
@@ -73,7 +74,7 @@ To set up separate sign-in and sign-up pages, follow this guide, and then follow
   NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
   ```
 
-  ## Visit your new page
+## Visit your new page
 
   Run your project with the following command:
 
@@ -94,21 +95,21 @@ Learn more about Clerk components, how to use them to create custom pages, and h
 
   ---
 
-  - [Protect content and read user data](/docs/nextjs/guides/users/reading)
-  - Learn how to use Clerk's hooks and helpers to protect content and read user data in your Next.js app.
+- [Protect content and read user data](/docs/nextjs/guides/users/reading)
+- Learn how to use Clerk's hooks and helpers to protect content and read user data in your Next.js app.
 
   ---
 
-  - [Client-side helpers](/docs/reference/nextjs/overview#client-side-helpers)
-  - Learn more about Clerk's client-side helpers and how to use them.
+- [Client-side helpers](/docs/reference/nextjs/overview#client-side-helpers)
+- Learn more about Clerk's client-side helpers and how to use them.
 
   ---
 
-  - [Prebuilt components](/docs/reference/components/overview)
-  - Learn how to quickly add authentication to your app using Clerk's suite of components.
+- [Prebuilt components](/docs/reference/components/overview)
+- Learn how to quickly add authentication to your app using Clerk's suite of components.
 
   ---
 
-  - [Clerk Next.js SDK Reference](/docs/reference/nextjs/overview)
-  - Learn about the Clerk Next.js SDK and how to integrate it into your app.
+- [Clerk Next.js SDK Reference](/docs/reference/nextjs/overview)
+- Learn about the Clerk Next.js SDK and how to integrate it into your app.
 </Cards>

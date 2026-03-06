@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/offline-support.mdx
 
 ---
+
 title: Enable offline support in your Expo app
 description: Learn how to enable offline support in your Expo app with Clerk.
 sdk: expo
@@ -33,7 +34,7 @@ To enable offline support in your Expo app, follow these steps:
   npm install expo-secure-store
   ```
 
-  ### Use the `__experimental_resourceCache` property on `ClerkProvider`
+### Use the `__experimental_resourceCache` property on `ClerkProvider`
 
   On [`<ClerkProvider>`](/docs/reference/components/clerk-provider), pass the `resourceCache` object to the `__experimental_resourceCache` property, as shown in the following example:
 
@@ -62,6 +63,7 @@ To enable offline support in your Expo app, follow these steps:
     )
   }
   ```
+
 </Steps>
 
 ## How to handle network errors

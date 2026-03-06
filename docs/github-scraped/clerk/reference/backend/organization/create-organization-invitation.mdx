@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/organization/create-organization-invitation.mdx
 
 ---
+
 title: '`createOrganizationInvitation()`'
 description: Use Clerk's JS Backend SDK to create an invitation for new users to join an Organization.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L248 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L248*/}
 
 Creates an [`OrganizationInvitation`](/docs/reference/backend/types/backend-organization-invitation) for new users to join an Organization.
 
@@ -26,36 +27,36 @@ function createOrganizationInvitation(
 
   ---
 
-  - `inviterUserId`
-  - `string | null`
+- `inviterUserId`
+- `string | null`
 
   The user ID of the user creating the invitation.
 
   ---
 
-  - `emailAddress`
-  - `string`
+- `emailAddress`
+- `string`
 
   The email address to send the invitation to.
 
   ---
 
-  - `role`
-  - `string`
+- `role`
+- `string`
 
   The [Role](/docs/guides/organizations/control-access/roles-and-permissions) to assign the invited user within the Organization.
 
   ---
 
-  - `redirectUrl?`
-  - `string`
+- `redirectUrl?`
+- `string`
 
   The full URL or path where users will land once the Organization invitation has been accepted.
 
   ---
 
-  - `publicMetadata?`
-  - [`OrganizationInvitationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-invitation-public-metadata)
+- `publicMetadata?`
+- [`OrganizationInvitationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-invitation-public-metadata)
 
   Metadata that can be read from both the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }}, but can be set only from the Backend API.
 </Properties>

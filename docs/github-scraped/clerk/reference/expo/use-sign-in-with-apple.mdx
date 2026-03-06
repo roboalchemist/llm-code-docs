@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/expo/use-sign-in-with-apple.mdx
 
 ---
+
 title: '`useSignInWithApple()`'
 description: Clerk's useSignInWithApple() hook provides native Sign in with Apple functionality for iOS devices.
 sdk: expo
@@ -66,22 +67,22 @@ function startAppleAuthenticationFlow(
 
   ---
 
-  - `setActive?`
-  - `(params: SetActiveParams) => Promise<void>`
+- `setActive?`
+- `(params: SetActiveParams) => Promise<void>`
 
   A method used to set the active session and/or Organization. Accepts a [`SetActiveParams`](/docs/reference/javascript/types/set-active-params) object.
 
   ---
 
-  - `signIn?`
-  - <code>[SignIn](/docs/reference/javascript/sign-in) | undefined</code>
+- `signIn?`
+- <code>[SignIn](/docs/reference/javascript/sign-in) | undefined</code>
 
   The [`SignIn`](/docs/reference/javascript/sign-in) object that was created, which holds the state of the current sign-in and provides helper methods to navigate and complete the sign-in process.
 
   ---
 
-  - `signUp?`
-  - <code>[SignUp](/docs/reference/javascript/sign-up) | undefined</code>
+- `signUp?`
+- <code>[SignUp](/docs/reference/javascript/sign-up) | undefined</code>
 
   The [`SignUp`](/docs/reference/javascript/sign-up) object that was created, which holds the state of the current sign-up and provides helper methods to navigate and complete the sign-up process.
 </Properties>

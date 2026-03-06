@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/enterprise-connections/saml/azure.mdx
 
 ---
+
 title: Add Microsoft Entra ID as a SAML connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Microsoft account using SAML SSO.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Microsoft account using SAML SSO
 ---
 
 <TutorialHero
@@ -33,22 +34,22 @@ Enabling SAML with Microsoft Entra ID (formerly [Azure Active Directory](https:/
   1. Select **Add connection**. You'll be redirected to the connection's configuration page. Note that the connection is disabled by default.
   1. In the **Service Provider Configuration** section, save the **Reply URL (Assertion Consumer Service URL)** and **Identifier (Entity ID)** values somewhere secure. You'll need to give these to the customer so they can configure their Microsoft Entra ID application.
 
-  ## Configure SAML application
+## Configure SAML application
 
   Now that the enterprise connection is configured in Clerk and the **Reply URL** and **Identifier** are known, the customer's Microsoft application needs to be configured. At a high level, the process is:
 
-  - Create a new enterprise app in Microsoft Azure.
-  - Assign selected users or groups to that Microsoft application.
-  - Add the **Reply URL** and **Identifier** from Clerk to the Microsoft application's SAML configuration.
-  - Verify that the attribute mappings are correct.
-  - Obtain and share the application's metadata URL.
+- Create a new enterprise app in Microsoft Azure.
+- Assign selected users or groups to that Microsoft application.
+- Add the **Reply URL** and **Identifier** from Clerk to the Microsoft application's SAML configuration.
+- Verify that the attribute mappings are correct.
+- Obtain and share the application's metadata URL.
 
   You are welcome to use the below email template with detailed instructions. They contain the following
   template strings that you should replace with your actual values:
 
-  - \[YOUR\_APPLICATION\_NAME]
-  - \[YOUR\_CLERK\_ENTITY\_ID]
-  - \[YOUR\_CLERK\_REPLY\_URL]
+- \[YOUR\_APPLICATION\_NAME]
+- \[YOUR\_CLERK\_ENTITY\_ID]
+- \[YOUR\_CLERK\_REPLY\_URL]
 
   <Copyable as="html">
     Here are the instructions for setting up SAML SSO with Microsoft Entra ID:
@@ -92,18 +93,18 @@ Enabling SAML with Microsoft Entra ID (formerly [Azure Active Directory](https:/
 
     Email address (required). This is the email address that your users will use to authenticate into your app:
 
-    - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
-    - Value: `user.mail`
+  - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+  - Value: `user.mail`
 
     First name (optional):
 
-    - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
-    - Value: `user.givenname`
+  - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+  - Value: `user.givenname`
 
     Last name (optional):
 
-    - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
-    - Value: `user.surname`
+  - Claim name: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+  - Value: `user.surname`
 
     These are the defaults, and probably won't need you to change them. However, many SAML configuration errors are due to incorrect attribute mappings, so it's worth double-checking. Here's how:
 
@@ -117,7 +118,7 @@ Enabling SAML with Microsoft Entra ID (formerly [Azure Active Directory](https:/
     1. Copy the **App Federation Metadata Url**, and reply to this email with it. This is the final piece of information we need to enable SAML.
   </Copyable>
 
-  ## Add App Federation Metadata URL in the Clerk Dashboard
+## Add App Federation Metadata URL in the Clerk Dashboard
 
   After following the instructions in the email, your customer should have sent you the Microsoft app's **App Federation Metadata URL**. Now, you're going to add it to the Clerk connection, completing the SAML connection configuration.
 
@@ -126,7 +127,7 @@ Enabling SAML with Microsoft Entra ID (formerly [Azure Active Directory](https:/
   1. In the **Identity Provider Configuration** section, under **App Federation Metadata Url**, paste the **App Federation Metadata URL**.
   1. Select **Fetch & save**. Keep the page open for the next step.
 
-  ## Enable the connection in Clerk
+## Enable the connection in Clerk
 
   The SAML connection is ready to enable! Once enabled, all users with email addresses ending in the domain will be redirected to Microsoft at sign-up and sign-in.
 

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.expressjs.mdx
 
 ---
+
 title: Express Quickstart
 description: Learn how to use Clerk to quickly and easily add secure authentication and user management to your Express server.
 sdk: expressjs
@@ -36,7 +37,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   npm install express
   ```
 
-  ## Install `@clerk/express`
+## Install `@clerk/express`
 
   The [Clerk Express SDK](/docs/reference/express/overview) provides a range of backend utilities to simplify user authentication and management in your application.
 
@@ -46,7 +47,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   npm install @clerk/express
   ```
 
-  ## Set your Clerk API keys
+## Set your Clerk API keys
 
   <Include src="_partials/quickstarts/set-clerk-api-keys" />
 
@@ -61,7 +62,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   npm install dotenv
   ```
 
-  ## Add `clerkMiddleware()` to your app
+## Add `clerkMiddleware()` to your app
 
   The [`clerkMiddleware()`](/docs/reference/express/clerk-middleware) function checks the request's cookies and headers for a session JWT and, if found, attaches the [`Auth`](/docs/reference/backend/types/auth-object){{ target: '_blank' }} object to the `request` object under the `auth` key.
 
@@ -81,7 +82,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   })
   ```
 
-  ## Protect your routes using `requireAuth()`
+## Protect your routes using `requireAuth()`
 
   To protect your routes, use the [`requireAuth()`](/docs/reference/express/require-auth) middleware. This middleware functions similarly to `clerkMiddleware()`, but also protects your routes by redirecting unauthenticated users to the sign-in page.
 
@@ -115,7 +116,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   })
   ```
 
-  ## Add global TypeScript type (optional)
+## Add global TypeScript type (optional)
 
   If you're using TypeScript, add a global type reference to your project to enable auto-completion and type checking for the `auth` object in Express request handlers.
 
@@ -125,6 +126,7 @@ Learn how to integrate Clerk into your Express backend for secure user authentic
   ```ts {{ filename: 'types/globals.d.ts' }}
   /// <reference types="@clerk/express/env" />
   ```
+
 </Steps>
 
 ## Next steps
@@ -137,16 +139,16 @@ Learn how to protect routes, handle authentication and authorization, and prepar
 
   ---
 
-  - [Protect routes based on authorization status](/docs/reference/express/get-auth)
-  - Learn how to protect a route based on both authentication and authorization status.
+- [Protect routes based on authorization status](/docs/reference/express/get-auth)
+- Learn how to protect a route based on both authentication and authorization status.
 
   ---
 
-  - [Deploy to production](/docs/guides/development/deployment/production)
-  - Learn how to deploy your Clerk app to production.
+- [Deploy to production](/docs/guides/development/deployment/production)
+- Learn how to deploy your Clerk app to production.
 
   ---
 
-  - [Clerk Express SDK reference](/docs/reference/express/overview)
-  - Learn about the Clerk Express SDK and how to integrate it into your app.
+- [Clerk Express SDK reference](/docs/reference/express/overview)
+- Learn about the Clerk Express SDK and how to integrate it into your app.
 </Cards>

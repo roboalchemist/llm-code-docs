@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/astro/client-side-helpers/user-store.mdx
 
 ---
+
 title: '`$userStore`'
 description: The $userStore store provides a convenient way to access current user data and helper methods for managing the active user.
 sdk: astro
@@ -21,6 +22,7 @@ The following example demonstrates how to use the `$userStore` store to update t
 For more information on the `update()` method, see the [`User` reference](/docs/reference/javascript/user#update){{ target: '_blank' }}.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'user.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $userStore } from '@clerk/astro/client'
@@ -102,6 +104,7 @@ For more information on the `update()` method, see the [`User` reference](/docs/
     <p>user.lastName: {$user.lastName}</p>
   {/if}
   ```
+
 </CodeBlockTabs>
 
 ### Reload user data
@@ -113,6 +116,7 @@ The following example demonstrates how to use the `$userStore` store to reload t
 For more information on the `reload()` method, see the [`User` reference](/docs/reference/javascript/user#reload){{ target: '_blank' }}.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'user.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $userStore } from '@clerk/astro/client'
@@ -220,4 +224,5 @@ For more information on the `reload()` method, see the [`User` reference](/docs/
     <p>user role: {$user.publicMetadata?.role}</p>
   {/if}
   ```
+
 </CodeBlockTabs>

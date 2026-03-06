@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/integrations/databases/instantdb.mdx
 
 ---
+
 title: Integrate InstantDB with Clerk
-description: Learn how to integrate Clerk into your InstantDB application.
+description: Learn how to integrate Clerk into your InstantDB application
 ---
 
 <TutorialHero
@@ -56,12 +57,12 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
 
   You can have additional claims as long as the `email` claim is set to `{{user.primary_email_address}}`.
 
-  ## Get your Clerk Publishable Key
+## Get your Clerk Publishable Key
 
   1. In the Clerk Dashboard, navigate to the [**API keys**](https://dashboard.clerk.com/~/api-keys) page.
   1. In the **Quick Copy** section, copy your Clerk [Publishable Key](!publishable-key).
 
-  ## Configure InstantDB
+## Configure InstantDB
 
   1. In the InstantDB dashboard, navigate to the [**Auth**](https://www.instantdb.com/dash?t=auth) tab.
   1. At the top of the page, save the **Public App ID** somewhere as you'll need this later.
@@ -70,7 +71,7 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
   1. Confirm the **The session token has the "email" claim.** message.
   1. Select **Add Clerk app**. Save the **Client Name** somewhere as you'll need this later.
 
-  ## Install the InstantDB library
+## Install the InstantDB library
 
   If you haven't already added InstantDB to your app, run the following command to install it:
 
@@ -78,7 +79,7 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
   npm install @instantdb/react
   ```
 
-  ## Set your InstantDB credentials
+## Set your InstantDB credentials
 
   In your `.env` file, set the following environment variables to your InstantDB App ID and Clerk Client Name that you saved earlier:
 
@@ -87,7 +88,7 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
   NEXT_PUBLIC_CLERK_CLIENT_NAME=
   ```
 
-  ## Initialize InstantDB in your app
+## Initialize InstantDB in your app
 
   To [initialize InstantDB](https://www.instantdb.com/docs/init) in your app:
 
@@ -117,7 +118,7 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
   export const db = init({ appId: APP_ID, schema })
   ```
 
-  ## Manage the Clerk and InstantDB auth sessions
+## Manage the Clerk and InstantDB auth sessions
 
   Integrating InstantDB with Clerk means that your users will sign in to your app using Clerk, and then Clerk's session token will be used to sign the user in to InstantDB. This means that your user will have two sessions: one with Clerk and one with InstantDB. In order to handle both sessions, the following component uses Clerk to check if the user is signed in, and if they are, it uses Clerk's session token to sign the user in to InstantDB. If the user is not signed in to Clerk, it signs them out of InstantDB, ensuring that if the Clerk session ends, the InstantDB session will end as well.
 
@@ -210,7 +211,7 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
   }
   ```
 
-  ## Update your homepage
+## Update your homepage
 
   Update your `page.tsx` file with the following code to see InstantDB in action. This code was copied from the [InstantDB quickstart](https://www.instantdb.com/docs#quick-start). The only difference is that the initialization code was moved to `/db/instant.ts` so that the InstantDB connection could be reused across the app.
 
@@ -377,4 +378,5 @@ This tutorial will walk you through the steps to integrate InstantDB with Clerk.
 
   export default App
   ```
+
 </Steps>

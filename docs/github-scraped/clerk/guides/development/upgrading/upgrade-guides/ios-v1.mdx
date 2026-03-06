@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/upgrading/upgrade-guides/ios-v1.mdx
 
 ---
+
 title: Migrate from Clerk iOS SDK v0 to v1
 description: Update imports, configuration, environment wiring, and sign-in code when moving to v1.
 sdk: ios
@@ -11,7 +12,7 @@ sdk: ios
 
   Most apps add Clerk through Xcode's package UI. The easiest way to update is to remove the existing Clerk dependency and re-add it with an **Up to Next Major Version** rule so it resolves to v1, then pick the v1 products you need.
 
-  ### Xcode
+### Xcode
 
   1. Remove the existing `Clerk` package from your project if it's already added.
   1. Open the **Package Dependencies** tab and select the **+** button.
@@ -23,7 +24,7 @@ sdk: ios
 
   Or, if you manage dependencies in `Package.swift`, use the configuration below:
 
-  ### Package.swift
+### Package.swift
 
   ```swift {{ filename: 'Package.swift' }}
   dependencies: [
@@ -40,7 +41,7 @@ sdk: ios
   ]
   ```
 
-  ## Update imports
+## Update imports
 
   v1 splits imports by product: use `ClerkKit` for core APIs, and add `ClerkKitUI` for [`AuthView`](/docs/reference/views/authentication/auth-view), [`UserProfileView`](/docs/reference/views/user/user-profile-view), and other [prebuilt views](/docs/reference/views/overview).
 
@@ -56,7 +57,7 @@ sdk: ios
   import ClerkKitUI
   ```
 
-  ## Configuration
+## Configuration
 
   v1 configures Clerk once at launch with a static `configure` call and no manual `load()` step.
   `Clerk.Settings` is now `Clerk.Options`. See the [iOS configuration reference](/docs/reference/native-mobile/configuration#configuration-options) for the full list of options.
@@ -95,7 +96,7 @@ sdk: ios
   }
   ```
 
-  ## Inject Clerk into the SwiftUI environment
+## Inject Clerk into the SwiftUI environment
 
   v1 injects the shared instance directly into SwiftUI's environment instead of using the custom v0 environment key.
 
@@ -115,7 +116,7 @@ sdk: ios
   }
   ```
 
-  ## Access Clerk state from the environment
+## Access Clerk state from the environment
 
   v1 reads `Clerk` from the typed environment value instead of the v0 key path.
 
@@ -133,7 +134,7 @@ sdk: ios
   }
   ```
 
-  ## Start an auth flow
+## Start an auth flow
 
   Auth flows now live under `clerk.auth` instead of the static v0 `SignIn.create(...)` entry point.
 
@@ -159,13 +160,13 @@ sdk: ios
 
   See [Authentication flows](/docs/reference/native-mobile/auth) for more authentication options and examples.
 
-  ## Migration checklist
+## Migration checklist
 
   Use this list to confirm you've covered the v1 changes.
 
-  - Update your SPM dependency to `from: "1.0.0"` and add `ClerkKit` / `ClerkKitUI` products.
-  - Replace `import Clerk` with `import ClerkKit` (and add `import ClerkKitUI` when using prebuilt views).
-  - Replace `clerk.configure(...)` + `await clerk.load()` with `Clerk.configure(...)`.
-  - Inject the shared instance with `.environment(Clerk.shared)` and read it via `@Environment(Clerk.self)`.
-  - Update auth flows to use `clerk.auth`.
+- Update your SPM dependency to `from: "1.0.0"` and add `ClerkKit` / `ClerkKitUI` products.
+- Replace `import Clerk` with `import ClerkKit` (and add `import ClerkKitUI` when using prebuilt views).
+- Replace `clerk.configure(...)` + `await clerk.load()` with `Clerk.configure(...)`.
+- Inject the shared instance with `.environment(Clerk.shared)` and read it via `@Environment(Clerk.self)`.
+- Update auth flows to use `clerk.auth`.
 </Steps>

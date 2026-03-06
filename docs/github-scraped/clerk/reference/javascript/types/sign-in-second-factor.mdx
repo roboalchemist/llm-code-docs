@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/sign-in-second-factor.mdx
 
 ---
+
 title: '`SignInSecondFactor`'
 description: The SignInSecondFactor type represents the second factor verification strategy that can be used in the sign-in process.
 sdk: js-frontend
@@ -20,26 +21,26 @@ type SignInSecondFactor = PhoneCodeFactor | TOTPFactor | BackupCodeFactor
 
   ---
 
-  - `phoneNumberId`
-  - `string`
+- `phoneNumberId`
+- `string`
 
   The ID of the phone number that a code will be sent to. Populated when the `strategy` is `'phone_code'`.
 
   ---
 
-  - `safeIdentifier`
-  - `string`
+- `safeIdentifier`
+- `string`
 
   The safe identifier of the factor. Supports the following values:
 
-  - `'phoneNumber'`
+- `'phoneNumber'`
 
   Populated when the strategy is `'phone_code'`.
 
   ---
 
-  - `primary`
-  - `boolean`
+- `primary`
+- `boolean`
 
   Whether the factor is the primary factor. Populated when the strategy is `'phone_code'`.
 </Properties>

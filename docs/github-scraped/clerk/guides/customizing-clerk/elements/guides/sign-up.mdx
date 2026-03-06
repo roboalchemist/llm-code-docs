@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/customizing-clerk/elements/guides/sign-up.mdx
 
 ---
+
 title: Build a sign-up flow with Clerk Elements
-description: Learn how to build a complete sign-up form with Clerk Elements.
+description: Learn how to build a complete sign-up form with Clerk Elements
 ---
 
 <TutorialHero
@@ -53,7 +54,7 @@ description: Learn how to build a complete sign-up form with Clerk Elements.
   > [!TIP]
   > If you're getting TypeScript errors on the `@clerk/elements` imports you probably have forgotten to set your [`moduleResolution`](https://www.typescriptlang.org/tsconfig/#moduleResolution) in `tsconfig.json` to `bundler`.
 
-  ## Add the start step
+## Add the start step
 
   The Clerk authentication flows are made up of **steps**. Steps handle rendering the UI for each part of the flow. To allow users to create a sign-up attempt, the `start` step needs to be rendered. The following example does so with the `<SignUp.Step>` component:
 
@@ -74,7 +75,7 @@ description: Learn how to build a complete sign-up form with Clerk Elements.
   }
   ```
 
-  ## Add form fields
+## Add form fields
 
   Make it functional by adding input fields. The following example uses the `<Clerk.Field>` component to render the `emailAddress` and `username` fields, as well as the `<Connection>` component to allow users to sign up with a social connection, like Google:
 
@@ -121,7 +122,7 @@ description: Learn how to build a complete sign-up form with Clerk Elements.
 
   `<Clerk.Field>` takes care of wiring up the input with the label element, and `<Clerk.FieldError>` will render any field-specific errors that get returned from Clerk's API. The `<SignUp.Action>` component provides common actions that are used throughout the flows. In this case, using the `submit` action to render a submit button for the start form.
 
-  ## Add verification
+## Add verification
 
   As users progress through a sign-up attempt, they may be asked to **verify** a number of authentication factors in the `verifications` step. You can render a form for the user to complete verification, but each [verification strategy](/docs/guides/customizing-clerk/elements/reference/sign-in#strategy) requires different fields. You must render the form fields conditionally for each authentication strategy your instance supports using the `<SignIn.Strategy>` component.
 
@@ -194,7 +195,7 @@ description: Learn how to build a complete sign-up form with Clerk Elements.
 
   Verification is the final step in the sign-up flow. When a user has verified all required factors, the sign-up attempt will be complete, their account will be created, and they will be signed in.
 
-  ## Accept additional fields
+## Accept additional fields
 
   Should a user attempt to sign up via Google while a username is a required field, the `continue` step will be necessary to accept the username. The `<SignUp.Step>` component will display any additional required fields.
 
@@ -280,7 +281,7 @@ description: Learn how to build a complete sign-up form with Clerk Elements.
   > [!NOTE]
   > Under the hood, Clerk Elements will conditionally render the fields that are necessary to complete the sign up attempt, so there's no need to check the state of the sign up attempt yourself.
 
-  ## Customize and add styling
+## Customize and add styling
 
   Learn how to style your Clerk Elements components with the [styling guide](/docs/guides/customizing-clerk/elements/guides/styling).
 

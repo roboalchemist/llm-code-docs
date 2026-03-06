@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/components/user/user-profile.mdx
 
 ---
+
 title: '`<UserProfile />` component'
 description: Clerk's <UserProfile /> component is used to render a beautiful, full-featured account management UI that allows users to manage their profile and security settings.
 sdk: astro, chrome-extension, expo, nextjs, nuxt, react, react-router, remix, tanstack-react-start, vue, js-frontend
@@ -142,14 +143,14 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
 
   The following methods available on an instance of the [`Clerk`](/docs/reference/javascript/clerk) class are used to render and control the `<UserProfile />` component:
 
-  - [`mountUserProfile()`](#mount-user-profile)
-  - [`unmountUserProfile()`](#unmount-user-profile)
-  - [`openUserProfile()`](#open-user-profile)
-  - [`closeUserProfile()`](#close-user-profile)
+- [`mountUserProfile()`](#mount-user-profile)
+- [`unmountUserProfile()`](#unmount-user-profile)
+- [`openUserProfile()`](#open-user-profile)
+- [`closeUserProfile()`](#close-user-profile)
 
   The following examples assume that you have followed the [quickstart](/docs/js-frontend/getting-started/quickstart) in order to add Clerk to your JavaScript application.
 
-  ### `mountUserProfile()`
+### `mountUserProfile()`
 
   Render the `<UserProfile />` component to an HTML `<div>` element.
 
@@ -157,7 +158,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   function mountUserProfile(node: HTMLDivElement, props?: UserProfileProps): void
   ```
 
-  #### `mountUserProfile()` params
+#### `mountUserProfile()` params
 
   <Properties>
     - `node`
@@ -173,7 +174,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
     The properties to pass to the `<UserProfile />` component
   </Properties>
 
-  #### `mountUserProfile()` usage
+#### `mountUserProfile()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -193,7 +194,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   clerk.mountUserProfile(userProfileDiv)
   ```
 
-  ### `unmountUserProfile()`
+### `unmountUserProfile()`
 
   Unmount and run cleanup on an existing `<UserProfile />` component instance.
 
@@ -201,7 +202,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   function unmountUserProfile(node: HTMLDivElement): void
   ```
 
-  #### `unmountUserProfile()` params
+#### `unmountUserProfile()` params
 
   <Properties>
     - `node`
@@ -210,7 +211,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
     The container `<div>` element with a rendered `<UserProfile />` component instance.
   </Properties>
 
-  #### `unmountUserProfile()` usage
+#### `unmountUserProfile()` usage
 
   ```js {{ filename: 'main.js', mark: [19] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -234,7 +235,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   clerk.unmountUserProfile(userProfileDiv)
   ```
 
-  ### `openUserProfile()`
+### `openUserProfile()`
 
   Opens the `<UserProfile />` component as an overlay at the root of your HTML `body` element.
 
@@ -242,7 +243,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   function openUserProfile(props?: UserProfileProps): void
   ```
 
-  #### `openUserProfile()` params
+#### `openUserProfile()` params
 
   <Properties>
     - `props?`
@@ -251,7 +252,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
     The properties to pass to the `<UserProfile />` component
   </Properties>
 
-  #### `openUserProfile()` usage
+#### `openUserProfile()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -271,7 +272,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   clerk.openUserProfile(userProfileDiv)
   ```
 
-  ### `closeUserProfile()`
+### `closeUserProfile()`
 
   Closes the user profile overlay.
 
@@ -279,7 +280,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
   function closeUserProfile(): void
   ```
 
-  #### `closeUserProfile()` usage
+#### `closeUserProfile()` usage
 
   ```js {{ filename: 'main.js', mark: [15] }}
   import { Clerk } from '@clerk/clerk-js'
@@ -298,6 +299,7 @@ The `<UserProfile />` component is used to render a beautiful, full-featured acc
 
   clerk.closeUserProfile(userProfileDiv)
   ```
+
 </If>
 
 ## Properties
@@ -312,36 +314,36 @@ All props are optional.
 
   ---
 
-  - `routing`
-  - `'hash' | 'path'`
+- `routing`
+- `'hash' | 'path'`
 
   The [routing](/docs/guides/how-clerk-works/routing) strategy for your pages. Defaults to `'path'` for frameworks that handle routing, such as Next.js and Remix. Defaults to `hash` for all other SDK's, such as React.
 
   ---
 
-  - `path`
-  - `string`
+- `path`
+- `string`
 
   The path where the component is mounted on when `routing` is set to `path`. It is ignored in hash-based routing. For example: `/user-profile`.
 
   ---
 
-  - `additionalOAuthScopes`
-  - `object`
+- `additionalOAuthScopes`
+- `object`
 
   Specify additional scopes per OAuth provider that your users would like to provide if not already approved.  For example: `{google: ['foo', 'bar'], github: ['qux']}`.
 
   ---
 
-  - `customPages`
-  - <code>[CustomPage](/docs/reference/javascript/types/custom-page)\[]</code>
+- `customPages`
+- <code>[CustomPage](/docs/reference/javascript/types/custom-page)\[]</code>
 
   An array of custom pages to add to the user profile. Only available for the [JavaScript SDK](/docs/reference/javascript/overview). To add custom pages with React-based SDK's, see the [dedicated guide](/docs/guides/customizing-clerk/adding-items/user-profile).
 
   ---
 
-  - `fallback?`
-  - `ReactNode`
+- `fallback?`
+- `ReactNode`
 
   An optional element to be rendered while the component is mounting.
 </Properties>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/native-mobile/integrations/convex.mdx
 
 ---
+
 title: Integrate Convex with Clerk
 description: Learn how to integrate Clerk with Convex in your native app.
 sdk: android, ios
@@ -69,7 +70,7 @@ This guide shows how to integrate Convex with Clerk in your native mobile app. I
 <Steps>
   <Include src="_partials/convex-initial-setup" />
 
-  ## Configure Convex with Clerk's Frontend API URL
+## Configure Convex with Clerk's Frontend API URL
 
   In your app's `convex` folder, create a `auth.config.ts` file with the following configuration, using the saved [Frontend API URL](!frontend-api-url) from earlier:
 
@@ -84,11 +85,11 @@ This guide shows how to integrate Convex with Clerk in your native mobile app. I
   }
   ```
 
-  ## Deploy your changes to Convex
+## Deploy your changes to Convex
 
   Run `npx convex dev` to automatically sync your configuration to your backend.
 
-  ## Add the Clerk Convex SDK to your app
+## Add the Clerk Convex SDK to your app
 
   <If sdk="android">
     Add the `clerk-convex-kotlin` dependency to your app:
@@ -180,7 +181,7 @@ This guide shows how to integrate Convex with Clerk in your native mobile app. I
     After users authenticate with Clerk, auth state is automatically synced to Convex. Use `client` for subscriptions, mutations, actions, and auth state.
   </If>
 
-  ## Show UI based on auth state
+## Show UI based on auth state
 
   Convex exposes auth state from the authenticated client. Use that state to render loading, signed-out, and signed-in UI.
 
@@ -241,7 +242,7 @@ This guide shows how to integrate Convex with Clerk in your native mobile app. I
     ```
   </If>
 
-  ## Make requests and present data in the UI
+## Make requests and present data in the UI
 
   With Clerk and Convex configured, authenticated requests stay in sync so you can subscribe and render data with minimal setup.
 

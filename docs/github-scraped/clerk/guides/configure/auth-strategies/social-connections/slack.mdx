@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/slack.mdx
 
 ---
+
 title: Add Slack as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Slack account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Slack account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URL** somewhere secure. Keep this page open.
 
-  ### Create a Slack app
+### Create a Slack app
 
   1. In the Slack API Platform, navigate to the [**Your Apps**](https://api.slack.com/apps) page and select **Create New App**.
   1. The **Create an app** modal will open. Depending on your app needs, select either **From a manifest** or **From scratch**. For more information on which to choose, refer to [Slack's doc on manifests](https://api.slack.com/reference/manifests).
@@ -53,11 +54,11 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the sidenav, navigate to the **OAuth & Permissions** page.
   1. Scroll down to the **Redirect URLs** section and select **Add New Redirect URL**. Paste the **Redirect URL** you saved from the Clerk Dashboard. Select **Add**, then select **Save URLs**.
 
-  ### Set the Client ID and Client Secret in the Clerk Dashboard
+### Set the Client ID and Client Secret in the Clerk Dashboard
 
   <Include src="_partials/authentication/social-connections/set-client-id-secret" />
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

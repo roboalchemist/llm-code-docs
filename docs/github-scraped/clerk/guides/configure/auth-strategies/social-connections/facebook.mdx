@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/facebook.mdx
 
 ---
+
 title: Add Facebook as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Facebook account using OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Facebook account using OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Redirect URI** somewhere secure. Keep this page open.
 
-  ### Create a Facebook app
+### Create a Facebook app
 
   1. In the top-right of the Facebook Developer page, select [**My Apps**](https://developers.facebook.com/apps).
   1. In the top-right, select **Create App**. You'll be redirected to the **Create an app** process.
@@ -62,7 +63,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. In the left sidenav, select **App settings** (hover over the settings icon to view the title or expand the menu), and then select **Basic**.
   1. Save the **App ID** and **App Secret** somewhere secure.
 
-  ### Set the App ID and App Secret in the Clerk Dashboard
+### Set the App ID and App Secret in the Clerk Dashboard
 
   1. Navigate back to the Clerk Dashboard where the configuration page should still be open. Paste the **App ID** and **App Secret** values that you saved into the respective fields.
   1. Select **Save**.
@@ -70,7 +71,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If the page is no longer open, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page in the Clerk Dashboard. Select the connection. Under **Use custom credentials**, you can paste the values into their respective fields.
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

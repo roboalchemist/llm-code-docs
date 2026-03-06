@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/configure/auth-strategies/social-connections/bitbucket.mdx
 
 ---
+
 title: Add Bitbucket as a social connection
-description: Learn how to allow users to sign up and sign in to your Clerk app with their Bitbucket account with OAuth.
+description: Learn how to allow users to sign up and sign in to your Clerk app with their Bitbucket account with OAuth
 ---
 
 <TutorialHero
@@ -45,7 +46,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Ensure that both **Enable for sign-up and sign-in** and **Use custom credentials** are toggled on.
   1. Save the **Callback URL** somewhere secure. Keep this page open.
 
-  ### Create a Bitbucket OAuth Consumer
+### Create a Bitbucket OAuth Consumer
 
   1. On a separate page, go to the [Bitbucket Workspaces](https://bitbucket.org/account/workspaces/) page and sign in.
   1. Under **Workspaces**, find your workspace and select **Manage**.
@@ -55,7 +56,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   1. Select **Save**. You'll be redirected to the **OAuth consumers** page.
   1. Select your consumer and save the **Key** and **Secret** values somewhere secure.
 
-  ### Set the Key and Secret in the Clerk Dashboard
+### Set the Key and Secret in the Clerk Dashboard
 
   1. Navigate back to the Clerk Dashboard where the configuration page should still be open. Paste the **Key** and **Secret** values that you saved into the respective fields.
   1. Select **Save**.
@@ -63,7 +64,7 @@ To make the setup process easier, it's recommended to keep two browser tabs open
   > [!NOTE]
   > If the page is no longer open, navigate to the [**SSO connections**](https://dashboard.clerk.com/~/user-authentication/sso-connections) page in the Clerk Dashboard. Select the connection. Under **Use custom credentials**, paste the values into their respective fields.
 
-  ### Test your connection
+### Test your connection
 
   <Include src="_partials/authentication/social-connections/test-your-connection" />
 </Steps>

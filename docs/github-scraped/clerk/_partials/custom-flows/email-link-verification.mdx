@@ -1,6 +1,6 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/_partials/custom-flows/email-link-verification.mdx
 
-{/* Adds an email address to a user's account, and verifies it using an email link. Expo, iOS, and Android do not support email link verification flows. */}
+{/*Adds an email address to a user's account, and verifies it using an email link. Expo, iOS, and Android do not support email link verification flows.*/}
 
 <If notSdk="nextjs">
   <Include src="_partials/sdk-examples-not-available-callout" />
@@ -14,6 +14,7 @@
 1. Call the `handleEmailLinkVerification()` method to verify the email address.
 
 <CodeBlockTabs options={["Add email page", "Verify page"]}>
+
   ```tsx {{ filename: 'app/account/add-email/page.tsx', collapsible: true }}
   'use client'
 
@@ -218,4 +219,5 @@
     )
   }
   ```
+
 </CodeBlockTabs>

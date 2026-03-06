@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/user/get-user-oauth-access-token.mdx
 
 ---
+
 title: getUserOauthAccessToken()
 description: Use Clerk's JS Backend SDK to retrieve the corresponding OAuth access token for a user.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L197 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/UserApi.ts#L197*/}
 
 Retrieves the corresponding [OAuth access token](!oauth-access-token) for a user that has previously authenticated with a particular OAuth provider. Returns a [`PaginatedResourceResponse`](/docs/reference/backend/types/paginated-resource-response) object with a `data` property that contains an array of [`OauthAccessToken`](/docs/reference/backend/types/backend-oauth-access-token) objects, and a `totalCount` property that indicates the total number of OAuth access tokens in the system for the specified user and provider.
 
@@ -27,8 +28,8 @@ function getUserOauthAccessToken(
 
   ---
 
-  - `provider`
-  - <code>$\{[OAuthProvider](/docs/reference/javascript/types/sso#o-auth-provider)}</code>
+- `provider`
+- <code>$\{[OAuthProvider](/docs/reference/javascript/types/sso#o-auth-provider)}</code>
 
   The OAuth provider to retrieve the access token for. If using a custom OAuth provider, prefix the provider name with `custom_` (e.g., `custom_foo`).
 </Properties>

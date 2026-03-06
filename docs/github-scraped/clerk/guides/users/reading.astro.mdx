@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/users/reading.astro.mdx
 
 ---
+
 title: Protect content and read user data
 description: Learn how to use Clerk's helpers to protect content and read user data in your Astro application.
 metadata:
@@ -20,6 +21,7 @@ The [`auth()`](/docs/reference/astro/locals) and [`currentUser()`](/docs/referen
 The following example demonstrates how to protect a page from unauthenticated users and access the current user's information.
 
 <CodeBlockTabs options={[".astro component", "API Route"]}>
+
   ```astro {{ filename: 'src/pages/me.astro' }}
   ---
   // Use `locals.auth()` to access `isAuthenticated` and the user's ID
@@ -58,6 +60,7 @@ The following example demonstrates how to protect a page from unauthenticated us
     )
   }
   ```
+
 </CodeBlockTabs>
 
 ### Retrieve data from external sources

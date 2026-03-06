@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/custom-flows/error-handling.mdx
 
 ---
+
 title: Error handling
-description: Provide your users with useful information about the errors being returned from sign-up and sign-in requests.
+description: Provide your users with useful information about the errors being returned from sign-up and sign-in requests
 ---
 
 The `useSignIn()`, `useSignUp()`, and `useWaitlist()` hooks return a global [`Errors`](/docs/reference/javascript/types/errors) object that contains the errors that occurred during the last API request. Use this object to display errors to the user in your custom UI. These errors contain a `code`, `message`, `longMessage` and `meta` property. These properties can be used to provide your users with useful information about the errors being returned from sign-up and sign-in requests.
@@ -19,7 +20,7 @@ The individual methods of [`signIn`](/docs/reference/javascript/sign-in-future) 
 
 The following example uses the [email & password sign-in custom flow](/docs/guides/development/custom-flows/authentication/email-password) to demonstrate how to handle errors returned during the sign-in process.
 
-{/* TODO(Docs): Keep examples in sync with the email and password sign-in custom flow guide. */}
+{/*TODO(Docs): Keep examples in sync with the email and password sign-in custom flow guide.*/}
 
 <If notSdk="nextjs">
   <Include src="_partials/sdk-examples-not-available-callout" />

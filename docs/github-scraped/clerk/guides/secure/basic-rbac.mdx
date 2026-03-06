@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/secure/basic-rbac.mdx
 
 ---
+
 title: Implement basic Role Based Access Control (RBAC) with metadata
 description: Learn how to leverage Clerk's publicMetadata to implement your own basic Role Based Access Controls.
 sdk: nextjs
@@ -26,7 +27,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Create a global TypeScript definition
+## Create a global TypeScript definition
 
   1. In your application's root folder, create a `types/` directory.
   1. Inside this directory, create a `globals.d.ts` file with the following code. This file will provide auto-completion and prevent TypeScript errors when working with Roles. For this guide, only the `admin` and `moderator` roles will be defined.
@@ -46,7 +47,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Set the admin Role for your user
+## Set the admin Role for your user
 
   Later in the guide, you will add a basic admin tool to change a user's Role. For now, manually add the `admin` Role to your own user account.
 
@@ -61,7 +62,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Create a reusable function to check Roles
+## Create a reusable function to check Roles
 
   Create a helper function to simplify checking Roles.
 
@@ -81,7 +82,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   > [!NOTE]
   > You can customize the behavior of the `checkRole()` helper function to suit your needs. For example, you could modify it to return the Roles a user has or create a `protectByRole()` function that handles Role-based redirects.
 
-  ## Create the admin dashboard
+## Create the admin dashboard
 
   Now, it's time to create an admin dashboard. The first step is to create the `/admin` route.
 
@@ -94,7 +95,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Protect the admin dashboard
+## Protect the admin dashboard
 
   To protect the `/admin` route, choose **one** of the two following methods:
 
@@ -104,7 +105,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   > [!IMPORTANT]
   > You only need to follow **one** of the following methods to secure your `/admin` route.
 
-  ### Option 1: Protect the `/admin` route using middleware
+### Option 1: Protect the `/admin` route using middleware
 
   <Include src="_partials/nextjs/nextjs-15-callout" />
 
@@ -134,7 +135,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ### Option 2: Protect the `/admin` route at the page-level
+### Option 2: Protect the `/admin` route at the page-level
 
   1. Add the following code to the `app/admin/page.tsx` file. The `checkRole()` function checks if the user has the `admin` Role. If they don't, it redirects them to the home page.
 
@@ -153,7 +154,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Create server actions for managing a user's Role
+## Create server actions for managing a user's Role
 
   1. In your `app/admin/` directory, create an `_actions.ts` file with the following code. The `setRole()` action checks that the current user has the `admin` Role before updating the specified user's Role using Clerk's [JS Backend SDK](/docs/reference/backend/user/update-user). The `removeRole()` action removes the Role from the specified user.
 
@@ -195,7 +196,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Create a component for searching for users
+## Create a component for searching for users
 
   1. In your `app/admin/` directory, create a `SearchUsers.tsx` file with the following code. The `<SearchUsers />` component includes a form for searching for users. When submitted, it appends the search term to the URL as a search parameter. Your `/admin` route will then perform a query based on the updated URL.
 
@@ -228,7 +229,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Refactor the admin dashboard
+## Refactor the admin dashboard
 
   With the server action and the search form set up, it's time to refactor the `app/admin/page.tsx`.
 
@@ -300,7 +301,7 @@ This guide assumes that you're using Next.js App Router, but the concepts can be
   }
   ```
 
-  ## Finished 🎉
+## Finished 🎉
 
   The foundation of a custom RBAC (Role-Based Access Control) system is now set up. Roles are attached directly to the user's session, allowing your application to access them without the need for additional network requests. The `checkRole()` helper function simplifies Role checks and reduces code complexity. The final component is the admin dashboard, which enables admins to efficiently search for users and manage Roles.
 </Steps>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/signed-in-session-resource.mdx
 
 ---
+
 title: '`SignedInSessionResource`'
 description: A session for a logged-in user that is either fully active or waiting to complete additional verification steps.
 sdk: js-frontend
@@ -26,8 +27,8 @@ An active session means the user is fully logged in and ready to use your app.
 
   ---
 
-  - `user`
-  - [`User`](/docs/reference/javascript/user)
+- `user`
+- [`User`](/docs/reference/javascript/user)
 
   The user associated with the session. This property is guaranteed to be non-null for active sessions.
 </Properties>
@@ -44,15 +45,15 @@ A pending session means the user has logged in but needs to complete one or more
 
   ---
 
-  - `user`
-  - [`User`](/docs/reference/javascript/user)
+- `user`
+- [`User`](/docs/reference/javascript/user)
 
   The user associated with the session. This property is guaranteed to be non-null for pending sessions.
 
   ---
 
-  - `currentTask`
-  - [`SessionTask`](/docs/reference/javascript/types/session-task)
+- `currentTask`
+- [`SessionTask`](/docs/reference/javascript/types/session-task)
 
   The current pending task for the session. Read more about [session tasks](/docs/guides/configure/session-tasks).
 </Properties>

@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/astro/locals.mdx
 
 ---
+
 title: Locals
 description: Learn how to authenticate your Astro application with Clerk using locals.
 sdk: astro
@@ -22,7 +23,7 @@ Through Astro [`locals`](https://docs.astro.build/en/guides/middleware/#storing-
 
   <Include src="_partials/machine-auth/accepts-token-explanation" />
 
-  - `treatPendingAsSignedOut?`: A boolean that indicates whether to treat [`pending` session status](/docs/reference/javascript/types/session-status#properties) as signed out. Defaults to `true`.
+- `treatPendingAsSignedOut?`: A boolean that indicates whether to treat [`pending` session status](/docs/reference/javascript/types/session-status#properties) as signed out. Defaults to `true`.
 </Properties>
 
 ### Example: Protect a page or form
@@ -30,6 +31,7 @@ Through Astro [`locals`](https://docs.astro.build/en/guides/middleware/#storing-
 You can use the `isAuthenticated` property from the `auth()` local to protect your pages and forms.
 
 <CodeBlockTabs options={["Protect a page", "Protect a form"]}>
+
   ```astro {{ filename: 'src/pages/protected.astro' }}
   ---
   const { isAuthenticated, userId, redirectToSignIn } = Astro.locals.auth()
@@ -59,6 +61,7 @@ You can use the `isAuthenticated` property from the `auth()` local to protect yo
     <button type="submit">Add to Cart</button>
   </form>
   ```
+
 </CodeBlockTabs>
 
 ### Example: Protect a route based on token type

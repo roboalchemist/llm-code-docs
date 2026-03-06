@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/organization/create-organization.mdx
 
 ---
+
 title: '`createOrganization()`'
 description: Use Clerk's JS Backend SDK to create an Organization.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L109 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/OrganizationApi.ts#L109*/}
 
 Creates an [`Organization`](/docs/reference/backend/types/backend-organization).
 
@@ -24,36 +25,36 @@ function createOrganization(params: CreateParams): Promise<Organization>
 
   ---
 
-  - `createdBy`
-  - `string`
+- `createdBy`
+- `string`
 
   The user ID for the user creating the Organization. The user will become an administrator for the Organization.
 
   ---
 
-  - `slug?`
-  - `string`
+- `slug?`
+- `string`
 
   Slug of the Organization.
 
   ---
 
-  - `publicMetadata?`
-  - [`OrganizationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-public-metadata)
+- `publicMetadata?`
+- [`OrganizationPublicMetadata`](/docs/reference/javascript/types/metadata#organization-public-metadata)
 
   Metadata that can be read from both the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }}, but can be set only from the Backend API.
 
   ---
 
-  - `privateMetadata?`
-  - [`OrganizationPrivateMetadata`](/docs/reference/javascript/types/metadata#organization-private-metadata)
+- `privateMetadata?`
+- [`OrganizationPrivateMetadata`](/docs/reference/javascript/types/metadata#organization-private-metadata)
 
   Metadata that is only visible to your [Backend API](/docs/reference/backend-api){{ target: '_blank' }}.
 
   ---
 
-  - `maxAllowedMemberships?`
-  - `number`
+- `maxAllowedMemberships?`
+- `number`
 
   The maximum number of memberships allowed in the Organization. Setting this value to `0` removes any limit, allowing an unlimited number of memberships.
 </Properties>

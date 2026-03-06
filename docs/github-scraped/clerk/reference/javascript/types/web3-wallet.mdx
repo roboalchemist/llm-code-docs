@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/web3-wallet.mdx
 
 ---
+
 title: '`Web3Wallet`'
 description: The Web3Wallet object describes a Web3 wallet address. The address can be used as a proof of identification for users.
 sdk: js-frontend
@@ -24,15 +25,15 @@ The second and final step involves an attempt to complete the verification by ca
 
   ---
 
-  - `web3Wallet`
-  - `string`
+- `web3Wallet`
+- `string`
 
   The Web3 wallet address, made up of either 0x + 40 hexadecimal characters or a `base58` encoded `ed25519` public key (for Solana wallets).
 
   ---
 
-  - `verification`
-  - [`VerificationResource`](/docs/reference/javascript/types/verification-resource)
+- `verification`
+- [`VerificationResource`](/docs/reference/javascript/types/verification-resource)
 
   An object holding information on the verification of this Web3 wallet.
 </Properties>
@@ -79,11 +80,11 @@ function prepareVerification(params: PrepareWeb3WalletVerificationParams): Promi
 
   The verification strategy to validate the user's sign-up request. The following strategies are supported:
 
-  - `'web3_base_signature'`: User will need to sign a message and generate a signature using Base.
-  - `'web3_metamask_signature'`: User will need to sign a message and generate a signature using MetaMask browser extension.
-  - `'web3_coinbase_wallet_signature'`: User will need to sign a message and generate a signature using Coinbase Wallet.
-  - `'web3_okx_wallet_signature'`: User will need to sign a message and generate a signature using OKX Wallet.
-  - `'web3_solana_signature'`: User will need to sign a message and generate a signature using their Solana wallet provider.
+- `'web3_base_signature'`: User will need to sign a message and generate a signature using Base.
+- `'web3_metamask_signature'`: User will need to sign a message and generate a signature using MetaMask browser extension.
+- `'web3_coinbase_wallet_signature'`: User will need to sign a message and generate a signature using Coinbase Wallet.
+- `'web3_okx_wallet_signature'`: User will need to sign a message and generate a signature using OKX Wallet.
+- `'web3_solana_signature'`: User will need to sign a message and generate a signature using their Solana wallet provider.
 </Properties>
 
 ## `attemptVerification()`

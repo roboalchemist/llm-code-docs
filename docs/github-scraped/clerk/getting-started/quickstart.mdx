@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/getting-started/quickstart.mdx
 
 ---
+
 title: Next.js Quickstart (App Router)
 description: Add authentication and user management to your Next.js app.
 sdk: nextjs
@@ -31,7 +32,7 @@ llm:
 
   <Include src="_partials/nextjs/sdk-installation-step" />
 
-  ## Add `clerkMiddleware()` to your app
+## Add `clerkMiddleware()` to your app
 
   [`clerkMiddleware()`](/docs/reference/nextjs/clerk-middleware) grants you access to user authentication state throughout your app. It also allows you to protect specific routes from unauthenticated users. To add `clerkMiddleware()` to your app, follow these steps:
 
@@ -61,7 +62,7 @@ llm:
 
   1. By default, `clerkMiddleware()` will not protect any routes. All routes are public and you must opt-in to protection for routes. See the [`clerkMiddleware()` reference](/docs/reference/nextjs/clerk-middleware) to learn how to require authentication for specific routes.
 
-  ## Add `<ClerkProvider>` to your app
+## Add `<ClerkProvider>` to your app
 
   <Include src="_partials/clerk-provider/explanation" />
 
@@ -103,7 +104,7 @@ llm:
   }
   ```
 
-  ## Create a header with Clerk components
+## Create a header with Clerk components
 
   You can control which content signed-in and signed-out users can see with the [prebuilt control components](/docs/reference/components/overview#control-components). The following example creates a header using the following components:
 
@@ -170,7 +171,7 @@ llm:
 
   <Include src="_partials/quickstarts/create-first-user-step" />
 
-  3. To make configuration changes to your Clerk development instance, claim the Clerk keys that were generated for you by selecting **Configure your application** in the bottom right of your app. This will associate the application with your Clerk account.
+  1. To make configuration changes to your Clerk development instance, claim the Clerk keys that were generated for you by selecting **Configure your application** in the bottom right of your app. This will associate the application with your Clerk account.
 </Steps>
 
 ## Next steps

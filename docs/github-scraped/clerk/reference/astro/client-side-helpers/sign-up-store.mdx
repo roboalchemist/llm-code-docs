@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/astro/client-side-helpers/sign-up-store.mdx
 
 ---
+
 title: '`$signUpStore`'
 description: Clerk's $signUpStore nanostore provides a convenient way to access the SignUp object, which allows you to check the current state of a sign-up. This is also useful for creating a custom sign-up flow.
 sdk: astro
@@ -15,6 +16,7 @@ The `$signUpStore` store provides a convenient way to access the [`SignUp`](/doc
 The following example demonstrates how to use the `$signUpStore` store to access the `SignUp` object and check the current state of a sign-up.
 
 <CodeBlockTabs options={['React', 'Vue', 'Svelte']}>
+
   ```tsx {{ filename: 'sign-up-step.tsx' }}
   import { useStore } from '@nanostores/react'
   import { $signUpStore } from '@clerk/astro/client'
@@ -62,6 +64,7 @@ The following example demonstrates how to use the `$signUpStore` store to access
     <div>The current sign-up attempt status is {$signUp.status}.</div>
   {/if}
   ```
+
 </CodeBlockTabs>
 
 The possible values for the `status` property of the `SignUp` resource are listed [here](/docs/reference/javascript/sign-up#properties){{ target: '_blank' }}.

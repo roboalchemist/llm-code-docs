@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/invitations/create-invitation-bulk.mdx
 
 ---
+
 title: '`createInvitationBulk()`'
 description: Use Clerk's JS Backend SDK to create multiple invitations for the given email addresses, and send the invitation emails.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/InvitationApi.ts#L69 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/InvitationApi.ts#L69*/}
 
 Creates multiple [`Invitation`](/docs/reference/backend/types/backend-invitation)s in bulk for the given email addresses and sends the invitation emails.
 
@@ -35,43 +36,43 @@ function createInvitationBulk(params: CreateBulkParams): Promise<Invitation[]>
 
   ---
 
-  - `redirectUrl?`
-  - `string`
+- `redirectUrl?`
+- `string`
 
   The full URL or path where the user is redirected upon visiting the invitation link, where they can accept the invitation. Required if you have implemented a [custom flow for handling application invitations](/docs/guides/development/custom-flows/authentication/application-invitations).
 
   ---
 
-  - `publicMetadata?`
-  - [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
+- `publicMetadata?`
+- [`UserPublicMetadata`](/docs/reference/javascript/types/metadata#user-public-metadata)
 
   Metadata that can be read from both the Frontend API and [Backend API](/docs/reference/backend-api){{ target: '_blank' }}, but can be set only from the Backend API. Once the user accepts the invitation and signs up, these metadata will end up in the user's public metadata.
 
   ---
 
-  - `notify?`
-  - `boolean`
+- `notify?`
+- `boolean`
 
   Whether an email invitation should be sent to the given email address. Defaults to `true`.
 
   ---
 
-  - `ignoreExisting?`
-  - `boolean`
+- `ignoreExisting?`
+- `boolean`
 
   Whether an invitation should be created if there is already an existing invitation for this email address, or if the email address already exists in the application. Defaults to `false`.
 
   ---
 
-  - `expiresInDays?`
-  - `number`
+- `expiresInDays?`
+- `number`
 
   The number of days the invitation will be valid for. By default, the invitation expires after 30 days.
 
   ---
 
-  - `templateSlug?`
-  - `'invitation' | 'waitlist_invitation'`
+- `templateSlug?`
+- `'invitation' | 'waitlist_invitation'`
 
   The slug of the email template to use for the invitation email. Defaults to `invitation`.
 </Properties>

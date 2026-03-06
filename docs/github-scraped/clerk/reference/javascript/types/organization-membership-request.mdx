@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/javascript/types/organization-membership-request.mdx
 
 ---
+
 title: '`OrganizationMembershipRequest`'
 description: The OrganizationMembershipRequest object is the model that describes the request of a user to join an Organization.
 sdk: js-frontend
@@ -18,36 +19,36 @@ The `OrganizationMembershipRequest` object is the model that describes the reque
 
   ---
 
-  - `organizationId`
-  - `string`
+- `organizationId`
+- `string`
 
   The Organization ID of the Organization this request is for.
 
   ---
 
-  - `status`
-  - `'pending' | 'accepted' | 'revoked'`
+- `status`
+- `'pending' | 'accepted' | 'revoked'`
 
   The status of the request.
 
   ---
 
-  - `publicUserData`
-  - [`PublicUserData`](/docs/reference/javascript/types/public-user-data)
+- `publicUserData`
+- [`PublicUserData`](/docs/reference/javascript/types/public-user-data)
 
   Public information about the user that this request belongs to.
 
   ---
 
-  - `createdAt`
-  - `Date`
+- `createdAt`
+- `Date`
 
   The date when the membership request was created.
 
   ---
 
-  - `updatedAt`
-  - `Date`
+- `updatedAt`
+- `Date`
 
   The date when the membership request was last updated.
 </Properties>

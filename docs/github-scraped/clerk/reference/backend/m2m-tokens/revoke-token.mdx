@@ -1,6 +1,7 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/m2m-tokens/revoke-token.mdx
 
 ---
+
 title: '`revokeToken()`'
 description: Use Clerk's JS Backend SDK to revoke a M2M token.
 sdk: js-backend
@@ -28,15 +29,15 @@ function revokeToken(params: RevokeM2MTokenParams): Promise<M2MToken>
 
   ---
 
-  - `m2mTokenId`
-  - `string`
+- `m2mTokenId`
+- `string`
 
   The ID of the M2M token to revoke.
 
   ---
 
-  - `revocationReason?`
-  - `string | null`
+- `revocationReason?`
+- `string | null`
 
   Optional reason for revocation. Useful for your records.
 </Properties>

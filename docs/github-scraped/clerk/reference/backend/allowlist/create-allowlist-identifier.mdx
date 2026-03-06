@@ -1,12 +1,13 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/reference/backend/allowlist/create-allowlist-identifier.mdx
 
 ---
+
 title: '`createAllowlistIdentifier()`'
 description: Use Clerk's JS Backend SDK to add a new identifier to the allowlist.
 sdk: js-backend
 ---
 
-{/* clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/AllowlistIdentifierApi.ts#L22 */}
+{/*clerk/javascript file: https://github.com/clerk/javascript/blob/main/packages/backend/src/api/endpoints/AllowlistIdentifierApi.ts#L22*/}
 
 Adds a new identifier to the allowlist. Returns the created [`AllowlistIdentifier`](/docs/reference/backend/types/backend-allowlist-identifier) object.
 
@@ -26,8 +27,8 @@ function createAllowlistIdentifier(
 
   ---
 
-  - `notify`
-  - `boolean`
+- `notify`
+- `boolean`
 
   Whether the given identifier will receive an invitation to join the application. Note that this only works for email address and phone number identifiers. Not available for wildcard identifiers or Web3 wallet addresses. Defaults to `true`.
 </Properties>

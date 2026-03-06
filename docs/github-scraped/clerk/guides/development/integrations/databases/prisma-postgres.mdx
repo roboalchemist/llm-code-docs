@@ -1,8 +1,9 @@
 # Source: https://github.com/clerk/clerk-docs/blob/main/docs/guides/development/integrations/databases/prisma-postgres.mdx
 
 ---
+
 title: Integrate Prisma Postgres with Clerk
-description: Learn how to integrate Clerk into your Prisma Postgres application.
+description: Learn how to integrate Clerk into your Prisma Postgres application
 ---
 
 <TutorialHero
@@ -26,7 +27,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   npm install prisma tsx --save-dev
   ```
 
-  ## Initialize Prisma
+## Initialize Prisma
 
   Run the following command to initialize Prisma:
 
@@ -36,11 +37,11 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
 
   This will:
 
-  - Create a new `prisma/` directory in your project, with a `schema.prisma` file inside of it. The `schema.prisma` file is where you will define your database models.
-  - Create a `prisma.config.ts` file in the root of your project.
-  - Update your `.env` file to include a `DATABASE_URL` environment variable, which is used to store your database connection string for your Prisma Postgres database.
+- Create a new `prisma/` directory in your project, with a `schema.prisma` file inside of it. The `schema.prisma` file is where you will define your database models.
+- Create a `prisma.config.ts` file in the root of your project.
+- Update your `.env` file to include a `DATABASE_URL` environment variable, which is used to store your database connection string for your Prisma Postgres database.
 
-  ## Update the Prisma configuration
+## Update the Prisma configuration
 
   Inside the `prisma.config.ts` file, add `import "dotenv/config";` so that it can load the `DATABASE_URL` environment variable from your `.env` file.
 
@@ -60,7 +61,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   })
   ```
 
-  ## Update the database schema
+## Update the database schema
 
   In the `prisma/schema.prisma` file, update the schema to include a new model called `Post` with the columns `id`, `title`, `content`, `published`, and `authorId`. The `id` column will be used as the post's primary key, and the `authorId` column will be used to store the user's Clerk ID.
 
@@ -84,7 +85,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   }
   ```
 
-  ## Push the schema to the database
+## Push the schema to the database
 
   Run the following command to push the updated schema to the database:
 
@@ -92,7 +93,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   npx prisma db push
   ```
 
-  ## Create a reusable Prisma Client instance
+## Create a reusable Prisma Client instance
 
   At the root of your project, create a folder called `lib`. Inside of it, create a new file called `prisma.ts` and add the following code to it. This will set up a single Prisma Client instance, which is used to interact with your database, and bind it to the global object so that only one instance of the client is created in your application. This helps resolve issues with hot reloading that can occur when using Prisma with Next.js in development mode.
 
@@ -108,7 +109,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   export default prisma
   ```
 
-  ## Create the UI for the homepage
+## Create the UI for the homepage
 
   Now that all of the set up is complete, it's time to start building out your app.
 
@@ -149,12 +150,12 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   }
   ```
 
-  ## Create a new post
+## Create a new post
 
   Create a new file called `app/posts/create/page.tsx` and add the following code to it. This page allows users to create new posts. It uses Clerk's [`auth`](/docs/reference/backend/types/auth-object) object to get the user's ID.
 
-  - If there is no user ID, the user is not signed in, so a sign in button is displayed.
-  - If the user is signed in, the "Create New Post" form is displayed. When the form is submitted, the `createPost()` function is called. This function creates a new post in the database using the [`prisma.post.create()`](https://www.prisma.io/docs/orm/reference/prisma-client-reference?utm_source=docs#create) method, which is a Prisma Client method that creates a new record in the database.
+- If there is no user ID, the user is not signed in, so a sign in button is displayed.
+- If the user is signed in, the "Create New Post" form is displayed. When the form is submitted, the `createPost()` function is called. This function creates a new post in the database using the [`prisma.post.create()`](https://www.prisma.io/docs/orm/reference/prisma-client-reference?utm_source=docs#create) method, which is a Prisma Client method that creates a new record in the database.
 
   ```tsx {{ filename: 'app/posts/create/page.tsx' }}
   import Form from 'next/form'
@@ -248,7 +249,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   }
   ```
 
-  ## Query a single record
+## Query a single record
 
   Create a new file called `app/posts/[id]/page.tsx` and add the following code to it. This page uses the URL parameters to get the post's ID, and then fetches it from your database and displays it on the page, showing the title, author ID, and content. It uses the [`prisma.post.findUnique()`](https://www.prisma.io/docs/orm/reference/prisma-client-reference?utm_source=docs#findunique) method, which is a Prisma Client method that retrieves a single record from the database.
 
@@ -285,7 +286,7 @@ Integrating Prisma Postgres with Clerk gives you the benefits of using a Prisma 
   }
   ```
 
-  ## Test your app
+## Test your app
 
   Run your application with the following command:
 
