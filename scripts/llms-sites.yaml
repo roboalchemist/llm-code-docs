@@ -448,6 +448,9 @@ sites:
 - name: infisical
   base_url: https://infisical.com/docs/
   description: Infisical documentation
+- name: influxdb
+  base_url: https://docs.influxdata.com/
+  description: InfluxDB time-series database documentation including InfluxDB 2.x, 3.x, Telegraf, Chronograf, Kapacitor, and Flux
 - name: inkeep
   base_url: https://docs.inkeep.com/
   description: Inkeep AI-powered documentation search
