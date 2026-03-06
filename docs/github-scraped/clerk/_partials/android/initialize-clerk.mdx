@@ -1,0 +1,18 @@
+# Source: https://github.com/clerk/clerk-docs/blob/main/docs/_partials/android/initialize-clerk.mdx
+
+```kotlin {{ filename: 'app/src/main/java/com/example/myclerkapp/MyClerkApp.kt' }}
+  package com.example.myclerkapp
+
+  import android.app.Application
+  import com.clerk.api.Clerk
+
+  class MyClerkApp: Application() {
+      override fun onCreate() {
+        super.onCreate()
+        Clerk.initialize(
+            this,
+            publishableKey = "{{pub_key}}"
+        )
+      }
+  }
+```

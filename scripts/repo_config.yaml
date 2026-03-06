@@ -386,6 +386,13 @@ repositories:
   source_folder: docs/docs.trychroma.com/markdoc/content
   target_folder: docs/github-scraped/chroma
   branch: main
+- name: Clerk
+  description: Clerk - Authentication and user management platform with SDKs, APIs,
+    and documentation for React, Next.js, and other frameworks
+  repo_url: https://github.com/clerk/clerk-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/clerk
+  branch: main
 - name: sqlite-vec
   description: sqlite-vec - Vector search SQLite extension written in pure C
   repo_url: https://github.com/asg017/sqlite-vec.git
