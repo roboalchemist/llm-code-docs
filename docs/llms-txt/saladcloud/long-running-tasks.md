@@ -1,0 +1,176 @@
+# Source: https://docs.salad.com/container-engine/explanation/job-processing/long-running-tasks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Long-Running Tasks Solution Overview
+
+> Performing Long-Running Tasks on SaladCloud
+
+*Last Updated: January 20, 2025*
+
+There are
+[two primary methods](/container-engine/explanation/core-concepts/architectural-overview#provide-input-to-applications)
+to provide inputs and retrieve results from applications running on SaladCloud:
+
+* **SaladCloud’s Container Gateway:** The client application sends requests to the gateway, which forwards them to the
+  container instances, waits for their responses, and then relays the responses back to the client.
+* **Job Queue System: Salad Kelpie, Salad Job Queue, AWS SQS, or other queue solutions, such as Redis, RabbitMQ, or
+  Kafka** can be used to distribute jobs to instances integrated with a job queue client. The results are then delivered
+  via webhooks or retrieved through job queries.
+
+The input and output data of a job can be directly embedded in the request/response and job/result. For larger datasets,
+it is recommended to exchange data between the instances and cloud storage, while the gateway or job queue only carries
+references of the data.
+
+You can also create a **single-replica container group** for a job and use environment variables to specify the cloud
+storage locations for the job's input and output. In this setup, the gateway or job queue is not required.
+
+**Performing long-running tasks on SaladCloud involves the following key considerations:**
+
+### Container Gateway or Job Queue
+
+SaladCloud’s Container Gateway has a maximum
+[server response timeout](/container-engine/explanation/gateway/load-balancer-options#server-response-timeout) of **100
+seconds**. This timeout specifies the maximum duration the gateway will wait for a response from an instance after
+forwarding a request. If no response is received within this timeframe, the gateway returns a timeout error to the
+client. For jobs that may run more than 100 seconds, such as video generation and long audio transcription, you will
+need to either use webhooks to receive the results asynchronously while still using the gateway, or integrate with a job
+queue system for better handling of long-running tasks.
+
+### Concurrency and Throughput
+
+The simplest approach while using the gateway or a job queue is to process a job at a time, ensuring that each job is
+fully completed before the next one begins.
+
+<img src="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=4f5fc599b4dbdf5db9099ceb41ac3fab" data-og-width="925" width="925" data-og-height="124" height="124" data-path="container-engine/images/lrt-so1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=280&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=ccc63f9df520d6f03e2edceb117b8d84 280w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=560&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=ba312e89fc6ff124efadb72b1a6fd796 560w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=840&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=cfc9890ba8232f72f9c7c7efe7eb32f7 840w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=1100&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=936ec3e12c5b3d75977da5656f8fcfb4 1100w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=1650&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=10a37e7a7ad056c5af471baf64da80cb 1650w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so1.png?w=2500&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=ba09aea2a1c762efe7727e9174f2d921 2500w" />
+
+The lifecycle of job execution may involve multiple stages, including downloading the input, pre-processing (e.g.,
+format conversion, re-samping and chunking), executing GPU inference, post-processing (e.g., merging and summarizing),
+uploading the output. Each stage has different resource demands—some are I/O-bound, others are CPU-intensive, and some
+are GPU-intensive.
+
+If the GPU inference constitutes only a small portion of the process, concurrent processing can significantly enhance
+throughput and optimize resource utilization for these types of jobs.
+
+While leveraging CPU and I/O capacity effectively, multiprocessing or multithreading-based concurrent inference over a
+single GPU might limit optimal GPU cache utilization and degrade performance, due to each inference running in isolation
+at its own layer or stage. Additionally, the multiprocessing approach can increase VRAM consumption, as each process
+requires a separate CUDA context and loads its own model into the GPU VRAM.
+
+The recommendation is to use a multi-pipeline, staged architecture, where GPU inference remains sequential or batched by
+a separated process or thread, while other tasks run in parallel or asynchronously across one or more processes or
+threads to maximize efficiency. Typically, a local queue is employed to connect these two parts.
+
+<img src="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=e4af7d881a0d404b97dee1f8617f0ce3" data-og-width="667" width="667" data-og-height="173" height="173" data-path="container-engine/images/lrt-so2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=280&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=77981c0c85cdfe640c8ab085da1b8efb 280w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=560&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=5cbdbe81ba9935395114c0152b378614 560w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=840&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=2fb08b9bb4d356b991a4e41af9ab6432 840w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=1100&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=a9257d26420d7079629b57c310ff3343 1100w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=1650&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=2ae6dd4609849f50dc5bb4e97b32da6c 1650w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so2.png?w=2500&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=0284f37fddb4e1141123185e1a9805f7 2500w" />
+
+Compared to single inference, batched inference may achieve higher throughput, but usually requires more VRAM. The
+decision should be based on your specific use case and resource selection.
+
+<img src="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=93821b5f25b67166a85ba567e06efe1c" data-og-width="491" width="491" data-og-height="172" height="172" data-path="container-engine/images/lrt-so3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=280&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=826813ff104c45ef2c7fc0f23aede297 280w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=560&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=042e96e3e1eae53e7ac7386e4f5f858d 560w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=840&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=8f443786cf5179b178c22eaec9421564 840w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=1100&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=83a7c087fe1581225a792d369fa4793a 1100w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=1650&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=964112c5999ba0d8c5a6e26d754d27db 1650w, https://mintcdn.com/salad/pEBrSzH4UQRtJw00/container-engine/images/lrt-so3.png?w=2500&fit=max&auto=format&n=pEBrSzH4UQRtJw00&q=85&s=1886f12c865509778e066198f3402334 2500w" />
+
+[This repository](https://github.com/SaladTechnologies/mds/tree/main/inference-server) provides the reference
+implementation of inference servers that support concurrent processing while using the gateway and the job queue - AWS
+SQS.
+
+To handle multiple jobs concurrently while using a job queue, AWS SQS is preferred, as it allows your application to
+handle each job independently and flexibly, including pulling the job, extending its leasing, and deleting it once
+completed.
+[In our YouTube video transcription benchmark test with AWS SQS](https://blog.salad.com/ai-batch-transcription-benchmark/),
+which transcribed 1 million hours of video using 100 mid-end GPUs within a week, utilizing three or more threads for
+downloading and pre-processing enabled us to achieve nearly 100% GPU utilization.
+
+### Save Running State
+
+SaladCloud operates on a foundation of distributed and interruptible nodes, meaning that a node hosting your instance
+may go down unexpectedly at any time. However, the majority of nodes are capable of running continuously for over 10
+hours. Please refer to [the benchmark test results](https://github.com/SaladTechnologies/mds/tree/main/demo-app3)
+detailing uptime and the number of interruptions for jobs running over a 48-hour period on SaladCloud.
+
+If an instance fails to complete (or delete) a job due to the node failure, the job will typically become available for
+other instances via the job queue system. To avoid restarting an unfinished job from scratch after an
+interruption—particularly for jobs expected to run longer than 30 minutes (depending on the use case), such as molecular
+dynamics simulations—**consider implementing the following features in your applications:**
+
+* Start fresh while pulling a new job.
+* Regularly save and upload the running state to cloud storage during job execution.
+* Download and resume from the previous running state if retrieving an unfinished task.
+
+Key application settings, such as saving intervals, upload data size, and required upload speed, should be carefully
+tested and aligned:
+
+* Longer saving intervals reduce the required upload speed but may result in greater GPU processing losses if nodes go
+  down.
+* Shorter saving intervals require higher upload speeds, which may lead to upload backlogs.
+
+The asymmetric bandwidth of SaladCloud is notable, as many nodes are located in residential networks. Your applications
+may perform
+[initial checks to filter nodes](/container-engine/tutorials/performance/high-performance-apps#perform-initial-checks-to-filter-nodes)
+with specific download and upload speeds.
+
+Consider using
+[open-source tools like Rclone](/container-engine/tutorials/performance/high-performance-storage-solutions) to optimize
+performance and throughput. These tools support chunked, parallel uploads and downloads, enabling more efficient
+utilization of bandwidth by establishing multiple simultaneous connections.
+
+Additionally, progressive or incremental uploads can reduce the overall required upload speed with shorter saving
+intervals, while also allowing you to tap into a larger pool of available nodes.
+
+Your applications can implement the above mechanism alongside any job queue system, such as Salad Kelpie, Salad Job
+Queue and AWS SQS. Alternatively, you can create a single-replica container group for each job and integrate these
+features, eliminating the need for a job queue.
+
+**Since the release of Salad Kelpie 0.5.0, it supports two use cases:**
+
+* Use Kelpie as a job queue system along with its built-in data synchronization for easy implementation.
+* Use Kelpie solely as a job queue while implementing custom, flexible data management strategies, including selective
+  downloads and progressive uploads.
+
+### Super Long Running Jobs
+
+Certain large molecular dynamics simulations, or model fine-tunning and hyperparameter tuning jobs, can run for several
+days or even a week, generating tens to hundreds of gigabytes of data (e.g., trajectory files or checkpoints at various
+time points) that must be uploaded to cloud storage. This is fully achievable on SaladCloud, as validated by customer
+use cases. However, both AWS SQS and Salad Job Queue are not ideal for this case.
+
+Due to the 12-hour maximum visibility timeout imposed by AWS SQS (starting from when the job is first received,
+extending the timeout doesn't reset this limit), the long-running solution built on it can handle tasks for up to 12
+hours at a time. After this period, the job reappears in the queue and can be picked up by another instance to continue
+execution.
+
+Salad Job Queue can tolerate up to 3 node failures for a job. When more nodes fail during job execution, the job will be
+reported as failed. For jobs running longer than a day, the likelihood of failure increases significantly.
+
+For super long running jobs, we recommend using Salad Kelpie:
+
+* **Simplified Architecture:** It significantly reduces application complexity by eliminating the need for job and
+  leasing management.
+* **Enhanced Task Duration:** It allows unlimited node reallocations, enabling seamless support for longer running tasks
+  on SaladCloud.
+
+If you have a small number of very long-running jobs, you can also create a single-replica container group for each job
+and use environment variables to specify the locations of the job's input, state, and output. In this scenario, a job
+queue system is unnecessary. **While a job remains unprocessed during node reallocation, our tests show that such
+interruptions are minimal, occurring less than 4% of the time over a few-day period.**
+
+### Summary
+
+Here is a summary of the recommended solutions for each scenario:
+
+| Job Duration      | Use Case                                                                         | Solution Description                                                                                                                                                                                                                                              |
+| :---------------- | :------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Under 100 seconds | Image generation, LLM streaming, real-time transcription                         | SaladCloud’s Container Gateway, or any job queue system.                                                                                                                                                                                                          |
+| Under 30 minutes  | Video generation, LLM non-streaming, long audio transcription                    | Any job queue system. To handle multiple jobs concurrently while using a job queue, AWS SQS is preferred.                                                                                                                                                         |
+| Under 12 hours    | Molecular dynamics simulation, model fine-tuning                                 | Any job queue system. Applications need to regularly save running state to cloud storage during job execution, and resume from the previous running state if retrieving an unfinished task. Use the Kelpie built-in data synchronization for easy implementation. |
+| Over 12 hours     | Large molecular dynamics simulation, model fine-tuning and hyperparameter tuning | Salad Kelpie is preferred for simplified architecture and enhanced task duration. For a small number of very long-running jobs, use the single-replica container group, eliminating the need for a job queue.                                                     |
+
+Please refer to the example code and applications for further details:
+
+| No | Description                                                                                                                                       | Repository                                                                                                          |
+| :- | :------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------ |
+| 1  | Reference implementation of inference server using SaladCloud’s Container Gateway, supporting concurrent processing with batched inference.       | [link](https://github.com/SaladTechnologies/mds/tree/main/inference-server#use-the-container-gateway-load-balancer) |
+| 2  | Reference implementation of inference server integrated with AWS SQS, supporting concurrent processing with single inference.                     | [link](https://github.com/SaladTechnologies/mds/tree/main/inference-server#use-a-job-queue)                         |
+| 3  | Use Kelpie as the job queue along with its built-in data management.                                                                              | [link](https://github.com/SaladTechnologies/mds/tree/main/demo-app1)                                                |
+| 4  | Use Kelpie solely as the job queue, while implementing flexible data management strategies, including selective downloads and progressive uploads | [link](https://github.com/SaladTechnologies/mds/tree/main/demo-app3)                                                |
+| 5  | Use AWS SQS as the job queue, while implementing flexible data management strategies.                                                             | [link](https://github.com/SaladTechnologies/mds/tree/main/demo-app2v2)                                              |

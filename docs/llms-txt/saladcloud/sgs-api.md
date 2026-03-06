@@ -1,0 +1,211 @@
+# Source: https://docs.salad.com/gateway-service/reference/sgs-api.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# SGS API
+
+> Optional feature to manage streaming capability tags for nodes in your network
+
+*Last Updated: March 20, 2025*
+
+# The SGS API
+
+The SGS API enables you to manage streaming capability tags for nodes in your network. By tagging nodes based on their
+ability to connect to specific streaming services, you can create optimized routing paths for different workloads. Note
+that it is up to you to develop, run, and maintain any such connectivity tests.
+
+> **Important:** The SGS API is currently in limited release and is only available on some SGS servers. Contact your
+> account manager to enable this feature.
+
+## How Node Selection Works
+
+When you specify a tag, our system selects nodes in this order:
+
+1. Nodes with your requested tag
+2. Nodes with internal tags assigned by Salad's DHC system (if no match is found in step 1)
+3. Least-loaded node (if no match is found in steps 1 or 2)
+
+## Usage Examples
+
+### HTTP Headers
+
+Request a node with a specific tag by adding the `X-Sgs-Tag` proxy header to your request:
+
+```
+X-Sgs-Tag: {yourTag}
+X-Sgs-Capabilities: {yourTag}  (legacy, still supported)
+```
+
+### URL Parameters
+
+Alternatively, you can request a node with a specific tag by adding the `&tag=` parameter to the end of your session ID:
+
+```
+{sessionId}&tag={yourTag}
+{sessionId}&cap={yourTag}  (legacy, still supported)
+```
+
+All examples above produce identical routing behavior. Note that the new `X-Sgs-Tag` proxy header replaces the legacy
+`X-Sgs-Capabilities` proxy header, while the `&tag=` parameter replaces the legacy `&cap=` parameter. Both headers and
+parameters currently function identically, but we recommend using either the `X-Sgs-Tag` proxy header or the `&tag=` URL
+parameter for future compatibility.
+
+# Tagging Nodes
+
+## Authentication
+
+All API requests require your Salad-provided JWT token:
+
+```bash  theme={null}
+curl https://{sgsName}.salad.com:7443/nodes \
+  -H "Authorization: Bearer YOUR_SALAD_JWT"
+```
+
+Requests without proper authentication will receive a `401 Unauthorized` response. JWT tokens were shared with your team
+during initial integration; if you need a JWT token, contact your account manager.
+
+## Nodes
+
+### List all nodes
+
+```http  theme={null}
+GET /nodes
+```
+
+Returns all active, non-quarantined nodes connected to your SGS server.
+
+#### Example response
+
+```json  theme={null}
+{
+  "nodes": [
+    {
+      "machine_id": "5ebfa363-6e0b-4db1-b9be-70ed4995d0b1",
+      "tags": {
+        "internal-nflx": 1,
+        "internal-dsnp": 1
+      },
+      "update_time": "2023-05-04T05:41:05Z"
+    }
+  ]
+}
+```
+
+### Retrieve a node
+
+```http  theme={null}
+GET /nodes/{machineId}
+```
+
+Retrieves information about a specific node.
+
+#### Example response
+
+```json  theme={null}
+{
+  "machine_id": "5ebfa363-6e0b-4db1-b9be-70ed4995d0b1",
+  "tags": {
+    "internal-nflx": 1,
+    "internal-dsnp": 1
+  },
+  "update_time": "2023-05-04T05:41:05Z"
+}
+```
+
+### Retrieve a node's tags
+
+```http  theme={null}
+GET /nodes/{machineId}/tags
+```
+
+Retrieves only the tags for a specific node.
+
+#### Example response
+
+```json  theme={null}
+{
+  "internal-nflx": 1,
+  "internal-dsnp": 1
+}
+```
+
+### Update a node
+
+```http  theme={null}
+PATCH /nodes/{machineId}/tags
+```
+
+Updates capability tags for a specific node.
+
+Tag values must be between 0 and 1, where:
+
+* `0` indicates the node cannot handle the service
+* Any value `> 0` and `≤ 1` indicates the node can handle the service
+  > **Note:** The rational number tag values (between `0` and `1`) enable future weighted load balancing features.
+
+> **Important:** We recommend using a prefix (like `internal-`) for your tags to avoid conflicts with Salad's existing
+> DHC labels.
+
+#### Example request
+
+```json  theme={null}
+{
+  "internal-nflx": 1,
+  "internal-dsnp": 0,
+  "internal-itv": 0.8
+}
+```
+
+### Remove all tags
+
+```http  theme={null}
+DELETE /nodes/{machineId}/tags
+```
+
+Removes all capability tags from a node. Note that passing a `0` value for a tag is equivalent to removing it.
+
+## Routing behavior
+
+* SGS routes sessions for a service only to nodes with a positive tag value (`> 0`) for that service
+* Missing tags are treated as `0` (unroutable)
+* If all nodes are unroutable for a requested capability, SGS will "fail open" and distribute traffic across all nodes
+* The rational number tag values (between `0` and `1`) enable future weighted load balancing features
+
+## Common workflows
+
+### Qualifying nodes for a new service
+
+1. List all nodes and retrieve their machine IDs:
+   ```bash  theme={null}
+   curl https://{sgsName}.salad.com:7443/nodes \
+     -H "Authorization: Bearer YOUR_SALAD_JWT" | jq '.nodes[] | .machine_id'
+   ```
+2. For each machine ID, test its connectivity to the target service (e.g., "target-service") by targeting specific
+   nodes:
+   ```bash  theme={null}
+   # Add the X-Sgs-Machine-Id header to test a specific node
+   # Do not use &cap= or &tag= in the sessionID during testing
+   curl --proxy-header "X-Sgs-Machine-Id: {machineId}" -X https://{sessionID}:{password}@{sgsName}.salad.com:8443 \
+     https://target-service.com
+   ```
+3. Tag nodes which connected successfully (use a unique name for the tag e.g., "internal-target-service"):
+   ```bash  theme={null}
+   curl PATCH https://{sgsName}.salad.com:7443/nodes/{machineId}/tags \
+     -H "Authorization: Bearer YOUR_SALAD_JWT" \
+     -H "Content-Type: application/json" \
+     -d '{"internal-target-service": 1}'
+   ```
+4. Verify the tags were updated successfully:
+   ```bash  theme={null}
+   curl https://{sgsName}.salad.com:7443/nodes \
+     -H "Authorization: Bearer YOUR_SALAD_JWT"
+   ```
+5. Adjust your configuration so that any traffic for "target-service" is routed to your tagged nodes by suffixing
+   `&tag=internal-target-service` to your session IDs (e.g.,
+   "`https://sessionID1234&tag=internal-target-service:{password}@{sgsName}.salad.com`"), or by adding it as a proxy
+   header in your request as follows: "`X-Sgs-Tag`:`internal-target-service`".
+6. Because nodes occasionally connect and disconnect from SGS, regularly repeat steps 1-3 to ensure your tags are
+   up-to-date. The frequency of these checks depends on several factors, but we recommend performing them at least every
+   2-3 hours.

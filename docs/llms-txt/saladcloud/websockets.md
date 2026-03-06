@@ -1,0 +1,18 @@
+# Source: https://docs.salad.com/container-engine/explanation/gateway/websockets.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# WebSockets
+
+*Last Updated: October 10, 2024*
+
+When using long-lived WebSocket connections with SaladCloud's Container Gateway, there are a couple things you need to
+be aware of.
+
+1. The WebSocket protocol doesn't allow passing headers of any kind, including authorization headers. This means you
+   must disable authentication when you enable the Container Gateway for your container group. Your container will get
+   assigned a highly unique domain name as a secure alternative to the `Salad-Api-Key` header.
+2. Idle connections get terminated after 100 seconds. This means you need to send a heartbeat through the WebSocket
+   connection periodically to keep the connection alive.
