@@ -14,13 +14,13 @@ The Bluetooth Mesh Profile specification defines the fundamental requirements fo
 2. 1.3. Language
 3. 1.3.1. Language conventions
 4. 1.4. Table conventions
-5. 2. Mesh system architecture
+5. 2\. Mesh system architecture
 6. 2.1. Layered architecture
 7. 2.2. Overview of mesh operation
 8. 2.3. Architectural concepts
 9. 2.3.3. Messages
 10. 2.3.10. Security
-11. 3. Mesh networking
+11. 3\. Mesh networking
 12. 3.1. Conventions
 13. 3.1.1. Endianness and field ordering
 14. 3.3. Bearers
@@ -115,11 +115,11 @@ The proxy protocol allows non-mesh devices (like smartphones) to communicate wit
 
 ## Detailed Specification Sections
 
-### Note
+### Note: Virtual Address Collision Likelihood
 
 Note: When factoring in a 32-bit MIC and the size of the hash, there is only a 1/246=1.42×10-14 likelihood that two matching virtual addresses using the same application key but different Label UUIDs will collide.
 
-### Note
+### Note: Segment Sizes
 
 Note: The segment sizes are different for Upper Transport Access PDUs and Upper Transport Control PDUs.
 
@@ -131,11 +131,11 @@ Example: Using a single-segment segmented message can decrease the air traffic, 
 
 Each segment of an Upper Transport Access PDU shall be 12 octets long with the exception of the last segment, which may be shorter.
 
-### Note
+### Note: Segment Acknowledgment with OBO Field
 
 Note: The reception of a Segment Acknowledgment message with the OBO field set to 1 does not mean that the segmented message has been delivered to the final destination, but only that the segmented message has been delivered to the Friend of that Low Power node. The message is stored in the Friend Queue, but the message can be discarded if other messages are received for that Low Power node or the Friendship is terminated.
 
-### Note
+### Note: Discarding Messages in Friend Queue
 
 Note: An implementation may have to discard multiple messages to fit the new message into the Friend Queue.
 
@@ -147,11 +147,11 @@ When the Low Power node requests a message from the Friend Queue, the oldest ent
 
 If the Friend node is polled for a message from a Low Power node using a Friend Poll, and the Friend Queue for that node is empty, then the Friend node shall generate a new Friend Update message and add that message to the Friend Queue before sending the response, so that this Friend Update message can be sent in response to the Friend Poll message.
 
-### Note
+### Note: Transport Control Messages and TransMIC
 
 Note: Transport Control messages do not have a TransMIC field.
 
-### Note
+### Note: Low Power Node 96-Hour Collection Requirement
 
 Note: The above requirement implies that a Low Power node should collect all stored messages at least once every 96 hours, otherwise the Friend node may discard the stored messages before the Low Power node can receive them.
 
@@ -163,13 +163,13 @@ The Friend Subscription List Confirm message shall be sent after a minimum of Re
 
 In the Network PDU of a Friend Subscription List Confirm message, the TTL field shall be set to 0.
 
-### Note
+### Note: Hops Value Calculation
 
 Note: If the message is received directly (for example, the InitTTL value and the received Network PDU TTL field value are the same), then the hops value would be 0x01. If the message has been delivered using the maximum length path, then InitTTL would be 0x7F and the received Network PDU TTL field value would be 0x01, and therefore hops would 0x7F.
 
 If the hops value is lower than the Heartbeat Subscription Min Hops state, it shall be set as the new value of the Heartbeat Subscription Min Hops state. If the hops value is higher than the Heartbeat Subscription Max Hops state, it shall be set as the new value of the Heartbeat Subscription Max Hops state.
 
-### Note
+### Note: Fixed Group Address Delivery
 
 Note: A message with a fixed group address can be delivered to model instances on any element of the device, irrespective of any condition defined in Table 3.63, because the model subscription lists can contain one or more fixed group addresses.
 
@@ -181,7 +181,7 @@ Proxy functionality is enabled
 
 Friend functionality is enabled
 
-### Note
+### Note: False Message Identification
 
 Note: A message can be falsely identified as a valid message, passing the NetMIC and TransMIC fields authentication using a known network key and application key even though that message was sent using different keys. The decryption of that message using the wrong keys would result in a message that is not understood by the element. The probability of such a situation occurring is small but not insignificant.
 
@@ -193,11 +193,11 @@ The Access message size for the identified opcode is incorrect.
 
 The parameters field of the Access message contains values that are Prohibited.
 
-### Note
+### Note: Model Unicast Address Subscription
 
 Note: A model is, in effect, always subscribed to its element unicast address as described in Section 3.7.3.2.
 
-### Note
+### Note: CCM Algorithm Reference
 
 Note: A description of the CCM algorithm can also be found in the NIST Special Publication 800-38C [29].
 
@@ -209,7 +209,7 @@ m is the variable-length data to be encrypted and authenticated – also known a
 
 a is the variable-length data to be authenticated – also known as “Additional Data”
 
-### Note
+### Note: NID Key Space
 
 Note: There are up to 2121 possible keys for each NID; therefore, the NID value can only provide an indication of the security material that has been used to secure this Network PDU.
 
@@ -221,7 +221,7 @@ NID || EncryptionKey || PrivacyKey=k2(NetKey, 0x00)
 
 The friendship security material is derived from the friendship security credentials using the following formula:
 
-### Note
+### Note: Access Message Encryption Independence from TTL
 
 Note: The authentication and encryption of the Access message is not dependent on the TTL field value, meaning that as the Access message is relayed through a mesh network, the Access message does not need to be re-encrypted at each hop.
 
@@ -233,15 +233,15 @@ When using an application key and the destination address is a unicast address o
 
 EncAccessMessage, TransMIC=AES-CCMAppKey (application nonce, Access message)
 
-### Note
+### Note: Configuration Manager Device Key Usage
 
 Note: The Configuration Manager’s device key is used only when another Configuration Manager is interacting with server models that require using the device key for the access layer security.
 
-### Note
+### Note: Mesh Proxy Service Advertising
 
 Note: The Mesh Proxy Service advertising depends on the NetKey value and will be updated upon transition from Phase 1 (see Section 7.2.2.2.1).
 
-### Note
+### Note: Recently Provisioned Devices and Key Revocation
 
 Note: When a device has been recently provisioned and does not have the old keys, it will not know the old keys and therefore will not be able to revoke the old keys.
 
@@ -251,7 +251,7 @@ Upon receiving a Secure Network beacon or a Mesh Private beacon or a Friend Upda
 
 The Configuration Manager should be aware that Low Power nodes may have a very high latency, and therefore Low Power nodes may take additional time to receive the Key Refresh Flag information from a Friend node.
 
-### Note
+### Note: IV Update Procedure Frequency
 
 Note: Nodes that send messages less frequently are less likely to initiate the IV Update procedure.
 
@@ -263,19 +263,19 @@ The node is a member of the primary subnet.
 
 The node is receiving Secure Network beacons or Mesh Private beacons on the primary subnet.
 
-### Note
+### Note: Publish TTL Local-Only Delivery
 
 Note: If the Publish TTL state is set to 1, the outgoing messages are published to local elements only, as defined in Section 3.4.5.
 
-### Note
+### Note: Heartbeat Publication Destination
 
 Note: If the Heartbeat Publication Destination is set to the unassigned address, the Heartbeat messages are not being sent.
 
-### Note
+### Note: Reading Composition Data Pages
 
 Note: It is possible to read all supported Composition Data Pages by reading 0xFF first, and then reading one less than the returned page number until the page number is 0x00.
 
-### Note
+### Note: Duplicate NetKey Add Handling
 
 Note: When an element receives a Config NetKey Add message that identifies a NetKey that has already been added to the NetKey List, it responds with Success, because the result of adding the key again, with the same NetKey value, using the same NetKeyIndex will be the same as the result of adding the key the first time.
 
@@ -287,7 +287,7 @@ Key Index Already Stored
 
 The key identified by NetKeyIndex is not valid for this device for Config NetKey Update message
 
-### Note
+### Note: Duplicate AppKey Add Handling
 
 Note: When an element receives a Config AppKey Add message that identifies an AppKey that has already been added to the AppKey List, it responds with Success, because the result of adding the key again, with the same AppKey value, using the same AppKeyIndex will be the same as the result of adding the key the first time.
 
@@ -299,11 +299,11 @@ Key Index Already Stored
 
 The node cannot store the new key due to insufficient resources
 
-### Note
+### Note: Heartbeat and LPN Nodes
 
 Note: Using heartbeat with LPN nodes as destinations is not recommended as it may cause the Friend Queue to overflow. However, if the subscribing element is within a Low Power Node, it should update the Friend Subscription List (see Section 3.6.6.4.3).
 
-### Note
+### Note: Replay Protection After Subscription List Change
 
 Note: After adding a previously not known group address to one of the node's subscription lists, the node is not protected against a replay attack utilizing messages to that new group address. It is therefore strongly recommended that the Configuration Client run, for a brief period of time, a Heartbeat Subscription procedure on the node and a Heartbeat Publication procedure on all nodes that publish to the new group address to initialize the replay protection list of the node with the current value of the sequence numbers for all affected publishers.
 
@@ -315,11 +315,11 @@ To determine the Subscription List state of a particular Vendor Model within the
 
 Upon receiving a Config SIG Model Subscription List message or a Config Vendor Model Subscription List message, a Configuration Client can determine the status that can be either a Success or an error (see Table 4.315). If it’s Success, the Configuration Client can also determine the current Subscription List state of a particular model within the element. If it’s an error, the Status field will contain the error condition, and the Addresses field will be set to a zero-length (empty) list.
 
-### Note
+### Note: Opcodes Aggregator Server Binding
 
 Note: The error conditions in Table 4.375 imply that the Opcodes Aggregator Server model is implicitly bound to the node’s device key. Additionally, the Configuration Manager should bind the same application key to the Opcodes Aggregator Server model and to one or more desired models on one or more elements on a node for which the OPCODES_AGGREGATOR_SEQUENCE message will be sent; otherwise, the Opcodes Aggregator Server could encounter the WrongAccessKey error condition while executing this procedure.
 
-### Note
+### Note: Provisioning and IV Update Time Limits
 
 Note: After processing the Provisioning Data PDU from the Provisioner, the 96-hour time limits for changing the IV Update procedure state, as defined in the IV Update procedure, do not apply.
 
@@ -327,11 +327,11 @@ Upon receiving the Provisioning Complete PDU from the Provisionee, the Provision
 
 The Provisioner shall not reuse unicast addresses that have been allocated to a Provisionee and sent in a Provisioning Data PDU unless the node to which the unicast addresses were previously assigned has been removed from the network and the current IV Index (in use during the Node Removal procedure) has been updated, as required in Section 3.11.7, or the Node Address Refresh procedure was executed and the current IV Index (in use during the Node Address Refresh procedure) has been updated, as required in Section 3.11.8.5.
 
-### Note
+### Note: Public Key Validation Reference
 
 Note: For additional information about public key validation, see NIST Special Publication 800-56A, Revision 3 [11].
 
-### Note
+### Note: Certificate-Based Provisioning URI
 
 Note: The benefit of reading the Certificate-Based Provisioning Base URI with a Device UUID from a barcode is that the user has a tangible physical object associated with the device that is being provisioned (the device itself, its packaging, or, for example, a paper slip in the packaging), which might be preferable to choosing a beaconing device in the Provisioner’s user interface.
 
@@ -339,14 +339,13 @@ After the Provisioner has acquired both the Certificate-Based Provisioning Base 
 
 By choosing the most efficient encoding that is able to output all of the characters required for the URI (including semicolons and slashes needed for the schema), the implementation can reduce the physical space needed for the 2D barcode.
 
-### Note
+### Note: AddressArray Virtual Address Format
 
 Note: Each address in the AddressArray is a 16-bit value and therefore the 16-bit virtual address and not the Label UUID is used.
 
-### Note
+### Note: AddressArray 16-Bit Value Constraint
 
 Note: Each address in the AddressArray is a 16-bit value and therefore the 16-bit virtual address and not the Label UUID is used.
-
 
 ---
 

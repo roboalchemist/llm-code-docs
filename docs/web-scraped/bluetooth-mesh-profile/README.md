@@ -46,7 +46,9 @@ Bluetooth Mesh is a standardized mesh networking protocol designed specifically 
 ## Key Technical Concepts
 
 ### Provisioning
+
 The process of securely adding devices to a mesh network:
+
 - Out-of-band authentication
 - Capability exchange
 - Network key distribution
@@ -54,7 +56,9 @@ The process of securely adding devices to a mesh network:
 - Device key establishment
 
 ### Security Model
+
 Multi-layer security architecture:
+
 - **Network Layer:** NetKey protects all mesh messages
 - **Application Layer:** AppKey encrypts application-specific data
 - **Device Layer:** DevKey enables secure device-to-device communication
@@ -62,12 +66,14 @@ Multi-layer security architecture:
 - **Authentication:** MIC (Message Integrity Check) on all messages
 
 ### Message Types
+
 - **Unicast messages:** Sent to specific device addresses
 - **Group messages:** Sent to group addresses with multiple recipients
 - **Virtual addresses:** Logical address sets for complex group structures
 - **All-nodes messages:** Broadcast to entire network
 
 ### Network Operation
+
 - **Flooding:** Messages propagated through network via relay nodes
 - **Relay:** Devices forward messages to extend range
 - **TTL (Time To Live):** Controls message propagation depth
@@ -76,28 +82,33 @@ Multi-layer security architecture:
 ## Device Roles
 
 ### Full Node
+
 - Maintains full mesh functionality
 - Processes all incoming messages
 - Participates in relay
 - Typically always-on devices
 
 ### Relay Node
+
 - Forwards messages from other devices
 - Extends network coverage
 - Combines full node features
 
 ### Low Power Node (LPN)
+
 - Battery-optimized operation
 - Maintains friendship with friend node
 - Reduced radio activity
 - Stores messages from friend node
 
 ### Friend Node
+
 - Collects messages for associated LPN devices
 - Maintains friendship relationship
 - Stores buffered messages
 
 ### Proxy Node
+
 - Gateway functionality
 - Connects non-mesh devices to mesh network
 - Bridges between mesh and other transports (BLE, GATT)
@@ -130,7 +141,7 @@ This specification defines:
 
 ## Message Flow Example
 
-```
+```text
 Application Model
        ↓
 Access Layer (AppKey encryption)
@@ -147,24 +158,28 @@ Bearer Layer (BLE Advertisement Channels)
 ## Use Cases
 
 ### Smart Lighting
+
 - Large installation lighting control
 - Scene management
 - Color and brightness control
 - Automated scheduling
 
 ### Building Automation
+
 - HVAC control
 - Environmental monitoring
 - Energy management
 - Access control integration
 
 ### Industrial IoT
+
 - Asset tracking
 - Sensor networks
 - Predictive maintenance
 - Remote monitoring
 
 ### Smart Home
+
 - Device coordination
 - Home automation scenes
 - Multi-room systems
@@ -201,15 +216,18 @@ When implementing Bluetooth Mesh:
 ## Additional Resources
 
 ### Official Bluetooth SIG
+
 - **Website:** https://www.bluetooth.com/
 - **Specifications:** https://www.bluetooth.com/specifications/specs/
 - **Documentation:** https://www.bluetooth.com/specifications/specs/html/
 
 ### Typical File Size
+
 - Specification content: ~500KB-1MB when converted to markdown
 - Implementation guides often significantly longer (specifications + examples)
 
 ### Format Notes
+
 - Original format: HTML with DocBook structure
 - Converted to: GitHub-flavored Markdown
 - All section hierarchies preserved
@@ -219,6 +237,7 @@ When implementing Bluetooth Mesh:
 ## Document Maintenance
 
 This markdown version is a conversion from the original Bluetooth SIG HTML specification for easier:
+
 - Integration with documentation systems
 - Version control tracking
 - Content searching and analysis
