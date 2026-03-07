@@ -135,14 +135,6 @@ repositories:
   source_folder: source
   target_folder: docs/github-scraped/mattermost
   branch: master
-- name: Matter SDK (connectedhomeip)
-  description: Matter SDK - Official C++ implementation of the Matter smart home protocol
-    from the Connectivity Standards Alliance, with comprehensive guides for getting started,
-    building Matter applications, and device certification
-  repo_url: https://github.com/project-chip/connectedhomeip.git
-  source_folder: docs
-  target_folder: docs/github-scraped/matter-sdk
-  branch: master
 - name: Matter RS
   description: Matter RS - Rust implementation of the Matter protocol with support for
     controllers, devices, commissioning, and secure communications
