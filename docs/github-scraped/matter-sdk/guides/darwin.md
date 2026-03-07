@@ -102,7 +102,7 @@ For Context: This is a mapping of platform to OS
 
 ### Install the Matter Profile on your HomePod
 
-##### Note: The profile will expire automatically after some time
+##### Note: The HomePod profile will expire automatically after some time
 
 1. Download the
    [Matter Developer Profile](https://developer.apple.com/services-account/download?path=/iOS/iOS_Logs/EnableBluetoothCentralMatterClientDeveloperMode.mobileconfig)
@@ -114,7 +114,7 @@ For Context: This is a mapping of platform to OS
 
 ### Install the Matter Profile on your Apple TV
 
-##### Note: The profile will expire automatically after some time
+##### Note: The Apple TV profile will expire automatically after some time
 
 1. Download the
    [profile](https://developer.apple.com/services-account/download?path=/iOS/iOS_Logs/EnableBluetoothCentralMatterClientDeveloperMode.mobileconfig)

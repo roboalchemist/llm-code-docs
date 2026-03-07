@@ -131,7 +131,7 @@ sudo apt-get install libsdl2-dev
 
 On macOS, install Xcode from the Mac App Store.
 
-#### UI builds
+#### UI builds (macOS)
 
 If building `-with-ui` variant, also install SDL2:
 
@@ -348,7 +348,7 @@ ninja -C out/host src/inet/tests:tests_run
 > **Note:** The build system caches passing tests, so you may see the following
 > message:
 >
-> ```
+> ```text
 > ninja: no work to do
 > ```
 >
