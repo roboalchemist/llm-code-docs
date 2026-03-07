@@ -20,7 +20,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 ## v2.0.2 (2025-09-17)
 
-### Changes
+### Changes (v2.0.2)
 
 - dependency updates
 - code style - use `subarray` instead of `slice` for buffers
@@ -29,7 +29,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - regenerate documentation (`typedoc`) files
 - docs: remove unnecessary `@group` tags on interface declarations
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v2.0.2)
 
 - `@homebridge/ciao` @ `v1.3.4`
 - `@homebridge/dbus-native` @ `v0.7.2`
@@ -37,11 +37,11 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 ## v2.0.1 (2025-07-23)
 
-### Changes
+### Changes (v2.0.1)
 
 - dependency updates
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v2.0.1)
 
 - `@homebridge/ciao` @ `v1.3.4`
 - `@homebridge/dbus-native` @ `v0.7.2`
@@ -55,7 +55,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
   - the minimum node version required is now `v20`
 - ⚠️ republish as `@homebridge/hap-nodejs` for consistency
 
-### Changes
+### Changes (v2.0.0)
 
 - update `commander` from `v13` to `v14`
 - Added support for NodeJS 24
@@ -63,7 +63,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - update `jest` to `v30` and required migration steps
 - update `eslint` to `v9` and required migration steps
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v2.0.0)
 
 - `@homebridge/ciao` @ `v1.3.3`
 - `@homebridge/dbus-native` @ `v0.7.1`
@@ -71,7 +71,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 ## v1.2.0 (2025-06-08)
 
-### Changes
+### Changes (v1.2.0)
 
 - add constants for `SecuritySystemAlarmType` (#1086)
 - update hk plist file from V=880 to V=886 (#1087)
@@ -81,7 +81,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - fix some bad merge conflicts from previous commit
 - updated dependencies, use included types from `dbus-native` (#1092)
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v1.2.0)
 
 - `@homebridge/ciao` @ `v1.3.2`
 - `@homebridge/dbus-native` @ `v0.7.1`
@@ -93,7 +93,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 ## v1.1.1 (2025-03-11)
 
-### Changes
+### Changes (v1.1.1)
 
 - Update name checking (#1083)
 
@@ -102,23 +102,23 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - Update docs
 - support node 22 + dependency updates (#1075)
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v1.1.1)
 
 - `@homebridge/ciao` @ `v1.3.0`
 - `bonjour-hap` @ `v3.8.0`
 
 ## v1.1.0 (2024-07-21)
 
-### Changes
+### Changes (v1.1.0)
 
 - Set `Ciao` as the default Advertiser
 
-### Other Changes
+### Other Changes (v1.1.0)
 
 - Update docs
 - Updated dependencies
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v1.1.0)
 
 - `@homebridge/ciao` @ `v1.3.0`
 - `bonjour-hap` @ `v3.8.0`
@@ -129,12 +129,12 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 - **The minimum Node.js version required is now `v18`.**
 - **Important notice:** Because of the cleanup of the Deprecated code, you will need to migrate you code base.
-    - Remove the long-deprecated init().
-    - Deprecate Core, BridgedCore, legacy Camera characteristics. (#1058) (@hjdhjd)
-        - For deprecated `Core` and `BridgedCore` see: https://github.com/homebridge/HAP-NodeJS/wiki/Deprecation-of-Core-and-BridgeCore
-    - Legacy code deprecation cleanup. (#1059) (@hjdhjd)
-        - For deprecated `storagePath` switch to `HAPStorage.setCustomStoragePath`, `AudioCodec` switch to `AudioStreamingCodec`, `VideoCodec` switch to `H264CodecParameters`,`StreamAudioParams` switch to `AudioStreamingOptions`, `StreamVideoParams` switch to `VideoStreamingOptions`,`cameraSource` switch to `CameraController`.
-    - Others deprecated code to highlight removed: `useLegacyAdvertiser`, `AccessoryLoader`.
+  - Remove the long-deprecated init().
+  - Deprecate Core, BridgedCore, legacy Camera characteristics. (#1058) (@hjdhjd)
+    - For deprecated `Core` and `BridgedCore` see: https://github.com/homebridge/HAP-NodeJS/wiki/Deprecation-of-Core-and-BridgeCore
+  - Legacy code deprecation cleanup. (#1059) (@hjdhjd)
+    - For deprecated `storagePath` switch to `HAPStorage.setCustomStoragePath`, `AudioCodec` switch to `AudioStreamingCodec`, `VideoCodec` switch to `H264CodecParameters`,`StreamAudioParams` switch to `AudioStreamingOptions`, `StreamVideoParams` switch to `VideoStreamingOptions`,`cameraSource` switch to `CameraController`.
+  - Others deprecated code to highlight removed: `useLegacyAdvertiser`, `AccessoryLoader`.
 - Fix: Naming for Characteristic.ProgramMode has been corrected from `PROGRAM_SCHEDULED_MANUAL_MODE_` to `PROGRAM_SCHEDULED_MANUAL_MODE`
 
 ### Fixed
@@ -145,7 +145,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - Fix: ConfiguredName (#1049) (@donavanbecker)
 - Fix: Manufacturer looking at checkName but should look at checkValue. (#1053) (@donavanbecker)
 
-### Other Changes
+### Other Changes (v1.0.0)
 
 - Implement warning messages for invalid characters in names (#1009) (@NorthernMan54)
 - Mitigate event emitter "memory leak" warnings when a significant number of camera streaming events occur simultaneously (#1037) (@hjdhjd)
@@ -158,7 +158,7 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 - Updated and fixed `typedoc` config file
 - Updated dependencies
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v1.0.0)
 
 - `@homebridge/ciao` @ `v1.3.0`
 - `bonjour-hap` @ `v3.8.0`
@@ -172,13 +172,13 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 ## v0.14.0 (2025-10-29)
 
-### Changed
+### Changed (v0.14.0)
 
 - remove `treatWarningsAsErrors` flag from doc gen
 - updated dependencies, fix `Buffer` types
 - add node 24 to node engines in `package.json`
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.14.0)
 
 - `@homebridge/ciao` @ `v1.3.4`
 - `bonjour-hap` @ `v3.9.1`
@@ -187,14 +187,14 @@ All notable changes to `hap-nodejs` will be documented in this file. This projec
 
 *No changes since v0.13.0, just a version bump to trigger a new release.*
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.13.1)
 
 - `@homebridge/ciao` @ `v1.3.1`
 - `bonjour-hap` @ `v3.9.0`
 
 ## v0.13.0 (2025-06-04)
 
-### Changed
+### Changed (v0.13.0)
 
 _Most of these commits have been backported from the `v1.x` track. None should be breaking changes._
 
@@ -213,59 +213,59 @@ _Most of these commits have been backported from the `v1.x` track. None should b
 - fix OOC errors from `validateUserInput` on steps
 - regenerate documentation for new version
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.13.0)
 
 - `@homebridge/ciao` @ `v1.3.1`
 - `bonjour-hap` @ `v3.9.0`
 
 ## v0.12.3 (2024-10-26)
 
-### Changed
+### Changed (v0.12.3)
 
 - minor dependency update
 - mark compatible with node v22
 - fix `initWithServices` reference in typedoc
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.12.3)
 
 - `@homebridge/ciao` @ `v1.3.0`
 - `bonjour-hap` @ `v3.8.0`
 
 ## v0.12.2 (2024-05-31)
 
-### Changed
+### Changed (v0.12.2)
 
 - Updated dependencies (`rimraf` and `@types/node`)
 - Updated dependencies (`simple-plist`)
 - Updated dependencies (`typescript`)
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.12.2)
 
 - `@homebridge/ciao` @ `v1.2.0`
 - `@homebridge/dbus-native` @ `v0.6.0`
 
 ## v0.12.1 (2024-05-11)
 
-### Changed
+### Changed (v0.12.1)
 
 - Updated dependencies (`axios` and `commander`)
 
-### Fixed
+### Fixed (v0.12.1)
 
 - Mitigate event emitter "memory leak" warnings when a significant number of HSV events occur simultaneously (#1029) (@hjdhjd)
 
-### Other Changes
+### Other Changes (v0.12.1)
 
 - Update Discord Webhooks to trigger only after published to npm
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.12.1)
 
 - `@homebridge/ciao` @ `v1.2.0`
 - `@homebridge/dbus-native` @ `v0.6.0`
 
 ## v0.12.0 (2024-04-19)
 
-### Changed
+### Changed (v0.12.0)
 
 - Create `CHANGELOG.md` file
 - Fix: typos + add logo to `README.md`
@@ -277,7 +277,7 @@ _Most of these commits have been backported from the `v1.x` track. None should b
 - update homebridge dependencies
 - regenerate docs
 
-### Homebridge Dependencies
+### Homebridge Dependencies (v0.12.0)
 
 - `@homebridge/ciao` @ `v1.2.0`
 - `@homebridge/dbus-native` @ `v0.6.0`

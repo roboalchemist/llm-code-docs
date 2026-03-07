@@ -1,4 +1,5 @@
 # Supported Cryptographic Libraries
+
 * OpenSSL (1.1.1c or later)
 * MbedTLS (2.18.0 or later)
 
@@ -31,7 +32,7 @@ their own production quality implementation (or hardware accelerated implementat
 To disable our implementation we recommend including the C file of our bindings in a new C file and
 defining *HAVE_CUSTOM_ED25519*, which disables our implementation.
 
-```
+```c
 #define ED25519_PUBLIC_KEY_BYTES 32
 #define ED25519_SECRET_KEY_BYTES 32
 #define ED25519_BYTES 64
@@ -51,7 +52,7 @@ int HAP_ed25519_verify(const uint8_t sig[ED25519_BYTES],
 
 X25519 is an elliptic curve Diffie-Hellman key exchange scheme using Curve25519.
 
-```
+```c
 #define X25519_SCALAR_BYTES 32
 #define X25519_BYTES 32
 
@@ -66,7 +67,7 @@ void HAP_X25519_scalarmult(uint8_t r[X25519_BYTES],
 
 Authenticated Encryption using ChaCha20 stream cipher and Poly1305 authenticator.
 
-```
+```c
 #define CHACHA20_POLY1305_KEY_BYTES 32
 #define CHACHA20_POLY1305_NONCE_BYTES_MAX 12
 #define CHACHA20_POLY1305_TAG_BYTES 16
@@ -104,7 +105,7 @@ If HAVE_CUSTOM_SINGLE_SHOT_CHACHA20_POLY1305 is not set, we synthesize a single 
 the streaming API above. Otherwise the backend must provide the following API. This is
 recommended for BLE-only crypto backends. *The streaming API is needed by IP accessories only.*
 
-```
+```c
 void HAP_chacha20_poly1305_encrypt_aad(uint8_t tag[CHACHA20_POLY1305_TAG_BYTES],
                                        uint8_t *c,
                                        const uint8_t *m, size_t m_len,
@@ -133,7 +134,7 @@ substituting an optimized implementation for MCU-class silicon.*
 To replace our implementation we recommend including the C file of our bindings in a new C file and
 defining *CUSTOM_SRP*, which disables our implementation.
 
-```
+```c
 #define SRP_PRIME_BYTES 384
 #define SRP_SALT_BYTES 16
 #define SRP_VERIFIER_BYTES 384
@@ -177,7 +178,7 @@ void HAP_srp_proof_m2(uint8_t m2[SRP_PROOF_BYTES],
 
 Secure Hash Algorithms (SHA1, SHA-256, and SHA-512)
 
-```
+```c
 #define SHA1_BYTES 20
 
 void HAP_sha1(uint8_t md[SHA1_BYTES], const uint8_t *data, size_t size);
@@ -195,7 +196,7 @@ void HAP_sha512(uint8_t md[SHA512_BYTES], const uint8_t *data, size_t size);
 
 Hash-based message authentication code using SHA1. *Only needed for IP Accessories.*
 
-```
+```c
 #define HMAC_SHA1_BYTES SHA1_BYTES
 
 void HAP_hmac_sha1_aad(uint8_t r[HMAC_SHA1_BYTES],
@@ -208,7 +209,7 @@ void HAP_hmac_sha1_aad(uint8_t r[HMAC_SHA1_BYTES],
 
 HMAC-based key derivation function using SHA-512.
 
-```
+```c
 void HAP_hkdf_sha512(uint8_t* r, size_t r_len,
                      const uint8_t* key, size_t key_len,
                      const uint8_t* salt, size_t salt_len,
@@ -219,7 +220,7 @@ Brute-force resistant password-based key derivation function.
 
 ### PBKDF2-SHA1
 
-```
+```c
 void HAP_pbkdf2_hmac_sha1(uint8_t *key, size_t key_len,
                           const uint8_t *password, size_t password_len,
                           const uint8_t *salt, size_t salt_len,
@@ -230,7 +231,7 @@ void HAP_pbkdf2_hmac_sha1(uint8_t *key, size_t key_len,
 
 AES block cipher in CTR mode. *Only needed for IP Accessories.*
 
-```
+```c
 void HAP_aes_ctr_init(HAP_aes_ctr_ctx *ctx, const uint8_t *key, int size, const uint8_t iv[16]);
 void HAP_aes_ctr_encrypt(HAP_aes_ctr_ctx *ctx, uint8_t* ct, const uint8_t* pt, size_t pt_len);
 void HAP_aes_ctr_decrypt(HAP_aes_ctr_ctx *ctx, uint8_t* pt, const uint8_t* ct, size_t ct_len);

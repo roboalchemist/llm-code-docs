@@ -3,28 +3,34 @@
 ## Using Visual Studio Code
 
 ### Installation
+
 * Download VSCode: https://code.visualstudio.com/
 
 * To install c/c++ language support: within VSCode press ⌘+p and enter
-```
+
+```text
 ext install ms-vscode.cpptools
 ```
 
 * To install debugger: within VSCode, press ⌘+p and enter
-```
+
+```text
 ext install vadimcn.vscode-lldb
 ```
+
 * Note: an alternative debugger is necessary because llvm no longer includes lldb-mi which the default debugger uses.
 
 
 ### Running an application
+
 * Create a workspace which points to the root of your ADK folder.
 * Click "Debug" > "Open Configuration", which will open the launch.json file.
 * Set "type" to "lldb"
 * Set "program" to the application you want to run.
 
 Example launch.json file for Lightbulb app:
-```
+
+```json
 {
     "version": "0.2.0",
     "configurations": [

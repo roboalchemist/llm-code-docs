@@ -9,12 +9,14 @@ and comprehensive documentation for building HomeKit accessories.
 ## What's Included
 
 ### Documentation
+
 - **HAP Specification**: Complete protocol definition for HomeKit communication
 - **Getting Started Guide**: How to build your first HomeKit accessory
 - **Crypto Documentation**: Security protocols (SRP, Ed25519, Curve25519)
 - **Visual Debug Guide**: Debugging tips for macOS development
 
 ### Reference Implementation
+
 - **HAP Library**: Full C implementation of the HomeKit Accessory Protocol
 - **Services & Characteristics**: Predefined HomeKit service and characteristic definitions
 - **Examples**: Reference implementations for various accessory types
@@ -46,15 +48,19 @@ and comprehensive documentation for building HomeKit accessories.
 ## Common Tasks
 
 ### Understanding HAP
+
 Start with the Documentation folder to understand the protocol.
 
 ### Implementing an Accessory
+
 Use the reference implementation and examples to guide your development.
 
 ### Working with Services & Characteristics
+
 Refer to the service definitions for all available HomeKit types.
 
 ### Security & Pairing
+
 Review crypto.md for security protocol details.
 
 ## Related Resources

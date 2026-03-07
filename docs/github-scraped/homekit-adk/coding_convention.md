@@ -1,26 +1,32 @@
 # Coding Conventions
 
 ## Code Style
+
 Please use the following tools to auto-format your code before submitting a Pull Request.
 
 ### Linting
+
 This project uses `clang-format` tool to lint and format source code and uses `shellcheck` to lint
 shell files.
-```
+
+```bash
 ./Tools/linters/lint.sh -h
 ```
 
 ### Enforcing lint rules at commit time
+
 As a convenience, the following git pre-commit hook can be used to validate that commits are properly
 linted. The hook will check all staged files with the linter and fail the commit if the linter finds issues
 (but does not reformat or fix any issues).
-```
+
+```bash
 cp Tools/linters/git-hooks-pre-commit .git/hooks/pre-commit
 ```
 
 ## Conventions
 
 ### Sample Application
+
 - In DB.c, the following IIDs should be used:
   - 0x...0 Service IID.
   - 0x...1 Service Signature characteristic IID. Only present when the service has linked service or has properties.
@@ -32,6 +38,7 @@ When updating a DB file for a sample that has already been released, try to avoi
 
 
 ### Error Handling
+
 - Unexpected errors `HAPError` are used for exceptional circumstances such as communication failure with I2C,
 or access problems with key-value store. Those errors should be modeled as `HAPError` and are in most cases
 bubbled out to the caller until the next error handler.
@@ -46,6 +53,7 @@ has to handle expected errors returned through the separate out parameters.
 
 
 ### Specification References
+
 - Always reference the spec if possible, and always use the exact same format to simplify "Find in Files" searches.
   - First line: `@see` or See followed by exact PDF Title as shown in title bar when opening it.
   - Second line: Section + Section number + exact Section Title.
@@ -57,7 +65,8 @@ the Doxygen `@obsolete` tag to specify the first revision it got removed. Avoid 
 use `@obsolete` instead.
 
 #### Example for documentation block
-```
+
+```c
 /**
  * ...
  *
@@ -67,7 +76,8 @@ use `@obsolete` instead.
 ```
 
 #### Example for code comment
-```
+
+```c
 // ...
 // See HomeKit Accessory Protocol Specification R15
 // Section 1.2.3.4 Some Sample Section
@@ -75,11 +85,12 @@ use `@obsolete` instead.
 
 
 ### Definitions
+
 - Definition name: kHAPCategory_PascalCase
 - Always explicitly specify the type of the definition, e.g., `uint8_t`, `size_t`.
 - Consider using enumerations instead, where possible.
 
-```
+```c
 /**
  * Brief description
  */
@@ -88,6 +99,7 @@ use `@obsolete` instead.
 
 
 ### Enumerations
+
 - Enumerations are never used to store out-of-range values. Instead, the underlying type is used, e.g., `uint8_t`.
 Before casting to an enum, perform proper input validation. When receiving an enum, no thorough input validation is
 necessary as it is already done.
@@ -102,7 +114,7 @@ comment block may be used to condense information. If the enum is defined in an 
 per indentation.
 - In interfaces, always use `HAP_ENUM_BEGIN` / `HAP_ENUM_END` for portability across different compiler settings.
 
-```
+```c
 /**
  * Enum type documentation.
  */
@@ -126,6 +138,7 @@ HAP_ENUM_BEGIN(uint8_t, HAPEnumType) {
 
 
 ### Functions
+
 - Function names: *HAPPascalCase*<br>
 Use concise names and avoid abbreviations. Length does not matter here. If targeting an object, first mention the
 object, e.g., `HAPAccessoryServerStartBridge` targets a `HAPAccessoryServer` object. In that case, also make sure that
@@ -141,10 +154,10 @@ it must be marked with `HAP_RESULT_USE_CHECK`. If the function cannot fail and d
 return void. If unsure whether a function may return an error, start with void return first. Errors that arise from
 API misuse (invalid arguments, invalid state) crash / assert instead of returning error.
 - Every parameter and return value is documented.
-   - If a parameter is an out-parameter, [out] is attached after the `@param`.
-   - If a parameter is an in/out parameter, [in, out] is attached after the `@param`.
-   - `true` / `false` return values are written in lowercase in documentation.
-   - `HAPError` return values are sorted in documentation in the same way as listed in the `HAPError` enum.
+  - If a parameter is an out-parameter, [out] is attached after the `@param`.
+  - If a parameter is an in/out parameter, [in, out] is attached after the `@param`.
+  - `true` / `false` return values are written in lowercase in documentation.
+  - `HAPError` return values are sorted in documentation in the same way as listed in the `HAPError` enum.
 - GCC attributes one per line, sorted alphabetically. Apply GCC attributes to both declaration and definition of the
 function.
 - Function bodies are streamlined
@@ -159,7 +172,7 @@ just re-throwing an error, do not log. The error is already logged when it was t
 checked even in error cases, wrap the function body in a second function that uses early returns, and check the
 post-condition in the wrapping function.
 
-```
+```c
 /**
  * Brief documentation about the function.
  *
@@ -196,6 +209,7 @@ static HAPError HAPDoSomething(
 ```
 
 ### Header Files
+
 - Name: `HAPPascalCase.h`. The file name does not have to be a prefix of all functions.
 - If several items form a certain subgroup of a header, consider using a separate header file.
 Name: `HAPBaseHeader+CategoryName.h`
@@ -205,29 +219,29 @@ forget to update the log category / subsystem in source files that implement the
 - Always include `extern "C"` declaration, even in internal headers. Headers may move around over time and become
 visible to C++. Also include the declaration when it is not necessary, for consistency. It doesn't hurt.
 - Header files are streamlined:
-   -  Copyright notice. Make sure it is EXACTLY the same in all files, so that automated re-copyrighting scripts work.
-   -  Empty line.
-   -  Header guard.
-   -  Empty line.
-   -  extern "C" declaration.
-   -  `#include <system_header.h>`, sorted alphabetically. If some are in a subdirectory, place them in the end.
-      System headers must only be included in HAPBase.h and in platform-specific code!
-   -  Empty line, if system headers were included.
-   -  `#include "platform_header.h"`, sorted alphabetically. This is for headers coming from external dependencies.
-   -  Empty line, if platform headers were included.
-   -  `#include "HAP.h"` / `#include "HAPPlatform.h"`, and categories of own header files, sorted alphabetically.
-   -  Empty line.
-   -  Enter `assume_nonnull` block.
-   -  Header file contents.
-   -  Exit `assume_nonnull` block.
-   -  Empty line.
-   -  If necessary, further `#include` statements, followed by empty line.
-   -  Complete extern "C" declaration.
-   -  Empty line.
-   -  Complete header guard.
-   -  Empty line.
+  - Copyright notice. Make sure it is EXACTLY the same in all files, so that automated re-copyrighting scripts work.
+  - Empty line.
+  - Header guard.
+  - Empty line.
+  - extern "C" declaration.
+  - `#include <system_header.h>`, sorted alphabetically. If some are in a subdirectory, place them in the end.
+    System headers must only be included in HAPBase.h and in platform-specific code!
+  - Empty line, if system headers were included.
+  - `#include "platform_header.h"`, sorted alphabetically. This is for headers coming from external dependencies.
+  - Empty line, if platform headers were included.
+  - `#include "HAP.h"` / `#include "HAPPlatform.h"`, and categories of own header files, sorted alphabetically.
+  - Empty line.
+  - Enter `assume_nonnull` block.
+  - Header file contents.
+  - Exit `assume_nonnull` block.
+  - Empty line.
+  - If necessary, further `#include` statements, followed by empty line.
+  - Complete extern "C" declaration.
+  - Empty line.
+  - Complete header guard.
+  - Empty line.
 
-```
+```c
 #ifndef HAP_HEADER_FILE_NAME_H
 #define HAP_HEADER_FILE_NAME_H
 
@@ -257,6 +271,7 @@ extern "C" {
 ```
 
 ### Switch Statements
+
 - When switching over a closed enum, do not add a default case. Try to return from every case, and place a fatal error
 after the switch. This ensures compiler warnings when new enum cases are added but are not explicitly handled.
 - Use a separate scope for every case. (Empty cases are allowed to be condensed together, e.g., case 'c' / 'd' below).
@@ -264,7 +279,7 @@ after the switch. This ensures compiler warnings when new enum cases are added b
 - When switching on enumerations, add a default case like `default: HAPFatalError();` or `default: false`
 as the final line to cover unexpected values.
 
-```
+```c
 switch (foo) {
     case 'a': {
         // Handle case.
@@ -286,7 +301,7 @@ switch (foo) {
 scope does not help with readability. If there are a lot of cases and the switch is just a conversion table from
 one constant to another it can also be considered to remove the brackets to avoid spanning the switch across pages.
 
-```
+```c
 static const char *GetCurrentHeatingCoolingStateDescription(
     HAPCharacteristicValue_CurrentHeatingCoolingState state)
 {
@@ -303,6 +318,7 @@ static const char *GetCurrentHeatingCoolingStateDescription(
 ```
 
 ### Goto Statements
+
 - In general, goto statements should be avoided. Especially, goto statements must not be used to jump backwards.
 However, in the following scenarios, goto statements may be used.
 - If a postcondition needs to be checked or final cleanup needs to be performed before returning from a function,
@@ -318,6 +334,7 @@ before the definition of the next case label.
 - Goto labels should use camelCase.
 
 ### Magic numbers
+
 - Number literals are avoided in favor of named constants, except where a literal is more transparent, e.g
   - obvious offsets like `+/- 1`
   - offsets or shift distances and masks for bit manipulation like this:  `mantissa = (x >> 9) & 0x1FFFF;`
@@ -325,11 +342,13 @@ before the definition of the next case label.
 - Test code is allowed to contain magic numbers
 
 ### Dynamic memory allocation
+
 - There are only a few places in the PAL where we do dynamic memory allocation, none in the HAP Library.
 - Use the macro `HAPPlatformFreeSafe` to deallocate memory in cases where memory is allocated dynamically with libc.
 - Use similar macros for third-party library deallocation.
 
 ### Use of parameters
+
 - All public functions are documented with Doxygen comments.
 - All const pointers and non-pointer values are inputs (caller provides data).
 - All non-const pointers are outputs or inouts.
@@ -339,30 +358,32 @@ before the definition of the next case label.
 except for "this" pointers which are the first parameters of functions that work with object-like data types.
 
 ### Use of void parameters
+
 - We normally use typed parameters.
 - If byte buffers are returned, void is used instead, to not force clients to use type casts. This is the same style as
 Apple's mDNSResponder.
 
 
 ### Opaque structures
+
 - Internal structures that are exposed publicly should be hidden by following the opaque pattern.
 - Public header: Use the `HAP_OPAQUE` define with the first arguments defining the size in multiples of 8.
 The associated data is aligned on 8 bytes. Name ends in `Ref`.
 
-```
+```c
 typedef HAP_OPAQUE(24) HAPFooRef;
 ```
 
 - Private header: Specify real structure without "Ref" in name and static assert that it fits into a Ref.
   `typedef struct { ... } HAPFoo;`
 
-```
+```c
 HAP_STATIC_ASSERT(sizeof (HAPFooRef) >= sizeof (HAPFoo), HAPFoo);
 ```
 
 - Functions: Always pass around refs. If internal fields need to be accessed, create second variable with _ postfix.
 
-```
+```c
     HAPFooRef *foo_;
     HAPFoo *foo = (HAPFoo *) foo_;
 ```

@@ -24,12 +24,15 @@ It allows you to build HomeKit-compatible accessories and integrate them with th
 ## Common Tasks
 
 ### Creating an Accessory
+
 See the examples in the docs folder for creating HomeKit accessories.
 
 ### Pairing with Controllers
+
 HAP-nodejs handles the HomeKit pairing process automatically.
 
 ### Working with Services and Characteristics
+
 Use predefined service and characteristic types from the library.
 
 ## Related Documentation
