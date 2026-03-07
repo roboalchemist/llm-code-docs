@@ -135,6 +135,36 @@ repositories:
   source_folder: source
   target_folder: docs/github-scraped/mattermost
   branch: master
+- name: Matter SDK (connectedhomeip)
+  description: Matter SDK - Official C++ implementation of the Matter smart home protocol
+    from the Connectivity Standards Alliance, with comprehensive guides for getting started,
+    building Matter applications, and device certification
+  repo_url: https://github.com/project-chip/connectedhomeip.git
+  source_folder: docs
+  target_folder: docs/github-scraped/matter-sdk
+  branch: master
+- name: Matter RS
+  description: Matter RS - Rust implementation of the Matter protocol with support for
+    controllers, devices, commissioning, and secure communications
+  repo_url: https://github.com/project-chip/rs-matter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/matter-rs
+  branch: main
+- name: Matter Handbook
+  description: Matter Handbook - Official reference guide for building Matter-enabled
+    devices with documentation on cluster definitions, device types, and best practices
+  repo_url: https://github.com/project-chip/matter-handbook.git
+  source_folder: src
+  target_folder: docs/github-scraped/matter-handbook
+  branch: main
+- name: Matter.js
+  description: Matter.js - Complete TypeScript implementation of the Matter protocol
+    specification with full support for controllers, devices, commissioning, and cluster
+    definitions
+  repo_url: https://github.com/matter-js/matter.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/matter.js
+  branch: main
 - name: Laravel
   description: Laravel - PHP framework with elegant middleware system for HTTP request
     handling
@@ -225,6 +255,20 @@ repositories:
   source_folder: apps/docs/content
   target_folder: docs/github-scraped/heroui
   branch: main
+- name: HAP-nodejs
+  description: HAP-nodejs - HomeKit Accessory Protocol implementation for Node.js
+    with complete protocol documentation, service definitions, and pairing mechanisms
+  repo_url: https://github.com/homebridge/HAP-nodejs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/hap-nodejs
+  branch: latest
+- name: HomeKit ADK
+  description: Apple HomeKit Accessory Development Kit - Official HAP specification,
+    implementation guide, and C reference with support for HTTP/IP and Bluetooth LE
+  repo_url: https://github.com/apple/HomeKitADK.git
+  source_folder: Documentation
+  target_folder: docs/github-scraped/homekit-adk
+  branch: master
 - name: HomeAssistant
   description: Home Assistant - Open-source home automation platform with focus on
     local control and privacy
