@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2026-03-07 20:33
-  total_sources: 747
-  total_fetched: 747
+  last_updated: 2026-03-07 20:42
+  total_sources: 748
+  total_fetched: 748
   llms_txt_count: 363
   llms_txt_fetched: 363
   github_count: 186
   github_fetched: 186
-  web_scraped_count: 197
-  web_scraped_fetched: 197
+  web_scraped_count: 198
+  web_scraped_fetched: 198
   specifications_count: 1
   specifications_fetched: 1
 llms_txt:
@@ -4293,6 +4293,13 @@ web_scraped:
   file_count: 9
   size: 69.0KB
   last_updated: 2026-03-07 20:33
+- name: apple-homekit
+  description: Apple HomeKit Framework documentation for iOS and macOS developers
+  path: docs/web-scraped/apple-homekit/
+  status: fetched
+  file_count: 6
+  size: 39.8KB
+  last_updated: 2026-03-07 20:42
 - name: applescript
   description: applescript documentation
   path: docs/web-scraped/applescript/
