@@ -11,6 +11,7 @@ The Matter standard evolves continuously and delivers two updates per year. matt
 - **Matter 1.4.2**: matter.js 0.16.x and higher
 
 The following Matter protocol level features are not yet supported by matter.js:
+
 - Groups persistence for controller not yet implemented
 - Bindings are only partially implemented
 - DCL validation (incl. revocation checks) for controllers is not yet implemented

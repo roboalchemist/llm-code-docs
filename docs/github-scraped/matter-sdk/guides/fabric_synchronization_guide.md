@@ -60,7 +60,7 @@ Run the Fabric Synchronization script:
 
 ## Bootstrap Fabric Sync Demo on RP4
 
-### Start Fabric Synchronization on Ecosystem 1
+### Start Fabric Synchronization on Ecosystem 1 (RP4)
 
 Connect to the Ecosystem 1 server:
 
@@ -76,7 +76,7 @@ Run the Fabric Synchronization script:
 ./run_fabric_sync.sh
 ```
 
-### Start Fabric Synchronization on Ecosystem 2
+### Start Fabric Synchronization on Ecosystem 2 (RP4)
 
 Connect to the Ecosystem 2 server:
 

@@ -392,18 +392,18 @@ Endpoint: 0 Cluster: 0x0000_001F Attribute 0x0000_0000DataVersion: 2578401041
 
 ## Managing ACLs Using matter-repl
 
-### Usage
+### Usage (matter-repl)
 
 This section provides examples of commands and ACL output for different
 operations with the matter-repl.
 
-#### Entire List
+#### Entire List (matter-repl)
 
 See the important notes in the
 [Managing ACLs using CHIP-Tool](#managing-acls-using-chip-tool) section, as they
 also apply to the matter-repl.
 
-### Null Fields
+### Null Fields (matter-repl)
 
 Null fields may be omitted.
 
@@ -414,7 +414,7 @@ This means that the following entry is acceptable:
 The above assumes Target and Null are defined at global scope, which is not
 normally the case.
 
-#### Fabric Index
+#### Fabric Index (matter-repl)
 
 The `ACL` attribute is fabric-scoped, so each ACL has a fabric index.
 
@@ -449,7 +449,7 @@ Some typical clusters:
 - Clusters.AccessControl.id
 - Clusters.BasicInformation.id
 
-### Examples
+### Examples (matter-repl)
 
 This section provides examples of commands and ACL output for different
 operations with the matter-repl.
@@ -484,7 +484,7 @@ await devCtrl.ReadAttribute(1, [ (0, Clusters.AccessControl.Attributes.Acl ) ] )
 }
 ```
 
-#### Installing a CASE ACL
+#### Installing a CASE ACL (matter-repl)
 
 ```text
 await devCtrl.WriteAttribute(1, [ (0, Clusters.AccessControl.Attributes.Acl( [
@@ -533,7 +533,7 @@ await devCtrl.WriteAttribute(1, [ (0, Clusters.AccessControl.Attributes.Acl( [
 }
 ```
 
-#### Installing a Group ACL
+#### Installing a Group ACL (matter-repl)
 
 ```text
 await devCtrl.WriteAttribute(1, [ (0, Clusters.AccessControl.Attributes.Acl( [

@@ -37,7 +37,7 @@ and attributes.
 An example code snippet showing the translation of the TLV into API calls to the
 ClusterLogic class:
 
-```
+```cpp
 CHIP_ERROR DiscoBallServer::Read(const ConcreteReadAttributePath & aPath,
     AttributeValueEncoder & aEncoder)
 {
@@ -103,7 +103,7 @@ Server::GetInstance()
 
 ![](./img/unit_testable_clusters_context.png)
 
-### ClusterDriver
+### ClusterDriver API Design
 
 The ClusterDriver is called by the ClusterLogic class and is used to translate
 attribute changes and commands into application actions. It also reports

@@ -17,7 +17,7 @@ tools/*
 - The
         [documentation page](https://project-chip.github.io/connectedhomeip-doc/)
         is the end product
-    -   Links can be relative; links ending in ".md" in the code will be
+  - Links can be relative; links ending in ".md" in the code will be
             reflected as ".html" on that page
 - Pull Requests
 - Built in style and spelling checks must be satisfied

@@ -108,7 +108,7 @@ A common problem encountered is that a container can't resolve
 `archive.ubuntu.com` and can't install anything via `apt-get`, during the
 creation of the container image, resulting in an error like:
 
-```
+```text
 E: Package 'locales' has no installation candidate
 The command '/bin/sh -c apt-get install -y locales && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8' returned a non-zero code: 100
 ```
@@ -119,21 +119,21 @@ more secure environments is not accessible. A typical solution for this is to
 put a following key/value into your system-wide docker `daemon.json` (Typically
 located under `/etc/docker/daemon.json` on a Linux system):
 
-```
+```json
 "dns": ["<<IP ADDRESS OF YOUR NAMESERVER>>", "8.8.8.8"]
 ```
 
 You can obtain the address you should put into that line of your nameserver by
 running:
 
-```
+```bash
 nmcli dev show | grep 'IP4.DNS'
 ```
 
 After you update the dns, you should restart docker, specific to your system. On
 a typical Linux workstation, you do this via:
 
-```
+```bash
 sudo service docker restart
 ```
 

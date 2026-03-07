@@ -23,7 +23,7 @@ directory:**
    (e.g. in mode-base-cluster.xml you may need to add cluster codes - otherwise
    you may get strange exceptions which aren't clear when running regen_all.py)
 
-    > ```
+    > ```xml
     > <struct name="ModeOptionStruct">
     >  <cluster code="0x0051"/> <!-- Laundry Washer Mode -->
     >  <cluster code="YOUR NEW CLUSTER ID"/>

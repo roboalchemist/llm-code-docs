@@ -380,14 +380,14 @@ corresponding QR code to the T4T applet.
 > **Note:** Refer to `platform/nxp/crypto/se05x/CHIPCryptoPALHsm_se05x_config.h`
 > for additional code changes required for this integration.
 
-### GN Build
+### GN Build (Trust Provisioned Verifiers)
 
 ```bash
 gn gen out --args="chip_se05x_spake_verifier=true chip_se05x_spake_verifier_use_tp_values=true chip_se05x_spake_verifier_tp_set_no=1 chip_se05x_spake_verifier_tp_iter_cnt=1000"
 
 ```
 
-### CMake Build
+### CMake Build (Trust Provisioned Verifiers)
 
 **Note:** Factory data must be provisioned first to use Trust provisioned
 values. Refer to [NXP Manufacturing Flow](nxp_manufacturing_flow.md).

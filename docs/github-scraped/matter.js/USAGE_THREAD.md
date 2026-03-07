@@ -29,7 +29,7 @@ Alternatively you can use a "trick" with a matter.js test device to gather the t
 
 This requires a Raspberry Pi with BLE available and Matter.js's `matter-node.js-examples` package installed (other hardware will work but here BLE support can be finicky). Then you use the `DeviceFull` example with these parameters:
 
-```
+```bash
 node node_modules/@matter/examples/dist/esm/examples/DeviceNodeFull.js --storage-path=.thread --ble-enable --ble-thread-fake --passcode=20202021 --discriminator=1234
 ```
 
@@ -49,7 +49,7 @@ On the OTBR host use `sudo ot-ctl discover` to scan for Thread networks and sele
 
 Using these fields as additional parameters, your start command for the device looks like:
 
-```
+```bash
 node node_modules/@matter/examples/dist/esm/examples/DeviceNodeFull.js --storage-path=.thread --ble-enable --ble-thread-fake --passcode=20202438 --discriminator=1248 --ble-thread-panid=XXXX --ble-thread-extendedpanid=XXXXXXXXX --ble-thread-networkname=AMZN-Thread-XXXX --ble-thread-channel=XX --ble-thread-address=XXXXXXXXXXX
 ```
 

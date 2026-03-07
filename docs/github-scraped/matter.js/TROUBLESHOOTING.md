@@ -21,6 +21,7 @@ Before you think about opening an issue or such please have a lok at the informa
 ## How to report issues
 
 If you have issues with pairing, please provide the following information when reporting the issue:
+
 * Debug Log - please do not cut it out yourself. In most cases "more log is better"
 * Node.js Version and OS type and version
 * Ecosystem you are using
@@ -77,35 +78,35 @@ There may be other network daemons which will override this option (for example,
 
 You can check the accept_ra value with:
 
-```
+```bash
 $ sudo sysctl -n net.ipv6.conf.wlan0.accept_ra
 0
 ```
 
 And set the value to 1 (or 2 in case IP forwarding is enabled) with:
 
-```
+```bash
 $ sudo sysctl -w net.ipv6.conf.wlan0.accept_ra=1
 Net.ipv6.conf.wlan0.accept_ra = 1
 ```
 
 The accept_ra_rt_info_max_plen option on most Linux distributions is default to 0, set it to 64 with:
 
-```
+```bash
 $ sudo sysctl -w net.ipv6.conf.wlan0.accept_ra_rt_info_max_plen=64
 net.ipv6.conf.wlan0.accept_ra_rt_info_max_plen = 64
 ```
 
 To make these changes permanent, add the following lines to `/etc/sysctl.conf`:
 
-```
+```text
 net.ipv6.conf.eth0.accept_ra=1
 net.ipv6.conf.eth0.accept_ra_rt_info_max_plen=64
 ```
 
 Raspberry Pi users may need to add the following lines to `/etc/dhcpcd.conf` to prevent dhcpcd from overriding the accept_ra value:
 
-```
+```text
 noipv6
 noipv6rs
 ```
