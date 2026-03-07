@@ -26,7 +26,7 @@ This specification covers critical aspects of Z-Wave protocol implementation. Fo
 
 The following content has been extracted from the official Z-Wave specification:
 
-```
+```text
 Z-Wave API Specification
 Release 2.9.0
 

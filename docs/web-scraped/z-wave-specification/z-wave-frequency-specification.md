@@ -26,7 +26,7 @@ This specification covers critical aspects of Z-Wave protocol implementation. Fo
 
 The following content has been extracted from the official Z-Wave specification:
 
-```
+```text
 Specifications
 
 Z-Wave Alliance Frequency and Region List, Release 1.9.0

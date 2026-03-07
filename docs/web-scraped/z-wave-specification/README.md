@@ -58,7 +58,7 @@ Z-Wave is a wireless mesh networking protocol designed for reliable home automat
 
 ### Protocol Stack
 
-```
+```text
 Application Layer      (Command Classes, Security, Validation)
      ↓
 Framework/Transport    (Reliable Delivery, Sequencing)
@@ -75,6 +75,7 @@ Radio Hardware        (Transceiver)
 ### Command Classes
 
 Z-Wave communication is organized around **command classes** that define specific functionality:
+
 - **Basic**: Basic on/off control
 - **Multilevel Switch**: Dimming and percentage control
 - **Door Lock**: Secure locking mechanisms
@@ -88,6 +89,7 @@ Z-Wave communication is organized around **command classes** that define specifi
 ### Routing
 
 Z-Wave uses a mesh networking approach:
+
 - Each node can relay messages (with hop count limiting)
 - AODV-like routing protocol
 - Route request/reply mechanism
@@ -96,6 +98,7 @@ Z-Wave uses a mesh networking approach:
 ### Security
 
 Two security levels:
+
 - **S0 (S0-Legacy)**: AES-128 CCM (128-bit, deprecated)
 - **S2**: AES-CCMP with ECDH key agreement (modern, 256-bit equivalent)
 
