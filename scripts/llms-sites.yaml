@@ -278,6 +278,9 @@ sites:
 - name: docker
   base_url: https://docs.docker.com/
   description: Docker containerization platform
+- name: eclipse-ditto
+  base_url: https://eclipse.dev/ditto/
+  description: Eclipse Ditto open source digital twin framework for IoT
 - name: dnd-kit
   base_url: https://docs.dndkit.com/
   description: dnd kit drag and drop library for React
@@ -845,6 +848,9 @@ sites:
 - name: sherlockdomains
   base_url: https://www.sherlockdomains.com/
   description: Sherlockdomains documentation
+- name: silicon-labs-openthread
+  base_url: https://docs.silabs.com/openthread/latest/
+  description: Silicon Labs OpenThread documentation for EFR32 microcontrollers and wireless devices
 - name: shopify
   base_url: https://shopify.dev/
   description: Shopify developer platform with Admin API (GraphQL and REST), Storefront
