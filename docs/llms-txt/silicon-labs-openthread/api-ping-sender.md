@@ -2,7 +2,7 @@
 
 # Ping Sender
 
-This file includes the OpenThread API for the ping sender module. 
+This file includes the OpenThread API for the ping sender module.
 
 ## Modules
 
@@ -18,7 +18,7 @@ This file includes the OpenThread API for the ping sender module.
 
 `typedef struct otPingSenderReply otPingSenderReply`
 
-**Description:**
+**Description**:
 
 Represents a ping reply.
 
@@ -26,7 +26,7 @@ Represents a ping reply.
 
 `typedef struct otPingSenderStatistics otPingSenderStatistics`
 
-**Description:**
+**Description**:
 
 Represents statistics of a ping request.
 
@@ -34,41 +34,41 @@ Represents statistics of a ping request.
 
 `typedef void(* otPingSenderReplyCallback) (const otPingSenderReply *aReply, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer type specifies the callback to notify receipt of a ping reply.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aReply|A pointer to a `otPingSenderReply` containing info about the received ping reply.|
 ||[in]|aContext|A pointer to application-specific context.|
 
-**Details:**
+**Details**:
 
 ### otPingSenderStatisticsCallback
 
 `typedef void(* otPingSenderStatisticsCallback) (const otPingSenderStatistics *aStatistics, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer type specifies the callback to report the ping statistics.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aStatistics|A pointer to a `otPingSenderStatistics` containing info about the received ping statistics.|
 ||[in]|aContext|A pointer to application-specific context.|
 
-**Details:**
+**Details**:
 
 ### otPingSenderConfig
 
 `typedef struct otPingSenderConfig otPingSenderConfig`
 
-**Description:**
+**Description**:
 
 Represents a ping request configuration.
 
@@ -80,7 +80,7 @@ Represents a ping request configuration.
 
 **Description:** Starts a ping.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -93,7 +93,7 @@ Represents a ping request configuration.
 
 **Description:** Stops an ongoing ping.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

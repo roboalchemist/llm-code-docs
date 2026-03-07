@@ -2,7 +2,7 @@
 
 # Message
 
-This module includes functions that manipulate OpenThread message buffers. 
+This module includes functions that manipulate OpenThread message buffers.
 
 ## Modules
 
@@ -20,19 +20,21 @@ This module includes functions that manipulate OpenThread message buffers.
 
 ### otMessagePriority
 
-```
+```c
+
 enum otMessagePriority {
     OT_MESSAGE_PRIORITY_LOW = 0
     OT_MESSAGE_PRIORITY_NORMAL = 1
     OT_MESSAGE_PRIORITY_HIGH = 2
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines the OpenThread message priority levels.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -42,19 +44,21 @@ Defines the OpenThread message priority levels.
 
 ### otMessageOrigin
 
-```
+```c
+
 enum otMessageOrigin {
     OT_MESSAGE_ORIGIN_THREAD_NETIF = 0
     OT_MESSAGE_ORIGIN_HOST_TRUSTED = 1
     OT_MESSAGE_ORIGIN_HOST_UNTRUSTED = 2
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines the OpenThread message origins.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -68,23 +72,23 @@ Defines the OpenThread message origins.
 
 `typedef struct otMessage otMessage`
 
-**Description:**
+**Description**:
 
 An opaque representation of an OpenThread message buffer.
 
-### otMessagePriority
+### otMessagePriority (Typedef)
 
 `typedef enum otMessagePriority otMessagePriority`
 
-**Description:**
+**Description**:
 
 Defines the OpenThread message priority levels.
 
-### otMessageOrigin
+### otMessageOrigin (Typedef)
 
 `typedef enum otMessageOrigin otMessageOrigin`
 
-**Description:**
+**Description**:
 
 Defines the OpenThread message origins.
 
@@ -92,7 +96,7 @@ Defines the OpenThread message origins.
 
 `typedef struct otMessageSettings otMessageSettings`
 
-**Description:**
+**Description**:
 
 Represents a message settings.
 
@@ -100,7 +104,7 @@ Represents a message settings.
 
 `typedef struct otThreadLinkInfo otThreadLinkInfo`
 
-**Description:**
+**Description**:
 
 Represents link-specific information for messages received from the Thread radio.
 
@@ -108,11 +112,11 @@ Represents link-specific information for messages received from the Thread radio
 
 `typedef void(* otMessageTxCallback) (const otMessage *aMessage, otError aError, void *aContext)`
 
-**Description:**
+**Description**:
 
 Represents the callback function pointer to notify the transmission outcome (success or failure) of a message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -120,7 +124,7 @@ Represents the callback function pointer to notify the transmission outcome (suc
 ||[in]|aError|The TX error when sending the message.|
 ||[in]|aContext|A pointer to the user-provided context when the callback was registered.|
 
-**Details:**
+**Details**:
 
 The error indicates the transmission status of the IPv6 message from this device to an immediate neighbor (one-hop transmission). It doesn't indicate that the message is received by its final intended destination (multi-hop away).
 
@@ -134,7 +138,7 @@ The OpenThread stack may alter the content of the message as it is prepared for 
 
 `typedef struct otMessageQueueInfo otMessageQueueInfo`
 
-**Description:**
+**Description**:
 
 Represents information about a message queue.
 
@@ -142,7 +146,7 @@ Represents information about a message queue.
 
 `typedef struct otBufferInfo otBufferInfo`
 
-**Description:**
+**Description**:
 
 Represents the message buffer information for different queues used by OpenThread stack.
 
@@ -154,13 +158,13 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Gets the `otInstance` associated with a given message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A message.|
 
-**Returns**
+**Returns:**
 
 - The `otInstance` associated with `aMessage`.
 
@@ -170,13 +174,13 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Free an allocated message buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 
-**See Also**
+**See Also:**
 
 - [otMessageAppend](api-message#ot-message-append)
 - [otMessageGetLength](api-message#ot-message-get-length)
@@ -192,17 +196,17 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Get the message length in bytes.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 
-**Returns**
+**Returns:**
 
 - The message length in bytes.
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -219,14 +223,14 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Set the message length in bytes.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 |uint16_t|[in]|aLength|A length in bytes.|
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -242,17 +246,17 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Get the message offset in bytes.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 
-**Returns**
+**Returns:**
 
 - The message offset value.
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -268,14 +272,14 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Set the message offset in bytes.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 |uint16_t|[in]|aOffset|An offset in bytes.|
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -291,7 +295,7 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Indicates whether or not link security is enabled for the message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -303,7 +307,7 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Indicates whether or not the message is allowed to be looped back to host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -315,7 +319,7 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Sets whether or not the message is allowed to be looped back to host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -328,7 +332,7 @@ Represents the message buffer information for different queues used by OpenThrea
 
 **Description:** Indicates whether the given message may be looped back in a case of a multicast destination address.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -344,7 +348,7 @@ This API is mainly intended for use along with `otIp6Send()` which expects an al
 
 **Description:** Controls whether the given message may be looped back in a case of a multicast destination address.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -357,13 +361,13 @@ This API is mainly intended for use along with `otIp6Send()` which expects an al
 
 **Description:** Gets the message origin.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 
-**Returns**
+**Returns:**
 
 - The message origin.
 
@@ -373,7 +377,7 @@ This API is mainly intended for use along with `otIp6Send()` which expects an al
 
 **Description:** Sets the message origin.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -386,7 +390,7 @@ This API is mainly intended for use along with `otIp6Send()` which expects an al
 
 **Description:** Sets/forces the message to be forwarded using direct transmission.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -401,13 +405,13 @@ Default setting for a new message is `false`.
 
 **Description:** Returns the average RSS (received signal strength) associated with the message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to a message buffer.|
 
-**Returns**
+**Returns:**
 
 - The average RSS value (in dBm) or OT_RADIO_RSSI_INVALID if no average RSS is available.
 
@@ -417,7 +421,7 @@ Default setting for a new message is `false`.
 
 **Description:** Retrieves the link-specific information for a message received over Thread radio.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -430,7 +434,7 @@ Default setting for a new message is `false`.
 
 **Description:** Registers a callback to be notified of a message's transmission outcome.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -448,7 +452,7 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 
 **Description:** Append bytes to a message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -456,7 +460,7 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 |const void *|[in]|aBuf|A pointer to the data to append.|
 |uint16_t|[in]|aLength|Number of bytes to append.|
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageGetLength](api-message#ot-message-get-length)
@@ -472,7 +476,7 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 
 **Description:** Read bytes from a message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -481,11 +485,11 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 |void *|[in]|aBuf|A pointer to a buffer that message bytes are read to.|
 |uint16_t|[in]|aLength|Number of bytes to read.|
 
-**Returns**
+**Returns:**
 
 - The number of bytes read.
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -501,7 +505,7 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 
 **Description:** Write bytes to a message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -510,11 +514,11 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 |const void *|[in]|aBuf|A pointer to a buffer that message bytes are written from.|
 |uint16_t|[in]|aLength|Number of bytes to write.|
 
-**Returns**
+**Returns:**
 
 - The number of bytes written.
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 - [otMessageAppend](api-message#ot-message-append)
@@ -530,7 +534,7 @@ If the message is never actually sent (e.g., it's not passed to `otIp6Send()` or
 
 **Description:** Initialize the message queue.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -544,7 +548,7 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Adds a message to the end of the given message queue.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -557,7 +561,7 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Adds a message at the head/front of the given message queue.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -570,7 +574,7 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Removes a message from the given message queue.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -583,13 +587,13 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Returns a pointer to the message at the head of the queue.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otMessageQueue](ot-message-queue) *|[in]|aQueue|A pointer to a message queue.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the message at the head of queue or NULL if queue is empty.
 
@@ -599,14 +603,14 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Returns a pointer to the next message in the queue by iterating forward (from head to tail).
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otMessageQueue](ot-message-queue) *|[in]|aQueue|A pointer to a message queue.|
 |const [otMessage](api-message#ot-message) *|[in]|aMessage|A pointer to current message buffer.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the next message in the queue after `aMessage` or NULL if `aMessage is the tail of queue. NULL is returned if`aMessage`is not in the queue`aQueue`.
 
@@ -616,7 +620,7 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Get the Message Buffer information.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -629,7 +633,7 @@ MUST be called once and only once for a `otMessageQueue` instance before any oth
 
 **Description:** Reset the Message Buffer information counter tracking the maximum number buffers in use at the same time.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

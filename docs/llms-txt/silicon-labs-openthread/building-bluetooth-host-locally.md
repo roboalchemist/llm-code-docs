@@ -15,7 +15,9 @@ git clone [https://github.com/SiliconLabsSoftware/sisdk-release.git](https://git
 The default Bluetooth NCP host application (bt_host_empty) is configured to communicate with the NCP target using BGAPI via UART. In order to enable CPC, the application needs to be built with the following command line option:
 
 ```bash
+
 make CPC=1
+
 ```
 
 The makefile for `bt_host_empty` is in the following SiSDK directory: <path_to_sdk>/bluetooth_le_app/example_host/bt_host_empty.
@@ -32,6 +34,7 @@ In newer versions of Raspberry Pi OS, BlueZ is already installed by default and 
 - The bluetooth service status can be checked with the command `systemctl status bluetooth`, which should give the following output:
 
 ```bash
+
 ● bluetooth.service - Bluetooth service
      Loaded: loaded (/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2024-10-15 20:24:27 BST; 4 weeks 2 days ago
@@ -42,6 +45,7 @@ In newer versions of Raspberry Pi OS, BlueZ is already installed by default and 
         CPU: 5.179s
      CGroup: /system.slice/bluetooth.service
              └─932 /usr/libexec/bluetooth/bluetoothd
+
 ```
 
 If the bluetooth service is disabled, manually start the service by running `systemctl start bluetooth`.
@@ -53,5 +57,7 @@ If the bluetooth service is disabled, manually start the service by running `sys
 The CPC-HCI bridge application connects to the CPCd and exposes a virtual serial device on the Linux host in `/dev/pts`. The source code and makefile are located in the SiSDK at `<path_to_sdk>/app/bluetooth/example/example_host/bt_host_cpc_hci_bridge`. Go to the `bt_host_cpc_hci_bridge` folder and run the following command to build the CPC-HCI bridge application:
 
 ```bash
+
 make
+
 ```

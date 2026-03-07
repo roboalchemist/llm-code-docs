@@ -2,7 +2,7 @@
 
 # Backbone Router
 
-This module includes functions for the OpenThread Backbone Router Service. 
+This module includes functions for the OpenThread Backbone Router Service.
 
 ## Modules
 
@@ -16,7 +16,7 @@ This module includes functions for the OpenThread Backbone Router Service.
 
 ### otBackboneRouterState
 
-```
+```c
 enum otBackboneRouterState {
     OT_BACKBONE_ROUTER_STATE_DISABLED = 0
     OT_BACKBONE_ROUTER_STATE_SECONDARY = 1
@@ -38,7 +38,7 @@ Represents the Backbone Router Status.
 
 ### otBackboneRouterMulticastListenerEvent
 
-```
+```c
 enum otBackboneRouterMulticastListenerEvent {
     OT_BACKBONE_ROUTER_MULTICAST_LISTENER_ADDED = 0
     OT_BACKBONE_ROUTER_MULTICAST_LISTENER_REMOVED = 1
@@ -58,7 +58,7 @@ Represents the Multicast Listener events.
 
 ### otBackboneRouterNdProxyEvent
 
-```
+```c
 enum otBackboneRouterNdProxyEvent {
     OT_BACKBONE_ROUTER_NDPROXY_ADDED = 0
     OT_BACKBONE_ROUTER_NDPROXY_REMOVED = 1
@@ -82,7 +82,7 @@ Represents the ND Proxy events.
 
 ### otBackboneRouterDomainPrefixEvent
 
-```
+```c
 enum otBackboneRouterDomainPrefixEvent {
     OT_BACKBONE_ROUTER_DOMAIN_PREFIX_ADDED = 0
     OT_BACKBONE_ROUTER_DOMAIN_PREFIX_REMOVED = 1
@@ -224,7 +224,7 @@ If disabled, `SRV_DATA.ntf` is triggered if the Backbone Router is in the Primar
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 
-**See Also**
+#### See Also
 
 - [otBackboneRouterGetState](api-backbone-router#ot-backbone-router-get-state)
 - [otBackboneRouterGetConfig](api-backbone-router#ot-backbone-router-get-config)
@@ -243,7 +243,7 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**See Also**
+#### See Also (otBackboneRouterGetState)
 
 - [otBackboneRouterSetEnabled](api-backbone-router#ot-backbone-router-set-enabled)
 - [otBackboneRouterGetConfig](api-backbone-router#ot-backbone-router-get-config)
@@ -265,7 +265,7 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 
-**See Also**
+#### See Also (otBackboneRouterGetConfig)
 
 - [otBackboneRouterSetEnabled](api-backbone-router#ot-backbone-router-set-enabled)
 - [otBackboneRouterGetState](api-backbone-router#ot-backbone-router-get-state)
@@ -289,7 +289,7 @@ A Server Data Request message `SRV_DATA.ntf` is initiated automatically if BBR D
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 
-**See Also**
+#### See Also (otBackboneRouterSetConfig)
 
 - [otBackboneRouterSetEnabled](api-backbone-router#ot-backbone-router-set-enabled)
 - [otBackboneRouterGetState](api-backbone-router#ot-backbone-router-get-state)
@@ -312,7 +312,7 @@ A Server Data Request message `SRV_DATA.ntf` is triggered for the attached devic
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 
-**See Also**
+#### See Also (otBackboneRouterRegister)
 
 - [otBackboneRouterSetEnabled](api-backbone-router#ot-backbone-router-set-enabled)
 - [otBackboneRouterGetState](api-backbone-router#ot-backbone-router-get-state)
@@ -331,11 +331,11 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|N/A|aInstance||
 
-**Returns**
+#### Returns
 
 - The Backbone Router registration jitter value.
 
-**See Also**
+##### See Also (Returns)
 
 - [otBackboneRouterSetRegistrationJitter](api-backbone-router#ot-backbone-router-set-registration-jitter)
 
@@ -352,7 +352,7 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE` is enabled.
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|the Backbone Router registration jitter value to set.|
 |uint8_t|N/A|aJitter||
 
-**See Also**
+#### See Also (otBackboneRouterSetRegistrationJitter)
 
 - [otBackboneRouterGetRegistrationJitter](api-backbone-router#ot-backbone-router-get-registration-jitter)
 
@@ -430,7 +430,7 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE`, `OPENTHREAD_CONFIG_BA
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE`, `OPENTHREAD_CONFIG_BACKBONE_ROUTER_MULTICAST_ROUTING_ENABLE`, and `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` are enabled.
 
-**See Also**
+#### See Also (otBackboneRouterMulticastListenerClear)
 
 - [otBackboneRouterMulticastListenerAdd](api-backbone-router#ot-backbone-router-multicast-listener-add)
 - [otBackboneRouterMulticastListenerGetNext](api-backbone-router#ot-backbone-router-multicast-listener-get-next)
@@ -453,7 +453,7 @@ Pass `0` to use the default MLR timeout.
 
 Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE`, `OPENTHREAD_CONFIG_BACKBONE_ROUTER_MULTICAST_ROUTING_ENABLE`, and `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` are enabled.
 
-**See Also**
+#### See Also (otBackboneRouterMulticastListenerAdd)
 
 - [otBackboneRouterMulticastListenerClear](api-backbone-router#ot-backbone-router-multicast-listener-clear)
 - [otBackboneRouterMulticastListenerGetNext](api-backbone-router#ot-backbone-router-multicast-listener-get-next)
@@ -472,7 +472,7 @@ Available when `OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE`, `OPENTHREAD_CONFIG_BA
 |[otBackboneRouterMulticastListenerIterator](api-backbone-router#ot-backbone-router-multicast-listener-iterator) *|[inout]|aIterator|A pointer to the iterator. On success the iterator will be updated to point to next Multicast Listener. To get the first entry the iterator should be set to OT_BACKBONE_ROUTER_MULTICAST_LISTENER_ITERATOR_INIT.|
 |[otBackboneRouterMulticastListenerInfo](ot-backbone-router-multicast-listener-info) *|[out]|aListenerInfo|A pointer to an `otBackboneRouterMulticastListenerInfo` where information of next Multicast Listener is placed (on success).|
 
-**See Also**
+#### See Also (otBackboneRouterMulticastListenerGetNext)
 
 - [otBackboneRouterMulticastListenerClear](api-backbone-router#ot-backbone-router-multicast-listener-clear)
 - [otBackboneRouterMulticastListenerAdd](api-backbone-router#ot-backbone-router-multicast-listener-add)

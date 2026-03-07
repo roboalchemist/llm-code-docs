@@ -287,7 +287,7 @@ The allowed sequence of GBL tags in an encrypted GBL file is shown in the follow
 
 ## GBL Tag Data Structures and Definitions
 
-**GBL Tag Header**
+### GBL Tag Header
 
 ```C
 typedef struct {
@@ -299,7 +299,7 @@ uint32_t  length; // Length of the subsequent tag data in bytes.
 } GblTagHeader_t;
 ```
 
-**GBL Header Tag**
+### GBL Header Tag
 
 ```C
 typedef struct {
@@ -325,7 +325,7 @@ uint32_t       type;    // Flags indicating whether the GBL file is encrypted an
 #define GBL_TYPE_SIGNATURE_ECDSA      0x00000100UL
 ```
 
-**GBL Version Dependency Tag**
+### GBL Version Dependency Tag
 
 ```C
 typedef struct {
@@ -385,7 +385,7 @@ uint32_t version;    // The version number used in the statement (ex. (0).1.2.3)
 #define GBL_VERSION_DEPENDENCY_SE_VERSION_MASK              0x00FFFFFFUL
 ```
 
-**GBL Application Info Tag**
+### GBL Application Info Tag
 
 ```C
 typedef struct {
@@ -433,7 +433,7 @@ uint8_t  productId[16];  // Unique ID (UUID or GUID) for the product this applic
 #define APPLICATION_TYPE_ZWAVE           (1UL << 7UL)
 ```
 
-**GBL SE Upgrade Tag**
+### GBL SE Upgrade Tag
 
 ```C
 typedef struct {
@@ -449,7 +449,7 @@ uint8_t        data[];   // Array of data containing the SE upgrade blob.
 } GblSeUpgrade_t;
 ```
 
-**GBL Bootloader Tag**
+### GBL Bootloader Tag
 
 ```C
 typedef struct {
@@ -465,7 +465,7 @@ uint8_t        data[];            // Array of data containing the bootloader upg
 } GblBootloader_t;
 ```
 
-**GBL Program Data Tag**
+### GBL Program Data Tag
 
 ```C
 typedef struct {
@@ -481,7 +481,7 @@ uint8_t        data[];            // Array of data to be flashed
 } GblProg_t;
 ```
 
-**GBL Metadata Tag**
+### GBL Metadata Tag
 
 ```C
 typedef struct {
@@ -493,7 +493,7 @@ uint8_t        metadata[]; // Array containing the metadata.
 } GblMetadata_t;
 ```
 
-**GBL Certificate Tag**
+### GBL Certificate Tag
 
 ```C
 typedef struct {
@@ -519,7 +519,7 @@ uint8_t  signature[64];     // The signature of the certificate itself (not the 
 } ApplicationCertificate_t;
 ```
 
-**GBL Signature Tag**
+### GBL Signature Tag
 
 ```C
 typedef struct {
@@ -533,7 +533,7 @@ uint8_t        s[32];  // The s value of the ECDSA signature.
 } GblSignatureEcdsaP256_t;
 ```
 
-**GBL End Tag**
+### GBL End Tag
 
 ```C
 typedef struct {
@@ -545,7 +545,7 @@ uint32_t       gblCrc; // CRC32 checksum of the entire GBL file.
 } GblEnd_t;
 ```
 
-**GBL Encryption Init Header Tag**
+### GBL Encryption Init Header Tag
 
 ```C
 typedef struct {
@@ -559,7 +559,7 @@ uint8_t        nonce[12]; // Random AES-CTR nonce.
 } GblEncryptionInitAesCcm_t;
 ```
 
-**GBL Encrypted Data Tag**
+### GBL Encrypted Data Tag
 
 ```C
 typedef struct {

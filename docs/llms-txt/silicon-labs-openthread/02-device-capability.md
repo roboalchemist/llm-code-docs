@@ -12,7 +12,7 @@ The following table lists the hardware related to cryptography hardware accelera
 |Secure Key Storage (4)|—|—|HSE-SVH|
 
 > **Notes**:
-> 
+>
 > 1. See [Table Entropy Source on Series 1 and Series 2 Devices](06-migration-guide#initialization-and-random-number-generation-rng) for details of TRNG (True Random Number Generator) on Series 1 devices.
 > 2. Crypto engine supports up to 256-bit ciphers and elliptic curves.
 > 3. Advanced crypto supports up to 512-bit ciphers and 521-bit elliptic curves.

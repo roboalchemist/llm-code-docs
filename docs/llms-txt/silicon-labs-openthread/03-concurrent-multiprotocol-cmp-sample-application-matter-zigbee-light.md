@@ -46,13 +46,13 @@ In this scenario, the node will act as both a Zigbee device and a Matter device 
 
 Once the application is build and flashed onto the device, you should see the Matter QR code displayed and if you're using a BLE sniffer like the EFRConnect app you should be able to see the Silabs-Light being advertised and ready to be commissioned into a Matter network.
 
-### Sequential Zigbee and Matter
+### Sequential Zigbee and Matter Behavior
 
 With this build variant, your device will act as a Zigbee device as long as no Matter fabric is present on the device. Once the device is successfully commissioned with Matter, the Zigbee network will be shut down until the next factory reset.
 
 Features like Touchlink will work with this build variant since there is no need to listen on multiple channels at once.
 
-### Concurrent Zigbee and Matter
+### Concurrent Zigbee and Matter Behavior
 
 With this build variant, the light can be controlled simultaneously from the Matter side or the Zigbee side. For the best user experience, it is advised to commission the Matter side **first** as the OTBR will trigger a channel switch on the Zigbee side. Should Zigbee be commissioned first, then upon completion of the Matter commissioning process, a network leave followed by a network start will be issued to the Zigbee stack in order to achieve a successful channel switch without missing any packets from the Matter side. As such, all previously paired devices on the Zigbee side will have to be re-paired with the device. Again, this is a limitation present in SiSDK 2024.6.0.
 

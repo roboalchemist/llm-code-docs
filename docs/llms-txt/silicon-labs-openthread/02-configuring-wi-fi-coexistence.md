@@ -54,31 +54,31 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ### REQUEST
 
-**REQUEST signal enabled**
+### REQUEST signal enabled
 
 - If selected, REQUEST is mapped to GPIO pin and is used by PTA implementation.
 - If not selected, REQUEST is not mapped to GPIO pin.
 
-**REQUEST signal is shared**
+### REQUEST signal is shared
 
 - If selected, REQUEST is shared and implements open-drain or open-source I/O for multi-EFR32 radio applications.
 - If active low, REQUEST is open-drain and an external 1 k ±5% pull-up is required.
 - If active high, REQUEST is open-source and an external 1 k ±5% pull-down is required.
 - If not selected, REQUEST is not shared and implements a push-pull output for single EFR32 radio applications.
 
-**REQUEST signal active high**
+### REQUEST signal active high
 
 - If selected, REQUEST GPIO pin is driven high (> Voh) when REQUEST is asserted.
 - If not selected, REQUEST GPIO pin is driven low (< Vol) when REQUEST is asserted.
 
-**REQUEST signal GPIO port and REQUEST signal GPIO pin**
+### REQUEST signal GPIO port and REQUEST signal GPIO pin
 
 - Select REQUEST port and pin matching circuit board configuration.
 - To configure GPIO port and pin for the REQUEST signal in the Component Editor, use the **SL_RAIL_UTIL_COEX_REQ** section of the configuration header.
 
 ![REQUEST signal in the Component Editor](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image9.png)
 
-**REQUEST signal max backoff mask [0-255]**
+### REQUEST signal max backoff mask [0-255]
 
 - REQUEST signal max backoff determines the random REQUEST delay mask (only valid if REQUEST signal is shared).
 - Random delay (in µs) is computed by masking the internal random variable against the entered mask.
@@ -86,7 +86,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 #### Receive Retry
 
-**Receive retry REQUEST enabled**
+### Receive retry REQUEST enabled
 
 - If selected, REQUEST is held after a corrupted receive packet or after a successful receive packet with GRANT denied until timeout expires, or another packet is received.
 
@@ -94,7 +94,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 - If not selected, REQUEST is not held after a corrupted receive packet or after a successful receive packet with GRANT denied.
 
-**Receive retry timeout (milliseconds) [0-255]**
+### Receive retry timeout (milliseconds) [0-255]
 
 - Selects the timeout for REQUEST hold after a corrupted receive packet.
 
@@ -104,24 +104,24 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 2. Many Wi-Fi/PTA implementations have a maximum GRANT timeout, which should be set to received retry timeout plus 6ms to allow for maximum size corrupted packet, maximum random delay, and maximum size retry packet.
 3. The Receive Retry timeout is used by the 802.15.4 Signal Identifier for EFR32xG24 as the timeout after asserting REQUEST from signal identifier.
 
-**REQUEST high PRIORITY on receive retry**
+### REQUEST high PRIORITY on receive retry
 
 - If selected, PRIORITY is asserted during REQUEST hold after a corrupted receive packet or after a successful receive packet with GRANT denied.
 - If not selected, PRIORITY is de-asserted during REQUEST hold after a corrupted receive packet or after a successful receive packet with GRANT denied.
 
 ### GRANT
 
-**GRANT signal enabled**
+### GRANT signal enabled
 
 - If selected, GRANT is mapped to GPIO pin and is used by PTA implementation.
 - If not selected, GRANT is not mapped to GPIO pin and GRANT is always asserted.
 
-**GRANT signal active high**
+### GRANT signal active high
 
 - If selected, GRANT is asserted when GRANT GPIO pin is high (> Vih).
 - If not selected, GRANT is asserted when GRANT GPIO pin is low (< Vil).
 
-**GRANT signal GPIO port and GRANT signal GPIO pin**
+### GRANT signal GPIO port and GRANT signal GPIO pin
 
 - Select GRANT port and pin matching circuit board configuration.
 - To configure GPIO port and pin for the GRANT signal in the Component Editor, use the **SL_RAIL_UTIL_COEX_GNT** section of the configuration header.
@@ -137,7 +137,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ### ACK Disable
 
-**Disable ACKing when GRANT de-asserted, RHO asserted, or REQUEST not secured (shared REQUEST only)**
+### Disable ACKing when GRANT de-asserted, RHO asserted, or REQUEST not secured (shared REQUEST only)
 
 - If selected, the ACK to a valid RX packet, requiring an ACK, is **not** transmitted if GRANT is de-asserted, RHO is asserted, or REQUEST is not secured (shared REQUEST only).
 
@@ -151,12 +151,12 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ### PRIORITY
 
-**PRIORITY signal enabled**
+### PRIORITY signal enabled
 
 - If selected, PRIORITY is mapped to GPIO pin and is used by PTA implementation.
 - If not selected, PRIORITY is not mapped to GPIO pin.
 
-**PRIORITY signal active high**
+### PRIORITY signal active high
 
 - If selected, PRIORITY GPIO pin is driven high (> Voh) when PRIORITY is asserted.
 - If not selected, PRIORITY GPIO pin is driven low (< Vol) when PRIORITY is asserted.
@@ -169,29 +169,29 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ![image](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image12.png)
 
-**Enable PRIORITY shared mode**
+### Enable PRIORITY shared mode
 
 - If enabled. PRIORITY is shared and implements open-drain or open-source I/O for multi-EFR32 radio applications.
 - If active low, PRIORITY is open-drain and an external 1 k ±5% pull-up is required.
 - If active high, PRIORITY is open-source and an external 1 k ±5% pull-down is required.
 - If not enabled, PRIORITY is not shared and implements a push-pull output for single EFR32 radio applications.
 
-**TX high PRIORITY**
+### TX high PRIORITY
 
 - If selected, PRIORITY is asserted during 802.15.4 TX.
 - If not selected, PRIORITY is de-asserted during 802.15.4 TX.
 
-**RX high PRIORITY**
+### RX high PRIORITY
 
 - If selected, PRIORITY is asserted during 802.15.4 RX.
 - If not selected, PRIORITY is de-asserted during 802.15.4 RX.
 
-**Include TX PRIORITY Escalation**
+### Include TX PRIORITY Escalation
 
 - If enabled. TX PRIORITY Escalation feature is compiled into firmware.
 - If not enabled, TX PRIORITY Escalation feature is not compiled into firmware and CCA/GRANT TX PRIORITY Escalation Threshold and MAC Fail TX PRIORITY Escalation Threshold must be set to 0 when writing to ptaOptions via run-time API.
 
-**CCA/GRANT TX PRIORITY Escalation Threshold**
+### CCA/GRANT TX PRIORITY Escalation Threshold
 
 - If set to 0 (000b, default):
 - CCA/GRANT TX PRIORITY Escalation is disabled.
@@ -201,7 +201,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 - PRIORITY during TX becomes asserted high after n MAC failures due to four CCA and/or GRANT denial failures.
 - PRIORITY during TX remains asserted high until a successful MAC TX and RX ACK.
 
-**MAC Fail TX PRIORITY Escalation Threshold**
+### MAC Fail TX PRIORITY Escalation Threshold
 
 - If set to 0 (00b, default):
 - CCA/GRANT TX PRIORITY Escalation is disabled.
@@ -213,12 +213,12 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ### PWM
 
-**PWM REQUEST signal (shared REQUEST only)**
+### PWM REQUEST signal (shared REQUEST only)
 
 - If REQUEST signal is NOT shared, PWM REQUEST signal must be set to “Disabled”.
 - If REQUEST signal is shared, the REQUEST GPIO pin is used to arbitrate REQUEST between multiple EFR32 radios and a second GPIO is required to drive REQUEST||PWM. PWM REQUEST signal specifies the REQUEST||PWM GPIO.
 
-**PWM REQUEST signal level (shared REQUEST only)**
+### PWM REQUEST signal level (shared REQUEST only)
 
 - If PWM REQUEST signal is “Disabled”, then PWM REQUEST signal level selection is ignored. Else, PWM REQUEST signal is shared and implements open-drain or open-source I/O for multi-EFR32 radio applications.
 - If active low, PWM REQUEST is open-drain, an external 1 k ±5% pull-up is required, and PWM REQUEST GPIO pin is driven low (< Vol) when REQUEST||PWM is asserted.
@@ -230,40 +230,40 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ![image](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image13.png)
 
-**Enable PWM REQUEST at startup**
+### Enable PWM REQUEST at startup
 
 - If enabled, PWM REQUEST is enabled at firmware startup as per specified period, duty-cycle, and priority.
 - If not enabled, PWM REQUEST is enabled at firmware startup, but can be enabled via run-time API.
 
-**PWM REQUEST Period (0.5 ms)**
+### PWM REQUEST Period (0.5 ms)
 
 > **Note**: PWM REQUEST Period selection cannot be an integer sub-multiple of the Wi-Fi beacon or a significant number of consecutive Wi-Fi beacons may be missed, causing AP to collapse Wi-Fi network or STA to disassociate. Silicon Labs achieves <1% 802.15.4 message receive loss with PWM REQUEST set to 39 ms (or 78 half-ms) period, 20% duty-cycle, and high priority, which results in ~30% reduction in Wi-Fi TCP throughput over MCS0 to MCS7 and 20 or 40 MHz bandwidth.
 
 - Sets PWM REQUEST Period from 5 ms (10) to 109 ms (218) in 0.5 ms steps.
 
-**PWM REQUEST Duty-Cycle (%)**
+### PWM REQUEST Duty-Cycle (%)
 
 > **Note**: Large PWM REQUEST Duty-Cycle selection will substantially impact the Wi-Fi throughput as it reserved more time for 802.15.4 listening. Silicon Labs achieves <1% 802.15.4 message receive loss with PWM REQUEST set to 39 ms (or 78 half-ms) period, 20% duty-cycle, and high priority, which results in ~30% reduction in Wi-Fi TCP throughput over MCS0 to MCS7 and 20 or 40 MHz bandwidth.
 
 - Sets PWM REQUEST Duty-Cycle from 1% to 95% in 1% steps.
 
-**Assert PRIORITY when PWM REQUEST asserted**
+### Assert PRIORITY when PWM REQUEST asserted
 
 - Sets PWM REQUEST PRIORITY to assert or not when PWM REQUEST asserts.
 
 ### Radio Hold Off
 
-**RHO (Radio Hold Off) signal enabled**
+### RHO (Radio Hold Off) signal enabled
 
 - If selected, RHO is mapped to GPIO pin and is used by PTA implementation.
 - If not selected, RHO is not mapped to GPIO pin and RHO is always de-asserted.
 
-**RHO (Radio Hold Off) active high**
+### RHO (Radio Hold Off) active high
 
 - If selected, RHO is asserted when RHO GPIO pin is high (> Vih).
 - If not selected, RHO is asserted when RHO GPIO pin is low (< Vil).
 
-**RHO (Radio Hold Off) signal GPIO port and RHO (Radio Hold Off) signal GPIO pin**
+### RHO (Radio Hold Off) signal GPIO port and RHO (Radio Hold Off) signal GPIO pin
 
 - Select RHO port and pin matching circuit board configuration.
 - To configure GPIO port and pin for the RHO signal in the Component Editor, use the **SL_RAIL_UTIL_COEX_RHO** section of the configuration header.
@@ -272,7 +272,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 
 ### Directional PRIORITY
 
-**Enable Directional PRIORITY**
+### Enable Directional PRIORITY
 
 - If True:
 - Directional PRIORITY signal is connected to the Wi-Fi PTA and multiplexes priority state and radio state information.
@@ -287,7 +287,7 @@ For coexistence configurations using EmberZNet PRO 6.10.x and below, follow the 
 - The Directional PRIORITY signal is not used or connected to the Wi-Fi PTA.
 - The PRIORITY signal is connected to the Wi-Fi PATA and operates as Static PRIORITY and is either high or low during REQUEST asserted for the transmit or receive operation.
 
-**Directional PRIORITY Timer (AppBuilder)**
+### Directional PRIORITY Timer (AppBuilder)
 
 To configure the Directional PRIORITY Timer in AppBuilder:
 
@@ -306,7 +306,7 @@ PC10 is shown in this example but other GPIOs can be selected. Refer to the EFR3
 
 ![image](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image17.png)
 
-**Directional PRIORITY Timer (Component Editor)**
+### Directional PRIORITY Timer (Component Editor)
 
 To configure the Directional PRIORITY Timer in the Component Editor.
 
@@ -317,13 +317,13 @@ To configure the Directional PRIORITY Timer in the Component Editor.
 
 > **Note**: For EFR32xG2x devices, the **Timer Compare / Capture Channel** is selected by the stack code. However, for EFR32xG1x devices, the stack code does not select the Timer Compare / Capture Channel pin.
 
-**Directional PRIORITY Pulse Width [0-255]**
+### Directional PRIORITY Pulse Width [0-255]
 
 - Set to 20 (0x14) by default.
 - Selects the hold time of the Directional PRIORITY RX Priority pulse in microseconds for a range of 1 to 255 depending on the requirement of the Wi-Fi PTA. Silicon Labs recommends the default of 20 microseconds for typical Wi-Fi PTA implementations.
 - Set to 0 to bypass Directional PRIORITY.
 
-**Directional Priority PRS Channel**
+### Directional Priority PRS Channel
 
 To configure the Directional PRIORITY PRS Channel:
 
@@ -342,12 +342,12 @@ To configure the Directional PRIORITY PRS Channel in SSv5 Component Editor:
 2. Selecting the **Directional PRIORITY PRS Channel** displays the **PRS Channel Output Pin** configuration option.  
    ![image](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image19.png)
 
-**PRS Channel Output Pin**
+### PRS Channel Output Pin
 
 - Directional PRIORITY output GPIO pin
 - Connects to the Wi-Fi PTA
 
-**Inverted Request PRS Channel**
+### Inverted Request PRS Channel
 
 For EFR32xG2x Series 2 EFR32 devices, the **Inverted Request PRS Channel** is selected by the stack code. However, the stack code does not select the Inverted Request PRS Channel for EFR32xG1x Series 1 EFR32 devices.
 
@@ -359,21 +359,21 @@ For EFR32xG2x Series 2 EFR32 devices, the **Inverted Request PRS Channel** is se
 
 ### RX Active
 
-**RX active signal enabled**
+### RX active signal enabled
 
 - If selected, MODEM_FRAME_DETECT is mapped to GPIO pin using a PRS channel.
 - If not selected, MODEM_FRAME_DETECT is not mapped to GPIO pin and does not use a PRS channel.
 
-**RX active assert signal level**
+### RX active assert signal level
 
 - Selecting High results in a high signal output when the receive packet is detected and a low output otherwise.
 - Selecting Low results in a low signal output when the receive packet is detected and a high output otherwise.
 
-**RX active PRS channel**
+### RX active PRS channel
 
 - Selects PRS channel used to assign MODEM_FRAME_DETECT signal to an output GPIO.
 
-**PRS channel output pin**
+### PRS channel output pin
 
 - Choose the GPIO to output the MODEM_FRAME_DETECT signal.
 
@@ -387,18 +387,18 @@ This completes the Coexistence Configurator setup. In AppBuilder, complete other
 
 ### Signal Identifier (EFR32xG24)
 
-**Enable coexistence IEEE802.15.4 signal identifier**
+### Enable coexistence IEEE802.15.4 signal identifier
 
 - If selected, the signal identifier feature is enabled to trigger REQUEST when an 802.15.4 signal is detected.
 - If not selected, the signal identifier feature is not enabled.  
   ![image](/zigbee-openthread-coexistence-wifi/0.1/images/sld515-image22.png)
 
-**Polarity of Wi-Fi TX signal**
+### Polarity of Wi-Fi TX signal
 
 - If set to high, Wi-Fi TX PAEN is asserted when the GPIO pin is high (> Vih).
 - If set to low, Wi-Fi TX PAEN is asserted when the GPIO pin is low (< Vil).
 
-**Wi-Fi TX signal GPIO port and GPIO pin**
+### Wi-Fi TX signal GPIO port and GPIO pin
 
 - Select Wi-Fi TX port and pin matching circuit board configuration.
 - To configure GPIO port and pin for the Wi-Fi TX signal in the Component Editor, use the **SL_RAIL_UTIL_COEX_WIFI_TX** section of the configuration header.
@@ -441,19 +441,19 @@ For OpenThread using the Component Editor, the Synch MAC to GRANT (MAC holdoff) 
 
 The descriptions of the above PTA options fields follow.
 
-**Disable REQUEST (force holdoff)**
+### Disable REQUEST (force holdoff)
 
 - If not set (default), REQUEST operates per the description in [Wi-Fi Coexistence Fundamentals](https://docs.silabs.com/multiprotocol/latest/multiprotocol-wifi-coexistence-fundamentals/).
 - If set, REQUEST stays disabled, effectively halting all radio TX/RX functions.
 
-**Synch MAC to GRANT (MAC holdoff)**
+### Synch MAC to GRANT (MAC holdoff)
 
 - If not set (default), Synch MAC to GRANT is disabled for 802.15.4-compliant random MAC delays.
 - If set, MAC CCA/TX is delayed until GRANT is asserted, synching all TX operations with GRANT.
 - Synch MAC to GRANT is not strictly 802.15.4 compliant as it prevents random MAC delay execution.
 - Synch MAC to GRANT should only be enabled during known, higher priority, Wi-Fi or BT interfering activity and disabled as soon as such activity completes.
 
-**REQUEST/PRIORITY Assert (Preamble/Synch or Address Detection)**
+### REQUEST/PRIORITY Assert (Preamble/Synch or Address Detection)
 
 - If set to 0 (00b, default and recommended):
 - REQUEST during RX is asserted at Preamble/Synch.
@@ -707,7 +707,7 @@ When multiple EFR32s are connected to Wi-Fi/PTA, TX PRIORITY Escalation can be c
 
 ## Coexistence Configuration Setup Examples for Different Wi-Fi/PTA Applications (Zigbee)
 
-**Example 1: Configure EFR32 PTA support to operate as single EFR32 with typical 3-Wire Wi-Fi/PTA**
+### Example 1: Configure EFR32 PTA support to operate as single EFR32 with typical 3-Wire Wi-Fi/PTA
 
 - Single EFR32 radio
 - RHO unused
@@ -756,7 +756,7 @@ This logic analyzer sequence shows:
 7. EFR32 de-asserts PRIORITY and REQUEST.
 8. Wi-Fi/PTA de-asserts GRANT.
 
-**Example 2: Configure EFR32 PTA support to operate with multi-radio 2-Wire Wi-Fi/PTA with active-low REQUEST**
+### Example 2: Configure EFR32 PTA support to operate with multi-radio 2-Wire Wi-Fi/PTA with active-low REQUEST
 
 - Multiple EFR32 radios (external 1 k ±5% pull-up required on REQUEST)
 - RHO unused
@@ -798,7 +798,7 @@ This logic analyzer sequence shows:
 9. 802.15 ACK is transmitted (TXA asserted). _<= 802.15.4 RX message successfully completed_.
 10. After 802.15.4 ACK completes, REQUEST is de-asserted, followed by GRANT de-assert.
 
-**Example 3: Configure EFR32 PTA support to operate with multi-radio typical 3-Wire Wi-Fi/PTA**
+### Example 3: Configure EFR32 PTA support to operate with multi-radio typical 3-Wire Wi-Fi/PTA
 
 - Multiple EFR32 radios (external 1 k ±5% pull-down required on REQUEST and external 1 k ±5% pull-down required on PRIORITY)
 - RHO unused

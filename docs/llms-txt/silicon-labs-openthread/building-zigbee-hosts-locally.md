@@ -16,18 +16,18 @@ As mentioned in [System Architecture](system-architecture), there are 3 differen
 
 ![Zigbee Application Configurations](/multiprotocol-solution-linux/0.4/images/figure-5-1-zigbee-stack-configurations.png)
 
-1. Running Radio Board as a Zigbee RCP:  
-   - Z3Gateway (Application Layer)  
-   - Zigbeed (Zigbee Networking Layer)  
-   - Zigbeed-Socat (Communication Link between Zigbeed and CPCD)  
-   - CPCD (Communication Link between Host and the Radio Board)  
+1. Running Radio Board as a Zigbee RCP:
+   - Z3Gateway (Application Layer)
+   - Zigbeed (Zigbee Networking Layer)
+   - Zigbeed-Socat (Communication Link between Zigbeed and CPCD)
+   - CPCD (Communication Link between Host and the Radio Board)
    - Radio Board with a Zigbee RCP Application (Zigbee Radio)
-2. Running the Radio Board as a Zigbee NCP (without CPCD):  
-   - Z3Gateway (Application Layer)  
+2. Running the Radio Board as a Zigbee NCP (without CPCD):
+   - Z3Gateway (Application Layer)
    - Radio Board with a Zigbee NCP Application (Zigbee Networking layer + Zigbee Radio)
-3. Running the Radio Board as a Zigbee NCP (With CPCD):  
-   - Z3GatewayCPC (Application Layer with CPC Connection)  
-   - CPCD (Communication Link between Host and the Radio Board)  
+3. Running the Radio Board as a Zigbee NCP (With CPCD):
+   - Z3GatewayCPC (Application Layer with CPC Connection)
+   - CPCD (Communication Link between Host and the Radio Board)
    - Radio Board with Zigbee NCP Application with CPCD Enabled (Zigbee Networking Layer + Zigbee Radio)
 
 ## Z3Gateway
@@ -40,15 +40,19 @@ Regardless of the Radio Board Configuration, all multiprotocol Zigbee applicatio
 
 1. Create a new Z3Gateway Project: **File > New > Silicon Labs Project Wizard**.
 2. Select your Target Device: Linux 32 bit (Or Linux 64 bit depending on the host platform configuration).
-3. Select your IDE / Toolchain: Makefile IDE.  
+3. Select your IDE / Toolchain: Makefile IDE.
    ![Select Project](/multiprotocol-solution-linux/0.4/images/figure-5-3-project-names.png)
-4. Select the Z3Gateway Project Required (Z3Gateway or Z3GatewayCpc).  
+4. Select the Z3Gateway Project Required (Z3Gateway or Z3GatewayCpc).
    ![Build Project](/multiprotocol-solution-linux/0.4/images/figure-5-4-copy-contents.png)
 5. Before clicking **Finish**, it is recommended to select **Copy Contents**. This makes building the application simpler on the Raspberry Pi as it copies all required SDK files (rather than symlinking).
-6. After clicking **Finish**, zip up the Z3Gateway Folder and SCP onto the Raspberry pi.  
-   ```c  
-   scp pi@<IP-Address>:/home/pi ./Z3Gateway.zip  
+6. After clicking **Finish**, zip up the Z3Gateway Folder and SCP onto the Raspberry pi.
+
+   ```c
+
+   scp pi@<IP-Address>:/home/pi ./Z3Gateway.zip
+
    ```
+
 7. On the Raspberry Pi, unzip the Z3Gateway folder.
 8. CD into the Z3Gateway folder and build the Z3Gateway with the following command: `make -f <Z3Gateway_Project_name>.Makefile`.
 9. Upon a successful build, you should see in your folder the directory: `./build/debug/<Z3Gateway_project_name>` Executable.
@@ -78,7 +82,7 @@ Prerequisite: If you are going to build Zigbeed, you **must** build CPCD and ins
 2. Select your Target Device: Linux 32 bit (Or Linux 64 bit depending on the OS).
 3. Select your IDE / Toolchain: Makefile IDE.
 4. Select the zigbeed project.
-5. Before clicking **Finish**, it is recommended to select **Copy Contents**. This makes building the application simpler on the Raspberry Pi as it copies all required SDK files (rather than symlinking).  
+5. Before clicking **Finish**, it is recommended to select **Copy Contents**. This makes building the application simpler on the Raspberry Pi as it copies all required SDK files (rather than symlinking).
    ![Select Library Component](/multiprotocol-solution-linux/0.4/images/figure-4-5-zigbee-arm32-component.png)
 6. _Depending on the underlying Host Running Zigbeed_, you may need to select **Zigbee Arm32 Component**. This will pull in the proper library files to be built in the right host environment. Other components depending on your underlying host could be: zigbee_arm32, zigbee_arm64, or zigbee_x86_64.
 7. After clicking **Finish**, zip up the zigbeed folder and SCP onto the Raspberry pi.
@@ -91,14 +95,18 @@ Prerequisite: If you are going to build Zigbeed, you **must** build CPCD and ins
 The zigbeed.slcp project file is found in `\<SDK Installation\>/protocol/zigbee/app/projects/zigbeed/zigbeed.slcp`. It includes all the components necessary to build Zigbeed. The Makefile can then be generated using SLC-CLI as follows:
 
 ```bash
+
 slc generate -s=../.. –-with=linux_arch_32,zigbee_arm32 -p=app/projects/zigbeed/zigbeed.slcp -d=app/zigbeed/output
+
 ```
 
 > **Note**: If you generated the app on your PC but want to build it on a Raspberry Pi, add the -cp option to copy the necessary files, including
 > libraries, to the generation directory.
 
 ```bash
+
 slc generate -cp -s=../.. –-with=linux_arch_32,zigbee_arm32 -p=app/projects/zigbeed/zigbeed.slcp -d=app/zigbeed/output
+
 ```
 
 Copy the generation directory to your target ARM-based system. From within the generation directory, invoke make as follows `make -f zigbeed.Makefile`.
@@ -115,6 +123,7 @@ Zigbeed, unlike Z3Gateway also includes a configuration file. To Install the Zig
 If you want Zigbeed to be included in a system service, create a Zigbeed Service file named: zigbeed.service. An example of the service file is shown below:
 
 ```bash
+
 [Unit]
 Description=Zigbeed service
 StartLimitIntervalSec=0
@@ -135,12 +144,15 @@ SyslogIdentifier=zigbeed
 
 [Install]
 WantedBy=multi-user.target
+
 ```
 
 Once you copy the Zigbeed.service file to `/etc/systemd/system`, this Service will allow your pi to start zigbeed upon reboot and you can start the zigbeed service by calling:
 
 ```bash
+
 sudo systemctl start zigbeed
+
 ```
 
 ### Understanding Zigbeed.conf File
@@ -168,12 +180,14 @@ To implement custom messages between Zigbeed and the host app, you define and im
 The zigbeed.slcp project includes the source file `protocol/zigbee/app/projects/zigbeed/zigbeed_custom_ezsp_commands.c` that contains an example implementation for custom messaging on the zigbeed xncp side. The example implements a small set of custom messages that can be sent from zigbee_host_xncp_led app, which is supplied prebuilt in the docker container for convenience. This functionality can be tested as follows:
 
 ```c
+
 $ zigbee_host_xncp_led -p ttyZigbeeNCP
 zigbee_host_xncp_led>custom set-led 1
 zigbee_host_xncp_led>custom get-led
 custom get-led
 Send custom frame: 0x00
 Response (state): 1 (OFF)
+
 ```
 
 This example from `zigbee_host_xncp_led.slcp` and `zigbeed_custom_ezsp_commands.c` can be followed to implement other custom EZSP messages between a host app and Zigbeed.
@@ -187,7 +201,9 @@ To use Zigbeed Socat, you need to make sure that you install the socat package.
 You can run Zigbeed Socat from the command line by following this command:
 
 ```c
+
 socat -x -v pty,link=/dev/ttyZigbeeNCP pty,link=/tmp/ttyZigbeeNCP
+
 ```
 
 ## Creating Zigbeed-socat Service File
@@ -195,6 +211,7 @@ socat -x -v pty,link=/dev/ttyZigbeeNCP pty,link=/tmp/ttyZigbeeNCP
 If you want Zigbeed-socat to be included in a system service, create a Zigbeed Service file named: `zigbeed-socat.service`. An example of the service file is shown below:
 
 ```bash
+
 [Unit]
 Description=Zigbeed socat helper service
 StartLimitIntervalSec=0
@@ -213,10 +230,13 @@ SyslogIdentifier=zigbeed-socat
 
 [Install]
 WantedBy=multi-user.target
+
 ```
 
 Once you copy the Zigbeed-socat.service file to: `/etc/systemd/system` this Service will allow your pi to start zigbeed-socate upon reboot and you can start the zigbeed service by calling:
 
 ```bash
+
 sudo systemctl start zigbeed-socat
+
 ```

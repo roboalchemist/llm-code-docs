@@ -2,7 +2,7 @@
 
 # TCP Abstractions
 
-This module includes easy-to-use abstractions on top of the base TCP API. 
+This module includes easy-to-use abstractions on top of the base TCP API.
 
 ## Modules
 
@@ -14,17 +14,19 @@ This module includes easy-to-use abstractions on top of the base TCP API.
 
 ### @23
 
-```
+```c
+
 enum @23 {
     OT_TCP_CIRCULAR_SEND_BUFFER_WRITE_MORE_TO_COME = 1 << 0
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines flags passed to `otTcpCircularSendBufferWrite`.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -36,11 +38,11 @@ Defines flags passed to `otTcpCircularSendBufferWrite`.
 
 `typedef struct otTcpCircularSendBuffer otTcpCircularSendBuffer`
 
-**Description:**
+**Description**:
 
 Represents a circular send buffer for use with a TCP endpoint.
 
-**Details:**
+**Details**:
 
 Using a circular send buffer is optional. Applications can use a TCP endpoint to send data by managing otLinkedBuffers directly. However, some applications may find it more convenient to have a circular send buffer; such applications can call [otTcpCircularSendBufferWrite()](api-tcp-ext#ot-tcp-circular-send-buffer-write) to "attach" a circular send buffer to a TCP endpoint and send out data on that TCP endpoint, relying on the circular send buffer to manage the underlying otLinkedBuffers.
 
@@ -54,7 +56,7 @@ The application should not inspect the fields of this structure directly; it sho
 
 `typedef struct otTcpEndpointAndCircularSendBuffer otTcpEndpointAndCircularSendBuffer`
 
-**Description:**
+**Description**:
 
 Context structure to use with mbedtls_ssl_set_bio.
 
@@ -66,7 +68,7 @@ Context structure to use with mbedtls_ssl_set_bio.
 
 **Description:** Initializes a TCP circular send buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -80,7 +82,7 @@ Context structure to use with mbedtls_ssl_set_bio.
 
 **Description:** Sends out data on a TCP endpoint, using the provided TCP circular send buffer to manage buffering.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -105,7 +107,7 @@ If the circular send buffer reaches capacity, only a prefix of the provided data
 
 **Description:** Performs circular-send-buffer-specific handling in the otTcpForwardProgress callback.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -122,7 +124,7 @@ In the callback function, the application can determine the amount of free space
 
 **Description:** Returns the amount of free space in the TCP circular send buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -130,7 +132,7 @@ In the callback function, the application can determine the amount of free space
 
 This operation will always succeed.
 
-**Returns**
+**Returns:**
 
 - The amount of free space in the send buffer.
 
@@ -140,7 +142,7 @@ This operation will always succeed.
 
 **Description:** Forcibly discards all data in the circular send buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -156,7 +158,7 @@ Calling this function on a nonempty TCP circular send buffer attached to a TCP e
 
 **Description:** Deinitializes a TCP circular send buffer, detaching it if attached.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -170,7 +172,7 @@ If the TCP circular send buffer is not empty, then this operation will fail.
 
 **Description:** Non-blocking send callback to pass to mbedtls_ssl_set_bio.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -178,7 +180,7 @@ If the TCP circular send buffer is not empty, then this operation will fail.
 |const unsigned char *|[in]|aBuf|The data to add to the send buffer.|
 |size_t|[in]|aLen|The amount of data to add to the send buffer.|
 
-**Returns**
+**Returns:**
 
 - The number of bytes sent, or an mbedtls error code.
 
@@ -188,7 +190,7 @@ If the TCP circular send buffer is not empty, then this operation will fail.
 
 **Description:** Non-blocking receive callback to pass to mbedtls_ssl_set_bio.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -196,6 +198,6 @@ If the TCP circular send buffer is not empty, then this operation will fail.
 |unsigned char *|[out]|aBuf|The buffer into which to receive data.|
 |size_t|[in]|aLen|The maximum amount of data that can be received.|
 
-**Returns**
+**Returns:**
 
 - The number of bytes received, or an mbedtls error code.

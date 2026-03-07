@@ -2,7 +2,7 @@
 
 # Border Agent
 
-This module includes functions for the Thread Border Agent role. 
+This module includes functions for the Thread Border Agent role.
 
 ## Modules
 
@@ -20,7 +20,7 @@ This module includes functions for the Thread Border Agent role.
 
 ### otBorderAgentEphemeralKeyState
 
-```
+```c
 enum otBorderAgentEphemeralKeyState {
     OT_BORDER_AGENT_STATE_DISABLED = 0
     OT_BORDER_AGENT_STATE_STOPPED = 1
@@ -118,7 +118,7 @@ This callback informs the application of the changes in the state of the MeshCoP
 
 In specific, the 'state' includes the MeshCoP TXT data originated from the Thread network and whether the Border Agent is Active (which can be obtained by `otBorderAgentIsActive`).
 
-### otBorderAgentEphemeralKeyState
+### otBorderAgentEphemeralKeyState (Typedefs)
 
 `typedef enum otBorderAgentEphemeralKeyState otBorderAgentEphemeralKeyState`
 
@@ -206,7 +206,7 @@ If `OPENTHREAD_CONFIG_BORDER_AGENT_EPHEMERAL_KEY_ENABLE` is enabled, independent
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns
 
 - UDP port of the Border Agent.
 
@@ -307,7 +307,7 @@ Requires `OPENTHREAD_CONFIG_BORDER_AGENT_ID_ENABLE`.
 
 The ID is saved in persistent storage and survives reboots. The typical use case of the ID is to be published in the MeshCoP mDNS service as the `id` TXT value for the client to identify this Border Router/Agent device.
 
-**See Also**
+#### See Also
 
 - [otBorderAgentSetId](api-border-agent#ot-border-agent-set-id)
 
@@ -328,7 +328,7 @@ Requires `OPENTHREAD_CONFIG_BORDER_AGENT_ID_ENABLE`.
 
 The Border Agent ID will be saved in persistent storage and survive reboots. It's required to set the ID only once after factory reset. If the ID has never been set by calling this function, a random ID will be generated and returned when `otBorderAgentGetId` is called.
 
-**See Also**
+#### See Also (otBorderAgentSetId)
 
 - [otBorderAgentGetId](api-border-agent#ot-border-agent-get-id)
 
@@ -372,7 +372,7 @@ An iterator MUST be initialized before being used in `otBorderAgentGetNextSessio
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otBorderAgentGetCounters)
 
 - A pointer to the Border Agent counters.
 
@@ -390,7 +390,7 @@ An iterator MUST be initialized before being used in `otBorderAgentGetNextSessio
 
 Requires `OPENTHREAD_CONFIG_BORDER_AGENT_EPHEMERAL_KEY_ENABLE`.
 
-**Returns**
+#### Returns (otBorderAgentEphemeralKeyGetState)
 
 - The current state of Ephemeral Key Manager.
 
@@ -470,7 +470,7 @@ Requires `OPENTHREAD_CONFIG_BORDER_AGENT_EPHEMERAL_KEY_ENABLE`.
 
 The port is applicable if an ephemeral key is in use, i.e., the state is not `OT_BORDER_AGENT_STATE_DISABLED` or `OT_BORDER_AGENT_STATE_STOPPED`.
 
-**Returns**
+#### Returns (otBorderAgentEphemeralKeyGetUdpPort)
 
 - The UDP port being used by Border Agent's Ephemeral Key Manager (when active).
 
@@ -504,7 +504,7 @@ A subsequent call to this function will replace any previously set callback.
 |----|---------|-------------|-----------|
 |[otBorderAgentEphemeralKeyState](api-border-agent#ot-border-agent-ephemeral-key-state)|[in]|aState|The state to convert.|
 
-**Returns**
+#### Returns (otBorderAgentEphemeralKeyStateToString)
 
 - Human-readable string corresponding to `aState`.
 

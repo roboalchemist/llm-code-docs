@@ -2,7 +2,7 @@
 
 # Raw Link
 
-This module includes functions that control the raw link-layer configuration. 
+This module includes functions that control the raw link-layer configuration.
 
 ## Typedefs
 
@@ -188,7 +188,7 @@ Returns a pointer to the transmit buffer.
 
 The caller forms the IEEE 802.15.4 frame in this buffer then calls [otLinkRawTransmit()](api-link-raw#ot-link-raw-transmit) to request transmission.
 
-**Returns**
+#### Returns
 
 - A pointer to the transmit buffer or NULL if the raw link-layer isn't enabled.
 
@@ -224,7 +224,7 @@ The transmit sequence consists of:
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkRawGetRssi)
 
 - The RSSI in dBm when it is valid. 127 when RSSI is invalid.
 
@@ -240,7 +240,7 @@ The transmit sequence consists of:
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkRawGetCaps)
 
 - The radio capability bit vector. The stack enables or disables some functions based on this value.
 
@@ -405,6 +405,6 @@ Always sets the MAC counter to the new given value `aMacFrameCounter` independen
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkRawGetRadioTime)
 
 - The current radio time in microseconds.

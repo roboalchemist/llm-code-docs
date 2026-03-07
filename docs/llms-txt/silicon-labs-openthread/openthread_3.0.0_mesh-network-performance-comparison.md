@@ -15,4 +15,4 @@ Additional performance benchmarking information for other technologies is availa
 - Mesh network performance including throughput, latency, and large network scalability is presented.
 - Benchmarks performed with Silicon Labs SDKs and Stacks for Bluetooth Mesh, Thread, and Zigbee.
 
-**The information in this application note is based on the SLThread implementation of Thread. SLThread reached ‘end of service’ in December 2019. Silicon Labs is replacing SLThread with an implementation of the more popular OpenThread. We anticipate that the results from OpenThread will be very close to the SLThread results.**
+**The information in this application note is based on the SLThread implementation of Thread. SLThread reached ‘end of service’ in December 2019. Silicon Labs is replacing SLThread with an implementation of the more popular OpenThread. We anticipate that the results from OpenThread will be very close to the SLThread results.:**

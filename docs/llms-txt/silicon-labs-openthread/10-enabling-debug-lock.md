@@ -26,13 +26,13 @@ commander security status --device EFR32MG21A010F1024 --serialno 440048205
 
 ```sh
 SE Firmware version : 1.2.14
-Serial number	    : 000000000000000014b457fffe045a8e
-Debug lock	        : Enabled
-Device erase	    : Enabled
+Serial number     : 000000000000000014b457fffe045a8e
+Debug lock         : Enabled
+Device erase     : Enabled
 Secure debug unlock : Disabled
-Tamper status	    : OK
-Secure boot	        : Disabled
-Boot status	        : 0x20 - OK
+Tamper status     : OK
+Secure boot         : Disabled
+Boot status         : 0x20 - OK
 DONE
 ```
 
@@ -74,8 +74,8 @@ commander security status --device EFR32MG21A010F1024 --serialno 440048205
 
 ```sh
 SE Firmware version : 1.2.14
-Serial number	    : 000000000000000014b457fffe045a8e
-Debug lock	        : Enabled
+Serial number     : 000000000000000014b457fffe045a8e
+Debug lock         : Enabled
 Device erase        : Disabled
 Secure debug unlock : Disabled
 Secure boot         : Disabled
@@ -117,8 +117,8 @@ commander security lock --trustzone 1100 --device EFR32MG21A010F1024 --serialno 
 
 ```sh
 Writing debug restriction bits:
-DBGLOCK:	0
-NIDLOCK:	0
+DBGLOCK: 0
+NIDLOCK: 0
 SPIDLOCK: 1
 SPNIDLOCK: 1
 Device is now locked.
@@ -158,22 +158,22 @@ commander security status --trustzone --device EFR32MG21A010F1024 --serialno 440
 
 ```sh
 SE Firmware version : 1.2.14
-Serial number	    : 000000000000000014b457fffe045a8e
-Debug lock	        : Enabled
-Device erase	    : Disabled
+Serial number     : 000000000000000014b457fffe045a8e
+Debug lock         : Enabled
+Device erase     : Disabled
 Secure debug unlock : Enabled
 
 Debug lock state: Locked
 
 Non-secure, invasive debug lock     (DBGLOCK) : Unlocked
 Non-secure, non-invasive debug lock (NIDLOCK) : Unlocked 
-Secure, invasive debug lock	        (SPIDLOCK) : Locked 
-Secure, non-invasive debug lock	    (SPNIDLOCK): Locked
+Secure, invasive debug lock         (SPIDLOCK) : Locked 
+Secure, non-invasive debug lock     (SPNIDLOCK): Locked
 
 Non-secure, invasive debug lock state     (DBGLOCK) : Unlocked
 Non-secure, non-invasive debug lock state (NIDLOCK) : Unlocked
-Secure, invasive debug lock state	      (SPIDLOCK) : Locked
-Secure, non-invasive debug lock state	  (SPNIDLOCK): Locked
+Secure, invasive debug lock state       (SPIDLOCK) : Locked
+Secure, non-invasive debug lock state   (SPNIDLOCK): Locked
 
 Tamper status:      : OK
 Secure boot         : Disabled

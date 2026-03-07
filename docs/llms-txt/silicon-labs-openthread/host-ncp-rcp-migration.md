@@ -19,9 +19,11 @@ The host then reads the saved tokens and updates the tokens on Zigbeed. Zigbeedâ
 For simplicity, the `trust\_center\_backup` component provides command line interfaces to read and save ncp tokens and write to Zigbeed tokens. They are, respectively:
 
 ```C
+
 plugin trust-center-backup backup-tokens <file name to save the tokens>
 
 plugin trust-center-backup update-zigbeed <the file that has saved the tokens above>
+
 ```
 
 There are certain limitations:

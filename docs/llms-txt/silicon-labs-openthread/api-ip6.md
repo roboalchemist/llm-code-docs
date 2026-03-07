@@ -2,7 +2,7 @@
 
 # IPv6
 
-This module includes functions that control IPv6 communication. 
+This module includes functions that control IPv6 communication.
 
 ## Modules
 
@@ -34,7 +34,7 @@ This module includes functions that control IPv6 communication.
 
 ### @2
 
-```
+```c
 enum @2 {
     OT_ADDRESS_ORIGIN_THREAD = 0
     OT_ADDRESS_ORIGIN_SLAAC = 1
@@ -58,7 +58,7 @@ IPv6 Address origins.
 
 ### @3
 
-```
+```c
 enum @3 {
     OT_ECN_NOT_CAPABLE = 0x0
     OT_ECN_CAPABLE_0 = 0x2
@@ -82,7 +82,7 @@ ECN statuses, represented as in the IP header.
 
 ### @4
 
-```
+```c
 enum @4 {
     OT_IP6_PROTO_HOP_OPTS = 0
     OT_IP6_PROTO_TCP = 6
@@ -270,7 +270,7 @@ Pointer is called with results of `otIp6RegisterMulticastListeners`.
 
 **Details:**
 
-**See Also**
+#### See Also
 
 - [otIp6RegisterMulticastListeners](api-ip6#ot-ip6-register-multicast-listeners)
 
@@ -294,7 +294,7 @@ Represents the counters of packets forwarded via Border Routing.
 
 ### OT_TOOL_PACKED_END
 
-```
+```c
 OT_TOOL_PACKED_BEGIN struct otIp6Prefix OT_TOOL_PACKED_END
 ```
 
@@ -367,7 +367,7 @@ The passed-in instance `aAddress` is copied by the Thread interface. The Thread 
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns
 
 - A pointer to the first Network Interface Address.
 
@@ -424,7 +424,7 @@ The passed in instance `aAddress` will be copied by the Thread interface. The Th
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otIp6GetMulticastAddresses)
 
 - A pointer to the first Network Interface Multicast Address.
 
@@ -441,15 +441,15 @@ The passed in instance `aAddress` will be copied by the Thread interface. The Th
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otMessageSettings](ot-message-settings) *|[in]|aSettings|A pointer to the message settings or NULL to set default settings.|
 
-**Note**
+#### Note
 
 - If `aSettings` is 'NULL', the link layer security is enabled and the message priority is set to OT_MESSAGE_PRIORITY_NORMAL by default.
 
-**Returns**
+##### Returns (Note)
 
 - A pointer to the message buffer or NULL if no message buffers are available or parameters are invalid.
 
-**See Also**
+###### See Also (Returns)
 
 - [otMessageFree](api-message#ot-message-free)
 
@@ -468,15 +468,15 @@ The passed in instance `aAddress` will be copied by the Thread interface. The Th
 |uint16_t|[in]|aDataLength|The size of the IPv6 datagram buffer pointed by `aData`.|
 |const [otMessageSettings](ot-message-settings) *|[in]|aSettings|A pointer to the message settings or NULL to set default settings.|
 
-**Note**
+#### Note (otIp6NewMessageFromBuffer)
 
 - If `aSettings` is NULL, the link layer security is enabled and the message priority is obtained from IPv6 message itself. If `aSettings` is not NULL, the `aSetting->mPriority` is ignored and obtained from IPv6 message itself.
 
-**Returns**
+##### Returns (otIp6NewMessageFromBuffer)
 
 - A pointer to the message or NULL if malformed IPv6 header or insufficient message buffers are available.
 
-**See Also**
+###### See Also (otIp6NewMessageFromBuffer)
 
 - [otMessageFree](api-message#ot-message-free)
 
@@ -496,7 +496,7 @@ The passed in instance `aAddress` will be copied by the Thread interface. The Th
 
 By default, this callback does not pass Thread control traffic. See [otIp6SetReceiveFilterEnabled()](api-ip6#ot-ip6-set-receive-filter-enabled) to change the Thread control traffic filter setting.
 
-**See Also**
+#### See Also (otIp6SetReceiveCallback)
 
 - [otIp6IsReceiveFilterEnabled](api-ip6#ot-ip6-is-receive-filter-enabled)
 - [otIp6SetReceiveFilterEnabled](api-ip6#ot-ip6-set-receive-filter-enabled)
@@ -527,11 +527,11 @@ By default, this callback does not pass Thread control traffic. See [otIp6SetRec
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otIp6IsReceiveFilterEnabled)
 
 - TRUE if Thread control traffic is filtered out, FALSE otherwise.
 
-**See Also**
+##### See Also (otIp6IsReceiveFilterEnabled)
 
 - [otIp6SetReceiveCallback](api-ip6#ot-ip6-set-receive-callback)
 - [otIp6SetReceiveFilterEnabled](api-ip6#ot-ip6-set-receive-filter-enabled)
@@ -549,7 +549,7 @@ By default, this callback does not pass Thread control traffic. See [otIp6SetRec
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |bool|[in]|aEnabled|TRUE if Thread control traffic is filtered out, FALSE otherwise.|
 
-**See Also**
+#### See Also (otIp6SetReceiveFilterEnabled)
 
 - [otIp6SetReceiveCallback](api-ip6#ot-ip6-set-receive-callback)
 - otIsReceiveIp6FilterEnabled
@@ -595,7 +595,7 @@ The caller transfers ownership of `aMessage` when making this call. OpenThread w
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |uint16_t|[in]|aPort|The port value.|
 
-**Note**
+#### Note (otIp6RemoveUnsecurePort)
 
 - This function removes `aPort` by overwriting `aPort` with the element after `aPort` in the internal port list. Be careful when calling [otIp6GetUnsecurePorts()](api-ip6#ot-ip6-get-unsecure-ports) followed by [otIp6RemoveUnsecurePort()](api-ip6#ot-ip6-remove-unsecure-port) to remove unsecure ports.
 
@@ -624,11 +624,11 @@ The caller transfers ownership of `aMessage` when making this call. OpenThread w
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |uint8_t *|[out]|aNumEntries|The number of entries in the list.|
 
-**Note**
+#### Note (otIp6GetUnsecurePorts)
 
 - Port value 0 is used to indicate an invalid entry.
 
-**Returns**
+##### Returns (otIp6GetUnsecurePorts)
 
 - A pointer to the unsecure port list.
 
@@ -791,7 +791,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 |const [otIp6Address](ot-ip6-address) *|[in]|aFirst|A pointer to the first IPv6 address.|
 |const [otIp6Address](ot-ip6-address) *|[in]|aSecond|A pointer to the second IPv6 address.|
 
-**Returns**
+#### Returns (otIp6PrefixMatch)
 
 - The prefix match length in bits.
 
@@ -905,7 +905,7 @@ If this function is not called, the default filter used by SLAAC module will be 
 
 `OPENTHREAD_CONFIG_TMF_PROXY_MLR_ENABLE` and `OPENTHREAD_CONFIG_COMMISSIONER_ENABLE` must be enabled.
 
-**See Also**
+#### See Also (otIp6RegisterMulticastListeners)
 
 - [otIp6RegisterMulticastListenersCallback](api-ip6#ot-ip6-register-multicast-listeners-callback)
 
@@ -936,7 +936,7 @@ Requires `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE`.
 |----|---------|-------------|-----------|
 |uint8_t|[in]|aIpProto|An IP protocol number (`OT_IP6_PROTO_*` enumeration).|
 
-**Returns**
+#### Returns (otIp6ProtoToString)
 
 - A string representing `aIpProto`.
 
@@ -954,7 +954,7 @@ Requires `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE`.
 
 `OPENTHREAD_CONFIG_IP6_BR_COUNTERS_ENABLE` build-time feature must be enabled.
 
-**Returns**
+#### Returns (otIp6GetBorderRoutingCounters)
 
 - A pointer to the Border Routing counters.
 

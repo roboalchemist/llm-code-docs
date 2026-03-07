@@ -83,16 +83,16 @@ To better understand the effects of Wi-Fi on 802.15.4 radios, Silicon Labs measu
 These are the key observations about the impact of Wi-Fi on 802.15.4 from the figure above.
 
 - Co-Channel (Zigbee overlapping Wi-Fi):  
-  - At channel 12, Zigbee can receive an 802.15.4 signal down to 9 dBm weaker than aggregate Wi-Fi transmit power (100% duty cycle).    
+  - At channel 12, Zigbee can receive an 802.15.4 signal down to 9 dBm weaker than aggregate Wi-Fi transmit power (100% duty cycle).
     - This receive sensitivity limitation impacts both co-located and remote, not co-located, 802.15.4 radios.  
   - At channel 12, Zigbee with and without LNA (Low Noise Amplifier) can receive an 802.15.4 signal down to 9 dB weaker than aggregate Wi-Fi transmit power (100% duty cycle).  
   - 802.15.4 transmits can also be blocked by Wi-Fi transmit power tripping the 802.15.4 -75 dBm CCA (Clear Channel Assessment) threshold.
 - Adjacent Channel (Zigbee within one Wi-Fi bandwidth):  
-  - At channel 15, Zigbee can receive a -87 dBm 802.15.4 signal with -30 dBm or weaker Wi-Fi transmit power (100% duty cycle).    
+  - At channel 15, Zigbee can receive a -87 dBm 802.15.4 signal with -30 dBm or weaker Wi-Fi transmit power (100% duty cycle).
     - Maximum receive sensitivity is attained at -38 dBm or weaker Wi-Fi transmit power (100% duty cycle).  
   - At channel 15, Zigbee without LNA can receive a -87 dBm 802.15.4 signal with -30 dBm or weaker Wi-Fi transmit power (100% duty cycle); -34 dBm or weaker with LNA enabled.
 - “Far-Away” Channel (Zigbee beyond one Wi-Fi bandwidth):  
-  - At channels 17 through 26, Zigbee can receive a -96 dBm 802.15.4 signal with -30 dBm or weaker Wi-Fi transmit power (100% duty cycle).    
+  - At channels 17 through 26, Zigbee can receive a -96 dBm 802.15.4 signal with -30 dBm or weaker Wi-Fi transmit power (100% duty cycle).
     - Maximum receive sensitivity is attained at -40 dBm or weaker Wi-Fi transmit power (100% duty cycle).  
   - At channels 17 through 26, Zigbee without LNA can receive a -96 dBm 802.15.4 signal with -30 dBm or weaker 100% Wi-Fi transmit power (100% duty cycle); -34 dBm or weaker with LNA enabled.
 

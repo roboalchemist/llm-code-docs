@@ -26,17 +26,21 @@ For GSDK 4.4.0 and up (Including SiSDK) you can use raspberry Pi OS Lite using D
 ## Install Required Prerequisite Packages
 
 ```bash
+
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install cmake git libreadline-dev libmbedtls-dev socat
 sudo apt-get install bluetooth bluez bluez-tools rfkill libbluetooth-dev
+
 ```
 
 Some versions of operating systems for the Raspberry Pi have enabled a swapfile. This file creates a lot of unnecessary wear on the SD card and causes performance to degrade drastically over time. It is recommended to disable this with the following commands:
 
 ```bash
+
 sudo dphys-swapfile swapoff
 sudo dphys-swapfile uninstall
-sudo apt remove dphys-swapfile 
+sudo apt remove dphys-swapfile
+
 ```
 
 ## SPI Configuration
@@ -45,42 +49,56 @@ This section is intended only for users running the co-processor with SPI, UART 
 
 ### Configuring RasperryPi OS to run the SPI Driver
 
-1. Open /boot/config.txt and add the following configuration:  
-   ```bash  
-   # Enable SPI0 with 1 chip select  
-   [all]  
-   dtoverlay=spi0-1cs  
-     
-   # If the CS pin number must be changed, use and adapt this line **instead**:  
-   dtoverlay=spi0-1cs,cs0_pin=8  
-     
-   # If you need two CS pins, use and adapt this line instead:  
-   dtoverlay=spi0-2cs,cs0_pin=8,cs1_pin=7   
+1. Open /boot/config.txt and add the following configuration:
+
+   ```bash
+
+   # Enable SPI0 with 1 chip select
+   [all]
+   dtoverlay=spi0-1cs
+
+   # If the CS pin number must be changed, use and adapt this line **instead**:
+   dtoverlay=spi0-1cs,cs0_pin=8
+
+   # If you need two CS pins, use and adapt this line instead:
+   dtoverlay=spi0-2cs,cs0_pin=8,cs1_pin=7
+
    ```
-2. Reboot for changes to take effect.  
-   ```bash  
-   sudo reboot  
+
+2. Reboot for changes to take effect.
+
+   ```bash
+
+   sudo reboot
+
    ```
-3. Validate that your changes are successful, by running:  
-   ```bash  
-   ls /dev | grep spi  
+
+3. Validate that your changes are successful, by running:
+
+   ```bash
+
+   ls /dev | grep spi
+
    ```
 
 success will yield the following output:
 
-```c
 ```bash
+
 spidev0.0
-```
+
 ```
 
-1. To make sure the chip select GPIOs are proper, run: dtc -I fs /sys/firmware/devicetree/base and make sure you can find the following configuration:  
-   ```bash  
-   spi0_cs_pins{      
-       brcm,function = <0x01>;      
-       phandle = <0x0f>;  
-       brcm,pins = <0x08>;  
-   };  
+1. To make sure the chip select GPIOs are proper, run: dtc -I fs /sys/firmware/devicetree/base and make sure you can find the following configuration:
+
+   ```bash
+
+   spi0_cs_pins{
+       brcm,function = <0x01>;
+       phandle = <0x0f>;
+       brcm,pins = <0x08>;
+   };
+
    ```
 
 In this configuration the CS pin is connected to GPIO 8 so this is the correct and expected pin configuration of the RasperryPi host.

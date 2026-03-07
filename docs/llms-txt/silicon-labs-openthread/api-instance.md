@@ -2,7 +2,7 @@
 
 # Instance
 
-This module includes functions that control the OpenThread Instance. 
+This module includes functions that control the OpenThread Instance.
 
 ## Typedefs
 
@@ -62,11 +62,11 @@ Initializes OpenThread and prepares it for subsequent OpenThread API calls. This
 
 Is available and can only be used when support for multiple OpenThread instances is enabled.
 
-**Returns**
+#### Returns
 
 - A pointer to the new OpenThread instance.
 
-**See Also**
+##### See Also
 
 - [otInstanceFinalize](api-instance#ot-instance-finalize)
 
@@ -86,7 +86,7 @@ Initializes OpenThread and prepares it for subsequent OpenThread API calls. This
 
 Is available and can only be used when support for multiple OpenThread instances is disabled.
 
-**Returns**
+#### Returns (otInstanceInitSingle)
 
 - A pointer to the single OpenThread instance.
 
@@ -104,7 +104,7 @@ Is available and can only be used when support for multiple OpenThread instances
 
 Is available and can only be used when support for multiple OpenThread instances is disabled.
 
-**Returns**
+#### Returns (otInstanceGetSingle)
 
 - A pointer to the single OpenThread instance.
 
@@ -124,7 +124,7 @@ This function initializes OpenThread and prepares it for subsequent OpenThread A
 
 This function is available and can only be used when support for multiple OpenThread static instances is enabled (`OPENTHREAD_CONFIG_MULTIPLE_STATIC_INSTANCE_ENABLE`)
 
-**Returns**
+#### Returns (otInstanceInitMultiple)
 
 - A pointer to the new OpenThread instance.
 
@@ -142,7 +142,7 @@ This function is available and can only be used when support for multiple OpenTh
 
 This function is available when both `OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE` and `OPENTHREAD_CONFIG_MULTIPLE_STATIC_INSTANCE_ENABLE` are enabled.
 
-**Returns**
+#### Returns (otInstanceGetInstance)
 
 - A pointer to the corresponding OpenThread instance, or `NULL` if `aIdx` is out of bounds.
 
@@ -160,7 +160,7 @@ This function is available when both `OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE
 
 This function is available when both `OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE` and `OPENTHREAD_CONFIG_MULTIPLE_STATIC_INSTANCE_ENABLE` are enabled.
 
-**Returns**
+#### Returns (otInstanceGetIndex)
 
 - The index of the OpenThread instance.
 
@@ -178,7 +178,7 @@ This function is available when both `OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE
 
 The instance identifier is set to a random value when the instance is constructed, and then its value will not change after initialization.
 
-**Returns**
+#### Returns (otInstanceGetId)
 
 - The instance identifier.
 
@@ -196,7 +196,7 @@ The instance identifier is set to a random value when the instance is constructe
 
 The instance is considered valid if it is acquired and initialized using either `otInstanceInitSingle()` (in single instance case) or `otInstanceInit()` (in multi instance case). A subsequent call to `otInstanceFinalize()` causes the instance to be considered as uninitialized.
 
-**Returns**
+#### Returns (otInstanceIsInitialized)
 
 - TRUE if the given instance is valid/initialized, FALSE otherwise.
 
@@ -230,7 +230,7 @@ Requires `OPENTHREAD_CONFIG_UPTIME_ENABLE` to be enabled.
 
 The uptime is given as number of milliseconds since OpenThread instance was initialized.
 
-**Returns**
+#### Returns (otInstanceGetUptime)
 
 - The uptime (number of milliseconds).
 
@@ -364,7 +364,7 @@ Erase is successful only if the device is in `disabled` state/role.
 |----|---------|-------------|-----------|
 |void|N/A|undefined||
 
-**Returns**
+#### Returns (otGetVersionString)
 
 - A pointer to the OpenThread version.
 
@@ -380,7 +380,7 @@ Erase is successful only if the device is in `disabled` state/role.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otGetRadioVersionString)
 
 - A pointer to the OpenThread radio version.
 

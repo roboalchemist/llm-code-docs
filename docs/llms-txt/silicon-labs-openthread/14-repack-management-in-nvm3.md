@@ -36,6 +36,7 @@ The **repack headroom** parameter (`repackHeadroom` in `nvm3_Init_t`) specifies 
   Configure `repackHeadroom` according to the application's tolerance for repack latency (the amount of delay it can accept when a repack occurs during a write) and the available NVM3 memory. A smaller value allows more objects to be stored before a repack is needed but increases the risk of a forced repack during a write, adding latency. A larger value causes repacks to occur earlier, which lowers the risk of a forced repack but results in more frequent user repacks.  
   Repack headroom can be configured using `NVM3_DEFAULT_REPACK_HEADROOM` macro or through the Studio UI to reserve a specific amount of memory in advance, helping to avoid forced repacks during time-critical operations.  
   For example, if the application writes 512 bytes of data (including object overhead) during bootup, which is a time-sensitive operation, configure the repack headroom to 512 bytes to ensure that a forced repack does not occur during boot. Proactively check for repack before the next bootup.  
+
   ```c  
   // Example: Configure repack headroom to 512 bytes to ensure sufficient memory for a critical write  
   #define NVM3_DEFAULT_REPACK_HEADROOM  512  
@@ -45,8 +46,10 @@ The **repack headroom** parameter (`repackHeadroom` in `nvm3_Init_t`) specifies 
     nvm3_repack(nvm3_defaultHandle);  
   }  
   ```
+
 - **Monitor Available Memory:**  
   Use `nvm3_getMemInfo()` to monitor available memory and repack proactively if memory is running low.  
+
   ```c  
   // Example: Monitor available memory and trigger a repack  
   nvm3_MemInfo_t memInfo;  
@@ -56,6 +59,7 @@ The **repack headroom** parameter (`repackHeadroom` in `nvm3_Init_t`) specifies 
     nvm3_repack(nvm3_defaultHandle);  
   }  
   ```  
+
   For more information, see the [NVM3 Memory Info](https://docs.silabs.com/gecko-platform/latest/platform-driver/nvm3-mem-info-t).
 
 ## Avoid Large Max Object Size Unless Needed
@@ -86,7 +90,7 @@ This is a theoretical limit. If the basic storage is at this limit, no memory is
 For detailed tables showing the relationship between flash page count, page size, and max object size, see the [Storage Capacity](https://docs.silabs.com/gecko-platform/latest/platform-driver/nvm3#storage-capacity) section in the NVM3 API documentation.
 
 > **Best Practice**: Configure `maxObjectSize` to the smallest value that still accommodates the largest object. Avoid configuring it unnecessarily high, as this reduces usable memory and increases the frequency of repacks, which can accelerate flash wear.
-> 
+>
 > **Tip**: If an application only occasionally needs to store a few large objects (e.g., 4096 bytes), these objects can be broken into smaller chunks (such as four 1024-byte objects). Each chunk is written separately and later read back and reassembled into the original object when needed. This approach keeps `maxObjectSize` small, maximizing usable memory and minimizing repack frequency and flash wear for the majority of the data.
 
 ## Impact of Max Object Size on Repack and Usable Storage

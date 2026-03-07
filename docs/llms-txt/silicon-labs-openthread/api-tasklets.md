@@ -2,7 +2,7 @@
 
 # Tasklets
 
-This module includes functions that control the Thread stack's execution. 
+This module includes functions that control the Thread stack's execution.
 
 ## Functions
 
@@ -12,7 +12,7 @@ This module includes functions that control the Thread stack's execution.
 
 **Description:** Run all queued OpenThread tasklets at the time this is called.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -24,7 +24,7 @@ This module includes functions that control the Thread stack's execution.
 
 **Description:** Indicates whether or not OpenThread has tasklets pending.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -36,7 +36,7 @@ This module includes functions that control the Thread stack's execution.
 
 **Description:** OpenThread calls this function when the tasklet queue transitions from empty to non-empty.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

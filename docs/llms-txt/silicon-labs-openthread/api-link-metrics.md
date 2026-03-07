@@ -2,7 +2,7 @@
 
 # Link Metrics
 
-This module includes functions that control the Link Metrics protocol. 
+This module includes functions that control the Link Metrics protocol.
 
 ## Modules
 
@@ -14,7 +14,7 @@ This module includes functions that control the Link Metrics protocol.
 
 ### otLinkMetricsEnhAckFlags
 
-```
+```c
 enum otLinkMetricsEnhAckFlags {
     OT_LINK_METRICS_ENH_ACK_CLEAR = 0
     OT_LINK_METRICS_ENH_ACK_REGISTER = 1
@@ -38,7 +38,7 @@ These are used in Enhanced-ACK Based Probing to indicate whether to register or 
 
 ### otLinkMetricsStatus
 
-```
+```c
 enum otLinkMetricsStatus {
     OT_LINK_METRICS_STATUS_SUCCESS = 0
     OT_LINK_METRICS_STATUS_CANNOT_SUPPORT_NEW_SERIES = 1
@@ -82,7 +82,7 @@ Represents the result (value) for a Link Metrics query.
 
 Represents which frames are accounted in a Forward Tracking Series.
 
-### otLinkMetricsEnhAckFlags
+### otLinkMetricsEnhAckFlags (Typedefs)
 
 `typedef enum otLinkMetricsEnhAckFlags otLinkMetricsEnhAckFlags`
 
@@ -94,7 +94,7 @@ Enhanced-ACK Flags.
 
 These are used in Enhanced-ACK Based Probing to indicate whether to register or clear the probing.
 
-### otLinkMetricsStatus
+### otLinkMetricsStatus (Typedefs)
 
 `typedef enum otLinkMetricsStatus otLinkMetricsStatus`
 

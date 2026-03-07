@@ -2,7 +2,7 @@
 
 # Multi Radio Link
 
-This module includes definitions and functions for multi radio link. 
+This module includes definitions and functions for multi radio link.
 
 ## Modules
 
@@ -16,7 +16,7 @@ This module includes definitions and functions for multi radio link.
 
 `typedef struct otRadioLinkInfo otRadioLinkInfo`
 
-**Description:**
+**Description**:
 
 Represents information associated with a radio link.
 
@@ -24,7 +24,7 @@ Represents information associated with a radio link.
 
 `typedef struct otMultiRadioNeighborInfo otMultiRadioNeighborInfo`
 
-**Description:**
+**Description**:
 
 Represents multi radio link information associated with a neighbor.
 
@@ -36,7 +36,7 @@ Represents multi radio link information associated with a neighbor.
 
 **Description:** Gets the multi radio link information associated with a neighbor with a given Extended Address.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

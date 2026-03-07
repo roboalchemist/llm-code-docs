@@ -2,7 +2,7 @@
 
 # Link
 
-This module includes functions that control link-layer configuration. 
+This module includes functions that control link-layer configuration.
 
 ## Modules
 
@@ -18,7 +18,7 @@ This module includes functions that control link-layer configuration.
 
 ### otMacFilterAddressMode
 
-```
+```c
 enum otMacFilterAddressMode {
     OT_MAC_FILTER_ADDRESS_MODE_DISABLED
     OT_MAC_FILTER_ADDRESS_MODE_ALLOWLIST
@@ -48,7 +48,7 @@ Defines address mode of the mac filter.
 
 Used to iterate through mac filter entries.
 
-### otMacFilterAddressMode
+### otMacFilterAddressMode (Typedefs)
 
 `typedef enum otMacFilterAddressMode otMacFilterAddressMode`
 
@@ -140,7 +140,7 @@ Pointer is called when an IEEE 802.15.4 frame is received.
 
 **Details:**
 
-**Note**
+#### Note
 
 - This callback is called after FCS processing and `aFrame` may not contain the actual FCS that was received.
 - This callback is called before IEEE 802.15.4 security processing.
@@ -175,7 +175,7 @@ Pointer is called when an IEEE 802.15.4 frame is received.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns
 
 - true if an IEEE 802.15.4 Active Scan is in progress, false otherwise.
 
@@ -207,7 +207,7 @@ Pointer is called when an IEEE 802.15.4 frame is received.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkIsEnergyScanInProgress)
 
 - true if an IEEE 802.15.4 Energy Scan is in progress, false otherwise.
 
@@ -237,7 +237,7 @@ Pointer is called when an IEEE 802.15.4 frame is received.
 
 MAC module is in the transmit state during CSMA/CA procedure, CCA, Data, Beacon or Data Request frame transmission and receiving an ACK of a transmitted frame. MAC module is not in the transmit state during transmission of an ACK frame or a Beacon Request frame.
 
-**Returns**
+#### Returns (otLinkIsInTransmitState)
 
 - true if an IEEE 802.15.4 MAC is in the transmit state, false otherwise.
 
@@ -253,11 +253,11 @@ MAC module is in the transmit state during CSMA/CA procedure, CCA, Data, Beacon 
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetChannel)
 
 - The IEEE 802.15.4 channel.
 
-**See Also**
+##### See Also
 
 - [otLinkSetChannel](api-link-link#ot-link-set-channel)
 
@@ -276,7 +276,7 @@ MAC module is in the transmit state during CSMA/CA procedure, CCA, Data, Beacon 
 
 Succeeds only when Thread protocols are disabled. A successful call to this function invalidates the Active and Pending Operational Datasets in non-volatile memory.
 
-**See Also**
+#### See Also (otLinkSetChannel)
 
 - [otLinkGetChannel](api-link-link#ot-link-get-channel)
 
@@ -292,7 +292,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetSupportedChannelMask)
 
 - The supported channel mask as `uint32_t` with bit 0 (lsb) mapping to channel 0, bit 1 to channel 1, so on.
 
@@ -323,7 +323,7 @@ Succeeds only when Thread protocols are disabled.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetExtendedAddress)
 
 - A pointer to the IEEE 802.15.4 Extended Address.
 
@@ -340,7 +340,7 @@ Succeeds only when Thread protocols are disabled.
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otExtAddress](ot-ext-address) *|[in]|aExtAddress|A pointer to the IEEE 802.15.4 Extended Address.|
 
-**Note**
+#### Note (otLinkSetExtendedAddress)
 
 - Only succeeds when Thread protocols are disabled.
 
@@ -369,11 +369,11 @@ Succeeds only when Thread protocols are disabled.
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetPanId)
 
 - The IEEE 802.15.4 PAN ID.
 
-**See Also**
+##### See Also (Returns)
 
 - [otLinkSetPanId](api-link-link#ot-link-set-pan-id)
 
@@ -392,7 +392,7 @@ Succeeds only when Thread protocols are disabled.
 
 Succeeds only when Thread protocols are disabled. A successful call to this function also invalidates the Active and Pending Operational Datasets in non-volatile memory.
 
-**See Also**
+#### See Also (otLinkSetPanId)
 
 - [otLinkGetPanId](api-link-link#ot-link-get-pan-id)
 
@@ -408,11 +408,11 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetPollPeriod)
 
 - The data poll period of sleepy end device in milliseconds.
 
-**See Also**
+##### See Also (otLinkGetPollPeriod)
 
 - [otLinkSetPollPeriod](api-link-link#ot-link-set-poll-period)
 
@@ -429,13 +429,13 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |uint32_t|[in]|aPollPeriod|data poll period in milliseconds.|
 
-**Note**
+#### Note (otLinkSetPollPeriod)
 
 - This function updates only poll period of sleepy end device. To update child timeout the function `otThreadSetChildTimeout()` shall be called.
 - Minimal non-zero value should be `OPENTHREAD_CONFIG_MAC_MINIMUM_POLL_PERIOD` (10ms). Or zero to clear user-specified poll period.
 - User-specified value should be no more than the maximal value 0x3FFFFFF ((1 << 26) - 1) allowed, otherwise it would be clipped by the maximal value.
 
-**See Also**
+##### See Also (Note)
 
 - [otLinkGetPollPeriod](api-link-link#ot-link-get-poll-period)
 
@@ -451,7 +451,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetShortAddress)
 
 - The IEEE 802.15.4 Short Address.
 
@@ -467,7 +467,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetAlternateShortAddress)
 
 - The alternate short address, or `OT_RADIO_INVALID_SHORT_ADDR` (0xfffe) if there is no alternate address.
 
@@ -483,7 +483,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetMaxFrameRetriesDirect)
 
 - The maximum number of retries during direct transmission.
 
@@ -512,7 +512,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetMaxFrameRetriesIndirect)
 
 - The maximum number of retries during indirect transmission.
 
@@ -541,7 +541,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetFrameCounter)
 
 - The current MAC frame counter value.
 
@@ -559,7 +559,7 @@ Succeeds only when Thread protocols are disabled. A successful call to this func
 
 Is available when `OPENTHREAD_CONFIG_MAC_FILTER_ENABLE` configuration is enabled.
 
-**Returns**
+#### Returns (otLinkFilterGetAddressMode)
 
 - the address mode.
 
@@ -786,7 +786,7 @@ Is available when `OPENTHREAD_CONFIG_MAC_FILTER_ENABLE` configuration is enabled
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |int8_t|[in]|aRss|The received signal strength value to be converted.|
 
-**Returns**
+#### Returns (otLinkConvertRssToLinkQuality)
 
 - Link quality value mapping to `aRss`.
 
@@ -803,7 +803,7 @@ Is available when `OPENTHREAD_CONFIG_MAC_FILTER_ENABLE` configuration is enabled
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |uint8_t|[in]|aLinkQuality|LinkQuality value, should be in range [0,3].|
 
-**Returns**
+#### Returns (otLinkConvertLinkQualityToRss)
 
 - Typical platform received signal strength mapping to `aLinkQuality`.
 
@@ -822,7 +822,7 @@ Is available when `OPENTHREAD_CONFIG_MAC_FILTER_ENABLE` configuration is enabled
 
 Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration is enabled.
 
-**Returns**
+#### Returns (otLinkGetTxDirectRetrySuccessHistogram)
 
 - A pointer to the histogram of retries (in a form of an array). The n-th element indicates that the packet has been sent with n-th retry.
 
@@ -841,7 +841,7 @@ Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration
 
 Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration is enabled.
 
-**Returns**
+#### Returns (otLinkGetTxIndirectRetrySuccessHistogram)
 
 - A pointer to the histogram of retries (in a form of an array). The n-th element indicates that the packet has been sent with n-th retry.
 
@@ -871,7 +871,7 @@ Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetCounters)
 
 - A pointer to the MAC layer counters.
 
@@ -926,7 +926,7 @@ Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |bool|[in]|aPromiscuous|true to enable promiscuous mode, or false otherwise.|
 
-**Note**
+#### Note (otLinkSetPromiscuous)
 
 - Promiscuous mode may only be enabled when the Thread interface is disabled.
 
@@ -942,7 +942,7 @@ Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetCslChannel)
 
 - The CSL channel.
 
@@ -971,7 +971,7 @@ Is valid when OPENTHREAD_CONFIG_MAC_RETRY_SUCCESS_HISTOGRAM_ENABLE configuration
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetCslPeriod)
 
 - The CSL period in microseconds.
 
@@ -1004,7 +1004,7 @@ The CSL period MUST be a multiple of `OT_LINK_CSL_PERIOD_TEN_SYMBOLS_UNIT_IN_USE
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+#### Returns (otLinkGetCslTimeout)
 
 - The CSL timeout in seconds.
 
@@ -1035,7 +1035,7 @@ The CSL period MUST be a multiple of `OT_LINK_CSL_PERIOD_TEN_SYMBOLS_UNIT_IN_USE
 
 The rate is maintained over a window of (roughly) last `OPENTHREAD_CONFIG_CCA_FAILURE_RATE_AVERAGING_WINDOW` frame transmissions.
 
-**Returns**
+#### Returns (otLinkGetCcaFailureRate)
 
 - The CCA failure rate with maximum value `0xffff` corresponding to 100% failure rate.
 
@@ -1052,7 +1052,7 @@ The rate is maintained over a window of (roughly) last `OPENTHREAD_CONFIG_CCA_FA
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |bool|[in]|aEnable|true to enable the link layer, or false otherwise.|
 
-**Note**
+#### Note (otLinkSetEnabled)
 
 - The link layer may only be enabled / disabled when the Thread Interface is disabled.
 
@@ -1150,7 +1150,7 @@ The radio region format is the 2-bytes ascii representation of the ISO 3166 alph
 
 Requires `OPENTHREAD_CONFIG_WAKEUP_COORDINATOR_ENABLE` or `OPENTHREAD_CONFIG_WAKEUP_END_DEVICE_ENABLE`.
 
-**Returns**
+#### Returns (otLinkGetWakeupChannel)
 
 - The Wake-up channel.
 

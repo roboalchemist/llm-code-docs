@@ -2,7 +2,7 @@
 
 # ICMPv6
 
-This module includes functions that control ICMPv6 communication. 
+This module includes functions that control ICMPv6 communication.
 
 ## Modules
 
@@ -14,7 +14,7 @@ This module includes functions that control ICMPv6 communication.
 
 ### otIcmp6Type
 
-```
+```c
 enum otIcmp6Type {
     OT_ICMP6_TYPE_DST_UNREACH = 1
     OT_ICMP6_TYPE_PACKET_TO_BIG = 2
@@ -50,7 +50,7 @@ ICMPv6 Message Types.
 
 ### otIcmp6Code
 
-```
+```c
 enum otIcmp6Code {
     OT_ICMP6_CODE_DST_UNREACH_NO_ROUTE = 0
     OT_ICMP6_CODE_DST_UNREACH_PROHIBITED = 1
@@ -72,7 +72,7 @@ ICMPv6 Message Codes.
 
 ### otIcmp6EchoMode
 
-```
+```c
 enum otIcmp6EchoMode {
     OT_ICMP6_ECHO_HANDLER_DISABLED = 0
     OT_ICMP6_ECHO_HANDLER_UNICAST_ONLY = 1
@@ -98,7 +98,7 @@ ICMPv6 Echo Reply Modes.
 
 ## Typedefs
 
-### otIcmp6Type
+### otIcmp6Type (Typedefs)
 
 `typedef enum otIcmp6Type otIcmp6Type`
 
@@ -106,7 +106,7 @@ ICMPv6 Echo Reply Modes.
 
 ICMPv6 Message Types.
 
-### otIcmp6Code
+### otIcmp6Code (Typedefs)
 
 `typedef enum otIcmp6Code otIcmp6Code`
 
@@ -149,7 +149,7 @@ This callback allows OpenThread to inform the application of a received ICMPv6 m
 
 Implements ICMPv6 message handler.
 
-### otIcmp6EchoMode
+### otIcmp6EchoMode (Typedefs)
 
 `typedef enum otIcmp6EchoMode otIcmp6EchoMode`
 
@@ -161,7 +161,7 @@ ICMPv6 Echo Reply Modes.
 
 ### OT_TOOL_PACKED_END
 
-```
+```c
 OT_TOOL_PACKED_BEGIN struct otIcmp6Header OT_TOOL_PACKED_END
 ```
 
@@ -205,7 +205,7 @@ OT_TOOL_PACKED_BEGIN struct otIcmp6Header OT_TOOL_PACKED_END
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |[otIcmp6Handler](ot-icmp6-handler) *|[in]|aHandler|A pointer to a handler containing callback that is called when an ICMPv6 message is received.|
 
-**Note**
+#### Note
 
 - A handler structure `aHandler` has to be stored in persistent (static) memory. OpenThread does not make a copy of handler structure.
 

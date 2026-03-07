@@ -2,9 +2,9 @@
 
 # TREL - Thread Stack
 
-This module defines Thread Radio Encapsulation Link (TREL) APIs for Thread Over Infrastructure. 
+This module defines Thread Radio Encapsulation Link (TREL) APIs for Thread Over Infrastructure.
 
-The functions in this module require `OPENTHREAD_CONFIG_RADIO_LINK_TREL_ENABLE` to be enabled. 
+The functions in this module require `OPENTHREAD_CONFIG_RADIO_LINK_TREL_ENABLE` to be enabled.
 
 ## Modules
 
@@ -16,7 +16,7 @@ The functions in this module require `OPENTHREAD_CONFIG_RADIO_LINK_TREL_ENABLE` 
 
 `typedef struct otTrelPeer otTrelPeer`
 
-**Description:**
+**Description**:
 
 Represents a TREL peer.
 
@@ -24,7 +24,7 @@ Represents a TREL peer.
 
 `typedef const void* otTrelPeerIterator`
 
-**Description:**
+**Description**:
 
 Represents an iterator for iterating over TREL peer table entries.
 
@@ -32,7 +32,7 @@ Represents an iterator for iterating over TREL peer table entries.
 
 `typedef otPlatTrelCounters otTrelCounters`
 
-**Description:**
+**Description**:
 
 Represents a group of TREL related counters.
 
@@ -40,17 +40,17 @@ Represents a group of TREL related counters.
 
 `typedef void(* otTrelStateChangeCallback) (void *aContext)`
 
-**Description:**
+**Description**:
 
 Callback function pointer to signal state changes to the TREL.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aContext|A pointer to an arbitrary context (provided when callback is set).|
 
-**Details:**
+**Details**:
 
 This callback is invoked whenever the `otTrelGetEnabled()` or `otTrelGetUdpPort()` gets changed.
 
@@ -64,7 +64,7 @@ Any OpenThread API, including `otTrel` APIs, can be safely called from this call
 
 **Description:** Sets the user's preference to enable or disable the TREL operation.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -83,7 +83,7 @@ If the user explicitly disables the TREL operation by calling this function with
 
 **Description:** Indicates whether the TREL operation is enabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -97,7 +97,7 @@ The TREL operation is enabled if and only if it is enabled by both the user (see
 
 **Description:** Initializes a peer table iterator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -110,14 +110,14 @@ The TREL operation is enabled if and only if it is enabled by both the user (see
 
 **Description:** Iterates over the peer table entries and get the next entry from the table.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|The OpenThread instance.|
 |[otTrelPeerIterator](api-trel#ot-trel-peer-iterator) *|[in]|aIterator|The iterator. MUST be initialized.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the next `otTrelPeer` entry or `NULL` if no more entries in the table.
 
@@ -127,13 +127,13 @@ The TREL operation is enabled if and only if it is enabled by both the user (see
 
 **Description:** Returns the number of TREL peers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - The number of TREL peers.
 
@@ -143,7 +143,7 @@ The TREL operation is enabled if and only if it is enabled by both the user (see
 
 **Description:** Sets the filter mode (enables/disables filtering).
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -160,7 +160,7 @@ Unlike `otTrel{Enable/Disable}()` which fully starts/stops the TREL operation, w
 
 **Description:** Indicates whether or not the filter mode is enabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -172,13 +172,13 @@ Unlike `otTrel{Enable/Disable}()` which fully starts/stops the TREL operation, w
 
 **Description:** Gets the TREL counters.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the TREL counters.
 
@@ -188,7 +188,7 @@ Unlike `otTrel{Enable/Disable}()` which fully starts/stops the TREL operation, w
 
 **Description:** Resets the TREL counters.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -200,13 +200,13 @@ Unlike `otTrel{Enable/Disable}()` which fully starts/stops the TREL operation, w
 
 **Description:** Gets the UDP port of the TREL interface.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - UDP port of the TREL interface.
 
@@ -214,7 +214,7 @@ Unlike `otTrel{Enable/Disable}()` which fully starts/stops the TREL operation, w
 
 `void otTrelSetStateChangeCallback(otInstance *aInstance, otTrelStateChangeCallback aCallback, void *aContext)`
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

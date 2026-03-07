@@ -2,13 +2,13 @@
 
 # BLE Secure
 
-This module includes functions that control BLE Secure (TLS over BLE) communication. 
+This module includes functions that control BLE Secure (TLS over BLE) communication.
 
 This module includes functions that implement TCAT communication.
 
 The functions in this module are available when BLE Secure API feature (`OPENTHREAD_CONFIG_BLE_TCAT_ENABLE`) is enabled.
 
-The functions in this module are available when TCAT feature (`OPENTHREAD_CONFIG_BLE_TCAT_ENABLE`) is enabled. 
+The functions in this module are available when TCAT feature (`OPENTHREAD_CONFIG_BLE_TCAT_ENABLE`) is enabled.
 
 ## Modules
 
@@ -22,7 +22,7 @@ The functions in this module are available when TCAT feature (`OPENTHREAD_CONFIG
 
 ### otTcatStatusCode
 
-```
+```c
 enum otTcatStatusCode {
     OT_TCAT_STATUS_SUCCESS = 0
     OT_TCAT_STATUS_UNSUPPORTED = 1
@@ -58,7 +58,7 @@ Represents TCAT status code.
 
 ### otTcatApplicationProtocol
 
-```
+```c
 enum otTcatApplicationProtocol {
     OT_TCAT_APPLICATION_PROTOCOL_NONE = 0
     OT_TCAT_APPLICATION_PROTOCOL_STATUS = 0x01
@@ -91,7 +91,7 @@ Represents TCAT application protocol options.
 
 ### otTcatCommandClass
 
-```
+```c
 enum otTcatCommandClass {
     OT_TCAT_COMMAND_CLASS_GENERAL = 0
     OT_TCAT_COMMAND_CLASS_COMMISSIONING = 1
@@ -117,7 +117,7 @@ Represents a TCAT command class.
 
 ### otTcatAdvertisedDeviceIdType
 
-```
+```c
 enum otTcatAdvertisedDeviceIdType {
     OT_TCAT_DEVICE_ID_EMPTY = 0
     OT_TCAT_DEVICE_ID_OUI24 = 1
@@ -180,7 +180,7 @@ Pointer to call when data was received over a BLE Secure TLS connection.
 
 When TCAT has been started, the TCAT agent automatically responds with status OT_TCAT_STATUS_UNSUPPORTED if no response has been generated or no handler is defined. The application may generate a response to incoming TCAT application data or vendor-specific data by calling [otBleSecureSendApplicationTlv](api-ble-secure#ot-ble-secure-send-application-tlv).
 
-### otTcatStatusCode
+### otTcatStatusCode (Typedefs)
 
 `typedef enum otTcatStatusCode otTcatStatusCode`
 
@@ -188,7 +188,7 @@ When TCAT has been started, the TCAT agent automatically responds with status OT
 
 Represents TCAT status code.
 
-### otTcatApplicationProtocol
+### otTcatApplicationProtocol (Typedefs)
 
 `typedef enum otTcatApplicationProtocol otTcatApplicationProtocol`
 
@@ -196,7 +196,7 @@ Represents TCAT status code.
 
 Represents TCAT application protocol options.
 
-### otTcatCommandClass
+### otTcatCommandClass (Typedefs)
 
 `typedef enum otTcatCommandClass otTcatCommandClass`
 
@@ -204,7 +204,7 @@ Represents TCAT application protocol options.
 
 Represents a TCAT command class.
 
-### otTcatAdvertisedDeviceIdType
+### otTcatAdvertisedDeviceIdType (Typedefs)
 
 `typedef enum otTcatAdvertisedDeviceIdType otTcatAdvertisedDeviceIdType`
 
@@ -374,7 +374,7 @@ In standby state, no BLE advertisements are sent and TCAT Commissioners can't co
 |const uint8_t *|[in]|aPskIdentity|The Identity Name for the PSK.|
 |uint16_t|[in]|aPskIdLength|The PSK Identity Length.|
 
-**Note**
+#### Note
 
 - Requires the build-time feature `MBEDTLS_KEY_EXCHANGE_PSK_ENABLED` to be enabled.
 
@@ -392,7 +392,7 @@ In standby state, no BLE advertisements are sent and TCAT Commissioners can't co
 |unsigned char *|[out]|aPeerCert|A pointer to the base64 encoded certificate buffer.|
 |size_t *|[inout]|aCertLength|On input, the size the max size of `aPeerCert`. On output, the length of the base64 encoded peer certificate.|
 
-**Note**
+#### Note (otBleSecureGetPeerCertificateBase64)
 
 - Requires the build-time features `MBEDTLS_BASE64_C` and `MBEDTLS_SSL_KEEP_PEER_CERTIFICATE` to be enabled.
 
@@ -410,7 +410,7 @@ In standby state, no BLE advertisements are sent and TCAT Commissioners can't co
 |unsigned char *|[out]|aPeerCert|A pointer to the DER encoded certificate buffer.|
 |size_t *|[inout]|aCertLength|On input, the size the max size of `aPeerCert`. On output, the length of the DER encoded peer certificate.|
 
-**Note**
+#### Note (otBleSecureGetPeerCertificateDer)
 
 - Requires the build-time feature `MBEDTLS_SSL_KEEP_PEER_CERTIFICATE` to be enabled.
 
@@ -433,7 +433,7 @@ In standby state, no BLE advertisements are sent and TCAT Commissioners can't co
 
 The peer OID is provided in binary format. The attribute length is set if the attribute was successfully read or zero if unsuccessful. The ASN.1 type as is set as defineded in the ITU-T X.690 standard if the attribute was successfully read.
 
-**Note**
+#### Note (otBleSecureGetPeerSubjectAttributeByOid)
 
 - Requires the build-time feature `MBEDTLS_SSL_KEEP_PEER_CERTIFICATE` to be enabled.
 
@@ -454,7 +454,7 @@ The peer OID is provided in binary format. The attribute length is set if the at
 
 The attribute length is set if the attribute was successfully read or zero if unsuccessful. Requires a connection to be active.
 
-**Note**
+#### Note (otBleSecureGetThreadAttributeFromPeer...)
 
 - Requires the build-time feature `MBEDTLS_SSL_KEEP_PEER_CERTIFICATE` to be enabled.
 
@@ -508,7 +508,7 @@ Disable or enable the verification of peer certificate. Must be called before st
 
 Used for TLS sessions with cipher suite TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256.
 
-**Note**
+#### Note (otBleSecureSetCertificate)
 
 - Requires `MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED=1`.
 
@@ -530,7 +530,7 @@ It is needed for validating the certificate of the peer via TLS.
 
 Used for TLS sessions with cipher suite TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256.
 
-**Note**
+#### Note (otBleSecureSetCaCertificateChain)
 
 - Requires `MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED=1`.
 

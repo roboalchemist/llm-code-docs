@@ -2,7 +2,7 @@
 
 # UDP
 
-This module includes functions that control UDP communication. 
+This module includes functions that control UDP communication.
 
 ## Modules
 
@@ -14,20 +14,22 @@ This module includes functions that control UDP communication.
 
 ### otNetifIdentifier
 
-```
+```c
+
 enum otNetifIdentifier {
     OT_NETIF_UNSPECIFIED = 0
     OT_NETIF_THREAD_HOST
     OT_NETIF_THREAD_INTERNAL
     OT_NETIF_BACKBONE
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines the OpenThread network interface identifiers.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -42,17 +44,17 @@ Defines the OpenThread network interface identifiers.
 
 `typedef bool(* otUdpHandler) (void *aContext, const otMessage *aMessage, const otMessageInfo *aMessageInfo)`
 
-**Description:**
+**Description**:
 
 This callback allows OpenThread to provide specific handlers for certain UDP messages.
 
-**Details:**
+**Details**:
 
 ### otUdpReceiver
 
 `typedef struct otUdpReceiver otUdpReceiver`
 
-**Description:**
+**Description**:
 
 Represents a UDP receiver.
 
@@ -60,15 +62,15 @@ Represents a UDP receiver.
 
 `typedef void(* otUdpReceive) (void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo)`
 
-**Description:**
+**Description**:
 
 This callback allows OpenThread to inform the application of a received UDP message.
 
-### otNetifIdentifier
+### otNetifIdentifier (Typedef)
 
 `typedef enum otNetifIdentifier otNetifIdentifier`
 
-**Description:**
+**Description**:
 
 Defines the OpenThread network interface identifiers.
 
@@ -76,7 +78,7 @@ Defines the OpenThread network interface identifiers.
 
 `typedef struct otUdpSocket otUdpSocket`
 
-**Description:**
+**Description**:
 
 Represents a UDP socket.
 
@@ -88,7 +90,7 @@ Represents a UDP socket.
 
 **Description:** Adds a UDP receiver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -101,7 +103,7 @@ Represents a UDP socket.
 
 **Description:** Removes a UDP receiver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -114,7 +116,7 @@ Represents a UDP socket.
 
 **Description:** Sends a UDP message without socket.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -128,22 +130,22 @@ Represents a UDP socket.
 
 **Description:** Allocate a new message buffer for sending a UDP message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otMessageSettings](ot-message-settings) *|[in]|aSettings|A pointer to the message settings or NULL to use default settings.|
 
-**Note**
+**Note:**
 
 - If `aSettings` is 'NULL', the link layer security is enabled and the message priority is set to OT_MESSAGE_PRIORITY_NORMAL by default.
 
-**Returns**
+**Returns:**
 
 - A pointer to the message buffer or NULL if no message buffers are available or parameters are invalid.
 
-**See Also**
+**See Also:**
 
 - [otMessageFree](api-message#ot-message-free)
 
@@ -153,7 +155,7 @@ Represents a UDP socket.
 
 **Description:** Open a UDP/IPv6 socket.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -168,14 +170,14 @@ Represents a UDP socket.
 
 **Description:** Check if a UDP socket is open.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otUdpSocket](ot-udp-socket) *|[in]|aSocket|A pointer to a UDP socket structure.|
 
-**Returns**
+**Returns:**
 
 - Whether the UDP socket is open.
 
@@ -185,7 +187,7 @@ Represents a UDP socket.
 
 **Description:** Close a UDP/IPv6 socket.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -198,7 +200,7 @@ Represents a UDP socket.
 
 **Description:** Bind a UDP/IPv6 socket.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -213,7 +215,7 @@ Represents a UDP socket.
 
 **Description:** Connect a UDP/IPv6 socket.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -227,7 +229,7 @@ Represents a UDP socket.
 
 **Description:** Send a UDP/IPv6 message.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -244,12 +246,12 @@ If the return value is OT_ERROR_NONE, OpenThread takes ownership of `aMessage`, 
 
 **Description:** Gets the head of linked list of UDP Sockets.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the head of UDP Socket linked list.

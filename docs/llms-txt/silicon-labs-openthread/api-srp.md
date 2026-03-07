@@ -2,13 +2,13 @@
 
 # SRP
 
-This module includes functions that control SRP client behavior. 
+This module includes functions that control SRP client behavior.
 
 This module includes functions of the Service Registration Protocol.
 
 This module includes functions for SRP client buffers and service pool.
 
-Functions in this module are only available when feature OPENTHREAD_CONFIG_SRP_CLIENT_BUFFERS_ENABLE is enabled. 
+Functions in this module are only available when feature OPENTHREAD_CONFIG_SRP_CLIENT_BUFFERS_ENABLE is enabled.
 
 ## Modules
 
@@ -30,7 +30,8 @@ Functions in this module are only available when feature OPENTHREAD_CONFIG_SRP_C
 
 ### otSrpClientItemState
 
-```
+```c
+
 enum otSrpClientItemState {
     OT_SRP_CLIENT_ITEM_STATE_TO_ADD
     OT_SRP_CLIENT_ITEM_STATE_ADDING
@@ -41,13 +42,14 @@ enum otSrpClientItemState {
     OT_SRP_CLIENT_ITEM_STATE_REGISTERED
     OT_SRP_CLIENT_ITEM_STATE_REMOVED
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Specifies an SRP client item (service or host info) state.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -62,19 +64,21 @@ Specifies an SRP client item (service or host info) state.
 
 ### otSrpServerState
 
-```
+```c
+
 enum otSrpServerState {
     OT_SRP_SERVER_STATE_DISABLED = 0
     OT_SRP_SERVER_STATE_RUNNING = 1
     OT_SRP_SERVER_STATE_STOPPED = 2
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Represents the state of the SRP server.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -84,27 +88,29 @@ Represents the state of the SRP server.
 
 ### otSrpServerAddressMode
 
-```
+```c
+
 enum otSrpServerAddressMode {
     OT_SRP_SERVER_ADDRESS_MODE_UNICAST = 0
     OT_SRP_SERVER_ADDRESS_MODE_ANYCAST = 1
     OT_SRP_SERVER_ADDRESS_MODE_UNICAST_FORCE_ADD = 2
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Represents the address mode used by the SRP server.
 
-**Details:**
+**Details**:
 
 Address mode specifies how the address and port number are determined by the SRP server and how this info is published in the Thread Network Data.
 
-**Warnings**
+**Warnings:**
 
 - Using the `OT_SRP_SERVER_ADDRESS_MODE_UNICAST_FORCE_ADD` option will make the implementation non-compliant with the Thread specification. This option is intended for testing and specific use-cases. When selected, the SRP server, upon being enabled, will bypass the Network Data publisher and always add the "SRP/DNS unicast" entry directly to the Network Data, regardless of how many other similar entries are present.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -118,7 +124,7 @@ Address mode specifies how the address and port number are determined by the SRP
 
 `typedef struct otSrpClientHostInfo otSrpClientHostInfo`
 
-**Description:**
+**Description**:
 
 Represents an SRP client host info.
 
@@ -126,11 +132,11 @@ Represents an SRP client host info.
 
 `typedef struct otSrpClientService otSrpClientService`
 
-**Description:**
+**Description**:
 
 Represents an SRP client service.
 
-**Details:**
+**Details**:
 
 The values in this structure, including the string buffers for the names and the TXT record entries, MUST persist and stay constant after an instance of this structure is passed to OpenThread from `otSrpClientAddService()` or `otSrpClientRemoveService()`.
 
@@ -142,11 +148,11 @@ The `mLease` and `mKeyLease` fields specify the desired lease and key lease inte
 
 `typedef void(* otSrpClientCallback) (otError aError, const otSrpClientHostInfo *aHostInfo, const otSrpClientService *aServices, const otSrpClientService *aRemovedServices, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer type defines the callback used by SRP client to notify user of changes/events/errors.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -156,7 +162,7 @@ Pointer type defines the callback used by SRP client to notify user of changes/e
 ||[in]|aRemovedServices|The head of linked-list containing all removed services. NULL if the list is empty.|
 ||[in]|aContext|A pointer to an arbitrary context (provided when callback was registered).|
 
-**Details:**
+**Details**:
 
 This callback is invoked on a successful registration of an update (i.e., add/remove of host-info and/or some service(s)) with the SRP server, or if there is a failure or error (e.g., server rejects a update request or client times out waiting for response, etc).
 
@@ -194,18 +200,18 @@ Note that in case of any failure, the client continues the operation, i.e. it pr
 
 `typedef void(* otSrpClientAutoStartCallback) (const otSockAddr *aServerSockAddr, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer type defines the callback used by SRP client to notify user when it is auto-started or stopped.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aServerSockAddr|A non-NULL pointer indicates SRP server was started and pointer will give the selected server socket address. A NULL pointer indicates SRP server was stopped.|
 ||[in]|aContext|A pointer to an arbitrary context (provided when callback was registered).|
 
-**Details:**
+**Details**:
 
 This is only used when auto-start feature `OPENTHREAD_CONFIG_SRP_CLIENT_AUTO_START_API_ENABLE` is enabled.
 
@@ -215,7 +221,7 @@ This callback is invoked when auto-start mode is enabled and the SRP client is e
 
 `typedef struct otSrpClientBuffersServiceEntry otSrpClientBuffersServiceEntry`
 
-**Description:**
+**Description**:
 
 Represents a SRP client service pool entry.
 
@@ -223,7 +229,7 @@ Represents a SRP client service pool entry.
 
 `typedef struct otSrpServerHost otSrpServerHost`
 
-**Description:**
+**Description**:
 
 This opaque type represents a SRP service host.
 
@@ -231,7 +237,7 @@ This opaque type represents a SRP service host.
 
 `typedef struct otSrpServerService otSrpServerService`
 
-**Description:**
+**Description**:
 
 This opaque type represents a SRP service.
 
@@ -239,23 +245,23 @@ This opaque type represents a SRP service.
 
 `typedef uint32_t otSrpServerServiceUpdateId`
 
-**Description:**
+**Description**:
 
 The ID of a SRP service update transaction on the SRP Server.
 
-### otSrpServerAddressMode
+### otSrpServerAddressMode (Typedef)
 
 `typedef enum otSrpServerAddressMode otSrpServerAddressMode`
 
-**Description:**
+**Description**:
 
 Represents the address mode used by the SRP server.
 
-**Details:**
+**Details**:
 
 Address mode specifies how the address and port number are determined by the SRP server and how this info is published in the Thread Network Data.
 
-**Warnings**
+**Warnings:**
 
 - Using the `OT_SRP_SERVER_ADDRESS_MODE_UNICAST_FORCE_ADD` option will make the implementation non-compliant with the Thread specification. This option is intended for testing and specific use-cases. When selected, the SRP server, upon being enabled, will bypass the Network Data publisher and always add the "SRP/DNS unicast" entry directly to the Network Data, regardless of how many other similar entries are present.
 
@@ -263,7 +269,7 @@ Address mode specifies how the address and port number are determined by the SRP
 
 `typedef struct otSrpServerTtlConfig otSrpServerTtlConfig`
 
-**Description:**
+**Description**:
 
 Includes SRP server TTL configurations.
 
@@ -271,7 +277,7 @@ Includes SRP server TTL configurations.
 
 `typedef struct otSrpServerLeaseConfig otSrpServerLeaseConfig`
 
-**Description:**
+**Description**:
 
 Includes SRP server LEASE and KEY-LEASE configurations.
 
@@ -279,7 +285,7 @@ Includes SRP server LEASE and KEY-LEASE configurations.
 
 `typedef struct otSrpServerLeaseInfo otSrpServerLeaseInfo`
 
-**Description:**
+**Description**:
 
 Includes SRP server lease information of a host/service.
 
@@ -287,7 +293,7 @@ Includes SRP server lease information of a host/service.
 
 `typedef struct otSrpServerResponseCounters otSrpServerResponseCounters`
 
-**Description:**
+**Description**:
 
 Includes the statistics of SRP server responses.
 
@@ -295,11 +301,11 @@ Includes the statistics of SRP server responses.
 
 `typedef void(* otSrpServerServiceUpdateHandler) (otSrpServerServiceUpdateId aId, const otSrpServerHost *aHost, uint32_t aTimeout, void *aContext)`
 
-**Description:**
+**Description**:
 
 Handles SRP service updates.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -308,7 +314,7 @@ Handles SRP service updates.
 ||[in]|aTimeout|The maximum time in milliseconds for the handler to process the service event.|
 ||[in]|aContext|A pointer to application-specific context.|
 
-**Details:**
+**Details**:
 
 Is called by the SRP server to notify that a SRP host and possibly SRP services are being updated. It is important that the SRP updates are not committed until the handler returns the result by calling otSrpServerHandleServiceUpdateResult or times out after `aTimeout`.
 
@@ -316,7 +322,7 @@ A SRP service observer should always call otSrpServerHandleServiceUpdateResult w
 
 A more generic handler may perform validations on the SRP host/services and rejects the SRP updates if any validation fails. For example, an Advertising Proxy should advertise (or remove) the host and services on a multicast-capable link and returns specific error code if any failure occurs.
 
-**See Also**
+**See Also:**
 
 - [otSrpServerSetServiceUpdateHandler](api-srp#ot-srp-server-set-service-update-handler)
 - [otSrpServerHandleServiceUpdateResult](api-srp#ot-srp-server-handle-service-update-result)
@@ -329,7 +335,7 @@ A more generic handler may perform validations on the SRP host/services and reje
 
 **Description:** Starts the SRP client operation.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -351,7 +357,7 @@ It does not matter in which order these functions are called. When all condition
 
 **Description:** Stops the SRP client operation.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -365,13 +371,13 @@ Stops any further interactions with the SRP server. Note that it does not remove
 
 **Description:** Indicates whether the SRP client is running or not.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - TRUE if the SRP client is running, FALSE otherwise.
 
@@ -381,7 +387,7 @@ Stops any further interactions with the SRP server. Note that it does not remove
 
 **Description:** Gets the socket address (IPv6 address and port number) of the SRP server which is being used by SRP client.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -389,7 +395,7 @@ Stops any further interactions with the SRP server. Note that it does not remove
 
 If the client is not running, the address is unspecified (all zero) with zero port number.
 
-**Returns**
+**Returns:**
 
 - A pointer to the SRP server's socket address (is always non-NULL).
 
@@ -399,7 +405,7 @@ If the client is not running, the address is unspecified (all zero) with zero po
 
 **Description:** Sets the callback to notify caller of events/changes from SRP client.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -415,7 +421,7 @@ The SRP client allows a single callback to be registered. So consecutive calls t
 
 **Description:** Enables the auto-start mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -447,7 +453,7 @@ When the SRP client is explicitly started through a successful call to `otSrpCli
 
 **Description:** Disables the auto-start mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -465,7 +471,7 @@ Note that a call to `otSrpClientStop()` will also disable the auto-start mode.
 
 **Description:** Indicates the current state of auto-start mode (enabled or disabled).
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -473,7 +479,7 @@ Note that a call to `otSrpClientStop()` will also disable the auto-start mode.
 
 This is only available when auto-start feature `OPENTHREAD_CONFIG_SRP_CLIENT_AUTO_START_API_ENABLE` is enabled.
 
-**Returns**
+**Returns:**
 
 - TRUE if the auto-start mode is enabled, FALSE otherwise.
 
@@ -483,7 +489,7 @@ This is only available when auto-start feature `OPENTHREAD_CONFIG_SRP_CLIENT_AUT
 
 **Description:** Gets the TTL value in every record included in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -493,7 +499,7 @@ Note that this is the TTL requested by the SRP client. The server may choose to 
 
 By default, the TTL will equal the lease interval. Passing 0 or a value larger than the lease interval via `otSrpClientSetTtl()` will also cause the TTL to equal the lease interval.
 
-**Returns**
+**Returns:**
 
 - The TTL (in seconds).
 
@@ -503,7 +509,7 @@ By default, the TTL will equal the lease interval. Passing 0 or a value larger t
 
 **Description:** Sets the TTL value in every record included in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -518,7 +524,7 @@ Changing the TTL does not impact the TTL of already registered services/host-inf
 
 **Description:** Gets the default lease interval used in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -528,7 +534,7 @@ The default interval is used only for `otSrpClientService` instances with `mLeas
 
 Note that this is the lease duration requested by the SRP client. The server may choose to accept a different lease interval.
 
-**Returns**
+**Returns:**
 
 - The lease interval (in seconds).
 
@@ -538,7 +544,7 @@ Note that this is the lease duration requested by the SRP client. The server may
 
 **Description:** Sets the default lease interval used in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -555,7 +561,7 @@ Changing the lease interval does not impact the accepted lease interval of alrea
 
 **Description:** Gets the default key lease interval used in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -565,7 +571,7 @@ The default interval is used only for `otSrpClientService` instances with `mKeyL
 
 Note that this is the lease duration requested by the SRP client. The server may choose to accept a different lease interval.
 
-**Returns**
+**Returns:**
 
 - The key lease interval (in seconds).
 
@@ -575,7 +581,7 @@ Note that this is the lease duration requested by the SRP client. The server may
 
 **Description:** Sets the default key lease interval used in SRP update requests.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -592,13 +598,13 @@ Changing the lease interval does not impact the accepted lease interval of alrea
 
 **Description:** Gets the host info.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - A pointer to host info structure.
 
@@ -608,7 +614,7 @@ Changing the lease interval does not impact the accepted lease interval of alrea
 
 **Description:** Sets the host name label.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -627,7 +633,7 @@ The host name can be set before client is started or after start but before host
 
 **Description:** Enables auto host address mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -645,7 +651,7 @@ After auto host address mode is enabled, it can be disabled by a call to `otSrpC
 
 **Description:** Sets/updates the list of host IPv6 address.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -667,7 +673,7 @@ Calling this function disables auto host address mode if it was previously enabl
 
 **Description:** Adds a service to be registered with server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -689,7 +695,7 @@ The `otSrpClientService` instance is not longer tracked by OpenThread and can be
 
 **Description:** Requests a service to be unregistered with server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -706,7 +712,7 @@ The `otSrpClientService` instance being pointed to by `aService` MUST persist an
 
 **Description:** Clears a service, immediately removing it from the client service list.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -723,13 +729,13 @@ Can be used along with a subsequent call to `otSrpClientAddService()` (potential
 
 **Description:** Gets the list of services being managed by client.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the head of linked-list of all services or NULL if the list is empty.
 
@@ -739,7 +745,7 @@ Can be used along with a subsequent call to `otSrpClientAddService()` (potential
 
 **Description:** Starts the remove process of the host info and all services.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -761,7 +767,7 @@ One situation where `aSendUnregToServer` can be useful is on a device reset/rebo
 
 **Description:** Clears all host info and all the services.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -775,7 +781,7 @@ Unlike `otSrpClientRemoveHostAndServices()` which sends an update message to the
 
 **Description:** Gets the domain name being used by SRP client.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -785,7 +791,7 @@ Requires `OPENTHREAD_CONFIG_SRP_CLIENT_DOMAIN_NAME_API_ENABLE` to be enabled.
 
 If domain name is not set, "default.service.arpa" will be used.
 
-**Returns**
+**Returns:**
 
 - The domain name string.
 
@@ -795,7 +801,7 @@ If domain name is not set, "default.service.arpa" will be used.
 
 **Description:** Sets the domain name to be used by SRP client.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -816,13 +822,13 @@ The domain name can be set before client is started or after start but before ho
 
 **Description:** Converts a `otSrpClientItemState` to a string.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otSrpClientItemState](api-srp#ot-srp-client-item-state)|[in]|aItemState|An item state.|
 
-**Returns**
+**Returns:**
 
 - A string representation of `aItemState`.
 
@@ -832,7 +838,7 @@ The domain name can be set before client is started or after start but before ho
 
 **Description:** Enables/disables "service key record inclusion" mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -843,7 +849,7 @@ When enabled, SRP client will include KEY record in Service Description Instruct
 
 Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is enabled.
 
-**Note**
+**Note:**
 
 - KEY record is optional in Service Description Instruction (it is required and always included in the Host Description Instruction). The default behavior of SRP client is to not include it. This function is intended to override the default behavior for testing only.
 
@@ -853,7 +859,7 @@ Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is e
 
 **Description:** Indicates whether the "service key record inclusion" mode is enabled or disabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -861,7 +867,7 @@ Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is e
 
 Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is enabled.
 
-**Returns**
+**Returns:**
 
 - TRUE if "service key record inclusion" mode is enabled, FALSE otherwise.
 
@@ -871,14 +877,14 @@ Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is e
 
 **Description:** Gets the string buffer to use for SRP client host name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 |uint16_t *|[out]|aSize|Pointer to a variable to return the size (number of bytes) of the string buffer (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to char buffer to use for SRP client host name.
 
@@ -888,14 +894,14 @@ Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is e
 
 **Description:** Gets the array of IPv6 address entries to use as SRP client host address list.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to the OpenThread instance.|
 |uint8_t *|[out]|aArrayLength|Pointer to a variable to return the array length i.e., number of IPv6 address entries in the array (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to an array of `otIp6Address` entries (number of entries is returned in `aArrayLength`).
 
@@ -905,7 +911,7 @@ Is available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` configuration is e
 
 **Description:** Allocates a new service entry from the pool.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -924,7 +930,7 @@ The returned service entry instance will be initialized as follows:
 - `mTxtEntry.mValueLength` is set to zero.
 - All related data/string buffers and arrays are cleared to all zero.
 
-**Returns**
+**Returns:**
 
 - A pointer to the newly allocated service entry or NULL if not more entry available in the pool.
 
@@ -934,7 +940,7 @@ The returned service entry instance will be initialized as follows:
 
 **Description:** Frees a previously allocated service entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -949,7 +955,7 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Frees all previously allocated service entries.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -961,14 +967,14 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Gets the string buffer for service name from a service entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otSrpClientBuffersServiceEntry](ot-srp-client-buffers-service-entry) *|[in]|aEntry|A pointer to a previously allocated service entry (MUST NOT be NULL).|
 |uint16_t *|[out]|aSize|A pointer to a variable to return the size (number of bytes) of the string buffer (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to the string buffer.
 
@@ -978,14 +984,14 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Gets the string buffer for service instance name from a service entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otSrpClientBuffersServiceEntry](ot-srp-client-buffers-service-entry) *|[in]|aEntry|A pointer to a previously allocated service entry (MUST NOT be NULL).|
 |uint16_t *|[out]|aSize|A pointer to a variable to return the size (number of bytes) of the string buffer (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to the string buffer.
 
@@ -995,14 +1001,14 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Gets the buffer for TXT record from a service entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otSrpClientBuffersServiceEntry](ot-srp-client-buffers-service-entry) *|[in]|aEntry|A pointer to a previously allocated service entry (MUST NOT be NULL).|
 |uint16_t *|[out]|aSize|A pointer to a variable to return the size (number of bytes) of the buffer (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to the buffer.
 
@@ -1012,14 +1018,14 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Gets the array for service subtype labels from the service entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otSrpClientBuffersServiceEntry](ot-srp-client-buffers-service-entry) *|[in]|aEntry|A pointer to a previously allocated service entry (MUST NOT be NULL).|
 |uint16_t *|[out]|aArrayLength|A pointer to a variable to return the array length (MUST NOT be NULL).|
 
-**Returns**
+**Returns:**
 
 - A pointer to the array.
 
@@ -1029,7 +1035,7 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 **Description:** Returns the domain authorized to the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1037,7 +1043,7 @@ The `aService` MUST be previously allocated using `otSrpClientBuffersAllocateSer
 
 If the domain if not set by SetDomain, "default.service.arpa." will be returned. A trailing dot is always appended even if the domain is set without it.
 
-**Returns**
+**Returns:**
 
 - A pointer to the dot-joined domain string.
 
@@ -1047,7 +1053,7 @@ If the domain if not set by SetDomain, "default.service.arpa." will be returned.
 
 **Description:** Sets the domain on the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1062,13 +1068,13 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 **Description:** Returns the state of the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - The current state of the SRP server.
 
@@ -1078,13 +1084,13 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 **Description:** Returns the port the SRP server is listening to.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - The port of the SRP server. It returns 0 if the server is not running.
 
@@ -1094,13 +1100,13 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 **Description:** Returns the address mode being used by the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - The SRP server's address mode.
 
@@ -1110,7 +1116,7 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 **Description:** Sets the address mode to be used by the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1123,7 +1129,7 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 **Description:** Returns the sequence number used with anycast address mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1131,7 +1137,7 @@ A trailing dot will be appended to `aDomain` if it is not already there. Should 
 
 The sequence number is included in "DNS/SRP Service Anycast Address" entry published in the Network Data.
 
-**Returns**
+**Returns:**
 
 - The anycast sequence number.
 
@@ -1141,7 +1147,7 @@ The sequence number is included in "DNS/SRP Service Anycast Address" entry publi
 
 **Description:** Sets the sequence number used with anycast address mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1154,7 +1160,7 @@ The sequence number is included in "DNS/SRP Service Anycast Address" entry publi
 
 **Description:** Enables/disables the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1169,7 +1175,7 @@ On a Border Router, it is recommended to use `otSrpServerSetAutoEnableMode()` in
 
 **Description:** Enables/disables the auto-enable mode on SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1188,7 +1194,7 @@ This mode can be disabled by a `otSrpServerSetAutoEnableMode()` call with `aEnab
 
 **Description:** Indicates whether the auto-enable mode is enabled or disabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1202,7 +1208,7 @@ Requires `OPENTHREAD_CONFIG_BORDER_ROUTING_ENABLE` feature.
 
 **Description:** Enables the "Fast Start Mode" on the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1214,8 +1220,8 @@ The Fast Start Mode is designed for scenarios where a device, often a mobile dev
 
 When Fast Start Mode is enabled, the SRP server manages when to start or stop based on the presence of other BRs, following this process:
 
-- Upon initial attachment to the Thread network, the device immediately inspects the received Network Data for any existing "SRP/DNS" entries. These entries indicate the presence of other active BRs providing SRP server service:  
-  - If no "SRP/DNS" entries from other BRs are found, the device immediately enables its own SRP server. This activation uses `OT_SRP_SERVER_ADDRESS_MODE_UNICAST_FORCE_ADD`, which bypasses the usual delay associated with the standard Network Data publisher, directly adding its own "SRP/DNS unicast" entry to the Network Data.  
+- Upon initial attachment to the Thread network, the device immediately inspects the received Network Data for any existing "SRP/DNS" entries. These entries indicate the presence of other active BRs providing SRP server service:
+  - If no "SRP/DNS" entries from other BRs are found, the device immediately enables its own SRP server. This activation uses `OT_SRP_SERVER_ADDRESS_MODE_UNICAST_FORCE_ADD`, which bypasses the usual delay associated with the standard Network Data publisher, directly adding its own "SRP/DNS unicast" entry to the Network Data.
   - If "SRP/DNS" entries from other BRs are detected, the device will not enable its SRP server, deferring to the existing ones.
 - After starting its SRP server in Fast Start Mode, the device continuously monitors the Network Data. If, at any point, new "SRP/DNS" entries appear (indicating that another BR has become active), the device automatically disables its own SRP server functionality, relinquishing the role to the newly available BR.
 
@@ -1229,7 +1235,7 @@ After successfully enabling Fast Start Mode, it can be disabled either by a call
 
 **Description:** Indicates whether the Fast Start Mode is enabled or disabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1243,7 +1249,7 @@ Requires `OPENTHREAD_CONFIG_SRP_SERVER_FAST_START_MODE_ENABLE` feature to be ena
 
 **Description:** Returns SRP server TTL configuration.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1256,7 +1262,7 @@ Requires `OPENTHREAD_CONFIG_SRP_SERVER_FAST_START_MODE_ENABLE` feature to be ena
 
 **Description:** Sets SRP server TTL configuration.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1271,7 +1277,7 @@ The granted TTL will always be no greater than the max lease interval configured
 
 **Description:** Returns SRP server LEASE and KEY-LEASE configurations.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1284,7 +1290,7 @@ The granted TTL will always be no greater than the max lease interval configured
 
 **Description:** Sets SRP server LEASE and KEY-LEASE configurations.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1299,7 +1305,7 @@ When a non-zero LEASE time is requested from a client, the granted value will be
 
 **Description:** Sets the SRP service updates handler on SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1313,7 +1319,7 @@ When a non-zero LEASE time is requested from a client, the granted value will be
 
 **Description:** Reports the result of processing a SRP update to the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1329,14 +1335,14 @@ The Service Update Handler should call this function to return the result of its
 
 **Description:** Returns the next registered host on the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otSrpServerHost](api-srp#ot-srp-server-host) *|[in]|aHost|A pointer to current host; use NULL to get the first host.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the registered host. NULL, if no more hosts can be found.
 
@@ -1346,13 +1352,13 @@ The Service Update Handler should call this function to return the result of its
 
 **Description:** Returns the response counters of the SRP server.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the response counters of the SRP server.
 
@@ -1362,7 +1368,7 @@ The Service Update Handler should call this function to return the result of its
 
 **Description:** Tells if the SRP service host has been deleted.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1370,7 +1376,7 @@ The Service Update Handler should call this function to return the result of its
 
 A SRP service host can be deleted but retains its name for future uses. In this case, the host instance is not removed from the SRP server/registry.
 
-**Returns**
+**Returns:**
 
 - TRUE if the host has been deleted, FALSE if not.
 
@@ -1380,13 +1386,13 @@ A SRP service host can be deleted but retains its name for future uses. In this 
 
 **Description:** Returns the full name of the host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerHost](api-srp#ot-srp-server-host) *|[in]|aHost|A pointer to the SRP service host.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the null-terminated host name string.
 
@@ -1396,7 +1402,7 @@ A SRP service host can be deleted but retains its name for future uses. In this 
 
 **Description:** Indicates whether the host matches a given host name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1411,14 +1417,14 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Returns the addresses of given host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerHost](api-srp#ot-srp-server-host) *|[in]|aHost|A pointer to the SRP service host.|
 |uint8_t *|[out]|aAddressesNum|A pointer to where we should output the number of the addresses to.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the array of IPv6 Address.
 
@@ -1428,7 +1434,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Returns the LEASE and KEY-LEASE information of a given host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1441,14 +1447,14 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Returns the next service of given host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerHost](api-srp#ot-srp-server-host) *|[in]|aHost|A pointer to the SRP service host.|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to current SRP service instance; use NULL to get the first service.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the next service or NULL if there is no more services.
 
@@ -1458,7 +1464,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Indicates whether or not the SRP service has been deleted.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1466,7 +1472,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 A SRP service can be deleted but retains its name for future uses. In this case, the service instance is not removed from the SRP server/registry. It is guaranteed that all services are deleted if the host is deleted.
 
-**Returns**
+**Returns:**
 
 - TRUE if the service has been deleted, FALSE if not.
 
@@ -1476,13 +1482,13 @@ A SRP service can be deleted but retains its name for future uses. In this case,
 
 **Description:** Returns the full service instance name of the service.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the null-terminated service instance name string.
 
@@ -1492,7 +1498,7 @@ A SRP service can be deleted but retains its name for future uses. In this case,
 
 **Description:** Indicates whether this service matches a given service instance name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1507,13 +1513,13 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Returns the service instance label (first label in instance name) of the service.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the null-terminated service instance label string..
 
@@ -1523,13 +1529,13 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Returns the full service name of the service.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the null-terminated service name string.
 
@@ -1539,7 +1545,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Indicates whether this service matches a given service name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1554,13 +1560,13 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Gets the number of sub-types of the service.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - The number of sub-types of `aService`.
 
@@ -1570,7 +1576,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Gets the sub-type service name (full name) of the service at a given index.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1579,7 +1585,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 The full service name for a sub-type service follows "<sub-label>._sub.<service-labels>.<domain>.".
 
-**Returns**
+**Returns:**
 
 - A pointer to sub-type service name at `aIndex`, or `NULL` if no sub-type at this index.
 
@@ -1589,7 +1595,7 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Indicates whether or not the service has a given sub-type.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1604,7 +1610,7 @@ DNS name matches are performed using a case-insensitive string comparison (i.e.,
 
 **Description:** Parses a sub-type service name (full name) and extracts the sub-type label.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1620,13 +1626,13 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the port of the service instance.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - The port of the service.
 
@@ -1636,13 +1642,13 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the weight of the service instance.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - The weight of the service.
 
@@ -1652,13 +1658,13 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the priority of the service instance.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - The priority of the service.
 
@@ -1668,13 +1674,13 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the TTL of the service instance.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - The TTL of the service instance..
 
@@ -1684,14 +1690,14 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the TXT record data of the service instance.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 |uint16_t *|[out]|aDataLength|A pointer to return the TXT record data length. MUST NOT be NULL.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the buffer containing the TXT record data (the TXT data length is returned in `aDataLength`).
 
@@ -1701,13 +1707,13 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the host which the service instance reside on.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |const [otSrpServerService](api-srp#ot-srp-server-service) *|[in]|aService|A pointer to the SRP service.|
 
-**Returns**
+**Returns:**
 
 - A pointer to the host instance.
 
@@ -1717,7 +1723,7 @@ The full service name for a sub-type service follows "<sub-label>._sub.<service-
 
 **Description:** Returns the LEASE and KEY-LEASE information of a given service.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

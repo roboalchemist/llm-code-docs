@@ -11,12 +11,15 @@ OpenThread host applications can be built from Silicon Lab's SDK as well as GitH
 Start by cloning the SDK source code on your Raspberry Pi:
 
 ```shell
+
 git clone https://github.com/SiliconLabsSoftware/sisdk-release.git
 
 ```
 
 ```shell
+
 sudo apt-get install bind9
+
 ```
 
 For steps on setting up and running CPCd, refer to [Building CPCd locally](building-cpcd-locally).
@@ -28,7 +31,9 @@ Before proceeding to build the OTBR, first, ensure:
 The OpenThread repo is in ~/simplicity_sdk/openthread_stack/util/third_party/openthread. This folder must be symlinked under ~/simplicity_sdk/openthread_stack/util/third_party/ot-br-posix/third_party/openthread/repo:
 
 ```shell
+
 ln -s ~/simplicity_sdk/openthread_stack/util/third_party/openthread/ ~/simplicity_sdk/openthread_stack/util/third_party/ot-br-posix/third_party/openthread/repo
+
 ```
 
 > **Note**: The specific flags shown in the following commands are recommended for 1.4 certifiable OTBR, but may require review for your use case.
@@ -36,27 +41,35 @@ ln -s ~/simplicity_sdk/openthread_stack/util/third_party/openthread/ ~/simplicit
 Now, install the dependencies by running the bootstrap script:
 
 ```shell
+
 cd ~/simplicity_sdk/openthread_stack/util/third_party/ot-br-posix/
 sudo ./script/bootstrap
+
 ```
 
 To configure the OTBR for multi-PAN and CPC support, you can use Silicon Labs specific configuration settings for border-router and ot-cli. Use the special configuration header hosted in the GSDK/SiSDK under `protocol/openthread/platform-abstraction/posix/openthread-core-silabs-posix-config.h`.
 
 ```shell
+
 sudo cp ~/simplicity_sdk/openthread/platform-abstraction/posix/openthread-core-silabs-posix-config.h ~/simplicity_sdk/openthread_stack/util/third_party/openthread/src/posix/platform/
+
 ```
 
 To build a Thread certifiable otbr-agent, use the following reference commands, which should be run from under the `util/third_party/otbr-posix` directory. Make sure to provide the absolute path to `$SDK_DIR` and `$CPCD_DIR` variables, for example:
 
 ```shell
-export SDK_DIR=<An absolute path to SDK directory> 
-export CPCD_DIR=<An absolute path to CPCD directory> 
+
+export SDK_DIR=<An absolute path to SDK directory>
+export CPCD_DIR=<An absolute path to CPCD directory>
+
 ```
 
 Run the setup script to complete building OTBR:
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.4 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DHCP6_PD=ON" ./script/setup
+
 ```
 
 Some of the important Build Flags are the following:
@@ -88,12 +101,15 @@ Starting with the 2025.12.0 release, the sizing logic for child and source match
 The total number of source-match entries is sized to support all child devices across the enabled protocol stacks. In practice, this corresponds to the number of OpenThread children across all OT instances, plus any Zigbee end-device children when CMP is enabled:
 
 ```shell
+
 total entries ≈ (MLE children × OT instances) + (Zigbee children, only when CMP is enabled)
+
 ```
 
 This can be adjusted at build time using:
 
 ```shell
+
 -DOPENTHREAD_CONFIG_MLE_MAX_CHILDREN=10
 
 -DSL_ZIGBEE_MAX_END_DEVICE_CHILDREN=6
@@ -118,8 +134,10 @@ Once the OTBR has been successfully built, you need to modify the Radio URL to p
 `/etc/default/otbr-agent` is the configuration file where you can update the Radio URL as follows:
 
 ```shell
-sudo vi /etc/default/otbr-agent 
+
+sudo vi /etc/default/otbr-agent
 OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+cpc://cpcd_0?iid=2&iid-list=0"
+
 ```
 
 To confirm that the OTBR is correctly running, you can access its CLI utility by executing `sudo ot-ctl`.
@@ -133,49 +151,65 @@ Common steps for following SDK releases:
 ### SiSDK 2025.12 - Thread 1.4
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.4 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DHCP6_PD=ON" ./script/setup
+
 ```
 
 ### SiSDK 2025.06 - Thread 1.4
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=0 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DHCPV6_PD=0 WEB_GUI=0 REST_API=0 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.4 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON -DOTBR_TREL=ON -DOTBR_DHCP6_PD=ON" ./script/setup
+
 ```
 
 ### SiSDK 2024.12 - Thread 1.4
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=0 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NETWORK_MANAGER=0 NAT64=1 DNS64=1 DHCPV6_PD=0 WEB_GUI=0 REST_API=0 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.4 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR  -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON -DOTBR_TREL=ON -DOTBR_DHCP6_PD=ON" ./script/setup
+
 ```
 
 ### SiSDK 2024.06 - Thread 1.3
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=0 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NETWORK_MANAGER=0 NAT64=1 DNS64=1 DHCPV6_PD=0 WEB_GUI=0 REST_API=0 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON -DOTBR_TREL=ON -DOTBR_DHCP6_PD=ON" ./script/setup
+
 ```
 
 ### GSDK v4.4.3
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DNS64=1 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PROJECT_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON" ./script/setup
+
 ```
 
 ### GSDK v4.4.2
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DNS64=1 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_CONFIG_RCP_BUS=VENDOR -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON" ./script/setup
+
 ```
 
 ### GSDK v4.4.1, v4.4.0
 
 ```shell
+
 sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DNS64=1 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_RCP_VENDOR_BUS=ON -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON" ./script/setup
+
 ```
 
 ### GSDK v4.3.3, v4.3.2
 
 ```shell
-sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DNS64=1 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCMAKE_MODULE_PATH=$GSDK_DIR/protocol/openthread/platform-abstraction/posix -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_CONFIG_RCP_BUS=VENDOR -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=SilabsRcpDeps -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON" ./script/setup 
+
+sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_ROUTING=1 NAT64=1 DNS64=1 OTBR_OPTIONS="-DOT_THREAD_VERSION=1.3 -DOT_MULTIPAN_RCP=ON -DCMAKE_MODULE_PATH=$GSDK_DIR/protocol/openthread/platform-abstraction/posix -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_CONFIG_RCP_BUS=VENDOR -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=SilabsRcpDeps -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_CONFIG=openthread-core-silabs-posix-config.h -DOTBR_DUA_ROUTING=ON -DOTBR_DNSSD_DISCOVERY_PROXY=ON -DOTBR_SRP_ADVERTISING_PROXY=ON" ./script/setup
+
 ```
 
 ## Building OT-CLI
@@ -183,7 +217,9 @@ sudo INFRA_IF_NAME=eth0 RELEASE=1 REFERENCE_DEVICE=1 BACKBONE_ROUTER=1 BORDER_RO
 This command will build the posix ot-cli app using CMake (which is a different OT Host application than the OTBR). The command to build the posix ot-cli from the `util/third_party/openthread` directory of the SDK using CMake:
 
 ```shell
+
 sudo ./script/cmake-build posix -DOT_MULTIPAN_RCP=ON -DOT_POSIX_RCP_HDLC_BUS=ON -DOT_POSIX_RCP_SPI_BUS=ON -DOT_POSIX_RCP_VENDOR_BUS=ON -DCPCD_SOURCE_DIR=$CPCD_DIR -DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE=$GSDK_DIR/protocol/openthread/platform-abstraction/posix/cpc_interface.cpp -DOT_PLATFORM_CONFIG=openthread-core-silabs-posix-config.h -DOT_POSIX_CONFIG_RCP_VENDOR_DEPS_PACKAGE=$SDK_DIR/protocol/openthread/platform-abstraction/posix/posix_vendor_rcp.cmake
+
 ```
 
 Build ‘otbr-agent’ and ‘ot-cli’ host applications using Silicon Labs SDK artifacts provides OT_PLATFORM_CONFIG, CPCD_SOURCE_DIR, and DOT_POSIX_CONFIG_RCP_VENDOR_INTERFACE configurations.

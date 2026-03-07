@@ -2,9 +2,9 @@
 
 # Multicast DNS
 
-This module includes APIs for Multicast DNS (mDNS). 
+This module includes APIs for Multicast DNS (mDNS).
 
-The mDNS APIs are available when the mDNS support `OPENTHREAD_CONFIG_MULTICAST_DNS_ENABLE` is enabled and the `OPENTHREAD_CONFIG_MULTICAST_DNS_PUBLIC_API_ENABLE` is also enabled. 
+The mDNS APIs are available when the mDNS support `OPENTHREAD_CONFIG_MULTICAST_DNS_ENABLE` is enabled and the `OPENTHREAD_CONFIG_MULTICAST_DNS_PUBLIC_API_ENABLE` is also enabled.
 
 ## Modules
 
@@ -16,20 +16,22 @@ The mDNS APIs are available when the mDNS support `OPENTHREAD_CONFIG_MULTICAST_D
 
 ### otMdnsEntryState
 
-```
+```c
+
 enum otMdnsEntryState {
     OT_MDNS_ENTRY_STATE_PROBING
     OT_MDNS_ENTRY_STATE_REGISTERED
     OT_MDNS_ENTRY_STATE_CONFLICT
     OT_MDNS_ENTRY_STATE_REMOVING
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Represents a host/service/key entry state.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -44,7 +46,7 @@ Represents a host/service/key entry state.
 
 `typedef otPlatDnssdRequestId otMdnsRequestId`
 
-**Description:**
+**Description**:
 
 Represents a request ID (`uint32_t` value) for registering a host, a service, or a key service.
 
@@ -52,11 +54,11 @@ Represents a request ID (`uint32_t` value) for registering a host, a service, or
 
 `typedef otPlatDnssdRegisterCallback otMdnsRegisterCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function to report the outcome of a host, service, or key registration request.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -64,7 +66,7 @@ Represents the callback function to report the outcome of a host, service, or ke
 ||[in]|aRequestId|The request ID.|
 ||[in]|aError|Error indicating the outcome of request.|
 
-**Details:**
+**Details**:
 
 The outcome of a registration request is reported back by invoking this callback with one of the following `aError` inputs:
 
@@ -77,11 +79,11 @@ See `otMdnsRegisterHost()`, `otMdnsRegisterService()`, and `otMdnsRegisterKey()`
 
 `typedef void(* otMdnsConflictCallback) (otInstance *aInstance, const char *aName, const char *aServiceType)`
 
-**Description:**
+**Description**:
 
 Represents the callback function to report a detected name conflict after successful registration of an entry.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -89,7 +91,7 @@ Represents the callback function to report a detected name conflict after succes
 ||[in]|aName|The host name or the service instance label.|
 ||[in]|aServiceType|The service type (e.g., `_tst._udp`).|
 
-**Details:**
+**Details**:
 
 If a conflict is detected while registering an entry, it is reported through the provided `otMdnsRegisterCallback`. The `otMdnsConflictCallback` is used only when a name conflict is detected after an entry has been successfully registered.
 
@@ -101,11 +103,11 @@ A NULL `aServiceType` indicates that conflict is for a host entry. In this case 
 
 `typedef otPlatDnssdHost otMdnsHost`
 
-**Description:**
+**Description**:
 
 Represents an mDNS host.
 
-**Details:**
+**Details**:
 
 This type is used to register or unregister a host (`otMdnsRegisterHost()` and `otMdnsUnregisterHost()`).
 
@@ -115,11 +117,11 @@ See the description of each function for more details on how different fields ar
 
 `typedef otPlatDnssdService otMdnsService`
 
-**Description:**
+**Description**:
 
 Represents an mDNS service.
 
-**Details:**
+**Details**:
 
 This type is used to register or unregister a service (`otMdnsRegisterService()` and `otMdnsUnregisterService()`).
 
@@ -129,11 +131,11 @@ See the description of each function for more details on how different fields ar
 
 `typedef otPlatDnssdKey otMdnsKey`
 
-**Description:**
+**Description**:
 
 Represents an mDNS key record.
 
-**Details:**
+**Details**:
 
 See `otMdnsRegisterKey()`, `otMdnsUnregisterKey()` for more details about fields in each case.
 
@@ -141,15 +143,15 @@ See `otMdnsRegisterKey()`, `otMdnsUnregisterKey()` for more details about fields
 
 `typedef struct otMdnsIterator otMdnsIterator`
 
-**Description:**
+**Description**:
 
 Represents an mDNS entry iterator.
 
-### otMdnsEntryState
+### otMdnsEntryState (Typedef)
 
 `typedef enum otMdnsEntryState otMdnsEntryState`
 
-**Description:**
+**Description**:
 
 Represents a host/service/key entry state.
 
@@ -157,7 +159,7 @@ Represents a host/service/key entry state.
 
 `typedef struct otMdnsLocalHostAddress otMdnsLocalHostAddress`
 
-**Description:**
+**Description**:
 
 Represents a local host IPv4 or IPv6 address entry.
 
@@ -165,11 +167,11 @@ Represents a local host IPv4 or IPv6 address entry.
 
 `typedef otPlatDnssdBrowser otMdnsBrowser`
 
-**Description:**
+**Description**:
 
 Represents a service browser.
 
-**Details:**
+**Details**:
 
 Refer to `otPlatDnssdBrowser` for documentation of member fields and `otMdnsStartBrowser()` for how they are used.
 
@@ -177,7 +179,7 @@ Refer to `otPlatDnssdBrowser` for documentation of member fields and `otMdnsStar
 
 `typedef otPlatDnssdBrowseCallback otMdnsBrowseCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function pointer type used to report a browse result.
 
@@ -185,7 +187,7 @@ Represents the callback function pointer type used to report a browse result.
 
 `typedef otPlatDnssdBrowseResult otMdnsBrowseResult`
 
-**Description:**
+**Description**:
 
 Represents a browse result.
 
@@ -193,11 +195,11 @@ Represents a browse result.
 
 `typedef otPlatDnssdSrvResolver otMdnsSrvResolver`
 
-**Description:**
+**Description**:
 
 Represents an SRV service resolver.
 
-**Details:**
+**Details**:
 
 Refer to `otPlatDnssdSrvResolver` for documentation of member fields and `otMdnsStartSrvResolver()` for how they are used.
 
@@ -205,7 +207,7 @@ Refer to `otPlatDnssdSrvResolver` for documentation of member fields and `otMdns
 
 `typedef otPlatDnssdSrvCallback otMdnsSrvCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function pointer type used to report an SRV resolve result.
 
@@ -213,7 +215,7 @@ Represents the callback function pointer type used to report an SRV resolve resu
 
 `typedef otPlatDnssdSrvResult otMdnsSrvResult`
 
-**Description:**
+**Description**:
 
 Represents an SRV resolver result.
 
@@ -221,11 +223,11 @@ Represents an SRV resolver result.
 
 `typedef otPlatDnssdTxtResolver otMdnsTxtResolver`
 
-**Description:**
+**Description**:
 
 Represents a TXT service resolver.
 
-**Details:**
+**Details**:
 
 Refer to `otPlatDnssdTxtResolver` for documentation of member fields and `otMdnsStartTxtResolver()` for how they are used.
 
@@ -233,7 +235,7 @@ Refer to `otPlatDnssdTxtResolver` for documentation of member fields and `otMdns
 
 `typedef otPlatDnssdTxtCallback otMdnsTxtCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function pointer type used to report a TXT resolve result.
 
@@ -241,7 +243,7 @@ Represents the callback function pointer type used to report a TXT resolve resul
 
 `typedef otPlatDnssdTxtResult otMdnsTxtResult`
 
-**Description:**
+**Description**:
 
 Represents a TXT resolver result.
 
@@ -249,11 +251,11 @@ Represents a TXT resolver result.
 
 `typedef otPlatDnssdAddressResolver otMdnsAddressResolver`
 
-**Description:**
+**Description**:
 
 Represents an address resolver.
 
-**Details:**
+**Details**:
 
 Refer to `otPlatDnssdAddressResolver` for documentation of member fields and `otMdnsStartIp6AddressResolver()` or `otMdnsStartIp4AddressResolver()` for how they are used.
 
@@ -261,7 +263,7 @@ Refer to `otPlatDnssdAddressResolver` for documentation of member fields and `ot
 
 `typedef otPlatDnssdAddressCallback otMdnsAddressCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function pointer type use to report an IPv6/IPv4 address resolve result.
 
@@ -269,7 +271,7 @@ Represents the callback function pointer type use to report an IPv6/IPv4 address
 
 `typedef otPlatDnssdAddressAndTtl otMdnsAddressAndTtl`
 
-**Description:**
+**Description**:
 
 Represents a discovered host address and its TTL.
 
@@ -277,7 +279,7 @@ Represents a discovered host address and its TTL.
 
 `typedef otPlatDnssdAddressResult otMdnsAddressResult`
 
-**Description:**
+**Description**:
 
 Represents address resolver result.
 
@@ -285,7 +287,7 @@ Represents address resolver result.
 
 `typedef otPlatDnssdRecordResult otMdnsRecordResult`
 
-**Description:**
+**Description**:
 
 Represents a record query result.
 
@@ -293,7 +295,7 @@ Represents a record query result.
 
 `typedef otPlatDnssdRecordCallback otMdnsRecordCallback`
 
-**Description:**
+**Description**:
 
 Represents the callback function used to report a record querier result.
 
@@ -301,7 +303,7 @@ Represents the callback function used to report a record querier result.
 
 `typedef otPlatDnssdRecordQuerier otMdnsRecordQuerier`
 
-**Description:**
+**Description**:
 
 Represents a record querier.
 
@@ -309,7 +311,7 @@ Represents a record querier.
 
 `typedef struct otMdnsCacheInfo otMdnsCacheInfo`
 
-**Description:**
+**Description**:
 
 Represents additional information about a browser/resolver and its cached results.
 
@@ -321,7 +323,7 @@ Represents additional information about a browser/resolver and its cached result
 
 **Description:** Enables or disables the mDNS module.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -337,7 +339,7 @@ The mDNS module should be enabled before registration any host, service, or key 
 
 **Description:** Indicates whether the mDNS module is enabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -349,7 +351,7 @@ The mDNS module should be enabled before registration any host, service, or key 
 
 **Description:** Enables or disables the mDNS auto-enable mode.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -370,7 +372,7 @@ The auto-enable mode can be disabled by a call to `otMdnsSetAutoEnableMode(false
 
 **Description:** Indicates whether the auto-enable mode is enabled or disabled.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -384,7 +386,7 @@ Requires `OPENTHREAD_CONFIG_BORDER_ROUTING_ENABLE`.
 
 **Description:** Sets whether the mDNS module is allowed to send questions requesting unicast responses referred to as "QU" questions.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -401,7 +403,7 @@ When allowed, the first probe will be sent as a "QU" question. This API can be u
 
 **Description:** Indicates whether mDNS module is allowed to send "QU" questions requesting unicast response.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -413,7 +415,7 @@ When allowed, the first probe will be sent as a "QU" question. This API can be u
 
 **Description:** Sets the post-registration conflict callback.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -430,13 +432,13 @@ If a conflict is detected while registering an entry, it is reported through the
 
 **Description:** Gets the local host name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|The OpenThread instance.|
 
-**Returns**
+**Returns:**
 
 - The local host name.
 
@@ -446,7 +448,7 @@ If a conflict is detected while registering an entry, it is reported through the
 
 **Description:** Sets the local host name.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -461,7 +463,7 @@ The local host name can be set only when the mDNS module is disabled. If not set
 
 **Description:** Registers or updates a host on mDNS.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -493,7 +495,7 @@ For caller convenience, the OpenThread mDNS module guarantees that the callback 
 
 **Description:** Unregisters a host on mDNS.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -515,7 +517,7 @@ If there is a previously registered host with the same name, the mDNS module wil
 
 **Description:** Registers or updates a service on mDNS.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -545,7 +547,7 @@ Regarding the invocation of the `aCallback`, this function behaves in the same w
 
 **Description:** Unregisters a service on mDNS module.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -568,7 +570,7 @@ If there is a previously registered service with the same name, the mDNS module 
 
 **Description:** Registers or updates a key record on mDNS module.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -595,7 +597,7 @@ Regarding the invocation of the `aCallback`, this function behaves in the same w
 
 **Description:** Unregisters a key record on mDNS.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -618,7 +620,7 @@ If there is a previously registered key with the same name, the mDNS module will
 
 **Description:** Allocates a new iterator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -628,7 +630,7 @@ Requires `OPENTHREAD_CONFIG_MULTICAST_DNS_ENTRY_ITERATION_API_ENABLE`.
 
 An allocated iterator must be freed by the caller using `otMdnsFreeIterator()`.
 
-**Returns**
+**Returns:**
 
 - A pointer to the allocated iterator, or `NULL` if it fails to allocate.
 
@@ -638,7 +640,7 @@ An allocated iterator must be freed by the caller using `otMdnsFreeIterator()`.
 
 **Description:** Frees a previously allocated iterator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -653,7 +655,7 @@ Requires `OPENTHREAD_CONFIG_MULTICAST_DNS_ENTRY_ITERATION_API_ENABLE`.
 
 **Description:** Iterates over registered host entries.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -672,7 +674,7 @@ On success, `aHost` is populated with information about the next host. Pointers 
 
 **Description:** Iterates over registered service entries.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -691,7 +693,7 @@ On success, `aService` is populated with information about the next service . Po
 
 **Description:** Iterates over registered key entries.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -710,7 +712,7 @@ On success, `aKey` is populated with information about the next key. Pointers wi
 
 **Description:** Iterates over the local host IPv6 and IPv4 addresses tracked by OpenThread mDNS module.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -728,7 +730,7 @@ The platform layer is responsible for monitoring and reporting all host IPv4 and
 
 **Description:** Starts a service browser.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -747,7 +749,7 @@ Multiple browsers can be started for the same service, provided they use differe
 
 **Description:** Stops a service browser.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -762,7 +764,7 @@ No action is performed if no matching browser with the same service and callback
 
 **Description:** Starts an SRV record resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -783,7 +785,7 @@ Multiple resolvers can be started for the same service, provided they use differ
 
 **Description:** Stops an SRV record resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -798,7 +800,7 @@ No action is performed if no matching resolver with the same service and callbac
 
 **Description:** Starts a TXT record resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -819,7 +821,7 @@ Multiple resolvers can be started for the same service, provided they use differ
 
 **Description:** Stops a TXT record resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -834,7 +836,7 @@ No action is performed if no matching resolver with the same service and callbac
 
 **Description:** Starts an IPv6 address resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -855,7 +857,7 @@ Multiple resolvers can be started for the same host name, provided they use diff
 
 **Description:** Stops an IPv6 address resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -870,7 +872,7 @@ No action is performed if no matching resolver with the same host name and callb
 
 **Description:** Starts an IPv4 address resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -891,7 +893,7 @@ Multiple resolvers can be started for the same host name, provided they use diff
 
 **Description:** Stops an IPv4 address resolver.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -906,7 +908,7 @@ No action is performed if no matching resolver with the same host name and callb
 
 **Description:** Starts a record querier.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -931,7 +933,7 @@ The `aQuerier` and all its contained information (strings) are only valid during
 
 **Description:** Stops a record querier.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -948,7 +950,7 @@ The `aQuerier` and all its contained information (strings) are only valid during
 
 **Description:** Iterates over browsers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -967,7 +969,7 @@ On success, `aBrowser` is populated with information about the next browser. The
 
 **Description:** Iterates over SRV resolvers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -986,7 +988,7 @@ On success, `aResolver` is populated with information about the next resolver. T
 
 **Description:** Iterates over TXT resolvers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1005,7 +1007,7 @@ On success, `aResolver` is populated with information about the next resolver. T
 
 **Description:** Iterates over IPv6 address resolvers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1024,7 +1026,7 @@ On success, `aResolver` is populated with information about the next resolver. T
 
 **Description:** Iterates over IPv4 address resolvers.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1043,7 +1045,7 @@ On success, `aResolver` is populated with information about the next resolver. T
 
 **Description:** Iterates over record querier entries.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1062,7 +1064,7 @@ On success, `aQuerier` is populated with information about the next querier . Th
 
 **Description:** Enables or disables verbose logging for the mDNS module at run-time.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -1083,7 +1085,7 @@ This feature can generate a large volume of logs, so its use is recommended only
 
 **Description:** Indicates whether verbose logging is enabled for the mDNS module.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

@@ -12,7 +12,7 @@ Note that a smaller poll period (that is, polling more frequently) means better 
 
 ## SED Configuration in OpenThread
 
-**APIs:**
+### APIs
 
 - `otLinkGetPollPeriod`/`otLinkSetPollPeriod`: Get/Set/Clear user-specified/external data poll period for sleepy end device.
 

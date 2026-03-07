@@ -2,9 +2,9 @@
 
 # NAT64
 
-This module includes functions and structs for the NAT64 function on the border router. 
+This module includes functions and structs for the NAT64 function on the border router.
 
-These functions are only available when `OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_ENABLE` is enabled. 
+These functions are only available when `OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_ENABLE` is enabled.
 
 ## Modules
 
@@ -26,7 +26,8 @@ These functions are only available when `OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_
 
 ### otNat64DropReason
 
-```
+```c
+
 enum otNat64DropReason {
     OT_NAT64_DROP_REASON_UNKNOWN = 0
     OT_NAT64_DROP_REASON_ILLEGAL_PACKET
@@ -34,13 +35,14 @@ enum otNat64DropReason {
     OT_NAT64_DROP_REASON_NO_MAPPING
     OT_NAT64_DROP_REASON_COUNT
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Packet drop reasons.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -52,20 +54,22 @@ Packet drop reasons.
 
 ### otNat64State
 
-```
+```c
+
 enum otNat64State {
     OT_NAT64_STATE_DISABLED = 0
     OT_NAT64_STATE_NOT_RUNNING
     OT_NAT64_STATE_IDLE
     OT_NAT64_STATE_ACTIVE
 }
+
 ```
 
-**Description:**
+**Description**:
 
 States of NAT64.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -80,7 +84,7 @@ States of NAT64.
 
 `typedef struct otIp4Address otIp4Address`
 
-**Description:**
+**Description**:
 
 Represents an IPv4 address.
 
@@ -92,7 +96,7 @@ Represents an IPv4 address.
 
 `typedef struct otNat64Counters otNat64Counters`
 
-**Description:**
+**Description**:
 
 Represents the counters for NAT64.
 
@@ -100,15 +104,15 @@ Represents the counters for NAT64.
 
 `typedef struct otNat64ProtocolCounters otNat64ProtocolCounters`
 
-**Description:**
+**Description**:
 
 Represents the counters for the protocols supported by NAT64.
 
-### otNat64DropReason
+### otNat64DropReason (Typedef)
 
 `typedef enum otNat64DropReason otNat64DropReason`
 
-**Description:**
+**Description**:
 
 Packet drop reasons.
 
@@ -116,7 +120,7 @@ Packet drop reasons.
 
 `typedef struct otNat64ErrorCounters otNat64ErrorCounters`
 
-**Description:**
+**Description**:
 
 Represents the counters of dropped packets due to errors when handling NAT64 packets.
 
@@ -124,13 +128,13 @@ Represents the counters of dropped packets due to errors when handling NAT64 pac
 
 `typedef struct otNat64AddressMapping otNat64AddressMapping`
 
-**Description:**
+**Description**:
 
 Represents an address mapping record for NAT64.
 
-**Details:**
+**Details**:
 
-**Note**
+**Note:**
 
 - The counters will be reset for each mapping session even for the same address pair. Applications can use `mId` to identify different sessions to calculate the packets correctly.
 
@@ -138,11 +142,11 @@ Represents an address mapping record for NAT64.
 
 `typedef struct otNat64AddressMappingIterator otNat64AddressMappingIterator`
 
-**Description:**
+**Description**:
 
 Used to iterate through NAT64 address mappings.
 
-**Details:**
+**Details**:
 
 The fields in this type are opaque (intended for use by OpenThread core only) and therefore should not be accessed or used by caller.
 
@@ -154,25 +158,27 @@ The member fields in this struct are for internal OpenThread stack use and shoul
 
 `typedef void(* otNat64ReceiveIp4Callback) (otMessage *aMessage, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer is called when an IPv4 datagram (translated by NAT64 translator) is received.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aMessage|A pointer to the message buffer containing the received IPv6 datagram. This function transfers the ownership of the `aMessage` to the receiver of the callback. The message should be freed by the receiver of the callback after it is processed.|
 ||[in]|aContext|A pointer to application-specific context.|
 
-**Details:**
+**Details**:
 
 ## Variables
 
 ### OT_TOOL_PACKED_END
 
-```
+```c
+
 OT_TOOL_PACKED_BEGIN struct otIp4Address OT_TOOL_PACKED_END
+
 ```
 
 ## Functions
@@ -183,7 +189,7 @@ OT_TOOL_PACKED_BEGIN struct otIp4Address OT_TOOL_PACKED_END
 
 **Description:** Gets NAT64 translator counters.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -200,7 +206,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Gets the NAT64 translator error counters.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -215,7 +221,7 @@ The counters are initialized to zero when the OpenThread instance is initialized
 
 **Description:** Initializes an `otNat64AddressMappingIterator`.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -234,7 +240,7 @@ The iterator initialization time is used to report the `mRemainingTimeMs` in the
 
 **Description:** Gets the next AddressMapping info (using an iterator).
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -250,7 +256,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Gets the state of NAT64 translator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -264,7 +270,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Gets the state of NAT64 prefix manager.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -278,7 +284,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_ENABLE` is enabled.
 
 **Description:** Enable or disable NAT64 functions.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -291,7 +297,7 @@ When `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled, setting disabled to
 
 Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` or `OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_ENABLE` is enabled.
 
-**See Also**
+**See Also:**
 
 - [otNat64GetTranslatorState](api-nat64#ot-nat64-get-translator-state)
 - [otNat64GetPrefixManagerState](api-nat64#ot-nat64-get-prefix-manager-state)
@@ -302,7 +308,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` or `OPENTHREAD_CONFIG
 
 **Description:** Allocate a new message buffer for sending an IPv4 message to the NAT64 translator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -313,15 +319,15 @@ Message buffers allocated by this function will have 20 bytes (difference betwee
 
 Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
-**Note**
+**Note:**
 
 - If `aSettings` is `NULL`, the link layer security is enabled and the message priority is set to OT_MESSAGE_PRIORITY_NORMAL by default.
 
-**Returns**
+**Returns:**
 
 - A pointer to the message buffer or NULL if no message buffers are available or parameters are invalid.
 
-**See Also**
+**See Also:**
 
 - [otNat64Send](api-nat64#ot-nat64-send)
 
@@ -331,7 +337,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Sets the CIDR used when setting the source address of the outgoing translated IPv4 packets.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -340,12 +346,12 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 Is available only when OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE is enabled.
 
-**Note**
+**Note:**
 
 - A valid CIDR must have a non-zero prefix length. The actual addresses pool is limited by the size of the mapping pool and the number of addresses available in the CIDR block.
 - This function can be called at any time, but the NAT64 translator will be reset and all existing sessions will be expired when updating the configured CIDR.
 
-**See Also**
+**See Also:**
 
 - [otNat64Send](api-nat64#ot-nat64-send)
 - [otNat64SetReceiveIp4Callback](api-nat64#ot-nat64-set-receive-ip4-callback)
@@ -356,7 +362,7 @@ Is available only when OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE is enabled.
 
 **Description:** Clears the CIDR used when setting the source address of the outgoing translated IPv4 packets.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -364,11 +370,11 @@ Is available only when OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE is enabled.
 
 Is available only when OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE is enabled.
 
-**Note**
+**Note:**
 
 - This function can be called at any time, but the NAT64 translator will be reset and all existing sessions will be expired when clearing the configured CIDR.
 
-**See Also**
+**See Also:**
 
 - [otNat64SetIp4Cidr](api-nat64#ot-nat64-set-ip4-cidr)
 
@@ -378,7 +384,7 @@ Is available only when OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE is enabled.
 
 **Description:** Translates an IPv4 datagram to an IPv6 datagram and sends via the Thread interface.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -393,7 +399,7 @@ The caller transfers ownership of `aMessage` when making this call. OpenThread w
 
 **Description:** Registers a callback to provide received IPv4 datagrams.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -407,7 +413,7 @@ The caller transfers ownership of `aMessage` when making this call. OpenThread w
 
 **Description:** Gets the IPv4 CIDR configured in the NAT64 translator.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -422,7 +428,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Test if two IPv4 addresses are the same.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -435,7 +441,7 @@ Available when `OPENTHREAD_CONFIG_NAT64_TRANSLATOR_ENABLE` is enabled.
 
 **Description:** Set `aIp4Address` by performing NAT64 address translation from `aIp6Address` as specified in RFC 6052.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -451,7 +457,7 @@ The NAT64 `aPrefixLength` MUST be one of the following values: 32, 40, 48, 56, 6
 
 **Description:** Extracts the IPv4 address from a given IPv4-mapped IPv6 address.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -466,7 +472,7 @@ An IPv4-mapped IPv6 address consists of an 80-bit prefix of zeros, the next 16 b
 
 **Description:** Converts a given IP4 address to an IPv6 address following the IPv4-mapped IPv6 address format.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -479,7 +485,7 @@ An IPv4-mapped IPv6 address consists of an 80-bit prefix of zeros, the next 16 b
 
 **Description:** Converts the address to a string.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -497,7 +503,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 
 **Description:** Converts a human-readable IPv4 CIDR string into a binary representation.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -510,7 +516,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 
 **Description:** Converts the IPv4 CIDR to a string.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -528,7 +534,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 
 **Description:** Converts a human-readable IPv4 address string into a binary representation.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -541,7 +547,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 
 **Description:** Sets the IPv6 address by performing NAT64 address translation from the preferred NAT64 prefix and the given IPv4 address as specified in RFC 6052.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -549,7 +555,7 @@ If the resulting string does not fit in `aBuffer` (within its `aSize` characters
 |const [otIp4Address](ot-ip4-address) *|[in]|aIp4Address|A pointer to the IPv4 address to translate to IPv6.|
 |[otIp6Address](ot-ip6-address) *|[out]|aIp6Address|A pointer to the synthesized IPv6 address.|
 
-**Returns**
+**Returns:**
 
 - OT_ERROR_NONE Successfully synthesized the IPv6 address from NAT64 prefix and IPv4 address.
 - OT_ERROR_INVALID_STATE No valid NAT64 prefix in the network data.

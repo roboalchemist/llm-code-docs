@@ -2,7 +2,7 @@
 
 # Server
 
-This module includes functions to manage local network data with the OpenThread Server. 
+This module includes functions to manage local network data with the OpenThread Server.
 
 ## Functions
 
@@ -12,7 +12,7 @@ This module includes functions to manage local network data with the OpenThread 
 
 **Description:** Provides a full or stable copy of the local Thread Network Data.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -27,14 +27,14 @@ This module includes functions to manage local network data with the OpenThread 
 
 **Description:** Add a service configuration to the local network data.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otServiceConfig](ot-service-config) *|[in]|aConfig|A pointer to the service configuration.|
 
-**See Also**
+**See Also:**
 
 - [otServerRemoveService](api-server#ot-server-remove-service)
 - [otServerRegister](api-server#ot-server-register)
@@ -45,7 +45,7 @@ This module includes functions to manage local network data with the OpenThread 
 
 **Description:** Remove a service configuration from the local network data.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -54,7 +54,7 @@ This module includes functions to manage local network data with the OpenThread 
 |const uint8_t *|[in]|aServiceData|A pointer to an Service Data to look for during deletion.|
 |uint8_t|[in]|aServiceDataLength|The length of `aServiceData` in bytes.|
 
-**See Also**
+**See Also:**
 
 - [otServerAddService](api-server#ot-server-add-service)
 - [otServerRegister](api-server#ot-server-register)
@@ -65,7 +65,7 @@ This module includes functions to manage local network data with the OpenThread 
 
 **Description:** Gets the next service in the local Network Data.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -79,13 +79,13 @@ This module includes functions to manage local network data with the OpenThread 
 
 **Description:** Immediately register the local network data with the Leader.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**See Also**
+**See Also:**
 
 - [otServerAddService](api-server#ot-server-add-service)
 - [otServerRemoveService](api-server#ot-server-remove-service)

@@ -2,7 +2,7 @@
 
 # Dynamic Multiprotocol Development with Bluetooth and OpenThread on SoCs in GSDK v3.x and Higher
 
-**This section replaces _AN1265: Dynamic Multiprotocol Development with Bluetooth and OpenThread on SoCs in GSDK v3.x and Higher_. Further updates to this application note will be provided here.**
+**This section replaces _AN1265: Dynamic Multiprotocol Development with Bluetooth and OpenThread on SoCs in GSDK v3.x and Higher_. Further updates to this application note will be provided here.:**
 
 These pages provide instructions on getting started with dynamic multiprotocol (DMP) applications using Silicon Labs OpenThread and Bluetooth running over the FreeRTOS real time operating system.
 

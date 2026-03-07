@@ -17,7 +17,7 @@ This section describes how to run any combination of Zigbee EmberZNet, OpenThrea
 
 The following pre-built host application distribution methods support the following architectures:
 
-- Debian Packages (*.deb for debian-bookworm) support architectures: armhf (arm32v7), arm64 (aarch64,arm64v8), i386, amd64 (x86_64)  
+- Debian Packages (*.deb for debian-bookworm) support architectures: armhf (arm32v7), arm64 (aarch64,arm64v8), i386, amd64 (x86_64)
   > **Note**: When installing the ot-br-posix .deb file for on 32-bit bookworm systems such as armhf (arm32v7), make sure the dhcpcd package on your target system is higher than the recommended bookworm version of 9.4.1-24, which has a [known startup issue](https://github.com/NetworkConfiguration/dhcpcd/issues/323). The bookworm-backports apt source provides version 10.1.0 which is highly recommended. If not, Silicon Labs recommends updating your dhcpcd package version to at least 9.5.1.
 - Multiprotocol Container support architectures: armhf **the Multiprotocol Container will be deprecated in 2025
 - OpenWRT packages (*ipk for OpenWRT-23.05.3) support architectures: arm64

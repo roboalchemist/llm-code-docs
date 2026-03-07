@@ -2,7 +2,7 @@
 
 # DNS-SD Server
 
-This module includes APIs for DNS-SD server. 
+This module includes APIs for DNS-SD server.
 
 ## Modules
 
@@ -18,7 +18,7 @@ This module includes APIs for DNS-SD server.
 
 ### otDnssdQueryType
 
-```
+```c
 enum otDnssdQueryType {
     OT_DNSSD_QUERY_TYPE_NONE = 0
     OT_DNSSD_QUERY_TYPE_BROWSE = 1
@@ -65,11 +65,11 @@ Is called when a DNS-SD query subscribes one of:
 
 The DNS-SD query implementation is responsible for identifying what `aFullName` is. If `aFullName` is a service name or service instance name, the DNS-SD query implementation should discover corresponding service instance information and notify the DNS-SD server using `otDnssdQueryHandleDiscoveredServiceInstance`. If `aFullName` is a host name, the DNS-SD query implementation should discover the host information and notify the DNS-SD server using `otDnssdQueryHandleDiscoveredHost`.
 
-**Note**
+#### Note
 
 - There can be multiple subscription to the same name. DNS-SD query implementation should record the number of active subscriptions and stop notifying when there is no active subscription for `aFullName`.
 
-**See Also**
+##### See Also
 
 - [otDnssdQueryHandleDiscoveredServiceInstance](api-dnssd-server#ot-dnssd-query-handle-discovered-service-instance)
 - [otDnssdQueryHandleDiscoveredHost](api-dnssd-server#ot-dnssd-query-handle-discovered-host)
@@ -97,7 +97,7 @@ Is called when a DNS-SD query unsubscribes one of:
 
 The DNS-SD query implementation is responsible for identifying what `aFullName` is.
 
-**Note**
+#### Note (otDnssdQueryUnsubscribeCallback)
 
 - There can be multiple subscription to the same name. DNS-SD query implementation should record the number of active subscriptions and stop notifying when there is no active subscription for `aFullName`.
 
@@ -164,7 +164,7 @@ Contains the counters of DNS-SD server.
 
 The DNS-SD server calls `aSubscribe` to subscribe to a service or service instance to resolve a DNS-SD query and `aUnsubscribe` to unsubscribe when the query is resolved or timeout.
 
-**Note**
+#### Note (otDnssdQuerySetCallbacks)
 
 - `aSubscribe` and `aUnsubscribe` must be both set or unset.
 
@@ -184,7 +184,7 @@ The DNS-SD server calls `aSubscribe` to subscribe to a service or service instan
 
 The external query resolver (e.g. Discovery Proxy) should call this function to notify OpenThread core of the subscribed services or service instances.
 
-**Note**
+#### Note (otDnssdQueryHandleDiscoveredServiceIn...)
 
 - `aInstanceInfo` must not contain unspecified or link-local or loop-back or multicast IP addresses.
 
@@ -204,7 +204,7 @@ The external query resolver (e.g. Discovery Proxy) should call this function to 
 
 The external query resolver (e.g. Discovery Proxy) should call this function to notify OpenThread core of the subscribed hosts.
 
-**Note**
+#### Note (otDnssdQueryHandleDiscoveredHost)
 
 - `aHostInfo` must not contain unspecified or link-local or loop-back or multicast IP addresses.
 
@@ -221,7 +221,7 @@ The external query resolver (e.g. Discovery Proxy) should call this function to 
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|The OpenThread instance structure.|
 |const [otDnssdQuery](api-dnssd-server#ot-dnssd-query) *|[in]|aQuery|The query pointer. Pass NULL to get the first query.|
 
-**Returns**
+#### Returns
 
 - A pointer to the query or NULL if no more queries.
 
@@ -238,7 +238,7 @@ The external query resolver (e.g. Discovery Proxy) should call this function to 
 |const [otDnssdQuery](api-dnssd-server#ot-dnssd-query) *|[in]|aQuery|The query pointer acquired from `otDnssdGetNextQuery`.|
 |char(*)|[out]|aNameOutput|The name output buffer, which should be `OT_DNS_MAX_NAME_SIZE` bytes long.|
 
-**Returns**
+#### Returns (otDnssdGetQueryTypeAndName)
 
 - The DNS-SD query type.
 
@@ -254,7 +254,7 @@ The external query resolver (e.g. Discovery Proxy) should call this function to 
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|The OpenThread instance structure.|
 
-**Returns**
+#### Returns (otDnssdGetCounters)
 
 - A pointer to the counters of the DNS-SD server.
 
@@ -273,7 +273,7 @@ The external query resolver (e.g. Discovery Proxy) should call this function to 
 
 Available when `OPENTHREAD_CONFIG_DNS_UPSTREAM_QUERY_ENABLE` is enabled.
 
-**See Also**
+#### See Also (otDnssdUpstreamQuerySetEnabled)
 
 - [otPlatDnsStartUpstreamQuery](plat-dns#ot-plat-dns-start-upstream-query)
 - [otPlatDnsCancelUpstreamQuery](plat-dns#ot-plat-dns-cancel-upstream-query)
@@ -293,6 +293,6 @@ Available when `OPENTHREAD_CONFIG_DNS_UPSTREAM_QUERY_ENABLE` is enabled.
 
 Available when `OPENTHREAD_CONFIG_DNS_UPSTREAM_QUERY_ENABLE` is enabled.
 
-**See Also**
+#### See Also (otDnssdUpstreamQueryIsEnabled)
 
 - [otDnssdUpstreamQuerySetEnabled](api-dnssd-server#ot-dnssd-upstream-query-set-enabled)

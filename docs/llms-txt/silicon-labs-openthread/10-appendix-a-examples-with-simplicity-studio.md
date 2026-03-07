@@ -16,13 +16,16 @@ The security operations are performed in the Security Settings of Simplicity Stu
 This example focuses on provisioning the Public Command Key and tamper configuration. It skips the procedures for provisioning of the Public Sign Key and Secure Boot Enabling.
 
 1. Run the `util keytotoken` command to convert the Public Command Key file (PEM format) into a text file (`command_pubkey.txt`).  
+
    ```sh  
    commander util keytotoken command_pubkey.pem --outfile command_pubkey.txt  
    ```  
+
    ```sh  
    Writing EC tokens to command_pubkey.txt...  
    DONE  
    ```
+
 2. Open the **Security Settings** of the selected device as described in [Using Simplicity Studio](09-examples#using-simplicity-commander).
 3. Click [**Start Provisioning Wizard...**] in the upper right corner to display the **Secure Initialization** dialog box.  
    ![screenshot](/efr32-secure-vault-tamper/0.3/images/sld715-image74.jpg)
@@ -31,10 +34,12 @@ This example focuses on provisioning the Public Command Key and tamper configura
 5. Click [**Next >**]. The **Security Keys** dialog box is displayed.  
    ![screenshot](/efr32-secure-vault-tamper/0.3/images/sld715-image76.jpg)
 6. Using a text editor, open the `command_pubkey.txt` file generated in step 1.  
+
    ```sh  
    MFG_SIGNED_BOOTLOADER_KEY_X : B1BC6F6FA56640ED522B2EE0F5B3CF7E5D48F60BE8148F0DC08440F0A4E1DCA4  
    MFG_SIGNED_BOOTLOADER_KEY_Y : 7C04119ED6A1BE31B7707E5F9D001A659A051003E95E1B936F05C37EA793AD63  
    ```
+
 7. Check **Enable Writing Command Key**. Copy the Public Command Key (X-point `B1BC...` first, then Y-point `7C04...`) to the **Key:** box under **Command Key:**.  
    ![screenshot](/efr32-secure-vault-tamper/0.3/images/sld715-image77.jpg)  
    > **Note**: This example does not enable the secure boot (not checking **Enable Writing Sign Key** option).

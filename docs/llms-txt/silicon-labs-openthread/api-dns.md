@@ -2,9 +2,9 @@
 
 # DNS
 
-This module includes functions that control DNS communication. 
+This module includes functions that control DNS communication.
 
-The functions in this module are available only if feature `OPENTHREAD_CONFIG_DNS_CLIENT_ENABLE` is enabled. 
+The functions in this module are available only if feature `OPENTHREAD_CONFIG_DNS_CLIENT_ENABLE` is enabled.
 
 ## Modules
 
@@ -22,7 +22,7 @@ The functions in this module are available only if feature `OPENTHREAD_CONFIG_DN
 
 ### otDnsRecursionFlag
 
-```
+```c
 enum otDnsRecursionFlag {
     OT_DNS_FLAG_UNSPECIFIED = 0
     OT_DNS_FLAG_RECURSION_DESIRED = 1
@@ -44,7 +44,7 @@ Type represents the "Recursion Desired" (RD) flag in an `otDnsQueryConfig`.
 
 ### otDnsNat64Mode
 
-```
+```c
 enum otDnsNat64Mode {
     OT_DNS_NAT64_UNSPECIFIED = 0
     OT_DNS_NAT64_ALLOW = 1
@@ -70,7 +70,7 @@ The NAT64 mode indicates whether to allow or disallow NAT64 address translation 
 
 ### otDnsServiceMode
 
-```
+```c
 enum otDnsServiceMode {
     OT_DNS_SERVICE_MODE_UNSPECIFIED = 0
     OT_DNS_SERVICE_MODE_SRV = 1
@@ -102,7 +102,7 @@ This is only used during DNS client service resolution `otDnsClientResolveServic
 
 ### otDnsTransportProto
 
-```
+```c
 enum otDnsTransportProto {
     OT_DNS_TRANSPORT_UNSPECIFIED = 0
     OT_DNS_TRANSPORT_UDP = 1
@@ -128,7 +128,7 @@ This `OT_DNS_TRANSPORT_TCP` is only supported when `OPENTHREAD_CONFIG_DNS_CLIENT
 
 ### otDnsRecordSection
 
-```
+```c
 enum otDnsRecordSection {
     OT_DNS_SECTION_ANSWER
     OT_DNS_SECTION_AUTHORITY
@@ -460,7 +460,7 @@ Note that in the case `OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE` is used, this
 
 This is intended for testing only and available when `OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE` config is enabled.
 
-**Returns**
+#### Returns
 
 - TRUE if the "DNS name compression" mode is enabled, FALSE otherwise.
 
@@ -478,7 +478,7 @@ This is intended for testing only and available when `OPENTHREAD_CONFIG_REFERENC
 
 When OpenThread stack starts, the default DNS query config is determined from a set of OT config options such as `OPENTHREAD_CONFIG_DNS_CLIENT_DEFAULT_SERVER_IP6_ADDRESS`, `_DEFAULT_SERVER_PORT`, `_DEFAULT_RESPONSE_TIMEOUT`, etc. (see `config/dns_client.h` for all related config options).
 
-**Returns**
+#### Returns (otDnsClientGetDefaultConfig)
 
 - A pointer to the current default config being used by DNS client.
 
@@ -495,7 +495,7 @@ When OpenThread stack starts, the default DNS query config is determined from a 
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otDnsQueryConfig](ot-dns-query-config) *|[in]|aConfig|A pointer to the new query config to use as default.|
 
-**Note**
+#### Note
 
 - Any ongoing query will continue to use the config from when it was started. The new default config will be used for any future DNS queries.
 

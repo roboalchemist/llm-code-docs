@@ -10,20 +10,20 @@ Simplicity Studio has precompiled demo's of NCP / RCP projects for certain board
 
 1. On the toolbar, click **Install**. In the resulting Installation Manager dialog, click **Manage installed packages**.
 2. On the Assets tab, turn off **Filter by connected product**. Expand the target release and browse for the file; for example `protocol\openthread\demos\rcp-uart-802154`.
-3. Select the .s37 file compatible with your board and click **Install**.  
+3. Select the .s37 file compatible with your board and click **Install**.
    ![Install Pre-Built RCP Images](/multiprotocol-solution-linux/0.4/images/figure-2-1-install-pre-built-rcp-images.png)
 
 ## EFR32 Co-processor Setup: Building Radio Image
 
 To build a co-processor image for any board in Simplicity Studio 6, navigate to the Projects panel and select **Create New Project**.
 
-1. On the Example Project Selection, type _concurrent_ as the keyword filter to find RCP projects and _dynamic_ and _NCP_ as the keywords to filter the DMP NCP projects.  
-   ![Concurrent RCP Projects](/multiprotocol-solution-linux/0.4/images/figure-2-2-project-selection.png)  
+1. On the Example Project Selection, type _concurrent_ as the keyword filter to find RCP projects and _dynamic_ and _NCP_ as the keywords to filter the DMP NCP projects.
+   ![Concurrent RCP Projects](/multiprotocol-solution-linux/0.4/images/figure-2-2-project-selection.png)
    ![Dynamic NCP Projects](/multiprotocol-solution-linux/0.4/images/figure-2-3-ncp-project-selection.png)
 2. From the list of projects, select the appropriate image depending on the desired combination of protocols, and depending on whether your physical link is UART or SPI.
-3. Click **Create** and select which device you will be using. Then select finish.  
+3. Click **Create** and select which device you will be using. Then select finish.
    At this stage your project will have been generated. Since this is a local instance of the RCP Project you have the flexibility to configure the project to your exact specifications.
-4. Once configured, right click on the project and select **Open in IDE**. The project should open up in VS Code. You can then click the build Icon to build the project. Once built, flash the project onto the board using Simplicity Commander. For more information, see the [Simplicity Commander Reference Guide](https://docs.silabs.com/simplicity-commander/latest/simplicity-commander-start/).  
+4. Once configured, right click on the project and select **Open in IDE**. The project should open up in VS Code. You can then click the build Icon to build the project. Once built, flash the project onto the board using Simplicity Commander. For more information, see the [Simplicity Commander Reference Guide](https://docs.silabs.com/simplicity-commander/latest/simplicity-commander-start/).
    > **Note**: Multiprotocol, Multi-PAN and CPC support for the RCP is currently only available in Silicon Lab's SDK and not in the OpenThread GitHub repo.
 
 ## Build the Bootloader for Co-Processor

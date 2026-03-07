@@ -2,7 +2,7 @@
 
 # Border Router
 
-This module includes functions to manage local network data with the OpenThread Border Router. 
+This module includes functions to manage local network data with the OpenThread Border Router.
 
 ## Typedefs
 
@@ -52,7 +52,7 @@ Function pointer callback which is invoked when Network Data (local or leader) g
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otBorderRouterConfig](ot-border-router-config) *|[in]|aConfig|A pointer to the border router configuration.|
 
-**See Also**
+#### See Also
 
 - [otBorderRouterRemoveOnMeshPrefix](api-border-router#ot-border-router-remove-on-mesh-prefix)
 - [otBorderRouterRegister](api-border-router#ot-border-router-register)
@@ -70,7 +70,7 @@ Function pointer callback which is invoked when Network Data (local or leader) g
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otIp6Prefix](ot-ip6-prefix) *|[in]|aPrefix|A pointer to an IPv6 prefix.|
 
-**See Also**
+#### See Also (otBorderRouterRemoveOnMeshPrefix)
 
 - [otBorderRouterAddOnMeshPrefix](api-border-router#ot-border-router-add-on-mesh-prefix)
 - [otBorderRouterRegister](api-border-router#ot-border-router-register)
@@ -102,7 +102,7 @@ Function pointer callback which is invoked when Network Data (local or leader) g
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otExternalRouteConfig](ot-external-route-config) *|[in]|aConfig|A pointer to the external route configuration.|
 
-**See Also**
+#### See Also (otBorderRouterAddRoute)
 
 - [otBorderRouterRemoveRoute](api-border-router#ot-border-router-remove-route)
 - [otBorderRouterRegister](api-border-router#ot-border-router-register)
@@ -120,7 +120,7 @@ Function pointer callback which is invoked when Network Data (local or leader) g
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 |const [otIp6Prefix](ot-ip6-prefix) *|[in]|aPrefix|A pointer to an IPv6 prefix.|
 
-**See Also**
+#### See Also (otBorderRouterRemoveRoute)
 
 - [otBorderRouterAddRoute](api-border-router#ot-border-router-add-route)
 - [otBorderRouterRegister](api-border-router#ot-border-router-register)
@@ -151,7 +151,7 @@ Function pointer callback which is invoked when Network Data (local or leader) g
 |----|---------|-------------|-----------|
 |[otInstance](api-instance#ot-instance) *|[in]|aInstance|A pointer to an OpenThread instance.|
 
-**See Also**
+#### See Also (otBorderRouterRegister)
 
 - [otBorderRouterAddOnMeshPrefix](api-border-router#ot-border-router-add-on-mesh-prefix)
 - [otBorderRouterRemoveOnMeshPrefix](api-border-router#ot-border-router-remove-on-mesh-prefix)

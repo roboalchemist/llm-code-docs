@@ -2,7 +2,7 @@
 
 # TCP
 
-This module includes functions that control TCP communication. 
+This module includes functions that control TCP communication.
 
 ## Modules
 
@@ -20,7 +20,8 @@ This module includes functions that control TCP communication.
 
 ### otTcpDisconnectedReason
 
-```
+```c
+
 enum otTcpDisconnectedReason {
     OT_TCP_DISCONNECTED_REASON_NORMAL
     OT_TCP_DISCONNECTED_REASON_REFUSED
@@ -28,9 +29,10 @@ enum otTcpDisconnectedReason {
     OT_TCP_DISCONNECTED_REASON_TIME_WAIT
     OT_TCP_DISCONNECTED_REASON_TIMED_OUT
 }
+
 ```
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -42,17 +44,19 @@ enum otTcpDisconnectedReason {
 
 ### @19
 
-```
+```c
+
 enum @19 {
     OT_TCP_CONNECT_NO_FAST_OPEN = 1 << 0
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines flags passed to [otTcpConnect()](api-tcp#ot-tcp-connect).
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -60,17 +64,19 @@ Defines flags passed to [otTcpConnect()](api-tcp#ot-tcp-connect).
 
 ### @20
 
-```
+```c
+
 enum @20 {
     OT_TCP_SEND_MORE_TO_COME = 1 << 0
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines flags passed to `otTcpSendByReference`.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -78,23 +84,25 @@ Defines flags passed to `otTcpSendByReference`.
 
 ### otTcpIncomingConnectionAction
 
-```
+```c
+
 enum otTcpIncomingConnectionAction {
     OT_TCP_INCOMING_CONNECTION_ACTION_ACCEPT
     OT_TCP_INCOMING_CONNECTION_ACTION_DEFER
     OT_TCP_INCOMING_CONNECTION_ACTION_REFUSE
 }
+
 ```
 
-**Description:**
+**Description**:
 
 Defines incoming connection actions.
 
-**Details:**
+**Details**:
 
 This is used in [otTcpAcceptReady()](api-tcp#ot-tcp-accept-ready) callback.
 
-**Enumerator:**
+**Enumerator**:
 
 |   |   |
 |---|---|
@@ -108,11 +116,11 @@ This is used in [otTcpAcceptReady()](api-tcp#ot-tcp-accept-ready) callback.
 
 `typedef struct otLinkedBuffer otLinkedBuffer`
 
-**Description:**
+**Description**:
 
 A linked buffer structure for use with TCP.
 
-**Details:**
+**Details**:
 
 A single [otLinkedBuffer](ot-linked-buffer) structure references an array of bytes in memory, via mData and mLength. The mNext field is used to form a chain of [otLinkedBuffer](ot-linked-buffer) structures.
 
@@ -124,34 +132,34 @@ A single [otLinkedBuffer](ot-linked-buffer) structure references an array of byt
 
 `typedef void(* otTcpEstablished) (otTcpEndpoint *aEndpoint)`
 
-**Description:**
+**Description**:
 
 This callback informs the application that the TCP 3-way handshake is complete and that the connection is now established.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aEndpoint|The TCP endpoint whose connection is now established.|
 
-**Details:**
+**Details**:
 
 ### otTcpSendDone
 
 `typedef void(* otTcpSendDone) (otTcpEndpoint *aEndpoint, otLinkedBuffer *aData)`
 
-**Description:**
+**Description**:
 
 This callback informs the application that data in the provided `aData` have been acknowledged by the connection peer and that `aData` and the data it contains can be reclaimed by the application.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aEndpoint|The TCP endpoint for the connection.|
 ||[in]|aData|A pointer to the [otLinkedBuffer](ot-linked-buffer) that can be reclaimed.|
 
-**Details:**
+**Details**:
 
 The `aData` are guaranteed to be identical to those passed in to TCP via [otTcpSendByReference()](api-tcp#ot-tcp-send-by-reference), including any extensions effected via [otTcpSendByExtension()](api-tcp#ot-tcp-send-by-extension).
 
@@ -159,11 +167,11 @@ The `aData` are guaranteed to be identical to those passed in to TCP via [otTcpS
 
 `typedef void(* otTcpForwardProgress) (otTcpEndpoint *aEndpoint, size_t aInSendBuffer, size_t aBacklog)`
 
-**Description:**
+**Description**:
 
 This callback informs the application if forward progress has been made in transferring data from the send buffer to the recipient.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -171,7 +179,7 @@ This callback informs the application if forward progress has been made in trans
 ||[in]|aInSendBuffer|The number of bytes in the send buffer (sum of "in-flight" and "backlog" regions).|
 ||[in]|aBacklog|The number of bytes that are queued for sending but have not yet been sent (the "backlog" region).|
 
-**Details:**
+**Details**:
 
 This callback is not necessary for correct TCP operation. Most applications can just rely on the [otTcpSendDone()](api-tcp#ot-tcp-send-done) callback to reclaim linked buffers once the TCP stack is done using them. The purpose of this callback is to support advanced applications that benefit from finer-grained information about how the the connection is making forward progress in transferring data to the connection peer.
 
@@ -191,11 +199,11 @@ After a call to [otTcpSendByReference()](api-tcp#ot-tcp-send-by-reference) or [o
 
 `typedef void(* otTcpReceiveAvailable) (otTcpEndpoint *aEndpoint, size_t aBytesAvailable, bool aEndOfStream, size_t aBytesRemaining)`
 
-**Description:**
+**Description**:
 
 This callback indicates the number of bytes available for consumption from the receive buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -204,11 +212,11 @@ This callback indicates the number of bytes available for consumption from the r
 ||[in]|aEndOfStream|Indicates if additional data, beyond what is already in the connection's receive buffer, can be received.|
 ||[in]|aBytesRemaining|The number of additional bytes that can be received before the receive buffer becomes full.|
 
-**Details:**
+**Details**:
 
 It is called whenever bytes are added to the receive buffer and when the end of stream is reached. If the end of the stream has been reached (i.e., if no more data will become available to read because the connection peer has closed their end of the connection for writing), then `aEndOfStream` is true. Finally, `aBytesRemaining` indicates how much capacity is left in the receive buffer to hold additional data that arrives.
 
-### otTcpDisconnectedReason
+### otTcpDisconnectedReason (Typedef)
 
 `typedef enum otTcpDisconnectedReason otTcpDisconnectedReason`
 
@@ -216,18 +224,18 @@ It is called whenever bytes are added to the receive buffer and when the end of 
 
 `typedef void(* otTcpDisconnected) (otTcpEndpoint *aEndpoint, otTcpDisconnectedReason aReason)`
 
-**Description:**
+**Description**:
 
 This callback indicates that the connection was broken and should no longer be used, or that a connection has entered the TIME-WAIT state.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 ||[in]|aEndpoint|The TCP endpoint whose connection has been lost.|
 ||[in]|aReason|The reason why the connection was lost.|
 
-**Details:**
+**Details**:
 
 It can occur if a connection establishment attempt (initiated by calling [otTcpConnect()](api-tcp#ot-tcp-connect)) fails, or any point thereafter (e.g., if the connection times out or an RST segment is received from the connection peer). Once this callback fires, all resources that the application provided for this connection (i.e., any `otLinkedBuffers` and memory they reference, but not the TCP endpoint itself or space for the receive buffers) can be reclaimed. In the case of a connection entering the TIME-WAIT state, this callback is called twice, once upon entry into the TIME-WAIT state (with OT_TCP_DISCONNECTED_REASON_TIME_WAIT, and again when the TIME-WAIT state expires (with OT_TCP_DISCONNECTED_REASON_NORMAL).
 
@@ -235,7 +243,7 @@ It can occur if a connection establishment attempt (initiated by calling [otTcpC
 
 `typedef struct otTcpEndpointInitializeArgs otTcpEndpointInitializeArgs`
 
-**Description:**
+**Description**:
 
 Contains arguments to the [otTcpEndpointInitialize()](api-tcp#ot-tcp-endpoint-initialize) function.
 
@@ -243,15 +251,15 @@ Contains arguments to the [otTcpEndpointInitialize()](api-tcp#ot-tcp-endpoint-in
 
 `typedef struct otTcpListener otTcpListener`
 
-### otTcpIncomingConnectionAction
+### otTcpIncomingConnectionAction (Typedef)
 
 `typedef enum otTcpIncomingConnectionAction otTcpIncomingConnectionAction`
 
-**Description:**
+**Description**:
 
 Defines incoming connection actions.
 
-**Details:**
+**Details**:
 
 This is used in [otTcpAcceptReady()](api-tcp#ot-tcp-accept-ready) callback.
 
@@ -259,11 +267,11 @@ This is used in [otTcpAcceptReady()](api-tcp#ot-tcp-accept-ready) callback.
 
 `typedef otTcpIncomingConnectionAction(* otTcpAcceptReady) (otTcpListener *aListener, const otSockAddr *aPeer, otTcpEndpoint **aAcceptInto)`
 
-**Description:**
+**Description**:
 
 This callback indicates that an incoming connection that matches this TCP listener has arrived.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -271,13 +279,13 @@ This callback indicates that an incoming connection that matches this TCP listen
 ||[in]|aPeer|The host and port from which the incoming connection originates.|
 ||[out]|aAcceptInto|The TCP endpoint into which to accept the incoming connection.|
 
-**Details:**
+**Details**:
 
 The typical response is for the application to accept the incoming connection. It does so by populating `aAcceptInto` with a pointer to the [otTcpEndpoint](ot-tcp-endpoint) into which to accept the incoming connection. This [otTcpEndpoint](ot-tcp-endpoint) must already be initialized using [otTcpEndpointInitialize()](api-tcp#ot-tcp-endpoint-initialize). Then, the application returns OT_TCP_INCOMING_CONNECTION_ACTION_ACCEPT.
 
 Alternatively, the application can decline to accept the incoming connection. There are two ways for the application to do this. First, if the application returns OT_TCP_INCOMING_CONNECTION_ACTION_DEFER, then OpenThread silently ignores the connection establishment request; the connection peer will likely retransmit the request, at which point the callback will be called again. This is valuable if resources are not presently available to accept the connection, but they may be available when the connection peer retransmits its connection establishment attempt. Second, if the application returns OT_TCP_INCOMING_CONNECTION_ACTION_REFUSE, then OpenThread sends a "connection refused" message to the host that attempted to establish a connection. If the application declines the incoming connection, it is not required to populate `aAcceptInto`.
 
-**Returns**
+**Returns:**
 
 - Description of how to handle the incoming connection.
 
@@ -285,11 +293,11 @@ Alternatively, the application can decline to accept the incoming connection. Th
 
 `typedef void(* otTcpAcceptDone) (otTcpListener *aListener, otTcpEndpoint *aEndpoint, const otSockAddr *aPeer)`
 
-**Description:**
+**Description**:
 
 This callback indicates that the TCP connection is now ready for two-way communication.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -297,7 +305,7 @@ This callback indicates that the TCP connection is now ready for two-way communi
 ||[in]|aEndpoint|The TCP endpoint into which the incoming connection was accepted.|
 ||[in]|aPeer|the host and port from which the incoming connection originated.|
 
-**Details:**
+**Details**:
 
 In the case of TCP Fast Open, this may be before the TCP connection handshake has actually completed. The application is provided with the context pointers both for the TCP listener that accepted the connection and the TCP endpoint into which it was accepted. The provided context is the one associated with the TCP listener.
 
@@ -305,7 +313,7 @@ In the case of TCP Fast Open, this may be before the TCP connection handshake ha
 
 `typedef struct otTcpListenerInitializeArgs otTcpListenerInitializeArgs`
 
-**Description:**
+**Description**:
 
 Contains arguments to the [otTcpListenerInitialize()](api-tcp#ot-tcp-listener-initialize) function.
 
@@ -317,7 +325,7 @@ Contains arguments to the [otTcpListenerInitialize()](api-tcp#ot-tcp-listener-in
 
 **Description:** Initializes a TCP endpoint.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -333,13 +341,13 @@ Calling this function causes OpenThread to keep track of the TCP endpoint and st
 
 **Description:** Obtains the otInstance that was associated with `aEndpoint` upon initialization.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otTcpEndpoint](ot-tcp-endpoint) *|[in]|aEndpoint|The TCP endpoint whose instance to obtain.|
 
-**Returns**
+**Returns:**
 
 - The otInstance pointer associated with `aEndpoint`.
 
@@ -349,13 +357,13 @@ Calling this function causes OpenThread to keep track of the TCP endpoint and st
 
 **Description:** Obtains the context pointer that was associated with `aEndpoint` upon initialization.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otTcpEndpoint](ot-tcp-endpoint) *|[in]|aEndpoint|The TCP endpoint whose context to obtain.|
 
-**Returns**
+**Returns:**
 
 - The context pointer associated with `aEndpoint`.
 
@@ -365,7 +373,7 @@ Calling this function causes OpenThread to keep track of the TCP endpoint and st
 
 **Description:** Obtains a pointer to a TCP endpoint's local host and port.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -373,7 +381,7 @@ Calling this function causes OpenThread to keep track of the TCP endpoint and st
 
 The contents of the host and port may be stale if this socket is not in a connected state and has not been bound after it was last disconnected.
 
-**Returns**
+**Returns:**
 
 - The local host and port of `aEndpoint`.
 
@@ -383,7 +391,7 @@ The contents of the host and port may be stale if this socket is not in a connec
 
 **Description:** Obtains a pointer to a TCP endpoint's peer's host and port.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -391,7 +399,7 @@ The contents of the host and port may be stale if this socket is not in a connec
 
 The contents of the host and port may be stale if this socket is not in a connected state.
 
-**Returns**
+**Returns:**
 
 - The host and port of the connection peer of `aEndpoint`.
 
@@ -401,7 +409,7 @@ The contents of the host and port may be stale if this socket is not in a connec
 
 **Description:** Binds the TCP endpoint to an IP address and port.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -414,7 +422,7 @@ The contents of the host and port may be stale if this socket is not in a connec
 
 **Description:** Records the remote host and port for this connection.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -432,7 +440,7 @@ If TCP Fast Open is disabled, then the caller must wait for the `otTcpEstablishe
 
 **Description:** Adds data referenced by the linked buffer pointed to by `aBuffer` to the send buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -450,7 +458,7 @@ Note that `aBuffer` should not be chained; its mNext field should be NULL. If ad
 
 **Description:** Adds data to the send buffer by extending the length of the final [otLinkedBuffer](ot-linked-buffer) in the send buffer by the specified amount.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -466,7 +474,7 @@ If the send buffer is empty, then the operation fails.
 
 **Description:** Provides the application with a linked buffer chain referencing data currently in the TCP receive buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -481,7 +489,7 @@ The linked buffer chain is valid until the "receive ready" callback is next invo
 
 **Description:** Reorganizes the receive buffer to be entirely contiguous in memory.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -495,7 +503,7 @@ This is optional; an application can simply traverse the linked buffer chain obt
 
 **Description:** Informs the TCP stack that the application has finished processing `aNumBytes` bytes of data at the start of the receive buffer and that the TCP stack need not continue maintaining those bytes in the receive buffer.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -509,7 +517,7 @@ This is optional; an application can simply traverse the linked buffer chain obt
 
 **Description:** Informs the connection peer that this TCP endpoint will not send more data.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -525,7 +533,7 @@ The "end of stream" condition only applies after any data previously provided to
 
 **Description:** Forcibly ends the TCP connection associated with this TCP endpoint.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -539,7 +547,7 @@ This immediately makes the TCP endpoint free for use for another connection and 
 
 **Description:** Deinitializes this TCP endpoint.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -555,7 +563,7 @@ If it corresponds to a live TCP connection, the connection is terminated uncerem
 
 **Description:** Initializes a TCP listener.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -571,13 +579,13 @@ Calling this function causes OpenThread to keep track of the TCP listener and st
 
 **Description:** Obtains the otInstance that was associated with `aListener` upon initialization.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otTcpListener](ot-tcp-listener) *|[in]|aListener|The TCP listener whose instance to obtain.|
 
-**Returns**
+**Returns:**
 
 - The otInstance pointer associated with `aListener`.
 
@@ -587,13 +595,13 @@ Calling this function causes OpenThread to keep track of the TCP listener and st
 
 **Description:** Obtains the context pointer that was associated with `aListener` upon initialization.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
 |[otTcpListener](ot-tcp-listener) *|[in]|aListener|The TCP listener whose context to obtain.|
 
-**Returns**
+**Returns:**
 
 - The context pointer associated with `aListener`.
 
@@ -603,7 +611,7 @@ Calling this function causes OpenThread to keep track of the TCP listener and st
 
 **Description:** Causes incoming TCP connections that match the specified IP address and port to trigger this TCP listener's callbacks.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -616,7 +624,7 @@ Calling this function causes OpenThread to keep track of the TCP listener and st
 
 **Description:** Causes this TCP listener to stop listening for incoming connections.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -628,7 +636,7 @@ Calling this function causes OpenThread to keep track of the TCP listener and st
 
 **Description:** Deinitializes this TCP listener.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

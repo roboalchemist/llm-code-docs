@@ -57,7 +57,7 @@ Simplicity Commander or Gecko Bootloader can be used to upgrade the SE Firmware 
 
 > **Note**: Using Simplicity Commander to upgrade the SE Firmware on a Secure Debug Locked device is not recommended. It causes Secure Boot failure since the SE Firmware upgrade erases the signed host image for Secure Boot. The user may have issues when recovering a Secure Boot failure device with Device Erase disabled. See section _Recover Devices when Secure Boot Fails_ in [Series 2 and Series 3 Secure Boot with RTSL](https://docs.silabs.com/mcu-bootloader/latest/series2-secure-boot-with-rtsl/) for details.
 
-### Simplicity Commander
+### Simplicity Commander (Secure Boot-Enabled Device)
 
 A signed SE Firmware upgrade application must be used for the upgrade. Instructions for signing the SE Firmware upgrade application are found in the sections "Signing for ECDSA-P256-SHA256 Secure Boot" and _Signing for Certificate-Based Secure Boot_ in [Series 2 and Series 3 Secure Boot with RTSL](https://docs.silabs.com/mcu-bootloader/latest/series2-secure-boot-with-rtsl/).
 
@@ -115,7 +115,7 @@ JLinkError: Failed to halt CPU.
 DONE
 ```
 
-### Gecko Bootloader
+### Gecko Bootloader (Secure Boot-Enabled Device)
 
 Refer to section _Generate a GBL Upgrade Image File_ (Secure Engine Upgrade) in [Series 2 and Series 3 Secure Boot with RTSL](https://docs.silabs.com/mcu-bootloader/latest/series2-secure-boot-with-rtsl/) for details.
 

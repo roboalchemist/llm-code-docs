@@ -2,7 +2,7 @@
 
 # Error
 
-This module includes error definitions used in OpenThread. 
+This module includes error definitions used in OpenThread.
 
 ## Typedefs
 
@@ -28,6 +28,6 @@ Represents error codes used throughout OpenThread.
 |----|---------|-------------|-----------|
 |[otError](api-error#ot-error)|[in]|aError|An otError enum.|
 
-**Returns**
+#### Returns
 
 - A string representation of an otError.

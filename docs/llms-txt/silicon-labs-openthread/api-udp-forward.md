@@ -2,9 +2,9 @@
 
 # UDP Forward
 
-This module includes functions for UDP forward feature. 
+This module includes functions for UDP forward feature.
 
-The functions in this module are available when udp-forward feature (`OPENTHREAD_CONFIG_UDP_FORWARD_ENABLE`) is enabled. 
+The functions in this module are available when udp-forward feature (`OPENTHREAD_CONFIG_UDP_FORWARD_ENABLE`) is enabled.
 
 ## Typedefs
 
@@ -12,11 +12,11 @@ The functions in this module are available when udp-forward feature (`OPENTHREAD
 
 `typedef void(* otUdpForwarder) (otMessage *aMessage, uint16_t aPeerPort, otIp6Address *aPeerAddr, uint16_t aSockPort, void *aContext)`
 
-**Description:**
+**Description**:
 
 Pointer delivers the UDP packet to host and host should send the packet through its own network stack.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -26,7 +26,7 @@ Pointer delivers the UDP packet to host and host should send the packet through 
 ||[in]|aSockPort|The source UDP port.|
 ||[in]|aContext|A pointer to application-specific context.|
 
-**Details:**
+**Details**:
 
 ## Functions
 
@@ -36,7 +36,7 @@ Pointer delivers the UDP packet to host and host should send the packet through 
 
 **Description:** Set UDP forward callback to deliver UDP packets to host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -50,7 +50,7 @@ Pointer delivers the UDP packet to host and host should send the packet through 
 
 **Description:** Handle a UDP packet received from host.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|
@@ -60,7 +60,7 @@ Pointer delivers the UDP packet to host and host should send the packet through 
 |const [otIp6Address](ot-ip6-address) *|[in]|aPeerAddr|A pointer to the source address.|
 |uint16_t|[in]|aSockPort|The destination UDP port.|
 
-**Warnings**
+**Warnings:**
 
 - No matter the call success or fail, the message is freed.
 
@@ -70,7 +70,7 @@ Pointer delivers the UDP packet to host and host should send the packet through 
 
 **Description:** Determines if the given UDP port is exclusively opened by OpenThread API.
 
-**Parameters:**
+**Parameters**:
 
 |Type|Direction|Argument Name|Description|
 |----|---------|-------------|-----------|

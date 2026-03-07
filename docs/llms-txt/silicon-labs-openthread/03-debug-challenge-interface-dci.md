@@ -23,7 +23,7 @@ See [AN0062: Programming Internal Flash over the Serial Wire Debug Interface](ht
 
 The following table lists three registers to interact with the DCI through the SWD interface.
 
-**DCI Register**
+### DCI Register
 
 |**Register**|**Description**|**Fields**|**Address**|**Remarks**|
 |---|---|---|---|---|
@@ -38,7 +38,7 @@ The following table lists three registers to interact with the DCI through the S
 
 All DCI calls start by writing a 32-bit word containing the length of the DCI data followed by the 32-bit Command ID into the DCI. The length includes the length word itself, so the minimum value is 8 (4 bytes of length and 4 byes of Command ID). Then a variable length command payload (if applicable) is transferred into the DCI.
 
-**DCI Command**
+#### DCI Command
 
 |**Command Word**|**Description**|
 |---|---|
@@ -50,7 +50,7 @@ All DCI calls start by writing a 32-bit word containing the length of the DCI da
 
 On completion, a 32-bit word consisting of the response length [15:0] in bytes and response code [31:16] is read from the DCI followed by the response payload, if present.
 
-**DCI Response**
+#### DCI Response
 
 |**Response Word**|**Description**|
 |---|---|
@@ -59,7 +59,7 @@ On completion, a 32-bit word consisting of the response length [15:0] in bytes a
 
 All executed commands return a response code that classifies the result of the operation. The basic meaning of these response codes is given in the following table.
 
-**DCI Response Codes**
+#### DCI Response Codes
 
 |**Response Code**|**Status**|**Description**|
 |---|---|---|

@@ -23,12 +23,14 @@ The figure below shows how CPCd runs in the Host application.
 ## Install and Make CPCD on the System
 
 ```bash
+
 git clone https://github.com/SiliconLabs/cpc_daemon.git
 cd cpc_daemon
 mkdir build
 cd build
 cmake ../
 make
+
 ```
 
 By default, the make install places libcpc.so in `/usr/local/lib/arm-linux-gnueabihf` and sl_cpc.h in `/usr/local/include`.
@@ -36,9 +38,11 @@ By default, the make install places libcpc.so in `/usr/local/lib/arm-linux-gnuea
 ### Install CPCD and the CPC Library
 
 ```bash
+
 sudo make install
 sudo ldconfig
 sudo cp ../cpcd.conf /usr/local/etc/.
+
 ```
 
 ### CPCD Service File
@@ -46,6 +50,7 @@ sudo cp ../cpcd.conf /usr/local/etc/.
 If you want CPCD to be included in a system service, create a CPCD Service file named: cpcd.service file. An example of the service file is shown below:
 
 ```bash
+
 [Unit]
 Description=Cpcd service
 StartLimitIntervalSec=0
@@ -64,12 +69,15 @@ SyslogIdentifier=cpcd
 
 [Install]
 WantedBy=multi-user.target
+
 ```
 
 After moving the cpcd.service file /etc/systemd/system, the cpc daemon can not be started from anywhere with:
 
 ```bash
+
 sudo systemctl start cpcd
+
 ```
 
 ## CPCD Configuration
@@ -93,7 +101,9 @@ More information on CPCD Configuration can be found by following the instruction
 In heavy traffic environments, it is recommended to increase the host's socket buffers to be able to process all of the incoming network packets. An error message like so typically points to the socket buffers filling up on the host:
 
 ```bash
+
 Write() at cpc_interface.cpp:242: Broken pipe
+
 ```
 
 To mediate this issue, you can increase the socket buffer sizes in /etc/sysctl.conf.
@@ -113,6 +123,7 @@ In the CPCD.CONF file you will need to change **bus_type: SPI**. If you changed 
 Assuming that CPCD has already been installed on the host you can run this command to set up connection between the Host and the RCP. Note you can see that the bus is now changed to **SPI**. For questions on how to configure the host to run SPI and how to connect the co-processor to the host please reference section 3: Local Host Configuration.
 
 ```bash
+
 sudo /usr/local/bin/cpcd -c ~/cpc-daemon/cpcd.conf
 
 WARNING in function 'main' in file /home/pi/cpc-daemon/main.c at line #186 : Running CPCd as 'root' is not recommended. Proceed at your own risk.
@@ -166,6 +177,7 @@ WARNING in function 'main' in file /home/pi/cpc-daemon/main.c at line #186 : Run
 [21:55:49:311916] Info : The negotiated SPI bitrate will be 1000000
 [21:55:49:312651] Info : Secondary APP vUNDEFINED
 [21:55:49:312774] Info : Daemon startup was successful. Waiting for client connections
+
 ```
 
 As you can see, the following CPCD configuration parameters will be printed to the console. If the CPCD connection is successful, you will see **Info: Daemon Startup was successful. Waiting for client connections**.

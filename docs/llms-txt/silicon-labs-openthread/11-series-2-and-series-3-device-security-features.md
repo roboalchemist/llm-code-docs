@@ -24,7 +24,7 @@ Additional security features are provided by Secure Vault. Three levels of Secur
 |Secure Vault High (SVH)|HSE only (HSE-SVH)|EFM32PG23B, EFMPG26B, EFM32PG28B|EFR32xG21B, EFR32Xg21B (Rev C) EFR32xG23B, EFR32xG24B, EFR32xG25B, EFR32xG26B, EFR32xG28B, EFR32xG29B, SixG301|
 
 > Note:
-> 
+>
 > 1. The features of different Secure Vault levels can be found in [https://www.silabs.com/security.](https://www.silabs.com/security).
 > 2. The x is a letter B, F, M, or Z.
 > 3. Unlike other VSE-SVM parts, the EFR32xG27C device has a built-in PUF.

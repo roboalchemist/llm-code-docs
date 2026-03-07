@@ -30,7 +30,7 @@ Here are several ways to debug with an RCP:
 
 When using an OTBR + RCP setup, you can enable [efr32RadioCounters](https://github.com/SiliconLabsSoftware/sisdk-release/blob/sisdk-2025.12/openthread/platform-abstraction/include/radio_counters.h) by following the steps below:
 
-1. Add the "EFR32 Platform extension" component to your RCP project.  
+1. Add the "EFR32 Platform extension" component to your RCP project.
    - `ot_platform_ext` component if generating project with slc-cli
 2. Set SL_CATALOG_OPENTHREAD_EFR32_CLI_PRESENT = 1.
 3. Build OTBR with -DSL_OT_EFR32_CLI=ON to enable the host-side API.
@@ -41,6 +41,7 @@ When using an OTBR + RCP setup, you can enable [efr32RadioCounters](https://gith
 [CPCd](https://github.com/SiliconLabs/cpc-daemon) is a key component in a multiprotocol architecture, bridging the physical bits received by the RCP and forwarding the information to the host stack process. The `cpcd.conf` file contains fields to enable tracing:
 
 ```c
+
 # Prints tracing information to stdout
 # Optional, defaults to 'false'
 # Allowed values are 'true' or 'false'
@@ -60,6 +61,7 @@ traces_folder: /dev/shm/cpcd-traces
 # Optional, defaults to 'false'
 # Allowed values are 'true' or 'false'
 enable_frame_trace: true
+
 ```
 
 > **Note**: These are not enabled by default so they must enabled to see the [spinel](https://github.com/openthread/spinel-spec/blob/master/core/intro-frames.md) frame traces. This is beneficial if CPC security is disabled in both the RCP and CPCd. In enabling these traces, the raw spinel frames being transferred along with the [CPC headers](https://github.com/SiliconLabs/cpc-daemon/blob/133b29678b3d0bc7578e098d2f46b4d5bcd2ebb4/doc/uart.md?plain=1#L23) can be debugged.
@@ -67,19 +69,24 @@ enable_frame_trace: true
 The CPCd process itself will output information to syslog about the state of connection of the secondary (RCP), along with information about how many connections and endpoint has. If a stack process, such as Zigbeed, is disconnected something like the following will be printed:
 
 ```c
+
 Info : Endpoint socket #12: Client connected. 2 connections
 Info : Endpoint socket #12: Client disconnected. 1 connections
+
 ```
 
 If the RCP is stuck or CPCd is unable to connect, you can view the live CPCd syslogs with:
 
 ```c
+
 tail -F /var/log/syslog | grep cpcd
+
 ```
 
 First, you must enable the Zigbee logs in the zigbeed.conf file:
 
 ```c
+
 # Debug level
 # Optional
 # The debug level for the Spinel driver.
@@ -90,6 +97,7 @@ First, you must enable the Zigbee logs in the zigbeed.conf file:
 # Uncomment to enable.
 
 # debug-level=5
+
 ```
 
 Note that this is not enabled by default so you must remove the '#' in the `zigbeed.conf` file to obtain the Zigbeed logs.
@@ -105,6 +113,7 @@ A few Silicon Labs components can be added to a Zigbeed project to help debug:
 In the Zigbeed code, you can make use of the APIs from these components to print out helpful debug information. The information can then be found in the syslogs. For example, you can use the packet handoff in combination with debug prints to display a packet:
 
 ```bash
+
 // packetHandoff
 sl_zigbee_packet_action_t sl_zigbee_af_incoming_packet_filter_cb(sl_zigbee_zigbee_packet_type_t packetType, uint8_t* packetData, uint8_t* size_p, void* data) {
   switch (packetType)
@@ -127,6 +136,7 @@ sl_zigbee_packet_action_t sl_zigbee_af_incoming_packet_filter_cb(sl_zigbee_zigbe
 
   return SL_ZIGBEE_ACCEPT_PACKET;
 }
+
 ```
 
 ## Debugging OTBR
@@ -134,13 +144,17 @@ sl_zigbee_packet_action_t sl_zigbee_af_incoming_packet_filter_cb(sl_zigbee_zigbe
 If there is any issue with the Thread network and the RCP is working fine, then you can view the OT process syslogs by running:
 
 ```c
+
 tail -F /var/log/syslog | grep otbr-agent
+
 ```
 
 Unlike Zigbeed, the Thread stack does not have a .conf file to enable logging. Logging can be enabled by setting the log level of your OTBR agent to 5:
 
 ```c
+
 Sudo ot-ctl log level 5
+
 ```
 
 For more information, refer to [OpenThread CLI Commands](https://openthread.io/reference/cli/commands).
@@ -148,7 +162,9 @@ For more information, refer to [OpenThread CLI Commands](https://openthread.io/r
 Before doing this, the OTBR on the host must be built with the following configuration flags while calling the setup script:
 
 ```c
+
 OTBR_OPTIONS='-DOT_LOG_LEVEL=DEBG -DOT_FULL_LOGS=ON'
+
 ```
 
 The OT agent logs, when set to level 5, are helpful for debugging network information (Rx and Tx), spinel data, and OTBR agent state.
@@ -191,7 +207,7 @@ Refer to the release notes page to check for known bugs and workarounds.
 
 ## Common Issues
 
-_CPC won't connect to the secondary_
+_CPC won't connect to the secondary:_
 
 Look over the CPC syslogs or state. This will output obvious mistakes such as mismatching settings or versions. If the CPC logs show the RCP is unresponsive, double-check the following:
 
@@ -201,20 +217,22 @@ Look over the CPC syslogs or state. This will output obvious mistakes such as mi
 
 Refer to [Common CPCD Issues & Debugging](https://community.silabs.com/s/article/Common-CPCD-Issues-Debugging?language=en_US) for more information.
 
-_My OTBR agent won't start_
+_My OTBR agent won't start:_
 
 - Look over the syslogs for the OTBR agent
 - Ensure the URL in /etc/default/otbr-agent is correct
 - If using CPCd, make sure CPCd is connected before starting the service
 
-_Tx timeout reported, 'RCP reset' messages after normal operation_
+_Tx timeout reported, 'RCP reset' messages after normal operation:_
 
 If these messages are printed the RCP has crashed or is stuck. Follow the "OTBR" section to capture what assert the RCP is hitting.
 
 ### Running the OTBR CLI Utility
 
 ```bash
+
  sudo ot-ctl
+
 ```
 
 For a complete list of OTBR CLI commands, refer to the [OpenThread CLI Command Reference](https://openthread.io/reference/cli/commands).
