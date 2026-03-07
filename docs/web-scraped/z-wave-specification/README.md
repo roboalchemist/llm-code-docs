@@ -1,58 +1,59 @@
 # Z-Wave Protocol Specification
 
 **Official Source**: Z-Wave Alliance 2025-B Specification Package
-**Last Updated**: 2026-03-07T20:11:54.479214
-**Format**: Markdown (extracted from official PDFs)
+**Last Updated**: 2026-03-07
+**Format**: Full markdown extraction from official PDFs via PyMuPDF
 
 ## Overview
 
-This directory contains the official Z-Wave protocol specification from the Z-Wave Alliance.
-Z-Wave is a wireless mesh networking protocol designed for reliable home automation and IoT applications.
-
-### Coverage
-
-- **PHY/MAC Layers**: Physical and Medium Access Control layer specifications
-- **Network Layer**: Routing, addressing, and network management
-- **Application Layer**: Command classes, device types, and application protocols
-- **Host API**: Serial communication protocol between hosts and Z-Wave controllers
-- **Regional**: Frequency allocations and regional variations
+This directory contains the complete Z-Wave protocol specification from the Z-Wave Alliance,
+extracted from the official 2025-B Specification Package (12 PDFs, 2,375 pages total).
 
 ## Documentation Files
 
 ### Core Specifications
 
-1. **[Z-Wave Application Specification](./z-wave-application-specification.md)**
-   - Command classes (100+ command class definitions)
-   - Device types and roles
-   - Application layer protocols
-   - Security (S0, S2)
+1. **[Z-Wave Application Specification](./z-wave-application-specification.md)** (4.3MB, 1311 pages)
+   - 100+ command class definitions with byte-level frame formats
+   - Device types, roles, and lifeline associations
+   - Security S0/S2 command encapsulation
+   - Requirement IDs (CC:xxxx.xx.xx.xx.xxx format)
 
-2. **[Z-Wave Network Layer Specification](./z-wave-network-layer.md)**
-   - Routing protocols (AODV-based routing)
-   - Network topology
-   - Node addressing and identification
-   - Network security
+2. **[Z-Wave Network Layer Specification](./z-wave-network-specification.md)** (256KB, 174 pages)
+   - AODV-based mesh routing protocol
+   - Node addressing and identification (8-bit, 1-232)
+   - Route request/reply mechanisms
+   - Network inclusion/exclusion
 
-3. **[Z-Wave Host API Specification](./z-wave-host-api.md)**
-   - Serial API protocol
-   - Command/Response frames
-   - Data link layer
-   - Host-to-controller communication
+3. **[Z-Wave Host API Specification](./z-wave-host-api-specification.md)** (388KB, 320 pages)
+   - Serial API protocol between host and Z-Wave module
+   - Command/Response frame formats
+   - Function IDs and callbacks
 
-4. **[Z-Wave PHY and MAC Layer Specification](./z-wave-phy-mac.md)**
-   - Modulation (GFSK at 9.6-40 kbps)
-   - Channel access (CSMA/CA)
-   - Frame structure
+4. **[Z-Wave PHY and MAC Layer Specification](./z-wave-phy-mac-specification.md)** (52KB)
+   - GFSK modulation (9.6, 40, 100 kbps)
+   - CSMA/CA channel access
+   - Frame structure and CRC
+
+5. **[Z-Wave Long Range PHY and MAC Specification](./z-wave-lr-phy-mac-specification.md)** (140KB, 80 pages)
    - Long Range variant (up to 100m outdoor)
+   - Extended addressing and frame formats
 
-5. **[Frequency Region Allocation](./z-wave-frequency.md)**
-   - Regional frequency bands (EU, US, RU, IN, IL, CN, JP, etc.)
-   - Channel specifications
-   - Regulatory compliance
+6. **[Frequency Region Allocation](./z-wave-frequency-specification.md)** (8KB, 10 pages)
+   - Regional frequency bands (EU 868 MHz, US 908 MHz, CN 920 MHz, JP 922 MHz)
+   - Channel specifications and regulatory compliance
 
-6. **[Errata and Updates](./z-wave-errata.md)**
-   - Known issues and corrections
-   - ITU specification updates
+7. **[Errata and Updates](./z-wave-errata-specification.md)** (12KB, 12 pages)
+   - Known issues and ITU specification corrections
+
+### Test Specifications
+
+8. **[Z-Wave PHY Layer Test Specification](./z-wave-phy-test-specification.md)** (56KB, 43 pages)
+9. **[Z-Wave MAC Layer Test Specification](./z-wave-mac-test-specification.md)** (216KB, 122 pages)
+10. **[Z-Wave Network Layer Test Specification](./z-wave-network-test-specification.md)** (304KB, 151 pages)
+11. **[Z-Wave LR PHY Layer Test Specification](./z-wave-lr-phy-test-specification.md)** (60KB, 42 pages)
+12. **[Z-Wave LR MAC Layer Test Specification](./z-wave-lr-mac-test-specification.md)** (108KB, 66 pages)
+13. **[Z-Wave LR Network Layer Test Specification](./z-wave-lr-network-test-specification.md)** (76KB, 44 pages)
 
 ## Key Concepts
 
@@ -74,78 +75,20 @@ Radio Hardware        (Transceiver)
 
 ### Command Classes
 
-Z-Wave communication is organized around **command classes** that define specific functionality:
+Z-Wave communication is organized around **command classes** with versioned specifications.
+Each command class defines frame formats at the byte level with requirement IDs.
 
-- **Basic**: Basic on/off control
-- **Multilevel Switch**: Dimming and percentage control
-- **Door Lock**: Secure locking mechanisms
-- **Thermostat**: Temperature control
-- **Sensor**: Environmental sensing
-- **Meter**: Energy/water/gas metering
-- **Notification**: Event reporting
-- **Security**: S0 and S2 encryption
-- And 100+ more...
-
-### Routing
-
-Z-Wave uses a mesh networking approach:
-
-- Each node can relay messages (with hop count limiting)
-- AODV-like routing protocol
-- Route request/reply mechanism
-- Network stability and convergence
+Examples: Basic, Binary Switch (v1-v2), Multilevel Switch (v1-v4), Door Lock,
+Thermostat, Sensor Multilevel, Meter, Notification, Security S2, and 100+ more.
 
 ### Security
 
-Two security levels:
-
-- **S0 (S0-Legacy)**: AES-128 CCM (128-bit, deprecated)
-- **S2**: AES-CCMP with ECDH key agreement (modern, 256-bit equivalent)
-
-## Technical Details
-
-### Frequency Bands
-
-- **Europe (EU)**: 868.0 - 868.6 MHz
-- **North America (US)**: 908.4 - 916.0 MHz
-- **Russia (RU)**: 869.0 - 869.2 MHz
-- **China (CN)**: 920.0 - 921.7 MHz
-- **Japan (JP)**: 922.5 - 923.5 MHz
-
-### Data Rates
-
-- **Standard Z-Wave**: 9.6, 19.2, 40 kbps (GFSK modulation)
-- **Z-Wave Long Range**: Up to 100m outdoor range (lower data rate)
-
-### Network Size
-
-- **Maximum nodes**: 232 (devices) + 1 controller = 233
-- **Addressing**: 8-bit node IDs (1-232 for devices)
-- **Range**: 30m typical indoor, 100m+ with Long Range
-
-## Related Standards
-
-- **ITU-T G.9959**: Underlying PHY/MAC specification (published by ITU)
-- **IEEE 802.15.4**: Inspiration for MAC layer design
-- **Zigbee**: Competing mesh standard
-
-## Resources
-
-- **Official Site**: https://z-wavealliance.org
-- **Developers**: https://developers.z-wavealliance.org
-- **Members Portal**: https://sdomembers.z-wavealliance.org
-- **SDK**: Available for members
+- **S0 (Legacy)**: AES-128 CCM (deprecated)
+- **S2**: AES-CCMP with ECDH key agreement (current standard)
 
 ## License
 
-Z-Wave specifications are copyright Z-Wave Alliance. This documentation is extracted for
-reference purposes. For official specifications, visit the Z-Wave Alliance website.
+Z-Wave specifications are copyright Z-Wave Alliance, Inc.
+Extracted for reference purposes from the publicly available 2025-B Specification Package.
 
-## Usage Notes
-
-This documentation was automatically extracted from official Z-Wave Alliance specification PDFs.
-For the most authoritative information, consult the official specification documents through
-the Z-Wave Alliance Members Portal.
-
-**Generated**: 2026-03-07T20:11:54.479214
 **Source**: Z-Wave Alliance 2025-B Specification Package
