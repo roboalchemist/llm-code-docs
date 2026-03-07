@@ -101,7 +101,8 @@ NotificationCenter.default.addObserver(
 
 ### Power/State
 
-**HMCharacteristicTypePowerState**
+#### HMCharacteristicTypePowerState
+
 - Values: 0 (off), 1 (on)
 - Used in: lights, switches, outlets
 
@@ -112,7 +113,8 @@ try await characteristic.writeValue(0)  // Turn off
 
 ### Brightness
 
-**HMCharacteristicTypeBrightness**
+#### HMCharacteristicTypeBrightness
+
 - Values: 0-100 (percentage)
 - Used in: lights, dimmable switches
 
@@ -122,11 +124,13 @@ try await characteristic.writeValue(75)  // 75% brightness
 
 ### Temperature
 
-**HMCharacteristicTypeCurrentTemperature**
+#### HMCharacteristicTypeCurrentTemperature
+
 - Read-only: actual temperature
 - Units: Celsius
 
-**HMCharacteristicTypeTargetTemperature**
+#### HMCharacteristicTypeTargetTemperature
+
 - Read/Write: desired temperature
 - Units: Celsius
 
@@ -137,11 +141,13 @@ try await targetTempChar.writeValue(21)
 
 ### Lock State
 
-**HMCharacteristicTypeLockCurrentState**
+#### HMCharacteristicTypeLockCurrentState
+
 - Values: 0 (unsecured), 1 (secured), 2 (unknown), 3 (jammed)
 - Read-only
 
-**HMCharacteristicTypeLockTargetState**
+#### HMCharacteristicTypeLockTargetState
+
 - Values: 0 (unsecured), 1 (secured)
 - Read/Write
 
@@ -155,37 +161,44 @@ try await lockTargetChar.writeValue(0)
 
 ### Hue and Saturation
 
-**HMCharacteristicTypeHue**
+#### HMCharacteristicTypeHue
+
 - Values: 0-360 (degrees)
 - Used in: color-capable lights
 
-**HMCharacteristicTypeSaturation**
+#### HMCharacteristicTypeSaturation
+
 - Values: 0-100 (percentage)
 - Used in: color-capable lights
 
 ### Contact & Motion
 
-**HMCharacteristicTypeContactState**
+#### HMCharacteristicTypeContactState
+
 - Values: 0 (open), 1 (closed)
 - Read-only, sensor
 
-**HMCharacteristicTypeMotionDetected**
+#### HMCharacteristicTypeMotionDetected
+
 - Values: 0 (no motion), 1 (motion detected)
 - Read-only, sensor
 
 ### Occupancy
 
-**HMCharacteristicTypeOccupancyDetected**
+#### HMCharacteristicTypeOccupancyDetected
+
 - Values: 0 (not occupied), 1 (occupied)
 - Read-only, sensor
 
 ### Humidity
 
-**HMCharacteristicTypeCurrentRelativeHumidity**
+#### HMCharacteristicTypeCurrentRelativeHumidity
+
 - Values: 0-100 (percentage)
 - Read-only, sensor
 
-**HMCharacteristicTypeTargetRelativeHumidity**
+#### HMCharacteristicTypeTargetRelativeHumidity
+
 - Values: 0-100 (percentage)
 - Read/Write, humidifier
 

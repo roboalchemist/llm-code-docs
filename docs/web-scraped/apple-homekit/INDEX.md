@@ -152,22 +152,26 @@ do {
 ## Key Features by Platform
 
 ### iOS
+
 - Full HomeKit framework support
 - Remote access via iCloud
 - Siri integration
 - Background execution
 
 ### macOS
+
 - Full HomeKit framework support
 - HomeKit hub functionality
 - Remote access coordination
 
 ### tvOS
+
 - HomeKit hub (manage remote access)
 - Full remote access capability
 - Scene execution via Siri
 
 ### watchOS
+
 - Limited HomeKit support
 - Control scenes and accessories
 - View status

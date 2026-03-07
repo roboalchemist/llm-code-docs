@@ -41,6 +41,7 @@ let status = HMHomeManager.authorizationStatus()
 ```
 
 Authorization statuses:
+
 - `notDetermined` - User hasn't made a choice yet
 - `restricted` - User cannot change authorization
 - `denied` - User denied HomeKit access

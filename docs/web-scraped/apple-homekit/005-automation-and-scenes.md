@@ -57,6 +57,7 @@ do {
 ### Scene Names and Siri Compatibility
 
 Common scene names that Siri recognizes:
+
 - "Good Morning"
 - "Good Night"
 - "Movie Time"
@@ -161,7 +162,7 @@ if let motionService = motionSensor.services.first(where: { $0.serviceType == HM
 
 ### Event Types
 
-**HMEventCharacteristicHasValue**
+#### HMEventCharacteristicHasValue
 
 Triggers when characteristic reaches specific value:
 
@@ -172,7 +173,7 @@ let event = HMEventCharacteristicHasValue(
 )
 ```
 
-**HMEventCharacteristicRangeValue**
+#### HMEventCharacteristicRangeValue
 
 Triggers when characteristic is within range:
 
@@ -184,7 +185,7 @@ let event = HMEventCharacteristicRangeValue(
 // Triggers when temperature reaches 20°C
 ```
 
-**HMEventCharacteristicThresholdValue**
+#### HMEventCharacteristicThresholdValue
 
 Triggers based on threshold:
 

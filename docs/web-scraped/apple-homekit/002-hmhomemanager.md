@@ -19,6 +19,7 @@ let status = HMHomeManager.authorizationStatus()
 ```
 
 Possible statuses:
+
 - `.notDetermined` - User hasn't decided
 - `.restricted` - App is restricted from HomeKit access
 - `.denied` - User denied HomeKit access
@@ -227,4 +228,3 @@ HMHomeManager must be accessed from the main thread. All delegate callbacks are 
 - macOS 10.12+
 - tvOS 10.1+
 - watchOS 2.0+
-
