@@ -1153,3 +1153,6 @@ sites:
 - name: ragas
   base_url: https://docs.ragas.io/
   description: ragas documentation
+- name: weaviate
+  base_url: https://docs.weaviate.io/
+  description: weaviate documentation
