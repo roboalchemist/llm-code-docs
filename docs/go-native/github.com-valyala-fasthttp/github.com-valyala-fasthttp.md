@@ -38,7 +38,7 @@ Fasthttp provides the following features:
   
   \- Early filtering out non\-GET requests.
 
-5. A lot of additional useful info is exposed to request handler:
+1. A lot of additional useful info is exposed to request handler:
   
   \- Server and client address.
   
@@ -52,9 +52,9 @@ Fasthttp provides the following features:
   
   \- Request sequence number for the current connection.
 
-6. Client supports automatic retry on idempotent requests' failure.
+1. Client supports automatic retry on idempotent requests' failure.
 
-7. Fasthttp API is designed with the ability to extend existing client and server implementations or to write custom client and server implementations from scratch.
+2. Fasthttp API is designed with the ability to extend existing client and server implementations or to write custom client and server implementations from scratch.
 
 ## Index
 
@@ -696,7 +696,6 @@ Fasthttp provides the following features:
   - [func \(u \*URI\) Username\(\) \[\]byte](<#URI.Username>)
   - [func \(u \*URI\) WriteTo\(w io.Writer\) \(int64, error\)](<#URI.WriteTo>)
 
-
 ## Constants
 
 <a name="CompressBrotliNoCompression"></a>Supported compression levels.
@@ -1231,6 +1230,7 @@ var (
 ```
 
 <a name="AcquireTimer"></a>
+
 ## func [AcquireTimer](<https://github.com/valyala/fasthttp/blob/master/timer.go#L35>)
 
 ```go
@@ -1242,6 +1242,7 @@ AcquireTimer returns a time.Timer from the pool and updates it to send the curre
 The returned Timer may be returned to the pool with ReleaseTimer when no longer needed. This allows reducing GC load.
 
 <a name="AddMissingPort"></a>
+
 ## func [AddMissingPort](<https://github.com/valyala/fasthttp/blob/master/client.go#L2073>)
 
 ```go
@@ -1251,6 +1252,7 @@ func AddMissingPort(addr string, isTLS bool) string
 AddMissingPort adds a port to a host if it is missing. A literal IPv6 address in hostport must be enclosed in square brackets, as in "\[::1\]:80", "\[::1%lo0\]:80".
 
 <a name="AppendBrotliBytes"></a>
+
 ## func [AppendBrotliBytes](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L163>)
 
 ```go
@@ -1260,6 +1262,7 @@ func AppendBrotliBytes(dst, src []byte) []byte
 AppendBrotliBytes appends brotlied src to dst and returns the resulting dst.
 
 <a name="AppendBrotliBytesLevel"></a>
+
 ## func [AppendBrotliBytesLevel](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L99>)
 
 ```go
@@ -1276,6 +1279,7 @@ Supported compression levels are:
 - CompressBrotliDefaultCompression
 
 <a name="AppendDeflateBytes"></a>
+
 ## func [AppendDeflateBytes](<https://github.com/valyala/fasthttp/blob/master/compress.go#L321>)
 
 ```go
@@ -1285,6 +1289,7 @@ func AppendDeflateBytes(dst, src []byte) []byte
 AppendDeflateBytes appends deflated src to dst and returns the resulting dst.
 
 <a name="AppendDeflateBytesLevel"></a>
+
 ## func [AppendDeflateBytesLevel](<https://github.com/valyala/fasthttp/blob/master/compress.go#L250>)
 
 ```go
@@ -1302,6 +1307,7 @@ Supported compression levels are:
 - CompressHuffmanOnly
 
 <a name="AppendGunzipBytes"></a>
+
 ## func [AppendGunzipBytes](<https://github.com/valyala/fasthttp/blob/master/compress.go#L234>)
 
 ```go
@@ -1311,6 +1317,7 @@ func AppendGunzipBytes(dst, src []byte) ([]byte, error)
 AppendGunzipBytes appends gunzipped src to dst and returns the resulting dst.
 
 <a name="AppendGzipBytes"></a>
+
 ## func [AppendGzipBytes](<https://github.com/valyala/fasthttp/blob/master/compress.go#L208>)
 
 ```go
@@ -1320,6 +1327,7 @@ func AppendGzipBytes(dst, src []byte) []byte
 AppendGzipBytes appends gzipped src to dst and returns the resulting dst.
 
 <a name="AppendGzipBytesLevel"></a>
+
 ## func [AppendGzipBytesLevel](<https://github.com/valyala/fasthttp/blob/master/compress.go#L143>)
 
 ```go
@@ -1337,6 +1345,7 @@ Supported compression levels are:
 - CompressHuffmanOnly
 
 <a name="AppendHTMLEscape"></a>
+
 ## func [AppendHTMLEscape](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L18>)
 
 ```go
@@ -1346,6 +1355,7 @@ func AppendHTMLEscape(dst []byte, s string) []byte
 AppendHTMLEscape appends html\-escaped s to dst and returns the extended dst.
 
 <a name="AppendHTMLEscapeBytes"></a>
+
 ## func [AppendHTMLEscapeBytes](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L49>)
 
 ```go
@@ -1355,6 +1365,7 @@ func AppendHTMLEscapeBytes(dst, s []byte) []byte
 AppendHTMLEscapeBytes appends html\-escaped s to dst and returns the extended dst.
 
 <a name="AppendHTTPDate"></a>
+
 ## func [AppendHTTPDate](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L112>)
 
 ```go
@@ -1364,6 +1375,7 @@ func AppendHTTPDate(dst []byte, date time.Time) []byte
 AppendHTTPDate appends HTTP\-compliant \(RFC1123\) representation of date to dst and returns the extended dst.
 
 <a name="AppendIPv4"></a>
+
 ## func [AppendIPv4](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L55>)
 
 ```go
@@ -1373,6 +1385,7 @@ func AppendIPv4(dst []byte, ip net.IP) []byte
 AppendIPv4 appends string representation of the given ip v4 to dst and returns the extended dst.
 
 <a name="AppendInflateBytes"></a>
+
 ## func [AppendInflateBytes](<https://github.com/valyala/fasthttp/blob/master/compress.go#L347>)
 
 ```go
@@ -1382,6 +1395,7 @@ func AppendInflateBytes(dst, src []byte) ([]byte, error)
 AppendInflateBytes appends inflated src to dst and returns the resulting dst.
 
 <a name="AppendNormalizedHeaderKey"></a>
+
 ## func [AppendNormalizedHeaderKey](<https://github.com/valyala/fasthttp/blob/master/header.go#L3364>)
 
 ```go
@@ -1397,6 +1411,7 @@ Normalized header key starts with uppercase letter. The first letters after dash
 - foo\-bar\-baz \-\> Foo\-Bar\-Baz
 
 <a name="AppendNormalizedHeaderKeyBytes"></a>
+
 ## func [AppendNormalizedHeaderKeyBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L3380>)
 
 ```go
@@ -1412,6 +1427,7 @@ Normalized header key starts with uppercase letter. The first letters after dash
 - foo\-bar\-baz \-\> Foo\-Bar\-Baz
 
 <a name="AppendQuotedArg"></a>
+
 ## func [AppendQuotedArg](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L269>)
 
 ```go
@@ -1421,6 +1437,7 @@ func AppendQuotedArg(dst, src []byte) []byte
 AppendQuotedArg appends url\-encoded src to dst and returns appended dst.
 
 <a name="AppendUint"></a>
+
 ## func [AppendUint](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L124>)
 
 ```go
@@ -1430,6 +1447,7 @@ func AppendUint(dst []byte, n int) []byte
 AppendUint appends n to dst and returns the extended dst.
 
 <a name="AppendUnbrotliBytes"></a>
+
 ## func [AppendUnbrotliBytes](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L189>)
 
 ```go
@@ -1439,6 +1457,7 @@ func AppendUnbrotliBytes(dst, src []byte) ([]byte, error)
 AppendUnbrotliBytes appends unbrotlied src to dst and returns the resulting dst.
 
 <a name="AppendUnquotedArg"></a>
+
 ## func [AppendUnquotedArg](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L264>)
 
 ```go
@@ -1450,6 +1469,7 @@ AppendUnquotedArg appends url\-decoded src to dst and returns appended dst.
 dst may point to src. In this case src will be overwritten.
 
 <a name="AppendUnzstdBytes"></a>
+
 ## func [AppendUnzstdBytes](<https://github.com/valyala/fasthttp/blob/master/zstd.go#L161>)
 
 ```go
@@ -1459,6 +1479,7 @@ func AppendUnzstdBytes(dst, src []byte) ([]byte, error)
 AppendUnzstdBytes appends unzstd src to dst and returns the resulting dst.
 
 <a name="AppendZstdBytes"></a>
+
 ## func [AppendZstdBytes](<https://github.com/valyala/fasthttp/blob/master/zstd.go#L135>)
 
 ```go
@@ -1468,15 +1489,15 @@ func AppendZstdBytes(dst, src []byte) []byte
 AppendZstdBytes appends zstd src to dst and returns the resulting dst.
 
 <a name="AppendZstdBytesLevel"></a>
+
 ## func [AppendZstdBytesLevel](<https://github.com/valyala/fasthttp/blob/master/zstd.go#L88>)
 
 ```go
 func AppendZstdBytesLevel(dst, src []byte, level int) []byte
 ```
 
-
-
 <a name="CoarseTimeNow"></a>
+
 ## func [CoarseTimeNow](<https://github.com/valyala/fasthttp/blob/master/coarsetime.go#L11>)
 
 ```go
@@ -1488,6 +1509,7 @@ CoarseTimeNow returns the current time truncated to the nearest second.
 Deprecated: This is slower than calling time.Now\(\) directly. This is now time.Now\(\).Truncate\(time.Second\) shortcut.
 
 <a name="Dial"></a>
+
 ## func [Dial](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L37>)
 
 ```go
@@ -1513,6 +1535,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="DialDualStack"></a>
+
 ## func [DialDualStack](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L90>)
 
 ```go
@@ -1538,6 +1561,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="DialDualStackTimeout"></a>
+
 ## func [DialDualStackTimeout](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L116>)
 
 ```go
@@ -1562,6 +1586,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="DialTimeout"></a>
+
 ## func [DialTimeout](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L62>)
 
 ```go
@@ -1586,6 +1611,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="Do"></a>
+
 ## func [Do](<https://github.com/valyala/fasthttp/blob/master/client.go#L36>)
 
 ```go
@@ -1610,6 +1636,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="DoDeadline"></a>
+
 ## func [DoDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L90>)
 
 ```go
@@ -1636,6 +1663,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="DoRedirects"></a>
+
 ## func [DoRedirects](<https://github.com/valyala/fasthttp/blob/master/client.go#L113>)
 
 ```go
@@ -1658,6 +1686,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="DoTimeout"></a>
+
 ## func [DoTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L63>)
 
 ```go
@@ -1684,6 +1713,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="FileLastModified"></a>
+
 ## func [FileLastModified](<https://github.com/valyala/fasthttp/blob/master/fs.go#L1825>)
 
 ```go
@@ -1693,6 +1723,7 @@ func FileLastModified(path string) (time.Time, error)
 FileLastModified returns last modified time for the file.
 
 <a name="FlushDNSCache"></a>
+
 ## func [FlushDNSCache](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L286>)
 
 ```go
@@ -1702,6 +1733,7 @@ func FlushDNSCache()
 FlushDNSCache clears all cached DNS entries for the default dialer, forcing fresh DNS lookups on subsequent Dial\* calls. This is useful when you want to ensure fresh DNS resolution, for example after network changes.
 
 <a name="GenerateTestCertificate"></a>
+
 ## func [GenerateTestCertificate](<https://github.com/valyala/fasthttp/blob/master/tls.go#L14>)
 
 ```go
@@ -1711,6 +1743,7 @@ func GenerateTestCertificate(host string) ([]byte, []byte, error)
 GenerateTestCertificate generates a test certificate and private key based on the given host.
 
 <a name="Get"></a>
+
 ## func [Get](<https://github.com/valyala/fasthttp/blob/master/client.go#L127>)
 
 ```go
@@ -1724,6 +1757,7 @@ The contents of dst will be replaced by the body and returned, if the dst is too
 The function follows redirects. Use Do\* for manually handling redirects.
 
 <a name="GetDeadline"></a>
+
 ## func [GetDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L153>)
 
 ```go
@@ -1739,6 +1773,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched until the given deadline.
 
 <a name="GetTimeout"></a>
+
 ## func [GetTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L140>)
 
 ```go
@@ -1754,6 +1789,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched during the given timeout.
 
 <a name="ListenAndServe"></a>
+
 ## func [ListenAndServe](<https://github.com/valyala/fasthttp/blob/master/server.go#L87>)
 
 ```go
@@ -1765,37 +1801,35 @@ ListenAndServe serves HTTP requests from the given TCP addr using the given hand
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// The server will listen for incoming requests on this address.
-	listenAddr := "127.0.0.1:80"
+ // The server will listen for incoming requests on this address.
+ listenAddr := "127.0.0.1:80"
 
-	// This function will be called by the server for each incoming request.
-	//
-	// RequestCtx provides a lot of functionality related to http request
-	// processing. See RequestCtx docs for details.
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
-	}
+ // This function will be called by the server for each incoming request.
+ //
+ // RequestCtx provides a lot of functionality related to http request
+ // processing. See RequestCtx docs for details.
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
+ }
 
-	// Start the server with default settings.
-	// Create Server instance for adjusting server settings.
-	//
-	// ListenAndServe returns only on error, so usually it blocks forever.
-	if err := fasthttp.ListenAndServe(listenAddr, requestHandler); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ // Start the server with default settings.
+ // Create Server instance for adjusting server settings.
+ //
+ // ListenAndServe returns only on error, so usually it blocks forever.
+ if err := fasthttp.ListenAndServe(listenAddr, requestHandler); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -1803,6 +1837,7 @@ func main() {
 </details>
 
 <a name="ListenAndServeTLS"></a>
+
 ## func [ListenAndServeTLS](<https://github.com/valyala/fasthttp/blob/master/server.go#L111>)
 
 ```go
@@ -1814,6 +1849,7 @@ ListenAndServeTLS serves HTTPS requests from the given TCP addr using the given 
 certFile and keyFile are paths to TLS certificate and key files.
 
 <a name="ListenAndServeTLSEmbed"></a>
+
 ## func [ListenAndServeTLSEmbed](<https://github.com/valyala/fasthttp/blob/master/server.go#L122>)
 
 ```go
@@ -1825,6 +1861,7 @@ ListenAndServeTLSEmbed serves HTTPS requests from the given TCP addr using the g
 certData and keyData must contain valid TLS certificate and key data.
 
 <a name="ListenAndServeUNIX"></a>
+
 ## func [ListenAndServeUNIX](<https://github.com/valyala/fasthttp/blob/master/server.go#L100>)
 
 ```go
@@ -1838,6 +1875,7 @@ The function deletes existing file at addr before starting serving.
 The server sets the given file mode for the UNIX addr.
 
 <a name="NewStreamReader"></a>
+
 ## func [NewStreamReader](<https://github.com/valyala/fasthttp/blob/master/stream.go#L29>)
 
 ```go
@@ -1853,6 +1891,7 @@ Close must be called on the returned reader after all the required data has been
 See also Response.SetBodyStreamWriter.
 
 <a name="ParseByteRange"></a>
+
 ## func [ParseByteRange](<https://github.com/valyala/fasthttp/blob/master/fs.go#L1259>)
 
 ```go
@@ -1864,6 +1903,7 @@ ParseByteRange parses 'Range: bytes=...' header value.
 It follows https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35 .
 
 <a name="ParseHTTPDate"></a>
+
 ## func [ParseHTTPDate](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L119>)
 
 ```go
@@ -1873,6 +1913,7 @@ func ParseHTTPDate(date []byte) (time.Time, error)
 ParseHTTPDate parses HTTP\-compliant \(RFC1123\) date.
 
 <a name="ParseIPv4"></a>
+
 ## func [ParseIPv4](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L72>)
 
 ```go
@@ -1882,6 +1923,7 @@ func ParseIPv4(dst net.IP, ipStr []byte) (net.IP, error)
 ParseIPv4 parses ip address from ipStr into dst and returns the extended dst.
 
 <a name="ParseUfloat"></a>
+
 ## func [ParseUfloat](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L175>)
 
 ```go
@@ -1891,6 +1933,7 @@ func ParseUfloat(buf []byte) (float64, error)
 ParseUfloat parses unsigned float from buf.
 
 <a name="ParseUint"></a>
+
 ## func [ParseUint](<https://github.com/valyala/fasthttp/blob/master/bytesconv.go#L134>)
 
 ```go
@@ -1900,6 +1943,7 @@ func ParseUint(buf []byte) (int, error)
 ParseUint parses uint from buf.
 
 <a name="Post"></a>
+
 ## func [Post](<https://github.com/valyala/fasthttp/blob/master/client.go#L165>)
 
 ```go
@@ -1915,6 +1959,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 Empty POST body is sent if postArgs is nil.
 
 <a name="ReleaseArgs"></a>
+
 ## func [ReleaseArgs](<https://github.com/valyala/fasthttp/blob/master/args.go#L28>)
 
 ```go
@@ -1926,6 +1971,7 @@ ReleaseArgs returns the object acquired via AcquireArgs to the pool.
 Do not access the released Args object, otherwise data races may occur.
 
 <a name="ReleaseCookie"></a>
+
 ## func [ReleaseCookie](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L51>)
 
 ```go
@@ -1937,6 +1983,7 @@ ReleaseCookie returns the Cookie object acquired with AcquireCookie back to the 
 Do not access released Cookie object, otherwise data races may occur.
 
 <a name="ReleaseRequest"></a>
+
 ## func [ReleaseRequest](<https://github.com/valyala/fasthttp/blob/master/client.go#L1222>)
 
 ```go
@@ -1948,6 +1995,7 @@ ReleaseRequest returns req acquired via AcquireRequest to request pool.
 It is forbidden accessing req and/or its' members after returning it to request pool.
 
 <a name="ReleaseResponse"></a>
+
 ## func [ReleaseResponse](<https://github.com/valyala/fasthttp/blob/master/client.go#L1244>)
 
 ```go
@@ -1959,6 +2007,7 @@ ReleaseResponse return resp acquired via AcquireResponse to response pool.
 It is forbidden accessing resp and/or its' members after returning it to response pool.
 
 <a name="ReleaseTimer"></a>
+
 ## func [ReleaseTimer](<https://github.com/valyala/fasthttp/blob/master/timer.go#L50>)
 
 ```go
@@ -1970,6 +2019,7 @@ ReleaseTimer returns the time.Timer acquired via AcquireTimer to the pool and pr
 Do not access the released time.Timer or read from its channel otherwise data races may occur.
 
 <a name="ReleaseURI"></a>
+
 ## func [ReleaseURI](<https://github.com/valyala/fasthttp/blob/master/uri.go#L25>)
 
 ```go
@@ -1981,6 +2031,7 @@ ReleaseURI releases the URI acquired via AcquireURI.
 The released URI mustn't be used after releasing it, otherwise data races may occur.
 
 <a name="SaveMultipartFile"></a>
+
 ## func [SaveMultipartFile](<https://github.com/valyala/fasthttp/blob/master/server.go#L1142>)
 
 ```go
@@ -1990,6 +2041,7 @@ func SaveMultipartFile(fh *multipart.FileHeader, path string) (err error)
 SaveMultipartFile saves multipart file fh under the given filename path.
 
 <a name="Serve"></a>
+
 ## func [Serve](<https://github.com/valyala/fasthttp/blob/master/server.go#L56>)
 
 ```go
@@ -2003,45 +2055,43 @@ Serve blocks until the given listener returns permanent error.
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
-	"net"
+ "fmt"
+ "log"
+ "net"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// Create network listener for accepting incoming requests.
-	//
-	// Note that you are not limited by TCP listener - arbitrary
-	// net.Listener may be used by the server.
-	// For example, unix socket listener or TLS listener.
-	ln, err := net.Listen("tcp4", "127.0.0.1:8080")
-	if err != nil {
-		log.Fatalf("error in net.Listen: %v", err)
-	}
+ // Create network listener for accepting incoming requests.
+ //
+ // Note that you are not limited by TCP listener - arbitrary
+ // net.Listener may be used by the server.
+ // For example, unix socket listener or TLS listener.
+ ln, err := net.Listen("tcp4", "127.0.0.1:8080")
+ if err != nil {
+  log.Fatalf("error in net.Listen: %v", err)
+ }
 
-	// This function will be called by the server for each incoming request.
-	//
-	// RequestCtx provides a lot of functionality related to http request
-	// processing. See RequestCtx docs for details.
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
-	}
+ // This function will be called by the server for each incoming request.
+ //
+ // RequestCtx provides a lot of functionality related to http request
+ // processing. See RequestCtx docs for details.
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
+ }
 
-	// Start the server with default settings.
-	// Create Server instance for adjusting server settings.
-	//
-	// Serve returns on ln.Close() or error, so usually it blocks forever.
-	if err := fasthttp.Serve(ln, requestHandler); err != nil {
-		log.Fatalf("error in Serve: %v", err)
-	}
+ // Start the server with default settings.
+ // Create Server instance for adjusting server settings.
+ //
+ // Serve returns on ln.Close() or error, so usually it blocks forever.
+ if err := fasthttp.Serve(ln, requestHandler); err != nil {
+  log.Fatalf("error in Serve: %v", err)
+ }
 }
 ```
 
@@ -2049,6 +2099,7 @@ func main() {
 </details>
 
 <a name="ServeConn"></a>
+
 ## func [ServeConn](<https://github.com/valyala/fasthttp/blob/master/server.go#L37>)
 
 ```go
@@ -2064,6 +2115,7 @@ Connection c must immediately propagate all the data passed to Write\(\) to the 
 ServeConn closes c before returning.
 
 <a name="ServeFS"></a>
+
 ## func [ServeFS](<https://github.com/valyala/fasthttp/blob/master/fs.go#L154>)
 
 ```go
@@ -2082,6 +2134,7 @@ Directory contents is returned if path points to directory.
 See also ServeFile.
 
 <a name="ServeFile"></a>
+
 ## func [ServeFile](<https://github.com/valyala/fasthttp/blob/master/fs.go#L101>)
 
 ```go
@@ -2104,6 +2157,7 @@ See also RequestCtx.SendFile.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="ServeFileBytes"></a>
+
 ## func [ServeFileBytes](<https://github.com/valyala/fasthttp/blob/master/fs.go#L80>)
 
 ```go
@@ -2126,6 +2180,7 @@ See also RequestCtx.SendFileBytes.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="ServeFileBytesUncompressed"></a>
+
 ## func [ServeFileBytesUncompressed](<https://github.com/valyala/fasthttp/blob/master/fs.go#L40>)
 
 ```go
@@ -2143,6 +2198,7 @@ See also RequestCtx.SendFileBytes.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="ServeFileUncompressed"></a>
+
 ## func [ServeFileUncompressed](<https://github.com/valyala/fasthttp/blob/master/fs.go#L57>)
 
 ```go
@@ -2160,6 +2216,7 @@ See also RequestCtx.SendFile.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="ServeTLS"></a>
+
 ## func [ServeTLS](<https://github.com/valyala/fasthttp/blob/master/server.go#L67>)
 
 ```go
@@ -2171,6 +2228,7 @@ ServeTLS serves HTTPS requests from the given net.Listener using the given handl
 certFile and keyFile are paths to TLS certificate and key files.
 
 <a name="ServeTLSEmbed"></a>
+
 ## func [ServeTLSEmbed](<https://github.com/valyala/fasthttp/blob/master/server.go#L78>)
 
 ```go
@@ -2182,6 +2240,7 @@ ServeTLSEmbed serves HTTPS requests from the given net.Listener using the given 
 certData and keyData must contain valid TLS certificate and key data.
 
 <a name="SetBodySizePoolLimit"></a>
+
 ## func [SetBodySizePoolLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L27>)
 
 ```go
@@ -2191,6 +2250,7 @@ func SetBodySizePoolLimit(reqBodyLimit, respBodyLimit int)
 SetBodySizePoolLimit set the max body size for bodies to be returned to the pool. If the body size is larger it will be released instead of put back into the pool for reuse.
 
 <a name="StatusCodeIsRedirect"></a>
+
 ## func [StatusCodeIsRedirect](<https://github.com/valyala/fasthttp/blob/master/client.go#L1192>)
 
 ```go
@@ -2200,6 +2260,7 @@ func StatusCodeIsRedirect(statusCode int) bool
 StatusCodeIsRedirect returns true if the status code indicates a redirect.
 
 <a name="StatusMessage"></a>
+
 ## func [StatusMessage](<https://github.com/valyala/fasthttp/blob/master/status.go#L155>)
 
 ```go
@@ -2209,6 +2270,7 @@ func StatusMessage(statusCode int) string
 StatusMessage returns HTTP status message for the given status code.
 
 <a name="VisitHeaderParams"></a>
+
 ## func [VisitHeaderParams](<https://github.com/valyala/fasthttp/blob/master/header.go#L583>)
 
 ```go
@@ -2220,6 +2282,7 @@ VisitHeaderParams calls f for each parameter in the given header bytes. It stops
 f must not retain references to key and/or value after returning. Copy key and/or value contents before returning if you need retaining them.
 
 <a name="WriteBrotli"></a>
+
 ## func [WriteBrotli](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L158>)
 
 ```go
@@ -2229,6 +2292,7 @@ func WriteBrotli(w io.Writer, p []byte) (int, error)
 WriteBrotli writes brotlied p to w and returns the number of compressed bytes written to w.
 
 <a name="WriteBrotliLevel"></a>
+
 ## func [WriteBrotliLevel](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L114>)
 
 ```go
@@ -2245,6 +2309,7 @@ Supported compression levels are:
 - CompressBrotliDefaultCompression
 
 <a name="WriteDeflate"></a>
+
 ## func [WriteDeflate](<https://github.com/valyala/fasthttp/blob/master/compress.go#L316>)
 
 ```go
@@ -2254,6 +2319,7 @@ func WriteDeflate(w io.Writer, p []byte) (int, error)
 WriteDeflate writes deflated p to w and returns the number of compressed bytes written to w.
 
 <a name="WriteDeflateLevel"></a>
+
 ## func [WriteDeflateLevel](<https://github.com/valyala/fasthttp/blob/master/compress.go#L266>)
 
 ```go
@@ -2271,6 +2337,7 @@ Supported compression levels are:
 - CompressHuffmanOnly
 
 <a name="WriteGunzip"></a>
+
 ## func [WriteGunzip](<https://github.com/valyala/fasthttp/blob/master/compress.go#L214>)
 
 ```go
@@ -2280,6 +2347,7 @@ func WriteGunzip(w io.Writer, p []byte) (int, error)
 WriteGunzip writes ungzipped p to w and returns the number of uncompressed bytes written to w.
 
 <a name="WriteGzip"></a>
+
 ## func [WriteGzip](<https://github.com/valyala/fasthttp/blob/master/compress.go#L203>)
 
 ```go
@@ -2289,6 +2357,7 @@ func WriteGzip(w io.Writer, p []byte) (int, error)
 WriteGzip writes gzipped p to w and returns the number of compressed bytes written to w.
 
 <a name="WriteGzipLevel"></a>
+
 ## func [WriteGzipLevel](<https://github.com/valyala/fasthttp/blob/master/compress.go#L159>)
 
 ```go
@@ -2306,6 +2375,7 @@ Supported compression levels are:
 - CompressHuffmanOnly
 
 <a name="WriteInflate"></a>
+
 ## func [WriteInflate](<https://github.com/valyala/fasthttp/blob/master/compress.go#L327>)
 
 ```go
@@ -2315,6 +2385,7 @@ func WriteInflate(w io.Writer, p []byte) (int, error)
 WriteInflate writes inflated p to w and returns the number of uncompressed bytes written to w.
 
 <a name="WriteMultipartForm"></a>
+
 ## func [WriteMultipartForm](<https://github.com/valyala/fasthttp/blob/master/http.go#L1188>)
 
 ```go
@@ -2324,6 +2395,7 @@ func WriteMultipartForm(w io.Writer, f *multipart.Form, boundary string) error
 WriteMultipartForm writes the given multipart form f with the given boundary to w.
 
 <a name="WriteUnbrotli"></a>
+
 ## func [WriteUnbrotli](<https://github.com/valyala/fasthttp/blob/master/brotli.go#L169>)
 
 ```go
@@ -2333,6 +2405,7 @@ func WriteUnbrotli(w io.Writer, p []byte) (int, error)
 WriteUnbrotli writes unbrotlied p to w and returns the number of uncompressed bytes written to w.
 
 <a name="WriteUnzstd"></a>
+
 ## func [WriteUnzstd](<https://github.com/valyala/fasthttp/blob/master/zstd.go#L141>)
 
 ```go
@@ -2342,15 +2415,15 @@ func WriteUnzstd(w io.Writer, p []byte) (int, error)
 WriteUnzstd writes unzstd p to w and returns the number of uncompressed bytes written to w.
 
 <a name="WriteZstdLevel"></a>
+
 ## func [WriteZstdLevel](<https://github.com/valyala/fasthttp/blob/master/zstd.go#L94>)
 
 ```go
 func WriteZstdLevel(w io.Writer, p []byte, level int) (int, error)
 ```
 
-
-
 <a name="Args"></a>
+
 ## type [Args](<https://github.com/valyala/fasthttp/blob/master/args.go#L45-L50>)
 
 Args represents query arguments.
@@ -2366,6 +2439,7 @@ type Args struct {
 ```
 
 <a name="AcquireArgs"></a>
+
 ### func [AcquireArgs](<https://github.com/valyala/fasthttp/blob/master/args.go#L21>)
 
 ```go
@@ -2377,6 +2451,7 @@ AcquireArgs returns an empty Args object from the pool.
 The returned Args may be returned to the pool with ReleaseArgs when no longer needed. This allows reducing GC load.
 
 <a name="Args.Add"></a>
+
 ### func \(\*Args\) [Add](<https://github.com/valyala/fasthttp/blob/master/args.go#L201>)
 
 ```go
@@ -2388,6 +2463,7 @@ Add adds 'key=value' argument.
 Multiple values for the same key may be added.
 
 <a name="Args.AddBytesK"></a>
+
 ### func \(\*Args\) [AddBytesK](<https://github.com/valyala/fasthttp/blob/master/args.go#L208>)
 
 ```go
@@ -2399,6 +2475,7 @@ AddBytesK adds 'key=value' argument.
 Multiple values for the same key may be added.
 
 <a name="Args.AddBytesKNoValue"></a>
+
 ### func \(\*Args\) [AddBytesKNoValue](<https://github.com/valyala/fasthttp/blob/master/args.go#L236>)
 
 ```go
@@ -2410,6 +2487,7 @@ AddBytesKNoValue adds only 'key' as argument without the '='.
 Multiple values for the same key may be added.
 
 <a name="Args.AddBytesKV"></a>
+
 ### func \(\*Args\) [AddBytesKV](<https://github.com/valyala/fasthttp/blob/master/args.go#L222>)
 
 ```go
@@ -2421,6 +2499,7 @@ AddBytesKV adds 'key=value' argument.
 Multiple values for the same key may be added.
 
 <a name="Args.AddBytesV"></a>
+
 ### func \(\*Args\) [AddBytesV](<https://github.com/valyala/fasthttp/blob/master/args.go#L215>)
 
 ```go
@@ -2432,6 +2511,7 @@ AddBytesV adds 'key=value' argument.
 Multiple values for the same key may be added.
 
 <a name="Args.AddNoValue"></a>
+
 ### func \(\*Args\) [AddNoValue](<https://github.com/valyala/fasthttp/blob/master/args.go#L229>)
 
 ```go
@@ -2443,6 +2523,7 @@ AddNoValue adds only 'key' as argument without the '='.
 Multiple values for the same key may be added.
 
 <a name="Args.All"></a>
+
 ### func \(\*Args\) [All](<https://github.com/valyala/fasthttp/blob/master/args.go#L75>)
 
 ```go
@@ -2456,6 +2537,7 @@ The key and value may invalid outside the iteration loop. Make copies if you nee
 Making modifications to the Args during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="Args.AppendBytes"></a>
+
 ### func \(\*Args\) [AppendBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L163>)
 
 ```go
@@ -2465,6 +2547,7 @@ func (a *Args) AppendBytes(dst []byte) []byte
 AppendBytes appends query string to dst and returns the extended dst.
 
 <a name="Args.CopyTo"></a>
+
 ### func \(\*Args\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/args.go#L64>)
 
 ```go
@@ -2474,6 +2557,7 @@ func (a *Args) CopyTo(dst *Args)
 CopyTo copies all args to dst.
 
 <a name="Args.Del"></a>
+
 ### func \(\*Args\) [Del](<https://github.com/valyala/fasthttp/blob/master/args.go#L189>)
 
 ```go
@@ -2483,6 +2567,7 @@ func (a *Args) Del(key string)
 Del deletes argument with the given key from query args.
 
 <a name="Args.DelBytes"></a>
+
 ### func \(\*Args\) [DelBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L194>)
 
 ```go
@@ -2492,6 +2577,7 @@ func (a *Args) DelBytes(key []byte)
 DelBytes deletes argument with the given key from query args.
 
 <a name="Args.GetBool"></a>
+
 ### func \(\*Args\) [GetBool](<https://github.com/valyala/fasthttp/blob/master/args.go#L372>)
 
 ```go
@@ -2503,6 +2589,7 @@ GetBool returns boolean value for the given key.
 true is returned for "1", "t", "T", "true", "TRUE", "True", "y", "yes", "Y", "YES", "Yes", otherwise false is returned.
 
 <a name="Args.GetUfloat"></a>
+
 ### func \(\*Args\) [GetUfloat](<https://github.com/valyala/fasthttp/blob/master/args.go#L349>)
 
 ```go
@@ -2512,6 +2599,7 @@ func (a *Args) GetUfloat(key string) (float64, error)
 GetUfloat returns ufloat value for the given key.
 
 <a name="Args.GetUfloatOrZero"></a>
+
 ### func \(\*Args\) [GetUfloatOrZero](<https://github.com/valyala/fasthttp/blob/master/args.go#L360>)
 
 ```go
@@ -2523,6 +2611,7 @@ GetUfloatOrZero returns ufloat value for the given key.
 Zero \(0\) is returned on error.
 
 <a name="Args.GetUint"></a>
+
 ### func \(\*Args\) [GetUint](<https://github.com/valyala/fasthttp/blob/master/args.go#L318>)
 
 ```go
@@ -2532,6 +2621,7 @@ func (a *Args) GetUint(key string) (int, error)
 GetUint returns uint value for the given key.
 
 <a name="Args.GetUintOrZero"></a>
+
 ### func \(\*Args\) [GetUintOrZero](<https://github.com/valyala/fasthttp/blob/master/args.go#L340>)
 
 ```go
@@ -2543,6 +2633,7 @@ GetUintOrZero returns uint value for the given key.
 Zero \(0\) is returned on error.
 
 <a name="Args.Has"></a>
+
 ### func \(\*Args\) [Has](<https://github.com/valyala/fasthttp/blob/master/args.go#L305>)
 
 ```go
@@ -2552,6 +2643,7 @@ func (a *Args) Has(key string) bool
 Has returns true if the given key exists in Args.
 
 <a name="Args.HasBytes"></a>
+
 ### func \(\*Args\) [HasBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L310>)
 
 ```go
@@ -2561,6 +2653,7 @@ func (a *Args) HasBytes(key []byte) bool
 HasBytes returns true if the given key exists in Args.
 
 <a name="Args.Len"></a>
+
 ### func \(\*Args\) [Len](<https://github.com/valyala/fasthttp/blob/master/args.go#L99>)
 
 ```go
@@ -2570,6 +2663,7 @@ func (a *Args) Len() int
 Len returns the number of query args.
 
 <a name="Args.Parse"></a>
+
 ### func \(\*Args\) [Parse](<https://github.com/valyala/fasthttp/blob/master/args.go#L104>)
 
 ```go
@@ -2579,6 +2673,7 @@ func (a *Args) Parse(s string)
 Parse parses the given string containing query args.
 
 <a name="Args.ParseBytes"></a>
+
 ### func \(\*Args\) [ParseBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L110>)
 
 ```go
@@ -2588,6 +2683,7 @@ func (a *Args) ParseBytes(b []byte)
 ParseBytes parses the given b containing query args.
 
 <a name="Args.Peek"></a>
+
 ### func \(\*Args\) [Peek](<https://github.com/valyala/fasthttp/blob/master/args.go#L276>)
 
 ```go
@@ -2599,6 +2695,7 @@ Peek returns query arg value for the given key.
 The returned value is valid until the Args is reused or released \(ReleaseArgs\). Do not store references to the returned value. Make copies instead.
 
 <a name="Args.PeekBytes"></a>
+
 ### func \(\*Args\) [PeekBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L284>)
 
 ```go
@@ -2610,6 +2707,7 @@ PeekBytes returns query arg value for the given key.
 The returned value is valid until the Args is reused or released \(ReleaseArgs\). Do not store references to the returned value. Make copies instead.
 
 <a name="Args.PeekMulti"></a>
+
 ### func \(\*Args\) [PeekMulti](<https://github.com/valyala/fasthttp/blob/master/args.go#L289>)
 
 ```go
@@ -2619,6 +2717,7 @@ func (a *Args) PeekMulti(key string) [][]byte
 PeekMulti returns all the arg values for the given key.
 
 <a name="Args.PeekMultiBytes"></a>
+
 ### func \(\*Args\) [PeekMultiBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L300>)
 
 ```go
@@ -2628,6 +2727,7 @@ func (a *Args) PeekMultiBytes(key []byte) [][]byte
 PeekMultiBytes returns all the arg values for the given key.
 
 <a name="Args.QueryString"></a>
+
 ### func \(\*Args\) [QueryString](<https://github.com/valyala/fasthttp/blob/master/args.go#L135>)
 
 ```go
@@ -2639,6 +2739,7 @@ QueryString returns query string for the args.
 The returned value is valid until the Args is reused or released \(ReleaseArgs\). Do not store references to the returned value. Make copies instead.
 
 <a name="Args.Reset"></a>
+
 ### func \(\*Args\) [Reset](<https://github.com/valyala/fasthttp/blob/master/args.go#L59>)
 
 ```go
@@ -2648,6 +2749,7 @@ func (a *Args) Reset()
 Reset clears query args.
 
 <a name="Args.Set"></a>
+
 ### func \(\*Args\) [Set](<https://github.com/valyala/fasthttp/blob/master/args.go#L241>)
 
 ```go
@@ -2657,6 +2759,7 @@ func (a *Args) Set(key, value string)
 Set sets 'key=value' argument.
 
 <a name="Args.SetBytesK"></a>
+
 ### func \(\*Args\) [SetBytesK](<https://github.com/valyala/fasthttp/blob/master/args.go#L246>)
 
 ```go
@@ -2666,6 +2769,7 @@ func (a *Args) SetBytesK(key []byte, value string)
 SetBytesK sets 'key=value' argument.
 
 <a name="Args.SetBytesKNoValue"></a>
+
 ### func \(\*Args\) [SetBytesKNoValue](<https://github.com/valyala/fasthttp/blob/master/args.go#L268>)
 
 ```go
@@ -2675,6 +2779,7 @@ func (a *Args) SetBytesKNoValue(key []byte)
 SetBytesKNoValue sets 'key' argument.
 
 <a name="Args.SetBytesKV"></a>
+
 ### func \(\*Args\) [SetBytesKV](<https://github.com/valyala/fasthttp/blob/master/args.go#L256>)
 
 ```go
@@ -2684,6 +2789,7 @@ func (a *Args) SetBytesKV(key, value []byte)
 SetBytesKV sets 'key=value' argument.
 
 <a name="Args.SetBytesV"></a>
+
 ### func \(\*Args\) [SetBytesV](<https://github.com/valyala/fasthttp/blob/master/args.go#L251>)
 
 ```go
@@ -2693,6 +2799,7 @@ func (a *Args) SetBytesV(key string, value []byte)
 SetBytesV sets 'key=value' argument.
 
 <a name="Args.SetNoValue"></a>
+
 ### func \(\*Args\) [SetNoValue](<https://github.com/valyala/fasthttp/blob/master/args.go#L263>)
 
 ```go
@@ -2704,6 +2811,7 @@ SetNoValue sets only 'key' as argument without the '='.
 Only key in argument, like key1&key2.
 
 <a name="Args.SetUint"></a>
+
 ### func \(\*Args\) [SetUint](<https://github.com/valyala/fasthttp/blob/master/args.go#L327>)
 
 ```go
@@ -2713,6 +2821,7 @@ func (a *Args) SetUint(key string, value int)
 SetUint sets uint value for the given key.
 
 <a name="Args.SetUintBytes"></a>
+
 ### func \(\*Args\) [SetUintBytes](<https://github.com/valyala/fasthttp/blob/master/args.go#L333>)
 
 ```go
@@ -2722,6 +2831,7 @@ func (a *Args) SetUintBytes(key []byte, value int)
 SetUintBytes sets uint value for the given key.
 
 <a name="Args.Sort"></a>
+
 ### func \(\*Args\) [Sort](<https://github.com/valyala/fasthttp/blob/master/args.go#L143>)
 
 ```go
@@ -2733,6 +2843,7 @@ Sort sorts Args by key and then value using 'f' as comparison function.
 For example args.Sort\(bytes.Compare\).
 
 <a name="Args.SortKeys"></a>
+
 ### func \(\*Args\) [SortKeys](<https://github.com/valyala/fasthttp/blob/master/args.go#L156>)
 
 ```go
@@ -2744,6 +2855,7 @@ SortKeys sorts Args by key only using 'f' as comparison function.
 For example args.SortKeys\(bytes.Compare\).
 
 <a name="Args.String"></a>
+
 ### func \(\*Args\) [String](<https://github.com/valyala/fasthttp/blob/master/args.go#L127>)
 
 ```go
@@ -2753,6 +2865,7 @@ func (a *Args) String() string
 String returns string representation of query args.
 
 <a name="Args.VisitAll"></a>
+
 ### func \(\*Args\) [VisitAll](<https://github.com/valyala/fasthttp/blob/master/args.go#L91>)
 
 ```go
@@ -2766,6 +2879,7 @@ f must not retain references to key and value after returning. Make key and/or v
 Deprecated: Use All instead.
 
 <a name="Args.WriteTo"></a>
+
 ### func \(\*Args\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/args.go#L183>)
 
 ```go
@@ -2777,6 +2891,7 @@ WriteTo writes query string to w.
 WriteTo implements io.WriterTo interface.
 
 <a name="BalancingClient"></a>
+
 ## type [BalancingClient](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L11-L14>)
 
 BalancingClient is the interface for clients, which may be passed to LBClient.Clients.
@@ -2789,15 +2904,15 @@ type BalancingClient interface {
 ```
 
 <a name="CacheKind"></a>
+
 ## type [CacheKind](<https://github.com/valyala/fasthttp/blob/master/fs.go#L822>)
-
-
 
 ```go
 type CacheKind uint8
 ```
 
 <a name="Client"></a>
+
 ## type [Client](<https://github.com/valyala/fasthttp/blob/master/client.go#L178-L333>)
 
 Client implements http client.
@@ -2959,6 +3074,7 @@ type Client struct {
 ```
 
 <a name="Client.CloseIdleConnections"></a>
+
 ### func \(\*Client\) [CloseIdleConnections](<https://github.com/valyala/fasthttp/blob/master/client.go#L591>)
 
 ```go
@@ -2968,6 +3084,7 @@ func (c *Client) CloseIdleConnections()
 CloseIdleConnections closes any connections which were previously connected from previous requests but are now sitting idle in a "keep\-alive" state. It does not interrupt any connections currently in use.
 
 <a name="Client.Do"></a>
+
 ### func \(\*Client\) [Do](<https://github.com/valyala/fasthttp/blob/master/client.go#L493>)
 
 ```go
@@ -2992,6 +3109,7 @@ ErrNoFreeConns is returned if all Client.MaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="Client.DoDeadline"></a>
+
 ### func \(\*Client\) [DoDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L439>)
 
 ```go
@@ -3018,6 +3136,7 @@ ErrNoFreeConns is returned if all Client.MaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="Client.DoRedirects"></a>
+
 ### func \(\*Client\) [DoRedirects](<https://github.com/valyala/fasthttp/blob/master/client.go#L466>)
 
 ```go
@@ -3040,6 +3159,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="Client.DoTimeout"></a>
+
 ### func \(\*Client\) [DoTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L407>)
 
 ```go
@@ -3066,6 +3186,7 @@ ErrNoFreeConns is returned if all Client.MaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="Client.Get"></a>
+
 ### func \(\*Client\) [Get](<https://github.com/valyala/fasthttp/blob/master/client.go#L341>)
 
 ```go
@@ -3079,6 +3200,7 @@ The contents of dst will be replaced by the body and returned, if the dst is too
 The function follows redirects. Use Do\* for manually handling redirects.
 
 <a name="Client.GetDeadline"></a>
+
 ### func \(\*Client\) [GetDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L367>)
 
 ```go
@@ -3094,6 +3216,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched until the given deadline.
 
 <a name="Client.GetTimeout"></a>
+
 ### func \(\*Client\) [GetTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L354>)
 
 ```go
@@ -3109,6 +3232,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched during the given timeout.
 
 <a name="Client.Post"></a>
+
 ### func \(\*Client\) [Post](<https://github.com/valyala/fasthttp/blob/master/client.go#L379>)
 
 ```go
@@ -3124,6 +3248,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 Empty POST body is sent if postArgs is nil.
 
 <a name="ConnPoolStrategyType"></a>
+
 ## type [ConnPoolStrategyType](<https://github.com/valyala/fasthttp/blob/master/client.go#L702>)
 
 ConnPoolStrategyType define strategy of connection pool enqueue/dequeue.
@@ -3142,6 +3267,7 @@ const (
 ```
 
 <a name="ConnState"></a>
+
 ## type [ConnState](<https://github.com/valyala/fasthttp/blob/master/server.go#L3041>)
 
 A ConnState represents the state of a client connection to a server. It's used by the optional Server.ConnState hook.
@@ -3191,15 +3317,15 @@ const (
 ```
 
 <a name="ConnState.String"></a>
+
 ### func \(ConnState\) [String](<https://github.com/valyala/fasthttp/blob/master/server.go#L3087>)
 
 ```go
 func (c ConnState) String() string
 ```
 
-
-
 <a name="Cookie"></a>
+
 ## type [Cookie](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L67-L89>)
 
 Cookie represents HTTP response cookie.
@@ -3215,6 +3341,7 @@ type Cookie struct {
 ```
 
 <a name="AcquireCookie"></a>
+
 ### func [AcquireCookie](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L43>)
 
 ```go
@@ -3226,6 +3353,7 @@ AcquireCookie returns an empty Cookie object from the pool.
 The returned object may be returned back to the pool with ReleaseCookie. This allows reducing GC load.
 
 <a name="Cookie.AppendBytes"></a>
+
 ### func \(\*Cookie\) [AppendBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L280>)
 
 ```go
@@ -3235,6 +3363,7 @@ func (c *Cookie) AppendBytes(dst []byte) []byte
 AppendBytes appends cookie representation to dst and returns the extended dst.
 
 <a name="Cookie.Cookie"></a>
+
 ### func \(\*Cookie\) [Cookie](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L349>)
 
 ```go
@@ -3246,6 +3375,7 @@ Cookie returns cookie representation.
 The returned value is valid until the Cookie reused or released \(ReleaseCookie\). Do not store references to the returned value. Make copies instead.
 
 <a name="Cookie.CopyTo"></a>
+
 ### func \(\*Cookie\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L92>)
 
 ```go
@@ -3255,6 +3385,7 @@ func (c *Cookie) CopyTo(src *Cookie)
 CopyTo copies src cookie to c.
 
 <a name="Cookie.Domain"></a>
+
 ### func \(\*Cookie\) [Domain](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L176>)
 
 ```go
@@ -3266,6 +3397,7 @@ Domain returns cookie domain.
 The returned value is valid until the Cookie reused or released \(ReleaseCookie\). Do not store references to the returned value. Make copies instead.
 
 <a name="Cookie.Expire"></a>
+
 ### func \(\*Cookie\) [Expire](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L210>)
 
 ```go
@@ -3277,6 +3409,7 @@ Expire returns cookie expiration time.
 CookieExpireUnlimited is returned if cookie doesn't expire.
 
 <a name="Cookie.HTTPOnly"></a>
+
 ### func \(\*Cookie\) [HTTPOnly](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L107>)
 
 ```go
@@ -3286,6 +3419,7 @@ func (c *Cookie) HTTPOnly() bool
 HTTPOnly returns true if the cookie is http only.
 
 <a name="Cookie.Key"></a>
+
 ### func \(\*Cookie\) [Key](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L250>)
 
 ```go
@@ -3297,6 +3431,7 @@ Key returns cookie name.
 The returned value is valid until the Cookie reused or released \(ReleaseCookie\). Do not store references to the returned value. Make copies instead.
 
 <a name="Cookie.MaxAge"></a>
+
 ### func \(\*Cookie\) [MaxAge](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L192>)
 
 ```go
@@ -3306,6 +3441,7 @@ func (c *Cookie) MaxAge() int
 MaxAge returns the seconds until the cookie is meant to expire or 0 if no max age.
 
 <a name="Cookie.Parse"></a>
+
 ### func \(\*Cookie\) [Parse](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L370>)
 
 ```go
@@ -3315,6 +3451,7 @@ func (c *Cookie) Parse(src string) error
 Parse parses Set\-Cookie header.
 
 <a name="Cookie.ParseBytes"></a>
+
 ### func \(\*Cookie\) [ParseBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L376>)
 
 ```go
@@ -3324,6 +3461,7 @@ func (c *Cookie) ParseBytes(src []byte) error
 ParseBytes parses Set\-Cookie header.
 
 <a name="Cookie.Partitioned"></a>
+
 ### func \(\*Cookie\) [Partitioned](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L141>)
 
 ```go
@@ -3333,6 +3471,7 @@ func (c *Cookie) Partitioned() bool
 Partitioned returns true if the cookie is partitioned.
 
 <a name="Cookie.Path"></a>
+
 ### func \(\*Cookie\) [Path](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L156>)
 
 ```go
@@ -3342,6 +3481,7 @@ func (c *Cookie) Path() []byte
 Path returns cookie path.
 
 <a name="Cookie.Reset"></a>
+
 ### func \(\*Cookie\) [Reset](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L265>)
 
 ```go
@@ -3351,6 +3491,7 @@ func (c *Cookie) Reset()
 Reset clears the cookie.
 
 <a name="Cookie.SameSite"></a>
+
 ### func \(\*Cookie\) [SameSite](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L127>)
 
 ```go
@@ -3360,6 +3501,7 @@ func (c *Cookie) SameSite() CookieSameSite
 SameSite returns the SameSite mode.
 
 <a name="Cookie.Secure"></a>
+
 ### func \(\*Cookie\) [Secure](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L117>)
 
 ```go
@@ -3369,6 +3511,7 @@ func (c *Cookie) Secure() bool
 Secure returns true if the cookie is secure.
 
 <a name="Cookie.SetDomain"></a>
+
 ### func \(\*Cookie\) [SetDomain](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L181>)
 
 ```go
@@ -3378,6 +3521,7 @@ func (c *Cookie) SetDomain(domain string)
 SetDomain sets cookie domain.
 
 <a name="Cookie.SetDomainBytes"></a>
+
 ### func \(\*Cookie\) [SetDomainBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L186>)
 
 ```go
@@ -3387,6 +3531,7 @@ func (c *Cookie) SetDomainBytes(domain []byte)
 SetDomainBytes sets cookie domain.
 
 <a name="Cookie.SetExpire"></a>
+
 ### func \(\*Cookie\) [SetExpire](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L224>)
 
 ```go
@@ -3400,6 +3545,7 @@ Set expiration time to CookieExpireDelete for expiring \(deleting\) the cookie o
 By default cookie lifetime is limited by browser session.
 
 <a name="Cookie.SetHTTPOnly"></a>
+
 ### func \(\*Cookie\) [SetHTTPOnly](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L112>)
 
 ```go
@@ -3409,6 +3555,7 @@ func (c *Cookie) SetHTTPOnly(httpOnly bool)
 SetHTTPOnly sets cookie's httpOnly flag to the given value.
 
 <a name="Cookie.SetKey"></a>
+
 ### func \(\*Cookie\) [SetKey](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L255>)
 
 ```go
@@ -3418,6 +3565,7 @@ func (c *Cookie) SetKey(key string)
 SetKey sets cookie name.
 
 <a name="Cookie.SetKeyBytes"></a>
+
 ### func \(\*Cookie\) [SetKeyBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L260>)
 
 ```go
@@ -3427,6 +3575,7 @@ func (c *Cookie) SetKeyBytes(key []byte)
 SetKeyBytes sets cookie name.
 
 <a name="Cookie.SetMaxAge"></a>
+
 ### func \(\*Cookie\) [SetMaxAge](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L203>)
 
 ```go
@@ -3438,6 +3587,7 @@ SetMaxAge sets cookie expiration time based on seconds. This takes precedence ov
 'max\-age' is set when the maxAge is non\-zero. That is, if maxAge = 0, the 'max\-age' is unset. If maxAge \< 0, it indicates that the cookie should be deleted immediately, equivalent to 'max\-age=0'. This behavior is consistent with the Go standard library's net/http package.
 
 <a name="Cookie.SetPartitioned"></a>
+
 ### func \(\*Cookie\) [SetPartitioned](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L147>)
 
 ```go
@@ -3447,6 +3597,7 @@ func (c *Cookie) SetPartitioned(partitioned bool)
 SetPartitioned sets the cookie's Partitioned flag to the given value. Set value Partitioned to true will set Secure to true and Path to / also to avoid browser rejection.
 
 <a name="Cookie.SetPath"></a>
+
 ### func \(\*Cookie\) [SetPath](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L161>)
 
 ```go
@@ -3456,6 +3607,7 @@ func (c *Cookie) SetPath(path string)
 SetPath sets cookie path.
 
 <a name="Cookie.SetPathBytes"></a>
+
 ### func \(\*Cookie\) [SetPathBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L167>)
 
 ```go
@@ -3465,6 +3617,7 @@ func (c *Cookie) SetPathBytes(path []byte)
 SetPathBytes sets cookie path.
 
 <a name="Cookie.SetSameSite"></a>
+
 ### func \(\*Cookie\) [SetSameSite](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L133>)
 
 ```go
@@ -3474,6 +3627,7 @@ func (c *Cookie) SetSameSite(mode CookieSameSite)
 SetSameSite sets the cookie's SameSite flag to the given value. Set value CookieSameSiteNoneMode will set Secure to true also to avoid browser rejection.
 
 <a name="Cookie.SetSecure"></a>
+
 ### func \(\*Cookie\) [SetSecure](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L122>)
 
 ```go
@@ -3483,6 +3637,7 @@ func (c *Cookie) SetSecure(secure bool)
 SetSecure sets cookie's secure flag to the given value.
 
 <a name="Cookie.SetValue"></a>
+
 ### func \(\*Cookie\) [SetValue](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L237>)
 
 ```go
@@ -3492,6 +3647,7 @@ func (c *Cookie) SetValue(value string)
 SetValue sets cookie value.
 
 <a name="Cookie.SetValueBytes"></a>
+
 ### func \(\*Cookie\) [SetValueBytes](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L242>)
 
 ```go
@@ -3501,6 +3657,7 @@ func (c *Cookie) SetValueBytes(value []byte)
 SetValueBytes sets cookie value.
 
 <a name="Cookie.String"></a>
+
 ### func \(\*Cookie\) [String](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L355>)
 
 ```go
@@ -3510,6 +3667,7 @@ func (c *Cookie) String() string
 String returns cookie representation.
 
 <a name="Cookie.Value"></a>
+
 ### func \(\*Cookie\) [Value](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L232>)
 
 ```go
@@ -3521,6 +3679,7 @@ Value returns cookie value.
 The returned value is valid until the Cookie reused or released \(ReleaseCookie\). Do not store references to the returned value. Make copies instead.
 
 <a name="Cookie.WriteTo"></a>
+
 ### func \(\*Cookie\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L362>)
 
 ```go
@@ -3532,6 +3691,7 @@ WriteTo writes cookie representation to w.
 WriteTo implements io.WriterTo interface.
 
 <a name="CookieSameSite"></a>
+
 ## type [CookieSameSite](<https://github.com/valyala/fasthttp/blob/master/cookie.go#L23>)
 
 CookieSameSite is an enum for the mode in which the SameSite flag should be set for the given cookie. See https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00 for details.
@@ -3559,6 +3719,7 @@ const (
 ```
 
 <a name="DialFunc"></a>
+
 ## type [DialFunc](<https://github.com/valyala/fasthttp/blob/master/client.go#L657>)
 
 DialFunc must establish connection to addr.
@@ -3576,6 +3737,7 @@ type DialFunc func(addr string) (net.Conn, error)
 ```
 
 <a name="DialFuncWithTimeout"></a>
+
 ## type [DialFuncWithTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L672>)
 
 DialFuncWithTimeout must establish connection to addr. Unlike DialFunc, it also accepts a timeout.
@@ -3593,6 +3755,7 @@ type DialFuncWithTimeout func(addr string, timeout time.Duration) (net.Conn, err
 ```
 
 <a name="ErrBodyStreamWritePanic"></a>
+
 ## type [ErrBodyStreamWritePanic](<https://github.com/valyala/fasthttp/blob/master/http.go#L2182-L2184>)
 
 ErrBodyStreamWritePanic is returned when panic happens during writing body stream.
@@ -3604,6 +3767,7 @@ type ErrBodyStreamWritePanic struct {
 ```
 
 <a name="ErrBrokenChunk"></a>
+
 ## type [ErrBrokenChunk](<https://github.com/valyala/fasthttp/blob/master/http.go#L2705-L2707>)
 
 ErrBrokenChunk is returned when server receives a broken chunked body \(Transfer\-Encoding: chunked\).
@@ -3615,6 +3779,7 @@ type ErrBrokenChunk struct {
 ```
 
 <a name="ErrDialWithUpstream"></a>
+
 ## type [ErrDialWithUpstream](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L389-L392>)
 
 ErrDialWithUpstream wraps dial error with upstream info.
@@ -3627,7 +3792,7 @@ err := hc.Do(req, res)
 
 var dialErr *fasthttp.ErrDialWithUpstream
 if errors.As(err, &dialErr) {
-	upstream = dialErr.Upstream // 34.206.39.153:80
+ upstream = dialErr.Upstream // 34.206.39.153:80
 }
 ```
 
@@ -3639,24 +3804,23 @@ type ErrDialWithUpstream struct {
 ```
 
 <a name="ErrDialWithUpstream.Error"></a>
+
 ### func \(\*ErrDialWithUpstream\) [Error](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L394>)
 
 ```go
 func (e *ErrDialWithUpstream) Error() string
 ```
 
-
-
 <a name="ErrDialWithUpstream.Unwrap"></a>
+
 ### func \(\*ErrDialWithUpstream\) [Unwrap](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L398>)
 
 ```go
 func (e *ErrDialWithUpstream) Unwrap() error
 ```
 
-
-
 <a name="ErrNothingRead"></a>
+
 ## type [ErrNothingRead](<https://github.com/valyala/fasthttp/blob/master/header.go#L3415-L3417>)
 
 ErrNothingRead is returned when a keep\-alive connection is closed, either because the remote closed it or because of a read timeout.
@@ -3668,6 +3832,7 @@ type ErrNothingRead struct {
 ```
 
 <a name="ErrSmallBuffer"></a>
+
 ## type [ErrSmallBuffer](<https://github.com/valyala/fasthttp/blob/master/header.go#L3424-L3426>)
 
 ErrSmallBuffer is returned when the provided buffer size is too small for reading request and/or response headers.
@@ -3681,24 +3846,23 @@ type ErrSmallBuffer struct {
 ```
 
 <a name="EscapeError"></a>
+
 ## type [EscapeError](<https://github.com/valyala/fasthttp/blob/master/uri.go#L482>)
-
-
 
 ```go
 type EscapeError string
 ```
 
 <a name="EscapeError.Error"></a>
+
 ### func \(EscapeError\) [Error](<https://github.com/valyala/fasthttp/blob/master/uri.go#L484>)
 
 ```go
 func (e EscapeError) Error() string
 ```
 
-
-
 <a name="FS"></a>
+
 ## type [FS](<https://github.com/valyala/fasthttp/blob/master/fs.go#L257-L373>)
 
 FS represents settings for request handler serving static files from the local filesystem.
@@ -3824,36 +3988,34 @@ type FS struct {
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"log"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	fs := &fasthttp.FS{
-		// Path to directory to serve.
-		Root: "/var/www/static-site",
+ fs := &fasthttp.FS{
+  // Path to directory to serve.
+  Root: "/var/www/static-site",
 
-		// Generate index pages if client requests directory contents.
-		GenerateIndexPages: true,
+  // Generate index pages if client requests directory contents.
+  GenerateIndexPages: true,
 
-		// Enable transparent compression to save network traffic.
-		Compress: true,
-	}
+  // Enable transparent compression to save network traffic.
+  Compress: true,
+ }
 
-	// Create request handler for serving static files.
-	h := fs.NewRequestHandler()
+ // Create request handler for serving static files.
+ h := fs.NewRequestHandler()
 
-	// Start the server.
-	if err := fasthttp.ListenAndServe(":8080", h); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ // Start the server.
+ if err := fasthttp.ListenAndServe(":8080", h); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -3861,6 +4023,7 @@ func main() {
 </details>
 
 <a name="FS.NewRequestHandler"></a>
+
 ### func \(\*FS\) [NewRequestHandler](<https://github.com/valyala/fasthttp/blob/master/fs.go#L437>)
 
 ```go
@@ -3874,6 +4037,7 @@ The returned handler caches requested file handles for FS.CacheDuration. Make su
 Do not create multiple request handlers from a single FS instance \- just reuse a single request handler.
 
 <a name="FormValueFunc"></a>
+
 ## type [FormValueFunc](<https://github.com/valyala/fasthttp/blob/master/server.go#L1218>)
 
 FormValueFunc customizes how RequestCtx.FormValue resolves a value.
@@ -3883,6 +4047,7 @@ type FormValueFunc func(*RequestCtx, string) []byte
 ```
 
 <a name="HijackHandler"></a>
+
 ## type [HijackHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L705>)
 
 HijackHandler must process the hijacked connection c.
@@ -3898,6 +4063,7 @@ type HijackHandler func(c net.Conn)
 ```
 
 <a name="HostClient"></a>
+
 ## type [HostClient](<https://github.com/valyala/fasthttp/blob/master/client.go#L719-L918>)
 
 HostClient balances http requests among hosts listed in Addr.
@@ -4083,47 +4249,45 @@ type HostClient struct {
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"log"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// Prepare a client, which fetches webpages via HTTP proxy listening
-	// on the localhost:8080.
-	c := &fasthttp.HostClient{
-		Addr: "localhost:8080",
-	}
+ // Prepare a client, which fetches webpages via HTTP proxy listening
+ // on the localhost:8080.
+ c := &fasthttp.HostClient{
+  Addr: "localhost:8080",
+ }
 
-	// Fetch google page via local proxy.
-	statusCode, body, err := c.Get(nil, "http://google.com/foo/bar")
-	if err != nil {
-		log.Fatalf("Error when loading google page through local proxy: %v", err)
-	}
-	if statusCode != fasthttp.StatusOK {
-		log.Fatalf("Unexpected status code: %d. Expecting %d", statusCode, fasthttp.StatusOK)
-	}
-	useResponseBody(body)
+ // Fetch google page via local proxy.
+ statusCode, body, err := c.Get(nil, "http://google.com/foo/bar")
+ if err != nil {
+  log.Fatalf("Error when loading google page through local proxy: %v", err)
+ }
+ if statusCode != fasthttp.StatusOK {
+  log.Fatalf("Unexpected status code: %d. Expecting %d", statusCode, fasthttp.StatusOK)
+ }
+ useResponseBody(body)
 
-	// Fetch foobar page via local proxy. Reuse body buffer.
-	statusCode, body, err = c.Get(body, "http://foobar.com/google/com")
-	if err != nil {
-		log.Fatalf("Error when loading foobar page through local proxy: %v", err)
-	}
-	if statusCode != fasthttp.StatusOK {
-		log.Fatalf("Unexpected status code: %d. Expecting %d", statusCode, fasthttp.StatusOK)
-	}
-	useResponseBody(body)
+ // Fetch foobar page via local proxy. Reuse body buffer.
+ statusCode, body, err = c.Get(body, "http://foobar.com/google/com")
+ if err != nil {
+  log.Fatalf("Error when loading foobar page through local proxy: %v", err)
+ }
+ if statusCode != fasthttp.StatusOK {
+  log.Fatalf("Unexpected status code: %d. Expecting %d", statusCode, fasthttp.StatusOK)
+ }
+ useResponseBody(body)
 }
 
 func useResponseBody(body []byte) {
-	// Do something with body :)
+ // Do something with body :)
 }
 ```
 
@@ -4131,42 +4295,39 @@ func useResponseBody(body []byte) {
 </details>
 
 <a name="HostClient.AcquireConn"></a>
+
 ### func \(\*HostClient\) [AcquireConn](<https://github.com/valyala/fasthttp/blob/master/client.go#L1543>)
 
 ```go
 func (c *HostClient) AcquireConn(reqTimeout time.Duration, connectionClose bool) (cc *clientConn, err error)
 ```
 
-
-
 <a name="HostClient.AcquireReader"></a>
+
 ### func \(\*HostClient\) [AcquireReader](<https://github.com/valyala/fasthttp/blob/master/client.go#L1870>)
 
 ```go
 func (c *HostClient) AcquireReader(conn net.Conn) *bufio.Reader
 ```
 
-
-
 <a name="HostClient.AcquireWriter"></a>
+
 ### func \(\*HostClient\) [AcquireWriter](<https://github.com/valyala/fasthttp/blob/master/client.go#L1842>)
 
 ```go
 func (c *HostClient) AcquireWriter(conn net.Conn) *bufio.Writer
 ```
 
-
-
 <a name="HostClient.CloseConn"></a>
+
 ### func \(\*HostClient\) [CloseConn](<https://github.com/valyala/fasthttp/blob/master/client.go#L1744>)
 
 ```go
 func (c *HostClient) CloseConn(cc *clientConn)
 ```
 
-
-
 <a name="HostClient.CloseIdleConnections"></a>
+
 ### func \(\*HostClient\) [CloseIdleConnections](<https://github.com/valyala/fasthttp/blob/master/client.go#L1674>)
 
 ```go
@@ -4176,6 +4337,7 @@ func (c *HostClient) CloseIdleConnections()
 CloseIdleConnections closes any connections which were previously connected from previous requests but are now sitting idle in a "keep\-alive" state. It does not interrupt any connections currently in use.
 
 <a name="HostClient.ConnsCount"></a>
+
 ### func \(\*HostClient\) [ConnsCount](<https://github.com/valyala/fasthttp/blob/master/client.go#L1778>)
 
 ```go
@@ -4185,6 +4347,7 @@ func (c *HostClient) ConnsCount() int
 ConnsCount returns connection count of HostClient.
 
 <a name="HostClient.Do"></a>
+
 ### func \(\*HostClient\) [Do](<https://github.com/valyala/fasthttp/blob/master/client.go#L1344>)
 
 ```go
@@ -4204,6 +4367,7 @@ ErrNoFreeConns is returned if all HostClient.MaxConns connections to the host ar
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="HostClient.DoDeadline"></a>
+
 ### func \(\*HostClient\) [DoDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L1295>)
 
 ```go
@@ -4225,6 +4389,7 @@ ErrNoFreeConns is returned if all HostClient.MaxConns connections to the host ar
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="HostClient.DoRedirects"></a>
+
 ### func \(\*HostClient\) [DoRedirects](<https://github.com/valyala/fasthttp/blob/master/client.go#L1322>)
 
 ```go
@@ -4247,6 +4412,7 @@ ErrNoFreeConns is returned if all DefaultMaxConnsPerHost connections to the requ
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="HostClient.DoTimeout"></a>
+
 ### func \(\*HostClient\) [DoTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L1268>)
 
 ```go
@@ -4268,6 +4434,7 @@ ErrNoFreeConns is returned if all HostClient.MaxConns connections to the host ar
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="HostClient.Get"></a>
+
 ### func \(\*HostClient\) [Get](<https://github.com/valyala/fasthttp/blob/master/client.go#L956>)
 
 ```go
@@ -4281,6 +4448,7 @@ The contents of dst will be replaced by the body and returned, if the dst is too
 The function follows redirects. Use Do\* for manually handling redirects.
 
 <a name="HostClient.GetDeadline"></a>
+
 ### func \(\*HostClient\) [GetDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L982>)
 
 ```go
@@ -4296,6 +4464,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched until the given deadline.
 
 <a name="HostClient.GetTimeout"></a>
+
 ### func \(\*HostClient\) [GetTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L969>)
 
 ```go
@@ -4311,6 +4480,7 @@ The function follows redirects. Use Do\* for manually handling redirects.
 ErrTimeout error is returned if url contents couldn't be fetched during the given timeout.
 
 <a name="HostClient.LastUseTime"></a>
+
 ### func \(\*HostClient\) [LastUseTime](<https://github.com/valyala/fasthttp/blob/master/client.go#L945>)
 
 ```go
@@ -4320,6 +4490,7 @@ func (c *HostClient) LastUseTime() time.Time
 LastUseTime returns time the client was last used.
 
 <a name="HostClient.PendingRequests"></a>
+
 ### func \(\*HostClient\) [PendingRequests](<https://github.com/valyala/fasthttp/blob/master/client.go#L1424>)
 
 ```go
@@ -4331,6 +4502,7 @@ PendingRequests returns the current number of requests the client is executing.
 This function may be used for balancing load among multiple HostClient instances.
 
 <a name="HostClient.Post"></a>
+
 ### func \(\*HostClient\) [Post](<https://github.com/valyala/fasthttp/blob/master/client.go#L994>)
 
 ```go
@@ -4346,33 +4518,31 @@ The function follows redirects. Use Do\* for manually handling redirects.
 Empty POST body is sent if postArgs is nil.
 
 <a name="HostClient.ReleaseConn"></a>
+
 ### func \(\*HostClient\) [ReleaseConn](<https://github.com/valyala/fasthttp/blob/master/client.go#L1804>)
 
 ```go
 func (c *HostClient) ReleaseConn(cc *clientConn)
 ```
 
-
-
 <a name="HostClient.ReleaseReader"></a>
+
 ### func \(\*HostClient\) [ReleaseReader](<https://github.com/valyala/fasthttp/blob/master/client.go#L1890>)
 
 ```go
 func (c *HostClient) ReleaseReader(br *bufio.Reader)
 ```
 
-
-
 <a name="HostClient.ReleaseWriter"></a>
+
 ### func \(\*HostClient\) [ReleaseWriter](<https://github.com/valyala/fasthttp/blob/master/client.go#L1862>)
 
 ```go
 func (c *HostClient) ReleaseWriter(bw *bufio.Writer)
 ```
 
-
-
 <a name="HostClient.SetMaxConns"></a>
+
 ### func \(\*HostClient\) [SetMaxConns](<https://github.com/valyala/fasthttp/blob/master/client.go#L1537>)
 
 ```go
@@ -4382,24 +4552,23 @@ func (c *HostClient) SetMaxConns(newMaxConns int)
 SetMaxConns sets up the maximum number of connections which may be established to all hosts listed in Addr.
 
 <a name="InvalidHostError"></a>
+
 ## type [InvalidHostError](<https://github.com/valyala/fasthttp/blob/master/uri.go#L488>)
-
-
 
 ```go
 type InvalidHostError string
 ```
 
 <a name="InvalidHostError.Error"></a>
+
 ### func \(InvalidHostError\) [Error](<https://github.com/valyala/fasthttp/blob/master/uri.go#L490>)
 
 ```go
 func (e InvalidHostError) Error() string
 ```
 
-
-
 <a name="LBClient"></a>
+
 ## type [LBClient](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L27-L55>)
 
 LBClient balances requests among available LBClient.Clients.
@@ -4442,39 +4611,37 @@ type LBClient struct {
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 // Requests will be spread among these servers.
 servers := []string{
-	"google.com:80",
-	"foobar.com:8080",
-	"127.0.0.1:123",
+ "google.com:80",
+ "foobar.com:8080",
+ "127.0.0.1:123",
 }
 
 // Prepare clients for each server
 var lbc fasthttp.LBClient
 for _, addr := range servers {
-	c := &fasthttp.HostClient{
-		Addr: addr,
-	}
-	lbc.Clients = append(lbc.Clients, c)
+ c := &fasthttp.HostClient{
+  Addr: addr,
+ }
+ lbc.Clients = append(lbc.Clients, c)
 }
 
 // Send requests to load-balanced servers
 var req fasthttp.Request
 var resp fasthttp.Response
 for i := range 10 {
-	url := fmt.Sprintf("http://abcedfg/foo/bar/%d", i)
-	req.SetRequestURI(url)
-	if err := lbc.Do(&req, &resp); err != nil {
-		log.Fatalf("Error when sending request: %v", err)
-	}
-	if resp.StatusCode() != fasthttp.StatusOK {
-		log.Fatalf("unexpected status code: %d. Expecting %d", resp.StatusCode(), fasthttp.StatusOK)
-	}
+ url := fmt.Sprintf("http://abcedfg/foo/bar/%d", i)
+ req.SetRequestURI(url)
+ if err := lbc.Do(&req, &resp); err != nil {
+  log.Fatalf("Error when sending request: %v", err)
+ }
+ if resp.StatusCode() != fasthttp.StatusOK {
+  log.Fatalf("unexpected status code: %d. Expecting %d", resp.StatusCode(), fasthttp.StatusOK)
+ }
 
-	useResponseBody(resp.Body())
+ useResponseBody(resp.Body())
 }
 ```
 
@@ -4482,6 +4649,7 @@ for i := range 10 {
 </details>
 
 <a name="LBClient.AddClient"></a>
+
 ### func \(\*LBClient\) [AddClient](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L101>)
 
 ```go
@@ -4491,6 +4659,7 @@ func (cc *LBClient) AddClient(c BalancingClient) int
 AddClient adds a new client to the balanced clients and returns the new total number of clients.
 
 <a name="LBClient.Do"></a>
+
 ### func \(\*LBClient\) [Do](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L76>)
 
 ```go
@@ -4500,6 +4669,7 @@ func (cc *LBClient) Do(req *Request, resp *Response) error
 Do calculates timeout using LBClient.Timeout and calls DoTimeout on the least loaded client.
 
 <a name="LBClient.DoDeadline"></a>
+
 ### func \(\*LBClient\) [DoDeadline](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L64>)
 
 ```go
@@ -4509,6 +4679,7 @@ func (cc *LBClient) DoDeadline(req *Request, resp *Response, deadline time.Time)
 DoDeadline calls DoDeadline on the least loaded client.
 
 <a name="LBClient.DoTimeout"></a>
+
 ### func \(\*LBClient\) [DoTimeout](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L69>)
 
 ```go
@@ -4518,6 +4689,7 @@ func (cc *LBClient) DoTimeout(req *Request, resp *Response, timeout time.Duratio
 DoTimeout calculates deadline and calls DoDeadline on the least loaded client.
 
 <a name="LBClient.RemoveClients"></a>
+
 ### func \(\*LBClient\) [RemoveClients](<https://github.com/valyala/fasthttp/blob/master/lbclient.go#L114>)
 
 ```go
@@ -4527,6 +4699,7 @@ func (cc *LBClient) RemoveClients(rc func(BalancingClient) bool) int
 RemoveClients removes clients using the provided callback. If rc returns true, the passed client will be removed. Returns the new total number of clients.
 
 <a name="Logger"></a>
+
 ## type [Logger](<https://github.com/valyala/fasthttp/blob/master/server.go#L929-L932>)
 
 Logger is used for logging formatted messages.
@@ -4539,6 +4712,7 @@ type Logger interface {
 ```
 
 <a name="PathRewriteFunc"></a>
+
 ## type [PathRewriteFunc](<https://github.com/valyala/fasthttp/blob/master/fs.go#L181>)
 
 PathRewriteFunc must return new request path based on arbitrary ctx info such as ctx.Path\(\).
@@ -4554,6 +4728,7 @@ type PathRewriteFunc func(ctx *RequestCtx) []byte
 ```
 
 <a name="NewPathPrefixStripper"></a>
+
 ### func [NewPathPrefixStripper](<https://github.com/valyala/fasthttp/blob/master/fs.go#L243>)
 
 ```go
@@ -4571,6 +4746,7 @@ Examples:
 The returned path rewriter may be used as FS.PathRewrite .
 
 <a name="NewPathSlashesStripper"></a>
+
 ### func [NewPathSlashesStripper](<https://github.com/valyala/fasthttp/blob/master/fs.go#L227>)
 
 ```go
@@ -4588,6 +4764,7 @@ Examples:
 The returned path rewriter may be used as FS.PathRewrite .
 
 <a name="NewVHostPathRewriter"></a>
+
 ### func [NewVHostPathRewriter](<https://github.com/valyala/fasthttp/blob/master/fs.go#L194>)
 
 ```go
@@ -4603,6 +4780,7 @@ Examples:
 - host=img.aaa.com, slashesCount=1, original path="/images/123/456.jpg" Resulting path: "/img.aaa.com/123/456.jpg"
 
 <a name="PipelineClient"></a>
+
 ## type [PipelineClient](<https://github.com/valyala/fasthttp/blob/master/client.go#L2247-L2360>)
 
 PipelineClient pipelines requests over a limited set of concurrent connections to the given Addr.
@@ -4727,6 +4905,7 @@ type PipelineClient struct {
 ```
 
 <a name="PipelineClient.Do"></a>
+
 ### func \(\*PipelineClient\) [Do](<https://github.com/valyala/fasthttp/blob/master/client.go#L2553>)
 
 ```go
@@ -4744,6 +4923,7 @@ Response is ignored if resp is nil.
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="PipelineClient.DoDeadline"></a>
+
 ### func \(\*PipelineClient\) [DoDeadline](<https://github.com/valyala/fasthttp/blob/master/client.go#L2441>)
 
 ```go
@@ -4763,6 +4943,7 @@ ErrTimeout is returned if the response wasn't returned until the given deadline.
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="PipelineClient.DoTimeout"></a>
+
 ### func \(\*PipelineClient\) [DoTimeout](<https://github.com/valyala/fasthttp/blob/master/client.go#L2422>)
 
 ```go
@@ -4782,6 +4963,7 @@ ErrTimeout is returned if the response wasn't returned during the given timeout.
 It is recommended obtaining req and resp via AcquireRequest and AcquireResponse in performance\-critical code.
 
 <a name="PipelineClient.PendingRequests"></a>
+
 ### func \(\*PipelineClient\) [PendingRequests](<https://github.com/valyala/fasthttp/blob/master/client.go#L2949>)
 
 ```go
@@ -4795,9 +4977,8 @@ This number may exceed MaxPendingRequests\*MaxConns by up to two times, since ea
 This function may be used for balancing load among multiple PipelineClient instances.
 
 <a name="ReadCloserWithError"></a>
+
 ## type [ReadCloserWithError](<https://github.com/valyala/fasthttp/blob/master/http.go#L345-L348>)
-
-
 
 ```go
 type ReadCloserWithError interface {
@@ -4807,6 +4988,7 @@ type ReadCloserWithError interface {
 ```
 
 <a name="Request"></a>
+
 ## type [Request](<https://github.com/valyala/fasthttp/blob/master/http.go#L38-L85>)
 
 Request represents HTTP request.
@@ -4836,6 +5018,7 @@ type Request struct {
 ```
 
 <a name="AcquireRequest"></a>
+
 ### func [AcquireRequest](<https://github.com/valyala/fasthttp/blob/master/client.go#L1210>)
 
 ```go
@@ -4847,6 +5030,7 @@ AcquireRequest returns an empty Request instance from request pool.
 The returned Request instance may be passed to ReleaseRequest when it is no longer needed. This allows Request recycling, reduces GC pressure and usually improves performance.
 
 <a name="Request.AppendBody"></a>
+
 ### func \(\*Request\) [AppendBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L913>)
 
 ```go
@@ -4858,6 +5042,7 @@ AppendBody appends p to request body.
 It is safe re\-using p after the function returns.
 
 <a name="Request.AppendBodyString"></a>
+
 ### func \(\*Request\) [AppendBodyString](<https://github.com/valyala/fasthttp/blob/master/http.go#L920>)
 
 ```go
@@ -4867,6 +5052,7 @@ func (req *Request) AppendBodyString(s string)
 AppendBodyString appends s to request body.
 
 <a name="Request.Body"></a>
+
 ### func \(\*Request\) [Body](<https://github.com/valyala/fasthttp/blob/master/http.go#L897>)
 
 ```go
@@ -4878,6 +5064,7 @@ Body returns request body.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="Request.BodyGunzip"></a>
+
 ### func \(\*Request\) [BodyGunzip](<https://github.com/valyala/fasthttp/blob/master/http.go#L494>)
 
 ```go
@@ -4889,6 +5076,7 @@ BodyGunzip returns un\-gzipped body data.
 This method may be used if the request header contains 'Content\-Encoding: gzip' for reading un\-gzipped body. Use Body for reading gzipped request body.
 
 <a name="Request.BodyGunzipWithLimit"></a>
+
 ### func \(\*Request\) [BodyGunzipWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L502>)
 
 ```go
@@ -4900,6 +5088,7 @@ BodyGunzipWithLimit returns un\-gzipped body data and limits the size of uncompr
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Request.BodyInflate"></a>
+
 ### func \(\*Request\) [BodyInflate](<https://github.com/valyala/fasthttp/blob/master/http.go#L580>)
 
 ```go
@@ -4911,6 +5100,7 @@ BodyInflate returns inflated body data.
 This method may be used if the response header contains 'Content\-Encoding: deflate' for reading inflated request body. Use Body for reading deflated request body.
 
 <a name="Request.BodyInflateWithLimit"></a>
+
 ### func \(\*Request\) [BodyInflateWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L588>)
 
 ```go
@@ -4922,6 +5112,7 @@ BodyInflateWithLimit returns inflated body data and limits the size of uncompres
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Request.BodyStream"></a>
+
 ### func \(\*Request\) [BodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L326>)
 
 ```go
@@ -4933,6 +5124,7 @@ BodyStream returns io.Reader.
 You must CloseBodyStream or ReleaseRequest after you use it.
 
 <a name="Request.BodyUnbrotli"></a>
+
 ### func \(\*Request\) [BodyUnbrotli](<https://github.com/valyala/fasthttp/blob/master/http.go#L537>)
 
 ```go
@@ -4944,6 +5136,7 @@ BodyUnbrotli returns un\-brotlied body data.
 This method may be used if the request header contains 'Content\-Encoding: br' for reading un\-brotlied body. Use Body for reading brotlied request body.
 
 <a name="Request.BodyUnbrotliWithLimit"></a>
+
 ### func \(\*Request\) [BodyUnbrotliWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L545>)
 
 ```go
@@ -4955,6 +5148,7 @@ BodyUnbrotliWithLimit returns un\-brotlied body data and limits the size of unco
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Request.BodyUncompressed"></a>
+
 ### func \(\*Request\) [BodyUncompressed](<https://github.com/valyala/fasthttp/blob/master/http.go#L663>)
 
 ```go
@@ -4966,6 +5160,7 @@ BodyUncompressed returns body data and if needed decompresses it from gzip, defl
 This method may be used if the response header contains 'Content\-Encoding' for reading uncompressed request body. Use Body for reading the raw request body.
 
 <a name="Request.BodyUncompressedWithLimit"></a>
+
 ### func \(\*Request\) [BodyUncompressedWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L671>)
 
 ```go
@@ -4977,15 +5172,15 @@ BodyUncompressedWithLimit returns body data and if needed decompresses it from g
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Request.BodyUnzstd"></a>
+
 ### func \(\*Request\) [BodyUnzstd](<https://github.com/valyala/fasthttp/blob/master/http.go#L613>)
 
 ```go
 func (req *Request) BodyUnzstd() ([]byte, error)
 ```
 
-
-
 <a name="Request.BodyUnzstdWithLimit"></a>
+
 ### func \(\*Request\) [BodyUnzstdWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L621>)
 
 ```go
@@ -4997,6 +5192,7 @@ BodyUnzstdWithLimit returns un\-zstd body data and limits the size of uncompress
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Request.BodyWriteTo"></a>
+
 ### func \(\*Request\) [BodyWriteTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L720>)
 
 ```go
@@ -5006,6 +5202,7 @@ func (req *Request) BodyWriteTo(w io.Writer) error
 BodyWriteTo writes request body to w.
 
 <a name="Request.BodyWriter"></a>
+
 ### func \(\*Request\) [BodyWriter](<https://github.com/valyala/fasthttp/blob/master/http.go#L371>)
 
 ```go
@@ -5015,15 +5212,15 @@ func (req *Request) BodyWriter() io.Writer
 BodyWriter returns writer for populating request body.
 
 <a name="Request.CloseBodyStream"></a>
+
 ### func \(\*Request\) [CloseBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L330>)
 
 ```go
 func (req *Request) CloseBodyStream() error
 ```
 
-
-
 <a name="Request.ConnectionClose"></a>
+
 ### func \(\*Request\) [ConnectionClose](<https://github.com/valyala/fasthttp/blob/master/http.go#L190>)
 
 ```go
@@ -5033,6 +5230,7 @@ func (req *Request) ConnectionClose() bool
 ConnectionClose returns true if 'Connection: close' header is set.
 
 <a name="Request.ContinueReadBody"></a>
+
 ### func \(\*Request\) [ContinueReadBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L1416>)
 
 ```go
@@ -5046,6 +5244,7 @@ The caller must send StatusContinue response before calling this method.
 If maxBodySize \> 0 and the body size exceeds maxBodySize, then ErrBodyTooLarge is returned.
 
 <a name="Request.ContinueReadBodyStream"></a>
+
 ### func \(\*Request\) [ContinueReadBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L1499>)
 
 ```go
@@ -5059,6 +5258,7 @@ The caller must send StatusContinue response before calling this method.
 If maxBodySize \> 0 and the body size exceeds maxBodySize, then ErrBodyTooLarge is returned.
 
 <a name="Request.CopyTo"></a>
+
 ### func \(\*Request\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L958>)
 
 ```go
@@ -5068,6 +5268,7 @@ func (req *Request) CopyTo(dst *Request)
 CopyTo copies req contents to dst except of body stream.
 
 <a name="Request.GetTimeOut"></a>
+
 ### func \(\*Request\) [GetTimeOut](<https://github.com/valyala/fasthttp/blob/master/http.go#L205>)
 
 ```go
@@ -5079,6 +5280,7 @@ GetTimeOut retrieves the timeout duration set for the Request.
 This method returns a time.Duration that determines how long the request can wait before it times out. In the default use case, the timeout applies to the entire request lifecycle, including both receiving the response headers and the response body.
 
 <a name="Request.Host"></a>
+
 ### func \(\*Request\) [Host](<https://github.com/valyala/fasthttp/blob/master/http.go#L142>)
 
 ```go
@@ -5088,6 +5290,7 @@ func (req *Request) Host() []byte
 Host returns the host for the given request.
 
 <a name="Request.IsBodyStream"></a>
+
 ### func \(\*Request\) [IsBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L272>)
 
 ```go
@@ -5097,6 +5300,7 @@ func (req *Request) IsBodyStream() bool
 IsBodyStream returns true if body is set via SetBodyStream\*.
 
 <a name="Request.MayContinue"></a>
+
 ### func \(\*Request\) [MayContinue](<https://github.com/valyala/fasthttp/blob/master/http.go#L1405>)
 
 ```go
@@ -5112,6 +5316,7 @@ The caller must do one of the following actions if MayContinue returns true:
 - Or close the connection.
 
 <a name="Request.MultipartForm"></a>
+
 ### func \(\*Request\) [MultipartForm](<https://github.com/valyala/fasthttp/blob/master/http.go#L1099>)
 
 ```go
@@ -5127,6 +5332,7 @@ This method is equivalent to MultipartFormWithLimit\(0\), i.e. no body size limi
 RemoveMultipartFormFiles must be called after returned multipart form is processed.
 
 <a name="Request.MultipartFormWithLimit"></a>
+
 ### func \(\*Request\) [MultipartFormWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L1113>)
 
 ```go
@@ -5142,6 +5348,7 @@ Returns ErrNoMultipartForm if request's Content\-Type isn't 'multipart/form\-dat
 RemoveMultipartFormFiles must be called after returned multipart form is processed.
 
 <a name="Request.PostArgs"></a>
+
 ### func \(\*Request\) [PostArgs](<https://github.com/valyala/fasthttp/blob/master/http.go#L1068>)
 
 ```go
@@ -5151,6 +5358,7 @@ func (req *Request) PostArgs() *Args
 PostArgs returns POST arguments.
 
 <a name="Request.Read"></a>
+
 ### func \(\*Request\) [Read](<https://github.com/valyala/fasthttp/blob/master/http.go#L1322>)
 
 ```go
@@ -5170,6 +5378,7 @@ If MayContinue returns true, the caller must:
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="Request.ReadBody"></a>
+
 ### func \(\*Request\) [ReadBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L1468>)
 
 ```go
@@ -5181,6 +5390,7 @@ ReadBody reads request body from the given r, limiting the body size.
 If maxBodySize \> 0 and the body size exceeds maxBodySize, then ErrBodyTooLarge is returned.
 
 <a name="Request.ReadLimitBody"></a>
+
 ### func \(\*Request\) [ReadLimitBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L1350>)
 
 ```go
@@ -5202,6 +5412,7 @@ If MayContinue returns true, the caller must:
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="Request.ReleaseBody"></a>
+
 ### func \(\*Request\) [ReleaseBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L831>)
 
 ```go
@@ -5215,6 +5426,7 @@ This permits GC to reclaim the large buffer. If used, must be before ReleaseRequ
 Use this method only if you really understand how it works. The majority of workloads don't need this method.
 
 <a name="Request.RemoveMultipartFormFiles"></a>
+
 ### func \(\*Request\) [RemoveMultipartFormFiles](<https://github.com/valyala/fasthttp/blob/master/http.go#L1279>)
 
 ```go
@@ -5224,6 +5436,7 @@ func (req *Request) RemoveMultipartFormFiles()
 RemoveMultipartFormFiles removes multipart/form\-data temporary files associated with the request.
 
 <a name="Request.RemoveUserValue"></a>
+
 ### func \(\*Request\) [RemoveUserValue](<https://github.com/valyala/fasthttp/blob/master/http.go#L2358>)
 
 ```go
@@ -5233,6 +5446,7 @@ func (req *Request) RemoveUserValue(key any)
 RemoveUserValue removes the given key and the value under it in Request.
 
 <a name="Request.RemoveUserValueBytes"></a>
+
 ### func \(\*Request\) [RemoveUserValueBytes](<https://github.com/valyala/fasthttp/blob/master/http.go#L2363>)
 
 ```go
@@ -5242,6 +5456,7 @@ func (req *Request) RemoveUserValueBytes(key []byte)
 RemoveUserValueBytes removes the given key and the value under it in Request.
 
 <a name="Request.RequestURI"></a>
+
 ### func \(\*Request\) [RequestURI](<https://github.com/valyala/fasthttp/blob/master/http.go#L161>)
 
 ```go
@@ -5251,6 +5466,7 @@ func (req *Request) RequestURI() []byte
 RequestURI returns request's URI.
 
 <a name="Request.Reset"></a>
+
 ### func \(\*Request\) [Reset](<https://github.com/valyala/fasthttp/blob/master/http.go#L1255>)
 
 ```go
@@ -5260,6 +5476,7 @@ func (req *Request) Reset()
 Reset clears request contents.
 
 <a name="Request.ResetBody"></a>
+
 ### func \(\*Request\) [ResetBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L943>)
 
 ```go
@@ -5269,6 +5486,7 @@ func (req *Request) ResetBody()
 ResetBody resets request body.
 
 <a name="Request.ResetUserValues"></a>
+
 ### func \(\*Request\) [ResetUserValues](<https://github.com/valyala/fasthttp/blob/master/http.go#L2353>)
 
 ```go
@@ -5278,6 +5496,7 @@ func (req *Request) ResetUserValues()
 ResetUserValues allows to reset user values from Request Context.
 
 <a name="Request.SetBody"></a>
+
 ### func \(\*Request\) [SetBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L929>)
 
 ```go
@@ -5289,6 +5508,7 @@ SetBody sets request body.
 It is safe re\-using body argument after the function returns.
 
 <a name="Request.SetBodyRaw"></a>
+
 ### func \(\*Request\) [SetBodyRaw](<https://github.com/valyala/fasthttp/blob/master/http.go#L801>)
 
 ```go
@@ -5300,6 +5520,7 @@ SetBodyRaw sets response body, but without copying it.
 From this point onward the body argument must not be changed.
 
 <a name="Request.SetBodyStream"></a>
+
 ### func \(\*Request\) [SetBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L248>)
 
 ```go
@@ -5319,6 +5540,7 @@ Note that GET and HEAD requests cannot have body.
 See also SetBodyStreamWriter.
 
 <a name="Request.SetBodyStreamWriter"></a>
+
 ### func \(\*Request\) [SetBodyStreamWriter](<https://github.com/valyala/fasthttp/blob/master/http.go#L293>)
 
 ```go
@@ -5338,6 +5560,7 @@ Note that GET and HEAD requests cannot have body.
 See also SetBodyStream.
 
 <a name="Request.SetBodyString"></a>
+
 ### func \(\*Request\) [SetBodyString](<https://github.com/valyala/fasthttp/blob/master/http.go#L936>)
 
 ```go
@@ -5347,6 +5570,7 @@ func (req *Request) SetBodyString(body string)
 SetBodyString sets request body.
 
 <a name="Request.SetConnectionClose"></a>
+
 ### func \(\*Request\) [SetConnectionClose](<https://github.com/valyala/fasthttp/blob/master/http.go#L195>)
 
 ```go
@@ -5356,6 +5580,7 @@ func (req *Request) SetConnectionClose()
 SetConnectionClose sets 'Connection: close' header.
 
 <a name="Request.SetHost"></a>
+
 ### func \(\*Request\) [SetHost](<https://github.com/valyala/fasthttp/blob/master/http.go#L132>)
 
 ```go
@@ -5365,6 +5590,7 @@ func (req *Request) SetHost(host string)
 SetHost sets host for the request.
 
 <a name="Request.SetHostBytes"></a>
+
 ### func \(\*Request\) [SetHostBytes](<https://github.com/valyala/fasthttp/blob/master/http.go#L137>)
 
 ```go
@@ -5374,6 +5600,7 @@ func (req *Request) SetHostBytes(host []byte)
 SetHostBytes sets host for the request.
 
 <a name="Request.SetRequestURI"></a>
+
 ### func \(\*Request\) [SetRequestURI](<https://github.com/valyala/fasthttp/blob/master/http.go#L147>)
 
 ```go
@@ -5383,6 +5610,7 @@ func (req *Request) SetRequestURI(requestURI string)
 SetRequestURI sets RequestURI.
 
 <a name="Request.SetRequestURIBytes"></a>
+
 ### func \(\*Request\) [SetRequestURIBytes](<https://github.com/valyala/fasthttp/blob/master/http.go#L154>)
 
 ```go
@@ -5392,6 +5620,7 @@ func (req *Request) SetRequestURIBytes(requestURI []byte)
 SetRequestURIBytes sets RequestURI.
 
 <a name="Request.SetTimeout"></a>
+
 ### func \(\*Request\) [SetTimeout](<https://github.com/valyala/fasthttp/blob/master/http.go#L2806>)
 
 ```go
@@ -5414,6 +5643,7 @@ c.DoTimeout(&req, &resp, t)
 ```
 
 <a name="Request.SetURI"></a>
+
 ### func \(\*Request\) [SetURI](<https://github.com/valyala/fasthttp/blob/master/http.go#L1045>)
 
 ```go
@@ -5423,6 +5653,7 @@ func (req *Request) SetURI(newURI *URI)
 SetURI initializes request URI. Use this method if a single URI may be reused across multiple requests. Otherwise, you can just use SetRequestURI\(\) and it will be parsed as new URI. The URI is copied and can be safely modified later.
 
 <a name="Request.SetUserValue"></a>
+
 ### func \(\*Request\) [SetUserValue](<https://github.com/valyala/fasthttp/blob/master/http.go#L2300>)
 
 ```go
@@ -5438,6 +5669,7 @@ This functionality may be useful for passing arbitrary values between functions 
 All the values are removed from Request after returning from the top RequestHandler. Additionally, Close method is called on each value implementing io.Closer before removing the value from Request.
 
 <a name="Request.SetUserValueBytes"></a>
+
 ### func \(\*Request\) [SetUserValueBytes](<https://github.com/valyala/fasthttp/blob/master/http.go#L2313>)
 
 ```go
@@ -5453,6 +5685,7 @@ This functionality may be useful for passing arbitrary values between functions 
 All the values stored in Request are deleted after returning from RequestHandler.
 
 <a name="Request.String"></a>
+
 ### func \(\*Request\) [String](<https://github.com/valyala/fasthttp/blob/master/http.go#L2276>)
 
 ```go
@@ -5466,6 +5699,7 @@ Returns error message instead of request representation on error.
 Use Write instead of String for performance\-critical code.
 
 <a name="Request.SwapBody"></a>
+
 ### func \(\*Request\) [SwapBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L872>)
 
 ```go
@@ -5477,6 +5711,7 @@ SwapBody swaps request body with the given body and returns the previous request
 It is forbidden to use the body passed to SwapBody after the function returns.
 
 <a name="Request.URI"></a>
+
 ### func \(\*Request\) [URI](<https://github.com/valyala/fasthttp/blob/master/http.go#L1036>)
 
 ```go
@@ -5486,6 +5721,7 @@ func (req *Request) URI() *URI
 URI returns request URI.
 
 <a name="Request.UserValue"></a>
+
 ### func \(\*Request\) [UserValue](<https://github.com/valyala/fasthttp/blob/master/http.go#L2318>)
 
 ```go
@@ -5495,6 +5731,7 @@ func (req *Request) UserValue(key any) any
 UserValue returns the value stored via SetUserValue\* under the given key.
 
 <a name="Request.UserValueBytes"></a>
+
 ### func \(\*Request\) [UserValueBytes](<https://github.com/valyala/fasthttp/blob/master/http.go#L2324>)
 
 ```go
@@ -5504,6 +5741,7 @@ func (req *Request) UserValueBytes(key []byte) any
 UserValueBytes returns the value stored via SetUserValue\* under the given key.
 
 <a name="Request.VisitUserValues"></a>
+
 ### func \(\*Request\) [VisitUserValues](<https://github.com/valyala/fasthttp/blob/master/http.go#L2332>)
 
 ```go
@@ -5515,6 +5753,7 @@ VisitUserValues calls visitor for each existing userValue with a key that is a s
 visitor must not retain references to key and value after returning. Make key and/or value copies if you need storing them after returning.
 
 <a name="Request.VisitUserValuesAll"></a>
+
 ### func \(\*Request\) [VisitUserValuesAll](<https://github.com/valyala/fasthttp/blob/master/http.go#L2345>)
 
 ```go
@@ -5526,6 +5765,7 @@ VisitUserValuesAll calls visitor for each existing userValue.
 visitor must not retain references to key and value after returning. Make key and/or value copies if you need storing them after returning.
 
 <a name="Request.Write"></a>
+
 ### func \(\*Request\) [Write](<https://github.com/valyala/fasthttp/blob/master/http.go#L1732>)
 
 ```go
@@ -5539,6 +5779,7 @@ Write doesn't flush request to w for performance reasons.
 See also WriteTo.
 
 <a name="Request.WriteTo"></a>
+
 ### func \(\*Request\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L1645>)
 
 ```go
@@ -5548,6 +5789,7 @@ func (req *Request) WriteTo(w io.Writer) (int64, error)
 WriteTo writes request to w. It implements io.WriterTo.
 
 <a name="RequestConfig"></a>
+
 ## type [RequestConfig](<https://github.com/valyala/fasthttp/blob/master/server.go#L500-L512>)
 
 RequestConfig configure the per request deadline and body limits.
@@ -5569,6 +5811,7 @@ type RequestConfig struct {
 ```
 
 <a name="RequestCtx"></a>
+
 ## type [RequestCtx](<https://github.com/valyala/fasthttp/blob/master/server.go#L594-L628>)
 
 RequestCtx contains incoming request and manages outgoing response.
@@ -5596,6 +5839,7 @@ type RequestCtx struct {
 ```
 
 <a name="RequestCtx.Conn"></a>
+
 ### func \(\*RequestCtx\) [Conn](<https://github.com/valyala/fasthttp/blob/master/server.go#L867>)
 
 ```go
@@ -5609,6 +5853,7 @@ WARNING: Only use this method if you know what you are doing\!
 Reading from or writing to the returned connection will end badly\!
 
 <a name="RequestCtx.ConnID"></a>
+
 ### func \(\*RequestCtx\) [ConnID](<https://github.com/valyala/fasthttp/blob/master/server.go#L969>)
 
 ```go
@@ -5620,6 +5865,7 @@ ConnID returns unique connection ID.
 This ID may be used to match distinct requests to the same incoming connection.
 
 <a name="RequestCtx.ConnRequestNum"></a>
+
 ### func \(\*RequestCtx\) [ConnRequestNum](<https://github.com/valyala/fasthttp/blob/master/server.go#L988>)
 
 ```go
@@ -5631,6 +5877,7 @@ ConnRequestNum returns request sequence number for the current connection.
 Sequence starts with 1.
 
 <a name="RequestCtx.ConnTime"></a>
+
 ### func \(\*RequestCtx\) [ConnTime](<https://github.com/valyala/fasthttp/blob/master/server.go#L980>)
 
 ```go
@@ -5640,6 +5887,7 @@ func (ctx *RequestCtx) ConnTime() time.Time
 ConnTime returns the time the server started serving the connection the current request came from.
 
 <a name="RequestCtx.Deadline"></a>
+
 ### func \(\*RequestCtx\) [Deadline](<https://github.com/valyala/fasthttp/blob/master/server.go#L2858>)
 
 ```go
@@ -5651,6 +5899,7 @@ Deadline returns the time when work done on behalf of this context should be can
 This method always returns 0, false and is only present to make RequestCtx implement the context interface.
 
 <a name="RequestCtx.Done"></a>
+
 ### func \(\*RequestCtx\) [Done](<https://github.com/valyala/fasthttp/blob/master/server.go#L2868>)
 
 ```go
@@ -5662,6 +5911,7 @@ Done returns a channel that's closed when work done on behalf of this context sh
 Note: Because creating a new channel for every request is just too expensive, so RequestCtx.s.done is only closed when the server is shutting down.
 
 <a name="RequestCtx.EarlyHints"></a>
+
 ### func \(\*RequestCtx\) [EarlyHints](<https://github.com/valyala/fasthttp/blob/master/server.go#L650>)
 
 ```go
@@ -5689,6 +5939,7 @@ func(ctx *fasthttp.RequestCtx) {
 ```
 
 <a name="RequestCtx.Err"></a>
+
 ### func \(\*RequestCtx\) [Err](<https://github.com/valyala/fasthttp/blob/master/server.go#L2881>)
 
 ```go
@@ -5700,6 +5951,7 @@ Err returns a non\-nil error value after Done is closed, successive calls to Err
 Note: Because creating a new channel for every request is just too expensive, so RequestCtx.s.done is only closed when the server is shutting down.
 
 <a name="RequestCtx.Error"></a>
+
 ### func \(\*RequestCtx\) [Error](<https://github.com/valyala/fasthttp/blob/master/server.go#L1381>)
 
 ```go
@@ -5711,6 +5963,7 @@ Error sets response status code to the given value and sets response body to the
 Warning: this will reset the response headers and body already set\!
 
 <a name="RequestCtx.FormFile"></a>
+
 ### func \(\*RequestCtx\) [FormFile](<https://github.com/valyala/fasthttp/blob/master/server.go#L1122>)
 
 ```go
@@ -5728,6 +5981,7 @@ The returned file header is valid until your request handler returns.
 For multipart requests with untrusted input, call MultipartFormWithLimit\(\) before FormFile.
 
 <a name="RequestCtx.FormValue"></a>
+
 ### func \(\*RequestCtx\) [FormValue](<https://github.com/valyala/fasthttp/blob/master/server.go#L1210>)
 
 ```go
@@ -5753,6 +6007,7 @@ The returned value is valid until your request handler returns.
 For multipart requests with untrusted input, either call MultipartFormWithLimit\(\) before FormValue or provide a custom Server.FormValueFunc that uses MultipartFormWithLimit\(\).
 
 <a name="RequestCtx.Hijack"></a>
+
 ### func \(\*RequestCtx\) [Hijack](<https://github.com/valyala/fasthttp/blob/master/server.go#L731>)
 
 ```go
@@ -5782,55 +6037,53 @@ Arbitrary 'Connection: Upgrade' protocols may be implemented with HijackHandler.
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
-	"net"
+ "fmt"
+ "log"
+ "net"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// hijackHandler is called on hijacked connection.
-	hijackHandler := func(c net.Conn) {
-		fmt.Fprintf(c, "This message is sent over a hijacked connection to the client %s\n", c.RemoteAddr())
-		fmt.Fprintf(c, "Send me something and I'll echo it to you\n")
-		var buf [1]byte
-		for {
-			if _, err := c.Read(buf[:]); err != nil {
-				log.Printf("error when reading from hijacked connection: %v", err)
-				return
-			}
-			fmt.Fprintf(c, "You sent me %q. Waiting for new data\n", buf[:])
-		}
-	}
+ // hijackHandler is called on hijacked connection.
+ hijackHandler := func(c net.Conn) {
+  fmt.Fprintf(c, "This message is sent over a hijacked connection to the client %s\n", c.RemoteAddr())
+  fmt.Fprintf(c, "Send me something and I'll echo it to you\n")
+  var buf [1]byte
+  for {
+   if _, err := c.Read(buf[:]); err != nil {
+    log.Printf("error when reading from hijacked connection: %v", err)
+    return
+   }
+   fmt.Fprintf(c, "You sent me %q. Waiting for new data\n", buf[:])
+  }
+ }
 
-	// requestHandler is called for each incoming request.
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		path := ctx.Path()
-		switch {
-		case string(path) == "/hijack":
-			// Note that the connection is hijacked only after
-			// returning from requestHandler and sending http response.
-			ctx.Hijack(hijackHandler)
+ // requestHandler is called for each incoming request.
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  path := ctx.Path()
+  switch {
+  case string(path) == "/hijack":
+   // Note that the connection is hijacked only after
+   // returning from requestHandler and sending http response.
+   ctx.Hijack(hijackHandler)
 
-			// The connection will be hijacked after sending this response.
-			fmt.Fprintf(ctx, "Hijacked the connection!")
-		case string(path) == "/":
-			fmt.Fprintf(ctx, "Root directory requested")
-		default:
-			fmt.Fprintf(ctx, "Requested path is %q", path)
-		}
-	}
+   // The connection will be hijacked after sending this response.
+   fmt.Fprintf(ctx, "Hijacked the connection!")
+  case string(path) == "/":
+   fmt.Fprintf(ctx, "Root directory requested")
+  default:
+   fmt.Fprintf(ctx, "Requested path is %q", path)
+  }
+ }
 
-	if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -5838,6 +6091,7 @@ func main() {
 </details>
 
 <a name="RequestCtx.HijackSetNoResponse"></a>
+
 ### func \(\*RequestCtx\) [HijackSetNoResponse](<https://github.com/valyala/fasthttp/blob/master/server.go#L740>)
 
 ```go
@@ -5847,6 +6101,7 @@ func (ctx *RequestCtx) HijackSetNoResponse(noResponse bool)
 HijackSetNoResponse changes the behavior of hijacking a request. If HijackSetNoResponse is called with false fasthttp will send a response to the client before calling the HijackHandler \(default\). If HijackSetNoResponse is called with true no response is send back before calling the HijackHandler supplied in the Hijack function.
 
 <a name="RequestCtx.Hijacked"></a>
+
 ### func \(\*RequestCtx\) [Hijacked](<https://github.com/valyala/fasthttp/blob/master/server.go#L745>)
 
 ```go
@@ -5856,6 +6111,7 @@ func (ctx *RequestCtx) Hijacked() bool
 Hijacked returns true after Hijack is called.
 
 <a name="RequestCtx.Host"></a>
+
 ### func \(\*RequestCtx\) [Host](<https://github.com/valyala/fasthttp/blob/master/server.go#L1053>)
 
 ```go
@@ -5867,6 +6123,7 @@ Host returns requested host.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.ID"></a>
+
 ### func \(\*RequestCtx\) [ID](<https://github.com/valyala/fasthttp/blob/master/server.go#L961>)
 
 ```go
@@ -5876,6 +6133,7 @@ func (ctx *RequestCtx) ID() uint64
 ID returns unique ID of the request.
 
 <a name="RequestCtx.IfModifiedSince"></a>
+
 ### func \(\*RequestCtx\) [IfModifiedSince](<https://github.com/valyala/fasthttp/blob/master/server.go#L1518>)
 
 ```go
@@ -5887,6 +6145,7 @@ IfModifiedSince returns true if lastModified exceeds 'If\-Modified\-Since' value
 The function returns true also 'If\-Modified\-Since' request header is missing.
 
 <a name="RequestCtx.Init"></a>
+
 ### func \(\*RequestCtx\) [Init](<https://github.com/valyala/fasthttp/blob/master/server.go#L2837>)
 
 ```go
@@ -5900,6 +6159,7 @@ remoteAddr and logger are optional. They are used by RequestCtx.Logger\(\).
 This function is intended for custom Server implementations.
 
 <a name="RequestCtx.Init2"></a>
+
 ### func \(\*RequestCtx\) [Init2](<https://github.com/valyala/fasthttp/blob/master/server.go#L2818>)
 
 ```go
@@ -5913,6 +6173,7 @@ conn is used only for determining local and remote addresses.
 This function is intended for custom Server implementations. See https://github.com/valyala/httpteleport for details.
 
 <a name="RequestCtx.IsBodyStream"></a>
+
 ### func \(\*RequestCtx\) [IsBodyStream](<https://github.com/valyala/fasthttp/blob/master/server.go#L1594>)
 
 ```go
@@ -5922,6 +6183,7 @@ func (ctx *RequestCtx) IsBodyStream() bool
 IsBodyStream returns true if response body is set via SetBodyStream\*.
 
 <a name="RequestCtx.IsConnect"></a>
+
 ### func \(\*RequestCtx\) [IsConnect](<https://github.com/valyala/fasthttp/blob/master/server.go#L1285>)
 
 ```go
@@ -5931,6 +6193,7 @@ func (ctx *RequestCtx) IsConnect() bool
 IsConnect returns true if request method is CONNECT.
 
 <a name="RequestCtx.IsDelete"></a>
+
 ### func \(\*RequestCtx\) [IsDelete](<https://github.com/valyala/fasthttp/blob/master/server.go#L1280>)
 
 ```go
@@ -5940,6 +6203,7 @@ func (ctx *RequestCtx) IsDelete() bool
 IsDelete returns true if request method is DELETE.
 
 <a name="RequestCtx.IsGet"></a>
+
 ### func \(\*RequestCtx\) [IsGet](<https://github.com/valyala/fasthttp/blob/master/server.go#L1265>)
 
 ```go
@@ -5949,6 +6213,7 @@ func (ctx *RequestCtx) IsGet() bool
 IsGet returns true if request method is GET.
 
 <a name="RequestCtx.IsHead"></a>
+
 ### func \(\*RequestCtx\) [IsHead](<https://github.com/valyala/fasthttp/blob/master/server.go#L1312>)
 
 ```go
@@ -5958,6 +6223,7 @@ func (ctx *RequestCtx) IsHead() bool
 IsHead returns true if request method is HEAD.
 
 <a name="RequestCtx.IsOptions"></a>
+
 ### func \(\*RequestCtx\) [IsOptions](<https://github.com/valyala/fasthttp/blob/master/server.go#L1290>)
 
 ```go
@@ -5967,6 +6233,7 @@ func (ctx *RequestCtx) IsOptions() bool
 IsOptions returns true if request method is OPTIONS.
 
 <a name="RequestCtx.IsPatch"></a>
+
 ### func \(\*RequestCtx\) [IsPatch](<https://github.com/valyala/fasthttp/blob/master/server.go#L1300>)
 
 ```go
@@ -5976,6 +6243,7 @@ func (ctx *RequestCtx) IsPatch() bool
 IsPatch returns true if request method is PATCH.
 
 <a name="RequestCtx.IsPost"></a>
+
 ### func \(\*RequestCtx\) [IsPost](<https://github.com/valyala/fasthttp/blob/master/server.go#L1270>)
 
 ```go
@@ -5985,6 +6253,7 @@ func (ctx *RequestCtx) IsPost() bool
 IsPost returns true if request method is POST.
 
 <a name="RequestCtx.IsPut"></a>
+
 ### func \(\*RequestCtx\) [IsPut](<https://github.com/valyala/fasthttp/blob/master/server.go#L1275>)
 
 ```go
@@ -5994,6 +6263,7 @@ func (ctx *RequestCtx) IsPut() bool
 IsPut returns true if request method is PUT.
 
 <a name="RequestCtx.IsTLS"></a>
+
 ### func \(\*RequestCtx\) [IsTLS](<https://github.com/valyala/fasthttp/blob/master/server.go#L827>)
 
 ```go
@@ -6005,6 +6275,7 @@ IsTLS returns true if the underlying connection is tls.Conn.
 tls.Conn is an encrypted connection \(aka SSL, HTTPS\).
 
 <a name="RequestCtx.IsTrace"></a>
+
 ### func \(\*RequestCtx\) [IsTrace](<https://github.com/valyala/fasthttp/blob/master/server.go#L1295>)
 
 ```go
@@ -6014,6 +6285,7 @@ func (ctx *RequestCtx) IsTrace() bool
 IsTrace returns true if request method is TRACE.
 
 <a name="RequestCtx.LastTimeoutErrorResponse"></a>
+
 ### func \(\*RequestCtx\) [LastTimeoutErrorResponse](<https://github.com/valyala/fasthttp/blob/master/server.go#L2704>)
 
 ```go
@@ -6025,6 +6297,7 @@ LastTimeoutErrorResponse returns the last timeout response set via TimeoutError\
 This function is intended for custom server implementations.
 
 <a name="RequestCtx.LocalAddr"></a>
+
 ### func \(\*RequestCtx\) [LocalAddr](<https://github.com/valyala/fasthttp/blob/master/server.go#L1344>)
 
 ```go
@@ -6036,6 +6309,7 @@ LocalAddr returns server address for the given request.
 Always returns non\-nil result.
 
 <a name="RequestCtx.LocalIP"></a>
+
 ### func \(\*RequestCtx\) [LocalIP](<https://github.com/valyala/fasthttp/blob/master/server.go#L1365>)
 
 ```go
@@ -6047,6 +6321,7 @@ LocalIP returns the server ip the request came to.
 Always returns non\-nil result.
 
 <a name="RequestCtx.Logger"></a>
+
 ### func \(\*RequestCtx\) [Logger](<https://github.com/valyala/fasthttp/blob/master/server.go#L1609>)
 
 ```go
@@ -6064,37 +6339,35 @@ The returned logger is valid until your request handler returns.
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		if string(ctx.Path()) == "/top-secret" {
-			ctx.Logger().Printf("Alarm! Alien intrusion detected!")
-			ctx.Error("Access denied!", fasthttp.StatusForbidden)
-			return
-		}
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  if string(ctx.Path()) == "/top-secret" {
+   ctx.Logger().Printf("Alarm! Alien intrusion detected!")
+   ctx.Error("Access denied!", fasthttp.StatusForbidden)
+   return
+  }
 
-		// Logger may be cached in local variables.
-		logger := ctx.Logger()
+  // Logger may be cached in local variables.
+  logger := ctx.Logger()
 
-		logger.Printf("Good request from User-Agent %q", ctx.Request.Header.UserAgent())
-		fmt.Fprintf(ctx, "Good request to %q", ctx.Path())
-		logger.Printf("Multiple log messages may be written during a single request")
-	}
+  logger.Printf("Good request from User-Agent %q", ctx.Request.Header.UserAgent())
+  fmt.Fprintf(ctx, "Good request to %q", ctx.Path())
+  logger.Printf("Multiple log messages may be written during a single request")
+ }
 
-	if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -6102,6 +6375,7 @@ func main() {
 </details>
 
 <a name="RequestCtx.Method"></a>
+
 ### func \(\*RequestCtx\) [Method](<https://github.com/valyala/fasthttp/blob/master/server.go#L1307>)
 
 ```go
@@ -6113,6 +6387,7 @@ Method return request method.
 Returned value is valid until your request handler returns.
 
 <a name="RequestCtx.MultipartForm"></a>
+
 ### func \(\*RequestCtx\) [MultipartForm](<https://github.com/valyala/fasthttp/blob/master/server.go#L1096>)
 
 ```go
@@ -6134,6 +6409,7 @@ The returned form is valid until your request handler returns.
 See also FormFile and FormValue.
 
 <a name="RequestCtx.MultipartFormWithLimit"></a>
+
 ### func \(\*RequestCtx\) [MultipartFormWithLimit](<https://github.com/valyala/fasthttp/blob/master/server.go#L1107>)
 
 ```go
@@ -6147,6 +6423,7 @@ If maxBodySize \<= 0, then no limit is applied.
 Call this method before FormValue/FormFile if you need a limit for multipart parsing.
 
 <a name="RequestCtx.NotFound"></a>
+
 ### func \(\*RequestCtx\) [NotFound](<https://github.com/valyala/fasthttp/blob/master/server.go#L1538>)
 
 ```go
@@ -6156,6 +6433,7 @@ func (ctx *RequestCtx) NotFound()
 NotFound resets response and sets '404 Not Found' response status code.
 
 <a name="RequestCtx.NotModified"></a>
+
 ### func \(\*RequestCtx\) [NotModified](<https://github.com/valyala/fasthttp/blob/master/server.go#L1532>)
 
 ```go
@@ -6165,6 +6443,7 @@ func (ctx *RequestCtx) NotModified()
 NotModified resets response and sets '304 Not Modified' response status code.
 
 <a name="RequestCtx.Path"></a>
+
 ### func \(\*RequestCtx\) [Path](<https://github.com/valyala/fasthttp/blob/master/server.go#L1046>)
 
 ```go
@@ -6176,6 +6455,7 @@ Path returns requested path.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.PostArgs"></a>
+
 ### func \(\*RequestCtx\) [PostArgs](<https://github.com/valyala/fasthttp/blob/master/server.go#L1075>)
 
 ```go
@@ -6191,6 +6471,7 @@ See also QueryArgs, FormValue and FormFile.
 These args are valid until your request handler returns.
 
 <a name="RequestCtx.PostBody"></a>
+
 ### func \(\*RequestCtx\) [PostBody](<https://github.com/valyala/fasthttp/blob/master/server.go#L1559>)
 
 ```go
@@ -6202,6 +6483,7 @@ PostBody returns POST request body.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.QueryArgs"></a>
+
 ### func \(\*RequestCtx\) [QueryArgs](<https://github.com/valyala/fasthttp/blob/master/server.go#L1064>)
 
 ```go
@@ -6217,6 +6499,7 @@ See also PostArgs, FormValue and FormFile.
 These args are valid until your request handler returns.
 
 <a name="RequestCtx.Redirect"></a>
+
 ### func \(\*RequestCtx\) [Redirect](<https://github.com/valyala/fasthttp/blob/master/server.go#L1419>)
 
 ```go
@@ -6244,6 +6527,7 @@ ctx.Response.SetStatusCode(fasthttp.StatusMovedPermanently)
 ```
 
 <a name="RequestCtx.RedirectBytes"></a>
+
 ### func \(\*RequestCtx\) [RedirectBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L1447>)
 
 ```go
@@ -6271,6 +6555,7 @@ ctx.Response.SetStatusCode(fasthttp.StatusMovedPermanently)
 ```
 
 <a name="RequestCtx.Referer"></a>
+
 ### func \(\*RequestCtx\) [Referer](<https://github.com/valyala/fasthttp/blob/master/server.go#L1032>)
 
 ```go
@@ -6282,6 +6567,7 @@ Referer returns request referer.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.RemoteAddr"></a>
+
 ### func \(\*RequestCtx\) [RemoteAddr](<https://github.com/valyala/fasthttp/blob/master/server.go#L1319>)
 
 ```go
@@ -6293,6 +6579,7 @@ RemoteAddr returns client address for the given request.
 Always returns non\-nil result.
 
 <a name="RequestCtx.RemoteIP"></a>
+
 ### func \(\*RequestCtx\) [RemoteIP](<https://github.com/valyala/fasthttp/blob/master/server.go#L1358>)
 
 ```go
@@ -6304,6 +6591,7 @@ RemoteIP returns the client ip the request came from.
 Always returns non\-nil result.
 
 <a name="RequestCtx.RemoveUserValue"></a>
+
 ### func \(\*RequestCtx\) [RemoveUserValue](<https://github.com/valyala/fasthttp/blob/master/server.go#L810>)
 
 ```go
@@ -6313,6 +6601,7 @@ func (ctx *RequestCtx) RemoveUserValue(key any)
 RemoveUserValue removes the given key and the value under it in Request.
 
 <a name="RequestCtx.RemoveUserValueBytes"></a>
+
 ### func \(\*RequestCtx\) [RemoveUserValueBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L815>)
 
 ```go
@@ -6322,15 +6611,15 @@ func (ctx *RequestCtx) RemoveUserValueBytes(key []byte)
 RemoveUserValueBytes removes the given key and the value under it in Request.
 
 <a name="RequestCtx.RequestBodyStream"></a>
+
 ### func \(\*RequestCtx\) [RequestBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L609>)
 
 ```go
 func (ctx *RequestCtx) RequestBodyStream() io.Reader
 ```
 
-
-
 <a name="RequestCtx.RequestURI"></a>
+
 ### func \(\*RequestCtx\) [RequestURI](<https://github.com/valyala/fasthttp/blob/master/server.go#L1018>)
 
 ```go
@@ -6342,6 +6631,7 @@ RequestURI returns RequestURI.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.ResetBody"></a>
+
 ### func \(\*RequestCtx\) [ResetBody](<https://github.com/valyala/fasthttp/blob/master/server.go#L1480>)
 
 ```go
@@ -6351,6 +6641,7 @@ func (ctx *RequestCtx) ResetBody()
 ResetBody resets response body contents.
 
 <a name="RequestCtx.ResetUserValues"></a>
+
 ### func \(\*RequestCtx\) [ResetUserValues](<https://github.com/valyala/fasthttp/blob/master/server.go#L805>)
 
 ```go
@@ -6360,6 +6651,7 @@ func (ctx *RequestCtx) ResetUserValues()
 ResetUserValues allows to reset user values from Request.
 
 <a name="RequestCtx.SendFile"></a>
+
 ### func \(\*RequestCtx\) [SendFile](<https://github.com/valyala/fasthttp/blob/master/server.go#L1495>)
 
 ```go
@@ -6377,6 +6669,7 @@ See also ServeFile, FSHandler and FS.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="RequestCtx.SendFileBytes"></a>
+
 ### func \(\*RequestCtx\) [SendFileBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L1510>)
 
 ```go
@@ -6394,6 +6687,7 @@ See also ServeFileBytes, FSHandler and FS.
 WARNING: do not pass any user supplied paths to this function\! WARNING: if path is based on user input users will be able to request any file on your filesystem\! Use fasthttp.FS with a sane Root instead.
 
 <a name="RequestCtx.SetBody"></a>
+
 ### func \(\*RequestCtx\) [SetBody](<https://github.com/valyala/fasthttp/blob/master/server.go#L1470>)
 
 ```go
@@ -6405,6 +6699,7 @@ SetBody sets response body to the given value.
 It is safe re\-using body argument after the function returns.
 
 <a name="RequestCtx.SetBodyStream"></a>
+
 ### func \(\*RequestCtx\) [SetBodyStream](<https://github.com/valyala/fasthttp/blob/master/server.go#L1574>)
 
 ```go
@@ -6422,6 +6717,7 @@ If bodySize \< 0, then bodyStream is read until io.EOF.
 See also SetBodyStreamWriter.
 
 <a name="RequestCtx.SetBodyStreamWriter"></a>
+
 ### func \(\*RequestCtx\) [SetBodyStreamWriter](<https://github.com/valyala/fasthttp/blob/master/server.go#L1589>)
 
 ```go
@@ -6441,40 +6737,38 @@ This function may be used in the following cases:
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"log"
-	"time"
+ "bufio"
+ "fmt"
+ "log"
+ "time"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// Start fasthttp server for streaming responses.
-	if err := fasthttp.ListenAndServe(":8080", responseStreamHandler); err != nil {
-		log.Fatalf("unexpected error in server: %v", err)
-	}
+ // Start fasthttp server for streaming responses.
+ if err := fasthttp.ListenAndServe(":8080", responseStreamHandler); err != nil {
+  log.Fatalf("unexpected error in server: %v", err)
+ }
 }
 
 func responseStreamHandler(ctx *fasthttp.RequestCtx) {
-	// Send the response in chunks and wait for a second between each chunk.
-	ctx.SetBodyStreamWriter(func(w *bufio.Writer) {
-		for i := range 10 {
-			fmt.Fprintf(w, "this is a message number %d", i)
+ // Send the response in chunks and wait for a second between each chunk.
+ ctx.SetBodyStreamWriter(func(w *bufio.Writer) {
+  for i := range 10 {
+   fmt.Fprintf(w, "this is a message number %d", i)
 
-			// Do not forget flushing streamed data to the client.
-			if err := w.Flush(); err != nil {
-				return
-			}
-			time.Sleep(time.Second)
-		}
-	})
+   // Do not forget flushing streamed data to the client.
+   if err := w.Flush(); err != nil {
+    return
+   }
+   time.Sleep(time.Second)
+  }
+ })
 }
 ```
 
@@ -6482,6 +6776,7 @@ func responseStreamHandler(ctx *fasthttp.RequestCtx) {
 </details>
 
 <a name="RequestCtx.SetBodyString"></a>
+
 ### func \(\*RequestCtx\) [SetBodyString](<https://github.com/valyala/fasthttp/blob/master/server.go#L1475>)
 
 ```go
@@ -6491,6 +6786,7 @@ func (ctx *RequestCtx) SetBodyString(body string)
 SetBodyString sets response body to the given value.
 
 <a name="RequestCtx.SetConnectionClose"></a>
+
 ### func \(\*RequestCtx\) [SetConnectionClose](<https://github.com/valyala/fasthttp/blob/master/server.go#L994>)
 
 ```go
@@ -6500,6 +6796,7 @@ func (ctx *RequestCtx) SetConnectionClose()
 SetConnectionClose sets 'Connection: close' response header and closes connection after the RequestHandler returns.
 
 <a name="RequestCtx.SetContentType"></a>
+
 ### func \(\*RequestCtx\) [SetContentType](<https://github.com/valyala/fasthttp/blob/master/server.go#L1004>)
 
 ```go
@@ -6509,6 +6806,7 @@ func (ctx *RequestCtx) SetContentType(contentType string)
 SetContentType sets response Content\-Type.
 
 <a name="RequestCtx.SetContentTypeBytes"></a>
+
 ### func \(\*RequestCtx\) [SetContentTypeBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L1011>)
 
 ```go
@@ -6520,6 +6818,7 @@ SetContentTypeBytes sets response Content\-Type.
 It is safe modifying contentType buffer after function return.
 
 <a name="RequestCtx.SetRemoteAddr"></a>
+
 ### func \(\*RequestCtx\) [SetRemoteAddr](<https://github.com/valyala/fasthttp/blob/master/server.go#L1337>)
 
 ```go
@@ -6531,6 +6830,7 @@ SetRemoteAddr sets remote address to the given value.
 Set nil value to restore default behaviour for using connection remote address.
 
 <a name="RequestCtx.SetStatusCode"></a>
+
 ### func \(\*RequestCtx\) [SetStatusCode](<https://github.com/valyala/fasthttp/blob/master/server.go#L999>)
 
 ```go
@@ -6540,6 +6840,7 @@ func (ctx *RequestCtx) SetStatusCode(statusCode int)
 SetStatusCode sets response status code.
 
 <a name="RequestCtx.SetUserValue"></a>
+
 ### func \(\*RequestCtx\) [SetUserValue](<https://github.com/valyala/fasthttp/blob/master/server.go#L760>)
 
 ```go
@@ -6555,6 +6856,7 @@ This functionality may be useful for passing arbitrary values between functions 
 All the values are removed from Request after returning from the top RequestHandler. Additionally, Close method is called on each value implementing io.Closer before removing the value from Request.
 
 <a name="RequestCtx.SetUserValueBytes"></a>
+
 ### func \(\*RequestCtx\) [SetUserValueBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L773>)
 
 ```go
@@ -6570,6 +6872,7 @@ This functionality may be useful for passing arbitrary values between functions 
 All the values stored in Request are deleted after returning from RequestHandler.
 
 <a name="RequestCtx.String"></a>
+
 ### func \(\*RequestCtx\) [String](<https://github.com/valyala/fasthttp/blob/master/server.go#L955>)
 
 ```go
@@ -6581,6 +6884,7 @@ String returns unique string representation of the ctx.
 The returned value may be useful for logging.
 
 <a name="RequestCtx.Success"></a>
+
 ### func \(\*RequestCtx\) [Success](<https://github.com/valyala/fasthttp/blob/master/server.go#L1389>)
 
 ```go
@@ -6590,6 +6894,7 @@ func (ctx *RequestCtx) Success(contentType string, body []byte)
 Success sets response Content\-Type and body to the given values.
 
 <a name="RequestCtx.SuccessString"></a>
+
 ### func \(\*RequestCtx\) [SuccessString](<https://github.com/valyala/fasthttp/blob/master/server.go#L1395>)
 
 ```go
@@ -6599,6 +6904,7 @@ func (ctx *RequestCtx) SuccessString(contentType, body string)
 SuccessString sets response Content\-Type and body to the given values.
 
 <a name="RequestCtx.TLSConnectionState"></a>
+
 ### func \(\*RequestCtx\) [TLSConnectionState](<https://github.com/valyala/fasthttp/blob/master/server.go#L853>)
 
 ```go
@@ -6612,6 +6918,7 @@ The function returns nil if the underlying connection isn't tls.Conn.
 The returned state may be used for verifying TLS version, client certificates, etc.
 
 <a name="RequestCtx.Time"></a>
+
 ### func \(\*RequestCtx\) [Time](<https://github.com/valyala/fasthttp/blob/master/server.go#L974>)
 
 ```go
@@ -6621,6 +6928,7 @@ func (ctx *RequestCtx) Time() time.Time
 Time returns RequestHandler call time.
 
 <a name="RequestCtx.TimeoutError"></a>
+
 ### func \(\*RequestCtx\) [TimeoutError](<https://github.com/valyala/fasthttp/blob/master/server.go#L1629>)
 
 ```go
@@ -6638,49 +6946,47 @@ Usage of this function is discouraged. Prefer eliminating ctx references from pe
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
-	"math/rand"
-	"time"
+ "fmt"
+ "log"
+ "math/rand"
+ "time"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		// Emulate long-running task, which touches ctx.
-		doneCh := make(chan struct{})
-		go func() {
-			workDuration := time.Millisecond * time.Duration(rand.Intn(2000))
-			time.Sleep(workDuration)
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  // Emulate long-running task, which touches ctx.
+  doneCh := make(chan struct{})
+  go func() {
+   workDuration := time.Millisecond * time.Duration(rand.Intn(2000))
+   time.Sleep(workDuration)
 
-			fmt.Fprintf(ctx, "ctx has been accessed by long-running task\n")
-			fmt.Fprintf(ctx, "The requestHandler may be finished by this time.\n")
+   fmt.Fprintf(ctx, "ctx has been accessed by long-running task\n")
+   fmt.Fprintf(ctx, "The requestHandler may be finished by this time.\n")
 
-			close(doneCh)
-		}()
+   close(doneCh)
+  }()
 
-		select {
-		case <-doneCh:
-			fmt.Fprintf(ctx, "The task has been finished in less than a second")
-		case <-time.After(time.Second):
-			// Since the long-running task is still running and may access ctx,
-			// we must call TimeoutError before returning from requestHandler.
-			//
-			// Otherwise the program will suffer from data races.
-			ctx.TimeoutError("Timeout!")
-		}
-	}
+  select {
+  case <-doneCh:
+   fmt.Fprintf(ctx, "The task has been finished in less than a second")
+  case <-time.After(time.Second):
+   // Since the long-running task is still running and may access ctx,
+   // we must call TimeoutError before returning from requestHandler.
+   //
+   // Otherwise the program will suffer from data races.
+   ctx.TimeoutError("Timeout!")
+  }
+ }
 
-	if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -6688,6 +6994,7 @@ func main() {
 </details>
 
 <a name="RequestCtx.TimeoutErrorWithCode"></a>
+
 ### func \(\*RequestCtx\) [TimeoutErrorWithCode](<https://github.com/valyala/fasthttp/blob/master/server.go#L1643>)
 
 ```go
@@ -6703,6 +7010,7 @@ TimeoutErrorWithCode MUST be called before returning from RequestHandler if ther
 Usage of this function is discouraged. Prefer eliminating ctx references from pending goroutines instead of using this function.
 
 <a name="RequestCtx.TimeoutErrorWithResponse"></a>
+
 ### func \(\*RequestCtx\) [TimeoutErrorWithResponse](<https://github.com/valyala/fasthttp/blob/master/server.go#L1660>)
 
 ```go
@@ -6718,6 +7026,7 @@ TimeoutErrorWithResponse MUST be called before returning from RequestHandler if 
 Usage of this function is discouraged. Prefer eliminating ctx references from pending goroutines instead of using this function.
 
 <a name="RequestCtx.URI"></a>
+
 ### func \(\*RequestCtx\) [URI](<https://github.com/valyala/fasthttp/blob/master/server.go#L1025>)
 
 ```go
@@ -6729,6 +7038,7 @@ URI returns requested uri.
 This uri is valid until your request handler returns.
 
 <a name="RequestCtx.UserAgent"></a>
+
 ### func \(\*RequestCtx\) [UserAgent](<https://github.com/valyala/fasthttp/blob/master/server.go#L1039>)
 
 ```go
@@ -6740,6 +7050,7 @@ UserAgent returns User\-Agent header value from the request.
 The returned bytes are valid until your request handler returns.
 
 <a name="RequestCtx.UserValue"></a>
+
 ### func \(\*RequestCtx\) [UserValue](<https://github.com/valyala/fasthttp/blob/master/server.go#L778>)
 
 ```go
@@ -6749,6 +7060,7 @@ func (ctx *RequestCtx) UserValue(key any) any
 UserValue returns the value stored via SetUserValue\* under the given key.
 
 <a name="RequestCtx.UserValueBytes"></a>
+
 ### func \(\*RequestCtx\) [UserValueBytes](<https://github.com/valyala/fasthttp/blob/master/server.go#L784>)
 
 ```go
@@ -6758,6 +7070,7 @@ func (ctx *RequestCtx) UserValueBytes(key []byte) any
 UserValueBytes returns the value stored via SetUserValue\* under the given key.
 
 <a name="RequestCtx.Value"></a>
+
 ### func \(\*RequestCtx\) [Value](<https://github.com/valyala/fasthttp/blob/master/server.go#L2896>)
 
 ```go
@@ -6769,6 +7082,7 @@ Value returns the value associated with this context for key, or nil if no value
 This method is present to make RequestCtx implement the context interface. This method is the same as calling ctx.UserValue\(key\).
 
 <a name="RequestCtx.VisitUserValues"></a>
+
 ### func \(\*RequestCtx\) [VisitUserValues](<https://github.com/valyala/fasthttp/blob/master/server.go#L792>)
 
 ```go
@@ -6780,6 +7094,7 @@ VisitUserValues calls visitor for each existing userValue with a key that is a s
 visitor must not retain references to key and value after returning. Make key and/or value copies if you need storing them after returning.
 
 <a name="RequestCtx.VisitUserValuesAll"></a>
+
 ### func \(\*RequestCtx\) [VisitUserValuesAll](<https://github.com/valyala/fasthttp/blob/master/server.go#L800>)
 
 ```go
@@ -6791,6 +7106,7 @@ VisitUserValuesAll calls visitor for each existing userValue.
 visitor must not retain references to key and value after returning. Make key and/or value copies if you need storing them after returning.
 
 <a name="RequestCtx.Write"></a>
+
 ### func \(\*RequestCtx\) [Write](<https://github.com/valyala/fasthttp/blob/master/server.go#L1545>)
 
 ```go
@@ -6800,6 +7116,7 @@ func (ctx *RequestCtx) Write(p []byte) (int, error)
 Write writes p into response body.
 
 <a name="RequestCtx.WriteString"></a>
+
 ### func \(\*RequestCtx\) [WriteString](<https://github.com/valyala/fasthttp/blob/master/server.go#L1551>)
 
 ```go
@@ -6809,6 +7126,7 @@ func (ctx *RequestCtx) WriteString(s string) (int, error)
 WriteString appends s to response body.
 
 <a name="RequestHandler"></a>
+
 ## type [RequestHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L135>)
 
 RequestHandler must process incoming requests.
@@ -6820,6 +7138,7 @@ type RequestHandler func(ctx *RequestCtx)
 ```
 
 <a name="CompressHandler"></a>
+
 ### func [CompressHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L517>)
 
 ```go
@@ -6829,6 +7148,7 @@ func CompressHandler(h RequestHandler) RequestHandler
 CompressHandler returns RequestHandler that transparently compresses response body generated by h if the request contains 'gzip' or 'deflate' 'Accept\-Encoding' header.
 
 <a name="CompressHandlerBrotliLevel"></a>
+
 ### func [CompressHandlerBrotliLevel](<https://github.com/valyala/fasthttp/blob/master/server.go#L564>)
 
 ```go
@@ -6853,6 +7173,7 @@ otherLevel is the desired compression level for gzip and deflate.
 - CompressHuffmanOnly
 
 <a name="CompressHandlerLevel"></a>
+
 ### func [CompressHandlerLevel](<https://github.com/valyala/fasthttp/blob/master/server.go#L532>)
 
 ```go
@@ -6870,6 +7191,7 @@ Level is the desired compression level:
 - CompressHuffmanOnly
 
 <a name="FSHandler"></a>
+
 ### func [FSHandler](<https://github.com/valyala/fasthttp/blob/master/fs.go#L415>)
 
 ```go
@@ -6893,55 +7215,53 @@ Do not create multiple request handler instances for the same \(root, stripSlash
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"bytes"
-	"log"
+ "bytes"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 // Setup file handlers (aka 'file server config').
 var (
-	// Handler for serving images from /img/ path,
-	// i.e. /img/foo/bar.jpg will be served from
-	// /var/www/images/foo/bar.jpb .
-	imgPrefix  = []byte("/img/")
-	imgHandler = fasthttp.FSHandler("/var/www/images", 1)
+ // Handler for serving images from /img/ path,
+ // i.e. /img/foo/bar.jpg will be served from
+ // /var/www/images/foo/bar.jpb .
+ imgPrefix  = []byte("/img/")
+ imgHandler = fasthttp.FSHandler("/var/www/images", 1)
 
-	// Handler for serving css from /static/css/ path,
-	// i.e. /static/css/foo/bar.css will be served from
-	// /home/dev/css/foo/bar.css .
-	cssPrefix  = []byte("/static/css/")
-	cssHandler = fasthttp.FSHandler("/home/dev/css", 2)
+ // Handler for serving css from /static/css/ path,
+ // i.e. /static/css/foo/bar.css will be served from
+ // /home/dev/css/foo/bar.css .
+ cssPrefix  = []byte("/static/css/")
+ cssHandler = fasthttp.FSHandler("/home/dev/css", 2)
 
-	// Handler for serving the rest of requests,
-	// i.e. /foo/bar/baz.html will be served from
-	// /var/www/files/foo/bar/baz.html .
-	filesHandler = fasthttp.FSHandler("/var/www/files", 0)
+ // Handler for serving the rest of requests,
+ // i.e. /foo/bar/baz.html will be served from
+ // /var/www/files/foo/bar/baz.html .
+ filesHandler = fasthttp.FSHandler("/var/www/files", 0)
 )
 
 // Main request handler.
 func requestHandler(ctx *fasthttp.RequestCtx) {
-	path := ctx.Path()
-	switch {
-	case bytes.HasPrefix(path, imgPrefix):
-		imgHandler(ctx)
-	case bytes.HasPrefix(path, cssPrefix):
-		cssHandler(ctx)
-	default:
-		filesHandler(ctx)
-	}
+ path := ctx.Path()
+ switch {
+ case bytes.HasPrefix(path, imgPrefix):
+  imgHandler(ctx)
+ case bytes.HasPrefix(path, cssPrefix):
+  cssHandler(ctx)
+ default:
+  filesHandler(ctx)
+ }
 }
 
 func main() {
-	if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
-		log.Fatalf("Error in server: %v", err)
-	}
+ if err := fasthttp.ListenAndServe(":80", requestHandler); err != nil {
+  log.Fatalf("Error in server: %v", err)
+ }
 }
 ```
 
@@ -6949,6 +7269,7 @@ func main() {
 </details>
 
 <a name="TimeoutHandler"></a>
+
 ### func [TimeoutHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L454>)
 
 ```go
@@ -6960,6 +7281,7 @@ TimeoutHandler creates RequestHandler, which returns StatusRequestTimeout error 
 The returned handler may return StatusTooManyRequests error with the given msg to the client if there are more than Server.Concurrency concurrent handlers h are running at the moment.
 
 <a name="TimeoutWithCodeHandler"></a>
+
 ### func [TimeoutWithCodeHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L465>)
 
 ```go
@@ -6971,6 +7293,7 @@ TimeoutWithCodeHandler creates RequestHandler, which returns an error with the g
 The returned handler may return StatusTooManyRequests error with the given msg to the client if there are more than Server.Concurrency concurrent handlers h are running at the moment.
 
 <a name="RequestHeader"></a>
+
 ## type [RequestHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L70-L86>)
 
 RequestHeader represents HTTP request header.
@@ -6986,6 +7309,7 @@ type RequestHeader struct {
 ```
 
 <a name="RequestHeader.Add"></a>
+
 ### func \(\*RequestHeader\) [Add](<https://github.com/valyala/fasthttp/blob/master/header.go#L1758>)
 
 ```go
@@ -6999,6 +7323,7 @@ Multiple headers with the same key may be added with this function. Use Set for 
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked request body.
 
 <a name="RequestHeader.AddBytesK"></a>
+
 ### func \(\*RequestHeader\) [AddBytesK](<https://github.com/valyala/fasthttp/blob/master/header.go#L1769>)
 
 ```go
@@ -7012,6 +7337,7 @@ Multiple headers with the same key may be added with this function. Use SetBytes
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked request body.
 
 <a name="RequestHeader.AddBytesKV"></a>
+
 ### func \(\*RequestHeader\) [AddBytesKV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1795>)
 
 ```go
@@ -7027,6 +7353,7 @@ the Content\-Type, Content\-Length, Connection, Transfer\-Encoding, Host and Use
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked request body.
 
 <a name="RequestHeader.AddBytesV"></a>
+
 ### func \(\*RequestHeader\) [AddBytesV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1780>)
 
 ```go
@@ -7040,6 +7367,7 @@ Multiple headers with the same key may be added with this function. Use SetBytes
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked request body.
 
 <a name="RequestHeader.All"></a>
+
 ### func \(\*RequestHeader\) [All](<https://github.com/valyala/fasthttp/blob/master/header.go#L1228>)
 
 ```go
@@ -7055,6 +7383,7 @@ To get the headers in order they were received use AllInOrder.
 Making modifications to the RequestHeader during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="RequestHeader.AllInOrder"></a>
+
 ### func \(\*RequestHeader\) [AllInOrder](<https://github.com/valyala/fasthttp/blob/master/header.go#L1296>)
 
 ```go
@@ -7070,6 +7399,7 @@ The returned iterator is slightly slower than All because it has to reparse the 
 Making modifications to the RequestHeader during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="RequestHeader.AppendBytes"></a>
+
 ### func \(\*RequestHeader\) [AppendBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L2569>)
 
 ```go
@@ -7079,6 +7409,7 @@ func (h *RequestHeader) AppendBytes(dst []byte) []byte
 AppendBytes appends request header representation to dst and returns the extended dst.
 
 <a name="RequestHeader.ConnectionUpgrade"></a>
+
 ### func \(\*RequestHeader\) [ConnectionUpgrade](<https://github.com/valyala/fasthttp/blob/master/header.go#L184>)
 
 ```go
@@ -7088,6 +7419,7 @@ func (h *RequestHeader) ConnectionUpgrade() bool
 ConnectionUpgrade returns true if 'Connection: Upgrade' header is set.
 
 <a name="RequestHeader.ContentEncoding"></a>
+
 ### func \(\*RequestHeader\) [ContentEncoding](<https://github.com/valyala/fasthttp/blob/master/header.go#L358>)
 
 ```go
@@ -7097,6 +7429,7 @@ func (h *RequestHeader) ContentEncoding() []byte
 ContentEncoding returns Content\-Encoding header value.
 
 <a name="RequestHeader.ContentLength"></a>
+
 ### func \(\*RequestHeader\) [ContentLength](<https://github.com/valyala/fasthttp/blob/master/header.go#L207>)
 
 ```go
@@ -7108,6 +7441,7 @@ ContentLength returns Content\-Length header value.
 It may be negative: \-1 means Transfer\-Encoding: chunked. \-2 means Transfer\-Encoding: identity.
 
 <a name="RequestHeader.ContentType"></a>
+
 ### func \(\*RequestHeader\) [ContentType](<https://github.com/valyala/fasthttp/blob/master/header.go#L350>)
 
 ```go
@@ -7117,6 +7451,7 @@ func (h *RequestHeader) ContentType() []byte
 ContentType returns Content\-Type header value.
 
 <a name="RequestHeader.Cookie"></a>
+
 ### func \(\*RequestHeader\) [Cookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L2100>)
 
 ```go
@@ -7126,6 +7461,7 @@ func (h *RequestHeader) Cookie(key string) []byte
 Cookie returns cookie for the given key.
 
 <a name="RequestHeader.CookieBytes"></a>
+
 ### func \(\*RequestHeader\) [CookieBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L2106>)
 
 ```go
@@ -7135,6 +7471,7 @@ func (h *RequestHeader) CookieBytes(key []byte) []byte
 CookieBytes returns cookie for the given key.
 
 <a name="RequestHeader.Cookies"></a>
+
 ### func \(\*RequestHeader\) [Cookies](<https://github.com/valyala/fasthttp/blob/master/header.go#L1195>)
 
 ```go
@@ -7148,6 +7485,7 @@ The key and value may invalid outside the iteration loop. Copy key and/or value 
 Making modifications to the RequestHeader during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="RequestHeader.CopyTo"></a>
+
 ### func \(\*RequestHeader\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/header.go#L1051>)
 
 ```go
@@ -7157,6 +7495,7 @@ func (h *RequestHeader) CopyTo(dst *RequestHeader)
 CopyTo copies all the headers to dst.
 
 <a name="RequestHeader.Del"></a>
+
 ### func \(\*RequestHeader\) [Del](<https://github.com/valyala/fasthttp/blob/master/header.go#L1362>)
 
 ```go
@@ -7166,6 +7505,7 @@ func (h *RequestHeader) Del(key string)
 Del deletes header with the given key.
 
 <a name="RequestHeader.DelAllCookies"></a>
+
 ### func \(\*RequestHeader\) [DelAllCookies](<https://github.com/valyala/fasthttp/blob/master/header.go#L1746>)
 
 ```go
@@ -7175,6 +7515,7 @@ func (h *RequestHeader) DelAllCookies()
 DelAllCookies removes all the cookies from request headers.
 
 <a name="RequestHeader.DelBytes"></a>
+
 ### func \(\*RequestHeader\) [DelBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1368>)
 
 ```go
@@ -7184,6 +7525,7 @@ func (h *RequestHeader) DelBytes(key []byte)
 DelBytes deletes header with the given key.
 
 <a name="RequestHeader.DelCookie"></a>
+
 ### func \(\*RequestHeader\) [DelCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1730>)
 
 ```go
@@ -7193,6 +7535,7 @@ func (h *RequestHeader) DelCookie(key string)
 DelCookie removes cookie under the given key.
 
 <a name="RequestHeader.DelCookieBytes"></a>
+
 ### func \(\*RequestHeader\) [DelCookieBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1736>)
 
 ```go
@@ -7202,6 +7545,7 @@ func (h *RequestHeader) DelCookieBytes(key []byte)
 DelCookieBytes removes cookie under the given key.
 
 <a name="RequestHeader.DisableSpecialHeader"></a>
+
 ### func \(\*RequestHeader\) [DisableSpecialHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L904>)
 
 ```go
@@ -7211,6 +7555,7 @@ func (h *RequestHeader) DisableSpecialHeader() bool
 DisableSpecialHeader disables special header processing. fasthttp will not set any special headers for you, such as Host, Content\-Type, User\-Agent, etc. You must set everything yourself. If RequestHeader.Read\(\) is called, special headers will be ignored. This can be used to control case and order of special headers. This is generally not recommended. The previous setting is returned.
 
 <a name="RequestHeader.EnableSpecialHeader"></a>
+
 ### func \(\*RequestHeader\) [EnableSpecialHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L914>)
 
 ```go
@@ -7220,6 +7565,7 @@ func (h *RequestHeader) EnableSpecialHeader() bool
 EnableSpecialHeader enables special header processing. fasthttp will send Host, Content\-Type, User\-Agent, etc headers for you. This is suggested and enabled by default. The previous setting is returned.
 
 <a name="RequestHeader.HasAcceptEncoding"></a>
+
 ### func \(\*RequestHeader\) [HasAcceptEncoding](<https://github.com/valyala/fasthttp/blob/master/header.go#L854>)
 
 ```go
@@ -7229,6 +7575,7 @@ func (h *RequestHeader) HasAcceptEncoding(acceptEncoding string) bool
 HasAcceptEncoding returns true if the header contains the given Accept\-Encoding value.
 
 <a name="RequestHeader.HasAcceptEncodingBytes"></a>
+
 ### func \(\*RequestHeader\) [HasAcceptEncodingBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L861>)
 
 ```go
@@ -7238,6 +7585,7 @@ func (h *RequestHeader) HasAcceptEncodingBytes(acceptEncoding []byte) bool
 HasAcceptEncodingBytes returns true if the header contains the given Accept\-Encoding value.
 
 <a name="RequestHeader.Header"></a>
+
 ### func \(\*RequestHeader\) [Header](<https://github.com/valyala/fasthttp/blob/master/header.go#L2520>)
 
 ```go
@@ -7251,6 +7599,7 @@ Headers that set as Trailer will not represent. Use TrailerHeader for trailers.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.Host"></a>
+
 ### func \(\*RequestHeader\) [Host](<https://github.com/valyala/fasthttp/blob/master/header.go#L691>)
 
 ```go
@@ -7260,6 +7609,7 @@ func (h *RequestHeader) Host() []byte
 Host returns Host header value.
 
 <a name="RequestHeader.IsConnect"></a>
+
 ### func \(\*RequestHeader\) [IsConnect](<https://github.com/valyala/fasthttp/blob/master/header.go#L828>)
 
 ```go
@@ -7269,6 +7619,7 @@ func (h *RequestHeader) IsConnect() bool
 IsConnect returns true if request method is CONNECT.
 
 <a name="RequestHeader.IsDelete"></a>
+
 ### func \(\*RequestHeader\) [IsDelete](<https://github.com/valyala/fasthttp/blob/master/header.go#L823>)
 
 ```go
@@ -7278,6 +7629,7 @@ func (h *RequestHeader) IsDelete() bool
 IsDelete returns true if request method is DELETE.
 
 <a name="RequestHeader.IsGet"></a>
+
 ### func \(\*RequestHeader\) [IsGet](<https://github.com/valyala/fasthttp/blob/master/header.go#L803>)
 
 ```go
@@ -7287,6 +7639,7 @@ func (h *RequestHeader) IsGet() bool
 IsGet returns true if request method is GET.
 
 <a name="RequestHeader.IsHead"></a>
+
 ### func \(\*RequestHeader\) [IsHead](<https://github.com/valyala/fasthttp/blob/master/header.go#L818>)
 
 ```go
@@ -7296,6 +7649,7 @@ func (h *RequestHeader) IsHead() bool
 IsHead returns true if request method is HEAD.
 
 <a name="RequestHeader.IsOptions"></a>
+
 ### func \(\*RequestHeader\) [IsOptions](<https://github.com/valyala/fasthttp/blob/master/header.go#L833>)
 
 ```go
@@ -7305,6 +7659,7 @@ func (h *RequestHeader) IsOptions() bool
 IsOptions returns true if request method is OPTIONS.
 
 <a name="RequestHeader.IsPatch"></a>
+
 ### func \(\*RequestHeader\) [IsPatch](<https://github.com/valyala/fasthttp/blob/master/header.go#L843>)
 
 ```go
@@ -7314,6 +7669,7 @@ func (h *RequestHeader) IsPatch() bool
 IsPatch returns true if request method is PATCH.
 
 <a name="RequestHeader.IsPost"></a>
+
 ### func \(\*RequestHeader\) [IsPost](<https://github.com/valyala/fasthttp/blob/master/header.go#L808>)
 
 ```go
@@ -7323,6 +7679,7 @@ func (h *RequestHeader) IsPost() bool
 IsPost returns true if request method is POST.
 
 <a name="RequestHeader.IsPut"></a>
+
 ### func \(\*RequestHeader\) [IsPut](<https://github.com/valyala/fasthttp/blob/master/header.go#L813>)
 
 ```go
@@ -7332,6 +7689,7 @@ func (h *RequestHeader) IsPut() bool
 IsPut returns true if request method is PUT.
 
 <a name="RequestHeader.IsTrace"></a>
+
 ### func \(\*RequestHeader\) [IsTrace](<https://github.com/valyala/fasthttp/blob/master/header.go#L838>)
 
 ```go
@@ -7341,6 +7699,7 @@ func (h *RequestHeader) IsTrace() bool
 IsTrace returns true if request method is TRACE.
 
 <a name="RequestHeader.Len"></a>
+
 ### func \(\*RequestHeader\) [Len](<https://github.com/valyala/fasthttp/blob/master/header.go#L889>)
 
 ```go
@@ -7350,6 +7709,7 @@ func (h *RequestHeader) Len() int
 Len returns the number of headers set, i.e. the number of times f is called in VisitAll.
 
 <a name="RequestHeader.Method"></a>
+
 ### func \(\*RequestHeader\) [Method](<https://github.com/valyala/fasthttp/blob/master/header.go#L742>)
 
 ```go
@@ -7359,6 +7719,7 @@ func (h *RequestHeader) Method() []byte
 Method returns HTTP request method.
 
 <a name="RequestHeader.MultipartFormBoundary"></a>
+
 ### func \(\*RequestHeader\) [MultipartFormBoundary](<https://github.com/valyala/fasthttp/blob/master/header.go#L650>)
 
 ```go
@@ -7368,6 +7729,7 @@ func (h *RequestHeader) MultipartFormBoundary() []byte
 MultipartFormBoundary returns boundary part from 'multipart/form\-data; boundary=...' Content\-Type.
 
 <a name="RequestHeader.Peek"></a>
+
 ### func \(\*RequestHeader\) [Peek](<https://github.com/valyala/fasthttp/blob/master/header.go#L1902>)
 
 ```go
@@ -7379,6 +7741,7 @@ Peek returns header value for the given key.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.PeekAll"></a>
+
 ### func \(\*RequestHeader\) [PeekAll](<https://github.com/valyala/fasthttp/blob/master/header.go#L1975>)
 
 ```go
@@ -7390,6 +7753,7 @@ PeekAll returns all header value for the given key.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Any future calls to the Peek\* will modify the returned value. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.PeekBytes"></a>
+
 ### func \(\*RequestHeader\) [PeekBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1912>)
 
 ```go
@@ -7401,6 +7765,7 @@ PeekBytes returns header value for the given key.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.PeekKeys"></a>
+
 ### func \(\*RequestHeader\) [PeekKeys](<https://github.com/valyala/fasthttp/blob/master/header.go#L2067>)
 
 ```go
@@ -7412,6 +7777,7 @@ PeekKeys return all header keys.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Any future calls to the Peek\* will modify the returned value. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.RawHeaders"></a>
+
 ### func \(\*RequestHeader\) [RawHeaders](<https://github.com/valyala/fasthttp/blob/master/header.go#L2558>)
 
 ```go
@@ -7427,6 +7793,7 @@ This copy is set aside during parsing, so empty slice is returned for all cases 
 The slice is not safe to use after the handler returns.
 
 <a name="RequestHeader.Read"></a>
+
 ### func \(\*RequestHeader\) [Read](<https://github.com/valyala/fasthttp/blob/master/header.go#L2265>)
 
 ```go
@@ -7438,6 +7805,7 @@ Read reads request header from r.
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="RequestHeader.Referer"></a>
+
 ### func \(\*RequestHeader\) [Referer](<https://github.com/valyala/fasthttp/blob/master/header.go#L727>)
 
 ```go
@@ -7447,6 +7815,7 @@ func (h *RequestHeader) Referer() []byte
 Referer returns Referer header value.
 
 <a name="RequestHeader.RequestURI"></a>
+
 ### func \(\*RequestHeader\) [RequestURI](<https://github.com/valyala/fasthttp/blob/master/header.go#L780>)
 
 ```go
@@ -7456,6 +7825,7 @@ func (h *RequestHeader) RequestURI() []byte
 RequestURI returns RequestURI from the first HTTP request line.
 
 <a name="RequestHeader.Reset"></a>
+
 ### func \(\*RequestHeader\) [Reset](<https://github.com/valyala/fasthttp/blob/master/header.go#L992>)
 
 ```go
@@ -7465,6 +7835,7 @@ func (h *RequestHeader) Reset()
 Reset clears request header.
 
 <a name="RequestHeader.Set"></a>
+
 ### func \(\*RequestHeader\) [Set](<https://github.com/valyala/fasthttp/blob/master/header.go#L1813>)
 
 ```go
@@ -7480,6 +7851,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use Add for setting multiple header values under the same key.
 
 <a name="RequestHeader.SetByteRange"></a>
+
 ### func \(\*RequestHeader\) [SetByteRange](<https://github.com/valyala/fasthttp/blob/master/header.go#L108>)
 
 ```go
@@ -7492,6 +7864,7 @@ SetByteRange sets 'Range: bytes=startPos\-endPos' header.
 - If endPos is negative, then 'bytes=startPos\-' value is set.
 
 <a name="RequestHeader.SetBytesK"></a>
+
 ### func \(\*RequestHeader\) [SetBytesK](<https://github.com/valyala/fasthttp/blob/master/header.go#L1827>)
 
 ```go
@@ -7507,6 +7880,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesK for setting multiple header values under the same key.
 
 <a name="RequestHeader.SetBytesKV"></a>
+
 ### func \(\*RequestHeader\) [SetBytesKV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1855>)
 
 ```go
@@ -7522,6 +7896,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesKV for setting multiple header values under the same key.
 
 <a name="RequestHeader.SetBytesV"></a>
+
 ### func \(\*RequestHeader\) [SetBytesV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1841>)
 
 ```go
@@ -7537,6 +7912,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesV for setting multiple header values under the same key.
 
 <a name="RequestHeader.SetCanonical"></a>
+
 ### func \(\*RequestHeader\) [SetCanonical](<https://github.com/valyala/fasthttp/blob/master/header.go#L1869>)
 
 ```go
@@ -7550,6 +7926,7 @@ Please note that the Cookie header will not clear previous cookies, delete cooki
 If the header is set as a Trailer \(forbidden trailers will not be set, see SetTrailer for more details\), it will be sent after the chunked request body.
 
 <a name="RequestHeader.SetContentEncoding"></a>
+
 ### func \(\*RequestHeader\) [SetContentEncoding](<https://github.com/valyala/fasthttp/blob/master/header.go#L363>)
 
 ```go
@@ -7559,6 +7936,7 @@ func (h *RequestHeader) SetContentEncoding(contentEncoding string)
 SetContentEncoding sets Content\-Encoding header value.
 
 <a name="RequestHeader.SetContentEncodingBytes"></a>
+
 ### func \(\*RequestHeader\) [SetContentEncodingBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L368>)
 
 ```go
@@ -7568,6 +7946,7 @@ func (h *RequestHeader) SetContentEncodingBytes(contentEncoding []byte)
 SetContentEncodingBytes sets Content\-Encoding header value.
 
 <a name="RequestHeader.SetContentLength"></a>
+
 ### func \(\*RequestHeader\) [SetContentLength](<https://github.com/valyala/fasthttp/blob/master/header.go#L267>)
 
 ```go
@@ -7579,6 +7958,7 @@ SetContentLength sets Content\-Length header value.
 Negative content\-length sets 'Transfer\-Encoding: chunked' header.
 
 <a name="RequestHeader.SetCookie"></a>
+
 ### func \(\*RequestHeader\) [SetCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1658>)
 
 ```go
@@ -7588,6 +7968,7 @@ func (h *RequestHeader) SetCookie(key, value string)
 SetCookie sets 'key: value' cookies.
 
 <a name="RequestHeader.SetCookieBytesK"></a>
+
 ### func \(\*RequestHeader\) [SetCookieBytesK](<https://github.com/valyala/fasthttp/blob/master/header.go#L1664>)
 
 ```go
@@ -7597,6 +7978,7 @@ func (h *RequestHeader) SetCookieBytesK(key []byte, value string)
 SetCookieBytesK sets 'key: value' cookies.
 
 <a name="RequestHeader.SetCookieBytesKV"></a>
+
 ### func \(\*RequestHeader\) [SetCookieBytesKV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1669>)
 
 ```go
@@ -7606,6 +7988,7 @@ func (h *RequestHeader) SetCookieBytesKV(key, value []byte)
 SetCookieBytesKV sets 'key: value' cookies.
 
 <a name="RequestHeader.SetHost"></a>
+
 ### func \(\*RequestHeader\) [SetHost](<https://github.com/valyala/fasthttp/blob/master/header.go#L699>)
 
 ```go
@@ -7615,6 +7998,7 @@ func (h *RequestHeader) SetHost(host string)
 SetHost sets Host header value.
 
 <a name="RequestHeader.SetHostBytes"></a>
+
 ### func \(\*RequestHeader\) [SetHostBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L704>)
 
 ```go
@@ -7624,6 +8008,7 @@ func (h *RequestHeader) SetHostBytes(host []byte)
 SetHostBytes sets Host header value.
 
 <a name="RequestHeader.SetMethod"></a>
+
 ### func \(\*RequestHeader\) [SetMethod](<https://github.com/valyala/fasthttp/blob/master/header.go#L750>)
 
 ```go
@@ -7633,6 +8018,7 @@ func (h *RequestHeader) SetMethod(method string)
 SetMethod sets HTTP request method.
 
 <a name="RequestHeader.SetMethodBytes"></a>
+
 ### func \(\*RequestHeader\) [SetMethodBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L755>)
 
 ```go
@@ -7642,6 +8028,7 @@ func (h *RequestHeader) SetMethodBytes(method []byte)
 SetMethodBytes sets HTTP request method.
 
 <a name="RequestHeader.SetMultipartFormBoundary"></a>
+
 ### func \(\*RequestHeader\) [SetMultipartFormBoundary](<https://github.com/valyala/fasthttp/blob/master/header.go#L375>)
 
 ```go
@@ -7651,6 +8038,7 @@ func (h *RequestHeader) SetMultipartFormBoundary(boundary string)
 SetMultipartFormBoundary sets the following Content\-Type: 'multipart/form\-data; boundary=...' where ... is substituted by the given boundary.
 
 <a name="RequestHeader.SetMultipartFormBoundaryBytes"></a>
+
 ### func \(\*RequestHeader\) [SetMultipartFormBoundaryBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L390>)
 
 ```go
@@ -7660,6 +8048,7 @@ func (h *RequestHeader) SetMultipartFormBoundaryBytes(boundary []byte)
 SetMultipartFormBoundaryBytes sets the following Content\-Type: 'multipart/form\-data; boundary=...' where ... is substituted by the given boundary.
 
 <a name="RequestHeader.SetProtocol"></a>
+
 ### func \(\*RequestHeader\) [SetProtocol](<https://github.com/valyala/fasthttp/blob/master/header.go#L768>)
 
 ```go
@@ -7669,6 +8058,7 @@ func (h *RequestHeader) SetProtocol(protocol string)
 SetProtocol sets HTTP request protocol.
 
 <a name="RequestHeader.SetProtocolBytes"></a>
+
 ### func \(\*RequestHeader\) [SetProtocolBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L774>)
 
 ```go
@@ -7678,6 +8068,7 @@ func (h *RequestHeader) SetProtocolBytes(protocol []byte)
 SetProtocolBytes sets HTTP request protocol.
 
 <a name="RequestHeader.SetReferer"></a>
+
 ### func \(\*RequestHeader\) [SetReferer](<https://github.com/valyala/fasthttp/blob/master/header.go#L732>)
 
 ```go
@@ -7687,6 +8078,7 @@ func (h *RequestHeader) SetReferer(referer string)
 SetReferer sets Referer header value.
 
 <a name="RequestHeader.SetRefererBytes"></a>
+
 ### func \(\*RequestHeader\) [SetRefererBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L737>)
 
 ```go
@@ -7696,6 +8088,7 @@ func (h *RequestHeader) SetRefererBytes(referer []byte)
 SetRefererBytes sets Referer header value.
 
 <a name="RequestHeader.SetRequestURI"></a>
+
 ### func \(\*RequestHeader\) [SetRequestURI](<https://github.com/valyala/fasthttp/blob/master/header.go#L791>)
 
 ```go
@@ -7705,6 +8098,7 @@ func (h *RequestHeader) SetRequestURI(requestURI string)
 SetRequestURI sets RequestURI for the first HTTP request line. RequestURI must be properly encoded. Use URI.RequestURI for constructing proper RequestURI if unsure.
 
 <a name="RequestHeader.SetRequestURIBytes"></a>
+
 ### func \(\*RequestHeader\) [SetRequestURIBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L798>)
 
 ```go
@@ -7714,6 +8108,7 @@ func (h *RequestHeader) SetRequestURIBytes(requestURI []byte)
 SetRequestURIBytes sets RequestURI for the first HTTP request line. RequestURI must be properly encoded. Use URI.RequestURI for constructing proper RequestURI if unsure.
 
 <a name="RequestHeader.SetUserAgent"></a>
+
 ### func \(\*RequestHeader\) [SetUserAgent](<https://github.com/valyala/fasthttp/blob/master/header.go#L717>)
 
 ```go
@@ -7723,6 +8118,7 @@ func (h *RequestHeader) SetUserAgent(userAgent string)
 SetUserAgent sets User\-Agent header value.
 
 <a name="RequestHeader.SetUserAgentBytes"></a>
+
 ### func \(\*RequestHeader\) [SetUserAgentBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L722>)
 
 ```go
@@ -7732,6 +8128,7 @@ func (h *RequestHeader) SetUserAgentBytes(userAgent []byte)
 SetUserAgentBytes sets User\-Agent header value.
 
 <a name="RequestHeader.String"></a>
+
 ### func \(\*RequestHeader\) [String](<https://github.com/valyala/fasthttp/blob/master/header.go#L2563>)
 
 ```go
@@ -7741,6 +8138,7 @@ func (h *RequestHeader) String() string
 String returns request header representation.
 
 <a name="RequestHeader.TrailerHeader"></a>
+
 ### func \(\*RequestHeader\) [TrailerHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L2538>)
 
 ```go
@@ -7754,6 +8152,7 @@ Trailers will only be received with chunked transfer.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="RequestHeader.UserAgent"></a>
+
 ### func \(\*RequestHeader\) [UserAgent](<https://github.com/valyala/fasthttp/blob/master/header.go#L709>)
 
 ```go
@@ -7763,6 +8162,7 @@ func (h *RequestHeader) UserAgent() []byte
 UserAgent returns User\-Agent header value.
 
 <a name="RequestHeader.VisitAll"></a>
+
 ### func \(\*RequestHeader\) [VisitAll](<https://github.com/valyala/fasthttp/blob/master/header.go#L1277>)
 
 ```go
@@ -7778,6 +8178,7 @@ To get the headers in order they were received use VisitAllInOrder.
 Deprecated: Use All instead.
 
 <a name="RequestHeader.VisitAllCookie"></a>
+
 ### func \(\*RequestHeader\) [VisitAllCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1211>)
 
 ```go
@@ -7791,6 +8192,7 @@ f must not retain references to key and/or value after returning.
 Deprecated: Use Cookies instead.
 
 <a name="RequestHeader.VisitAllInOrder"></a>
+
 ### func \(\*RequestHeader\) [VisitAllInOrder](<https://github.com/valyala/fasthttp/blob/master/header.go#L1320>)
 
 ```go
@@ -7806,6 +8208,7 @@ This function is slightly slower than VisitAll because it has to reparse the raw
 Deprecated: Use AllInOrder instead.
 
 <a name="RequestHeader.Write"></a>
+
 ### func \(\*RequestHeader\) [Write](<https://github.com/valyala/fasthttp/blob/master/header.go#L2500>)
 
 ```go
@@ -7815,6 +8218,7 @@ func (h *RequestHeader) Write(w *bufio.Writer) error
 Write writes request header to w.
 
 <a name="RequestHeader.WriteTo"></a>
+
 ### func \(\*RequestHeader\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/header.go#L2508>)
 
 ```go
@@ -7826,6 +8230,7 @@ WriteTo writes request header to w.
 WriteTo implements io.WriterTo interface.
 
 <a name="Resolver"></a>
+
 ## type [Resolver](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L123-L125>)
 
 Resolver represents interface of the tcp resolver.
@@ -7837,6 +8242,7 @@ type Resolver interface {
 ```
 
 <a name="Response"></a>
+
 ## type [Response](<https://github.com/valyala/fasthttp/blob/master/http.go#L93-L129>)
 
 Response represents HTTP response.
@@ -7872,6 +8278,7 @@ type Response struct {
 ```
 
 <a name="AcquireResponse"></a>
+
 ### func [AcquireResponse](<https://github.com/valyala/fasthttp/blob/master/client.go#L1232>)
 
 ```go
@@ -7883,6 +8290,7 @@ AcquireResponse returns an empty Response instance from response pool.
 The returned Response instance may be passed to ReleaseResponse when it is no longer needed. This allows Response recycling, reduces GC pressure and usually improves performance.
 
 <a name="Response.AppendBody"></a>
+
 ### func \(\*Response\) [AppendBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L747>)
 
 ```go
@@ -7894,6 +8302,7 @@ AppendBody appends p to response body.
 It is safe re\-using p after the function returns.
 
 <a name="Response.AppendBodyString"></a>
+
 ### func \(\*Response\) [AppendBodyString](<https://github.com/valyala/fasthttp/blob/master/http.go#L753>)
 
 ```go
@@ -7903,6 +8312,7 @@ func (resp *Response) AppendBodyString(s string)
 AppendBodyString appends s to response body.
 
 <a name="Response.Body"></a>
+
 ### func \(\*Response\) [Body](<https://github.com/valyala/fasthttp/blob/master/http.go#L426>)
 
 ```go
@@ -7914,6 +8324,7 @@ Body returns response body.
 The returned value is valid until the response is released, either though ReleaseResponse or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="Response.BodyGunzip"></a>
+
 ### func \(\*Response\) [BodyGunzip](<https://github.com/valyala/fasthttp/blob/master/http.go#L511>)
 
 ```go
@@ -7925,6 +8336,7 @@ BodyGunzip returns un\-gzipped body data.
 This method may be used if the response header contains 'Content\-Encoding: gzip' for reading un\-gzipped body. Use Body for reading gzipped response body.
 
 <a name="Response.BodyGunzipWithLimit"></a>
+
 ### func \(\*Response\) [BodyGunzipWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L519>)
 
 ```go
@@ -7936,6 +8348,7 @@ BodyGunzipWithLimit returns un\-gzipped body data and limits the size of uncompr
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Response.BodyInflate"></a>
+
 ### func \(\*Response\) [BodyInflate](<https://github.com/valyala/fasthttp/blob/master/http.go#L597>)
 
 ```go
@@ -7947,6 +8360,7 @@ BodyInflate returns inflated body data.
 This method may be used if the response header contains 'Content\-Encoding: deflate' for reading inflated response body. Use Body for reading deflated response body.
 
 <a name="Response.BodyInflateWithLimit"></a>
+
 ### func \(\*Response\) [BodyInflateWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L605>)
 
 ```go
@@ -7958,6 +8372,7 @@ BodyInflateWithLimit returns inflated body data and limits the size of uncompres
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Response.BodyStream"></a>
+
 ### func \(\*Response\) [BodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L337>)
 
 ```go
@@ -7969,6 +8384,7 @@ BodyStream returns io.Reader.
 You must CloseBodyStream or ReleaseResponse after you use it.
 
 <a name="Response.BodyUnbrotli"></a>
+
 ### func \(\*Response\) [BodyUnbrotli](<https://github.com/valyala/fasthttp/blob/master/http.go#L554>)
 
 ```go
@@ -7980,6 +8396,7 @@ BodyUnbrotli returns un\-brotlied body data.
 This method may be used if the response header contains 'Content\-Encoding: br' for reading un\-brotlied body. Use Body for reading brotlied response body.
 
 <a name="Response.BodyUnbrotliWithLimit"></a>
+
 ### func \(\*Response\) [BodyUnbrotliWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L562>)
 
 ```go
@@ -7991,6 +8408,7 @@ BodyUnbrotliWithLimit returns un\-brotlied body data and limits the size of unco
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Response.BodyUncompressed"></a>
+
 ### func \(\*Response\) [BodyUncompressed](<https://github.com/valyala/fasthttp/blob/master/http.go#L694>)
 
 ```go
@@ -8002,6 +8420,7 @@ BodyUncompressed returns body data and if needed decompresses it from gzip, defl
 This method may be used if the response header contains 'Content\-Encoding' for reading uncompressed response body. Use Body for reading the raw response body.
 
 <a name="Response.BodyUncompressedWithLimit"></a>
+
 ### func \(\*Response\) [BodyUncompressedWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L702>)
 
 ```go
@@ -8013,15 +8432,15 @@ BodyUncompressedWithLimit returns body data and if needed decompresses it from g
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Response.BodyUnzstd"></a>
+
 ### func \(\*Response\) [BodyUnzstd](<https://github.com/valyala/fasthttp/blob/master/http.go#L625>)
 
 ```go
 func (resp *Response) BodyUnzstd() ([]byte, error)
 ```
 
-
-
 <a name="Response.BodyUnzstdWithLimit"></a>
+
 ### func \(\*Response\) [BodyUnzstdWithLimit](<https://github.com/valyala/fasthttp/blob/master/http.go#L633>)
 
 ```go
@@ -8033,6 +8452,7 @@ BodyUnzstdWithLimit returns un\-zstd body data and limits the size of uncompress
 If maxBodySize \<= 0, then no limit is applied.
 
 <a name="Response.BodyWriteTo"></a>
+
 ### func \(\*Response\) [BodyWriteTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L734>)
 
 ```go
@@ -8042,6 +8462,7 @@ func (resp *Response) BodyWriteTo(w io.Writer) error
 BodyWriteTo writes response body to w.
 
 <a name="Response.BodyWriter"></a>
+
 ### func \(\*Response\) [BodyWriter](<https://github.com/valyala/fasthttp/blob/master/http.go#L318>)
 
 ```go
@@ -8053,15 +8474,15 @@ BodyWriter returns writer for populating response body.
 If used inside RequestHandler, the returned writer must not be used after returning from RequestHandler. Use RequestCtx.Write or SetBodyStreamWriter in this case.
 
 <a name="Response.CloseBodyStream"></a>
+
 ### func \(\*Response\) [CloseBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L341>)
 
 ```go
 func (resp *Response) CloseBodyStream() error
 ```
 
-
-
 <a name="Response.ConnectionClose"></a>
+
 ### func \(\*Response\) [ConnectionClose](<https://github.com/valyala/fasthttp/blob/master/http.go#L180>)
 
 ```go
@@ -8071,6 +8492,7 @@ func (resp *Response) ConnectionClose() bool
 ConnectionClose returns true if 'Connection: close' header is set.
 
 <a name="Response.CopyTo"></a>
+
 ### func \(\*Response\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L992>)
 
 ```go
@@ -8080,6 +8502,7 @@ func (resp *Response) CopyTo(dst *Response)
 CopyTo copies resp contents to dst except of body stream.
 
 <a name="Response.IsBodyStream"></a>
+
 ### func \(\*Response\) [IsBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L277>)
 
 ```go
@@ -8089,6 +8512,7 @@ func (resp *Response) IsBodyStream() bool
 IsBodyStream returns true if body is set via SetBodyStream\*.
 
 <a name="Response.LocalAddr"></a>
+
 ### func \(\*Response\) [LocalAddr](<https://github.com/valyala/fasthttp/blob/master/http.go#L417>)
 
 ```go
@@ -8098,15 +8522,15 @@ func (resp *Response) LocalAddr() net.Addr
 LocalAddr returns the local network address. The Addr returned is shared by all invocations of LocalAddr, so do not modify it.
 
 <a name="Response.ParseNetConn"></a>
+
 ### func \(\*Response\) [ParseNetConn](<https://github.com/valyala/fasthttp/blob/master/http.go#L404>)
 
 ```go
 func (resp *Response) ParseNetConn(conn net.Conn)
 ```
 
-
-
 <a name="Response.Read"></a>
+
 ### func \(\*Response\) [Read](<https://github.com/valyala/fasthttp/blob/master/http.go#L1559>)
 
 ```go
@@ -8118,6 +8542,7 @@ Read reads response \(including body\) from the given r.
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="Response.ReadBody"></a>
+
 ### func \(\*Response\) [ReadBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L1606>)
 
 ```go
@@ -8129,6 +8554,7 @@ ReadBody reads response body from the given r, limiting the body size.
 If maxBodySize \> 0 and the body size exceeds maxBodySize, then ErrBodyTooLarge is returned.
 
 <a name="Response.ReadLimitBody"></a>
+
 ### func \(\*Response\) [ReadLimitBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L1572>)
 
 ```go
@@ -8144,6 +8570,7 @@ If maxBodySize \> 0 and the body size exceeds maxBodySize, then ErrBodyTooLarge 
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="Response.ReleaseBody"></a>
+
 ### func \(\*Response\) [ReleaseBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L813>)
 
 ```go
@@ -8157,6 +8584,7 @@ This permits GC to reclaim the large buffer. If used, must be before ReleaseResp
 Use this method only if you really understand how it works. The majority of workloads don't need this method.
 
 <a name="Response.RemoteAddr"></a>
+
 ### func \(\*Response\) [RemoteAddr](<https://github.com/valyala/fasthttp/blob/master/http.go#L411>)
 
 ```go
@@ -8166,6 +8594,7 @@ func (resp *Response) RemoteAddr() net.Addr
 RemoteAddr returns the remote network address. The Addr returned is shared by all invocations of RemoteAddr, so do not modify it.
 
 <a name="Response.Reset"></a>
+
 ### func \(\*Response\) [Reset](<https://github.com/valyala/fasthttp/blob/master/http.go#L1290>)
 
 ```go
@@ -8175,6 +8604,7 @@ func (resp *Response) Reset()
 Reset clears response contents.
 
 <a name="Response.ResetBody"></a>
+
 ### func \(\*Response\) [ResetBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L777>)
 
 ```go
@@ -8184,6 +8614,7 @@ func (resp *Response) ResetBody()
 ResetBody resets response body.
 
 <a name="Response.SendFile"></a>
+
 ### func \(\*Response\) [SendFile](<https://github.com/valyala/fasthttp/blob/master/http.go#L214>)
 
 ```go
@@ -8195,6 +8626,7 @@ SendFile registers file on the given path to be used as response body when Write
 Note that SendFile doesn't set Content\-Type, so set it yourself with Header.SetContentType.
 
 <a name="Response.SetBody"></a>
+
 ### func \(\*Response\) [SetBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L761>)
 
 ```go
@@ -8206,6 +8638,7 @@ SetBody sets response body.
 It is safe re\-using body argument after the function returns.
 
 <a name="Response.SetBodyRaw"></a>
+
 ### func \(\*Response\) [SetBodyRaw](<https://github.com/valyala/fasthttp/blob/master/http.go#L793>)
 
 ```go
@@ -8217,6 +8650,7 @@ SetBodyRaw sets response body, but without copying it.
 From this point onward the body argument must not be changed.
 
 <a name="Response.SetBodyStream"></a>
+
 ### func \(\*Response\) [SetBodyStream](<https://github.com/valyala/fasthttp/blob/master/http.go#L265>)
 
 ```go
@@ -8234,6 +8668,7 @@ bodyStream.Close\(\) is called after finishing reading all body data if it imple
 See also SetBodyStreamWriter.
 
 <a name="Response.SetBodyStreamWriter"></a>
+
 ### func \(\*Response\) [SetBodyStreamWriter](<https://github.com/valyala/fasthttp/blob/master/http.go#L308>)
 
 ```go
@@ -8251,6 +8686,7 @@ This function may be used in the following cases:
 See also SetBodyStream.
 
 <a name="Response.SetBodyString"></a>
+
 ### func \(\*Response\) [SetBodyString](<https://github.com/valyala/fasthttp/blob/master/http.go#L769>)
 
 ```go
@@ -8260,6 +8696,7 @@ func (resp *Response) SetBodyString(body string)
 SetBodyString sets response body.
 
 <a name="Response.SetConnectionClose"></a>
+
 ### func \(\*Response\) [SetConnectionClose](<https://github.com/valyala/fasthttp/blob/master/http.go#L185>)
 
 ```go
@@ -8269,6 +8706,7 @@ func (resp *Response) SetConnectionClose()
 SetConnectionClose sets 'Connection: close' header.
 
 <a name="Response.SetStatusCode"></a>
+
 ### func \(\*Response\) [SetStatusCode](<https://github.com/valyala/fasthttp/blob/master/http.go#L175>)
 
 ```go
@@ -8278,6 +8716,7 @@ func (resp *Response) SetStatusCode(statusCode int)
 SetStatusCode sets response status code.
 
 <a name="Response.StatusCode"></a>
+
 ### func \(\*Response\) [StatusCode](<https://github.com/valyala/fasthttp/blob/master/http.go#L170>)
 
 ```go
@@ -8287,6 +8726,7 @@ func (resp *Response) StatusCode() int
 StatusCode returns response status code.
 
 <a name="Response.String"></a>
+
 ### func \(\*Response\) [String](<https://github.com/valyala/fasthttp/blob/master/http.go#L2285>)
 
 ```go
@@ -8300,6 +8740,7 @@ Returns error message instead of response representation on error.
 Use Write instead of String for performance\-critical code.
 
 <a name="Response.SwapBody"></a>
+
 ### func \(\*Response\) [SwapBody](<https://github.com/valyala/fasthttp/blob/master/http.go#L847>)
 
 ```go
@@ -8311,6 +8752,7 @@ SwapBody swaps response body with the given body and returns the previous respon
 It is forbidden to use the body passed to SwapBody after the function returns.
 
 <a name="Response.Write"></a>
+
 ### func \(\*Response\) [Write](<https://github.com/valyala/fasthttp/blob/master/http.go#L2121>)
 
 ```go
@@ -8324,6 +8766,7 @@ Write doesn't flush response to w for performance reasons.
 See also WriteTo.
 
 <a name="Response.WriteDeflate"></a>
+
 ### func \(\*Response\) [WriteDeflate](<https://github.com/valyala/fasthttp/blob/master/http.go#L1837>)
 
 ```go
@@ -8337,6 +8780,7 @@ The method deflates response body and sets 'Content\-Encoding: deflate' header b
 WriteDeflate doesn't flush response to w for performance reasons.
 
 <a name="Response.WriteDeflateLevel"></a>
+
 ### func \(\*Response\) [WriteDeflateLevel](<https://github.com/valyala/fasthttp/blob/master/http.go#L1855>)
 
 ```go
@@ -8358,6 +8802,7 @@ The method deflates response body and sets 'Content\-Encoding: deflate' header b
 WriteDeflateLevel doesn't flush response to w for performance reasons.
 
 <a name="Response.WriteGzip"></a>
+
 ### func \(\*Response\) [WriteGzip](<https://github.com/valyala/fasthttp/blob/master/http.go#L1808>)
 
 ```go
@@ -8371,6 +8816,7 @@ The method gzips response body and sets 'Content\-Encoding: gzip' header before 
 WriteGzip doesn't flush response to w for performance reasons.
 
 <a name="Response.WriteGzipLevel"></a>
+
 ### func \(\*Response\) [WriteGzipLevel](<https://github.com/valyala/fasthttp/blob/master/http.go#L1826>)
 
 ```go
@@ -8392,6 +8838,7 @@ The method gzips response body and sets 'Content\-Encoding: gzip' header before 
 WriteGzipLevel doesn't flush response to w for performance reasons.
 
 <a name="Response.WriteTo"></a>
+
 ### func \(\*Response\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/http.go#L1650>)
 
 ```go
@@ -8401,6 +8848,7 @@ func (resp *Response) WriteTo(w io.Writer) (int64, error)
 WriteTo writes response to w. It implements io.WriterTo.
 
 <a name="ResponseHeader"></a>
+
 ## type [ResponseHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L49-L61>)
 
 ResponseHeader represents HTTP response header.
@@ -8416,6 +8864,7 @@ type ResponseHeader struct {
 ```
 
 <a name="ResponseHeader.Add"></a>
+
 ### func \(\*ResponseHeader\) [Add](<https://github.com/valyala/fasthttp/blob/master/header.go#L1524>)
 
 ```go
@@ -8431,6 +8880,7 @@ the Content\-Type, Content\-Length, Connection, Server, Transfer\-Encoding and D
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked response body.
 
 <a name="ResponseHeader.AddBytesK"></a>
+
 ### func \(\*ResponseHeader\) [AddBytesK](<https://github.com/valyala/fasthttp/blob/master/header.go#L1539>)
 
 ```go
@@ -8446,6 +8896,7 @@ the Content\-Type, Content\-Length, Connection, Server, Transfer\-Encoding and D
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked response body.
 
 <a name="ResponseHeader.AddBytesKV"></a>
+
 ### func \(\*ResponseHeader\) [AddBytesKV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1569>)
 
 ```go
@@ -8461,6 +8912,7 @@ the Content\-Type, Content\-Length, Connection, Server, Transfer\-Encoding and D
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked response body.
 
 <a name="ResponseHeader.AddBytesV"></a>
+
 ### func \(\*ResponseHeader\) [AddBytesV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1554>)
 
 ```go
@@ -8476,6 +8928,7 @@ the Content\-Type, Content\-Length, Connection, Server, Transfer\-Encoding and D
 If the header is set as a Trailer \(forbidden trailers will not be set, see AddTrailer for more details\), it will be sent after the chunked response body.
 
 <a name="ResponseHeader.All"></a>
+
 ### func \(\*ResponseHeader\) [All](<https://github.com/valyala/fasthttp/blob/master/header.go#L1072>)
 
 ```go
@@ -8489,6 +8942,7 @@ The key and value may invalid outside the iteration loop. Copy key and/or value 
 Making modifications to the ResponseHeader during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="ResponseHeader.AppendBytes"></a>
+
 ### func \(\*ResponseHeader\) [AppendBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L2433>)
 
 ```go
@@ -8498,6 +8952,7 @@ func (h *ResponseHeader) AppendBytes(dst []byte) []byte
 AppendBytes appends response header representation to dst and returns the extended dst.
 
 <a name="ResponseHeader.ConnectionUpgrade"></a>
+
 ### func \(\*ResponseHeader\) [ConnectionUpgrade](<https://github.com/valyala/fasthttp/blob/master/header.go#L179>)
 
 ```go
@@ -8507,6 +8962,7 @@ func (h *ResponseHeader) ConnectionUpgrade() bool
 ConnectionUpgrade returns true if 'Connection: Upgrade' header is set.
 
 <a name="ResponseHeader.ContentEncoding"></a>
+
 ### func \(\*ResponseHeader\) [ContentEncoding](<https://github.com/valyala/fasthttp/blob/master/header.go#L308>)
 
 ```go
@@ -8516,6 +8972,7 @@ func (h *ResponseHeader) ContentEncoding() []byte
 ContentEncoding returns Content\-Encoding header value.
 
 <a name="ResponseHeader.ContentLength"></a>
+
 ### func \(\*ResponseHeader\) [ContentLength](<https://github.com/valyala/fasthttp/blob/master/header.go#L198>)
 
 ```go
@@ -8527,6 +8984,7 @@ ContentLength returns Content\-Length header value.
 It may be negative: \-1 means Transfer\-Encoding: chunked. \-2 means Transfer\-Encoding: identity.
 
 <a name="ResponseHeader.ContentType"></a>
+
 ### func \(\*ResponseHeader\) [ContentType](<https://github.com/valyala/fasthttp/blob/master/header.go#L289>)
 
 ```go
@@ -8536,6 +8994,7 @@ func (h *ResponseHeader) ContentType() []byte
 ContentType returns Content\-Type header value.
 
 <a name="ResponseHeader.Cookie"></a>
+
 ### func \(\*ResponseHeader\) [Cookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L2114>)
 
 ```go
@@ -8547,6 +9006,7 @@ Cookie fills cookie for the given cookie.Key.
 Returns false if cookie with the given cookie.Key is missing.
 
 <a name="ResponseHeader.Cookies"></a>
+
 ### func \(\*ResponseHeader\) [Cookies](<https://github.com/valyala/fasthttp/blob/master/header.go#L1161>)
 
 ```go
@@ -8562,6 +9022,7 @@ The key and value may invalid outside the iteration loop. Copy key and/or value 
 Making modifications to the ResponseHeader during the iteration loop leads to undefined behavior and can cause panics.
 
 <a name="ResponseHeader.CopyTo"></a>
+
 ### func \(\*ResponseHeader\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/header.go#L1038>)
 
 ```go
@@ -8571,6 +9032,7 @@ func (h *ResponseHeader) CopyTo(dst *ResponseHeader)
 CopyTo copies all the headers to dst.
 
 <a name="ResponseHeader.Del"></a>
+
 ### func \(\*ResponseHeader\) [Del](<https://github.com/valyala/fasthttp/blob/master/header.go#L1328>)
 
 ```go
@@ -8580,6 +9042,7 @@ func (h *ResponseHeader) Del(key string)
 Del deletes header with the given key.
 
 <a name="ResponseHeader.DelAllCookies"></a>
+
 ### func \(\*ResponseHeader\) [DelAllCookies](<https://github.com/valyala/fasthttp/blob/master/header.go#L1741>)
 
 ```go
@@ -8589,6 +9052,7 @@ func (h *ResponseHeader) DelAllCookies()
 DelAllCookies removes all the cookies from response headers.
 
 <a name="ResponseHeader.DelBytes"></a>
+
 ### func \(\*ResponseHeader\) [DelBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1334>)
 
 ```go
@@ -8598,6 +9062,7 @@ func (h *ResponseHeader) DelBytes(key []byte)
 DelBytes deletes header with the given key.
 
 <a name="ResponseHeader.DelClientCookie"></a>
+
 ### func \(\*ResponseHeader\) [DelClientCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1686>)
 
 ```go
@@ -8619,6 +9084,7 @@ ReleaseCookie(c)
 Use DelCookie if you want just removing the cookie from response header.
 
 <a name="ResponseHeader.DelClientCookieBytes"></a>
+
 ### func \(\*ResponseHeader\) [DelClientCookieBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1709>)
 
 ```go
@@ -8640,6 +9106,7 @@ ReleaseCookie(c)
 Use DelCookieBytes if you want just removing the cookie from response header.
 
 <a name="ResponseHeader.DelCookie"></a>
+
 ### func \(\*ResponseHeader\) [DelCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1717>)
 
 ```go
@@ -8651,6 +9118,7 @@ DelCookie removes cookie under the given key from response header.
 Note that DelCookie doesn't remove the cookie from the client. Use DelClientCookie instead.
 
 <a name="ResponseHeader.DelCookieBytes"></a>
+
 ### func \(\*ResponseHeader\) [DelCookieBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1725>)
 
 ```go
@@ -8662,6 +9130,7 @@ DelCookieBytes removes cookie under the given key from response header.
 Note that DelCookieBytes doesn't remove the cookie from the client. Use DelClientCookieBytes instead.
 
 <a name="ResponseHeader.Header"></a>
+
 ### func \(\*ResponseHeader\) [Header](<https://github.com/valyala/fasthttp/blob/master/header.go#L2388>)
 
 ```go
@@ -8675,6 +9144,7 @@ Headers that set as Trailer will not represent. Use TrailerHeader for trailers.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="ResponseHeader.Len"></a>
+
 ### func \(\*ResponseHeader\) [Len](<https://github.com/valyala/fasthttp/blob/master/header.go#L879>)
 
 ```go
@@ -8684,6 +9154,7 @@ func (h *ResponseHeader) Len() int
 Len returns the number of headers set, i.e. the number of times f is called in VisitAll.
 
 <a name="ResponseHeader.Peek"></a>
+
 ### func \(\*ResponseHeader\) [Peek](<https://github.com/valyala/fasthttp/blob/master/header.go#L1881>)
 
 ```go
@@ -8695,6 +9166,7 @@ Peek returns header value for the given key.
 The returned value is valid until the response is released, either though ReleaseResponse or your request handler returning. Do not store references to the returned value. Make copies instead.
 
 <a name="ResponseHeader.PeekAll"></a>
+
 ### func \(\*ResponseHeader\) [PeekAll](<https://github.com/valyala/fasthttp/blob/master/header.go#L2023>)
 
 ```go
@@ -8706,6 +9178,7 @@ PeekAll returns all header value for the given key.
 The returned value is valid until the request is released, either though ReleaseResponse or your request handler returning. Any future calls to the Peek\* will modify the returned value. Do not store references to returned value. Make copies instead.
 
 <a name="ResponseHeader.PeekBytes"></a>
+
 ### func \(\*ResponseHeader\) [PeekBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L1891>)
 
 ```go
@@ -8717,6 +9190,7 @@ PeekBytes returns header value for the given key.
 The returned value is valid until the response is released, either though ReleaseResponse or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="ResponseHeader.PeekCookie"></a>
+
 ### func \(\*ResponseHeader\) [PeekCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L189>)
 
 ```go
@@ -8726,6 +9200,7 @@ func (h *ResponseHeader) PeekCookie(key string) []byte
 PeekCookie is able to returns cookie by a given key from response.
 
 <a name="ResponseHeader.PeekKeys"></a>
+
 ### func \(\*ResponseHeader\) [PeekKeys](<https://github.com/valyala/fasthttp/blob/master/header.go#L2081>)
 
 ```go
@@ -8737,6 +9212,7 @@ PeekKeys return all header keys.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Any future calls to the Peek\* will modify the returned value. Do not store references to returned value. Make copies instead.
 
 <a name="ResponseHeader.Read"></a>
+
 ### func \(\*ResponseHeader\) [Read](<https://github.com/valyala/fasthttp/blob/master/header.go#L2126>)
 
 ```go
@@ -8748,6 +9224,7 @@ Read reads response header from r.
 io.EOF is returned if r is closed before reading the first header byte.
 
 <a name="ResponseHeader.Reset"></a>
+
 ### func \(\*ResponseHeader\) [Reset](<https://github.com/valyala/fasthttp/blob/master/header.go#L964>)
 
 ```go
@@ -8757,6 +9234,7 @@ func (h *ResponseHeader) Reset()
 Reset clears response header.
 
 <a name="ResponseHeader.Server"></a>
+
 ### func \(\*ResponseHeader\) [Server](<https://github.com/valyala/fasthttp/blob/master/header.go#L335>)
 
 ```go
@@ -8766,6 +9244,7 @@ func (h *ResponseHeader) Server() []byte
 Server returns Server header value.
 
 <a name="ResponseHeader.Set"></a>
+
 ### func \(\*ResponseHeader\) [Set](<https://github.com/valyala/fasthttp/blob/master/header.go#L1587>)
 
 ```go
@@ -8781,6 +9260,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use Add for setting multiple header values under the same key.
 
 <a name="ResponseHeader.SetBytesK"></a>
+
 ### func \(\*ResponseHeader\) [SetBytesK](<https://github.com/valyala/fasthttp/blob/master/header.go#L1601>)
 
 ```go
@@ -8796,6 +9276,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesK for setting multiple header values under the same key.
 
 <a name="ResponseHeader.SetBytesKV"></a>
+
 ### func \(\*ResponseHeader\) [SetBytesKV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1629>)
 
 ```go
@@ -8811,6 +9292,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesKV for setting multiple header values under the same key.
 
 <a name="ResponseHeader.SetBytesV"></a>
+
 ### func \(\*ResponseHeader\) [SetBytesV](<https://github.com/valyala/fasthttp/blob/master/header.go#L1615>)
 
 ```go
@@ -8826,6 +9308,7 @@ If the header is set as a Trailer \(forbidden trailers will not be set, see SetT
 Use AddBytesV for setting multiple header values under the same key.
 
 <a name="ResponseHeader.SetCanonical"></a>
+
 ### func \(\*ResponseHeader\) [SetCanonical](<https://github.com/valyala/fasthttp/blob/master/header.go#L1643>)
 
 ```go
@@ -8839,6 +9322,7 @@ Please note that the Set\-Cookie header will not clear previous cookies, use Set
 If the header is set as a Trailer \(forbidden trailers will not be set, see SetTrailer for more details\), it will be sent after the chunked response body.
 
 <a name="ResponseHeader.SetContentEncoding"></a>
+
 ### func \(\*ResponseHeader\) [SetContentEncoding](<https://github.com/valyala/fasthttp/blob/master/header.go#L313>)
 
 ```go
@@ -8848,6 +9332,7 @@ func (h *ResponseHeader) SetContentEncoding(contentEncoding string)
 SetContentEncoding sets Content\-Encoding header value.
 
 <a name="ResponseHeader.SetContentEncodingBytes"></a>
+
 ### func \(\*ResponseHeader\) [SetContentEncodingBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L318>)
 
 ```go
@@ -8857,6 +9342,7 @@ func (h *ResponseHeader) SetContentEncodingBytes(contentEncoding []byte)
 SetContentEncodingBytes sets Content\-Encoding header value.
 
 <a name="ResponseHeader.SetContentLength"></a>
+
 ### func \(\*ResponseHeader\) [SetContentLength](<https://github.com/valyala/fasthttp/blob/master/header.go#L233>)
 
 ```go
@@ -8868,6 +9354,7 @@ SetContentLength sets Content\-Length header value.
 Content\-Length may be negative: \-1 means Transfer\-Encoding: chunked. \-2 means Transfer\-Encoding: identity.
 
 <a name="ResponseHeader.SetContentRange"></a>
+
 ### func \(\*ResponseHeader\) [SetContentRange](<https://github.com/valyala/fasthttp/blob/master/header.go#L90>)
 
 ```go
@@ -8877,6 +9364,7 @@ func (h *ResponseHeader) SetContentRange(startPos, endPos, contentLength int)
 SetContentRange sets 'Content\-Range: bytes startPos\-endPos/contentLength' header.
 
 <a name="ResponseHeader.SetCookie"></a>
+
 ### func \(\*ResponseHeader\) [SetCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1653>)
 
 ```go
@@ -8888,6 +9376,7 @@ SetCookie sets the given response cookie.
 It is safe re\-using the cookie after the function returns.
 
 <a name="ResponseHeader.SetLastModified"></a>
+
 ### func \(\*ResponseHeader\) [SetLastModified](<https://github.com/valyala/fasthttp/blob/master/header.go#L155>)
 
 ```go
@@ -8897,6 +9386,7 @@ func (h *ResponseHeader) SetLastModified(t time.Time)
 SetLastModified sets 'Last\-Modified' header to the given value.
 
 <a name="ResponseHeader.SetProtocol"></a>
+
 ### func \(\*ResponseHeader\) [SetProtocol](<https://github.com/valyala/fasthttp/blob/master/header.go#L150>)
 
 ```go
@@ -8906,6 +9396,7 @@ func (h *ResponseHeader) SetProtocol(protocol []byte)
 SetProtocol sets response protocol bytes.
 
 <a name="ResponseHeader.SetServer"></a>
+
 ### func \(\*ResponseHeader\) [SetServer](<https://github.com/valyala/fasthttp/blob/master/header.go#L340>)
 
 ```go
@@ -8915,6 +9406,7 @@ func (h *ResponseHeader) SetServer(server string)
 SetServer sets Server header value.
 
 <a name="ResponseHeader.SetServerBytes"></a>
+
 ### func \(\*ResponseHeader\) [SetServerBytes](<https://github.com/valyala/fasthttp/blob/master/header.go#L345>)
 
 ```go
@@ -8924,6 +9416,7 @@ func (h *ResponseHeader) SetServerBytes(server []byte)
 SetServerBytes sets Server header value.
 
 <a name="ResponseHeader.SetStatusCode"></a>
+
 ### func \(\*ResponseHeader\) [SetStatusCode](<https://github.com/valyala/fasthttp/blob/master/header.go#L135>)
 
 ```go
@@ -8933,6 +9426,7 @@ func (h *ResponseHeader) SetStatusCode(statusCode int)
 SetStatusCode sets response status code.
 
 <a name="ResponseHeader.SetStatusMessage"></a>
+
 ### func \(\*ResponseHeader\) [SetStatusMessage](<https://github.com/valyala/fasthttp/blob/master/header.go#L145>)
 
 ```go
@@ -8942,6 +9436,7 @@ func (h *ResponseHeader) SetStatusMessage(statusMessage []byte)
 SetStatusMessage sets response status message bytes.
 
 <a name="ResponseHeader.StatusCode"></a>
+
 ### func \(\*ResponseHeader\) [StatusCode](<https://github.com/valyala/fasthttp/blob/master/header.go#L127>)
 
 ```go
@@ -8951,6 +9446,7 @@ func (h *ResponseHeader) StatusCode() int
 StatusCode returns response status code.
 
 <a name="ResponseHeader.StatusMessage"></a>
+
 ### func \(\*ResponseHeader\) [StatusMessage](<https://github.com/valyala/fasthttp/blob/master/header.go#L140>)
 
 ```go
@@ -8960,6 +9456,7 @@ func (h *ResponseHeader) StatusMessage() []byte
 StatusMessage returns response status message.
 
 <a name="ResponseHeader.String"></a>
+
 ### func \(\*ResponseHeader\) [String](<https://github.com/valyala/fasthttp/blob/master/header.go#L2417>)
 
 ```go
@@ -8969,6 +9466,7 @@ func (h *ResponseHeader) String() string
 String returns response header representation.
 
 <a name="ResponseHeader.TrailerHeader"></a>
+
 ### func \(\*ResponseHeader\) [TrailerHeader](<https://github.com/valyala/fasthttp/blob/master/header.go#L2406>)
 
 ```go
@@ -8982,6 +9480,7 @@ Trailers will only be received with chunked transfer.
 The returned value is valid until the request is released, either though ReleaseRequest or your request handler returning. Do not store references to returned value. Make copies instead.
 
 <a name="ResponseHeader.VisitAll"></a>
+
 ### func \(\*ResponseHeader\) [VisitAll](<https://github.com/valyala/fasthttp/blob/master/header.go#L1117>)
 
 ```go
@@ -8995,6 +9494,7 @@ f must not retain references to key and/or value after returning. Copy key and/o
 Deprecated: Use All instead.
 
 <a name="ResponseHeader.VisitAllCookie"></a>
+
 ### func \(\*ResponseHeader\) [VisitAllCookie](<https://github.com/valyala/fasthttp/blob/master/header.go#L1180>)
 
 ```go
@@ -9010,6 +9510,7 @@ f must not retain references to key and/or value after returning.
 Deprecated: Use Cookies instead.
 
 <a name="ResponseHeader.Write"></a>
+
 ### func \(\*ResponseHeader\) [Write](<https://github.com/valyala/fasthttp/blob/master/header.go#L2368>)
 
 ```go
@@ -9019,6 +9520,7 @@ func (h *ResponseHeader) Write(w *bufio.Writer) error
 Write writes response header to w.
 
 <a name="ResponseHeader.WriteTo"></a>
+
 ### func \(\*ResponseHeader\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/header.go#L2376>)
 
 ```go
@@ -9030,6 +9532,7 @@ WriteTo writes response header to w.
 WriteTo implements io.WriterTo interface.
 
 <a name="RetryIfErrFunc"></a>
+
 ## type [RetryIfErrFunc](<https://github.com/valyala/fasthttp/blob/master/client.go#L694>)
 
 RetryIfErrFunc defines an interface used for implementing the following functionality: When the client encounters an error during a request, the behavior—whether to retry and whether to reset the request timeout—should be determined based on the return value of this interface.
@@ -9047,6 +9550,7 @@ type RetryIfErrFunc func(request *Request, attempts int, err error) (resetTimeou
 ```
 
 <a name="RetryIfFunc"></a>
+
 ## type [RetryIfFunc](<https://github.com/valyala/fasthttp/blob/master/client.go#L676>)
 
 RetryIfFunc defines the signature of the retry if function. Request argument passed to RetryIfFunc, if there are any request errors.
@@ -9056,6 +9560,7 @@ type RetryIfFunc func(request *Request) bool
 ```
 
 <a name="RoundTripper"></a>
+
 ## type [RoundTripper](<https://github.com/valyala/fasthttp/blob/master/client.go#L697-L699>)
 
 RoundTripper wraps every request/response.
@@ -9073,6 +9578,7 @@ var DefaultTransport RoundTripper = &transport{}
 ```
 
 <a name="ServeHandler"></a>
+
 ## type [ServeHandler](<https://github.com/valyala/fasthttp/blob/master/server.go#L138>)
 
 ServeHandler must process tls.Config.NextProto negotiated requests.
@@ -9082,6 +9588,7 @@ type ServeHandler func(c net.Conn) error
 ```
 
 <a name="Server"></a>
+
 ## type [Server](<https://github.com/valyala/fasthttp/blob/master/server.go#L149-L445>)
 
 Server implements HTTP server.
@@ -9368,43 +9875,41 @@ type Server struct {
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp"
 )
 
 func main() {
-	// This function will be called by the server for each incoming request.
-	//
-	// RequestCtx provides a lot of functionality related to http request
-	// processing. See RequestCtx docs for details.
-	requestHandler := func(ctx *fasthttp.RequestCtx) {
-		fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
-	}
+ // This function will be called by the server for each incoming request.
+ //
+ // RequestCtx provides a lot of functionality related to http request
+ // processing. See RequestCtx docs for details.
+ requestHandler := func(ctx *fasthttp.RequestCtx) {
+  fmt.Fprintf(ctx, "Hello, world! Requested path is %q", ctx.Path())
+ }
 
-	// Create custom server.
-	s := &fasthttp.Server{
-		Handler: requestHandler,
+ // Create custom server.
+ s := &fasthttp.Server{
+  Handler: requestHandler,
 
-		// Every response will contain 'Server: My super server' header.
-		Name: "My super server",
+  // Every response will contain 'Server: My super server' header.
+  Name: "My super server",
 
-		// Other Server settings may be set here.
-	}
+  // Other Server settings may be set here.
+ }
 
-	// Start the server listening for incoming requests on the given address.
-	//
-	// ListenAndServe returns only on error, so usually it blocks forever.
-	if err := s.ListenAndServe("127.0.0.1:80"); err != nil {
-		log.Fatalf("error in ListenAndServe: %v", err)
-	}
+ // Start the server listening for incoming requests on the given address.
+ //
+ // ListenAndServe returns only on error, so usually it blocks forever.
+ if err := s.ListenAndServe("127.0.0.1:80"); err != nil {
+  log.Fatalf("error in ListenAndServe: %v", err)
+ }
 }
 ```
 
@@ -9412,6 +9917,7 @@ func main() {
 </details>
 
 <a name="Server.AppendCert"></a>
+
 ### func \(\*Server\) [AppendCert](<https://github.com/valyala/fasthttp/blob/master/server.go#L1825>)
 
 ```go
@@ -9423,6 +9929,7 @@ AppendCert appends certificate and keyfile to TLS Configuration.
 This function allows programmer to handle multiple domains in one server structure. See examples/multidomain.
 
 <a name="Server.AppendCertEmbed"></a>
+
 ### func \(\*Server\) [AppendCertEmbed](<https://github.com/valyala/fasthttp/blob/master/server.go#L1842>)
 
 ```go
@@ -9432,6 +9939,7 @@ func (s *Server) AppendCertEmbed(certData, keyData []byte) error
 AppendCertEmbed does the same as AppendCert but using in\-memory data.
 
 <a name="Server.GetCurrentConcurrency"></a>
+
 ### func \(\*Server\) [GetCurrentConcurrency](<https://github.com/valyala/fasthttp/blob/master/server.go#L2146>)
 
 ```go
@@ -9443,6 +9951,7 @@ GetCurrentConcurrency returns a number of currently served connections.
 This function is intended be used by monitoring systems.
 
 <a name="Server.GetOpenConnectionsCount"></a>
+
 ### func \(\*Server\) [GetOpenConnectionsCount](<https://github.com/valyala/fasthttp/blob/master/server.go#L2153>)
 
 ```go
@@ -9454,6 +9963,7 @@ GetOpenConnectionsCount returns a number of opened connections.
 This function is intended be used by monitoring systems.
 
 <a name="Server.GetRejectedConnectionsCount"></a>
+
 ### func \(\*Server\) [GetRejectedConnectionsCount](<https://github.com/valyala/fasthttp/blob/master/server.go#L2168>)
 
 ```go
@@ -9465,6 +9975,7 @@ GetRejectedConnectionsCount returns a number of rejected connections.
 This function is intended be used by monitoring systems.
 
 <a name="Server.ListenAndServe"></a>
+
 ### func \(\*Server\) [ListenAndServe](<https://github.com/valyala/fasthttp/blob/master/server.go#L1708>)
 
 ```go
@@ -9478,6 +9989,7 @@ Pass custom listener to Serve if you need listening on non\-TCP4 media such as I
 Accepted connections are configured to enable TCP keep\-alives.
 
 <a name="Server.ListenAndServeTLS"></a>
+
 ### func \(\*Server\) [ListenAndServeTLS](<https://github.com/valyala/fasthttp/blob/master/server.go#L1746>)
 
 ```go
@@ -9495,6 +10007,7 @@ If the certFile or keyFile has not been provided to the server structure, the fu
 Accepted connections are configured to enable TCP keep\-alives.
 
 <a name="Server.ListenAndServeTLSEmbed"></a>
+
 ### func \(\*Server\) [ListenAndServeTLSEmbed](<https://github.com/valyala/fasthttp/blob/master/server.go#L1765>)
 
 ```go
@@ -9512,6 +10025,7 @@ If the certFile or keyFile has not been provided the server structure, the funct
 Accepted connections are configured to enable TCP keep\-alives.
 
 <a name="Server.ListenAndServeUNIX"></a>
+
 ### func \(\*Server\) [ListenAndServeUNIX](<https://github.com/valyala/fasthttp/blob/master/server.go#L1721>)
 
 ```go
@@ -9525,6 +10039,7 @@ The function deletes existing file at addr before starting serving.
 The server sets the given file mode for the UNIX addr.
 
 <a name="Server.NextProto"></a>
+
 ### func \(\*Server\) [NextProto](<https://github.com/valyala/fasthttp/blob/master/server.go#L1670>)
 
 ```go
@@ -9536,6 +10051,7 @@ NextProto adds nph to be processed when key is negotiated when TLS connection is
 This function can only be called before the server is started.
 
 <a name="Server.Serve"></a>
+
 ### func \(\*Server\) [Serve](<https://github.com/valyala/fasthttp/blob/master/server.go#L1872>)
 
 ```go
@@ -9547,6 +10063,7 @@ Serve serves incoming connections from the given listener.
 Serve blocks until the given listener returns permanent error.
 
 <a name="Server.ServeConn"></a>
+
 ### func \(\*Server\) [ServeConn](<https://github.com/valyala/fasthttp/blob/master/server.go#L2104>)
 
 ```go
@@ -9562,6 +10079,7 @@ Connection c must immediately propagate all the data passed to Write\(\) to the 
 ServeConn closes c before returning.
 
 <a name="Server.ServeTLS"></a>
+
 ### func \(\*Server\) [ServeTLS](<https://github.com/valyala/fasthttp/blob/master/server.go#L1779>)
 
 ```go
@@ -9575,6 +10093,7 @@ certFile and keyFile are paths to TLS certificate and key files.
 If the certFile or keyFile has not been provided the server structure, the function will use previously added TLS configuration.
 
 <a name="Server.ServeTLSEmbed"></a>
+
 ### func \(\*Server\) [ServeTLSEmbed](<https://github.com/valyala/fasthttp/blob/master/server.go#L1803>)
 
 ```go
@@ -9588,6 +10107,7 @@ certData and keyData must contain valid TLS certificate and key data.
 If the certFile or keyFile has not been provided the server structure, the function will use previously added TLS configuration.
 
 <a name="Server.Shutdown"></a>
+
 ### func \(\*Server\) [Shutdown](<https://github.com/valyala/fasthttp/blob/master/server.go#L1952>)
 
 ```go
@@ -9601,6 +10121,7 @@ When Shutdown is called, Serve, ListenAndServe, and ListenAndServeTLS immediatel
 Shutdown does not close keepalive connections so it's recommended to set ReadTimeout and IdleTimeout to something else than 0.
 
 <a name="Server.ShutdownWithContext"></a>
+
 ### func \(\*Server\) [ShutdownWithContext](<https://github.com/valyala/fasthttp/blob/master/server.go#L1967>)
 
 ```go
@@ -9616,6 +10137,7 @@ ShutdownWithContext does not close keepalive connections so it's recommended to 
 When ShutdownWithContext returns errors, any operation to the Server is unavailable.
 
 <a name="StreamWriter"></a>
+
 ## type [StreamWriter](<https://github.com/valyala/fasthttp/blob/master/stream.go#L19>)
 
 StreamWriter must write data to w.
@@ -9631,6 +10153,7 @@ type StreamWriter func(w *bufio.Writer)
 ```
 
 <a name="TCPDialer"></a>
+
 ## type [TCPDialer](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L128-L166>)
 
 TCPDialer contains options to control a group of Dial calls.
@@ -9639,14 +10162,14 @@ TCPDialer contains options to control a group of Dial calls.
 type TCPDialer struct {
     // This may be used to override DNS resolving policy, like this:
     // var dialer = &fasthttp.TCPDialer{
-    // 	Resolver: &net.Resolver{
-    // 		PreferGo:     true,
-    // 		StrictErrors: false,
-    // 		Dial: func (ctx context.Context, network, address string) (net.Conn, error) {
-    // 			d := net.Dialer{}
-    // 			return d.DialContext(ctx, "udp", "8.8.8.8:53")
-    // 		},
-    // 	},
+    //  Resolver: &net.Resolver{
+    //   PreferGo:     true,
+    //   StrictErrors: false,
+    //   Dial: func (ctx context.Context, network, address string) (net.Conn, error) {
+    //    d := net.Dialer{}
+    //    return d.DialContext(ctx, "udp", "8.8.8.8:53")
+    //   },
+    //  },
     // }
     Resolver Resolver
 
@@ -9673,6 +10196,7 @@ type TCPDialer struct {
 ```
 
 <a name="TCPDialer.Dial"></a>
+
 ### func \(\*TCPDialer\) [Dial](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L191>)
 
 ```go
@@ -9698,6 +10222,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="TCPDialer.DialDualStack"></a>
+
 ### func \(\*TCPDialer\) [DialDualStack](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L244>)
 
 ```go
@@ -9723,6 +10248,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="TCPDialer.DialDualStackTimeout"></a>
+
 ### func \(\*TCPDialer\) [DialDualStackTimeout](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L270>)
 
 ```go
@@ -9747,6 +10273,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="TCPDialer.DialTimeout"></a>
+
 ### func \(\*TCPDialer\) [DialTimeout](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L216>)
 
 ```go
@@ -9771,6 +10298,7 @@ The addr passed to the function must contain port. Example addr values:
 - aaa.com:8080
 
 <a name="TCPDialer.FlushDNSCache"></a>
+
 ### func \(\*TCPDialer\) [FlushDNSCache](<https://github.com/valyala/fasthttp/blob/master/tcpdialer.go#L276>)
 
 ```go
@@ -9780,6 +10308,7 @@ func (d *TCPDialer) FlushDNSCache()
 FlushDNSCache clears all cached DNS entries, forcing fresh DNS lookups on subsequent dials. This is useful when you want to ensure fresh DNS resolution, for example after network changes.
 
 <a name="URI"></a>
+
 ## type [URI](<https://github.com/valyala/fasthttp/blob/master/uri.go#L42-L69>)
 
 URI represents URI :\) .
@@ -9804,6 +10333,7 @@ type URI struct {
 ```
 
 <a name="AcquireURI"></a>
+
 ### func [AcquireURI](<https://github.com/valyala/fasthttp/blob/master/uri.go#L17>)
 
 ```go
@@ -9815,6 +10345,7 @@ AcquireURI returns an empty URI instance from the pool.
 Release the URI with ReleaseURI after the URI is no longer needed. This allows reducing GC load.
 
 <a name="URI.AppendBytes"></a>
+
 ### func \(\*URI\) [AppendBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L867>)
 
 ```go
@@ -9824,6 +10355,7 @@ func (u *URI) AppendBytes(dst []byte) []byte
 AppendBytes appends full uri to dst and returns the extended dst.
 
 <a name="URI.CopyTo"></a>
+
 ### func \(\*URI\) [CopyTo](<https://github.com/valyala/fasthttp/blob/master/uri.go#L72>)
 
 ```go
@@ -9833,6 +10365,7 @@ func (u *URI) CopyTo(dst *URI)
 CopyTo copies uri contents to dst.
 
 <a name="URI.FullURI"></a>
+
 ### func \(\*URI\) [FullURI](<https://github.com/valyala/fasthttp/blob/master/uri.go#L861>)
 
 ```go
@@ -9844,6 +10377,7 @@ FullURI returns full uri in the form \{Scheme\}://\{Host\}\{RequestURI\}\#\{Hash
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.Hash"></a>
+
 ### func \(\*URI\) [Hash](<https://github.com/valyala/fasthttp/blob/master/uri.go#L94>)
 
 ```go
@@ -9855,6 +10389,7 @@ Hash returns URI hash, i.e. qwe of http://aaa.com/foo/bar?baz=123#qwe .
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.Host"></a>
+
 ### func \(\*URI\) [Host](<https://github.com/valyala/fasthttp/blob/master/uri.go#L255>)
 
 ```go
@@ -9868,6 +10403,7 @@ Host is always lowercased.
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.LastPathSegment"></a>
+
 ### func \(\*URI\) [LastPathSegment](<https://github.com/valyala/fasthttp/blob/master/uri.go#L758>)
 
 ```go
@@ -9885,6 +10421,7 @@ Examples:
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.Parse"></a>
+
 ### func \(\*URI\) [Parse](<https://github.com/valyala/fasthttp/blob/master/uri.go#L279>)
 
 ```go
@@ -9898,6 +10435,7 @@ host may be nil. In this case uri must contain fully qualified uri, i.e. with sc
 uri may contain e.g. RequestURI without scheme and host if host is non\-empty.
 
 <a name="URI.Password"></a>
+
 ### func \(\*URI\) [Password](<https://github.com/valyala/fasthttp/blob/master/uri.go#L128>)
 
 ```go
@@ -9909,6 +10447,7 @@ Password returns URI password.
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.Path"></a>
+
 ### func \(\*URI\) [Path](<https://github.com/valyala/fasthttp/blob/master/uri.go#L168>)
 
 ```go
@@ -9922,6 +10461,7 @@ The returned path is always urldecoded and normalized, i.e. '//f%20obar/baz/../z
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.PathOriginal"></a>
+
 ### func \(\*URI\) [PathOriginal](<https://github.com/valyala/fasthttp/blob/master/uri.go#L191>)
 
 ```go
@@ -9933,6 +10473,7 @@ PathOriginal returns the original path from requestURI passed to URI.Parse\(\).
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.QueryArgs"></a>
+
 ### func \(\*URI\) [QueryArgs](<https://github.com/valyala/fasthttp/blob/master/uri.go#L930>)
 
 ```go
@@ -9944,6 +10485,7 @@ QueryArgs returns query args.
 The returned args are valid until the next URI method call.
 
 <a name="URI.QueryString"></a>
+
 ### func \(\*URI\) [QueryString](<https://github.com/valyala/fasthttp/blob/master/uri.go#L146>)
 
 ```go
@@ -9955,6 +10497,7 @@ QueryString returns URI query string, i.e. baz=123 of http://aaa.com/foo/bar?baz
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.RequestURI"></a>
+
 ### func \(\*URI\) [RequestURI](<https://github.com/valyala/fasthttp/blob/master/uri.go#L730>)
 
 ```go
@@ -9964,6 +10507,7 @@ func (u *URI) RequestURI() []byte
 RequestURI returns RequestURI \- i.e. URI without Scheme and Host.
 
 <a name="URI.Reset"></a>
+
 ### func \(\*URI\) [Reset](<https://github.com/valyala/fasthttp/blob/master/uri.go#L229>)
 
 ```go
@@ -9973,6 +10517,7 @@ func (u *URI) Reset()
 Reset clears uri.
 
 <a name="URI.Scheme"></a>
+
 ### func \(\*URI\) [Scheme](<https://github.com/valyala/fasthttp/blob/master/uri.go#L200>)
 
 ```go
@@ -9986,6 +10531,7 @@ Returned scheme is always lowercased.
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.SetHash"></a>
+
 ### func \(\*URI\) [SetHash](<https://github.com/valyala/fasthttp/blob/master/uri.go#L99>)
 
 ```go
@@ -9995,6 +10541,7 @@ func (u *URI) SetHash(hash string)
 SetHash sets URI hash.
 
 <a name="URI.SetHashBytes"></a>
+
 ### func \(\*URI\) [SetHashBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L104>)
 
 ```go
@@ -10004,6 +10551,7 @@ func (u *URI) SetHashBytes(hash []byte)
 SetHashBytes sets URI hash.
 
 <a name="URI.SetHost"></a>
+
 ### func \(\*URI\) [SetHost](<https://github.com/valyala/fasthttp/blob/master/uri.go#L260>)
 
 ```go
@@ -10013,6 +10561,7 @@ func (u *URI) SetHost(host string)
 SetHost sets host for the uri.
 
 <a name="URI.SetHostBytes"></a>
+
 ### func \(\*URI\) [SetHostBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L266>)
 
 ```go
@@ -10022,6 +10571,7 @@ func (u *URI) SetHostBytes(host []byte)
 SetHostBytes sets host for the uri.
 
 <a name="URI.SetPassword"></a>
+
 ### func \(\*URI\) [SetPassword](<https://github.com/valyala/fasthttp/blob/master/uri.go#L133>)
 
 ```go
@@ -10031,6 +10581,7 @@ func (u *URI) SetPassword(password string)
 SetPassword sets URI password.
 
 <a name="URI.SetPasswordBytes"></a>
+
 ### func \(\*URI\) [SetPasswordBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L138>)
 
 ```go
@@ -10040,6 +10591,7 @@ func (u *URI) SetPasswordBytes(password []byte)
 SetPasswordBytes sets URI password.
 
 <a name="URI.SetPath"></a>
+
 ### func \(\*URI\) [SetPath](<https://github.com/valyala/fasthttp/blob/master/uri.go#L177>)
 
 ```go
@@ -10049,6 +10601,7 @@ func (u *URI) SetPath(path string)
 SetPath sets URI path.
 
 <a name="URI.SetPathBytes"></a>
+
 ### func \(\*URI\) [SetPathBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L183>)
 
 ```go
@@ -10058,6 +10611,7 @@ func (u *URI) SetPathBytes(path []byte)
 SetPathBytes sets URI path.
 
 <a name="URI.SetQueryString"></a>
+
 ### func \(\*URI\) [SetQueryString](<https://github.com/valyala/fasthttp/blob/master/uri.go#L151>)
 
 ```go
@@ -10067,6 +10621,7 @@ func (u *URI) SetQueryString(queryString string)
 SetQueryString sets URI query string.
 
 <a name="URI.SetQueryStringBytes"></a>
+
 ### func \(\*URI\) [SetQueryStringBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L157>)
 
 ```go
@@ -10076,6 +10631,7 @@ func (u *URI) SetQueryStringBytes(queryString []byte)
 SetQueryStringBytes sets URI query string.
 
 <a name="URI.SetScheme"></a>
+
 ### func \(\*URI\) [SetScheme](<https://github.com/valyala/fasthttp/blob/master/uri.go#L209>)
 
 ```go
@@ -10085,6 +10641,7 @@ func (u *URI) SetScheme(scheme string)
 SetScheme sets URI scheme, i.e. http, https, ftp, etc.
 
 <a name="URI.SetSchemeBytes"></a>
+
 ### func \(\*URI\) [SetSchemeBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L215>)
 
 ```go
@@ -10094,6 +10651,7 @@ func (u *URI) SetSchemeBytes(scheme []byte)
 SetSchemeBytes sets URI scheme, i.e. http, https, ftp, etc.
 
 <a name="URI.SetUsername"></a>
+
 ### func \(\*URI\) [SetUsername](<https://github.com/valyala/fasthttp/blob/master/uri.go#L116>)
 
 ```go
@@ -10103,6 +10661,7 @@ func (u *URI) SetUsername(username string)
 SetUsername sets URI username.
 
 <a name="URI.SetUsernameBytes"></a>
+
 ### func \(\*URI\) [SetUsernameBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L121>)
 
 ```go
@@ -10112,6 +10671,7 @@ func (u *URI) SetUsernameBytes(username []byte)
 SetUsernameBytes sets URI username.
 
 <a name="URI.String"></a>
+
 ### func \(\*URI\) [String](<https://github.com/valyala/fasthttp/blob/master/uri.go#L892>)
 
 ```go
@@ -10121,6 +10681,7 @@ func (u *URI) String() string
 String returns full uri.
 
 <a name="URI.Update"></a>
+
 ### func \(\*URI\) [Update](<https://github.com/valyala/fasthttp/blob/master/uri.go#L779>)
 
 ```go
@@ -10137,6 +10698,7 @@ The following newURI types are accepted:
 - Relative path, i.e. xx?yy=abc . In this case the original RequestURI is updated according to the new relative path.
 
 <a name="URI.UpdateBytes"></a>
+
 ### func \(\*URI\) [UpdateBytes](<https://github.com/valyala/fasthttp/blob/master/uri.go#L795>)
 
 ```go
@@ -10153,6 +10715,7 @@ The following newURI types are accepted:
 - Relative path, i.e. xx?yy=abc . In this case the original RequestURI is updated according to the new relative path.
 
 <a name="URI.Username"></a>
+
 ### func \(\*URI\) [Username](<https://github.com/valyala/fasthttp/blob/master/uri.go#L111>)
 
 ```go
@@ -10164,6 +10727,7 @@ Username returns URI username
 The returned bytes are valid until the next URI method call.
 
 <a name="URI.WriteTo"></a>
+
 ### func \(\*URI\) [WriteTo](<https://github.com/valyala/fasthttp/blob/master/uri.go#L886>)
 
 ```go
@@ -10186,8 +10750,8 @@ Package expvarhandler provides fasthttp\-compatible request handler serving expv
 
 - [func ExpvarHandler\(ctx \*fasthttp.RequestCtx\)](<#ExpvarHandler>)
 
-
 <a name="ExpvarHandler"></a>
+
 ## func [ExpvarHandler](<https://github.com/valyala/fasthttp/blob/master/expvarhandler/expvar.go#L25>)
 
 ```go
@@ -10214,8 +10778,8 @@ Package fasthttpadaptor provides helper functions for converting net/http reques
 - [func NewFastHTTPHandler\(h http.Handler\) fasthttp.RequestHandler](<#NewFastHTTPHandler>)
 - [func NewFastHTTPHandlerFunc\(h http.HandlerFunc\) fasthttp.RequestHandler](<#NewFastHTTPHandlerFunc>)
 
-
 <a name="ConvertRequest"></a>
+
 ## func [ConvertRequest](<https://github.com/valyala/fasthttp/blob/master/fasthttpadaptor/request.go#L18>)
 
 ```go
@@ -10227,6 +10791,7 @@ ConvertRequest converts a fasthttp.Request to an http.Request. forServer should 
 The http.Request must not be used after the fasthttp handler has returned\! Memory in use by the http.Request will be reused after your handler has returned\!
 
 <a name="NewFastHTTPHandler"></a>
+
 ## func [NewFastHTTPHandler](<https://github.com/valyala/fasthttp/blob/master/fasthttpadaptor/adaptor.go#L53>)
 
 ```go
@@ -10243,6 +10808,7 @@ While this function may be used for easy switching from net/http to fasthttp, it
 So it is advisable using this function only for quick net/http \-\> fasthttp switching. Then manually convert net/http handlers to fasthttp handlers according to https://github.com/valyala/fasthttp#switching-from-nethttp-to-fasthttp .
 
 <a name="NewFastHTTPHandlerFunc"></a>
+
 ## func [NewFastHTTPHandlerFunc](<https://github.com/valyala/fasthttp/blob/master/fasthttpadaptor/adaptor.go#L33>)
 
 ```go
@@ -10282,8 +10848,8 @@ Package fasthttpproxy provides SOCKS5 and HTTP proxy support for fasthttp.
 - [type DialerFunc](<#DialerFunc>)
   - [func \(d DialerFunc\) Dial\(network, addr string\) \(net.Conn, error\)](<#DialerFunc.Dial>)
 
-
 <a name="FasthttpHTTPDialer"></a>
+
 ## func [FasthttpHTTPDialer](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/http.go#L18>)
 
 ```go
@@ -10296,11 +10862,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpHTTPDialer("username:password@localhost:9050"),
+ Dial: fasthttpproxy.FasthttpHTTPDialer("username:password@localhost:9050"),
 }
 ```
 
 <a name="FasthttpHTTPDialerDualStack"></a>
+
 ## func [FasthttpHTTPDialerDualStack](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/http.go#L45>)
 
 ```go
@@ -10313,11 +10880,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpHTTPDialerDualStack("username:password@localhost:9050"),
+ Dial: fasthttpproxy.FasthttpHTTPDialerDualStack("username:password@localhost:9050"),
 }
 ```
 
 <a name="FasthttpHTTPDialerDualStackTimeout"></a>
+
 ## func [FasthttpHTTPDialerDualStackTimeout](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/http.go#L58>)
 
 ```go
@@ -10330,11 +10898,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpHTTPDialerDualStackTimeout("username:password@localhost:9050", time.Second * 2),
+ Dial: fasthttpproxy.FasthttpHTTPDialerDualStackTimeout("username:password@localhost:9050", time.Second * 2),
 }
 ```
 
 <a name="FasthttpHTTPDialerTimeout"></a>
+
 ## func [FasthttpHTTPDialerTimeout](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/http.go#L31>)
 
 ```go
@@ -10347,11 +10916,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpHTTPDialerTimeout("username:password@localhost:9050", time.Second * 2),
+ Dial: fasthttpproxy.FasthttpHTTPDialerTimeout("username:password@localhost:9050", time.Second * 2),
 }
 ```
 
 <a name="FasthttpProxyHTTPDialer"></a>
+
 ## func [FasthttpProxyHTTPDialer](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/proxy_env.go#L22>)
 
 ```go
@@ -10364,11 +10934,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpProxyHTTPDialer(),
+ Dial: fasthttpproxy.FasthttpProxyHTTPDialer(),
 }
 ```
 
 <a name="FasthttpProxyHTTPDialerTimeout"></a>
+
 ## func [FasthttpProxyHTTPDialerTimeout](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/proxy_env.go#L35>)
 
 ```go
@@ -10381,11 +10952,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpProxyHTTPDialerTimeout(time.Second * 2),
+ Dial: fasthttpproxy.FasthttpProxyHTTPDialerTimeout(time.Second * 2),
 }
 ```
 
 <a name="FasthttpSocksDialer"></a>
+
 ## func [FasthttpSocksDialer](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/socks5.go#L16>)
 
 ```go
@@ -10398,11 +10970,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpSocksDialer("socks5://localhost:9050"),
+ Dial: fasthttpproxy.FasthttpSocksDialer("socks5://localhost:9050"),
 }
 ```
 
 <a name="FasthttpSocksDialerDualStack"></a>
+
 ## func [FasthttpSocksDialerDualStack](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/socks5.go#L30>)
 
 ```go
@@ -10415,11 +10988,12 @@ Example usage:
 
 ```
 c := &fasthttp.Client{
-	Dial: fasthttpproxy.FasthttpSocksDialerDualStack("socks5://localhost:9050"),
+ Dial: fasthttpproxy.FasthttpSocksDialerDualStack("socks5://localhost:9050"),
 }
 ```
 
 <a name="Dialer"></a>
+
 ## type [Dialer](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/dialer.go#L27-L70>)
 
 Dialer embeds both fasthttp.TCPDialer and httpproxy.Config, allowing it to take advantage of the optimizations provided by fasthttp for dialing while also utilizing the finer\-grained configuration options offered by httpproxy.
@@ -10472,6 +11046,7 @@ type Dialer struct {
 ```
 
 <a name="Dialer.Dial"></a>
+
 ### func \(\*Dialer\) [Dial](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/dialer.go#L153>)
 
 ```go
@@ -10481,6 +11056,7 @@ func (d *Dialer) Dial(network, addr string) (net.Conn, error)
 Dial is solely for implementing the proxy.Dialer interface.
 
 <a name="Dialer.GetDialFunc"></a>
+
 ### func \(\*Dialer\) [GetDialFunc](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/dialer.go#L74>)
 
 ```go
@@ -10490,6 +11066,7 @@ func (d *Dialer) GetDialFunc(useEnv bool) (fasthttp.DialFunc, error)
 GetDialFunc method returns a fasthttp\-style dial function. The useEnv parameter determines whether the proxy address comes from Dialer.Config or from environment variables.
 
 <a name="DialerFunc"></a>
+
 ## type [DialerFunc](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/dialer.go#L183>)
 
 DialerFunc Make a function of type func\(network, addr string\) \(net.Conn, error\) implement the proxy.Dialer interface.
@@ -10499,13 +11076,12 @@ type DialerFunc func(network, addr string) (net.Conn, error)
 ```
 
 <a name="DialerFunc.Dial"></a>
+
 ### func \(DialerFunc\) [Dial](<https://github.com/valyala/fasthttp/blob/master/fasthttpproxy/dialer.go#L185>)
 
 ```go
 func (d DialerFunc) Dial(network, addr string) (net.Conn, error)
 ```
-
-
 
 # fasthttputil
 
@@ -10533,7 +11109,6 @@ Package fasthttputil provides utility functions for fasthttp.
   - [func \(pc \*PipeConns\) Conn2\(\) net.Conn](<#PipeConns.Conn2>)
   - [func \(pc \*PipeConns\) SetAddresses\(localAddr1, remoteAddr1, localAddr2, remoteAddr2 net.Addr\)](<#PipeConns.SetAddresses>)
 
-
 ## Variables
 
 <a name="ErrInmemoryListenerClosed"></a>ErrInmemoryListenerClosed indicates that the InmemoryListener is already closed.
@@ -10549,6 +11124,7 @@ var ErrTimeout = &timeoutError{}
 ```
 
 <a name="InmemoryListener"></a>
+
 ## type [InmemoryListener](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L16-L22>)
 
 InmemoryListener provides in\-memory dialer\<\-\>net.Listener implementation.
@@ -10562,6 +11138,7 @@ type InmemoryListener struct {
 ```
 
 <a name="NewInmemoryListener"></a>
+
 ### func [NewInmemoryListener](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L30>)
 
 ```go
@@ -10571,6 +11148,7 @@ func NewInmemoryListener() *InmemoryListener
 NewInmemoryListener returns new in\-memory dialer\<\-\>net.Listener.
 
 <a name="InmemoryListener.Accept"></a>
+
 ### func \(\*InmemoryListener\) [Accept](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L49>)
 
 ```go
@@ -10584,6 +11162,7 @@ It is safe calling Accept from concurrently running goroutines.
 Accept returns new connection per each Dial call.
 
 <a name="InmemoryListener.Addr"></a>
+
 ### func \(\*InmemoryListener\) [Addr](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L84>)
 
 ```go
@@ -10593,6 +11172,7 @@ func (ln *InmemoryListener) Addr() net.Addr
 Addr implements net.Listener's Addr.
 
 <a name="InmemoryListener.Close"></a>
+
 ### func \(\*InmemoryListener\) [Close](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L59>)
 
 ```go
@@ -10602,6 +11182,7 @@ func (ln *InmemoryListener) Close() error
 Close implements net.Listener's Close.
 
 <a name="InmemoryListener.Dial"></a>
+
 ### func \(\*InmemoryListener\) [Dial](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L100>)
 
 ```go
@@ -10613,6 +11194,7 @@ Dial creates new client\<\-\>server connection. Just like a real Dial it only re
 It is safe calling Dial from concurrently running goroutines.
 
 <a name="InmemoryListener.DialWithLocalAddr"></a>
+
 ### func \(\*InmemoryListener\) [DialWithLocalAddr](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L110>)
 
 ```go
@@ -10624,6 +11206,7 @@ DialWithLocalAddr creates new client\<\-\>server connection. Just like a real Di
 It is safe calling Dial from concurrently running goroutines.
 
 <a name="InmemoryListener.SetLocalAddr"></a>
+
 ### func \(\*InmemoryListener\) [SetLocalAddr](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/inmemory_listener.go#L37>)
 
 ```go
@@ -10633,6 +11216,7 @@ func (ln *InmemoryListener) SetLocalAddr(localAddr net.Addr)
 SetLocalAddr sets the \(simulated\) local address for the listener.
 
 <a name="PipeConns"></a>
+
 ## type [PipeConns](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L44-L49>)
 
 PipeConns provides bi\-directional connection pipe, which use in\-process memory as a transport.
@@ -10654,6 +11238,7 @@ type PipeConns struct {
 ```
 
 <a name="NewPipeConns"></a>
+
 ### func [NewPipeConns](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L14>)
 
 ```go
@@ -10665,6 +11250,7 @@ NewPipeConns returns new bi\-directional connection pipe.
 PipeConns is NOT safe for concurrent use by multiple goroutines\!
 
 <a name="PipeConns.Close"></a>
+
 ### func \(\*PipeConns\) [Close](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L83>)
 
 ```go
@@ -10674,6 +11260,7 @@ func (pc *PipeConns) Close() error
 Close closes pipe connections.
 
 <a name="PipeConns.Conn1"></a>
+
 ### func \(\*PipeConns\) [Conn1](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L70>)
 
 ```go
@@ -10685,6 +11272,7 @@ Conn1 returns the first end of bi\-directional pipe.
 Data written to Conn1 may be read from Conn2. Data written to Conn2 may be read from Conn1.
 
 <a name="PipeConns.Conn2"></a>
+
 ### func \(\*PipeConns\) [Conn2](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L78>)
 
 ```go
@@ -10696,6 +11284,7 @@ Conn2 returns the second end of bi\-directional pipe.
 Data written to Conn2 may be read from Conn1. Data written to Conn1 may be read from Conn2.
 
 <a name="PipeConns.SetAddresses"></a>
+
 ### func \(\*PipeConns\) [SetAddresses](<https://github.com/valyala/fasthttp/blob/master/fasthttputil/pipeconns.go#L52>)
 
 ```go
@@ -10716,8 +11305,8 @@ Package pprofhandler provides a fasthttp handler similar to net/http/pprof.
 
 - [func PprofHandler\(ctx \*fasthttp.RequestCtx\)](<#PprofHandler>)
 
-
 <a name="PprofHandler"></a>
+
 ## func [PprofHandler](<https://github.com/valyala/fasthttp/blob/master/pprofhandler/pprof.go#L24>)
 
 ```go
@@ -10747,7 +11336,6 @@ Package prefork provides a way to prefork a fasthttp server.
   - [func \(p \*Prefork\) ListenAndServeTLS\(addr, certKey, certFile string\) error](<#Prefork.ListenAndServeTLS>)
   - [func \(p \*Prefork\) ListenAndServeTLSEmbed\(addr string, certData, keyData \[\]byte\) error](<#Prefork.ListenAndServeTLSEmbed>)
 
-
 ## Variables
 
 <a name="ErrOverRecovery"></a>
@@ -10765,6 +11353,7 @@ var (
 ```
 
 <a name="IsChild"></a>
+
 ## func [IsChild](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L74>)
 
 ```go
@@ -10774,6 +11363,7 @@ func IsChild() bool
 IsChild checks if the current thread/process is a child.
 
 <a name="Logger"></a>
+
 ## type [Logger](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L32-L35>)
 
 Logger is used for logging formatted messages.
@@ -10786,6 +11376,7 @@ type Logger interface {
 ```
 
 <a name="Prefork"></a>
+
 ## type [Prefork](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L45-L71>)
 
 Prefork implements fasthttp server prefork.
@@ -10822,6 +11413,7 @@ type Prefork struct {
 ```
 
 <a name="New"></a>
+
 ### func [New](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L79>)
 
 ```go
@@ -10831,6 +11423,7 @@ func New(s *fasthttp.Server) *Prefork
 New wraps the fasthttp server to run with preforked processes.
 
 <a name="Prefork.ListenAndServe"></a>
+
 ### func \(\*Prefork\) [ListenAndServe](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L226>)
 
 ```go
@@ -10840,6 +11433,7 @@ func (p *Prefork) ListenAndServe(addr string) error
 ListenAndServe serves HTTP requests from the given TCP addr.
 
 <a name="Prefork.ListenAndServeTLS"></a>
+
 ### func \(\*Prefork\) [ListenAndServeTLS](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L244>)
 
 ```go
@@ -10851,6 +11445,7 @@ ListenAndServeTLS serves HTTPS requests from the given TCP addr.
 certFile and keyFile are paths to TLS certificate and key files.
 
 <a name="Prefork.ListenAndServeTLSEmbed"></a>
+
 ### func \(\*Prefork\) [ListenAndServeTLSEmbed](<https://github.com/valyala/fasthttp/blob/master/prefork/prefork.go#L262>)
 
 ```go
@@ -10879,8 +11474,8 @@ The package is based on https://github.com/kavu/go_reuseport .
 - [type ErrNoReusePort](<#ErrNoReusePort>)
   - [func \(e \*ErrNoReusePort\) Error\(\) string](<#ErrNoReusePort.Error>)
 
-
 <a name="Listen"></a>
+
 ## func [Listen](<https://github.com/valyala/fasthttp/blob/master/reuseport/reuseport.go#L31>)
 
 ```go
@@ -10902,32 +11497,30 @@ ErrNoReusePort error is returned if the system doesn't support SO\_REUSEPORT.
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"fmt"
-	"log"
+ "fmt"
+ "log"
 
-	"github.com/valyala/fasthttp"
-	"github.com/valyala/fasthttp/reuseport"
+ "github.com/valyala/fasthttp"
+ "github.com/valyala/fasthttp/reuseport"
 )
 
 func main() {
-	ln, err := reuseport.Listen("tcp4", "localhost:12345")
-	if err != nil {
-		log.Fatalf("error in reuseport listener: %v", err)
-	}
+ ln, err := reuseport.Listen("tcp4", "localhost:12345")
+ if err != nil {
+  log.Fatalf("error in reuseport listener: %v", err)
+ }
 
-	if err = fasthttp.Serve(ln, requestHandler); err != nil {
-		log.Fatalf("error in fasthttp Server: %v", err)
-	}
+ if err = fasthttp.Serve(ln, requestHandler); err != nil {
+  log.Fatalf("error in fasthttp Server: %v", err)
+ }
 }
 
 func requestHandler(ctx *fasthttp.RequestCtx) {
-	fmt.Fprintf(ctx, "Hello, world!")
+ fmt.Fprintf(ctx, "Hello, world!")
 }
 ```
 
@@ -10935,6 +11528,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 </details>
 
 <a name="ErrNoReusePort"></a>
+
 ## type [ErrNoReusePort](<https://github.com/valyala/fasthttp/blob/master/reuseport/reuseport_error.go#L8-L10>)
 
 ErrNoReusePort is returned if the OS doesn't support SO\_REUSEPORT.
@@ -10946,6 +11540,7 @@ type ErrNoReusePort struct {
 ```
 
 <a name="ErrNoReusePort.Error"></a>
+
 ### func \(\*ErrNoReusePort\) [Error](<https://github.com/valyala/fasthttp/blob/master/reuseport/reuseport_error.go#L13>)
 
 ```go
@@ -10969,8 +11564,8 @@ Package stackless provides functionality that may save stack space for high numb
 - [type Writer](<#Writer>)
   - [func NewWriter\(dstW io.Writer, newWriter NewWriterFunc\) Writer](<#NewWriter>)
 
-
 <a name="NewFunc"></a>
+
 ## func [NewFunc](<https://github.com/valyala/fasthttp/blob/master/stackless/func.go#L21>)
 
 ```go
@@ -10988,6 +11583,7 @@ Unlike f, the returned stackless wrapper doesn't use stack space on the goroutin
 The stackless wrapper returns false if the call cannot be processed at the moment due to high load.
 
 <a name="NewWriterFunc"></a>
+
 ## type [NewWriterFunc](<https://github.com/valyala/fasthttp/blob/master/stackless/writer.go#L24>)
 
 NewWriterFunc must return new writer that will be wrapped into stackless writer.
@@ -10997,6 +11593,7 @@ type NewWriterFunc func(w io.Writer) Writer
 ```
 
 <a name="Writer"></a>
+
 ## type [Writer](<https://github.com/valyala/fasthttp/blob/master/stackless/writer.go#L15-L20>)
 
 Writer is an interface stackless writer must conform to.
@@ -11013,6 +11610,7 @@ type Writer interface {
 ```
 
 <a name="NewWriter"></a>
+
 ### func [NewWriter](<https://github.com/valyala/fasthttp/blob/master/stackless/writer.go#L33>)
 
 ```go
@@ -11046,8 +11644,8 @@ The package is derived from https://github.com/valyala/tcplisten
 - [type Config](<#Config>)
   - [func \(cfg \*Config\) NewListener\(network, addr string\) \(net.Listener, error\)](<#Config.NewListener>)
 
-
 <a name="Config"></a>
+
 ## type [Config](<https://github.com/valyala/fasthttp/blob/master/tcplisten/tcplisten.go#L29-L45>)
 
 Config provides options to enable on the returned listener.
@@ -11073,6 +11671,7 @@ type Config struct {
 ```
 
 <a name="Config.NewListener"></a>
+
 ### func \(\*Config\) [NewListener](<https://github.com/valyala/fasthttp/blob/master/tcplisten/tcplisten.go#L53>)
 
 ```go
@@ -11095,11 +11694,9 @@ import "github.com/valyala/fasthttp/examples/client"
 
 - [type Entity](<#Entity>)
 
-
 <a name="Entity"></a>
+
 ## type [Entity](<https://github.com/valyala/fasthttp/blob/master/examples/client/client.go#L20-L23>)
-
-
 
 ```go
 type Entity struct {
@@ -11120,8 +11717,6 @@ Serves static files from the given directory. Exports various stats at /stats .
 
 ## Index
 
-
-
 # helloworldserver
 
 ```go
@@ -11129,8 +11724,6 @@ import "github.com/valyala/fasthttp/examples/helloworldserver"
 ```
 
 ## Index
-
-
 
 # host\_client
 
@@ -11140,8 +11733,6 @@ import "github.com/valyala/fasthttp/examples/host_client"
 
 ## Index
 
-
-
 # letsencrypt
 
 ```go
@@ -11150,8 +11741,6 @@ import "github.com/valyala/fasthttp/examples/letsencrypt"
 
 ## Index
 
-
-
 # multidomain
 
 ```go
@@ -11159,7 +11748,5 @@ import "github.com/valyala/fasthttp/examples/multidomain"
 ```
 
 ## Index
-
-
 
 Generated by [gomarkdoc](<https://github.com/princjef/gomarkdoc>)
