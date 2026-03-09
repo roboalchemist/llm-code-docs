@@ -453,7 +453,8 @@ sites:
   description: Infisical documentation
 - name: influxdb
   base_url: https://docs.influxdata.com/
-  description: InfluxDB time-series database documentation including InfluxDB 2.x, 3.x, Telegraf, Chronograf, Kapacitor, and Flux
+  description: InfluxDB time-series database documentation including InfluxDB 2.x,
+    3.x, Telegraf, Chronograf, Kapacitor, and Flux
 - name: inkeep
   base_url: https://docs.inkeep.com/
   description: Inkeep AI-powered documentation search
@@ -641,7 +642,8 @@ sites:
   description: Netlify web deployment platform
 - name: northflank
   base_url: https://northflank.com/docs/
-  description: Northflank full-stack cloud platform with GPU orchestration, BYOC, auto spot, API and CLI
+  description: Northflank full-stack cloud platform with GPU orchestration, BYOC,
+    auto spot, API and CLI
 - name: nextjs
   base_url: https://nextjs.org/docs/
   description: Next.js React framework
@@ -826,7 +828,8 @@ sites:
   description: Saaspegasus documentation
 - name: saladcloud
   base_url: https://docs.salad.com/
-  description: SaladCloud distributed GPU cloud platform for AI/ML workloads with Container Engine, APIs, CLI, and batch processing
+  description: SaladCloud distributed GPU cloud platform for AI/ML workloads with
+    Container Engine, APIs, CLI, and batch processing
 - name: sardine
   base_url: https://docs.sardine.ai/
   description: Sardine documentation
@@ -850,7 +853,8 @@ sites:
   description: Sherlockdomains documentation
 - name: silicon-labs-openthread
   base_url: https://docs.silabs.com/openthread/latest/
-  description: Silicon Labs OpenThread documentation for EFR32 microcontrollers and wireless devices
+  description: Silicon Labs OpenThread documentation for EFR32 microcontrollers and
+    wireless devices
 - name: shopify
   base_url: https://shopify.dev/
   description: Shopify developer platform with Admin API (GraphQL and REST), Storefront
@@ -1143,3 +1147,6 @@ sites:
 - name: fiber
   base_url: https://docs.gofiber.io/
   description: fiber documentation
+- name: milvus
+  base_url: https://milvus.io/
+  description: milvus documentation
