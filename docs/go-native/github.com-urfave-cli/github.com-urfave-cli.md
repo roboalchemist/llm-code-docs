@@ -10,7 +10,7 @@ Package cli provides a minimal framework for creating and organizing command lin
 
 ```
 func main() {
-	(&cli.Command{}).Run(context.Background(), os.Args)
+ (&cli.Command{}).Run(context.Background(), os.Args)
 }
 ```
 
@@ -18,16 +18,16 @@ Of course this application does not do much, so let's make this an actual applic
 
 ```
 func main() {
-	cmd := &cli.Command{
-  		Name: "greet",
-  		Usage: "say a greeting",
-  		Action: func(c *cli.Context) error {
-  			fmt.Println("Greetings")
-  			return nil
-  		},
-	}
+ cmd := &cli.Command{
+    Name: "greet",
+    Usage: "say a greeting",
+    Action: func(c *cli.Context) error {
+     fmt.Println("Greetings")
+     return nil
+    },
+ }
 
-	cmd.Run(context.Background(), os.Args)
+ cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -355,7 +355,6 @@ func main() {
 - [type VisibleFlag](<#VisibleFlag>)
 - [type VisibleFlagCategory](<#VisibleFlagCategory>)
 
-
 ## Variables
 
 <a name="NewFloatSlice"></a>
@@ -590,15 +589,15 @@ var VersionPrinter = DefaultPrintVersion
 ```
 
 <a name="DefaultCompleteWithFlags"></a>
+
 ## func [DefaultCompleteWithFlags](<https://github.com/urfave/cli/blob/main/help.go#L252>)
 
 ```go
 func DefaultCompleteWithFlags(ctx context.Context, cmd *Command)
 ```
 
-
-
 <a name="DefaultPrintHelp"></a>
+
 ## func [DefaultPrintHelp](<https://github.com/urfave/cli/blob/main/help.go#L473>)
 
 ```go
@@ -608,6 +607,7 @@ func DefaultPrintHelp(out io.Writer, templ string, data any)
 DefaultPrintHelp is the default implementation of HelpPrinter.
 
 <a name="DefaultPrintHelpCustom"></a>
+
 ## func [DefaultPrintHelpCustom](<https://github.com/urfave/cli/blob/main/help.go#L383>)
 
 ```go
@@ -619,6 +619,7 @@ DefaultPrintHelpCustom is the default implementation of HelpPrinterCustom.
 The customFuncs map will be combined with a default template.FuncMap to allow using arbitrary functions in template rendering.
 
 <a name="DefaultPrintVersion"></a>
+
 ## func [DefaultPrintVersion](<https://github.com/urfave/cli/blob/main/help.go#L363>)
 
 ```go
@@ -628,6 +629,7 @@ func DefaultPrintVersion(cmd *Command)
 DefaultPrintVersion is the default implementation of VersionPrinter.
 
 <a name="DefaultRootCommandComplete"></a>
+
 ## func [DefaultRootCommandComplete](<https://github.com/urfave/cli/blob/main/help.go#L178>)
 
 ```go
@@ -637,6 +639,7 @@ func DefaultRootCommandComplete(ctx context.Context, cmd *Command)
 DefaultRootCommandComplete prints the list of subcommands as the default completion method.
 
 <a name="DefaultShowCommandHelp"></a>
+
 ## func [DefaultShowCommandHelp](<https://github.com/urfave/cli/blob/main/help.go#L299>)
 
 ```go
@@ -646,6 +649,7 @@ func DefaultShowCommandHelp(ctx context.Context, cmd *Command, commandName strin
 DefaultShowCommandHelp is the default implementation of ShowCommandHelp.
 
 <a name="DefaultShowRootCommandHelp"></a>
+
 ## func [DefaultShowRootCommandHelp](<https://github.com/urfave/cli/blob/main/help.go#L154>)
 
 ```go
@@ -655,6 +659,7 @@ func DefaultShowRootCommandHelp(cmd *Command) error
 DefaultShowRootCommandHelp is the default implementation of ShowRootCommandHelp.
 
 <a name="DefaultShowSubcommandHelp"></a>
+
 ## func [DefaultShowSubcommandHelp](<https://github.com/urfave/cli/blob/main/help.go#L351>)
 
 ```go
@@ -664,15 +669,15 @@ func DefaultShowSubcommandHelp(cmd *Command) error
 DefaultShowSubcommandHelp is the default implementation of ShowSubcommandHelp.
 
 <a name="FlagNames"></a>
+
 ## func [FlagNames](<https://github.com/urfave/cli/blob/main/flag.go#L196>)
 
 ```go
 func FlagNames(name string, aliases []string) []string
 ```
 
-
-
 <a name="HandleExitCoder"></a>
+
 ## func [HandleExitCoder](<https://github.com/urfave/cli/blob/main/errors.go#L147>)
 
 ```go
@@ -686,6 +691,7 @@ If the given error instead implements MultiError, each error will be checked for
 This function is the default error\-handling behavior for a Command.
 
 <a name="ShowCommandHelpAndExit"></a>
+
 ## func [ShowCommandHelpAndExit](<https://github.com/urfave/cli/blob/main/help.go#L293>)
 
 ```go
@@ -695,6 +701,7 @@ func ShowCommandHelpAndExit(ctx context.Context, cmd *Command, command string, c
 ShowCommandHelpAndExit exits with code after showing help via ShowCommandHelp.
 
 <a name="ShowRootCommandHelpAndExit"></a>
+
 ## func [ShowRootCommandHelpAndExit](<https://github.com/urfave/cli/blob/main/help.go#L145>)
 
 ```go
@@ -704,6 +711,7 @@ func ShowRootCommandHelpAndExit(cmd *Command, exitCode int)
 ShowRootCommandHelpAndExit prints the list of subcommands and exits with exit code.
 
 <a name="ShowSubcommandHelpAndExit"></a>
+
 ## func [ShowSubcommandHelpAndExit](<https://github.com/urfave/cli/blob/main/help.go#L345>)
 
 ```go
@@ -713,6 +721,7 @@ func ShowSubcommandHelpAndExit(cmd *Command, exitCode int)
 ShowSubcommandHelpAndExit prints help for the given subcommand via ShowSubcommandHelp and exits with exit code.
 
 <a name="ShowVersion"></a>
+
 ## func [ShowVersion](<https://github.com/urfave/cli/blob/main/help.go#L357>)
 
 ```go
@@ -722,6 +731,7 @@ func ShowVersion(cmd *Command)
 ShowVersion prints the version number of the root Command.
 
 <a name="ActionFunc"></a>
+
 ## type [ActionFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L18>)
 
 ActionFunc is the action to execute when no subcommands are specified
@@ -731,6 +741,7 @@ type ActionFunc func(context.Context, *Command) error
 ```
 
 <a name="ActionableFlag"></a>
+
 ## type [ActionableFlag](<https://github.com/urfave/cli/blob/main/flag.go#L88-L90>)
 
 ActionableFlag is an interface that wraps Flag interface and RunAction operation.
@@ -742,6 +753,7 @@ type ActionableFlag interface {
 ```
 
 <a name="AfterFunc"></a>
+
 ## type [AfterFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L15>)
 
 AfterFunc is an action that executes after any subcommands are run and have finished. The AfterFunc is run even if Action\(\) panics.
@@ -751,9 +763,8 @@ type AfterFunc func(context.Context, *Command) error
 ```
 
 <a name="Args"></a>
+
 ## type [Args](<https://github.com/urfave/cli/blob/main/args.go#L8-L22>)
-
-
 
 ```go
 type Args interface {
@@ -774,6 +785,7 @@ type Args interface {
 ```
 
 <a name="Argument"></a>
+
 ## type [Argument](<https://github.com/urfave/cli/blob/main/args.go#L66-L78>)
 
 Argument captures a positional argument that can be parsed
@@ -795,9 +807,8 @@ type Argument interface {
 ```
 
 <a name="ArgumentBase"></a>
+
 ## type [ArgumentBase](<https://github.com/urfave/cli/blob/main/args.go#L87-L95>)
-
-
 
 ```go
 type ArgumentBase[T any, C any, VC ValueCreator[T, C]] struct {
@@ -811,42 +822,39 @@ type ArgumentBase[T any, C any, VC ValueCreator[T, C]] struct {
 ```
 
 <a name="ArgumentBase[T, C, VC].Get"></a>
+
 ### func \(\*ArgumentBase\[T, C, VC\]\) [Get](<https://github.com/urfave/cli/blob/main/args.go#L138>)
 
 ```go
 func (a *ArgumentBase[T, C, VC]) Get() any
 ```
 
-
-
 <a name="ArgumentBase[T, C, VC].HasName"></a>
+
 ### func \(\*ArgumentBase\[T, C, VC\]\) [HasName](<https://github.com/urfave/cli/blob/main/args.go#L97>)
 
 ```go
 func (a *ArgumentBase[T, C, VC]) HasName(s string) bool
 ```
 
-
-
 <a name="ArgumentBase[T, C, VC].Parse"></a>
+
 ### func \(\*ArgumentBase\[T, C, VC\]\) [Parse](<https://github.com/urfave/cli/blob/main/args.go#L110>)
 
 ```go
 func (a *ArgumentBase[T, C, VC]) Parse(s []string) ([]string, error)
 ```
 
-
-
 <a name="ArgumentBase[T, C, VC].Usage"></a>
+
 ### func \(\*ArgumentBase\[T, C, VC\]\) [Usage](<https://github.com/urfave/cli/blob/main/args.go#L101>)
 
 ```go
 func (a *ArgumentBase[T, C, VC]) Usage() string
 ```
 
-
-
 <a name="ArgumentsBase"></a>
+
 ## type [ArgumentsBase](<https://github.com/urfave/cli/blob/main/args.go#L146-L156>)
 
 ArgumentsBase is a base type for slice arguments
@@ -865,42 +873,39 @@ type ArgumentsBase[T any, C any, VC ValueCreator[T, C]] struct {
 ```
 
 <a name="ArgumentsBase[T, C, VC].Get"></a>
+
 ### func \(\*ArgumentsBase\[T, C, VC\]\) [Get](<https://github.com/urfave/cli/blob/main/args.go#L219>)
 
 ```go
 func (a *ArgumentsBase[T, C, VC]) Get() any
 ```
 
-
-
 <a name="ArgumentsBase[T, C, VC].HasName"></a>
+
 ### func \(\*ArgumentsBase\[T, C, VC\]\) [HasName](<https://github.com/urfave/cli/blob/main/args.go#L158>)
 
 ```go
 func (a *ArgumentsBase[T, C, VC]) HasName(s string) bool
 ```
 
-
-
 <a name="ArgumentsBase[T, C, VC].Parse"></a>
+
 ### func \(\*ArgumentsBase\[T, C, VC\]\) [Parse](<https://github.com/urfave/cli/blob/main/args.go#L180>)
 
 ```go
 func (a *ArgumentsBase[T, C, VC]) Parse(s []string) ([]string, error)
 ```
 
-
-
 <a name="ArgumentsBase[T, C, VC].Usage"></a>
+
 ### func \(\*ArgumentsBase\[T, C, VC\]\) [Usage](<https://github.com/urfave/cli/blob/main/args.go#L162>)
 
 ```go
 func (a *ArgumentsBase[T, C, VC]) Usage() string
 ```
 
-
-
 <a name="BeforeFunc"></a>
+
 ## type [BeforeFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L11>)
 
 BeforeFunc is an action that executes prior to any subcommands being run once the context is ready. If a non\-nil error is returned, no subcommands are run.
@@ -910,6 +915,7 @@ type BeforeFunc func(context.Context, *Command) (context.Context, error)
 ```
 
 <a name="BoolConfig"></a>
+
 ## type [BoolConfig](<https://github.com/urfave/cli/blob/main/flag_bool.go#L11-L13>)
 
 BoolConfig defines the configuration for bool flags
@@ -921,18 +927,16 @@ type BoolConfig struct {
 ```
 
 <a name="BoolFlag"></a>
+
 ## type [BoolFlag](<https://github.com/urfave/cli/blob/main/flag_bool.go#L8>)
-
-
 
 ```go
 type BoolFlag = FlagBase[bool, BoolConfig, boolValue]
 ```
 
 <a name="BoolWithInverseFlag"></a>
+
 ## type [BoolWithInverseFlag](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L12-L40>)
-
-
 
 ```go
 type BoolWithInverseFlag struct {
@@ -962,43 +966,41 @@ type BoolWithInverseFlag struct {
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
+ "context"
+ "fmt"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	flagWithInverse := &cli.BoolWithInverseFlag{
-		Name: "env",
-	}
+ flagWithInverse := &cli.BoolWithInverseFlag{
+  Name: "env",
+ }
 
-	cmd := &cli.Command{
-		Flags: []cli.Flag{
-			flagWithInverse,
-		},
-		Action: func(_ context.Context, cmd *cli.Command) error {
-			if flagWithInverse.IsSet() {
-				if cmd.Bool("env") {
-					fmt.Println("env is set")
-				} else {
-					fmt.Println("no-env is set")
-				}
-			}
+ cmd := &cli.Command{
+  Flags: []cli.Flag{
+   flagWithInverse,
+  },
+  Action: func(_ context.Context, cmd *cli.Command) error {
+   if flagWithInverse.IsSet() {
+    if cmd.Bool("env") {
+     fmt.Println("env is set")
+    } else {
+     fmt.Println("no-env is set")
+    }
+   }
 
-			return nil
-		},
-	}
+   return nil
+  },
+ }
 
-	_ = cmd.Run(context.Background(), []string{"prog", "--no-env"})
+ _ = cmd.Run(context.Background(), []string{"prog", "--no-env"})
 
-	fmt.Println("flags:", len(flagWithInverse.Names()))
+ fmt.Println("flags:", len(flagWithInverse.Names()))
 
 }
 ```
@@ -1014,6 +1016,7 @@ flags: 2
 </details>
 
 <a name="BoolWithInverseFlag.Count"></a>
+
 ### func \(\*BoolWithInverseFlag\) [Count](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L191>)
 
 ```go
@@ -1023,15 +1026,15 @@ func (bif *BoolWithInverseFlag) Count() int
 Count returns the number of times this flag has been invoked
 
 <a name="BoolWithInverseFlag.Get"></a>
+
 ### func \(\*BoolWithInverseFlag\) [Get](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L46>)
 
 ```go
 func (bif *BoolWithInverseFlag) Get() any
 ```
 
-
-
 <a name="BoolWithInverseFlag.GetCategory"></a>
+
 ### func \(\*BoolWithInverseFlag\) [GetCategory](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L204>)
 
 ```go
@@ -1041,6 +1044,7 @@ func (bif *BoolWithInverseFlag) GetCategory() string
 GetCategory returns the category of the flag
 
 <a name="BoolWithInverseFlag.GetDefaultText"></a>
+
 ### func \(\*BoolWithInverseFlag\) [GetDefaultText](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L196>)
 
 ```go
@@ -1050,6 +1054,7 @@ func (bif *BoolWithInverseFlag) GetDefaultText() string
 GetDefaultText returns the default text for this flag
 
 <a name="BoolWithInverseFlag.GetEnvVars"></a>
+
 ### func \(\*BoolWithInverseFlag\) [GetEnvVars](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L218>)
 
 ```go
@@ -1059,6 +1064,7 @@ func (bif *BoolWithInverseFlag) GetEnvVars() []string
 GetEnvVars returns the env vars for this flag
 
 <a name="BoolWithInverseFlag.GetUsage"></a>
+
 ### func \(\*BoolWithInverseFlag\) [GetUsage](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L213>)
 
 ```go
@@ -1068,6 +1074,7 @@ func (bif *BoolWithInverseFlag) GetUsage() string
 GetUsage returns the usage string for the flag
 
 <a name="BoolWithInverseFlag.GetValue"></a>
+
 ### func \(\*BoolWithInverseFlag\) [GetValue](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L224>)
 
 ```go
@@ -1077,6 +1084,7 @@ func (bif *BoolWithInverseFlag) GetValue() string
 GetValue returns the flags value as string representation and an empty string if the flag takes no value at all.
 
 <a name="BoolWithInverseFlag.IsBoolFlag"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsBoolFlag](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L186>)
 
 ```go
@@ -1086,6 +1094,7 @@ func (bif *BoolWithInverseFlag) IsBoolFlag() bool
 IsBoolFlag returns whether the flag doesnt need to accept args
 
 <a name="BoolWithInverseFlag.IsDefaultVisible"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsDefaultVisible](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L233>)
 
 ```go
@@ -1095,96 +1104,87 @@ func (bif *BoolWithInverseFlag) IsDefaultVisible() bool
 IsDefaultVisible returns true if the flag is not hidden, otherwise false
 
 <a name="BoolWithInverseFlag.IsLocal"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsLocal](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L58>)
 
 ```go
 func (bif *BoolWithInverseFlag) IsLocal() bool
 ```
 
-
-
 <a name="BoolWithInverseFlag.IsRequired"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsRequired](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L158>)
 
 ```go
 func (bif *BoolWithInverseFlag) IsRequired() bool
 ```
 
-
-
 <a name="BoolWithInverseFlag.IsSet"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsSet](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L42>)
 
 ```go
 func (bif *BoolWithInverseFlag) IsSet() bool
 ```
 
-
-
 <a name="BoolWithInverseFlag.IsVisible"></a>
+
 ### func \(\*BoolWithInverseFlag\) [IsVisible](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L162>)
 
 ```go
 func (bif *BoolWithInverseFlag) IsVisible() bool
 ```
 
-
-
 <a name="BoolWithInverseFlag.Names"></a>
+
 ### func \(\*BoolWithInverseFlag\) [Names](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L148>)
 
 ```go
 func (bif *BoolWithInverseFlag) Names() []string
 ```
 
-
-
 <a name="BoolWithInverseFlag.PostParse"></a>
+
 ### func \(\*BoolWithInverseFlag\) [PostParse](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L95>)
 
 ```go
 func (bif *BoolWithInverseFlag) PostParse() error
 ```
 
-
-
 <a name="BoolWithInverseFlag.PreParse"></a>
+
 ### func \(\*BoolWithInverseFlag\) [PreParse](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L70>)
 
 ```go
 func (bif *BoolWithInverseFlag) PreParse() error
 ```
 
-
-
 <a name="BoolWithInverseFlag.RunAction"></a>
+
 ### func \(\*BoolWithInverseFlag\) [RunAction](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L50>)
 
 ```go
 func (bif *BoolWithInverseFlag) RunAction(ctx context.Context, cmd *Command) error
 ```
 
-
-
 <a name="BoolWithInverseFlag.Set"></a>
+
 ### func \(\*BoolWithInverseFlag\) [Set](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L117>)
 
 ```go
 func (bif *BoolWithInverseFlag) Set(name, val string) error
 ```
 
-
-
 <a name="BoolWithInverseFlag.SetCategory"></a>
+
 ### func \(\*BoolWithInverseFlag\) [SetCategory](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L208>)
 
 ```go
 func (bif *BoolWithInverseFlag) SetCategory(c string)
 ```
 
-
-
 <a name="BoolWithInverseFlag.String"></a>
+
 ### func \(\*BoolWithInverseFlag\) [String](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L170>)
 
 ```go
@@ -1196,15 +1196,15 @@ String implements the standard Stringer interface.
 Example for BoolFlag\{Name: "env"\} \-\-\[no\-\]env \(default: false\)
 
 <a name="BoolWithInverseFlag.TakesValue"></a>
+
 ### func \(\*BoolWithInverseFlag\) [TakesValue](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L228>)
 
 ```go
 func (bif *BoolWithInverseFlag) TakesValue() bool
 ```
 
-
-
 <a name="BoolWithInverseFlag.TypeName"></a>
+
 ### func \(\*BoolWithInverseFlag\) [TypeName](<https://github.com/urfave/cli/blob/main/flag_bool_with_inverse.go#L238>)
 
 ```go
@@ -1214,6 +1214,7 @@ func (bif *BoolWithInverseFlag) TypeName() string
 TypeName is used for stringify/docs. For bool its a no\-op
 
 <a name="CategorizableFlag"></a>
+
 ## type [CategorizableFlag](<https://github.com/urfave/cli/blob/main/flag.go#L172-L178>)
 
 CategorizableFlag is an interface that allows us to potentially use a flag in a categorized representation.
@@ -1229,6 +1230,7 @@ type CategorizableFlag interface {
 ```
 
 <a name="Command"></a>
+
 ## type [Command](<https://github.com/urfave/cli/blob/main/command.go#L23-L166>)
 
 Command contains everything needed to run an application that accepts a string slice of arguments such as os.Args. A given Command may contain Flags and sub\-commands in Commands.
@@ -1358,39 +1360,37 @@ type Command struct {
 <details><summary>Example (3uggest)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                          "greet",
-		ErrWriter:                     os.Stdout,
-		Suggest:                       true,
-		HideHelp:                      false,
-		HideHelpCommand:               true,
-		CustomRootCommandHelpTemplate: "(this space intentionally left blank)\n",
-		Flags: []cli.Flag{
-			&cli.StringFlag{Name: "name", Value: "squirrel", Usage: "a name to say"},
-		},
-		Action: func(_ context.Context, cmd *cli.Command) error {
-			fmt.Printf("Hello %v\n", cmd.String("name"))
-			return nil
-		},
-	}
+ cmd := &cli.Command{
+  Name:                          "greet",
+  ErrWriter:                     os.Stdout,
+  Suggest:                       true,
+  HideHelp:                      false,
+  HideHelpCommand:               true,
+  CustomRootCommandHelpTemplate: "(this space intentionally left blank)\n",
+  Flags: []cli.Flag{
+   &cli.StringFlag{Name: "name", Value: "squirrel", Usage: "a name to say"},
+  },
+  Action: func(_ context.Context, cmd *cli.Command) error {
+   fmt.Printf("Hello %v\n", cmd.String("name"))
+   return nil
+  },
+ }
 
-	if cmd.Run(context.Background(), []string{"greet", "--nema", "chipmunk"}) == nil {
-		fmt.Println("Expected error")
-	}
+ if cmd.Run(context.Background(), []string{"greet", "--nema", "chipmunk"}) == nil {
+  fmt.Println("Expected error")
+ }
 }
 ```
 
@@ -1410,54 +1410,52 @@ Did you mean "--name"?
 <details><summary>Example (3uggest_command)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		ErrWriter: os.Stdout,
-		Name:      "greet",
-		Flags: []cli.Flag{
-			&cli.StringFlag{Name: "name", Value: "squirrel", Usage: "a name to say"},
-		},
-		Action: func(_ context.Context, cmd *cli.Command) error {
-			fmt.Printf("Hello %v\n", cmd.String("name"))
-			return nil
-		},
-		Commands: []*cli.Command{
-			{
-				Name:               "neighbors",
-				HideHelp:           true,
-				HideHelpCommand:    true,
-				Suggest:            true,
-				CustomHelpTemplate: "(this space intentionally left blank)\n",
-				Flags: []cli.Flag{
-					&cli.BoolFlag{Name: "smiling"},
-				},
-				Action: func(_ context.Context, cmd *cli.Command) error {
-					if cmd.Bool("smiling") {
-						fmt.Println("😀")
-					}
-					fmt.Println("Hello, neighbors")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  ErrWriter: os.Stdout,
+  Name:      "greet",
+  Flags: []cli.Flag{
+   &cli.StringFlag{Name: "name", Value: "squirrel", Usage: "a name to say"},
+  },
+  Action: func(_ context.Context, cmd *cli.Command) error {
+   fmt.Printf("Hello %v\n", cmd.String("name"))
+   return nil
+  },
+  Commands: []*cli.Command{
+   {
+    Name:               "neighbors",
+    HideHelp:           true,
+    HideHelpCommand:    true,
+    Suggest:            true,
+    CustomHelpTemplate: "(this space intentionally left blank)\n",
+    Flags: []cli.Flag{
+     &cli.BoolFlag{Name: "smiling"},
+    },
+    Action: func(_ context.Context, cmd *cli.Command) error {
+     if cmd.Bool("smiling") {
+      fmt.Println("😀")
+     }
+     fmt.Println("Hello, neighbors")
+     return nil
+    },
+   },
+  },
+ }
 
-	if cmd.Run(context.Background(), []string{"greet", "neighbors", "--sliming"}) == nil {
-		fmt.Println("Expected error")
-	}
+ if cmd.Run(context.Background(), []string{"greet", "neighbors", "--sliming"}) == nil {
+  fmt.Println("Expected error")
+ }
 }
 ```
 
@@ -1473,6 +1471,7 @@ Did you mean "--smiling"?
 </details>
 
 <a name="Command.Args"></a>
+
 ### func \(\*Command\) [Args](<https://github.com/urfave/cli/blob/main/command.go#L574>)
 
 ```go
@@ -1482,24 +1481,23 @@ func (cmd *Command) Args() Args
 Args returns the command line arguments associated with the command.
 
 <a name="Command.Bool"></a>
+
 ### func \(\*Command\) [Bool](<https://github.com/urfave/cli/blob/main/flag_bool.go#L27>)
 
 ```go
 func (cmd *Command) Bool(name string) bool
 ```
 
-
-
 <a name="Command.Command"></a>
+
 ### func \(\*Command\) [Command](<https://github.com/urfave/cli/blob/main/command.go#L181>)
 
 ```go
 func (cmd *Command) Command(name string) *Command
 ```
 
-
-
 <a name="Command.Count"></a>
+
 ### func \(\*Command\) [Count](<https://github.com/urfave/cli/blob/main/command.go#L554>)
 
 ```go
@@ -1509,15 +1507,15 @@ func (cmd *Command) Count(name string) int
 Count returns the num of occurrences of this flag
 
 <a name="Command.Duration"></a>
+
 ### func \(\*Command\) [Duration](<https://github.com/urfave/cli/blob/main/flag_duration.go#L42>)
 
 ```go
 func (cmd *Command) Duration(name string) time.Duration
 ```
 
-
-
 <a name="Command.FlagNames"></a>
+
 ### func \(\*Command\) [FlagNames](<https://github.com/urfave/cli/blob/main/command.go#L531>)
 
 ```go
@@ -1527,6 +1525,7 @@ func (cmd *Command) FlagNames() []string
 FlagNames returns a slice of flag names used by the this command and all of its parent commands.
 
 <a name="Command.Float"></a>
+
 ### func \(\*Command\) [Float](<https://github.com/urfave/cli/blob/main/flag_float.go#L51>)
 
 ```go
@@ -1536,6 +1535,7 @@ func (cmd *Command) Float(name string) float64
 Float looks up the value of a local FloatFlag, returns 0 if not found
 
 <a name="Command.Float32"></a>
+
 ### func \(\*Command\) [Float32](<https://github.com/urfave/cli/blob/main/flag_float.go#L57>)
 
 ```go
@@ -1545,24 +1545,23 @@ func (cmd *Command) Float32(name string) float32
 Float32 looks up the value of a local Float32Flag, returns 0 if not found
 
 <a name="Command.Float32Arg"></a>
+
 ### func \(\*Command\) [Float32Arg](<https://github.com/urfave/cli/blob/main/args.go#L298>)
 
 ```go
 func (c *Command) Float32Arg(name string) float32
 ```
 
-
-
 <a name="Command.Float32Args"></a>
+
 ### func \(\*Command\) [Float32Args](<https://github.com/urfave/cli/blob/main/args.go#L302>)
 
 ```go
 func (c *Command) Float32Args(name string) []float32
 ```
 
-
-
 <a name="Command.Float32Slice"></a>
+
 ### func \(\*Command\) [Float32Slice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L26>)
 
 ```go
@@ -1572,6 +1571,7 @@ func (cmd *Command) Float32Slice(name string) []float32
 Float32Slice looks up the value of a local Float32Slice, returns nil if not found
 
 <a name="Command.Float64"></a>
+
 ### func \(\*Command\) [Float64](<https://github.com/urfave/cli/blob/main/flag_float.go#L63>)
 
 ```go
@@ -1581,24 +1581,23 @@ func (cmd *Command) Float64(name string) float64
 Float64 looks up the value of a local Float64Flag, returns 0 if not found
 
 <a name="Command.Float64Arg"></a>
+
 ### func \(\*Command\) [Float64Arg](<https://github.com/urfave/cli/blob/main/args.go#L306>)
 
 ```go
 func (c *Command) Float64Arg(name string) float64
 ```
 
-
-
 <a name="Command.Float64Args"></a>
+
 ### func \(\*Command\) [Float64Args](<https://github.com/urfave/cli/blob/main/args.go#L310>)
 
 ```go
 func (c *Command) Float64Args(name string) []float64
 ```
 
-
-
 <a name="Command.Float64Slice"></a>
+
 ### func \(\*Command\) [Float64Slice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L32>)
 
 ```go
@@ -1608,24 +1607,23 @@ func (cmd *Command) Float64Slice(name string) []float64
 Float64Slice looks up the value of a local Float64SliceFlag, returns nil if not found
 
 <a name="Command.FloatArg"></a>
+
 ### func \(\*Command\) [FloatArg](<https://github.com/urfave/cli/blob/main/args.go#L290>)
 
 ```go
 func (c *Command) FloatArg(name string) float64
 ```
 
-
-
 <a name="Command.FloatArgs"></a>
+
 ### func \(\*Command\) [FloatArgs](<https://github.com/urfave/cli/blob/main/args.go#L294>)
 
 ```go
 func (c *Command) FloatArgs(name string) []float64
 ```
 
-
-
 <a name="Command.FloatSlice"></a>
+
 ### func \(\*Command\) [FloatSlice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L20>)
 
 ```go
@@ -1635,6 +1633,7 @@ func (cmd *Command) FloatSlice(name string) []float64
 FloatSlice looks up the value of a local FloatSliceFlag, returns nil if not found
 
 <a name="Command.FullName"></a>
+
 ### func \(\*Command\) [FullName](<https://github.com/urfave/cli/blob/main/command.go#L171>)
 
 ```go
@@ -1644,6 +1643,7 @@ func (cmd *Command) FullName() string
 FullName returns the full name of the command. For commands with parents this ensures that the parent commands are part of the command path.
 
 <a name="Command.Generic"></a>
+
 ### func \(\*Command\) [Generic](<https://github.com/urfave/cli/blob/main/flag_generic.go#L57>)
 
 ```go
@@ -1653,6 +1653,7 @@ func (cmd *Command) Generic(name string) Value
 Generic looks up the value of a local GenericFlag, returns nil if not found
 
 <a name="Command.HasName"></a>
+
 ### func \(\*Command\) [HasName](<https://github.com/urfave/cli/blob/main/command.go#L252>)
 
 ```go
@@ -1662,6 +1663,7 @@ func (cmd *Command) HasName(name string) bool
 HasName returns true if Command.Name matches given name
 
 <a name="Command.Int"></a>
+
 ### func \(\*Command\) [Int](<https://github.com/urfave/cli/blob/main/flag_int.go#L67>)
 
 ```go
@@ -1671,6 +1673,7 @@ func (cmd *Command) Int(name string) int
 Int looks up the value of a local Int64Flag, returns 0 if not found
 
 <a name="Command.Int16"></a>
+
 ### func \(\*Command\) [Int16](<https://github.com/urfave/cli/blob/main/flag_int.go#L79>)
 
 ```go
@@ -1680,24 +1683,23 @@ func (cmd *Command) Int16(name string) int16
 Int16 looks up the value of a local Int16Flag, returns 0 if not found
 
 <a name="Command.Int16Arg"></a>
+
 ### func \(\*Command\) [Int16Arg](<https://github.com/urfave/cli/blob/main/args.go#L330>)
 
 ```go
 func (c *Command) Int16Arg(name string) int16
 ```
 
-
-
 <a name="Command.Int16Args"></a>
+
 ### func \(\*Command\) [Int16Args](<https://github.com/urfave/cli/blob/main/args.go#L334>)
 
 ```go
 func (c *Command) Int16Args(name string) []int16
 ```
 
-
-
 <a name="Command.Int16Slice"></a>
+
 ### func \(\*Command\) [Int16Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L38>)
 
 ```go
@@ -1707,6 +1709,7 @@ func (cmd *Command) Int16Slice(name string) []int16
 Int16Slice looks up the value of a local Int16SliceFlag, returns nil if not found
 
 <a name="Command.Int32"></a>
+
 ### func \(\*Command\) [Int32](<https://github.com/urfave/cli/blob/main/flag_int.go#L85>)
 
 ```go
@@ -1716,24 +1719,23 @@ func (cmd *Command) Int32(name string) int32
 Int32 looks up the value of a local Int32Flag, returns 0 if not found
 
 <a name="Command.Int32Arg"></a>
+
 ### func \(\*Command\) [Int32Arg](<https://github.com/urfave/cli/blob/main/args.go#L338>)
 
 ```go
 func (c *Command) Int32Arg(name string) int32
 ```
 
-
-
 <a name="Command.Int32Args"></a>
+
 ### func \(\*Command\) [Int32Args](<https://github.com/urfave/cli/blob/main/args.go#L342>)
 
 ```go
 func (c *Command) Int32Args(name string) []int32
 ```
 
-
-
 <a name="Command.Int32Slice"></a>
+
 ### func \(\*Command\) [Int32Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L44>)
 
 ```go
@@ -1743,6 +1745,7 @@ func (cmd *Command) Int32Slice(name string) []int32
 Int32Slice looks up the value of a local Int32SliceFlag, returns nil if not found
 
 <a name="Command.Int64"></a>
+
 ### func \(\*Command\) [Int64](<https://github.com/urfave/cli/blob/main/flag_int.go#L91>)
 
 ```go
@@ -1752,24 +1755,23 @@ func (cmd *Command) Int64(name string) int64
 Int64 looks up the value of a local Int64Flag, returns 0 if not found
 
 <a name="Command.Int64Arg"></a>
+
 ### func \(\*Command\) [Int64Arg](<https://github.com/urfave/cli/blob/main/args.go#L346>)
 
 ```go
 func (c *Command) Int64Arg(name string) int64
 ```
 
-
-
 <a name="Command.Int64Args"></a>
+
 ### func \(\*Command\) [Int64Args](<https://github.com/urfave/cli/blob/main/args.go#L350>)
 
 ```go
 func (c *Command) Int64Args(name string) []int64
 ```
 
-
-
 <a name="Command.Int64Slice"></a>
+
 ### func \(\*Command\) [Int64Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L50>)
 
 ```go
@@ -1779,6 +1781,7 @@ func (cmd *Command) Int64Slice(name string) []int64
 Int64Slice looks up the value of a local Int64SliceFlag, returns nil if not found
 
 <a name="Command.Int8"></a>
+
 ### func \(\*Command\) [Int8](<https://github.com/urfave/cli/blob/main/flag_int.go#L73>)
 
 ```go
@@ -1788,24 +1791,23 @@ func (cmd *Command) Int8(name string) int8
 Int8 looks up the value of a local Int8Flag, returns 0 if not found
 
 <a name="Command.Int8Arg"></a>
+
 ### func \(\*Command\) [Int8Arg](<https://github.com/urfave/cli/blob/main/args.go#L322>)
 
 ```go
 func (c *Command) Int8Arg(name string) int8
 ```
 
-
-
 <a name="Command.Int8Args"></a>
+
 ### func \(\*Command\) [Int8Args](<https://github.com/urfave/cli/blob/main/args.go#L326>)
 
 ```go
 func (c *Command) Int8Args(name string) []int8
 ```
 
-
-
 <a name="Command.Int8Slice"></a>
+
 ### func \(\*Command\) [Int8Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L32>)
 
 ```go
@@ -1815,24 +1817,23 @@ func (cmd *Command) Int8Slice(name string) []int8
 Int8Slice looks up the value of a local Int8SliceFlag, returns nil if not found
 
 <a name="Command.IntArg"></a>
+
 ### func \(\*Command\) [IntArg](<https://github.com/urfave/cli/blob/main/args.go#L314>)
 
 ```go
 func (c *Command) IntArg(name string) int
 ```
 
-
-
 <a name="Command.IntArgs"></a>
+
 ### func \(\*Command\) [IntArgs](<https://github.com/urfave/cli/blob/main/args.go#L318>)
 
 ```go
 func (c *Command) IntArgs(name string) []int
 ```
 
-
-
 <a name="Command.IntSlice"></a>
+
 ### func \(\*Command\) [IntSlice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L26>)
 
 ```go
@@ -1842,6 +1843,7 @@ func (cmd *Command) IntSlice(name string) []int
 IntSlice looks up the value of a local IntSliceFlag, returns nil if not found
 
 <a name="Command.IsSet"></a>
+
 ### func \(\*Command\) [IsSet](<https://github.com/urfave/cli/blob/main/command.go#L485>)
 
 ```go
@@ -1851,6 +1853,7 @@ func (cmd *Command) IsSet(name string) bool
 IsSet determines if the flag was actually set
 
 <a name="Command.Lineage"></a>
+
 ### func \(\*Command\) [Lineage](<https://github.com/urfave/cli/blob/main/command.go#L543>)
 
 ```go
@@ -1860,6 +1863,7 @@ func (cmd *Command) Lineage() []*Command
 Lineage returns \*this\* command and all of its ancestor commands in order from child to parent
 
 <a name="Command.LocalFlagNames"></a>
+
 ### func \(\*Command\) [LocalFlagNames](<https://github.com/urfave/cli/blob/main/command.go#L504>)
 
 ```go
@@ -1869,6 +1873,7 @@ func (cmd *Command) LocalFlagNames() []string
 LocalFlagNames returns a slice of flag names used in this command.
 
 <a name="Command.NArg"></a>
+
 ### func \(\*Command\) [NArg](<https://github.com/urfave/cli/blob/main/command.go#L579>)
 
 ```go
@@ -1878,6 +1883,7 @@ func (cmd *Command) NArg() int
 NArg returns the number of the command line arguments.
 
 <a name="Command.Names"></a>
+
 ### func \(\*Command\) [Names](<https://github.com/urfave/cli/blob/main/command.go#L247>)
 
 ```go
@@ -1887,6 +1893,7 @@ func (cmd *Command) Names() []string
 Names returns the names including short names and aliases.
 
 <a name="Command.NumFlags"></a>
+
 ### func \(\*Command\) [NumFlags](<https://github.com/urfave/cli/blob/main/command.go#L452>)
 
 ```go
@@ -1896,6 +1903,7 @@ func (cmd *Command) NumFlags() int
 NumFlags returns the number of flags set
 
 <a name="Command.Root"></a>
+
 ### func \(\*Command\) [Root](<https://github.com/urfave/cli/blob/main/command.go#L346>)
 
 ```go
@@ -1905,6 +1913,7 @@ func (cmd *Command) Root() *Command
 Root returns the Command at the root of the graph
 
 <a name="Command.Run"></a>
+
 ### func \(\*Command\) [Run](<https://github.com/urfave/cli/blob/main/command_run.go#L92>)
 
 ```go
@@ -1916,46 +1925,44 @@ Run is the entry point to the command graph. The positional arguments are parsed
 <details><summary>Example</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"net/mail"
-	"os"
+ "context"
+ "fmt"
+ "net/mail"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	// Declare a command
-	cmd := &cli.Command{
-		Name: "greet",
-		Flags: []cli.Flag{
-			&cli.StringFlag{Name: "name", Value: "pat", Usage: "a name to say"},
-		},
-		Action: func(_ context.Context, cmd *cli.Command) error {
-			fmt.Printf("Hello %[1]v\n", cmd.String("name"))
-			return nil
-		},
-		Authors: []any{
-			&mail.Address{Name: "Oliver Allen", Address: "oliver@toyshop.example.com"},
-			"gruffalo@soup-world.example.org",
-		},
-		Version: "v0.13.12",
-	}
+ // Declare a command
+ cmd := &cli.Command{
+  Name: "greet",
+  Flags: []cli.Flag{
+   &cli.StringFlag{Name: "name", Value: "pat", Usage: "a name to say"},
+  },
+  Action: func(_ context.Context, cmd *cli.Command) error {
+   fmt.Printf("Hello %[1]v\n", cmd.String("name"))
+   return nil
+  },
+  Authors: []any{
+   &mail.Address{Name: "Oliver Allen", Address: "oliver@toyshop.example.com"},
+   "gruffalo@soup-world.example.org",
+  },
+  Version: "v0.13.12",
+ }
 
-	// Simulate the command line arguments
-	os.Args = []string{"greet", "--name", "Jeremy"}
+ // Simulate the command line arguments
+ os.Args = []string{"greet", "--name", "Jeremy"}
 
-	if err := cmd.Run(context.Background(), os.Args); err != nil {
-		// do something with unhandled errors
-		fmt.Fprintf(os.Stderr, "Unhandled error: %[1]v\n", err)
-		os.Exit(86)
-	}
+ if err := cmd.Run(context.Background(), os.Args); err != nil {
+  // do something with unhandled errors
+  fmt.Fprintf(os.Stderr, "Unhandled error: %[1]v\n", err)
+  os.Exit(86)
+ }
 }
 ```
 
@@ -1971,56 +1978,54 @@ Hello Jeremy
 <details><summary>Example (App Help)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"net/mail"
-	"os"
-	"time"
+ "context"
+ "fmt"
+ "net/mail"
+ "os"
+ "time"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:        "greet",
-		Version:     "0.1.0",
-		Description: "This is how we describe greet the app",
-		Authors: []any{
-			&mail.Address{Name: "Harrison", Address: "harrison@lolwut.example.com"},
-			"Oliver Allen  <oliver@toyshop.example.com>",
-		},
-		Flags: []cli.Flag{
-			&cli.StringFlag{Name: "name", Value: "bob", Usage: "a name to say"},
-		},
-		Arguments: cli.AnyArguments,
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe describeit the function",
-				ArgsUsage:   "[arguments...]",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("i like to describe things")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:        "greet",
+  Version:     "0.1.0",
+  Description: "This is how we describe greet the app",
+  Authors: []any{
+   &mail.Address{Name: "Harrison", Address: "harrison@lolwut.example.com"},
+   "Oliver Allen  <oliver@toyshop.example.com>",
+  },
+  Flags: []cli.Flag{
+   &cli.StringFlag{Name: "name", Value: "bob", Usage: "a name to say"},
+  },
+  Arguments: cli.AnyArguments,
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe describeit the function",
+    ArgsUsage:   "[arguments...]",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("i like to describe things")
+     return nil
+    },
+   },
+  },
+ }
 
-	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
-	defer cancel()
+ ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
+ defer cancel()
 
-	// Simulate the command line arguments
-	os.Args = []string{"greet", "help"}
+ // Simulate the command line arguments
+ os.Args = []string{"greet", "help"}
 
-	_ = cmd.Run(ctx, os.Args)
+ _ = cmd.Run(ctx, os.Args)
 }
 ```
 
@@ -2059,48 +2064,46 @@ GLOBAL OPTIONS:
 <details><summary>Example (Command Help)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name: "greet",
-		Flags: []cli.Flag{
-			&cli.StringFlag{Name: "name", Value: "pat", Usage: "a name to say"},
-		},
-		Action: func(_ context.Context, cmd *cli.Command) error {
-			fmt.Fprintf(cmd.Root().Writer, "hello to %[1]q\n", cmd.String("name"))
-			return nil
-		},
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe describeit the function",
-				ArgsUsage:   "[arguments...]",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Println("i like to describe things")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name: "greet",
+  Flags: []cli.Flag{
+   &cli.StringFlag{Name: "name", Value: "pat", Usage: "a name to say"},
+  },
+  Action: func(_ context.Context, cmd *cli.Command) error {
+   fmt.Fprintf(cmd.Root().Writer, "hello to %[1]q\n", cmd.String("name"))
+   return nil
+  },
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe describeit the function",
+    ArgsUsage:   "[arguments...]",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Println("i like to describe things")
+     return nil
+    },
+   },
+  },
+ }
 
-	// Simulate the command line arguments
-	os.Args = []string{"greet", "h", "describeit"}
+ // Simulate the command line arguments
+ os.Args = []string{"greet", "h", "describeit"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2126,44 +2129,42 @@ OPTIONS:
 <details><summary>Example (Map Values)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name: "multi_values",
-		Flags: []cli.Flag{
-			&cli.StringMapFlag{Name: "stringMap"},
-		},
-		HideHelp: true,
-		Action: func(ctx context.Context, cmd *cli.Command) error {
-			for i, v := range cmd.FlagNames() {
-				fmt.Printf("%d-%s %#v\n", i, v, cmd.StringMap(v))
-			}
-			fmt.Printf("notfound %#v\n", cmd.StringMap("notfound"))
-			err := ctx.Err()
-			fmt.Println("error:", err)
-			return err
-		},
-	}
+ cmd := &cli.Command{
+  Name: "multi_values",
+  Flags: []cli.Flag{
+   &cli.StringMapFlag{Name: "stringMap"},
+  },
+  HideHelp: true,
+  Action: func(ctx context.Context, cmd *cli.Command) error {
+   for i, v := range cmd.FlagNames() {
+    fmt.Printf("%d-%s %#v\n", i, v, cmd.StringMap(v))
+   }
+   fmt.Printf("notfound %#v\n", cmd.StringMap("notfound"))
+   err := ctx.Err()
+   fmt.Println("error:", err)
+   return err
+  },
+ }
 
-	// Simulate command line arguments
-	os.Args = []string{
-		"multi_values",
-		"--stringMap", "parsed1=parsed two", "--stringMap", "parsed3=",
-	}
+ // Simulate command line arguments
+ os.Args = []string{
+  "multi_values",
+  "--stringMap", "parsed1=parsed two", "--stringMap", "parsed3=",
+ }
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2181,25 +2182,23 @@ error: <nil>
 <details><summary>Example (No Action)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{Name: "greet"}
+ cmd := &cli.Command{Name: "greet"}
 
-	// Simulate the command line arguments
-	os.Args = []string{"greet"}
+ // Simulate the command line arguments
+ os.Args = []string{"greet"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2222,50 +2221,48 @@ GLOBAL OPTIONS:
 <details><summary>Example (Shell Complete_bash)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe describeit the function",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("i like to describe things")
-					return nil
-				},
-			}, {
-				Name:        "next",
-				Usage:       "next example",
-				Description: "more stuff to see when generating shell completion",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("the next example")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe describeit the function",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("i like to describe things")
+     return nil
+    },
+   }, {
+    Name:        "next",
+    Usage:       "next example",
+    Description: "more stuff to see when generating shell completion",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("the next example")
+     return nil
+    },
+   },
+  },
+ }
 
-	// Simulate a bash environment and command line arguments
-	os.Setenv("SHELL", "bash")
-	os.Args = []string{"greet", "--generate-shell-completion"}
+ // Simulate a bash environment and command line arguments
+ os.Setenv("SHELL", "bash")
+ os.Args = []string{"greet", "--generate-shell-completion"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2283,45 +2280,43 @@ help
 <details><summary>Example (Shell Complete_bash_with Long Flag)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Flags: []cli.Flag{
-			&cli.Int64Flag{
-				Name:    "other",
-				Aliases: []string{"o"},
-			},
-			&cli.StringFlag{
-				Name:    "xyz",
-				Aliases: []string{"x"},
-			},
-			&cli.StringFlag{
-				Name: "some-flag,s",
-			},
-			&cli.StringFlag{
-				Name: "similar-flag",
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Flags: []cli.Flag{
+   &cli.Int64Flag{
+    Name:    "other",
+    Aliases: []string{"o"},
+   },
+   &cli.StringFlag{
+    Name:    "xyz",
+    Aliases: []string{"x"},
+   },
+   &cli.StringFlag{
+    Name: "some-flag,s",
+   },
+   &cli.StringFlag{
+    Name: "similar-flag",
+   },
+  },
+ }
 
-	// Simulate a bash environment and command line arguments
-	os.Setenv("SHELL", "bash")
-	os.Args = []string{"greet", "--s", "--generate-shell-completion"}
+ // Simulate a bash environment and command line arguments
+ os.Setenv("SHELL", "bash")
+ os.Args = []string{"greet", "--s", "--generate-shell-completion"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2338,48 +2333,46 @@ func main() {
 <details><summary>Example (Shell Complete_bash_with Multiple Long Flag)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Flags: []cli.Flag{
-			&cli.Int64Flag{
-				Name:    "int-flag",
-				Aliases: []string{"i"},
-			},
-			&cli.StringFlag{
-				Name:    "string",
-				Aliases: []string{"s"},
-			},
-			&cli.StringFlag{
-				Name: "string-flag-2",
-			},
-			&cli.StringFlag{
-				Name: "similar-flag",
-			},
-			&cli.StringFlag{
-				Name: "some-flag",
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Flags: []cli.Flag{
+   &cli.Int64Flag{
+    Name:    "int-flag",
+    Aliases: []string{"i"},
+   },
+   &cli.StringFlag{
+    Name:    "string",
+    Aliases: []string{"s"},
+   },
+   &cli.StringFlag{
+    Name: "string-flag-2",
+   },
+   &cli.StringFlag{
+    Name: "similar-flag",
+   },
+   &cli.StringFlag{
+    Name: "some-flag",
+   },
+  },
+ }
 
-	// Simulate a bash environment and command line arguments
-	os.Setenv("SHELL", "bash")
-	os.Args = []string{"greet", "--st", "--generate-shell-completion"}
+ // Simulate a bash environment and command line arguments
+ os.Setenv("SHELL", "bash")
+ os.Args = []string{"greet", "--st", "--generate-shell-completion"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2396,39 +2389,37 @@ func main() {
 <details><summary>Example (Shell Complete_bash_with Short Flag)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Flags: []cli.Flag{
-			&cli.Int64Flag{
-				Name:    "other",
-				Aliases: []string{"o"},
-			},
-			&cli.StringFlag{
-				Name:    "xyz",
-				Aliases: []string{"x"},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Flags: []cli.Flag{
+   &cli.Int64Flag{
+    Name:    "other",
+    Aliases: []string{"o"},
+   },
+   &cli.StringFlag{
+    Name:    "xyz",
+    Aliases: []string{"x"},
+   },
+  },
+ }
 
-	// Simulate a bash environment and command line arguments
-	os.Setenv("SHELL", "bash")
-	os.Args = []string{"greet", "-", "--generate-shell-completion"}
+ // Simulate a bash environment and command line arguments
+ os.Setenv("SHELL", "bash")
+ os.Args = []string{"greet", "-", "--generate-shell-completion"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2446,50 +2437,48 @@ func main() {
 <details><summary>Example (Shell Complete_fish)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe describeit the function",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("i like to describe things")
-					return nil
-				},
-			}, {
-				Name:        "next",
-				Usage:       "next example",
-				Description: "more stuff to see when generating bash completion",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("the next example")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe describeit the function",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("i like to describe things")
+     return nil
+    },
+   }, {
+    Name:        "next",
+    Usage:       "next example",
+    Description: "more stuff to see when generating bash completion",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("the next example")
+     return nil
+    },
+   },
+  },
+ }
 
-	// Simulate a fish environment and command line arguments
-	os.Args = []string{"greet", "--generate-shell-completion"}
-	os.Setenv("SHELL", "/usr/bin/fish")
+ // Simulate a fish environment and command line arguments
+ os.Args = []string{"greet", "--generate-shell-completion"}
+ os.Setenv("SHELL", "/usr/bin/fish")
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2507,50 +2496,48 @@ help:Shows a list of commands or help for one command
 <details><summary>Example (Shell Complete_zsh)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name:                  "greet",
-		EnableShellCompletion: true,
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe describeit the function",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("i like to describe things")
-					return nil
-				},
-			}, {
-				Name:        "next",
-				Usage:       "next example",
-				Description: "more stuff to see when generating bash completion",
-				Action: func(context.Context, *cli.Command) error {
-					fmt.Printf("the next example")
-					return nil
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name:                  "greet",
+  EnableShellCompletion: true,
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe describeit the function",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("i like to describe things")
+     return nil
+    },
+   }, {
+    Name:        "next",
+    Usage:       "next example",
+    Description: "more stuff to see when generating bash completion",
+    Action: func(context.Context, *cli.Command) error {
+     fmt.Printf("the next example")
+     return nil
+    },
+   },
+  },
+ }
 
-	// Simulate a zsh environment and command line arguments
-	os.Args = []string{"greet", "--generate-shell-completion"}
-	os.Setenv("SHELL", "/usr/bin/zsh")
+ // Simulate a zsh environment and command line arguments
+ os.Args = []string{"greet", "--generate-shell-completion"}
+ os.Setenv("SHELL", "/usr/bin/zsh")
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2568,47 +2555,45 @@ help:Shows a list of commands or help for one command
 <details><summary>Example (Slice Values)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+ "context"
+ "fmt"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name: "multi_values",
-		Flags: []cli.Flag{
-			&cli.StringSliceFlag{Name: "stringSlice"},
-			&cli.FloatSliceFlag{Name: "float64Slice"},
-			&cli.Int64SliceFlag{Name: "intSlice"},
-		},
-		HideHelp: true,
-		Action: func(ctx context.Context, cmd *cli.Command) error {
-			for i, v := range cmd.FlagNames() {
-				fmt.Printf("%d-%s %#v\n", i, v, cmd.Value(v))
-			}
-			err := ctx.Err()
-			fmt.Println("error:", err)
-			return err
-		},
-	}
+ cmd := &cli.Command{
+  Name: "multi_values",
+  Flags: []cli.Flag{
+   &cli.StringSliceFlag{Name: "stringSlice"},
+   &cli.FloatSliceFlag{Name: "float64Slice"},
+   &cli.Int64SliceFlag{Name: "intSlice"},
+  },
+  HideHelp: true,
+  Action: func(ctx context.Context, cmd *cli.Command) error {
+   for i, v := range cmd.FlagNames() {
+    fmt.Printf("%d-%s %#v\n", i, v, cmd.Value(v))
+   }
+   err := ctx.Err()
+   fmt.Println("error:", err)
+   return err
+  },
+ }
 
-	// Simulate command line arguments
-	os.Args = []string{
-		"multi_values",
-		"--stringSlice", "parsed1,parsed2", "--stringSlice", "parsed3,parsed4",
-		"--float64Slice", "13.3,14.4", "--float64Slice", "15.5,16.6",
-		"--intSlice", "13,14", "--intSlice", "15,16",
-	}
+ // Simulate command line arguments
+ os.Args = []string{
+  "multi_values",
+  "--stringSlice", "parsed1,parsed2", "--stringSlice", "parsed3,parsed4",
+  "--float64Slice", "13.3,14.4", "--float64Slice", "15.5,16.6",
+  "--intSlice", "13,14", "--intSlice", "15,16",
+ }
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2627,59 +2612,57 @@ error: <nil>
 <details><summary>Example (Subcommand)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	"time"
+ "context"
+ "fmt"
+ "os"
+ "time"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name: "say",
-		Commands: []*cli.Command{
-			{
-				Name:        "hello",
-				Aliases:     []string{"hi"},
-				Usage:       "use it to see a description",
-				Description: "This is how we describe hello the function",
-				Commands: []*cli.Command{
-					{
-						Name:        "english",
-						Aliases:     []string{"en"},
-						Usage:       "sends a greeting in english",
-						Description: "greets someone in english",
-						Flags: []cli.Flag{
-							&cli.StringFlag{
-								Name:  "name",
-								Value: "Bob",
-								Usage: "Name of the person to greet",
-							},
-						},
-						Action: func(_ context.Context, cmd *cli.Command) error {
-							fmt.Println("Hello,", cmd.String("name"))
-							return nil
-						},
-					},
-				},
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name: "say",
+  Commands: []*cli.Command{
+   {
+    Name:        "hello",
+    Aliases:     []string{"hi"},
+    Usage:       "use it to see a description",
+    Description: "This is how we describe hello the function",
+    Commands: []*cli.Command{
+     {
+      Name:        "english",
+      Aliases:     []string{"en"},
+      Usage:       "sends a greeting in english",
+      Description: "greets someone in english",
+      Flags: []cli.Flag{
+       &cli.StringFlag{
+        Name:  "name",
+        Value: "Bob",
+        Usage: "Name of the person to greet",
+       },
+      },
+      Action: func(_ context.Context, cmd *cli.Command) error {
+       fmt.Println("Hello,", cmd.String("name"))
+       return nil
+      },
+     },
+    },
+   },
+  },
+ }
 
-	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
-	defer cancel()
+ ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
+ defer cancel()
 
-	// Simulate the command line arguments
-	os.Args = []string{"say", "hi", "english", "--name", "Jeremy"}
+ // Simulate the command line arguments
+ os.Args = []string{"say", "hi", "english", "--name", "Jeremy"}
 
-	_ = cmd.Run(ctx, os.Args)
+ _ = cmd.Run(ctx, os.Args)
 }
 ```
 
@@ -2695,36 +2678,34 @@ Hello, Jeremy
 <details><summary>Example (Subcommand No Action)</summary>
 <p>
 
-
-
 ```go
 package main
 
 import (
-	"context"
-	"os"
+ "context"
+ "os"
 
-	cli "github.com/urfave/cli/v3"
+ cli "github.com/urfave/cli/v3"
 )
 
 func main() {
-	cmd := &cli.Command{
-		Name: "greet",
-		Commands: []*cli.Command{
-			{
-				Name:        "describeit",
-				Aliases:     []string{"d"},
-				Usage:       "use it to see a description",
-				ArgsUsage:   "[arguments...]",
-				Description: "This is how we describe describeit the function",
-			},
-		},
-	}
+ cmd := &cli.Command{
+  Name: "greet",
+  Commands: []*cli.Command{
+   {
+    Name:        "describeit",
+    Aliases:     []string{"d"},
+    Usage:       "use it to see a description",
+    ArgsUsage:   "[arguments...]",
+    Description: "This is how we describe describeit the function",
+   },
+  },
+ }
 
-	// Simulate the command line arguments
-	os.Args = []string{"greet", "describeit"}
+ // Simulate the command line arguments
+ os.Args = []string{"greet", "describeit"}
 
-	_ = cmd.Run(context.Background(), os.Args)
+ _ = cmd.Run(context.Background(), os.Args)
 }
 ```
 
@@ -2748,6 +2729,7 @@ OPTIONS:
 </details>
 
 <a name="Command.Set"></a>
+
 ### func \(\*Command\) [Set](<https://github.com/urfave/cli/blob/main/command.go#L475>)
 
 ```go
@@ -2757,33 +2739,31 @@ func (cmd *Command) Set(name, value string) error
 Set sets a context flag to a value.
 
 <a name="Command.String"></a>
+
 ### func \(\*Command\) [String](<https://github.com/urfave/cli/blob/main/flag_string.go#L56>)
 
 ```go
 func (cmd *Command) String(name string) string
 ```
 
-
-
 <a name="Command.StringArg"></a>
+
 ### func \(\*Command\) [StringArg](<https://github.com/urfave/cli/blob/main/args.go#L282>)
 
 ```go
 func (c *Command) StringArg(name string) string
 ```
 
-
-
 <a name="Command.StringArgs"></a>
+
 ### func \(\*Command\) [StringArgs](<https://github.com/urfave/cli/blob/main/args.go#L286>)
 
 ```go
 func (c *Command) StringArgs(name string) []string
 ```
 
-
-
 <a name="Command.StringMap"></a>
+
 ### func \(\*Command\) [StringMap](<https://github.com/urfave/cli/blob/main/flag_string_map.go#L12>)
 
 ```go
@@ -2793,6 +2773,7 @@ func (cmd *Command) StringMap(name string) map[string]string
 StringMap looks up the value of a local StringMapFlag, returns nil if not found
 
 <a name="Command.StringSlice"></a>
+
 ### func \(\*Command\) [StringSlice](<https://github.com/urfave/cli/blob/main/flag_string_slice.go#L12>)
 
 ```go
@@ -2802,6 +2783,7 @@ func (cmd *Command) StringSlice(name string) []string
 StringSlice looks up the value of a local StringSliceFlag, returns nil if not found
 
 <a name="Command.Timestamp"></a>
+
 ### func \(\*Command\) [Timestamp](<https://github.com/urfave/cli/blob/main/flag_timestamp.go#L135>)
 
 ```go
@@ -2811,24 +2793,23 @@ func (cmd *Command) Timestamp(name string) time.Time
 Timestamp gets the timestamp from a flag name
 
 <a name="Command.TimestampArg"></a>
+
 ### func \(\*Command\) [TimestampArg](<https://github.com/urfave/cli/blob/main/args.go#L394>)
 
 ```go
 func (c *Command) TimestampArg(name string) time.Time
 ```
 
-
-
 <a name="Command.TimestampArgs"></a>
+
 ### func \(\*Command\) [TimestampArgs](<https://github.com/urfave/cli/blob/main/args.go#L398>)
 
 ```go
 func (c *Command) TimestampArgs(name string) []time.Time
 ```
 
-
-
 <a name="Command.ToFishCompletion"></a>
+
 ### func \(\*Command\) [ToFishCompletion](<https://github.com/urfave/cli/blob/main/fish.go#L13>)
 
 ```go
@@ -2838,6 +2819,7 @@ func (cmd *Command) ToFishCompletion() (string, error)
 ToFishCompletion creates a fish completion string for the \`\*Command\` The function errors if either parsing or writing of the string fails.
 
 <a name="Command.Uint"></a>
+
 ### func \(\*Command\) [Uint](<https://github.com/urfave/cli/blob/main/flag_uint.go#L62>)
 
 ```go
@@ -2847,6 +2829,7 @@ func (cmd *Command) Uint(name string) uint
 Uint looks up the value of a local Uint64Flag, returns 0 if not found
 
 <a name="Command.Uint16"></a>
+
 ### func \(\*Command\) [Uint16](<https://github.com/urfave/cli/blob/main/flag_uint.go#L74>)
 
 ```go
@@ -2856,24 +2839,23 @@ func (cmd *Command) Uint16(name string) uint16
 Uint16 looks up the value of a local Uint16Flag, returns 0 if not found
 
 <a name="Command.Uint16Arg"></a>
+
 ### func \(\*Command\) [Uint16Arg](<https://github.com/urfave/cli/blob/main/args.go#L362>)
 
 ```go
 func (c *Command) Uint16Arg(name string) uint16
 ```
 
-
-
 <a name="Command.Uint16Args"></a>
+
 ### func \(\*Command\) [Uint16Args](<https://github.com/urfave/cli/blob/main/args.go#L382>)
 
 ```go
 func (c *Command) Uint16Args(name string) []uint16
 ```
 
-
-
 <a name="Command.Uint16Slice"></a>
+
 ### func \(\*Command\) [Uint16Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L38>)
 
 ```go
@@ -2883,6 +2865,7 @@ func (cmd *Command) Uint16Slice(name string) []uint16
 Uint16Slice looks up the value of a local Uint16SliceFlag, returns nil if not found
 
 <a name="Command.Uint32"></a>
+
 ### func \(\*Command\) [Uint32](<https://github.com/urfave/cli/blob/main/flag_uint.go#L80>)
 
 ```go
@@ -2892,24 +2875,23 @@ func (cmd *Command) Uint32(name string) uint32
 Uint32 looks up the value of a local Uint32Flag, returns 0 if not found
 
 <a name="Command.Uint32Arg"></a>
+
 ### func \(\*Command\) [Uint32Arg](<https://github.com/urfave/cli/blob/main/args.go#L366>)
 
 ```go
 func (c *Command) Uint32Arg(name string) uint32
 ```
 
-
-
 <a name="Command.Uint32Args"></a>
+
 ### func \(\*Command\) [Uint32Args](<https://github.com/urfave/cli/blob/main/args.go#L386>)
 
 ```go
 func (c *Command) Uint32Args(name string) []uint32
 ```
 
-
-
 <a name="Command.Uint32Slice"></a>
+
 ### func \(\*Command\) [Uint32Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L44>)
 
 ```go
@@ -2919,6 +2901,7 @@ func (cmd *Command) Uint32Slice(name string) []uint32
 Uint32Slice looks up the value of a local Uint32SliceFlag, returns nil if not found
 
 <a name="Command.Uint64"></a>
+
 ### func \(\*Command\) [Uint64](<https://github.com/urfave/cli/blob/main/flag_uint.go#L86>)
 
 ```go
@@ -2928,24 +2911,23 @@ func (cmd *Command) Uint64(name string) uint64
 Uint64 looks up the value of a local Uint64Flag, returns 0 if not found
 
 <a name="Command.Uint64Arg"></a>
+
 ### func \(\*Command\) [Uint64Arg](<https://github.com/urfave/cli/blob/main/args.go#L370>)
 
 ```go
 func (c *Command) Uint64Arg(name string) uint64
 ```
 
-
-
 <a name="Command.Uint64Args"></a>
+
 ### func \(\*Command\) [Uint64Args](<https://github.com/urfave/cli/blob/main/args.go#L390>)
 
 ```go
 func (c *Command) Uint64Args(name string) []uint64
 ```
 
-
-
 <a name="Command.Uint64Slice"></a>
+
 ### func \(\*Command\) [Uint64Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L50>)
 
 ```go
@@ -2955,6 +2937,7 @@ func (cmd *Command) Uint64Slice(name string) []uint64
 Uint64Slice looks up the value of a local Uint64SliceFlag, returns nil if not found
 
 <a name="Command.Uint8"></a>
+
 ### func \(\*Command\) [Uint8](<https://github.com/urfave/cli/blob/main/flag_uint.go#L68>)
 
 ```go
@@ -2964,24 +2947,23 @@ func (cmd *Command) Uint8(name string) uint8
 Uint8 looks up the value of a local Uint8Flag, returns 0 if not found
 
 <a name="Command.Uint8Arg"></a>
+
 ### func \(\*Command\) [Uint8Arg](<https://github.com/urfave/cli/blob/main/args.go#L358>)
 
 ```go
 func (c *Command) Uint8Arg(name string) uint8
 ```
 
-
-
 <a name="Command.Uint8Args"></a>
+
 ### func \(\*Command\) [Uint8Args](<https://github.com/urfave/cli/blob/main/args.go#L378>)
 
 ```go
 func (c *Command) Uint8Args(name string) []uint8
 ```
 
-
-
 <a name="Command.Uint8Slice"></a>
+
 ### func \(\*Command\) [Uint8Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L32>)
 
 ```go
@@ -2991,24 +2973,23 @@ func (cmd *Command) Uint8Slice(name string) []uint8
 Uint8Slice looks up the value of a local Uint8SliceFlag, returns nil if not found
 
 <a name="Command.UintArg"></a>
+
 ### func \(\*Command\) [UintArg](<https://github.com/urfave/cli/blob/main/args.go#L354>)
 
 ```go
 func (c *Command) UintArg(name string) uint
 ```
 
-
-
 <a name="Command.UintArgs"></a>
+
 ### func \(\*Command\) [UintArgs](<https://github.com/urfave/cli/blob/main/args.go#L374>)
 
 ```go
 func (c *Command) UintArgs(name string) []uint
 ```
 
-
-
 <a name="Command.UintSlice"></a>
+
 ### func \(\*Command\) [UintSlice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L26>)
 
 ```go
@@ -3018,6 +2999,7 @@ func (cmd *Command) UintSlice(name string) []uint
 UintSlice looks up the value of a local UintSliceFlag, returns nil if not found
 
 <a name="Command.Value"></a>
+
 ### func \(\*Command\) [Value](<https://github.com/urfave/cli/blob/main/command.go#L562>)
 
 ```go
@@ -3027,6 +3009,7 @@ func (cmd *Command) Value(name string) interface{}
 Value returns the value of the flag corresponding to \`name\`
 
 <a name="Command.VisibleCategories"></a>
+
 ### func \(\*Command\) [VisibleCategories](<https://github.com/urfave/cli/blob/main/command.go#L258>)
 
 ```go
@@ -3036,6 +3019,7 @@ func (cmd *Command) VisibleCategories() []CommandCategory
 VisibleCategories returns a slice of categories and commands that are Hidden=false
 
 <a name="Command.VisibleCommands"></a>
+
 ### func \(\*Command\) [VisibleCommands](<https://github.com/urfave/cli/blob/main/command.go#L274>)
 
 ```go
@@ -3045,6 +3029,7 @@ func (cmd *Command) VisibleCommands() []*Command
 VisibleCommands returns a slice of the Commands with Hidden=false
 
 <a name="Command.VisibleFlagCategories"></a>
+
 ### func \(\*Command\) [VisibleFlagCategories](<https://github.com/urfave/cli/blob/main/command.go#L286>)
 
 ```go
@@ -3054,6 +3039,7 @@ func (cmd *Command) VisibleFlagCategories() []VisibleFlagCategory
 VisibleFlagCategories returns a slice containing all the visible flag categories with the flags they contain
 
 <a name="Command.VisibleFlags"></a>
+
 ### func \(\*Command\) [VisibleFlags](<https://github.com/urfave/cli/blob/main/command.go#L294>)
 
 ```go
@@ -3063,6 +3049,7 @@ func (cmd *Command) VisibleFlags() []Flag
 VisibleFlags returns a slice of the Flags with Hidden=false
 
 <a name="Command.VisiblePersistentFlags"></a>
+
 ### func \(\*Command\) [VisiblePersistentFlags](<https://github.com/urfave/cli/blob/main/command.go#L305>)
 
 ```go
@@ -3072,6 +3059,7 @@ func (cmd *Command) VisiblePersistentFlags() []Flag
 VisiblePersistentFlags returns a slice of [LocalFlag](<#LocalFlag>) with Persistent=true and Hidden=false.
 
 <a name="CommandCategories"></a>
+
 ## type [CommandCategories](<https://github.com/urfave/cli/blob/main/category.go#L6-L11>)
 
 CommandCategories interface allows for category manipulation
@@ -3086,6 +3074,7 @@ type CommandCategories interface {
 ```
 
 <a name="CommandCategory"></a>
+
 ## type [CommandCategory](<https://github.com/urfave/cli/blob/main/category.go#L53-L58>)
 
 CommandCategory is a category containing commands.
@@ -3100,6 +3089,7 @@ type CommandCategory interface {
 ```
 
 <a name="CommandNotFoundFunc"></a>
+
 ## type [CommandNotFoundFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L21>)
 
 CommandNotFoundFunc is executed if the proper command cannot be found
@@ -3109,6 +3099,7 @@ type CommandNotFoundFunc func(context.Context, *Command, string)
 ```
 
 <a name="ConfigureShellCompletionCommand"></a>
+
 ## type [ConfigureShellCompletionCommand](<https://github.com/urfave/cli/blob/main/funcs.go#L24>)
 
 ConfigureShellCompletionCommand is a function to configure a shell completion command
@@ -3118,6 +3109,7 @@ type ConfigureShellCompletionCommand func(*Command)
 ```
 
 <a name="Countable"></a>
+
 ## type [Countable](<https://github.com/urfave/cli/blob/main/flag.go#L160-L162>)
 
 Countable is an interface to enable detection of flag values which support repetitive flags
@@ -3129,6 +3121,7 @@ type Countable interface {
 ```
 
 <a name="DocGenerationFlag"></a>
+
 ## type [DocGenerationFlag](<https://github.com/urfave/cli/blob/main/flag.go#L126-L148>)
 
 DocGenerationFlag is an interface that allows documentation generation for the flag
@@ -3160,6 +3153,7 @@ type DocGenerationFlag interface {
 ```
 
 <a name="DocGenerationMultiValueFlag"></a>
+
 ## type [DocGenerationMultiValueFlag](<https://github.com/urfave/cli/blob/main/flag.go#L151-L156>)
 
 DocGenerationMultiValueFlag extends DocGenerationFlag for slice/map based flags.
@@ -3174,15 +3168,15 @@ type DocGenerationMultiValueFlag interface {
 ```
 
 <a name="DurationFlag"></a>
+
 ## type [DurationFlag](<https://github.com/urfave/cli/blob/main/flag_duration.go#L8>)
-
-
 
 ```go
 type DurationFlag = FlagBase[time.Duration, NoConfig, durationValue]
 ```
 
 <a name="EnvValueSource"></a>
+
 ## type [EnvValueSource](<https://github.com/urfave/cli/blob/main/value_source.go#L22-L25>)
 
 EnvValueSource is to specifically detect env sources when printing help text
@@ -3195,6 +3189,7 @@ type EnvValueSource interface {
 ```
 
 <a name="ErrorFormatter"></a>
+
 ## type [ErrorFormatter](<https://github.com/urfave/cli/blob/main/errors.go#L91-L93>)
 
 ErrorFormatter is the interface that will suitably format the error output
@@ -3206,6 +3201,7 @@ type ErrorFormatter interface {
 ```
 
 <a name="ExitCoder"></a>
+
 ## type [ExitCoder](<https://github.com/urfave/cli/blob/main/errors.go#L96-L99>)
 
 ExitCoder is the interface checked by \`Command\` for a custom exit code.
@@ -3218,6 +3214,7 @@ type ExitCoder interface {
 ```
 
 <a name="Exit"></a>
+
 ### func [Exit](<https://github.com/urfave/cli/blob/main/errors.go#L113>)
 
 ```go
@@ -3229,6 +3226,7 @@ Exit wraps a message and exit code into an error, which by default is handled wi
 This is the simplest way to trigger a non\-zero exit code for a Command without having to call os.Exit manually. During testing, this behavior can be avoided by overriding the ExitErrHandler function on a Command or the package\-global OsExiter function.
 
 <a name="ExitErrHandlerFunc"></a>
+
 ## type [ExitErrHandlerFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L37>)
 
 ExitErrHandlerFunc is executed if provided in order to handle exitError values returned by Actions and Before/After functions.
@@ -3238,6 +3236,7 @@ type ExitErrHandlerFunc func(context.Context, *Command, error)
 ```
 
 <a name="Flag"></a>
+
 ## type [Flag](<https://github.com/urfave/cli/blob/main/flag.go#L95-L116>)
 
 Flag is a common interface related to parsing flags in cli. For more advanced flag parsing techniques, it is recommended that this interface be implemented.
@@ -3301,6 +3300,7 @@ var VersionFlag Flag = &BoolFlag{
 ```
 
 <a name="FlagBase"></a>
+
 ## type [FlagBase](<https://github.com/urfave/cli/blob/main/flag_impl.go#L56-L82>)
 
 FlagBase \[T,C,VC\] is a generic flag base which can be used as a boilerplate to implement the most common interfaces used by urfave/cli.
@@ -3336,6 +3336,7 @@ type FlagBase[T any, C any, VC ValueCreator[T, C]] struct {
 ```
 
 <a name="FlagBase[T, C, VC].Count"></a>
+
 ### func \(\*FlagBase\[T, C, VC\]\) [Count](<https://github.com/urfave/cli/blob/main/flag_impl.go#L311>)
 
 ```go
@@ -3345,15 +3346,15 @@ func (f *FlagBase[T, C, VC]) Count() int
 Count returns the number of times this flag has been invoked
 
 <a name="FlagBase[T, C, V].Get"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [Get](<https://github.com/urfave/cli/blob/main/flag_impl.go#L212>)
 
 ```go
 func (f *FlagBase[T, C, V]) Get() any
 ```
 
-
-
 <a name="FlagBase[T, C, V].GetCategory"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [GetCategory](<https://github.com/urfave/cli/blob/main/flag_impl.go#L250>)
 
 ```go
@@ -3363,6 +3364,7 @@ func (f *FlagBase[T, C, V]) GetCategory() string
 GetCategory returns the category of the flag
 
 <a name="FlagBase[T, C, V].GetDefaultText"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [GetDefaultText](<https://github.com/urfave/cli/blob/main/flag_impl.go#L275>)
 
 ```go
@@ -3372,6 +3374,7 @@ func (f *FlagBase[T, C, V]) GetDefaultText() string
 GetDefaultText returns the default text for this flag
 
 <a name="FlagBase[T, C, V].GetEnvVars"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [GetEnvVars](<https://github.com/urfave/cli/blob/main/flag_impl.go#L264>)
 
 ```go
@@ -3381,6 +3384,7 @@ func (f *FlagBase[T, C, V]) GetEnvVars() []string
 GetEnvVars returns the env vars for this flag
 
 <a name="FlagBase[T, C, V].GetUsage"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [GetUsage](<https://github.com/urfave/cli/blob/main/flag_impl.go#L259>)
 
 ```go
@@ -3390,6 +3394,7 @@ func (f *FlagBase[T, C, V]) GetUsage() string
 GetUsage returns the usage string for the flag
 
 <a name="FlagBase[T, C, V].GetValue"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [GetValue](<https://github.com/urfave/cli/blob/main/flag_impl.go#L86>)
 
 ```go
@@ -3399,6 +3404,7 @@ func (f *FlagBase[T, C, V]) GetValue() string
 GetValue returns the flags value as string representation and an empty string if the flag takes no value at all.
 
 <a name="FlagBase[T, C, VC].IsBoolFlag"></a>
+
 ### func \(\*FlagBase\[T, C, VC\]\) [IsBoolFlag](<https://github.com/urfave/cli/blob/main/flag_impl.go#L305>)
 
 ```go
@@ -3408,6 +3414,7 @@ func (f *FlagBase[T, C, VC]) IsBoolFlag() bool
 IsBoolFlag returns whether the flag doesnt need to accept args
 
 <a name="FlagBase[T, C, V].IsDefaultVisible"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [IsDefaultVisible](<https://github.com/urfave/cli/blob/main/flag_impl.go#L220>)
 
 ```go
@@ -3417,6 +3424,7 @@ func (f *FlagBase[T, C, V]) IsDefaultVisible() bool
 IsDefaultVisible returns true if the flag is not hidden, otherwise false
 
 <a name="FlagBase[T, C, VC].IsLocal"></a>
+
 ### func \(\*FlagBase\[T, C, VC\]\) [IsLocal](<https://github.com/urfave/cli/blob/main/flag_impl.go#L300>)
 
 ```go
@@ -3426,6 +3434,7 @@ func (f *FlagBase[T, C, VC]) IsLocal() bool
 IsLocal returns false if flag needs to be persistent across subcommands
 
 <a name="FlagBase[T, C, VC].IsMultiValueFlag"></a>
+
 ### func \(\*FlagBase\[T, C, VC\]\) [IsMultiValueFlag](<https://github.com/urfave/cli/blob/main/flag_impl.go#L290>)
 
 ```go
@@ -3435,6 +3444,7 @@ func (f *FlagBase[T, C, VC]) IsMultiValueFlag() bool
 IsMultiValueFlag returns true if the value type T can take multiple values from cmd line. This is true for slice and map type flags
 
 <a name="FlagBase[T, C, V].IsRequired"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [IsRequired](<https://github.com/urfave/cli/blob/main/flag_impl.go#L240>)
 
 ```go
@@ -3444,6 +3454,7 @@ func (f *FlagBase[T, C, V]) IsRequired() bool
 IsRequired returns whether or not the flag is required
 
 <a name="FlagBase[T, C, V].IsSet"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [IsSet](<https://github.com/urfave/cli/blob/main/flag_impl.go#L230>)
 
 ```go
@@ -3453,6 +3464,7 @@ func (f *FlagBase[T, C, V]) IsSet() bool
 IsSet returns whether or not the flag has been set through env or file
 
 <a name="FlagBase[T, C, V].IsVisible"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [IsVisible](<https://github.com/urfave/cli/blob/main/flag_impl.go#L245>)
 
 ```go
@@ -3462,6 +3474,7 @@ func (f *FlagBase[T, C, V]) IsVisible() bool
 IsVisible returns true if the flag is not hidden, otherwise false
 
 <a name="FlagBase[T, C, V].Names"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [Names](<https://github.com/urfave/cli/blob/main/flag_impl.go#L235>)
 
 ```go
@@ -3471,6 +3484,7 @@ func (f *FlagBase[T, C, V]) Names() []string
 Names returns the names of the flag
 
 <a name="FlagBase[T, C, V].PostParse"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [PostParse](<https://github.com/urfave/cli/blob/main/flag_impl.go#L128>)
 
 ```go
@@ -3480,15 +3494,15 @@ func (f *FlagBase[T, C, V]) PostParse() error
 PostParse populates the flag given the flag set and environment
 
 <a name="FlagBase[T, C, V].PreParse"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [PreParse](<https://github.com/urfave/cli/blob/main/flag_impl.go#L159>)
 
 ```go
 func (f *FlagBase[T, C, V]) PreParse() error
 ```
 
-
-
 <a name="FlagBase[T, C, V].RunAction"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [RunAction](<https://github.com/urfave/cli/blob/main/flag_impl.go#L280>)
 
 ```go
@@ -3498,6 +3512,7 @@ func (f *FlagBase[T, C, V]) RunAction(ctx context.Context, cmd *Command) error
 RunAction executes flag action if set
 
 <a name="FlagBase[T, C, V].Set"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [Set](<https://github.com/urfave/cli/blob/main/flag_impl.go#L179>)
 
 ```go
@@ -3507,15 +3522,15 @@ func (f *FlagBase[T, C, V]) Set(_ string, val string) error
 Set applies given value from string
 
 <a name="FlagBase[T, C, V].SetCategory"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [SetCategory](<https://github.com/urfave/cli/blob/main/flag_impl.go#L254>)
 
 ```go
 func (f *FlagBase[T, C, V]) SetCategory(c string)
 ```
 
-
-
 <a name="FlagBase[T, C, V].String"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [String](<https://github.com/urfave/cli/blob/main/flag_impl.go#L225>)
 
 ```go
@@ -3525,6 +3540,7 @@ func (f *FlagBase[T, C, V]) String() string
 String returns a readable representation of this value \(for usage defaults\)
 
 <a name="FlagBase[T, C, V].TakesValue"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [TakesValue](<https://github.com/urfave/cli/blob/main/flag_impl.go#L269>)
 
 ```go
@@ -3534,6 +3550,7 @@ func (f *FlagBase[T, C, V]) TakesValue() bool
 TakesValue returns true if the flag takes a value, otherwise false
 
 <a name="FlagBase[T, C, V].TypeName"></a>
+
 ### func \(\*FlagBase\[T, C, V\]\) [TypeName](<https://github.com/urfave/cli/blob/main/flag_impl.go#L92>)
 
 ```go
@@ -3543,6 +3560,7 @@ func (f *FlagBase[T, C, V]) TypeName() string
 TypeName returns the type of the flag.
 
 <a name="FlagCategories"></a>
+
 ## type [FlagCategories](<https://github.com/urfave/cli/blob/main/category.go#L84-L89>)
 
 FlagCategories interface allows for category manipulation
@@ -3557,6 +3575,7 @@ type FlagCategories interface {
 ```
 
 <a name="FlagEnvHintFunc"></a>
+
 ## type [FlagEnvHintFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L49>)
 
 FlagEnvHintFunc is used by the default FlagStringFunc to annotate flag help with the environment variable details.
@@ -3572,6 +3591,7 @@ var FlagEnvHinter FlagEnvHintFunc = withEnvHint
 ```
 
 <a name="FlagFileHintFunc"></a>
+
 ## type [FlagFileHintFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L53>)
 
 FlagFileHintFunc is used by the default FlagStringFunc to annotate flag help with the file path details.
@@ -3587,6 +3607,7 @@ var FlagFileHinter FlagFileHintFunc = withFileHint
 ```
 
 <a name="FlagNamePrefixFunc"></a>
+
 ## type [FlagNamePrefixFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L45>)
 
 FlagNamePrefixFunc is used by the default FlagStringFunc to create prefix text for a flag's full name.
@@ -3602,6 +3623,7 @@ var FlagNamePrefixer FlagNamePrefixFunc = prefixedNames
 ```
 
 <a name="FlagStringFunc"></a>
+
 ## type [FlagStringFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L41>)
 
 FlagStringFunc is used by the help generation to display a flag, which is expected to be a single line.
@@ -3617,6 +3639,7 @@ var FlagStringer FlagStringFunc = stringifyFlag
 ```
 
 <a name="FlagsByName"></a>
+
 ## type [FlagsByName](<https://github.com/urfave/cli/blob/main/flag.go#L73>)
 
 FlagsByName is a slice of Flag.
@@ -3626,177 +3649,159 @@ type FlagsByName []Flag
 ```
 
 <a name="FlagsByName.Len"></a>
+
 ### func \(FlagsByName\) [Len](<https://github.com/urfave/cli/blob/main/flag.go#L75>)
 
 ```go
 func (f FlagsByName) Len() int
 ```
 
-
-
 <a name="FlagsByName.Less"></a>
+
 ### func \(FlagsByName\) [Less](<https://github.com/urfave/cli/blob/main/flag.go#L79>)
 
 ```go
 func (f FlagsByName) Less(i, j int) bool
 ```
 
-
-
 <a name="FlagsByName.Swap"></a>
+
 ### func \(FlagsByName\) [Swap](<https://github.com/urfave/cli/blob/main/flag.go#L83>)
 
 ```go
 func (f FlagsByName) Swap(i, j int)
 ```
 
-
-
 <a name="Float32Arg"></a>
+
 ## type [Float32Arg](<https://github.com/urfave/cli/blob/main/args.go#L228>)
-
-
 
 ```go
 type Float32Arg = ArgumentBase[float32, NoConfig, floatValue[float32]]
 ```
 
 <a name="Float32Args"></a>
+
 ## type [Float32Args](<https://github.com/urfave/cli/blob/main/args.go#L245>)
-
-
 
 ```go
 type Float32Args = ArgumentsBase[float32, NoConfig, floatValue[float32]]
 ```
 
 <a name="Float32Flag"></a>
+
 ## type [Float32Flag](<https://github.com/urfave/cli/blob/main/flag_float.go#L10>)
-
-
 
 ```go
 type Float32Flag = FlagBase[float32, NoConfig, floatValue[float32]]
 ```
 
 <a name="Float32Slice"></a>
+
 ## type [Float32Slice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L5>)
-
-
 
 ```go
 type Float32Slice = SliceBase[float32, NoConfig, floatValue[float32]]
 ```
 
 <a name="Float32SliceFlag"></a>
+
 ## type [Float32SliceFlag](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L8>)
-
-
 
 ```go
 type Float32SliceFlag = FlagBase[[]float32, NoConfig, Float32Slice]
 ```
 
 <a name="Float64Arg"></a>
+
 ## type [Float64Arg](<https://github.com/urfave/cli/blob/main/args.go#L229>)
-
-
 
 ```go
 type Float64Arg = ArgumentBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="Float64Args"></a>
+
 ## type [Float64Args](<https://github.com/urfave/cli/blob/main/args.go#L246>)
-
-
 
 ```go
 type Float64Args = ArgumentsBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="Float64Flag"></a>
+
 ## type [Float64Flag](<https://github.com/urfave/cli/blob/main/flag_float.go#L11>)
-
-
 
 ```go
 type Float64Flag = FlagBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="Float64Slice"></a>
+
 ## type [Float64Slice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L6>)
-
-
 
 ```go
 type Float64Slice = SliceBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="Float64SliceFlag"></a>
+
 ## type [Float64SliceFlag](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L9>)
-
-
 
 ```go
 type Float64SliceFlag = FlagBase[[]float64, NoConfig, Float64Slice]
 ```
 
 <a name="FloatArg"></a>
+
 ## type [FloatArg](<https://github.com/urfave/cli/blob/main/args.go#L227>)
-
-
 
 ```go
 type FloatArg = ArgumentBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="FloatArgs"></a>
+
 ## type [FloatArgs](<https://github.com/urfave/cli/blob/main/args.go#L244>)
-
-
 
 ```go
 type FloatArgs = ArgumentsBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="FloatFlag"></a>
+
 ## type [FloatFlag](<https://github.com/urfave/cli/blob/main/flag_float.go#L9>)
-
-
 
 ```go
 type FloatFlag = FlagBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="FloatSlice"></a>
+
 ## type [FloatSlice](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L4>)
-
-
 
 ```go
 type FloatSlice = SliceBase[float64, NoConfig, floatValue[float64]]
 ```
 
 <a name="FloatSliceFlag"></a>
+
 ## type [FloatSliceFlag](<https://github.com/urfave/cli/blob/main/flag_float_slice.go#L7>)
-
-
 
 ```go
 type FloatSliceFlag = FlagBase[[]float64, NoConfig, FloatSlice]
 ```
 
 <a name="GenericFlag"></a>
+
 ## type [GenericFlag](<https://github.com/urfave/cli/blob/main/flag_generic.go#L3>)
-
-
 
 ```go
 type GenericFlag = FlagBase[Value, NoConfig, genericValue]
 ```
 
 <a name="HelpPrinterCustomFunc"></a>
+
 ## type [HelpPrinterCustomFunc](<https://github.com/urfave/cli/blob/main/help.go#L23>)
 
 Prints help for the Command with custom template function.
@@ -3814,6 +3819,7 @@ var HelpPrinterCustom HelpPrinterCustomFunc = DefaultPrintHelpCustom
 ```
 
 <a name="HelpPrinterFunc"></a>
+
 ## type [HelpPrinterFunc](<https://github.com/urfave/cli/blob/main/help.go#L20>)
 
 HelpPrinterFunc prints help for the Command.
@@ -3831,231 +3837,207 @@ var HelpPrinter HelpPrinterFunc = DefaultPrintHelp
 ```
 
 <a name="Int16Arg"></a>
+
 ## type [Int16Arg](<https://github.com/urfave/cli/blob/main/args.go#L232>)
-
-
 
 ```go
 type Int16Arg = ArgumentBase[int16, IntegerConfig, intValue[int16]]
 ```
 
 <a name="Int16Args"></a>
+
 ## type [Int16Args](<https://github.com/urfave/cli/blob/main/args.go#L249>)
-
-
 
 ```go
 type Int16Args = ArgumentsBase[int16, IntegerConfig, intValue[int16]]
 ```
 
 <a name="Int16Flag"></a>
+
 ## type [Int16Flag](<https://github.com/urfave/cli/blob/main/flag_int.go#L11>)
-
-
 
 ```go
 type Int16Flag = FlagBase[int16, IntegerConfig, intValue[int16]]
 ```
 
 <a name="Int16Slice"></a>
+
 ## type [Int16Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L6>)
-
-
 
 ```go
 type Int16Slice = SliceBase[int16, IntegerConfig, intValue[int16]]
 ```
 
 <a name="Int16SliceFlag"></a>
+
 ## type [Int16SliceFlag](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L11>)
-
-
 
 ```go
 type Int16SliceFlag = FlagBase[[]int16, IntegerConfig, Int16Slice]
 ```
 
 <a name="Int32Arg"></a>
+
 ## type [Int32Arg](<https://github.com/urfave/cli/blob/main/args.go#L233>)
-
-
 
 ```go
 type Int32Arg = ArgumentBase[int32, IntegerConfig, intValue[int32]]
 ```
 
 <a name="Int32Args"></a>
+
 ## type [Int32Args](<https://github.com/urfave/cli/blob/main/args.go#L250>)
-
-
 
 ```go
 type Int32Args = ArgumentsBase[int32, IntegerConfig, intValue[int32]]
 ```
 
 <a name="Int32Flag"></a>
+
 ## type [Int32Flag](<https://github.com/urfave/cli/blob/main/flag_int.go#L12>)
-
-
 
 ```go
 type Int32Flag = FlagBase[int32, IntegerConfig, intValue[int32]]
 ```
 
 <a name="Int32Slice"></a>
+
 ## type [Int32Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L7>)
-
-
 
 ```go
 type Int32Slice = SliceBase[int32, IntegerConfig, intValue[int32]]
 ```
 
 <a name="Int32SliceFlag"></a>
+
 ## type [Int32SliceFlag](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L12>)
-
-
 
 ```go
 type Int32SliceFlag = FlagBase[[]int32, IntegerConfig, Int32Slice]
 ```
 
 <a name="Int64Arg"></a>
+
 ## type [Int64Arg](<https://github.com/urfave/cli/blob/main/args.go#L234>)
-
-
 
 ```go
 type Int64Arg = ArgumentBase[int64, IntegerConfig, intValue[int64]]
 ```
 
 <a name="Int64Args"></a>
+
 ## type [Int64Args](<https://github.com/urfave/cli/blob/main/args.go#L251>)
-
-
 
 ```go
 type Int64Args = ArgumentsBase[int64, IntegerConfig, intValue[int64]]
 ```
 
 <a name="Int64Flag"></a>
+
 ## type [Int64Flag](<https://github.com/urfave/cli/blob/main/flag_int.go#L13>)
-
-
 
 ```go
 type Int64Flag = FlagBase[int64, IntegerConfig, intValue[int64]]
 ```
 
 <a name="Int64Slice"></a>
+
 ## type [Int64Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L8>)
-
-
 
 ```go
 type Int64Slice = SliceBase[int64, IntegerConfig, intValue[int64]]
 ```
 
 <a name="Int64SliceFlag"></a>
+
 ## type [Int64SliceFlag](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L13>)
-
-
 
 ```go
 type Int64SliceFlag = FlagBase[[]int64, IntegerConfig, Int64Slice]
 ```
 
 <a name="Int8Arg"></a>
+
 ## type [Int8Arg](<https://github.com/urfave/cli/blob/main/args.go#L231>)
-
-
 
 ```go
 type Int8Arg = ArgumentBase[int8, IntegerConfig, intValue[int8]]
 ```
 
 <a name="Int8Args"></a>
+
 ## type [Int8Args](<https://github.com/urfave/cli/blob/main/args.go#L248>)
-
-
 
 ```go
 type Int8Args = ArgumentsBase[int8, IntegerConfig, intValue[int8]]
 ```
 
 <a name="Int8Flag"></a>
+
 ## type [Int8Flag](<https://github.com/urfave/cli/blob/main/flag_int.go#L10>)
-
-
 
 ```go
 type Int8Flag = FlagBase[int8, IntegerConfig, intValue[int8]]
 ```
 
 <a name="Int8Slice"></a>
+
 ## type [Int8Slice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L5>)
-
-
 
 ```go
 type Int8Slice = SliceBase[int8, IntegerConfig, intValue[int8]]
 ```
 
 <a name="Int8SliceFlag"></a>
+
 ## type [Int8SliceFlag](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L10>)
-
-
 
 ```go
 type Int8SliceFlag = FlagBase[[]int8, IntegerConfig, Int8Slice]
 ```
 
 <a name="IntArg"></a>
+
 ## type [IntArg](<https://github.com/urfave/cli/blob/main/args.go#L230>)
-
-
 
 ```go
 type IntArg = ArgumentBase[int, IntegerConfig, intValue[int]]
 ```
 
 <a name="IntArgs"></a>
+
 ## type [IntArgs](<https://github.com/urfave/cli/blob/main/args.go#L247>)
-
-
 
 ```go
 type IntArgs = ArgumentsBase[int, IntegerConfig, intValue[int]]
 ```
 
 <a name="IntFlag"></a>
+
 ## type [IntFlag](<https://github.com/urfave/cli/blob/main/flag_int.go#L9>)
-
-
 
 ```go
 type IntFlag = FlagBase[int, IntegerConfig, intValue[int]]
 ```
 
 <a name="IntSlice"></a>
+
 ## type [IntSlice](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L4>)
-
-
 
 ```go
 type IntSlice = SliceBase[int, IntegerConfig, intValue[int]]
 ```
 
 <a name="IntSliceFlag"></a>
+
 ## type [IntSliceFlag](<https://github.com/urfave/cli/blob/main/flag_int_slice.go#L9>)
-
-
 
 ```go
 type IntSliceFlag = FlagBase[[]int, IntegerConfig, IntSlice]
 ```
 
 <a name="IntegerConfig"></a>
+
 ## type [IntegerConfig](<https://github.com/urfave/cli/blob/main/flag_int.go#L17-L19>)
 
 IntegerConfig is the configuration for all integer type flags
@@ -4067,6 +4049,7 @@ type IntegerConfig struct {
 ```
 
 <a name="InvalidFlagAccessFunc"></a>
+
 ## type [InvalidFlagAccessFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L33>)
 
 InvalidFlagAccessFunc is executed when an invalid flag is accessed from the context.
@@ -4076,6 +4059,7 @@ type InvalidFlagAccessFunc func(context.Context, *Command, string)
 ```
 
 <a name="LocalFlag"></a>
+
 ## type [LocalFlag](<https://github.com/urfave/cli/blob/main/flag.go#L182-L184>)
 
 LocalFlag is an interface to enable detection of flags which are local to current command
@@ -4087,6 +4071,7 @@ type LocalFlag interface {
 ```
 
 <a name="MapBase"></a>
+
 ## type [MapBase](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L12-L17>)
 
 MapBase wraps map\[string\]T to satisfy flag.Value
@@ -4098,6 +4083,7 @@ type MapBase[T any, C any, VC ValueCreator[T, C]] struct {
 ```
 
 <a name="NewMapBase"></a>
+
 ### func [NewMapBase](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L34>)
 
 ```go
@@ -4107,15 +4093,15 @@ func NewMapBase[T any, C any, VC ValueCreator[T, C]](defaults map[string]T) *Map
 NewMapBase makes a \*MapBase with default values
 
 <a name="MapBase[T, C, VC].Create"></a>
+
 ### func \(MapBase\[T, C, VC\]\) [Create](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L19>)
 
 ```go
 func (i MapBase[T, C, VC]) Create(val map[string]T, p *map[string]T, c C) Value
 ```
 
-
-
 <a name="MapBase[T, C, VC].Get"></a>
+
 ### func \(\*MapBase\[T, C, VC\]\) [Get](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L118>)
 
 ```go
@@ -4125,6 +4111,7 @@ func (i *MapBase[T, C, VC]) Get() interface{}
 Get returns the mapping of values set by this flag
 
 <a name="MapBase[T, C, VC].Serialize"></a>
+
 ### func \(\*MapBase\[T, C, VC\]\) [Serialize](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L104>)
 
 ```go
@@ -4134,6 +4121,7 @@ func (i *MapBase[T, C, VC]) Serialize() string
 Serialize allows MapBase to fulfill Serializer
 
 <a name="MapBase[T, C, VC].Set"></a>
+
 ### func \(\*MapBase\[T, C, VC\]\) [Set](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L53>)
 
 ```go
@@ -4143,6 +4131,7 @@ func (i *MapBase[T, C, VC]) Set(value string) error
 Set parses the value and appends it to the list of values
 
 <a name="MapBase[T, C, VC].String"></a>
+
 ### func \(\*MapBase\[T, C, VC\]\) [String](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L94>)
 
 ```go
@@ -4152,15 +4141,15 @@ func (i *MapBase[T, C, VC]) String() string
 String returns a readable representation of this value \(for usage defaults\)
 
 <a name="MapBase[T, C, VC].ToString"></a>
+
 ### func \(MapBase\[T, C, VC\]\) [ToString](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L122>)
 
 ```go
 func (i MapBase[T, C, VC]) ToString(t map[string]T) string
 ```
 
-
-
 <a name="MapBase[T, C, VC].Value"></a>
+
 ### func \(\*MapBase\[T, C, VC\]\) [Value](<https://github.com/urfave/cli/blob/main/flag_map_impl.go#L110>)
 
 ```go
@@ -4170,6 +4159,7 @@ func (i *MapBase[T, C, VC]) Value() map[string]T
 Value returns the mapping of values set by this flag
 
 <a name="MapSource"></a>
+
 ## type [MapSource](<https://github.com/urfave/cli/blob/main/value_source.go#L30-L38>)
 
 MapSource is a source which can be used to look up a value based on a key typically for use with a cli.Flag
@@ -4187,15 +4177,15 @@ type MapSource interface {
 ```
 
 <a name="NewMapSource"></a>
+
 ### func [NewMapSource](<https://github.com/urfave/cli/blob/main/value_source.go#L180>)
 
 ```go
 func NewMapSource(name string, m map[any]any) MapSource
 ```
 
-
-
 <a name="MultiError"></a>
+
 ## type [MultiError](<https://github.com/urfave/cli/blob/main/errors.go#L18-L21>)
 
 MultiError is an error that wraps multiple errors.
@@ -4208,6 +4198,7 @@ type MultiError interface {
 ```
 
 <a name="MutuallyExclusiveFlags"></a>
+
 ## type [MutuallyExclusiveFlags](<https://github.com/urfave/cli/blob/main/flag_mutex.go#L8-L17>)
 
 MutuallyExclusiveFlags defines a mutually exclusive flag group Multiple option paths can be provided out of which only one can be defined on cmdline So for example \[ \-\-foo | \[ \-\-bar something \-\-darth somethingelse \] \]
@@ -4226,6 +4217,7 @@ type MutuallyExclusiveFlags struct {
 ```
 
 <a name="NoConfig"></a>
+
 ## type [NoConfig](<https://github.com/urfave/cli/blob/main/flag_impl.go#L47>)
 
 NoConfig is for flags which dont need a custom configuration
@@ -4235,6 +4227,7 @@ type NoConfig struct{}
 ```
 
 <a name="OnUsageErrorFunc"></a>
+
 ## type [OnUsageErrorFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L30>)
 
 OnUsageErrorFunc is executed if a usage error occurs. This is useful for displaying customized usage error messages. This function is able to replace the original error messages. If this function is not set, the "Incorrect usage" is displayed and the execution is interrupted.
@@ -4244,6 +4237,7 @@ type OnUsageErrorFunc func(ctx context.Context, cmd *Command, err error, isSubco
 ```
 
 <a name="RequiredFlag"></a>
+
 ## type [RequiredFlag](<https://github.com/urfave/cli/blob/main/flag.go#L120-L123>)
 
 RequiredFlag is an interface that allows us to mark flags as required it allows flags required flags to be backwards compatible with the Flag interface
@@ -4256,6 +4250,7 @@ type RequiredFlag interface {
 ```
 
 <a name="Serializer"></a>
+
 ## type [Serializer](<https://github.com/urfave/cli/blob/main/flag.go#L56-L58>)
 
 Serializer is used to circumvent the limitations of flag.FlagSet.Set
@@ -4267,6 +4262,7 @@ type Serializer interface {
 ```
 
 <a name="ShellCompleteFunc"></a>
+
 ## type [ShellCompleteFunc](<https://github.com/urfave/cli/blob/main/funcs.go#L6>)
 
 ShellCompleteFunc is an action to execute when the shell completion flag is set
@@ -4276,6 +4272,7 @@ type ShellCompleteFunc func(context.Context, *Command)
 ```
 
 <a name="SliceBase"></a>
+
 ## type [SliceBase](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L11-L17>)
 
 SliceBase wraps \[\]T to satisfy flag.Value
@@ -4287,6 +4284,7 @@ type SliceBase[T any, C any, VC ValueCreator[T, C]] struct {
 ```
 
 <a name="NewSliceBase"></a>
+
 ### func [NewSliceBase](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L32>)
 
 ```go
@@ -4296,15 +4294,15 @@ func NewSliceBase[T any, C any, VC ValueCreator[T, C]](defaults ...T) *SliceBase
 NewSliceBase makes a \*SliceBase with default values
 
 <a name="SliceBase[T, C, VC].Create"></a>
+
 ### func \(SliceBase\[T, C, VC\]\) [Create](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L19>)
 
 ```go
 func (i SliceBase[T, C, VC]) Create(val []T, p *[]T, c C) Value
 ```
 
-
-
 <a name="SliceBase[T, C, VC].Get"></a>
+
 ### func \(\*SliceBase\[T, C, VC\]\) [Get](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L108>)
 
 ```go
@@ -4314,6 +4312,7 @@ func (i *SliceBase[T, C, VC]) Get() interface{}
 Get returns the slice of values set by this flag
 
 <a name="SliceBase[T, C, VC].Serialize"></a>
+
 ### func \(\*SliceBase\[T, C, VC\]\) [Serialize](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L94>)
 
 ```go
@@ -4323,6 +4322,7 @@ func (i *SliceBase[T, C, VC]) Serialize() string
 Serialize allows SliceBase to fulfill Serializer
 
 <a name="SliceBase[T, C, VC].Set"></a>
+
 ### func \(\*SliceBase\[T, C, VC\]\) [Set](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L46>)
 
 ```go
@@ -4332,6 +4332,7 @@ func (i *SliceBase[T, C, VC]) Set(value string) error
 Set parses the value and appends it to the list of values
 
 <a name="SliceBase[T, C, VC].String"></a>
+
 ### func \(\*SliceBase\[T, C, VC\]\) [String](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L84>)
 
 ```go
@@ -4341,15 +4342,15 @@ func (i *SliceBase[T, C, VC]) String() string
 String returns a readable representation of this value \(for usage defaults\)
 
 <a name="SliceBase[T, C, VC].ToString"></a>
+
 ### func \(SliceBase\[T, C, VC\]\) [ToString](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L112>)
 
 ```go
 func (i SliceBase[T, C, VC]) ToString(t []T) string
 ```
 
-
-
 <a name="SliceBase[T, C, VC].Value"></a>
+
 ### func \(\*SliceBase\[T, C, VC\]\) [Value](<https://github.com/urfave/cli/blob/main/flag_slice_base.go#L100>)
 
 ```go
@@ -4359,24 +4360,23 @@ func (i *SliceBase[T, C, VC]) Value() []T
 Value returns the slice of values set by this flag
 
 <a name="StringArg"></a>
+
 ## type [StringArg](<https://github.com/urfave/cli/blob/main/args.go#L235>)
-
-
 
 ```go
 type StringArg = ArgumentBase[string, StringConfig, stringValue]
 ```
 
 <a name="StringArgs"></a>
+
 ## type [StringArgs](<https://github.com/urfave/cli/blob/main/args.go#L252>)
-
-
 
 ```go
 type StringArgs = ArgumentsBase[string, StringConfig, stringValue]
 ```
 
 <a name="StringConfig"></a>
+
 ## type [StringConfig](<https://github.com/urfave/cli/blob/main/flag_string.go#L11-L14>)
 
 StringConfig defines the configuration for string flags
@@ -4389,96 +4389,87 @@ type StringConfig struct {
 ```
 
 <a name="StringFlag"></a>
+
 ## type [StringFlag](<https://github.com/urfave/cli/blob/main/flag_string.go#L8>)
-
-
 
 ```go
 type StringFlag = FlagBase[string, StringConfig, stringValue]
 ```
 
 <a name="StringMap"></a>
+
 ## type [StringMap](<https://github.com/urfave/cli/blob/main/flag_string_map.go#L4>)
-
-
 
 ```go
 type StringMap = MapBase[string, StringConfig, stringValue]
 ```
 
 <a name="StringMapArgs"></a>
+
 ## type [StringMapArgs](<https://github.com/urfave/cli/blob/main/args.go#L236>)
-
-
 
 ```go
 type StringMapArgs = ArgumentBase[map[string]string, StringConfig, StringMap]
 ```
 
 <a name="StringMapFlag"></a>
+
 ## type [StringMapFlag](<https://github.com/urfave/cli/blob/main/flag_string_map.go#L5>)
-
-
 
 ```go
 type StringMapFlag = FlagBase[map[string]string, StringConfig, StringMap]
 ```
 
 <a name="StringSlice"></a>
+
 ## type [StringSlice](<https://github.com/urfave/cli/blob/main/flag_string_slice.go#L4>)
-
-
 
 ```go
 type StringSlice = SliceBase[string, StringConfig, stringValue]
 ```
 
 <a name="StringSliceFlag"></a>
+
 ## type [StringSliceFlag](<https://github.com/urfave/cli/blob/main/flag_string_slice.go#L5>)
-
-
 
 ```go
 type StringSliceFlag = FlagBase[[]string, StringConfig, StringSlice]
 ```
 
 <a name="SuggestCommandFunc"></a>
+
 ## type [SuggestCommandFunc](<https://github.com/urfave/cli/blob/main/suggestions.go#L17>)
-
-
 
 ```go
 type SuggestCommandFunc func(commands []*Command, provided string) string
 ```
 
 <a name="SuggestFlagFunc"></a>
+
 ## type [SuggestFlagFunc](<https://github.com/urfave/cli/blob/main/suggestions.go#L15>)
-
-
 
 ```go
 type SuggestFlagFunc func(flags []Flag, provided string, hideHelp bool) string
 ```
 
 <a name="TimestampArg"></a>
+
 ## type [TimestampArg](<https://github.com/urfave/cli/blob/main/args.go#L237>)
-
-
 
 ```go
 type TimestampArg = ArgumentBase[time.Time, TimestampConfig, timestampValue]
 ```
 
 <a name="TimestampArgs"></a>
+
 ## type [TimestampArgs](<https://github.com/urfave/cli/blob/main/args.go#L253>)
-
-
 
 ```go
 type TimestampArgs = ArgumentsBase[time.Time, TimestampConfig, timestampValue]
 ```
 
 <a name="TimestampConfig"></a>
+
 ## type [TimestampConfig](<https://github.com/urfave/cli/blob/main/flag_timestamp.go#L12-L20>)
 
 TimestampConfig defines the config for timestamp flags
@@ -4496,240 +4487,215 @@ type TimestampConfig struct {
 ```
 
 <a name="TimestampFlag"></a>
+
 ## type [TimestampFlag](<https://github.com/urfave/cli/blob/main/flag_timestamp.go#L9>)
-
-
 
 ```go
 type TimestampFlag = FlagBase[time.Time, TimestampConfig, timestampValue]
 ```
 
 <a name="Uint16Arg"></a>
+
 ## type [Uint16Arg](<https://github.com/urfave/cli/blob/main/args.go#L240>)
-
-
 
 ```go
 type Uint16Arg = ArgumentBase[uint16, IntegerConfig, uintValue[uint16]]
 ```
 
 <a name="Uint16Args"></a>
+
 ## type [Uint16Args](<https://github.com/urfave/cli/blob/main/args.go#L256>)
-
-
 
 ```go
 type Uint16Args = ArgumentsBase[uint16, IntegerConfig, uintValue[uint16]]
 ```
 
 <a name="Uint16Flag"></a>
+
 ## type [Uint16Flag](<https://github.com/urfave/cli/blob/main/flag_uint.go#L11>)
-
-
 
 ```go
 type Uint16Flag = FlagBase[uint16, IntegerConfig, uintValue[uint16]]
 ```
 
 <a name="Uint16Slice"></a>
+
 ## type [Uint16Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L6>)
-
-
 
 ```go
 type Uint16Slice = SliceBase[uint16, IntegerConfig, uintValue[uint16]]
 ```
 
 <a name="Uint16SliceFlag"></a>
+
 ## type [Uint16SliceFlag](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L11>)
-
-
 
 ```go
 type Uint16SliceFlag = FlagBase[[]uint16, IntegerConfig, Uint16Slice]
 ```
 
 <a name="Uint32Arg"></a>
+
 ## type [Uint32Arg](<https://github.com/urfave/cli/blob/main/args.go#L241>)
-
-
 
 ```go
 type Uint32Arg = ArgumentBase[uint32, IntegerConfig, uintValue[uint32]]
 ```
 
 <a name="Uint32Args"></a>
+
 ## type [Uint32Args](<https://github.com/urfave/cli/blob/main/args.go#L257>)
-
-
 
 ```go
 type Uint32Args = ArgumentsBase[uint32, IntegerConfig, uintValue[uint32]]
 ```
 
 <a name="Uint32Flag"></a>
+
 ## type [Uint32Flag](<https://github.com/urfave/cli/blob/main/flag_uint.go#L12>)
-
-
 
 ```go
 type Uint32Flag = FlagBase[uint32, IntegerConfig, uintValue[uint32]]
 ```
 
 <a name="Uint32Slice"></a>
+
 ## type [Uint32Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L7>)
-
-
 
 ```go
 type Uint32Slice = SliceBase[uint32, IntegerConfig, uintValue[uint32]]
 ```
 
 <a name="Uint32SliceFlag"></a>
+
 ## type [Uint32SliceFlag](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L12>)
-
-
 
 ```go
 type Uint32SliceFlag = FlagBase[[]uint32, IntegerConfig, Uint32Slice]
 ```
 
 <a name="Uint64Arg"></a>
+
 ## type [Uint64Arg](<https://github.com/urfave/cli/blob/main/args.go#L242>)
-
-
 
 ```go
 type Uint64Arg = ArgumentBase[uint64, IntegerConfig, uintValue[uint64]]
 ```
 
 <a name="Uint64Args"></a>
+
 ## type [Uint64Args](<https://github.com/urfave/cli/blob/main/args.go#L258>)
-
-
 
 ```go
 type Uint64Args = ArgumentsBase[uint64, IntegerConfig, uintValue[uint64]]
 ```
 
 <a name="Uint64Flag"></a>
+
 ## type [Uint64Flag](<https://github.com/urfave/cli/blob/main/flag_uint.go#L13>)
-
-
 
 ```go
 type Uint64Flag = FlagBase[uint64, IntegerConfig, uintValue[uint64]]
 ```
 
 <a name="Uint64Slice"></a>
+
 ## type [Uint64Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L8>)
-
-
 
 ```go
 type Uint64Slice = SliceBase[uint64, IntegerConfig, uintValue[uint64]]
 ```
 
 <a name="Uint64SliceFlag"></a>
+
 ## type [Uint64SliceFlag](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L13>)
-
-
 
 ```go
 type Uint64SliceFlag = FlagBase[[]uint64, IntegerConfig, Uint64Slice]
 ```
 
 <a name="Uint8Arg"></a>
+
 ## type [Uint8Arg](<https://github.com/urfave/cli/blob/main/args.go#L239>)
-
-
 
 ```go
 type Uint8Arg = ArgumentBase[uint8, IntegerConfig, uintValue[uint8]]
 ```
 
 <a name="Uint8Args"></a>
+
 ## type [Uint8Args](<https://github.com/urfave/cli/blob/main/args.go#L255>)
-
-
 
 ```go
 type Uint8Args = ArgumentsBase[uint8, IntegerConfig, uintValue[uint8]]
 ```
 
 <a name="Uint8Flag"></a>
+
 ## type [Uint8Flag](<https://github.com/urfave/cli/blob/main/flag_uint.go#L10>)
-
-
 
 ```go
 type Uint8Flag = FlagBase[uint8, IntegerConfig, uintValue[uint8]]
 ```
 
 <a name="Uint8Slice"></a>
+
 ## type [Uint8Slice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L5>)
-
-
 
 ```go
 type Uint8Slice = SliceBase[uint8, IntegerConfig, uintValue[uint8]]
 ```
 
 <a name="Uint8SliceFlag"></a>
+
 ## type [Uint8SliceFlag](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L10>)
-
-
 
 ```go
 type Uint8SliceFlag = FlagBase[[]uint8, IntegerConfig, Uint8Slice]
 ```
 
 <a name="UintArg"></a>
+
 ## type [UintArg](<https://github.com/urfave/cli/blob/main/args.go#L238>)
-
-
 
 ```go
 type UintArg = ArgumentBase[uint, IntegerConfig, uintValue[uint]]
 ```
 
 <a name="UintArgs"></a>
+
 ## type [UintArgs](<https://github.com/urfave/cli/blob/main/args.go#L254>)
-
-
 
 ```go
 type UintArgs = ArgumentsBase[uint, IntegerConfig, uintValue[uint]]
 ```
 
 <a name="UintFlag"></a>
+
 ## type [UintFlag](<https://github.com/urfave/cli/blob/main/flag_uint.go#L9>)
-
-
 
 ```go
 type UintFlag = FlagBase[uint, IntegerConfig, uintValue[uint]]
 ```
 
 <a name="UintSlice"></a>
+
 ## type [UintSlice](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L4>)
-
-
 
 ```go
 type UintSlice = SliceBase[uint, IntegerConfig, uintValue[uint]]
 ```
 
 <a name="UintSliceFlag"></a>
+
 ## type [UintSliceFlag](<https://github.com/urfave/cli/blob/main/flag_uint_slice.go#L9>)
-
-
 
 ```go
 type UintSliceFlag = FlagBase[[]uint, IntegerConfig, UintSlice]
 ```
 
 <a name="Value"></a>
+
 ## type [Value](<https://github.com/urfave/cli/blob/main/flag_impl.go#L13-L16>)
 
 Value represents a value as used by cli. For now it implements the golang flag.Value interface
@@ -4742,6 +4708,7 @@ type Value interface {
 ```
 
 <a name="ValueCreator"></a>
+
 ## type [ValueCreator](<https://github.com/urfave/cli/blob/main/flag_impl.go#L41-L44>)
 
 ValueCreator is responsible for creating a flag.Value emulation as well as custom formatting
@@ -4759,6 +4726,7 @@ type ValueCreator[T any, C any] interface {
 ```
 
 <a name="ValueSource"></a>
+
 ## type [ValueSource](<https://github.com/urfave/cli/blob/main/value_source.go#L11-L18>)
 
 ValueSource is a source which can be used to look up a value, typically for use with a cli.Flag
@@ -4775,33 +4743,31 @@ type ValueSource interface {
 ```
 
 <a name="EnvVar"></a>
+
 ### func [EnvVar](<https://github.com/urfave/cli/blob/main/value_source.go#L126>)
 
 ```go
 func EnvVar(key string) ValueSource
 ```
 
-
-
 <a name="File"></a>
+
 ### func [File](<https://github.com/urfave/cli/blob/main/value_source.go#L159>)
 
 ```go
 func File(path string) ValueSource
 ```
 
-
-
 <a name="NewMapValueSource"></a>
+
 ### func [NewMapValueSource](<https://github.com/urfave/cli/blob/main/value_source.go#L236>)
 
 ```go
 func NewMapValueSource(key string, ms MapSource) ValueSource
 ```
 
-
-
 <a name="ValueSourceChain"></a>
+
 ## type [ValueSourceChain](<https://github.com/urfave/cli/blob/main/value_source.go#L43-L45>)
 
 ValueSourceChain contains an ordered series of ValueSource that allows for lookup where the first ValueSource to resolve is returned
@@ -4813,6 +4779,7 @@ type ValueSourceChain struct {
 ```
 
 <a name="EnvVars"></a>
+
 ### func [EnvVars](<https://github.com/urfave/cli/blob/main/value_source.go#L134>)
 
 ```go
@@ -4822,6 +4789,7 @@ func EnvVars(keys ...string) ValueSourceChain
 EnvVars is a helper function to encapsulate a number of envVarValueSource together as a ValueSourceChain
 
 <a name="Files"></a>
+
 ### func [Files](<https://github.com/urfave/cli/blob/main/value_source.go#L165>)
 
 ```go
@@ -4831,69 +4799,63 @@ func Files(paths ...string) ValueSourceChain
 Files is a helper function to encapsulate a number of fileValueSource together as a ValueSourceChain
 
 <a name="NewValueSourceChain"></a>
+
 ### func [NewValueSourceChain](<https://github.com/urfave/cli/blob/main/value_source.go#L47>)
 
 ```go
 func NewValueSourceChain(src ...ValueSource) ValueSourceChain
 ```
 
-
-
 <a name="ValueSourceChain.Append"></a>
+
 ### func \(\*ValueSourceChain\) [Append](<https://github.com/urfave/cli/blob/main/value_source.go#L53>)
 
 ```go
 func (vsc *ValueSourceChain) Append(other ValueSourceChain)
 ```
 
-
-
 <a name="ValueSourceChain.EnvKeys"></a>
+
 ### func \(\*ValueSourceChain\) [EnvKeys](<https://github.com/urfave/cli/blob/main/value_source.go#L57>)
 
 ```go
 func (vsc *ValueSourceChain) EnvKeys() []string
 ```
 
-
-
 <a name="ValueSourceChain.GoString"></a>
+
 ### func \(\*ValueSourceChain\) [GoString](<https://github.com/urfave/cli/blob/main/value_source.go#L79>)
 
 ```go
 func (vsc *ValueSourceChain) GoString() string
 ```
 
-
-
 <a name="ValueSourceChain.Lookup"></a>
+
 ### func \(\*ValueSourceChain\) [Lookup](<https://github.com/urfave/cli/blob/main/value_source.go#L89>)
 
 ```go
 func (vsc *ValueSourceChain) Lookup() (string, bool)
 ```
 
-
-
 <a name="ValueSourceChain.LookupWithSource"></a>
+
 ### func \(\*ValueSourceChain\) [LookupWithSource](<https://github.com/urfave/cli/blob/main/value_source.go#L94>)
 
 ```go
 func (vsc *ValueSourceChain) LookupWithSource() (string, ValueSource, bool)
 ```
 
-
-
 <a name="ValueSourceChain.String"></a>
+
 ### func \(\*ValueSourceChain\) [String](<https://github.com/urfave/cli/blob/main/value_source.go#L69>)
 
 ```go
 func (vsc *ValueSourceChain) String() string
 ```
 
-
-
 <a name="VisibleFlag"></a>
+
 ## type [VisibleFlag](<https://github.com/urfave/cli/blob/main/flag.go#L165-L168>)
 
 VisibleFlag is an interface that allows to check if a flag is visible
@@ -4906,6 +4868,7 @@ type VisibleFlag interface {
 ```
 
 <a name="VisibleFlagCategory"></a>
+
 ## type [VisibleFlagCategory](<https://github.com/urfave/cli/blob/main/category.go#L161-L166>)
 
 VisibleFlagCategory is a category containing flags.
@@ -4927,8 +4890,6 @@ import "github.com/urfave/cli/docs/v3"
 
 ## Index
 
-
-
 # scripts
 
 ```go
@@ -4949,105 +4910,93 @@ import "github.com/urfave/cli/v3/scripts"
 - [func V3Diff\(ctx context.Context, cmd \*cli.Command\) error](<#V3Diff>)
 - [func VetActionFunc\(ctx context.Context, cmd \*cli.Command\) error](<#VetActionFunc>)
 
-
 <a name="DiffCheckActionFunc"></a>
+
 ## func [DiffCheckActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L506>)
 
 ```go
 func DiffCheckActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="EnsureGfmrunActionFunc"></a>
+
 ## func [EnsureGfmrunActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L538>)
 
 ```go
 func EnsureGfmrunActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="EnsureGoimportsActionFunc"></a>
+
 ## func [EnsureGoimportsActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L518>)
 
 ```go
 func EnsureGoimportsActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="EnsureMkdocsActionFunc"></a>
+
 ## func [EnsureMkdocsActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L563>)
 
 ```go
 func EnsureMkdocsActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="GenerateActionFunc"></a>
+
 ## func [GenerateActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L491>)
 
 ```go
 func GenerateActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="GfmrunActionFunc"></a>
+
 ## func [GfmrunActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L295>)
 
 ```go
 func GfmrunActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="LintActionFunc"></a>
+
 ## func [LintActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L602>)
 
 ```go
 func LintActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="SetMkdocsRemoteActionFunc"></a>
+
 ## func [SetMkdocsRemoteActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L581>)
 
 ```go
 func SetMkdocsRemoteActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="TestActionFunc"></a>
+
 ## func [TestActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L238>)
 
 ```go
 func TestActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="V3Diff"></a>
+
 ## func [V3Diff](<https://github.com/urfave/cli/blob/main/scripts/build.go#L623>)
 
 ```go
 func V3Diff(ctx context.Context, cmd *cli.Command) error
 ```
 
-
-
 <a name="VetActionFunc"></a>
+
 ## func [VetActionFunc](<https://github.com/urfave/cli/blob/main/scripts/build.go#L234>)
 
 ```go
 func VetActionFunc(ctx context.Context, cmd *cli.Command) error
 ```
-
-
 
 # example\-cli
 
@@ -5057,8 +5006,6 @@ import "github.com/urfave/cli/v3/examples/example-cli"
 
 ## Index
 
-
-
 # example\-hello\-world
 
 ```go
@@ -5066,7 +5013,5 @@ import "github.com/urfave/cli/v3/examples/example-hello-world"
 ```
 
 ## Index
-
-
 
 Generated by [gomarkdoc](<https://github.com/princjef/gomarkdoc>)
