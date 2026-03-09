@@ -2538,6 +2538,11 @@ Set "pass" to true if the docs are usable (minor issues are OK). Set "pass" to f
     if not stdout:
         return fail_result("clauded-mm returned empty output")
 
+    # Strip markdown code fences (```json ... ``` or ``` ... ```)
+    code_fence_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', stdout)
+    if code_fence_match:
+        stdout = code_fence_match.group(1).strip()
+
     # Try to extract JSON from the output (may have non-JSON preamble)
     try:
         parsed = json.loads(stdout)
