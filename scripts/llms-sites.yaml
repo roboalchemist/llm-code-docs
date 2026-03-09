@@ -1150,3 +1150,6 @@ sites:
 - name: milvus
   base_url: https://milvus.io/
   description: milvus documentation
+- name: ragas
+  base_url: https://docs.ragas.io/
+  description: ragas documentation
