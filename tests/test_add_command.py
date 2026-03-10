@@ -150,15 +150,17 @@ class TestAddLlmsTxt:
     """Test add_library with llms-txt source."""
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_happy_path_llms_txt(
-        self, mock_git, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 5}
         mock_lint.return_value = {"files_checked": 5, "issues_fixed": 2}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "Good"}
@@ -180,14 +182,16 @@ class TestAddLlmsTxt:
         assert result["error"] is None
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     def test_no_commit_flag(
-        self, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 3}
         mock_lint.return_value = {"files_checked": 3, "issues_fixed": 0}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "OK"}
@@ -211,15 +215,17 @@ class TestAddGitHub:
     """Test add_library with GitHub source."""
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_github")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_happy_path_github(
-        self, mock_git, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_github, tmp_path,
     ):
         mock_probe.return_value = mock_probe_github
+        mock_decide.return_value = {"source": "github", "url": "org/ghlib", "reason": "github docs"}
         mock_fetch.return_value = {"success": True, "file_count": 25}
         mock_lint.return_value = {"files_checked": 25, "issues_fixed": 5}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "OK"}
@@ -290,8 +296,10 @@ class TestAddDryRun:
     """Test --dry-run flag."""
 
     @patch("auto_doc._invoke_probe")
-    def test_dry_run_stops_after_decide(self, mock_probe, mock_probe_output):
+    @patch("auto_doc.decide")
+    def test_dry_run_stops_after_decide(self, mock_decide, mock_probe, mock_probe_output):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
 
         result = auto_doc.add_library("testlib", dry_run=True)
 
@@ -355,9 +363,11 @@ class TestAddFetchFailure:
     """Test handling of fetch failures."""
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
-    def test_fetch_fails(self, mock_fetch, mock_probe, mock_probe_output):
+    def test_fetch_fails(self, mock_fetch, mock_decide, mock_probe, mock_probe_output):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": False, "error": "connection timeout"}
 
         result = auto_doc.add_library("testlib")
@@ -375,14 +385,16 @@ class TestAddReviewFailure:
     """Test handling of LLM review failure."""
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     def test_review_fails(
-        self, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 5}
         mock_lint.return_value = {"files_checked": 5, "issues_fixed": 0}
         mock_review.return_value = {
@@ -415,15 +427,17 @@ class TestAddGitFailure:
     """Test handling of git commit/push failure."""
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_git_commit_fails(
-        self, mock_git, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 5}
         mock_lint.return_value = {"files_checked": 5, "issues_fixed": 0}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "OK"}
@@ -440,16 +454,18 @@ class TestAddGitFailure:
         assert "nothing to commit" in result["error"]
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_push_fails_but_commit_succeeds(
-        self, mock_git, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         """Push failure is non-fatal if commit succeeded."""
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 5}
         mock_lint.return_value = {"files_checked": 5, "issues_fixed": 0}
         mock_review.return_value = {"pass": True, "issues": [], "files_to_delete": [], "summary": "OK"}
@@ -589,16 +605,18 @@ class TestAddEdgeCases:
         assert result["success"] is False
 
     @patch("auto_doc._invoke_probe")
+    @patch("auto_doc.decide")
     @patch("auto_doc._fetch_llms_txt")
     @patch("auto_doc.cleanup_markdownlint")
     @patch("auto_doc.review_content")
     @patch("auto_doc._git_commit_and_push")
     def test_review_deletes_flagged_files(
-        self, mock_git, mock_review, mock_lint, mock_fetch, mock_probe,
+        self, mock_git, mock_review, mock_lint, mock_fetch, mock_decide, mock_probe,
         mock_probe_output, tmp_path,
     ):
         """Review that passes but flags files for deletion."""
         mock_probe.return_value = mock_probe_output
+        mock_decide.return_value = {"source": "llms-txt", "url": "https://testlib.dev/llms-full.txt", "reason": "llms-txt"}
         mock_fetch.return_value = {"success": True, "file_count": 3}
         mock_lint.return_value = {"files_checked": 3, "issues_fixed": 0}
         mock_review.return_value = {

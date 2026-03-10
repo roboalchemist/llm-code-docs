@@ -256,7 +256,7 @@ class TestPlowDryRun:
 
         auto_doc.plow_batch(dry_run=True)
 
-        mock_add.assert_called_once_with("drylib", dry_run=True)
+        mock_add.assert_called_once_with("drylib", dry_run=True, skip_sources=None)
 
     @patch("auto_doc.add_library")
     @patch("auto_doc.trckr_update_ticket")
@@ -363,7 +363,7 @@ class TestPlowCLI:
         assert result.exit_code == 0
         output = json.loads(result.output)
         assert output["processed"] == 2
-        mock_batch.assert_called_once_with(limit=2, dry_run=False, project_id=auto_doc.DOCS_PROJECT_ID)
+        mock_batch.assert_called_once_with(limit=2, dry_run=False, project_id=auto_doc.DOCS_PROJECT_ID, skip_sources=None, labels=None)
 
     @patch("auto_doc.plow_batch")
     def test_human_output(self, mock_batch):
@@ -403,7 +403,7 @@ class TestPlowCLI:
         }
 
         runner.invoke(auto_doc.app, ["plow", "--dry-run", "--limit", "5"])
-        mock_batch.assert_called_once_with(limit=5, dry_run=True, project_id=auto_doc.DOCS_PROJECT_ID)
+        mock_batch.assert_called_once_with(limit=5, dry_run=True, project_id=auto_doc.DOCS_PROJECT_ID, skip_sources=None, labels=None)
 
     @patch("auto_doc.plow_batch")
     def test_custom_project_id(self, mock_batch):
@@ -416,4 +416,4 @@ class TestPlowCLI:
         }
 
         runner.invoke(auto_doc.app, ["plow", "--project-id", "custom-uuid-123"])
-        mock_batch.assert_called_once_with(limit=0, dry_run=False, project_id="custom-uuid-123")
+        mock_batch.assert_called_once_with(limit=0, dry_run=False, project_id="custom-uuid-123", skip_sources=None, labels=None)

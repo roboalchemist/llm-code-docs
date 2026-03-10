@@ -174,59 +174,46 @@ def download_file(url: str, output_path: Path, description: str = None, force: b
 def parse_llms_txt(content: str, base_url: str = "") -> list[str]:
     """Parse llms.txt content and extract all documentation URLs.
 
-    Follows llms.txt standard: extracts URLs from markdown links [title](url)
+    Follows llms.txt standard: extracts URLs from markdown links [title](url).
+    Deduplicates by base URL (strips query params and anchors) so that
+    single-page docs with anchor navigation (e.g. ``?id=foo``) yield one URL
+    instead of hundreds.
 
     Args:
         content: Raw text content of llms.txt file
         base_url: Base URL to resolve relative URLs (optional)
 
     Returns:
-        list: URLs to documentation files
+        list: Deduplicated URLs to documentation files
     """
-    # Extract URLs from markdown links: [Title](URL)
-    # Pattern matches markdown links with .md URLs (both absolute and relative)
-    pattern_absolute_md = r'\[([^\]]+)\]\((https?://[^\)]+\.md)\)'
-    pattern_relative_md = r'\[([^\]]+)\]\((/[^\)]+\.md)\)'
-    # Pattern for bare relative paths (no leading slash) - must end with .md and close paren
-    # Use [^\)] to match anything except closing paren to avoid matching across lines
-    pattern_bare_relative_nested = r'\[([^\]]+)\]\(([^\)]+\.md)\)'
-    # Pattern for URLs without .md extension (some sites use path-based URLs)
-    pattern_relative_path = r'\[([^\]]+)\]\((/[^\)]+)\)'
-    urls = []
+    # Extract ALL markdown links: [Title](URL)
+    # Use [^\)\n]+ to prevent matching across line breaks (some TOCs have
+    # truncated URLs like "https://git..." that lack a closing paren).
+    raw_urls = []
+    for match in re.finditer(r'\[([^\]\n]+)\]\(([^\)\n]+)\)', content):
+        href = match.group(2).strip()
+        # Skip anchors, javascript, and mailto
+        if href.startswith('#') or href.startswith('javascript:') or href.startswith('mailto:'):
+            continue
+        # Resolve relative URLs
+        if href.startswith('http://') or href.startswith('https://'):
+            raw_urls.append(href)
+        elif base_url:
+            raw_urls.append(urljoin(base_url, href))
 
-    # First try absolute .md URLs
-    for match in re.finditer(pattern_absolute_md, content):
-        url = match.group(2)
-        urls.append(url)
+    # Deduplicate: strip query params and fragments to collapse anchor-style
+    # links (e.g. /api?id=foo, /api?id=bar → /api) into one URL per page.
+    seen = {}
+    for url in raw_urls:
+        parsed = urlparse(url)
+        # Canonical = scheme + netloc + path (no query, no fragment)
+        canonical = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+        # Normalize trailing slashes for dedup but keep original for download
+        canon_key = canonical.rstrip('/')
+        if canon_key not in seen:
+            seen[canon_key] = canonical
 
-    # If no absolute .md URLs found, try relative .md URLs (starting with /)
-    if not urls and base_url:
-        for match in re.finditer(pattern_relative_md, content):
-            relative_url = match.group(2)
-            url = urljoin(base_url, relative_url)
-            urls.append(url)
-
-    # If still no URLs, try bare relative paths with .md (like "Accordion.md" or "releases/v0-1-0.md")
-    if not urls and base_url:
-        for match in re.finditer(pattern_bare_relative_nested, content):
-            relative_url = match.group(2)
-            # Skip anchor links, javascript, and absolute URLs
-            if relative_url.startswith('#') or relative_url.startswith('javascript:') or relative_url.startswith('http'):
-                continue
-            url = urljoin(base_url, relative_url)
-            urls.append(url)
-
-    # If still no URLs, try relative path-based URLs (without .md extension)
-    if not urls and base_url:
-        for match in re.finditer(pattern_relative_path, content):
-            relative_url = match.group(2)
-            # Skip anchor links and javascript
-            if relative_url.startswith('#') or relative_url.startswith('javascript:'):
-                continue
-            url = urljoin(base_url, relative_url)
-            urls.append(url)
-
-    return urls
+    return list(seen.values())
 
 
 def download_individual_files(site_name: str, base_url: str, output_dir: Path, force: bool = False, rate_limit_seconds: float = 0) -> tuple[int, int]:
@@ -271,31 +258,41 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
 
     success_count = 0
     fail_count = 0
+    used_filenames: set[str] = set()
 
     for i, url in enumerate(urls):
-        # Extract filename from URL, preserving path structure to avoid collisions
+        # Extract filename from URL path
         path = urlparse(url).path
-        filename = Path(path).name
+        filename = _url_to_filename(path)
 
-        # If no filename (path ends with /), use the last directory as filename
-        if not filename:
-            parts = [p for p in path.split('/') if p]
-            filename = parts[-1] if parts else 'index'
-
-        # Ensure .md extension
-        if not filename.endswith('.md'):
-            filename += '.md'
-
-        # If filename would collide (e.g. all "index.md"), use path-based naming
-        # Convert /workers/runtime-apis/fetch/index.md -> workers_runtime-apis_fetch.md
-        if filename == 'index.md':
-            parts = [p for p in path.strip('/').split('/') if p and p != 'index.md']
-            if parts:
-                filename = '_'.join(parts) + '.md'
+        # Deduplicate filenames by appending _2, _3, etc.
+        orig_filename = filename
+        counter = 2
+        while filename in used_filenames:
+            stem = orig_filename.rsplit('.', 1)[0]
+            filename = f"{stem}_{counter}.md"
+            counter += 1
+        used_filenames.add(filename)
 
         output_path = output_dir / filename
 
-        success, size = download_file(url, output_path, filename, force)
+        # Per llms.txt spec, try the .md version of the URL first, then the
+        # original URL.  Many sites serve markdown at url.md even when the TOC
+        # links to the HTML page.
+        download_url = url
+        if not url.endswith('.md'):
+            md_url = url.rstrip('/') + '.md'
+            # Quick HEAD check to see if .md version exists
+            try:
+                head_resp = requests.head(md_url, timeout=10, allow_redirects=True)
+                if head_resp.status_code == 200:
+                    ct = head_resp.headers.get('content-type', '')
+                    if 'html' not in ct:
+                        download_url = md_url
+            except requests.RequestException:
+                pass
+
+        success, size = download_file(download_url, output_path, filename, force)
         if success:
             # Add source header (only if not already present)
             content = output_path.read_text(encoding='utf-8')
@@ -311,6 +308,35 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
             time.sleep(rate_limit_seconds)
 
     return success_count, fail_count
+
+
+def _url_to_filename(path: str) -> str:
+    """Convert a URL path to a safe, unique-ish filename.
+
+    Examples:
+        /docs/guide/apps.md         → apps.md
+        /docs/guide/apps            → apps.md
+        /                           → index.md
+        /workers/runtime-apis/fetch → workers_runtime-apis_fetch.md
+    """
+    name = Path(path).name
+
+    # No filename (trailing slash or root)
+    if not name:
+        parts = [p for p in path.split('/') if p]
+        name = parts[-1] if parts else 'index'
+
+    # Ensure .md extension
+    if not name.endswith('.md'):
+        name += '.md'
+
+    # Path-based naming for generic filenames to avoid collisions
+    if name in ('index.md', 'index.html.md'):
+        parts = [p for p in path.strip('/').split('/') if p and p not in ('index.md', 'index.html.md')]
+        if parts:
+            name = '_'.join(parts) + '.md'
+
+    return name
 
 
 def download_full_file(site_name: str, base_url: str, output_dir: Path, force: bool = False) -> bool:
@@ -345,6 +371,70 @@ def download_full_file(site_name: str, base_url: str, output_dir: Path, force: b
             print(f"  ✓ Full documentation saved to: {output_path}")
 
     return success
+
+
+def split_full_file(full_path: Path, output_dir: Path) -> int:
+    """Split an llms-full.txt/md file into individual documents using H1 headers.
+
+    Each H1 (``# Title``) starts a new document. The first H1 is treated as the
+    overall title/preamble and is skipped (it's already in the full file).
+    Documents shorter than 200 chars are skipped as likely noise.
+
+    Args:
+        full_path: Path to the full markdown file
+        output_dir: Directory to write individual files
+
+    Returns:
+        Number of individual files created
+    """
+    content = full_path.read_text(encoding='utf-8')
+    lines = content.split('\n')
+
+    # Find all H1 header positions
+    h1_positions = []
+    for i, line in enumerate(lines):
+        if line.startswith('# ') and not line.startswith('# Source:'):
+            h1_positions.append(i)
+
+    if len(h1_positions) < 2:
+        return 0  # Single document or no clear boundaries
+
+    # Split into documents (skip the first H1 which is the file title/preamble)
+    documents = []
+    for idx in range(1, len(h1_positions)):
+        start = h1_positions[idx]
+        end = h1_positions[idx + 1] if idx + 1 < len(h1_positions) else len(lines)
+        title = lines[start].lstrip('# ').strip()
+        body = '\n'.join(lines[start:end]).strip()
+        if len(body) >= 200 and title:
+            documents.append((title, body))
+
+    if not documents:
+        return 0
+
+    count = 0
+    used: set[str] = set()
+    for title, body in documents:
+        # Convert title to filename
+        fname = re.sub(r'[^\w\s-]', '', title.lower())
+        fname = re.sub(r'[\s]+', '-', fname).strip('-')[:80]
+        if not fname:
+            fname = f"section-{count}"
+        fname += '.md'
+        # Deduplicate
+        orig = fname
+        n = 2
+        while fname in used:
+            fname = f"{orig.rsplit('.', 1)[0]}_{n}.md"
+            n += 1
+        used.add(fname)
+
+        out_path = output_dir / fname
+        if not out_path.exists():  # Don't overwrite existing individual files
+            out_path.write_text(body, encoding='utf-8')
+            count += 1
+
+    return count
 
 
 def process_site(site: dict, mode: str, force: bool = False) -> dict:
@@ -399,7 +489,108 @@ def process_site(site: dict, mode: str, force: bool = False) -> dict:
         if not full_success:
             stats['success'] = False
 
+    # If we got a full file but no individual files, try to split the full file
+    # using H1 headers as document boundaries.
+    if stats['full_success'] and stats['individual_success'] == 0:
+        full_path = output_dir / f"{name}-full.md"
+        if full_path.exists():
+            split_count = split_full_file(full_path, output_dir)
+            if split_count > 0:
+                stats['individual_success'] = split_count
+                with print_lock:
+                    print(f"  Split full file into {split_count} individual documents")
+
     return stats
+
+
+def _backfill_one_site(name: str, full_path: Path, sites_by_name: dict) -> dict:
+    """Backfill a single full-only dir. Returns result dict."""
+    llms_dir = full_path.parent.parent
+    output_dir = llms_dir / name
+    site_config = sites_by_name.get(name)
+
+    if site_config:
+        base_url = site_config['base_url']
+        rate_limit = site_config.get('rate_limit_seconds', 0)
+        with print_lock:
+            print(f"\n{name}: trying individual download from {base_url}")
+
+        success, fail = download_individual_files(name, base_url, output_dir, force=True, rate_limit_seconds=rate_limit)
+        if success > 0:
+            with print_lock:
+                print(f"  {name}: downloaded {success} individual files")
+            return {"name": name, "result": "downloaded", "count": success}
+
+    # Fallback: split the full file
+    with print_lock:
+        print(f"  {name}: splitting full file by H1 headers")
+    split_count = split_full_file(full_path, output_dir)
+    if split_count > 0:
+        with print_lock:
+            print(f"  {name}: split into {split_count} files")
+        return {"name": name, "result": "split", "count": split_count}
+
+    with print_lock:
+        print(f"  {name}: could not split (single document or no H1 boundaries)")
+    return {"name": name, "result": "failed", "count": 0}
+
+
+def backfill_full_only_dirs(workers: int = 10) -> int:
+    """Find llms-txt dirs that have only a full file and attempt to add individual files.
+
+    Processes sites in parallel — each site's downloads are sequential (no rate
+    limit issues), but multiple sites run concurrently.
+
+    Returns:
+        Exit code (0 = success)
+    """
+    llms_dir = REPO_ROOT / "docs" / "llms-txt"
+    config = load_config()
+    sites_by_name = {s['name']: s for s in config.get('sites', [])}
+
+    # Find full-only dirs (only 1 file, and it's a -full.md/txt)
+    full_only = []
+    for d in sorted(llms_dir.iterdir()):
+        if not d.is_dir():
+            continue
+        files = [f for f in d.iterdir() if not f.name.startswith('.')]
+        full_files = [f for f in files if f.name.endswith(('-full.md', '-full.txt'))]
+        non_full = [f for f in files if not f.name.endswith(('-full.md', '-full.txt'))]
+        if full_files and not non_full:
+            full_only.append((d.name, full_files[0]))
+
+    print(f"Found {len(full_only)} dirs with only a full file")
+    print(f"Processing with {workers} parallel workers\n")
+
+    results = {"downloaded": 0, "split": 0, "failed": 0}
+
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {
+            executor.submit(_backfill_one_site, name, full_path, sites_by_name): name
+            for name, full_path in full_only
+        }
+        for future in as_completed(futures):
+            name = futures[future]
+            try:
+                r = future.result()
+                if r["result"] == "downloaded":
+                    results["downloaded"] += 1
+                elif r["result"] == "split":
+                    results["split"] += 1
+                else:
+                    results["failed"] += 1
+            except Exception as e:
+                with print_lock:
+                    print(f"  {name}: ERROR — {e}")
+                results["failed"] += 1
+
+    print(f"\n{'=' * 70}")
+    print(f"Backfill Summary:")
+    print(f"  Individual downloads: {results['downloaded']}")
+    print(f"  Split from full file: {results['split']}")
+    print(f"  Failed:               {results['failed']}")
+    print(f"  Total:                {sum(results.values())}")
+    return 0
 
 
 def main():
@@ -429,8 +620,17 @@ def main():
         action='store_true',
         help='Force re-download even if files were downloaded in last 23 hours'
     )
+    parser.add_argument(
+        '--backfill',
+        action='store_true',
+        help='Find dirs with only a full file and attempt to download individual files or split'
+    )
 
     args = parser.parse_args()
+
+    # Handle --backfill mode
+    if args.backfill:
+        return backfill_full_only_dirs()
 
     # Load configuration
     config = load_config()
